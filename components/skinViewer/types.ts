@@ -125,7 +125,8 @@ export type Layout = {
   world?: {
     skeleton?: { x: number; y: number; scale: number; dataScale?: number };
     ppu?: number;
-    bg?: { tex: string; x: number; y: number; w: number; h: number };
+    bg?: { name?: string; tex: string; x: number; y: number; w: number; h: number };
+    backgrounds?: { name: string; tex: string; x: number; y: number; w: number; h: number }[];
     cutsceneOffsets?: {
       category: { fileId: number; pathId: number };
       samples: {

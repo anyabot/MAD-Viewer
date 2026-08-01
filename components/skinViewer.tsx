@@ -129,7 +129,8 @@ export default function SkinViewer({
   const fitCameraRef = useRef<() => void>(() => {});
   const pixiRef = useRef<any>(null);
   const spineRef = useRef<any>(null);
-  const bgSpriteRef = useRef<any>(null);
+  const bgSpritesRef = useRef<any[]>([]);
+  const syncBackgroundVisibilityRef = useRef<() => void>(() => {});
   const spinePixelScaleRef = useRef<() => number>(() => 1);
   const filesRef = useRef<Map<string, Blob> | null>(null);
   const jiggleRef = useRef<JiggleField | null>(null);
@@ -431,7 +432,8 @@ export default function SkinViewer({
     let appReady = false;
     let sceneTimers: ReturnType<typeof setTimeout>[] = [];
     spineRef.current = null;
-    bgSpriteRef.current = null;
+    bgSpritesRef.current = [];
+    syncBackgroundVisibilityRef.current = () => {};
     jiggleRef.current = null;
     spinePixelScaleRef.current = () => 1;
 
@@ -498,20 +500,64 @@ export default function SkinViewer({
         duration: number;
       } | null = null;
 
-      if (W.bg) {
-        const bgTex = await loadTexture(PIXI, archive, files, W.bg.tex);
+      const backgroundDefs = W.backgrounds?.length
+        ? W.backgrounds
+        : W.bg ? [{ ...W.bg, name: W.bg.name ?? W.bg.tex.replace(/\.png$/i, '') }] : [];
+      const normalizeBackgroundName = (name: string) => name
+        .toLowerCase().replace(/\.png$/i, '').replace(/_(\d+)$/, '$1');
+      const backgroundOffTargets = new Set<string>();
+      for (const animation of skeletonData.animations ?? []) {
+        for (const timeline of animation.timelines ?? []) {
+          for (const event of timeline.events ?? []) {
+            if (event?.data?.name !== 'bg_off' || !event.stringValue) continue;
+            backgroundOffTargets.add(normalizeBackgroundName(event.stringValue));
+          }
+        }
+      }
+      const targetedBackgrounds = backgroundOffTargets.size > 0;
+      const backgroundEnabled = backgroundDefs.map((def: any, index: number) =>
+        targetedBackgrounds
+          ? backgroundOffTargets.has(normalizeBackgroundName(def.name))
+          : index === 0);
+      const backgroundSprites: any[] = [];
+      const applyBackgroundVisibility = () => {
+        backgroundSprites.forEach((sprite, index) => {
+          sprite.visible = showBgRef.current && backgroundEnabled[index];
+        });
+      };
+      for (let index = 0; index < backgroundDefs.length; index++) {
+        const def = backgroundDefs[index];
+        const bgTex = await loadTexture(PIXI, archive, files, def.tex);
         if (destroyed) { if (appReady) app?.destroy(true); return; }
         const bg = new PIXI.Sprite(bgTex);
         bg.anchor.set(0.5);
         // Pixi's y axis points down; Unity's points up.
-        bg.position.set(W.bg.x, -W.bg.y);
-        bg.width = W.bg.w;
-        bg.height = W.bg.h;
-        bg.zIndex = -10;
-        bg.visible = showBgRef.current;
+        bg.position.set(def.x, -def.y);
+        bg.width = def.w;
+        bg.height = def.h;
+        bg.zIndex = -20 + index;
         scene.addChild(bg);
-        bgSpriteRef.current = bg;
+        backgroundSprites.push(bg);
       }
+      bgSpritesRef.current = backgroundSprites;
+      syncBackgroundVisibilityRef.current = applyBackgroundVisibility;
+      applyBackgroundVisibility();
+
+      const switchBackground = (eventName: string, targetName: string, targetIndex: number) => {
+        let index = backgroundDefs.findIndex((def: any) =>
+          normalizeBackgroundName(def.name) === normalizeBackgroundName(targetName));
+        if (index < 0 && targetIndex > 0) index = targetIndex - 1;
+        if (index < 0) return false;
+        if (eventName === 'bg_off') {
+          backgroundEnabled[index] = false;
+          if (index + 1 < backgroundEnabled.length) backgroundEnabled[index + 1] = true;
+        } else {
+          backgroundEnabled[index] = true;
+          if (index + 1 < backgroundEnabled.length) backgroundEnabled[index + 1] = false;
+        }
+        applyBackgroundVisibility();
+        return true;
+      };
 
       const spine = new Spine({ skeletonData });
       spineRef.current = spine;
@@ -1032,13 +1078,11 @@ export default function SkinViewer({
         });
       }
 
-      // `bg_on`/`bg_off` drive the scene's white Naninovel overlay, not the
-      // exported room sprite. The room remains under the user's background
-      // toggle; the animation event only opens or clears the overlay above it.
       spine.state.addListener({
         event: (_entry: any, event: any) => {
           const name = event?.data?.name;
           if (name === 'bg_on' || name === 'bg_off') {
+            if (switchBackground(name, event.stringValue ?? '', event.intValue ?? 0)) return;
             setFade((current) => spineBackgroundEventFade(current, name));
           }
         },
@@ -1275,6 +1319,12 @@ export default function SkinViewer({
         cameraState.offsetY = 0;
         cameraState.zoom = 0;
         cameraTween = null;
+        backgroundEnabled.forEach((_, index) => {
+          backgroundEnabled[index] = targetedBackgrounds
+            ? backgroundOffTargets.has(normalizeBackgroundName(backgroundDefs[index].name))
+            : index === 0;
+        });
+        applyBackgroundVisibility();
         setFade({ color: 'black', opacity: 0, duration: 0 });
         fit();
       };
@@ -1429,7 +1479,7 @@ export default function SkinViewer({
         if (scales.length) {
           return scales[Math.floor((scales.length - 1) * EXPORT_SCALE_PERCENTILE)];
         }
-        const bg = bgSpriteRef.current;
+        const bg = bgSpritesRef.current.find((sprite) => sprite.visible);
         const src = bg?.texture?.source;
         if (bg?.visible && src?.width && src?.height) {
           return Math.max(Math.abs(bg.width) / src.width, Math.abs(bg.height) / src.height) || 1;
@@ -1497,7 +1547,8 @@ export default function SkinViewer({
       boundsRef.current = null;
       boxOverlayRef.current = null;
       spineRef.current = null;
-      bgSpriteRef.current = null;
+      bgSpritesRef.current = [];
+      syncBackgroundVisibilityRef.current = () => {};
       jiggleRef.current = null;
       spinePixelScaleRef.current = () => 1;
       appRef.current = null;
@@ -1576,7 +1627,7 @@ export default function SkinViewer({
   }, [faceAnim]);
 
   useEffect(() => {
-    if (bgSpriteRef.current) bgSpriteRef.current.visible = showBg;
+    syncBackgroundVisibilityRef.current();
   }, [showBg]);
 
   // Hiding is enforced per frame in the Spine hook; showing restores the setup

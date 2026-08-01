@@ -44,6 +44,11 @@ aspect-keyed offset, computes fit from the unmodified composition, then applies
 the offset to a shared room/actor/touch-overlay container; manual modes use the
 ordinary fit.
 
+Drawers may contain an ordered background stack rather than one sprite. The
+viewer keeps those layers in the shared scene container and uses targeted Spine
+`bg_on`/`bg_off` payloads to switch authored pairs; untargeted events remain
+screen-overlay cues.
+
 Character expressions are separate animations rather than skins, so ordinary
 playback uses body track 0 and face track 1. Scripted Desire playback can also
 address authored numeric or variable Spine tracks directly; those extra tracks

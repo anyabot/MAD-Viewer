@@ -185,9 +185,10 @@ curve. It measures the original room/actor composition first, then applies the
 authored position, rotation, and scale to a shared room/actor/touch-zone
 container. Manual Free play continues to use ordinary fit framing.
 
-Spine `bg_on`/`bg_off` events address that same white overlay, not the exported
-room/background sprite. `bg_on` opens opaque white and `bg_off` clears white;
-the background toggle remains independent. `bg_change` is not yet reproduced.
+Spine `bg_on`/`bg_off` events with a named or indexed drawer-background payload
+switch that exact layer (including paired multi-layer backgrounds). Untargeted
+events address the white overlay: `bg_on` opens opaque white and `bg_off` clears
+it. The background toggle remains independent. `bg_change` is not yet reproduced.
 
 The **Follow game flow** toggle owns both the opening and scripted camera.
 Disabled, a context skips its pre-dialogue/pre-label entry and opens directly
