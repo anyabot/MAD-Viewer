@@ -1,0 +1,170 @@
+export type AnimationAction = {
+  type: 'animation';
+  clip: string;
+  loop: boolean;
+  /** Authored Spine track expression (`31`, `z`); null selects by clip role. */
+  track: string | number | null;
+  hold?: boolean;
+  reset?: boolean;
+  wait: boolean;
+  when?: string | null;
+};
+
+export type ResetAnimationAction = {
+  type: 'reset-animation';
+  track: string | null;
+  wait: boolean;
+};
+
+export type WaitAction = { type: 'wait'; duration: number };
+export type WaitAnimationAction = { type: 'wait-animation' };
+
+export type CameraAction = {
+  type: 'camera';
+  source: 'camera' | 'actor';
+  offset?: (number | null)[];
+  rotation?: (number | null)[];
+  zoom?: number;
+  roll?: number;
+  duration: number;
+  easing?: string;
+  wait: boolean;
+};
+
+export type FadeAction = {
+  type: 'fade';
+  color: 'white' | 'black' | string;
+  opacity: number;
+  duration: number;
+  wait: boolean;
+};
+
+export type SceneAction = AnimationAction | ResetAnimationAction | WaitAction | WaitAnimationAction
+  | CameraAction | FadeAction;
+
+export type SceneBeat = { label: string; actions: SceneAction[] };
+export type LinearScene = { script: string; entry: SceneAction[]; beats: SceneBeat[] };
+export type DesirePresentation = {
+  script: string;
+  entry: SceneAction[];
+  sections: {
+    labels: (string | null)[];
+    entry: SceneAction[];
+    triggers: SceneAction[][];
+    reset?: string | null;
+    resetActions?: SceneAction[];
+  }[];
+  subroutines?: Record<string, SceneAction[]>;
+  modelCommands?: {
+    class: string;
+    line: number | null;
+    inline: number | null;
+    indent: number;
+    fields: Record<string, string>;
+  }[];
+};
+
+export type SceneTimelineRig = {
+  view?: LinearScene | DesirePresentation;
+  story?: LinearScene;
+};
+
+export type SceneTimelineData = {
+  generated: string;
+  source: string;
+  rigs: Record<string, SceneTimelineRig>;
+};
+
+export function isLinearScene(scene: LinearScene | DesirePresentation | undefined):
+scene is LinearScene {
+  return !!scene && 'beats' in scene;
+}
+
+export type CameraState = { offsetX: number; offsetY: number; zoom: number };
+export type SceneFadeState = { color: string; opacity: number; duration: number };
+
+/** Spine `bg_*` events control the scene's white overlay, not its room sprite. */
+export function spineBackgroundEventFade(
+  current: SceneFadeState,
+  eventName: string,
+): SceneFadeState {
+  if (eventName === 'bg_on') return { color: 'white', opacity: 1, duration: 0 };
+  if (eventName === 'bg_off' && current.color === 'white') {
+    return { ...current, opacity: 0, duration: 0 };
+  }
+  return current;
+}
+
+export type CameraBase = {
+  x: number; y: number; scale: number; width: number; height: number;
+};
+
+export type CutsceneOffsetSample = {
+  aspect: number;
+  position: { x: number; y: number };
+  rotation: number;
+  scale: number;
+};
+
+/** Linearly sample Unity's aspect-keyed cutscene actor staging curve. */
+export function cutsceneOffsetAt(
+  samples: CutsceneOffsetSample[], aspect: number,
+): CutsceneOffsetSample | null {
+  if (!samples.length) return null;
+  const ordered = [...samples].sort((a, b) => a.aspect - b.aspect);
+  if (aspect <= ordered[0].aspect) return ordered[0];
+  if (aspect >= ordered[ordered.length - 1].aspect) return ordered[ordered.length - 1];
+  const upper = ordered.findIndex((sample) => sample.aspect >= aspect);
+  const a = ordered[upper - 1];
+  const b = ordered[upper];
+  const t = (aspect - a.aspect) / (b.aspect - a.aspect);
+  return {
+    aspect,
+    position: {
+      x: a.position.x + (b.position.x - a.position.x) * t,
+      y: a.position.y + (b.position.y - a.position.y) * t,
+    },
+    rotation: a.rotation + (b.rotation - a.rotation) * t,
+    scale: a.scale + (b.scale - a.scale) * t,
+  };
+}
+
+export function scriptCameraTransform(base: CameraBase, state: CameraState): {
+  x: number; y: number; scale: number;
+} {
+  const factor = 1 / Math.max(0.1, 1 - state.zoom);
+  const x = base.width / 2 + (base.x - base.width / 2) * factor
+    - state.offsetX * base.scale * factor;
+  const y = base.height / 2 + (base.y - base.height / 2) * factor
+    + state.offsetY * base.scale * factor;
+  return { x, y, scale: base.scale * factor };
+}
+
+export function presentationDuration(actions: SceneAction[], animationRemaining = 0): number {
+  let elapsed = 0;
+  for (const action of actions) {
+    if (action.type === 'wait') elapsed += action.duration;
+    else if (action.type === 'wait-animation') {
+      elapsed = Math.max(elapsed, animationRemaining);
+    }
+    else if ((action.type === 'camera' || action.type === 'fade') && action.wait) {
+      elapsed += action.duration;
+    }
+  }
+  return elapsed;
+}
+
+/** Resolve an empty Desire wait against the most recently authored track. */
+export function waitAnimationDeadline(
+  elapsed: number,
+  lastAnimationTrack: number | null,
+  scheduledEnds: ReadonlyMap<number, number>,
+  liveRemaining = 0,
+): number {
+  const hasScheduled = lastAnimationTrack !== null
+    && scheduledEnds.has(lastAnimationTrack);
+  const deadline = hasScheduled
+    ? scheduledEnds.get(lastAnimationTrack!) ?? 0
+    : liveRemaining;
+  return Math.max(elapsed, deadline);
+}

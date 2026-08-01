@@ -1,0 +1,2993 @@
+{
+ "version": "1.4.5",
+ "generated": "2026-08-01T14:17:33+00:00",
+ "skins": [
+  {
+   "key": "af_ch0009",
+   "kind": "affection",
+   "character": "CH0009",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 71,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "lobby",
+    "story"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0009.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "oppai_L_aleora_2_UNCEN",
+     "oppai_L_nipple_3_UNCEN",
+     "oppai_L_nipple_shadow_2_UNCEN",
+     "oppai_R_aleora_2_UNCEN",
+     "oppai_R_nipple_3_UNCEN",
+     "oppai_R_nipple_shadow_2_UNCEN",
+     "oppai_stocking_L_aleora_2_UNCEN",
+     "oppai_stocking_L_nipple_dup01_2_UNCEN",
+     "oppai_stocking_L_nipple_shadow_2_UNCEN",
+     "oppai_stocking_R_aleora_2_UNCEN",
+     "oppai_stocking_R_nipple_dup01_2_UNCEN",
+     "oppai_stocking_R_nipple_shadow_2_UNCEN"
+    ],
+    "added": [
+     "oppai_L_censorship_2_CEN",
+     "oppai_R_censorship_2_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 10716520,
+    "onestore": 10642178
+   }
+  },
+  {
+   "key": "af_ch0010",
+   "kind": "affection",
+   "character": "CH0010",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 29,
+   "faces": 2,
+   "bodyGroups": [
+    "00_loop",
+    "asmr",
+    "basic",
+    "test"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0010.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "breast_L_lighting_2_UNCEN",
+     "nipple_UNCEN"
+    ],
+    "added": [
+     "patch_CEN",
+     "swimsuit_band_1_CEN",
+     "swimsuit_band_2_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 5615709,
+    "onestore": 5597153
+   }
+  },
+  {
+   "key": "af_ch0011",
+   "kind": "affection",
+   "character": "CH0011",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 41,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 6097412
+   }
+  },
+  {
+   "key": "af_ch0015",
+   "kind": "affection",
+   "character": "CH0015",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 38,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0015.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "body",
+     "oppai_L"
+    ],
+    "dropped": [
+     "body_wet_UNCEN"
+    ],
+    "added": [
+     "leg_L_hip_censored_panties_CEN",
+     "oppai_L_censored_bra_CEN",
+     "oppai_L_censored_bra_shadow_CEN",
+     "oppai_L_censored_bra_string_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 5329886,
+    "onestore": 5355830
+   }
+  },
+  {
+   "key": "af_ch0019",
+   "kind": "affection",
+   "character": "CH0019",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 44,
+   "faces": 2,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 9633241
+   }
+  },
+  {
+   "key": "af_ch0022",
+   "kind": "affection",
+   "character": "CH0022",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 44,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0022.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "breast_L",
+     "breast_R"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 5285289,
+    "onestore": 5286152
+   }
+  },
+  {
+   "key": "af_ch0024",
+   "kind": "affection",
+   "character": "CH0024",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 46,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_Alone.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "breast_L",
+     "breast_R",
+     "breast_negligge_L",
+     "breast_negligge_R",
+     "negligee_L",
+     "negligee_R"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 4979696,
+    "onestore": 5154961
+   }
+  },
+  {
+   "key": "af_ch0028",
+   "kind": "affection",
+   "character": "CH0028",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 55,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_Charlotte.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped"
+    ],
+    "renamed": [],
+    "dropped": [
+     "massage_finger01",
+     "massage_finger02",
+     "massage_finger11",
+     "massage_finger12",
+     "massage_finger21",
+     "massage_finger22",
+     "massage_finger23",
+     "massage_finger31",
+     "massage_finger32",
+     "massage_hand",
+     "massage_hand_shadow",
+     "massage_thumb_shadow",
+     "push_cover",
+     "skinpush"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 4576845,
+    "onestore": 4683744
+   }
+  },
+  {
+   "key": "af_ch0032",
+   "kind": "affection",
+   "character": "CH0032",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 21,
+   "faces": 2,
+   "bodyGroups": [
+    ""
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 8482800
+   }
+  },
+  {
+   "key": "af_ch0035",
+   "kind": "affection",
+   "character": "CH0035",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 20,
+   "faces": 2,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0035.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "negligee_upper_L",
+     "negligee_upper_R"
+    ],
+    "dropped": [
+     "oppai_nipple_L_UNCEN",
+     "oppai_nipple_R_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 8408048,
+    "onestore": 8418384
+   }
+  },
+  {
+   "key": "af_ch0038",
+   "kind": "affection",
+   "character": "CH0038",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 21,
+   "faces": 2,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0038.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN"
+    ],
+    "added": [
+     "nipplepatch_L_CEN",
+     "nipplepatch_R_CEN",
+     "panty_CEN",
+     "panty_shadow_multi_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 7199394,
+    "onestore": 7091837
+   }
+  },
+  {
+   "key": "af_ch0042",
+   "kind": "affection",
+   "character": "CH0042",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 26,
+   "faces": 7,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0042.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "areola_stand_L_UNCEN",
+     "areola_stand_R_UNCEN",
+     "nipple_stand_L_UNCEN",
+     "nipple_stand_R_UNCEN"
+    ],
+    "added": [
+     "patch_stand_L_CEN",
+     "patch_stand_R_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 16864253,
+    "onestore": 16853154
+   }
+  },
+  {
+   "key": "af_ch0057",
+   "kind": "affection",
+   "character": "CH0057",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 22,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "cape_2"
+    ],
+    "dropped": [
+     "cape_1_UNCEN"
+    ],
+    "added": [
+     "cape_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 4667982,
+    "onestore": 4660112
+   }
+  },
+  {
+   "key": "af_ch0068",
+   "kind": "affection",
+   "character": "CH0068",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 33,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0068.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "braest_shadow",
+     "breast_shadow_reflect"
+    ],
+    "dropped": [
+     "oppai_nipple_L_UNCEN",
+     "oppai_nipple_L_areola_UNCEN",
+     "oppai_nipple_R_UNCEN",
+     "oppai_nipple_R_areola_UNCEN"
+    ],
+    "added": [
+     "oppai_L_cover_CEN",
+     "oppai_R_cover_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 5362875,
+    "onestore": 5368677
+   }
+  },
+  {
+   "key": "ds_ch0009",
+   "kind": "desire",
+   "character": "CH0009",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 18,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_Elisia.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "oppai_L",
+     "oppai_R"
+    ],
+    "added": [
+     "oppai_L_censor",
+     "oppai_R_censor"
+    ]
+   },
+   "bytes": {
+    "google": 5437399,
+    "onestore": 5399821
+   }
+  },
+  {
+   "key": "ds_ch0010",
+   "kind": "desire",
+   "character": "CH0010",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 24,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 7951144
+   }
+  },
+  {
+   "key": "ds_ch0011",
+   "kind": "desire",
+   "character": "CH0011",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 23,
+   "faces": 0,
+   "bodyGroups": [
+    "00_loop",
+    "10_basic",
+    "10_reaction",
+    "20_emotion",
+    "30_overlay",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_chise.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "nipple_L",
+     "nipple_R"
+    ],
+    "added": [
+     "chest_bandage"
+    ]
+   },
+   "bytes": {
+    "google": 7070026,
+    "onestore": 7031208
+   }
+  },
+  {
+   "key": "ds_ch0015",
+   "kind": "desire",
+   "character": "CH0015",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 0,
+   "bodyGroups": [
+    "",
+    "10",
+    "30_overlay",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 5548033
+   }
+  },
+  {
+   "key": "ds_ch0019",
+   "kind": "desire",
+   "character": "CH0019",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 29,
+   "faces": 0,
+   "bodyGroups": [
+    "00_loop",
+    "10_basic",
+    "10_function",
+    "10_reaction",
+    "20_blend",
+    "30_overlay",
+    "emotion",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_Victoria.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "oppai_R"
+    ],
+    "added": [
+     "oppai_R_censor"
+    ]
+   },
+   "bytes": {
+    "google": 6108660,
+    "onestore": 6112572
+   }
+  },
+  {
+   "key": "ds_ch0022",
+   "kind": "desire",
+   "character": "CH0022",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 19,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0022.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "breast_L",
+     "breast_R"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 6586573,
+    "onestore": 6589134
+   }
+  },
+  {
+   "key": "ds_ch0024",
+   "kind": "desire",
+   "character": "CH0024",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_Alone.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "breast_L",
+     "breast_R",
+     "negligee_breast",
+     "negligee_front"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 6822187,
+    "onestore": 6843977
+   }
+  },
+  {
+   "key": "ds_ch0028",
+   "kind": "desire",
+   "character": "CH0028",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 13,
+   "faces": 0,
+   "bodyGroups": [
+    "10",
+    "30",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_Charlotte.png"
+   ],
+   "divergeEdit": {
+    "censorship": false,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "body2",
+     "puhaha_2",
+     "puhaha_2_2",
+     "puhaha_2_4"
+    ],
+    "added": [
+     "body2_o",
+     "puhaha_2_2_o",
+     "puhaha_2_4_o",
+     "puhaha_2_o"
+    ]
+   },
+   "bytes": {
+    "google": 6353503,
+    "onestore": 6353324
+   }
+  },
+  {
+   "key": "ds_ch0032",
+   "kind": "desire",
+   "character": "CH0032",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 11,
+   "faces": 0,
+   "bodyGroups": [
+    "00",
+    "10"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0032.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "panty"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 6240792,
+    "onestore": 6239681
+   }
+  },
+  {
+   "key": "ds_ch0035",
+   "kind": "desire",
+   "character": "CH0035",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 13,
+   "faces": 0,
+   "bodyGroups": [
+    "00",
+    "10"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0035.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "nipple_L",
+     "nipple_R",
+     "panty"
+    ],
+    "dropped": [
+     "panty_wet_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 10211038,
+    "onestore": 10183417
+   }
+  },
+  {
+   "key": "ds_ch0038",
+   "kind": "desire",
+   "character": "CH0038",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0038.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "body"
+    ],
+    "dropped": [
+     "nipple_L_UNCEN",
+     "nipple_L_light_UNCEN",
+     "nipple_R_UNCEN",
+     "nipple_R_light_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 8774900,
+    "onestore": 8788877
+   }
+  },
+  {
+   "key": "ds_ch0042",
+   "kind": "desire",
+   "character": "CH0042",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 37,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0042.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "chest_R"
+    ],
+    "dropped": [
+     "areola_L_UNCEN",
+     "areola_R_UNCEN",
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN"
+    ],
+    "added": [
+     "chest_prill_L_1_CEN",
+     "chest_prill_L_2_CEN",
+     "chest_prill_L_3_CEN",
+     "chest_prill_R_1_CEN",
+     "chest_prill_R_2_CEN",
+     "chest_prill_shadow_L_touch2_CEN",
+     "chest_ribbon_L_CEN",
+     "chest_ribbon_R_1_CEN",
+     "chest_ribbon_R_2_CEN",
+     "chest_ribbon_R_3_CEN",
+     "chest_shadow_R_CEN",
+     "chest_skinpull_L_touch2_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 10896690,
+    "onestore": 10735553
+   }
+  },
+  {
+   "key": "ds_ch0057",
+   "kind": "desire",
+   "character": "CH0057",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 18,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay",
+    "lobby"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 8872124
+   }
+  },
+  {
+   "key": "ds_ch0068",
+   "kind": "desire",
+   "character": "CH0068",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 21,
+   "faces": 0,
+   "bodyGroups": [
+    "basic",
+    "lobby",
+    "loop",
+    "reaction"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0068.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "leg_crotch",
+     "oppai_R_band"
+    ],
+    "dropped": [
+     "leg_crotch_cover_UNCEN",
+     "leg_crotch_orgasm_UNCEN",
+     "leg_crotch_orgasm_cover_UNCEN",
+     "oppai_L_nipple_UNCEN",
+     "oppai_L_nipple_areola_UNCEN",
+     "oppai_L_nipple_shadow_UNCEN",
+     "oppai_R_nipple_UNCEN",
+     "oppai_R_nipple_areola_UNCEN",
+     "oppai_R_nipple_shadow_UNCEN"
+    ],
+    "added": [
+     "oppai_L_band_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 6022267,
+    "onestore": 6116808
+   }
+  },
+  {
+   "key": "pl_cutin_0001",
+   "kind": "pleasure",
+   "character": "cutin_0001",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 2,
+   "faces": 0,
+   "bodyGroups": [
+    ""
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:PL_cutin_0001.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "f_breast_L",
+     "f_breast_R",
+     "l_chest_L",
+     "l_chest_R"
+    ],
+    "dropped": [
+     "f_nipple_L_UNCEN"
+    ],
+    "added": [
+     "l_cloth_B_CEN",
+     "l_cloth_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 9014392,
+    "onestore": 8577512
+   }
+  },
+  {
+   "key": "pl_cutin_0002",
+   "kind": "pleasure",
+   "character": "cutin_0002",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 1,
+   "faces": 0,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:PL_cutin_0002.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "L_oppai_clothes_L",
+     "L_oppai_clothes_R",
+     "L_pelivs",
+     "L_torso"
+    ],
+    "dropped": [
+     "L_oppai_nipple_L_UNCEN",
+     "L_oppai_nipple_R_UNCEN",
+     "L_sweat5_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 8711611,
+    "onestore": 8695926
+   }
+  },
+  {
+   "key": "pl_ev0001",
+   "kind": "pleasure",
+   "character": "EV0001",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 4,
+   "faces": 0,
+   "bodyGroups": [
+    "00_loop",
+    "10_basic",
+    "20_emotion"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 8908291
+   }
+  },
+  {
+   "key": "pl_title_0001",
+   "kind": "pleasure",
+   "character": "title_0001",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 2,
+   "faces": 0,
+   "bodyGroups": [
+    ""
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 8405642
+   }
+  },
+  {
+   "key": "st_ch0001",
+   "kind": "standing",
+   "character": "CH0001",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4013683
+   }
+  },
+  {
+   "key": "st_ch0002",
+   "kind": "standing",
+   "character": "CH0002",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3817382
+   }
+  },
+  {
+   "key": "st_ch0005",
+   "kind": "standing",
+   "character": "CH0005",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 14,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3229834
+   }
+  },
+  {
+   "key": "st_ch0006",
+   "kind": "standing",
+   "character": "CH0006",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4082611
+   }
+  },
+  {
+   "key": "st_ch0007",
+   "kind": "standing",
+   "character": "CH0007",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4178032
+   }
+  },
+  {
+   "key": "st_ch0009",
+   "kind": "standing",
+   "character": "CH0009",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0009.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [],
+    "added": [
+     "body_oppai_L_cover",
+     "body_oppai_R_cover"
+    ]
+   },
+   "bytes": {
+    "google": 3231631,
+    "onestore": 3120853
+   }
+  },
+  {
+   "key": "st_ch0010",
+   "kind": "standing",
+   "character": "CH0010",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 11,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0010.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "breast_L",
+     "breast_R"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 3877614,
+    "onestore": 3880279
+   }
+  },
+  {
+   "key": "st_ch0011",
+   "kind": "standing",
+   "character": "CH0011",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3530195
+   }
+  },
+  {
+   "key": "st_ch0012",
+   "kind": "standing",
+   "character": "CH0012",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4456708
+   }
+  },
+  {
+   "key": "st_ch0013",
+   "kind": "standing",
+   "character": "CH0013",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3875837
+   }
+  },
+  {
+   "key": "st_ch0015",
+   "kind": "standing",
+   "character": "CH0015",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3123285
+   }
+  },
+  {
+   "key": "st_ch0016",
+   "kind": "standing",
+   "character": "CH0016",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3686934
+   }
+  },
+  {
+   "key": "st_ch0017",
+   "kind": "standing",
+   "character": "CH0017",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3731499
+   }
+  },
+  {
+   "key": "st_ch0019",
+   "kind": "standing",
+   "character": "CH0019",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3781842
+   }
+  },
+  {
+   "key": "st_ch0020",
+   "kind": "standing",
+   "character": "CH0020",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 11,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4910834
+   }
+  },
+  {
+   "key": "st_ch0021",
+   "kind": "standing",
+   "character": "CH0021",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3945190
+   }
+  },
+  {
+   "key": "st_ch0022",
+   "kind": "standing",
+   "character": "CH0022",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 20,
+   "faces": 17,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3620554
+   }
+  },
+  {
+   "key": "st_ch0023",
+   "kind": "standing",
+   "character": "CH0023",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3541216
+   }
+  },
+  {
+   "key": "st_ch0024",
+   "kind": "standing",
+   "character": "CH0024",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 19,
+   "faces": 16,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4357937
+   }
+  },
+  {
+   "key": "st_ch0025",
+   "kind": "standing",
+   "character": "CH0025",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 11,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4310599
+   }
+  },
+  {
+   "key": "st_ch0026",
+   "kind": "standing",
+   "character": "CH0026",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3558491
+   }
+  },
+  {
+   "key": "st_ch0027",
+   "kind": "standing",
+   "character": "CH0027",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0027.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped"
+    ],
+    "renamed": [],
+    "dropped": [
+     "oppai_L_nipple"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 3976659,
+    "onestore": 3986046
+   }
+  },
+  {
+   "key": "st_ch0028",
+   "kind": "standing",
+   "character": "CH0028",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4404352
+   }
+  },
+  {
+   "key": "st_ch0029",
+   "kind": "standing",
+   "character": "CH0029",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 14,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4417123
+   }
+  },
+  {
+   "key": "st_ch0030",
+   "kind": "standing",
+   "character": "CH0030",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 14,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3595347
+   }
+  },
+  {
+   "key": "st_ch0031",
+   "kind": "standing",
+   "character": "CH0031",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 18,
+   "faces": 14,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3778939
+   }
+  },
+  {
+   "key": "st_ch0032",
+   "kind": "standing",
+   "character": "CH0032",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 13,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4092608
+   }
+  },
+  {
+   "key": "st_ch0033",
+   "kind": "standing",
+   "character": "CH0033",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3951373
+   }
+  },
+  {
+   "key": "st_ch0034",
+   "kind": "standing",
+   "character": "CH0034",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 12,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3403305
+   }
+  },
+  {
+   "key": "st_ch0035",
+   "kind": "standing",
+   "character": "CH0035",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 14,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3735268
+   }
+  },
+  {
+   "key": "st_ch0036",
+   "kind": "standing",
+   "character": "CH0036",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0036.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "body",
+     "bra"
+    ],
+    "dropped": [
+     "oppai_L_nipple_UNCEN",
+     "oppai_R_nipple_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 3681060,
+    "onestore": 3687866
+   }
+  },
+  {
+   "key": "st_ch0037",
+   "kind": "standing",
+   "character": "CH0037",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4225155
+   }
+  },
+  {
+   "key": "st_ch0038",
+   "kind": "standing",
+   "character": "CH0038",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 18,
+   "faces": 13,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0038.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "breast_L",
+     "breast_R"
+    ],
+    "added": [
+     "breast_L censored",
+     "breast_R censored"
+    ]
+   },
+   "bytes": {
+    "google": 3766662,
+    "onestore": 3769860
+   }
+  },
+  {
+   "key": "st_ch0039",
+   "kind": "standing",
+   "character": "CH0039",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4566291
+   }
+  },
+  {
+   "key": "st_ch0042",
+   "kind": "standing",
+   "character": "CH0042",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 12,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4572645
+   }
+  },
+  {
+   "key": "st_ch0043",
+   "kind": "standing",
+   "character": "CH0043",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4292005
+   }
+  },
+  {
+   "key": "st_ch0046",
+   "kind": "standing",
+   "character": "CH0046",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 23,
+   "faces": 13,
+   "bodyGroups": [
+    "00",
+    "old"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4028600
+   }
+  },
+  {
+   "key": "st_ch0050",
+   "kind": "standing",
+   "character": "CH0050",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 11,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3703711
+   }
+  },
+  {
+   "key": "st_ch0053",
+   "kind": "standing",
+   "character": "CH0053",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3817434
+   }
+  },
+  {
+   "key": "st_ch0054",
+   "kind": "standing",
+   "character": "CH0054",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4850074
+   }
+  },
+  {
+   "key": "st_ch0056",
+   "kind": "standing",
+   "character": "CH0056",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3758692
+   }
+  },
+  {
+   "key": "st_ch0057",
+   "kind": "standing",
+   "character": "CH0057",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 14,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4074079
+   }
+  },
+  {
+   "key": "st_ch0062",
+   "kind": "standing",
+   "character": "CH0062",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4358095
+   }
+  },
+  {
+   "key": "st_ch0063",
+   "kind": "standing",
+   "character": "CH0063",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4101740
+   }
+  },
+  {
+   "key": "st_ch0068",
+   "kind": "standing",
+   "character": "CH0068",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 19,
+   "faces": 15,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0068.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "oppai_R_pasties",
+     "pelvis_maebari"
+    ],
+    "dropped": [
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN",
+     "nipple_areolae_L_UNCEN",
+     "nipple_areolae_L_highlight_UNCEN",
+     "nipple_areolae_R_UNCEN",
+     "nipple_areolae_R_highlight_UNCEN",
+     "oppai_L_pasties1_UNCEN",
+     "oppai_L_pasties2_2_UNCEN",
+     "oppai_L_pasties2_2_UNCEN2",
+     "oppai_L_pasties2_UNCEN"
+    ],
+    "added": [
+     "oppai_L_pasties_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 3115665,
+    "onestore": 3172143
+   }
+  },
+  {
+   "key": "st_np0103",
+   "kind": "standing",
+   "character": "NP0103",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 3,
+   "faces": 2,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2965288
+   }
+  },
+  {
+   "key": "st_np0104",
+   "kind": "standing",
+   "character": "NP0104",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 6,
+   "faces": 4,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3177105
+   }
+  },
+  {
+   "key": "st_np0199",
+   "kind": "standing",
+   "character": "NP0199",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 13,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3375146
+   }
+  },
+  {
+   "key": "st_np0203",
+   "kind": "standing",
+   "character": "NP0203",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 4,
+   "faces": 3,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3383313
+   }
+  },
+  {
+   "key": "st_np0212",
+   "kind": "standing",
+   "character": "NP0212",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 4,
+   "faces": 3,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3293369
+   }
+  },
+  {
+   "key": "st_np0299",
+   "kind": "standing",
+   "character": "NP0299",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 10,
+   "faces": 9,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3419820
+   }
+  },
+  {
+   "key": "st_np0304",
+   "kind": "standing",
+   "character": "NP0304",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 5,
+   "faces": 4,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2845791
+   }
+  },
+  {
+   "key": "st_np0306",
+   "kind": "standing",
+   "character": "NP0306",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 5,
+   "faces": 4,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3377861
+   }
+  },
+  {
+   "key": "st_np0308",
+   "kind": "standing",
+   "character": "NP0308",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 7,
+   "faces": 6,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3187292
+   }
+  },
+  {
+   "key": "st_np0399",
+   "kind": "standing",
+   "character": "NP0399",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 10,
+   "faces": 9,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2893247
+   }
+  },
+  {
+   "key": "st_np0402",
+   "kind": "standing",
+   "character": "NP0402",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 5,
+   "faces": 4,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2596013
+   }
+  },
+  {
+   "key": "st_np0411",
+   "kind": "standing",
+   "character": "NP0411",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 5,
+   "faces": 4,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3378320
+   }
+  },
+  {
+   "key": "st_np0499",
+   "kind": "standing",
+   "character": "NP0499",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 5,
+   "faces": 4,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2786034
+   }
+  },
+  {
+   "key": "st_np0502",
+   "kind": "standing",
+   "character": "NP0502",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 7,
+   "faces": 6,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2938014
+   }
+  },
+  {
+   "key": "st_np0509",
+   "kind": "standing",
+   "character": "NP0509",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 10,
+   "faces": 7,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3149247
+   }
+  },
+  {
+   "key": "st_np0599",
+   "kind": "standing",
+   "character": "NP0599",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3093849
+   }
+  },
+  {
+   "key": "st_np0706",
+   "kind": "standing",
+   "character": "NP0706",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 7,
+   "faces": 6,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2862929
+   }
+  },
+  {
+   "key": "st_np0708",
+   "kind": "standing",
+   "character": "NP0708",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 8,
+   "faces": 5,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3225768
+   }
+  },
+  {
+   "key": "st_np0799",
+   "kind": "standing",
+   "character": "NP0799",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_NP0799.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "bikini_lower",
+     "bikini_lower_shadow",
+     "bikini_oppai_L",
+     "bikini_oppai_L_shadow",
+     "bikini_oppai_R",
+     "bikini_oppai_R_shadow"
+    ],
+    "dropped": [
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 3667768,
+    "onestore": 3695463
+   }
+  },
+  {
+   "key": "st_np6023",
+   "kind": "standing",
+   "character": "NP6023",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 9,
+   "faces": 7,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 5724560
+   }
+  },
+  {
+   "key": "st_sc0002",
+   "kind": "standing",
+   "character": "SC0002",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4255423
+   }
+  },
+  {
+   "key": "st_sc0003",
+   "kind": "standing",
+   "character": "SC0003",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 16,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3690859
+   }
+  },
+  {
+   "key": "st_sc0004",
+   "kind": "standing",
+   "character": "SC0004",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 14,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4148096
+   }
+  },
+  {
+   "key": "st_sc0101",
+   "kind": "standing",
+   "character": "SC0101",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 8,
+   "faces": 0,
+   "bodyGroups": [
+    ""
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4080830
+   }
+  },
+  {
+   "key": "st_sc0201",
+   "kind": "standing",
+   "character": "SC0201",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 6,
+   "faces": 5,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2885128
+   }
+  },
+  {
+   "key": "st_sc0204",
+   "kind": "standing",
+   "character": "SC0204",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 6,
+   "faces": 5,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3171953
+   }
+  },
+  {
+   "key": "st_sc0212",
+   "kind": "standing",
+   "character": "SC0212",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 10,
+   "faces": 9,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2421776
+   }
+  },
+  {
+   "key": "st_sc3001",
+   "kind": "standing",
+   "character": "SC3001",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 7,
+   "faces": 6,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4162704
+   }
+  },
+  {
+   "key": "st_sc3002",
+   "kind": "standing",
+   "character": "SC3002",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 13,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3512808
+   }
+  },
+  {
+   "key": "st_sc3003",
+   "kind": "standing",
+   "character": "SC3003",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_SC3003.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "oppai_L",
+     "oppai_R"
+    ],
+    "added": [
+     "oppai_L_censor",
+     "oppai_R_censor"
+    ]
+   },
+   "bytes": {
+    "google": 3523801,
+    "onestore": 3526949
+   }
+  },
+  {
+   "key": "st_sc3004",
+   "kind": "standing",
+   "character": "SC3004",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 6,
+   "faces": 5,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2424705
+   }
+  },
+  {
+   "key": "st_sc3005",
+   "kind": "standing",
+   "character": "SC3005",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 14,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3561497
+   }
+  }
+ ]
+}

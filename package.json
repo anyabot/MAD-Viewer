@@ -1,0 +1,36 @@
+{
+  "name": "madviewer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:local": "cross-env NEXT_PUBLIC_DATA_SOURCE=local next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "sync:local-data": "node scripts/sync-local-data.js"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.2.4",
+    "@chakra-ui/react": "^2.10.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@esotericsoftware/spine-pixi-v8": "4.2.72",
+    "brotli-dec-wasm": "^2.3.2",
+    "framer-motion": "^11.15.0",
+    "next": "^15.5.18",
+    "pixi.js": "~8.4.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^22.10.5",
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.5.2",
+    "typescript": "^5.7.3"
+  }
+}

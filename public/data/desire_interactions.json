@@ -1,0 +1,2389 @@
+{
+  "generated": "2026-08-01T12:01:42Z",
+  "source": "scenario",
+  "rigs": {
+    "ds_ch0009": {
+      "entry": "10_basic/10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "x1": "false",
+            "x2": "false",
+            "x3": "false",
+            "t1": "false"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_horn_L",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {
+                "x1": "true"
+              }
+            },
+            {
+              "box": "bd_horn_R",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {
+                "x1": "true"
+              }
+            },
+            {
+              "box": "bd_horn_L",
+              "clip": "10_reaction/10_A1",
+              "when": "x1!",
+              "set": {}
+            },
+            {
+              "box": "bd_horn_R",
+              "clip": "10_reaction/10_A1",
+              "when": "x1!",
+              "set": {}
+            },
+            {
+              "box": "bd_head",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {
+                "x2": "true"
+              }
+            },
+            {
+              "box": "bd_ear",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {
+                "x2": "true"
+              }
+            },
+            {
+              "box": "bd_head",
+              "clip": "10_reaction/10_A2",
+              "when": "x2!",
+              "set": {}
+            },
+            {
+              "box": "bd_ear",
+              "clip": "10_reaction/10_A2",
+              "when": "x2!",
+              "set": {}
+            },
+            {
+              "box": "bd_breath",
+              "clip": "10_reaction/10_A3",
+              "when": null,
+              "set": {
+                "x3": "true"
+              }
+            },
+            {
+              "box": "bd_breath",
+              "clip": "10_reaction/10_A3",
+              "when": "x3!",
+              "set": {}
+            },
+            {
+              "box": "bd_elisiaglass",
+              "clip": "10_reaction/10_B1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_playerglass",
+              "clip": "10_reaction/15_T1",
+              "when": null,
+              "set": {
+                "t1": "true"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_glass_on"
+                }
+              ],
+              "goto": "phase2"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1"
+          ]
+        },
+        {
+          "label": "phase2",
+          "set": {},
+          "idle": "10_basic/10_idle",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_elisiaglass",
+              "clip": "30_overlay/30_twinkle",
+              "when": "t1!",
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_H1"
+                }
+              ],
+              "goto": "phase3"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "extras": [
+            {
+              "when": null,
+              "clip": "30_overlay/30_twinkle"
+            }
+          ],
+          "labels": [
+            "phase2"
+          ]
+        },
+        {
+          "label": "phase3",
+          "set": {},
+          "idle": "10_basic/10_idle_H",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_breath",
+              "clip": "10_reaction/10_H2",
+              "when": null,
+              "set": {
+                "x1": "false",
+                "x2": "false",
+                "x3": "false",
+                "t1": "false"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_glass_H"
+                }
+              ],
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase3"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0009_03_desire_view",
+      "actor": "elizabeth"
+    },
+    "ds_ch0010": {
+      "entry": "10_basic/10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "setting",
+          "set": {
+            "x": "0",
+            "y": "false"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_A1",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {},
+              "gosub": "bottle"
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {},
+              "gosub": "bottle"
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_reaction/10_A3",
+              "when": null,
+              "set": {},
+              "gosub": "bottle"
+            },
+            {
+              "box": "bd_B1",
+              "clip": "10_reaction/10_B1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_B1",
+              "clip": "10_reaction/10_B1_1",
+              "when": "x>=3",
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_B1_3"
+                }
+              ],
+              "goto": "phase2"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "setting",
+            "phase1"
+          ]
+        },
+        {
+          "label": "phase2",
+          "set": {},
+          "idle": "10_basic/10_idle2",
+          "onlook": {
+            "clip": "10_basic/10_wait2",
+            "delay": 10.0,
+            "branches": [
+              {
+                "when": null,
+                "set": {},
+                "clips": [
+                  {
+                    "when": null,
+                    "clip": "30_overlay/30_twinkle"
+                  }
+                ]
+              }
+            ]
+          },
+          "triggers": [
+            {
+              "box": "bd_A1",
+              "clip": "10_reaction/10_A1_1",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_twinkle"
+                }
+              ]
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_reaction/10_A2_1",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_twinkle"
+                }
+              ]
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_reaction/10_A3_1",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_twinkle"
+                }
+              ]
+            },
+            {
+              "box": "bd_B2",
+              "clip": "30_overlay/30_twinkle",
+              "when": null,
+              "set": {},
+              "drag": true,
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/drag"
+                },
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_H1"
+                }
+              ],
+              "goto": "after"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "extras": [
+            {
+              "when": null,
+              "clip": "30_overlay/30_twinkle"
+            }
+          ],
+          "labels": [
+            "phase2"
+          ]
+        },
+        {
+          "label": "after",
+          "set": {},
+          "idle": "10_basic/10_idle3",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_A1",
+              "clip": "10_basic/10_touch2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_basic/10_touch2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_basic/10_touch2",
+              "when": null,
+              "set": {}
+            }
+          ],
+          "gate": null,
+          "reset": "setting",
+          "enter": "10_reaction/10_H1",
+          "extras": [
+            {
+              "when": null,
+              "clip": "10_reaction/drag"
+            }
+          ],
+          "labels": [
+            "after"
+          ]
+        }
+      ],
+      "subroutines": {
+        "bottle": {
+          "branches": [
+            {
+              "when": null,
+              "set": {
+                "x": "x+1"
+              }
+            }
+          ],
+          "clips": [
+            {
+              "when": "x=1",
+              "clip": "10_reaction/10_T1"
+            },
+            {
+              "when": "x=2",
+              "clip": "10_reaction/10_T2"
+            },
+            {
+              "when": "x=3",
+              "clip": "10_reaction/10_T3"
+            }
+          ]
+        }
+      },
+      "script": "ch0010_05_desire_view",
+      "actor": "mane_swimsuit"
+    },
+    "ds_ch0011": {
+      "entry": "10_basic/10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": null,
+          "set": {},
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_leg_thigh_L",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_leg_thigh_R",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_hand_L",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_hand_R",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_face",
+              "clip": "10_reaction/10_A4",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "20_emotion/20_phase01"
+                }
+              ],
+              "goto": "phase1_얼굴_홍조_동작"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": "00_loop/00_snow",
+          "labels": [
+            null,
+            "phase1_얼굴_홍조_준비"
+          ]
+        },
+        {
+          "label": "phase1_얼굴_홍조_동작",
+          "set": {},
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_leg_thigh_L",
+              "clip": "20_emotion/20_phase01",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_A1"
+                }
+              ]
+            },
+            {
+              "box": "bd_leg_thigh_R",
+              "clip": "20_emotion/20_phase01",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_A1"
+                }
+              ]
+            },
+            {
+              "box": "bd_hand_L",
+              "clip": "20_emotion/20_phase01",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_A2"
+                }
+              ]
+            },
+            {
+              "box": "bd_hand_R",
+              "clip": "20_emotion/20_phase01",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_A2"
+                }
+              ]
+            },
+            {
+              "box": "bd_face",
+              "clip": "20_emotion/20_phase01",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_A4"
+                }
+              ]
+            },
+            {
+              "box": "bd_breast_L",
+              "clip": "20_emotion/20_phase01",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_A3"
+                }
+              ],
+              "goto": "phase3_가슴_노출_마무리"
+            },
+            {
+              "box": "bd_breast_R",
+              "clip": "20_emotion/20_phase01",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_A3"
+                }
+              ],
+              "goto": "phase3_가슴_노출_마무리"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "extras": [
+            {
+              "when": null,
+              "clip": "20_emotion/20_phase01"
+            },
+            {
+              "when": null,
+              "clip": "20_emotion/20_phase01"
+            }
+          ],
+          "labels": [
+            "phase1_얼굴_홍조_동작",
+            "phase2_가슴_노출"
+          ]
+        },
+        {
+          "label": "phase3_가슴_노출_마무리",
+          "set": {
+            "legL": "false",
+            "legR": "false",
+            "obbi": "false"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_obbi",
+              "clip": "10_reaction/10_A3",
+              "when": null,
+              "set": {
+                "obbi": "true"
+              },
+              "goto": "phase5_절정_준비",
+              "gotoWhen": "obbi==true&legL==true&legR==true"
+            },
+            {
+              "box": "bd_leg_thigh_L",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {
+                "legL": "true"
+              },
+              "goto": "phase5_절정_준비",
+              "gotoWhen": "obbi==true&legL==true&legR==true"
+            },
+            {
+              "box": "bd_leg_thigh_R",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {
+                "legR": "true"
+              },
+              "goto": "phase5_절정_준비",
+              "gotoWhen": "obbi==true&legL==true&legR==true"
+            },
+            {
+              "box": "bd_hand_L",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_hand_R",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_breast_L",
+              "clip": "10_reaction/10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_breast_R",
+              "clip": "10_reaction/10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_face",
+              "clip": "10_reaction/10_A4",
+              "when": null,
+              "set": {}
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": "10_reaction/10_A6",
+          "extras": [
+            {
+              "when": null,
+              "clip": "20_emotion/20_phase03"
+            }
+          ],
+          "labels": [
+            "phase3_가슴_노출_마무리",
+            "phase4_흥분_준비"
+          ]
+        },
+        {
+          "label": "phase5_절정_준비",
+          "set": {},
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0,
+            "branches": [
+              {
+                "when": null,
+                "set": {},
+                "clips": [
+                  {
+                    "when": null,
+                    "clip": "30_overlay/30_twinkle"
+                  }
+                ]
+              }
+            ]
+          },
+          "triggers": [
+            {
+              "box": "bd_bg",
+              "clip": "20_emotion/20_phase03",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_B1"
+                },
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_B2"
+                }
+              ]
+            },
+            {
+              "box": "bd_obbi",
+              "clip": "10_reaction/10_B3",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_basic/10_idle_horny"
+                },
+                {
+                  "when": null,
+                  "clip": "10_basic/10_idle_horny_loop"
+                }
+              ],
+              "goto": "phase7_완료"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "extras": [
+            {
+              "when": null,
+              "clip": "20_emotion/20_phase03"
+            }
+          ],
+          "labels": [
+            "phase5_절정_준비",
+            "phase6_절정_동작"
+          ]
+        },
+        {
+          "label": "phase7_완료",
+          "set": {},
+          "idle": "10_basic/10_idle",
+          "onlook": null,
+          "triggers": [],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase7_완료"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0011_03_desire_view",
+      "actor": "chise"
+    },
+    "ds_ch0015": {
+      "entry": "10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {},
+          "idle": "10_idle",
+          "onlook": {
+            "clip": "10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_breast_L",
+              "clip": "10_A1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_breast_R",
+              "clip": "10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_face",
+              "clip": "10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_tail",
+              "clip": "10_A4",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_tail_point",
+              "clip": "10_A5",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "tail_1"
+                }
+              ],
+              "goto": "phase2"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1"
+          ]
+        },
+        {
+          "label": "phase2",
+          "set": {
+            "tail": "false"
+          },
+          "idle": "10_idle",
+          "onlook": {
+            "clip": "10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_breast_L",
+              "clip": "10_A1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_breast_R",
+              "clip": "10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_face",
+              "clip": "10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_tail",
+              "clip": "10_A4",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_tail_point",
+              "clip": "10_A5",
+              "when": null,
+              "set": {
+                "tail": "true"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "tail_2"
+                },
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_twinkle"
+                }
+              ]
+            },
+            {
+              "box": "bd_tit_R",
+              "clip": "10_T1",
+              "when": "tail!",
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_twinkle"
+                }
+              ],
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase2"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0015_03_desire_view",
+      "actor": "ines"
+    },
+    "ds_ch0019": {
+      "entry": "10_basic/10_enter__",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "Chopstick": "false"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_A7",
+              "clip": "10_reaction/10_A7",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A8",
+              "clip": "10_reaction/10_A8",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A1",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_reaction/10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A4",
+              "clip": "10_reaction/10_A4",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A5",
+              "clip": "10_reaction/10_A5",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A6",
+              "clip": "10_reaction/10_A6",
+              "when": "Chopstick!",
+              "set": {},
+              "goto": "phase1"
+            },
+            {
+              "box": "bd_B1",
+              "clip": "10_reaction/10_B1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_B2",
+              "clip": "10_reaction/10_B2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_T1",
+              "clip": "10_reaction/15_T1",
+              "when": null,
+              "set": {
+                "Chopstick": "true"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_chopstick_on"
+                }
+              ]
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0019_05_desire_view",
+      "actor": "victoria"
+    },
+    "ds_ch0022": {
+      "entry": "10_basic/10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "x1": "false",
+            "x2": "false",
+            "x3": "false"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_A1",
+              "clip": "10_reaction/10_A1_1",
+              "when": null,
+              "set": {
+                "x1": "true"
+              }
+            },
+            {
+              "box": "bd_A1",
+              "clip": "10_reaction/10_A1_2",
+              "when": "x1!",
+              "set": {
+                "x1": "false"
+              }
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_reaction/10_A2_1",
+              "when": null,
+              "set": {
+                "x2": "true"
+              }
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_reaction/10_A2_2",
+              "when": "x2!",
+              "set": {
+                "x2": "false"
+              }
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_reaction/10_A3_1",
+              "when": null,
+              "set": {
+                "x3": "true"
+              }
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_reaction/10_A3_2",
+              "when": "x3!",
+              "set": {
+                "x3": "false"
+              }
+            },
+            {
+              "box": "bd_T1",
+              "clip": "10_reaction/10_A1_1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_T2",
+              "clip": "10_reaction/10_T2",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_light_off"
+                },
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_twinkle"
+                }
+              ],
+              "goto": "phase2"
+            },
+            {
+              "box": "bd_T3",
+              "clip": "10_reaction/10_A2_1",
+              "when": null,
+              "set": {}
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1"
+          ]
+        },
+        {
+          "label": "phase2",
+          "set": {},
+          "idle": "10_basic/10_idle",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_C1",
+              "clip": "10_reaction/10_C1",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_twinkle"
+                },
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_T2_2"
+                },
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_light_on"
+                }
+              ],
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": "30_overlay/30_twinkle",
+          "labels": [
+            "phase2"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0022_04_desire_view",
+      "actor": "midwen"
+    },
+    "ds_ch0024": {
+      "entry": "10_basic/10_enter",
+      "aligned": false,
+      "sections": [
+        {
+          "label": "phase",
+          "set": {
+            "slime1": "false",
+            "slime2": "false",
+            "slime3": "false",
+            "slime4": "false",
+            "shoulder": "false",
+            "slime11": "false",
+            "slime22": "false",
+            "slime33": "false",
+            "slime44": "false"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0,
+            "branches": [
+              {
+                "when": "slime1 && slime2 && slime3 && slime4==true",
+                "set": {},
+                "clips": [
+                  {
+                    "when": null,
+                    "clip": "30_overlay/30_twinkle"
+                  },
+                  {
+                    "when": null,
+                    "clip": "10_basic/10_idle_slime"
+                  }
+                ]
+              }
+            ]
+          },
+          "triggers": [
+            {
+              "box": "bd_A1",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_reaction/10_A3",
+              "when": "shoulder==false",
+              "set": {
+                "shoulder": "true"
+              }
+            },
+            {
+              "box": "bd_A3",
+              "clip": null,
+              "when": "shoulder==true",
+              "set": {}
+            },
+            {
+              "box": "bd_T1",
+              "clip": "10_basic/10_idle_slime",
+              "when": null,
+              "set": {
+                "slime1": "true",
+                "slime11": "true"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_T1"
+                }
+              ]
+            },
+            {
+              "box": "bd_T2",
+              "clip": "10_reaction/10_T2",
+              "when": null,
+              "set": {
+                "slime2": "true",
+                "slime22": "true"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_T2"
+                }
+              ]
+            },
+            {
+              "box": "bd_T3",
+              "clip": "10_reaction/10_T3",
+              "when": null,
+              "set": {
+                "slime3": "true",
+                "slime33": "true"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_T3"
+                }
+              ]
+            },
+            {
+              "box": "bd_T4",
+              "clip": "10_reaction/10_T4",
+              "when": null,
+              "set": {
+                "slime4": "true",
+                "slime44": "true"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_T4"
+                },
+                {
+                  "when": null,
+                  "clip": "10_basic/10_wait"
+                },
+                {
+                  "when": null,
+                  "clip": "10_basic/10_idle_slime"
+                }
+              ]
+            },
+            {
+              "box": "bd_T5",
+              "clip": "10_reaction/10_T5",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_reaction/10_T5"
+                },
+                {
+                  "when": null,
+                  "clip": "10_basic/10_idle_slime"
+                }
+              ]
+            },
+            {
+              "box": "bd_C1",
+              "clip": "10_reaction/10_C1",
+              "when": "slime1 || slime2 || slime3 || slime4==false",
+              "set": {}
+            },
+            {
+              "box": "bd_C1",
+              "clip": "10_reaction/10_C1",
+              "when": "slime1 && slime2 && slime3 && slime4==true",
+              "set": {
+                "slime1": "false",
+                "slime2": "false",
+                "slime3": "false",
+                "slime4": "false",
+                "slime11": "false",
+                "slime22": "false",
+                "slime33": "false",
+                "slime44": "false",
+                "shoulder": "false"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "10_basic/10_idle_slime"
+                }
+              ]
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0024_03_desire_view",
+      "actor": "alone"
+    },
+    "ds_ch0028": {
+      "entry": "10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "towel": "false"
+          },
+          "idle": "10_idle",
+          "onlook": {
+            "clip": "10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_face",
+              "clip": "10_A1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_arm_L",
+              "clip": "10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_leg_L_lower",
+              "clip": "10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_leg_L_upper",
+              "clip": "10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_leg_R_lower",
+              "clip": "10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_leg_R_upper",
+              "clip": "10_A3",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_foot",
+              "clip": "10_A4",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_socks",
+              "clip": "10_B1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_towel",
+              "clip": "10_B+1",
+              "when": null,
+              "set": {
+                "towel": "true"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_twinkle"
+                }
+              ]
+            },
+            {
+              "box": "bd_knee",
+              "clip": "10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_knee",
+              "clip": "10_H1",
+              "when": "towel!",
+              "set": {
+                "towel": "false"
+              },
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0028_03_desire_view",
+      "actor": "charlotte"
+    },
+    "ds_ch0032": {
+      "entry": "10_intro",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "x1": "0"
+          },
+          "idle": "10_idle",
+          "onlook": {
+            "clip": "10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_A1",
+              "clip": "10_a1",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_a2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_a3",
+              "when": "x1=0",
+              "set": {}
+            },
+            {
+              "box": "bd_A4",
+              "clip": "10_a4",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_B1",
+              "clip": "10_b1",
+              "when": null,
+              "set": {
+                "x1": "1"
+              }
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_b2",
+              "when": "x1=1",
+              "set": {
+                "x1": "0"
+              },
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1",
+            "start"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0032_03_desire_view",
+      "actor": "suji"
+    },
+    "ds_ch0035": {
+      "entry": "10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "x1": "0",
+            "x2": "0",
+            "x3": "0",
+            "x4": "0",
+            "x5": "0",
+            "x6": "0",
+            "y": "0"
+          },
+          "idle": "10_idle",
+          "onlook": {
+            "clip": "10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_A1",
+              "clip": "10_A1",
+              "when": "y=0",
+              "set": {
+                "x1": "1"
+              }
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_A2",
+              "when": "y=0",
+              "set": {
+                "x2": "1"
+              }
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_A3",
+              "when": "y=0",
+              "set": {
+                "x3": "1"
+              }
+            },
+            {
+              "box": "bd_B1",
+              "clip": "10_B1",
+              "when": "y=0",
+              "set": {
+                "x4": "1"
+              }
+            },
+            {
+              "box": "bd_B2",
+              "clip": "10_B2",
+              "when": "y=0",
+              "set": {
+                "x5": "1"
+              }
+            },
+            {
+              "box": "bd_B3",
+              "clip": "10_B3",
+              "when": "y=0",
+              "set": {
+                "x6": "1"
+              }
+            }
+          ],
+          "gate": {
+            "when": "x1*x2*x3*x4*x5*x6=1",
+            "set": {
+              "y": "1"
+            },
+            "goto": "phase2"
+          },
+          "reset": null,
+          "enter": null,
+          "extras": [
+            {
+              "when": null,
+              "clip": "00_loop"
+            }
+          ],
+          "labels": [
+            "phase1",
+            "start"
+          ]
+        },
+        {
+          "label": "phase2",
+          "set": {},
+          "idle": "10_idle2",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_B1",
+              "clip": "10_H1",
+              "when": null,
+              "set": {},
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": "10_idle1_1",
+          "labels": [
+            "phase2"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0035_03_desire_view",
+      "actor": "yuria"
+    },
+    "ds_ch0038": {
+      "entry": "10_basic/10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "x1": "0",
+            "x2": "0",
+            "x3": "0"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_head",
+              "clip": "10_reaction/10_A1",
+              "when": "x1=0",
+              "set": {
+                "x1": "1"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_T1"
+                }
+              ]
+            },
+            {
+              "box": "bd_head",
+              "clip": "10_reaction/10_A2",
+              "when": "x1*x2*x3=0&&x1=1",
+              "set": {}
+            },
+            {
+              "box": "bd_breath",
+              "clip": "10_reaction/10_A3",
+              "when": null,
+              "set": {
+                "x2": "1"
+              },
+              "clips": [
+                {
+                  "when": "x2=0",
+                  "clip": "30_overlay/30_T2"
+                }
+              ]
+            },
+            {
+              "box": "bd_hip",
+              "clip": "10_reaction/10_A4",
+              "when": null,
+              "set": {
+                "x3": "1"
+              }
+            },
+            {
+              "box": "bd_head",
+              "clip": "10_reaction/10_H1",
+              "when": "x1*x2*x3=1",
+              "set": {
+                "x1": "0",
+                "x2": "0",
+                "x3": "0"
+              },
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0038_03_desire_view",
+      "actor": "valentina"
+    },
+    "ds_ch0042": {
+      "entry": "10_basic/10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "setting",
+          "set": {
+            "x1": "false",
+            "y1": "-1",
+            "y2": "-1"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_face",
+              "clip": "10_reaction/10_A1_2",
+              "when": "x1=false",
+              "set": {}
+            },
+            {
+              "box": "bd_face",
+              "clip": "10_reaction/10_A1_1",
+              "when": "x1=true",
+              "set": {},
+              "goto": "phase2"
+            },
+            {
+              "box": "bd_breath",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_leg_L",
+              "clip": "10_reaction/10_A3",
+              "when": "y1=0",
+              "set": {}
+            },
+            {
+              "box": "bd_leg_L",
+              "clip": null,
+              "when": "y1>0",
+              "set": {},
+              "clips": [
+                {
+                  "when": "y1=1",
+                  "clip": "30_overlay/30_A4_01"
+                },
+                {
+                  "when": "y1=2",
+                  "clip": "30_overlay/30_A4_02"
+                },
+                {
+                  "when": "y1=3",
+                  "clip": "30_overlay/30_A4_03"
+                },
+                {
+                  "when": "y1=4",
+                  "clip": "30_overlay/30_A4_04"
+                },
+                {
+                  "when": "y1=5",
+                  "clip": "30_overlay/30_A4_05"
+                },
+                {
+                  "when": "y1=6",
+                  "clip": "30_overlay/30_A4_06"
+                },
+                {
+                  "when": "y1=7",
+                  "clip": "30_overlay/30_A4_07"
+                },
+                {
+                  "when": "y1=8",
+                  "clip": "30_overlay/30_A4_08"
+                },
+                {
+                  "when": "y1=9",
+                  "clip": "30_overlay/30_A4_09"
+                },
+                {
+                  "when": "y1=10",
+                  "clip": "30_overlay/30_A4_10"
+                },
+                {
+                  "when": "y1=11",
+                  "clip": "30_overlay/30_A4_11"
+                }
+              ],
+              "gosub": "y1",
+              "gosubAfter": true
+            },
+            {
+              "box": "bd_leg_R",
+              "clip": "10_reaction/10_A3",
+              "when": "y2=0",
+              "set": {}
+            },
+            {
+              "box": "bd_leg_R",
+              "clip": null,
+              "when": "y2>0",
+              "set": {},
+              "clips": [
+                {
+                  "when": "y2=1",
+                  "clip": "30_overlay/30_A5_01"
+                },
+                {
+                  "when": "y2=2",
+                  "clip": "30_overlay/30_A5_02"
+                },
+                {
+                  "when": "y2=3",
+                  "clip": "30_overlay/30_A5_03"
+                },
+                {
+                  "when": "y2=4",
+                  "clip": "30_overlay/30_A5_04"
+                },
+                {
+                  "when": "y2=5",
+                  "clip": "30_overlay/30_A5_05"
+                },
+                {
+                  "when": "y2=6",
+                  "clip": "30_overlay/30_A5_06"
+                }
+              ],
+              "gosub": "y2",
+              "gosubAfter": true
+            },
+            {
+              "box": "bd_purfume",
+              "clip": "30_overlay/30_B1",
+              "when": null,
+              "set": {
+                "x1": "true"
+              }
+            },
+            {
+              "box": "bd_pen",
+              "clip": "30_overlay/30_B2",
+              "when": null,
+              "set": {
+                "y1": "1",
+                "y2": "1",
+                "z": "31"
+              }
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "setting",
+            "phase1"
+          ]
+        },
+        {
+          "label": "phase2",
+          "set": {},
+          "idle": "10_reaction/10_A1_3",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_groin",
+              "clip": "10_reaction/10_H1",
+              "when": null,
+              "set": {},
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_twinkle"
+                }
+              ],
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "extras": [
+            {
+              "when": null,
+              "clip": "30_overlay/30_twinkle"
+            }
+          ],
+          "labels": [
+            "phase2"
+          ]
+        },
+        {
+          "label": "after",
+          "set": {},
+          "idle": "10_basic/10_after_idle",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_breath",
+              "clip": "10_basic/10_after_touch",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_leg_L",
+              "clip": "10_basic/10_after_touch",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_leg_R",
+              "clip": "10_basic/10_after_touch",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_groin",
+              "clip": "10_basic/10_after_touch",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_face",
+              "clip": "10_basic/10_after_touch",
+              "when": null,
+              "set": {}
+            }
+          ],
+          "gate": null,
+          "reset": "setting",
+          "enter": null,
+          "labels": [
+            "after"
+          ]
+        }
+      ],
+      "subroutines": {
+        "y1": {
+          "branches": [
+            {
+              "when": "y1<11",
+              "set": {
+                "y1": "y1+1",
+                "z": "z+1"
+              }
+            },
+            {
+              "when": null,
+              "set": {
+                "y1": "0",
+                "z": "z+1"
+              }
+            }
+          ],
+          "clips": []
+        },
+        "y2": {
+          "branches": [
+            {
+              "when": "y2<6",
+              "set": {
+                "y2": "y2+1",
+                "z": "z+1"
+              }
+            },
+            {
+              "when": null,
+              "set": {
+                "y2": "0",
+                "z": "z+1"
+              }
+            }
+          ],
+          "clips": []
+        }
+      },
+      "script": "ch0042_03_desire_view",
+      "actor": "oblia"
+    },
+    "ds_ch0057": {
+      "entry": "10_basic/10_enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "sum.x": "0",
+            "x1": "false",
+            "x2": "false",
+            "x3": "false",
+            "h1": "false",
+            "h2": "false",
+            "h3": "false",
+            "toy": "false"
+          },
+          "idle": "10_basic/10_idle",
+          "onlook": {
+            "clip": "10_basic/10_wait",
+            "delay": 10.0,
+            "branches": [
+              {
+                "when": "sum.x=1",
+                "set": {},
+                "clips": [
+                  {
+                    "when": null,
+                    "clip": "30_overlay/30_T1"
+                  }
+                ]
+              },
+              {
+                "when": "sum.x=2",
+                "set": {},
+                "clips": [
+                  {
+                    "when": null,
+                    "clip": "30_overlay/30_T2"
+                  }
+                ]
+              },
+              {
+                "when": "sum.x>=3",
+                "set": {
+                  "h1": "true"
+                },
+                "clips": [
+                  {
+                    "when": null,
+                    "clip": "30_overlay/30_T3"
+                  }
+                ]
+              },
+              {
+                "when": "h2=true",
+                "set": {},
+                "clips": [
+                  {
+                    "when": null,
+                    "clip": "30_overlay/30_U1"
+                  }
+                ]
+              },
+              {
+                "when": "h3=true",
+                "set": {},
+                "clips": [
+                  {
+                    "when": null,
+                    "clip": "30_overlay/30_U2"
+                  }
+                ]
+              }
+            ]
+          },
+          "triggers": [
+            {
+              "box": "bd_A1",
+              "clip": "10_reaction/10_A1",
+              "when": null,
+              "set": {
+                "x1": "true",
+                "sum.x": "sum.x+1"
+              }
+            },
+            {
+              "box": "bd_A1",
+              "clip": "10_reaction/10_A1",
+              "when": "x1!",
+              "set": {
+                "sum.x": "sum.x+1"
+              }
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_reaction/10_A2",
+              "when": null,
+              "set": {
+                "x2": "true",
+                "sum.x": "sum.x+1"
+              }
+            },
+            {
+              "box": "bd_A2",
+              "clip": "10_reaction/10_A2",
+              "when": "x2!",
+              "set": {
+                "sum.x": "sum.x+1"
+              }
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_reaction/10_A3",
+              "when": null,
+              "set": {
+                "x3": "true",
+                "sum.x": "sum.x+1"
+              }
+            },
+            {
+              "box": "bd_A3",
+              "clip": "10_reaction/10_A3",
+              "when": "x3!",
+              "set": {
+                "sum.x": "sum.x+1"
+              }
+            },
+            {
+              "box": "bd_B1",
+              "clip": "10_reaction/10_B1",
+              "when": null,
+              "set": {
+                "toy": "true",
+                "sum.x": "sum.x+1"
+              }
+            },
+            {
+              "box": "bd_B1",
+              "clip": "10_reaction/10_B1",
+              "when": "toy!",
+              "set": {
+                "sum.x": "sum.x+1"
+              }
+            },
+            {
+              "box": "bd_H1",
+              "clip": "10_reaction/10_H1",
+              "when": "h1!",
+              "set": {
+                "h1": "false",
+                "h2": "true"
+              },
+              "goto": "phase2"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1"
+          ]
+        },
+        {
+          "label": "phase2",
+          "set": {},
+          "idle": "10_basic/10_idle",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_H1",
+              "clip": "10_reaction/10_H2",
+              "when": "h2!",
+              "set": {
+                "h2": "false",
+                "h3": "true"
+              }
+            },
+            {
+              "box": "bd_H1",
+              "clip": "10_reaction/10_H3",
+              "when": "h3!",
+              "set": {
+                "h3": "false"
+              },
+              "clips": [
+                {
+                  "when": null,
+                  "clip": "30_overlay/30_U2"
+                }
+              ],
+              "goto": "phase1"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "extras": [
+            {
+              "when": "h2=true",
+              "clip": "30_overlay/30_U1"
+            },
+            {
+              "when": "h3=true",
+              "clip": "30_overlay/30_U2"
+            }
+          ],
+          "labels": [
+            "phase2"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0057_03_desire_view",
+      "actor": "casey"
+    },
+    "ds_ch0068": {
+      "entry": "basic/enter",
+      "aligned": true,
+      "sections": [
+        {
+          "label": "phase1",
+          "set": {
+            "x": "0",
+            "y": "0",
+            "a": "0"
+          },
+          "idle": "basic/idle_close",
+          "onlook": {
+            "clip": "basic/wait_close",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_A1_L_close",
+              "clip": "reaction/close_A1",
+              "when": null,
+              "set": {
+                "x": "1"
+              }
+            },
+            {
+              "box": "bd_A1_R_close",
+              "clip": "reaction/close_A1",
+              "when": null,
+              "set": {
+                "x": "1"
+              }
+            },
+            {
+              "box": "bd_A2_close",
+              "clip": "reaction/close_A2",
+              "when": null,
+              "set": {
+                "y": "1"
+              }
+            },
+            {
+              "box": "bd_A3_close",
+              "clip": "reaction/close_B1",
+              "when": "x*y=1",
+              "set": {},
+              "goto": "phase2"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase1"
+          ]
+        },
+        {
+          "label": "phase2",
+          "set": {},
+          "idle": "basic/idle_open",
+          "onlook": {
+            "clip": "basic/wait_open",
+            "delay": 10.0
+          },
+          "triggers": [
+            {
+              "box": "bd_A1_L_open",
+              "clip": "reaction/open_A1",
+              "when": null,
+              "set": {
+                "a": "a+1"
+              }
+            },
+            {
+              "box": "bd_A1_R_open",
+              "clip": "reaction/open_A1",
+              "when": null,
+              "set": {
+                "a": "a+1"
+              }
+            },
+            {
+              "box": "bd_A2_open",
+              "clip": "reaction/open_A2",
+              "when": null,
+              "set": {
+                "a": "a+1"
+              }
+            },
+            {
+              "box": "bd_A3_open",
+              "clip": "reaction/open_A3",
+              "when": "a<4",
+              "set": {
+                "a": "a+1"
+              }
+            },
+            {
+              "box": "bd_A3_open",
+              "clip": "reaction/open_H1",
+              "when": "a>=4",
+              "set": {
+                "a": "0"
+              },
+              "goto": "after"
+            }
+          ],
+          "gate": null,
+          "reset": null,
+          "enter": null,
+          "labels": [
+            "phase2"
+          ]
+        },
+        {
+          "label": "after",
+          "set": {},
+          "idle": "lobby/idle_after",
+          "onlook": null,
+          "triggers": [
+            {
+              "box": "bd_A1_L_close",
+              "clip": "lobby/touch_after",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A1_L_open",
+              "clip": "lobby/touch_after",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A1_R_close",
+              "clip": "lobby/touch_after",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A1_R_open",
+              "clip": "lobby/touch_after",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A2_close",
+              "clip": "lobby/touch_after",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A2_open",
+              "clip": "lobby/touch_after",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A3_close",
+              "clip": "lobby/touch_after",
+              "when": null,
+              "set": {}
+            },
+            {
+              "box": "bd_A3_open",
+              "clip": "lobby/touch_after",
+              "when": null,
+              "set": {}
+            }
+          ],
+          "gate": null,
+          "reset": "phase1",
+          "enter": "lobby/idle_after",
+          "labels": [
+            "after"
+          ]
+        }
+      ],
+      "subroutines": {},
+      "script": "ch0068_03_desire_view",
+      "actor": "claire_swimsuit"
+    }
+  }
+}
