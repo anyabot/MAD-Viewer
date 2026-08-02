@@ -1,0 +1,4441 @@
+{
+ "characters": {
+  "CH0001": {
+   "code": "CH0001",
+   "name": "루시아",
+   "desc": "수많은 팔로워를 거느린 인플루언서 수녀. 엄청난 친화력과 반짝이는 미소로 믿음과’ 좋아요’를 전파한다. 소문에 의하면, 루시아는 가끔 야심한 밤에 기도회를 가장한 비밀 파티를 연다고 한다.",
+   "iconPath": "Icon_CH0001",
+   "resourcesId": "ch0001_resources",
+   "voiceGroupId": "voc_ch0001_group",
+   "unfinished": {
+    "eng": "Lucia",
+    "jpn": "ルシア"
+   },
+   "id": 1,
+   "characterType": 1,
+   "nameKey": "character_name_ch0001",
+   "roleType": 3,
+   "divisionType": 2,
+   "factionType": 200,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 2,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0001",
+   "birthday": [
+    3,
+    10
+   ],
+   "hobby": "셀카 찍기",
+   "specialty": "필하모니 공식 SNS 팔로워 많이 모으기",
+   "likes": "쇼핑, 호캉스 가서 사진 찍기",
+   "comment": "협찬은 언제든지 받으니까 모찌톡 줘!  :)",
+   "birthdayComment": "다들 축하해줘서 고마워! 오늘만큼은 답장 느려도 용서해 달라구 ㅠㅠ",
+   "artist": "SNOWBALL",
+   "cv": "모모세 유즈키"
+  },
+  "CH0002": {
+   "code": "CH0002",
+   "name": "라일라",
+   "desc": "도넛 연구에 인생을 건 경찰. 겉모습으로 평가하지 말라며 이상한 모양의 도넛을 내놓아 사람들을 당황하게 한다. 악의는 없지만, 본인도 모르는 사이에 상대의 약점을 정확히 찌르는 저격수 같은 면모가 있다. 오늘도 라일라는 실체 없는 궁극의 도넛을 찾아 묵묵히 오븐 앞을 지킨다.",
+   "iconPath": "Icon_CH0002",
+   "resourcesId": "ch0002_resources",
+   "voiceGroupId": "voc_ch0002_group",
+   "unfinished": {
+    "eng": "Lila",
+    "jpn": "ライラ"
+   },
+   "id": 2,
+   "characterType": 1,
+   "nameKey": "character_name_ch0002",
+   "roleType": 2,
+   "divisionType": 1,
+   "factionType": 105,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0002",
+   "birthday": [
+    5,
+    12
+   ],
+   "hobby": "제빵",
+   "specialty": "정곡 찌르기, 저격",
+   "likes": "특이한 외견의 도넛",
+   "comment": "겉, 겉모습만으로 평가하지 말아요오…!",
+   "birthdayComment": "오늘은… 그, 그동안 못 했던 일들, 원 없이 해도 되는 날인 거죠…?",
+   "artist": "SNOWBALL",
+   "cv": "미타니 마오"
+  },
+  "CH0003": {
+   "code": "CH0003",
+   "name": "",
+   "desc": "",
+   "iconPath": "Icon_CH0003",
+   "resourcesId": "ch0003_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "",
+    "jpn": ""
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0004": {
+   "code": "CH0004",
+   "name": "",
+   "desc": "",
+   "iconPath": "Icon_CH0004",
+   "resourcesId": "ch0004_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "",
+    "jpn": ""
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0005": {
+   "code": "CH0005",
+   "name": "클레어",
+   "desc": "크로노스칼라 가문 대대로 전해져 내려오는 호문쿨루스. 저택의 집사장을 맡고 있지만, 절망적인 가정 능력으로 집안일은 금지당했다. 과거 당주 중 시간 마법의 부하를 견딜 수 있는 궁극의 육체를 개발하던 자가 만들어낸 역작이라고 한다. 육체능력은 굉장히 뛰어나지만, 그 육체를 유지하기 위해서 대량의 단백질이 필요하다.",
+   "iconPath": "Icon_CH0005",
+   "resourcesId": "ch0005_resources",
+   "voiceGroupId": "voc_ch0005_group",
+   "unfinished": {
+    "eng": "Claire",
+    "jpn": "クレア"
+   },
+   "id": 5,
+   "characterType": 1,
+   "nameKey": "character_name_ch0005",
+   "roleType": 1,
+   "divisionType": 2,
+   "factionType": 204,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 6,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0005",
+   "birthday": [
+    3,
+    22
+   ],
+   "hobby": "사냥, 고기 먹기, 간식 먹기",
+   "specialty": "고기 품질 감별하기",
+   "likes": "고기, 일광욕",
+   "comment": "오늘의 고기 메뉴는?",
+   "birthdayComment": "생일 선물은 고기로 부탁해. 최대한 많이.",
+   "artist": "SNOWBALL",
+   "cv": "우이"
+  },
+  "CH0006": {
+   "code": "CH0006",
+   "name": "에일린",
+   "desc": "세이브림 소속의 경비원. 항상 밝고 기운찬 모습으로 주변을 훈훈하게 만드는 분위기 메이커. 넘치는 의욕에 비해 집중력은 다소 부족해, 종종 환자를 이송하다가 잃어버리기도 한다. 치료 받지 않겠다고 난동 부리는 환자가 있으면 눌러서 제압하기도 한다.",
+   "iconPath": "Icon_CH0006",
+   "resourcesId": "ch0006_resources",
+   "voiceGroupId": "voc_ch0006_group",
+   "unfinished": {
+    "eng": "Eileen",
+    "jpn": "エイリン"
+   },
+   "id": 6,
+   "characterType": 1,
+   "nameKey": "character_name_ch0006",
+   "roleType": 1,
+   "divisionType": 1,
+   "factionType": 104,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0006",
+   "birthday": [
+    7,
+    10
+   ],
+   "hobby": "동네 순찰 (본인 주장)",
+   "specialty": "물건 입으로 캐치하기",
+   "likes": "쓰다듬받기",
+   "comment": "친절한 이웃, 에일린이에요!",
+   "birthdayComment": "저 생일이에요! 간식 주세요!",
+   "artist": "SNOWBALL",
+   "cv": "와오우 키리카"
+  },
+  "CH0007": {
+   "code": "CH0007",
+   "name": "마네",
+   "desc": "무법 지대에서 다양한 의뢰를 받고 움직이는 용병 대장. 가장 많이 들어오는 일은 위험 지대에서 약탈당한 물건을 되찾아 달라는 요청이다. 의뢰 완수율 100%에 근접하는 엄청난 실적을 자랑하는 그녀는, 의뢰를 끝내고 마시는 맥주 한 캔이 최고의 소소한 행복이다.",
+   "iconPath": "Icon_CH0007",
+   "resourcesId": "ch0007_resources",
+   "voiceGroupId": "voc_ch0007_group",
+   "unfinished": {
+    "eng": "Mane",
+    "jpn": "マーネ"
+   },
+   "id": 7,
+   "characterType": 1,
+   "nameKey": "character_name_ch0007",
+   "roleType": 2,
+   "divisionType": 9,
+   "factionType": 900,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 2,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0007",
+   "birthday": [
+    8,
+    5
+   ],
+   "hobby": "독주 담그기",
+   "specialty": "팔씨름, 술 내기",
+   "likes": "샤워 후 마시는 맥주 한 캔",
+   "comment": "뺏긴 물건 되찾고 싶어? 연락 줘!",
+   "birthdayComment": "오늘만큼은 다 접고, 내 잔에 술 가득 채우러 오라구!",
+   "artist": "Sol",
+   "cv": "스기하라 마츠리"
+  },
+  "CH0008": {
+   "code": "CH0008",
+   "name": "",
+   "desc": "",
+   "iconPath": "Icon_CH0008",
+   "resourcesId": "ch0008_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "",
+    "jpn": ""
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0009": {
+   "code": "CH0009",
+   "name": "엘리시아",
+   "desc": "칵테일 바 블러디 메리의 자애로운 주인. 바 손님들에게 위안을 주는 마족 ‘상담사’로, 말을 나눠 보면 굉장히 다정하다. 모르는 게 없을 정도로 다양한 교양 지식을 갖고 있어, 바 손님의 대다수는 그녀의 단골이다. 블러디 메리의 식구들에게 애착이 깊으며, 그들에게 위해를 가한 자는 절대 용서하지 않는다.",
+   "iconPath": "Icon_CH0009",
+   "resourcesId": "ch0009_resources",
+   "voiceGroupId": "voc_ch0009_group",
+   "unfinished": {
+    "eng": "Elisia",
+    "jpn": "エリシア"
+   },
+   "id": 9,
+   "characterType": 1,
+   "nameKey": "character_name_ch0009",
+   "roleType": 2,
+   "divisionType": 2,
+   "factionType": 203,
+   "attributeType": 4,
+   "positionType": 3,
+   "tribeType": 5,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0009",
+   "birthday": [
+    6,
+    4
+   ],
+   "hobby": "사람들과 잡담 하기",
+   "specialty": "말 상대하기, 교양있게 말하기",
+   "likes": "가족, 고객",
+   "comment": "블러디 메리 영업중~^^",
+   "birthdayComment": "다들 생일 축하해줘서 고마워~^^",
+   "artist": "SNOWBALL",
+   "cv": "아마네 유우"
+  },
+  "CH0010": {
+   "code": "CH0010",
+   "name": "마네(수영복)",
+   "desc": "<자유의 날>을 맞이하여 수영복으로 갈아입은 마네. 아지랑이 피는 여름의 더위를 이겨내고자, 온갖 준비를 하여 베르몬트 해안가로 보물을 찾으러 떠난다.",
+   "iconPath": "Icon_CH0010",
+   "resourcesId": "ch0010_resources",
+   "voiceGroupId": "voc_ch0010_group",
+   "unfinished": {
+    "eng": "Mane(Summer)",
+    "jpn": "マーネ（水着）"
+   },
+   "id": 10,
+   "characterType": 1,
+   "nameKey": "character_name_ch0010",
+   "roleType": 3,
+   "divisionType": 9,
+   "factionType": 900,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 5,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0010",
+   "birthday": [
+    8,
+    5
+   ],
+   "hobby": "독주 담그기",
+   "specialty": "팔씨름, 술 내기",
+   "likes": "샤워 후 마시는 맥주 한 캔",
+   "comment": "바다 갈 사람 구함",
+   "birthdayComment": "음, 오늘 이런 옷을 입을 줄은....\n아무튼 고마워.",
+   "artist": "Sol",
+   "cv": "스기하라 마츠리"
+  },
+  "CH0011": {
+   "code": "CH0011",
+   "name": "치세",
+   "desc": "비밀이 많은 신비로운 검객. 항상 단정한 옷차림에 차가운 분위기를 풍기며, 고고한 성격을 지녔다. 검술 실력은 이미 뛰어나지만, 지상 최고의 검사가 되겠다는 목표로 유랑 생활을 하고 있다. 세상일에 서툴러 가끔 엉뚱한 모습을 보일 때가 있다.",
+   "iconPath": "Icon_CH0011",
+   "resourcesId": "ch0011_resources",
+   "voiceGroupId": "voc_ch0011_group",
+   "unfinished": {
+    "eng": "Chise",
+    "jpn": "チセ"
+   },
+   "id": 11,
+   "characterType": 1,
+   "nameKey": "character_name_ch0011",
+   "roleType": 2,
+   "divisionType": 3,
+   "factionType": 301,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 3,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0011",
+   "birthday": [
+    12,
+    21
+   ],
+   "hobby": "고요한 풍경 보며 명상",
+   "specialty": "잡다한 지식 습득",
+   "likes": "지혜, 동물, 꽃",
+   "comment": "강아지, 고양이, 꽃.",
+   "birthdayComment": "촛불, 축하, 온기.",
+   "artist": "Ducklings",
+   "cv": "아유미 사라"
+  },
+  "CH0012": {
+   "code": "CH0012",
+   "name": "마샤",
+   "desc": "장난기 넘치는 경찰 소녀. 범인의 집을 경찰서처럼 꾸미거나 경찰서에 장난 전화를 거는 등 도무지 경찰답지 않은 엉뚱한 행동도 서슴지 않는다. 그래도 사건 해결 실력만큼은 누구보다 확실하다. 딸기시럽을 듬뿍 바른 도넛 앞에서는 무장해제 된다고 한다.",
+   "iconPath": "Icon_CH0012",
+   "resourcesId": "ch0012_resources",
+   "voiceGroupId": "voc_ch0012_group",
+   "unfinished": {
+    "eng": "Marcia",
+    "jpn": "マーシャ"
+   },
+   "id": 12,
+   "characterType": 1,
+   "nameKey": "character_name_ch0012",
+   "roleType": 1,
+   "divisionType": 1,
+   "factionType": 105,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0012",
+   "birthday": [
+    8,
+    17
+   ],
+   "hobby": "짓궂은 장난치기",
+   "specialty": "실적 쌓기, 도발하기",
+   "likes": "딸기 시럽, 사람 놀리기",
+   "comment": "키히힛♡ 오늘은 누구랑 놀아줄까~?",
+   "birthdayComment": "오늘 선물 안 주는 사람~\n낼부터 차단함~",
+   "artist": "Lilith",
+   "cv": "소라마메。"
+  },
+  "CH0013": {
+   "code": "CH0013",
+   "name": "로망스 경",
+   "desc": "낭만을 위해 살고, 낭만을 위해 죽는, 낭만에 목숨을 건 낭만 소녀. 모험을 떠나는 것도 낭만이고, 동료와 함께하는 것도 낭만이며, 그 과정에 싹트는 관계까지도 낭만이다. 너무 긍정적인 나머지, '이것도 낭만이지?'라는 말에 수긍하면 무슨 일을 벌이더라도 받아들여 버린다.",
+   "iconPath": "Icon_CH0013",
+   "resourcesId": "ch0013_resources",
+   "voiceGroupId": "voc_ch0013_group",
+   "unfinished": {
+    "eng": "Romance",
+    "jpn": "ロマンス卿"
+   },
+   "id": 13,
+   "characterType": 1,
+   "nameKey": "character_name_ch0013",
+   "roleType": 2,
+   "divisionType": 9,
+   "factionType": 901,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0013",
+   "birthday": [
+    5,
+    5
+   ],
+   "hobby": "탐험 용품 점검, 지도 그리기",
+   "specialty": "야생에서 살아남기",
+   "likes": "플러리 사냥",
+   "comment": "같이 플러리 사냥 갈 사람~?",
+   "birthdayComment": "낭만적인 선물~\n기대하고 있을게~!",
+   "artist": "Lilith",
+   "cv": "카나우"
+  },
+  "CH0014": {
+   "code": "CH0014",
+   "name": "베스페리",
+   "desc": "#####준비중입니다.",
+   "iconPath": "Icon_CH0014",
+   "resourcesId": "ch0014_resources",
+   "voiceGroupId": "voc_ch0014_group",
+   "unfinished": {
+    "eng": "Vesperi",
+    "jpn": "ヴェスペリ"
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0015": {
+   "code": "CH0015",
+   "name": "이네스",
+   "desc": "하모닉스의 사랑을 알리는 서큐버스 수녀원장. 자애로운 성품과 신앙심을 인정받아 고위 성직자가 된 뒤부터 다른 수녀들의 모범이 되고자 세속적인 욕망을 멀리하려고 노력하고 있다. 본능에 따라 제멋대로 움직이려는 꼬리를 신경 쓰는 모양이다.",
+   "iconPath": "Icon_CH0015",
+   "resourcesId": "ch0015_resources",
+   "voiceGroupId": "voc_ch0015_group",
+   "unfinished": {
+    "eng": "Ines",
+    "jpn": "イネス"
+   },
+   "id": 15,
+   "characterType": 1,
+   "nameKey": "character_name_ch0015",
+   "roleType": 3,
+   "divisionType": 2,
+   "factionType": 200,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 5,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0015",
+   "birthday": [
+    12,
+    25
+   ],
+   "hobby": "경전 해석하기",
+   "specialty": "욕망 절제",
+   "likes": "신실한 마음",
+   "comment": "하모닉스 님께서는 늘 당신을 따뜻하게 지켜보고 계신답니다.",
+   "birthdayComment": "오늘은 하모닉스 님의 축복을 받은 \n행복한 날입니다.",
+   "artist": "SNOWBALL",
+   "cv": "모리야 코코로"
+  },
+  "CH0016": {
+   "code": "CH0016",
+   "name": "레안나",
+   "desc": "뉴 머니의 방송 담당 겸 기자 겸 데이터 수집가. 주식이나 투자 분야에 대해 아무것도 모르는 문외한이지만, 친한 PD의 꼬드김에 넘어가 안정적이었던 아나운서 자리를 내려놓고 합류하였다. 아나운서 출신인 만큼 목소리가 좋은 인플루언서 순위에서 늘 상위권을 차지하고 있다.",
+   "iconPath": "Icon_CH0016",
+   "resourcesId": "ch0016_resources",
+   "voiceGroupId": "voc_ch0016_group",
+   "unfinished": {
+    "eng": "Reanna",
+    "jpn": "レアンナ"
+   },
+   "id": 16,
+   "characterType": 1,
+   "nameKey": "character_name_ch0016",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 108,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 4,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0016",
+   "birthday": [
+    1,
+    27
+   ],
+   "hobby": "데이터 정리 정돈",
+   "specialty": "기계와 소통하기",
+   "likes": "깔끔한 바탕 화면",
+   "comment": "<뉴 머니> 채널에 구독과 좋아요 꾸욱~",
+   "birthdayComment": "오늘은 제 생일!!\n특별방송 때 꼭 들러서 많이많이 축하해주세요~",
+   "artist": "Cruno",
+   "cv": "후지사키 사야카"
+  },
+  "CH0017": {
+   "code": "CH0017",
+   "name": "시즈쿠",
+   "desc": "치마 속에 비밀을 감춘 대기업 전략관리실장. 말은 많지만, 감정을 전달하는 일에는 서툴다. 안 하는 일도 못 하는 일도 없으며 상사가 시키는 일을 잔말 없이 수행한다. 은근히 호기심 많은 구석이 있어, 일하다가도 나비가 신기하다며 쫄래쫄래 쫓아가는 편이다.",
+   "iconPath": "Icon_CH0017",
+   "resourcesId": "ch0017_resources",
+   "voiceGroupId": "voc_ch0017_group",
+   "unfinished": {
+    "eng": "Shizuku",
+    "jpn": "シズク"
+   },
+   "id": 17,
+   "characterType": 1,
+   "nameKey": "character_name_ch0017",
+   "roleType": 2,
+   "divisionType": 1,
+   "factionType": 103,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 3,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0017",
+   "birthday": [
+    10,
+    14
+   ],
+   "hobby": "나비 관찰",
+   "specialty": "첩보수집 및 정보공작",
+   "likes": "개박하, 생선회, 카드보드 박스",
+   "comment": "프로필을 작성해 주세요.",
+   "birthdayComment": "당신의 생일을 친구들에게 알려주세요.",
+   "artist": "Lilith",
+   "cv": "아즈마 시즈"
+  },
+  "CH0018": {
+   "code": "CH0018",
+   "name": "",
+   "desc": "",
+   "iconPath": "Icon_CH0018",
+   "resourcesId": "ch0018_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "",
+    "jpn": ""
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0019": {
+   "code": "CH0019",
+   "name": "빅토리아",
+   "desc": "두부 거리에서도 독보적인 두부 사장. 파노티콘에서 막 출소한 이들을 상대로 두부를 강매하며 장사를 이어간다. 의외로 두부가 맛있어서 단골이 된 고객도 제법 많다. 특제 마파두부가 호평이라, 손님들에게 욕을 해도 그녀의 손길을 빠져나가지 못하는 사람이 계속 늘고 있다.",
+   "iconPath": "Icon_CH0019",
+   "resourcesId": "ch0019_resources",
+   "voiceGroupId": "voc_ch0019_group",
+   "unfinished": {
+    "eng": "Victoria",
+    "jpn": "ヴィクトリア"
+   },
+   "id": 19,
+   "characterType": 1,
+   "nameKey": "character_name_ch0019",
+   "roleType": 2,
+   "divisionType": 1,
+   "factionType": 101,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 6,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0019",
+   "birthday": [
+    2,
+    17
+   ],
+   "hobby": "야한 웹소설 보기",
+   "specialty": "특제 마파두부 요리하기",
+   "likes": "두부",
+   "comment": "[당★일★생★산] 싱싱한 두부 팔아요\n볼륨이 커지는 마법의 두부입니당~",
+   "birthdayComment": "와, 나 오늘 레알 생일임?\n오늘이야말로 두부 파티닷!!!",
+   "artist": "Lilith",
+   "cv": "시라유키 미도리"
+  },
+  "CH0020": {
+   "code": "CH0020",
+   "name": "단희",
+   "desc": "풍월회에 속한 유유자적하고 호쾌한 성격의 한량. 축제 거리나 야시장에 나타나 사람들에게 각종 게임이나 승부를 거는 것을 즐긴다. 승자의 부탁을 들어주기 때문에, 사군자의 거리에서는 복신의 일종으로 모셔지기도 한다.",
+   "iconPath": "Icon_CH0020",
+   "resourcesId": "ch0020_resources",
+   "voiceGroupId": "voc_ch0020_group",
+   "unfinished": {
+    "eng": "Danhee",
+    "jpn": "タンキ"
+   },
+   "id": 20,
+   "characterType": 1,
+   "nameKey": "character_name_ch0020",
+   "roleType": 2,
+   "divisionType": 3,
+   "factionType": 302,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0020",
+   "birthday": [
+    2,
+    4
+   ],
+   "hobby": "낚시, 승부",
+   "specialty": "풍류와 해설",
+   "likes": "천랑, 축제 게임",
+   "comment": "달밤에 술 한잔.",
+   "birthdayComment": "선물은 술이나 고기가 좋겠구나!",
+   "artist": "Sol",
+   "cv": "카즈하"
+  },
+  "CH0021": {
+   "code": "CH0021",
+   "name": "홍접",
+   "desc": "원령들이 남긴 부정한 힘을 정화하는 무녀. 겉으로는 사람들에게 차갑고 거리를 두는 태도를 보이지만, 원령을 끌어들이는 자신의 특성으로 인해 주변 사람들이 상처 받지 않기를 바란 상냥한 마음 때문이었다. 그러나 그런 거리를 개의치 않는 누군가의 등장으로 닫아둔 감정의 문이 서서히 흔들리기 시작했다.",
+   "iconPath": "Icon_CH0021",
+   "resourcesId": "ch0021_resources",
+   "voiceGroupId": "voc_ch0021_group",
+   "unfinished": {
+    "eng": "Hongjeop",
+    "jpn": "コウチョウ"
+   },
+   "id": 21,
+   "characterType": 1,
+   "nameKey": "character_name_ch0021",
+   "roleType": 2,
+   "divisionType": 3,
+   "factionType": 302,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0021",
+   "birthday": [
+    5,
+    10
+   ],
+   "hobby": "낫 손질",
+   "specialty": "원령 사냥",
+   "likes": "꽃이 핀 고요한 정원, 나비",
+   "comment": "순간을 소중히.",
+   "birthdayComment": "생일이라…",
+   "artist": "Cruno",
+   "cv": "카이바라 에레나"
+  },
+  "CH0022": {
+   "code": "CH0022",
+   "name": "미드웬",
+   "desc": "이데아에서 손꼽히는 사업가. 미드웬이 손댄 사업은 반드시 성공하기로 유명하지만, 가혹한 업무 스타일 탓에 함께 일한 사람들에게는 악덕 사업주라는 평판을 얻었다. 사무실에서 후마니타스를 쥐락펴락하다가도, 퇴근 후에는 그녀만의 방식으로 스트레스를 푼다고 한다.",
+   "iconPath": "Icon_CH0022",
+   "resourcesId": "ch0022_resources",
+   "voiceGroupId": "voc_ch0022_group",
+   "unfinished": {
+    "eng": "Midwen",
+    "jpn": "ミッドウェン"
+   },
+   "id": 22,
+   "characterType": 1,
+   "nameKey": "character_name_ch0022",
+   "roleType": 1,
+   "divisionType": 1,
+   "factionType": 103,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0022",
+   "birthday": [
+    8,
+    8
+   ],
+   "hobby": "집에서 혼자 가만히 누워 있기",
+   "specialty": "사업 아이디어, 기회 잡기",
+   "likes": "뒹굴 거리기, 말끔한 보고서",
+   "comment": "업무 시간 이후의 연락은\n받지 않습니다.",
+   "birthdayComment": "업무 시간 이후에도\n연락 받습니다.(오늘 한정)",
+   "artist": "Sol",
+   "cv": "마시로 요조라"
+  },
+  "CH0023": {
+   "code": "CH0023",
+   "name": "로나",
+   "desc": "고객 만족도 0%의 두부 가게 영업사원. 수상한 가방을 들고 일방적으로 고객의 집에 찾아가 두부를 배달하고 정기 구독을 강요하는 독특한 영업 전략을 쓴다. 콩부터 정성스럽게 키워야 최상의 두부를 빚을 수 있다고 믿으며, 지금도 최고의 콩 품종을 키워내기 위해 고군분투한다.",
+   "iconPath": "Icon_CH0023",
+   "resourcesId": "ch0023_resources",
+   "voiceGroupId": "voc_ch0023_group",
+   "unfinished": {
+    "eng": "Rona",
+    "jpn": "ロナ"
+   },
+   "id": 23,
+   "characterType": 1,
+   "nameKey": "character_name_ch0023",
+   "roleType": 1,
+   "divisionType": 1,
+   "factionType": 101,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 5,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0023",
+   "birthday": [
+    7,
+    6
+   ],
+   "hobby": "두부용 콩 재배",
+   "specialty": "강매, 적자내기",
+   "likes": "영업 실적",
+   "comment": "※사업 관련 문의 -> '위대한 두부단' 채널※\n※언제나 정직한 기업, 위대한 두부단!※\n#원금보장 #안정투자 #신시대먹거리 #인생역전",
+   "birthdayComment": "♨ㅁ오늘은 두부 케이크 먹는 날!ㅁ♨\n♨ㅁ두부 케이크 문의 및 투자 환영!ㅁ♨\n#따끈따끈 #원기보양 #순백뽀얀속살 #제2인생시작",
+   "artist": "Cruno",
+   "cv": "모리타니 우타네"
+  },
+  "CH0024": {
+   "code": "CH0024",
+   "name": "아로네",
+   "desc": "블러디 메리의 마족 아가씨. 엘리시아, 그리고 블러디 메리의 공식적인 후계자. 사람과 눈도 못 마주칠 정도로 극심하게 낯을 가린다. 사역하는 슬라임, '이쁜이'가 유일한 친구. 보드게임을 잘하며, 보드게임에 한해서는 말이 많아진다.",
+   "iconPath": "Icon_CH0024",
+   "resourcesId": "ch0024_resources",
+   "voiceGroupId": "voc_ch0024_group",
+   "unfinished": {
+    "eng": "Alone",
+    "jpn": "アロネ"
+   },
+   "id": 24,
+   "characterType": 1,
+   "nameKey": "character_name_ch0024",
+   "roleType": 3,
+   "divisionType": 2,
+   "factionType": 203,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 5,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0024",
+   "birthday": [
+    1,
+    1
+   ],
+   "hobby": "이쁜이랑 보드게임 하기",
+   "specialty": "보드게임 룰 외우기, 소환술",
+   "likes": "엄마, '이쁜이', 보드게임",
+   "comment": "같이 보드게임 해주실 분 있을까요....",
+   "birthdayComment": "생일 선물로 같이 보드게임\n해주실 분 있나요....",
+   "artist": "Sol",
+   "cv": "츠키시로 마히루"
+  },
+  "CH0025": {
+   "code": "CH0025",
+   "name": "카게",
+   "desc": "어둠에 숨어 모든 걸 기록하는 완벽주의 쿠노이치. 완벽함은 철저한 정보 수집과 계획에서 나온다고 믿는다. 자신이 보고 들은 것을 빼곡히 기록하며, 앞으로의 계획과 변수를 수첩에 상세히 적어둔다. 완벽주의자가 늘 그렇듯, 계획대로 되는 일은 거의 없다.",
+   "iconPath": "Icon_CH0025",
+   "resourcesId": "ch0025_resources",
+   "voiceGroupId": "voc_ch0025_group",
+   "unfinished": {
+    "eng": "Kage",
+    "jpn": "カゲ"
+   },
+   "id": 25,
+   "characterType": 1,
+   "nameKey": "character_name_ch0025",
+   "roleType": 3,
+   "divisionType": 3,
+   "factionType": 303,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 3,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0025",
+   "birthday": [
+    12,
+    5
+   ],
+   "hobby": "조용한 지붕 위에서 별 보기",
+   "specialty": "은밀 행동, 각 잡은 옷 접기",
+   "likes": "새로 산 수첩의 첫 장",
+   "comment": "모든 것은 계획대로.",
+   "birthdayComment": "축하해주셔서 감사합니다. 답례 회신은 내일 모레 일괄적으로 드리겠습니다.",
+   "artist": "Cruno",
+   "cv": "나나가세 린"
+  },
+  "CH0026": {
+   "code": "CH0026",
+   "name": "소피아",
+   "desc": "어려운 사람을 돕는 친절한 수간호사. 상냥한 미소와 부드러운 어조로 누구에게나 존경받는다. 후마니타스의 수많은 사건사고가 대부분 크게 번지지 않는 것도 다 소피아 덕분이라고 한다. 그런 그녀를 함부로 건드렸다가는 그날부로 후마니타스에서 발도 못 붙이게 될 것이다.",
+   "iconPath": "Icon_CH0026",
+   "resourcesId": "ch0026_resources",
+   "voiceGroupId": "voc_ch0026_group",
+   "unfinished": {
+    "eng": "Sophia",
+    "jpn": "ソフィア"
+   },
+   "id": 26,
+   "characterType": 1,
+   "nameKey": "character_name_ch0026",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 104,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0026",
+   "birthday": [
+    5,
+    7
+   ],
+   "hobby": "식물 키우기",
+   "specialty": "마사지 해주기",
+   "likes": "다 나은 환자 배웅하기",
+   "comment": "도움이 필요하면 언제든지 연락 주세요 ^ㅁ^",
+   "birthdayComment": "다들 축하해주셔서 고마워요 완전 감동 TㅁT",
+   "artist": "SNOWBALL",
+   "cv": "사키 유타카"
+  },
+  "CH0027": {
+   "code": "CH0027",
+   "name": "에밀리",
+   "desc": "유서 깊은 마도 가문, 크로노스칼라의 일원. 촉감으로 바람을 느끼고, 그 바람을 수족처럼 부릴 수 있다. 바람을 느끼기 위해 옷을 가볍게 입다 못 해 거의 벗고 다닌다. 그렇지만 사회적 체면이 있으므로, 당당히 벗고 다니기보다는 어떻게 하면 자연스럽게 옷을 벗고 다닐 수 있을까 고민한다.",
+   "iconPath": "Icon_CH0027",
+   "resourcesId": "ch0027_resources",
+   "voiceGroupId": "voc_ch0027_group",
+   "unfinished": {
+    "eng": "Emily",
+    "jpn": "エミリー"
+   },
+   "id": 27,
+   "characterType": 1,
+   "nameKey": "character_name_ch0027",
+   "roleType": 2,
+   "divisionType": 2,
+   "factionType": 204,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 2,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0027",
+   "birthday": [
+    9,
+    22
+   ],
+   "hobby": "나체로 산책하기, 바이올린",
+   "specialty": "마법으로 옷 갈아입기 & 바느질하기",
+   "likes": "전신에 스며드는 시원한 바람",
+   "comment": "몸 속 깊은 곳까지 바람을 느끼고 싶어!",
+   "birthdayComment": "생일 선물은 옷이 좋겠어. 착한 사람에게만 보이는 옷!",
+   "artist": "SNOWBALL",
+   "cv": "네코야시키 마이"
+  },
+  "CH0028": {
+   "code": "CH0028",
+   "name": "샬럿",
+   "desc": "장사 수완이 좋은 택배 스타트업 사장. 운송비의 절반을 팁으로 요구하면서 흥정을 시작하는 뻔뻔함을 지녔다. 체구는 작아도 어떤 비즈니스 협상이든 기죽지 않고 상대를 압도한다. 들어보면 그럴듯한 소리를 하기 때문에, 샬럿의 말에 넘어가 바가지를 썼다는 사례가 적지 않다.",
+   "iconPath": "Icon_CH0028",
+   "resourcesId": "ch0028_resources",
+   "voiceGroupId": "voc_ch0028_group",
+   "unfinished": {
+    "eng": "Charlotte",
+    "jpn": "シャーロット"
+   },
+   "id": 28,
+   "characterType": 1,
+   "nameKey": "character_name_ch0028",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 102,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0028",
+   "birthday": [
+    12,
+    16
+   ],
+   "hobby": "잠재 고객 관찰",
+   "specialty": "흥정",
+   "likes": "돈",
+   "comment": "<럭키트럭> 대표\n비즈니스 문의도 받습니다.",
+   "birthdayComment": "친구의 생일이에요! 마음을 선물하세요!",
+   "artist": "Lilith",
+   "cv": "모모야마 이온"
+  },
+  "CH0029": {
+   "code": "CH0029",
+   "name": "프레이아",
+   "desc": "골칫덩이 집단 M.A.D.의 행동대장이자, 자칭 '스피드 액션 트러블메이커'. 모두가 YES를 하는 상황에서 그녀는 재미있을 것 같다는 이유 하나만으로 NO를 날릴 수 있는 인물이다. 그녀에게 사건사고 없는 평온한 세상은 하품 나오는 따분한 세상일 뿐이다.",
+   "iconPath": "Icon_CH0029",
+   "resourcesId": "ch0029_resources",
+   "voiceGroupId": "voc_ch0029_group",
+   "unfinished": {
+    "eng": "Freya",
+    "jpn": "プレイア"
+   },
+   "id": 29,
+   "characterType": 1,
+   "nameKey": "character_name_ch0029",
+   "roleType": 2,
+   "divisionType": 1,
+   "factionType": 100,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0029",
+   "birthday": [
+    5,
+    4
+   ],
+   "hobby": "재밌어 보이는 물건 충동구매",
+   "specialty": "도망치기, 추격자 따돌리기",
+   "likes": "달리기",
+   "comment": "이거 멀티 프로필이지롱~\n그러면 너는 내 몇 번째 멀티 프로필일까?",
+   "birthdayComment": "사실 나 민초 안 조아해... 헤헤…",
+   "artist": "SNOWBALL",
+   "cv": "아메카와 시노"
+  },
+  "CH0030": {
+   "code": "CH0030",
+   "name": "세븐",
+   "desc": "뽑기와 슬롯머신을 좋아하는 도박광 안드로이드 메이드. 귀차니즘이 심해 집안일을 제시간에 끝낸 적이 아예 없다. 안드로이드라 인간의 감정을 읽는 것에 서투르지만, 어째서인지 자신을 남들에게 행운을 가져다주는 존재라고 굳게 믿고 있다.",
+   "iconPath": "Icon_CH0030",
+   "resourcesId": "ch0030_resources",
+   "voiceGroupId": "voc_ch0030_group",
+   "unfinished": {
+    "eng": "セブン",
+    "jpn": "セブン"
+   },
+   "id": 30,
+   "characterType": 1,
+   "nameKey": "character_name_ch0030",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 106,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0030",
+   "birthday": [
+    7,
+    7
+   ],
+   "hobby": "뽑기 게임",
+   "specialty": "감시와 관찰, 확률 계산",
+   "likes": "뽑기 결과 자랑하기",
+   "comment": "충전 중 아니면 뽑기 중입니다.\n나중에 연락 주세요.",
+   "birthdayComment": "오늘은 제 행운의 날 입니다.\n저랑 뽑기하러 가실 분~.",
+   "artist": "うるる牡丹",
+   "cv": "츠키노 키이로"
+  },
+  "CH0031": {
+   "code": "CH0031",
+   "name": "히나타",
+   "desc": "거대 기업의 재무 담당 비서실장. 하룻밤 내에 500장이 넘는 서류를 다 정리했다고 소문이 돌 만큼 사무 정리의 스페셜리스트다. 기본적으로 화낼 줄도 모르며, 부탁받아도 거절하지 못한다. 자신을 업무 지옥에서 구원해 줄 사람에게 모든 것을 바치겠다는 소녀다운 꿈이 있다.",
+   "iconPath": "Icon_CH0031",
+   "resourcesId": "ch0031_resources",
+   "voiceGroupId": "voc_ch0031_group",
+   "unfinished": {
+    "eng": "ヒナタ",
+    "jpn": "ヒナタ"
+   },
+   "id": 31,
+   "characterType": 1,
+   "nameKey": "character_name_ch0031",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 103,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0031",
+   "birthday": [
+    1,
+    7
+   ],
+   "hobby": "일기에 오늘 하루 서러웠던 일들 적기",
+   "specialty": "서류 작업 전반",
+   "likes": "칼퇴, 휴식",
+   "comment": "업무를 보고 있습니다.\n다음에 연락주세요.",
+   "birthdayComment": "생일이지만 업무가 끝나지 않았습니다!",
+   "artist": "Sol",
+   "cv": "유즈하라 미우"
+  },
+  "CH0032": {
+   "code": "CH0032",
+   "name": "수지",
+   "desc": "두부거리에 어울리지 않는 소심한 소녀. 외부인의 시선으로 봤을 때 양아치 친구들에게 강제로 부려 먹히는 모범생 같아 보일 수도 있지만… 결정적인 순간에는 모두가 믿고 따르는 두부단의 핵심 멤버다. 친구들이 마음껏 자신들의 특기를 발휘할 수 있도록, 어디선가 배워온 주식과 암호화폐 투자법으로 만년 적자인 재정을 충당한다고 한다.",
+   "iconPath": "Icon_CH0032",
+   "resourcesId": "ch0032_resources",
+   "voiceGroupId": "voc_ch0032_group",
+   "unfinished": {
+    "eng": "スジ",
+    "jpn": "スージー"
+   },
+   "id": 32,
+   "characterType": 1,
+   "nameKey": "character_name_ch0032",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 101,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0032",
+   "birthday": [
+    5,
+    16
+   ],
+   "hobby": "범죄 관련 영화 감상",
+   "specialty": "주식과 암호화폐 투자",
+   "likes": "범죄 영화, 두부단 친구들",
+   "comment": "적은 가까이, 친구는 더 가까이.",
+   "birthdayComment": "도와주세요! 친구들이 생일빵을 하겠대요!",
+   "artist": "Sol",
+   "cv": "스즈야 마야"
+  },
+  "CH0033": {
+   "code": "CH0033",
+   "name": "에스텔",
+   "desc": "#####준비중입니다.",
+   "iconPath": "Icon_CH0033",
+   "resourcesId": "ch0033_resources",
+   "voiceGroupId": "voc_ch0033_group",
+   "unfinished": {
+    "eng": "エステル",
+    "jpn": "エステル"
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0034": {
+   "code": "CH0034",
+   "name": "세타",
+   "desc": "기억을 잃어 자신의 과거를 모르는 사이보그 소녀. M.A.D.에서 그나마 지성과 전략을 챙기는 두뇌 역할 담당이다. 먼저 나서지 않는 성격 탓에 주로 일이 커질 대로 커진 다음에나 수습에 도움을 준다. 갓 나온 빵을 보면 본인도 모르게 손이 가는 특수한 도벽을 가지고 있다.",
+   "iconPath": "Icon_CH0034",
+   "resourcesId": "ch0034_resources",
+   "voiceGroupId": "voc_ch0034_group",
+   "unfinished": {
+    "eng": "シータ",
+    "jpn": "セタ"
+   },
+   "id": 34,
+   "characterType": 1,
+   "nameKey": "character_name_ch0034",
+   "roleType": 1,
+   "divisionType": 1,
+   "factionType": 100,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0034",
+   "birthday": [
+    3,
+    2
+   ],
+   "hobby": "빵 시식",
+   "specialty": "10초 안에 잠들기(절전)",
+   "likes": "몽블랑, 빵, 충전, 고양이",
+   "comment": "빵 시식 오픈런 동료 구함",
+   "birthdayComment": "오늘이 제 생일이었군요.",
+   "artist": "SNOWBALL",
+   "cv": "오오미야 와카바"
+  },
+  "CH0035": {
+   "code": "CH0035",
+   "name": "유리아",
+   "desc": "베르몬트 마법 명문가의 당주이자 마법을 연구하는 연구자. 당주로서의 일과 연구자로서의 일을 전부 소화하고 있으며, 그 무엇도 뒤쳐지지 않는다. 촉수를 이용한 속박 마법이 특기며, 이를 연구하여 시간을 속박하는 걸 목표로 한다.",
+   "iconPath": "Icon_CH0035",
+   "resourcesId": "ch0035_resources",
+   "voiceGroupId": "voc_ch0035_group",
+   "unfinished": {
+    "eng": "Lumina",
+    "jpn": "ルミナ"
+   },
+   "id": 35,
+   "characterType": 1,
+   "nameKey": "character_name_ch0035",
+   "roleType": 2,
+   "divisionType": 2,
+   "factionType": 204,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0035",
+   "birthday": [
+    11,
+    1
+   ],
+   "hobby": "뒹굴거리며 책 읽기",
+   "specialty": "눈 감고 1분 세기, 촉수 멀티태스킹",
+   "likes": "연구, 모닝 커피, 바디필로우",
+   "comment": "크로노스칼라의 당주 유리아입니다.",
+   "birthdayComment": "선물은 따로 받지 않습니다. 감사합니다.",
+   "artist": "SNOWBALL",
+   "cv": "하치코"
+  },
+  "CH0036": {
+   "code": "CH0036",
+   "name": "루미나",
+   "desc": "골칫덩이 집단 M.A.D.의 긍정주의 아가씨. 오직 즐거움만이 삶을 구원해 준다는 사고방식을 갖고 있다. 일을 벌리는데 주저하지 않고, 아무렴 어떠냐며 오히려 사건을 부추기기도 하는 M.A.D.의 윤활유 같은 존재.",
+   "iconPath": "Icon_CH0036",
+   "resourcesId": "ch0036_resources",
+   "voiceGroupId": "voc_ch0036_group",
+   "unfinished": {
+    "eng": "Lumina",
+    "jpn": "ルミナ"
+   },
+   "id": 36,
+   "characterType": 1,
+   "nameKey": "character_name_ch0036",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 100,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0036",
+   "birthday": [
+    6,
+    10
+   ],
+   "hobby": "쾌락 참기, 소문 수집",
+   "specialty": "사고 쳐놓고 모른체 하기",
+   "likes": "남들의 시선 받기",
+   "comment": "지금 생각나는 사람이 나라면... 그건 데스티니!",
+   "birthdayComment": "한 살 더 먹었으니까... 좀 더 어른스럽게 놀아봐야겠죠~?",
+   "artist": "SNOWBALL",
+   "cv": "모모치 루카"
+  },
+  "CH0037": {
+   "code": "CH0037",
+   "name": "카사",
+   "desc": "기타를 들고 다니는 자칭 브레인 두부 마케터. 투덜거리면서도 남들이 부탁한 일을 대신 해결해 주는 것이 일상이다. 만년 적자인 위대한 두부단을 살릴 수 있는 건 똑똑한 자신밖에 없다고 생각하며 두부 마케팅에 심혈을 기울인다. 노력과 별개로, 마케팅의 효과는 크지 않은 것 같다.",
+   "iconPath": "Icon_CH0037",
+   "resourcesId": "ch0037_resources",
+   "voiceGroupId": "voc_ch0037_group",
+   "unfinished": {
+    "eng": "Kasa",
+    "jpn": "カサ"
+   },
+   "id": 37,
+   "characterType": 1,
+   "nameKey": "character_name_ch0037",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 101,
+   "attributeType": 4,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0037",
+   "birthday": [
+    6,
+    15
+   ],
+   "hobby": "SNS, 잡지 읽기",
+   "specialty": "기타 연주(본인 주장)",
+   "likes": "밴드 음악",
+   "comment": "노력은 배신하지 않는다.",
+   "birthdayComment": "선물은 안 받아도 돼. 대신 넌 오라구.",
+   "artist": "CHoney",
+   "cv": "아카시 유키"
+  },
+  "CH0038": {
+   "code": "CH0038",
+   "name": "발렌티나",
+   "desc": "영세 영화사 키노가르텐의 리더이자 영화감독. 자신의 성인영화를 상영하기 위해 베르몬트 윤리위원회와의 충돌도 마다하지 않는다. 카리스마 넘치고 추진력이 뛰어난 그녀는, 안타깝게도 매번 영화 제작비에 허덕이고 있다. 미래에 베르몬트의 메이저 성인 영화사를 이끄는 것이 꿈이다.",
+   "iconPath": "Icon_CH0038",
+   "resourcesId": "ch0038_resources",
+   "voiceGroupId": "voc_ch0038_group",
+   "unfinished": {
+    "eng": "Valentina",
+    "jpn": "バレンティーナ"
+   },
+   "id": 38,
+   "characterType": 1,
+   "nameKey": "character_name_ch0038",
+   "roleType": 2,
+   "divisionType": 2,
+   "factionType": 205,
+   "attributeType": 4,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0038",
+   "birthday": [
+    7,
+    18
+   ],
+   "hobby": "영화 감상, 칵테일 마시기",
+   "specialty": "마라톤",
+   "likes": "자신을 표출하는 것, 촬영",
+   "comment": "베르몬트 명예의 전당에 오를 때까지…\n(투자 문의는 언제나 환영합니다)",
+   "birthdayComment": "먹고 마시고 죽자!\n(알아들었으면 촬영장으로 와줘!)",
+   "artist": "CHoney",
+   "cv": "나츠노 미코토"
+  },
+  "CH0039": {
+   "code": "CH0039",
+   "name": "카렌",
+   "desc": "교수의 잦은 연락에 시달리는 대학원생. 밤샘 논문을 쓰느라 만성 피로에 시달린다. 그녀의 전공은 보안 설계이지만, 실제 특기는 금고의 암호를 푸는 것. 이 재능을 활용해, 등록금을 충당하기 위해 원래대로라면 손대지도 않았을 금고 털이를 시작한다. 처음부터 지금까지의 금고 털이 중에서 원만하게 일이 잘 풀린 경우가 거의 없다는데…",
+   "iconPath": "Icon_CH0039",
+   "resourcesId": "ch0039_resources",
+   "voiceGroupId": "voc_ch0039_group",
+   "unfinished": {
+    "eng": "Caren",
+    "jpn": "カレン"
+   },
+   "id": 39,
+   "characterType": 1,
+   "nameKey": "character_name_ch0039",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 106,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0039",
+   "birthday": [
+    1,
+    2
+   ],
+   "hobby": "퍼즐 풀기",
+   "specialty": "돈 아끼기, 잠금 패턴 파악",
+   "likes": "어렵지만 해결할 가치가 있는 것",
+   "comment": "네, 안 괜찮아요",
+   "birthdayComment": "축하는 연구실에서",
+   "artist": "Lumium",
+   "cv": "미타카 린"
+  },
+  "CH0040": {
+   "code": "CH0040",
+   "name": "이자벨",
+   "desc": "#####준비중입니다.",
+   "iconPath": "Icon_CH0040",
+   "resourcesId": "ch0040_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "Isabel",
+    "jpn": "イザベル"
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0042": {
+   "code": "CH0042",
+   "name": "오블리아",
+   "desc": "언사인드의 드론 전문가. 순찰과 정찰을 담당하고 있다. 후마니타스의 명망 있는 프로그래머였으나, 모종의 이유로 언사인드에 합류했다. 하드웨어와 소프트웨어 양쪽으로 지식이 깊어 기술적인 방면에서 언사인드에 기여한다.",
+   "iconPath": "Icon_CH0042",
+   "resourcesId": "ch0042_resources",
+   "voiceGroupId": "voc_ch0042_group",
+   "unfinished": {
+    "eng": "Oblia",
+    "jpn": "オブリア"
+   },
+   "id": 42,
+   "characterType": 1,
+   "nameKey": "character_name_ch0042",
+   "roleType": 2,
+   "divisionType": 9,
+   "factionType": 900,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0042",
+   "birthday": [
+    9,
+    14
+   ],
+   "hobby": "커뮤니티 눈팅, 인디 노래 감상, 조향",
+   "specialty": "한 손으로 키보드 타자 치기",
+   "likes": "커피, 향, 어두운 장소(트렁크)",
+   "comment": "용무만 간단히",
+   "birthdayComment": "불필요한 안부 인사는 사절",
+   "artist": "DotG",
+   "cv": "하나카게 호타루"
+  },
+  "CH0043": {
+   "code": "CH0043",
+   "name": "라피네",
+   "desc": "인간의 사회에 대한 호기심 때문에 숲을 떠나 도시에서 살기로 한 엘프. 숲속 엘프 마을에서의 생활이 길었던 탓에 인간 사회에 대한 감각 특히 금전 감각이 없어 항상 돈에 쪼들린다.",
+   "iconPath": "Icon_CH0043",
+   "resourcesId": "ch0043_resources",
+   "voiceGroupId": "voc_ch0043_group",
+   "unfinished": {
+    "eng": "Lafine",
+    "jpn": "ラフィーネ"
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0046": {
+   "code": "CH0046",
+   "name": "제니",
+   "desc": "특수화물운송전문업체 럭키트럭의 접수원. 평소에는 밝고 친절한 성격이지만, 운전대만 잡으면 사람이 바뀐다. 다만 제니 본인은 운전 당시의 상황을 기억하지 못하는 듯한데… 사장인 샬럿의 명령에 매번 곤란해 하면서도, 부끄러움을 무릅쓰고 해내려 하는 당찬 면모도 있다.",
+   "iconPath": "Icon_CH0046",
+   "resourcesId": "ch0046_resources",
+   "voiceGroupId": "voc_ch0046_group",
+   "unfinished": {
+    "eng": "Jennie",
+    "jpn": "ジェニ"
+   },
+   "id": 46,
+   "characterType": 1,
+   "nameKey": "character_name_ch0046",
+   "roleType": 1,
+   "divisionType": 1,
+   "factionType": 102,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0046",
+   "birthday": [
+    4,
+    3
+   ],
+   "hobby": "트럭 정비",
+   "specialty": "집안일",
+   "likes": "트럭 운전",
+   "comment": "경제적 자유를 이루자~!",
+   "birthdayComment": "친구의 생일이에요! 마음을 선물하세요!",
+   "artist": "Lilith",
+   "cv": "노하나"
+  },
+  "CH0050": {
+   "code": "CH0050",
+   "name": "미오",
+   "desc": "걸즈 스톰의 드러머 겸 영업 담당. 언제나 인형 탈을 쓰고 있어서, 그녀의 얼굴을 알고 있는 사람은 같은 밴드 멤버들 외엔 거진 없다. 무서운 얼굴을 가리기 위한 억제기라는 소문도 있지만, 반대로 초절정 청순 미소녀라는 소문 역시 존재하는데…",
+   "iconPath": "Icon_CH0050",
+   "resourcesId": "ch0050_resources",
+   "voiceGroupId": "voc_ch0050_group",
+   "unfinished": {
+    "eng": "Mio",
+    "jpn": "みお"
+   },
+   "id": 50,
+   "characterType": 1,
+   "nameKey": "character_name_ch0050",
+   "roleType": 1,
+   "divisionType": 1,
+   "factionType": 109,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0050",
+   "birthday": [
+    11,
+    12
+   ],
+   "hobby": "브랜드별 드럼스틱 사기",
+   "specialty": "인형옷 입고 달리기",
+   "likes": "에덴 악기 상가, 걸즈 스톰 멤버들",
+   "comment": "일 하는 중에 연락은 잘 못 받아요... 죄송합니다....",
+   "birthdayComment": "생일 선물로 초콜릿는 괜찮습니다....",
+   "artist": "Sol",
+   "cv": "아오이 하루"
+  },
+  "CH0052": {
+   "code": "CH0052",
+   "name": "라나",
+   "desc": "#####준비중입니다.",
+   "iconPath": "Icon_CH0052",
+   "resourcesId": "ch0052_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "Lana",
+    "jpn": "ラナ"
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0053": {
+   "code": "CH0053",
+   "name": "진",
+   "desc": "블러디 메리의 바텐더이자 사용인. 침착하고 과묵한 성정으로, 밤에는 손님들의 이야기를 잔잔히 들어주고 낮에는 아가씨들의 생활을 세심하게 돌본다. 똑같은 레시피라도 진의 음료는 특별하다는 소문이 있어, 그녀를 찾는 손님이 끊이지 않는다.",
+   "iconPath": "Icon_CH0053",
+   "resourcesId": "ch0053_resources",
+   "voiceGroupId": "voc_ch0053_group",
+   "unfinished": {
+    "eng": "Gin",
+    "jpn": "ジン"
+   },
+   "id": 53,
+   "characterType": 1,
+   "nameKey": "character_name_ch0053",
+   "roleType": 2,
+   "divisionType": 2,
+   "factionType": 203,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0053",
+   "birthday": [
+    4,
+    5
+   ],
+   "hobby": "정리정돈, 청소",
+   "specialty": "집안일, 바텐더 일",
+   "likes": "평화로운 일상",
+   "comment": "언제나 정성을 다하겠습니다.",
+   "birthdayComment": "늘 감사드립니다.",
+   "artist": "MoRung",
+   "cv": "히요코"
+  },
+  "CH0054": {
+   "code": "CH0054",
+   "name": "하리",
+   "desc": "사군자에서 주목받는 젊은 학자. 자유분방한 성격 탓에, 무슨 생각을 하고 있는지 도통 속을 알 수 없다. 본인은 선생이지만 어떻게 하면 수업을 안 할 수 있을까 고민한다. 겉으로는 장난만 치며 무심한 듯 보이지만, 뒤에서는 은근히 잘 챙겨준다고 한다.",
+   "iconPath": "Icon_CH0054",
+   "resourcesId": "ch0054_resources",
+   "voiceGroupId": "voc_ch0054_group",
+   "unfinished": {
+    "eng": "Hari",
+    "jpn": "ハリ"
+   },
+   "id": 54,
+   "characterType": 1,
+   "nameKey": "character_name_ch0054",
+   "roleType": 3,
+   "divisionType": 3,
+   "factionType": 300,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 2,
+   "nameUppercaseKey": "character_uppercase_name_ch0054",
+   "birthday": [
+    8,
+    2
+   ],
+   "hobby": "낮잠 자기, 수업 취소 시키기",
+   "specialty": "사람 가르치기",
+   "likes": "농땡이",
+   "comment": "오늘도 수업이 있지만, \n언제든지 놀러 와!",
+   "birthdayComment": "생일 축하가 늦은 거 아니냐구? \n아니, 지금이 가장 빠른 때야!",
+   "artist": "Cruno",
+   "cv": "아마치 하루"
+  },
+  "CH0056": {
+   "code": "CH0056",
+   "name": "아이렌",
+   "desc": "무술로 말씀을 전파하는 필하모니 소속 수녀. 붙임성 좋고 싹싹한 성격으로 어려운 이웃을 도우며, 악인에게는 정의의 심판을 내린다. 시간 날 때마다 무술 수련을 하면서 여러 동작을 펼쳐내는데, 어째서인지 그럴 때마다 구경꾼이 많다…",
+   "iconPath": "Icon_CH0056",
+   "resourcesId": "ch0056_resources",
+   "voiceGroupId": "voc_ch0056_group",
+   "unfinished": {
+    "eng": "Airen",
+    "jpn": "アイリーン"
+   },
+   "id": 56,
+   "characterType": 1,
+   "nameKey": "character_name_ch0056",
+   "roleType": 1,
+   "divisionType": 2,
+   "factionType": 200,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0056",
+   "birthday": [
+    12,
+    8
+   ],
+   "hobby": "어려운 사람 돕기, 말씀 공부하기",
+   "specialty": "무술 (특히 봉술)",
+   "likes": "순례",
+   "comment": "악행을 일삼는 자는 정의봉이 용서하지 않습니다!",
+   "birthdayComment": "하모닉스님께 세상이라는 축복을 받은 날이에요. 축하해주셔서 감사합니다!",
+   "artist": "SNOWBALL",
+   "cv": "카세 시우"
+  },
+  "CH0057": {
+   "code": "CH0057",
+   "name": "케이시",
+   "desc": "도넛 하우스의 리더이자 누구보다도 정의로운 경찰. 불의를 보면 참지 못하는 성격으로, 그 때문에 온갖 트러블에 휘말리는 일이 많다. 그럼에도 꿋꿋히 정의를 관철하려는 강직한 성품의 소유자이다. 서부극 영화의 열렬한 팬이지만, 체면 때문에 티를 내지는 않는다.",
+   "iconPath": "Icon_CH0057",
+   "resourcesId": "ch0057_resources",
+   "voiceGroupId": "voc_ch0057_group",
+   "unfinished": {
+    "eng": "Casey",
+    "jpn": "ケイシー"
+   },
+   "id": 57,
+   "characterType": 1,
+   "nameKey": "character_name_ch0057",
+   "roleType": 2,
+   "divisionType": 1,
+   "factionType": 105,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0057",
+   "birthday": [
+    7,
+    30
+   ],
+   "hobby": "서부극 영화 감상",
+   "specialty": "도넛 배달",
+   "likes": "정의, 서부극, 도넛",
+   "comment": "도넛은 최고다",
+   "birthdayComment": "생일 축하 고맙다",
+   "artist": "CHoney",
+   "cv": "사쿠라이 아카리"
+  },
+  "CH0058": {
+   "code": "CH0058",
+   "name": "비앙카",
+   "desc": "#####준비중입니다.",
+   "iconPath": "Icon_CH0058",
+   "resourcesId": "ch0058_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "Casey",
+    "jpn": "ケイシー"
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
+  "CH0062": {
+   "code": "CH0062",
+   "name": "트리체",
+   "desc": "극도로 희미한 존재감을 가진 스텔스 소녀. 타고난 체질 탓에 매번 없는 사람 취급을 당하지만, 그 덕분에 누구에게도 들키지 않고 잠입하거나 정보를 수집하는 데 특화되었다. 현재는, 이 능력을 살려 자신을 필요로 하는 이들의 의뢰를 받으며 생활한다. 다만 그렇게 번 돈을 모두 미소녀 피규어에 쏟아부을 정도로 맹목적이고 열렬한 오타쿠이기도 하다.",
+   "iconPath": "Icon_CH0062",
+   "resourcesId": "ch0062_resources",
+   "voiceGroupId": "voc_ch0062_group",
+   "unfinished": {
+    "eng": "treache",
+    "jpn": "トリチェ"
+   },
+   "id": 62,
+   "characterType": 1,
+   "nameKey": "character_name_ch0062",
+   "roleType": 2,
+   "divisionType": 9,
+   "factionType": 107,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0062",
+   "birthday": [
+    11,
+    19
+   ],
+   "hobby": "피규어 수집, 조립, 감상",
+   "specialty": "도촬, 도청, 잠입, 좀도둑질",
+   "likes": "루파짱 피규어 시리즈",
+   "comment": "이건 보이겠죠…?",
+   "birthdayComment": "오늘은 보이면 좋겠어요…",
+   "artist": "Ducklings",
+   "cv": "이가사키 아야카"
+  },
+  "CH0063": {
+   "code": "CH0063",
+   "name": "세라",
+   "desc": "걸즈 스톰의 베이시스트이자 ‘아르카나 타로 하우스’의 사장. 화려한 베이스 연주 실력과 고양이 같은 얼굴로 소녀 팬들을 이끌고 다니는 천재 베이시스트다. 하지만 실상은 베이스를 제외한 모든 일에 귀찮음이 절어 있는 게으른 미소녀일 뿐이다.",
+   "iconPath": "Icon_CH0063",
+   "resourcesId": "ch0063_resources",
+   "voiceGroupId": "voc_ch0063_group",
+   "unfinished": {
+    "eng": "Sera",
+    "jpn": "セラ"
+   },
+   "id": 63,
+   "characterType": 1,
+   "nameKey": "character_name_ch0063",
+   "roleType": 1,
+   "divisionType": 1,
+   "factionType": 109,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 1,
+   "nameUppercaseKey": "character_uppercase_name_ch0063",
+   "birthday": [
+    2,
+    3
+   ],
+   "hobby": "게으름 피우면서 멍때리기",
+   "specialty": "타로점 보기, 단기 기억력",
+   "likes": "베이스, 걸즈 스톰, 누워있기",
+   "comment": "타로 상담은 공식 홈페이지로 문의해줘~",
+   "birthdayComment": "오늘은 생일이니까 가게 쉬고 뒹굴뒹굴하는 날~",
+   "artist": "Sol",
+   "cv": "하루야마 이로하"
+  },
+  "CH0068": {
+   "code": "CH0068",
+   "name": "클레어(수영복)",
+   "desc": "<자유의 날>을 맞이하여 수영복으로 갈아입은 클레어. 평소에도 자유롭게 사는 편이라 자유의 날에 대해 별다른 감흥은 없지만, 아가씨들이 밀린 휴가를 쓰라고 강력하게 권해서 여름을 만끽하러 나왔다.",
+   "iconPath": "Icon_CH0068",
+   "resourcesId": "ch0068_resources",
+   "voiceGroupId": "voc_ch0068_group",
+   "unfinished": {
+    "eng": "Sera",
+    "jpn": "セラ"
+   },
+   "id": 68,
+   "characterType": 1,
+   "nameKey": "character_name_ch0068",
+   "roleType": 2,
+   "divisionType": 2,
+   "factionType": 204,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "nameUppercaseKey": "character_uppercase_name_ch0068",
+   "birthday": [
+    3,
+    22
+   ],
+   "hobby": "사냥, 고기 먹기, 간식 먹기",
+   "specialty": "고기 품질 감별하기",
+   "likes": "고기, 일광욕",
+   "comment": "휴가란 무엇일까",
+   "birthdayComment": "아가씨 카드 한도를 고기로 채우는 날",
+   "artist": "SNOWBALL",
+   "cv": "우이"
+  },
+  "NP0101": {
+   "code": "NP0101",
+   "name": "메이드 알바(청소)",
+   "desc": "객실 청결도를 담당하는 메이드 알바. 취업 사기를 당한 것 같지만 본인은 한사코 부정한다.",
+   "iconPath": "Icon_NPC_Maid_Novice_101",
+   "resourcesId": "np0101_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイドアルバ（清掃）",
+    "jpn": "メイドアルバイト（掃除）"
+   },
+   "id": 200101,
+   "characterType": 2,
+   "nameKey": "character_name_np0101",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0102": {
+   "code": "NP0102",
+   "name": "메이드 알바(욕실)",
+   "desc": "욕실의 청결도를 담당하는 메이드 알바. 세상에서 곰팡이를 제일 혐오한다.",
+   "iconPath": "Icon_NPC_Maid_Novice_102",
+   "resourcesId": "np0102_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイドアルバ（浴室）",
+    "jpn": "メイドアルバイト（浴室）"
+   },
+   "id": 200102,
+   "characterType": 2,
+   "nameKey": "character_name_np0102",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0103": {
+   "code": "NP0103",
+   "name": "메이드 알바(롤러)",
+   "desc": "벽지 담당 메이드 알바. 거대한 롤러를 밀고 다니며, 방향 전환은 아직 서툴다.",
+   "iconPath": "Icon_NPC_Maid_Novice_201",
+   "resourcesId": "np0103_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイドアルバ（ローラー）",
+    "jpn": "メイドアルバイト（ローラー）"
+   },
+   "id": 200103,
+   "characterType": 2,
+   "nameKey": "character_name_np0103",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0104": {
+   "code": "NP0104",
+   "name": "메이드 알바(경호)",
+   "desc": "임시 경비 업무를 맡은 메이드 알바. 혹여나 손님이 있을 경우 경호도 겸한다.",
+   "iconPath": "Icon_NPC_Maid_Novice_202",
+   "resourcesId": "np0104_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイドアルバ（警護）",
+    "jpn": "メイドアルバイト（警護）"
+   },
+   "id": 200104,
+   "characterType": 2,
+   "nameKey": "character_name_np0104",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0105": {
+   "code": "NP0105",
+   "name": "메이드 알바(저격)",
+   "desc": "높은 곳의 청소를 주로 맡는 메이드 알바. 높은 곳에 올라가는 김에 저격총을 지급받았다.",
+   "iconPath": "Icon_NPC_Maid_Novice_203",
+   "resourcesId": "np0105_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイドアルバ（狙撃）",
+    "jpn": "メイドアルバイト（狙撃）"
+   },
+   "id": 200105,
+   "characterType": 2,
+   "nameKey": "character_name_np0105",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0106": {
+   "code": "NP0106",
+   "name": "메이드 알바(먼지)",
+   "desc": "먼지 제거 담당 메이드 알바. 먼지떨이를 휘저으며 오늘도 먼지를 잔뜩 마신다.",
+   "iconPath": "Icon_NPC_Maid_Novice_301",
+   "resourcesId": "np0106_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイドアルバ（ほこり）",
+    "jpn": "メイドアルバイト（はたき）"
+   },
+   "id": 200106,
+   "characterType": 2,
+   "nameKey": "character_name_np0106",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0107": {
+   "code": "NP0107",
+   "name": "메이드 정직원(요리)",
+   "desc": "요리 담당의 메이드 정직원. 프라이팬을 다루는 손목 스냅은 수준급이다.",
+   "iconPath": "Icon_NPC_Maid_Elite_101_E",
+   "resourcesId": "np0107_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイド正職員（料理）",
+    "jpn": "メイド正社員（料理）"
+   },
+   "id": 200107,
+   "characterType": 2,
+   "nameKey": "character_name_np0107",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0108": {
+   "code": "NP0108",
+   "name": "메이드 정직원(주방)",
+   "desc": "국물 요리 담당의 메이드 정직원. 거대한 솥단지를 들고 배고픈 사람에게 수프를 나눠준다.",
+   "iconPath": "Icon_NPC_Maid_Elite_102_E",
+   "resourcesId": "np0108_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイド正職員（キッチン）",
+    "jpn": "メイド正社員（厨房）"
+   },
+   "id": 200108,
+   "characterType": 2,
+   "nameKey": "character_name_np0108",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0109": {
+   "code": "NP0109",
+   "name": "메이드 정직원(진공)",
+   "desc": "청소 담당 메이드 정직원. 거대한 진공청소기로 파노티콘을 구석구석 청소한다.",
+   "iconPath": "Icon_NPC_Maid_Elite_201_E",
+   "resourcesId": "np0109_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイド正職員（真空）",
+    "jpn": "メイド正社員（掃除機）"
+   },
+   "id": 200109,
+   "characterType": 2,
+   "nameKey": "character_name_np0109",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0110": {
+   "code": "NP0110",
+   "name": "메이드 정직원(체포)",
+   "desc": "파노티콘에 감금된 자를 안내하는 역할을 맡은 메이드 정직원. 음침한 성벽을 갖고 있다.",
+   "iconPath": "Icon_NPC_Maid_Elite_202_E",
+   "resourcesId": "np0110_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイド正職員（逮捕）",
+    "jpn": "メイド正社員（拳銃）"
+   },
+   "id": 200110,
+   "characterType": 2,
+   "nameKey": "character_name_np0110",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0111": {
+   "code": "NP0111",
+   "name": "메이드 정직원(저격)",
+   "desc": "파노티콘을 탈출하는 자가 없는지 감시하는 역할의 메이드 정직원. 일을 상당히 대충한다.",
+   "iconPath": "Icon_NPC_Maid_Elite_203_E",
+   "resourcesId": "np0111_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイド正職員（狙撃）",
+    "jpn": "メイド正社員（狙撃）"
+   },
+   "id": 200111,
+   "characterType": 2,
+   "nameKey": "character_name_np0111",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0112": {
+   "code": "NP0112",
+   "name": "메이드 정직원(주술)",
+   "desc": "객실의 정숙과 균형을 관리하는 메이드 정직원. 시끄러운 수감자에게는 저주를 건다.",
+   "iconPath": "Icon_NPC_Maid_Elite_301_E",
+   "resourcesId": "np0112_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "メイド正職員（呪術）",
+    "jpn": "メイド正社員（呪術）"
+   },
+   "id": 200112,
+   "characterType": 2,
+   "nameKey": "character_name_np0112",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0199": {
+   "code": "NP0199",
+   "name": "메이드장",
+   "desc": "파노티콘의 메이드장 겸 간수장 겸 교도소장. 엄청난 재력가임과 동시에 엄청난 엉덩이 성애자로, 엉덩이를 가장' 찰지고 맛있게' 때릴 방법에 관해 탐구 중이다.",
+   "iconPath": "Icon_Boss_Manageress",
+   "resourcesId": "np0199_resources",
+   "voiceGroupId": "voc_np0199_group",
+   "unfinished": {
+    "eng": "メイド場",
+    "jpn": "メイド長"
+   },
+   "id": 200199,
+   "characterType": 2,
+   "nameKey": "character_name_np0199",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0201": {
+   "code": "NP0201",
+   "name": "블루 엔젤(아령)",
+   "desc": "상체 균형을 중시하는 블루 엔젤. 아령을 항상 몸에 지니고 다닌다.",
+   "iconPath": "Icon_NPC_Healthy_Blue_101",
+   "resourcesId": "np0201_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ブルーエンジェル（ダンベル）",
+    "jpn": "ブルーエンジェル（ダンベル）"
+   },
+   "id": 200201,
+   "characterType": 2,
+   "nameKey": "character_name_np0201",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0202": {
+   "code": "NP0202",
+   "name": "블루 엔젤(암미트)",
+   "desc": "타격 훈련 보조를 담당하는 블루 엔젤. 모든 운동은 스파링이라고 주장한다.",
+   "iconPath": "Icon_NPC_Healthy_Blue_102",
+   "resourcesId": "np0202_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ブルーエンジェル（アンミット）",
+    "jpn": "ブルーエンジェル（ミット）"
+   },
+   "id": 200202,
+   "characterType": 2,
+   "nameKey": "character_name_np0202",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0203": {
+   "code": "NP0203",
+   "name": "블루 엔젤(복싱)",
+   "desc": "체지방을 허용하지 않는 블루 엔젤. 근력 운동을 마치면 항상 유산소로 마무리한다.",
+   "iconPath": "Icon_NPC_Healthy_Blue_201",
+   "resourcesId": "np0203_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ブルーエンジェル（ボクシング）",
+    "jpn": "ブルーエンジェル（ボクシング）"
+   },
+   "id": 200203,
+   "characterType": 2,
+   "nameKey": "character_name_np0203",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0204": {
+   "code": "NP0204",
+   "name": "블루 엔젤(투포환)",
+   "desc": "하체 근력을 자랑하는 블루 엔젤. 중량 투척 기록 경신을 매일매일 노린다.",
+   "iconPath": "Icon_NPC_Healthy_Blue_202",
+   "resourcesId": "np0204_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ブルーエンジェル（ツポファン）",
+    "jpn": "ブルーエンジェル（砲丸）"
+   },
+   "id": 200204,
+   "characterType": 2,
+   "nameKey": "character_name_np0204",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0205": {
+   "code": "NP0205",
+   "name": "블루 엔젤(디스크)",
+   "desc": "회전 근력 운동에 집착하는 블루 엔젤. 던지기 동작 하나에도 완벽한 자세를 추구한다.",
+   "iconPath": "Icon_NPC_Healthy_Blue_204",
+   "resourcesId": "np0205_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ブルーエンジェル（ディスク）",
+    "jpn": "ブルーエンジェル（円盤）"
+   },
+   "id": 200205,
+   "characterType": 2,
+   "nameKey": "character_name_np0205",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0206": {
+   "code": "NP0206",
+   "name": "블루 매니저(슬링샷)",
+   "desc": "운동 스케줄을 관리하는 블루 매니저. 운동 루틴을 지키지 않으면 슬링샷으로 주의를 준다.",
+   "iconPath": "Icon_NPC_Healthy_Blue_301",
+   "resourcesId": "np0206_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ブルーマネージャー（スリングショット）",
+    "jpn": "ブルーマネージャー（スリングショット）"
+   },
+   "id": 200206,
+   "characterType": 2,
+   "nameKey": "character_name_np0206",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0207": {
+   "code": "NP0207",
+   "name": "레드 엔젤(덤벨)",
+   "desc": "고중량을 신봉하는 레드 엔젤. 덤벨을 애용하며 몸에서 놓지 않는다.",
+   "iconPath": "Icon_NPC_Healthy_Red_101_E",
+   "resourcesId": "np0207_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "レッドエンジェル（ダンベル）",
+    "jpn": "レッドエンジェル（ダンベル）"
+   },
+   "id": 200207,
+   "characterType": 2,
+   "nameKey": "character_name_np0207",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0208": {
+   "code": "NP0208",
+   "name": "레드 엔젤(암쉴드)",
+   "desc": "전완과 삼두를 단련한 레드 엔젤. 암쉴드를 세워 언제든 충격에 대비한다.",
+   "iconPath": "Icon_NPC_Healthy_Red_102_E",
+   "resourcesId": "np0208_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "レッドエンジェル（アームシールド）",
+    "jpn": "レッドエンジェル（ミット）"
+   },
+   "id": 200208,
+   "characterType": 2,
+   "nameKey": "character_name_np0208",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0209": {
+   "code": "NP0209",
+   "name": "레드 엔젤(파이트)",
+   "desc": "난투를 즐기는 레드 엔젤. 끊임없이 움직여서 워밍업은 진작에 끝난 상태다.",
+   "iconPath": "Icon_NPC_Healthy_Red_201_E",
+   "resourcesId": "np0209_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "レッドエンジェル（ファイト）",
+    "jpn": "レッドエンジェル（ファイター）"
+   },
+   "id": 200209,
+   "characterType": 2,
+   "nameKey": "character_name_np0209",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0210": {
+   "code": "NP0210",
+   "name": "레드 엔젤(케틀벨)",
+   "desc": "스윙 동작에 집착하는 레드 엔젤. 무거운 케틀벨을 사용하여 코어를 단련한다.",
+   "iconPath": "Icon_NPC_Healthy_Red_202_E",
+   "resourcesId": "np0210_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "レッドエンジェル（ケトルベル）",
+    "jpn": "レッドエンジェル（ケトルベル）"
+   },
+   "id": 200210,
+   "characterType": 2,
+   "nameKey": "character_name_np0210",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0211": {
+   "code": "NP0211",
+   "name": "레드 엔젤(디스크)",
+   "desc": "고중량 디스크를 투척 무기로 사용하는 레드 엔젤. 프리웨이트를 신뢰한다.",
+   "iconPath": "Icon_NPC_Healthy_Red_204_E",
+   "resourcesId": "np0211_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "レッドエンジェル（ディスク）",
+    "jpn": "レッドエンジェル（円盤）"
+   },
+   "id": 200211,
+   "characterType": 2,
+   "nameKey": "character_name_np0211",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0212": {
+   "code": "NP0212",
+   "name": "레드 매니저(슬링샷)",
+   "desc": "중량 기록을 관리하는 레드 매니저. 운동을 대충 하면 강력한 슬링샷으로 응징한다.",
+   "iconPath": "Icon_NPC_Healthy_Red_301_E",
+   "resourcesId": "np0212_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "レッドマネージャー（スリングショット）",
+    "jpn": "レッドマネージャー（スリングショット）"
+   },
+   "id": 200212,
+   "characterType": 2,
+   "nameKey": "character_name_np0212",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0299": {
+   "code": "NP0299",
+   "name": "블랙엔젤",
+   "desc": "후마니타스 최고의 근육을 자랑하는 '피트 엔젤스'의 리더. 한때는 평범하고 가녀린 미소녀였으나 어떠한 계기로 근육을 맹신하게 되어 극한으로 몸을 단련하였다.",
+   "iconPath": "Icon_NP0299",
+   "resourcesId": "np0299_resources",
+   "voiceGroupId": "voc_np0299_group",
+   "unfinished": {
+    "eng": "ブラックエンジェル",
+    "jpn": "ブラックエンジェル"
+   },
+   "id": 200299,
+   "characterType": 2,
+   "nameKey": "character_name_np0299",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0301": {
+   "code": "NP0301",
+   "name": "바니 루키(키커)",
+   "desc": "음료를 전달하는 바니 루키. 푹신한 토끼 발을 낀 채로 열심히 뛰어 다닌다.",
+   "iconPath": "Icon_NP0301",
+   "resourcesId": "np0301_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バーニールーキー(キッカー)",
+    "jpn": "バーニールーキー(キッカー)"
+   },
+   "id": 200301,
+   "characterType": 2,
+   "nameKey": "character_name_np0301",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0302": {
+   "code": "NP0302",
+   "name": "바니 루키(가드)",
+   "desc": "손님을 맞이하는 바니 루키. 두터운 토끼 장갑을 흔들며 환영 인사를 건넨다.",
+   "iconPath": "Icon_NP0302",
+   "resourcesId": "np0302_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニールーキー(ガード)",
+    "jpn": "バニールーキー(ガード)"
+   },
+   "id": 200302,
+   "characterType": 2,
+   "nameKey": "character_name_np0302",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0303": {
+   "code": "NP0303",
+   "name": "바니 루키(룰렛)",
+   "desc": "룰렛을 돌리는 바니 루키. 빙글빙글 도는 룰렛을 바라보다가 눈이 핑 돌곤 한다.",
+   "iconPath": "Icon_NP0303",
+   "resourcesId": "np0303_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニールーキー(ルーレット)",
+    "jpn": "バニールーキー(ルーレット)"
+   },
+   "id": 200303,
+   "characterType": 2,
+   "nameKey": "character_name_np0303",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0304": {
+   "code": "NP0304",
+   "name": "바니 루키(친위)",
+   "desc": "이벤트를 진행하는 바니 루키. 당첨자에게는 축하의 뜻을 담아 칩을 장전하여 쏜다.",
+   "iconPath": "Icon_NP0304",
+   "resourcesId": "np0304_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニー·ルーキー(親衛)",
+    "jpn": "バニー·ルーキー(親衛)"
+   },
+   "id": 200304,
+   "characterType": 2,
+   "nameKey": "character_name_np0304",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0305": {
+   "code": "NP0305",
+   "name": "바니 루키(다트)",
+   "desc": "다트로 승부하는 바니 루키. 던지는 자세는 화려하지만 점수는 초라하다.",
+   "iconPath": "Icon_NP0305",
+   "resourcesId": "np0305_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニールーキー(ダーツ)",
+    "jpn": "バニールーキー(ダーツ)"
+   },
+   "id": 200305,
+   "characterType": 2,
+   "nameKey": "character_name_np0305",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0306": {
+   "code": "NP0306",
+   "name": "바니 루키(마술)",
+   "desc": "홀덤을 진행하는 바니 루키. 정직한 손놀림으로 당당한 승부를 추구한다.",
+   "iconPath": "Icon_NP0306",
+   "resourcesId": "np0306_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バーニールーキー(魔術)",
+    "jpn": "バーニールーキー(魔術)"
+   },
+   "id": 200306,
+   "characterType": 2,
+   "nameKey": "character_name_np0306",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0307": {
+   "code": "NP0307",
+   "name": "바니 러버즈(키커)",
+   "desc": "손님을 호위하는 바니 러버즈. 허락받지 않고 접근하면 강경하게 응수한다.",
+   "iconPath": "Icon_NP0307",
+   "resourcesId": "np0307_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニーラバーズ（キッカー）",
+    "jpn": "バニーラバーズ（キッカー）"
+   },
+   "id": 200307,
+   "characterType": 2,
+   "nameKey": "character_name_np0307",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0308": {
+   "code": "NP0308",
+   "name": "바니 러버즈(가드)",
+   "desc": "손님을 안내하는 바니 러버즈. 게임에 지고 있으면 응원하여 사기를 복돋아 준다.",
+   "iconPath": "Icon_NP0308",
+   "resourcesId": "np0308_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニーラバーズ（ガード）",
+    "jpn": "バニーラバーズ（ガード）"
+   },
+   "id": 200308,
+   "characterType": 2,
+   "nameKey": "character_name_np0308",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0309": {
+   "code": "NP0309",
+   "name": "바니 러버즈(룰렛)",
+   "desc": "룰렛으로 승부하는 바니 러버즈. 빙글빙글 도는 룰렛으로 오늘의 운을 점친다.",
+   "iconPath": "Icon_NP0309",
+   "resourcesId": "np0309_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニーラバーズ（ルーレット）",
+    "jpn": "バニーラバーズ（ルーレット）"
+   },
+   "id": 200309,
+   "characterType": 2,
+   "nameKey": "character_name_np0309",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0310": {
+   "code": "NP0310",
+   "name": "바니 러버즈(친위)",
+   "desc": "특별 이벤트를 진행하는 바니 러버즈. 신선한 이벤트로 최고의 경험을 선사한다.",
+   "iconPath": "Icon_NP0310",
+   "resourcesId": "np0310_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニーラバーズ（親衛）",
+    "jpn": "バニーラバーズ（親衛）"
+   },
+   "id": 200310,
+   "characterType": 2,
+   "nameKey": "character_name_np0310",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0311": {
+   "code": "NP0311",
+   "name": "바니 러버즈(다트)",
+   "desc": "다트에 진심인 바니 러버즈. 백발백중하는 다트판을 보면 환호를 자아낸다.",
+   "iconPath": "Icon_NP0311",
+   "resourcesId": "np0311_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニーラバーズ（ダーツ）",
+    "jpn": "バニーラバーズ（ダーツ）"
+   },
+   "id": 200311,
+   "characterType": 2,
+   "nameKey": "character_name_np0311",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0312": {
+   "code": "NP0312",
+   "name": "바니 러버즈(마술)",
+   "desc": "마술 공연을 선보이는 바니 러버즈. 공연을 주목하다 보면 어느새 현혹된다.",
+   "iconPath": "Icon_NP0312",
+   "resourcesId": "np0312_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニーラバーズ（魔法）",
+    "jpn": "バニーラバーズ（魔法）"
+   },
+   "id": 200312,
+   "characterType": 2,
+   "nameKey": "character_name_np0312",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0399": {
+   "code": "NP0399",
+   "name": "바니 글로리아",
+   "desc": "바니 엠파이어의 지배자이자 모든 바니걸의 대선배. 바니걸이 가진 잠재력과 파급력을 믿으며, 언젠가 후마니타스 전체에 바니 라이프를 선사할 날을 그린다.",
+   "iconPath": "Icon_NP0399",
+   "resourcesId": "np0399_resources",
+   "voiceGroupId": "voc_np0399_group",
+   "unfinished": {
+    "eng": "バニーグロリア",
+    "jpn": "バニーグロリア"
+   },
+   "id": 200399,
+   "characterType": 2,
+   "nameKey": "character_name_np0399",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0401": {
+   "code": "NP0401",
+   "name": "노비스(참회)",
+   "desc": "신도를 인도하는 시스터즈 노비스. 자신이 올바른 일을 행한다고 믿는다.",
+   "iconPath": "Icon_NP0401",
+   "resourcesId": "np0401_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ノビス（参会）",
+    "jpn": "ノビス（参会）"
+   },
+   "id": 200401,
+   "characterType": 2,
+   "nameKey": "character_name_np0401",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0402": {
+   "code": "NP0402",
+   "name": "노비스(수호)",
+   "desc": "소란을 진압하는 시스터즈 노비스. 굳건한 신앙을 바탕으로 뒤로 밀리지 않는다.",
+   "iconPath": "Icon_NP0402",
+   "resourcesId": "np0402_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ノビス（守護）",
+    "jpn": "ノビス（守護）"
+   },
+   "id": 200402,
+   "characterType": 2,
+   "nameKey": "character_name_np0402",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0403": {
+   "code": "NP0403",
+   "name": "노비스(계시)",
+   "desc": "배교자를 추적하는 시스터즈 노비스. 자신을 믿음을 화살에 담아 전한다.",
+   "iconPath": "Icon_NP0403",
+   "resourcesId": "np0403_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ノビス（啓示）",
+    "jpn": "ノビス（啓示）"
+   },
+   "id": 200403,
+   "characterType": 2,
+   "nameKey": "character_name_np0403",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0404": {
+   "code": "NP0404",
+   "name": "노비스(선포)",
+   "desc": "교리에 빠져든 시스터즈 노비스. 자신만의 해석을 신도에게 설파한다.",
+   "iconPath": "Icon_NP0404",
+   "resourcesId": "np0404_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ノビス（宣布）",
+    "jpn": "ノビス（宣布）"
+   },
+   "id": 200404,
+   "characterType": 2,
+   "nameKey": "character_name_np0404",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0405": {
+   "code": "NP0405",
+   "name": "노비스(축복)",
+   "desc": "종소리로 옳고 그름을 판별하는 시스터즈 노비스. 악인에게 종을 울려 죄를 알린다.",
+   "iconPath": "Icon_NP0405",
+   "resourcesId": "np0405_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ノビス（祝福）",
+    "jpn": "ノビス（祝福）"
+   },
+   "id": 200405,
+   "characterType": 2,
+   "nameKey": "character_name_np0405",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0406": {
+   "code": "NP0406",
+   "name": "노비스(은총)",
+   "desc": "그릇된 은혜를 전하는 배드 시스터즈 노비스. 은혜받은 자는 기분이 좋아진다.",
+   "iconPath": "Icon_NP0406",
+   "resourcesId": "np0406_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ノビス（優美）",
+    "jpn": "ノビス（優美）"
+   },
+   "id": 200406,
+   "characterType": 2,
+   "nameKey": "character_name_np0406",
+   "roleType": 4,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0407": {
+   "code": "NP0407",
+   "name": "오디나(헌신)",
+   "desc": "신도를 교화하는 시스터즈 오디나. 상대가 쾌락에 몸부림치는 모습을 즐긴다.",
+   "iconPath": "Icon_NP0407",
+   "resourcesId": "np0407_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "オーディナ（献身）",
+    "jpn": "オーディナ（献身）"
+   },
+   "id": 200407,
+   "characterType": 2,
+   "nameKey": "character_name_np0407",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0408": {
+   "code": "NP0408",
+   "name": "오디나(속죄)",
+   "desc": "사건에 개입하는 시스터즈 오디나. 길잃은 상대를 불쌍히 여겨 가차 없이 진압한다.",
+   "iconPath": "Icon_NP0408",
+   "resourcesId": "np0408_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "オーディナ（贖罪）",
+    "jpn": "オーディナ（贖罪）"
+   },
+   "id": 200408,
+   "characterType": 2,
+   "nameKey": "character_name_np0408",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0409": {
+   "code": "NP0409",
+   "name": "오디나(신격)",
+   "desc": "배교자를 수색하는 시스터즈 오디나. 사냥감을 몰며 서서히 숨통을 죄인다.",
+   "iconPath": "Icon_NP0409",
+   "resourcesId": "np0409_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "オーディナ（神格）",
+    "jpn": "オーディナ（神格）"
+   },
+   "id": 200409,
+   "characterType": 2,
+   "nameKey": "character_name_np0409",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0410": {
+   "code": "NP0410",
+   "name": "오디나(예언)",
+   "desc": "교리를 깨우친 시스터즈 오디나. 자신의 해석이 옳다고 믿으며 신도에게 강요한다.",
+   "iconPath": "Icon_NP0410",
+   "resourcesId": "np0410_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "オーディナ（予言）",
+    "jpn": "オーディナ（予言）"
+   },
+   "id": 200410,
+   "characterType": 2,
+   "nameKey": "character_name_np0410",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0411": {
+   "code": "NP0411",
+   "name": "오디나(의식)",
+   "desc": "종소리로 선악을 판별하는 시스터즈 오디나. 악인을 향한 종소리는 매몰차다.",
+   "iconPath": "Icon_NP0411",
+   "resourcesId": "np0411_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "オーディナ（意識）",
+    "jpn": "オーディナ（意識）"
+   },
+   "id": 200411,
+   "characterType": 2,
+   "nameKey": "character_name_np0411",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0412": {
+   "code": "NP0412",
+   "name": "오디나(치유)",
+   "desc": "그릇된 축복을 전하는 시스터즈 오디나. 축복받은 자는 점차 몸이 달아오른다.",
+   "iconPath": "Icon_NP0412",
+   "resourcesId": "np0412_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "オーディナ（癒し）",
+    "jpn": "オーディナ（癒し）"
+   },
+   "id": 200412,
+   "characterType": 2,
+   "nameKey": "character_name_np0412",
+   "roleType": 4,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0499": {
+   "code": "NP0499",
+   "name": "엑세노스",
+   "desc": "하모닉스의 말씀에 깊은 깨달음을 얻어 그 뜻을 널리 설파하는 셀레스티얼의 고행자 리더. 교리를 따르지 않는 신도들을 올바른 길로 인도하는 일을 책임지고 행한다.",
+   "iconPath": "Icon_NP0499",
+   "resourcesId": "np0499_resources",
+   "voiceGroupId": "voc_np0499_group",
+   "unfinished": {
+    "eng": "エクセノス",
+    "jpn": "エクセノス"
+   },
+   "id": 200499,
+   "characterType": 2,
+   "nameKey": "character_name_np0499",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0501": {
+   "code": "NP0501",
+   "name": "키티 불리(패디)",
+   "desc": "운동을 깔짝이는 키티 불리. 스포츠 백은 컨셉이자 장식이다.",
+   "iconPath": "Icon_NP0501",
+   "resourcesId": "np0501_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（パディ）",
+    "jpn": "キティブリー（パディ）"
+   },
+   "id": 200501,
+   "characterType": 2,
+   "nameKey": "character_name_np0501",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0502": {
+   "code": "NP0502",
+   "name": "키티 불리(커티)",
+   "desc": "사람을 애태우는 키티 불리. 상대를 겁박하여 크레딧을 뜯어낸다.",
+   "iconPath": "Icon_NP0502",
+   "resourcesId": "np0502_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（カーティ）",
+    "jpn": "キティブリー（カーティ）"
+   },
+   "id": 200502,
+   "characterType": 2,
+   "nameKey": "character_name_np0502",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0503": {
+   "code": "NP0503",
+   "name": "키티 불리(블럭스)",
+   "desc": "대화를 주도하는 키티 불리. 벽돌을 사용하여 세상과 소통한다.",
+   "iconPath": "Icon_NP0503",
+   "resourcesId": "np0503_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（ブロックス）",
+    "jpn": "キティブリー（ブロックス）"
+   },
+   "id": 200503,
+   "characterType": 2,
+   "nameKey": "character_name_np0503",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0504": {
+   "code": "NP0504",
+   "name": "키티 불리(뱅뱅)",
+   "desc": "장난을 남발하는 키티 불리. 움직이는 물체를 보면 참지 못하고 쏜다.",
+   "iconPath": "Icon_NP0504",
+   "resourcesId": "np0504_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（ブロックス）",
+    "jpn": "キティブリー（ブロックス）"
+   },
+   "id": 200504,
+   "characterType": 2,
+   "nameKey": "character_name_np0504",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0505": {
+   "code": "NP0505",
+   "name": "키티 불리(럼블)",
+   "desc": "예술을 표방하는 키티 불리. 불만이 생기면 돌을 던져 해소한다.",
+   "iconPath": "Icon_NP0505",
+   "resourcesId": "np0505_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（ブロックス）",
+    "jpn": "キティブリー（ブロックス）"
+   },
+   "id": 200505,
+   "characterType": 2,
+   "nameKey": "character_name_np0505",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0506": {
+   "code": "NP0506",
+   "name": "키티 불리(버즈닥)",
+   "desc": "문화를 사랑하는 키티 불리. 능숙하게 술을 권하는 모습이 예술이다.",
+   "iconPath": "Icon_NP0506",
+   "resourcesId": "np0506_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200506,
+   "characterType": 2,
+   "nameKey": "character_name_np0506",
+   "roleType": 4,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0507": {
+   "code": "NP0507",
+   "name": "푸시캣 느와르(루시)",
+   "desc": "도도하게 접대하는 푸시캣 느와르. 항상 최전선에서 모든 일을 받아낸다.",
+   "iconPath": "Icon_NP0507",
+   "resourcesId": "np0507_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200507,
+   "characterType": 2,
+   "nameKey": "character_name_np0507",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0508": {
+   "code": "NP0508",
+   "name": "푸시캣 느와르(스팅)",
+   "desc": "신나게 살아가는 푸시캣 느와르. 모든 일이 재미를 위해 존재한다고 믿는다.",
+   "iconPath": "Icon_NP0508",
+   "resourcesId": "np0508_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200508,
+   "characterType": 2,
+   "nameKey": "character_name_np0508",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0509": {
+   "code": "NP0509",
+   "name": "푸시캣 느와르(래틀)",
+   "desc": "강단있게 나아가는 푸시캣 느와르. 일이 안 풀리면 무력으로 해결한다.",
+   "iconPath": "Icon_NP0509",
+   "resourcesId": "np0509_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200509,
+   "characterType": 2,
+   "nameKey": "character_name_np0509",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0510": {
+   "code": "NP0510",
+   "name": "푸시캣 느와르(에이밍)",
+   "desc": "능청스럽게 노리는 푸시캣 느와르. 입맛을 다시며 상대의 심장을 저격한다.",
+   "iconPath": "Icon_NP0510",
+   "resourcesId": "np0510_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200510,
+   "characterType": 2,
+   "nameKey": "character_name_np0510",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0511": {
+   "code": "NP0511",
+   "name": "푸시캣 느와르(섀드)",
+   "desc": "우아하게 홀리는 푸시캣 느와르. 앞에선 꼬리치고 뒤에서 비수를 꽂아 넣는다.",
+   "iconPath": "Icon_NP0511",
+   "resourcesId": "np0511_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200511,
+   "characterType": 2,
+   "nameKey": "character_name_np0511",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0512": {
+   "code": "NP0512",
+   "name": "푸시캣 느와르(메를로)",
+   "desc": "담담하게 마시는 푸시캣 느와르. 눈 하나 깜짝하지 않고 와인 잔을 뿌린다.",
+   "iconPath": "Icon_NP0512",
+   "resourcesId": "np0512_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200512,
+   "characterType": 2,
+   "nameKey": "character_name_np0512",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0599": {
+   "code": "NP0599",
+   "name": "갓마더",
+   "desc": "대부업과 밀수업을 선도하는 범도시적인 범죄 조직의 보스. 묵직한 상납금과 영원한 복종을 바치면 '좋은 관계'가 될 수 있다.",
+   "iconPath": "Icon_NP0599",
+   "resourcesId": "np0599_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200599,
+   "characterType": 2,
+   "nameKey": "character_name_np0599",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0701": {
+   "code": "NP0701",
+   "name": "메이드 수영복(센티넬)",
+   "desc": "초호화 리조트 알케트라즈의 안전요원. 날뛰는 손님들을 단속한다.",
+   "iconPath": "Icon_NP0701",
+   "resourcesId": "np0701_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200701,
+   "characterType": 2,
+   "nameKey": "character_name_np0701",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0702": {
+   "code": "NP0702",
+   "name": "메이드 수영복(재니터)",
+   "desc": "초호화 리조트 알케트라즈의 청소요원. 수영장은 항상 깨끗하게 유지한다.",
+   "iconPath": "Icon_NP0702",
+   "resourcesId": "np0702_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200702,
+   "characterType": 2,
+   "nameKey": "character_name_np0702",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0703": {
+   "code": "NP0703",
+   "name": "메이드 수영복(라이프가드)",
+   "desc": "초호화 리조트 알케트라즈의 안전요원. 물에 빠진 사람을 구조한다.",
+   "iconPath": "Icon_NP0703",
+   "resourcesId": "np0703_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200703,
+   "characterType": 2,
+   "nameKey": "character_name_np0703",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0704": {
+   "code": "NP0704",
+   "name": "메이드 수영복(워셔)",
+   "desc": "초호화 리조트 알케트라즈의 청소요원. 찌든 때나 이끼를 박멸한다.",
+   "iconPath": "Icon_NP0704",
+   "resourcesId": "np0704_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200704,
+   "characterType": 2,
+   "nameKey": "character_name_np0704",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0705": {
+   "code": "NP0705",
+   "name": "메이드 수영복(코디네이터)",
+   "desc": "초호화 리조트 알케트라즈의 워터파티 스태프. 물풍선 싸움은 언제나 환영이다.",
+   "iconPath": "Icon_NP0705",
+   "resourcesId": "np0705_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200705,
+   "characterType": 2,
+   "nameKey": "character_name_np0705",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0706": {
+   "code": "NP0706",
+   "name": "메이드 수영복(클리너)",
+   "desc": "초호화 리조트 알케트라즈의 워터파티 스태프. 물총 싸움에서 져주는 역할을 자주 맡는다.",
+   "iconPath": "Icon_NP0706",
+   "resourcesId": "np0706_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200706,
+   "characterType": 2,
+   "nameKey": "character_name_np0706",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0707": {
+   "code": "NP0707",
+   "name": "메이드 비키니(서퍼)",
+   "desc": "의무를 방치하고 즐거운 여름휴가를 만끽하기로 맘먹은 메이드. 파도타기는 그 누구보다도 자신있다.",
+   "iconPath": "Icon_NP0707",
+   "resourcesId": "np0707_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200707,
+   "characterType": 2,
+   "nameKey": "character_name_np0707",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0708": {
+   "code": "NP0708",
+   "name": "메이드 비키니(태닝)",
+   "desc": "의무를 방치하고 즐거운 여름휴가를 만끽하기로 맘먹은 메이드. 건강미 넘치는 태닝이야말로 여름의 상징.",
+   "iconPath": "Icon_NP0708",
+   "resourcesId": "np0708_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200708,
+   "characterType": 2,
+   "nameKey": "character_name_np0708",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0709": {
+   "code": "NP0709",
+   "name": "메이드 비키니(플로터)",
+   "desc": "의무를 방치하고 즐거운 여름휴가를 만끽하기로 맘먹은 메이드. 잔잔한 파도 위의 낮잠을 즐기고 싶어한다.",
+   "iconPath": "Icon_NP0709",
+   "resourcesId": "np0709_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200709,
+   "characterType": 2,
+   "nameKey": "character_name_np0709",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0710": {
+   "code": "NP0710",
+   "name": "메이드 비키니(워터샷)",
+   "desc": "의무를 방치하고 즐거운 여름휴가를 만끽하기로 맘먹은 메이드. 불법튜닝된 물총으로 물총싸움 1등을 노린다.",
+   "iconPath": "Icon_NP0710",
+   "resourcesId": "np0710_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200710,
+   "characterType": 2,
+   "nameKey": "character_name_np0710",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0711": {
+   "code": "NP0711",
+   "name": "메이드 비키니(벌룬런처)",
+   "desc": "의무를 방치하고 즐거운 여름휴가를 만끽하기로 맘먹은 메이드. 이 정도 화력이면 물풍선이 아니라 물폭탄이다.",
+   "iconPath": "Icon_NP0711",
+   "resourcesId": "np0711_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200711,
+   "characterType": 2,
+   "nameKey": "character_name_np0711",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0712": {
+   "code": "NP0712",
+   "name": "메이드 비키니(워터건)",
+   "desc": "의무를 방치하고 즐거운 여름휴가를 만끽하기로 맘먹은 메이드. 작고 귀여운 플러리 물총이라고 방심하지 말자.",
+   "iconPath": "Icon_NP0712",
+   "resourcesId": "np0712_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200712,
+   "characterType": 2,
+   "nameKey": "character_name_np0712",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP0799": {
+   "code": "NP0799",
+   "name": "메이드장(수영복)",
+   "desc": "풍성한 메이드복을 벗어던지고, 그 아래 숨겨왔던 몸매를 자유롭게 드러낸 메이드장. 엉덩이도 좋지만... 올해 여름은 왠지 새로운 자극에 눈뜰 것 같은 기분이다...!",
+   "iconPath": "Icon_NP0799",
+   "resourcesId": "np0799_resources",
+   "voiceGroupId": "voc_np0799_group",
+   "unfinished": {
+    "eng": "キティブリー（バズダック）",
+    "jpn": "キティブリー（バズダック）"
+   },
+   "id": 200799,
+   "characterType": 2,
+   "nameKey": "character_name_np0799",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP6010": {
+   "code": "NP6010",
+   "name": "시니스트라",
+   "desc": "거대 여신상 움브라 데이의 왼팔. 검게 뒤틀린 악의가 지상에 섬뜩한 그림자를 드리운다.",
+   "iconPath": "Icon_NP6010",
+   "resourcesId": "np6010_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "オブリビオン",
+    "jpn": "オブリビオン"
+   },
+   "id": 206010,
+   "characterType": 2,
+   "nameKey": "character_name_np6010",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP6011": {
+   "code": "NP6011",
+   "name": "덱스트라",
+   "desc": "거대 여신상 움브라 데이의 오른팔. 압도적인 파괴력으로 접촉한 모든 것을 해체한다.",
+   "iconPath": "Icon_NP6011",
+   "resourcesId": "np6011_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ナイトメア",
+    "jpn": "ナイトメア"
+   },
+   "id": 206011,
+   "characterType": 2,
+   "nameKey": "character_name_np6011",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP6012": {
+   "code": "NP6012",
+   "name": "움브라 데이",
+   "desc": "불가지의 영역에서 소환된 거대 여신상. 세계의 종언을 고하기 위해 오랜 잠에서 깨어난 고대의 존재다.",
+   "iconPath": "Icon_NP6012",
+   "resourcesId": "np6012_resources",
+   "voiceGroupId": "voc_np6012_group",
+   "unfinished": {
+    "eng": "アポカリプス",
+    "jpn": "アポカリプス"
+   },
+   "id": 206012,
+   "characterType": 2,
+   "nameKey": "character_name_np6012",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP6020": {
+   "code": "NP6020",
+   "name": "우아한 게스트",
+   "desc": "마리스커레이드에 초대받은 특별한 게스트. 세련된 춤사위로 축제의 열기를 고조시킨다.",
+   "iconPath": "Icon_NP6020",
+   "resourcesId": "np6020_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "オブリビオン",
+    "jpn": "オブリビオン"
+   },
+   "id": 206020,
+   "characterType": 2,
+   "nameKey": "character_name_np6020",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP6021": {
+   "code": "NP6021",
+   "name": "발랄한 게스트",
+   "desc": "마리스커레이드에 초대받은 특별한 게스트. 경쾌한 스텝으로 모두를 축제에 물들인다.",
+   "iconPath": "Icon_NP6021",
+   "resourcesId": "np6021_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ナイトメア",
+    "jpn": "ナイトメア"
+   },
+   "id": 206021,
+   "characterType": 2,
+   "nameKey": "character_name_np6021",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP6022": {
+   "code": "NP6022",
+   "name": "느긋한 게스트",
+   "desc": "마리스커레이드에 초대받은 특별한 게스트. 여유로운 몸짓으로 끝없는 축제를 이어간다.",
+   "iconPath": "Icon_NP6022",
+   "resourcesId": "np6022_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "アポカリプス",
+    "jpn": "アポカリプス"
+   },
+   "id": 206022,
+   "characterType": 2,
+   "nameKey": "character_name_np6022",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP6023": {
+   "code": "NP6023",
+   "name": "마리",
+   "desc": "현실을 덮어쓰고 환상을 창조하는 마리스커레이드의 호스트. 오랫동안 누군가를 기다리고 있다.",
+   "iconPath": "Icon_NP6023",
+   "resourcesId": "np6023_resources",
+   "voiceGroupId": "voc_np6023_group",
+   "unfinished": {
+    "eng": "ナイトメア",
+    "jpn": "ナイトメア"
+   },
+   "id": 206023,
+   "characterType": 2,
+   "nameKey": "character_name_np6023",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP6024": {
+   "code": "NP6024",
+   "name": "안나",
+   "desc": "마리의 곁을 지키는 거대한 뱀. 창조주의 명에 따라 축제를 방해하는 이들을 쫓아낸다.",
+   "iconPath": "Icon_NP6024",
+   "resourcesId": "np6024_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "アポカリプス",
+    "jpn": "アポカリプス"
+   },
+   "id": 206024,
+   "characterType": 2,
+   "nameKey": "character_name_np6024",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP7998": {
+   "code": "NP7998",
+   "name": "쿠와크 경",
+   "desc": "플러리 사이에서 자라난 거대한 오리. 자기 자신은 플러리라고 생각하고 있어 무리를 지키기 위해 고군분투한다.",
+   "iconPath": "Icon_Boss_600002_Duck_Leader",
+   "resourcesId": "np7998_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "クワク卿",
+    "jpn": "クワク卿"
+   },
+   "id": 4000303,
+   "characterType": 2,
+   "nameKey": "character_name_np7998",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP7999": {
+   "code": "NP7999",
+   "name": "골드 페더",
+   "desc": "황금만능주의에 빠진 거대한 오리. 머리부터 발끝까지 금으로 치장하여 자신의 재력을 과시하는 나르시스트다.",
+   "iconPath": "Icon_Boss_600006_Dimension_Gold_Duck_Leader",
+   "resourcesId": "np7999_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ゴールドフェザー",
+    "jpn": "ゴールドフェザー"
+   },
+   "id": 3000201,
+   "characterType": 2,
+   "nameKey": "character_name_np7999",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8004": {
+   "code": "NP8004",
+   "name": "메이드 플러리(롤러)",
+   "desc": "롤러를 들고 페인트칠을 시도하는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8004",
+   "resourcesId": "np8004_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "Maid flully (Roller)",
+    "jpn": "メイドフラリー（ローラー）"
+   },
+   "id": 208004,
+   "characterType": 2,
+   "nameKey": "character_name_np8004",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8005": {
+   "code": "NP8005",
+   "name": "메이드 플러리(저격)",
+   "desc": "저격총으로 주인님들에게 접대하려 하는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8005",
+   "resourcesId": "np8005_resources",
+   "voiceGroupId": null,
+   "unfinished": {
+    "eng": "Maid flully (Sniper)",
+    "jpn": "メイドフラリー（スナイパー）"
+   },
+   "id": 208005,
+   "characterType": 2,
+   "nameKey": "character_name_np8005",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8006": {
+   "code": "NP8006",
+   "name": "피트 플러리(복싱)",
+   "desc": "날렵한 풋워크와 복싱 테크닉을 단련하는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8006",
+   "resourcesId": "np8006_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "フィートフラリー（ボクシング）",
+    "jpn": "フィートフラリー（ボクシング）"
+   },
+   "id": 208006,
+   "characterType": 2,
+   "nameKey": "character_name_np8006",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8007": {
+   "code": "NP8007",
+   "name": "피트 플러리(근력)",
+   "desc": "유독 상체 운동에 집착하는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8007",
+   "resourcesId": "np8007_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "フィートフラリー（筋力）",
+    "jpn": "フィートフラリー（筋力）"
+   },
+   "id": 208007,
+   "characterType": 2,
+   "nameKey": "character_name_np8007",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8008": {
+   "code": "NP8008",
+   "name": "바니 플러리(토끼 장갑)",
+   "desc": "카지노의 바니걸처럼 잔뜩 꾸민 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8008",
+   "resourcesId": "np8008_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "バニーフラリー（うさぎ手袋）",
+    "jpn": "バニーフラリー（うさぎ手袋）"
+   },
+   "id": 208008,
+   "characterType": 2,
+   "nameKey": "character_name_np8008",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8009": {
+   "code": "NP8009",
+   "name": "바니 플러리(금화)",
+   "desc": "가짜 금화를 투척하는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8009",
+   "resourcesId": "np8009_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "Bunny flully (Gold Coin)",
+    "jpn": "バニーフラリー（金貨）"
+   },
+   "id": 208009,
+   "characterType": 2,
+   "nameKey": "character_name_np8009",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8010": {
+   "code": "NP8010",
+   "name": "시스터 플러리(철퇴)",
+   "desc": "커다란 참회봉을 휘두르는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8010",
+   "resourcesId": "np8010_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "シスターフラリー（撤退）",
+    "jpn": "シスターフラリー（撤退）"
+   },
+   "id": 208010,
+   "characterType": 2,
+   "nameKey": "character_name_np8010",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8011": {
+   "code": "NP8011",
+   "name": "시스터 플러리(스태프)",
+   "desc": "성서와 지팡이를 사용하는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8011",
+   "resourcesId": "np8011_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "Sister flully (Staff)",
+    "jpn": "シスターフラリー（スタッフ）"
+   },
+   "id": 208011,
+   "characterType": 2,
+   "nameKey": "character_name_np8011",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8094": {
+   "code": "NP8094",
+   "name": "메이드장 플러리",
+   "desc": "엉덩이에 심각하게 집착하는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8094",
+   "resourcesId": "np8094_resources",
+   "voiceGroupId": "voc_np8094_group",
+   "unfinished": {
+    "eng": "メイドジャンフラリー",
+    "jpn": "メイドジャンフラリー"
+   },
+   "id": 208094,
+   "characterType": 2,
+   "nameKey": "character_name_np8094",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8095": {
+   "code": "NP8095",
+   "name": "엔젤 플러리",
+   "desc": "끊임없이 몸을 과시하는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8095",
+   "resourcesId": "np8095_resources",
+   "voiceGroupId": "voc_np8094_group",
+   "unfinished": {
+    "eng": "Angel flully",
+    "jpn": "エンジェルフラリー"
+   },
+   "id": 208095,
+   "characterType": 2,
+   "nameKey": "character_name_np8095",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8096": {
+   "code": "NP8096",
+   "name": "킹 래빗 플러리",
+   "desc": "왠지 돈이 많을 것 같은 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8096",
+   "resourcesId": "np8096_resources",
+   "voiceGroupId": "voc_np8094_group",
+   "unfinished": {
+    "eng": "キングラビットフラリー",
+    "jpn": "キングラビットフラリー"
+   },
+   "id": 208096,
+   "characterType": 2,
+   "nameKey": "character_name_np8096",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 4,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8097": {
+   "code": "NP8097",
+   "name": "수녀원장 플러리",
+   "desc": "신앙심이 깊어 보이는 플러리. 누군가를 따라 하는 것 같다.",
+   "iconPath": "Icon_NP8097",
+   "resourcesId": "np8097_resources",
+   "voiceGroupId": "voc_np8094_group",
+   "unfinished": {
+    "eng": "Abbess flully",
+    "jpn": "修道院長フラリー"
+   },
+   "id": 208097,
+   "characterType": 2,
+   "nameKey": "character_name_np8097",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8101": {
+   "code": "NP8101",
+   "name": "미니 시스터(CUB-E 01)",
+   "desc": "전투 병기로 만들어진 작은 기계 로봇. 측면에 일련번호가 적혀 있다 CUB- E 01.",
+   "iconPath": "Icon_NP8101",
+   "resourcesId": "np8101_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ミニシスター(CUB-E 01)",
+    "jpn": "ミニシスター(CUB-E 01)"
+   },
+   "id": 208101,
+   "characterType": 2,
+   "nameKey": "character_name_np8101",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8102": {
+   "code": "NP8102",
+   "name": "미니 시스터(CUB-E 08)",
+   "desc": "전투 병기로 만들어진 작은 기계 로봇. 측면에 일련번호가 적혀 있다 CUB- E 08.",
+   "iconPath": "Icon_NP8102",
+   "resourcesId": "np8102_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "ミニシスター(CUB-E 08)",
+    "jpn": "ミニシスター(CUB-E 08)"
+   },
+   "id": 208102,
+   "characterType": 2,
+   "nameKey": "character_name_np8102",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 2,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8199": {
+   "code": "NP8199",
+   "name": "스몰 시스터",
+   "desc": "끊임없이 데이터를 수집하고, 가공하는 인공지능 탑재 로봇. 최고의 전투 병기를 만들어 내는 것이 목표이다.",
+   "iconPath": "Icon_Boss_600002_SmallBrother",
+   "resourcesId": "np8199_resources",
+   "voiceGroupId": "voc_np8199_group",
+   "unfinished": {
+    "eng": "スモールシスター",
+    "jpn": "スモールシスター"
+   },
+   "id": 208199,
+   "characterType": 2,
+   "nameKey": "character_name_np8199",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8200": {
+   "code": "NP8200",
+   "name": "세탁봇 mk.1",
+   "desc": "고급 재료로 시민들의 속옷들을 세탁해주는 이동식 세척 서비스 세탁기. 숨겨진 기능이 있다는 소문이 돈다.",
+   "iconPath": "Icon_NP8200",
+   "resourcesId": "np8200_resources",
+   "voiceGroupId": "voc_np8200_group",
+   "unfinished": {
+    "eng": "スモールシスター",
+    "jpn": "スモールシスター"
+   },
+   "id": 208200,
+   "characterType": 2,
+   "nameKey": "character_name_np8200",
+   "roleType": 1,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 2,
+   "positionType": 1,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  },
+  "NP8201": {
+   "code": "NP8201",
+   "name": "도넛하우스 파트타이머",
+   "desc": "",
+   "iconPath": "Icon_NP8201",
+   "resourcesId": "np8201_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "도넛하우스 파트타이머",
+    "jpn": "도넛하우스 파트타이머"
+   },
+   "id": 208201,
+   "characterType": 2,
+   "nameKey": "character_name_np8201",
+   "roleType": 2,
+   "divisionType": 1,
+   "factionType": 105,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null
+  }
+ },
+ "types": {
+  "attribute": {
+   "0": {
+    "name": "모든 속성",
+    "en": "All",
+    "nameKey": "system_attribute_all",
+    "icon": "Icon_Attribute_All",
+    "icons": [
+     "Icon_Attribute_All"
+    ],
+    "color": "#FFFFFF"
+   },
+   "1": {
+    "name": "열정",
+    "en": "Passion",
+    "nameKey": "system_attribute_mercy",
+    "icon": "Icon_Attribute_Mercy",
+    "icons": [
+     "Icon_Attribute_Mercy"
+    ],
+    "color": "#FB3374"
+   },
+   "2": {
+    "name": "욕망",
+    "en": "Desire",
+    "nameKey": "system_attribute_unity",
+    "icon": "Icon_Attribute_Unity",
+    "icons": [
+     "Icon_Attribute_Unity"
+    ],
+    "color": "#BB54E6"
+   },
+   "3": {
+    "name": "의지",
+    "en": "Will",
+    "nameKey": "system_attribute_obey",
+    "icon": "Icon_Attribute_Obey",
+    "icons": [
+     "Icon_Attribute_Obey"
+    ],
+    "color": "#3DAD57"
+   },
+   "4": {
+    "name": "이성",
+    "en": "Reason",
+    "nameKey": "system_attribute_chastity",
+    "icon": "Icon_Attribute_Chastity",
+    "icons": [
+     "Icon_Attribute_Chastity"
+    ],
+    "color": "#59A7FF"
+   }
+  },
+  "role": {
+   "1": {
+    "name": "탱커",
+    "en": "Tanker",
+    "nameKey": "system_name_role_tanker",
+    "icon": "Icon_Role_Tanker",
+    "icons": [
+     "Icon_Role_Tanker",
+     "Icon_Item_Role_Tanker",
+     "Icon_Slot_Role_Tanker"
+    ]
+   },
+   "2": {
+    "name": "딜러",
+    "en": "Dealer",
+    "nameKey": "system_name_role_dealer",
+    "icon": "Icon_Role_Dealer",
+    "icons": [
+     "Icon_Role_Dealer",
+     "Icon_Item_Role_Dealer",
+     "Icon_Slot_Role_Dealer"
+    ]
+   },
+   "3": {
+    "name": "서포터",
+    "en": "Supporter",
+    "nameKey": "system_name_role_supporter",
+    "icon": "Icon_Role_Supporter",
+    "icons": [
+     "Icon_Role_Supporter",
+     "Icon_Item_Role_Supporter",
+     "Icon_Slot_Role_Supporter"
+    ]
+   },
+   "4": {
+    "name": "힐러",
+    "en": "Healer",
+    "nameKey": "system_name_role_healer",
+    "icon": "Icon_Role_Healer",
+    "icons": [
+     "Icon_Role_Healer",
+     "Icon_Item_Role_Healer",
+     "Icon_Slot_Role_Healer"
+    ]
+   }
+  },
+  "position": {
+   "1": {
+    "name": "전열",
+    "en": "Front",
+    "nameKey": "system_name_position_front",
+    "icon": "Icon_Position_Front",
+    "icons": [
+     "Icon_Position_Front"
+    ]
+   },
+   "2": {
+    "name": "중열",
+    "en": "Middle",
+    "nameKey": "system_name_position_middle",
+    "icon": "Icon_Position_Mid",
+    "icons": [
+     "Icon_Position_Mid"
+    ]
+   },
+   "3": {
+    "name": "후열",
+    "en": "Back",
+    "nameKey": "system_name_position_back",
+    "icon": "Icon_Position_Back",
+    "icons": [
+     "Icon_Position_Back"
+    ]
+   }
+  },
+  "division": {
+   "1": {
+    "name": "후마니타스",
+    "en": "Humanitas",
+    "nameKey": "type_division_name_humanitas",
+    "icon": "Logo_Division_Humanitas",
+    "icons": [
+     "Logo_Division_Humanitas"
+    ]
+   },
+   "2": {
+    "name": "베르몬트",
+    "en": "Vermont",
+    "nameKey": "type_division_name_vermont",
+    "icon": "Logo_Division_Vermont",
+    "icons": [
+     "Logo_Division_Vermont"
+    ]
+   },
+   "3": {
+    "name": "사군자",
+    "en": "Sagunja",
+    "nameKey": "type_division_name_sagunja",
+    "icon": "Logo_Division_Sagunja",
+    "icons": [
+     "Logo_Division_Sagunja"
+    ]
+   },
+   "9": {
+    "name": "무소속",
+    "en": "Independent",
+    "nameKey": "type_division_name_independent",
+    "icon": "Logo_Divisiton_Independent",
+    "icons": [
+     "Logo_Divisiton_Independent"
+    ]
+   }
+  },
+  "faction": {
+   "100": {
+    "name": "M.A.D.",
+    "en": "M.A.D.",
+    "nameKey": "type_faction_name_mad",
+    "icon": "Logo_Faction_Mad",
+    "icons": [
+     "Logo_Faction_Mad"
+    ]
+   },
+   "101": {
+    "name": "위대한 두부단",
+    "en": "Great Tofu",
+    "nameKey": "type_faction_name_greattofu",
+    "icon": "Logo_Faction_Greattofu",
+    "icons": [
+     "Logo_Faction_Greattofu"
+    ]
+   },
+   "102": {
+    "name": "럭키트럭",
+    "en": "Lucky Truck",
+    "nameKey": "type_faction_name_luckytruck",
+    "icon": "Logo_Faction_Luckytruck",
+    "icons": [
+     "Logo_Faction_Luckytruck"
+    ]
+   },
+   "103": {
+    "name": "미드웬 코퍼레이션",
+    "en": "Midwen Corporation",
+    "nameKey": "type_faction_name_midwencorp",
+    "icon": "Logo_Faction_Midwencorp",
+    "icons": [
+     "Logo_Faction_Midwencorp"
+    ]
+   },
+   "104": {
+    "name": "세이브림",
+    "en": "Saverim",
+    "nameKey": "type_faction_name_saverim",
+    "icon": "Logo_Faction_Saverim",
+    "icons": [
+     "Logo_Faction_Saverim"
+    ]
+   },
+   "105": {
+    "name": "도넛 하우스",
+    "en": "Donut House",
+    "nameKey": "type_faction_name_donuthouse",
+    "icon": "Logo_Faction_Donuthouse",
+    "icons": [
+     "Logo_Faction_Donuthouse"
+    ]
+   },
+   "106": {
+    "name": "슈퍼 리치",
+    "en": "Super Rich",
+    "nameKey": "type_faction_name_superrich",
+    "icon": "Logo_Faction_Superrich",
+    "icons": [
+     "Logo_Faction_Superrich"
+    ]
+   },
+   "107": {
+    "name": "카르멘토",
+    "en": "Carmento",
+    "nameKey": "type_faction_name_knock",
+    "icon": "Logo_Faction_Knock",
+    "icons": [
+     "Logo_Faction_Knock"
+    ]
+   },
+   "108": {
+    "name": "뉴머니",
+    "en": "New Money",
+    "nameKey": "type_faction_name_newmoney",
+    "icon": "Logo_Faction_Newmoney",
+    "icons": [
+     "Logo_Faction_Newmoney"
+    ]
+   },
+   "109": {
+    "name": "걸즈 스톰",
+    "en": "Girls Storm",
+    "nameKey": "type_faction_name_girlsstorm",
+    "icon": "Logo_Faction_Girlsstorm",
+    "icons": [
+     "Logo_Faction_Girlsstorm"
+    ]
+   },
+   "200": {
+    "name": "필하모니",
+    "en": "Feel Harmony",
+    "nameKey": "type_faction_name_feelharmony",
+    "icon": "Logo_Faction_Feelharmony",
+    "icons": [
+     "Logo_Faction_Feelharmony"
+    ]
+   },
+   "201": {
+    "name": "셀레스티얼",
+    "en": "Celestial",
+    "nameKey": "type_faction_name_celestial",
+    "icon": "Logo_Faction_Celestial",
+    "icons": [
+     "Logo_Faction_Celestial"
+    ]
+   },
+   "202": {
+    "name": "생투스 성좌",
+    "en": "Sanctus Constellation",
+    "nameKey": "type_faction_name_saint",
+    "icon": "Logo_Faction_Saint",
+    "icons": [
+     "Logo_Faction_Saint"
+    ]
+   },
+   "203": {
+    "name": "블러디 메리",
+    "en": "Bloody Mary",
+    "nameKey": "type_faction_name_bloodymary",
+    "icon": "Logo_Faction_Bloodymary",
+    "icons": [
+     "Logo_Faction_Bloodymary"
+    ]
+   },
+   "204": {
+    "name": "크로노스칼라",
+    "en": "Chronoscholar",
+    "nameKey": "type_faction_name_chronoscholar",
+    "icon": "Logo_Faction_Chronoscholar",
+    "icons": [
+     "Logo_Faction_Chronoscholar"
+    ]
+   },
+   "205": {
+    "name": "키노가르텐",
+    "en": "Kinogarten",
+    "nameKey": "type_faction_name_kinogarten",
+    "icon": "Logo_Faction_Kinogarten",
+    "icons": [
+     "Logo_Faction_Kinogarten"
+    ]
+   },
+   "300": {
+    "name": "제자백가",
+    "en": "Hundred Schools",
+    "nameKey": "type_faction_name_gentleschool",
+    "icon": "Logo_Faction_Gentleschool",
+    "icons": [
+     "Logo_Faction_Gentleschool"
+    ]
+   },
+   "301": {
+    "name": "월영단",
+    "en": "Moonshadow Order",
+    "nameKey": "type_faction_name_moonshadow",
+    "icon": "Logo_Faction_Moonshadow",
+    "icons": [
+     "Logo_Faction_Moonshadow"
+    ]
+   },
+   "302": {
+    "name": "풍월회",
+    "en": "Pungwolhoe",
+    "nameKey": "type_faction_name_pungwolhoe",
+    "icon": "Logo_Faction_Pungwolhoe",
+    "icons": [
+     "Logo_Faction_Pungwolhoe"
+    ]
+   },
+   "303": {
+    "name": "제암단",
+    "en": "Jeamdan",
+    "nameKey": "type_faction_name_jeamdan",
+    "icon": "Logo_Faction_Jeamdan",
+    "icons": [
+     "Logo_Faction_Jeamdan"
+    ]
+   },
+   "900": {
+    "name": "언사인드",
+    "en": "Unsigned",
+    "nameKey": "type_faction_name_unsigned",
+    "icon": "Logo_Faction_Unsigned",
+    "icons": [
+     "Logo_Faction_Unsigned"
+    ]
+   },
+   "901": {
+    "name": "플러리사냥단",
+    "en": "Flully Hunters",
+    "nameKey": "type_faction_name_flullyhunters",
+    "icon": "Logo_Faction_Flullyhunters",
+    "icons": [
+     "Logo_Faction_Flullyhunters"
+    ]
+   }
+  }
+ }
+}

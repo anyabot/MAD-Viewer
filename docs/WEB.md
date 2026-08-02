@@ -5,18 +5,137 @@
 | path | role |
 |---|---|
 | `pages/_app.tsx` | Chakra provider, dark theme, `Layout` wrapper |
-| `pages/index.tsx` | the only page — gallery: filters, skin list, hosts the viewer |
-| `components/Layout.tsx` | header shell |
+| `pages/index.tsx` | skin gallery: filters, skin list, hosts the viewer |
+| `pages/characters.tsx` | character list: the game's own filter axes, drawn with its icons |
+| `pages/character.tsx` | one character: infobox + that character's skins in the viewer |
+| `components/Layout.tsx` | header shell and the two-tab nav |
+| `components/gameIcon.tsx` | `GameIcon` / `StarRating` — renders published icon art, or nothing |
+| `lib/characters.ts` | shared reads over the master data: type rows, skin icons, grouping |
+| `lib/icons.ts` | icon URLs and manifest-backed existence checks |
+| `lib/filterStore.ts` | Zustand store keeping list filters across route changes |
 | `components/skinViewer.tsx` | the viewer (PixiJS + Spine, playback state machine) |
 | `components/skinViewer/types.ts` | `Layout`/`StoreKey`/`PlayMode` types, archive naming, playback helpers, pan/zoom, pixel-scale math |
 | `components/skinViewer/chrome.tsx` | overlay UI: icon buttons, dropdowns, store strip, layer panel |
 | `components/skinViewer/interactions.ts` | scenario-driven scene playback: condition evaluator + section/trigger machine |
 | `components/skinViewer/jiggle.ts` | home-screen spring physics for the rig's `_jigglers` |
-| `lib/data.ts` | runtime JSON fetch + `SkinListEntry` |
+| `lib/data.ts` | runtime JSON fetch + `SkinListEntry`, `CharacterEntry` |
 | `lib/skinArchive.ts` | archive fetch → brotli → untar → `Map<name, Blob>` |
 
-The app has a **single route**. There is no landing page: the gallery is what the
-viewer is for, and an index page in front of it was one click of nothing.
+## Routes
+
+There is no landing page: every route reaches the viewer.
+
+| route | what it lists |
+|---|---|
+| `/` | every skin archive, by asset key — the pipeline's own view |
+| `/characters` | every character, filtered the way the game filters them |
+| `/character?code=CH0001` | one character: infobox, its skins, the viewer |
+
+The character page reads a **query parameter**, not a `[code]` route segment.
+`output: 'export'` prerenders each route at build time, so a dynamic segment
+would need a build-time path list — and the character set is runtime data whose
+whole point is that adding a character requires no rebuild.
+
+### Character names and profile facts
+
+`data/characters.json` is `{characters, types}`. `characters` is keyed by the
+same `CH####` code every `SkinListEntry.character` already carries; `types`
+resolves each `*_type` integer to a display name, icon candidates and (elements
+only) the colour the game tints it with.
+
+Three populations, each on its own toggle in the character list:
+
+| population | how it is identified | what it carries |
+|---|---|---|
+| playable (default) | `characterType` 1 | everything — rarity, types, birthday, profile card |
+| NPC | `characterType` 2 | name and portrait; `division_type`/`faction_type` are `0`, a value no type table declares |
+| unreleased | `unreleased: true` | a resources row and a standing prefab, no base row at all |
+
+An unresolvable type must render as **absent, not as an error**, and every
+profile field is optional. An unreleased character has no `Character_Base` row,
+so it has no types, no rarity and no profile; two of the ten (CH0033, CH0043)
+already have a shipped skin and a portrait, and the rest have neither. They are
+hidden by default and badged when shown, so a name the game does not display
+yet is never presented as a released one.
+
+### Filter state survives navigation
+
+`lib/filterStore.ts` (Zustand) holds both list pages' filters and the gallery's
+selection. Next.js unmounts a page component on every route change, so
+component state cannot survive a trip to a character page and back; the store
+can. It is **in-memory only** — a "where was I" convenience for one session,
+not a saved preference.
+
+**Labels are English, values keep Korean too.** Each type row carries `en`
+beside the Korean `name`, and the UI leads with `en`. Only the element rows
+have finished English in the game's own text table — every other row's `eng`
+column holds the Japanese string — so `en` comes from a fixed table in the
+generator, romanised the way the game's own `nameKey` and `Logo_*` sprite names
+do it. The generator prints a warning if a type row appears that the table has
+no label for.
+
+**A skin is identified by its character, not its rig.** A gallery row and the
+viewer heading both read `루시아 (Standing)`; the asset key stays on the second
+line, because it is what the pipeline calls the rig rather than what the rig
+is. The skin gallery deliberately carries **no unit facts** — element, role,
+rarity and the rest belong to the character, and the row links to the character
+page that owns them. The filter box matches the name alongside the asset key
+and code.
+
+All of it is **decoration, never a dependency**: the fetch is separate from the
+skin list and a failure leaves the gallery fully usable. Every field is
+optional.
+
+The type filters are one object keyed by table. A deselect must **delete** the
+key rather than set it to `undefined`: the page filters by walking
+`Object.entries`, so a present-but-undefined entry compares against every
+character's real type value, matches none, and empties the list.
+
+### In-game icon art
+
+`public/icons/{ui,char,cutin,skin}/<Name>.webp` is published by the local icon
+pipeline, and `data/icons.json` lists what exists. `lib/icons.ts` resolves a
+name against that manifest and `components/gameIcon.tsx` renders the result;
+**a name with no published file renders nothing** — the app never emits an
+`<img>` that will 404.
+
+Resolution is a *candidate list*, not a single name, because the master data
+names icons the client cannot always produce: `Role_Icon_Data.icon` is
+`Icon_Role_Tanker`, which no atlas bundle carries, while its `item_icon`
+(`Icon_Item_Role_Tanker`) exists. The type tables therefore emit `icons` in
+preference order.
+
+The same rule covers skins: a rig uses its own `Thumbnail_*` when the game
+ships one and falls back to the character portrait, because a standing rig has
+no separate thumbnail — the portrait *is* its art. Four rigs
+(`pl_cutin_0001/0002`, `pl_title_0001`, `st_sc0101`) have no icon at all.
+
+A portrait name is **not derived from the character code**. It is
+`Character_Resources.icon_path`, which is `Icon_Boss_Manageress` for NP0199 and
+`Icon_NPC_Maid_Novice_202` for NP0104. Always resolve through `iconPath`.
+
+**Element icons must be tinted.** All four ship as the same flat white
+silhouette and the game paints each one with the colour in its own
+`Attribute_Icon_Data` row; untinted, they are indistinguishable. `GameIcon`
+applies the colour as a CSS mask so the sprite's alpha survives. Role,
+position, division and faction art is white by design and carries no colour.
+`Icon_Attribute_All` is the multi-coloured "All Attributes" catch-all — a UI
+element, not a game element. No character has attribute 0, so it is excluded
+from the filter row.
+
+**A missing icon still occupies its box.** `GameIcon` renders an empty box of
+the requested size when nothing resolves, so a label row keeps its alignment
+whether or not the art exists. Pass `reserve={false}` where the icon is alone
+in its slot and an empty square would be visible noise.
+
+**An absent code means "do not name this", not "lookup failed."** Codes with no
+entry are either not characters (event, screen and cut-in assets) or unreleased
+characters, and both correctly fall back to the skin key.
+
+Only Korean columns are finished content, so character names, descriptions and
+credits come from them; the `unfinished` locale columns must not be displayed.
+The English *type* labels are a separate, generated table — see above — not a
+locale column.
 
 The deployed app has one skin source: packed archives under `public/skins/`.
 `NEXT_PUBLIC_BASE_PATH` prefixes Next.js assets, runtime JSON, and those archives
@@ -233,8 +352,10 @@ wheel/pinch zoom and drag-pan use the same transform.
   a dark overlay with no grouping and no room for a hint line. `MenuList` is
   portalled so the viewer's `overflow: hidden` cannot clip it, and scroll-capped
   so a 100-clip rig does not produce a list taller than the window.
-- Chrome icons are inline SVG paths in `chrome.tsx`. No external icon assets and
-  no game UI art are used.
+- Chrome icons are inline SVG paths in `chrome.tsx`. The viewer's own controls
+  (play, camera, layers, save) stay SVG: the game has no UI art for them. Game
+  icon art is used for what the game itself labels — elements, roles, factions,
+  rarity, rig families, characters and skins — through `components/gameIcon.tsx`.
 - The viewer holds PixiJS/Spine objects in refs, never in state, and both
   libraries are dynamically imported inside the build effect so they stay out of
   the initial bundle.

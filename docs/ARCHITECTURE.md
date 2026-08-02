@@ -20,14 +20,25 @@ runtime.
 
 Next.js pages router with `output: 'export'`, Chakra UI v2 for the shell and
 overlay chrome, PixiJS v8 + `@esotericsoftware/spine-pixi-v8` for rendering.
-There is no global state store — the gallery owns its filter/selection state and
-the viewer owns its playback state. See [WEB.md](WEB.md) for the module map.
+The viewer owns its playback state locally. The only shared state is a small
+Zustand store holding the two list pages' filters, because Next.js unmounts a
+page on every route change and a search must survive the trip to a character
+page and back. See [WEB.md](WEB.md) for the module map.
+
+Three routes, all reaching the same viewer: the skin gallery (`/`, by asset
+key), the character list (`/characters`, by the game's own filter axes) and a
+character page (`/character?code=CH####`). The character page takes its code
+from the query string rather than a `[code]` route segment, because every route
+must prerender at build time while the character set itself is runtime data.
 
 Two data paths, both plain `fetch`:
 
 - **Index** — `lib/data.ts` reads `skin_list.json` (which skins exist, and which
-  store builds each one has). `NEXT_PUBLIC_DATA_SOURCE` selects a local
-  `public/data/` copy or a remote base URL.
+  store builds each one has), plus `characters.json` (names and profile facts),
+  `icons.json` (which icon art was published) and the two scenario sidecars.
+  `NEXT_PUBLIC_DATA_SOURCE` selects a local `public/data/` copy or a remote base
+  URL. Everything except `skin_list.json` is decoration: a failed fetch must
+  leave the page usable.
 - **Assets** — `lib/skinArchive.ts` fetches `<skin>.tar.br`, decompresses it with
   a WASM brotli decoder, and untars it into `Map<filename, Blob>`. The viewer
   builds `blob:` URLs from that map. Brotli is used because no browser exposes a
@@ -75,6 +86,13 @@ and the index advertises both stores for it; a skin that is identical ships one
 un-suffixed archive and advertises a single store. The viewer's store switch is
 an archive swap, not a texture swap, because the two builds have different
 skeletons.
+
+The same toolchain also publishes the game's own **icon art** — element, role,
+position, division and faction marks, character portraits and cut-ins, and
+per-skin thumbnails — as WebP under `public/icons/`, with `public/data/icons.json`
+listing what exists. The frontend never probes for an icon: it asks the
+manifest, and renders nothing when the answer is no. That step is incremental
+and reports only what changed, because the type art effectively never does.
 
 A second local step decodes the game's **scenario scripts** — some scenes are
 authored as scripts rather than described by the rig's own metadata — into two

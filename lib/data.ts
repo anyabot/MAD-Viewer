@@ -35,6 +35,74 @@ export type SkinList = {
   skins: SkinListEntry[];
 };
 
+// One character from the game's master data, keyed by the same `CH####` code
+// `SkinListEntry.character` carries. Only Korean columns are finished content,
+// so `name`/`desc`/`artist`/`cv` come from them; `unfinished` is reference only.
+//
+// A character with no `Character_Base` row is **unreleased**: it has a
+// resources row and a standing prefab but no types, rarity or profile. Those
+// are emitted with `unreleased: true` and hidden by default, so a name that
+// the game does not show yet is never presented as a released one.
+export type CharacterEntry = {
+  code: string;
+  unreleased?: boolean;
+  name: string;
+  desc: string;
+  iconPath: string | null;
+  resourcesId: string | null;
+  voiceGroupId: string | null;
+  unfinished: { eng: string; jpn: string };
+  artist: string | null;
+  cv: string | null;
+  id?: number;
+  characterType?: number;
+  nameKey?: string;
+  // these index the matching table in `CharacterData.types`
+  roleType?: number;
+  divisionType?: number;
+  factionType?: number;
+  attributeType?: number;
+  positionType?: number;
+  tribeType?: number;
+  charGrade?: number;
+  defaultStar?: number;
+  nameUppercaseKey?: string;
+  birthday?: number[] | null;
+  // profile-card text; absent when the row is still a placeholder
+  hobby?: string | null;
+  specialty?: string | null;
+  likes?: string | null;
+  comment?: string | null;
+  birthdayComment?: string | null;
+};
+
+// A resolved `*_type` integer: its display name, its atlas icon, and (elements
+// only) the colour the game tints it with. `icons` lists every icon column the
+// table declares, in preference order — `icon` alone is not always extractable.
+//
+// `name` is the game's Korean label; `en` is the generated English one. Only
+// the element rows have finished English in the game's own text table, so the
+// rest is a fixed table in the generator — see `docs/WEB.md`.
+export type TypeEntry = {
+  name: string;
+  en?: string | null;
+  nameKey: string | null;
+  icon: string | null;
+  icons?: string[];
+  color?: string;
+};
+
+export type CharacterData = {
+  characters: Record<string, CharacterEntry>;
+  types: {
+    attribute: Record<string, TypeEntry>;
+    role: Record<string, TypeEntry>;
+    position: Record<string, TypeEntry>;
+    division: Record<string, TypeEntry>;
+    faction: Record<string, TypeEntry>;
+  };
+};
+
 const cache = new Map<string, Promise<unknown>>();
 
 function fetchJson<T>(name: string): Promise<T> {
@@ -64,6 +132,23 @@ export function loadDesireInteractions(): Promise<InteractionData> {
 
 export function loadSceneTimelines(): Promise<SceneTimelineData> {
   return fetchJson<SceneTimelineData>('scene_timelines.json');
+}
+
+// Character names and the type-label tables from the master data. Codes that
+// are not characters (event, screen and cut-in assets) and characters that are
+// unreleased have no entry, so callers fall back to the code.
+export function loadCharacters(): Promise<CharacterData> {
+  return fetchJson<CharacterData>('characters.json');
+}
+
+// What the icon pipeline actually published under `public/icons/`. Used to
+// decide whether an icon can be rendered; see `lib/icons.ts`.
+export type IconManifest = {
+  groups: Partial<Record<'ui' | 'char' | 'cutin' | 'skin', string[]>>;
+};
+
+export function loadIcons(): Promise<IconManifest> {
+  return fetchJson<IconManifest>('icons.json');
 }
 
 export const KIND_LABEL: Record<SkinKind, string> = {
