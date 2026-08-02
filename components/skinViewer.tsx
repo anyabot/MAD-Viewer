@@ -1982,18 +1982,18 @@ export default function SkinViewer({
             px={2} py={1} pointerEvents="none" maxW="calc(100% - 60px)" zIndex={2}>
             <Text fontSize="xs" color="gray.300" noOfLines={1}>
               {linearScene
-                ? `${sceneVariant} ${sceneBeatIdx + 1}/${linearScene.beats.length} — ${
-                  sceneLoop ? 'autoplay loop; click to skip' : 'click to advance'}`
+                ? `${sceneVariant} ${sceneBeatIdx + 1}/${linearScene.beats.length}${
+                  sceneLoop ? '' : ' — click to advance'}`
                 : storySeq
                 ? `${storySeq.group} ${storyStep + 1}/${storySeq.clips.length} — click to advance`
                 : reaction
                   ? `reacting: ${animLabel(reaction)}`
                   : hasTouchBoxes
-                    ? `idle — click the figure to touch${
+                    ? `click the figure${
                       mode === 'home' && jigglerCount
-                        ? dragJiggle ? ' (drag jiggles)' : ` (${jigglerCount} jigglers live)`
+                        ? dragJiggle ? ' (drag jiggles)' : ` (${jigglerCount} jigglers)`
                         : ''}`
-                    : 'idle — no touch regions in this rig'}
+                    : 'no touch regions'}
             </Text>
             {touchInfo && (
               <Text fontSize="xs" color="gray.500" noOfLines={1} fontFamily="mono">

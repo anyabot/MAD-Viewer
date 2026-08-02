@@ -17,16 +17,17 @@ import { KIND_ICON, skinIconNames } from '@/lib/characters';
 import { resolveIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
 import {
-  KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
+  KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
 
 const KINDS: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure'];
 
-// A row reads "루시아 (Standing)". The asset key stays on the second line —
-// it is what the pipeline calls the rig, not what the rig is.
+// A row is named after the character; the rig family is a badge beside it and
+// the asset key stays on the second line — it is what the pipeline calls the
+// rig, not what the rig is.
 function skinTitle(skin: SkinListEntry, name: string): string {
-  return `${name || skin.character || skin.key} (${KIND_LABEL[skin.kind]})`;
+  return name || skin.character || skin.key;
 }
 
 export default function SkinsPage() {
@@ -60,6 +61,10 @@ export default function SkinsPage() {
       charData?.characters[s.character] ?? null, [charData]);
   const nameOf = useMemo(
     () => (s: SkinListEntry) => charOf(s)?.name ?? '', [charOf]);
+  // The English name, as the character page shows it beside the Korean one.
+  // Playable characters only — it is `null` for every NPC.
+  const nameEnOf = useMemo(
+    () => (s: SkinListEntry) => charOf(s)?.nameEn ?? '', [charOf]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -68,8 +73,9 @@ export default function SkinsPage() {
       && (!divergedOnly || s.stores.length > 1)
       && (!q || s.key.toLowerCase().includes(q)
         || s.character.toLowerCase().includes(q)
-        || nameOf(s).toLowerCase().includes(q)));
-  }, [skins, kind, query, divergedOnly, nameOf]);
+        || nameOf(s).toLowerCase().includes(q)
+        || nameEnOf(s).toLowerCase().includes(q)));
+  }, [skins, kind, query, divergedOnly, nameOf, nameEnOf]);
 
   const current = useMemo(
     () => (skins ?? []).find((s) => s.key === selected) ?? null, [skins, selected]);
@@ -81,29 +87,35 @@ export default function SkinsPage() {
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!skins) {
-    return <Center py={20}><VStack><Spinner /><Text fontSize="sm" color="gray.500">loading skin list…</Text></VStack></Center>;
+    return <Center py={20}><VStack><Spinner /><Text fontSize="sm" color="gray.500">loading…</Text></VStack></Center>;
   }
 
   return (
     <VStack align="stretch" spacing={4}>
       <Wrap spacing={2} align="center">
         <WrapItem>
-          <HStack spacing={1}>
-            <Chip active={kind === 'all'} onClick={() => set({ kind: 'all' })}>All</Chip>
+          <Wrap spacing={1}>
+            <WrapItem>
+              <Chip active={kind === 'all'} onClick={() => set({ kind: 'all' })}>All</Chip>
+            </WrapItem>
             {KINDS.map((k) => (
-              <Chip key={k} active={kind === k} onClick={() => set({ kind: k })}>
-                {KIND_LABEL[k]}
-              </Chip>
+              <WrapItem key={k}>
+                <Chip active={kind === k} onClick={() => set({ kind: k })}>
+                  <GameIcon manifest={icons} group="ui" name={KIND_ICON[k]} size={4}
+                    reserve={false} />
+                  {KIND_LABEL[k]}
+                </Chip>
+              </WrapItem>
             ))}
-          </HStack>
+          </Wrap>
         </WrapItem>
         <WrapItem>
           <Chip active={divergedOnly} onClick={() => set({ divergedOnly: !divergedOnly })}>
-            Store diff only
+            Store diff
           </Chip>
         </WrapItem>
         <WrapItem>
-          <Input size="sm" maxW="220px" placeholder="filter by id or name…" value={query}
+          <Input size="sm" maxW="220px" placeholder="search…" value={query}
             onChange={(e) => set({ query: e.target.value })} bg="whiteAlpha.100" borderColor="whiteAlpha.300" />
         </WrapItem>
         <WrapItem>
@@ -137,8 +149,16 @@ export default function SkinsPage() {
                         <GameIcon manifest={icons} group="ui" name={KIND_ICON[s.kind]}
                           size={3.5} title={KIND_LABEL[s.kind]} />
                         <Text fontSize="sm" noOfLines={1}>{skinTitle(s, nameOf(s))}</Text>
+                        {nameEnOf(s) && (
+                          <Text fontSize="xs" color="gray.500" noOfLines={1}>
+                            {nameEnOf(s)}
+                          </Text>
+                        )}
+                        <Badge colorScheme={KIND_COLOR[s.kind]} fontSize="0.55rem">
+                          {KIND_LABEL[s.kind]}
+                        </Badge>
                         {s.stores.length > 1 && (
-                          <Badge colorScheme="yellow" fontSize="0.6rem">DIFF</Badge>
+                          <Badge colorScheme="yellow" fontSize="0.55rem">DIFF</Badge>
                         )}
                       </Flex>
                       <Text fontSize="xs" color="gray.500" noOfLines={1}>
@@ -168,20 +188,22 @@ export default function SkinsPage() {
                     <Text fontWeight="bold" fontSize="lg">
                       {skinTitle(current, nameOf(current))}
                     </Text>
+                    {nameEnOf(current) && (
+                      <Text fontSize="md" color="gray.500">{nameEnOf(current)}</Text>
+                    )}
+                    <Badge colorScheme={KIND_COLOR[current.kind]}>
+                      {KIND_LABEL[current.kind]}
+                    </Badge>
                   </HStack>
                 </WrapItem>
                 <WrapItem>
                   <Text fontFamily="mono" color="gray.400">{current.key}</Text>
                 </WrapItem>
-                {current.stores.length > 1 ? (
+                {current.stores.length > 1 && (
                   <WrapItem>
-                    <Badge colorScheme="yellow">
-                      store art differs — showing {STORE_META[store].short}
+                    <Badge colorScheme="yellow" title="store art differs">
+                      DIFF · {STORE_META[store].short}
                     </Badge>
-                  </WrapItem>
-                ) : (
-                  <WrapItem>
-                    <Badge colorScheme="green">identical across stores</Badge>
                   </WrapItem>
                 )}
                 {current.hasBg && <WrapItem><Badge colorScheme="blue">background</Badge></WrapItem>}
@@ -190,7 +212,7 @@ export default function SkinsPage() {
                     <Text as={NextLink} fontSize="xs" color="yellow.300"
                       href={{ pathname: '/character', query: { code: current.character } }}
                       _hover={{ color: 'yellow.200' }}>
-                      character page →
+                      character →
                     </Text>
                   </WrapItem>
                 )}
@@ -212,6 +234,7 @@ function Chip({ active, onClick, children }: {
 }) {
   return (
     <Box as="button" onClick={onClick} px={3} py={1} borderRadius="full" fontSize="sm"
+      display="flex" alignItems="center" gap={1.5}
       bg={active ? 'yellow.400' : 'whiteAlpha.150'} color={active ? 'gray.900' : 'gray.200'}
       fontWeight={active ? 'bold' : 'normal'}
       _hover={{ bg: active ? 'yellow.300' : 'whiteAlpha.300' }} transition="background 0.15s">

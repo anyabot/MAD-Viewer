@@ -29,7 +29,7 @@ There is no landing page: every route reaches the viewer.
 |---|---|
 | `/` | every skin archive, by asset key — the pipeline's own view |
 | `/characters` | every character, filtered the way the game filters them |
-| `/character?code=CH0001` | one character: infobox, its skins, the viewer |
+| `/character?code=CH0001` | one character: infobox, unit profile, then its skins in the viewer |
 
 The character page reads a **query parameter**, not a `[code]` route segment.
 `output: 'export'` prerenders each route at build time, so a dynamic segment
@@ -38,10 +38,13 @@ whole point is that adding a character requires no rebuild.
 
 ### Character names and profile facts
 
-`data/characters.json` is `{characters, types}`. `characters` is keyed by the
-same `CH####` code every `SkinListEntry.character` already carries; `types`
-resolves each `*_type` integer to a display name, icon candidates and (elements
-only) the colour the game tints it with.
+`data/characters.json` is
+`{characters, types, items, places, equipment, skillSets, skills}`. `characters`
+is keyed by the same `CH####` code every `SkinListEntry.character` already
+carries; `types` resolves each `*_type` integer to a display name, icon
+candidates and (elements only) the colour the game tints it with. The remaining
+tables are shared lookups a character entry points into by id — the gifts it
+likes, the date venues in its region, its equipment slots, and its skills.
 
 Three populations, each on its own toggle in the character list:
 
@@ -74,13 +77,73 @@ generator, romanised the way the game's own `nameKey` and `Logo_*` sprite names
 do it. The generator prints a warning if a type row appears that the table has
 no label for.
 
+**A character's English name is emitted for playable characters only.** The
+game's text table has finished English for that roster and holds Japanese for
+every NPC, so `nameEn` is `null` outside it and the Korean name stays the
+primary label everywhere. Six playable rows whose English is defective are
+corrected in the generator against a second, independent English name the game
+carries for the same roster.
+
+That second name (`nameUppercase`) is also shown on the character page, but
+only when it is a genuinely different name rather than the first one in caps —
+`altNameEn` compares the two with case and punctuation stripped. The character
+list matches it in the search box either way.
+
+### The unit profile
+
+The character page is **two tabs**: *Profile* — the infobox, the profile text,
+the three equipment slots, the three liked gifts, the date venues of the
+character's region, the skill list and the AI's skill rotation — and *Skins*,
+which carries the rig strip and the viewer. The tabs are lazy, so the viewer is
+built only once its tab is opened, and the profile is not pushed off a phone
+screen by a 70vh canvas.
+
+**Every infobox fact that is also a filter axis links into the character
+list.** Clicking the element, role, position, division, faction or rarity row
+calls `focusType`/`focusStar` on the filter store and navigates to
+`/characters`; those actions reset every other filter, including the name
+query, so the list opens on exactly the characters sharing that value. They
+force the NPC toggle on when the character clicked from is an NPC, which the
+list otherwise hides. Hovering the faction row additionally opens a popover of
+that faction's members, each a link to its own character page — hover only, so
+the row's own link is what a touch screen gets.
+
+Equipment slot names come from `EQUIP_EN` in `lib/characters.ts`, a hand
+translation of the 12 slot types keyed by the same id. The master data has no
+English column for them and the set is fixed; the game's Korean label stays
+underneath.
+
+- **Skills are picked by star grade, then per skill by level.** A passive
+  unlocks at 3★ and upgrades at 4★ and 5★ whatever the character's own rarity
+  is, so the star picker is what makes the tiers visible. It offers only grades
+  the character can reach — one that starts at 3★ is never 1★ — and opens at
+  that starting rarity rather than at the cap. Skill level is per skill because
+  skills level independently; a passive and the normal attack have no level and
+  show no picker.
+- **Descriptions are pre-rendered per level by the generator**, one string per
+  level, so the app never walks the game's effect tables. They carry the game's
+  own `<color=#rrggbb>` markup, split into runs by `colorRuns` rather than
+  injected as HTML. The buffs and debuffs a skill applies are carried the same
+  way — one list per level, since both magnitude and duration scale with it.
+- **A date preference is a region, not a venue.** The game records which
+  division a character's dates are chosen from; the page lists that region's
+  venues, and none of them is marked as a favourite because no table says so.
+
 **A skin is identified by its character, not its rig.** A gallery row and the
-viewer heading both read `루시아 (Standing)`; the asset key stays on the second
-line, because it is what the pipeline calls the rig rather than what the rig
-is. The skin gallery deliberately carries **no unit facts** — element, role,
-rarity and the rest belong to the character, and the row links to the character
-page that owns them. The filter box matches the name alongside the asset key
-and code.
+viewer heading are titled `루시아 Lucia` — the character's Korean name with its
+English one beside it, exactly as the character page heads its own page — with
+the rig family as a **badge** beside them rather than a parenthesis attached to
+the name; the asset key stays on the second line, because it is what the
+pipeline calls the rig rather than what the rig is. The gallery's family filter chips carry the same in-game category art
+the rows do. The skin gallery deliberately carries **no unit facts** — element,
+role, rarity and the rest belong to the character, and the row links to the
+character page that owns them. The filter box matches the name alongside the
+asset key and code.
+
+**Text is labels, not explanation.** A badge says `DIFF · ONE`, not "store art
+differs — showing ONE"; a skin whose art is identical across stores gets no
+badge at all rather than one saying so. The header carries no tagline and the
+profile panels no instructions.
 
 All of it is **decoration, never a dependency**: the fetch is separate from the
 skin list and a failure leaves the gallery fully usable. Every field is
@@ -93,8 +156,8 @@ character's real type value, matches none, and empties the list.
 
 ### In-game icon art
 
-`public/icons/{ui,char,cutin,skin}/<Name>.webp` is published by the local icon
-pipeline, and `data/icons.json` lists what exists. `lib/icons.ts` resolves a
+`public/icons/{ui,char,cutin,skin,item,skill,place,buff,equip}/<Name>.webp` is
+published by the local icon pipeline, and `data/icons.json` lists what exists. `lib/icons.ts` resolves a
 name against that manifest and `components/gameIcon.tsx` renders the result;
 **a name with no published file renders nothing** — the app never emits an
 `<img>` that will 404.

@@ -47,6 +47,13 @@ export type CharacterEntry = {
   code: string;
   unreleased?: boolean;
   name: string;
+  /**
+   * English display name. Playable characters only — `Lang_Data.eng` is
+   * finished for that roster and holds Japanese (and, from NP0506 on, one
+   * repeated wrong value) for every NPC. Six defective playable rows are
+   * corrected in the generator.
+   */
+  nameEn: string | null;
   desc: string;
   iconPath: string | null;
   resourcesId: string | null;
@@ -67,6 +74,8 @@ export type CharacterEntry = {
   charGrade?: number;
   defaultStar?: number;
   nameUppercaseKey?: string;
+  /** All-caps English gloss; the independent source that fixes `nameEn`. */
+  nameUppercase?: string | null;
   birthday?: number[] | null;
   // profile-card text; absent when the row is still a placeholder
   hobby?: string | null;
@@ -74,6 +83,90 @@ export type CharacterEntry = {
   likes?: string | null;
   comment?: string | null;
   birthdayComment?: string | null;
+  /** Three liked gift item ids, indexing `CharacterData.items`. */
+  giftItems?: number[];
+  /**
+   * The division(s) this character's dates are chosen from. The game records
+   * the preference at region granularity; no table binds a character to one
+   * venue. The venues in the region are `CharacterData.places[division]`.
+   */
+  dateDivisions?: number[];
+  /** Join key into `CharacterData.skillSets`. */
+  skillSetGroup?: number;
+  /** Three equipment slot type ids, indexing `CharacterData.equipment`. */
+  equipmentSlots?: number[];
+  /**
+   * The AI's skill rotation: `start` runs once at the opening, `repeat` loops.
+   * Several rotations in one list are alternatives chosen by `condition`;
+   * the one named 기본 패턴 is the unconditional fallback.
+   */
+  battlePatterns?: { start?: BattlePattern[]; repeat?: BattlePattern[] };
+};
+
+// One ordered rotation. `steps` are skill ids in `CharacterData.skills`.
+// Alternatives are evaluated in `order`; condition 0 is unconditional, 20 and
+// 21 test the state named in `conditionValue` against its threshold.
+export type BattlePattern = {
+  name: string | null;
+  order: number;
+  condition: number;
+  conditionValue: string[];
+  steps: number[];
+};
+
+// One of the 12 equipment slot types. `icon` is the empty slot's art.
+export type EquipmentEntry = {
+  name: string | null;
+  icon: string | null;
+};
+
+// A lasting state a skill applies. Magnitude and duration both scale with the
+// skill's level, so these are carried per level alongside the description.
+export type BuffEntry = {
+  name: string | null;
+  desc: string | null;
+  icon: string | null;
+  /** 1 buff, 2 debuff, 3 crowd control, 0 uncategorised. */
+  categorize: number;
+  seconds: number;
+  maxStack: number;
+  dispellable: boolean;
+};
+
+// A gift item a character likes.
+export type ItemEntry = {
+  name: string | null;
+  desc: string | null;
+  flavor: string | null;
+  icon: string | null;
+};
+
+// One date venue inside a division.
+export type PlaceEntry = {
+  id: number;
+  name: string | null;
+  desc: string | null;
+  thumbnail: string | null;
+};
+
+// One skill slot. `desc` carries one pre-rendered description per skill level,
+// so the app never has to walk the effect tables; length 1 when the skill
+// cannot be levelled. Descriptions contain the game's own `<color=#rrggbb>`
+// markup — split it into runs with `colorRuns`.
+export type SkillEntry = {
+  name: string | null;
+  desc: string[];
+  /** The states it applies, one list per skill level; aligned with `desc`. */
+  buffs: BuffEntry[][];
+  icon: string | null;
+  /** Star grade at which the slot unlocks. Passive tiers are 3 / 4 / 5. */
+  openStar: number;
+  /** 1 attack, 2 active, 3 burst, 4 passive, 5 trigger. */
+  categorize: number;
+  /** Unique among one character's skills; a rotation step names it. */
+  skillType: number;
+  maxLevel: number;
+  levelable: boolean;
 };
 
 // A resolved `*_type` integer: its display name, its atlas icon, and (elements
@@ -101,6 +194,15 @@ export type CharacterData = {
     division: Record<string, TypeEntry>;
     faction: Record<string, TypeEntry>;
   };
+  /** Gift items, keyed by item id; only the ones a character likes. */
+  items: Record<string, ItemEntry>;
+  /** Date venues, keyed by division type. */
+  places: Record<string, PlaceEntry[]>;
+  /** The 12 equipment slot types, keyed by type id. */
+  equipment: Record<string, EquipmentEntry>;
+  /** `skillSetGroup` -> star grade -> the skill ids that grade has. */
+  skillSets: Record<string, Record<string, number[]>>;
+  skills: Record<string, SkillEntry>;
 };
 
 const cache = new Map<string, Promise<unknown>>();
@@ -144,7 +246,9 @@ export function loadCharacters(): Promise<CharacterData> {
 // What the icon pipeline actually published under `public/icons/`. Used to
 // decide whether an icon can be rendered; see `lib/icons.ts`.
 export type IconManifest = {
-  groups: Partial<Record<'ui' | 'char' | 'cutin' | 'skin', string[]>>;
+  groups: Partial<Record<
+    'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip',
+    string[]>>;
 };
 
 export function loadIcons(): Promise<IconManifest> {

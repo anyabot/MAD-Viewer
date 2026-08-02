@@ -39,9 +39,6 @@ export default function Layout({ children }: { children: ReactNode }) {
                 );
               })}
             </Flex>
-            <Text fontSize="xs" color="gray.500" display={{ base: 'none', md: 'block' }}>
-              Spine rig viewer for Make Drama skins
-            </Text>
           </Flex>
         </Container>
       </Box>

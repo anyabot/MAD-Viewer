@@ -45,6 +45,15 @@ type FilterStore = {
    * character and empty the list.
    */
   toggleType: (table: TypeTable, value: number) => void;
+  /**
+   * Open the character list on exactly one filter — a fact clicked through from
+   * a character page. Every other filter, including the name query, is reset,
+   * so the list shows precisely the characters that share the clicked value.
+   * `npcs` is forced on when the character clicked from is one, since the list
+   * hides them by default and would otherwise open empty.
+   */
+  focusType: (table: TypeTable, value: number, npcs?: boolean) => void;
+  focusStar: (star: number) => void;
   clearCharacterTypes: () => void;
   setSkins: (patch: Partial<SkinFilters>) => void;
 };
@@ -59,6 +68,14 @@ export const useFilters = create<FilterStore>((set) => ({
     else picked[table] = value;
     return { characters: { ...s.characters, picked } };
   }),
+  focusType: (table, value, npcs) => set((s) => ({
+    characters: {
+      ...EMPTY_CHARACTERS, npcs: npcs || s.characters.npcs, picked: { [table]: value },
+    },
+  })),
+  focusStar: (star) => set((s) => ({
+    characters: { ...EMPTY_CHARACTERS, npcs: s.characters.npcs, star },
+  })),
   clearCharacterTypes: () => set((s) => ({
     characters: { ...s.characters, picked: {}, star: null },
   })),

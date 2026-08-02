@@ -62,7 +62,8 @@ export default function CharactersPage() {
       if (!q) return true;
       return c.name.toLowerCase().includes(q)
         || c.code.toLowerCase().includes(q)
-        || (c.unfinished?.eng ?? '').toLowerCase().includes(q);
+        || (c.nameEn ?? '').toLowerCase().includes(q)
+        || (c.nameUppercase ?? '').toLowerCase().includes(q);
     }).sort((a, b) => a.code.localeCompare(b.code));
   }, [chars, query, npcs, unreleased, skinsOnly, star, picked, byCharacter]);
 
@@ -70,7 +71,7 @@ export default function CharactersPage() {
   if (!chars) {
     return (
       <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">loading characters…</Text></VStack>
+        <VStack><Spinner /><Text fontSize="sm" color="gray.500">loading…</Text></VStack>
       </Center>
     );
   }
@@ -117,7 +118,7 @@ export default function CharactersPage() {
 
         <Wrap spacing={2} align="center" pt={1}>
           <WrapItem>
-            <Input size="sm" maxW="220px" placeholder="filter by name or code…"
+            <Input size="sm" maxW="220px" placeholder="search…"
               value={query} onChange={(e) => set({ query: e.target.value })}
               bg="whiteAlpha.100" borderColor="whiteAlpha.300" />
           </WrapItem>
@@ -233,6 +234,9 @@ function CharacterCard({ entry, types, icons, skins }: {
       </Box>
       <VStack align="stretch" spacing={0.5} px={2} py={1.5}>
         <Text fontSize="sm" fontWeight="bold" noOfLines={1}>{entry.name || entry.code}</Text>
+        {entry.nameEn && (
+          <Text fontSize="0.65rem" color="gray.500" noOfLines={1}>{entry.nameEn}</Text>
+        )}
         <Flex align="center" justify="space-between" gap={1}>
           {entry.unreleased
             ? <Badge colorScheme="purple" fontSize="0.55rem">UNRELEASED</Badge>
