@@ -228,8 +228,37 @@ export function storySequences(
   return out;
 }
 
+/**
+ * The Spine track a clip plays on, exactly as the client derives it.
+ *
+ * `CV.Naninovel.DesireAndAffectionController.GetAnimationData` splits the clip
+ * name at `/`, takes the segment after it, and parses the digits before that
+ * segment's first `_` as the track index; a segment with no numeric prefix is
+ * track 0. `SetAnimationEntry` then uses that value unless the scenario command
+ * carries an explicit `Track:` parameter, which overrides it:
+ *
+ *     lsr  x8, x23, #0x20     ; Track: parameter value
+ *     ldr  w9, [sp, #8]       ; track derived from the name
+ *     tst  x23, #0xff         ; Track: supplied?
+ *     csel w23, w9, w8, eq    ; no -> the derived one
+ *
+ * So the numeric prefixes in this content's clip names are not decoration:
+ * `10_A1` is track 10, `30_overlay/30_twinkle` track 30, `10_reaction/15_T1`
+ * track 15, `20_blend/21_right` track 21, `00_loop` track 0, `01_smile` track 1,
+ * and `basic/idle_close` track 0. A clip layers over or under another purely by
+ * that number.
+ */
+export function spineTrack(name: string): number {
+  const segment = name.slice(name.indexOf('/') + 1);
+  const underscore = segment.indexOf('_');
+  if (underscore <= 0) return 0;
+  const prefix = segment.slice(0, underscore);
+  return /^\d+$/.test(prefix) ? Number(prefix) : 0;
+}
+
 // Threshold on the share of the rig's busiest clip that a clip keys. Derived
-// from a roster-wide histogram.
+// from a roster-wide histogram. Used only to group the Free play dropdowns;
+// playback tracks come from `spineTrack`.
 export const OVERLAY_BONE_SHARE = 0.28;
 
 /** Clips too partial to own track 0, measured from the parsed skeleton. */

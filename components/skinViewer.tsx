@@ -19,7 +19,7 @@ import {
 import {
   BORING_DELAY_MS, actorPhases, archiveName, attachPanZoom, baseSkinKey,
   effectOf, layerGroup, mappedSourcePixelScale, overlayAnimations, regionLiveInPhase,
-  storySequences, zoomAt,
+  spineTrack, storySequences, zoomAt,
   type ActorPhase, type Layout, type PlayMode, type StoreKey, type TouchRegion,
 } from '@/components/skinViewer/types';
 import { JiggleField } from '@/components/skinViewer/jiggle';
@@ -28,12 +28,23 @@ import {
   sectionIndexByLabel, type RigScript, type Vars,
 } from '@/components/skinViewer/interactions';
 import {
-  cutsceneOffsetAt, isLinearScene, scriptCameraTransform, spineBackgroundEventFade,
-  waitAnimationDeadline,
+  cutsceneOffsetAt, isLinearScene, resolveAlternatives, sceneVoiceIds,
+  scriptCameraTransform, spineBackgroundEventFade, waitAnimationDeadline,
   type CameraAction, type CameraBase, type CameraState, type DesirePresentation,
   type LinearScene, type SceneAction, type SceneTimelineRig,
 } from '@/components/skinViewer/scenes';
-import { loadDesireInteractions, loadSceneTimelines } from '@/lib/data';
+import {
+  loadDesireInteractions, loadSceneAudio, loadSceneTimelines, loadVoice,
+} from '@/lib/data';
+import {
+  interactionsFor, playVoice, prefetchVoice, stopVoice,
+  type VoiceIndex, type VoiceInteraction,
+} from '@/lib/voice';
+import { lobbyBodyAnimation, lobbyFaceAnimation } from '@/components/skinViewer/lobby';
+import { useViewerStore } from '@/lib/viewerStore';
+import {
+  playBgm, playSceneSound, stopBgm, stopSceneSound, type SceneAudioIndex,
+} from '@/lib/sceneAudio';
 import {
   IconBtn, LayerPanel, LoopButton, OverlaySelect, PlayPauseButton, ReloadButton,
   SaveButton, StoreStrip, type LayerItem, type SelectOption,
@@ -79,6 +90,10 @@ export function isFaceAnim(name: string): boolean {
   return FACE_GROUPS.has(animGroup(name));
 }
 
+// Driven playback puts every clip on the track its own name declares
+// (`spineTrack`), which is what the client does. These are the Free play lanes,
+// where the user picks a body/face/overlay clip by hand, and the fallback face
+// lane for a face clip whose name carries no track number (`mouth/*`).
 const TRACK_BODY = 0;
 const TRACK_FACE = 1;
 const TRACK_OVERLAY = 2;
@@ -140,32 +155,49 @@ export default function SkinViewer({
   const [layout, setLayout] = useState<Layout | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loadState, setLoadState] = useState<'fetching' | 'unpacking' | 'ready' | 'error'>('fetching');
+  // Bumped when a Pixi/Spine build finishes. `layout` lands earlier — as soon as
+  // the archive parses — and the build is what installs `autoDriveRef`, so
+  // anything that has to drive the rig waits for this instead.
+  const [rigBuilt, setRigBuilt] = useState(0);
   const [resetKey, setResetKey] = useState(0);
 
   const [bodyAnim, setBodyAnim] = useState('');
   const [faceAnim, setFaceAnim] = useState('');
   const [overlayAnim, setOverlayAnim] = useState('');
   const [overlayAnims, setOverlayAnims] = useState<Set<string>>(() => new Set());
-  const [loop, setLoop] = useState(true);
-  const [playing, setPlaying] = useState(true);
-  const [showBg, setShowBg] = useState(true);
-
-  const [mode, setMode] = useState<PlayMode>('manual');
+  const {
+    loop, playing, showBg, mode, sceneVariant, followGameFlow, sceneLoop,
+    showBoxes, voiceOn, bgmOn, showLayers, dragJiggle, set: setViewer,
+  } = useViewerStore();
+  const setLoop = (value: boolean) => setViewer({ loop: value });
+  const setPlaying = (value: boolean) => setViewer({ playing: value });
+  const setShowBg = (value: boolean) => setViewer({ showBg: value });
+  const setMode = (value: PlayMode) => setViewer({ mode: value });
   const autoMode = mode !== 'manual';
-  const [sceneVariant, setSceneVariant] = useState<'view' | 'story'>('view');
-  const [followGameFlow, setFollowGameFlow] = useState(false);
+  const setSceneVariant = (value: 'view' | 'story') => setViewer({ sceneVariant: value });
+  const setFollowGameFlow = (value: boolean) => setViewer({ followGameFlow: value });
+  const setSceneLoop = (value: boolean) => setViewer({ sceneLoop: value });
   const [timelineRig, setTimelineRig] = useState<SceneTimelineRig | null>(null);
   const [sceneBeatIdx, setSceneBeatIdx] = useState(0);
   const [sceneRunKey, setSceneRunKey] = useState(0);
-  const [sceneLoop, setSceneLoop] = useState(true);
   const [fade, setFade] = useState({ color: 'black', opacity: 0, duration: 0 });
   const [phaseIdx, setPhaseIdx] = useState(0);
-  const [showBoxes, setShowBoxes] = useState(false);
+  const setShowBoxes = (value: boolean) => setViewer({ showBoxes: value });
   const [reaction, setReaction] = useState<string | null>(null);
   const [touchInfo, setTouchInfo] = useState<
     { box: string; effect: string; detail: string } | null>(null);
 
-  const [showLayers, setShowLayers] = useState(false);
+  // Voice is enabled by default. Lobby touches and scene advancement are user
+  // gestures, so they also satisfy browser audio-playback policy.
+  const [voiceIndex, setVoiceIndex] = useState<VoiceIndex | null>(null);
+  const setVoiceOn = (value: boolean) => setViewer({ voiceOn: value });
+  const setBgmOn = (value: boolean) => setViewer({ bgmOn: value });
+  const [sceneAudioIndex, setSceneAudioIndex] = useState<SceneAudioIndex | null>(null);
+  const [subtitle, setSubtitle] = useState<{ text: string; author?: string } | null>(null);
+  // Lobby lines are a rotating set per (character, family), as in game.
+  const lobbyLineRef = useRef(0);
+
+  const setShowLayers = (value: boolean) => setViewer({ showLayers: value });
   const [layerItems, setLayerItems] = useState<LayerItem[]>([]);
   const [hiddenSlots, setHiddenSlots] = useState<Set<string>>(() => new Set());
   const hiddenSlotsRef = useRef(hiddenSlots); hiddenSlotsRef.current = hiddenSlots;
@@ -173,6 +205,7 @@ export default function SkinViewer({
   const boxOverlayRef = useRef<any>(null);
   const boundsRef = useRef<any>(null);   // Spine SkeletonBounds for hit-testing
   const boringTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lobbyFaceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoDriveRef = useRef<
     ((trigger: 'idle' | 'boring' | string, holdAfter?: boolean,
       extras?: string[]) => void) | null>(null);
@@ -218,11 +251,13 @@ export default function SkinViewer({
   ) => number>(() => 0);
   const cancelSceneActionsRef = useRef<() => void>(() => {});
   const resetSceneVisualsRef = useRef<() => void>(() => {});
-  const enterDisplayRef = useRef(false);
+  // Bumped when the scene is entered again without the rig or context changing
+  // (the restart control). Nothing else re-runs the script's entry.
+  const [sceneEnterKey, setSceneEnterKey] = useState(0);
 
   // Home-view pointer mode: pan the canvas (default) or drag the jigglers,
   // which is the in-game input the pan gesture otherwise swallows.
-  const [dragJiggle, setDragJiggle] = useState(false);
+  const setDragJiggle = (value: boolean) => setViewer({ dragJiggle: value });
 
   // Mirrors so the async build effect can apply current UI state to a freshly
   // built skeleton (a reload while paused must stay paused).
@@ -247,11 +282,122 @@ export default function SkinViewer({
   const desirePresentationRef = useRef(desirePresentation);
   desirePresentationRef.current = desirePresentation;
   const dragJiggleRef = useRef(dragJiggle); dragJiggleRef.current = dragJiggle;
+  const voiceIndexRef = useRef(voiceIndex); voiceIndexRef.current = voiceIndex;
+  const voiceOnRef = useRef(voiceOn); voiceOnRef.current = voiceOn;
+  const bgmOnRef = useRef(bgmOn); bgmOnRef.current = bgmOn;
+  const sceneAudioIndexRef = useRef(sceneAudioIndex); sceneAudioIndexRef.current = sceneAudioIndex;
+  const pendingSceneSoundRef = useRef<{ rig: string; animation: string } | null>(null);
+  const pendingBgmRef = useRef<{
+    clip: string; intro?: string; fade: number;
+  } | null>(null);
+  const desiredBgmRef = useRef<{
+    clip: string; intro?: string; fade: number;
+  } | null>(null);
+  const requestSceneSoundRef = useRef<(rig: string, animation: string) => void>(() => {});
+  requestSceneSoundRef.current = (rig, animation) => {
+    if (!bgmOnRef.current) return;
+    if (!sceneAudioIndexRef.current) {
+      pendingSceneSoundRef.current ??= { rig, animation };
+      return;
+    }
+    pendingSceneSoundRef.current = null;
+    void playSceneSound(sceneAudioIndexRef.current, rig, animation);
+  };
+  const requestBgmRef = useRef<(clip: string, intro: string | undefined, fade: number) => void>(
+    () => {});
+  requestBgmRef.current = (clip, intro, fade) => {
+    desiredBgmRef.current = { clip, intro, fade };
+    if (!bgmOnRef.current) return;
+    if (!sceneAudioIndexRef.current) {
+      pendingBgmRef.current = { clip, intro, fade };
+      return;
+    }
+    pendingBgmRef.current = null;
+    void playBgm(sceneAudioIndexRef.current, clip, intro, fade);
+  };
+
+  // Show a line and, when voice is on, speak it. A line with no clip still
+  // shows: the game does not voice every line, and the subtitle is the content.
+  const sayRef = useRef<(line: { text: string; author?: string; voice?: string }) => void>(
+    () => {});
+  sayRef.current = (line) => {
+    if (line.text) setSubtitle({ text: line.text, author: line.author });
+    if (line.voice && voiceOnRef.current) {
+      void playVoice(voiceIndexRef.current, line.voice);
+    }
+  };
+
+  // Lobby lines come from the master-data interaction table, not the scenario
+  // scripts: a filter of character, rig family and action selects a small set
+  // and the game cycles it. `Situation<N>` rows repeat the same four lines per
+  // phase, so the phase is part of the selector when the rig declares one.
+  const lobbyFamily = layout?.kind === 'affection' ? 'Affection'
+    : layout?.kind === 'desire' ? 'Desire' : 'Standing';
+  const lobbyCode = layout?.character ?? '';
+  const speakLobbyRef = useRef<(
+    action: 'Touch' | 'Enter' | 'Onlook', box?: string | null,
+  ) => VoiceInteraction | null>(() => null);
+  speakLobbyRef.current = (action, box) => {
+    const wanted = ['Lobby', action, lobbyFamily];
+    if (lobbyFamily !== 'Standing') wanted.push(`Situation${phaseIdx + 1}`);
+    let rows = interactionsFor(voiceIndexRef.current, lobbyCode, wanted);
+    if (!rows.length && lobbyFamily !== 'Standing') {
+      rows = interactionsFor(voiceIndexRef.current, lobbyCode, ['Lobby', action, lobbyFamily]);
+    }
+    if (action === 'Touch') {
+      const breast = !!box && /breast/i.test(box);
+      const targeted = rows.filter((row) => row.filter.includes('Breast') === breast);
+      if (targeted.length) rows = targeted;
+    }
+    if (!rows.length) return null;
+    const row = rows[lobbyLineRef.current % rows.length];
+    lobbyLineRef.current += 1;
+    sayRef.current({ text: row.text ?? '', voice: row.voice });
+    return row;
+  };
+
+  // The lobby interaction row owns its animation staging. In particular,
+  // rows without `ani` are intentionally non-moving standing variations and
+  // must not fall through to the prefab's generic active clip.
+  const stageLobbyRef = useRef<(row: VoiceInteraction | null) => string | null>(() => null);
+  stageLobbyRef.current = (row) => {
+    if (!row) return null;
+    const anims = layout?.animations ?? [];
+    const spine = spineRef.current;
+    if (lobbyFaceTimerRef.current) clearTimeout(lobbyFaceTimerRef.current);
+    lobbyFaceTimerRef.current = null;
+    if (spine) spine.state.setEmptyAnimation(TRACK_FACE, 0.15);
+    if (spine && row.face) {
+      const face = lobbyFaceAnimation(row, anims);
+      if (face) {
+        spine.state.setAnimation(TRACK_FACE, face, true).mixDuration = 0.15;
+        if (row.wait && row.wait > 0) {
+          lobbyFaceTimerRef.current = setTimeout(() => {
+            spineRef.current?.state.setEmptyAnimation(TRACK_FACE, 0.15);
+          }, row.wait * 1000);
+        }
+      }
+    }
+    return lobbyBodyAnimation(row, phase, anims);
+  };
+
+  // Whether this character has any extracted clip at all. Voice is jp-only and
+  // not every character is recorded, so the control is hidden rather than
+  // offering silence.
+  const hasVoice = useMemo(() => {
+    if (!voiceIndex || !lobbyCode) return false;
+    const owner = lobbyCode.toLowerCase();
+    return Object.values(voiceIndex.clips).some((f) => f.split('/')[1] === owner);
+  }, [voiceIndex, lobbyCode]);
 
   // The idle clip the state machine returns to: the script section's when a
   // scenario table is driving, otherwise the actor phase's.
   const idleClipRef = useRef<() => string | null>(() => null);
   idleClipRef.current = () => sectionRef.current?.idle ?? phaseRef.current.idle;
+  // The track this rig's body clips occupy, read off the current idle clip's
+  // own name: `10_idle` is track 10, `lobby/idle` and `00_idle_normal` track 0.
+  const bodyTrackRef = useRef<() => number>(() => 0);
+  bodyTrackRef.current = () => spineTrack(idleClipRef.current() ?? '');
 
   // --- archive fetch -------------------------------------------------------
   useEffect(() => {
@@ -280,26 +426,26 @@ export default function SkinViewer({
         setFaceAnim('');
         setOverlayAnim('');
         setOverlayAnims(new Set());
-        setShowBg(true);
         setPhaseIdx(0);
         setReaction(null);
         setTouchInfo(null);
-        setShowBoxes(false);
+        setSubtitle(null);
+        stopVoice();
+        lobbyLineRef.current = 0;
         setRigScript(null);
         setTimelineRig(null);
         setSectionIdx(0);
         setVars({});
-        setSceneVariant('view');
-        setFollowGameFlow(false);
         setSceneBeatIdx(0);
         setFade({ color: 'black', opacity: 0, duration: 0 });
         setStorySeqIdx(0);
         setStoryIdx(0);
-        setDragJiggle(false);
         setLayerItems([]);
         setHiddenSlots(new Set());
-        setShowLayers(false);
-        setMode((m) => (m === 'scene' ? 'manual' : m));
+        const currentMode = useViewerStore.getState().mode;
+        if (currentMode === 'scene' && l.kind === 'standing') {
+          useViewerStore.getState().set({ mode: 'manual' });
+        }
         pendingSectionRef.current = null;
       })
       .catch((e) => {
@@ -329,6 +475,27 @@ export default function SkinViewer({
     return () => { cancelled = true; };
   }, [layout]);
 
+  // Voice clips and the lobby interaction table. Every family has lobby lines,
+  // so this is not restricted by rig kind. A missing file leaves the viewer
+  // silent and subtitle-less rather than broken.
+  useEffect(() => {
+    let cancelled = false;
+    loadVoice().then((data) => { if (!cancelled) setVoiceIndex(data); })
+      .catch(() => { /* no voice published */ });
+    loadSceneAudio().then((data) => { if (!cancelled) setSceneAudioIndex(data); })
+      .catch(() => { /* no scene audio published */ });
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    if (!sceneAudioIndex || !bgmOn) return;
+    const sound = pendingSceneSoundRef.current;
+    if (sound) requestSceneSoundRef.current(sound.rig, sound.animation);
+    const music = pendingBgmRef.current;
+    const wanted = music ?? desiredBgmRef.current;
+    if (wanted) requestBgmRef.current(wanted.clip, wanted.intro, wanted.fade);
+  }, [sceneAudioIndex, bgmOn]);
+
   useEffect(() => {
     if (!layout || (layout.kind !== 'desire' && layout.kind !== 'affection')) return;
     let cancelled = false;
@@ -340,6 +507,36 @@ export default function SkinViewer({
       .catch(() => { /* keep the static animation-list fallback */ });
     return () => { cancelled = true; };
   }, [layout]);
+
+  // Download the lines this rig can speak before anything triggers them. A line
+  // fires together with its animation, so a clip that only starts downloading at
+  // that moment lands well after the reaction it belongs to has finished.
+  useEffect(() => {
+    if (!voiceOn || !voiceIndex || !layout?.character) return;
+    const ids = interactionsFor(voiceIndex, layout.character, ['Lobby', lobbyFamily])
+      .map((row) => row.voice)
+      .filter((id): id is string => !!id);
+    prefetchVoice(voiceIndex, ids);
+  }, [voiceOn, voiceIndex, layout, lobbyFamily]);
+
+  useEffect(() => {
+    if (!voiceOn || !voiceIndex || !timelineRig) return;
+    prefetchVoice(voiceIndex, sceneVoiceIds(timelineRig));
+  }, [voiceOn, voiceIndex, timelineRig]);
+
+  // Lobby's own Enter row, which is a real interaction rather than the first
+  // idle frame. Entering Lobby runs it; leaving and coming back runs it again.
+  //
+  // It keys on `rigBuilt` rather than `layout` because the archive parses well
+  // before the Pixi/Spine build installs `autoDriveRef` — an Enter fired in that
+  // window is dropped on a null ref. `rigBuilt` changes exactly once per build,
+  // so nothing has to remember whether this rig has already run.
+  useEffect(() => {
+    if (mode !== 'home' || !rigBuilt || !voiceIndex) return;
+    const row = speakLobbyRef.current('Enter');
+    const clip = stageLobbyRef.current(row);
+    if (clip) autoDriveRef.current?.(clip);
+  }, [mode, rigBuilt, voiceIndex]);
 
   // Entering a section applies its variable initialisation and restarts the
   // idle loop, mirroring what the script does when it jumps to a label.
@@ -354,35 +551,7 @@ export default function SkinViewer({
     // (ds_ch0057's toy overlays persist into phase 2 only when h2/h3 are set).
     const extras = entryExtras(target, next);
     const presentation = desirePresentation?.sections[sectionIdx];
-    if (enterDisplayRef.current) {
-      enterDisplayRef.current = false;
-      if (followGameFlowRef.current) {
-        const entryActions: SceneAction[] = [
-          ...(desirePresentation?.entry ?? []),
-          ...(presentation?.entry ?? []),
-        ];
-        if (entryActions.length) {
-          entryActions.push({ type: 'wait-animation' });
-          if (target.enter && target.enter !== target.idle) {
-            entryActions.push({
-              type: 'animation', clip: target.enter, loop: false, track: 0, wait: true,
-            });
-          }
-          if (target.idle) entryActions.push({
-            type: 'animation', clip: target.idle, loop: true, track: 0, wait: false,
-          });
-          for (const clip of extras) entryActions.push({
-            type: 'animation', clip, loop: true, track: 2, wait: false,
-          });
-          playSceneActionsRef.current(entryActions);
-          return;
-        }
-        if (interactiveScene.entry) {
-          autoDriveRef.current?.(interactiveScene.entry, false, extras);
-          return;
-        }
-      }
-    } else if (presentation?.entry.length) {
+    if (presentation?.entry.length) {
       playSceneActionsRef.current(presentation.entry);
     }
     // A phase that opens on a one-shot plays it first; `autoDrive` queues the
@@ -396,6 +565,38 @@ export default function SkinViewer({
       }
     }
   }, [interactiveScene, desirePresentation, sectionIdx, sceneRunKey]);
+
+  // The script's entry: the commands it authors before its first label. It
+  // belongs to entering the scene, not to a phase — the rig changing, a reload,
+  // choosing this playback context or the restart control run it, and a section
+  // change never does. A script with no entry runs nothing.
+  //
+  // Declared after the section effect so its sequence owns track playback: the
+  // section starts its idle, the entry then plays over it and queues the idle
+  // back behind the opening clip.
+  useEffect(() => {
+    const entry = desirePresentation?.entry ?? [];
+    const entryClip = interactiveScene?.entry;
+    if (!rigBuilt || !followGameFlow) return;
+    if (!entry.length) {
+      if (entryClip) autoDriveRef.current?.(entryClip);
+      return;
+    }
+    const target = interactiveScene?.sections[sectionIdxRef.current];
+    const actions: SceneAction[] = [...entry, { type: 'wait-animation' }];
+    if (target?.enter && target.enter !== target.idle) {
+      actions.push({
+        type: 'animation', clip: target.enter, loop: false, track: null, wait: true,
+      });
+    }
+    if (target?.idle) {
+      actions.push({
+        type: 'animation', clip: target.idle, loop: true, track: null, wait: false,
+      });
+    }
+    playSceneActionsRef.current(actions);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [desirePresentation, interactiveScene, rigBuilt, followGameFlow, sceneEnterKey]);
 
   useEffect(() => {
     if (!linearScene || mode !== 'scene' || !playing) return;
@@ -420,7 +621,8 @@ export default function SkinViewer({
   useEffect(() => {
     const spine = spineRef.current;
     if (!spine || !storySeq) return;
-    spine.state.setAnimation(TRACK_BODY, storySeq.clips[storyStep], true);
+    const clip = storySeq.clips[storyStep];
+    spine.state.setAnimation(spineTrack(clip), clip, true);
     setReaction(null);
   }, [storySeq, storyStep]);
 
@@ -697,7 +899,12 @@ export default function SkinViewer({
         }
         const p = phaseRef.current;
         if (!p.boring || !p.idle) return;
-        boringTimerRef.current = setTimeout(() => autoDriveRef.current?.('boring'), BORING_DELAY_MS);
+        boringTimerRef.current = setTimeout(() => {
+          const row = modeRef.current === 'home' ? speakLobbyRef.current('Onlook') : null;
+          const authored = stageLobbyRef.current(row);
+          if (!row || authored) autoDriveRef.current?.(authored ?? 'boring');
+          else armBoring();
+        }, BORING_DELAY_MS);
       };
       // True while a one-shot reaction is still playing on the body or overlay
       // track. Input and the onlook timer both wait for it, as in game.
@@ -742,55 +949,57 @@ export default function SkinViewer({
         preserveHeldEndStates();
         const idle = idleClipRef.current();
         if (!idle && !holdAfter) return;
+        const bodyTrack = bodyTrackRef.current();
         clearBoring();
         if (trigger === 'idle') {
-          if (idle) spine.state.setAnimation(TRACK_BODY, idle, true);
+          if (idle) spine.state.setAnimation(bodyTrack, idle, true);
           setReaction(null);
           armBoring();
           return;
         }
         const clip = trigger === 'boring' ? phaseRef.current.boring : trigger;
         if (!clip || !animSet.has(clip)) { armBoring(); return; }
-        const track = overlaySetRef.current.has(clip) ? TRACK_OVERLAY : TRACK_BODY;
+        const track = spineTrack(clip);
         const entry = spine.state.setAnimation(track, clip, false);
-        // Overlay clips are cut in, not mixed in. A stamp clip switches its art
+        requestSceneSoundRef.current(baseSkinKey(skin), clip);
+        // Layered clips are cut in, not mixed in. A stamp clip switches its art
         // on at t=0 and hides it with an alpha-0 colour key until the reveal
         // (ds_ch0042's early strokes); during a mix the attachment applies
         // immediately but the colour only blends in from the slot's current
         // alpha 1, flashing the finished art before it is drawn.
-        entry.mixDuration = track === TRACK_OVERLAY ? 0 : 0.15;
+        entry.mixDuration = track === bodyTrack ? 0.15 : 0;
         // The rest of the reaction: same-track clips queue behind the main
-        // one (ds_ch0015's tail_1 after A5), an overlay during a body reaction
-        // layers immediately (ds_ch0010's twinkle) or queues behind a running
-        // overlay one-shot so neither is cut before its art is pinned.
-        let bodyStarted = track === TRACK_BODY;
+        // one (ds_ch0015's tail_1 after A5), a clip on another track layers
+        // immediately (ds_ch0010's twinkle) or queues behind a one-shot already
+        // running there so neither is cut before its art is pinned.
+        let bodyStarted = track === bodyTrack;
         for (const x of extras ?? []) {
           if (!animSet.has(x)) continue;
-          const xt = overlaySetRef.current.has(x) ? TRACK_OVERLAY : TRACK_BODY;
+          const xt = spineTrack(x);
           let e;
-          if (xt === track || (xt === TRACK_BODY && bodyStarted)) {
+          if (xt === track || (xt === bodyTrack && bodyStarted)) {
             e = spine.state.addAnimation(xt, x, false, 0);
-          } else if (xt === TRACK_BODY) {
+          } else if (xt === bodyTrack) {
             e = spine.state.setAnimation(xt, x, false);
             bodyStarted = true;
           } else {
-            const cur = spine.state.getCurrent(TRACK_OVERLAY);
+            const cur = spine.state.getCurrent(xt);
             e = cur && !cur.loop && !cur.isComplete()
-              ? spine.state.addAnimation(TRACK_OVERLAY, x, false, 0)
-              : spine.state.setAnimation(TRACK_OVERLAY, x, false);
+              ? spine.state.addAnimation(xt, x, false, 0)
+              : spine.state.setAnimation(xt, x, false);
           }
-          e.mixDuration = xt === TRACK_OVERLAY ? 0 : 0.15;
+          e.mixDuration = xt === bodyTrack ? 0.15 : 0;
         }
         // A transition clip must NOT queue the current phase's idle behind it:
         // the phase is about to change, and the next section sets its own idle
         // when the clip completes. Queueing here would play the outgoing idle
         // for a frame and fight the incoming one.
         if (bodyStarted && !holdAfter && idle) {
-          spine.state.addAnimation(TRACK_BODY, idle, true, 0);
+          spine.state.addAnimation(bodyTrack, idle, true, 0);
         }
         // The phase switch waits for the reaction's LAST body clip when there
         // is one (ds_ch0010's drag ends on 10_H1), else the main clip's track.
-        if (holdAfter) pendingTrackRef.current = bodyStarted ? TRACK_BODY : track;
+        if (holdAfter) pendingTrackRef.current = bodyStarted ? bodyTrack : track;
         setReaction(clip);
         armBoring();
       };
@@ -1037,14 +1246,23 @@ export default function SkinViewer({
             }
             if (reacting()) return;
             const regionClip = hit?.effect === 'region' ? hit.clip : null;
-            const clip = regionClip ?? phaseRef.current.active;
+            const row = speakLobbyRef.current('Touch', box);
+            const authoredClip = stageLobbyRef.current(row);
+            const clip = row ? authoredClip : (regionClip ?? phaseRef.current.active);
             if (clip && animSet.has(clip)) {
               setTouchInfo({
                 box: box || '(no region)',
-                effect: regionClip ? 'region' : 'touch',
+                effect: regionClip || row?.ani ? 'region' : 'touch',
                 detail: clip,
               });
               autoDriveRef.current?.(clip);
+            } else if (row) {
+              setTouchInfo({
+                box: box || '(no region)',
+                effect: 'state',
+                detail: row.face ? `face ${row.face}` : 'authored non-moving line',
+              });
+              armBoring();
             } else {
               setTouchInfo({
                 box: box || '(no region)',
@@ -1091,7 +1309,8 @@ export default function SkinViewer({
         // time: a queued stroke must not un-pin art while its predecessor is
         // still playing.
         start: (entry: any) => {
-          if (entry?.trackIndex === TRACK_BODY || entry?.trackIndex === TRACK_FACE) return;
+          if (entry?.trackIndex === bodyTrackRef.current()
+            || entry?.trackIndex === TRACK_FACE) return;
           const name = entry?.animation?.name;
           for (const [slotIndex] of overlayEndState.get(name) ?? []) {
             pinned.delete(slotIndex);
@@ -1119,7 +1338,7 @@ export default function SkinViewer({
           // A layered one-shot pins its end art whether or not a phase change
           // is pending — ds_ch0009's glass_on completes DURING the transition
           // to phase 2 and its glass must survive it.
-          if (track !== TRACK_BODY) {
+          if (track !== bodyTrackRef.current()) {
             for (const [slotIndex, name] of overlayEndState.get(done) ?? []) {
               if (name) pinned.set(slotIndex, name);
               else pinned.delete(slotIndex);
@@ -1148,7 +1367,7 @@ export default function SkinViewer({
             return;
           }
           // A one-shot ending on a layered track is not a return to idle.
-          if (track !== TRACK_BODY) return;
+          if (track !== bodyTrackRef.current()) return;
           setReaction(null);
           armBoring();
         },
@@ -1340,12 +1559,13 @@ export default function SkinViewer({
             return Math.max(0, Math.trunc(value));
           }
         }
-        return action.clip && overlaySetRef.current.has(action.clip)
-          ? TRACK_OVERLAY : TRACK_BODY;
+        return action.clip ? spineTrack(action.clip) : bodyTrackRef.current();
       };
-      playSceneActionsRef.current = (actions, actionVars = {}, onReset) => {
+      playSceneActionsRef.current = (authored, actionVars = {}, onReset) => {
         preserveHeldEndStates();
         clearSceneTimers();
+        // One `@PickRandom` group survives per pick, as in game.
+        const actions = resolveAlternatives(authored);
         let resetNotified = false;
         let elapsed = 0;
         let finishesAt = 0;
@@ -1362,7 +1582,8 @@ export default function SkinViewer({
             continue;
           }
           if (action.type === 'wait-animation') {
-            const current = spine.state.getCurrent(lastAnimationTrack ?? TRACK_BODY);
+            const current = spine.state.getCurrent(
+              lastAnimationTrack ?? bodyTrackRef.current());
             const remaining = current
               ? Math.max(0, (current.animationEnd ?? current.animation?.duration ?? 0)
                 - (current.trackTime ?? 0))
@@ -1395,18 +1616,35 @@ export default function SkinViewer({
           }
           const timer = setTimeout(() => {
             if (destroyed) return;
-            if (action.type === 'camera') {
+            if (action.type === 'say') {
+              sayRef.current(action);
+            } else if (action.type === 'camera') {
               applyCamera(action);
             } else if (action.type === 'fade') {
               setFade({ color: action.color, opacity: action.opacity, duration: action.duration });
+            } else if (action.type === 'bgm') {
+              requestBgmRef.current(action.clip, action.intro, action.fade);
+            } else if (action.type === 'stop-bgm') {
+              pendingBgmRef.current = null;
+              desiredBgmRef.current = null;
+              stopBgm(action.fade);
             } else if (action.type === 'reset-animation') {
               if (action.track === null || action.track === undefined) {
+                // `@desire <actor> Reset:true` resets the actor, not just its
+                // tracks. Clearing tracks alone leaves every slot colour and
+                // attachment where the last clip left it: `ds_ch0068`'s
+                // `reaction/open_H1` ends mid-fade with the `whiteout` and
+                // `whiteout_add` quads at alpha 0.49, and nothing keys them
+                // again, so the scene stayed washed out behind a white pixel.
                 spine.state.clearTracks();
+                spine.skeleton.setToSetupPose();
                 clearPersistentRef.current();
               } else {
                 const track = authoredTrack(action, actionVars);
                 spine.state.clearTrack(track);
-                if (track !== TRACK_BODY && track !== TRACK_FACE) pinned.clear();
+                if (track !== bodyTrackRef.current() && track !== TRACK_FACE) {
+                  pinned.clear();
+                }
               }
               if (!resetNotified) {
                 resetNotified = true;
@@ -1419,8 +1657,9 @@ export default function SkinViewer({
               const entry = previousAt === at && !queuedLoop.get(track)
                 ? spine.state.addAnimation(track, action.clip, action.loop, 0)
                 : spine.state.setAnimation(track, action.clip, action.loop);
-              entry.mixDuration = track === TRACK_BODY ? 0.15 : 0;
+              entry.mixDuration = track === bodyTrackRef.current() ? 0.15 : 0;
               if (action.hold) entry._madHold = true;
+              requestSceneSoundRef.current(baseSkinKey(skin), action.clip);
               queuedAt.set(track, at);
               queuedLoop.set(track, action.loop);
             }
@@ -1530,6 +1769,8 @@ export default function SkinViewer({
           end: () => undefined,
         };
       });
+
+      setRigBuilt((built) => built + 1);
     })().catch((e) => !destroyed && setError(String(e)));
 
     return () => {
@@ -1550,6 +1791,11 @@ export default function SkinViewer({
       bgSpritesRef.current = [];
       syncBackgroundVisibilityRef.current = () => {};
       jiggleRef.current = null;
+      pendingSceneSoundRef.current = null;
+      pendingBgmRef.current = null;
+      desiredBgmRef.current = null;
+      stopSceneSound();
+      stopBgm();
       spinePixelScaleRef.current = () => 1;
       appRef.current = null;
       rootRef.current = null;
@@ -1597,7 +1843,17 @@ export default function SkinViewer({
     if (!spine) return;
     if (mode !== 'home') jiggleRef.current?.reset();
     clearPersistentRef.current();
+    // Each mode owns a different set of tracks: a desire scene drives track 10
+    // while Free play and Lobby drive 0, so an outgoing mode's clips would keep
+    // playing over the incoming one.
+    spine.state.clearTracks();
+    spine.skeleton.setToSetupPose();
     setTouchInfo(null);
+    setSubtitle(null);
+    stopVoice();
+    if (lobbyFaceTimerRef.current) clearTimeout(lobbyFaceTimerRef.current);
+    lobbyFaceTimerRef.current = null;
+    lobbyLineRef.current = 0;
     if (mode === 'home') {
       autoDriveRef.current?.('idle');
     } else if (mode === 'manual') {
@@ -1605,6 +1861,8 @@ export default function SkinViewer({
       boringTimerRef.current = null;
       setReaction(null);
       if (bodyAnim) spine.state.setAnimation(TRACK_BODY, bodyAnim, loop);
+      if (faceAnim) spine.state.setAnimation(TRACK_FACE, faceAnim, true);
+      if (overlayAnim) spine.state.setAnimation(TRACK_OVERLAY, overlayAnim, true);
     }
     fitCameraRef.current();
   }, [mode, phaseIdx]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -1612,6 +1870,19 @@ export default function SkinViewer({
   useEffect(() => {
     if (boxOverlayRef.current) boxOverlayRef.current.visible = showBoxes;
   }, [showBoxes]);
+
+  // Muting stops the line already in the air; the subtitle stays, since it is
+  // the transcript of what is on screen rather than part of the audio.
+  useEffect(() => { if (!voiceOn) stopVoice(); }, [voiceOn]);
+  useEffect(() => {
+    if (!bgmOn) {
+      pendingSceneSoundRef.current = null;
+      pendingBgmRef.current = null;
+      stopSceneSound();
+      stopBgm();
+    }
+  }, [bgmOn]);
+  useEffect(() => stopVoice, []);
 
   // Track 1 holds the face expression; clearing it empties the track so the
   // body animation's own face keys take over again.
@@ -1777,7 +2048,7 @@ export default function SkinViewer({
 
   const resetInteractiveScene = () => {
     if (!rigScript) return;
-    enterDisplayRef.current = true;
+    setSceneEnterKey((key) => key + 1);
     setSectionIdx(0);
     setSceneRunKey((key) => key + 1);
     const initial = applyAssignments(rigScript.sections[0]?.set ?? {}, {});
@@ -1813,6 +2084,13 @@ export default function SkinViewer({
 
   const selectPlaybackContext = (context: PlaybackContext) => {
     resetSceneVisualsRef.current();
+    if (context === 'free_play' || context === 'lobby') {
+      pendingSceneSoundRef.current = null;
+      pendingBgmRef.current = null;
+      desiredBgmRef.current = null;
+      stopSceneSound();
+      stopBgm();
+    }
     setSceneBeatIdx(0);
     setStoryIdx(0);
     pendingSectionRef.current = null;
@@ -2018,15 +2296,25 @@ export default function SkinViewer({
         {/* Top-right: playback + capture controls */}
         <VStack position="absolute" top={2} right={2} spacing={1} align="flex-end"
           bg="blackAlpha.500" borderRadius="md" px={1} py={1} zIndex={2}>
-          <PlayPauseButton playing={playing} onToggle={() => setPlaying((v) => !v)} />
-          {!autoMode && <LoopButton loop={loop} onToggle={() => setLoop((v) => !v)} />}
-          {linearScene && <LoopButton loop={sceneLoop} onToggle={() => setSceneLoop((v) => !v)} />}
+          <PlayPauseButton playing={playing} onToggle={() => setPlaying(!playing)} />
+          {!autoMode && <LoopButton loop={loop} onToggle={() => setLoop(!loop)} />}
+          {linearScene && <LoopButton loop={sceneLoop} onToggle={() => setSceneLoop(!sceneLoop)} />}
           {mode === 'scene' && selectedScriptScene && (
             <IconBtn icon="camera"
               label={followGameFlow
                 ? 'Follow game flow: play entry and scripted camera'
                 : 'Viewer flow: skip entry and scripted camera'}
               active={followGameFlow} onClick={toggleFollowGameFlow} />
+          )}
+          {hasVoice && (
+            <IconBtn icon="voice"
+              label={voiceOn ? 'Mute character voice' : 'Play character voice (Japanese)'}
+              active={voiceOn} onClick={() => setVoiceOn(!voiceOn)} />
+          )}
+          {(layout?.kind === 'desire' || layout?.kind === 'affection') && (
+            <IconBtn icon="music"
+              label={bgmOn ? 'Mute scene audio and music' : 'Play scene audio and music'}
+              active={bgmOn} onClick={() => setBgmOn(!bgmOn)} />
           )}
           <ReloadButton onClick={reloadPlayback} />
           <SaveButton onClick={handleSave} />
@@ -2048,26 +2336,39 @@ export default function SkinViewer({
               <IconBtn icon="touch" label={showBoxes
                 ? `Hide ${mode === 'home' ? 'home touch zones' : 'touch regions'}`
                 : `Show ${mode === 'home' ? 'home touch zones' : 'touch regions'}`}
-                active={showBoxes} onClick={() => setShowBoxes((v) => !v)} />
+                active={showBoxes} onClick={() => setShowBoxes(!showBoxes)} />
             )}
             {mode === 'home' && jigglerCount > 0 && (
               <IconBtn icon="jiggle"
                 label={dragJiggle
                   ? 'Drag-jiggle enabled — click to restore canvas pan'
                   : 'Tap jiggle is active — click to enable drag-jiggle'}
-                active={dragJiggle} onClick={() => setDragJiggle((v) => !v)} />
+                active={dragJiggle} onClick={() => setDragJiggle(!dragJiggle)} />
             )}
             {layerItems.length > 0 && (
               <IconBtn icon="layers"
                 label={showLayers ? 'Close the layer panel' : 'Advanced: turn skin layers on and off'}
-                active={showLayers} onClick={() => setShowLayers((v) => !v)} />
+                active={showLayers} onClick={() => setShowLayers(!showLayers)} />
             )}
             {layout?.world?.bg && (
               <IconBtn icon="bg" label={showBg ? 'Hide background' : 'Show background'}
-                active={showBg} onClick={() => setShowBg((v) => !v)} />
+                active={showBg} onClick={() => setShowBg(!showBg)} />
             )}
           </VStack>
         </HStack>
+
+        {/* Subtitle. Sits above the bottom-right control stack rather than
+            beside it, so a long line wraps instead of colliding with it. */}
+        {subtitle && (
+          <Box position="absolute" bottom={{ base: 12, md: 2 }} left={2}
+            right={{ base: 2, md: '90px' }} bg="blackAlpha.800" borderRadius="md"
+            px={3} py={2} pointerEvents="none" zIndex={2}>
+            <Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.100"
+              whiteSpace="pre-wrap">
+              {subtitle.text}
+            </Text>
+          </Box>
+        )}
 
         {unavailable && (
           <Center position="absolute" inset={0} px={4}>

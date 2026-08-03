@@ -39,8 +39,63 @@ export type FadeAction = {
   wait: boolean;
 };
 
-export type SceneAction = AnimationAction | ResetAnimationAction | WaitAction | WaitAnimationAction
-  | CameraAction | FadeAction;
+// One spoken line: its subtitle and, when the line was recorded, the voice clip
+// id to play with it. Naninovel binds the clip outside the script, so a line
+// with no `voice` is one the game never voiced — the subtitle still stands.
+export type SayAction = {
+  type: 'say';
+  text: string;
+  /** Naninovel actor id of the speaker (`mane_swimsuit`), not a display name. */
+  author?: string;
+  voice?: string;
+};
+
+export type BgmAction = {
+  type: 'bgm';
+  clip: string;
+  intro?: string;
+  fade: number;
+};
+
+export type StopBgmAction = { type: 'stop-bgm'; fade: number };
+
+// `alt` marks an action authored inside one `@PickRandom` group as
+// `"<pick>:<group>"`. The game plays a single group, so `resolveAlternatives`
+// drops the rest before anything is scheduled.
+export type SceneAction = (AnimationAction | ResetAnimationAction | WaitAction
+  | WaitAnimationAction | CameraAction | FadeAction | SayAction | BgmAction
+  | StopBgmAction) & { alt?: string };
+
+/**
+ * Drop every `@PickRandom` alternative but one per pick, which is what the game
+ * does. The tag is `"<pick>:<group>"`; untagged actions always survive. Without
+ * this a single touch runs all the alternatives in sequence, so the character
+ * speaks two different lines back to back.
+ */
+export function resolveAlternatives(
+  actions: SceneAction[], pick: (n: number) => number = (n) => Math.floor(Math.random() * n),
+): SceneAction[] {
+  const groups = new Map<string, Set<string>>();
+  for (const action of actions) {
+    const { alt } = action;
+    if (!alt) continue;
+    const [id, group] = alt.split(':');
+    if (!groups.has(id)) groups.set(id, new Set());
+    groups.get(id)!.add(group);
+  }
+  if (!groups.size) return actions;
+  const chosen = new Map<string, string>();
+  for (const [id, seen] of Array.from(groups)) {
+    const ordered = Array.from(seen).sort((a, b) => Number(a) - Number(b));
+    chosen.set(id, ordered[Math.min(pick(ordered.length), ordered.length - 1)]);
+  }
+  return actions.filter((action) => {
+    const { alt } = action;
+    if (!alt) return true;
+    const [id, group] = alt.split(':');
+    return chosen.get(id) === group;
+  });
+}
 
 export type SceneBeat = { label: string; actions: SceneAction[] };
 export type LinearScene = { script: string; entry: SceneAction[]; beats: SceneBeat[] };
@@ -78,6 +133,28 @@ export type SceneTimelineData = {
 export function isLinearScene(scene: LinearScene | DesirePresentation | undefined):
 scene is LinearScene {
   return !!scene && 'beats' in scene;
+}
+
+/**
+ * Every voice clip a rig's timelines can speak. The lines sit in entries, beats,
+ * trigger bodies and subroutines, so this walks the structure rather than
+ * naming the places; the result is what the viewer prefetches so a line is
+ * audible the moment its animation starts.
+ */
+export function sceneVoiceIds(rig: SceneTimelineRig | null | undefined): string[] {
+  const out = new Set<string>();
+  const walk = (node: unknown) => {
+    if (Array.isArray(node)) {
+      for (const item of node) walk(item);
+      return;
+    }
+    if (!node || typeof node !== 'object') return;
+    const action = node as Partial<SayAction>;
+    if (action.type === 'say' && action.voice) out.add(action.voice);
+    for (const value of Object.values(node)) walk(value);
+  };
+  walk(rig);
+  return Array.from(out);
 }
 
 export type CameraState = { offsetX: number; offsetY: number; zoom: number };

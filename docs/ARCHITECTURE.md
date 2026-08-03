@@ -20,10 +20,10 @@ runtime.
 
 Next.js pages router with `output: 'export'`, Chakra UI v2 for the shell and
 overlay chrome, PixiJS v8 + `@esotericsoftware/spine-pixi-v8` for rendering.
-The viewer owns its playback state locally. The only shared state is a small
-Zustand store holding the two list pages' filters, because Next.js unmounts a
-page on every route change and a search must survive the trip to a character
-page and back. See [WEB.md](WEB.md) for the module map.
+Rig playback progress stays local to the viewer. Two small in-memory Zustand
+stores hold list filters and cross-rig viewer controls, because Next.js remounts
+the keyed viewer when a skin changes and unmounts pages on route changes. See
+[WEB.md](WEB.md) for the module map.
 
 Three routes, all reaching the same viewer: the skin gallery (`/`, by asset
 key), the character list (`/characters`, by the game's own filter axes) and a
@@ -44,6 +44,15 @@ Two data paths, both plain `fetch`:
   builds `blob:` URLs from that map. Brotli is used because no browser exposes a
   native decoder for it (`DecompressionStream` does not support brotli), and one
   solid archive per skin means one request instead of one per file.
+- **Audio** — character voice, authored scene animation sounds and BGM are
+  Opus clips fetched on demand through independent viewer controls.
+
+The archives and audio clips are far larger than a repository should hold,
+so they are served from a CDN. `lib/cdn.ts` resolves each one through
+`public/data/cdn.json`, a manifest naming which bucket repository holds which
+asset; the site's own `public/skins/` copy stays as a fallback candidate, so a
+missing or stale manifest degrades to a slower load rather than a broken
+gallery. See the pipeline section below.
 
 ## Rendering
 
@@ -100,8 +109,31 @@ runtime sidecars. `data/desire_interactions.json` carries the desire-view state
 machine; `data/scene_timelines.json` carries complete pre-label/pre-dialogue
 entries and linear view/story visual beats, including authored animation loop
 flags, track expressions, hold/reset state, waits, reset destinations, fades,
-and camera cues. The viewer fetches both without changing archive contents. See
+camera cues, and BGM start/stop actions. The viewer fetches both without changing archive contents. See
 [WEB.md](WEB.md) for the runtime model.
+
+A third step publishes **character voice and the subtitles that go with it**.
+The game voices two different surfaces two different ways, and both are decoded
+into `public/data/voice.json`: the scenario scripts bind a spoken line to a clip
+through a resource map rather than naming it inline, while the home-screen and
+UI lines come from a master-data interaction table whose text is a small inline
+script carrying the clip, the staging and the subtitle together. Clips are
+re-encoded to Opus, because the shipped audio is in a container form no browser
+plays. Only Japanese voice exists in the game.
+
+The same audio stage extracts the scenario bundle's per-animation view sounds
+and the BGM clips referenced by those timelines, publishes their clip/animation
+map as `scene_audio.json`, and stages the binaries in a separate CDN family.
+
+## Asset hosting
+
+The packed archives, voice, and scene audio are hundreds of megabytes, so they are
+not served from the site. A local step assigns each one to a **numbered bucket
+repository** and stages a push-ready tree; the app resolves URLs through
+`cdn.json`. Two rules keep those URLs cacheable: an asset is never moved to a
+different bucket once assigned, and a bucket that gains content is republished
+under a new tag rather than overwriting one already cached. New content fills
+the current bucket until it reaches a size budget, then opens the next.
 
 ## Deployment
 

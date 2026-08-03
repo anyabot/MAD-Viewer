@@ -14,7 +14,7 @@ import type { StoreKey } from './types';
 type IconName =
   | 'play' | 'pause' | 'reload' | 'save' | 'loop' | 'bg' | 'face' | 'body' | 'store'
   | 'auto' | 'touch' | 'home' | 'layers' | 'chevron' | 'close' | 'jiggle' | 'overlay'
-  | 'camera';
+  | 'camera' | 'voice' | 'music';
 
 const ICON_PATHS: Record<IconName, string> = {
   play: 'M8 5v14l11-7z',
@@ -39,6 +39,9 @@ const ICON_PATHS: Record<IconName, string> = {
   camera: 'M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4zm3 4a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
   chevron: 'M7 10l5 5 5-5z',
   close: 'M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3z',
+  // speaker with waves: character voice playback
+  voice: 'M4 9v6h4l5 4V5L8 9zm12.5 3a4 4 0 0 0-2.3-3.6v7.2A4 4 0 0 0 16.5 12zM14.2 3.2v2.1A6.8 6.8 0 0 1 14.2 18.7v2.1a8.8 8.8 0 0 0 0-17.6z',
+  music: 'M12 3v10.6A4 4 0 1 0 14 17V8h5V3zM8 19a2 2 0 1 1 2-2 2 2 0 0 1-2 2z',
   // ripple: a jiggle-only region
   jiggle: 'M3 13c1.5-2 3-2 4.5 0S10.5 15 12 13s3-2 4.5 0 3 2 4.5 0v2.5c-1.5 2-3 2-4.5 0s-3-2-4.5 0-3 2-4.5 0-3-2-4.5 0zm0-6c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0 3 2 4.5 0v2.5c-1.5 2-3 2-4.5 0s-3-2-4.5 0-3 2-4.5 0-3-2-4.5 0z',
 };

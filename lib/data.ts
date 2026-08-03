@@ -4,6 +4,8 @@
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
 import type { InteractionData } from '@/components/skinViewer/interactions';
 import type { SceneTimelineData } from '@/components/skinViewer/scenes';
+import type { VoiceIndex } from '@/lib/voice';
+import type { SceneAudioIndex } from '@/lib/sceneAudio';
 
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const DATA_BASE = (
@@ -234,6 +236,17 @@ export function loadDesireInteractions(): Promise<InteractionData> {
 
 export function loadSceneTimelines(): Promise<SceneTimelineData> {
   return fetchJson<SceneTimelineData>('scene_timelines.json');
+}
+
+// Which voice clip each scenario line and each lobby interaction plays, and
+// where the clip is. Optional like the tables above: without it the viewer
+// still shows subtitles that the scene timeline carries inline.
+export function loadVoice(): Promise<VoiceIndex> {
+  return fetchJson<VoiceIndex>('voice.json');
+}
+
+export function loadSceneAudio(): Promise<SceneAudioIndex> {
+  return fetchJson<SceneAudioIndex>('scene_audio.json');
 }
 
 // Character names and the type-label tables from the master data. Codes that

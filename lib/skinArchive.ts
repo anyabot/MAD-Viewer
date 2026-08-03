@@ -3,11 +3,11 @@
 // decompresses it client-side, and untars it into a Map<filename, Blob> the
 // viewer builds blob: URLs from. Brotli has no reliable native browser decoder
 // (DecompressionStream does not support it), so a small WASM decoder is used.
+//
+// Where the archive lives is `lib/cdn.ts`'s problem: normally a jsDelivr bucket
+// repository, and the site's own `public/skins/` when no manifest is published.
 
-const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-const ARCHIVE_BASE = (
-  process.env.NEXT_PUBLIC_SKIN_ARCHIVE_BASE ?? `${PUBLIC_BASE}/skins`
-).replace(/\/$/, '');
+import { skinArchiveUrls } from '@/lib/cdn';
 
 // The decompressed view is pinned to a plain ArrayBuffer: `Uint8Array` defaults
 // to `ArrayBufferLike`, which includes SharedArrayBuffer and is therefore not a
@@ -51,13 +51,21 @@ export function loadSkinArchive(skin: string): Promise<Map<string, Blob>> {
   let p = archiveCache.get(skin);
   if (!p) {
     p = (async () => {
-      const [res, brotli] = await Promise.all([
-        fetch(`${ARCHIVE_BASE}/${skin}.tar.br`),
-        loadBrotli(),
-      ]);
-      if (!res.ok) throw new Error(`failed to fetch ${skin}.tar.br: ${res.status}`);
-      const compressed = new Uint8Array(await res.arrayBuffer());
-      return untar(brotli.decompress(compressed));
+      const [urls, brotli] = await Promise.all([skinArchiveUrls(skin), loadBrotli()]);
+      let failure = '';
+      for (const url of urls) {
+        let res: Response;
+        try {
+          res = await fetch(url);
+        } catch (e) {
+          failure = String(e);
+          continue;
+        }
+        if (!res.ok) { failure = `${res.status}`; continue; }
+        const compressed = new Uint8Array(await res.arrayBuffer());
+        return untar(brotli.decompress(compressed));
+      }
+      throw new Error(`failed to fetch ${skin}.tar.br: ${failure || 'no source'}`);
     })();
     archiveCache.set(skin, p);
   }

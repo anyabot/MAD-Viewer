@@ -13,6 +13,7 @@
 | `lib/characters.ts` | shared reads over the master data: type rows, skin icons, grouping |
 | `lib/icons.ts` | icon URLs and manifest-backed existence checks |
 | `lib/filterStore.ts` | Zustand store keeping list filters across route changes |
+| `lib/viewerStore.ts` | Zustand store keeping viewer controls across skin changes |
 | `components/skinViewer.tsx` | the viewer (PixiJS + Spine, playback state machine) |
 | `components/skinViewer/types.ts` | `Layout`/`StoreKey`/`PlayMode` types, archive naming, playback helpers, pan/zoom, pixel-scale math |
 | `components/skinViewer/chrome.tsx` | overlay UI: icon buttons, dropdowns, store strip, layer panel |
@@ -20,6 +21,9 @@
 | `components/skinViewer/jiggle.ts` | home-screen spring physics for the rig's `_jigglers` |
 | `lib/data.ts` | runtime JSON fetch + `SkinListEntry`, `CharacterEntry` |
 | `lib/skinArchive.ts` | archive fetch → brotli → untar → `Map<name, Blob>` |
+| `lib/cdn.ts` | resolves archive, voice, and scene-audio URLs through the bucket manifest |
+| `lib/voice.ts` | voice index types, single-line playback, lobby line lookup |
+| `lib/sceneAudio.ts` | authored animation-sound and BGM playback |
 
 ## Routes
 
@@ -265,15 +269,56 @@ up. Do not reintroduce name matching here; region names follow at least three
 different conventions and at least one region's name contradicts its actual
 behaviour.
 
+### Voice, scene audio, and subtitles
+
+A control in the top-right stack turns character voice on; it appears only for
+characters that have a recorded clip. Voice is **on by default**, and that
+preference stays on when a different skin mounts. Only one line is ever audible — a new line
+replaces the one playing, which is what an interrupted reaction does in game.
+
+Subtitles are independent of it. A line whose clip the game never recorded still
+shows its text, and muting stops the audio without hiding the transcript.
+
+Two sources feed it, matching how the game itself is authored:
+
+- **Scene lines** ride in the timeline as a `say` action, so they play at the
+  authored moment inside the trigger or beat that owns them rather than being
+  timed by the viewer. Each carries its subtitle and, when the line was
+  recorded, its clip.
+- **Lobby lines** come from `voice.json`'s interaction table, selected by
+  character, rig family, home variation, action (`Enter`, `Touch`, `Onlook`),
+  and the standing breast selector, then cycled in table order. Their authored
+  body/face staging is applied too. A row without `@ani` deliberately keeps the
+  idle body instead of falling through to the standing rig's generic active
+  clip.
+
+Scene audio has its own enabled-by-default control. Script `PlayBgm`/`StopBgm`
+actions play their authored intro, loop and fade, while a scene animation plays
+the matching view sound exported for that rig. This channel is independent of
+character dialogue.
+
+`resolveAlternatives` in `scenes.ts` drops all but one `@PickRandom` group
+before anything is scheduled. Without it a single touch runs every alternative
+in sequence and the character says two different lines back to back.
+
 ### Animation tracks
 
-Three: **0 body, 1 face, 2 overlay**. A clip that keys only a small share of the
-rig's bones animates a prop or an effect, not the character — played on track 0
-it would leave every bone it does not key frozen in the previous clip's pose.
-Those clips are classified per rig from the parsed skeleton (group names cannot
-decide it — several namespaces hold both kinds) and layered on track 2 instead,
-with their own dropdown. Only a track-0 one-shot completing counts as a return
-to idle.
+**A clip's track is declared by its own name**, and driven playback reads it
+there: split the name at `/`, take the segment after it, and the digits before
+that segment's first `_` are the track index; no numeric prefix means track 0.
+So `10_A1` is track 10, `30_overlay/30_twinkle` track 30,
+`10_reaction/15_T1` track 15, `20_blend/21_right` track 21, `01_smile` track 1,
+and `basic/idle_close` track 0. This is the game's own rule, not a convention
+read off the art, and it is what makes a clip layer over or under another.
+
+A rig's **body track** is therefore whatever its current idle clip declares —
+10 for a desire scene, 0 for a lobby or standing rig — and only a one-shot
+finishing on that track counts as a return to idle. Where the scenario script
+carries an explicit `Track:` parameter, that value wins instead.
+
+Free play keeps its own three hand-picked lanes (0 body, 1 face, 2 overlay) for
+the dropdowns, and switching modes clears every track so an outgoing mode's
+clips cannot keep playing over the incoming one.
 
 Manual body selection resets the skeleton to its setup pose first, so a clip
 shows what it actually contains rather than a blend with whatever preceded it.
@@ -422,3 +467,7 @@ wheel/pinch zoom and drag-pan use the same transform.
 - The viewer holds PixiJS/Spine objects in refs, never in state, and both
   libraries are dynamically imported inside the build effect so they stay out of
   the initial bundle.
+- Cross-rig controls live in the in-memory Zustand viewer store: playback,
+  background, voice/scene audio, touch boxes, layers, jiggle input and game-flow
+  following survive the keyed viewer remount used when a skin changes. Rig
+  animation selections and script progress remain local and reset per skin.
