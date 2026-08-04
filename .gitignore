@@ -3,6 +3,8 @@
 /out
 /build
 /docs
+/public/skins
+/public/skin_test
 *.tsbuildinfo
 next-env.d.ts
 
