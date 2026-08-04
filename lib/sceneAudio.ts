@@ -23,9 +23,86 @@ export function setSceneSoundRate(value: number) {
   if (effect) effect.playbackRate = effectRate;
 }
 
-async function url(index: SceneAudioIndex | null, clip: string): Promise<string | null> {
+// Downloaded clips, held as object URLs so a sound starts on the same tick as
+// the animation that stages it and a music cue starts on the beat the script
+// asks for, rather than a CDN round trip later.
+const downloading = new Map<string, Promise<string>>();
+const ready = new Map<string, string>();
+const order: string[] = [];
+// Enough for several rigs' animation sounds plus their music.
+const MAX_CACHED = 64;
+
+/** Clips currently loaded into a player; revoking these would cut playback. */
+function inUse(): Set<string> {
+  const live = new Set<string>();
+  for (const [clip, objectUrl] of Array.from(ready)) {
+    if (effect?.src === objectUrl || music?.src === objectUrl) live.add(clip);
+  }
+  return live;
+}
+
+function evict() {
+  if (order.length <= MAX_CACHED) return;
+  const live = inUse();
+  let index = 0;
+  while (order.length > MAX_CACHED && index < order.length) {
+    const clip = order[index];
+    if (live.has(clip)) {
+      index += 1;
+      continue;
+    }
+    order.splice(index, 1);
+    const objectUrl = ready.get(clip);
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    ready.delete(clip);
+    downloading.delete(clip);
+  }
+}
+
+function download(index: SceneAudioIndex | null, clip: string): Promise<string> | null {
   const folder = index?.clips[clip];
-  return folder ? sceneAudioClipUrl(folder, clip) : null;
+  if (!folder) return null;
+  const started = downloading.get(clip);
+  if (started) return started;
+  const pending = (async () => {
+    const res = await fetch(await sceneAudioClipUrl(folder, clip));
+    if (!res.ok) throw new Error(`scene audio ${clip}: ${res.status}`);
+    const objectUrl = URL.createObjectURL(await res.blob());
+    ready.set(clip, objectUrl);
+    order.push(clip);
+    evict();
+    return objectUrl;
+  })();
+  // A failed fetch must not be sticky: the next play retries it.
+  pending.catch(() => downloading.delete(clip));
+  downloading.set(clip, pending);
+  return pending;
+}
+
+/**
+ * Start downloading clips before anything asks to play them. Call it as soon as
+ * the set of sounds a rig can make is known — its animation sounds and every
+ * BGM its timelines name — so no cue is silent while its clip is still in
+ * flight. Unknown clip ids are ignored.
+ */
+export function prefetchSceneAudio(
+  index: SceneAudioIndex | null, clips: Iterable<string>,
+): void {
+  for (const clip of clips) {
+    if (ready.has(clip)) continue;
+    download(index, clip)?.catch(() => { /* prefetch is best effort */ });
+  }
+}
+
+// A cached clip resolves without awaiting anything; one that is not cached yet
+// streams from its URL rather than waiting for a full download.
+async function url(index: SceneAudioIndex | null, clip: string): Promise<string | null> {
+  const cached = ready.get(clip);
+  if (cached) return cached;
+  const folder = index?.clips[clip];
+  if (!folder) return null;
+  download(index, clip)?.catch(() => { /* streamed instead */ });
+  return sceneAudioClipUrl(folder, clip);
 }
 
 export async function playSceneSound(
@@ -44,8 +121,7 @@ export async function playSceneSound(
 
 export function stopSceneSound() {
   if (!effect) return;
-  effect.pause();
-  effect.src = '';
+  detach(effect);
 }
 
 export async function playBgm(
@@ -72,17 +148,24 @@ export async function playBgm(
   if (fade > 0) fadeVolume(player, 1, fade, mine);
 }
 
+// Detaching the source clears the element without pointing it at a URL. An
+// empty `src` string resolves against the document, so the browser tries to
+// load the page as media and logs a failure.
+function detach(player: HTMLAudioElement) {
+  player.pause();
+  player.removeAttribute('src');
+  player.load();
+}
+
 export function stopBgm(fade = 0) {
   const mine = ++musicToken;
   if (!music) return;
   if (fade <= 0) {
-    music.pause();
-    music.src = '';
+    detach(music);
     return;
   }
   fadeVolume(music, 0, fade, mine, () => {
-    music?.pause();
-    if (music) music.src = '';
+    if (music) detach(music);
   });
 }
 

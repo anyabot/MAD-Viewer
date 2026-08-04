@@ -107,7 +107,10 @@ export function stopVoice() {
   token += 1;
   if (!audio) return;
   audio.pause();
-  audio.src = '';
+  // An empty `src` resolves against the document, so the browser tries to
+  // load the page as media; detaching the attribute clears it cleanly.
+  audio.removeAttribute('src');
+  audio.load();
 }
 
 /**

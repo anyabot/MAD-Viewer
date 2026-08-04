@@ -1,6 +1,6 @@
 {
-  "generated": "2026-08-02T14:15:26Z",
-  "source": "55bad43934f06f21f363dd639c0c1c1a.bundle",
+  "generated": "2026-08-04T09:32:09Z",
+  "source": "scenario",
   "rigs": {
     "ds_ch0009": {
       "entry": "10_basic/10_enter",
@@ -106,7 +106,8 @@
               "clips": [
                 {
                   "when": null,
-                  "clip": "30_overlay/30_glass_on"
+                  "clip": "30_overlay/30_glass_on",
+                  "track": 31
                 }
               ],
               "goto": "phase2"
@@ -127,15 +128,9 @@
           "triggers": [
             {
               "box": "bd_elisiaglass",
-              "clip": "30_overlay/30_twinkle",
+              "clip": "10_reaction/10_H1",
               "when": "t1!",
               "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_H1"
-                }
-              ],
               "goto": "phase3"
             }
           ],
@@ -171,7 +166,8 @@
               "clips": [
                 {
                   "when": null,
-                  "clip": "30_overlay/30_glass_H"
+                  "clip": "30_overlay/30_glass_H",
+                  "track": 31
                 }
               ],
               "goto": "phase1"
@@ -240,7 +236,9 @@
               "clips": [
                 {
                   "when": null,
-                  "clip": "10_reaction/10_B1_3"
+                  "clip": "10_reaction/10_B1_3",
+                  "track": 35,
+                  "hold": true
                 }
               ],
               "goto": "phase2"
@@ -260,71 +258,39 @@
           "idle": "10_basic/10_idle2",
           "onlook": {
             "clip": "10_basic/10_wait2",
-            "delay": 10.0,
-            "branches": [
-              {
-                "when": null,
-                "set": {},
-                "clips": [
-                  {
-                    "when": null,
-                    "clip": "30_overlay/30_twinkle"
-                  }
-                ]
-              }
-            ]
+            "delay": 10.0
           },
           "triggers": [
             {
               "box": "bd_A1",
               "clip": "10_reaction/10_A1_1",
               "when": null,
-              "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "30_overlay/30_twinkle"
-                }
-              ]
+              "set": {}
             },
             {
               "box": "bd_A2",
               "clip": "10_reaction/10_A2_1",
               "when": null,
-              "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "30_overlay/30_twinkle"
-                }
-              ]
+              "set": {}
             },
             {
               "box": "bd_A3",
               "clip": "10_reaction/10_A3_1",
               "when": null,
-              "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "30_overlay/30_twinkle"
-                }
-              ]
+              "set": {}
             },
             {
               "box": "bd_B2",
-              "clip": "30_overlay/30_twinkle",
+              "clip": "10_reaction/drag",
               "when": null,
               "set": {},
               "drag": true,
+              "track": 37,
               "clips": [
                 {
                   "when": null,
-                  "clip": "10_reaction/drag"
-                },
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_H1"
+                  "clip": "10_reaction/10_H1",
+                  "track": 50
                 }
               ],
               "goto": "after"
@@ -370,13 +336,7 @@
           ],
           "gate": null,
           "reset": "setting",
-          "enter": "10_reaction/10_H1",
-          "extras": [
-            {
-              "when": null,
-              "clip": "10_reaction/drag"
-            }
-          ],
+          "enter": null,
           "labels": [
             "after"
           ]
@@ -395,15 +355,18 @@
           "clips": [
             {
               "when": "x=1",
-              "clip": "10_reaction/10_T1"
+              "clip": "10_reaction/10_T1",
+              "track": 31
             },
             {
               "when": "x=2",
-              "clip": "10_reaction/10_T2"
+              "clip": "10_reaction/10_T2",
+              "track": 32
             },
             {
               "when": "x=3",
-              "clip": "10_reaction/10_T3"
+              "clip": "10_reaction/10_T3",
+              "track": 33
             }
           ]
         }
@@ -481,88 +444,46 @@
           "triggers": [
             {
               "box": "bd_leg_thigh_L",
-              "clip": "20_emotion/20_phase01",
+              "clip": "10_reaction/10_A1",
               "when": null,
-              "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_A1"
-                }
-              ]
+              "set": {}
             },
             {
               "box": "bd_leg_thigh_R",
-              "clip": "20_emotion/20_phase01",
+              "clip": "10_reaction/10_A1",
               "when": null,
-              "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_A1"
-                }
-              ]
+              "set": {}
             },
             {
               "box": "bd_hand_L",
-              "clip": "20_emotion/20_phase01",
+              "clip": "10_reaction/10_A2",
               "when": null,
-              "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_A2"
-                }
-              ]
+              "set": {}
             },
             {
               "box": "bd_hand_R",
-              "clip": "20_emotion/20_phase01",
+              "clip": "10_reaction/10_A2",
               "when": null,
-              "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_A2"
-                }
-              ]
+              "set": {}
             },
             {
               "box": "bd_face",
-              "clip": "20_emotion/20_phase01",
+              "clip": "10_reaction/10_A4",
               "when": null,
-              "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_A4"
-                }
-              ]
+              "set": {}
             },
             {
               "box": "bd_breast_L",
-              "clip": "20_emotion/20_phase01",
+              "clip": "10_reaction/10_A3",
               "when": null,
               "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_A3"
-                }
-              ],
               "goto": "phase3_가슴_노출_마무리"
             },
             {
               "box": "bd_breast_R",
-              "clip": "20_emotion/20_phase01",
+              "clip": "10_reaction/10_A3",
               "when": null,
               "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_A3"
-                }
-              ],
               "goto": "phase3_가슴_노출_마무리"
             }
           ],
@@ -695,14 +616,11 @@
           "triggers": [
             {
               "box": "bd_bg",
-              "clip": "20_emotion/20_phase03",
+              "clip": "10_reaction/10_B1",
               "when": null,
               "set": {},
+              "hold": true,
               "clips": [
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_B1"
-                },
                 {
                   "when": null,
                   "clip": "10_reaction/10_B2"
@@ -875,12 +793,6 @@
               "clip": "10_T1",
               "when": "tail!",
               "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "30_overlay/30_twinkle"
-                }
-              ],
               "goto": "phase1"
             }
           ],
@@ -1115,11 +1027,8 @@
               "clips": [
                 {
                   "when": null,
-                  "clip": "30_overlay/30_twinkle"
-                },
-                {
-                  "when": null,
-                  "clip": "10_reaction/10_T2_2"
+                  "clip": "10_reaction/10_T2_2",
+                  "track": 11
                 },
                 {
                   "when": null,
@@ -1131,7 +1040,7 @@
           ],
           "gate": null,
           "reset": null,
-          "enter": "30_overlay/30_twinkle",
+          "enter": null,
           "labels": [
             "phase2"
           ]
@@ -1169,11 +1078,13 @@
                 "clips": [
                   {
                     "when": null,
-                    "clip": "30_overlay/30_twinkle"
+                    "clip": "30_overlay/30_twinkle",
+                    "track": 14
                   },
                   {
                     "when": null,
-                    "clip": "10_basic/10_idle_slime"
+                    "clip": "10_basic/10_idle_slime",
+                    "track": 12
                   }
                 ]
               }
@@ -1198,7 +1109,8 @@
               "when": "shoulder==false",
               "set": {
                 "shoulder": "true"
-              }
+              },
+              "track": 13
             },
             {
               "box": "bd_A3",
@@ -1214,10 +1126,12 @@
                 "slime1": "true",
                 "slime11": "true"
               },
+              "track": 11,
               "clips": [
                 {
                   "when": null,
-                  "clip": "10_reaction/10_T1"
+                  "clip": "10_reaction/10_T1",
+                  "track": 11
                 }
               ]
             },
@@ -1229,10 +1143,12 @@
                 "slime2": "true",
                 "slime22": "true"
               },
+              "track": 11,
               "clips": [
                 {
                   "when": null,
-                  "clip": "10_reaction/10_T2"
+                  "clip": "10_reaction/10_T2",
+                  "track": 11
                 }
               ]
             },
@@ -1244,10 +1160,12 @@
                 "slime3": "true",
                 "slime33": "true"
               },
+              "track": 11,
               "clips": [
                 {
                   "when": null,
-                  "clip": "10_reaction/10_T3"
+                  "clip": "10_reaction/10_T3",
+                  "track": 11
                 }
               ]
             },
@@ -1262,7 +1180,8 @@
               "clips": [
                 {
                   "when": null,
-                  "clip": "10_reaction/10_T4"
+                  "clip": "10_reaction/10_T4",
+                  "track": 11
                 },
                 {
                   "when": null,
@@ -1270,7 +1189,8 @@
                 },
                 {
                   "when": null,
-                  "clip": "10_basic/10_idle_slime"
+                  "clip": "10_basic/10_idle_slime",
+                  "track": 12
                 }
               ]
             },
@@ -1279,14 +1199,22 @@
               "clip": "10_reaction/10_T5",
               "when": null,
               "set": {},
+              "track": 11,
               "clips": [
                 {
                   "when": null,
-                  "clip": "10_reaction/10_T5"
+                  "clip": "10_reaction/10_T5",
+                  "track": 11
                 },
                 {
                   "when": null,
-                  "clip": "10_basic/10_idle_slime"
+                  "clip": "10_basic/10_idle_slime",
+                  "track": 11
+                },
+                {
+                  "when": null,
+                  "clip": "10_basic/10_idle_slime",
+                  "track": 12
                 }
               ]
             },
@@ -1314,7 +1242,8 @@
               "clips": [
                 {
                   "when": null,
-                  "clip": "10_basic/10_idle_slime"
+                  "clip": "10_basic/10_idle_slime",
+                  "track": 12
                 }
               ]
             }
@@ -1649,7 +1578,8 @@
               "clips": [
                 {
                   "when": null,
-                  "clip": "30_overlay/30_T1"
+                  "clip": "30_overlay/30_T1",
+                  "hold": true
                 }
               ]
             },
@@ -1669,7 +1599,9 @@
               "clips": [
                 {
                   "when": "x2=0",
-                  "clip": "30_overlay/30_T2"
+                  "clip": "30_overlay/30_T2",
+                  "track": 31,
+                  "hold": true
                 }
               ]
             },
@@ -1879,12 +1811,6 @@
               "clip": "10_reaction/10_H1",
               "when": null,
               "set": {},
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "30_overlay/30_twinkle"
-                }
-              ],
               "goto": "phase1"
             }
           ],
@@ -2173,12 +2099,6 @@
               "set": {
                 "h3": "false"
               },
-              "clips": [
-                {
-                  "when": null,
-                  "clip": "30_overlay/30_U2"
-                }
-              ],
               "goto": "phase1"
             }
           ],

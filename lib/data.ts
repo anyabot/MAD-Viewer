@@ -2,7 +2,6 @@
 // time: the generated files are fetched by the SPA, so refreshing data does
 // not require a rebuild.
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
-import type { InteractionData } from '@/components/skinViewer/interactions';
 import type { SceneTimelineData } from '@/components/skinViewer/scenes';
 import type { VoiceIndex } from '@/lib/voice';
 import type { SceneAudioIndex } from '@/lib/sceneAudio';
@@ -225,14 +224,9 @@ export function loadSkinList(): Promise<SkinList> {
   return fetchJson<SkinList>('skin_list.json');
 }
 
-// Per-rig desire-scene interaction tables decoded from Naninovel scenarios.
-// Only desire rigs have one;
-// the viewer falls back to its phase/region playback when this is unavailable,
-// so a missing file must not break the gallery.
-export function loadDesireInteractions(): Promise<InteractionData> {
-  return fetchJson<InteractionData>('desire_interactions.json');
-}
-
+// The ordered command list of each rig's scenario scripts — the program the
+// scene interpreter runs. A missing file leaves the viewer on its phase/region
+// playback rather than breaking the gallery.
 export function loadSceneTimelines(): Promise<SceneTimelineData> {
   return fetchJson<SceneTimelineData>('scene_timelines.json');
 }

@@ -271,6 +271,15 @@ export function overlayAnimations(
   return out;
 }
 
+/**
+ * The room layer a `bg_on` / `bg_off` event addresses, as the client names it:
+ * the bone `bg` for payload index 0, otherwise `bg_<index>`. The event's string
+ * payload is not the selector — `bg_off` is not even handed it.
+ */
+export function backgroundBoneName(index: number): string {
+  return index === 0 ? 'bg' : `bg_${index}`;
+}
+
 const STATE_TOKENS = ['close', 'open', 'after'];
 
 // The interaction state a phase represents, read from its idle clip name.
@@ -376,13 +385,16 @@ export function zoomAt(root: any, factor: number, x: number, y: number): void {
   root.scale.set(scale);
 }
 
-// `zoomEnabled` gates wheel and pinch only. Following the game's camera owns
-// the scale, so manual zoom is refused while that is on; panning still works.
+// `zoomEnabled` gates wheel and pinch; `panEnabled` gates the one-finger drag.
+// Following the game's camera owns the framing, so both are refused while that
+// is on. A claimed drag is not a pan and still runs — Lobby jiggle depends on
+// it, and no rig that offers jiggle carries a `cam` bone anyway.
 export function attachPanZoom(
   canvas: HTMLCanvasElement,
   root: any,
   claimDrag?: (x: number, y: number) => DragClaim,
   zoomEnabled?: () => boolean,
+  panEnabled?: () => boolean,
 ): () => void {
   const pointers = new Map<number, { x: number; y: number }>();
   let dragging = false;
@@ -449,6 +461,7 @@ export function attachPanZoom(
       claimed.move(e.clientX - rect.left, e.clientY - rect.top);
       return;
     }
+    if (panEnabled && !panEnabled()) return;
     const dx = e.clientX - dragStart.x;
     const dy = e.clientY - dragStart.y;
     if (!dragging && Math.hypot(dx, dy) < 4) return;

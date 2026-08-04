@@ -17,6 +17,15 @@ const DATA_BASE = (
     : `${PUBLIC_BASE}/data`
 ).replace(/\/$/, '');
 
+/**
+ * Serve the assets this checkout already holds instead of the published ones.
+ *
+ * Only the skin archives qualify: `public/skins/` is a complete local copy, so
+ * a freshly packed export is picked up without republishing anything. Voice and
+ * scene audio have no in-repo copy, so they keep resolving through the manifest.
+ */
+const LOCAL_ASSETS = process.env.NEXT_PUBLIC_ASSET_SOURCE === 'local';
+
 /** Explicit override; set it and the manifest is not consulted at all. */
 const ARCHIVE_OVERRIDE = process.env.NEXT_PUBLIC_SKIN_ARCHIVE_BASE?.replace(/\/$/, '');
 const VOICE_OVERRIDE = process.env.NEXT_PUBLIC_VOICE_BASE?.replace(/\/$/, '');
@@ -76,8 +85,14 @@ function bucketBase(
 export async function skinArchiveUrls(name: string): Promise<string[]> {
   const file = `${name}.tar.br`;
   if (ARCHIVE_OVERRIDE) return [`${ARCHIVE_OVERRIDE}/${file}`];
-  const base = bucketBase(await loadCdnManifest(), 'skins', name);
   const local = `${PUBLIC_BASE}/skins/${file}`;
+  // Local mode leads with this checkout's own archive so an export under test
+  // is what loads; the bucket stays behind it, for a skin not packed here.
+  if (LOCAL_ASSETS) {
+    const base = bucketBase(await loadCdnManifest(), 'skins', name);
+    return base ? [local, `${base}/${file}`] : [local];
+  }
+  const base = bucketBase(await loadCdnManifest(), 'skins', name);
   return base ? [`${base}/${file}`, local] : [local];
 }
 
