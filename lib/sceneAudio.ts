@@ -12,6 +12,16 @@ export type SceneAudioIndex = {
 let effect: HTMLAudioElement | null = null;
 let music: HTMLAudioElement | null = null;
 let musicToken = 0;
+// An animation sound is staged by the clip it belongs to, so it follows the
+// viewer's speed control. Music keeps its own tempo — only the authored
+// cross-fade, which belongs to the script, runs on the scaled clock.
+let effectRate = 1;
+
+/** Follow the viewer's speed control, including for the sound already playing. */
+export function setSceneSoundRate(value: number) {
+  effectRate = Math.max(value, 0.01);
+  if (effect) effect.playbackRate = effectRate;
+}
 
 async function url(index: SceneAudioIndex | null, clip: string): Promise<string | null> {
   const folder = index?.clips[clip];
@@ -28,6 +38,7 @@ export async function playSceneSound(
   if (!effect) effect = new Audio();
   effect.src = source;
   effect.currentTime = 0;
+  effect.playbackRate = effectRate;
   try { await effect.play(); } catch { /* autoplay refusal or unavailable CDN */ }
 }
 
@@ -81,9 +92,10 @@ function fadeVolume(
 ) {
   const from = player.volume;
   const started = performance.now();
+  const span = (seconds * 1000) / effectRate;
   const tick = () => {
     if (token !== musicToken) return;
-    const t = Math.min(1, (performance.now() - started) / (seconds * 1000));
+    const t = span > 0 ? Math.min(1, (performance.now() - started) / span) : 1;
     player.volume = from + (target - from) * t;
     if (t < 1) requestAnimationFrame(tick);
     else done?.();

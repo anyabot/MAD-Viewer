@@ -1,12 +1,10 @@
 // Resolves the large binary assets — packed skins, voice, and scene audio —
 // to their jsDelivr URLs.
 //
-// They are too big to ship inside the site: jsDelivr serves files out of public
-// GitHub repositories with a 20 MB per-file limit, so the pipeline splits them
-// across numbered bucket repositories (`MAD-assets-1`, `MAD-voice-1`,
-// `MAD-audio-1`, ...) and
-// publishes `cdn.json` describing which bucket holds what. Assignment is
-// sticky, so a URL this module builds stays valid across regenerations.
+// They are too big to ship inside the site, so the pipeline splits them across
+// numbered bucket repositories and publishes `cdn.json` describing which bucket
+// holds what. Assignment is sticky, so a URL this module builds stays valid
+// across regenerations.
 //
 // The manifest is optional. Without it — local development, or a checkout with
 // the archives still under `public/` — every lookup falls back to the site's
@@ -72,9 +70,8 @@ function bucketBase(
  * Where to look for one packed skin archive, in order.
  *
  * The site's own copy is kept as the last candidate even when a bucket is
- * named, so publishing the manifest before the bucket repositories exist —
- * or a jsDelivr outage — degrades to a slower load rather than a broken
- * gallery.
+ * named, so an unreachable bucket degrades to a slower load rather than a
+ * broken gallery.
  */
 export async function skinArchiveUrls(name: string): Promise<string[]> {
   const file = `${name}.tar.br`;

@@ -50,10 +50,9 @@ export type CharacterEntry = {
   unreleased?: boolean;
   name: string;
   /**
-   * English display name. Playable characters only — `Lang_Data.eng` is
-   * finished for that roster and holds Japanese (and, from NP0506 on, one
-   * repeated wrong value) for every NPC. Six defective playable rows are
-   * corrected in the generator.
+   * English display name. Playable characters only — the game's English column
+   * is finished for that roster and holds Japanese for every NPC. Defective
+   * playable rows are corrected in the generator.
    */
   nameEn: string | null;
   desc: string;
@@ -177,7 +176,7 @@ export type SkillEntry = {
 //
 // `name` is the game's Korean label; `en` is the generated English one. Only
 // the element rows have finished English in the game's own text table, so the
-// rest is a fixed table in the generator — see `docs/WEB.md`.
+// rest is a fixed table in the generator.
 export type TypeEntry = {
   name: string;
   en?: string | null;
@@ -266,6 +265,28 @@ export type IconManifest = {
 
 export function loadIcons(): Promise<IconManifest> {
   return fetchJson<IconManifest>('icons.json');
+}
+
+// The lobby emote glyphs published under `public/emoticons/`. A line's
+// `[@emo <name>]` names one; the manifest exists so an unknown name renders
+// nothing instead of a broken image.
+//
+// Placement is authored, not guessed. Each emote declares one of the game's
+// three slots and its height in the emitter's particle units, and each standing
+// rig declares which bone that slot hangs off and the x/y offset from it. The
+// particle-to-skeleton size factor is the one part the game applies in code.
+export type EmoticonSlot = 'Mouth' | 'OutsideHead' | 'InsideHead';
+
+export type EmoticonManifest = {
+  emotes: Record<string, { slot: EmoticonSlot; height: number; aspect: number }>;
+  actors: Record<string, {
+    bones: Record<EmoticonSlot, string>;
+    offsets: Record<EmoticonSlot, [number, number]>;
+  }>;
+};
+
+export function loadEmoticons(): Promise<EmoticonManifest> {
+  return fetchJson<EmoticonManifest>('emoticons.json');
 }
 
 export const KIND_LABEL: Record<SkinKind, string> = {

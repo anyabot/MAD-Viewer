@@ -203,11 +203,9 @@ export function evaluate(expr: string, vars: Vars): number | null {
   const expression = (minPrec: number): number | null => {
     let left = primary();
     if (left === null) return null;
-    // Postfix `!` asserts truthiness (`x1!` = "x1 is set"). Derived, not
-    // guessed: `ds_ch0022` alternates `10_A1_1`/`10_A1_2` on one box using an
-    // unconditional trigger that sets `x1=true` and an `x1!` trigger that sets
-    // it back to false. Reading `!` as negation would latch on the second clip
-    // immediately and the first would never play.
+    // Postfix `!` asserts truthiness (`x1!` = "x1 is set"), not negation: the
+    // scripts pair an unconditional trigger that sets `x1=true` with an `x1!`
+    // trigger that sets it back, to alternate two clips on one box.
     while (tokens[pos]?.kind === 'op' && tokens[pos].text === '!') {
       pos++;
       left = left !== 0 ? 1 : 0;
@@ -284,11 +282,8 @@ export function fireTouch(
   const armed = section.triggers.filter((t) => t.box === box && holds(t.when, vars));
   // Most specific wins: a conditional trigger outranks an unconditional one on
   // the same box. Several rigs register a catch-all first and a conditional
-  // variant after it (`ds_ch0022`'s `10_A1_1` / `10_A1_2` alternation,
-  // `ds_ch0057`'s repeat counter); taking the first match would make the
-  // variant unreachable and freeze those rigs on step one. Where a rig's
-  // conditions are mutually exclusive — `ds_ch0068`, `ds_ch0035` — this
-  // changes nothing.
+  // variant after it, so taking the first match would make the variant
+  // unreachable.
   const trigger = armed.find((t) => t.when) ?? armed[0];
   if (!trigger) return null;
   let next = vars;

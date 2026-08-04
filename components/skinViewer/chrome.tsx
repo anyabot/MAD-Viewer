@@ -1,12 +1,15 @@
-// Shared overlay chrome for the skin viewer: dropdowns, icon buttons, the
-// store-variant strip and the advanced layer panel.
+// Shared chrome for the skin viewer's control sidebar: labelled control rows,
+// segmented controls, dropdowns, the store-variant strip and the layer panel.
 //
-// The LO viewer this was ported from used PNG icons extracted from the game's
-// UI atlas. No MAD UI art is extracted, so these are inline SVG paths instead —
-// self-contained, themeable, and no asset pipeline dependency.
-import { useMemo, useState } from 'react';
+// Every control carries a visible name. A fixed set of choices is a segmented
+// control or an on/off row; only an open-ended, rig-dependent list (animations,
+// script beats, sections) is a dropdown.
+//
+// The icons are inline SVG paths rather than extracted art — self-contained,
+// themeable, and with no asset-pipeline dependency.
+import { Children, useMemo, useState, type ReactNode } from 'react';
 import {
-  Box, Divider, Flex, HStack, Input, Menu, MenuButton, MenuItem, MenuList,
+  Box, Divider, Flex, HStack, Image, Input, Menu, MenuButton, MenuItem, MenuList,
   Portal, Spinner, Text, Tooltip, VStack,
 } from '@chakra-ui/react';
 import type { StoreKey } from './types';
@@ -14,7 +17,7 @@ import type { StoreKey } from './types';
 type IconName =
   | 'play' | 'pause' | 'reload' | 'save' | 'loop' | 'bg' | 'face' | 'body' | 'store'
   | 'auto' | 'touch' | 'home' | 'layers' | 'chevron' | 'close' | 'jiggle' | 'overlay'
-  | 'camera' | 'voice' | 'music';
+  | 'camera' | 'voice' | 'music' | 'speed' | 'aspect' | 'theater' | 'pan';
 
 const ICON_PATHS: Record<IconName, string> = {
   play: 'M8 5v14l11-7z',
@@ -42,8 +45,16 @@ const ICON_PATHS: Record<IconName, string> = {
   // speaker with waves: character voice playback
   voice: 'M4 9v6h4l5 4V5L8 9zm12.5 3a4 4 0 0 0-2.3-3.6v7.2A4 4 0 0 0 16.5 12zM14.2 3.2v2.1A6.8 6.8 0 0 1 14.2 18.7v2.1a8.8 8.8 0 0 0 0-17.6z',
   music: 'M12 3v10.6A4 4 0 1 0 14 17V8h5V3zM8 19a2 2 0 1 1 2-2 2 2 0 0 1-2 2z',
+  // stopwatch: the playback-rate control
+  speed: 'M15 1H9v2h6zm-4 12h2V8h-2zm8.03-6.61 1.42-1.42a10 10 0 0 0-1.4-1.4l-1.43 1.42A8 8 0 1 0 20 13a7.95 7.95 0 0 0-.97-3.83zM12 20a6 6 0 1 1 6-6 6 6 0 0 1-6 6z',
   // ripple: a jiggle-only region
   jiggle: 'M3 13c1.5-2 3-2 4.5 0S10.5 15 12 13s3-2 4.5 0 3 2 4.5 0v2.5c-1.5 2-3 2-4.5 0s-3-2-4.5 0-3 2-4.5 0-3-2-4.5 0zm0-6c1.5-2 3-2 4.5 0s3 2 4.5 0 3-2 4.5 0 3 2 4.5 0v2.5c-1.5 2-3 2-4.5 0s-3-2-4.5 0-3 2-4.5 0-3-2-4.5 0z',
+  // empty frame: the canvas shape the rig is composed into
+  aspect: 'M2 7h20v10H2V7zM4 15h16V9H4v6z',
+  // outward corners: the canvas alone, filling the window
+  theater: 'M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM4 14h2v4h4v2H4v-6zm14 0h2v6h-6v-2h4v-4z',
+  // four-way arrows: dragging moves the canvas
+  pan: 'M12 2l3 3h-2v5h5V8l3 3-3 3v-2h-5v5h2l-3 3-3-3h2v-5H6v2l-3-3 3-3v2h5V5H9z',
 };
 
 function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
@@ -55,63 +66,128 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
   );
 }
 
-// Icon button used in the canvas overlay panels. `active=false` dims it and
-// draws a slash, matching the LO viewer's on/off affordance.
-export function IconBtn({ icon, label, active, onClick, placement = 'left' }: {
-  icon: IconName; label: string; active: boolean;
-  onClick: () => void; placement?: 'left' | 'top';
-}) {
+// --- labelled control primitives -------------------------------------------
+
+// A named group of rows. Renders nothing when the current playback context
+// supplies no rows, so a heading never stands alone over an empty section.
+export function ControlSection({ title, children }: { title: string; children: ReactNode }) {
+  const rows = Children.toArray(children);
+  if (!rows.length) return null;
   return (
-    <Tooltip label={label} fontSize="xs" hasArrow placement={placement}>
-      <Box as="button" onClick={onClick} position="relative" boxSize="34px"
-        display="flex" alignItems="center" justifyContent="center" color="gray.100"
-        borderRadius="md" opacity={active ? 1 : 0.45} transition="opacity 0.15s"
-        _hover={{ opacity: active ? 0.85 : 0.7 }} aria-label={label}>
-        <Icon name={icon} />
-        {!active && (
-          <Box position="absolute" inset={0} display="flex" alignItems="center"
-            justifyContent="center" pointerEvents="none">
-            <Box w="78%" h="2px" bg="red.400" transform="rotate(-45deg)" borderRadius="full" />
+    <Box>
+      <Text fontSize="0.6rem" fontWeight="bold" textTransform="uppercase" letterSpacing="wide"
+        color="gray.500" px={1} pb={1}>{title}</Text>
+      <VStack align="stretch" spacing={1}>{rows}</VStack>
+    </Box>
+  );
+}
+
+// One control and its visible name. The label column is text only — the glyph,
+// where there is one, sits inside the control itself.
+export function ControlRow({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <Flex align="center" gap={2} minH="30px">
+      <Text fontSize="xs" color="gray.400" w="82px" flexShrink={0} noOfLines={1}>{label}</Text>
+      <Flex flex="1" minW={0} justify="flex-end">{children}</Flex>
+    </Flex>
+  );
+}
+
+export type SegmentOption<T extends string> = {
+  value: T;
+  label: string;
+  /** Longer wording for the hover tooltip; the visible label stays short. */
+  title?: string;
+  icon?: IconName;
+  /** Renders the art at `public/<src>`, in place of the icon. */
+  image?: string;
+};
+
+// A fixed, small set of mutually exclusive choices, shown side by side. Used
+// for anything with a known option list — camera mode, drag mode, the store.
+export function SegmentedControl<T extends string>({
+  value, options, onChange, ariaLabel,
+}: {
+  value: T;
+  options: SegmentOption<T>[];
+  onChange: (value: T) => void;
+  ariaLabel?: string;
+}) {
+  if (!options.length) return null;
+  return (
+    <HStack role="group" aria-label={ariaLabel} bg="blackAlpha.600" borderRadius="md"
+      p="2px" spacing="2px" w="100%" border="1px solid" borderColor="whiteAlpha.200">
+      {options.map((option) => {
+        const isActive = option.value === value;
+        const button = (
+          <Box as="button" flex="1" minW={0} px={1.5} py={1} borderRadius="sm"
+            display="flex" alignItems="center" justifyContent="center" gap={1}
+            fontSize="xs" fontWeight={isActive ? 'bold' : 'normal'} lineHeight="1.4"
+            bg={isActive ? 'yellow.400' : 'transparent'}
+            color={isActive ? 'gray.900' : 'gray.400'}
+            _hover={{ bg: isActive ? 'yellow.300' : 'whiteAlpha.200' }}
+            transition="background 0.15s" aria-label={option.label} aria-pressed={isActive}
+            onClick={() => { if (!isActive) onChange(option.value); }}>
+            {option.image
+              ? <StoreArt src={option.image} alt="" />
+              : option.icon ? <Icon name={option.icon} size={14} /> : null}
+            <Text as="span" noOfLines={1}>{option.label}</Text>
           </Box>
-        )}
-      </Box>
-    </Tooltip>
+        );
+        return option.title
+          ? (
+            <Tooltip key={option.value} label={option.title} fontSize="xs" hasArrow
+              placement="top" openDelay={400}>
+              {button}
+            </Tooltip>
+          )
+          : <Box key={option.value} flex="1" minW={0} display="flex">{button}</Box>;
+      })}
+    </HStack>
   );
 }
 
-// Plain (never-slashed) overlay icon button.
-function OverlayIconButton({ icon, label, onClick, dim = false, busy = false }: {
-  icon: IconName; label: string; onClick: () => void; dim?: boolean; busy?: boolean;
+// A named on/off control. The state is spelled out rather than implied by a
+// dimmed icon, which reads as "unavailable" as often as "off".
+export function ToggleRow({ label, value, onChange }: {
+  label: string; value: boolean; onChange: (value: boolean) => void;
 }) {
   return (
-    <Tooltip label={label} fontSize="xs" hasArrow placement="left">
-      <Box as="button" onClick={onClick} boxSize="34px" display="flex" alignItems="center"
-        justifyContent="center" color="gray.100" borderRadius="md"
-        opacity={dim ? 0.45 : 0.85} _hover={{ opacity: 1 }} transition="opacity 0.15s"
-        aria-label={label}>
-        {busy ? <Spinner size="sm" /> : <Icon name={icon} />}
+    <ControlRow label={label}>
+      <Box as="button" onClick={() => onChange(!value)} aria-label={label} aria-pressed={value}
+        display="flex" alignItems="center" gap={2} px={2} py={1} borderRadius="md" w="72px"
+        justifyContent="space-between" border="1px solid" transition="all 0.15s"
+        bg={value ? 'whiteAlpha.100' : 'blackAlpha.600'}
+        borderColor={value ? 'yellow.400' : 'whiteAlpha.200'}
+        color={value ? 'yellow.300' : 'gray.500'}
+        _hover={{ borderColor: value ? 'yellow.300' : 'whiteAlpha.400' }}>
+        <Box boxSize="8px" borderRadius="full" flexShrink={0} border="1px solid"
+          borderColor={value ? 'yellow.300' : 'whiteAlpha.500'}
+          bg={value ? 'yellow.300' : 'transparent'} />
+        <Text fontSize="0.65rem" fontWeight="bold" letterSpacing="wide">
+          {value ? 'ON' : 'OFF'}
+        </Text>
       </Box>
-    </Tooltip>
+    </ControlRow>
   );
 }
 
-export function PlayPauseButton({ playing, onToggle }: { playing: boolean; onToggle: () => void }) {
-  return <OverlayIconButton icon={playing ? 'pause' : 'play'}
-    label={playing ? 'Pause' : 'Play'} onClick={onToggle} />;
-}
-
-export function ReloadButton({ onClick }: { onClick: () => void }) {
-  return <OverlayIconButton icon="reload" label="Reload skin" onClick={onClick} />;
-}
-
-export function SaveButton({ onClick, saving = false }: { onClick: () => void; saving?: boolean }) {
-  return <OverlayIconButton icon="save" label="Save visible area as PNG"
-    onClick={onClick} busy={saving} />;
-}
-
-export function LoopButton({ loop, onToggle }: { loop: boolean; onToggle: () => void }) {
-  return <IconBtn icon="loop" label={loop ? 'Looping' : 'Play once'}
-    active={loop} onClick={onToggle} />;
+// A one-shot action: icon plus its name, never a bare glyph.
+export function ActionButton({ icon, label, onClick, disabled = false, busy = false }: {
+  icon: IconName; label: string; onClick: () => void;
+  disabled?: boolean; busy?: boolean;
+}) {
+  return (
+    <Box as="button" onClick={() => { if (!disabled) onClick(); }} aria-label={label}
+      disabled={disabled} display="flex" alignItems="center" gap={1.5} px={2} py={1.5}
+      borderRadius="md" bg="blackAlpha.600" border="1px solid" borderColor="whiteAlpha.200"
+      color={disabled ? 'gray.600' : 'gray.100'} opacity={disabled ? 0.5 : 1}
+      cursor={disabled ? 'not-allowed' : 'pointer'} transition="all 0.15s"
+      _hover={disabled ? {} : { bg: 'blackAlpha.800', borderColor: 'whiteAlpha.400' }}>
+      {busy ? <Spinner size="xs" /> : <Icon name={icon} size={14} />}
+      <Text fontSize="xs" whiteSpace="nowrap">{label}</Text>
+    </Box>
+  );
 }
 
 export type SelectOption = {
@@ -235,10 +311,9 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
   const shown = groups.reduce((n, [, list]) => n + list.length, 0);
 
   return (
-    <Box position="absolute" top={2} right="52px" bottom={2}
-      w={{ base: 'calc(100% - 64px)', md: '300px' }} bg="blackAlpha.800" backdropFilter="blur(4px)"
-      borderRadius="md" border="1px solid" borderColor="whiteAlpha.300"
-      display="flex" flexDirection="column" overflow="hidden" zIndex={5}>
+    <Box bg="blackAlpha.400" borderRadius="md" border="1px solid" borderColor="whiteAlpha.300"
+      display="flex" flexDirection="column" overflow="hidden"
+      maxH={{ base: '50vh', lg: '340px' }} minH="180px">
       <Flex align="center" gap={2} px={2} py={1.5} borderBottom="1px solid"
         borderColor="whiteAlpha.200">
         <Icon name="layers" size={16} />
@@ -316,12 +391,20 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
   );
 }
 
-// Store-build labels. OneStore ships the uncensored art; Google Play ships the
-// censored edit. Only affection art differs.
-export const STORE_META: Record<StoreKey, { short: string; label: string }> = {
-  onestore: { short: 'ONE', label: 'ONE store — uncensored' },
-  google: { short: 'GP', label: 'Google Play — censored' },
+// Store-build labels and each platform's own storefront art. OneStore ships the
+// uncensored art; Google Play ships the censored edit. Only affection art
+// differs.
+export const STORE_META: Record<StoreKey, { short: string; label: string; image: string }> = {
+  onestore: { short: 'ONE', label: 'ONE store — uncensored', image: 'stores/onestore.png' },
+  google: { short: 'GP', label: 'Google Play — censored', image: 'stores/google.png' },
 };
+
+// Static assets are served under the export's base path.
+const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
+function StoreArt({ src, alt }: { src: string; alt: string }) {
+  return <Image src={`${PUBLIC_BASE}/${src}`} alt={alt} boxSize="14px" flexShrink={0} />;
+}
 
 // Store-variant radio strip, shown only for skins whose art actually diverges.
 export function StoreStrip({ stores, active, onSelect }: {
@@ -329,22 +412,12 @@ export function StoreStrip({ stores, active, onSelect }: {
 }) {
   if (stores.length < 2) return null;
   return (
-    <HStack bg="blackAlpha.600" borderRadius="md" px={1} py={1} spacing={1}>
-      {stores.map((k) => {
-        const isActive = active === k;
-        return (
-          <Tooltip key={k} label={STORE_META[k].label} fontSize="xs" hasArrow placement="top">
-            <Box as="button" onClick={() => { if (!isActive) onSelect(k); }}
-              px={2} py={1} borderRadius="sm" fontSize="xs" fontWeight="bold" lineHeight="1"
-              bg={isActive ? 'yellow.400' : 'whiteAlpha.200'}
-              color={isActive ? 'gray.900' : 'gray.300'}
-              _hover={{ bg: isActive ? 'yellow.300' : 'whiteAlpha.300' }}
-              transition="background 0.15s" aria-pressed={isActive}>
-              {STORE_META[k].short}
-            </Box>
-          </Tooltip>
-        );
-      })}
-    </HStack>
+    <SegmentedControl<StoreKey> value={active} onChange={onSelect} ariaLabel="Store build"
+      options={stores.map((k) => ({
+        value: k,
+        label: STORE_META[k].short,
+        title: STORE_META[k].label,
+        image: STORE_META[k].image,
+      }))} />
   );
 }

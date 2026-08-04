@@ -1,10 +1,9 @@
 // Types + pure helpers for the PixiJS Spine skin viewer.
-import type { Jiggler } from './jiggle';
 //
-// Every MAD skin is a Spine 4.2 rig (binary `.skel` + `.atlas` + atlas page
-// PNGs), so — unlike the LO viewer this was ported from — there is no second
-// "fixed"/"skinned" rendering path. `kind` distinguishes the two prefab
-// families, which differ in staging (background, phases), not in engine.
+// Every skin is a Spine 4.2 rig (binary `.skel` + `.atlas` + atlas page PNGs),
+// so there is one rendering path; `kind` distinguishes the prefab families,
+// which differ in staging (background, phases), not in engine.
+import type { Jiggler } from './jiggle';
 
 // The four rig families, matching the prefab's `_actorType`
 // (0 standing, 1 desire, 2 affection, 3 pleasure). Structurally identical —
@@ -44,8 +43,8 @@ export type ActorMeta = {
   volumeProfiles?: number[];
 };
 
-// What touching a region does, resolved at export time by
-// `export_spine.py::resolve_touch` — the viewer never infers this from names.
+// What touching a region does, resolved at export time — the viewer never
+// infers this from names.
 //   physics   springs a `gyro_*` bone; plays no animation
 //   reaction  plays a dedicated `reaction/<state>_<CODE>` clip
 //   region    plays a region clip (`00_breast_touch`)
@@ -229,24 +228,14 @@ export function storySequences(
 }
 
 /**
- * The Spine track a clip plays on, exactly as the client derives it.
+ * The Spine track a clip plays on, exactly as the client derives it: the clip
+ * name is split at `/`, and the digits before the first `_` of the segment after
+ * it are the track index. A segment with no numeric prefix is track 0. A
+ * scenario command's explicit `Track:` parameter overrides this.
  *
- * `CV.Naninovel.DesireAndAffectionController.GetAnimationData` splits the clip
- * name at `/`, takes the segment after it, and parses the digits before that
- * segment's first `_` as the track index; a segment with no numeric prefix is
- * track 0. `SetAnimationEntry` then uses that value unless the scenario command
- * carries an explicit `Track:` parameter, which overrides it:
- *
- *     lsr  x8, x23, #0x20     ; Track: parameter value
- *     ldr  w9, [sp, #8]       ; track derived from the name
- *     tst  x23, #0xff         ; Track: supplied?
- *     csel w23, w9, w8, eq    ; no -> the derived one
- *
- * So the numeric prefixes in this content's clip names are not decoration:
- * `10_A1` is track 10, `30_overlay/30_twinkle` track 30, `10_reaction/15_T1`
- * track 15, `20_blend/21_right` track 21, `00_loop` track 0, `01_smile` track 1,
- * and `basic/idle_close` track 0. A clip layers over or under another purely by
- * that number.
+ * The numeric prefixes are therefore not decoration — `10_A1` is track 10,
+ * `30_overlay/30_twinkle` track 30, `basic/idle_close` track 0 — and a clip
+ * layers over or under another purely by that number.
  */
 export function spineTrack(name: string): number {
   const segment = name.slice(name.indexOf('/') + 1);
@@ -256,9 +245,8 @@ export function spineTrack(name: string): number {
   return /^\d+$/.test(prefix) ? Number(prefix) : 0;
 }
 
-// Threshold on the share of the rig's busiest clip that a clip keys. Derived
-// from a roster-wide histogram. Used only to group the Free play dropdowns;
-// playback tracks come from `spineTrack`.
+// Threshold on the share of the rig's busiest clip that a clip keys. Used only
+// to group the Free play dropdowns; playback tracks come from `spineTrack`.
 export const OVERLAY_BONE_SHARE = 0.28;
 
 /** Clips too partial to own track 0, measured from the parsed skeleton. */
@@ -300,17 +288,11 @@ export function regionLiveInPhase(region: TouchRegion, phase: ActorPhase): boole
   return ps === null || ps === region.state;
 }
 
-// --- repeated-touch escalation ---------------------------------------------
-//
-// Superseded. The viewer used to guess this: a `ESCALATION_TOUCHES` threshold
-// and a name match on the genital jiggle bone, both invented because no source
-// existed. The real rule is now extracted from each desire rig's Naninovel
-// scenario script and replayed by `interactions.ts`. Nothing here infers
-// escalation; a rig without a script table simply plays its resolved clips.
-
 // What a touch on a resolved region does. The effect and clip were decided by
 // the exporter from the prefab's jiggler list and the rig's clip inventory —
-// nothing is inferred from names here.
+// nothing is inferred from names here. Repeated-touch escalation is not
+// modelled here either: it comes from the rig's scenario script, replayed by
+// `interactions.ts`.
 export function effectOf(
   region: TouchRegion | null,
   phase: ActorPhase,
@@ -394,10 +376,13 @@ export function zoomAt(root: any, factor: number, x: number, y: number): void {
   root.scale.set(scale);
 }
 
+// `zoomEnabled` gates wheel and pinch only. Following the game's camera owns
+// the scale, so manual zoom is refused while that is on; panning still works.
 export function attachPanZoom(
   canvas: HTMLCanvasElement,
   root: any,
   claimDrag?: (x: number, y: number) => DragClaim,
+  zoomEnabled?: () => boolean,
 ): () => void {
   const pointers = new Map<number, { x: number; y: number }>();
   let dragging = false;
@@ -415,6 +400,7 @@ export function attachPanZoom(
     claimId = -1;
   };
   const applyScale = (factor: number, mx: number, my: number) => {
+    if (zoomEnabled && !zoomEnabled()) return;
     zoomAt(root, factor, mx, my);
   };
   const onWheel = (e: WheelEvent) => {

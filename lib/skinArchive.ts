@@ -24,8 +24,8 @@ function loadBrotli(): Promise<{ decompress: (data: Bytes) => Bytes }> {
 
 // Minimal USTAR reader: fixed 512-byte header records (name @0 len100, size as
 // octal ASCII @124 len12), content padded to the next 512-byte boundary, two
-// all-zero blocks terminate the archive. We control both producer (Python
-// stdlib tarfile) and consumer, so this covers everything pack.py emits.
+// all-zero blocks terminate the archive. Both producer and consumer are ours,
+// so this covers every archive the pipeline emits.
 function untar(bytes: Bytes): Map<string, Blob> {
   const files = new Map<string, Blob>();
   const BLOCK = 512;

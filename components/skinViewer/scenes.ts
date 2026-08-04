@@ -217,6 +217,42 @@ export function scriptCameraTransform(base: CameraBase, state: CameraState): {
   return { x, y, scale: base.scale * factor };
 }
 
+/**
+ * The rig's own camera pose for the current frame, read off the `cam` bone and
+ * expressed relative to that bone's setup pose. `x`/`y` are in the container
+ * space the transform is applied in, `scale` is the bone's world scale and
+ * `rotation` its world rotation in radians.
+ */
+export type RigCameraState = { x: number; y: number; scale: number; rotation: number };
+
+export type RigCameraTransform = {
+  pivotX: number; pivotY: number; x: number; y: number; scale: number; rotation: number;
+};
+
+/**
+ * View transform for a desire/affection rig's `cam` bone.
+ *
+ * The bone is the camera, so the view is the inverse of its pose: a bone scale
+ * of `s` shows `s` times as much of the scene, which is a `1/s` zoom, and the
+ * bone's position is the point held at the centre of the view. A bone left at
+ * its setup pose returns the identity transform, which is what keeps a rig
+ * without a `cam` bone — and every clip that does not animate one — framed
+ * exactly as the plain fit frames it.
+ */
+export function rigCameraTransform(
+  centre: { x: number; y: number },
+  cam: RigCameraState,
+): RigCameraTransform {
+  return {
+    pivotX: centre.x + cam.x,
+    pivotY: centre.y + cam.y,
+    x: centre.x,
+    y: centre.y,
+    scale: 1 / Math.max(0.01, cam.scale),
+    rotation: -cam.rotation,
+  };
+}
+
 export function presentationDuration(actions: SceneAction[], animationRemaining = 0): number {
   let elapsed = 0;
   for (const action of actions) {

@@ -40,11 +40,18 @@ export type VoiceInteraction = {
 
 let audio: HTMLAudioElement | null = null;
 let token = 0;
+// The viewer's playback rate. A line is staged by the animation it rides on,
+// so speeding the rig up without speeding the voice up desynchronises them.
+let rate = 1;
+
+/** Follow the viewer's speed control, including for the line already playing. */
+export function setVoiceRate(value: number) {
+  rate = value;
+  if (audio) audio.playbackRate = value;
+}
 
 // Downloaded clips, held as object URLs so playback starts on the same tick as
-// the animation it belongs to. Without this the clip is only requested when the
-// line fires, and a cold CDN round trip lands the voice seconds after the
-// reaction it was meant to accompany has finished.
+// the animation it belongs to, rather than a CDN round trip later.
 const downloading = new Map<string, Promise<string>>();
 const ready = new Map<string, string>();
 const order: string[] = [];
@@ -108,9 +115,8 @@ export function stopVoice() {
  * started, not when it ends; a rejected `play()` (autoplay policy, missing
  * clip) is swallowed so a silent failure never breaks the scene it belongs to.
  *
- * A prefetched clip plays without awaiting anything. One that is not cached yet
- * still streams from its URL rather than waiting for a full download, so a line
- * the prefetch missed is no later than it used to be.
+ * A prefetched clip plays without awaiting anything; one that is not cached yet
+ * streams from its URL rather than waiting for a full download.
  */
 export async function playVoice(index: VoiceIndex | null, voiceId: string): Promise<void> {
   const folder = index?.clips[voiceId];
@@ -123,6 +129,7 @@ export async function playVoice(index: VoiceIndex | null, voiceId: string): Prom
   if (!audio) audio = new Audio();
   audio.src = src;
   audio.currentTime = 0;
+  audio.playbackRate = rate;
   try {
     await audio.play();
   } catch {

@@ -54,8 +54,3 @@ project site and uses no prefix for a `<user>.github.io` root site.
   differs; the gallery marks those `DIFF`.
 - Mouse wheel zooms, drag pans, and the download button saves the current view as
   a PNG at the art's native resolution.
-
-## Docs
-
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — system overview and data flow
-- [docs/WEB.md](docs/WEB.md) — module map and frontend conventions
