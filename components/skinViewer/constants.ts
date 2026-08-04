@@ -50,14 +50,16 @@ export const SPEED_OPTIONS = [0.5, 0.75, 1, 1.5, 2, 3, 4].map((rate) => ({
   hint: rate === 1 ? 'authored speed' : undefined,
 }));
 
-// How long an emote stays up when its line carries no `[@wait]`. Its slot,
-// offset and relative size are authored; the duration is not.
-export const EMOTE_SECONDS = 1.5;
-export const EMOTE_FADE_SECONDS = 0.2;
+// A lobby touch takes over the reaction it lands on. Only one arriving less
+// than this many seconds after the current line was staged is refused, so a
+// double-tap does not restage the same line twice.
+export const TOUCH_INTERRUPT_DELAY = 0.5;
 
-// Particle units -> skeleton units for an emote glyph. Only the ratios between
-// emotes are authored (`startSize`); this sets the absolute size, chosen so a
-// glyph reads as a bubble over the head rather than across the body.
+// Particle units -> skeleton units for an emote. Only the ratios inside a
+// prefab are authored (`startSize`, the emitter offsets, the shape radii); the
+// factor that turns them into skeleton units is applied by the game's spawn
+// code, so this sets the absolute size — chosen so an emote reads as a bubble
+// over the head rather than across the body.
 export const EMOTE_UNIT_SCALE = 4;
 
 // Largest render-texture dimension a saved PNG may use — the minimum

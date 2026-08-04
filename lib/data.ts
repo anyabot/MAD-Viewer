@@ -261,19 +261,143 @@ export function loadIcons(): Promise<IconManifest> {
   return fetchJson<IconManifest>('icons.json');
 }
 
-// The lobby emote glyphs published under `public/emoticons/`. A line's
+// The lobby emotes published under `public/emoticons/`. A line's
 // `[@emo <name>]` names one; the manifest exists so an unknown name renders
 // nothing instead of a broken image.
 //
+// An emote is a Unity particle prefab, so what the manifest carries is its
+// emitters — every module they enable, with the curves and gradients intact —
+// plus the untrimmed texture sheets under `public/emoticons/fx/`. The still in
+// `public/emoticons/<name>.webp` is the primary emitter's entry tile and is
+// what `height`/`aspect` describe.
+//
 // Placement is authored, not guessed. Each emote declares one of the game's
-// three slots and its height in the emitter's particle units, and each standing
-// rig declares which bone that slot hangs off and the x/y offset from it. The
-// particle-to-skeleton size factor is the one part the game applies in code.
+// three slots, and each standing rig declares which bone that slot hangs off
+// and the x/y offset from it. The particle-to-skeleton size factor is the one
+// part the game applies in code.
 export type EmoticonSlot = 'Mouth' | 'OutsideHead' | 'InsideHead';
 
+/**
+ * An `AnimationCurve` key: time, value, in slope, out slope. A null slope is
+ * Unity's infinite tangent — the segment steps instead of interpolating, which
+ * is what a flipbook's frame curve is made of.
+ */
+export type EmoteCurveKey = [number, number, number | null, number | null];
+
+/**
+ * A `MinMaxCurve`. `m` is Unity's mode — 0 constant, 1 curve, 2 random between
+ * two curves, 3 random between two constants — `s` the constant, the curve
+ * multiplier or the maximum, and `n` the minimum of mode 3.
+ */
+export type EmoteCurve = {
+  m: number;
+  s: number;
+  n?: number;
+  k?: EmoteCurveKey[];
+  j?: EmoteCurveKey[];
+};
+
+/** A `Gradient`: colour keys `[t, r, g, b]`, alpha keys `[t, a]`, `f` 1 = step. */
+export type EmoteGradientStops = {
+  c: [number, number, number, number][];
+  a: [number, number][];
+  f: number;
+};
+
+/**
+ * A `MinMaxGradient`. `m` is Unity's mode — 0 colour, 1 gradient, 2 two
+ * colours, 3 two gradients, 4 a random point of one gradient.
+ */
+export type EmoteGradient = {
+  m: number;
+  c?: [number, number, number, number];
+  d?: [number, number, number, number];
+  g?: EmoteGradientStops;
+  h?: EmoteGradientStops;
+};
+
+export type EmoteBurst = {
+  t: number;
+  n: EmoteCurve;
+  cycles: number;
+  interval: number;
+  probability: number;
+};
+
+export type EmoteEmitter = {
+  name: string;
+  /** Key into `EmoticonManifest.sheets`, and the file under `emoticons/fx/`. */
+  sheet: string;
+  tiles: [number, number];
+  /** The emitter's own transform, relative to the prefab root. */
+  position: [number, number];
+  angle: number;
+  scale: [number, number];
+  duration: number;
+  looping: boolean;
+  startDelay: EmoteCurve;
+  simulationSpeed: number;
+  maxParticles: number;
+  /** `ParticleSystemRenderer.renderAlignment`. */
+  align: number;
+  pivot: [number, number];
+  start: {
+    lifetime: EmoteCurve;
+    speed: EmoteCurve;
+    size: EmoteCurve;
+    sizeY?: EmoteCurve;
+    rotation: EmoteCurve;
+    color: EmoteGradient;
+    gravity: EmoteCurve;
+    flipRotation: number;
+  };
+  emission?: { rate: EmoteCurve; bursts: EmoteBurst[] };
+  shape?: {
+    /** `ParticleSystemShapeType`: 10 circle, 12 single-sided edge. */
+    type: number;
+    radius: number;
+    radiusThickness: number;
+    arc: number;
+    /** 0 random, 3 spread across one burst. */
+    arcMode: number;
+    rotation: number;
+    position: [number, number];
+    randomDirection: number;
+    alignToDirection: boolean;
+  };
+  size?: { curve: EmoteCurve; y: EmoteCurve; separateAxes: boolean };
+  color?: { gradient: EmoteGradient };
+  velocity?: {
+    x: EmoteCurve;
+    y: EmoteCurve;
+    radial: EmoteCurve;
+    speedModifier: EmoteCurve;
+    inWorldSpace: boolean;
+  };
+  spin?: { curve: EmoteCurve };
+  force?: { x: EmoteCurve; y: EmoteCurve; randomizePerFrame: boolean };
+  uv?: {
+    frame: EmoteCurve;
+    startFrame: EmoteCurve;
+    cycles: number;
+    animationType: number;
+    rowMode: number;
+    rowIndex: number;
+  };
+};
+
 export type EmoticonManifest = {
-  emotes: Record<string, { slot: EmoticonSlot; height: number; aspect: number }>;
+  /** Sheet name -> pixel size, for the tile grid. */
+  sheets: Record<string, [number, number]>;
+  emotes: Record<string, {
+    slot: EmoticonSlot;
+    height: number;
+    aspect: number;
+    emitters: EmoteEmitter[];
+  }>;
   actors: Record<string, {
+    /** The rig's baked look direction. A right-facing actor mirrors its emote. */
+    look: 'Center' | 'Left' | 'Right';
     bones: Record<EmoticonSlot, string>;
     offsets: Record<EmoticonSlot, [number, number]>;
   }>;

@@ -19,7 +19,7 @@ import {
   type ActorPhase, type Layout, type PlayMode, type StoreKey, type TouchRegion,
 } from '@/components/skinViewer/types';
 import {
-  EFFECT_LABEL, EMOTE_SECONDS, REFERENCE_VIEW_WIDTH, SPEED_OPTIONS,
+  EFFECT_LABEL, REFERENCE_VIEW_WIDTH, SPEED_OPTIONS, TOUCH_INTERRUPT_DELAY,
   TRACK_BODY, TRACK_FACE, TRACK_OVERLAY, WIDE_CUTSCENE_STAGING_SKINS,
   animLabel, groupedOptions, isFaceAnim, pickDefault, polygonArea,
 } from '@/components/skinViewer/constants';
@@ -43,7 +43,7 @@ import {
 import type { Command } from '@/components/skinViewer/interpreter';
 import { loadSceneAudio, loadSceneTimelines, loadVoice } from '@/lib/data';
 import {
-  interactionsFor, playVoice, prefetchVoice, setVoiceRate, stopVoice,
+  interactionsFor, playVoice, prefetchVoice, setVoiceRate, stopVoice, voicePlaying,
   type VoiceIndex, type VoiceInteraction,
 } from '@/lib/voice';
 import { lobbyBodyAnimation, lobbyFaceAnimation } from '@/components/skinViewer/lobby';
@@ -167,11 +167,15 @@ export default function SkinViewer({
   const [subtitle, setSubtitle] = useState<{ text: string; author?: string } | null>(null);
   // Lobby lines are a rotating set per (character, family), as in game.
   const lobbyLineRef = useRef(0);
-  // The published emote glyphs. A lobby line's `[@emo]` shows one over the
-  // figure; the manifest keeps an unpublished name from rendering a broken URL.
+  // Scene time the current lobby reaction was staged at. A touch restages the
+  // line it lands on; only one that arrives within `TOUCH_INTERRUPT_DELAY` of
+  // this is refused. Nothing has been staged yet, so no touch can be too soon.
+  const lobbyStagedAtRef = useRef(-Infinity);
+  // The published emotes. A lobby line's `[@emo]` plays one over the figure;
+  // the manifest keeps an unpublished name from rendering a broken URL.
   const [emoticons, setEmoticons] = useState<EmoticonManifest | null>(null);
   const emoticonsRef = useRef(emoticons); emoticonsRef.current = emoticons;
-  const showEmoteRef = useRef<(placement: EmotePlacement, seconds: number) => void>(() => {});
+  const showEmoteRef = useRef<(placement: EmotePlacement) => void>(() => {});
   const hideEmoteRef = useRef<() => void>(() => {});
 
   const setShowLayers = (value: boolean) => setViewer({ showLayers: value });
@@ -333,6 +337,7 @@ export default function SkinViewer({
     if (!rows.length) return null;
     const row = rows[lobbyLineRef.current % rows.length];
     lobbyLineRef.current += 1;
+    lobbyStagedAtRef.current = sceneTimerRef.current.now();
     sayRef.current({ text: row.text ?? '', voice: row.voice });
     return row;
   };
@@ -362,12 +367,11 @@ export default function SkinViewer({
       }
     }
     // The emote is independent of the clip: a line with no `ani` still pops
-    // one, which is most of what makes those lines read as a reaction.
+    // one, which is most of what makes those lines read as a reaction. Its
+    // length is the prefab's own — the emitters stop when their last particle
+    // dies, so the line does not decide it.
     const emote = emotePlacement(emoticonsRef.current, row.emo, layout?.character);
-    if (emote) {
-      showEmoteRef.current(
-        emote, row.wait && row.wait > 0 ? row.wait : EMOTE_SECONDS);
-    }
+    if (emote) showEmoteRef.current(emote);
     return lobbyBodyAnimation(row, phase, anims);
   };
 
@@ -422,6 +426,7 @@ export default function SkinViewer({
         setSubtitle(null);
         stopVoice();
         lobbyLineRef.current = 0;
+        lobbyStagedAtRef.current = -Infinity;
         setTimelineRig(null);
         setSceneState(null);
         setFade({ color: 'black', opacity: 0, duration: 0 });
@@ -1124,7 +1129,16 @@ export default function SkinViewer({
             // fraction of the art, so a tap outside every box does nothing
             // rather than falling through to the phase's active clip.
             if (!box) return;
-            if (reacting()) return;
+            // A touch does not wait for the reaction it lands on: it takes it
+            // over and stages the next line from the top — animation, voice,
+            // face and emote. The only touch that is refused is one arriving
+            // less than `TOUCH_INTERRUPT_DELAY` after the current line was
+            // staged; the game answers that one by revealing the printed line
+            // in full instead, and the viewer already shows a line whole.
+            const staged = sceneNow() - lobbyStagedAtRef.current;
+            const busy = reacting() || voicePlaying() || lobbyFaceTimerRef.current !== null;
+            if (busy && staged < TOUCH_INTERRUPT_DELAY) return;
+            stopVoice();
             const regionClip = hit?.effect === 'region' ? hit.clip : null;
             const row = speakLobbyRef.current('Touch', box);
             const authoredClip = stageLobbyRef.current(row);
@@ -1615,6 +1629,7 @@ export default function SkinViewer({
     sceneTimerRef.current.clear(lobbyFaceTimerRef.current);
     lobbyFaceTimerRef.current = null;
     lobbyLineRef.current = 0;
+    lobbyStagedAtRef.current = -Infinity;
     hideEmoteRef.current();
     // This effect is declared after the scene player's, so on a mode change the
     // player has already started and the teardown above has just wiped the

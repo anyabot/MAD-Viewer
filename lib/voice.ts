@@ -102,6 +102,11 @@ export function prefetchVoice(index: VoiceIndex | null, voiceIds: Iterable<strin
   }
 }
 
+/** Whether a line is still being spoken. */
+export function voicePlaying(): boolean {
+  return !!audio && !audio.paused && !audio.ended;
+}
+
 /** Stop whatever is playing. Safe before any line has played. */
 export function stopVoice() {
   token += 1;
