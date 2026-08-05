@@ -1,46 +1,27 @@
-// The room sprites behind the rig: which one is showing, and where it is drawn.
-//
-// A drawer background is not drawn at its sprite size on the rig origin: it
-// hangs on a `bg*` skeleton bone and is drawn at that bone's world position and
-// rotation, sized `sprite size * bone scale`. The bone is the only place the
-// room's real size lives, so a rig whose bone is not identity is framed wrongly
-// without it.
-//
-// That bone is also the layer's identity: a room is addressed by the name of the
-// bone it stands on, which is what a `bg_on` / `bg_off` event's integer payload
-// resolves to. Every room that stands on a bone of its own is drawn from the
-// start; a sprite that stands on no bone of its own is a swap variant, which
-// only `bg_change` brings in.
+// A room hangs on a `bg*` skeleton bone, drawn at that bone's world position
+// and rotation and sized `sprite size * bone scale`. The bone is the only place
+// the room's real size lives, and it is also the layer's identity — what a
+// `bg_on` / `bg_off` payload resolves to. A sprite standing on no bone of its
+// own is a swap variant that only `bg_change` brings in.
 import { backgroundBoneName } from '@/components/skinViewer/types';
 import { loadTexture } from '@/lib/skinArchive';
 
 export type BackgroundStage = {
   sprites: any[];
-  /** Re-apply the visible/hidden state; call after the show-background toggle. */
   applyVisibility: () => void;
-  /** Drive position, rotation and size off the anchor bones. Runs per frame. */
+  /** Runs per frame. */
   applyTransforms: () => void;
   /** Return to the rooms the rig opens on, discarding every authored switch. */
   reset: () => void;
-  /**
-   * Show or hide the room standing on the bone a `bg_on` / `bg_off` event's
-   * integer payload names. An index naming no room this rig has changes
-   * nothing — the client builds an empty renderer there, which draws nothing.
-   */
+  /** An index naming no room this rig has changes nothing: the client builds
+   *  an empty renderer there, which draws nothing. */
   switchBackground: (eventName: string, targetIndex: number) => void;
-  /**
-   * Handle `bg_change`: cross-fade the layer on the bone the integer payload
-   * names onto the sprite whose own name is `spriteName`. The viewer swaps
-   * instantly; the client's fade duration is not modelled.
-   */
+  /** The viewer swaps instantly; the client's fade duration is not modelled. */
   changeBackground: (targetIndex: number, spriteName: string) => void;
 };
 
-/**
- * Build every background sprite the rig declares and return the handles the
- * viewer drives them with. Textures are loaded in order; `isDestroyed` is
- * polled between them so a teardown mid-load stops the build.
- */
+/** `isDestroyed` is polled between texture loads so a teardown mid-load stops
+ *  the build. */
 export async function buildBackgrounds(options: {
   PIXI: any;
   archive: string;
@@ -57,14 +38,10 @@ export async function buildBackgrounds(options: {
     ? world.backgrounds
     : world.bg ? [{ ...world.bg, name: world.bg.name ?? world.bg.tex.replace(/\.png$/i, '') }] : [];
 
-  // The pairing is by name, ignoring case: the sprite name ends with the bone
-  // name. The longest match wins, so `bg_2` is not claimed by `bg`.
-  //
-  // A background the rig only swaps in — `*_bg_off` against `*_bg` — names no
-  // bone of its own, because the client does not build it a renderer: it
-  // cross-fades it onto the renderer already standing on that bone. So an
-  // unmatched entry inherits the last matched one for its transform. One that
-  // follows no match at all keeps its authored size and origin.
+  // Paired by name, ignoring case: the sprite name ends with the bone name and
+  // the longest match wins, so `bg_2` is not claimed by `bg`. A swap-in variant
+  // names no bone of its own, so it inherits the last matched entry's
+  // transform, or keeps its authored size and origin when there is none.
   const boneNameOf = (def: any): string =>
     String(def.name ?? def.tex ?? '').replace(/\.png$/i, '').toLowerCase();
   let inherited: any = null;
@@ -101,8 +78,7 @@ export async function buildBackgrounds(options: {
       layers[layers.length - 1].defs.push(index);
     }
   });
-  // Every layer opens visible on the sprite it was built with — the renderer's
-  // constructor sets its colour to opaque white.
+  // Every layer opens visible on the sprite it was built with.
   const layerOf = (index: number) => layers.find((l) => l.defs.includes(index))!;
 
   const sprites: any[] = [];
@@ -150,8 +126,7 @@ export async function buildBackgrounds(options: {
   const changeBackground = (targetIndex: number, spriteName: string) => {
     const layer = layerAt(targetIndex);
     if (!layer || !spriteName) return;
-    // The client matches the sprite's own name exactly, and logs an error when
-    // the rig carries no such sprite rather than falling back to anything.
+    // Matched on the sprite's own name exactly, with no fallback.
     const next = layer.defs.find((i) => defs[i].name === spriteName);
     if (next === undefined) return;
     layer.shown = next;
@@ -165,13 +140,11 @@ export async function buildBackgrounds(options: {
       const sprite = sprites[index];
       if (!bone || !sprite) continue;
       const def = defs[index];
-      // Bone coordinates are skeleton units and `bone.worldY` is already y-down
-      // (spine-pixi sets `Skeleton.yDown`), as the emote anchor and the rig
-      // camera also rely on.
+      // Skeleton units, and `bone.worldY` is already y-down since spine-pixi
+      // sets `Skeleton.yDown`.
       const anchor = scene.toLocal(spine.toGlobal({ x: bone.worldX, y: bone.worldY }));
       sprite.position.set(anchor.x, anchor.y);
-      // The bone's own scale, not its world scale: the game reads the local
-      // pair, the same field the `cam` bone supplies the framing width from.
+      // The bone's local scale, not its world scale, as the game reads it.
       sprite.width = def.w * Math.abs(bone.scaleX) * Math.abs(spine.scale.x);
       sprite.height = def.h * Math.abs(bone.scaleY) * Math.abs(spine.scale.y);
       sprite.rotation = bone.getWorldRotationX() * Math.PI / 180;

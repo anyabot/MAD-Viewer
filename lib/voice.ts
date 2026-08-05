@@ -1,12 +1,5 @@
-// Voice playback for the viewer.
-//
-// The clips are Opus in an Ogg container, served from a jsDelivr bucket (see
-// `lib/cdn.ts`). Only one line is ever audible: a new line replaces whatever is
-// playing, which is what the game does — an interrupted reaction cuts its voice
-// short rather than layering a second one over it.
-//
-// The viewer enables playback by default. Browsers still require a user
-// gesture, which Lobby touches and scene advancement naturally provide.
+// Only one line is ever audible: as in game, a new line replaces whatever is
+// playing rather than layering over it.
 
 import { voiceClipUrl } from '@/lib/cdn';
 
@@ -21,9 +14,8 @@ export type VoiceIndex = {
   interactions: Record<string, VoiceInteraction[]>;
 };
 
-// One row of the master-data interaction table. `filter` is the game's own
-// selector minus the character code: rig family, an optional situation, the
-// context and the action (`['Desire', 'Situation1', 'Lobby', 'Touch']`).
+// `filter` is the game's own selector minus the character code: rig family, an
+// optional situation, the context and the action.
 export type VoiceInteraction = {
   id: string;
   filter: string[];
@@ -40,18 +32,17 @@ export type VoiceInteraction = {
 
 let audio: HTMLAudioElement | null = null;
 let token = 0;
-// The viewer's playback rate. A line is staged by the animation it rides on,
-// so speeding the rig up without speeding the voice up desynchronises them.
+// A line is staged by the animation it rides on, so the two speeds must match.
 let rate = 1;
 
-/** Follow the viewer's speed control, including for the line already playing. */
+/** Applies to the line already playing as well. */
 export function setVoiceRate(value: number) {
   rate = value;
   if (audio) audio.playbackRate = value;
 }
 
-// Downloaded clips, held as object URLs so playback starts on the same tick as
-// the animation it belongs to, rather than a CDN round trip later.
+// Held as object URLs so playback starts on the same tick as the animation it
+// belongs to, rather than a CDN round trip later.
 const downloading = new Map<string, Promise<string>>();
 const ready = new Map<string, string>();
 const order: string[] = [];
@@ -90,11 +81,8 @@ function download(index: VoiceIndex | null, voiceId: string): Promise<string> | 
   return pending;
 }
 
-/**
- * Start downloading clips before anything asks to play them. Call it as soon as
- * the set of lines a surface can speak is known — a character's lobby table, a
- * scene's dialogue — so the line is audible the moment it is triggered.
- */
+/** A line must be audible the moment it is triggered, so this runs as soon as
+ *  the set a surface can speak is known. */
 export function prefetchVoice(index: VoiceIndex | null, voiceIds: Iterable<string>): void {
   for (const id of voiceIds) {
     if (ready.has(id)) continue;
@@ -102,12 +90,10 @@ export function prefetchVoice(index: VoiceIndex | null, voiceIds: Iterable<strin
   }
 }
 
-/** Whether a line is still being spoken. */
 export function voicePlaying(): boolean {
   return !!audio && !audio.paused && !audio.ended;
 }
 
-/** Stop whatever is playing. Safe before any line has played. */
 export function stopVoice() {
   token += 1;
   if (!audio) return;
@@ -119,12 +105,9 @@ export function stopVoice() {
 }
 
 /**
- * Play one clip, replacing the current line. Resolves when playback has been
- * started, not when it ends; a rejected `play()` (autoplay policy, missing
- * clip) is swallowed so a silent failure never breaks the scene it belongs to.
- *
- * A prefetched clip plays without awaiting anything; one that is not cached yet
- * streams from its URL rather than waiting for a full download.
+ * Resolves when playback has started, not when it ends. A refused `play()` is
+ * swallowed so a silent failure never breaks the scene it belongs to, and an
+ * uncached clip streams rather than waiting for a full download.
  */
 export async function playVoice(index: VoiceIndex | null, voiceId: string): Promise<void> {
   const folder = index?.clips[voiceId];
@@ -146,10 +129,8 @@ export async function playVoice(index: VoiceIndex | null, voiceId: string): Prom
 }
 
 /**
- * The interactions for one character that match a filter prefix, in table
- * order. `['Standing', 'Lobby', 'Touch']` selects the standing rig's lobby
- * touch lines; a row carrying extra selectors after the prefix (a situation, a
- * `Breast` sub-target) still matches, which is how the game groups variants.
+ * Matches on a filter prefix, in table order. A row carrying extra selectors
+ * after the prefix still matches, which is how the game groups variants.
  */
 export function interactionsFor(
   index: VoiceIndex | null, code: string, wanted: string[],

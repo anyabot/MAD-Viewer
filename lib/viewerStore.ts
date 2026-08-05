@@ -1,13 +1,12 @@
-// Viewer controls are session preferences, so changing the selected skin must
-// not silently reset them. Animation names and script progress remain local to
-// each rig; only controls that have the same meaning across rigs live here.
+// Session preferences, so changing the selected skin must not reset them. Only
+// controls that mean the same thing across rigs belong here.
 import { create } from 'zustand';
 import type { PlayMode } from '@/components/skinViewer/types';
 
 type ViewerStore = {
   playing: boolean;
-  /** Playback rate, 0.5x to 4x. Drives the Spine clock, the in-world timers
-   *  and the voice, so a sped-up reaction stays in sync with its line. */
+  /** Drives the Spine clock, the in-world timers and the voice together, so a
+   *  sped-up reaction stays in sync with its line. */
   speed: number;
   loop: boolean;
   showBg: boolean;
@@ -20,8 +19,8 @@ type ViewerStore = {
   bgmOn: boolean;
   showLayers: boolean;
   dragJiggle: boolean;
-  /** Canvas shape. The named ratios are the ones the rigs author
-   *  `CutsceneOffset` samples for; `fill` uses the panel as it is. */
+  /** The named ratios are the ones the rigs author `CutsceneOffset` samples
+   *  for; `fill` uses the panel as it is. */
   canvasAspect: CanvasAspect;
   /** Canvas alone, filling the window, with the sidebar out of the way. */
   theater: boolean;

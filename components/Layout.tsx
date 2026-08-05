@@ -3,16 +3,15 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
 
-// Two routes reach the viewer: the skin gallery (every rig, by asset key) and
-// the character list (every character, by the game's own filters). `/character`
-// is a leaf of the list, so it lights the same tab.
+// `/character` is a leaf of the list, so it lights the same tab.
 const NAV = [
-  { href: '/', label: 'Skins', match: (p: string) => p === '/' },
+  { href: '/', label: 'Viewer', match: (p: string) => p === '/' },
   {
     href: '/characters',
     label: 'Characters',
     match: (p: string) => p.startsWith('/character'),
   },
+  { href: '/effects', label: 'Effects', match: (p: string) => p === '/effects' },
 ];
 
 export default function Layout({ children }: { children: ReactNode }) {

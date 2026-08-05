@@ -1,15 +1,11 @@
-// Character list — every character in the master data, filtered by the axes
-// the game itself uses (element, rarity, role, position, division, faction),
-// each drawn with its own in-game icon. A card leads to that character's page.
-//
-// Mobile-first: the filter groups wrap, the grid reflows from two columns to
-// six, and nothing overflows the body.
+// Filtered by the axes the game itself uses, each drawn with its in-game icon.
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
   Badge, Box, Center, Flex, Grid, HStack, Input, Spinner, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import { GameIcon, StarRating } from '@/components/gameIcon';
+import { FilterChip, FilterRow } from '@/components/filters';
 import {
   KIND_ICON, KIND_ORDER, TYPE_LABEL, filterRows, isPlayable, rosterNote,
   skinsByCharacter, typeIcons, typeLabel, typeOf, typeTint, typeValue,
@@ -22,8 +18,8 @@ import {
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
 
-// Faction has 22 rows — too many for a chip row that stays readable, so it is
-// the one axis rendered as a scrolling icon strip.
+// Faction has too many rows for a readable chip row, so it is the one axis
+// rendered as a scrolling icon strip.
 const CHIP_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division'];
 const STARS = [1, 2, 3];
 
@@ -166,37 +162,6 @@ export default function CharactersPage() {
   );
 }
 
-// One filter axis. The chips wrap rather than scroll so nothing is hidden on a
-// narrow screen.
-function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <Flex align="baseline" gap={2} wrap="wrap">
-      <Text fontSize="xs" color="gray.500" minW="60px" textTransform="uppercase"
-        letterSpacing="wide">{label}</Text>
-      <Wrap spacing={1} flex="1" minW={0}>
-        {Array.isArray(children)
-          ? children.map((child, i) => <WrapItem key={i}>{child}</WrapItem>)
-          : <WrapItem>{children}</WrapItem>}
-      </Wrap>
-    </Flex>
-  );
-}
-
-function FilterChip({ active, onClick, color, children }: {
-  active: boolean; onClick: () => void; color?: string; children: React.ReactNode;
-}) {
-  return (
-    <Box as="button" onClick={onClick} px={2} py={1} borderRadius="full" fontSize="xs"
-      display="flex" alignItems="center" gap={1} borderWidth="1px"
-      borderColor={active ? (color ?? 'yellow.400') : 'whiteAlpha.300'}
-      bg={active ? 'whiteAlpha.300' : 'whiteAlpha.100'}
-      color={active ? 'white' : 'gray.300'} fontWeight={active ? 'bold' : 'normal'}
-      _hover={{ bg: 'whiteAlpha.400' }} transition="background 0.15s">
-      {children}
-    </Box>
-  );
-}
-
 function CharacterCard({ entry, types, icons, skins }: {
   entry: CharacterEntry; types: CharacterData['types'];
   icons: IconManifest | null; skins: SkinListEntry[];
@@ -206,8 +171,8 @@ function CharacterCard({ entry, types, icons, skins }: {
   const faction = typeOf(entry, types, 'faction');
   const kinds = KIND_ORDER.filter((k) => skins.some((s) => s.kind === k));
   const roster = rosterNote(entry);
-  // the rig's own thumbnail first: a story-only character has no portrait at
-  // all, and an NPC's rig art is the better picture where both exist
+  // the rig's own thumbnail first: a story-only character has no portrait, and
+  // an NPC's rig art is the better picture where both exist
   const art = characterIcon(icons, entry, skins);
 
   return (

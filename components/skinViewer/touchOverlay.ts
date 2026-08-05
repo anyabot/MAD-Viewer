@@ -1,16 +1,13 @@
-// The touch-region overlay: the posed bounding boxes, drawn over the figure.
-//
 // Redrawn every frame because the boxes are posed polygons, not static
-// rectangles. It lives in `scene` next to the actor, so pan, zoom and the device
-// staging carry it exactly as they carry the figure, and it is `eventMode:
-// 'none'` — the hit test runs against the same `SkeletonBounds`, never against
-// this graphic.
+// rectangles, and sits in `scene` beside the actor so pan, zoom and device
+// staging carry it with the figure. The hit test runs against the same
+// `SkeletonBounds`, never against this graphic.
 import { EFFECT_COLOR } from '@/components/skinViewer/constants';
 import type { TouchRegion } from '@/components/skinViewer/types';
 
 export type TouchOverlay = {
   graphics: any;
-  /** Redraw against the current pose. Register on the Pixi ticker. */
+  /** Register on the Pixi ticker. */
   tick: () => void;
 };
 
@@ -22,11 +19,8 @@ export function createTouchOverlay(options: {
   bounds: any;
   regionByBox: Map<string, TouchRegion>;
   visible: boolean;
-  /**
-   * Whether a box can be touched right now, given its bounding-box attachment.
-   * A box that cannot is not drawn at all, so the overlay shows the zones the
-   * input path would actually accept and nothing else.
-   */
+  /** A box that fails this is skipped, not dimmed: the overlay draws exactly
+   *  what the input path would accept. */
   isLive: (box: string, region: TouchRegion | undefined, attachment: any) => boolean;
 }): TouchOverlay {
   const { PIXI, scene, spine, bounds, regionByBox, visible, isLive } = options;
@@ -51,10 +45,9 @@ export function createTouchOverlay(options: {
         const name: string = boxes[i]?.name ?? '';
         const region = regionByBox.get(name);
         if (!isLive(name, region, boxes[i])) continue;
-        // The Spine display object already applies Pixi's y-down flip to the
-        // skeleton's world transform, so these vertices are in the Spine
-        // object's own local space — flipping y again would mirror the boxes off
-        // the figure entirely.
+        // The Spine object already applies Pixi's y-down flip, so these
+        // vertices are in its own local space; flipping again would mirror the
+        // boxes off the figure.
         const pts: number[] = [];
         for (let v = 0; v < verts.length; v += 2) {
           const world = spine.toGlobal({ x: verts[v], y: verts[v + 1] });

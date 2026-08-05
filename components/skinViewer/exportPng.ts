@@ -1,12 +1,8 @@
-// Saving the composed stage as a PNG at the art's native resolution.
 import { mappedSourcePixelScale } from '@/components/skinViewer/types';
 import { EXPORT_SCALE_PERCENTILE, MAX_EXPORT_DIM } from '@/components/skinViewer/constants';
 
-/**
- * Source-atlas pixels per world unit for every drawn attachment in the current
- * pose. `RegionAttachment` and `MeshAttachment` come from the runtime's own
- * module, so they are passed in rather than imported here.
- */
+/** Source-atlas pixels per world unit, per drawn attachment in the current
+ *  pose. The two attachment classes come from the runtime's own module. */
 export function attachmentScales(
   spine: any, RegionAttachment: any, MeshAttachment: any,
 ): number[] {
@@ -40,14 +36,10 @@ export function attachmentScales(
 }
 
 /**
- * The scale a save should render at, in source pixels per world unit.
- *
- * A rig's real art occupies a narrow band of source-pixel scales, but every rig
- * also carries filler regions (`pixel`, `white`, skin-tone gap meshes) stretched
- * far past their own size. A low percentile of the band is near-native for the
- * detailed art and immune to those outliers. The background is a fallback only:
- * it is usually stretched well past its own resolution and would halve the
- * figure's export scale.
+ * Source pixels per world unit. A rig's real art sits in a narrow band of
+ * scales beside filler regions stretched far past their own size, so a low
+ * percentile is near-native and immune to those outliers. The background is a
+ * fallback only: it is usually stretched well past its own resolution.
  */
 export function sourcePixelScale(scales: number[], backgroundSprites: any[]): number {
   const sorted = scales.slice().sort((a, b) => a - b);
@@ -62,10 +54,6 @@ export function sourcePixelScale(scales: number[], backgroundSprites: any[]): nu
   return 1;
 }
 
-/**
- * Render the whole stage to an off-screen texture at native resolution, crop it
- * to its non-transparent bounds and hand the browser the download.
- */
 export function saveStagePng(options: {
   PIXI: any;
   app: any;
@@ -76,12 +64,11 @@ export function saveStagePng(options: {
 }): void {
   const { PIXI, app, root, pixelScale, fileName } = options;
 
-  // fitScale: screen px per world unit (set by fit()).
-  // 1/pixelScale: world units per atlas pixel in the current pose.
+  // `fitScale` is screen px per world unit; `1/pixelScale` world units per
+  // atlas pixel in the current pose.
   const fitScale = root.scale.x;
   const screenBounds = root.getBounds();
-  // Capped at the maximum texture dimension WebGL guarantees. Clamping rather
-  // than bailing means an oversized rig still saves, one size down.
+  // Clamped rather than refused, so an oversized rig still saves one size down.
   const exportScale = Math.min(
     (1 / pixelScale) / fitScale,
     MAX_EXPORT_DIM / screenBounds.width,
@@ -96,7 +83,6 @@ export function saveStagePng(options: {
     exportScale, 0, 0, exportScale,
     -screenBounds.x * exportScale, -screenBounds.y * exportScale);
   app.renderer.render({ container: app.stage, target: rt, transform: matrix, clear: true });
-  // extract.canvas() is synchronous in PixiJS v8.
   const src = app.renderer.extract.canvas({ target: rt }) as HTMLCanvasElement;
   rt.destroy(true);
 

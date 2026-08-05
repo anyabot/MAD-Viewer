@@ -1,15 +1,7 @@
-// The lobby emotes — the "?" and "!" that pop over a character when a lobby
-// line plays.
-//
-// A line stages itself with `[@emo <name>]`. In game each name is a Unity
-// particle prefab (`FX_Char_Emo_03_Question`), so there is no sprite to take
-// from the skin archive; the local pipeline publishes each prefab's emitters to
-// `emoticons.json` and their texture sheets to `public/emoticons/fx/`.
-//
-// Placement comes with it. The prefab names one of three slots and every
-// standing rig authors that slot's bone and x/y offset individually, so an
-// emote is anchored to the rig's own head rather than to a guessed point above
-// its bounds.
+// An `[@emo <name>]` names a particle prefab, not a sprite in the skin archive,
+// so the emitters and their sheets are published separately. Placement comes
+// with them: the prefab names a slot and each rig authors that slot's bone and
+// offset, so an emote anchors to the rig's own head.
 import {
   loadEmoticons, type EmoteEmitter, type EmoticonManifest, type EmoticonSlot,
 } from '@/lib/data';
@@ -20,13 +12,9 @@ export type EmotePlacement = {
   /** Skeleton bone the slot hangs off, as the rig spells it. */
   bone: string;
   offset: [number, number];
-  /**
-   * Whether the whole effect is mirrored in x. A prefab is authored for one
-   * facing — most of them place their emitters left of the slot — and the game
-   * mirrors it for a right-facing rig.
-   */
+  /** A prefab is authored for one facing, so a right-facing rig mirrors it. */
   mirror: boolean;
-  /** The prefab's emitters, in hierarchy order. */
+  /** In hierarchy order. */
   emitters: EmoteEmitter[];
   /** Sheet name -> `{url, tile grid source size}`. */
   sheets: Record<string, { url: string; width: number; height: number }>;
@@ -48,14 +36,8 @@ export function hasEmoticon(
   return !!name && !!manifest?.emotes[name];
 }
 
-/**
- * Where and what this character shows for this emote, or null when either half
- * is missing.
- *
- * A character with no authored slots (every non-standing rig, and any rig whose
- * bundle the pipeline has not read) yields null rather than a default position:
- * an emote parked at an invented point is worse than no emote.
- */
+/** Null rather than a default position when the character has no authored
+ *  slots: an emote parked at an invented point is worse than no emote. */
 export function emotePlacement(
   manifest: EmoticonManifest | null,
   name: string | null | undefined,

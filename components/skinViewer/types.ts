@@ -1,34 +1,22 @@
-// Types + pure helpers for the PixiJS Spine skin viewer.
-//
-// Every skin is a Spine 4.2 rig (binary `.skel` + `.atlas` + atlas page PNGs),
-// so there is one rendering path; `kind` distinguishes the prefab families,
-// which differ in staging (background, phases), not in engine.
 import type { Jiggler } from './jiggle';
 
-// The four rig families, matching the prefab's `_actorType`
-// (0 standing, 1 desire, 2 affection, 3 pleasure). Structurally identical —
-// a Spine rig plus an actor MonoBehaviour — they differ in staging and in how
-// many interaction phases they declare.
+// The prefab's `_actorType`: 0 standing, 1 desire, 2 affection, 3 pleasure.
+// The families differ in staging and phase count, not in rendering.
 export type SkinKind = 'standing' | 'affection' | 'desire' | 'pleasure';
 
-// Which store build an archive was exported from. OneStore ships the
-// uncensored art (`*_UNCEN` attachments); Google Play ships the censored
-// edit (`*_CEN`, nipple attachments absent). Standings are identical across
-// both; only affection art diverges.
+// OneStore ships the uncensored art, Google Play the censored edit. Standings
+// are identical across both; only affection art diverges.
 export type StoreKey = 'onestore' | 'google';
 
 export const STORE_KEYS: StoreKey[] = ['onestore', 'google'];
 
-// One home-screen variation's clip triple. Variations are alternatives the
-// player picks between, not steps of a sequence.
+// Variations are alternatives the player picks between, not steps of a sequence.
 export type ActorPhase = {
   idle: string | null;
   boring: string | null;
   active: string | null;
 };
 
-// Prefab metadata carried over from the Unity actor MonoBehaviour, used to pick
-// sensible defaults and to drive home-screen playback.
 export type ActorMeta = {
   idle?: string | null;
   boring?: string | null;
@@ -43,14 +31,13 @@ export type ActorMeta = {
   volumeProfiles?: number[];
 };
 
-// What touching a region does, resolved at export time — the viewer never
-// infers this from names.
+// Resolved at export time; the viewer never infers this from names.
 //   physics   springs a `gyro_*` bone; plays no animation
 //   reaction  plays a dedicated `reaction/<state>_<CODE>` clip
 //   region    plays a region clip (`00_breast_touch`)
 //   generic   plays the current phase's `active` clip
-// `effect` names the primary action only: the click and jiggle handlers are
-// independent in game, so a region may carry both a `clip` and a `bone`.
+// The primary action only: the click and jiggle handlers are independent in
+// game, so a region may carry both a `clip` and a `bone`.
 export type TouchEffect = 'physics' | 'reaction' | 'region' | 'generic';
 
 export type TouchRegion = {
@@ -62,8 +49,8 @@ export type TouchRegion = {
   effect: TouchEffect;
   clip?: string;
   bone?: string;
-  /** The clip was attributed by the exporter's escalation inference, not by an
-   *  exact name match. Authoritative mapping lives in server master data. */
+  /** Attributed by the exporter's escalation inference, not by an exact name
+   *  match — the authoritative mapping is server-side. */
   inferred?: boolean;
 };
 
@@ -72,12 +59,11 @@ export type TouchMeta = {
   regions?: TouchRegion[];
   /** Reaction clips no region triggers — selected by server master data. */
   orphanReactions?: string[];
-  /** Spring targets, live on the home screen only. See `jiggle.ts`. */
+  /** Spring targets, live on the home screen only. */
   jigglers?: Jiggler[];
 };
 
-// Spine skin names bucketed by their `group/name` prefix, resolved at export
-// time so the UI does not have to re-derive the convention.
+// Spine skin names bucketed by their `group/name` prefix at export time.
 export type SkinGroups = {
   base?: string;        // the always-on skin (usually "default")
   faces?: string[];     // mutually exclusive expression skins
@@ -88,10 +74,10 @@ export type SkinGroups = {
 };
 
 export type Layout = {
-  skin: string;         // asset key, e.g. "st_ch0001"
+  skin: string;
   kind: SkinKind;
-  character?: string;   // "CH0001"
-  skel: string;         // binary .skel filename inside the archive
+  character?: string;
+  skel: string;
   atlas: string;
   textures?: string[];
   animations?: string[];
@@ -146,17 +132,14 @@ export type Layout = {
   };
 };
 
-// Diverged skins are packed as two archives (`<key>__onestore` /
-// `<key>__google`) but the embedded `skin` field
-// always carries the bare key — the exporter writes one layout per store and
-// does not rename it. Strip the suffix before comparing so the stale-layout
-// guard does not reject a freshly loaded diverged skin.
+// A diverged skin is packed as two suffixed archives, but the embedded `skin`
+// field carries the bare key in both, so the stale-layout guard has to compare
+// on this rather than on the archive name.
 export function baseSkinKey(skin: string): string {
   return skin.replace(/__(onestore|google)$/, '');
 }
 
-// Archive name for a skin key at a given store. Non-diverged skins have a
-// single un-suffixed archive shared by both stores.
+// A non-diverged skin has one un-suffixed archive shared by both stores.
 export function archiveName(skin: string, store: StoreKey, diverged: boolean): string {
   const base = baseSkinKey(skin);
   return diverged ? `${base}__${store}` : base;
@@ -168,7 +151,7 @@ export type PlayMode = 'manual' | 'home' | 'scene';
 // Not extracted — the real delay lives in the game's C# controller.
 export const BORING_DELAY_MS = 10_000;
 
-/** Home variation list, normalised so every family drives one state machine. */
+/** Normalised so every family drives one state machine. */
 export function actorPhases(actor: ActorMeta | undefined, animations: string[]): ActorPhase[] {
   const has = (n: string | null | undefined): string | null =>
     n && animations.includes(n) ? n : null;
@@ -184,15 +167,13 @@ export function actorPhases(actor: ActorMeta | undefined, animations: string[]):
   return single.idle || single.active ? [single] : [];
 }
 
-/** One sequentially-played clip list of an affection/pleasure rig. */
 export type StorySequence = { group: string; clips: string[] };
 
 /**
- * Affection and pleasure scenes advance one clip per "next" tap, in order.
- * A sequence is a group whose clips all end in a number (`asmr/ani_001…`,
- * `story/story_001…`), sorted numerically — af_ch0011 mixes `ani_009` with
- * `ani_0010`, so lexical order interleaves the tens into the ones. Pleasure
- * rigs without numbered groups play their whole clip list in export order.
+ * A sequence is a group whose clips all end in a number, sorted numerically —
+ * a rig mixing `ani_009` with `ani_0010` interleaves the tens into the ones
+ * under lexical order. A pleasure rig with no numbered group plays its whole
+ * clip list in export order.
  */
 export function storySequences(
   layout: Layout,
@@ -228,14 +209,10 @@ export function storySequences(
 }
 
 /**
- * The Spine track a clip plays on, exactly as the client derives it: the clip
- * name is split at `/`, and the digits before the first `_` of the segment after
- * it are the track index. A segment with no numeric prefix is track 0. A
- * scenario command's explicit `Track:` parameter overrides this.
- *
- * The numeric prefixes are therefore not decoration — `10_A1` is track 10,
- * `30_overlay/30_twinkle` track 30, `basic/idle_close` track 0 — and a clip
- * layers over or under another purely by that number.
+ * The clip's own name declares its track, as the client derives it: the digits
+ * before the first `_` of the segment after any `/`, else 0. A scenario
+ * command's explicit `Track:` overrides it. The prefixes are not decoration —
+ * a clip layers over or under another purely by that number.
  */
 export function spineTrack(name: string): number {
   const segment = name.slice(name.indexOf('/') + 1);
@@ -245,8 +222,8 @@ export function spineTrack(name: string): number {
   return /^\d+$/.test(prefix) ? Number(prefix) : 0;
 }
 
-// Threshold on the share of the rig's busiest clip that a clip keys. Used only
-// to group the Free play dropdowns; playback tracks come from `spineTrack`.
+// A share of the rig's busiest clip. Groups the Free play dropdowns only;
+// playback tracks come from `spineTrack`.
 export const OVERLAY_BONE_SHARE = 0.28;
 
 /** Clips too partial to own track 0, measured from the parsed skeleton. */
@@ -272,9 +249,8 @@ export function overlayAnimations(
 }
 
 /**
- * The room layer a `bg_on` / `bg_off` event addresses, as the client names it:
- * the bone `bg` for payload index 0, otherwise `bg_<index>`. The event's string
- * payload is not the selector — `bg_off` is not even handed it.
+ * A `bg_on` / `bg_off` event addresses its layer by the bone it stands on, and
+ * only the integer payload selects it. The string payload is not a selector.
  */
 export function backgroundBoneName(index: number): string {
   return index === 0 ? 'bg' : `bg_${index}`;
@@ -288,20 +264,16 @@ export function phaseState(phase: ActorPhase): string | null {
   return STATE_TOKENS.find((s) => name.endsWith(`_${s}`) || name.endsWith(`/${s}`)) ?? null;
 }
 
-// Whether a region is live in the given phase. Desire rigs attach every state's
-// regions at once (`bd_A1_L_close` and `bd_A1_L_open` both), so a region with a
-// state only counts in the matching phase; a stateless one is always live.
+// Desire rigs attach every state's regions at once, so a region with a state
+// counts only in the matching phase; a stateless one is always live.
 export function regionLiveInPhase(region: TouchRegion, phase: ActorPhase): boolean {
   if (!region.state) return true;
   const ps = phaseState(phase);
   return ps === null || ps === region.state;
 }
 
-// What a touch on a resolved region does. The effect and clip were decided by
-// the exporter from the prefab's jiggler list and the rig's clip inventory —
-// nothing is inferred from names here. Repeated-touch escalation is not
-// modelled here either: it comes from the rig's scenario script, replayed by
-// `interactions.ts`.
+// The exporter already decided the effect and clip; nothing is inferred from
+// names here, and repeated-touch escalation comes from the scenario script.
 export function effectOf(
   region: TouchRegion | null,
   phase: ActorPhase,
@@ -321,11 +293,10 @@ export function layerGroup(slot: string): string {
   return token || slot;
 }
 
-// Largest root-local distance covered by one source-texture pixel for a mesh.
-// Spine meshes can carry a pixels-per-unit ratio that compensates for a large
-// Unity transform, so transform scale alone is not a native-resolution
-// measurement. Measure every non-degenerate triangle because weighted meshes
-// can have a different affine mapping across the current pose.
+// A Spine mesh can carry a pixels-per-unit ratio compensating for a large Unity
+// transform, so transform scale alone is not a native-resolution measurement.
+// Every non-degenerate triangle is measured because a weighted mesh can have a
+// different affine mapping across the current pose.
 export function mappedSourcePixelScale(
   verts: ArrayLike<number>,
   uvs: ArrayLike<number>,
@@ -364,13 +335,8 @@ export function mappedSourcePixelScale(
   return maxScale;
 }
 
-// Wire wheel-zoom + drag-pan + two-finger pinch on a PixiJS canvas, panning
-// and scaling `root`. Returns a cleanup that removes the listeners.
-//
-// `claimDrag` lets another consumer take a one-finger drag before panning does:
-// it is called on pointer-down with canvas-local coordinates and returns a
-// handler pair when it wants the gesture. Home-screen drag-jiggle uses this —
-// the in-game jiggler input is a drag, which pan would otherwise swallow.
+// A claim takes a one-finger drag before panning does: the in-game jiggler
+// input is a drag, which pan would otherwise swallow.
 export type DragClaim = {
   move: (x: number, y: number) => void;
   end: () => void;
@@ -385,10 +351,8 @@ export function zoomAt(root: any, factor: number, x: number, y: number): void {
   root.scale.set(scale);
 }
 
-// `zoomEnabled` gates wheel and pinch; `panEnabled` gates the one-finger drag.
-// Following the game's camera owns the framing, so both are refused while that
-// is on. A claimed drag is not a pan and still runs — Lobby jiggle depends on
-// it, and no rig that offers jiggle carries a `cam` bone anyway.
+// Following the game's camera owns the framing, so both gates are refused
+// while it is on. A claimed drag is not a pan and still runs.
 export function attachPanZoom(
   canvas: HTMLCanvasElement,
   root: any,
@@ -403,7 +367,6 @@ export function attachPanZoom(
   let pinchDist0 = 0;
   let pinchScale0 = 1;
   let pinchMid = { x: 0, y: 0 };
-  // Set while a claimed drag owns the gesture; panning stays out of the way.
   let claimed: DragClaim = null;
   let claimId = -1;
   const endClaim = () => {

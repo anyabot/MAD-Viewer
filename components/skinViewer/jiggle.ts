@@ -1,5 +1,3 @@
-// Home-screen spring jiggle. Mechanism and unit reasoning:
-
 export type Jiggler = {
   box?: string | null;
   bone?: string | null;
@@ -117,11 +115,9 @@ export class JiggleField {
   }
 
   /**
-   * Must run after `AnimationState.apply` and before `updateWorldTransform`.
-   * Captures the bone's animated local pose before offsetting it; `restore`
-   * puts it back. Nothing keys a `gyro_*` bone (the clips key only the
-   * constraint mixes), so an unpaired `+=` would compound every frame and
-   * park the bone off-figure permanently.
+   * Must run after `AnimationState.apply` and before `updateWorldTransform`,
+   * paired with `restore`: nothing keys a `gyro_*` bone, so an unpaired `+=`
+   * compounds every frame and parks the bone off-figure permanently.
    */
   apply(): void {
     for (const s of this.springs) {

@@ -7,11 +7,9 @@ const theme = extendTheme({
   config: { initialColorMode: 'dark', useSystemColorMode: false },
   styles: {
     global: {
-      // The viewer canvas is dark; keep the shell dark so it does not flash.
       body: { bg: 'gray.900', color: 'gray.100' },
-      // Dim greys are used throughout for secondary text (asset keys, codes,
-      // captions). The browser's own selection keeps the text colour, which
-      // hides those runs entirely, so the selection paints both.
+      // The browser's own selection keeps the text colour, which hides the dim
+      // greys used for secondary text, so this paints both.
       '::selection': { bg: 'yellow.300', color: 'gray.900' },
     },
   },

@@ -1,6 +1,5 @@
-// Runtime fetch of the generated game-data JSON. Nothing is bundled at build
-// time: the generated files are fetched by the SPA, so refreshing data does
-// not require a rebuild.
+// Nothing here is bundled at build time, so refreshing the data does not
+// require a rebuild.
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
 import type { SceneTimelineData } from '@/components/skinViewer/scenes';
 import type { VoiceIndex } from '@/lib/voice';
@@ -13,13 +12,11 @@ const DATA_BASE = (
     : `${PUBLIC_BASE}/data`
 ).replace(/\/$/, '');
 
-// One gallery entry. The fields needed before an archive loads (`stores`) live
-// here so the gallery can choose the correct archive immediately.
 export type SkinListEntry = {
-  key: string;              // asset key, e.g. "st_ch0001"
+  key: string;
   kind: SkinKind;
-  character: string;        // "CH0001"
-  /** Store builds this skin was exported for. 2 entries = art diverges. */
+  character: string;
+  /** Two entries means the art diverges between store builds. */
   stores: StoreKey[];
   animations: number;
   faces: number;
@@ -36,31 +33,18 @@ export type SkinList = {
   skins: SkinListEntry[];
 };
 
-// One character from the game's master data, keyed by the same `CH####` code
-// `SkinListEntry.character` carries. Only Korean columns are finished content,
-// so `name`/`desc`/`artist`/`cv` come from them; `unfinished` is reference only.
-//
-// A character with no `Character_Base` row is **unreleased**: it has a
-// resources row and a standing prefab but no types, rarity or profile. Those
-// are emitted with `unreleased: true` and hidden by default, so a name that
-// the game does not show yet is never presented as a released one.
+// Only the Korean columns are finished content, so `name`/`desc`/`artist`/`cv`
+// come from them and `unfinished` is reference only.
 export type CharacterEntry = {
   code: string;
+  /** No `Character_Base` row: a resources row and a prefab, nothing else. */
   unreleased?: boolean;
-  /**
-   * A rig that exists only in the scenario: no `Character_Base` row, so no
-   * types, rarity, kit or stats — the character is never fought. Its `name`
-   * and `actorId` come from the scripts rather than the master data.
-   */
+  /** Scenario-only rig — no base row either, and never fought. */
   storyOnly?: boolean;
   /** The id the scripts address this character by, e.g. `dandelion`. */
   actorId?: string;
   name: string;
-  /**
-   * English display name. Playable characters only — the game's English column
-   * is finished for that roster and holds Japanese for every NPC. Defective
-   * playable rows are corrected in the generator.
-   */
+  /** Playable roster only; the game's English column holds Japanese for NPCs. */
   nameEn: string | null;
   desc: string;
   iconPath: string | null;
@@ -72,7 +56,7 @@ export type CharacterEntry = {
   id?: number;
   characterType?: number;
   nameKey?: string;
-  // these index the matching table in `CharacterData.types`
+  // indices into the matching table in `CharacterData.types`
   roleType?: number;
   divisionType?: number;
   factionType?: number;
@@ -85,7 +69,7 @@ export type CharacterEntry = {
   /** All-caps English gloss; the independent source that fixes `nameEn`. */
   nameUppercase?: string | null;
   birthday?: number[] | null;
-  // profile-card text; absent when the row is still a placeholder
+  // absent while the row is still a placeholder
   hobby?: string | null;
   specialty?: string | null;
   likes?: string | null;
@@ -93,46 +77,30 @@ export type CharacterEntry = {
   birthdayComment?: string | null;
   /** Three liked gift item ids, indexing `CharacterData.items`. */
   giftItems?: number[];
-  /**
-   * The division(s) this character's dates are chosen from. The game records
-   * the preference at region granularity; the venues in a region are
-   * `CharacterData.places[division]`.
-   */
+  /** The regions dates are chosen from; their venues are `places[division]`. */
   dateDivisions?: number[];
-  /**
-   * The venues the character's date script actually visits, in the order it
-   * authors them. A region holds more venues than any one character uses —
-   * Humanitas lists ten and every Humanitas date visits five — so this is the
-   * real list and `dateDivisions` only names the region it came from.
-   */
+  /** The venues the date script visits, in the order it authors them. A region
+   *  holds more venues than any one character uses. */
   datePlaces?: number[];
   /** Join key into `CharacterData.skillSets`. */
   skillSetGroup?: number;
   /** Three equipment slot type ids, indexing `CharacterData.equipment`. */
   equipmentSlots?: number[];
-  /**
-   * The AI's skill rotation: `start` runs once at the opening, `repeat` loops.
-   * Several rotations in one list are alternatives chosen by `condition`;
-   * the one named 기본 패턴 is the unconditional fallback.
-   */
+  /** `start` runs once at the opening, `repeat` loops. */
   battlePatterns?: { start?: BattlePattern[]; repeat?: BattlePattern[] };
-  /**
-   * The stat block at level 1, keyed by star grade then `STAT_TYPE` constant.
-   * Grade 6 is a cap row equal to grade 5, not a grade that can be reached.
-   */
+  /** Level 1, keyed by star grade then `STAT_TYPE`. Grade 6 is a cap row equal
+   *  to grade 5, not a grade that can be reached. */
   baseStats?: Record<string, Record<string, number>>;
   /** What each level after the first adds, keyed the same way as `baseStats`. */
   levelStats?: Record<string, Record<string, number>>;
-  /**
-   * What each affection rank adds, index 0 being rank 1. The ranks accumulate,
-   * so the bonus at rank N is the sum of the first N entries.
-   */
+  /** Per affection rank, index 0 being rank 1. Ranks accumulate, so rank N is
+   *  the sum of the first N entries. */
   loveStats?: Record<string, number>[];
 };
 
-// One ordered rotation. `steps` are skill ids in `CharacterData.skills`.
-// Alternatives are evaluated in `order`; condition 0 is unconditional, 20 and
-// 21 test the state named in `conditionValue` against its threshold.
+// `steps` are skill ids in `CharacterData.skills`. Alternatives are evaluated
+// in `order`; condition 0 is unconditional, 20 and 21 test the state named in
+// `conditionValue` against its threshold.
 export type BattlePattern = {
   name: string | null;
   order: number;
@@ -142,11 +110,8 @@ export type BattlePattern = {
 };
 
 /**
- * One option a filled equipment slot grants.
- *
- * Its value at equipment level L is `value + perLevel * (L - 1)`. `calc` says
- * how it reaches the stat: `ADDTION` (the game's own spelling) is a flat term,
- * `MULTIPLICATION` a fraction of the base stat.
+ * Value at equipment level L is `value + perLevel * (L - 1)`. `ADDTION` (the
+ * game's own spelling) is a flat term, `MULTIPLICATION` a fraction of the base.
  */
 export type EquipmentOption = {
   stat: string | null;
@@ -155,7 +120,6 @@ export type EquipmentOption = {
   perLevel: number;
 };
 
-/** One tier of an equipment slot, with its own level cap and filled-slot art. */
 export type EquipmentTier = {
   tier: number;
   maxLevel: number;
@@ -163,8 +127,7 @@ export type EquipmentTier = {
   options: EquipmentOption[];
 };
 
-// One of the 12 equipment slot types. `icon` is the empty slot's art; `tiers`
-// is what filling it actually grants.
+// `icon` is the empty slot's art; a tier carries the filled art.
 export type EquipmentEntry = {
   name: string | null;
   icon: string | null;
@@ -172,13 +135,10 @@ export type EquipmentEntry = {
 };
 
 /**
- * A stat's display name and how the game rounds it.
- *
  * `display` is `STAT_UI_DISPLAY_TYPE`: 1 truncates to a whole number, 2 keeps
- * two decimals and is shown as a percentage, 0 leaves the value alone. Rounding
- * is not cosmetic — the game applies it to the base block and again to the
- * equipment delta before the two are added, so `roundStat` has to run at both
- * points.
+ * two decimals as a percentage, 0 leaves the value alone. Rounding is not
+ * cosmetic — the game rounds the base block and the equipment delta separately
+ * before adding them.
  */
 export type StatTypeEntry = {
   name: string | null;
@@ -187,15 +147,14 @@ export type StatTypeEntry = {
   order: number;
 };
 
-/** The ceilings a stat calculation has to respect. */
 export type StatCaps = {
   level: number;
   star: number;
   love: number;
 };
 
-// A lasting state a skill applies. Magnitude and duration both scale with the
-// skill's level, so these are carried per level alongside the description.
+// Magnitude and duration both scale with skill level, so these are carried per
+// level alongside the description.
 export type BuffEntry = {
   name: string | null;
   desc: string | null;
@@ -207,7 +166,6 @@ export type BuffEntry = {
   dispellable: boolean;
 };
 
-// A gift item a character likes.
 export type ItemEntry = {
   name: string | null;
   desc: string | null;
@@ -215,7 +173,6 @@ export type ItemEntry = {
   icon: string | null;
 };
 
-// One date venue inside a division.
 export type PlaceEntry = {
   id: number;
   name: string | null;
@@ -223,22 +180,13 @@ export type PlaceEntry = {
   thumbnail: string | null;
 };
 
-// One operation a skill performs, as the game's own enum constant names —
-// `lib/characters.ts` turns those into labels. A `null` field is the game's
-// `NONE`.
-//
-// `op` is an `ONETIME_EFFECT_TYPE` when `kind` is `onetime` and a
-// `DURATION_EFFECT_TYPE` when it is `duration`, plus the synthetic `MARKER`
-// for a lasting state that carries no effect at all — those exist only to be
-// tested by a condition or a trigger.
 /**
- * A value that grows with the skill level:
+ * Grows with skill level:
  *
  *     base + up * (L - 1) + extra * floor((L - 1) / SkillEntry.levelPeriod)
  *
- * One entry per slot of the effect row's own value array — the game's
- * description templates index it, and slot 0 is the one nearly every effect
- * uses. Grow it with `growValue`.
+ * One entry per slot of the effect row's value array, which the game's
+ * description templates index; nearly every effect uses slot 0.
  */
 export type SkillMagnitude = {
   base: number[];
@@ -246,25 +194,17 @@ export type SkillMagnitude = {
   extra: number[];
 };
 
-/**
- * One thing a clear, an immunity or a gate points at.
- *
- * `name` is what to show. It is **null for the internal markers a skill sets
- * and then clears** — over half the states a clear names are those, the game
- * shows the player nothing for them, and `id` is all that identifies them.
- */
+/** `name` is null for the internal markers a skill sets and then clears; the
+ *  game shows the player nothing for those and `id` is all they have. */
 export type SkillDetailValue = {
   name: string | null;
   id: string;
 };
 
 /**
- * What a clear or immunity operation names.
- *
- * `state` / `instant` values are states — CH0001's dispel names 지속 회복, i.e.
- * it strips heal-over-time rather than a whole category. `durationCategory`
- * values are `DURATION_CATEGORIZE_TYPE` constants and `instantCategory` values
- * are `ONETIME_CATEGORIZE_TYPE` constants.
+ * `state` / `instant` values are individual states, not whole categories.
+ * `durationCategory` values are `DURATION_CATEGORIZE_TYPE` constants and
+ * `instantCategory` values are `ONETIME_CATEGORIZE_TYPE` constants.
  */
 export type SkillDetail = {
   kind: 'state' | 'instant' | 'durationCategory' | 'instantCategory';
@@ -272,16 +212,8 @@ export type SkillDetail = {
 };
 
 /**
- * The condition an effect is only given under.
- *
- * `Skill_Effect_Data_V2` is not only the alias table: a row can gate the effect
- * it points at, and a row pointing at its own id exists purely to carry a gate.
- * CH0022's burst is the readable case — its shield is gated
- * `CONDITION_CHECK_CHARACTER_FACTION` on faction 103, so it reaches only Midwen
- * Corporation partners.
- *
  * `condition` is a `SKILL_EFFECT_GIVE_CONDITION` constant and decides what the
- * values mean: a state (already resolved), a `*_type` id the app looks up in
+ * values mean: a resolved state, a `*_type` id to look up in
  * `CharacterData.types`, a character id, an HP fraction, or a stack count.
  */
 export type SkillGate = {
@@ -322,8 +254,8 @@ export type SkillOp = {
   interval?: number;
 };
 
-// One hitbox the cast opens. `count` is how many times the skill spawns this
-// same hitbox — a multi-hit skill authors one event per hit.
+// `count` is how many times the skill spawns this same hitbox — a multi-hit
+// skill authors one event per hit.
 export type SkillHit = {
   /** `X_AXIS`, `CIRCLE` or `GLOBAL`. */
   shape: string | null;
@@ -333,11 +265,8 @@ export type SkillHit = {
   cycle: number;
   delay: number;
   count: number;
-  /**
-   * What the hitbox anchors on — not who it affects, which is on the
-   * operation. It is authored per event, so one skill's hitboxes can anchor on
-   * different things.
-   */
+  /** What the hitbox anchors on, not who it affects. Authored per event, so
+   *  one skill's hitboxes can anchor on different things. */
   cast?: {
     team: string | null;
     range: string | null;
@@ -349,7 +278,7 @@ export type SkillHit = {
   ops: SkillOp[];
 };
 
-// A flat stat grant a passive applies for the whole battle.
+// A passive's flat grant, applied for the whole battle.
 export type SkillStat = {
   stat: string | null;
   scale: string | null;
@@ -359,7 +288,7 @@ export type SkillStat = {
   conditionValue: string[];
 };
 
-// A passive's event hook. `on` is a `PASSIVE_TRIGGER_TYPE`.
+// `on` is a `PASSIVE_TRIGGER_TYPE`.
 export type SkillTrigger = {
   on: string | null;
   check: string | null;
@@ -369,15 +298,10 @@ export type SkillTrigger = {
 };
 
 /**
- * What a skill mechanically does, read out of the game's behaviour tables.
- *
- * An operation carries its own coefficient and the stat that coefficient
- * applies to, so "84% of the caster's attack" is readable here even for the
- * effects a skill's description never mentions. What is **not** decoded is how
- * the game turns that into a number against a defender — nothing here may be
- * combined into a computed damage or healing total.
- *
  * An active skill has `hits`; a passive has `stats` and `triggers`.
+ *
+ * How the game turns an operation into a number against a defender is not
+ * decoded, so nothing here may be combined into a damage or healing total.
  */
 export type SkillBehaviour = {
   attack?: boolean;
@@ -389,10 +313,8 @@ export type SkillBehaviour = {
   triggers?: SkillTrigger[];
 };
 
-// One skill slot. `desc` carries one pre-rendered description per skill level,
-// so the app never has to walk the effect tables; length 1 when the skill
-// cannot be levelled. Descriptions contain the game's own `<color=#rrggbb>`
-// markup — split it into runs with `colorRuns`.
+// `desc` is one pre-rendered description per skill level, length 1 when the
+// skill cannot be levelled, carrying the game's own `<color=#rrggbb>` markup.
 export type SkillEntry = {
   name: string | null;
   desc: string[];
@@ -413,13 +335,10 @@ export type SkillEntry = {
   behaviour?: SkillBehaviour;
 };
 
-// A resolved `*_type` integer: its display name, its atlas icon, and (elements
-// only) the colour the game tints it with. `icons` lists every icon column the
-// table declares, in preference order — `icon` alone is not always extractable.
-//
-// `name` is the game's Korean label; `en` is the generated English one. Only
-// the element rows have finished English in the game's own text table, so the
-// rest is a fixed table in the generator.
+// A resolved `*_type` integer. `icons` lists every icon column the table
+// declares, in preference order — `icon` alone is not always extractable.
+// `name` is Korean; only the element rows have finished English in the game's
+// own text table, so `en` is otherwise generated.
 export type TypeEntry = {
   name: string;
   en?: string | null;
@@ -438,16 +357,16 @@ export type CharacterData = {
     division: Record<string, TypeEntry>;
     faction: Record<string, TypeEntry>;
   };
-  /** Gift items, keyed by item id; only the ones a character likes. */
+  /** Keyed by item id; only the ones some character likes. */
   items: Record<string, ItemEntry>;
-  /** Date venues, keyed by division type. */
+  /** Keyed by division type. */
   places: Record<string, PlaceEntry[]>;
-  /** The 12 equipment slot types, keyed by type id. */
+  /** Keyed by slot type id. */
   equipment: Record<string, EquipmentEntry>;
-  /** Every stat a unit has, keyed by `STAT_TYPE` constant. */
+  /** Keyed by `STAT_TYPE` constant. */
   statTypes: Record<string, StatTypeEntry>;
   statCaps: StatCaps;
-  /** The relationship title at each affection level; index 0 is level 1. */
+  /** Index 0 is affection level 1. */
   loveTitles: (string | null)[];
   /** `skillSetGroup` -> star grade -> the skill ids that grade has. */
   skillSets: Record<string, Record<string, number[]>>;
@@ -473,16 +392,10 @@ export function loadSkinList(): Promise<SkinList> {
   return fetchJson<SkinList>('skin_list.json');
 }
 
-// The ordered command list of each rig's scenario scripts — the program the
-// scene interpreter runs. A missing file leaves the viewer on its phase/region
-// playback rather than breaking the gallery.
 export function loadSceneTimelines(): Promise<SceneTimelineData> {
   return fetchJson<SceneTimelineData>('scene_timelines.json');
 }
 
-// Which voice clip each scenario line and each lobby interaction plays, and
-// where the clip is. Optional like the tables above: without it the viewer
-// still shows subtitles that the scene timeline carries inline.
 export function loadVoice(): Promise<VoiceIndex> {
   return fetchJson<VoiceIndex>('voice.json');
 }
@@ -491,15 +404,14 @@ export function loadSceneAudio(): Promise<SceneAudioIndex> {
   return fetchJson<SceneAudioIndex>('scene_audio.json');
 }
 
-// Character names and the type-label tables from the master data. Codes that
-// are not characters (event, screen and cut-in assets) and characters that are
-// unreleased have no entry, so callers fall back to the code.
+// Codes that are not characters (event, screen and cut-in assets) have no
+// entry, so callers fall back to the code.
 export function loadCharacters(): Promise<CharacterData> {
   return fetchJson<CharacterData>('characters.json');
 }
 
-// What the icon pipeline actually published under `public/icons/`. Used to
-// decide whether an icon can be rendered; see `lib/icons.ts`.
+// What the icon pipeline actually published, so an unpublished icon is never
+// rendered as a broken image.
 export type IconManifest = {
   groups: Partial<Record<
     'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip',
@@ -510,33 +422,25 @@ export function loadIcons(): Promise<IconManifest> {
   return fetchJson<IconManifest>('icons.json');
 }
 
-// The lobby emotes published under `public/emoticons/`. A line's
-// `[@emo <name>]` names one; the manifest exists so an unknown name renders
-// nothing instead of a broken image.
+// An emote is a Unity particle prefab: the manifest carries its emitters with
+// every module they enable, plus the untrimmed sheets. `height`/`aspect`
+// describe the still, which is the primary emitter's entry tile.
 //
-// An emote is a Unity particle prefab, so what the manifest carries is its
-// emitters — every module they enable, with the curves and gradients intact —
-// plus the untrimmed texture sheets under `public/emoticons/fx/`. The still in
-// `public/emoticons/<name>.webp` is the primary emitter's entry tile and is
-// what `height`/`aspect` describe.
-//
-// Placement is authored, not guessed. Each emote declares one of the game's
-// three slots, and each standing rig declares which bone that slot hangs off
-// and the x/y offset from it. The particle-to-skeleton size factor is the one
-// part the game applies in code.
+// Placement is authored — an emote names a slot, a rig names the bone that slot
+// hangs off and the offset from it. Only the particle-to-skeleton size factor
+// is applied in code.
 export type EmoticonSlot = 'Mouth' | 'OutsideHead' | 'InsideHead';
 
 /**
- * An `AnimationCurve` key: time, value, in slope, out slope. A null slope is
- * Unity's infinite tangent — the segment steps instead of interpolating, which
- * is what a flipbook's frame curve is made of.
+ * Time, value, in slope, out slope. A null slope is Unity's infinite tangent:
+ * the segment steps instead of interpolating, as a flipbook's frame curve does.
  */
 export type EmoteCurveKey = [number, number, number | null, number | null];
 
 /**
- * A `MinMaxCurve`. `m` is Unity's mode — 0 constant, 1 curve, 2 random between
- * two curves, 3 random between two constants — `s` the constant, the curve
- * multiplier or the maximum, and `n` the minimum of mode 3.
+ * `m` is Unity's `MinMaxCurve` mode — 0 constant, 1 curve, 2 random between two
+ * curves, 3 random between two constants — `s` the constant, curve multiplier
+ * or maximum, and `n` the minimum of mode 3.
  */
 export type EmoteCurve = {
   m: number;
@@ -554,8 +458,8 @@ export type EmoteGradientStops = {
 };
 
 /**
- * A `MinMaxGradient`. `m` is Unity's mode — 0 colour, 1 gradient, 2 two
- * colours, 3 two gradients, 4 a random point of one gradient.
+ * `m` is Unity's `MinMaxGradient` mode — 0 colour, 1 gradient, 2 two colours,
+ * 3 two gradients, 4 a random point of one gradient.
  */
 export type EmoteGradient = {
   m: number;
@@ -656,6 +560,35 @@ export function loadEmoticons(): Promise<EmoticonManifest> {
   return fetchJson<EmoticonManifest>('emoticons.json');
 }
 
+// `grades` is the result grades that pick this rig: the child rig covers 1 and
+// 2, the adult rig covers 3.
+export type GachaRig = {
+  key: string;
+  asset: string;
+  skel: string;
+  atlas: string;
+  pages: string[];
+  /** `SkeletonDataAsset.scale`, applied at parse time as the game applies it. */
+  dataScale: number;
+  grades: number[];
+  animations: string[];
+  durations: Record<string, number>;
+  cameraBone: string | null;
+  jiggleBone: string | null;
+};
+
+export type GachaIndex = {
+  generated: string;
+  bundle: string;
+  drawer: { pixelPerUnit: number };
+  jiggler: { maxDistance: number; springStrength: number; springDamping: number };
+  rigs: Record<'child' | 'adult', GachaRig>;
+};
+
+export function loadGachaIndex(): Promise<GachaIndex> {
+  return fetchJson<GachaIndex>('gacha.json');
+}
+
 export const KIND_LABEL: Record<SkinKind, string> = {
   standing: 'Standing',
   affection: 'Affection',
@@ -663,7 +596,6 @@ export const KIND_LABEL: Record<SkinKind, string> = {
   pleasure: 'Pleasure',
 };
 
-// Short badge text for the gallery list.
 export const KIND_BADGE: Record<SkinKind, string> = {
   standing: 'ST',
   affection: 'AF',

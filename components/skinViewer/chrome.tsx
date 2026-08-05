@@ -1,12 +1,6 @@
-// Shared chrome for the skin viewer's control sidebar: labelled control rows,
-// segmented controls, dropdowns, the store-variant strip and the layer panel.
-//
 // Every control carries a visible name. A fixed set of choices is a segmented
-// control or an on/off row; only an open-ended, rig-dependent list (animations,
-// script beats, sections) is a dropdown.
-//
-// The icons are inline SVG paths rather than extracted art — self-contained,
-// themeable, and with no asset-pipeline dependency.
+// control or an on/off row; only an open-ended, rig-dependent list is a
+// dropdown. The icons are inline SVG so nothing here depends on the pipeline.
 import { Children, useMemo, useState, type ReactNode } from 'react';
 import {
   Box, Divider, Flex, HStack, Image, Input, Menu, MenuButton, MenuItem, MenuList,
@@ -68,8 +62,7 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
 
 // --- labelled control primitives -------------------------------------------
 
-// A named group of rows. Renders nothing when the current playback context
-// supplies no rows, so a heading never stands alone over an empty section.
+// Renders nothing when it has no rows, so a heading never stands alone.
 export function ControlSection({ title, children }: { title: string; children: ReactNode }) {
   const rows = Children.toArray(children);
   if (!rows.length) return null;
@@ -82,8 +75,7 @@ export function ControlSection({ title, children }: { title: string; children: R
   );
 }
 
-// One control and its visible name. The label column is text only — the glyph,
-// where there is one, sits inside the control itself.
+// The label column is text only; the glyph sits inside the control itself.
 export function ControlRow({ label, children }: { label: string; children: ReactNode }) {
   return (
     <Flex align="center" gap={2} minH="30px">
@@ -103,8 +95,7 @@ export type SegmentOption<T extends string> = {
   image?: string;
 };
 
-// A fixed, small set of mutually exclusive choices, shown side by side. Used
-// for anything with a known option list — camera mode, drag mode, the store.
+// A small fixed set of mutually exclusive choices, shown side by side.
 export function SegmentedControl<T extends string>({
   value, options, onChange, ariaLabel,
 }: {
@@ -147,8 +138,8 @@ export function SegmentedControl<T extends string>({
   );
 }
 
-// A named on/off control. The state is spelled out rather than implied by a
-// dimmed icon, which reads as "unavailable" as often as "off".
+// The state is spelled out rather than implied by a dimmed icon, which reads
+// as "unavailable" as often as "off".
 export function ToggleRow({ label, value, onChange }: {
   label: string; value: boolean; onChange: (value: boolean) => void;
 }) {
@@ -172,7 +163,7 @@ export function ToggleRow({ label, value, onChange }: {
   );
 }
 
-// A one-shot action: icon plus its name, never a bare glyph.
+// Icon plus its name, never a bare glyph.
 export function ActionButton({ icon, label, onClick, disabled = false, busy = false }: {
   icon: IconName; label: string; onClick: () => void;
   disabled?: boolean; busy?: boolean;
@@ -391,9 +382,7 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
   );
 }
 
-// Store-build labels and each platform's own storefront art. OneStore ships the
-// uncensored art; Google Play ships the censored edit. Only affection art
-// differs.
+// OneStore ships the uncensored art, Google Play the censored edit.
 export const STORE_META: Record<StoreKey, { short: string; label: string; image: string }> = {
   onestore: { short: 'ONE', label: 'ONE store — uncensored', image: 'stores/onestore.png' },
   google: { short: 'GP', label: 'Google Play — censored', image: 'stores/google.png' },
@@ -406,7 +395,7 @@ function StoreArt({ src, alt }: { src: string; alt: string }) {
   return <Image src={`${PUBLIC_BASE}/${src}`} alt={alt} boxSize="14px" flexShrink={0} />;
 }
 
-// Store-variant radio strip, shown only for skins whose art actually diverges.
+// Shown only for skins whose art actually diverges.
 export function StoreStrip({ stores, active, onSelect }: {
   stores: StoreKey[]; active: StoreKey; onSelect: (k: StoreKey) => void;
 }) {

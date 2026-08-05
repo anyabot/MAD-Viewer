@@ -1,0 +1,111 @@
+{
+ "generated": "2026-08-05T02:33:05Z",
+ "bundle": "ui_assets_assets_assetresources_prefabs_ui_gacha_popups_uireturnpopupgacharesult_c318886144457a9e8497e9d83680d057.bundle",
+ "drawer": {
+  "pixelPerUnit": 100.0
+ },
+ "jiggler": {
+  "maxDistance": 10.0,
+  "springStrength": 500.0,
+  "springDamping": 0.1
+ },
+ "rigs": {
+  "child": {
+   "key": "gacha_sc0003",
+   "asset": "Gacha_SC0003",
+   "skel": "Gacha_SC0003.skel",
+   "atlas": "Gacha_SC0003.atlas",
+   "pages": [
+    "Gacha_SC0003.png"
+   ],
+   "dataScale": 0.009999999776482582,
+   "grades": [
+    1,
+    2
+   ],
+   "animations": [
+    "idle_boring",
+    "idle_normal",
+    "intro_cut_01",
+    "intro_cut_02",
+    "intro_cut_03",
+    "touch_action_01_idle",
+    "touch_action_01_start",
+    "touch_action_02_idle",
+    "touch_action_02_start",
+    "touch_action_03",
+    "touch_cancel_01",
+    "touch_cancel_02",
+    "touch_cancel_03",
+    "transition_in_01",
+    "transition_in_02"
+   ],
+   "durations": {
+    "idle_boring": 4,
+    "idle_normal": 2,
+    "intro_cut_01": 2.1667,
+    "intro_cut_02": 1.6667,
+    "intro_cut_03": 2.3333,
+    "touch_action_01_idle": 2,
+    "touch_action_01_start": 1.6667,
+    "touch_action_02_idle": 4,
+    "touch_action_02_start": 2,
+    "touch_action_03": 1.5,
+    "touch_cancel_01": 5,
+    "touch_cancel_02": 5,
+    "touch_cancel_03": 5,
+    "transition_in_01": 2.3333,
+    "transition_in_02": 2.3333
+   },
+   "cameraBone": "cam",
+   "jiggleBone": "touch_action"
+  },
+  "adult": {
+   "key": "gacha_sc0004",
+   "asset": "Gacha_SC0004",
+   "skel": "Gacha_SC0004.skel",
+   "atlas": "Gacha_SC0004.atlas",
+   "pages": [
+    "Gacha_SC0004.png"
+   ],
+   "dataScale": 0.009999999776482582,
+   "grades": [
+    3
+   ],
+   "animations": [
+    "idle_boring",
+    "idle_normal",
+    "intro_cut_01",
+    "intro_cut_02",
+    "intro_cut_03",
+    "touch_action_01_idle",
+    "touch_action_01_start",
+    "touch_action_02_idle",
+    "touch_action_02_start",
+    "touch_action_03",
+    "touch_cancel_01",
+    "touch_cancel_02",
+    "touch_cancel_03",
+    "transition_out_01"
+   ],
+   "durations": {
+    "idle_boring": 4,
+    "idle_normal": 2,
+    "intro_cut_01": 2.1667,
+    "intro_cut_02": 1.6667,
+    "intro_cut_03": 2.3333,
+    "touch_action_01_idle": 2,
+    "touch_action_01_start": 1.6667,
+    "touch_action_02_idle": 4,
+    "touch_action_02_start": 2,
+    "touch_action_03": 1.5,
+    "touch_cancel_01": 5,
+    "touch_cancel_02": 5,
+    "touch_cancel_03": 5,
+    "transition_out_01": 2.8
+   },
+   "cameraBone": "cam",
+   "jiggleBone": "touch_action"
+  }
+ }
+}

@@ -1,6 +1,5 @@
-// Authored animation sounds and music used by the scene scripts. Character
-// dialogue remains independent in voice.ts so muting one channel does not
-// unexpectedly mute the other.
+// Character dialogue stays independent in `voice.ts`, so muting one channel
+// does not mute the other.
 import { sceneAudioClipUrl } from '@/lib/cdn';
 
 export type SceneAudioIndex = {
@@ -12,20 +11,18 @@ export type SceneAudioIndex = {
 let effect: HTMLAudioElement | null = null;
 let music: HTMLAudioElement | null = null;
 let musicToken = 0;
-// An animation sound is staged by the clip it belongs to, so it follows the
-// viewer's speed control. Music keeps its own tempo — only the authored
-// cross-fade, which belongs to the script, runs on the scaled clock.
+// An animation sound is staged by its clip, so it follows the speed control.
+// Music keeps its own tempo; only the authored cross-fade is scaled.
 let effectRate = 1;
 
-/** Follow the viewer's speed control, including for the sound already playing. */
+/** Applies to the sound already playing as well. */
 export function setSceneSoundRate(value: number) {
   effectRate = Math.max(value, 0.01);
   if (effect) effect.playbackRate = effectRate;
 }
 
-// Downloaded clips, held as object URLs so a sound starts on the same tick as
-// the animation that stages it and a music cue starts on the beat the script
-// asks for, rather than a CDN round trip later.
+// Held as object URLs so a sound starts on the tick the animation staging it
+// does, rather than a CDN round trip later.
 const downloading = new Map<string, Promise<string>>();
 const ready = new Map<string, string>();
 const order: string[] = [];
@@ -79,12 +76,8 @@ function download(index: SceneAudioIndex | null, clip: string): Promise<string> 
   return pending;
 }
 
-/**
- * Start downloading clips before anything asks to play them. Call it as soon as
- * the set of sounds a rig can make is known — its animation sounds and every
- * BGM its timelines name — so no cue is silent while its clip is still in
- * flight. Unknown clip ids are ignored.
- */
+/** Runs as soon as the set of sounds a rig can make is known, so no cue is
+ *  silent while its clip is still in flight. Unknown ids are ignored. */
 export function prefetchSceneAudio(
   index: SceneAudioIndex | null, clips: Iterable<string>,
 ): void {
@@ -94,8 +87,7 @@ export function prefetchSceneAudio(
   }
 }
 
-// A cached clip resolves without awaiting anything; one that is not cached yet
-// streams from its URL rather than waiting for a full download.
+// An uncached clip streams rather than waiting for a full download.
 async function url(index: SceneAudioIndex | null, clip: string): Promise<string | null> {
   const cached = ready.get(clip);
   if (cached) return cached;
@@ -148,9 +140,8 @@ export async function playBgm(
   if (fade > 0) fadeVolume(player, 1, fade, mine);
 }
 
-// Detaching the source clears the element without pointing it at a URL. An
-// empty `src` string resolves against the document, so the browser tries to
-// load the page as media and logs a failure.
+// An empty `src` string resolves against the document, so the browser would try
+// to load the page as media; detaching the attribute clears it cleanly.
 function detach(player: HTMLAudioElement) {
   player.pause();
   player.removeAttribute('src');

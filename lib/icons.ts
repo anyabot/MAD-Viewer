@@ -1,11 +1,6 @@
-// The game's own icon art, published under `public/icons/<group>/<name>.webp`
-// by the local icon pipeline.
-//
-// `icons.json` is the manifest of what was actually extracted, so a caller can
-// ask whether an icon exists instead of rendering a broken image. Not every
-// name the master data references is extractable — `Role_Icon_Data.icon` names
-// a sprite no atlas bundle carries — which is why the type tables carry a
-// candidate list and resolution happens here.
+// Not every icon name the master data references is extractable, which is why
+// the type tables carry a candidate list and the manifest is consulted before
+// anything is rendered.
 import { loadIcons, type CharacterEntry, type IconManifest, type SkinListEntry } from '@/lib/data';
 import { skinIconNames } from '@/lib/characters';
 
@@ -24,8 +19,7 @@ export function hasIcon(
   return !!name && !!manifest?.groups[group]?.includes(name);
 }
 
-// The first candidate that was published, or null. Icons are decoration, so a
-// miss must render as "no icon" rather than a broken image.
+// Icons are decoration, so a miss renders as "no icon", never as a broken image.
 export function resolveIcon(
   manifest: IconManifest | null, group: IconGroup, names: (string | null | undefined)[],
 ): string | null {
@@ -34,13 +28,9 @@ export function resolveIcon(
 }
 
 /**
- * The display icon for one rig: its own thumbnail when the game ships one,
- * otherwise the character portrait.
- *
- * A playable character's standing rig has no thumbnail of its own — the
- * portrait *is* its art — while every story-only character is the other way
- * round, with a rig thumbnail and no portrait at all. So neither source alone
- * covers the roster and the order matters.
+ * A playable character's standing rig has no thumbnail — the portrait is its
+ * art — while a story-only character has a thumbnail and no portrait, so the
+ * order matters and neither source alone covers the roster.
  */
 export function skinIcon(
   manifest: IconManifest | null, skin: SkinListEntry, entry: CharacterEntry | null,
@@ -50,11 +40,8 @@ export function skinIcon(
     ?? resolveIcon(manifest, 'char', names.char);
 }
 
-/**
- * The icon that stands for a character: its standing rig's, else any rig's,
- * else the plain portrait. A character with no rig at all still resolves,
- * which is what keeps the character list whole.
- */
+/** The standing rig's, else any rig's, else the plain portrait — so a
+ *  character with no rig at all still resolves. */
 export function characterIcon(
   manifest: IconManifest | null, entry: CharacterEntry | null, skins: SkinListEntry[],
 ): string | null {

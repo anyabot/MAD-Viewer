@@ -1,15 +1,5 @@
-// One character, in as many tabs as it has content for: a wiki-style infobox
-// of the non-gameplay master data, the skill kit with what each skill
-// mechanically does, a unit stat calculator, and every skin the character has —
-// standing, affection, desire — in the Spine viewer. An NPC usually has only
-// the first, and then there is no tab bar at all.
-//
-// The route is `/character?code=CH0001` rather than a `[code]` segment: all
-// game data is fetched at runtime, so a build-time path list would have to be
-// regenerated whenever a character is added.
-//
-// Mobile-first: the infobox sits above the profile panels on `base` and beside
-// them from `lg`; the skin strip scrolls inside its own box.
+// A query route rather than a `[code]` segment: all game data is fetched at
+// runtime, so a build-time path list would need regenerating per character.
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
@@ -64,7 +54,6 @@ export default function CharacterPage() {
   const mine = useMemo(
     () => (code ? skinsByCharacter(skins).get(code) ?? [] : []), [skins, code]);
 
-  // Reset the selection when the route changes to a different character.
   useEffect(() => { setSelected(null); }, [code]);
   const current = useMemo(
     () => mine.find((s) => s.key === selected) ?? mine[0] ?? null, [mine, selected]);
@@ -99,16 +88,10 @@ export default function CharacterPage() {
   const element = typeOf(entry, chars.types, 'attribute');
   const roster = rosterNote(entry);
 
-  // Only what the character has gets a tab. An NPC carries a profile and
-  // little else, and a row of tabs whose panels all say "no data" is noise;
-  // with one section left there is nothing to switch between, so the tab bar
-  // goes too.
+  // Only what the character has gets a tab, and with one section left the tab
+  // bar goes too.
   const tabs: { key: string; label: string; count?: number; panel: React.ReactNode }[] = [];
 
-  // The infobox is a fixed-width card; everything else flows beside it and
-  // wraps under it on a narrow screen. Keeping the tall blocks (skills) in the
-  // same column as the short ones stops the grid from leaving a column-height
-  // gap.
   tabs.push({
     key: 'profile',
     label: 'Profile',
@@ -136,8 +119,6 @@ export default function CharacterPage() {
     ),
   });
 
-  // The kit is its own tab: the skill rows carry a behaviour breakdown each,
-  // which makes the block far taller than the profile column it used to share.
   if (skillGrades(entry, chars).length > 0) {
     tabs.push({
       key: 'skills',
@@ -151,9 +132,6 @@ export default function CharacterPage() {
     });
   }
 
-  // The calculator owns its own inputs, so it is a tab rather than a profile
-  // panel — the level, star, equipment and affection pickers are as tall as
-  // the result table.
   if (entry.baseStats) {
     tabs.push({
       key: 'stats',
@@ -217,15 +195,12 @@ export default function CharacterPage() {
           _hover={{ color: 'gray.200' }}>← characters</Text>
         <Text fontSize="2xl" fontWeight="bold">{entry.name || entry.code}</Text>
         {entry.nameEn && <Text fontSize="md" color="gray.500">{entry.nameEn}</Text>}
-        {/* the game's second, independent English name, when it is not just
-            the first one in caps */}
         {altNameEn(entry) && (
           <Text fontSize="sm" color="gray.600">{altNameEn(entry)}</Text>
         )}
         <Text fontFamily="mono" fontSize="sm" color="gray.500">{entry.code}</Text>
         {roster && <Badge colorScheme={roster.scheme}>{roster.label}</Badge>}
-        {/* a story-only character has no master-data row; the scripts address
-            it by this id and that is where its name came from */}
+        {/* a story-only character is named by the scripts, through this id */}
         {entry.actorId && (
           <Text fontFamily="mono" fontSize="xs" color="gray.500">{entry.actorId}</Text>
         )}
@@ -234,9 +209,6 @@ export default function CharacterPage() {
       {tabs.length === 1 ? (
         <Box pt={1}>{tabs[0].panel}</Box>
       ) : (
-        // The viewer is tall enough to push the profile off a phone screen, so
-        // the sections are tabs rather than one column. Each mounts only when
-        // its tab is opened.
         <Tabs variant="line" colorScheme="yellow" isLazy>
           <TabList borderColor="whiteAlpha.200" overflowX="auto">
             {tabs.map((tab) => (
@@ -262,8 +234,7 @@ export default function CharacterPage() {
   );
 }
 
-// One infobox fact that also names a filter axis: clicking it opens the
-// character list showing exactly the characters that share the value.
+// Opens the character list filtered to the characters sharing this value.
 function FilterLink({ onClick, children }: {
   onClick: () => void; children: React.ReactNode;
 }) {
@@ -275,8 +246,7 @@ function FilterLink({ onClick, children }: {
   );
 }
 
-// The characters that share a faction, shown on hover over the faction row.
-// Hover only: on a touch screen the row itself is the link to the same list.
+// Hover only: on a touch screen the row itself links to the same list.
 function MemberPopover({ members, icons, children }: {
   members: CharacterEntry[]; icons: IconManifest | null; children: React.ReactNode;
 }) {
@@ -309,12 +279,8 @@ function MemberPopover({ members, icons, children }: {
   );
 }
 
-// The wiki infobox: cut-in art, then every non-gameplay fact the master data
-// carries. Rows with no value are omitted entirely rather than shown empty,
-// and a character with neither art nor facts gets no card at all. Every type
-// row and the rarity are links into the character list.
-//
-// Only the playable roster and ten NPCs have cut-in art; where there is none,
+// A row with no value is omitted rather than shown empty, and a character with
+// neither art nor facts gets no card at all. Most NPCs have no cut-in art, so
 // the character's own rig icon stands in.
 function Infobox({ entry, data, icons, accent, skins }: {
   entry: CharacterEntry; data: CharacterData;
@@ -381,8 +347,8 @@ function Infobox({ entry, data, icons, accent, skins }: {
       bg="whiteAlpha.50" overflow="hidden">
       {art && (
         <Center bg="blackAlpha.400" py={2}>
-          {/* a cut-in is tall portrait art; a rig icon is a small square and
-              must not be blown up to the same height */}
+          {/* a rig icon is a small square and must not be blown up to the
+              height a tall cut-in takes */}
           <Box as="img" src={art} alt="" w="auto" objectFit="contain"
             maxH={cutin ? '260px' : '120px'} />
         </Center>
@@ -450,10 +416,8 @@ function GameText({ text }: { text: string }) {
   );
 }
 
-// The three equipment slots this character can fill. The art is the empty
-// slot; what goes in it is player inventory, not master data. The slot types
-// have no English column in the master data, so `EQUIP_EN` supplies it and the
-// game's own Korean label stays underneath.
+// The art is the empty slot: what goes in it is player inventory, not master
+// data.
 function EquipmentSlots({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
@@ -478,8 +442,8 @@ function EquipmentSlots({ entry, data, icons }: {
   );
 }
 
-// The three gifts this character likes. `gift_item_id_favorite` ships empty
-// for every character, so there is no second tier to show.
+// `gift_item_id_favorite` ships empty for every character, so there is no
+// second tier to show.
 function Gifts({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
@@ -504,9 +468,6 @@ function Gifts({ entry, data, icons }: {
   );
 }
 
-// The venues a date can be at. The master data records the *region* per
-// character (`flirting_division_type`), not one favourite venue, so this lists
-// the whole region.
 function DateVenues({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
@@ -538,8 +499,7 @@ function DateVenues({ entry, data, icons }: {
   );
 }
 
-// A labelled slider. The value sits on the label row so the control stays one
-// line high on a phone.
+// The value sits on the label row so the control stays one line high on a phone.
 function Dial({ label, value, min, max, note, onChange }: {
   label: string; value: number; min: number; max: number;
   note?: string | null; onChange: (v: number) => void;
@@ -561,7 +521,6 @@ function Dial({ label, value, min, max, note, onChange }: {
   );
 }
 
-// A row of small toggles, used for the star grade.
 function Choices({ label, options, value, onChange }: {
   label: string; options: { value: number; text: string }[];
   value: number; onChange: (v: number) => void;
@@ -581,11 +540,8 @@ function Choices({ label, options, value, onChange }: {
   );
 }
 
-// One equipment slot's picker: which tier is in it, and how far it is levelled.
-// Tier 0 is the empty slot, which is the state a character starts in, and its
-// art is the slot's own empty icon. Each tier is picked by the game's art for a
-// filled slot at that tier — the tiers differ by colour, which a `T3` label
-// does not carry.
+// Tier 0 is the empty slot. A tier is picked by the game's own filled-slot
+// art, since the tiers differ by colour, which a `T3` label does not carry.
 function GearSlot({ slot, icons, tier, level, onChange }: {
   slot: ReturnType<typeof equipmentSlotsOf>[number]; icons: IconManifest | null;
   tier: number; level: number; onChange: (tier: number, level: number) => void;
@@ -633,13 +589,7 @@ function GearSlot({ slot, icons, tier, level, onChange }: {
   );
 }
 
-// What a character's stats come to at a chosen level, star grade, equipment set
-// and affection rank.
-//
-// The terms are shown apart because each has its own source: the base column is
-// the character's own growth, the equipment column is the fraction-of-base and
-// flat options of what is in the three slots, and the affection column is the
-// flat gain the relationship ranks add.
+// The terms are shown apart because each has its own source.
 function StatCalculator({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
@@ -648,7 +598,7 @@ function StatCalculator({ entry, data, icons }: {
   const slots = equipmentSlotsOf(entry, data.equipment);
   const [star, setStar] = useState<number | null>(null);
   const [level, setLevel] = useState(caps.level);
-  // every character starts at affection rank 1, so that is the floor
+  // every character starts at affection rank 1
   const [love, setLove] = useState(1);
   const [gear, setGear] = useState<Record<number, { tier: number; level: number }>>({});
 
@@ -747,9 +697,8 @@ function StatCalculator({ entry, data, icons }: {
   );
 }
 
-// What the filled slots grant, before the base stat is applied to the
-// fractional ones — the table above shows the resulting number, this shows the
-// option that produced it.
+// The options themselves, before the base stat is applied to the fractional
+// ones.
 function GearGrants({ data, equipment }: {
   data: CharacterData; equipment: EquipInput[];
 }) {
@@ -769,8 +718,7 @@ function GearGrants({ data, equipment }: {
   );
 }
 
-// The lasting states a skill applies at the picked level. Both the magnitude
-// and the duration scale with the level, so this re-renders with it.
+// Magnitude and duration both scale with the skill level.
 function BuffList({ buffs, icons }: {
   buffs: BuffEntry[]; icons: IconManifest | null;
 }) {
@@ -817,9 +765,8 @@ function BuffList({ buffs, icons }: {
   );
 }
 
-// One operation a skill performs. The description above it says what the game
-// tells the player; this says what the tables say, which is where the target
-// side, the scaling stat and the unnamed effects become visible.
+// What the tables say, as opposed to the description above it: this is where
+// the target side, the scaling stat and the unnamed effects become visible.
 function OpRow({ op, level, period, data, icons }: {
   op: SkillOp; level: number; period: number;
   data: CharacterData; icons: IconManifest | null;
@@ -835,8 +782,7 @@ function OpRow({ op, level, period, data, icons }: {
   const scale = scaleSummary(op);
   const amounts = opAmounts(op, level, period);
   const seconds = opSeconds(op, level, period);
-  // an internal marker's id is all that identifies it, and a boss can name six
-  // at once; show enough to read and keep the rest in the tooltip
+  // a boss can name six states at once; the rest go in the tooltip
   const detail = op.detail ? detailSummary(op.detail) : [];
   const shown = detail.slice(0, 3);
   return (
@@ -869,7 +815,9 @@ function OpRow({ op, level, period, data, icons }: {
         </Text>
       )}
       {op.gate && (
-        <Text fontSize="0.65rem" color="cyan.300">{gateSummary(op.gate, data)}</Text>
+        <Text fontSize="0.65rem" color="cyan.300">
+          <GameText text={gateSummary(op.gate, data)} />
+        </Text>
       )}
       {seconds && <Text fontSize="0.65rem" color="gray.500">{seconds}</Text>}
       {op.interval ? (
@@ -883,11 +831,9 @@ function OpRow({ op, level, period, data, icons }: {
   );
 }
 
-// What a skill mechanically does, as opposed to what its description says.
-//
 // Structure only — which operation lands on whom, scaled off which stat. The
-// magnitudes stay in the description, because the arithmetic that turns a
-// coefficient into a battle number is not decoded and must not be implied here.
+// arithmetic that turns a coefficient into a battle number is not decoded and
+// must not be implied here.
 function Behaviour({ behaviour, level, period, data, icons }: {
   behaviour: SkillBehaviour; level: number; period: number;
   data: CharacterData; icons: IconManifest | null;
@@ -970,10 +916,8 @@ function Behaviour({ behaviour, level, period, data, icons }: {
   );
 }
 
-// Skills at one star grade. The grade is picked because the master data
-// carries a full set per grade: a passive unlocks at 3★ and upgrades at 4★ and
-// 5★ regardless of the character's own rarity. Skill level is picked per
-// skill, in `SkillRow`.
+// The grade is picked because a passive unlocks at 3★ and upgrades at 4★ and
+// 5★ regardless of the character's own rarity.
 function Skills({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
@@ -999,8 +943,8 @@ function Skills({ entry, data, icons }: {
       <VStack align="stretch" spacing={3}>
         {skills.map((skill) => (
           <SkillRow key={skill.id} skill={skill} data={data} icons={icons}
-            // most enemy slots share one placeholder name, so the slot the
-            // rotation refers to is the only thing telling them apart
+            // most enemy slots share one placeholder name, so the slot number
+            // is the only thing telling them apart
             showSlot={skills.filter((s) => s.name === skill.name).length > 1} />
         ))}
       </VStack>
@@ -1008,10 +952,8 @@ function Skills({ entry, data, icons }: {
   );
 }
 
-// One skill. A levelable one carries its own level picker: skills level
-// independently, so a single shared level would misreport every other row.
-// A passive is keyed by star grade and the normal attack has no level at all,
-// so neither shows a picker.
+// Skills level independently, so a shared level picker would misreport every
+// other row. A passive is keyed by star grade and a normal attack has no level.
 function SkillRow({ skill, data, icons, showSlot }: {
   skill: SkillEntry & { id: number }; data: CharacterData;
   icons: IconManifest | null; showSlot?: boolean;
@@ -1066,9 +1008,8 @@ function SkillRow({ skill, data, icons, showSlot }: {
   );
 }
 
-// The AI's skill order: `start` plays once at the opening, `repeat` loops.
-// A list with more than one rotation is a set of alternatives; the game picks
-// by the named condition, falling through to the unconditional 기본 패턴.
+// More than one rotation in a list is a set of alternatives the game picks by
+// the named condition, falling through to the unconditional 기본 패턴.
 const ROTATION_LABEL: Record<string, string> = { start: 'Opening', repeat: 'Loop' };
 
 function Rotation({ entry, data, icons }: {
@@ -1076,9 +1017,8 @@ function Rotation({ entry, data, icons }: {
 }) {
   const patterns = entry.battlePatterns;
   if (!patterns) return null;
-  // An enemy's slots share one placeholder name, so a bare name list would be
-  // the same word ten times over. A name is ambiguous when *different* skills
-  // carry it — a rotation naming one skill twice is not.
+  // A name is ambiguous when different skills carry it — an enemy's slots
+  // share one placeholder name. A rotation naming one skill twice is not.
   const idsByName = new Map<string, Set<number>>();
   for (const rot of [...(patterns.start ?? []), ...(patterns.repeat ?? [])]) {
     for (const id of rot.steps) {
@@ -1128,8 +1068,7 @@ function Rotation({ entry, data, icons }: {
   );
 }
 
-// Every rig this character has. Scrolls horizontally on a narrow screen rather
-// than widening the page.
+// Scrolls horizontally on a narrow screen rather than widening the page.
 function SkinStrip({ skins, entry, icons, selected, onSelect }: {
   skins: SkinListEntry[]; entry: CharacterEntry; icons: IconManifest | null;
   selected: string | null; onSelect: (key: string) => void;

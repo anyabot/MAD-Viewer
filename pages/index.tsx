@@ -1,14 +1,10 @@
-// Skin gallery — every rig the pipeline produced, by asset key. Pick one and
-// view it in the Spine viewer. There is no landing page: the gallery is what
-// the viewer is for. Unit facts live on the character page, not here.
-//
-// Mobile-first — the picker collapses above the viewer on narrow screens and
-// the chip rows wrap instead of overflowing.
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Center, Flex, Grid, HStack, Input, Spinner, Text, VStack, Wrap, WrapItem,
+  Badge, Box, Center, Flex, Grid, HStack, Input, Spinner, Tab, TabList, TabPanel,
+  TabPanels, Tabs, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
+import GachaScene from '@/components/gachaScene';
 import SkinViewer from '@/components/skinViewer';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
@@ -23,21 +19,35 @@ import {
 
 const KINDS: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure'];
 
-// A row is named after the character; the rig family is a badge beside it and
-// the asset key stays on the second line — it is what the pipeline calls the
-// rig, not what the rig is.
 function skinTitle(skin: SkinListEntry, name: string): string {
   return name || skin.character || skin.key;
 }
 
-export default function SkinsPage() {
+// Two things live on this route: the rig gallery, and the gacha result
+// cutscene, which is its own scene rather than a gallery entry. `isLazy` keeps
+// the cutscene's archives unfetched until its tab is opened.
+export default function ViewerPage() {
+  return (
+    <Tabs variant="line" colorScheme="yellow" isLazy>
+      <TabList borderColor="whiteAlpha.200" overflowX="auto">
+        <Tab fontSize="sm" whiteSpace="nowrap">Skins</Tab>
+        <Tab fontSize="sm" whiteSpace="nowrap">Gacha</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel px={0} pt={4}><SkinGallery /></TabPanel>
+        <TabPanel px={0} pt={4}><GachaScene /></TabPanel>
+      </TabPanels>
+    </Tabs>
+  );
+}
+
+function SkinGallery() {
   const [skins, setSkins] = useState<SkinListEntry[] | null>(null);
   const [charData, setCharData] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [store, setStore] = useState<StoreKey>('onestore');
-  // Filters and selection live in the store so leaving for a character page
-  // and coming back restores the search rather than resetting it.
+  // In the store so leaving for a character page and back restores the search.
   const { kind, query, divergedOnly, selected } = useFilters((s) => s.skins);
   const set = useFilters((s) => s.setSkins);
 
@@ -61,8 +71,7 @@ export default function SkinsPage() {
       charData?.characters[s.character] ?? null, [charData]);
   const nameOf = useMemo(
     () => (s: SkinListEntry) => charOf(s)?.name ?? '', [charOf]);
-  // The English name, as the character page shows it beside the Korean one.
-  // Playable characters only — it is `null` for every NPC.
+  // Playable characters only; it is null for every NPC.
   const nameEnOf = useMemo(
     () => (s: SkinListEntry) => charOf(s)?.nameEn ?? '', [charOf]);
 

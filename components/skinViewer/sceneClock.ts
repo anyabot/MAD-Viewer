@@ -1,20 +1,16 @@
-// The one clock the rig's playback runs on, and the fade cover that rides it.
-//
-// Scene time is authored seconds: it advances with the rig's own animation
-// clock — zero while paused, scaled by the speed control every frame — so a
-// wait, a fade, a camera move and the idle timeout all keep their authored
-// relationship to the clip they accompany, and changing speed while any of them
-// is in flight rescales what is left of it. `setTimeout` and `performance.now()`
-// are the wrong clock for anything the rig times.
+// Scene time is authored seconds, advancing with the rig's own animation clock:
+// zero while paused, scaled by the speed control every frame, so a speed change
+// mid-flight rescales what is left of anything pending. `setTimeout` and
+// `performance.now()` are the wrong clock for anything the rig times.
 import type { SceneFadeState } from '@/components/skinViewer/scenes';
 
 export type SceneClock = {
-  /** Current scene time, in authored seconds since the rig was built. */
+  /** Authored seconds since the rig was built. */
   now: () => number;
-  /** Run `task` after `seconds` of scene time; returns a cancellation handle. */
+  /** Returns a handle for `cancel`. */
   schedule: (task: () => void, seconds: number) => number;
   cancel: (handle: number | null) => void;
-  /** Advance the clock and dispatch what is due. Register on the Pixi ticker. */
+  /** Register on the Pixi ticker. */
   tick: (deltaMS: number) => void;
 };
 
@@ -22,9 +18,8 @@ export function createSceneClock(rate: () => number): SceneClock {
   let now = 0;
   let seq = 0;
   let tasks: { id: number; at: number; run: () => void }[] = [];
-  // Cancelling holds for the frame the task was already due on: several actions
-  // can come due together, and one of them clearing the sequence (a touch, an
-  // authored reset) must still stop the rest.
+  // Cancelling holds for the frame the task was already due on: several tasks
+  // can come due together, and one clearing the sequence must stop the rest.
   const cancelled = new Set<number>();
 
   return {
@@ -59,18 +54,15 @@ export function createSceneClock(rate: () => number): SceneClock {
 }
 
 export type FadeCover = {
-  /** Show the authored state, tweening its alpha when it carries a duration. */
   apply: (next: SceneFadeState) => void;
-  /** Advance the tween and resize to the screen. Register on the Pixi ticker. */
+  /** Register on the Pixi ticker. */
   tick: () => void;
 };
 
 /**
- * The cover the script fades in and out. It is a Pixi `Graphics` on the stage
- * above the whole scene, so pan, zoom and device staging never move it, and its
- * alpha runs on the scene clock rather than a CSS transition — a DOM cover
- * desynchronises from the animation it covers at any speed but 1x and cannot be
- * paused.
+ * A `Graphics` above the whole scene, so pan, zoom and device staging never
+ * move it, and its alpha runs on the scene clock: a DOM cover with a CSS
+ * transition desynchronises at any speed but 1x and cannot be paused.
  */
 export function createFadeCover(PIXI: any, app: any, clock: SceneClock): FadeCover {
   const cover = new PIXI.Graphics();

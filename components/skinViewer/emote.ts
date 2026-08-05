@@ -1,16 +1,9 @@
-// The lobby emote. `[@emo]` names a Unity particle prefab, so this draws the
-// prefab's emitters running — one Pixi sprite per live particle — rather than a
-// picture of them. The simulation itself is `particles.ts`; this module owns
-// the textures, the sprite pool and where the whole thing hangs.
+// One Pixi sprite per live particle of the prefab `[@emo]` names; the
+// simulation itself is `particles.ts`. The container sits in `scene` beside the
+// actor so pan, zoom and device staging carry it with the figure.
 //
-// The container lives in `scene` next to the actor so pan, zoom and the device
-// staging carry it exactly as they carry the figure.
-//
-// Placement is the game's own: the prefab picks a slot, and the rig authors
-// that slot's bone and offset. The bone and the offset are in skeleton units,
-// while the particles are in the emitter's particle units — the one factor
-// between them is `EMOTE_UNIT_SCALE`, which the game applies in code and the
-// viewer supplies.
+// The slot bone and its offset are in skeleton units while the particles are in
+// the emitter's own; `EMOTE_UNIT_SCALE` is the factor between them.
 import { EMOTE_UNIT_SCALE } from '@/components/skinViewer/constants';
 import { createEmoteRun, type EmoteRun } from '@/components/skinViewer/particles';
 import type { EmotePlacement } from '@/lib/emoticons';
@@ -18,16 +11,14 @@ import type { EmotePlacement } from '@/lib/emoticons';
 export type EmoteBubble = {
   /** The Pixi container, so the caller can hide it while measuring the scene. */
   sprite: any;
-  /** Play the emote's particle systems once. */
   show: (placement: EmotePlacement) => void;
   hide: () => void;
-  /** Advance and redraw. Register on the Pixi ticker. */
+  /** Register on the Pixi ticker. */
   tick: () => void;
 };
 
-// Unity's own `Time.maximumDeltaTime`: a frame longer than this — a hidden tab,
-// a stalled load — advances the simulation by no more than one step of it,
-// rather than teleporting every particle.
+// Unity's own `Time.maximumDeltaTime`: a longer frame advances the simulation
+// by one step of this rather than teleporting every particle.
 const MAX_STEP = 0.333;
 
 export function createEmoteBubble(options: {
@@ -47,9 +38,8 @@ export function createEmoteBubble(options: {
   scene.addChild(container);
 
   const pool: any[] = [];
-  // One texture per (sheet, tile). The tile grid is the emitter's, so the same
-  // sheet read through two grids yields two sets, which is what several
-  // prefabs do.
+  // One texture per (sheet, tile). The grid is the emitter's, so the same sheet
+  // read through two grids yields two sets.
   const tiles = new Map<string, any>();
   const sheets = new Map<string, any>();
   let token = 0;
@@ -92,17 +82,15 @@ export function createEmoteBubble(options: {
     const bone = spine.skeleton.bones.find(
       (b: any) => b.data.name.toLowerCase() === wanted);
     if (!bone) return;
-    // `spine-pixi` sets `Skeleton.yDown = true`, so `bone.worldY` is already
-    // y-down. The authored offset and the particle positions are both y-up, so
-    // both are subtracted rather than added.
+    // `bone.worldY` is already y-down while the authored offset and the
+    // particle positions are y-up, so both are subtracted rather than added.
     const originX = bone.worldX + place.offset[0];
     const originY = bone.worldY - place.offset[1];
     const unit = EMOTE_UNIT_SCALE;
     const scale = unit * Math.abs(spine.scale.y);
-    // A right-facing rig mirrors the whole effect about the slot: the prefab is
-    // authored for one facing. Mirroring is a negative x scale on the effect
-    // root, so it takes the particle's x, the quad's own x — which carries the
-    // pivot with it — and the sense of its rotation.
+    // The prefab is authored for one facing, so a right-facing rig mirrors the
+    // whole effect about the slot: the particle's x, the quad's own x — which
+    // carries the pivot with it — and the sense of its rotation.
     const mirror = place.mirror ? -1 : 1;
 
     let used = 0;
@@ -115,12 +103,9 @@ export function createEmoteBubble(options: {
         used += 1;
         view.texture = tileTexture(
           base, emitter.def.sheet, columns, rows, particle.frame);
-        // Unity's renderer pivot moves the quad by `+pivot * size`, in units of
-        // the particle's own size, and is the point it turns about — which is
-        // exactly a Pixi anchor, mirrored in y because the pivot is authored
-        // y-up. `silence` pins the direction: its bubble carries the pivot and
-        // its dots, which have none, are authored at the point the bubble's
-        // centre has to land on.
+        // Unity's renderer pivot moves the quad by `+pivot * size` and is the
+        // point it turns about, which is exactly a Pixi anchor — mirrored in y
+        // because the pivot is authored y-up.
         view.anchor.set(0.5 - emitter.def.pivot[0], 0.5 + emitter.def.pivot[1]);
         const point = scene.toLocal(spine.toGlobal({
           x: originX + particle.x * unit * mirror,
@@ -130,9 +115,8 @@ export function createEmoteBubble(options: {
         view.width = particle.size * scale;
         view.height = particle.sizeY * scale;
         view.scale.x = Math.abs(view.scale.x) * mirror;
-        // Particle rotation is counter-clockwise about the emitter's plane and
-        // the stage is y-down, so it enters Pixi negated — and mirroring
-        // reverses it again.
+        // Counter-clockwise about the emitter's plane against a y-down stage,
+        // so it enters Pixi negated, and mirroring reverses it again.
         view.rotation = -particle.angle * mirror;
         view.tint = (Math.round(Math.min(1, Math.max(0, particle.r)) * 255) << 16)
           | (Math.round(Math.min(1, Math.max(0, particle.g)) * 255) << 8)
@@ -156,8 +140,8 @@ export function createEmoteBubble(options: {
     sprite: container,
     show: (placement) => {
       const mine = ++token;
-      // `loadParser` is named explicitly, as everywhere else here: PIXI picks a
-      // parser by extension, and the bare-string form produces no texture.
+      // PIXI picks a parser by extension, and the bare-string form produces no
+      // texture, so `loadParser` is named explicitly.
       void Promise.all(Object.entries(placement.sheets).map(([name, sheet]) =>
         PIXI.Assets.load({ src: sheet.url, loadParser: 'loadTextures' })
           .then((texture: any) => [name, texture] as const)))
@@ -172,13 +156,13 @@ export function createEmoteBubble(options: {
           run = createEmoteRun(usable, Math.floor(Math.random() * 0xffffffff));
           last = now();
           container.visible = true;
-          // One zero-length step so the opening burst is on screen for the
-          // frame the line starts, not the one after.
+          // A zero-length step puts the opening burst on screen for the frame
+          // the line starts, not the one after.
           run.advance(0);
           draw();
         })
-        // A decorative asset must not break the reaction it belongs to, and
-        // must not fail silently either.
+        // A decorative asset must not break the reaction it belongs to, nor
+        // fail silently.
         .catch((err: unknown) => console.warn('emote', err));
     },
     hide: stop,

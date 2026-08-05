@@ -1,22 +1,17 @@
-// Naninovel custom-variable expressions.
-//
-// The scenario scripts gate everything on custom variables: a trigger arms on a
-// condition, a `@goto` carries one, `@set` assigns one, and a `Track:` may be a
-// variable rather than a literal. This module is that expression language and
-// nothing else — the script interpreter owns the control flow.
+// Naninovel custom-variable expressions, which the scripts gate everything on.
+// The control flow itself belongs to the interpreter.
 
 export type Vars = Record<string, number>;
 
-// The syntax these scripts use: `=` and `==` equality, `!=`, `<`, `<=`, `>`,
-// `>=`, `&&`, `||`, and arithmetic `+ - * /`. Booleans are carried as 0/1 so
-// `x1=false` and `y=0` compare the same way.
+// `=` and `==` are both equality, and booleans are carried as 0/1 so `x1=false`
+// and `y=0` compare the same way.
 //
 // Hand-rolled rather than `new Function` so published data never reaches eval.
 
 type Token = { kind: 'num' | 'name' | 'op'; text: string };
 
-// Longest match wins, so '&&' must precede '&' and '!=' precede '!'.
-// ds_ch0011 writes its three-flag gate with single '&'.
+// Longest match wins, so '&&' must precede '&' and '!=' precede '!'. Some
+// scripts write a multi-flag gate with a single '&'.
 const OPERATOR_TEXT = ['&&', '||', '&', '|', '==', '!=', '<=', '>=', '<', '>', '=',
   '+', '-', '*', '/', '(', ')', '!'];
 
@@ -34,7 +29,7 @@ function tokenize(src: string): Token[] {
       continue;
     }
     if (/[A-Za-z_]/.test(c)) {
-      // Dots are part of the name: ds_ch0057 counts touches in `sum.x`.
+      // Dots are part of a name — a script counts touches in `sum.x`.
       let j = i;
       while (j < src.length && /[A-Za-z0-9_.]/.test(src[j])) j++;
       out.push({ kind: 'name', text: src.slice(i, j) });
@@ -103,10 +98,9 @@ export function evaluate(expr: string, vars: Vars): number | null {
   const expression = (minPrec: number): number | null => {
     let left = primary();
     if (left === null) return null;
-    // Postfix `!` asserts truthiness (`x1!` = "x1 is set"), not negation: the
-    // scripts pair an unconditional trigger that sets `x1=true` with an `x1!`
-    // trigger that sets it back, to alternate two clips on one box. Read from
-    // the ch0009 pattern, not from Naninovel's parser.
+    // Postfix `!` asserts truthiness (`x1!` is "x1 is set"), not negation:
+    // scripts pair a trigger that sets `x1=true` with an `x1!` one that sets it
+    // back, to alternate two clips on one box.
     while (tokens[pos]?.kind === 'op' && tokens[pos].text === '!') {
       pos++;
       left = left !== 0 ? 1 : 0;
@@ -128,7 +122,7 @@ export function evaluate(expr: string, vars: Vars): number | null {
   return pos === tokens.length ? value : null;
 }
 
-/** A condition holds when it evaluates truthy. An unparseable one never arms. */
+/** An unparseable condition never arms. */
 export function holds(when: string | null | undefined, vars: Vars): boolean {
   if (!when) return true;
   const v = evaluate(when, vars);

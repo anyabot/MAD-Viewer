@@ -1,11 +1,5 @@
-// Drives a `ScriptMachine` against the rig.
-//
-// The machine is pure: it returns the effects a step produced and the reason it
-// stopped. This module is the other half — it applies those effects to the
-// skeleton, the audio and the presentation, and resolves each park (a timed
-// wait, a clip finishing, a tap, or an armed trigger) by running the machine
-// again. One playback index drives the whole scene, exactly as the client's
-// playlist does.
+// The impure half of `ScriptMachine`: applies its effects to the skeleton, the
+// audio and the presentation, and resolves each park by running it again.
 
 import {
   ScriptMachine, type Armed, type ArmedOnlook, type Command, type Effect, type Park,
@@ -55,9 +49,8 @@ export function createScenePlayer(
   let park: Park = { kind: 'end' };
   let armed: Armed[] = [];
   let stopped = false;
-  // Scene-clock reading each onlook was armed at, keyed by its playlist index.
-  // The client stamps this when the trigger command runs, and re-running it —
-  // which is what a returning nested body does — restarts the deadline.
+  // Stamped when the trigger command runs, so a returning nested body — which
+  // re-runs it — restarts the deadline.
   const onlookArmedAt = new Map<number, { stamp: number; at: number }>();
 
   const apply = (effect: Effect): void => {
@@ -121,8 +114,6 @@ export function createScenePlayer(
     for (const effect of result.effects) apply(effect);
     park = result.park;
     armed = result.armed;
-    // Registrations that went away take their deadline with them; one that
-    // re-registered restarts it.
     const live = new Set(armed.map((a) => a.at));
     for (const key of Array.from(onlookArmedAt.keys())) {
       if (!live.has(key)) onlookArmedAt.delete(key);
@@ -144,15 +135,13 @@ export function createScenePlayer(
     }
   };
 
-  /** The trigger a touch on `box` runs, or null when the box is inert here. */
   const triggerFor = (box: string): Armed | null => {
     const hits = armed.filter(
       (a) => (a.kind === 'touch' || a.kind === 'drag') && a.box === box);
     if (!hits.length) return null;
-    // Several triggers can bind one box; a conditional one is the specific
-    // variant and an unconditional one the catch-all registered beside it, so
-    // taking the first match would make the variant unreachable. Which one the
-    // client's own trigger check prefers is not decoded.
+    // Several triggers can bind one box, a conditional one being the specific
+    // variant beside an unconditional catch-all, so taking the first match
+    // would make the variant unreachable.
     return hits.find((a) => a.when) ?? hits[0];
   };
 
@@ -173,36 +162,27 @@ export function createScenePlayer(
     armed: () => armed,
     park: () => park,
 
-    /** Label the destination of the section's authored reset, when it has one. */
     resetDestination(): string | null {
       const entry = armed.find((a) => a.kind === 'reset');
       return entry && entry.kind === 'reset' ? entry.destination : null;
     },
 
-    /**
-     * Begin the script. `skipEntry` starts at the first label, which is where
-     * the script's own pre-label opening ends — the viewer's Follow game flow
-     * option owns that opening.
-     */
+    /** `skipEntry` starts at the first label, past the script's own opening. */
     start(skipEntry: boolean): void {
       stopped = false;
       machine.pc = skipEntry ? machine.firstLabelIndex() : 0;
       step();
     },
 
-    /** Jump to a label, as the stage selector does. */
     goto(label: string): void {
       if (!machine.gotoLabel(label)) return;
       step();
     },
 
     /**
-     * Run a touch on `box`. False when nothing there is armed.
-     *
      * A registration is held by the actor, not by the playback index, so it
-     * stays hittable while the index is parked on a wait — ds_ch0022's phase 2
-     * registers its only trigger and then waits five seconds, and refusing
-     * input for that wait makes the phase impossible to leave.
+     * stays hittable while the index is parked on a wait — a phase that
+     * registers its only trigger and then waits could not be left otherwise.
      */
     touch(box: string): boolean {
       if (stopped || park.kind === 'end') return false;
@@ -213,17 +193,13 @@ export function createScenePlayer(
       return true;
     },
 
-    /** A tap while the script waits for input on a printed line. */
     advance(): boolean {
       if (stopped || park.kind !== 'wait-input') return false;
       step();
       return true;
     },
 
-    /**
-     * The view menu's reset button. `DesireResetCommand` parks until this is
-     * pressed, then the index moves to its destination.
-     */
+    /** The index parks on an armed reset until this fires. */
     reset(): boolean {
       const entry = armed.find((a) => a.kind === 'reset');
       if (!entry || entry.kind !== 'reset' || !entry.destination) return false;
@@ -232,11 +208,8 @@ export function createScenePlayer(
       return true;
     },
 
-    /**
-     * Poll the armed onlooks. The client evaluates `armedAt + Threshold <=
-     * Time.time` every frame; the scene clock is this viewer's equivalent, so
-     * the deadline stretches and pauses with the rig.
-     */
+    /** Onlooks are a per-frame deadline, polled on the scene clock so they
+     *  stretch and pause with the rig. */
     tick(): void {
       if (stopped || park.kind !== 'armed') return;
       const now = host.now();

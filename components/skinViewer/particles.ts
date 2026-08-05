@@ -1,20 +1,10 @@
-// A Unity `ParticleSystem`, replayed.
+// A Unity `ParticleSystem`, replayed. Touches no Pixi, DOM or Spine: positions
+// and sizes come out in the emitter's own particle units for the caller to
+// convert. The modules covered are the ones the emote prefabs enable.
 //
-// An emote is a particle prefab, so drawing one means running its emitters, not
-// showing a picture of them. This module is that runtime: it evaluates the same
-// curves, gradients, shapes and over-lifetime modules the prefab authors and
-// produces a list of live particles per frame. It touches no Pixi, no DOM and
-// no Spine — positions and sizes come out in the emitter's own particle units
-// and the caller converts them.
-//
-// The module set is the one the 30 emote prefabs enable: emission bursts,
-// circle and edge shapes, size / colour / velocity / rotation / force over
-// lifetime, and grid texture-sheet animation.
-//
-// Two things the prefabs carry that are deliberately not modelled: the trail
-// emitters (their renderer draws no billboard at all, so they are not
-// exported), and velocity-aligned billboards — the five emitters that ask for
-// one all start at zero speed.
+// Not modelled: trail emitters, whose renderer draws no billboard and which are
+// therefore not exported, and velocity-aligned billboards, which every emitter
+// asking for one starts at zero speed.
 import type {
   EmoteCurve, EmoteEmitter, EmoteGradient, EmoteGradientStops,
 } from '@/lib/data';
@@ -102,10 +92,8 @@ function random(seed: number): () => number {
   };
 }
 
-/** An `AnimationCurve`, evaluated the way Unity does: cubic Hermite between
- * keys, clamped outside the first and last, and stepped across a segment whose
- * tangent is infinite. No key in the emote set is weighted, so the tangents are
- * the whole story. */
+/** Unity's evaluation: cubic Hermite between keys, clamped outside the first
+ * and last, and stepped across a segment whose tangent is infinite. */
 function curveAt(keys: EmoteCurve['k'], time: number): number {
   if (!keys || !keys.length) return 0;
   if (keys.length === 1) return keys[0][1];
@@ -203,12 +191,10 @@ export function colorAt(gradient: EmoteGradient | undefined, t: number, roll: nu
 }
 
 /**
- * Where a particle starts and which way it leaves, in the emitter's space.
- *
- * `Circle` places it on a disc between `radius * (1 - radiusThickness)` and
- * `radius`, area-uniform, and sends it radially outward. `SingleSidedEdge` is a
- * line of that length along the shape's x axis, emitting along its y.
- * `arcMode` 3 spreads one burst evenly over the arc instead of sampling it.
+ * `Circle` places the particle on a disc between `radius * (1 -
+ * radiusThickness)` and `radius`, area-uniform, leaving radially.
+ * `SingleSidedEdge` is a line of that length along the shape's x axis, emitting
+ * along its y. `arcMode` 3 spreads one burst evenly instead of sampling it.
  */
 function spawnPoint(def: EmoteEmitter, index: number, count: number,
                     roll: () => number): [number, number, number, number] {
@@ -274,8 +260,7 @@ function createEmitter(def: EmoteEmitter, seed: number) {
     const sizeY = def.start.sizeY
       ? valueAt(def.start.sizeY, t01, rolls[ROLL_SIZE]) : size;
     const color = colorAt(def.start.color, t01, rolls[ROLL_COLOR]);
-    // The emitter's own transform: its offset and rotation place the whole
-    // spray, which is how `gogo`'s six letters are set side by side.
+    // The emitter's own offset and rotation place the whole spray.
     const px = def.position[0] + (x * cos - y * sin) * def.scale[0];
     const py = def.position[1] + (x * sin + y * cos) * def.scale[1];
     const flip = def.start.flipRotation > 0 && roll() < def.start.flipRotation
@@ -324,8 +309,8 @@ function createEmitter(def: EmoteEmitter, seed: number) {
         for (let i = 0; i < count; i += 1) spawn(i, count, at);
       }
     });
-    // No emote emitter authors a rate, but a rate is what a system with no
-    // bursts would use, so it is emitted rather than silently dropped.
+    // No emote emitter authors a rate, but a system with no bursts would use
+    // one, so it is emitted rather than silently dropped.
     const rate = valueAt(emission.rate, def.duration > 0
       ? clamp01(to / def.duration) : 0, 0.5);
     if (rate > 0 && to <= def.duration) {
@@ -351,7 +336,7 @@ function createEmitter(def: EmoteEmitter, seed: number) {
       const t = clamp01(p.age / p.lifetime);
 
       // Velocity over lifetime adds to the spawn velocity; forces and gravity
-      // integrate into their own accumulator, exactly as they stack in Unity.
+      // integrate into their own accumulator, as they stack in Unity.
       let vx = p.vx;
       let vy = p.vy;
       if (def.velocity) {
@@ -413,13 +398,10 @@ function createEmitter(def: EmoteEmitter, seed: number) {
     def,
     particles: out,
     advance,
-    // The system is spent when its clock has passed the authored length and
-    // every particle it emitted has died.
     finished: () => !def.looping && time > def.duration && live.length === 0,
   };
 }
 
-/** Start one emote: every emitter of the prefab, from a fresh random seed. */
 export function createEmoteRun(defs: EmoteEmitter[], seed: number): EmoteRun {
   const emitters = defs.map((def, index) => createEmitter(def, seed + index * 7919));
   return {

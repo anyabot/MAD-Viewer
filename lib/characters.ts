@@ -1,7 +1,3 @@
-// Shared reads over the character master data: which type row a character
-// points at, which icon stands for a skin, and the filter axes the character
-// list offers. Kept out of the pages so the gallery, the list and the
-// character page agree on every label.
 import type { SkinKind } from '@/components/skinViewer/types';
 import type {
   CharacterData, CharacterEntry, EquipmentEntry, EquipmentTier, ItemEntry, PlaceEntry,
@@ -33,8 +29,6 @@ export function typeValue(entry: CharacterEntry, table: TypeTable): number | nul
   return typeof v === 'number' ? v : null;
 }
 
-// Every released character sharing one type value, in code order. Backs the
-// faction hover list on the character page.
 export function membersOfType(
   characters: Record<string, CharacterEntry>, table: TypeTable, value: number,
 ): CharacterEntry[] {
@@ -51,30 +45,26 @@ export function typeOf(
   return v == null ? null : types[table][String(v)] ?? null;
 }
 
-// Icon candidates for a type row. `icon` alone is not always extractable, so
-// the table's whole candidate list is preferred when present.
+// `icon` alone is not always extractable, so the table's whole candidate list
+// is preferred when present.
 export function typeIcons(t: TypeEntry | null): string[] {
   if (!t) return [];
   return t.icons?.length ? t.icons : (t.icon ? [t.icon] : []);
 }
 
-// The English label, falling back to the Korean one. Every type row the game
-// currently ships has an English label; a newly added row would not until the
-// generator's table is extended, and must still render.
+// A row the generator's table does not cover yet still has to render.
 export function typeLabel(t: TypeEntry | null): string {
   return t ? (t.en || t.name) : '';
 }
 
-// The colour to paint a type's icon in. Only `Attribute_Icon_Data` carries
-// one, and its icons are flat white silhouettes the game tints — untinted,
-// all four elements look identical.
+// Only `Attribute_Icon_Data` carries a colour, and its icons are flat white
+// silhouettes the game tints — untinted, all four elements look identical.
 export function typeTint(t: TypeEntry | null): string | null {
   return t?.color ?? null;
 }
 
-// Rows a filter row should offer. `attribute` 0 is 모든 속성 / "All
-// Attributes" — a UI catch-all, not an element. No character carries it, so
-// as a filter it selects nothing.
+// `attribute` 0 is 모든 속성, a UI catch-all no character carries, so as a
+// filter it selects nothing.
 export function filterRows(
   types: CharacterData['types'], table: TypeTable,
 ): [string, TypeEntry][] {
@@ -88,10 +78,8 @@ export function isPlayable(entry: CharacterEntry): boolean {
   return entry.characterType === 1;
 }
 
-// Which roster a rig's character belongs to, when it is not the playable one.
-// A playable character gets no badge — that is the default and needs no note.
-// An unknown character (a screen or cut-in asset, not a character at all) gets
-// none either; the asset key already says what it is.
+// A playable character and an asset that is not a character at all both go
+// unbadged: the default and the asset key already say what they are.
 export function rosterNote(
   entry: CharacterEntry | null,
 ): { label: string; scheme: string } | null {
@@ -102,10 +90,8 @@ export function rosterNote(
   return null;
 }
 
-// The game carries a second, independent English name for the playable roster
-// (`name_uppercase_eng_id`) beside the localized one. It is usually the same
-// name in caps, so it is only worth showing when the two genuinely differ —
-// 라일라 is `Lila` in one column and `LAILA` in the other.
+// The game's second English name column is usually the same name in caps, so
+// it is only worth showing when the two genuinely differ.
 export function altNameEn(entry: CharacterEntry): string | null {
   const alt = entry.nameUppercase;
   if (!alt) return null;
@@ -119,8 +105,7 @@ export function birthdayText(entry: CharacterEntry): string | null {
   return `${b[0]}월 ${b[1]}일`;
 }
 
-// The three gift items a character likes, in the order the master data lists
-// them. An id with no `items` row is dropped rather than rendered as a blank.
+// An id with no `items` row is dropped rather than rendered as a blank.
 export function giftsOf(
   entry: CharacterEntry, items: CharacterData['items'],
 ): (ItemEntry & { id: number })[] {
@@ -130,11 +115,8 @@ export function giftsOf(
   });
 }
 
-// Date venues for a character, grouped by the region they sit in.
-//
-// The venues are the ones the character's own date script visits, in its own
-// order. Only the region is in the master data, and a region carries venues no
-// date uses, so a character with no script falls back to the whole region.
+// Only the region is in the master data and it carries venues no date uses, so
+// a character with no script falls back to the whole region.
 export function datePlacesOf(
   entry: CharacterEntry, places: CharacterData['places'],
 ): { division: number; places: PlaceEntry[] }[] {
@@ -146,9 +128,7 @@ export function datePlacesOf(
   });
 }
 
-// English for the 12 equipment slot types. The master data has no English
-// column for them — the set is fixed and small, so this is a translation of the
-// Korean label, keyed by the same type id.
+// The master data has no English column for equipment slots.
 export const EQUIP_EN: Record<number, string> = {
   1: 'Earring',
   2: 'Necklace',
@@ -164,8 +144,6 @@ export const EQUIP_EN: Record<number, string> = {
   12: 'Panties',
 };
 
-// The three equipment slots a character can fill, in the order the master data
-// lists them (one from each group of four types).
 export function equipmentSlotsOf(
   entry: CharacterEntry, equipment: CharacterData['equipment'],
 ): (EquipmentEntry & { type: number })[] {
@@ -175,24 +153,19 @@ export function equipmentSlotsOf(
   });
 }
 
-// What the player has put in one equipment slot. `level` is clamped to the
-// tier's own cap.
+/** `level` is clamped to the tier's own cap. */
 export type EquipInput = { type: number; tier: number; level: number };
 
 export type StatInput = {
   level: number;
   star: number;
-  /**
-   * Affection rank. **Every character starts at rank 1**, so 1 is the lowest a
-   * unit is ever seen at and the rank-1 gain is part of its baseline; 0 is
-   * accepted only to read the block without any affection at all.
-   */
+  /** Every character starts at rank 1, so the rank-1 gain is part of a unit's
+   *  baseline; 0 reads the block without any affection at all. */
   love: number;
   equipment: EquipInput[];
 };
 
-// One stat, with each term kept apart so the page can show where the number
-// comes from rather than only the total.
+// The terms are kept apart so the page can show where the number comes from.
 export type StatRow = {
   stat: string;
   label: string;
@@ -208,17 +181,15 @@ function clamp(value: number, low: number, high: number): number {
   return Math.min(high, Math.max(low, Math.round(value) || low));
 }
 
-// Truncation toward zero, which is what the game's own rounding does.
+// The game truncates toward zero rather than rounding.
 function truncate(value: number): number {
   return value < 0 ? Math.ceil(value) : Math.floor(value);
 }
 
 /**
- * The game's per-stat rounding, by `StatTypeEntry.display`.
- *
- * It is applied twice — once to the base block and once to the equipment delta,
- * before the two are added — so a calculator that rounds only the total drifts
- * from the game on any stat whose display type is not 0.
+ * Applied twice — to the base block and to the equipment delta, before the two
+ * are added — so rounding only the total drifts from the game on any stat whose
+ * display type is not 0.
  */
 export function roundStat(display: number, value: number): number {
   if (display === 1) return truncate(value);
@@ -226,13 +197,12 @@ export function roundStat(display: number, value: number): number {
   return value;
 }
 
-/** A stat value as the game prints it: a percentage when its display type is 2. */
+/** As the game prints it: a percentage when the display type is 2. */
 export function statText(display: number, value: number): string {
   if (display === 2) return `${Number((value * 100).toFixed(2))}%`;
   return String(Number(value.toFixed(2)));
 }
 
-// The tier a slot input names, or null when the slot is empty.
 function tierOf(
   data: CharacterData, slot: EquipInput,
 ): EquipmentTier | null {
@@ -240,7 +210,7 @@ function tierOf(
     .find((t) => t.tier === slot.tier) ?? null;
 }
 
-/** What one filled slot grants, with its level already applied. */
+/** With the slot's level already applied. */
 export function equipmentGrants(
   data: CharacterData, slot: EquipInput,
 ): { stat: string; calc: string; value: number }[] {
@@ -255,9 +225,8 @@ export function equipmentGrants(
     : []));
 }
 
-// The star grades a stat block can be read at. The tables carry a row per
-// grade whatever the character's rarity, plus a cap row above the ceiling that
-// repeats the top grade — neither is a grade the character can be at.
+// The tables carry a row per grade whatever the character's rarity, plus a cap
+// row above the ceiling repeating the top grade. Neither is reachable.
 export function statGrades(entry: CharacterEntry, data: CharacterData): number[] {
   const floor = entry.defaultStar ?? 1;
   return Object.keys(entry.baseStats ?? {}).map(Number)
@@ -266,17 +235,14 @@ export function statGrades(entry: CharacterEntry, data: CharacterData): number[]
 }
 
 /**
- * A character's stats at a level, star grade, equipment set and affection rank.
- *
- * The three terms are combined the way the game combines them:
+ * Combined the way the game combines them:
  *
  *     base   = round(battle[stat] + perLevel[stat] * (level - 1))
  *     equip  = round(sum of flat options + base * sum of fractional options)
  *     total  = base + equip + sum of affection ranks 1..love
  *
- * Equipment scales off the base stat, so it has to be computed after the level
- * term and before the affection term. Stats that stay at zero throughout are
- * dropped — a character with no defence gain gets no defence row.
+ * Equipment scales off the base stat, so it comes after the level term and
+ * before the affection one. A stat that stays at zero throughout is dropped.
  */
 export function computeStats(
   entry: CharacterEntry, data: CharacterData, input: StatInput,
@@ -335,8 +301,7 @@ export const BUFF_CATEGORY: Record<number, { label: string; scheme: string }> = 
   3: { label: 'Control', scheme: 'purple' },
 };
 
-// Slot art has no per-slot label in the master data; `skill_categorize_type`
-// is what the game groups by.
+// `skill_categorize_type`, which is what the game groups slots by.
 export const SKILL_CATEGORY_LABEL: Record<number, string> = {
   1: 'Normal attack',
   2: 'Skill',
@@ -345,9 +310,8 @@ export const SKILL_CATEGORY_LABEL: Record<number, string> = {
   5: 'Trigger',
 };
 
-// The skills a character has at one star grade, in slot order. A grade below
-// the character's own rarity is still listed by the master data; that is what
-// makes the passive's 3★/4★/5★ tiers visible.
+// A grade below the character's own rarity is still listed by the master data,
+// which is what makes the passive's 3★/4★/5★ tiers visible.
 export function skillsAtGrade(
   entry: CharacterEntry, data: CharacterData, grade: number,
 ): (SkillEntry & { id: number })[] {
@@ -359,9 +323,8 @@ export function skillsAtGrade(
   });
 }
 
-// The star grades this character can actually be at. The master data carries a
-// set for grades 1..5 whatever the character's rarity, but one that starts at
-// 3★ can never be 1★ or 2★, so those rows are unreachable.
+// The master data carries a set for grades 1..5 whatever the rarity, but a
+// character that starts at 3★ can never be 1★ or 2★.
 export function skillGrades(entry: CharacterEntry, data: CharacterData): number[] {
   const set = data.skillSets[String(entry.skillSetGroup ?? '')];
   if (!set) return [];
@@ -369,12 +332,8 @@ export function skillGrades(entry: CharacterEntry, data: CharacterData): number[
   return Object.keys(set).map(Number).filter((g) => g >= floor).sort((a, b) => a - b);
 }
 
-// English for the behaviour graph's enum constants. The master data has no
-// English column for any of them — the generator emits the game's own constant
-// name so nothing is lost, and these are translations of it.
-//
-// A name with no entry here falls back to `prettyConst`, so a constant added by
-// a client update renders readably instead of blank.
+// English for the behaviour graph's enum constants, which the master data has
+// no column for. Anything missing falls back to `prettyConst`.
 
 // `ONETIME_EFFECT_TYPE` and `DURATION_EFFECT_TYPE` share one table: an op is
 // only ever one or the other, and the two sets do not collide.
@@ -622,9 +581,8 @@ export function labelOf(table: Record<string, string>, name: string | null): str
   return table[name] ?? prettyConst(name);
 }
 
-// "8 hits · circle r2" — the geometry of one hitbox, as a single line. `ticks`
-// is how many detections one spawn makes; `count` how many times the skill
-// spawns it.
+// `ticks` is how many detections one spawn makes, `count` how many times the
+// skill spawns it.
 export function hitSummary(hit: SkillHit): string {
   const parts: string[] = [];
   const lands = hit.count * Math.max(1, hit.ticks);
@@ -635,7 +593,7 @@ export function hitSummary(hit: SkillHit): string {
   return parts.join(' · ');
 }
 
-// Singular of `TARGET_LABEL`, for the one-target phrasing below.
+// Singular of `TARGET_LABEL`.
 const TARGET_ONE: Record<string, string> = {
   ENEMY: 'enemy',
   FRIENDLY: 'ally',
@@ -650,11 +608,8 @@ const TARGET_ONE: Record<string, string> = {
 const ORDINAL = ['', '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'];
 
 /**
- * "the nearest enemy in front" — where a hitbox anchors.
- *
- * This is the *cast target*, which is what the hitbox centres on, not who the
- * hit affects: CH0068's 파도 가르기 anchors on `SELF` and its work then picks
- * every enemy in the circle. Who is affected is on the operation.
+ * The cast target, i.e. what the hitbox centres on. Who is affected is on the
+ * operation — a hitbox anchored on `SELF` can still pick every enemy in it.
  */
 export function castSummary(cast: NonNullable<SkillHit['cast']>): string {
   if (!cast.team) return '';
@@ -691,32 +646,25 @@ export const CATEGORY_LABEL: Record<string, string> = {
 };
 
 /**
- * One slot of a magnitude at skill level `level`, using the same growth the
- * game's own descriptions use — the extra step lands every `period` levels
- * rather than on every level above it.
+ * The extra step lands every `period` levels rather than on every level above
+ * the first, as the game's own descriptions grow it.
  */
 export function growValue(
   m: SkillMagnitude, level: number, period: number, slot = 0,
 ): number {
   const steps = Math.max(0, level - 1);
   const at = (xs: number[]) => xs[slot] ?? 0;
-  // deliberately unrounded: rounding here and again at format time is what
-  // makes a grown value disagree with the game's own printed number
+  // Unrounded: rounding here and again at format time makes a grown value
+  // disagree with the game's own printed number.
   return at(m.base) + at(m.up) * steps
     + (period ? at(m.extra) * Math.floor(steps / period) : 0);
 }
 
 /**
- * "84%" — an operation's coefficients at one level, one per value slot that
- * holds something.
- *
- * A `*_RATE` stat is a coefficient on that stat, so it reads as a percentage;
- * anything else stays a raw number. This is the magnitude the operation
- * carries, **not** a predicted damage or heal — the arithmetic against a
- * defender is not decoded.
- *
- * A coefficient with no stat to apply to means nothing on its own: a dispel's
- * `1.0` is not "100% of" anything. Those return nothing.
+ * The magnitude the operation carries, not a predicted damage or heal — the
+ * arithmetic against a defender is not decoded. A `*_RATE` stat reads as a
+ * percentage; a coefficient with no stat to apply to means nothing on its own
+ * and returns nothing.
  */
 export function opAmounts(op: SkillOp, level: number, period: number): string[] {
   if (!op.value || !op.scale) return [];
@@ -727,14 +675,12 @@ export function opAmounts(op: SkillOp, level: number, period: number): string[] 
     .map((v) => (pct ? `${sixSigFigs(v * 100)}%` : `${v}`));
 }
 
-// The generator renders the game's description numbers with `%g`, i.e. six
-// significant figures. An operation's own coefficient has to round the same
-// way or the two disagree on 실패한 파도타기's 276.333%.
+// The generator renders the game's description numbers with `%g`, so a
+// coefficient has to round the same way or the two disagree on the last digit.
 function sixSigFigs(v: number): number {
   return Number(v.toPrecision(6));
 }
 
-/** "5s", or "5s every 3 levels"-free: just the duration at this level. */
 export function opSeconds(op: SkillOp, level: number, period: number): string {
   if (!op.seconds) return '';
   const s = growValue(op.seconds, level, period);
@@ -743,17 +689,14 @@ export function opSeconds(op: SkillOp, level: number, period: number): string {
   return `${s}s`;
 }
 
-// "+5%" — a passive's flat stat grant. Every `STAT_MULTIPLE_TYPE` a grant uses
-// is a `*_RATE`, i.e. a coefficient on the stat rather than a flat amount, so a
-// rate reads as a percentage and anything else stays a raw multiplier.
+// A `*_RATE` is a coefficient on the stat rather than a flat amount, so it
+// reads as a percentage and anything else stays a raw multiplier.
 export function statAmount(stat: SkillStat): string {
   if (stat.scale && !stat.scale.endsWith('_RATE')) return `×${stat.multiple}`;
   const pct = sixSigFigs(stat.multiple * 100);
   return `${pct > 0 ? '+' : ''}${pct}%`;
 }
 
-// "ATK of the caster" — what the magnitude scales off. Empty when the
-// operation does not scale off a stat at all.
 export function scaleSummary(op: SkillOp | SkillStat): string {
   if (!op.scale) return '';
   const stat = labelOf(STAT_LABEL, op.scale);
@@ -761,9 +704,8 @@ export function scaleSummary(op: SkillOp | SkillStat): string {
   return side ? `${stat} of the ${side}` : stat;
 }
 
-// "buffs, crowd control" or the states a clear/immunity addresses. An internal
-// marker has no name the game ever shows, so it is named as what it is rather
-// than by printing its table id.
+// A marker has no name the game ever shows, so it is named as what it is
+// rather than by printing its table id.
 export const INTERNAL_STATE = 'an internal state';
 
 export function detailSummary(detail: SkillDetail): string[] {
@@ -777,9 +719,6 @@ export function detailSummary(detail: SkillDetail): string[] {
 }
 
 /**
- * "only Midwen Corporation", "below 10% HP", "with 3+ 중독" — the condition an
- * effect is only given under.
- *
  * The condition constant decides what its values mean, which is why this needs
  * the type tables. `SAME_ATTRIBUTE_TYPE` / `SAME_POSITION_TYPE` also carry a
  * value whose role is not decoded, so only the comparison is stated.
@@ -826,9 +765,7 @@ const DURATION_CATEGORY_CONST: Record<string, string> = {
   1: 'CATEGORIZE_BUFF', 2: 'CATEGORIZE_DEBUFF', 3: 'CATEGORIZE_CC',
 };
 
-// Skill text carries the game's own `<color=#rrggbb>…</color>` markup around
-// the numbers it wants to highlight. Split it into coloured runs rather than
-// injecting HTML.
+// Skill text carries the game's own markup; it becomes runs rather than HTML.
 const COLOR_RE = /<color=(#[0-9a-fA-F]{3,8})>([\s\S]*?)<\/color>/g;
 
 export function colorRuns(text: string): { text: string; color?: string }[] {
@@ -843,9 +780,8 @@ export function colorRuns(text: string): { text: string; color?: string }[] {
   return out;
 }
 
-// The icon that stands for one skin: its own thumbnail when the game ships
-// one, otherwise the character portrait — standing rigs have no separate
-// thumbnail because the portrait *is* the standing art.
+// A standing rig has no thumbnail of its own, because the portrait is the
+// standing art.
 export function skinIconNames(skin: SkinListEntry, entry: CharacterEntry | null): {
   skin: string[]; char: string[];
 } {
@@ -856,11 +792,10 @@ export function skinIconNames(skin: SkinListEntry, entry: CharacterEntry | null)
   };
 }
 
-// Which rig families a character has, in the order the game lists them.
+// The order the game lists rig families in.
 export const KIND_ORDER: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure'];
 
-// In-game category art for a rig family. Standing has no category icon of its
-// own; the profile icon is what the game shows for the plain portrait.
+// Standing has no category icon of its own; the game shows the profile one.
 export const KIND_ICON: Record<SkinKind, string> = {
   standing: 'Talk_Icon_Profile',
   affection: 'Talk_Icon_Affection',

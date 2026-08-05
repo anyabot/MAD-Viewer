@@ -1,8 +1,4 @@
-// Scene data shapes and the camera math the viewer applies to them.
-//
-// A scene is one Naninovel script, published as its ordered command list. The
-// interpreter (`interpreter.ts`) is the playlist runner and `scenePlayer.ts`
-// applies what it produces; nothing here schedules playback.
+// Scene data shapes and camera math. Nothing here schedules playback.
 
 import type { Command } from './interpreter';
 
@@ -24,11 +20,7 @@ export type SceneTimelineData = {
   rigs: Record<string, SceneTimelineRig>;
 };
 
-/**
- * Every voice clip a rig's scripts can speak. A printed line carries its clip
- * id on the command, so this walks the command lists; the result is what the
- * viewer prefetches, so a line is audible the moment its animation starts.
- */
+/** Prefetched, so a line is audible the moment its animation starts. */
 export function sceneVoiceIds(rig: SceneTimelineRig | null | undefined): string[] {
   const out = new Set<string>();
   for (const scene of Object.values(rig ?? {})) {
@@ -39,11 +31,8 @@ export function sceneVoiceIds(rig: SceneTimelineRig | null | undefined): string[
   return Array.from(out);
 }
 
-/**
- * Every music clip a rig's scripts can start, intro and loop alike. Same reason
- * as `sceneVoiceIds`: a cue that only begins downloading when it fires plays
- * over silence for as long as the fetch takes.
- */
+/** Prefetched: a cue that starts downloading when it fires plays over silence
+ *  for as long as the fetch takes. */
 export function sceneBgmIds(rig: SceneTimelineRig | null | undefined): string[] {
   const out = new Set<string>();
   for (const scene of Object.values(rig ?? {})) {
@@ -105,12 +94,8 @@ export function scriptCameraTransform(base: CameraBase, state: CameraState): {
   return { x, y, scale: base.scale * factor };
 }
 
-/**
- * The rig's own camera pose for the current frame, read off the `cam` bone and
- * expressed relative to that bone's setup pose. `x`/`y` are in the container
- * space the transform is applied in, `scale` is the bone's world scale and
- * `rotation` its world rotation in radians.
- */
+/** Relative to the `cam` bone's setup pose. `x`/`y` are in the container space
+ *  the transform is applied in; `rotation` is in radians. */
 export type RigCameraState = { x: number; y: number; scale: number; rotation: number };
 
 export type RigCameraTransform = {
@@ -118,14 +103,10 @@ export type RigCameraTransform = {
 };
 
 /**
- * View transform for a desire/affection rig's `cam` bone.
- *
- * The bone is the camera, so the view is the inverse of its pose: a bone scale
- * of `s` shows `s` times as much of the scene, which is a `1/s` zoom, and the
- * bone's position is the point held at the centre of the view. A bone left at
- * its setup pose returns the identity transform, which is what keeps a rig
- * without a `cam` bone — and every clip that does not animate one — framed
- * exactly as the plain fit frames it.
+ * The bone is the camera, so the view is the inverse of its pose: bone scale
+ * `s` shows `s` times as much of the scene, i.e. a `1/s` zoom. A bone at its
+ * setup pose gives the identity, which is what leaves a rig with no `cam` bone
+ * framed by the plain fit.
  */
 export function rigCameraTransform(
   centre: { x: number; y: number },

@@ -1,17 +1,11 @@
-// Fetches a packed skin archive (<skin>.tar.br: a tar of the exported skin
-// folder, brotli-compressed as one solid stream),
-// decompresses it client-side, and untars it into a Map<filename, Blob> the
-// viewer builds blob: URLs from. Brotli has no reliable native browser decoder
-// (DecompressionStream does not support it), so a small WASM decoder is used.
-//
-// Where the archive lives is `lib/cdn.ts`'s problem: normally a jsDelivr bucket
-// repository, and the site's own `public/skins/` when no manifest is published.
+// An archive is one brotli-compressed tar of an exported skin folder, untarred
+// client-side into blobs the viewer builds `blob:` URLs from. `DecompressionStream`
+// does not support brotli, hence the WASM decoder.
 
 import { skinArchiveUrls } from '@/lib/cdn';
 
-// The decompressed view is pinned to a plain ArrayBuffer: `Uint8Array` defaults
-// to `ArrayBufferLike`, which includes SharedArrayBuffer and is therefore not a
-// valid `BlobPart` for the untar step.
+// Pinned to a plain ArrayBuffer: `Uint8Array` defaults to `ArrayBufferLike`,
+// which includes SharedArrayBuffer and is not a valid `BlobPart`.
 type Bytes = Uint8Array<ArrayBuffer>;
 
 let brotliModPromise: Promise<{ decompress: (data: Bytes) => Bytes }> | null = null;
@@ -22,10 +16,8 @@ function loadBrotli(): Promise<{ decompress: (data: Bytes) => Bytes }> {
   return brotliModPromise!;
 }
 
-// Minimal USTAR reader: fixed 512-byte header records (name @0 len100, size as
-// octal ASCII @124 len12), content padded to the next 512-byte boundary, two
-// all-zero blocks terminate the archive. Both producer and consumer are ours,
-// so this covers every archive the pipeline emits.
+// Minimal USTAR: 512-byte header records (name @0 len100, size as octal ASCII
+// @124 len12), content padded to the next block, two zero blocks terminating.
 function untar(bytes: Bytes): Map<string, Blob> {
   const files = new Map<string, Blob>();
   const BLOCK = 512;
@@ -46,12 +38,19 @@ function untar(bytes: Bytes): Map<string, Blob> {
 
 const archiveCache = new Map<string, Promise<Map<string, Blob>>>();
 
-// Fetch + decompress + untar a skin archive (cached per archive name).
 export function loadSkinArchive(skin: string): Promise<Map<string, Blob>> {
+  return loadArchive(skin, () => skinArchiveUrls(skin));
+}
+
+/** The cache is shared, so names must stay unique across archive families. */
+export function loadArchive(
+  name: string, urlsFor: () => Promise<string[]> | string[],
+): Promise<Map<string, Blob>> {
+  const skin = name;
   let p = archiveCache.get(skin);
   if (!p) {
     p = (async () => {
-      const [urls, brotli] = await Promise.all([skinArchiveUrls(skin), loadBrotli()]);
+      const [urls, brotli] = await Promise.all([urlsFor(), loadBrotli()]);
       let failure = '';
       for (const url of urls) {
         let res: Response;
@@ -72,7 +71,7 @@ export function loadSkinArchive(skin: string): Promise<Map<string, Blob>> {
   return p;
 }
 
-// Blob URLs created per archive, revoked together when a skin is dropped.
+// Kept per archive so they can be revoked together when a skin is dropped.
 const urlCache = new Map<string, Map<string, string>>();
 
 export function urlFor(skin: string, files: Map<string, Blob>, filename: string): string {
@@ -95,23 +94,20 @@ export function revokeSkinUrls(skin: string) {
   urlCache.delete(skin);
 }
 
-// Read a text/JSON file straight from the blob map (spine.json, .atlas).
 export async function readText(files: Map<string, Blob>, filename: string): Promise<string> {
   const blob = files.get(filename);
   if (!blob) throw new Error(`${filename} not found in archive`);
   return blob.text();
 }
 
-// Read a binary file (the Spine `.skel`, which MAD ships instead of JSON).
 export async function readBytes(files: Map<string, Blob>, filename: string): Promise<Uint8Array> {
   const blob = files.get(filename);
   if (!blob) throw new Error(`${filename} not found in archive`);
   return new Uint8Array(await blob.arrayBuffer());
 }
 
-// PIXI's texture loader picks a parser by file extension (PIXI.Assets.load),
-// but blob: URLs have none, so the default dispatch finds no matching parser
-// and silently returns no texture. Force the image-texture parser explicitly.
+// PIXI picks a parser by file extension, which a `blob:` URL has none of, so
+// the default dispatch silently returns no texture.
 export async function loadTexture(
   PIXI: any, skin: string, files: Map<string, Blob>, filename: string,
 ): Promise<any> {

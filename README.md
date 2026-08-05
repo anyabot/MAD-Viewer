@@ -24,6 +24,8 @@ The app needs generated content to display:
 
 - `public/data/skin_list.json` — the gallery index
 - `public/skins/<skin>.tar.br` — per-skin asset archives
+- `public/data/gacha.json` and `public/gacha/*.tar.br` — the Gacha tab's scene
+  (optional; without them that tab reports a failed fetch and nothing else breaks)
 
 Both are produced by a local content toolchain that is not part of this
 repository. Point the app at an alternative host with `NEXT_PUBLIC_DATA_SOURCE`,
@@ -54,3 +56,9 @@ project site and uses no prefix for a `<user>.github.io` root site.
   differs; the gallery marks those `DIFF`.
 - Mouse wheel zooms, drag pans, and the download button saves the current view as
   a PNG at the art's native resolution.
+
+## Gacha
+
+A second tab on the viewer page, holding the gacha result cutscene. Tap the
+scene to move it on a stage; the grade picker chooses which ending plays. The
+scene's particle effects and audio are not included.
