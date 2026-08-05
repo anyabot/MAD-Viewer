@@ -13,8 +13,8 @@ import SkinViewer from '@/components/skinViewer';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
 import { GameIcon } from '@/components/gameIcon';
-import { KIND_ICON, skinIconNames } from '@/lib/characters';
-import { resolveIcon } from '@/lib/icons';
+import { KIND_ICON, rosterNote } from '@/lib/characters';
+import { skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
 import {
   KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
@@ -90,6 +90,8 @@ export default function SkinsPage() {
     return <Center py={20}><VStack><Spinner /><Text fontSize="sm" color="gray.500">loading…</Text></VStack></Center>;
   }
 
+  const currentRoster = current ? rosterNote(charOf(current)) : null;
+
   return (
     <VStack align="stretch" spacing={4}>
       <Wrap spacing={2} align="center">
@@ -129,9 +131,8 @@ export default function SkinsPage() {
           <VStack align="stretch" spacing={0.5}>
             {filtered.map((s) => {
               const entry = charOf(s);
-              const names = skinIconNames(s, entry);
-              const thumb = resolveIcon(icons, 'skin', names.skin)
-                ?? resolveIcon(icons, 'char', names.char);
+              const thumb = skinIcon(icons, s, entry);
+              const roster = rosterNote(entry);
               return (
                 <Box key={s.key} as="button" textAlign="left" px={2} py={1.5} borderRadius="md"
                   bg={s.key === selected ? 'whiteAlpha.300' : 'transparent'}
@@ -157,6 +158,11 @@ export default function SkinsPage() {
                         <Badge colorScheme={KIND_COLOR[s.kind]} fontSize="0.55rem">
                           {KIND_LABEL[s.kind]}
                         </Badge>
+                        {roster && (
+                          <Badge colorScheme={roster.scheme} fontSize="0.55rem">
+                            {roster.label}
+                          </Badge>
+                        )}
                         {s.stores.length > 1 && (
                           <Badge colorScheme="yellow" fontSize="0.55rem">DIFF</Badge>
                         )}
@@ -194,6 +200,11 @@ export default function SkinsPage() {
                     <Badge colorScheme={KIND_COLOR[current.kind]}>
                       {KIND_LABEL[current.kind]}
                     </Badge>
+                    {currentRoster && (
+                      <Badge colorScheme={currentRoster.scheme}>
+                        {currentRoster.label}
+                      </Badge>
+                    )}
                   </HStack>
                 </WrapItem>
                 <WrapItem>

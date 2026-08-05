@@ -47,6 +47,14 @@ export type SkinList = {
 export type CharacterEntry = {
   code: string;
   unreleased?: boolean;
+  /**
+   * A rig that exists only in the scenario: no `Character_Base` row, so no
+   * types, rarity, kit or stats — the character is never fought. Its `name`
+   * and `actorId` come from the scripts rather than the master data.
+   */
+  storyOnly?: boolean;
+  /** The id the scripts address this character by, e.g. `dandelion`. */
+  actorId?: string;
   name: string;
   /**
    * English display name. Playable characters only — the game's English column
@@ -87,10 +95,17 @@ export type CharacterEntry = {
   giftItems?: number[];
   /**
    * The division(s) this character's dates are chosen from. The game records
-   * the preference at region granularity; no table binds a character to one
-   * venue. The venues in the region are `CharacterData.places[division]`.
+   * the preference at region granularity; the venues in a region are
+   * `CharacterData.places[division]`.
    */
   dateDivisions?: number[];
+  /**
+   * The venues the character's date script actually visits, in the order it
+   * authors them. A region holds more venues than any one character uses —
+   * Humanitas lists ten and every Humanitas date visits five — so this is the
+   * real list and `dateDivisions` only names the region it came from.
+   */
+  datePlaces?: number[];
   /** Join key into `CharacterData.skillSets`. */
   skillSetGroup?: number;
   /** Three equipment slot type ids, indexing `CharacterData.equipment`. */
@@ -101,6 +116,18 @@ export type CharacterEntry = {
    * the one named 기본 패턴 is the unconditional fallback.
    */
   battlePatterns?: { start?: BattlePattern[]; repeat?: BattlePattern[] };
+  /**
+   * The stat block at level 1, keyed by star grade then `STAT_TYPE` constant.
+   * Grade 6 is a cap row equal to grade 5, not a grade that can be reached.
+   */
+  baseStats?: Record<string, Record<string, number>>;
+  /** What each level after the first adds, keyed the same way as `baseStats`. */
+  levelStats?: Record<string, Record<string, number>>;
+  /**
+   * What each affection rank adds, index 0 being rank 1. The ranks accumulate,
+   * so the bonus at rank N is the sum of the first N entries.
+   */
+  loveStats?: Record<string, number>[];
 };
 
 // One ordered rotation. `steps` are skill ids in `CharacterData.skills`.
@@ -114,10 +141,57 @@ export type BattlePattern = {
   steps: number[];
 };
 
-// One of the 12 equipment slot types. `icon` is the empty slot's art.
+/**
+ * One option a filled equipment slot grants.
+ *
+ * Its value at equipment level L is `value + perLevel * (L - 1)`. `calc` says
+ * how it reaches the stat: `ADDTION` (the game's own spelling) is a flat term,
+ * `MULTIPLICATION` a fraction of the base stat.
+ */
+export type EquipmentOption = {
+  stat: string | null;
+  calc: string | null;
+  value: number;
+  perLevel: number;
+};
+
+/** One tier of an equipment slot, with its own level cap and filled-slot art. */
+export type EquipmentTier = {
+  tier: number;
+  maxLevel: number;
+  icon: string | null;
+  options: EquipmentOption[];
+};
+
+// One of the 12 equipment slot types. `icon` is the empty slot's art; `tiers`
+// is what filling it actually grants.
 export type EquipmentEntry = {
   name: string | null;
   icon: string | null;
+  tiers?: EquipmentTier[];
+};
+
+/**
+ * A stat's display name and how the game rounds it.
+ *
+ * `display` is `STAT_UI_DISPLAY_TYPE`: 1 truncates to a whole number, 2 keeps
+ * two decimals and is shown as a percentage, 0 leaves the value alone. Rounding
+ * is not cosmetic — the game applies it to the base block and again to the
+ * equipment delta before the two are added, so `roundStat` has to run at both
+ * points.
+ */
+export type StatTypeEntry = {
+  name: string | null;
+  en: string | null;
+  display: number;
+  order: number;
+};
+
+/** The ceilings a stat calculation has to respect. */
+export type StatCaps = {
+  level: number;
+  star: number;
+  love: number;
 };
 
 // A lasting state a skill applies. Magnitude and duration both scale with the
@@ -149,6 +223,172 @@ export type PlaceEntry = {
   thumbnail: string | null;
 };
 
+// One operation a skill performs, as the game's own enum constant names —
+// `lib/characters.ts` turns those into labels. A `null` field is the game's
+// `NONE`.
+//
+// `op` is an `ONETIME_EFFECT_TYPE` when `kind` is `onetime` and a
+// `DURATION_EFFECT_TYPE` when it is `duration`, plus the synthetic `MARKER`
+// for a lasting state that carries no effect at all — those exist only to be
+// tested by a condition or a trigger.
+/**
+ * A value that grows with the skill level:
+ *
+ *     base + up * (L - 1) + extra * floor((L - 1) / SkillEntry.levelPeriod)
+ *
+ * One entry per slot of the effect row's own value array — the game's
+ * description templates index it, and slot 0 is the one nearly every effect
+ * uses. Grow it with `growValue`.
+ */
+export type SkillMagnitude = {
+  base: number[];
+  up: number[];
+  extra: number[];
+};
+
+/**
+ * One thing a clear, an immunity or a gate points at.
+ *
+ * `name` is what to show. It is **null for the internal markers a skill sets
+ * and then clears** — over half the states a clear names are those, the game
+ * shows the player nothing for them, and `id` is all that identifies them.
+ */
+export type SkillDetailValue = {
+  name: string | null;
+  id: string;
+};
+
+/**
+ * What a clear or immunity operation names.
+ *
+ * `state` / `instant` values are states — CH0001's dispel names 지속 회복, i.e.
+ * it strips heal-over-time rather than a whole category. `durationCategory`
+ * values are `DURATION_CATEGORIZE_TYPE` constants and `instantCategory` values
+ * are `ONETIME_CATEGORIZE_TYPE` constants.
+ */
+export type SkillDetail = {
+  kind: 'state' | 'instant' | 'durationCategory' | 'instantCategory';
+  values: SkillDetailValue[];
+};
+
+/**
+ * The condition an effect is only given under.
+ *
+ * `Skill_Effect_Data_V2` is not only the alias table: a row can gate the effect
+ * it points at, and a row pointing at its own id exists purely to carry a gate.
+ * CH0022's burst is the readable case — its shield is gated
+ * `CONDITION_CHECK_CHARACTER_FACTION` on faction 103, so it reaches only Midwen
+ * Corporation partners.
+ *
+ * `condition` is a `SKILL_EFFECT_GIVE_CONDITION` constant and decides what the
+ * values mean: a state (already resolved), a `*_type` id the app looks up in
+ * `CharacterData.types`, a character id, an HP fraction, or a stack count.
+ */
+export type SkillGate = {
+  condition: string | null;
+  /** Whose property is tested: `CASTER` or `HOLDER`. */
+  on: string | null;
+  values: SkillDetailValue[];
+};
+
+export type SkillOp = {
+  kind: 'onetime' | 'duration';
+  op: string | null;
+  /** Who the operation lands on: `CASTER` or `HOLDER`. */
+  applyTo: string | null;
+  /** The stat the magnitude scales off, and whose stat it is. */
+  scale: string | null;
+  scaleOf: string | null;
+  // how the work picks its targets
+  team: string | null;
+  pick: string | null;
+  sort: string | null;
+  count: number;
+  /** The coefficient on `scale`, per skill level. Absent when it is all zero. */
+  value?: SkillMagnitude;
+  /** Which states or categories a clear/immunity operation names. */
+  detail?: SkillDetail;
+  /** The condition the effect is only given under. */
+  gate?: SkillGate;
+  // duration operations only
+  name?: string | null;
+  icon?: string | null;
+  /** 1 buff, 2 debuff, 3 crowd control, 0 uncategorised. */
+  categorize?: number;
+  /** How long the state lasts, per skill level. */
+  seconds?: SkillMagnitude;
+  maxStack?: number;
+  /** Seconds between ticks, when the state repeats its operation. */
+  interval?: number;
+};
+
+// One hitbox the cast opens. `count` is how many times the skill spawns this
+// same hitbox — a multi-hit skill authors one event per hit.
+export type SkillHit = {
+  /** `X_AXIS`, `CIRCLE` or `GLOBAL`. */
+  shape: string | null;
+  range: number;
+  /** Detections inside one spawn, and the seconds between them. */
+  ticks: number;
+  cycle: number;
+  delay: number;
+  count: number;
+  /**
+   * What the hitbox anchors on — not who it affects, which is on the
+   * operation. It is authored per event, so one skill's hitboxes can anchor on
+   * different things.
+   */
+  cast?: {
+    team: string | null;
+    range: string | null;
+    rangeValue: number;
+    pick: string | null;
+    sort: string | null;
+    count: number;
+  };
+  ops: SkillOp[];
+};
+
+// A flat stat grant a passive applies for the whole battle.
+export type SkillStat = {
+  stat: string | null;
+  scale: string | null;
+  multiple: number;
+  /** A party-composition gate, when the grant is conditional. */
+  condition: string | null;
+  conditionValue: string[];
+};
+
+// A passive's event hook. `on` is a `PASSIVE_TRIGGER_TYPE`.
+export type SkillTrigger = {
+  on: string | null;
+  check: string | null;
+  cooldown: number;
+  limit: number;
+  ops: SkillOp[];
+};
+
+/**
+ * What a skill mechanically does, read out of the game's behaviour tables.
+ *
+ * An operation carries its own coefficient and the stat that coefficient
+ * applies to, so "84% of the caster's attack" is readable here even for the
+ * effects a skill's description never mentions. What is **not** decoded is how
+ * the game turns that into a number against a defender — nothing here may be
+ * combined into a computed damage or healing total.
+ *
+ * An active skill has `hits`; a passive has `stats` and `triggers`.
+ */
+export type SkillBehaviour = {
+  attack?: boolean;
+  fever?: number;
+  /** Non-hitbox events the cast fires, e.g. `MOVE_TO_TARGET`. */
+  moves?: string[];
+  hits?: SkillHit[];
+  stats?: SkillStat[];
+  triggers?: SkillTrigger[];
+};
+
 // One skill slot. `desc` carries one pre-rendered description per skill level,
 // so the app never has to walk the effect tables; length 1 when the skill
 // cannot be levelled. Descriptions contain the game's own `<color=#rrggbb>`
@@ -167,6 +407,10 @@ export type SkillEntry = {
   skillType: number;
   maxLevel: number;
   levelable: boolean;
+  /** The period of the extra growth step; see `SkillMagnitude`. */
+  levelPeriod: number;
+  /** What it does, as opposed to what its description says it does. */
+  behaviour?: SkillBehaviour;
 };
 
 // A resolved `*_type` integer: its display name, its atlas icon, and (elements
@@ -200,6 +444,11 @@ export type CharacterData = {
   places: Record<string, PlaceEntry[]>;
   /** The 12 equipment slot types, keyed by type id. */
   equipment: Record<string, EquipmentEntry>;
+  /** Every stat a unit has, keyed by `STAT_TYPE` constant. */
+  statTypes: Record<string, StatTypeEntry>;
+  statCaps: StatCaps;
+  /** The relationship title at each affection level; index 0 is level 1. */
+  loveTitles: (string | null)[];
   /** `skillSetGroup` -> star grade -> the skill ids that grade has. */
   skillSets: Record<string, Record<string, number[]>>;
   skills: Record<string, SkillEntry>;

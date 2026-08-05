@@ -11,9 +11,11 @@ import {
 } from '@chakra-ui/react';
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import {
-  KIND_ICON, KIND_ORDER, TYPE_LABEL, filterRows, isPlayable, skinsByCharacter,
-  typeIcons, typeLabel, typeOf, typeTint, typeValue, type TypeTable,
+  KIND_ICON, KIND_ORDER, TYPE_LABEL, filterRows, isPlayable, rosterNote,
+  skinsByCharacter, typeIcons, typeLabel, typeOf, typeTint, typeValue,
+  type TypeTable,
 } from '@/lib/characters';
+import { characterIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
 import {
   KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
@@ -203,16 +205,20 @@ function CharacterCard({ entry, types, icons, skins }: {
   const role = typeOf(entry, types, 'role');
   const faction = typeOf(entry, types, 'faction');
   const kinds = KIND_ORDER.filter((k) => skins.some((s) => s.kind === k));
+  const roster = rosterNote(entry);
+  // the rig's own thumbnail first: a story-only character has no portrait at
+  // all, and an NPC's rig art is the better picture where both exist
+  const art = characterIcon(icons, entry, skins);
 
   return (
     <Box as={NextLink} href={{ pathname: '/character', query: { code: entry.code } }}
       borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" overflow="hidden"
       bg="whiteAlpha.50" _hover={{ borderColor: element?.color ?? 'whiteAlpha.500' }}
       transition="border-color 0.15s" display="block">
-      <Box position="relative" bg="blackAlpha.400">
-        <GameIcon manifest={icons} group="char" name={entry.iconPath}
-          names={[entry.iconPath, `Icon_${entry.code}`]}
-          size="100%" w="100%" h="auto" sx={{ aspectRatio: '1 / 1' }} />
+      <Box position="relative" bg="blackAlpha.400" sx={{ aspectRatio: '1 / 1' }}>
+        {art && (
+          <Box as="img" src={art} alt="" w="100%" h="100%" objectFit="contain" />
+        )}
         <HStack position="absolute" top={1} left={1} spacing={1}>
           <GameIcon manifest={icons} group="ui" names={typeIcons(element)} size={5}
             tint={typeTint(element)} title={typeLabel(element)} reserve={false} />
@@ -238,8 +244,8 @@ function CharacterCard({ entry, types, icons, skins }: {
           <Text fontSize="0.65rem" color="gray.500" noOfLines={1}>{entry.nameEn}</Text>
         )}
         <Flex align="center" justify="space-between" gap={1}>
-          {entry.unreleased
-            ? <Badge colorScheme="purple" fontSize="0.55rem">UNRELEASED</Badge>
+          {roster
+            ? <Badge colorScheme={roster.scheme} fontSize="0.55rem">{roster.label}</Badge>
             : <StarRating manifest={icons} star={entry.defaultStar ?? 0} size={3} />}
           <Text fontSize="0.65rem" fontFamily="mono" color="gray.500">{entry.code}</Text>
         </Flex>
