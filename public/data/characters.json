@@ -3067,22 +3067,6 @@
     100205
    ]
   },
-  "CH0014": {
-   "code": "CH0014",
-   "name": "베스페리",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0014",
-   "resourcesId": "ch0014_resources",
-   "voiceGroupId": "voc_ch0014_group",
-   "unfinished": {
-    "eng": "Vesperi",
-    "jpn": "ヴェスペリ"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
   "CH0015": {
    "code": "CH0015",
    "name": "이네스",
@@ -8293,22 +8277,6 @@
     110
    ]
   },
-  "CH0033": {
-   "code": "CH0033",
-   "name": "에스텔",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0033",
-   "resourcesId": "ch0033_resources",
-   "voiceGroupId": "voc_ch0033_group",
-   "unfinished": {
-    "eng": "エステル",
-    "jpn": "エステル"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
   "CH0034": {
    "code": "CH0034",
    "name": "세타",
@@ -10118,22 +10086,6 @@
     110
    ]
   },
-  "CH0040": {
-   "code": "CH0040",
-   "name": "이자벨",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0040",
-   "resourcesId": "ch0040_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "Isabel",
-    "jpn": "イザベル"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
   "CH0042": {
    "code": "CH0042",
    "name": "오블리아",
@@ -11063,22 +11015,6 @@
     103,
     110
    ]
-  },
-  "CH0052": {
-   "code": "CH0052",
-   "name": "라나",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0052",
-   "resourcesId": "ch0052_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "Lana",
-    "jpn": "ラナ"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
   },
   "CH0053": {
    "code": "CH0053",
@@ -12290,22 +12226,6 @@
     103,
     110
    ]
-  },
-  "CH0058": {
-   "code": "CH0058",
-   "name": "비앙카",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0058",
-   "resourcesId": "ch0058_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "Casey",
-    "jpn": "ケイシー"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
   },
   "CH0062": {
    "code": "CH0062",

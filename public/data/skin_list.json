@@ -1,6 +1,6 @@
 {
  "version": "1.4.5",
- "generated": "2026-08-04T04:26:17+00:00",
+ "generated": "2026-08-05T22:57:08+00:00",
  "skins": [
   {
    "key": "af_ch0009",
@@ -52,8 +52,8 @@
     ]
    },
    "bytes": {
-    "google": 10716520,
-    "onestore": 10642178
+    "google": 10724329,
+    "onestore": 10646339
    }
   },
   {
@@ -120,7 +120,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 6097412
+    "onestore": 6097754
    }
   },
   {
@@ -167,8 +167,8 @@
     ]
    },
    "bytes": {
-    "google": 5329886,
-    "onestore": 5355830
+    "google": 5293985,
+    "onestore": 5317614
    }
   },
   {
@@ -190,7 +190,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 9633241
+    "onestore": 9606329
    }
   },
   {
@@ -271,8 +271,8 @@
     "added": []
    },
    "bytes": {
-    "google": 4979696,
-    "onestore": 5154961
+    "google": 5011713,
+    "onestore": 5173023
    }
   },
   {
@@ -322,8 +322,8 @@
     "added": []
    },
    "bytes": {
-    "google": 4576845,
-    "onestore": 4683744
+    "google": 4575586,
+    "onestore": 4684411
    }
   },
   {
@@ -343,7 +343,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 8482800
+    "onestore": 8437270
    }
   },
   {
@@ -384,8 +384,8 @@
     "added": []
    },
    "bytes": {
-    "google": 8408048,
-    "onestore": 8418384
+    "google": 8346698,
+    "onestore": 8356007
    }
   },
   {
@@ -428,8 +428,8 @@
     ]
    },
    "bytes": {
-    "google": 7199394,
-    "onestore": 7091837
+    "google": 9049847,
+    "onestore": 8942315
    }
   },
   {
@@ -472,8 +472,8 @@
     ]
    },
    "bytes": {
-    "google": 16864253,
-    "onestore": 16853154
+    "google": 16767525,
+    "onestore": 16754106
    }
   },
   {
@@ -514,56 +514,8 @@
     ]
    },
    "bytes": {
-    "google": 4667982,
-    "onestore": 4660112
-   }
-  },
-  {
-   "key": "af_ch0068",
-   "kind": "affection",
-   "character": "CH0068",
-   "stores": [
-    "google",
-    "onestore"
-   ],
-   "animations": 33,
-   "faces": 1,
-   "bodyGroups": [
-    "asmr",
-    "basic"
-   ],
-   "hasBg": true,
-   "uncensored": true,
-   "divergeReasons": [
-    "skeleton",
-    "atlas",
-    "texture:AF_CH0068.png"
-   ],
-   "divergeEdit": {
-    "censorship": true,
-    "mechanisms": [
-     "rename",
-     "dropped",
-     "added"
-    ],
-    "renamed": [
-     "braest_shadow",
-     "breast_shadow_reflect"
-    ],
-    "dropped": [
-     "oppai_nipple_L_UNCEN",
-     "oppai_nipple_L_areola_UNCEN",
-     "oppai_nipple_R_UNCEN",
-     "oppai_nipple_R_areola_UNCEN"
-    ],
-    "added": [
-     "oppai_L_cover_CEN",
-     "oppai_R_cover_CEN"
-    ]
-   },
-   "bytes": {
-    "google": 5362875,
-    "onestore": 5368677
+    "google": 5332647,
+    "onestore": 5324974
    }
   },
   {
@@ -606,8 +558,8 @@
     ]
    },
    "bytes": {
-    "google": 5437399,
-    "onestore": 5399821
+    "google": 5447164,
+    "onestore": 5407028
    }
   },
   {
@@ -629,7 +581,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 7951144
+    "onestore": 7882535
    }
   },
   {
@@ -673,8 +625,8 @@
     ]
    },
    "bytes": {
-    "google": 7070026,
-    "onestore": 7031208
+    "google": 7134482,
+    "onestore": 7097589
    }
   },
   {
@@ -697,7 +649,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 5548033
+    "onestore": 5579805
    }
   },
   {
@@ -742,8 +694,8 @@
     ]
    },
    "bytes": {
-    "google": 6108660,
-    "onestore": 6112572
+    "google": 6090114,
+    "onestore": 6090035
    }
   },
   {
@@ -824,8 +776,8 @@
     "added": []
    },
    "bytes": {
-    "google": 6822187,
-    "onestore": 6843977
+    "google": 6822242,
+    "onestore": 6842277
    }
   },
   {
@@ -871,8 +823,8 @@
     ]
    },
    "bytes": {
-    "google": 6353503,
-    "onestore": 6353324
+    "google": 6338213,
+    "onestore": 6337084
    }
   },
   {
@@ -908,8 +860,8 @@
     "added": []
    },
    "bytes": {
-    "google": 6240792,
-    "onestore": 6239681
+    "google": 6231628,
+    "onestore": 6231127
    }
   },
   {
@@ -950,8 +902,8 @@
     "added": []
    },
    "bytes": {
-    "google": 10211038,
-    "onestore": 10183417
+    "google": 10152281,
+    "onestore": 10123495
    }
   },
   {
@@ -995,8 +947,8 @@
     "added": []
    },
    "bytes": {
-    "google": 8774900,
-    "onestore": 8788877
+    "google": 8806533,
+    "onestore": 8819047
    }
   },
   {
@@ -1054,8 +1006,8 @@
     ]
    },
    "bytes": {
-    "google": 10896690,
-    "onestore": 10735553
+    "google": 12405242,
+    "onestore": 12248492
    }
   },
   {
@@ -1078,61 +1030,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 8872124
-   }
-  },
-  {
-   "key": "ds_ch0068",
-   "kind": "desire",
-   "character": "CH0068",
-   "stores": [
-    "google",
-    "onestore"
-   ],
-   "animations": 21,
-   "faces": 0,
-   "bodyGroups": [
-    "basic",
-    "lobby",
-    "loop",
-    "reaction"
-   ],
-   "hasBg": true,
-   "uncensored": true,
-   "divergeReasons": [
-    "skeleton",
-    "atlas",
-    "texture:DS_CH0068.png"
-   ],
-   "divergeEdit": {
-    "censorship": true,
-    "mechanisms": [
-     "rename",
-     "dropped",
-     "added"
-    ],
-    "renamed": [
-     "leg_crotch",
-     "oppai_R_band"
-    ],
-    "dropped": [
-     "leg_crotch_cover_UNCEN",
-     "leg_crotch_orgasm_UNCEN",
-     "leg_crotch_orgasm_cover_UNCEN",
-     "oppai_L_nipple_UNCEN",
-     "oppai_L_nipple_areola_UNCEN",
-     "oppai_L_nipple_shadow_UNCEN",
-     "oppai_R_nipple_UNCEN",
-     "oppai_R_nipple_areola_UNCEN",
-     "oppai_R_nipple_shadow_UNCEN"
-    ],
-    "added": [
-     "oppai_L_band_CEN"
-    ]
-   },
-   "bytes": {
-    "google": 6022267,
-    "onestore": 6116808
+    "onestore": 8794724
    }
   },
   {
@@ -1177,8 +1075,8 @@
     ]
    },
    "bytes": {
-    "google": 9014392,
-    "onestore": 8577512
+    "google": 8980965,
+    "onestore": 8551252
    }
   },
   {
@@ -1221,8 +1119,8 @@
     "added": []
    },
    "bytes": {
-    "google": 8711611,
-    "onestore": 8695926
+    "google": 8659468,
+    "onestore": 8635638
    }
   },
   {
@@ -1244,7 +1142,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 8908291
+    "onestore": 8861381
    }
   },
   {
@@ -1264,7 +1162,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 8405642
+    "onestore": 8424187
    }
   },
   {
@@ -1863,26 +1761,6 @@
    }
   },
   {
-   "key": "st_ch0033",
-   "kind": "standing",
-   "character": "CH0033",
-   "stores": [
-    "onestore"
-   ],
-   "animations": 16,
-   "faces": 13,
-   "bodyGroups": [
-    "00"
-   ],
-   "hasBg": false,
-   "uncensored": false,
-   "divergeReasons": [],
-   "divergeEdit": null,
-   "bytes": {
-    "onestore": 3951373
-   }
-  },
-  {
    "key": "st_ch0034",
    "kind": "standing",
    "character": "CH0034",
@@ -2247,58 +2125,6 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 4101740
-   }
-  },
-  {
-   "key": "st_ch0068",
-   "kind": "standing",
-   "character": "CH0068",
-   "stores": [
-    "google",
-    "onestore"
-   ],
-   "animations": 19,
-   "faces": 15,
-   "bodyGroups": [
-    "00"
-   ],
-   "hasBg": false,
-   "uncensored": true,
-   "divergeReasons": [
-    "skeleton",
-    "atlas",
-    "texture:ST_CH0068.png"
-   ],
-   "divergeEdit": {
-    "censorship": true,
-    "mechanisms": [
-     "rename",
-     "dropped",
-     "added"
-    ],
-    "renamed": [
-     "oppai_R_pasties",
-     "pelvis_maebari"
-    ],
-    "dropped": [
-     "nipple_L_UNCEN",
-     "nipple_R_UNCEN",
-     "nipple_areolae_L_UNCEN",
-     "nipple_areolae_L_highlight_UNCEN",
-     "nipple_areolae_R_UNCEN",
-     "nipple_areolae_R_highlight_UNCEN",
-     "oppai_L_pasties1_UNCEN",
-     "oppai_L_pasties2_2_UNCEN",
-     "oppai_L_pasties2_2_UNCEN2",
-     "oppai_L_pasties2_UNCEN"
-    ],
-    "added": [
-     "oppai_L_pasties_CEN"
-    ]
-   },
-   "bytes": {
-    "google": 3115665,
-    "onestore": 3172143
    }
   },
   {
