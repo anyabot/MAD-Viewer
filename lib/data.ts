@@ -29,7 +29,6 @@ export type SkinListEntry = {
 
 export type SkinList = {
   version: string;
-  generated: string;
   skins: SkinListEntry[];
 };
 
@@ -41,6 +40,8 @@ export type CharacterEntry = {
   unreleased?: boolean;
   /** Scenario-only rig — no base row either, and never fought. */
   storyOnly?: boolean;
+  /** ISO date the skins become available; absent once they are listed. */
+  skinsLockedUntil?: string;
   /** The id the scripts address this character by, e.g. `dandelion`. */
   actorId?: string;
   name: string;
@@ -578,7 +579,6 @@ export type GachaRig = {
 };
 
 export type GachaIndex = {
-  generated: string;
   bundle: string;
   drawer: { pixelPerUnit: number };
   jiggler: { maxDistance: number; springStrength: number; springDamping: number };

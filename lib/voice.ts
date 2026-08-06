@@ -4,7 +4,6 @@
 import { voiceClipUrl } from '@/lib/cdn';
 
 export type VoiceIndex = {
-  generated: string;
   locale: string;
   /** Voice id -> the `<locale>/<char>/<category>` folder holding its clip. */
   clips: Record<string, string>;

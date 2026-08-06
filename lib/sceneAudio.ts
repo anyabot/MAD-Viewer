@@ -3,7 +3,6 @@
 import { sceneAudioClipUrl } from '@/lib/cdn';
 
 export type SceneAudioIndex = {
-  generated: string;
   clips: Record<string, string>;
   animations: Record<string, Record<string, string>>;
 };
