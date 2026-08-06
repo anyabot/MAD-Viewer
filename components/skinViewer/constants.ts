@@ -1,6 +1,7 @@
 // Nothing here touches Pixi, Spine or React state, so both the viewer and its
 // control surface can import it.
 import type { SelectOption } from '@/components/skinViewer/chrome';
+import { text, type Lang, type Localized } from '@/lib/i18n';
 
 export const EFFECT_COLOR: Record<string, number> = {
   reaction: 0xff4444,
@@ -9,17 +10,17 @@ export const EFFECT_COLOR: Record<string, number> = {
   generic: 0x4488ff,
 };
 
-export const EFFECT_LABEL: Record<string, string> = {
-  reaction: 'reaction clip',
-  region: 'region clip',
-  physics: 'jiggle only — no animation',
-  generic: 'generic touch',
+export const EFFECT_LABEL: Record<string, Localized> = {
+  reaction: { en: 'reaction clip', ko: '리액션 클립' },
+  region: { en: 'region clip', ko: '영역 클립' },
+  physics: { en: 'jiggle only — no animation', ko: '흔들림만 — 애니메이션 없음' },
+  generic: { en: 'generic touch', ko: '일반 터치' },
   // Home-screen outcomes.
-  touch: 'variation touch clip',
-  jiggle: 'jiggle only',
+  touch: { en: 'variation touch clip', ko: '변형 터치 클립' },
+  jiggle: { en: 'jiggle only', ko: '흔들림만' },
   // Scenario-driven outcomes.
-  state: 'state change only — no clip',
-  inert: 'nothing armed here yet',
+  state: { en: 'state change only — no clip', ko: '상태 변경만 — 클립 없음' },
+  inert: { en: 'nothing armed here yet', ko: '아직 활성화된 것 없음' },
 };
 
 // The Free play lanes only: driven playback puts a clip on the track its own
@@ -37,11 +38,15 @@ export const WIDE_CUTSCENE_STAGING_SKINS = new Set(['ds_ch0022']);
 export const REFERENCE_VIEW_WIDTH = 3840;
 
 // The same factor drives the Spine clock, the idle timers and the voice.
-export const SPEED_OPTIONS = [0.5, 0.75, 1, 1.5, 2, 3, 4].map((rate) => ({
-  value: String(rate),
-  label: `${rate}x`,
-  hint: rate === 1 ? 'authored speed' : undefined,
-}));
+const SPEEDS = [0.5, 0.75, 1, 1.5, 2, 3, 4];
+
+export function speedOptions(lang: Lang): SelectOption[] {
+  return SPEEDS.map((rate) => ({
+    value: String(rate),
+    label: `${rate}x`,
+    hint: rate === 1 ? text(lang, 'optAuthoredSpeed') : undefined,
+  }));
+}
 
 // Seconds after a lobby line is staged during which a touch is refused, so a
 // double-tap does not restage the same line twice.

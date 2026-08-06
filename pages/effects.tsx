@@ -8,24 +8,27 @@ import { GameIcon, StarRating } from '@/components/gameIcon';
 import { FilterChip, FilterRow } from '@/components/filters';
 import {
   BUFF_CATEGORY, OP_SCHEME, SIDE_LABEL, SKILL_CATEGORY_LABEL, STAT_LABEL,
-  TARGET_LABEL, TRIGGER_LABEL, castSummary, colorRuns, gateSummary, hitSummary,
-  isPlayable, labelOf, rosterNote, scaleSummary, skinsByCharacter, statAmount,
-  typeIcons, typeOf, typeTint, typeLabel,
+  TARGET_LABEL, TRIGGER_LABEL, castSummary, characterName, colorRuns, gateSummary,
+  hitSummary, isPlayable, labelOf, rosterNote, scaleSummary, skinsByCharacter,
+  statAmount, typeIcons, typeOf, typeTint, typeLabel,
 } from '@/lib/characters';
 import {
-  EFFECT_SECTIONS, EXTRA_GROUPS, GROUP_LABEL, buildKits, effectSection,
+  EFFECT_SECTIONS, EXTRA_GROUPS, GROUP_LABEL, SECTION_LABEL, buildKits, effectSection,
   facetOptions, matchedGroups, matchingSkills, opLabel, selectionCount,
   type CharacterKit, type EffectContext, type EffectSelection, type FacetOption,
   type KitSkill, type MatchedGroup,
 } from '@/lib/effects';
 import { characterIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
+import { text, useLang, useT, type Lang } from '@/lib/i18n';
 import {
   loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type IconManifest, type SkillOp, type SkinListEntry,
 } from '@/lib/data';
 
 export default function EffectsPage() {
+  const t = useT();
+  const lang = useLang();
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [skins, setSkins] = useState<SkinListEntry[]>([]);
   const [icons, setIcons] = useState<IconManifest | null>(null);
@@ -73,13 +76,13 @@ export default function EffectsPage() {
   if (!chars) {
     return (
       <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">loading…</Text></VStack>
+        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
       </Center>
     );
   }
 
-  const effects = facetOptions(scoped, picked, 'effect');
-  const grants = facetOptions(scoped, picked, 'grant');
+  const effects = facetOptions(scoped, picked, 'effect', lang);
+  const grants = facetOptions(scoped, picked, 'grant', lang);
 
   return (
     <VStack align="stretch" spacing={4}>
@@ -88,7 +91,7 @@ export default function EffectsPage() {
           const options = effects.filter((o) => effectSection(o.value) === section);
           if (!options.length) return null;
           return (
-            <FilterRow key={section} label={section}>
+            <FilterRow key={section} label={SECTION_LABEL[section][lang]}>
               {options.map((option) => (
                 <Chip key={option.value} option={option}
                   active={(picked.effect ?? []).includes(option.value)}
@@ -98,7 +101,7 @@ export default function EffectsPage() {
           );
         })}
         {grants.length > 0 && (
-          <FilterRow label={GROUP_LABEL.grant}>
+          <FilterRow label={GROUP_LABEL.grant[lang]}>
             {grants.map((option) => (
               <Chip key={option.value} option={option}
                 active={(picked.grant ?? []).includes(option.value)}
@@ -108,10 +111,10 @@ export default function EffectsPage() {
         )}
 
         {more && EXTRA_GROUPS.map((group) => {
-          const options = facetOptions(scoped, picked, group);
+          const options = facetOptions(scoped, picked, group, lang);
           if (!options.length) return null;
           return (
-            <FilterRow key={group} label={GROUP_LABEL[group]}>
+            <FilterRow key={group} label={GROUP_LABEL[group][lang]}>
               {options.map((option) => (
                 <Chip key={option.value} option={option}
                   active={(picked[group] ?? []).includes(option.value)}
@@ -123,33 +126,33 @@ export default function EffectsPage() {
 
         <Wrap spacing={2} align="center" pt={1}>
           <WrapItem>
-            <Input size="sm" maxW="220px" placeholder="search…"
+            <Input size="sm" maxW="220px" placeholder={t('search')}
               value={query} onChange={(e) => set({ query: e.target.value })}
               bg="whiteAlpha.100" borderColor="whiteAlpha.300" />
           </WrapItem>
           <WrapItem>
             <FilterChip active={more} onClick={() => setMore(!more)}>
-              <Text>More filters</Text>
+              <Text>{t('moreFilters')}</Text>
             </FilterChip>
           </WrapItem>
           <WrapItem>
             <FilterChip active={npcs} onClick={() => set({ npcs: !npcs })}>
-              <Text>Include NPCs</Text>
+              <Text>{t('includeNpcs')}</Text>
             </FilterChip>
           </WrapItem>
           <WrapItem>
             <FilterChip active={unreleased} onClick={() => set({ unreleased: !unreleased })}>
-              <Text>Include unreleased</Text>
+              <Text>{t('includeUnreleased')}</Text>
             </FilterChip>
           </WrapItem>
           {selectionCount(picked) > 0 && (
             <WrapItem>
-              <FilterChip active={false} onClick={clear}><Text>Clear</Text></FilterChip>
+              <FilterChip active={false} onClick={clear}><Text>{t('clear')}</Text></FilterChip>
             </WrapItem>
           )}
           <WrapItem>
             <Text fontSize="xs" color="gray.500">
-              {results.length} of {scoped.length}
+              {t('countOf', { shown: results.length, total: scoped.length })}
             </Text>
           </WrapItem>
         </Wrap>
@@ -159,10 +162,10 @@ export default function EffectsPage() {
         {results.map(({ kit, skills }) => (
           <ResultRow key={kit.entry.code} kit={kit} skills={skills} data={chars}
             icons={icons} skins={byCharacter.get(kit.entry.code) ?? []}
-            selection={picked} />
+            selection={picked} lang={lang} />
         ))}
       </VStack>
-      {results.length === 0 && <Text fontSize="sm" color="gray.500">no match</Text>}
+      {results.length === 0 && <Text fontSize="sm" color="gray.500">{t('noMatch')}</Text>}
     </VStack>
   );
 }
@@ -180,15 +183,15 @@ function Chip({ option, active, onClick }: {
   );
 }
 
-function ResultRow({ kit, skills, data, icons, skins, selection }: {
+function ResultRow({ kit, skills, data, icons, skins, selection, lang }: {
   kit: CharacterKit; skills: KitSkill[]; data: CharacterData;
   icons: IconManifest | null; skins: SkinListEntry[];
-  selection: EffectSelection;
+  selection: EffectSelection; lang: Lang;
 }) {
   const entry = kit.entry;
   const element = typeOf(entry, data.types, 'attribute');
   const role = typeOf(entry, data.types, 'role');
-  const roster = rosterNote(entry);
+  const roster = rosterNote(entry, lang);
   const art = characterIcon(icons, entry, skins);
 
   return (
@@ -203,13 +206,13 @@ function ResultRow({ kit, skills, data, icons, skins, selection }: {
         </Box>
         <VStack align={{ base: 'start', sm: 'center' }} spacing={0.5} minW={0}>
           <Text fontSize="sm" fontWeight="bold" noOfLines={1}>
-            {entry.name || entry.code}
+            {characterName(entry, lang)}
           </Text>
           <HStack spacing={1}>
             <GameIcon manifest={icons} group="ui" names={typeIcons(element)} size={4}
-              tint={typeTint(element)} title={typeLabel(element)} reserve={false} />
+              tint={typeTint(element)} title={typeLabel(element, lang)} reserve={false} />
             <GameIcon manifest={icons} group="ui" names={typeIcons(role)} size={4}
-              title={typeLabel(role)} reserve={false} />
+              title={typeLabel(role, lang)} reserve={false} />
             {roster
               ? <Badge colorScheme={roster.scheme} fontSize="0.55rem">{roster.label}</Badge>
               : <StarRating manifest={icons} star={entry.defaultStar ?? 0} size={3} />}
@@ -221,7 +224,7 @@ function ResultRow({ kit, skills, data, icons, skins, selection }: {
         flex={{ base: '0 0 auto', sm: '1' }}>
         {skills.map((s) => (
           <SkillResult key={s.id} kitSkill={s} ctx={kit.ctx} data={data} icons={icons}
-            selection={selection}
+            selection={selection} lang={lang}
             // an enemy's slots all share one placeholder name
             showSlot={skills.filter((o) => o.skill.name === s.skill.name).length > 1} />
         ))}
@@ -230,9 +233,10 @@ function ResultRow({ kit, skills, data, icons, skins, selection }: {
   );
 }
 
-function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot }: {
+function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot, lang }: {
   kitSkill: KitSkill; ctx: EffectContext; data: CharacterData;
   icons: IconManifest | null; selection: EffectSelection; showSlot?: boolean;
+  lang: Lang;
 }) {
   const { skill } = kitSkill;
   const groups = matchedGroups(skill, selection, ctx);
@@ -251,12 +255,12 @@ function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot }: {
         {showSlot && (
           <WrapItem>
             <Text fontFamily="mono" fontSize="0.6rem" color="gray.600">
-              slot {skill.skillType}
+              {text(lang, 'skillSlot', { n: skill.skillType })}
             </Text>
           </WrapItem>
         )}
         <WrapItem>
-          <Badge fontSize="0.55rem">{SKILL_CATEGORY_LABEL[skill.categorize]}</Badge>
+          <Badge fontSize="0.55rem">{SKILL_CATEGORY_LABEL[skill.categorize]?.[lang]}</Badge>
         </WrapItem>
         {skill.openStar > 1 && (
           <WrapItem>
@@ -267,11 +271,11 @@ function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot }: {
 
       {groups.map((group, i) => (
         <Box key={i} mt={1}>
-          <Text fontSize="0.65rem" color="gray.500">{groupSummary(group)}</Text>
+          <Text fontSize="0.65rem" color="gray.500">{groupSummary(group, lang)}</Text>
           <Wrap spacing={2} mt={0.5}>
             {group.ops.map((op, j) => (
               <WrapItem key={j}>
-                <OpChip op={op} ctx={ctx} data={data} icons={icons} />
+                <OpChip op={op} ctx={ctx} data={data} icons={icons} lang={lang} />
               </WrapItem>
             ))}
           </Wrap>
@@ -283,7 +287,7 @@ function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot }: {
           {grants.map((grant, i) => (
             <WrapItem key={i}>
               <Badge fontSize="0.55rem" colorScheme="green">
-                {labelOf(STAT_LABEL, grant.stat)} {statAmount(grant)}
+                {labelOf(STAT_LABEL, grant.stat, lang)} {statAmount(grant)}
               </Badge>
             </WrapItem>
           ))}
@@ -295,44 +299,47 @@ function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot }: {
 
 // Where the operations under it land: the hitbox and what it centres on, or
 // the battle event that fires the passive.
-function groupSummary(group: MatchedGroup): string {
+function groupSummary(group: MatchedGroup, lang: Lang): string {
   const { hit, trigger } = group;
   if (hit) {
-    const cast = hit.cast ? castSummary(hit.cast) : '';
-    return [hitSummary(hit), cast && `on ${cast}`].filter(Boolean).join(' · ');
+    const cast = hit.cast ? castSummary(hit.cast, lang) : '';
+    const on = lang === 'ko' ? `대상: ${cast}` : `on ${cast}`;
+    return [hitSummary(hit, lang), cast && on].filter(Boolean).join(' · ');
   }
   if (!trigger) return '';
   return [
-    labelOf(TRIGGER_LABEL, trigger.on),
-    trigger.check ? labelOf(TARGET_LABEL, trigger.check) : '',
-    trigger.cooldown > 0 ? `${trigger.cooldown}s cd` : '',
-    trigger.limit > 0 ? `×${trigger.limit} per battle` : '',
+    labelOf(TRIGGER_LABEL, trigger.on, lang),
+    trigger.check ? labelOf(TARGET_LABEL, trigger.check, lang) : '',
+    trigger.cooldown > 0 ? text(lang, 'cooldown', { n: trigger.cooldown }) : '',
+    trigger.limit > 0 ? text(lang, 'perBattle', { n: trigger.limit }) : '',
   ].filter(Boolean).join(' · ');
 }
 
 // Structure only — which operation lands on whom and off which stat. The
 // arithmetic that turns a coefficient into a battle number is not decoded.
-function OpChip({ op, ctx, data, icons }: {
+function OpChip({ op, ctx, data, icons, lang }: {
   op: SkillOp; ctx: EffectContext; data: CharacterData; icons: IconManifest | null;
+  lang: Lang;
 }) {
   const scheme = (op.op && OP_SCHEME[op.op])
     ?? BUFF_CATEGORY[op.categorize ?? 0]?.scheme
     ?? 'gray';
-  const scale = scaleSummary(op);
+  const scale = scaleSummary(op, lang);
   const where = [
-    op.team ? labelOf(TARGET_LABEL, op.team) : '',
-    op.pick === 'ALL' ? 'all in range' : (op.count ? `${op.count}` : ''),
-    op.applyTo && op.applyTo !== 'HOLDER' ? `on the ${SIDE_LABEL[op.applyTo]}` : '',
+    op.team ? labelOf(TARGET_LABEL, op.team, lang) : '',
+    op.pick === 'ALL' ? text(lang, 'allInRange') : (op.count ? `${op.count}` : ''),
+    op.applyTo && op.applyTo !== 'HOLDER'
+      ? text(lang, 'onSide', { side: labelOf(SIDE_LABEL, op.applyTo, lang) }) : '',
   ].filter(Boolean).join(' · ');
   return (
     <HStack spacing={1.5} align="center">
       {op.icon && <GameIcon manifest={icons} group="buff" name={op.icon} size={4} />}
-      <Badge fontSize="0.55rem" colorScheme={scheme}>{opLabel(op, ctx)}</Badge>
+      <Badge fontSize="0.55rem" colorScheme={scheme}>{opLabel(op, ctx, lang)}</Badge>
       {op.name && <GameText text={op.name} bold />}
       {scale && <Text fontSize="0.65rem" color="gray.400">{scale}</Text>}
       {op.gate && (
         <Text fontSize="0.65rem" color="cyan.300">
-          <GameText text={gateSummary(op.gate, data)} />
+          <GameText text={gateSummary(op.gate, data, lang)} />
         </Text>
       )}
       {where && <Text fontSize="0.65rem" color="gray.600">{where}</Text>}

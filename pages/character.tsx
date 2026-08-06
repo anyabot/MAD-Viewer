@@ -13,29 +13,32 @@ import SkinViewer from '@/components/skinViewer';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { StoreKey } from '@/components/skinViewer/types';
 import { GameIcon, StarRating } from '@/components/gameIcon';
+import { GameText, Panel, Rotation, Skills } from '@/components/skillKit';
 import { characterIcon, resolveIcon, skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
 import {
-  BUFF_CATEGORY, EQUIP_EN, KIND_ICON, MOVE_LABEL, OP_LABEL, OP_SCHEME,
-  SETUP_CONDITION_LABEL, SIDE_LABEL, SKILL_CATEGORY_LABEL, STAT_LABEL, TARGET_LABEL,
-  TRIGGER_LABEL, TYPE_LABEL, altNameEn, birthdayText, castSummary, colorRuns,
-  computeStats, datePlacesOf, detailSummary, equipmentGrants, equipmentSlotsOf,
-  gateSummary, giftsOf, hitSummary, isPlayable, labelOf, lockedUntilText,
-  membersOfType, opAmounts,
-  opSeconds, rosterNote, scaleSummary, skillGrades, skillsAtGrade, skinIconNames,
+  KIND_ICON, STAT_LABEL, TYPE_LABEL, altNameEn, birthdayText, characterName,
+  characterSubName,
+  computeStats, datePlacesOf, equipLabel, equipmentGrants, equipmentSlotsOf,
+  giftsOf, isPlayable, labelOf, lockedUntilText,
+  membersOfType,
+  rosterNote, skillGrades, skinIconNames,
   skinsByCharacter,
-  statAmount, statGrades, statText, typeIcons, typeLabel, typeOf, typeTint, typeValue,
+  statGrades, statText, typeIcons, typeLabel, typeOf, typeTint, typeValue,
   type EquipInput, type TypeTable,
 } from '@/lib/characters';
+import { text, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
   KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
-  type BuffEntry, type CharacterData, type CharacterEntry, type IconManifest,
-  type SkillBehaviour, type SkillEntry, type SkillOp, type SkinListEntry,
+  type CharacterData, type CharacterEntry, type IconManifest,
+  type SkinListEntry,
 } from '@/lib/data';
 
 const INFO_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division', 'faction'];
 
 export default function CharacterPage() {
+  const t = useT();
+  const lang = useLang();
   const router = useRouter();
   const code = typeof router.query.code === 'string' ? router.query.code : null;
 
@@ -67,7 +70,7 @@ export default function CharacterPage() {
   if (!chars || !router.isReady) {
     return (
       <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">loading…</Text></VStack>
+        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
       </Center>
     );
   }
@@ -77,17 +80,17 @@ export default function CharacterPage() {
     return (
       <VStack align="start" spacing={3} py={10}>
         <Text color="gray.400">
-          {code ? `no character data for ${code}` : 'no character selected'}
+          {code ? t('noCharacterData', { code }) : t('noCharacterSelected')}
         </Text>
         <Text as={NextLink} href="/characters" color="yellow.300" fontSize="sm">
-          ← characters
+          {t('backToCharacters')}
         </Text>
       </VStack>
     );
   }
 
   const element = typeOf(entry, chars.types, 'attribute');
-  const roster = rosterNote(entry);
+  const roster = rosterNote(entry, lang);
 
   // Only what the character has gets a tab, and with one section left the tab
   // bar goes too.
@@ -95,7 +98,7 @@ export default function CharacterPage() {
 
   tabs.push({
     key: 'profile',
-    label: 'Profile',
+    label: t('tabProfile'),
     panel: (
       <Grid templateColumns={{ base: '1fr', lg: '300px minmax(0, 1fr)' }} gap={4}
         alignItems="start">
@@ -104,7 +107,7 @@ export default function CharacterPage() {
 
         <VStack align="stretch" spacing={3} minW={0}>
           {entry.desc && (
-            <Panel title="Profile">
+            <Panel title={t('tabProfile')}>
               <Text fontSize="sm" whiteSpace="pre-wrap">{entry.desc}</Text>
             </Panel>
           )}
@@ -123,7 +126,7 @@ export default function CharacterPage() {
   if (skillGrades(entry, chars).length > 0) {
     tabs.push({
       key: 'skills',
-      label: 'Skills',
+      label: t('tabSkills'),
       panel: (
         <VStack align="stretch" spacing={3} minW={0}>
           <Skills entry={entry} data={chars} icons={icons} />
@@ -136,7 +139,7 @@ export default function CharacterPage() {
   if (entry.baseStats) {
     tabs.push({
       key: 'stats',
-      label: 'Stats',
+      label: t('tabStats'),
       panel: <StatCalculator entry={entry} data={chars} icons={icons} />,
     });
   }
@@ -144,11 +147,11 @@ export default function CharacterPage() {
   if (mine.length === 0 && entry.skinsLockedUntil) {
     tabs.push({
       key: 'skins',
-      label: 'Skins',
+      label: t('tabSkins'),
       panel: (
-        <Panel title="Skins">
+        <Panel title={t('tabSkins')}>
           <Text fontSize="sm" color="gray.400">
-            Locked until {lockedUntilText(entry.skinsLockedUntil)}.
+            {t('lockedUntil', { date: lockedUntilText(entry.skinsLockedUntil, lang) })}
           </Text>
         </Panel>
       ),
@@ -158,7 +161,7 @@ export default function CharacterPage() {
   if (mine.length > 0) {
     tabs.push({
       key: 'skins',
-      label: 'Skins',
+      label: t('tabSkins'),
       count: mine.length,
       panel: (
         <VStack align="stretch" spacing={3} minW={0}>
@@ -169,7 +172,7 @@ export default function CharacterPage() {
               <Wrap spacing={2} align="center">
                 <WrapItem>
                   <Badge colorScheme={KIND_COLOR[current.kind]}>
-                    {KIND_LABEL[current.kind]}
+                    {KIND_LABEL[current.kind][lang]}
                   </Badge>
                 </WrapItem>
                 <WrapItem>
@@ -179,19 +182,19 @@ export default function CharacterPage() {
                 </WrapItem>
                 <WrapItem>
                   <Text fontSize="xs" color="gray.500">
-                    {current.animations} anims
-                    {current.faces ? ` · ${current.faces} faces` : ''}
+                    {t('animCount', { n: current.animations })}
+                    {current.faces ? ` · ${t('faceCount', { n: current.faces })}` : ''}
                   </Text>
                 </WrapItem>
                 {current.stores.length > 1 && (
                   <WrapItem>
-                    <Badge colorScheme="yellow" title="store art differs">
-                      DIFF · {STORE_META[store].short}
+                    <Badge colorScheme="yellow" title={t('storeDiffTitle')}>
+                      {t('badgeDiff')} · {STORE_META[store].short}
                     </Badge>
                   </WrapItem>
                 )}
                 {current.hasBg && (
-                  <WrapItem><Badge colorScheme="blue">background</Badge></WrapItem>
+                  <WrapItem><Badge colorScheme="blue">{t('badgeBackground')}</Badge></WrapItem>
                 )}
               </Wrap>
               <SkinViewer key={current.key} skin={current.key} stores={current.stores}
@@ -207,9 +210,11 @@ export default function CharacterPage() {
     <VStack align="stretch" spacing={4}>
       <Flex align="baseline" gap={3} wrap="wrap">
         <Text as={NextLink} href="/characters" fontSize="sm" color="gray.500"
-          _hover={{ color: 'gray.200' }}>← characters</Text>
-        <Text fontSize="2xl" fontWeight="bold">{entry.name || entry.code}</Text>
-        {entry.nameEn && <Text fontSize="md" color="gray.500">{entry.nameEn}</Text>}
+          _hover={{ color: 'gray.200' }}>{t('backToCharacters')}</Text>
+        <Text fontSize="2xl" fontWeight="bold">{characterName(entry, lang)}</Text>
+        {characterSubName(entry, lang) && (
+          <Text fontSize="md" color="gray.500">{characterSubName(entry, lang)}</Text>
+        )}
         {altNameEn(entry) && (
           <Text fontSize="sm" color="gray.600">{altNameEn(entry)}</Text>
         )}
@@ -265,6 +270,7 @@ function FilterLink({ onClick, children }: {
 function MemberPopover({ members, icons, children }: {
   members: CharacterEntry[]; icons: IconManifest | null; children: React.ReactNode;
 }) {
+  const lang = useLang();
   if (!members.length) return <>{children}</>;
   return (
     <Popover trigger="hover" placement="right" isLazy openDelay={120} closeDelay={80}>
@@ -282,7 +288,7 @@ function MemberPopover({ members, icons, children }: {
                     names={[m.iconPath, `Icon_${m.code}`]} size="100%" w="100%" h="auto"
                     sx={{ aspectRatio: '1 / 1' }} borderRadius="sm" />
                   <Text fontSize="0.6rem" noOfLines={1} textAlign="center" w="100%">
-                    {m.name || m.code}
+                    {characterName(m, lang)}
                   </Text>
                 </VStack>
               ))}
@@ -301,24 +307,29 @@ function Infobox({ entry, data, icons, accent, skins }: {
   entry: CharacterEntry; data: CharacterData;
   icons: IconManifest | null; accent?: string; skins: SkinListEntry[];
 }) {
+  const t = useT();
+  const lang = useLang();
   const focusType = useFilters((s) => s.focusType);
   const focusStar = useFilters((s) => s.focusStar);
   const rows: { label: string; node: React.ReactNode }[] = [];
 
   for (const table of INFO_TABLES) {
-    const t = typeOf(entry, data.types, table);
+    const row = typeOf(entry, data.types, table);
     const value = typeValue(entry, table);
-    if (!t || value == null) continue;
+    if (!row || value == null) continue;
+    // The other language's name sits beside it, since the game names a type in
+    // both and neither is a translation of the other.
+    const alt = lang === 'ko' ? row.en : row.name;
     const link = (
       <FilterLink onClick={() => focusType(table, value, !isPlayable(entry))}>
-        <GameIcon manifest={icons} group="ui" names={typeIcons(t)} size={5}
-          tint={typeTint(t)} />
-        <Text color={t.color}>{typeLabel(t)}</Text>
-        <Text color="gray.500" fontSize="xs">{t.name}</Text>
+        <GameIcon manifest={icons} group="ui" names={typeIcons(row)} size={5}
+          tint={typeTint(row)} />
+        <Text color={row.color}>{typeLabel(row, lang)}</Text>
+        <Text color="gray.500" fontSize="xs">{alt}</Text>
       </FilterLink>
     );
     rows.push({
-      label: TYPE_LABEL[table],
+      label: TYPE_LABEL[table][lang],
       node: table === 'faction'
         ? (
           <MemberPopover members={membersOfType(data.characters, table, value)} icons={icons}>
@@ -331,7 +342,7 @@ function Infobox({ entry, data, icons, accent, skins }: {
   if (entry.defaultStar) {
     const star = entry.defaultStar;
     rows.splice(1, 0, {
-      label: 'Rarity',
+      label: t('rarity'),
       node: (
         <FilterLink onClick={() => focusStar(star)}>
           <StarRating manifest={icons} star={star} size={4} />
@@ -340,16 +351,16 @@ function Infobox({ entry, data, icons, accent, skins }: {
     });
   }
 
-  const text: [string, string | null | undefined][] = [
-    ['Birthday', birthdayText(entry)],
-    ['Artist', entry.artist],
-    ['CV', entry.cv],
-    ['Hobby', entry.hobby],
-    ['Specialty', entry.specialty],
-    ['Likes', entry.likes],
+  const facts: [UiKey, string | null | undefined][] = [
+    ['rowBirthday', birthdayText(entry, lang)],
+    ['rowArtist', entry.artist],
+    ['rowCv', entry.cv],
+    ['rowHobby', entry.hobby],
+    ['rowSpecialty', entry.specialty],
+    ['rowLikes', entry.likes],
   ];
-  for (const [label, value] of text) {
-    if (value) rows.push({ label, node: <Text>{value}</Text> });
+  for (const [key, value] of facts) {
+    if (value) rows.push({ label: t(key), node: <Text>{value}</Text> });
   }
 
   const cutin = resolveIcon(icons, 'cutin', [`Cut_${entry.code}`, `CUT_${entry.code}`]);
@@ -386,13 +397,13 @@ function Infobox({ entry, data, icons, accent, skins }: {
           <VStack align="stretch" spacing={2} px={3} py={2} fontSize="sm">
             {entry.comment && (
               <Box>
-                <Text fontSize="xs" color="gray.500">Status message</Text>
+                <Text fontSize="xs" color="gray.500">{t('statusMessage')}</Text>
                 <Text>{entry.comment}</Text>
               </Box>
             )}
             {entry.birthdayComment && (
               <Box>
-                <Text fontSize="xs" color="gray.500">Birthday message</Text>
+                <Text fontSize="xs" color="gray.500">{t('birthdayMessage')}</Text>
                 <Text>{entry.birthdayComment}</Text>
               </Box>
             )}
@@ -403,55 +414,30 @@ function Infobox({ entry, data, icons, accent, skins }: {
   );
 }
 
-// A titled panel. Used by every profile block below the infobox so they read
-// as one column.
-function Panel({ title, note, children }: {
-  title: string; note?: string; children: React.ReactNode;
-}) {
-  return (
-    <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" p={3}>
-      <Flex align="baseline" gap={2} mb={2} wrap="wrap">
-        <Text fontSize="xs" color="gray.500" textTransform="uppercase"
-          letterSpacing="wide">{title}</Text>
-        {note && <Text fontSize="xs" color="gray.600">{note}</Text>}
-      </Flex>
-      {children}
-    </Box>
-  );
-}
-
-// The game's own `<color=#rrggbb>` markup around the numbers it highlights.
-function GameText({ text }: { text: string }) {
-  return (
-    <>
-      {colorRuns(text).map((run, i) => (
-        <Text as="span" key={i} color={run.color}>{run.text}</Text>
-      ))}
-    </>
-  );
-}
-
 // The art is the empty slot: what goes in it is player inventory, not master
 // data.
 function EquipmentSlots({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
+  const t = useT();
+  const lang = useLang();
   const slots = equipmentSlotsOf(entry, data.equipment);
   if (!slots.length) return null;
   return (
-    <Panel title="Equipment slots">
+    <Panel title={t('panelEquipmentSlots')}>
       <HStack spacing={2} align="start">
-        {slots.map((slot) => (
-          <VStack key={slot.type} spacing={0.5} flex="1" minW={0}>
-            <GameIcon manifest={icons} group="equip" name={slot.icon} size={10} />
-            <Text fontSize="xs" color="gray.300" noOfLines={1}>
-              {EQUIP_EN[slot.type] ?? slot.name ?? slot.type}
-            </Text>
-            {slot.name && (
-              <Text fontSize="0.6rem" color="gray.600" noOfLines={1}>{slot.name}</Text>
-            )}
-          </VStack>
-        ))}
+        {slots.map((slot) => {
+          const label = equipLabel(slot, lang);
+          return (
+            <VStack key={slot.type} spacing={0.5} flex="1" minW={0}>
+              <GameIcon manifest={icons} group="equip" name={slot.icon} size={10} />
+              <Text fontSize="xs" color="gray.300" noOfLines={1}>{label}</Text>
+              {slot.name && slot.name !== label && (
+                <Text fontSize="0.6rem" color="gray.600" noOfLines={1}>{slot.name}</Text>
+              )}
+            </VStack>
+          );
+        })}
       </HStack>
     </Panel>
   );
@@ -462,10 +448,11 @@ function EquipmentSlots({ entry, data, icons }: {
 function Gifts({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
+  const t = useT();
   const gifts = giftsOf(entry, data.items);
   if (!gifts.length) return null;
   return (
-    <Panel title="Liked gifts">
+    <Panel title={t('panelLikedGifts')}>
       <VStack align="stretch" spacing={2}>
         {gifts.map((gift) => (
           <HStack key={gift.id} align="start" spacing={2}>
@@ -486,15 +473,17 @@ function Gifts({ entry, data, icons }: {
 function DateVenues({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
+  const t = useT();
+  const lang = useLang();
   const regions = datePlacesOf(entry, data.places).filter((r) => r.places.length);
   if (!regions.length) return null;
   return (
     <>
       {regions.map(({ division, places }) => {
-        const t = data.types.division[String(division)] ?? null;
+        const row = data.types.division[String(division)] ?? null;
         return (
-          <Panel key={division} title="Date venues"
-            note={`${typeLabel(t) || division} · ${places.length}`}>
+          <Panel key={division} title={t('panelDateVenues')}
+            note={`${typeLabel(row, lang) || division} · ${places.length}`}>
             <Wrap spacing={2}>
               {places.map((place) => (
                 <WrapItem key={place.id}>
@@ -561,19 +550,26 @@ function GearSlot({ slot, icons, tier, level, onChange }: {
   slot: ReturnType<typeof equipmentSlotsOf>[number]; icons: IconManifest | null;
   tier: number; level: number; onChange: (tier: number, level: number) => void;
 }) {
+  const t = useT();
+  const lang = useLang();
   const tiers = slot.tiers ?? [];
-  const current = tiers.find((t) => t.tier === tier) ?? null;
+  const current = tiers.find((row) => row.tier === tier) ?? null;
   const cap = current?.maxLevel ?? 1;
+  const label = equipLabel(slot, lang);
   const options = [
-    { value: 0, icon: slot.icon, title: 'Empty' },
-    ...tiers.map((t) => ({ value: t.tier, icon: t.icon, title: `Tier ${t.tier}` })),
+    { value: 0, icon: slot.icon, title: t('gearEmpty') },
+    ...tiers.map((row) => ({
+      value: row.tier, icon: row.icon, title: t('gearTier', { n: row.tier }),
+    })),
   ];
   return (
     <Box>
       <HStack spacing={2} align="center" mb={1}>
         <GameIcon manifest={icons} group="equip" name={slot.icon} size={7} />
-        <Text fontSize="sm">{EQUIP_EN[slot.type] ?? slot.name ?? slot.type}</Text>
-        {slot.name && <Text fontSize="xs" color="gray.600">{slot.name}</Text>}
+        <Text fontSize="sm">{label}</Text>
+        {slot.name && slot.name !== label && (
+          <Text fontSize="xs" color="gray.600">{slot.name}</Text>
+        )}
       </HStack>
       <Wrap spacing={1}>
         {options.map((option) => {
@@ -582,7 +578,7 @@ function GearSlot({ slot, icons, tier, level, onChange }: {
             <WrapItem key={option.value}>
               <Box as="button" title={option.title} aria-label={option.title}
                 onClick={() => onChange(option.value, Math.min(level,
-                  tiers.find((t) => t.tier === option.value)?.maxLevel ?? 1))}
+                  tiers.find((row) => row.tier === option.value)?.maxLevel ?? 1))}
                 p={0.5} borderWidth="1px" borderRadius="md" lineHeight={0}
                 borderColor={active ? 'yellow.400' : 'whiteAlpha.200'}
                 bg={active ? 'whiteAlpha.200' : 'transparent'}
@@ -596,8 +592,8 @@ function GearSlot({ slot, icons, tier, level, onChange }: {
       </Wrap>
       {current && (
         <Box mt={1}>
-          <Dial label="Level" value={Math.min(level, cap)} min={1} max={cap}
-            note={`max ${cap}`} onChange={(next) => onChange(tier, next)} />
+          <Dial label={t('dialLevel')} value={Math.min(level, cap)} min={1} max={cap}
+            note={t('dialMax', { n: cap })} onChange={(next) => onChange(tier, next)} />
         </Box>
       )}
     </Box>
@@ -608,6 +604,8 @@ function GearSlot({ slot, icons, tier, level, onChange }: {
 function StatCalculator({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
+  const t = useT();
+  const lang = useLang();
   const caps = data.statCaps;
   const grades = statGrades(entry, data);
   const slots = equipmentSlotsOf(entry, data.equipment);
@@ -623,30 +621,30 @@ function StatCalculator({ entry, data, icons }: {
     return set?.tier ? [{ type: slot.type, tier: set.tier, level: set.level }] : [];
   });
   const rows = useMemo(
-    () => computeStats(entry, data, { level, star: shown, love, equipment }),
+    () => computeStats(entry, data, { level, star: shown, love, equipment }, lang),
     // `equipment` is rebuilt every render; `gear` is what actually changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [entry, data, level, shown, love, gear, slots]);
+    [entry, data, level, shown, love, gear, slots, lang]);
 
   return (
     <Grid templateColumns={{ base: '1fr', lg: 'minmax(0, 320px) minmax(0, 1fr)' }}
       gap={4} alignItems="start">
       <VStack align="stretch" spacing={3}>
-        <Panel title="Unit">
+        <Panel title={t('panelUnit')}>
           <VStack align="stretch" spacing={3}>
             {grades.length > 1 && (
-              <Choices label="Star" value={shown} onChange={setStar}
+              <Choices label={t('dialStar')} value={shown} onChange={setStar}
                 options={grades.map((g) => ({ value: g, text: `${g}★` }))} />
             )}
-            <Dial label="Level" value={level} min={1} max={caps.level}
+            <Dial label={t('dialLevel')} value={level} min={1} max={caps.level}
               onChange={setLevel} />
-            <Dial label="Affection" value={love} min={1} max={caps.love}
+            <Dial label={t('dialAffection')} value={love} min={1} max={caps.love}
               note={data.loveTitles[love - 1]} onChange={setLove} />
           </VStack>
         </Panel>
 
         {slots.length > 0 && (
-          <Panel title="Equipment">
+          <Panel title={t('panelEquipment')}>
             <VStack align="stretch" spacing={3}>
               {slots.map((slot) => {
                 const set = gear[slot.type] ?? { tier: 0, level: 1 };
@@ -663,18 +661,18 @@ function StatCalculator({ entry, data, icons }: {
         )}
       </VStack>
 
-      <Panel title="Stats" note={`${shown}★ · Lv ${level} · ♥ ${love}`}>
+      <Panel title={t('tabStats')} note={t('statsNote', { star: shown, level, love })}>
         <Box overflowX="auto">
           <Box as="table" w="100%" minW="360px" fontSize="sm"
             sx={{ 'th, td': { py: 1, px: 2, textAlign: 'right' },
               'th:first-of-type, td:first-of-type': { textAlign: 'left', pl: 0 } }}>
             <Box as="thead">
               <Box as="tr" color="gray.500" fontSize="xs">
-                <Box as="th" fontWeight="normal">Stat</Box>
-                <Box as="th" fontWeight="normal">Base</Box>
-                <Box as="th" fontWeight="normal">Gear</Box>
-                <Box as="th" fontWeight="normal">Affection</Box>
-                <Box as="th" fontWeight="normal">Total</Box>
+                <Box as="th" fontWeight="normal">{t('headStat')}</Box>
+                <Box as="th" fontWeight="normal">{t('headBase')}</Box>
+                <Box as="th" fontWeight="normal">{t('headGear')}</Box>
+                <Box as="th" fontWeight="normal">{t('headAffection')}</Box>
+                <Box as="th" fontWeight="normal">{t('headTotal')}</Box>
               </Box>
             </Box>
             <Box as="tbody">
@@ -717,12 +715,13 @@ function StatCalculator({ entry, data, icons }: {
 function GearGrants({ data, equipment }: {
   data: CharacterData; equipment: EquipInput[];
 }) {
+  const lang = useLang();
   return (
     <Wrap spacing={2} mt={3} pt={2} borderTopWidth="1px" borderColor="whiteAlpha.100">
       {equipment.flatMap((slot) => equipmentGrants(data, slot).map((grant, i) => (
         <WrapItem key={`${slot.type}-${i}`}>
           <Badge fontSize="0.6rem" colorScheme="cyan" variant="subtle">
-            {labelOf(STAT_LABEL, grant.stat)}{' '}
+            {labelOf(STAT_LABEL, grant.stat, lang)}{' '}
             {grant.calc === 'MULTIPLICATION'
               ? `+${Number((grant.value * 100).toFixed(2))}%`
               : `+${Number(grant.value.toFixed(2))}`}
@@ -733,361 +732,12 @@ function GearGrants({ data, equipment }: {
   );
 }
 
-// Magnitude and duration both scale with the skill level.
-function BuffList({ buffs, icons }: {
-  buffs: BuffEntry[]; icons: IconManifest | null;
-}) {
-  if (!buffs.length) return null;
-  return (
-    <VStack align="stretch" spacing={1} mt={1.5} pl={2}
-      borderLeftWidth="2px" borderColor="whiteAlpha.200">
-      {buffs.map((buff, i) => {
-        const cat = BUFF_CATEGORY[buff.categorize];
-        return (
-          <Flex key={i} gap={2} align="start">
-            <GameIcon manifest={icons} group="buff" name={buff.icon} size={4} mt={0.5} />
-            <Box minW={0}>
-              <Wrap spacing={1.5} align="baseline">
-                <WrapItem>
-                  <Text fontSize="xs" fontWeight="bold">
-                    <GameText text={buff.name ?? ''} />
-                  </Text>
-                </WrapItem>
-                {cat && (
-                  <WrapItem>
-                    <Badge fontSize="0.55rem" colorScheme={cat.scheme}>{cat.label}</Badge>
-                  </WrapItem>
-                )}
-                {buff.seconds > 0 && buff.seconds < 9999 && (
-                  <WrapItem><Text fontSize="0.6rem" color="gray.600">{buff.seconds}s</Text></WrapItem>
-                )}
-                {buff.maxStack > 1 && buff.maxStack < 99 && (
-                  <WrapItem>
-                    <Text fontSize="0.6rem" color="gray.600">×{buff.maxStack} max</Text>
-                  </WrapItem>
-                )}
-              </Wrap>
-              {buff.desc && (
-                <Text fontSize="xs" color="gray.500">
-                  <GameText text={buff.desc} />
-                </Text>
-              )}
-            </Box>
-          </Flex>
-        );
-      })}
-    </VStack>
-  );
-}
-
-// What the tables say, as opposed to the description above it: this is where
-// the target side, the scaling stat and the unnamed effects become visible.
-function OpRow({ op, level, period, data, icons }: {
-  op: SkillOp; level: number; period: number;
-  data: CharacterData; icons: IconManifest | null;
-}) {
-  const scheme = (op.op && OP_SCHEME[op.op])
-    ?? BUFF_CATEGORY[op.categorize ?? 0]?.scheme
-    ?? 'gray';
-  const where = [
-    op.team ? labelOf(TARGET_LABEL, op.team) : '',
-    op.pick === 'ALL' ? 'all in range' : (op.count ? `${op.count}` : ''),
-    op.applyTo && op.applyTo !== 'HOLDER' ? `on the ${SIDE_LABEL[op.applyTo]}` : '',
-  ].filter(Boolean).join(' · ');
-  const scale = scaleSummary(op);
-  const amounts = opAmounts(op, level, period);
-  const seconds = opSeconds(op, level, period);
-  // a boss can name six states at once; the rest go in the tooltip
-  const detail = op.detail ? detailSummary(op.detail) : [];
-  const shown = detail.slice(0, 3);
-  return (
-    <Flex gap={2} align="start" wrap="wrap">
-      {op.icon
-        ? <GameIcon manifest={icons} group="buff" name={op.icon} size={4} mt={0.5} />
-        : <Box w={4} />}
-      <Badge fontSize="0.55rem" colorScheme={scheme} mt={0.5}>
-        {labelOf(OP_LABEL, op.op)}
-      </Badge>
-      {op.name && (
-        <Text fontSize="xs" fontWeight="bold">
-          <GameText text={op.name} />
-        </Text>
-      )}
-      {amounts.length > 0 && (
-        <Text fontSize="xs" color="yellow.200">{amounts.join(' / ')}</Text>
-      )}
-      {scale && <Text fontSize="0.65rem" color="gray.400">{scale}</Text>}
-      {detail.length > 0 && (
-        <Text fontSize="0.65rem" color="gray.300" noOfLines={1}
-          title={detail.join(', ')}>
-          {shown.map((v, i) => (
-            <Text as="span" key={i}>
-              {i > 0 && ', '}
-              <GameText text={v} />
-            </Text>
-          ))}
-          {detail.length > shown.length && ` +${detail.length - shown.length}`}
-        </Text>
-      )}
-      {op.gate && (
-        <Text fontSize="0.65rem" color="cyan.300">
-          <GameText text={gateSummary(op.gate, data)} />
-        </Text>
-      )}
-      {seconds && <Text fontSize="0.65rem" color="gray.500">{seconds}</Text>}
-      {op.interval ? (
-        <Text fontSize="0.65rem" color="gray.500">every {op.interval}s</Text>
-      ) : null}
-      {(op.maxStack ?? 0) > 1 && (op.maxStack ?? 0) < 99 && (
-        <Text fontSize="0.6rem" color="gray.600">×{op.maxStack} max</Text>
-      )}
-      {where && <Text fontSize="0.65rem" color="gray.600">{where}</Text>}
-    </Flex>
-  );
-}
-
-// Structure only — which operation lands on whom, scaled off which stat. The
-// arithmetic that turns a coefficient into a battle number is not decoded and
-// must not be implied here.
-function Behaviour({ behaviour, level, period, data, icons }: {
-  behaviour: SkillBehaviour; level: number; period: number;
-  data: CharacterData; icons: IconManifest | null;
-}) {
-  const { hits, moves, stats, triggers } = behaviour;
-
-  return (
-    <VStack align="stretch" spacing={1.5} mt={2} pt={2}
-      borderTopWidth="1px" borderColor="whiteAlpha.100">
-      {(moves ?? []).length > 0 && (
-        <Text fontSize="xs" color="gray.400">
-          {(moves ?? []).map((m) => labelOf(MOVE_LABEL, m)).join(', ')}
-        </Text>
-      )}
-
-      {(hits ?? []).map((hit, i) => (
-        <Box key={i}>
-          <Text fontSize="0.65rem" color="gray.500">
-            {hitSummary(hit)}
-            {hit.cast && castSummary(hit.cast) && ` · on ${castSummary(hit.cast)}`}
-          </Text>
-          <VStack align="stretch" spacing={0.5} mt={0.5}>
-            {hit.ops.map((op, j) => (
-              <OpRow key={j} op={op} level={level} period={period} data={data}
-                icons={icons} />
-            ))}
-          </VStack>
-        </Box>
-      ))}
-
-      {(stats ?? []).map((stat, i) => (
-        <Flex key={i} gap={2} align="baseline" wrap="wrap">
-          <Box w={4} />
-          <Badge fontSize="0.55rem" colorScheme="green">
-            {labelOf(STAT_LABEL, stat.stat)} {statAmount(stat)}
-          </Badge>
-          {stat.condition && (
-            <Text fontSize="0.65rem" color="gray.600">
-              {labelOf(SETUP_CONDITION_LABEL, stat.condition)}
-            </Text>
-          )}
-        </Flex>
-      ))}
-
-      {(triggers ?? []).map((trigger, i) => (
-        <Box key={i}>
-          <Wrap spacing={2} align="baseline">
-            <WrapItem>
-              <Text fontSize="0.65rem" color="gray.400">
-                {labelOf(TRIGGER_LABEL, trigger.on)}
-              </Text>
-            </WrapItem>
-            {trigger.check && (
-              <WrapItem>
-                <Text fontSize="0.6rem" color="gray.600">
-                  {labelOf(TARGET_LABEL, trigger.check)}
-                </Text>
-              </WrapItem>
-            )}
-            {trigger.cooldown > 0 && (
-              <WrapItem>
-                <Text fontSize="0.6rem" color="gray.600">{trigger.cooldown}s cd</Text>
-              </WrapItem>
-            )}
-            {trigger.limit > 0 && (
-              <WrapItem>
-                <Text fontSize="0.6rem" color="gray.600">×{trigger.limit} per battle</Text>
-              </WrapItem>
-            )}
-          </Wrap>
-          <VStack align="stretch" spacing={0.5} mt={0.5}>
-            {trigger.ops.map((op, j) => (
-              <OpRow key={j} op={op} level={level} period={period} data={data}
-                icons={icons} />
-            ))}
-          </VStack>
-        </Box>
-      ))}
-    </VStack>
-  );
-}
-
-// The grade is picked because a passive unlocks at 3★ and upgrades at 4★ and
-// 5★ regardless of the character's own rarity.
-function Skills({ entry, data, icons }: {
-  entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
-}) {
-  const grades = skillGrades(entry, data);
-  const [grade, setGrade] = useState<number | null>(null);
-  // opens at the character's own starting rarity, not at the cap
-  const shown = grade ?? grades[0] ?? 0;
-  const skills = shown ? skillsAtGrade(entry, data, shown) : [];
-  if (!skills.length) return null;
-
-  return (
-    <Panel title="Skills">
-      <HStack spacing={1} mb={3}>
-        <Text fontSize="xs" color="gray.500">Star</Text>
-        {grades.map((g) => (
-          <Box key={g} as="button" onClick={() => setGrade(g)} px={2} py={0.5}
-            fontSize="xs" borderWidth="1px" borderRadius="md"
-            borderColor={g === shown ? 'yellow.400' : 'whiteAlpha.200'}
-            color={g === shown ? 'yellow.200' : 'gray.400'}>{g}★</Box>
-        ))}
-      </HStack>
-
-      <VStack align="stretch" spacing={3}>
-        {skills.map((skill) => (
-          <SkillRow key={skill.id} skill={skill} data={data} icons={icons}
-            // most enemy slots share one placeholder name, so the slot number
-            // is the only thing telling them apart
-            showSlot={skills.filter((s) => s.name === skill.name).length > 1} />
-        ))}
-      </VStack>
-    </Panel>
-  );
-}
-
-// Skills level independently, so a shared level picker would misreport every
-// other row. A passive is keyed by star grade and a normal attack has no level.
-function SkillRow({ skill, data, icons, showSlot }: {
-  skill: SkillEntry & { id: number }; data: CharacterData;
-  icons: IconManifest | null; showSlot?: boolean;
-}) {
-  const [level, setLevel] = useState(1);
-  const at = Math.min(level, skill.desc.length) - 1;
-  return (
-    <Flex gap={3} align="start" borderTopWidth="1px" borderColor="whiteAlpha.100" pt={2}>
-      <GameIcon manifest={icons} group="skill" name={skill.icon} size={9} borderRadius="md" />
-      <Box minW={0} flex="1">
-        <Wrap spacing={2} align="center">
-          <WrapItem><Text fontSize="sm" fontWeight="bold">{skill.name}</Text></WrapItem>
-          {showSlot && (
-            <WrapItem>
-              <Text fontFamily="mono" fontSize="0.6rem" color="gray.600">
-                slot {skill.skillType}
-              </Text>
-            </WrapItem>
-          )}
-          <WrapItem>
-            <Badge fontSize="0.6rem">{SKILL_CATEGORY_LABEL[skill.categorize]}</Badge>
-          </WrapItem>
-          {skill.openStar > 1 && (
-            <WrapItem>
-              <Badge fontSize="0.6rem" colorScheme="yellow">{skill.openStar}★</Badge>
-            </WrapItem>
-          )}
-          {skill.levelable && (
-            <WrapItem>
-              <HStack spacing={1}>
-                <Text fontSize="0.65rem" color="gray.600">Lv</Text>
-                {skill.desc.map((_d, i) => (
-                  <Box key={i} as="button" onClick={() => setLevel(i + 1)} px={1.5}
-                    fontSize="0.65rem" borderWidth="1px" borderRadius="sm"
-                    borderColor={i === at ? 'yellow.400' : 'whiteAlpha.200'}
-                    color={i === at ? 'yellow.200' : 'gray.500'}>{i + 1}</Box>
-                ))}
-              </HStack>
-            </WrapItem>
-          )}
-        </Wrap>
-        <Text fontSize="sm" color="gray.300" mt={0.5}>
-          <GameText text={skill.desc[at] ?? ''} />
-        </Text>
-        <BuffList buffs={skill.buffs[at] ?? []} icons={icons} />
-        {skill.behaviour && (
-          <Behaviour behaviour={skill.behaviour} level={at + 1}
-            period={skill.levelPeriod} data={data} icons={icons} />
-        )}
-      </Box>
-    </Flex>
-  );
-}
-
-// More than one rotation in a list is a set of alternatives the game picks by
-// the named condition, falling through to the unconditional 기본 패턴.
-const ROTATION_LABEL: Record<string, string> = { start: 'Opening', repeat: 'Loop' };
-
-function Rotation({ entry, data, icons }: {
-  entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
-}) {
-  const patterns = entry.battlePatterns;
-  if (!patterns) return null;
-  // A name is ambiguous when different skills carry it — an enemy's slots
-  // share one placeholder name. A rotation naming one skill twice is not.
-  const idsByName = new Map<string, Set<number>>();
-  for (const rot of [...(patterns.start ?? []), ...(patterns.repeat ?? [])]) {
-    for (const id of rot.steps) {
-      const name = data.skills[String(id)]?.name ?? '';
-      idsByName.set(name, (idsByName.get(name) ?? new Set()).add(id));
-    }
-  }
-  return (
-    <Panel title="Skill rotation">
-      <VStack align="stretch" spacing={2}>
-        {(['start', 'repeat'] as const).flatMap((key) => (patterns[key] ?? []).map((rot, i) => (
-          <Box key={`${key}-${i}`}>
-            <Wrap spacing={2} align="baseline" mb={1}>
-              <WrapItem><Badge fontSize="0.6rem">{ROTATION_LABEL[key]}</Badge></WrapItem>
-              {rot.name && (
-                <WrapItem><Text fontSize="xs" color="gray.500">{rot.name}</Text></WrapItem>
-              )}
-            </Wrap>
-            <Box overflowX="auto">
-              <HStack spacing={1} minW="max-content">
-                {rot.steps.map((id, step) => {
-                  const skill = data.skills[String(id)];
-                  const ambiguous = (idsByName.get(skill?.name ?? '')?.size ?? 0) > 1;
-                  return (
-                    <HStack key={step} spacing={1}>
-                      {step > 0 && <Text fontSize="xs" color="gray.600">→</Text>}
-                      <HStack spacing={1} borderWidth="1px" borderColor="whiteAlpha.200"
-                        borderRadius="md" px={1.5} py={0.5}>
-                        <GameIcon manifest={icons} group="skill" name={skill?.icon}
-                          size={4} reserve={false} />
-                        <Text fontSize="xs" whiteSpace="nowrap">{skill?.name ?? id}</Text>
-                        {ambiguous && skill && (
-                          <Text fontFamily="mono" fontSize="0.6rem" color="gray.600">
-                            {skill.skillType}
-                          </Text>
-                        )}
-                      </HStack>
-                    </HStack>
-                  );
-                })}
-              </HStack>
-            </Box>
-          </Box>
-        )))}
-      </VStack>
-    </Panel>
-  );
-}
-
 // Scrolls horizontally on a narrow screen rather than widening the page.
 function SkinStrip({ skins, entry, icons, selected, onSelect }: {
   skins: SkinListEntry[]; entry: CharacterEntry; icons: IconManifest | null;
   selected: string | null; onSelect: (key: string) => void;
 }) {
+  const t = useT();
   return (
     <Box overflowX="auto" pb={1}>
       <HStack spacing={2} minW="max-content" align="stretch">
@@ -1109,7 +759,7 @@ function SkinStrip({ skins, entry, icons, selected, onSelect }: {
                 </Box>
                 {s.stores.length > 1 && (
                   <Badge position="absolute" top={0.5} right={0.5} colorScheme="yellow"
-                    fontSize="0.55rem">DIFF</Badge>
+                    fontSize="0.55rem">{t('badgeDiff')}</Badge>
                 )}
               </Box>
               <Text fontSize="0.6rem" fontFamily="mono" px={1} py={0.5} noOfLines={1}

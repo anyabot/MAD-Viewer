@@ -6,6 +6,7 @@ import {
   Box, Divider, Flex, HStack, Image, Input, Menu, MenuButton, MenuItem, MenuList,
   Portal, Spinner, Text, Tooltip, VStack,
 } from '@chakra-ui/react';
+import { useLang, useT, type Localized } from '@/lib/i18n';
 import type { StoreKey } from './types';
 
 type IconName =
@@ -143,6 +144,7 @@ export function SegmentedControl<T extends string>({
 export function ToggleRow({ label, value, onChange }: {
   label: string; value: boolean; onChange: (value: boolean) => void;
 }) {
+  const t = useT();
   return (
     <ControlRow label={label}>
       <Box as="button" onClick={() => onChange(!value)} aria-label={label} aria-pressed={value}
@@ -156,7 +158,7 @@ export function ToggleRow({ label, value, onChange }: {
           borderColor={value ? 'yellow.300' : 'whiteAlpha.500'}
           bg={value ? 'yellow.300' : 'transparent'} />
         <Text fontSize="0.65rem" fontWeight="bold" letterSpacing="wide">
-          {value ? 'ON' : 'OFF'}
+          {value ? t('toggleOn') : t('toggleOff')}
         </Text>
       </Box>
     </ControlRow>
@@ -202,6 +204,7 @@ export function OverlaySelect({
   /** Shown when nothing matches `value` (an action list with no persistent selection). */
   placeholder?: string;
 }) {
+  const t = useT();
   const grouped = useMemo(() => {
     const out: { group: string | null; options: SelectOption[] }[] = [];
     for (const o of options) {
@@ -214,7 +217,7 @@ export function OverlaySelect({
   }, [options]);
 
   if (options.length === 0) return null;
-  const current = options.find((o) => o.value === value)?.label ?? placeholder ?? '(none)';
+  const current = options.find((o) => o.value === value)?.label ?? placeholder ?? t('optNone');
 
   return (
     <Menu isLazy placement="bottom-start" autoSelect={false}>
@@ -283,6 +286,7 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
   onReset: () => void;
   onClose: () => void;
 }) {
+  const t = useT();
   const [query, setQuery] = useState('');
 
   const groups = useMemo(() => {
@@ -309,19 +313,20 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
         borderColor="whiteAlpha.200">
         <Icon name="layers" size={16} />
         <Text fontSize="xs" fontWeight="bold" color="gray.100" flex="1">
-          Layers{hidden.size ? ` — ${hidden.size} hidden` : ''}
+          {t('layers')}
+          {hidden.size ? ` — ${t('layersHidden', { n: hidden.size })}` : ''}
         </Text>
         {hidden.size > 0 && (
           <Box as="button" onClick={onReset} fontSize="0.65rem" color="yellow.300"
             px={1.5} py={0.5} borderRadius="sm" _hover={{ bg: 'whiteAlpha.200' }}
-            aria-label="Show all layers">reset</Box>
+            aria-label={t('layersShowAll')}>{t('layersReset')}</Box>
         )}
         <Box as="button" onClick={onClose} color="gray.400" _hover={{ color: 'gray.100' }}
-          aria-label="Close layer panel"><Icon name="close" size={12} /></Box>
+          aria-label={t('layersClose')}><Icon name="close" size={12} /></Box>
       </Flex>
 
       <Box px={2} py={1.5}>
-        <Input size="xs" placeholder="filter slots…" value={query} borderRadius="md"
+        <Input size="xs" placeholder={t('layersFilter')} value={query} borderRadius="md"
           onChange={(e) => setQuery(e.target.value)} bg="whiteAlpha.100"
           borderColor="whiteAlpha.300" _placeholder={{ color: 'gray.500' }} />
       </Box>
@@ -336,9 +341,10 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
                   letterSpacing="wide" color="gray.500" flex="1">{group}</Text>
                 <Box as="button" fontSize="0.65rem" color="gray.400"
                   _hover={{ color: 'yellow.300' }}
-                  aria-label={`${allHidden ? 'Show' : 'Hide'} all ${group} layers`}
+                  aria-label={t(allHidden ? 'layersShowGroupAria' : 'layersHideGroupAria',
+                    { group })}
                   onClick={() => onSet(list.map((it) => it.slot), !allHidden)}>
-                  {allHidden ? 'show all' : 'hide all'}
+                  {t(allHidden ? 'layersShowGroup' : 'layersHideGroup')}
                 </Box>
               </Flex>
               {list.map((it) => {
@@ -346,7 +352,8 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
                 return (
                   <Flex key={it.slot} as="button" w="100%" align="center" gap={2} px={2} py={1}
                     borderRadius="sm" textAlign="left" _hover={{ bg: 'whiteAlpha.150' }}
-                    aria-label={`${isHidden ? 'Show' : 'Hide'} ${it.slot}`}
+                    aria-label={t(isHidden ? 'layersShowSlot' : 'layersHideSlot',
+                      { slot: it.slot })}
                     aria-pressed={!isHidden}
                     onClick={() => onSet([it.slot], !isHidden)}>
                     <Box boxSize="12px" borderRadius="sm" border="1px solid" flexShrink={0}
@@ -370,22 +377,30 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
           );
         })}
         {shown === 0 && (
-          <Text fontSize="xs" color="gray.500" p={3}>no slot matches</Text>
+          <Text fontSize="xs" color="gray.500" p={3}>{t('layersNoMatch')}</Text>
         )}
       </VStack>
 
       <Divider borderColor="whiteAlpha.200" />
       <Text fontSize="0.6rem" color="gray.500" px={2} py={1}>
-        {items.length} renderable slots
+        {t('layersCount', { n: items.length })}
       </Text>
     </Box>
   );
 }
 
 // OneStore ships the uncensored art, Google Play the censored edit.
-export const STORE_META: Record<StoreKey, { short: string; label: string; image: string }> = {
-  onestore: { short: 'ONE', label: 'ONE store — uncensored', image: 'stores/onestore.png' },
-  google: { short: 'GP', label: 'Google Play — censored', image: 'stores/google.png' },
+export const STORE_META: Record<StoreKey, { short: string; label: Localized; image: string }> = {
+  onestore: {
+    short: 'ONE',
+    label: { en: 'ONE store — uncensored', ko: '원스토어 — 무수정' },
+    image: 'stores/onestore.png',
+  },
+  google: {
+    short: 'GP',
+    label: { en: 'Google Play — censored', ko: '구글 플레이 — 수정판' },
+    image: 'stores/google.png',
+  },
 };
 
 // Static assets are served under the export's base path.
@@ -399,13 +414,15 @@ function StoreArt({ src, alt }: { src: string; alt: string }) {
 export function StoreStrip({ stores, active, onSelect }: {
   stores: StoreKey[]; active: StoreKey; onSelect: (k: StoreKey) => void;
 }) {
+  const t = useT();
+  const lang = useLang();
   if (stores.length < 2) return null;
   return (
-    <SegmentedControl<StoreKey> value={active} onChange={onSelect} ariaLabel="Store build"
+    <SegmentedControl<StoreKey> value={active} onChange={onSelect} ariaLabel={t('ariaStoreBuild')}
       options={stores.map((k) => ({
         value: k,
         label: STORE_META[k].short,
-        title: STORE_META[k].label,
+        title: STORE_META[k].label[lang],
         image: STORE_META[k].image,
       }))} />
   );

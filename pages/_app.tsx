@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import Layout from '@/components/Layout';
+import { restoreLang } from '@/lib/i18n';
 
 const theme = extendTheme({
   config: { initialColorMode: 'dark', useSystemColorMode: false },
@@ -16,6 +18,8 @@ const theme = extendTheme({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  // After mount, so the exported HTML and the first client render agree.
+  useEffect(restoreLang, []);
   return (
     <ChakraProvider theme={theme}>
       <Head>

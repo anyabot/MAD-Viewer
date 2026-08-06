@@ -1,6 +1,7 @@
 // Nothing here is bundled at build time, so refreshing the data does not
 // require a rebuild.
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
+import type { Localized } from '@/lib/i18n';
 import type { SceneTimelineData } from '@/components/skinViewer/scenes';
 import type { VoiceIndex } from '@/lib/voice';
 import type { SceneAudioIndex } from '@/lib/sceneAudio';
@@ -374,6 +375,156 @@ export type CharacterData = {
   skills: Record<string, SkillEntry>;
 };
 
+// An enemy is a `Character_Base` row, so `code` is the same code the character
+// index is keyed by and the kit is already in `skillSets` / `skills`.
+export type StageEnemy = {
+  code: string;
+  name: string | null;
+  iconPath: string | null;
+  roleType?: number | null;
+  attributeType?: number | null;
+  positionType?: number | null;
+  skillSetGroup?: number | null;
+};
+
+/** One slot in a wave's line-up; the list keeps the game's own ordering. */
+export type WaveSlot = {
+  /** Absent when the id resolves to no character code. */
+  code?: string;
+  /** The raw id, only when it resolves to no code. */
+  id?: number;
+  level?: number | null;
+};
+
+export type WaveEvent = {
+  trigger?: string | null;
+  /** A named `WAVE_CUSTOM_ACTIVE_EVENT_TYPE`, or its raw constant. */
+  kind: string;
+  value?: string | null;
+  lines?: { order: number; icon: string | null; text: Localized | null }[] | null;
+};
+
+export type StageWave = {
+  sequence: number;
+  encounter?: string | null;
+  bossCode?: string;
+  bgm?: string | null;
+  events?: WaveEvent[] | null;
+  enemies: WaveSlot[];
+};
+
+/** One payout row. `ref` keys `StageData.drops` when the reward names a thing. */
+export type StageDrop = {
+  /** A named `REWARD_TYPE`, or its raw constant. */
+  type: string;
+  id: number;
+  /** One amount, or a min/max pair when the reward is authored as a range. */
+  amount: number[];
+  /** A named `DROP_TYPE`; `always` is guaranteed. */
+  drop: string;
+  /** Absent when the drop is certain. */
+  chance?: number;
+  ref?: string;
+};
+
+export type DropEntry = {
+  name: string | null;
+  icon: string | null;
+  grade?: number;
+};
+
+/** `first` is the one-time clear, `star` the mission reward, `repeat` per clear. */
+export type StageRewards = Partial<Record<'first' | 'star' | 'repeat', StageDrop[]>>;
+
+export type StageEntry = {
+  id: number;
+  mode: string;
+  zoneId?: number;
+  order?: number;
+  /** The game's `{0}`-style template; the arguments are filled by `stageName`. */
+  nameTemplate?: Localized;
+  /** Korean authoring name, the only name a narrative stage has. */
+  devName?: string;
+  /** The Nemesis boss this stage fields, where the family names one. */
+  bossName?: string;
+  recommendLevel?: string;
+  weakAttribute?: number;
+  stamina?: number;
+  subMissionGroup?: string;
+  /** Field prefab stem; the art itself is not extracted. */
+  background?: string;
+  bgm?: string;
+  waveGroup: number;
+  /** Key into `StageData.groups`. */
+  group: string;
+  rewards?: StageRewards;
+  waves: StageWave[];
+};
+
+export type StageZone = {
+  id: number;
+  order?: number;
+  difficulty?: string;
+  /** The game's own zone name. Absent for the story zones, whose
+   *  `zone_name_id` has no `Lang_Data` row. */
+  name?: Localized;
+  /** Korean authoring name; the story zones' only name. */
+  devName?: string;
+  /** `zone` icon group. Only the story and event zones have one. */
+  image?: string;
+};
+
+/**
+ * What the game lists stages under, which is not the same axis in every mode:
+ * a story chapter holds both difficulties, a Nemesis group is a season and an
+ * event group is one event, both with their own run window.
+ */
+export type StageGroup = {
+  key: string;
+  mode: string;
+  name?: Localized;
+  devName?: string;
+  /** Sort key within the mode. */
+  order?: number;
+  chapter?: number;
+  difficulty?: string;
+  /** Resolve through `GROUP_ICON_GROUPS`; a season's art is a boss portrait. */
+  image?: string;
+  /** The page logo, in the `banner` group. Only pages whose bundle was
+   *  extracted have one; season 1's carries no logo sprite at all. */
+  banner?: string;
+  zoneId?: number;
+  /** ISO dates, on the modes the game schedules. */
+  from?: string;
+  to?: string;
+};
+
+export type StageSubMission = {
+  id: number;
+  type: number;
+  /** A party check's first value is a row of `checkTable`, not a count. */
+  values: number[];
+  checkTable?: keyof CharacterData['types'];
+  text: Localized | null;
+};
+
+export type StageData = {
+  modes: { key: string; label: Localized; tile?: string }[];
+  /** Keyed by zone id. */
+  zones: Record<string, StageZone>;
+  /** Keyed by `StageEntry.group`. */
+  groups: Record<string, StageGroup>;
+  /** Keyed by sub-mission group id. */
+  subMissions: Record<string, StageSubMission[]>;
+  /** Keyed by character code. */
+  enemies: Record<string, StageEnemy>;
+  /** Keyed `<type>:<id>` — what a drop's `ref` points at. */
+  drops: Record<string, DropEntry>;
+  stages: StageEntry[];
+  /** Per mode, the stages dropped because the pack carries no waves for them. */
+  _skipped?: Record<string, number>;
+};
+
 const cache = new Map<string, Promise<unknown>>();
 
 function fetchJson<T>(name: string): Promise<T> {
@@ -415,9 +566,14 @@ export function loadCharacters(): Promise<CharacterData> {
 // rendered as a broken image.
 export type IconManifest = {
   groups: Partial<Record<
-    'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip',
+    'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip'
+    | 'zone' | 'tile' | 'banner',
     string[]>>;
 };
+
+export function loadStages(): Promise<StageData> {
+  return fetchJson<StageData>('stages.json');
+}
 
 export function loadIcons(): Promise<IconManifest> {
   return fetchJson<IconManifest>('icons.json');
@@ -550,7 +706,8 @@ export type EmoticonManifest = {
     emitters: EmoteEmitter[];
   }>;
   actors: Record<string, {
-    /** The rig's baked look direction. A right-facing actor mirrors its emote. */
+    /** The rig's baked look direction; mirrors an emote whose slot has no
+     *  side of its own. */
     look: 'Center' | 'Left' | 'Right';
     bones: Record<EmoticonSlot, string>;
     offsets: Record<EmoticonSlot, [number, number]>;
@@ -589,11 +746,11 @@ export function loadGachaIndex(): Promise<GachaIndex> {
   return fetchJson<GachaIndex>('gacha.json');
 }
 
-export const KIND_LABEL: Record<SkinKind, string> = {
-  standing: 'Standing',
-  affection: 'Affection',
-  desire: 'Desire',
-  pleasure: 'Pleasure',
+export const KIND_LABEL: Record<SkinKind, Localized> = {
+  standing: { en: 'Standing', ko: '스탠딩' },
+  affection: { en: 'Affection', ko: '애정' },
+  desire: { en: 'Desire', ko: '욕망' },
+  pleasure: { en: 'Pleasure', ko: '쾌락' },
 };
 
 export const KIND_BADGE: Record<SkinKind, string> = {

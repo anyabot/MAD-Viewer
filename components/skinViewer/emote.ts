@@ -88,9 +88,9 @@ export function createEmoteBubble(options: {
     const originY = bone.worldY - place.offset[1];
     const unit = EMOTE_UNIT_SCALE;
     const scale = unit * Math.abs(spine.scale.y);
-    // The prefab is authored for one facing, so a right-facing rig mirrors the
-    // whole effect about the slot: the particle's x, the quad's own x — which
-    // carries the pivot with it — and the sense of its rotation.
+    // A mirrored placement flips the whole effect about the slot: the
+    // particle's x, the quad's own x — which carries the pivot with it — and
+    // the sense of its rotation.
     const mirror = place.mirror ? -1 : 1;
 
     let used = 0;

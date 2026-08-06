@@ -7,7 +7,8 @@ import { skinIconNames } from '@/lib/characters';
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 export type IconGroup =
-  'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip';
+  'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip'
+  | 'zone' | 'tile' | 'banner';
 
 export function iconUrl(group: IconGroup, name: string): string {
   return `${PUBLIC_BASE}/icons/${group}/${name}.webp`;
