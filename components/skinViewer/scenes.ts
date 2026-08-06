@@ -15,7 +15,6 @@ export type SceneTimelineRig = {
 };
 
 export type SceneTimelineData = {
-  generated: string;
   source: string;
   rigs: Record<string, SceneTimelineRig>;
 };

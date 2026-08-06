@@ -1,6 +1,5 @@
 {
  "version": "1.4.5",
- "generated": "2026-08-05T22:57:08+00:00",
  "skins": [
   {
    "key": "af_ch0009",
@@ -519,6 +518,54 @@
    }
   },
   {
+   "key": "af_ch0068",
+   "kind": "affection",
+   "character": "CH0068",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 33,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0068.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "braest_shadow",
+     "breast_shadow_reflect"
+    ],
+    "dropped": [
+     "oppai_nipple_L_UNCEN",
+     "oppai_nipple_L_areola_UNCEN",
+     "oppai_nipple_R_UNCEN",
+     "oppai_nipple_R_areola_UNCEN"
+    ],
+    "added": [
+     "oppai_L_cover_CEN",
+     "oppai_R_cover_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 5370981,
+    "onestore": 5374875
+   }
+  },
+  {
    "key": "ds_ch0009",
    "kind": "desire",
    "character": "CH0009",
@@ -1031,6 +1078,60 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 8794724
+   }
+  },
+  {
+   "key": "ds_ch0068",
+   "kind": "desire",
+   "character": "CH0068",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 21,
+   "faces": 0,
+   "bodyGroups": [
+    "basic",
+    "lobby",
+    "loop",
+    "reaction"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0068.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "leg_crotch",
+     "oppai_R_band"
+    ],
+    "dropped": [
+     "leg_crotch_cover_UNCEN",
+     "leg_crotch_orgasm_UNCEN",
+     "leg_crotch_orgasm_cover_UNCEN",
+     "oppai_L_nipple_UNCEN",
+     "oppai_L_nipple_areola_UNCEN",
+     "oppai_L_nipple_shadow_UNCEN",
+     "oppai_R_nipple_UNCEN",
+     "oppai_R_nipple_areola_UNCEN",
+     "oppai_R_nipple_shadow_UNCEN"
+    ],
+    "added": [
+     "oppai_L_band_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 6007071,
+    "onestore": 6100099
    }
   },
   {
@@ -1761,6 +1862,26 @@
    }
   },
   {
+   "key": "st_ch0033",
+   "kind": "standing",
+   "character": "CH0033",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3951373
+   }
+  },
+  {
    "key": "st_ch0034",
    "kind": "standing",
    "character": "CH0034",
@@ -2125,6 +2246,58 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 4101740
+   }
+  },
+  {
+   "key": "st_ch0068",
+   "kind": "standing",
+   "character": "CH0068",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 19,
+   "faces": 15,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0068.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "oppai_R_pasties",
+     "pelvis_maebari"
+    ],
+    "dropped": [
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN",
+     "nipple_areolae_L_UNCEN",
+     "nipple_areolae_L_highlight_UNCEN",
+     "nipple_areolae_R_UNCEN",
+     "nipple_areolae_R_highlight_UNCEN",
+     "oppai_L_pasties1_UNCEN",
+     "oppai_L_pasties2_2_UNCEN",
+     "oppai_L_pasties2_2_UNCEN2",
+     "oppai_L_pasties2_UNCEN"
+    ],
+    "added": [
+     "oppai_L_pasties_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 3115665,
+    "onestore": 3172143
    }
   },
   {

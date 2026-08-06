@@ -1,5 +1,4 @@
 {
-  "generated": "2026-08-05T22:59:45Z",
   "base": "https://cdn.jsdelivr.net/gh",
   "owner": "anyabot",
   "families": {
@@ -39,6 +38,8 @@
         "af_ch0042__onestore": "1",
         "af_ch0057__google": "1",
         "af_ch0057__onestore": "1",
+        "af_ch0068__google": "1",
+        "af_ch0068__onestore": "1",
         "ds_ch0009__google": "1",
         "ds_ch0009__onestore": "1",
         "ds_ch0010": "1",
@@ -62,6 +63,8 @@
         "ds_ch0042__google": "1",
         "ds_ch0042__onestore": "1",
         "ds_ch0057": "1",
+        "ds_ch0068__google": "1",
+        "ds_ch0068__onestore": "1",
         "pl_cutin_0001__google": "1",
         "pl_cutin_0001__onestore": "1",
         "pl_cutin_0002__google": "1",
@@ -98,6 +101,7 @@
         "st_ch0030": "1",
         "st_ch0031": "1",
         "st_ch0032": "1",
+        "st_ch0033": "1",
         "st_ch0034": "1",
         "st_ch0035": "1",
         "st_ch0036__google": "1",
@@ -116,6 +120,8 @@
         "st_ch0057": "1",
         "st_ch0062": "1",
         "st_ch0063": "1",
+        "st_ch0068__google": "1",
+        "st_ch0068__onestore": "1",
         "st_np0103": "1",
         "st_np0104": "1",
         "st_np0199": "1",
@@ -315,6 +321,13 @@
         "jp/ch0063/ingame": "1",
         "jp/ch0063/lobby": "1",
         "jp/ch0063/outgame": "1",
+        "jp/ch0068/affection": "1",
+        "jp/ch0068/desire": "1",
+        "jp/ch0068/effect/exertion": "1",
+        "jp/ch0068/effect/groan": "1",
+        "jp/ch0068/ingame": "1",
+        "jp/ch0068/lobby": "1",
+        "jp/ch0068/outgame": "1",
         "jp/np0199/ingame": "1",
         "jp/np0299/ingame": "1",
         "jp/np0399/ingame": "1",
@@ -363,7 +376,8 @@
         "view/ds_ch0035": "1",
         "view/ds_ch0038": "1",
         "view/ds_ch0042": "1",
-        "view/ds_ch0057": "1"
+        "view/ds_ch0057": "1",
+        "view/ds_ch0068": "1"
       }
     }
   }

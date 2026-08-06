@@ -30,7 +30,6 @@ type Family = {
 };
 
 export type CdnManifest = {
-  generated: string;
   base: string;
   owner: string;
   families: Partial<Record<'skins' | 'voice' | 'audio', Family>>;

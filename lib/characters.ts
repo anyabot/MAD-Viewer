@@ -105,6 +105,15 @@ export function birthdayText(entry: CharacterEntry): string | null {
   return `${b[0]}월 ${b[1]}일`;
 }
 
+// UTC, or a local midnight shifts the stored date a day either way.
+export function lockedUntilText(iso: string): string {
+  const at = new Date(`${iso}T00:00:00Z`);
+  if (Number.isNaN(at.getTime())) return iso;
+  return at.toLocaleDateString(undefined, {
+    year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+  });
+}
+
 // An id with no `items` row is dropped rather than rendered as a blank.
 export function giftsOf(
   entry: CharacterEntry, items: CharacterData['items'],

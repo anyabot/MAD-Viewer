@@ -20,7 +20,8 @@ import {
   SETUP_CONDITION_LABEL, SIDE_LABEL, SKILL_CATEGORY_LABEL, STAT_LABEL, TARGET_LABEL,
   TRIGGER_LABEL, TYPE_LABEL, altNameEn, birthdayText, castSummary, colorRuns,
   computeStats, datePlacesOf, detailSummary, equipmentGrants, equipmentSlotsOf,
-  gateSummary, giftsOf, hitSummary, isPlayable, labelOf, membersOfType, opAmounts,
+  gateSummary, giftsOf, hitSummary, isPlayable, labelOf, lockedUntilText,
+  membersOfType, opAmounts,
   opSeconds, rosterNote, scaleSummary, skillGrades, skillsAtGrade, skinIconNames,
   skinsByCharacter,
   statAmount, statGrades, statText, typeIcons, typeLabel, typeOf, typeTint, typeValue,
@@ -137,6 +138,20 @@ export default function CharacterPage() {
       key: 'stats',
       label: 'Stats',
       panel: <StatCalculator entry={entry} data={chars} icons={icons} />,
+    });
+  }
+
+  if (mine.length === 0 && entry.skinsLockedUntil) {
+    tabs.push({
+      key: 'skins',
+      label: 'Skins',
+      panel: (
+        <Panel title="Skins">
+          <Text fontSize="sm" color="gray.400">
+            Locked until {lockedUntilText(entry.skinsLockedUntil)}.
+          </Text>
+        </Panel>
+      ),
     });
   }
 
