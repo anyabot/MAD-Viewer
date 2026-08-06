@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:local": "cross-env NEXT_PUBLIC_DATA_SOURCE=local NEXT_PUBLIC_ASSET_SOURCE=local next dev",
+    "dev:local": "cross-env NEXT_PUBLIC_DATA_SOURCE=bucket NEXT_PUBLIC_DATA_BASE=/data-full NEXT_PUBLIC_ASSET_SOURCE=local next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

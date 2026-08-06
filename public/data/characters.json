@@ -611,38 +611,6 @@
     110
    ]
   },
-  "CH0003": {
-   "code": "CH0003",
-   "name": "",
-   "nameEn": null,
-   "desc": "",
-   "iconPath": "Icon_CH0003",
-   "resourcesId": "ch0003_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "",
-    "jpn": ""
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
-  "CH0004": {
-   "code": "CH0004",
-   "name": "",
-   "nameEn": null,
-   "desc": "",
-   "iconPath": "Icon_CH0004",
-   "resourcesId": "ch0004_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "",
-    "jpn": ""
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
   "CH0005": {
    "code": "CH0005",
    "name": "클레어",
@@ -1552,22 +1520,6 @@
     100204,
     100205
    ]
-  },
-  "CH0008": {
-   "code": "CH0008",
-   "name": "",
-   "nameEn": null,
-   "desc": "",
-   "iconPath": "Icon_CH0008",
-   "resourcesId": "ch0008_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "",
-    "jpn": ""
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
   },
   "CH0009": {
    "code": "CH0009",
@@ -3067,22 +3019,6 @@
     100205
    ]
   },
-  "CH0014": {
-   "code": "CH0014",
-   "name": "베스페리",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0014",
-   "resourcesId": "ch0014_resources",
-   "voiceGroupId": "voc_ch0014_group",
-   "unfinished": {
-    "eng": "Vesperi",
-    "jpn": "ヴェスペリ"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
   "CH0015": {
    "code": "CH0015",
    "name": "이네스",
@@ -3995,22 +3931,6 @@
     103,
     110
    ]
-  },
-  "CH0018": {
-   "code": "CH0018",
-   "name": "",
-   "nameEn": null,
-   "desc": "",
-   "iconPath": "Icon_CH0018",
-   "resourcesId": "ch0018_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "",
-    "jpn": ""
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
   },
   "CH0019": {
    "code": "CH0019",
@@ -8293,22 +8213,6 @@
     110
    ]
   },
-  "CH0033": {
-   "code": "CH0033",
-   "name": "에스텔",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0033",
-   "resourcesId": "ch0033_resources",
-   "voiceGroupId": "voc_ch0033_group",
-   "unfinished": {
-    "eng": "エステル",
-    "jpn": "エステル"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
   "CH0034": {
    "code": "CH0034",
    "name": "세타",
@@ -10118,22 +10022,6 @@
     110
    ]
   },
-  "CH0040": {
-   "code": "CH0040",
-   "name": "이자벨",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0040",
-   "resourcesId": "ch0040_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "Isabel",
-    "jpn": "イザベル"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
   "CH0042": {
    "code": "CH0042",
    "name": "오블리아",
@@ -10455,22 +10343,6 @@
     100204,
     100205
    ]
-  },
-  "CH0043": {
-   "code": "CH0043",
-   "name": "라피네",
-   "nameEn": null,
-   "desc": "인간의 사회에 대한 호기심 때문에 숲을 떠나 도시에서 살기로 한 엘프. 숲속 엘프 마을에서의 생활이 길었던 탓에 인간 사회에 대한 감각 특히 금전 감각이 없어 항상 돈에 쪼들린다.",
-   "iconPath": "Icon_CH0043",
-   "resourcesId": "ch0043_resources",
-   "voiceGroupId": "voc_ch0043_group",
-   "unfinished": {
-    "eng": "Lafine",
-    "jpn": "ラフィーネ"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
   },
   "CH0046": {
    "code": "CH0046",
@@ -11063,22 +10935,6 @@
     103,
     110
    ]
-  },
-  "CH0052": {
-   "code": "CH0052",
-   "name": "라나",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0052",
-   "resourcesId": "ch0052_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "Lana",
-    "jpn": "ラナ"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
   },
   "CH0053": {
    "code": "CH0053",
@@ -12291,22 +12147,6 @@
     110
    ]
   },
-  "CH0058": {
-   "code": "CH0058",
-   "name": "비앙카",
-   "nameEn": null,
-   "desc": "#####준비중입니다.",
-   "iconPath": "Icon_CH0058",
-   "resourcesId": "ch0058_resources",
-   "voiceGroupId": "0",
-   "unfinished": {
-    "eng": "Casey",
-    "jpn": "ケイシー"
-   },
-   "artist": null,
-   "cv": null,
-   "unreleased": true
-  },
   "CH0062": {
    "code": "CH0062",
    "name": "트리체",
@@ -13219,7 +13059,8 @@
     100203,
     100204,
     100205
-   ]
+   ],
+   "skinsLockedUntil": "2026-08-13"
   },
   "NP0101": {
    "code": "NP0101",

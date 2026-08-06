@@ -3,6 +3,7 @@
 /out
 /build
 /docs
+/public/data-full
 /public/skins
 /public/skin_test
 *.tsbuildinfo
