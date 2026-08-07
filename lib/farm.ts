@@ -279,7 +279,30 @@ export type StageSource = {
   runs: number | null;
   /** `runs * entry.amount`, in `entry.ref` — never comparable across refs. */
   cost: number | null;
+  /** What else the clear pays, weighted towards what is in short supply. */
+  side: number;
 };
+
+/**
+ * Two stages paying the need at the same rate are not the same clear. The
+ * tie-break is everything else on the repeat table, each drop discounted by how
+ * much of it is already held, so the run that also restocks something scarce
+ * wins. Nothing here has to be in the bill.
+ */
+function sideValue(
+  growth: GrowthData, stage: StageEntry, need: Need, inventory: Record<string, number>,
+): number {
+  const own = need.kind === 'material'
+    ? new Set([need.key]) : new Set(Object.keys(poolItems(growth, need.kind)));
+  let total = 0;
+  for (const drop of stage.rewards?.repeat ?? []) {
+    if (!drop.ref || own.has(drop.ref)) continue;
+    const [min, max] = drop.amount;
+    const amount = (max ? (min + max) / 2 : min) * (drop.chance ?? 1);
+    total += amount / (1 + (inventory[drop.ref] ?? 0));
+  }
+  return total;
+}
 
 /**
  * Every stage that pays this need on repeat, cheapest first. Locked stages stay
@@ -292,7 +315,7 @@ export type StageSource = {
  */
 export function sourcesFor(
   growth: GrowthData, stages: StageEntry[], need: Need,
-  clears: Record<string, number>, sweepOnly: boolean,
+  inventory: Record<string, number>, clears: Record<string, number>, sweepOnly: boolean,
 ): StageSource[] {
   const out: StageSource[] = [];
   for (const stage of stages) {
@@ -309,11 +332,13 @@ export function sourcesFor(
       open: isFarmable(stars, sweepOnly),
       runs,
       cost: entry ? runs * entry.amount : null,
+      side: sideValue(growth, stage, need, inventory),
     });
   }
   return out.sort((a, b) => Number(b.open) - Number(a.open)
     || (a.runs ?? Infinity) - (b.runs ?? Infinity)
-    || b.perRun - a.perRun);
+    || b.perRun - a.perRun
+    || b.side - a.side);
 }
 
 export type FarmRoute = {
@@ -428,7 +453,7 @@ export function farmPlan(
   inventory: Record<string, number>, clears: Record<string, number>, sweepOnly: boolean,
 ): FarmPlan {
   const needs = needsOf(growth, bill, inventory).map((need) => {
-    const sources = sourcesFor(growth, stages, need, clears, sweepOnly);
+    const sources = sourcesFor(growth, stages, need, inventory, clears, sweepOnly);
     const open = sources.filter((s) => s.open);
     return {
       need,
@@ -517,6 +542,13 @@ export function formatAmount(value: number): string {
   if (value >= 1e6 && value % 1e5 === 0) return `${value / 1e6}m`;
   if (value >= 1e4 && value % 1e3 === 0) return `${value / 1e3}k`;
   return String(value);
+}
+
+const HARD_STAGE_NAME_KEY = 'contents_stage_list_name_conquest_zone_hard';
+
+/** Story hard stages, capped at three runs a day. */
+export function isHardStage(stage: StageEntry): boolean {
+  return stage.nameKey === HARD_STAGE_NAME_KEY;
 }
 
 /** Stages that pay any growth material on repeat — the clear record's scope. */
