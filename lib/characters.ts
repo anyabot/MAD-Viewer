@@ -1,4 +1,7 @@
+// The node suites load this module directly, so nothing here may import a
+// runtime value through the `@/` alias.
 import type { SkinKind } from '@/components/skinViewer/types';
+import type { Lang, Localized } from '@/lib/i18n';
 import type {
   CharacterData, CharacterEntry, EquipmentEntry, EquipmentTier, ItemEntry, PlaceEntry,
   SkillDetail, SkillEntry, SkillGate, SkillHit, SkillMagnitude, SkillOp, SkillStat,
@@ -16,12 +19,12 @@ export const TYPE_FIELD: Record<TypeTable, keyof CharacterEntry> = {
   faction: 'factionType',
 };
 
-export const TYPE_LABEL: Record<TypeTable, string> = {
-  attribute: 'Element',
-  role: 'Role',
-  position: 'Position',
-  division: 'Division',
-  faction: 'Faction',
+export const TYPE_LABEL: Record<TypeTable, Localized> = {
+  attribute: { en: 'Element', ko: '속성' },
+  role: { en: 'Role', ko: '역할' },
+  position: { en: 'Position', ko: '포지션' },
+  division: { en: 'Division', ko: '진영' },
+  faction: { en: 'Faction', ko: '소속' },
 };
 
 export function typeValue(entry: CharacterEntry, table: TypeTable): number | null {
@@ -52,9 +55,11 @@ export function typeIcons(t: TypeEntry | null): string[] {
   return t.icons?.length ? t.icons : (t.icon ? [t.icon] : []);
 }
 
-// A row the generator's table does not cover yet still has to render.
-export function typeLabel(t: TypeEntry | null): string {
-  return t ? (t.en || t.name) : '';
+// A row the generator's table does not cover yet still has to render, and the
+// game has no English column for every row.
+export function typeLabel(t: TypeEntry | null, lang: Lang = 'en'): string {
+  if (!t) return '';
+  return lang === 'ko' ? (t.name || t.en || '') : (t.en || t.name);
 }
 
 // Only `Attribute_Icon_Data` carries a colour, and its icons are flat white
@@ -80,14 +85,33 @@ export function isPlayable(entry: CharacterEntry): boolean {
 
 // A playable character and an asset that is not a character at all both go
 // unbadged: the default and the asset key already say what they are.
+const ROSTER_NOTE: Record<string, Localized> = {
+  unreleased: { en: 'UNRELEASED', ko: '미출시' },
+  story: { en: 'STORY', ko: '스토리' },
+  npc: { en: 'NPC', ko: 'NPC' },
+};
+
 export function rosterNote(
-  entry: CharacterEntry | null,
+  entry: CharacterEntry | null, lang: Lang = 'en',
 ): { label: string; scheme: string } | null {
   if (!entry) return null;
-  if (entry.unreleased) return { label: 'UNRELEASED', scheme: 'purple' };
-  if (entry.storyOnly) return { label: 'STORY', scheme: 'teal' };
-  if (entry.characterType === 2) return { label: 'NPC', scheme: 'gray' };
+  if (entry.unreleased) return { label: ROSTER_NOTE.unreleased[lang], scheme: 'purple' };
+  if (entry.storyOnly) return { label: ROSTER_NOTE.story[lang], scheme: 'teal' };
+  if (entry.characterType === 2) return { label: ROSTER_NOTE.npc[lang], scheme: 'gray' };
   return null;
+}
+
+// Only playable characters carry an English name, so an NPC reads Korean in
+// either language rather than falling back to its code.
+export function characterName(entry: CharacterEntry | null, lang: Lang = 'en'): string {
+  if (!entry) return '';
+  const primary = lang === 'ko' ? entry.name : (entry.nameEn || entry.name);
+  return primary || entry.code;
+}
+
+export function characterSubName(entry: CharacterEntry | null, lang: Lang = 'en'): string {
+  if (!entry || !entry.nameEn) return '';
+  return lang === 'ko' ? entry.nameEn : entry.name;
 }
 
 // The game's second English name column is usually the same name in caps, so
@@ -99,17 +123,21 @@ export function altNameEn(entry: CharacterEntry): string | null {
   return plain(alt) === plain(entry.nameEn ?? '') ? null : alt;
 }
 
-export function birthdayText(entry: CharacterEntry): string | null {
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+  'August', 'September', 'October', 'November', 'December'];
+
+export function birthdayText(entry: CharacterEntry, lang: Lang = 'en'): string | null {
   const b = entry.birthday;
   if (!b || b.length < 2 || !b[0]) return null;
-  return `${b[0]}월 ${b[1]}일`;
+  if (lang === 'ko') return `${b[0]}월 ${b[1]}일`;
+  return `${MONTHS[b[0] - 1] ?? b[0]} ${b[1]}`;
 }
 
 // UTC, or a local midnight shifts the stored date a day either way.
-export function lockedUntilText(iso: string): string {
+export function lockedUntilText(iso: string, lang: Lang = 'en'): string {
   const at = new Date(`${iso}T00:00:00Z`);
   if (Number.isNaN(at.getTime())) return iso;
-  return at.toLocaleDateString(undefined, {
+  return at.toLocaleDateString(lang === 'ko' ? 'ko-KR' : 'en-GB', {
     year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
   });
 }
@@ -138,7 +166,7 @@ export function datePlacesOf(
 }
 
 // The master data has no English column for equipment slots.
-export const EQUIP_EN: Record<number, string> = {
+const EQUIP_EN: Record<number, string> = {
   1: 'Earring',
   2: 'Necklace',
   3: 'Bracelet',
@@ -152,6 +180,14 @@ export const EQUIP_EN: Record<number, string> = {
   11: 'Bra',
   12: 'Panties',
 };
+
+export function equipLabel(
+  slot: { type: number; name?: string | null }, lang: Lang = 'en',
+): string {
+  const own = slot.name ?? '';
+  if (lang === 'ko') return own || EQUIP_EN[slot.type] || String(slot.type);
+  return EQUIP_EN[slot.type] ?? own ?? String(slot.type);
+}
 
 export function equipmentSlotsOf(
   entry: CharacterEntry, equipment: CharacterData['equipment'],
@@ -254,7 +290,7 @@ export function statGrades(entry: CharacterEntry, data: CharacterData): number[]
  * before the affection one. A stat that stays at zero throughout is dropped.
  */
 export function computeStats(
-  entry: CharacterEntry, data: CharacterData, input: StatInput,
+  entry: CharacterEntry, data: CharacterData, input: StatInput, lang: Lang = 'en',
 ): StatRow[] {
   const caps = data.statCaps;
   const star = String(clamp(input.star, 1, caps.star));
@@ -290,8 +326,8 @@ export function computeStats(
     if (!own && !gear && !bond) continue;
     rows.push({
       stat,
-      label: type.en || STAT_LABEL[stat] || prettyConst(stat),
-      name: type.name,
+      label: (lang === 'ko' ? type.name : type.en) || labelOf(STAT_LABEL, stat, lang),
+      name: lang === 'ko' ? type.en : type.name,
       display: type.display,
       base: own,
       equipment: gear,
@@ -304,19 +340,19 @@ export function computeStats(
 }
 
 // `duration_categorize_type` on a buff's define row.
-export const BUFF_CATEGORY: Record<number, { label: string; scheme: string }> = {
-  1: { label: 'Buff', scheme: 'green' },
-  2: { label: 'Debuff', scheme: 'red' },
-  3: { label: 'Control', scheme: 'purple' },
+export const BUFF_CATEGORY: Record<number, { label: Localized; scheme: string }> = {
+  1: { label: { en: 'Buff', ko: '버프' }, scheme: 'green' },
+  2: { label: { en: 'Debuff', ko: '디버프' }, scheme: 'red' },
+  3: { label: { en: 'Control', ko: '군중 제어' }, scheme: 'purple' },
 };
 
 // `skill_categorize_type`, which is what the game groups slots by.
-export const SKILL_CATEGORY_LABEL: Record<number, string> = {
-  1: 'Normal attack',
-  2: 'Skill',
-  3: 'Burst',
-  4: 'Passive',
-  5: 'Trigger',
+export const SKILL_CATEGORY_LABEL: Record<number, Localized> = {
+  1: { en: 'Normal attack', ko: '일반 공격' },
+  2: { en: 'Skill', ko: '스킬' },
+  3: { en: 'Burst', ko: '버스트' },
+  4: { en: 'Passive', ko: '패시브' },
+  5: { en: 'Trigger', ko: '트리거' },
 };
 
 // A grade below the character's own rarity is still listed by the master data,
@@ -346,69 +382,71 @@ export function skillGrades(entry: CharacterEntry, data: CharacterData): number[
 
 // `ONETIME_EFFECT_TYPE` and `DURATION_EFFECT_TYPE` share one table: an op is
 // only ever one or the other, and the two sets do not collide.
-export const OP_LABEL: Record<string, string> = {
-  MARKER: 'Internal state',
-  EMPTY_EFFECT: 'No effect',
-  ADD_DAMAGE: 'Damage',
-  ADD_HEAL: 'Heal',
-  ADD_FORCE_CRITICAL_DAMAGE: 'Guaranteed critical',
-  ADD_FORCE_PENETRATION_DAMAGE: 'Guaranteed penetration',
-  REDUCE_BURST_COOLDOWN: 'Burst cooldown down',
-  UNSUMMON: 'Unsummon',
-  CLEAR_DURATION_DEFINE_ID: 'Remove a named state',
-  CLEAR_DURATION_CATEGORIZE_TYPE: 'Cleanse',
-  CC_KNOCKBACK: 'Knockback',
-  CC_HIT_REACTION: 'Hit reaction',
-  SUMMON_HP: 'Summon HP',
-  BUFF_TOTAL_DAMAGE_BARRIER: 'Shield',
-  BUFF_PHYSICS_ATTACK_UP: 'Attack up',
-  BUFF_PHYSICS_DEFEND_UP: 'Defence up',
-  BUFF_PHYSICS_CRITICAL_CHANCE_UP: 'Crit rate up',
-  BUFF_PHYSICS_CRITICAL_POWER_ADD_UP: 'Crit damage up',
-  BUFF_EVASION_UP: 'Evasion up',
-  BUFF_ACCURACY_UP: 'Accuracy up',
-  BUFF_HEAL_UP: 'Healing up',
-  BUFF_MAX_HP_UP: 'Max HP up',
-  BUFF_WEIGHT_UP: 'Weight up',
-  BUFF_TOUGHNESS_UP: 'Toughness up',
-  BUFF_PENETRATE_UP: 'Penetration up',
-  BUFF_PENETRATE_DEFENSE_UP: 'Penetration resist up',
-  BUFF_CRITICAL_CHANCE_RESIST: 'Crit rate resist up',
-  BUFF_CRITICAL_POWER_ADD_RESIST: 'Crit damage resist up',
-  BUFF_HEAL_RECEIVE: 'Healing received up',
-  BUFF_ATTACK_SPEED_UP: 'Attack speed up',
-  DAMAGE_REDUCE: 'Damage taken down',
-  DEBUFF_PHYSICS_ATTACK_DOWN: 'Attack down',
-  DEBUFF_PHYSICS_DEFEND_DOWN: 'Defence down',
-  DEBUFF_PHYSICS_CRITICAL_CHANCE_DOWN: 'Crit rate down',
-  DEBUFF_PHYSICS_CRITICAL_POWER_ADD_DOWN: 'Crit damage down',
-  DEBUFF_EVASION_DOWN: 'Evasion down',
-  DEBUFF_ACCURACY_DOWN: 'Accuracy down',
-  DEBUFF_HEAL_DOWN: 'Healing down',
-  DEBUFF_TOUGHNESS_DOWN: 'Toughness down',
-  DEBUFF_PENETRATE_DOWN: 'Penetration down',
-  DEBUFF_PENETRATE_DEFENSE_DOWN: 'Penetration resist down',
-  DEBUFF_CRITICAL_CHANCE_RESIST: 'Crit rate resist down',
-  DEBUFF_CRITICAL_POWER_ADD_RESIST: 'Crit damage resist down',
-  DEBUFF_HEAL_RECEIVE: 'Healing received down',
-  DEBUFF_ATTACK_SPEED_DOWN: 'Attack speed down',
-  CC_PROVOKE: 'Provoke',
-  CC_CHARM: 'Charm',
-  CC_FEAR: 'Fear',
-  CC_STUN: 'Stun',
-  CC_SILENCE: 'Silence',
-  CC_BIND: 'Bind',
-  CC_FREEZE: 'Freeze',
-  CC_GROGGY: 'Groggy',
-  IMMUNE_PHYSICAL_DAMAGE: 'Damage immunity',
-  IMMUNE_DURATION_DEFINE_ID: 'Immune to a named state',
-  IMMUNE_DURATION_CATEGORIZE_TYPE: 'Immune to a state category',
-  IMMUNE_ONETIME_DEFINE_ID: 'Immune to a named instant',
-  IMMUNE_ONETIME_CATEGORIZE_TYPE: 'Immune to an instant category',
-  OVERTIME_DAMAGE: 'Damage over time',
-  OVERTIME_HEAL: 'Heal over time',
-  EXCLUDE_CASTING_TARGET: 'Cannot be targeted by casts',
-  EXCLUDE_DETECTING_TARGET: 'Cannot be hit',
+export const OP_LABEL: Record<string, Localized> = {
+  MARKER: { en: 'Internal state', ko: '내부 상태' },
+  EMPTY_EFFECT: { en: 'No effect', ko: '효과 없음' },
+  ADD_DAMAGE: { en: 'Damage', ko: '피해' },
+  ADD_HEAL: { en: 'Heal', ko: '회복' },
+  ADD_FORCE_CRITICAL_DAMAGE: { en: 'Guaranteed critical', ko: '치명타 확정' },
+  ADD_FORCE_PENETRATION_DAMAGE: { en: 'Guaranteed penetration', ko: '관통 확정' },
+  REDUCE_BURST_COOLDOWN: { en: 'Burst cooldown down', ko: '버스트 재사용 대기 감소' },
+  UNSUMMON: { en: 'Unsummon', ko: '소환 해제' },
+  CLEAR_DURATION_DEFINE_ID: { en: 'Remove a named state', ko: '지정 상태 해제' },
+  CLEAR_DURATION_CATEGORIZE_TYPE: { en: 'Cleanse', ko: '상태 정화' },
+  CC_KNOCKBACK: { en: 'Knockback', ko: '넉백' },
+  CC_HIT_REACTION: { en: 'Hit reaction', ko: '피격 경직' },
+  SUMMON_HP: { en: 'Summon HP', ko: '소환수 체력' },
+  BUFF_TOTAL_DAMAGE_BARRIER: { en: 'Shield', ko: '보호막' },
+  BUFF_PHYSICS_ATTACK_UP: { en: 'Attack up', ko: '공격력 증가' },
+  BUFF_PHYSICS_DEFEND_UP: { en: 'Defence up', ko: '방어력 증가' },
+  BUFF_PHYSICS_CRITICAL_CHANCE_UP: { en: 'Crit rate up', ko: '치명 증가' },
+  BUFF_PHYSICS_CRITICAL_POWER_ADD_UP: { en: 'Crit damage up', ko: '치명 피해 증가' },
+  BUFF_EVASION_UP: { en: 'Evasion up', ko: '회피 증가' },
+  BUFF_ACCURACY_UP: { en: 'Accuracy up', ko: '명중 증가' },
+  BUFF_HEAL_UP: { en: 'Healing up', ko: '치유력 증가' },
+  BUFF_MAX_HP_UP: { en: 'Max HP up', ko: '최대 체력 증가' },
+  BUFF_WEIGHT_UP: { en: 'Weight up', ko: '무게 증가' },
+  BUFF_TOUGHNESS_UP: { en: 'Toughness up', ko: '강인함 증가' },
+  BUFF_PENETRATE_UP: { en: 'Penetration up', ko: '관통력 증가' },
+  BUFF_PENETRATE_DEFENSE_UP: { en: 'Penetration resist up', ko: '관통 저항 증가' },
+  BUFF_CRITICAL_CHANCE_RESIST: { en: 'Crit rate resist up', ko: '치명 저항 증가' },
+  BUFF_CRITICAL_POWER_ADD_RESIST: { en: 'Crit damage resist up', ko: '치명 피해 저항 증가' },
+  BUFF_HEAL_RECEIVE: { en: 'Healing received up', ko: '받는 치유량 증가' },
+  BUFF_ATTACK_SPEED_UP: { en: 'Attack speed up', ko: '공격 속도 증가' },
+  DAMAGE_REDUCE: { en: 'Damage taken down', ko: '받는 피해 감소' },
+  DEBUFF_PHYSICS_ATTACK_DOWN: { en: 'Attack down', ko: '공격력 감소' },
+  DEBUFF_PHYSICS_DEFEND_DOWN: { en: 'Defence down', ko: '방어력 감소' },
+  DEBUFF_PHYSICS_CRITICAL_CHANCE_DOWN: { en: 'Crit rate down', ko: '치명 감소' },
+  DEBUFF_PHYSICS_CRITICAL_POWER_ADD_DOWN: { en: 'Crit damage down', ko: '치명 피해 감소' },
+  DEBUFF_EVASION_DOWN: { en: 'Evasion down', ko: '회피 감소' },
+  DEBUFF_ACCURACY_DOWN: { en: 'Accuracy down', ko: '명중 감소' },
+  DEBUFF_HEAL_DOWN: { en: 'Healing down', ko: '치유력 감소' },
+  DEBUFF_TOUGHNESS_DOWN: { en: 'Toughness down', ko: '강인함 감소' },
+  DEBUFF_PENETRATE_DOWN: { en: 'Penetration down', ko: '관통력 감소' },
+  DEBUFF_PENETRATE_DEFENSE_DOWN: { en: 'Penetration resist down', ko: '관통 저항 감소' },
+  DEBUFF_CRITICAL_CHANCE_RESIST: { en: 'Crit rate resist down', ko: '치명 저항 감소' },
+  DEBUFF_CRITICAL_POWER_ADD_RESIST: { en: 'Crit damage resist down', ko: '치명 피해 저항 감소' },
+  DEBUFF_HEAL_RECEIVE: { en: 'Healing received down', ko: '받는 치유량 감소' },
+  DEBUFF_ATTACK_SPEED_DOWN: { en: 'Attack speed down', ko: '공격 속도 감소' },
+  CC_PROVOKE: { en: 'Provoke', ko: '도발' },
+  CC_CHARM: { en: 'Charm', ko: '매혹' },
+  CC_FEAR: { en: 'Fear', ko: '공포' },
+  CC_STUN: { en: 'Stun', ko: '기절' },
+  CC_SILENCE: { en: 'Silence', ko: '침묵' },
+  CC_BIND: { en: 'Bind', ko: '속박' },
+  CC_FREEZE: { en: 'Freeze', ko: '빙결' },
+  CC_GROGGY: { en: 'Groggy', ko: '그로기' },
+  IMMUNE_PHYSICAL_DAMAGE: { en: 'Damage immunity', ko: '피해 면역' },
+  IMMUNE_DURATION_DEFINE_ID: { en: 'Immune to a named state', ko: '지정 상태 면역' },
+  IMMUNE_DURATION_CATEGORIZE_TYPE: { en: 'Immune to a state category', ko: '상태 계열 면역' },
+  IMMUNE_ONETIME_DEFINE_ID: { en: 'Immune to a named instant', ko: '지정 즉시 효과 면역' },
+  IMMUNE_ONETIME_CATEGORIZE_TYPE: {
+    en: 'Immune to an instant category', ko: '즉시 효과 계열 면역',
+  },
+  OVERTIME_DAMAGE: { en: 'Damage over time', ko: '지속 피해' },
+  OVERTIME_HEAL: { en: 'Heal over time', ko: '지속 회복' },
+  EXCLUDE_CASTING_TARGET: { en: 'Cannot be targeted by casts', ko: '시전 대상에서 제외' },
+  EXCLUDE_DETECTING_TARGET: { en: 'Cannot be hit', ko: '판정 대상에서 제외' },
 };
 
 // Which colour an op reads as. Falls back to the buff/debuff/CC category the
@@ -423,159 +461,187 @@ export const OP_SCHEME: Record<string, string> = {
 };
 
 // `STAT_MULTIPLE_TYPE` on an op, and `STAT_TYPE` on a passive's stat grant.
-export const STAT_LABEL: Record<string, string> = {
-  ATTACK_RATE: 'ATK',
-  PHYSICAL_ATTACK_RATE: 'ATK',
-  MAGICAL_ATTACK_RATE: 'magic ATK',
-  TOTAL_ATTACK_RATE: 'total ATK',
-  DEFENSE_RATE: 'DEF',
-  PHYSICAL_DEFENSE_RATE: 'DEF',
-  MAGICAL_DEFENSE_RATE: 'magic DEF',
-  MAX_LIFE_RATE: 'max HP',
-  LIFE_RATE: 'current HP',
-  CRITICAL_CHANCE_RATE: 'crit rate',
-  PHYSICAL_CRITICAL_CHANCE_RATE: 'crit rate',
-  MAGICAL_CRITICAL_CHANCE_RATE: 'magic crit rate',
-  CRITICAL_POWER_ADD_RATE: 'crit damage',
-  PHYSICAL_CRITICAL_POWER_ADD_RATE: 'crit damage',
-  MAGICAL_CRITICAL_POWER_ADD_RATE: 'magic crit damage',
-  ACCURACY_RATE: 'accuracy',
-  EVASION_RATE: 'evasion',
-  HEAL_RATE: 'healing',
-  TOTAL_HEAL_RATE: 'total healing',
-  HEAL_RECEIVE_RATE: 'healing received',
-  DAMAGE: 'damage dealt',
-  ELEMENT_RATE: 'element',
-  ATTACK_SPEED_RATE: 'attack speed',
-  ANI_ATTACK_SPEED_RATE: 'animation speed',
-  COOL_TIME_RATE: 'cooldown',
-  RESIST_RATE: 'resistance',
-  PENETRATION_RATE: 'penetration',
-  PENETRATION_DEFEND_RATE: 'penetration resist',
-  CRITICAL_CHANCE_RESIST_RATE: 'crit rate resist',
-  CRITICAL_POWER_ADD_RESIST_RATE: 'crit damage resist',
+export const STAT_LABEL: Record<string, Localized> = {
+  ATTACK_RATE: { en: 'ATK', ko: '공격력' },
+  PHYSICAL_ATTACK_RATE: { en: 'ATK', ko: '공격력' },
+  MAGICAL_ATTACK_RATE: { en: 'magic ATK', ko: '마법 공격력' },
+  TOTAL_ATTACK_RATE: { en: 'total ATK', ko: '총 공격력' },
+  DEFENSE_RATE: { en: 'DEF', ko: '방어력' },
+  PHYSICAL_DEFENSE_RATE: { en: 'DEF', ko: '방어력' },
+  MAGICAL_DEFENSE_RATE: { en: 'magic DEF', ko: '마법 방어력' },
+  MAX_LIFE_RATE: { en: 'max HP', ko: '최대 체력' },
+  LIFE_RATE: { en: 'current HP', ko: '현재 체력' },
+  CRITICAL_CHANCE_RATE: { en: 'crit rate', ko: '치명' },
+  PHYSICAL_CRITICAL_CHANCE_RATE: { en: 'crit rate', ko: '치명' },
+  MAGICAL_CRITICAL_CHANCE_RATE: { en: 'magic crit rate', ko: '마법 치명' },
+  CRITICAL_POWER_ADD_RATE: { en: 'crit damage', ko: '치명 피해율' },
+  PHYSICAL_CRITICAL_POWER_ADD_RATE: { en: 'crit damage', ko: '치명 피해율' },
+  MAGICAL_CRITICAL_POWER_ADD_RATE: { en: 'magic crit damage', ko: '마법 치명 피해율' },
+  ACCURACY_RATE: { en: 'accuracy', ko: '명중' },
+  EVASION_RATE: { en: 'evasion', ko: '회피' },
+  HEAL_RATE: { en: 'healing', ko: '치유력' },
+  TOTAL_HEAL_RATE: { en: 'total healing', ko: '총 치유력' },
+  HEAL_RECEIVE_RATE: { en: 'healing received', ko: '받는 치유량' },
+  DAMAGE: { en: 'damage dealt', ko: '주는 피해' },
+  ELEMENT_RATE: { en: 'element', ko: '속성' },
+  ATTACK_SPEED_RATE: { en: 'attack speed', ko: '공격 속도' },
+  ANI_ATTACK_SPEED_RATE: { en: 'animation speed', ko: '동작 속도' },
+  COOL_TIME_RATE: { en: 'cooldown', ko: '재사용 대기시간' },
+  RESIST_RATE: { en: 'resistance', ko: '저항' },
+  PENETRATION_RATE: { en: 'penetration', ko: '관통력' },
+  PENETRATION_DEFEND_RATE: { en: 'penetration resist', ko: '관통 저항' },
+  CRITICAL_CHANCE_RESIST_RATE: { en: 'crit rate resist', ko: '치명 저항' },
+  CRITICAL_POWER_ADD_RESIST_RATE: { en: 'crit damage resist', ko: '치명 피해 저항' },
   // STAT_TYPE
-  PHYSICS_ATTACK: 'Attack',
-  PHYSICS_DEFENSE: 'Defence',
-  MAX_LIFE: 'Max HP',
-  ACCURACY: 'Accuracy',
-  EVASION: 'Evasion',
-  PHYSICS_CRITICAL_CHANCE: 'Crit rate',
-  PHYSICS_CRITICAL_DAMAGE: 'Crit damage',
-  HEAL: 'Healing',
-  WEIGHT: 'Weight',
-  RESIST_NORMAL_DEBUFF: 'Debuff resist',
-  CRITICAL_CHANCE_RESIST: 'Crit rate resist',
-  CRITICAL_POWER_ADD_RESIST: 'Crit damage resist',
-  HEAL_RECEIVE: 'Healing received',
-  PENETRATION: 'Penetration',
-  PENETRATION_DEFEND: 'Penetration resist',
-  ATTACK_SPEED_NORMAL: 'Attack speed',
+  PHYSICS_ATTACK: { en: 'Attack', ko: '공격력' },
+  PHYSICS_DEFENSE: { en: 'Defence', ko: '방어력' },
+  MAX_LIFE: { en: 'Max HP', ko: '최대 체력' },
+  ACCURACY: { en: 'Accuracy', ko: '명중' },
+  EVASION: { en: 'Evasion', ko: '회피' },
+  PHYSICS_CRITICAL_CHANCE: { en: 'Crit rate', ko: '치명' },
+  PHYSICS_CRITICAL_DAMAGE: { en: 'Crit damage', ko: '치명 피해율' },
+  HEAL: { en: 'Healing', ko: '치유력' },
+  WEIGHT: { en: 'Weight', ko: '무게' },
+  RESIST_NORMAL_DEBUFF: { en: 'Debuff resist', ko: '해로운 효과 저항' },
+  CRITICAL_CHANCE_RESIST: { en: 'Crit rate resist', ko: '치명 저항' },
+  CRITICAL_POWER_ADD_RESIST: { en: 'Crit damage resist', ko: '치명 피해 저항률' },
+  HEAL_RECEIVE: { en: 'Healing received', ko: '받는 치유량' },
+  PENETRATION: { en: 'Penetration', ko: '관통력' },
+  PENETRATION_DEFEND: { en: 'Penetration resist', ko: '관통 저항' },
+  ATTACK_SPEED_NORMAL: { en: 'Attack speed', ko: '공격 속도' },
 };
 
 // `SKILL_TARGET_TYPE` on a cast or a work, and `CHECK_TARGET_TYPE` on a
 // trigger. The two enums share every name they have in common.
-export const TARGET_LABEL: Record<string, string> = {
-  SELF: 'self',
-  ENEMY: 'enemies',
-  FRIENDLY: 'allies',
-  FRIENDLY_NOT_SELF: 'other allies',
-  ALL_UNIT: 'everyone',
-  CAST_TARGET: 'the cast target',
-  HOLDER: 'the holder',
-  TRIGGER_TARGET: 'the trigger target',
-  TRIGGER_INSTIGATOR: 'the instigator',
-  SUMMON_MINE: 'own summons',
-  SUMMON_ENEMY: 'enemy summons',
-  SUMMON_FRIENDLY: 'allied summons',
-  SUMMON_ALL: 'all summons',
+export const TARGET_LABEL: Record<string, Localized> = {
+  SELF: { en: 'self', ko: '자신' },
+  ENEMY: { en: 'enemies', ko: '적' },
+  FRIENDLY: { en: 'allies', ko: '아군' },
+  FRIENDLY_NOT_SELF: { en: 'other allies', ko: '자신 외 아군' },
+  ALL_UNIT: { en: 'everyone', ko: '모든 유닛' },
+  CAST_TARGET: { en: 'the cast target', ko: '시전 대상' },
+  HOLDER: { en: 'the holder', ko: '보유자' },
+  TRIGGER_TARGET: { en: 'the trigger target', ko: '발동 대상' },
+  TRIGGER_INSTIGATOR: { en: 'the instigator', ko: '발동시킨 대상' },
+  SUMMON_MINE: { en: 'own summons', ko: '자신의 소환수' },
+  SUMMON_ENEMY: { en: 'enemy summons', ko: '적 소환수' },
+  SUMMON_FRIENDLY: { en: 'allied summons', ko: '아군 소환수' },
+  SUMMON_ALL: { en: 'all summons', ko: '모든 소환수' },
 };
 
 // `STAT_MULTIPLE_TARGET_TYPE` / `APPLY_TARGET_TYPE`: whose stat, and who it
 // lands on.
-export const SIDE_LABEL: Record<string, string> = {
-  CASTER: 'caster',
-  HOLDER: 'target',
+export const SIDE_LABEL: Record<string, Localized> = {
+  CASTER: { en: 'caster', ko: '시전자' },
+  HOLDER: { en: 'target', ko: '대상' },
 };
 
 // `SKILL_TARGET_SORT_TYPE` — how a limited pick chooses between candidates.
-export const SORT_LABEL: Record<string, string> = {
-  DISTANCE_LOWEST: 'nearest',
-  DISTANCE_HIGHEST: 'furthest',
-  HP_RATE_LOWEST: 'lowest HP',
-  HP_RATE_HIGHEST: 'highest HP',
-  PHY_ATK_LOWEST: 'lowest ATK',
-  PHY_ATK_HIGHEST: 'highest ATK',
-  MAG_ATK_LOWEST: 'lowest magic ATK',
-  MAG_ATK_HIGHEST: 'highest magic ATK',
-  PHY_DEF_LOWEST: 'lowest DEF',
-  PHY_DEF_HIGHEST: 'highest DEF',
-  MAG_DEF_LOWEST: 'lowest magic DEF',
-  MAG_DEF_HIGHEST: 'highest magic DEF',
-  RANDOM: 'at random',
+export const SORT_LABEL: Record<string, Localized> = {
+  DISTANCE_LOWEST: { en: 'nearest', ko: '가장 가까운' },
+  DISTANCE_HIGHEST: { en: 'furthest', ko: '가장 먼' },
+  HP_RATE_LOWEST: { en: 'lowest HP', ko: '체력이 가장 낮은' },
+  HP_RATE_HIGHEST: { en: 'highest HP', ko: '체력이 가장 높은' },
+  PHY_ATK_LOWEST: { en: 'lowest ATK', ko: '공격력이 가장 낮은' },
+  PHY_ATK_HIGHEST: { en: 'highest ATK', ko: '공격력이 가장 높은' },
+  MAG_ATK_LOWEST: { en: 'lowest magic ATK', ko: '마법 공격력이 가장 낮은' },
+  MAG_ATK_HIGHEST: { en: 'highest magic ATK', ko: '마법 공격력이 가장 높은' },
+  PHY_DEF_LOWEST: { en: 'lowest DEF', ko: '방어력이 가장 낮은' },
+  PHY_DEF_HIGHEST: { en: 'highest DEF', ko: '방어력이 가장 높은' },
+  MAG_DEF_LOWEST: { en: 'lowest magic DEF', ko: '마법 방어력이 가장 낮은' },
+  MAG_DEF_HIGHEST: { en: 'highest magic DEF', ko: '마법 방어력이 가장 높은' },
+  RANDOM: { en: 'at random', ko: '무작위' },
 };
 
 // `SKILL_RANGE_TYPE` on a hitbox, and `SKILL_CAST_TARGET_SELECT_RANGE` on the
 // cast.
-export const SHAPE_LABEL: Record<string, string> = {
-  X_AXIS: 'Line',
-  CIRCLE: 'Circle',
-  GLOBAL: 'Whole field',
-  FRONT: 'front',
-  CENTER: 'centre',
-  ALL: 'anywhere',
+export const SHAPE_LABEL: Record<string, Localized> = {
+  X_AXIS: { en: 'Line', ko: '직선' },
+  CIRCLE: { en: 'Circle', ko: '원형' },
+  GLOBAL: { en: 'Whole field', ko: '전체 필드' },
+  FRONT: { en: 'front', ko: '전방' },
+  CENTER: { en: 'centre', ko: '중앙' },
+  ALL: { en: 'anywhere', ko: '전 범위' },
 };
 
 // `SKILL_EVENT_TYPE`, minus `SPAWN_DISPATCHER` — the non-hitbox things a cast
 // does, which is how a skill's movement and summons show up.
-export const MOVE_LABEL: Record<string, string> = {
-  SPAWN_SUMMON: 'summons',
-  SPAWN_SUMMON_REPLACE: 'replaces its summon',
-  MOVE_TO_TARGET: 'dashes to the target',
-  MOVE_TO_DIRECTION: 'moves in a direction',
-  MOVE_TO_SAVE_POSITION: 'returns to its position',
-  LOOK_TARGET: 'turns to the target',
+export const MOVE_LABEL: Record<string, Localized> = {
+  SPAWN_SUMMON: { en: 'summons', ko: '소환' },
+  SPAWN_SUMMON_REPLACE: { en: 'replaces its summon', ko: '소환수 교체' },
+  MOVE_TO_TARGET: { en: 'dashes to the target', ko: '대상에게 돌진' },
+  MOVE_TO_DIRECTION: { en: 'moves in a direction', ko: '지정 방향으로 이동' },
+  MOVE_TO_SAVE_POSITION: { en: 'returns to its position', ko: '원위치로 복귀' },
+  LOOK_TARGET: { en: 'turns to the target', ko: '대상을 바라봄' },
 };
 
 // `PASSIVE_TRIGGER_TYPE` — the battle event that fires a passive.
-export const TRIGGER_LABEL: Record<string, string> = {
-  TRIGGER_TYPE_BATTLE_START: 'Battle start',
-  TRIGGER_TYPE_WAVE_START: 'Wave start',
-  TRIGGER_TYPE_ACTOR_DEAD: 'On death',
-  TRIGGER_TYPE_KILL: 'On kill',
-  TRIGGER_TYPE_HIT: 'When hit',
-  TRIGGER_TYPE_HIT_CRI: 'When crit',
-  TRIGGER_TYPE_ATTACK: 'On attack',
-  TRIGGER_TYPE_ATTACK_CRI: 'On critical hit',
-  TRIGGER_TYPE_HEAL: 'On heal',
-  TRIGGER_TYPE_USE_SKILL: 'On skill use',
-  TRIGGER_TYPE_DURATION_CATEGORIZE_APPLY: 'When a state category is applied',
-  TRIGGER_TYPE_DURATION_CATEGORIZE_DISPEL: 'When a state category is dispelled',
-  TRIGGER_TYPE_DURATION_CATEGORIZE_EXPIRED: 'When a state category expires',
-  TRIGGER_TYPE_DURATION_DEFINE_APPLY: 'When a state is applied',
-  TRIGGER_TYPE_DURATION_DEFINE_DISPEL: 'When a state is dispelled',
-  TRIGGER_TYPE_DURATION_DEFINE_EXPIRED: 'When a state expires',
-  TRIGGER_TYPE_ONETIME_CATEGORY_APPLY: 'When an instant category lands',
-  TRIGGER_TYPE_ONETIME_DEFINE_APPLY: 'When an instant lands',
-  TRIGGER_TYPE_SUMMON: 'On summon',
-  TRIGGER_TYPE_SUMMON_DEAD: 'When a summon dies',
-  TRIGGER_TYPE_SUMMON_AFTER: 'After summoning',
-  TRIGGER_TYPE_UNSUMMON: 'On unsummon',
-  TRIGGER_TYPE_REPEAT_COOLTIME: 'On a timer',
+export const TRIGGER_LABEL: Record<string, Localized> = {
+  TRIGGER_TYPE_BATTLE_START: { en: 'Battle start', ko: '전투 시작 시' },
+  TRIGGER_TYPE_WAVE_START: { en: 'Wave start', ko: '웨이브 시작 시' },
+  TRIGGER_TYPE_ACTOR_DEAD: { en: 'On death', ko: '사망 시' },
+  TRIGGER_TYPE_KILL: { en: 'On kill', ko: '적 처치 시' },
+  TRIGGER_TYPE_HIT: { en: 'When hit', ko: '피격 시' },
+  TRIGGER_TYPE_HIT_CRI: { en: 'When crit', ko: '치명타 피격 시' },
+  TRIGGER_TYPE_ATTACK: { en: 'On attack', ko: '공격 시' },
+  TRIGGER_TYPE_ATTACK_CRI: { en: 'On critical hit', ko: '치명타 공격 시' },
+  TRIGGER_TYPE_HEAL: { en: 'On heal', ko: '치유 시' },
+  TRIGGER_TYPE_USE_SKILL: { en: 'On skill use', ko: '스킬 사용 시' },
+  TRIGGER_TYPE_DURATION_CATEGORIZE_APPLY: {
+    en: 'When a state category is applied', ko: '상태 계열 적용 시',
+  },
+  TRIGGER_TYPE_DURATION_CATEGORIZE_DISPEL: {
+    en: 'When a state category is dispelled', ko: '상태 계열 해제 시',
+  },
+  TRIGGER_TYPE_DURATION_CATEGORIZE_EXPIRED: {
+    en: 'When a state category expires', ko: '상태 계열 만료 시',
+  },
+  TRIGGER_TYPE_DURATION_DEFINE_APPLY: { en: 'When a state is applied', ko: '상태 적용 시' },
+  TRIGGER_TYPE_DURATION_DEFINE_DISPEL: { en: 'When a state is dispelled', ko: '상태 해제 시' },
+  TRIGGER_TYPE_DURATION_DEFINE_EXPIRED: { en: 'When a state expires', ko: '상태 만료 시' },
+  TRIGGER_TYPE_ONETIME_CATEGORY_APPLY: {
+    en: 'When an instant category lands', ko: '즉시 효과 계열 적중 시',
+  },
+  TRIGGER_TYPE_ONETIME_DEFINE_APPLY: { en: 'When an instant lands', ko: '즉시 효과 적중 시' },
+  TRIGGER_TYPE_SUMMON: { en: 'On summon', ko: '소환 시' },
+  TRIGGER_TYPE_SUMMON_DEAD: { en: 'When a summon dies', ko: '소환수 사망 시' },
+  TRIGGER_TYPE_SUMMON_AFTER: { en: 'After summoning', ko: '소환 직후' },
+  TRIGGER_TYPE_UNSUMMON: { en: 'On unsummon', ko: '소환 해제 시' },
+  TRIGGER_TYPE_REPEAT_COOLTIME: { en: 'On a timer', ko: '일정 시간마다' },
 };
 
 // `PASSIVE_SETUP_CONDITION` — the party-composition gate on a stat grant.
-export const SETUP_CONDITION_LABEL: Record<string, string> = {
-  CHARACTER_ID_INCLUDED_PARTY: 'with a named partner in the party',
-  CHARACTER_ID_EXCLUDED_PARTY: 'without a named partner in the party',
-  ATTRIBUTE_COUNT_MORE_PARTY: 'with enough of one element in the party',
-  ATTRIBUTE_COUNT_LESS_PARTY: 'with few enough of one element in the party',
-  DIVISION_COUNT_MORE_PARTY: 'with enough of one division in the party',
-  DIVISION_COUNT_LESS_PARTY: 'with few enough of one division in the party',
-  ROLE_COUNT_MORE_PARTY: 'with enough of one role in the party',
-  ROLE_COUNT_LESS_PARTY: 'with few enough of one role in the party',
-  FACTION_COUNT_MORE_PARTY: 'with enough of one faction in the party',
-  FACTION_COUNT_LESS_PARTY: 'with few enough of one faction in the party',
+export const SETUP_CONDITION_LABEL: Record<string, Localized> = {
+  CHARACTER_ID_INCLUDED_PARTY: {
+    en: 'with a named partner in the party', ko: '파티에 지정 캐릭터가 있을 때',
+  },
+  CHARACTER_ID_EXCLUDED_PARTY: {
+    en: 'without a named partner in the party', ko: '파티에 지정 캐릭터가 없을 때',
+  },
+  ATTRIBUTE_COUNT_MORE_PARTY: {
+    en: 'with enough of one element in the party', ko: '파티의 같은 속성이 일정 수 이상일 때',
+  },
+  ATTRIBUTE_COUNT_LESS_PARTY: {
+    en: 'with few enough of one element in the party', ko: '파티의 같은 속성이 일정 수 이하일 때',
+  },
+  DIVISION_COUNT_MORE_PARTY: {
+    en: 'with enough of one division in the party', ko: '파티의 같은 진영이 일정 수 이상일 때',
+  },
+  DIVISION_COUNT_LESS_PARTY: {
+    en: 'with few enough of one division in the party', ko: '파티의 같은 진영이 일정 수 이하일 때',
+  },
+  ROLE_COUNT_MORE_PARTY: {
+    en: 'with enough of one role in the party', ko: '파티의 같은 역할이 일정 수 이상일 때',
+  },
+  ROLE_COUNT_LESS_PARTY: {
+    en: 'with few enough of one role in the party', ko: '파티의 같은 역할이 일정 수 이하일 때',
+  },
+  FACTION_COUNT_MORE_PARTY: {
+    en: 'with enough of one faction in the party', ko: '파티의 같은 소속이 일정 수 이상일 때',
+  },
+  FACTION_COUNT_LESS_PARTY: {
+    en: 'with few enough of one faction in the party', ko: '파티의 같은 소속이 일정 수 이하일 때',
+  },
 };
 
 // `SCREAMING_SNAKE` -> `Screaming snake`. The fallback for any constant the
@@ -585,20 +651,34 @@ export function prettyConst(name: string): string {
   return words ? words[0].toUpperCase() + words.slice(1) : '';
 }
 
-export function labelOf(table: Record<string, string>, name: string | null): string {
+export function labelOf(
+  table: Record<string, Localized>, name: string | null, lang: Lang = 'en',
+): string {
   if (!name) return '';
-  return table[name] ?? prettyConst(name);
+  const entry = table[name];
+  return entry ? entry[lang] : prettyConst(name);
+}
+
+export function secondsText(value: number, lang: Lang = 'en'): string {
+  return lang === 'ko' ? `${value}초` : `${value}s`;
+}
+
+export function everySecondsText(value: number, lang: Lang = 'en'): string {
+  return lang === 'ko' ? `${value}초마다` : `every ${value}s`;
 }
 
 // `ticks` is how many detections one spawn makes, `count` how many times the
 // skill spawns it.
-export function hitSummary(hit: SkillHit): string {
+export function hitSummary(hit: SkillHit, lang: Lang = 'en'): string {
   const parts: string[] = [];
   const lands = hit.count * Math.max(1, hit.ticks);
-  if (lands > 1) parts.push(`${lands} hits`);
-  if (hit.shape === 'GLOBAL') parts.push('whole field');
-  else if (hit.shape) parts.push(`${labelOf(SHAPE_LABEL, hit.shape).toLowerCase()} ${hit.range}`);
-  if (hit.ticks > 1 && hit.cycle) parts.push(`every ${hit.cycle}s`);
+  if (lands > 1) parts.push(lang === 'ko' ? `${lands}회 타격` : `${lands} hits`);
+  if (hit.shape === 'GLOBAL') parts.push(labelOf(SHAPE_LABEL, 'GLOBAL', lang).toLowerCase());
+  else if (hit.shape) {
+    const shape = labelOf(SHAPE_LABEL, hit.shape, lang);
+    parts.push(`${lang === 'ko' ? shape : shape.toLowerCase()} ${hit.range}`);
+  }
+  if (hit.ticks > 1 && hit.cycle) parts.push(everySecondsText(hit.cycle, lang));
   return parts.join(' · ');
 }
 
@@ -620,8 +700,11 @@ const ORDINAL = ['', '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9t
  * The cast target, i.e. what the hitbox centres on. Who is affected is on the
  * operation — a hitbox anchored on `SELF` can still pick every enemy in it.
  */
-export function castSummary(cast: NonNullable<SkillHit['cast']>): string {
+export function castSummary(
+  cast: NonNullable<SkillHit['cast']>, lang: Lang = 'en',
+): string {
   if (!cast.team) return '';
+  if (lang === 'ko') return castSummaryKo(cast);
   if (cast.team === 'SELF') return 'self';
   const one = TARGET_ONE[cast.team] ?? labelOf(TARGET_LABEL, cast.team);
   const many = labelOf(TARGET_LABEL, cast.team);
@@ -642,16 +725,30 @@ export function castSummary(cast: NonNullable<SkillHit['cast']>): string {
     : `the${how} ${one}${where}`;
 }
 
+// The Korean reads modifier-first — where, then how it picks, then the target —
+// so it is built rather than translated phrase by phrase.
+function castSummaryKo(cast: NonNullable<SkillHit['cast']>): string {
+  if (cast.team === 'SELF') return '자신';
+  const who = labelOf(TARGET_LABEL, cast.team, 'ko');
+  const where = cast.range && cast.range !== 'ALL'
+    ? `${labelOf(SHAPE_LABEL, cast.range, 'ko')}의 `
+    : '';
+  if (cast.pick === 'ALL') return `${where}모든 ${who}`;
+  const how = cast.sort ? `${labelOf(SORT_LABEL, cast.sort, 'ko')} ` : '';
+  if (cast.pick === 'NTH_TARGET_SELECT') return `${where}${how}${who} 중 ${cast.count}번째`;
+  return cast.count > 1 ? `${where}${how}${who} ${cast.count}명` : `${where}${how}${who}`;
+}
+
 // `DURATION_CATEGORIZE_TYPE` and `ONETIME_CATEGORIZE_TYPE`, as a clear or an
 // immunity names them.
-export const CATEGORY_LABEL: Record<string, string> = {
-  CATEGORIZE_BUFF: 'buffs',
-  CATEGORIZE_DEBUFF: 'debuffs',
-  CATEGORIZE_CC: 'crowd control',
-  DAMAGE: 'damage',
-  HEAL: 'healing',
-  MOVE_CONTROL: 'displacement',
-  DISPELL: 'dispels',
+export const CATEGORY_LABEL: Record<string, Localized> = {
+  CATEGORIZE_BUFF: { en: 'buffs', ko: '버프' },
+  CATEGORIZE_DEBUFF: { en: 'debuffs', ko: '디버프' },
+  CATEGORIZE_CC: { en: 'crowd control', ko: '군중 제어' },
+  DAMAGE: { en: 'damage', ko: '피해' },
+  HEAL: { en: 'healing', ko: '치유' },
+  MOVE_CONTROL: { en: 'displacement', ko: '이동 효과' },
+  DISPELL: { en: 'dispels', ko: '해제 효과' },
 };
 
 /**
@@ -690,12 +787,14 @@ function sixSigFigs(v: number): number {
   return Number(v.toPrecision(6));
 }
 
-export function opSeconds(op: SkillOp, level: number, period: number): string {
+export function opSeconds(
+  op: SkillOp, level: number, period: number, lang: Lang = 'en',
+): string {
   if (!op.seconds) return '';
   const s = growValue(op.seconds, level, period);
   // 99999 is the table's "for the whole battle"
   if (!s || s >= 9999) return '';
-  return `${s}s`;
+  return secondsText(s, lang);
 }
 
 // A `*_RATE` is a coefficient on the stat rather than a flat amount, so it
@@ -706,25 +805,29 @@ export function statAmount(stat: SkillStat): string {
   return `${pct > 0 ? '+' : ''}${pct}%`;
 }
 
-export function scaleSummary(op: SkillOp | SkillStat): string {
+export function scaleSummary(op: SkillOp | SkillStat, lang: Lang = 'en'): string {
   if (!op.scale) return '';
-  const stat = labelOf(STAT_LABEL, op.scale);
-  const side = 'scaleOf' in op && op.scaleOf ? SIDE_LABEL[op.scaleOf] ?? '' : '';
-  return side ? `${stat} of the ${side}` : stat;
+  const stat = labelOf(STAT_LABEL, op.scale, lang);
+  const side = 'scaleOf' in op && op.scaleOf
+    ? labelOf(SIDE_LABEL, op.scaleOf, lang) : '';
+  if (!side) return stat;
+  return lang === 'ko' ? `${side}의 ${stat}` : `${stat} of the ${side}`;
 }
 
 // A marker has no name the game ever shows, so it is named as what it is
 // rather than by printing its table id.
-export const INTERNAL_STATE = 'an internal state';
+export const INTERNAL_STATE: Localized = { en: 'an internal state', ko: '내부 상태' };
 
-export function detailSummary(detail: SkillDetail): string[] {
+export function detailSummary(detail: SkillDetail, lang: Lang = 'en'): string[] {
   if (detail.kind.endsWith('Category')) {
-    return detail.values.map((v) => labelOf(CATEGORY_LABEL, v.name ?? v.id));
+    return detail.values.map((v) => labelOf(CATEGORY_LABEL, v.name ?? v.id, lang));
   }
   const named = detail.values.filter((v) => v.name).map((v) => v.name as string);
   const internal = detail.values.length - named.length;
   if (!internal) return named;
-  return [...named, internal > 1 ? `${internal} internal states` : INTERNAL_STATE];
+  const more = lang === 'ko'
+    ? `내부 상태 ${internal}종` : `${internal} internal states`;
+  return [...named, internal > 1 ? more : INTERNAL_STATE[lang]];
 }
 
 /**
@@ -732,17 +835,45 @@ export function detailSummary(detail: SkillDetail): string[] {
  * the type tables. `SAME_ATTRIBUTE_TYPE` / `SAME_POSITION_TYPE` also carry a
  * value whose role is not decoded, so only the comparison is stated.
  */
-export function gateSummary(gate: SkillGate, data: CharacterData): string {
+export function gateSummary(
+  gate: SkillGate, data: CharacterData, lang: Lang = 'en',
+): string {
   const [first, second] = gate.values;
   const id = first?.id ?? '';
-  const state = first?.name ?? INTERNAL_STATE;
+  const state = first?.name ?? INTERNAL_STATE[lang];
   const n = second?.id ?? '';
   const pct = `${Number((Number(id) * 100).toPrecision(6))}%`;
-  const typed = (table: TypeTable) => typeLabel(data.types[table][id] ?? null) || id;
-  const named = () => Object.values(data.characters)
-    .find((c) => c.id === Number(id))?.name ?? id;
-  const category = labelOf(CATEGORY_LABEL,
-    DURATION_CATEGORY_CONST[id] ?? id);
+  const typed = (table: TypeTable) => typeLabel(data.types[table][id] ?? null, lang) || id;
+  const named = () => {
+    const c = Object.values(data.characters).find((entry) => entry.id === Number(id));
+    return c ? characterName(c, lang) : id;
+  };
+  const category = labelOf(CATEGORY_LABEL, DURATION_CATEGORY_CONST[id] ?? id, lang);
+
+  if (lang === 'ko') {
+    switch (gate.condition) {
+      case 'HP_GREATER_OR_EQUAL': return `체력 ${pct} 이상일 때`;
+      case 'HP_LESS_OR_EQUAL': return `체력 ${pct} 이하일 때`;
+      case 'HP_GREATER_THAN': return `체력 ${pct} 초과일 때`;
+      case 'HP_LESS_THAN': return `체력 ${pct} 미만일 때`;
+      case 'HAS_DURATIONS':
+      case 'HAS_ANY_DURATIONS': return `${state} 보유 시`;
+      case 'LACKS_DURATIONS':
+      case 'LACKS_ANY_DURATIONS': return `${state} 미보유 시`;
+      case 'HAS_DURATION_STACK_SAME': return `${state} 정확히 ${n}중첩일 때`;
+      case 'HAS_DURATION_STACK_NOT_SAME': return `${state} ${n}중첩이 아닐 때`;
+      case 'HAS_DURATION_STACK_MORE': return `${state} ${n}중첩 이상일 때`;
+      case 'HAS_DURATION_TYPE': return `${category} 보유 시`;
+      case 'LACKS_DURATION_TYPE': return `${category} 미보유 시`;
+      case 'SAME_ATTRIBUTE_TYPE': return '같은 속성일 때';
+      case 'NOT_SAME_ATTRIBUTE_TYPE': return '다른 속성일 때';
+      case 'SAME_POSITION_TYPE': return '같은 포지션일 때';
+      case 'CONDITION_CHECK_CHARACTER_ID': return `${named()}만`;
+      case 'CONDITION_CHECK_CHARACTER_FACTION': return `${typed('faction')}만`;
+      case 'CONDITION_CHECK_CHARACTER_DIVISION': return `${typed('division')}만`;
+      default: return gate.condition ? prettyConst(gate.condition) : '';
+    }
+  }
 
   switch (gate.condition) {
     case 'HP_GREATER_OR_EQUAL': return `at ${pct} HP or more`;

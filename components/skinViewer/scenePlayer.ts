@@ -2,7 +2,7 @@
 // audio and the presentation, and resolves each park by running it again.
 
 import {
-  ScriptMachine, type Armed, type ArmedOnlook, type Command, type Effect, type Park,
+  ScriptMachine, type Armed, type Command, type Effect, type Park,
 } from './interpreter.ts';
 import type { Vars } from './interactions.ts';
 
@@ -13,6 +13,8 @@ export type SceneHost = {
   cancel(handle: number | null): void;
   /** Seconds the clip on `track` has left; null asks for the body track. */
   remaining(track: number | null): number;
+  /** Seconds until every one-shot now playing, on any track, has finished. */
+  remainingReaction(): number;
   playAnimation(clip: string, loop: boolean, track: number | null, hold: boolean): void;
   /** The looping clip the actor returns to when a one-shot ends on its track. */
   setIdle(clip: string, track: number | null): void;
@@ -132,6 +134,17 @@ export function createScenePlayer(
       timer = host.schedule(step, Math.max(0, park.seconds));
     } else if (park.kind === 'wait-animation') {
       timer = host.schedule(step, Math.max(0, host.remaining(park.track)));
+    } else if (park.kind === 'wait-reaction') {
+      timer = host.schedule(step, Math.max(0, host.remainingReaction()));
+    }
+  };
+
+  /** Boredom is "nothing happened for a while", so any input restarts it. */
+  const restampOnlooks = () => {
+    const at = host.now();
+    for (const entry of armed) {
+      if (entry.kind !== 'onlook') continue;
+      onlookArmedAt.set(entry.at, { stamp: entry.stamp, at });
     }
   };
 
@@ -180,13 +193,17 @@ export function createScenePlayer(
     },
 
     /**
+     * A pointer event on the actor. A tap that reached no box still passes
+     * `null`: it restarts the onlook deadline like any other interaction.
+     *
      * A registration is held by the actor, not by the playback index, so it
      * stays hittable while the index is parked on a wait — a phase that
      * registers its only trigger and then waits could not be left otherwise.
      */
-    touch(box: string): boolean {
+    touch(box: string | null): boolean {
       if (stopped || park.kind === 'end') return false;
-      const entry = triggerFor(box);
+      restampOnlooks();
+      const entry = box ? triggerFor(box) : null;
       if (!entry) return false;
       machine.fire(entry.at);
       step();
@@ -208,15 +225,18 @@ export function createScenePlayer(
       return true;
     },
 
-    /** Onlooks are a per-frame deadline, polled on the scene clock so they
-     *  stretch and pause with the rig. */
+    /**
+     * The onlook deadline, polled on the scene clock so it pauses and scales
+     * with the rig. Only an armed phase is polled, so a reaction — which parks
+     * the machine and leaves nothing registered — is never interrupted.
+     */
     tick(): void {
       if (stopped || park.kind !== 'armed') return;
       const now = host.now();
       for (const entry of armed) {
         if (entry.kind !== 'onlook') continue;
         const stamped = onlookArmedAt.get(entry.at);
-        if (!stamped || stamped.at + (entry as ArmedOnlook).threshold > now) continue;
+        if (!stamped || stamped.at + entry.threshold > now) continue;
         onlookArmedAt.set(entry.at, { stamp: entry.stamp, at: now });
         machine.fire(entry.at);
         step();

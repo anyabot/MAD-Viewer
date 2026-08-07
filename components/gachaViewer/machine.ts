@@ -7,6 +7,7 @@
 // The client advances a phase by *holding*, and falls back to `touch_cancel_0N`
 // when the hold breaks early. The viewer advances on a **tap** instead, so the
 // three cancel clips have no trigger here and the `Cancel` state is not reached.
+import type { Localized } from '@/lib/i18n';
 
 export type GachaState =
   | 'intro' | 'idle' | 'phase1' | 'phase2' | 'phase3' | 'end' | 'done';
@@ -132,12 +133,12 @@ export function runState(state: GachaState, host: GachaHost): Promise<GachaState
   return STATES[state](host);
 }
 
-export const STATE_LABEL: Record<GachaState, string> = {
-  intro: 'Intro',
-  idle: 'Idle',
-  phase1: 'Phase 1',
-  phase2: 'Phase 2',
-  phase3: 'Phase 3',
-  end: 'End',
-  done: 'Done',
+export const STATE_LABEL: Record<GachaState, Localized> = {
+  intro: { en: 'Intro', ko: '인트로' },
+  idle: { en: 'Idle', ko: '대기' },
+  phase1: { en: 'Phase 1', ko: '1단계' },
+  phase2: { en: 'Phase 2', ko: '2단계' },
+  phase3: { en: 'Phase 3', ko: '3단계' },
+  end: { en: 'End', ko: '종료' },
+  done: { en: 'Done', ko: '완료' },
 };

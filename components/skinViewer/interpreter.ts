@@ -47,6 +47,8 @@ export type Park =
   | { kind: 'wait'; seconds: number }
   /** Wait for the clip on `track`; null means the most recently authored one. */
   | { kind: 'wait-animation'; track: number | null }
+  /** Wait for everything a trigger's body started, on whatever track. */
+  | { kind: 'wait-reaction' }
   | { kind: 'wait-input' }
   | { kind: 'armed' }
   | { kind: 'end' };
@@ -134,7 +136,8 @@ export function waitSeconds(mode: string): number {
  * An open nested body.
  *
  * `command` — the owner started its own playback and is a barrier on exit.
- * `trigger` — the index returns to the owner, which re-registers it.
+ * `trigger` — on exit the owner waits for its own clip, then the index returns
+ *   to the actor's idle command, which re-registers the whole phase.
  * `group`   — one `@PickRandom` alternative; exit continues past the pick.
  *
  * `depth` is the `Gosub` stack height the frame opened at. A body ends when the
@@ -164,6 +167,12 @@ export class ScriptMachine {
 
   /** An empty `@desire.wait` waits for this, not for an assumed body track. */
   lastTrack: number | null = null;
+
+  /**
+   * The actor's idle spot: the index a finished trigger returns to. It belongs
+   * to the actor, so it survives a jump and is replaced only by another idle.
+   */
+  private idleAt: number | null = null;
 
   private stack: number[] = [];
 
@@ -236,9 +245,16 @@ export class ScriptMachine {
     return true;
   }
 
-  /** The index returns to the trigger on its body's exit, which re-arms it. */
+  /**
+   * Firing clears the actor's whole registration list, so nothing else can be
+   * triggered until the reaction has finished and the index has walked the
+   * phase again. The view menu's reset is registered elsewhere and survives.
+   */
   fire(at: number): void {
     if (!this.program[at]) return;
+    for (const [key, entry] of this.registered) {
+      if (entry.kind !== 'reset') this.registered.delete(key);
+    }
     this.firing = at;
     this.halted = false;
   }
@@ -319,9 +335,13 @@ export class ScriptMachine {
           continue;
         }
         if (frame.kind === 'trigger') {
-          // Re-executing the trigger is what re-registers it.
-          this.pc = frame.at;
-          continue;
+          // The trigger holds until everything its body started has played, then
+          // hands the index back to the actor's idle — walking the phase from
+          // there is what re-arms every trigger, the onlook with a fresh
+          // deadline. A nested trigger returns to its host instead, so it keeps
+          // re-executing itself.
+          this.pc = this.frames.length ? frame.at : this.idleAt ?? frame.at;
+          return this.park({ kind: 'wait-reaction' }, effects);
         }
         // On its body's exit the owner still waits for its own playback.
         this.pc = frame.end;
@@ -471,6 +491,7 @@ export class ScriptMachine {
             const track = this.track(f.Track, c.clip);
             effects.push({ kind: 'idle', clip: c.clip, track });
             this.lastTrack = track;
+            this.idleAt = this.pc;
           }
           this.pc++;
           break;

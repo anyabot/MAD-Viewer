@@ -28,6 +28,7 @@
     6,
     11
    ],
+   "skillMaterialGroup": 201,
    "nameUppercaseKey": "character_uppercase_name_ch0001",
    "nameUppercase": "LUCIA",
    "birthday": [
@@ -339,6 +340,7 @@
     5,
     9
    ],
+   "skillMaterialGroup": 202,
    "nameUppercaseKey": "character_uppercase_name_ch0002",
    "nameUppercase": "LAILA",
    "birthday": [
@@ -639,6 +641,7 @@
     5,
     12
    ],
+   "skillMaterialGroup": 101,
    "nameUppercaseKey": "character_uppercase_name_ch0005",
    "nameUppercase": "CLAIRE",
    "birthday": [
@@ -942,6 +945,7 @@
     6,
     11
    ],
+   "skillMaterialGroup": 201,
    "nameUppercaseKey": "character_uppercase_name_ch0006",
    "nameUppercase": "EILEEN",
    "birthday": [
@@ -1248,6 +1252,7 @@
     7,
     12
    ],
+   "skillMaterialGroup": 403,
    "nameUppercaseKey": "character_uppercase_name_ch0007",
    "nameUppercase": "MANE",
    "birthday": [
@@ -1549,6 +1554,7 @@
     7,
     10
    ],
+   "skillMaterialGroup": 402,
    "nameUppercaseKey": "character_uppercase_name_ch0009",
    "nameUppercase": "ELISIA",
    "birthday": [
@@ -1849,6 +1855,7 @@
     7,
     12
    ],
+   "skillMaterialGroup": 403,
    "nameUppercaseKey": "character_uppercase_name_ch0010",
    "nameUppercase": "MANE (SUMMER)",
    "birthday": [
@@ -2155,6 +2162,7 @@
     6,
     12
    ],
+   "skillMaterialGroup": 204,
    "nameUppercaseKey": "character_uppercase_name_ch0011",
    "nameUppercase": "CHISE",
    "birthday": [
@@ -2452,6 +2460,7 @@
     6,
     12
    ],
+   "skillMaterialGroup": 301,
    "nameUppercaseKey": "character_uppercase_name_ch0012",
    "nameUppercase": "MARCIA",
    "birthday": [
@@ -2747,6 +2756,7 @@
     7,
     10
    ],
+   "skillMaterialGroup": 302,
    "nameUppercaseKey": "character_uppercase_name_ch0013",
    "nameUppercase": "Sir. Romance",
    "birthday": [
@@ -3047,6 +3057,7 @@
     8,
     12
    ],
+   "skillMaterialGroup": 102,
    "nameUppercaseKey": "character_uppercase_name_ch0015",
    "nameUppercase": "INES",
    "birthday": [
@@ -3359,6 +3370,7 @@
     5,
     11
    ],
+   "skillMaterialGroup": 303,
    "nameUppercaseKey": "character_uppercase_name_ch0016",
    "nameUppercase": "REANNA",
    "birthday": [
@@ -3660,6 +3672,7 @@
     7,
     10
    ],
+   "skillMaterialGroup": 202,
    "nameUppercaseKey": "character_uppercase_name_ch0017",
    "nameUppercase": "SHIZUKU",
    "birthday": [
@@ -3960,6 +3973,7 @@
     8,
     10
    ],
+   "skillMaterialGroup": 304,
    "nameUppercaseKey": "character_uppercase_name_ch0019",
    "nameUppercase": "VICTORIA",
    "birthday": [
@@ -4275,6 +4289,7 @@
     5,
     9
    ],
+   "skillMaterialGroup": 301,
    "nameUppercaseKey": "character_uppercase_name_ch0020",
    "nameUppercase": "DANHEE",
    "birthday": [
@@ -4574,6 +4589,7 @@
     8,
     9
    ],
+   "skillMaterialGroup": 103,
    "nameUppercaseKey": "character_uppercase_name_ch0021",
    "nameUppercase": "HONGJEOP",
    "birthday": [
@@ -4897,6 +4913,7 @@
     7,
     12
    ],
+   "skillMaterialGroup": 104,
    "nameUppercaseKey": "character_uppercase_name_ch0022",
    "nameUppercase": "MIDWEN",
    "birthday": [
@@ -5189,6 +5206,7 @@
     8,
     12
    ],
+   "skillMaterialGroup": 302,
    "nameUppercaseKey": "character_uppercase_name_ch0023",
    "nameUppercase": "RONA",
    "birthday": [
@@ -5488,6 +5506,7 @@
     8,
     11
    ],
+   "skillMaterialGroup": 101,
    "nameUppercaseKey": "character_uppercase_name_ch0024",
    "nameUppercase": "ALONE",
    "birthday": [
@@ -5785,6 +5804,7 @@
     6,
     9
    ],
+   "skillMaterialGroup": 303,
    "nameUppercaseKey": "character_uppercase_name_ch0025",
    "nameUppercase": "KAGE",
    "birthday": [
@@ -6095,6 +6115,7 @@
     7,
     12
    ],
+   "skillMaterialGroup": 102,
    "nameUppercaseKey": "character_uppercase_name_ch0026",
    "nameUppercase": "SOPHIA",
    "birthday": [
@@ -6407,6 +6428,7 @@
     6,
     11
    ],
+   "skillMaterialGroup": 103,
    "nameUppercaseKey": "character_uppercase_name_ch0027",
    "nameUppercase": "EMILY",
    "birthday": [
@@ -6706,6 +6728,7 @@
     7,
     11
    ],
+   "skillMaterialGroup": 304,
    "nameUppercaseKey": "character_uppercase_name_ch0028",
    "nameUppercase": "CHARLOTTE",
    "birthday": [
@@ -7006,6 +7029,7 @@
     7,
     9
    ],
+   "skillMaterialGroup": 404,
    "nameUppercaseKey": "character_uppercase_name_ch0029",
    "nameUppercase": "FREYA",
    "birthday": [
@@ -7305,6 +7329,7 @@
     6,
     10
    ],
+   "skillMaterialGroup": 203,
    "nameUppercaseKey": "character_uppercase_name_ch0030",
    "nameUppercase": "SEVEN",
    "birthday": [
@@ -7604,6 +7629,7 @@
     8,
     12
    ],
+   "skillMaterialGroup": 204,
    "nameUppercaseKey": "character_uppercase_name_ch0031",
    "nameUppercase": "HINATA",
    "birthday": [
@@ -7917,6 +7943,7 @@
     7,
     12
    ],
+   "skillMaterialGroup": 301,
    "nameUppercaseKey": "character_uppercase_name_ch0032",
    "nameUppercase": "SUJI",
    "birthday": [
@@ -8241,6 +8268,7 @@
     7,
     11
    ],
+   "skillMaterialGroup": 401,
    "nameUppercaseKey": "character_uppercase_name_ch0034",
    "nameUppercase": "THETA",
    "birthday": [
@@ -8541,6 +8569,7 @@
     7,
     10
    ],
+   "skillMaterialGroup": 203,
    "nameUppercaseKey": "character_uppercase_name_ch0035",
    "nameUppercase": "YURIA",
    "birthday": [
@@ -8838,6 +8867,7 @@
     7,
     12
    ],
+   "skillMaterialGroup": 402,
    "nameUppercaseKey": "character_uppercase_name_ch0036",
    "nameUppercase": "LUMINA",
    "birthday": [
@@ -9149,6 +9179,7 @@
     7,
     10
    ],
+   "skillMaterialGroup": 403,
    "nameUppercaseKey": "character_uppercase_name_ch0037",
    "nameUppercase": "KASA",
    "birthday": [
@@ -9448,6 +9479,7 @@
     5,
     10
    ],
+   "skillMaterialGroup": 404,
    "nameUppercaseKey": "character_uppercase_name_ch0038",
    "nameUppercase": "VALENTINA",
    "birthday": [
@@ -9750,6 +9782,7 @@
     6,
     10
    ],
+   "skillMaterialGroup": 203,
    "nameUppercaseKey": "character_uppercase_name_ch0039",
    "nameUppercase": "CAREN",
    "birthday": [
@@ -10050,6 +10083,7 @@
     7,
     10
    ],
+   "skillMaterialGroup": 104,
    "nameUppercaseKey": "character_uppercase_name_ch0042",
    "nameUppercase": "OBLIA",
    "birthday": [
@@ -10372,6 +10406,7 @@
     5,
     11
    ],
+   "skillMaterialGroup": 302,
    "nameUppercaseKey": "character_uppercase_name_ch0046",
    "nameUppercase": "JENNIE",
    "birthday": [
@@ -10671,6 +10706,7 @@
     5,
     11
    ],
+   "skillMaterialGroup": 202,
    "nameUppercaseKey": "character_uppercase_name_ch0050",
    "nameUppercase": "MIO",
    "birthday": [
@@ -10964,6 +11000,7 @@
     8,
     12
    ],
+   "skillMaterialGroup": 401,
    "nameUppercaseKey": "character_uppercase_name_ch0053",
    "nameUppercase": "GIN",
    "birthday": [
@@ -11264,6 +11301,7 @@
     5,
     10
    ],
+   "skillMaterialGroup": 201,
    "nameUppercaseKey": "character_uppercase_name_ch0054",
    "nameUppercase": "HARI",
    "birthday": [
@@ -11564,6 +11602,7 @@
     5,
     11
    ],
+   "skillMaterialGroup": 104,
    "nameUppercaseKey": "character_uppercase_name_ch0056",
    "nameUppercase": "AIREN",
    "birthday": [
@@ -11875,6 +11914,7 @@
     6,
     9
    ],
+   "skillMaterialGroup": 101,
    "nameUppercaseKey": "character_uppercase_name_ch0057",
    "nameUppercase": "CASEY",
    "birthday": [
@@ -12175,6 +12215,7 @@
     7,
     12
    ],
+   "skillMaterialGroup": 102,
    "nameUppercaseKey": "character_uppercase_name_ch0062",
    "nameUppercase": "TREACHE",
    "birthday": [
@@ -12474,6 +12515,7 @@
     6,
     10
    ],
+   "skillMaterialGroup": 203,
    "nameUppercaseKey": "character_uppercase_name_ch0063",
    "nameUppercase": "SERA",
    "birthday": [
@@ -12784,6 +12826,7 @@
     6,
     10
    ],
+   "skillMaterialGroup": 402,
    "nameUppercaseKey": "character_uppercase_name_ch0068",
    "nameUppercase": "CLAIRE",
    "birthday": [

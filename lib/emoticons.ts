@@ -12,7 +12,8 @@ export type EmotePlacement = {
   /** Skeleton bone the slot hangs off, as the rig spells it. */
   bone: string;
   offset: [number, number];
-  /** A prefab is authored for one facing, so a right-facing rig mirrors it. */
+  /** A prefab is authored to one side of its slot, so a right-side slot
+   *  mirrors it. */
   mirror: boolean;
   /** In hierarchy order. */
   emitters: EmoteEmitter[];
@@ -60,7 +61,11 @@ export function emotePlacement(
       url: emoteSheetUrl(emitter.sheet), width: size[0], height: size[1],
     };
   }
-  return { bone, offset, mirror: actor.look === 'Right', emitters, sheets };
+  // Emitters are authored to one side of the prefab origin, so a slot placed on
+  // the rig's right has to mirror or the effect reaches back over the head.
+  // Facing decides it only for a slot with no side of its own.
+  const mirror = offset[0] !== 0 ? offset[0] > 0 : actor.look === 'Right';
+  return { bone, offset, mirror, emitters, sheets };
 }
 
 export { loadEmoticons };

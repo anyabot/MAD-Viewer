@@ -12,10 +12,11 @@ import {
   type ActorPhase, type Layout, type PlayMode, type StoreKey, type TouchRegion,
 } from '@/components/skinViewer/types';
 import {
-  EFFECT_LABEL, REFERENCE_VIEW_WIDTH, SPEED_OPTIONS, TOUCH_INTERRUPT_DELAY,
+  EFFECT_LABEL, REFERENCE_VIEW_WIDTH, TOUCH_INTERRUPT_DELAY,
   TRACK_BODY, TRACK_FACE, TRACK_OVERLAY, WIDE_CUTSCENE_STAGING_SKINS,
-  animLabel, groupedOptions, isFaceAnim, pickDefault, polygonArea,
+  animLabel, groupedOptions, isFaceAnim, pickDefault, polygonArea, speedOptions,
 } from '@/components/skinViewer/constants';
+import { text, useLang, useT } from '@/lib/i18n';
 import { buildBackgrounds } from '@/components/skinViewer/background';
 import { createEmoteBubble } from '@/components/skinViewer/emote';
 import { createTouchOverlay } from '@/components/skinViewer/touchOverlay';
@@ -77,6 +78,8 @@ const EMPTY_ANIMATION = '<empty>';
 export default function SkinViewer({
   skin, height = '70vh', stores = [], store: storeProp, onStoreChange, unavailable,
 }: SkinViewerProps) {
+  const t = useT();
+  const lang = useLang();
   const diverged = stores.length > 1;
   const [store, setStore] = useState<StoreKey>(storeProp ?? stores[0] ?? 'onestore');
   useEffect(() => { if (storeProp && storeProp !== store) setStore(storeProp); }, [storeProp]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -809,6 +812,15 @@ export default function SkinViewer({
             const end = current.animationEnd ?? current.animation?.duration ?? 0;
             return Math.max(0, end - (current.trackTime ?? 0));
           },
+          remainingReaction: () => {
+            let longest = 0;
+            for (const cur of spine.state.tracks ?? []) {
+              if (!cur || cur.loop || cur.animation?.name === EMPTY_ANIMATION) continue;
+              const end = cur.animationEnd ?? cur.animation?.duration ?? 0;
+              longest = Math.max(longest, end - (cur.trackTime ?? 0));
+            }
+            return Math.max(0, longest);
+          },
           playAnimation: (clip, loop, track, hold) => {
             if (!animSet.has(clip)) return;
             const index = sceneTrack(clip, track);
@@ -966,25 +978,27 @@ export default function SkinViewer({
           // phase's `active` clip.
           if (player) {
             if (player.advance()) return;
-            if (!hitBox) {
-              setTouchInfo(looseBox
-                ? {
-                  box: looseBox,
-                  effect: looseRegion?.effect === 'physics' ? 'physics' : 'inert',
-                  detail: looseRegion?.effect === 'physics'
-                    ? (looseRegion.bone ?? '')
-                    : 'not armed here',
-                }
-                : { box: '(no region)', effect: 'inert', detail: 'nothing here' });
-              return;
-            }
             dbg('touch', { box: hitBox, vars: { ...(player.machine.vars) } });
+            // An onlook is bound to no box, so a tap that reached none still
+            // goes to the player before being reported inert.
             if (!player.touch(hitBox)) {
-              setTouchInfo({ box: hitBox, effect: 'inert', detail: 'no armed trigger here' });
+              if (hitBox) {
+                setTouchInfo({ box: hitBox, effect: 'inert', detail: 'no armed trigger here' });
+              } else {
+                setTouchInfo(looseBox
+                  ? {
+                    box: looseBox,
+                    effect: looseRegion?.effect === 'physics' ? 'physics' : 'inert',
+                    detail: looseRegion?.effect === 'physics'
+                      ? (looseRegion.bone ?? '')
+                      : 'not armed here',
+                  }
+                  : { box: '(no region)', effect: 'inert', detail: 'nothing here' });
+              }
               return;
             }
             setTouchInfo({
-              box: hitBox,
+              box: hitBox ?? '(no region)',
               effect: 'reaction',
               detail: [
                 player.machine.label ?? 'start',
@@ -1627,15 +1641,15 @@ export default function SkinViewer({
   const faceOptions = useMemo(() => {
     const faces = anims.filter(isFaceAnim);
     return faces.length
-      ? [{ value: '', label: '(animation default)' }, ...groupedOptions(faces)]
+      ? [{ value: '', label: text(lang, 'optAnimationDefault') }, ...groupedOptions(faces)]
       : [];
-  }, [anims]);
+  }, [anims, lang]);
   const overlayOptions = useMemo(() => {
     const overlays = anims.filter((a) => overlayAnims.has(a));
     return overlays.length
-      ? [{ value: '', label: '(none)' }, ...groupedOptions(overlays)]
+      ? [{ value: '', label: text(lang, 'optNone') }, ...groupedOptions(overlays)]
       : [];
-  }, [anims, overlayAnims]);
+  }, [anims, overlayAnims, lang]);
 
   const playbackContext: PlaybackContext = mode === 'manual' ? 'free_play'
     : mode === 'home' ? 'lobby'
@@ -1643,22 +1657,22 @@ export default function SkinViewer({
     : layout?.kind === 'affection' ? `affection_${sceneVariant}`
     : 'story';
   const playbackContextOptions: SelectOption[] = [
-    { value: 'free_play', label: 'Free play', hint: 'choose animations manually' },
-    ...(hasLobby ? [{ value: 'lobby', label: 'Lobby', hint: 'touch and boredom flow' }] : []),
+    { value: 'free_play', label: t('ctxFreePlay'), hint: t('ctxFreePlayHint') },
+    ...(hasLobby ? [{ value: 'lobby', label: t('ctxLobby'), hint: t('ctxLobbyHint') }] : []),
     ...(layout?.kind === 'desire' && timelineRig?.view
-      ? [{ value: 'desire_view', label: 'Desire View', hint: 'interactive display script' }]
+      ? [{ value: 'desire_view', label: t('ctxDesireView'), hint: t('ctxViewHint') }]
       : []),
     ...(layout?.kind === 'desire' && timelineRig?.story
-      ? [{ value: 'desire_story', label: 'Desire Story', hint: 'authored story timeline' }]
+      ? [{ value: 'desire_story', label: t('ctxDesireStory'), hint: t('ctxStoryHint') }]
       : []),
     ...(layout?.kind === 'affection' && timelineRig?.view
-      ? [{ value: 'affection_view', label: 'Affection View', hint: 'authored view timeline' }]
+      ? [{ value: 'affection_view', label: t('ctxAffectionView'), hint: t('ctxViewTimelineHint') }]
       : []),
     ...(layout?.kind === 'affection' && timelineRig?.story
-      ? [{ value: 'affection_story', label: 'Affection Story', hint: 'authored story timeline' }]
+      ? [{ value: 'affection_story', label: t('ctxAffectionStory'), hint: t('ctxStoryHint') }]
       : []),
     ...(layout?.kind === 'pleasure' && storySeqs.length
-      ? [{ value: 'story', label: 'Story', hint: 'sequential animation groups' }]
+      ? [{ value: 'story', label: t('ctxStory'), hint: t('ctxSequenceHint') }]
       : []),
   ];
   const reloadPlayback = () => {
@@ -1742,7 +1756,9 @@ export default function SkinViewer({
             <Center position="absolute" inset={0} color="gray.500" pointerEvents="none"
               flexDirection="column" gap={2}>
               <Spinner />
-              <Text fontSize="sm">{loadState === 'unpacking' ? 'unpacking…' : 'fetching…'}</Text>
+              <Text fontSize="sm">
+                {loadState === 'unpacking' ? t('stateUnpacking') : t('stateFetching')}
+              </Text>
             </Center>
           )}
 
@@ -1751,27 +1767,33 @@ export default function SkinViewer({
               px={2} py={1} pointerEvents="none" maxW="calc(100% - 16px)" zIndex={2}>
               <Text fontSize="xs" color="gray.300" noOfLines={1}>
                 {sceneState?.park.kind === 'wait-input'
-                  ? 'click to advance'
+                  ? t('hintClickAdvance')
                   : storySeq
-                  ? `${storySeq.group} ${storyStep + 1}/${storySeq.clips.length} — click to advance`
+                  ? t('hintStoryStep', {
+                    group: storySeq.group,
+                    step: storyStep + 1,
+                    total: storySeq.clips.length,
+                  })
                   : reaction
-                    ? `reacting: ${animLabel(reaction)}`
+                    ? t('hintReacting', { clip: animLabel(reaction) })
                     : hasTouchBoxes
-                      ? `click the figure${
+                      ? `${t('hintClickFigure')}${
                         mode === 'home' && jigglerCount
-                          ? dragJiggle ? ' (drag jiggles)' : ` (${jigglerCount} jigglers)`
+                          ? dragJiggle
+                            ? t('hintDragJiggles')
+                            : t('hintJigglerCount', { n: jigglerCount })
                           : ''}`
-                      : 'no touch regions'}
+                      : t('hintNoTouchRegions')}
               </Text>
               {touchInfo && (
                 <Text fontSize="xs" color="gray.500" noOfLines={1} fontFamily="mono">
-                  {touchInfo.box} → {EFFECT_LABEL[touchInfo.effect] ?? touchInfo.effect}
+                  {touchInfo.box} → {EFFECT_LABEL[touchInfo.effect]?.[lang] ?? touchInfo.effect}
                   {touchInfo.detail ? ` (${touchInfo.detail})` : ''}
                 </Text>
               )}
               {sceneState && (
                 <Text fontSize="xs" color="pink.300" noOfLines={2} fontFamily="mono">
-                  {sceneState.label ?? 'start'}
+                  {sceneState.label ?? t('sceneStart')}
                   {'  '}{sceneState.park.kind}
                   {Object.keys(sceneState.vars).length
                     ? '  ' + Object.entries(sceneState.vars).map(([k, v]) => `${k}=${v}`).join(' ')
@@ -1800,7 +1822,7 @@ export default function SkinViewer({
           {/* Theatre mode hides the sidebar, so its exit lives on the canvas. */}
           {theater && (
             <Box position="absolute" top={2} right={2} zIndex={3}>
-              <ActionButton icon="close" label="Exit theatre"
+              <ActionButton icon="close" label={t('btnExitTheatre')}
                 onClick={() => setViewer({ theater: false })} />
             </Box>
           )}
@@ -1812,68 +1834,69 @@ export default function SkinViewer({
           overflowY="auto" bg="gray.900" borderRadius="md" border="1px solid"
           borderColor="whiteAlpha.200" p={2}>
 
-          <ControlSection title="Playback">
+          <ControlSection title={t('viewerPlayback')}>
             {loadState === 'ready' && (
-              <ControlRow label="Mode">
+              <ControlRow label={t('rowMode')}>
                 <OverlaySelect icon="auto" value={playbackContext}
                   options={playbackContextOptions}
                   onChange={(value) => selectPlaybackContext(value as PlaybackContext)}
-                  minW="0" label="Playback context" />
+                  minW="0" label={t('ariaPlaybackContext')} />
               </ControlRow>
             )}
             {loadState === 'ready' && (
-              <ControlRow label="Speed">
-                <OverlaySelect icon="speed" value={String(speed)} options={SPEED_OPTIONS}
-                  onChange={(v) => setSpeed(Number(v))} minW="0" label="Playback speed" />
+              <ControlRow label={t('rowSpeed')}>
+                <OverlaySelect icon="speed" value={String(speed)} options={speedOptions(lang)}
+                  onChange={(v) => setSpeed(Number(v))} minW="0" label={t('ariaPlaybackSpeed')} />
               </ControlRow>
             )}
             {!autoMode && (
-              <ToggleRow label="Loop clip" value={loop} onChange={setLoop} />
+              <ToggleRow label={t('rowLoopClip')} value={loop} onChange={setLoop} />
             )}
             <Wrap spacing={1} pt={1}>
               <WrapItem>
-                <ActionButton icon={playing ? 'pause' : 'play'} label={playing ? 'Pause' : 'Play'}
+                <ActionButton icon={playing ? 'pause' : 'play'}
+                  label={playing ? t('btnPause') : t('btnPlay')}
                   onClick={() => setPlaying(!playing)} />
               </WrapItem>
               <WrapItem>
-                <ActionButton icon="reload" label="Restart" onClick={reloadPlayback} />
+                <ActionButton icon="reload" label={t('btnRestart')} onClick={reloadPlayback} />
               </WrapItem>
               {/* A parked `reset` waits on the view menu's own button. */}
               {canReset && (
                 <WrapItem>
-                  <ActionButton icon="reload" label="Reset"
+                  <ActionButton icon="reload" label={t('btnReset')}
                     onClick={() => scenePlayerRef.current?.reset()} />
                 </WrapItem>
               )}
               <WrapItem>
-                <ActionButton icon="save" label="Save PNG" onClick={handleSave} />
+                <ActionButton icon="save" label={t('btnSavePng')} onClick={handleSave} />
               </WrapItem>
             </Wrap>
           </ControlSection>
 
-          <ControlSection title="Animation">
+          <ControlSection title={t('viewerAnimation')}>
             {mode === 'manual' && bodyOptions.length > 1 && (
-              <ControlRow label="Body">
+              <ControlRow label={t('rowBody')}>
                 <OverlaySelect icon="body" value={bodyAnim} options={bodyOptions}
-                  onChange={setBodyAnim} minW="0" label="Body animation" />
+                  onChange={setBodyAnim} minW="0" label={t('ariaBodyAnimation')} />
               </ControlRow>
             )}
             {mode === 'home' && phases.length > 1 && (
-              <ControlRow label="Variation">
+              <ControlRow label={t('rowVariation')}>
                 <OverlaySelect icon="home" value={String(phaseIdx)} minW="0"
-                  label="Home variation"
+                  label={t('ariaHomeVariation')}
                   options={phases.map((p, i) => ({
                     value: String(i),
-                    label: `variation ${i + 1}`,
+                    label: t('optVariation', { n: i + 1 }),
                     hint: animLabel(p.idle ?? p.active ?? '?'),
                   }))}
                   onChange={(v) => setPhaseIdx(Number(v))} />
               </ControlRow>
             )}
             {sceneLabels.length > 1 && (
-              <ControlRow label="Stage">
+              <ControlRow label={t('rowStage')}>
                 <OverlaySelect icon="body" value={sceneState?.label ?? ''} minW="0"
-                  label="Script label"
+                  label={t('ariaScriptLabel')}
                   options={sceneLabels.map((label, i) => ({
                     value: label,
                     label: `${i + 1}. ${label}`,
@@ -1882,9 +1905,9 @@ export default function SkinViewer({
               </ControlRow>
             )}
             {storySeq && storySeqs.length > 1 && (
-              <ControlRow label="Sequence">
+              <ControlRow label={t('rowSequence')}>
                 <OverlaySelect icon="auto" value={String(storySeqIdx)} minW="0"
-                  label="Story sequence"
+                  label={t('ariaStorySequence')}
                   options={storySeqs.map((s, i) => ({
                     value: String(i),
                     label: `${s.group} (${s.clips.length})`,
@@ -1893,9 +1916,9 @@ export default function SkinViewer({
               </ControlRow>
             )}
             {storySeq && (
-              <ControlRow label="Step">
+              <ControlRow label={t('rowStep')}>
                 <OverlaySelect icon="body" value={String(storyStep)} minW="0"
-                  label="Story beat — clicking the figure advances"
+                  label={t('ariaStoryBeat')}
                   options={storySeq.clips.map((c, i) => ({
                     value: String(i),
                     label: `${i + 1}. ${animLabel(c)}`,
@@ -1906,91 +1929,90 @@ export default function SkinViewer({
             {/* The region→clip mapping is not in the rig, so clips no region
                 maps to are listed rather than left silently unplayable. */}
             {mode === 'scene' && reactionClips.length > 0 && (
-              <ControlRow label="Reaction">
-                <OverlaySelect icon="touch" value="" minW="0" label="Play a reaction clip"
-                  placeholder={`play one of ${reactionClips.length}`}
+              <ControlRow label={t('rowReaction')}>
+                <OverlaySelect icon="touch" value="" minW="0" label={t('ariaReactionClip')}
+                  placeholder={t('optPlayOneOf', { n: reactionClips.length })}
                   options={reactionClips.map((c) => ({
                     value: c,
                     label: animLabel(c),
-                    hint: orphanReactions.includes(c) ? 'conditional — no plain region' : undefined,
+                    hint: orphanReactions.includes(c) ? t('optConditional') : undefined,
                   }))}
                   onChange={(c) => {
                     if (!c) return;
-                    setTouchInfo({ box: '(manual)', effect: 'reaction', detail: c });
+                    setTouchInfo({ box: t('manualTouch'), effect: 'reaction', detail: c });
                     autoDriveRef.current?.(c);
                   }} />
               </ControlRow>
             )}
             {faceOptions.length > 1 && (
-              <ControlRow label="Face">
+              <ControlRow label={t('rowFace')}>
                 <OverlaySelect icon="face" value={faceAnim} options={faceOptions}
-                  onChange={setFaceAnim} minW="0" label="Face expression" />
+                  onChange={setFaceAnim} minW="0" label={t('ariaFaceExpression')} />
               </ControlRow>
             )}
             {overlayOptions.length > 1 && (
-              <ControlRow label="Overlay">
+              <ControlRow label={t('rowOverlay')}>
                 <OverlaySelect icon="overlay" value={overlayAnim} options={overlayOptions}
-                  onChange={setOverlayAnim} minW="0" label="Prop / effect overlay" />
+                  onChange={setOverlayAnim} minW="0" label={t('ariaOverlayClip')} />
               </ControlRow>
             )}
           </ControlSection>
 
-          <ControlSection title="Camera">
+          <ControlSection title={t('viewerCamera')}>
             {loadState === 'ready' && hasCameraControl && (
-              <ControlRow label="Camera">
-                <SegmentedControl<'free' | 'game'> ariaLabel="Camera mode"
+              <ControlRow label={t('viewerCamera')}>
+                <SegmentedControl<'free' | 'game'> ariaLabel={t('ariaCameraMode')}
                   value={followGameFlow ? 'game' : 'free'}
                   options={[
-                    { value: 'free', label: 'Free move', title: 'Pan and zoom by hand' },
-                    {
-                      value: 'game',
-                      label: 'Follow game',
-                      title: 'Play the script entry and follow the scripted camera',
-                    },
+                    { value: 'free', label: t('camFree'), title: t('camFreeHint') },
+                    { value: 'game', label: t('camGame'), title: t('camGameHint') },
                   ]}
                   onChange={(value) => setGameFlow(value === 'game')} />
               </ControlRow>
             )}
             {loadState === 'ready' && (
-              <ControlRow label="Aspect">
+              <ControlRow label={t('rowAspect')}>
                 <OverlaySelect icon="aspect" value={canvasAspect} minW="0"
-                  label="Canvas aspect ratio"
-                  options={CANVAS_ASPECTS.map((a) => ({ value: a.value, label: a.label }))}
+                  label={t('ariaCanvasAspect')}
+                  options={CANVAS_ASPECTS.map((a) => ({
+                    value: a.value,
+                    label: a.value === 'fill' ? t('aspectFill') : a.label,
+                  }))}
                   onChange={(v) => setViewer({ canvasAspect: v as CanvasAspect })} />
               </ControlRow>
             )}
             {loadState === 'ready' && (
-              <ToggleRow label="Theatre" value={theater}
+              <ToggleRow label={t('rowTheatre')} value={theater}
                 onChange={(value) => setViewer({ theater: value })} />
             )}
           </ControlSection>
 
-          <ControlSection title="Display">
+          <ControlSection title={t('viewerDisplay')}>
             {((mode === 'scene' && hasTouchBoxes)
               || (mode === 'home' && (hasTouchBoxes || jigglerCount > 0))) && (
-              <ToggleRow label="Touch zones" value={showBoxes} onChange={setShowBoxes} />
+              <ToggleRow label={t('rowTouchZones')} value={showBoxes} onChange={setShowBoxes} />
             )}
             {mode === 'home' && jigglerCount > 0 && (
-              <ControlRow label="Drag">
-                <SegmentedControl<'pan' | 'jiggle'> ariaLabel="Drag mode"
+              <ControlRow label={t('rowDrag')}>
+                <SegmentedControl<'pan' | 'jiggle'> ariaLabel={t('ariaDragMode')}
                   value={dragJiggle ? 'jiggle' : 'pan'}
                   options={[
-                    { value: 'pan', label: 'Pan', icon: 'pan', title: 'Drag moves the canvas' },
+                    { value: 'pan', label: t('dragPan'), icon: 'pan', title: t('dragPanHint') },
                     {
                       value: 'jiggle',
-                      label: 'Jiggle',
+                      label: t('dragJiggle'),
                       icon: 'jiggle',
-                      title: 'Drag drives the jigglers; a tap always jiggles',
+                      title: t('dragJiggleHint'),
                     },
                   ]}
                   onChange={(value) => setDragJiggle(value === 'jiggle')} />
               </ControlRow>
             )}
             {layerItems.length > 0 && (
-              <ToggleRow label="Layers" value={showLayers} onChange={setShowLayers} />
+              <ToggleRow label={t('rowLayers')} value={showLayers} onChange={setShowLayers} />
             )}
             {layout?.world?.bg && (
-              <ToggleRow label="Background" value={showBg} onChange={setShowBg} />
+              <ToggleRow label={t('rowBackground')} value={showBg} onChange={setShowBg} />
             )}
           </ControlSection>
 
@@ -2000,16 +2022,16 @@ export default function SkinViewer({
               onClose={() => setShowLayers(false)} />
           )}
 
-          <ControlSection title="Audio">
+          <ControlSection title={t('viewerAudio')}>
             {hasVoice && (
-              <ToggleRow label="Voice" value={voiceOn} onChange={setVoiceOn} />
+              <ToggleRow label={t('rowVoice')} value={voiceOn} onChange={setVoiceOn} />
             )}
             {(layout?.kind === 'desire' || layout?.kind === 'affection') && (
-              <ToggleRow label="Scene audio" value={bgmOn} onChange={setBgmOn} />
+              <ToggleRow label={t('rowSceneAudio')} value={bgmOn} onChange={setBgmOn} />
             )}
           </ControlSection>
 
-          <ControlSection title="Store">
+          <ControlSection title={t('viewerStore')}>
             {stores.length > 1 && (
               <StoreStrip stores={stores} active={store}
                 onSelect={(k) => { setStore(k); onStoreChange?.(k); }} />

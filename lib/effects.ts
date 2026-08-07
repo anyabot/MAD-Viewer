@@ -2,6 +2,7 @@ import {
   CATEGORY_LABEL, OP_LABEL, SHAPE_LABEL, SKILL_CATEGORY_LABEL, SORT_LABEL,
   STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, labelOf, prettyConst,
 } from '@/lib/characters';
+import { pick, type Lang, type Localized } from '@/lib/i18n';
 import type {
   CharacterData, CharacterEntry, SkillEntry, SkillHit, SkillOp, SkillTrigger,
 } from '@/lib/data';
@@ -9,16 +10,16 @@ import type {
 export type EffectGroup =
   'effect' | 'grant' | 'lands' | 'slot' | 'area' | 'pick' | 'shape' | 'scale' | 'trigger';
 
-export const GROUP_LABEL: Record<EffectGroup, string> = {
-  effect: 'Effect',
-  grant: 'Passive grant',
-  lands: 'Affects',
-  slot: 'Skill type',
-  area: 'Cast area',
-  pick: 'Cast picks',
-  shape: 'Hitbox',
-  scale: 'Scales off',
-  trigger: 'Passive trigger',
+export const GROUP_LABEL: Record<EffectGroup, Localized> = {
+  effect: { en: 'Effect', ko: '효과' },
+  grant: { en: 'Passive grant', ko: '패시브 능력치' },
+  lands: { en: 'Affects', ko: '적용 대상' },
+  slot: { en: 'Skill type', ko: '스킬 종류' },
+  area: { en: 'Cast area', ko: '시전 범위' },
+  pick: { en: 'Cast picks', ko: '대상 선정' },
+  shape: { en: 'Hitbox', ko: '판정 범위' },
+  scale: { en: 'Scales off', ko: '계수 스탯' },
+  trigger: { en: 'Passive trigger', ko: '패시브 발동' },
 };
 
 /** The groups behind the effect rows, in the order they are drawn. */
@@ -55,13 +56,15 @@ const INTERNAL_OPS = new Set(['MARKER', 'EMPTY_EFFECT']);
 
 // A clear or an immunity reads as the thing it addresses rather than as the
 // bare operation: "Remove 보호막", not "Remove a named state".
-const DETAIL_VERB: Record<string, string> = {
-  CLEAR_DURATION_DEFINE_ID: 'Remove',
-  CLEAR_DURATION_CATEGORIZE_TYPE: 'Cleanse',
-  IMMUNE_DURATION_DEFINE_ID: 'Immune to',
-  IMMUNE_DURATION_CATEGORIZE_TYPE: 'Immune to',
-  IMMUNE_ONETIME_DEFINE_ID: 'Immune to',
-  IMMUNE_ONETIME_CATEGORIZE_TYPE: 'Immune to',
+// The Korean puts the verb after what it addresses ("보호막 해제"), which
+// `effectLabel` composes rather than translating the pair as one phrase.
+const DETAIL_VERB: Record<string, Localized> = {
+  CLEAR_DURATION_DEFINE_ID: { en: 'Remove', ko: '해제' },
+  CLEAR_DURATION_CATEGORIZE_TYPE: { en: 'Cleanse', ko: '정화' },
+  IMMUNE_DURATION_DEFINE_ID: { en: 'Immune to', ko: '면역' },
+  IMMUNE_DURATION_CATEGORIZE_TYPE: { en: 'Immune to', ko: '면역' },
+  IMMUNE_ONETIME_DEFINE_ID: { en: 'Immune to', ko: '면역' },
+  IMMUNE_ONETIME_CATEGORIZE_TYPE: { en: 'Immune to', ko: '면역' },
 };
 
 const SECTION_PREFIX: [string, string][] = [
@@ -78,6 +81,16 @@ const SECTION_PREFIX: [string, string][] = [
 export const EFFECT_SECTIONS =
   ['Instant', 'Over time', 'Buff', 'Debuff', 'Control', 'Cleanse', 'Immunity'];
 
+export const SECTION_LABEL: Record<string, Localized> = {
+  Instant: { en: 'Instant', ko: '즉시' },
+  'Over time': { en: 'Over time', ko: '지속' },
+  Buff: { en: 'Buff', ko: '버프' },
+  Debuff: { en: 'Debuff', ko: '디버프' },
+  Control: { en: 'Control', ko: '군중 제어' },
+  Cleanse: { en: 'Cleanse', ko: '해제' },
+  Immunity: { en: 'Immunity', ko: '면역' },
+};
+
 export function effectSection(value: string): string {
   const op = value.split('|')[0];
   return SECTION_PREFIX.find(([prefix]) => op.startsWith(prefix))?.[1] ?? 'Instant';
@@ -88,8 +101,9 @@ function plain(name: string): string {
   return name.replace(/<[^>]+>/g, '').trim();
 }
 
-function lower(text: string): string {
-  return text ? text[0].toLowerCase() + text.slice(1) : '';
+function lower(text: string, lang: Lang): string {
+  if (lang === 'ko' || !text) return text;
+  return text[0].toLowerCase() + text.slice(1);
 }
 
 /**
@@ -102,13 +116,16 @@ function lower(text: string): string {
  * markers a skill sets and clears, which the game never shows the player), and
  * one naming a state **no other character applies** — a skill ending its own
  * mechanic, not a dispel.
+ *
+ * The key holds the constant, never its label: a selection has to survive a
+ * change of UI language.
  */
 function effectKeys(op: SkillOp, ctx: EffectContext): string[] {
   if (!op.op || INTERNAL_OPS.has(op.op)) return [];
   const detail = op.detail;
   if (!detail) return [op.op];
   if (detail.kind.endsWith('Category')) {
-    return detail.values.map((v) => `${op.op}|${labelOf(CATEGORY_LABEL, v.name ?? v.id)}`);
+    return detail.values.map((v) => `${op.op}|${v.name ?? v.id}`);
   }
   return detail.values.flatMap((v) => {
     if (!v.name) return [];
@@ -116,38 +133,48 @@ function effectKeys(op: SkillOp, ctx: EffectContext): string[] {
     const holders = ctx.index.appliedBy.get(state);
     const foreign = !!holders && [...holders].some((code) => code !== ctx.code);
     const named = ctx.index.stateOp.get(state);
-    return foreign && named ? [`${op.op}|${lower(labelOf(OP_LABEL, named))}`] : [];
+    return foreign && named ? [`${op.op}|${named}`] : [];
   });
 }
 
-export function effectLabel(value: string): string {
+export function effectLabel(value: string, lang: Lang = 'en'): string {
   const [op, addressed] = value.split('|');
-  if (!addressed) return labelOf(OP_LABEL, op);
+  if (!addressed) return labelOf(OP_LABEL, op, lang);
+  // The operation decides which table names what it addresses: a category
+  // constant for the `*_CATEGORIZE_TYPE` ops, the effect type behind the state
+  // for the rest.
+  const what = op.includes('CATEGORIZE_TYPE')
+    ? labelOf(CATEGORY_LABEL, addressed, lang)
+    : lower(labelOf(OP_LABEL, addressed, lang), lang);
   const verb = DETAIL_VERB[op];
-  return verb ? `${verb} ${addressed}` : `${labelOf(OP_LABEL, op)} — ${addressed}`;
+  if (!verb) return `${labelOf(OP_LABEL, op, lang)} — ${what}`;
+  return lang === 'ko' ? `${what} ${verb.ko}` : `${verb.en} ${what}`;
 }
 
 /** As its chip reads, so a result names the thing that was searched for. */
-export function opLabel(op: SkillOp, ctx: EffectContext): string {
+export function opLabel(op: SkillOp, ctx: EffectContext, lang: Lang = 'en'): string {
   const keys = effectKeys(op, ctx);
-  return keys.length ? keys.map(effectLabel).join(', ') : labelOf(OP_LABEL, op.op);
+  return keys.length
+    ? keys.map((key) => effectLabel(key, lang)).join(', ')
+    : labelOf(OP_LABEL, op.op, lang);
 }
 
-function sentence(text: string): string {
-  return text ? text[0].toUpperCase() + text.slice(1) : '';
+function sentence(text: string, lang: Lang): string {
+  if (lang === 'ko' || !text) return text;
+  return text[0].toUpperCase() + text.slice(1);
 }
 
-export function facetLabel(group: EffectGroup, value: string): string {
+export function facetLabel(group: EffectGroup, value: string, lang: Lang = 'en'): string {
   switch (group) {
-    case 'effect': return effectLabel(value);
-    case 'grant': return labelOf(STAT_LABEL, value);
-    case 'lands': return sentence(labelOf(TARGET_LABEL, value));
-    case 'slot': return SKILL_CATEGORY_LABEL[Number(value)] ?? value;
-    case 'area': return sentence(labelOf(SHAPE_LABEL, value));
-    case 'pick': return sentence(labelOf(SORT_LABEL, value));
-    case 'shape': return sentence(labelOf(SHAPE_LABEL, value));
-    case 'scale': return sentence(labelOf(STAT_LABEL, value));
-    case 'trigger': return labelOf(TRIGGER_LABEL, value);
+    case 'effect': return effectLabel(value, lang);
+    case 'grant': return labelOf(STAT_LABEL, value, lang);
+    case 'lands': return sentence(labelOf(TARGET_LABEL, value, lang), lang);
+    case 'slot': return pick(SKILL_CATEGORY_LABEL[Number(value)], lang) || value;
+    case 'area': return sentence(labelOf(SHAPE_LABEL, value, lang), lang);
+    case 'pick': return sentence(labelOf(SORT_LABEL, value, lang), lang);
+    case 'shape': return sentence(labelOf(SHAPE_LABEL, value, lang), lang);
+    case 'scale': return sentence(labelOf(STAT_LABEL, value, lang), lang);
+    case 'trigger': return labelOf(TRIGGER_LABEL, value, lang);
     default: return prettyConst(value);
   }
 }
@@ -293,6 +320,7 @@ export type FacetOption = { value: string; label: string; count: number };
  */
 export function facetOptions(
   kits: CharacterKit[], selection: EffectSelection, group: EffectGroup,
+  lang: Lang = 'en',
 ): FacetOption[] {
   const others: EffectSelection = { ...selection, [group]: [] };
   const counts = new Map<string, number>();
@@ -308,7 +336,7 @@ export function facetOptions(
     if (!counts.has(value)) counts.set(value, 0);
   }
   return [...counts.entries()]
-    .map(([value, count]) => ({ value, count, label: facetLabel(group, value) }))
+    .map(([value, count]) => ({ value, count, label: facetLabel(group, value, lang) }))
     .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }
 

@@ -7,12 +7,13 @@ import {
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import { FilterChip, FilterRow } from '@/components/filters';
 import {
-  KIND_ICON, KIND_ORDER, TYPE_LABEL, filterRows, isPlayable, rosterNote,
-  skinsByCharacter, typeIcons, typeLabel, typeOf, typeTint, typeValue,
-  type TypeTable,
+  KIND_ICON, KIND_ORDER, TYPE_LABEL, characterName, characterSubName, filterRows,
+  isPlayable, rosterNote, skinsByCharacter, typeIcons, typeLabel, typeOf, typeTint,
+  typeValue, type TypeTable,
 } from '@/lib/characters';
 import { characterIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
+import { useLang, useT, type Lang } from '@/lib/i18n';
 import {
   KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
@@ -24,6 +25,8 @@ const CHIP_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division'];
 const STARS = [1, 2, 3];
 
 export default function CharactersPage() {
+  const t = useT();
+  const lang = useLang();
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [skins, setSkins] = useState<SkinListEntry[]>([]);
   const [icons, setIcons] = useState<IconManifest | null>(null);
@@ -69,7 +72,7 @@ export default function CharactersPage() {
   if (!chars) {
     return (
       <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">loading…</Text></VStack>
+        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
       </Center>
     );
   }
@@ -81,20 +84,20 @@ export default function CharactersPage() {
     <VStack align="stretch" spacing={4}>
       <VStack align="stretch" spacing={2}>
         {CHIP_TABLES.map((table) => (
-          <FilterRow key={table} label={TYPE_LABEL[table]}>
-            {filterRows(chars.types, table).map(([value, t]) => (
+          <FilterRow key={table} label={TYPE_LABEL[table][lang]}>
+            {filterRows(chars.types, table).map(([value, row]) => (
               <FilterChip key={value} active={picked[table] === Number(value)}
                 onClick={() => toggle(table, Number(value))}
-                color={t.color}>
-                <GameIcon manifest={icons} group="ui" names={typeIcons(t)} size={5}
-                  tint={typeTint(t)} />
-                <Text color={t.color}>{typeLabel(t)}</Text>
+                color={row.color}>
+                <GameIcon manifest={icons} group="ui" names={typeIcons(row)} size={5}
+                  tint={typeTint(row)} />
+                <Text color={row.color}>{typeLabel(row, lang)}</Text>
               </FilterChip>
             ))}
           </FilterRow>
         ))}
 
-        <FilterRow label="Rarity">
+        <FilterRow label={t('rarity')}>
           {STARS.map((s) => (
             <FilterChip key={s} active={star === s}
               onClick={() => set({ star: star === s ? null : s })}>
@@ -103,47 +106,49 @@ export default function CharactersPage() {
           ))}
         </FilterRow>
 
-        <FilterRow label={TYPE_LABEL.faction}>
-          {filterRows(chars.types, 'faction').map(([value, t]) => (
+        <FilterRow label={TYPE_LABEL.faction[lang]}>
+          {filterRows(chars.types, 'faction').map(([value, row]) => (
             <FilterChip key={value} active={picked.faction === Number(value)}
               onClick={() => toggle('faction', Number(value))}>
-              <GameIcon manifest={icons} group="ui" names={typeIcons(t)} size={5}
-                title={t.name} />
-              <Text>{typeLabel(t)}</Text>
+              <GameIcon manifest={icons} group="ui" names={typeIcons(row)} size={5}
+                title={row.name} />
+              <Text>{typeLabel(row, lang)}</Text>
             </FilterChip>
           ))}
         </FilterRow>
 
         <Wrap spacing={2} align="center" pt={1}>
           <WrapItem>
-            <Input size="sm" maxW="220px" placeholder="search…"
+            <Input size="sm" maxW="220px" placeholder={t('search')}
               value={query} onChange={(e) => set({ query: e.target.value })}
               bg="whiteAlpha.100" borderColor="whiteAlpha.300" />
           </WrapItem>
           <WrapItem>
             <FilterChip active={skinsOnly} onClick={() => set({ skinsOnly: !skinsOnly })}>
-              <Text>Has skins</Text>
+              <Text>{t('hasSkins')}</Text>
             </FilterChip>
           </WrapItem>
           <WrapItem>
             <FilterChip active={npcs} onClick={() => set({ npcs: !npcs })}>
-              <Text>Include NPCs</Text>
+              <Text>{t('includeNpcs')}</Text>
             </FilterChip>
           </WrapItem>
           <WrapItem>
             <FilterChip active={unreleased} onClick={() => set({ unreleased: !unreleased })}>
-              <Text>Include unreleased</Text>
+              <Text>{t('includeUnreleased')}</Text>
             </FilterChip>
           </WrapItem>
           {(star != null || Object.values(picked).some((v) => v != null)) && (
             <WrapItem>
               <FilterChip active={false} onClick={clearTypes}>
-                <Text>Clear</Text>
+                <Text>{t('clear')}</Text>
               </FilterChip>
             </WrapItem>
           )}
           <WrapItem>
-            <Text fontSize="xs" color="gray.500">{list.length} of {total}</Text>
+            <Text fontSize="xs" color="gray.500">
+              {t('countOf', { shown: list.length, total })}
+            </Text>
           </WrapItem>
         </Wrap>
       </VStack>
@@ -154,23 +159,23 @@ export default function CharactersPage() {
       }}>
         {list.map((c) => (
           <CharacterCard key={c.code} entry={c} types={chars.types} icons={icons}
-            skins={byCharacter.get(c.code) ?? []} />
+            skins={byCharacter.get(c.code) ?? []} lang={lang} />
         ))}
       </Grid>
-      {list.length === 0 && <Text fontSize="sm" color="gray.500">no match</Text>}
+      {list.length === 0 && <Text fontSize="sm" color="gray.500">{t('noMatch')}</Text>}
     </VStack>
   );
 }
 
-function CharacterCard({ entry, types, icons, skins }: {
+function CharacterCard({ entry, types, icons, skins, lang }: {
   entry: CharacterEntry; types: CharacterData['types'];
-  icons: IconManifest | null; skins: SkinListEntry[];
+  icons: IconManifest | null; skins: SkinListEntry[]; lang: Lang;
 }) {
   const element = typeOf(entry, types, 'attribute');
   const role = typeOf(entry, types, 'role');
   const faction = typeOf(entry, types, 'faction');
   const kinds = KIND_ORDER.filter((k) => skins.some((s) => s.kind === k));
-  const roster = rosterNote(entry);
+  const roster = rosterNote(entry, lang);
   // the rig's own thumbnail first: a story-only character has no portrait, and
   // an NPC's rig art is the better picture where both exist
   const art = characterIcon(icons, entry, skins);
@@ -186,27 +191,29 @@ function CharacterCard({ entry, types, icons, skins }: {
         )}
         <HStack position="absolute" top={1} left={1} spacing={1}>
           <GameIcon manifest={icons} group="ui" names={typeIcons(element)} size={5}
-            tint={typeTint(element)} title={typeLabel(element)} reserve={false} />
+            tint={typeTint(element)} title={typeLabel(element, lang)} reserve={false} />
           <GameIcon manifest={icons} group="ui" names={typeIcons(role)} size={5}
-            title={typeLabel(role)} reserve={false} />
+            title={typeLabel(role, lang)} reserve={false} />
         </HStack>
         <HStack position="absolute" top={1} right={1} spacing={1}>
           <GameIcon manifest={icons} group="ui" names={typeIcons(faction)} size={5}
-            title={typeLabel(faction)} reserve={false} />
+            title={typeLabel(faction, lang)} reserve={false} />
         </HStack>
         {kinds.length > 0 && (
           <HStack position="absolute" bottom={1} right={1} spacing={0.5}>
             {kinds.map((k) => (
               <GameIcon key={k} manifest={icons} group="ui" name={KIND_ICON[k]}
-                size={4} title={KIND_LABEL[k]} opacity={0.9} reserve={false} />
+                size={4} title={KIND_LABEL[k][lang]} opacity={0.9} reserve={false} />
             ))}
           </HStack>
         )}
       </Box>
       <VStack align="stretch" spacing={0.5} px={2} py={1.5}>
-        <Text fontSize="sm" fontWeight="bold" noOfLines={1}>{entry.name || entry.code}</Text>
-        {entry.nameEn && (
-          <Text fontSize="0.65rem" color="gray.500" noOfLines={1}>{entry.nameEn}</Text>
+        <Text fontSize="sm" fontWeight="bold" noOfLines={1}>{characterName(entry, lang)}</Text>
+        {characterSubName(entry, lang) && (
+          <Text fontSize="0.65rem" color="gray.500" noOfLines={1}>
+            {characterSubName(entry, lang)}
+          </Text>
         )}
         <Flex align="center" justify="space-between" gap={1}>
           {roster

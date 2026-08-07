@@ -9,9 +9,10 @@ import SkinViewer from '@/components/skinViewer';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
 import { GameIcon } from '@/components/gameIcon';
-import { KIND_ICON, rosterNote } from '@/lib/characters';
+import { KIND_ICON, characterName, characterSubName, rosterNote } from '@/lib/characters';
 import { skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
+import { useLang, useT } from '@/lib/i18n';
 import {
   KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
@@ -27,11 +28,12 @@ function skinTitle(skin: SkinListEntry, name: string): string {
 // cutscene, which is its own scene rather than a gallery entry. `isLazy` keeps
 // the cutscene's archives unfetched until its tab is opened.
 export default function ViewerPage() {
+  const t = useT();
   return (
     <Tabs variant="line" colorScheme="yellow" isLazy>
       <TabList borderColor="whiteAlpha.200" overflowX="auto">
-        <Tab fontSize="sm" whiteSpace="nowrap">Skins</Tab>
-        <Tab fontSize="sm" whiteSpace="nowrap">Gacha</Tab>
+        <Tab fontSize="sm" whiteSpace="nowrap">{t('tabSkins')}</Tab>
+        <Tab fontSize="sm" whiteSpace="nowrap">{t('tabGacha')}</Tab>
       </TabList>
       <TabPanels>
         <TabPanel px={0} pt={4}><SkinGallery /></TabPanel>
@@ -42,6 +44,8 @@ export default function ViewerPage() {
 }
 
 function SkinGallery() {
+  const t = useT();
+  const lang = useLang();
   const [skins, setSkins] = useState<SkinListEntry[] | null>(null);
   const [charData, setCharData] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
@@ -70,10 +74,10 @@ function SkinGallery() {
     () => (s: SkinListEntry): CharacterEntry | null =>
       charData?.characters[s.character] ?? null, [charData]);
   const nameOf = useMemo(
-    () => (s: SkinListEntry) => charOf(s)?.name ?? '', [charOf]);
-  // Playable characters only; it is null for every NPC.
-  const nameEnOf = useMemo(
-    () => (s: SkinListEntry) => charOf(s)?.nameEn ?? '', [charOf]);
+    () => (s: SkinListEntry) => characterName(charOf(s), lang), [charOf, lang]);
+  // Playable characters only; it is empty for every NPC.
+  const subNameOf = useMemo(
+    () => (s: SkinListEntry) => characterSubName(charOf(s), lang), [charOf, lang]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -82,9 +86,9 @@ function SkinGallery() {
       && (!divergedOnly || s.stores.length > 1)
       && (!q || s.key.toLowerCase().includes(q)
         || s.character.toLowerCase().includes(q)
-        || nameOf(s).toLowerCase().includes(q)
-        || nameEnOf(s).toLowerCase().includes(q)));
-  }, [skins, kind, query, divergedOnly, nameOf, nameEnOf]);
+        || (charOf(s)?.name ?? '').toLowerCase().includes(q)
+        || (charOf(s)?.nameEn ?? '').toLowerCase().includes(q)));
+  }, [skins, kind, query, divergedOnly, charOf]);
 
   const current = useMemo(
     () => (skins ?? []).find((s) => s.key === selected) ?? null, [skins, selected]);
@@ -96,10 +100,14 @@ function SkinGallery() {
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!skins) {
-    return <Center py={20}><VStack><Spinner /><Text fontSize="sm" color="gray.500">loading…</Text></VStack></Center>;
+    return (
+      <Center py={20}>
+        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
+      </Center>
+    );
   }
 
-  const currentRoster = current ? rosterNote(charOf(current)) : null;
+  const currentRoster = current ? rosterNote(charOf(current), lang) : null;
 
   return (
     <VStack align="stretch" spacing={4}>
@@ -107,14 +115,16 @@ function SkinGallery() {
         <WrapItem>
           <Wrap spacing={1}>
             <WrapItem>
-              <Chip active={kind === 'all'} onClick={() => set({ kind: 'all' })}>All</Chip>
+              <Chip active={kind === 'all'} onClick={() => set({ kind: 'all' })}>
+                {t('filterAll')}
+              </Chip>
             </WrapItem>
             {KINDS.map((k) => (
               <WrapItem key={k}>
                 <Chip active={kind === k} onClick={() => set({ kind: k })}>
                   <GameIcon manifest={icons} group="ui" name={KIND_ICON[k]} size={4}
                     reserve={false} />
-                  {KIND_LABEL[k]}
+                  {KIND_LABEL[k][lang]}
                 </Chip>
               </WrapItem>
             ))}
@@ -122,15 +132,17 @@ function SkinGallery() {
         </WrapItem>
         <WrapItem>
           <Chip active={divergedOnly} onClick={() => set({ divergedOnly: !divergedOnly })}>
-            Store diff
+            {t('storeDiff')}
           </Chip>
         </WrapItem>
         <WrapItem>
-          <Input size="sm" maxW="220px" placeholder="search…" value={query}
+          <Input size="sm" maxW="220px" placeholder={t('search')} value={query}
             onChange={(e) => set({ query: e.target.value })} bg="whiteAlpha.100" borderColor="whiteAlpha.300" />
         </WrapItem>
         <WrapItem>
-          <Text fontSize="xs" color="gray.500">{filtered.length} of {skins.length}</Text>
+          <Text fontSize="xs" color="gray.500">
+            {t('countOf', { shown: filtered.length, total: skins.length })}
+          </Text>
         </WrapItem>
       </Wrap>
 
@@ -141,7 +153,7 @@ function SkinGallery() {
             {filtered.map((s) => {
               const entry = charOf(s);
               const thumb = skinIcon(icons, s, entry);
-              const roster = rosterNote(entry);
+              const roster = rosterNote(entry, lang);
               return (
                 <Box key={s.key} as="button" textAlign="left" px={2} py={1.5} borderRadius="md"
                   bg={s.key === selected ? 'whiteAlpha.300' : 'transparent'}
@@ -157,15 +169,15 @@ function SkinGallery() {
                     <Box minW={0} flex="1">
                       <Flex align="center" gap={1.5} wrap="wrap">
                         <GameIcon manifest={icons} group="ui" name={KIND_ICON[s.kind]}
-                          size={3.5} title={KIND_LABEL[s.kind]} />
+                          size={3.5} title={KIND_LABEL[s.kind][lang]} />
                         <Text fontSize="sm" noOfLines={1}>{skinTitle(s, nameOf(s))}</Text>
-                        {nameEnOf(s) && (
+                        {subNameOf(s) && (
                           <Text fontSize="xs" color="gray.500" noOfLines={1}>
-                            {nameEnOf(s)}
+                            {subNameOf(s)}
                           </Text>
                         )}
                         <Badge colorScheme={KIND_COLOR[s.kind]} fontSize="0.55rem">
-                          {KIND_LABEL[s.kind]}
+                          {KIND_LABEL[s.kind][lang]}
                         </Badge>
                         {roster && (
                           <Badge colorScheme={roster.scheme} fontSize="0.55rem">
@@ -173,13 +185,14 @@ function SkinGallery() {
                           </Badge>
                         )}
                         {s.stores.length > 1 && (
-                          <Badge colorScheme="yellow" fontSize="0.55rem">DIFF</Badge>
+                          <Badge colorScheme="yellow" fontSize="0.55rem">{t('badgeDiff')}</Badge>
                         )}
                       </Flex>
                       <Text fontSize="xs" color="gray.500" noOfLines={1}>
                         <Text as="span" fontFamily="mono">{s.key}</Text>
                         {' · '}
-                        {s.animations} anims{s.faces ? ` · ${s.faces} faces` : ''}
+                        {t('animCount', { n: s.animations })}
+                        {s.faces ? ` · ${t('faceCount', { n: s.faces })}` : ''}
                       </Text>
                     </Box>
                   </Flex>
@@ -187,7 +200,7 @@ function SkinGallery() {
               );
             })}
             {filtered.length === 0 && (
-              <Text fontSize="sm" color="gray.500" p={2}>no match</Text>
+              <Text fontSize="sm" color="gray.500" p={2}>{t('noMatch')}</Text>
             )}
           </VStack>
         </Box>
@@ -199,15 +212,15 @@ function SkinGallery() {
                 <WrapItem>
                   <HStack spacing={1.5}>
                     <GameIcon manifest={icons} group="ui" name={KIND_ICON[current.kind]}
-                      size={5} title={KIND_LABEL[current.kind]} />
+                      size={5} title={KIND_LABEL[current.kind][lang]} />
                     <Text fontWeight="bold" fontSize="lg">
                       {skinTitle(current, nameOf(current))}
                     </Text>
-                    {nameEnOf(current) && (
-                      <Text fontSize="md" color="gray.500">{nameEnOf(current)}</Text>
+                    {subNameOf(current) && (
+                      <Text fontSize="md" color="gray.500">{subNameOf(current)}</Text>
                     )}
                     <Badge colorScheme={KIND_COLOR[current.kind]}>
-                      {KIND_LABEL[current.kind]}
+                      {KIND_LABEL[current.kind][lang]}
                     </Badge>
                     {currentRoster && (
                       <Badge colorScheme={currentRoster.scheme}>
@@ -221,18 +234,20 @@ function SkinGallery() {
                 </WrapItem>
                 {current.stores.length > 1 && (
                   <WrapItem>
-                    <Badge colorScheme="yellow" title="store art differs">
-                      DIFF · {STORE_META[store].short}
+                    <Badge colorScheme="yellow" title={t('storeDiffTitle')}>
+                      {t('badgeDiff')} · {STORE_META[store].short}
                     </Badge>
                   </WrapItem>
                 )}
-                {current.hasBg && <WrapItem><Badge colorScheme="blue">background</Badge></WrapItem>}
+                {current.hasBg && (
+                  <WrapItem><Badge colorScheme="blue">{t('badgeBackground')}</Badge></WrapItem>
+                )}
                 {charOf(current) && (
                   <WrapItem>
                     <Text as={NextLink} fontSize="xs" color="yellow.300"
                       href={{ pathname: '/character', query: { code: current.character } }}
                       _hover={{ color: 'yellow.200' }}>
-                      character →
+                      {t('toCharacter')}
                     </Text>
                   </WrapItem>
                 )}
@@ -241,7 +256,7 @@ function SkinGallery() {
                 store={store} onStoreChange={setStore} height="70vh" />
             </VStack>
           ) : (
-            <Center h="40vh"><Text color="gray.500">select a skin</Text></Center>
+            <Center h="40vh"><Text color="gray.500">{t('selectSkin')}</Text></Center>
           )}
         </Box>
       </Grid>

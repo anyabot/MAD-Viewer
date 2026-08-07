@@ -13,6 +13,7 @@ import {
 import { REFERENCE_VIEW_WIDTH } from '@/components/skinViewer/constants';
 import { rigCameraTransform } from '@/components/skinViewer/scenes';
 import { gachaArchiveUrls } from '@/lib/cdn';
+import { useLang, useT } from '@/lib/i18n';
 import type { GachaIndex, GachaRig } from '@/lib/data';
 import { loadArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
 
@@ -24,6 +25,8 @@ type Loaded = {
 };
 
 export default function GachaViewer({ index }: { index: GachaIndex }) {
+  const t = useT();
+  const lang = useLang();
   const hostRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
@@ -241,7 +244,7 @@ export default function GachaViewer({ index }: { index: GachaIndex }) {
     <Flex direction="column" gap={3}>
       <Flex wrap="wrap" align="center" gap={3}>
         <HStack gap={2}>
-          <Text fontSize="sm" color="gray.400">Grade</Text>
+          <Text fontSize="sm" color="gray.400">{t('gachaGrade')}</Text>
           <Select size="sm" w="24" value={grade}
             onChange={(e) => setGrade(Number(e.target.value) as Grade)}>
             <option value={1}>1</option>
@@ -249,8 +252,8 @@ export default function GachaViewer({ index }: { index: GachaIndex }) {
             <option value={3}>3</option>
           </Select>
         </HStack>
-        <Button size="sm" onClick={() => setRunId((n) => n + 1)}>Replay</Button>
-        <Badge colorScheme="gray">{STATE_LABEL[state]}</Badge>
+        <Button size="sm" onClick={() => setRunId((n) => n + 1)}>{t('gachaReplay')}</Button>
+        <Badge colorScheme="gray">{STATE_LABEL[state][lang]}</Badge>
         <Text fontSize="sm" color="gray.500">fx {style}</Text>
         {sfx.length > 0 && (
           <Text fontSize="sm" color="gray.600" noOfLines={1}>sfx {sfx.join(' · ')}</Text>
