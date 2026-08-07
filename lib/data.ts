@@ -443,6 +443,8 @@ export type StageEntry = {
   mode: string;
   zoneId?: number;
   order?: number;
+  /** The only difficulty signal a story stage carries. */
+  nameKey?: string;
   /** The game's `{0}`-style template; the arguments are filled by `stageName`. */
   nameTemplate?: Localized;
   /** Korean authoring name, the only name a narrative stage has. */

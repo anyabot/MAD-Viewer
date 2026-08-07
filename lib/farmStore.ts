@@ -19,6 +19,8 @@ export type FarmState = {
   clears: Record<string, number>;
   /** Restrict every pool to stages that can be swept. */
   sweepOnly: boolean;
+  /** Whether hard stages count as a farm route. */
+  hardStages: boolean;
 };
 
 type FarmStore = FarmState & {
@@ -40,9 +42,12 @@ type FarmStore = FarmState & {
   setStars: (stageId: number, stars: number) => void;
   setStarsMany: (stageIds: number[], stars: number) => void;
   setSweepOnly: (on: boolean) => void;
+  setHardStages: (on: boolean) => void;
 };
 
-const EMPTY: FarmState = { inventory: {}, units: {}, clears: {}, sweepOnly: false };
+const EMPTY: FarmState = {
+  inventory: {}, units: {}, clears: {}, sweepOnly: false, hardStages: true,
+};
 
 function persist(state: FarmState): void {
   try {
@@ -51,6 +56,7 @@ function persist(state: FarmState): void {
       units: state.units,
       clears: state.clears,
       sweepOnly: state.sweepOnly,
+      hardStages: state.hardStages,
     }));
   } catch {
     // private mode or a blocked store: the record just does not persist
@@ -62,12 +68,34 @@ function save<T extends Partial<FarmState>>(state: FarmStore, patch: T): T {
   return patch;
 }
 
+/** A target below the current state is not a plan. */
+function atLeastCurrent(pair: UnitPlanPair): UnitPlanPair {
+  const { current, target } = pair;
+  const skills = { ...target.skills };
+  for (const [id, level] of Object.entries(current.skills)) {
+    if ((skills[id] ?? 1) < level) skills[id] = level;
+  }
+  const gear = { ...target.gear };
+  for (const [slot, worn] of Object.entries(current.gear)) {
+    const want = gear[slot];
+    if (!want || want.tier < worn.tier
+      || (want.tier === worn.tier && want.level < worn.level)) {
+      gear[slot] = { ...worn };
+    }
+  }
+  return {
+    ...pair,
+    target: { level: Math.max(target.level, current.level), skills, gear },
+  };
+}
+
 function withSide(
   units: FarmState['units'], code: string, side: 'current' | 'target',
   update: (plan: UnitPlan) => UnitPlan,
 ): FarmState['units'] {
   const pair = units[code] ?? { current: emptyPlan(), target: emptyPlan() };
-  return { ...units, [code]: { ...pair, [side]: update(pair[side]) } };
+  const next = { ...pair, [side]: update(pair[side]) };
+  return { ...units, [code]: side === 'current' ? atLeastCurrent(next) : next };
 }
 
 export const useFarm = create<FarmStore>((set) => ({
@@ -129,6 +157,8 @@ export const useFarm = create<FarmStore>((set) => ({
   }),
 
   setSweepOnly: (on) => set((s) => save(s, { sweepOnly: on })),
+
+  setHardStages: (on) => set((s) => save(s, { hardStages: on })),
 }));
 
 function record(value: unknown): Record<string, number> {
@@ -185,6 +215,7 @@ export function restoreFarm(): void {
       units,
       clears: record(doc.clears),
       sweepOnly: doc.sweepOnly === true,
+      hardStages: doc.hardStages !== false,
       ready: true,
     });
   } catch {

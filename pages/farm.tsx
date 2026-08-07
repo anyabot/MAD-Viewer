@@ -1,10 +1,10 @@
 // The farm tracker: what the tracked units still need, what the player already
 // holds, and which stages pay it. Every number here is a material count or a
 // stamina total — nothing is a battle number.
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Center, Flex, HStack, Input, Select, SimpleGrid, Spinner, Tab, TabList,
+  Badge, Box, Center, Flex, HStack, Input, SimpleGrid, Spinner, Tab, TabList,
   TabPanel, TabPanels, Tabs, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
@@ -15,8 +15,8 @@ import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
 import {
   MATERIAL_ICON_GROUPS, MATERIAL_KIND_LABEL, billCovered, billIsEmpty, emptyPlan,
-  farmPlan, farmStages, formatAmount, gearLevelCap, levellableSkills, mergeBills,
-  needLabel, parseAmount, skillCap, spendBill, unitBill,
+  farmPlan, farmStages, formatAmount, gearLevelCap, isHardStage, levellableSkills,
+  mergeBills, needLabel, parseAmount, skillCap, spendBill, unitBill,
   type Bill, type FarmPlan, type FarmRoute, type NeedPlan, type StageSource,
   type UnitPlan,
 } from '@/lib/farm';
@@ -53,6 +53,8 @@ export default function FarmPage() {
   const clears = useFarm((s) => s.clears);
   const sweepOnly = useFarm((s) => s.sweepOnly);
   const setSweepOnly = useFarm((s) => s.setSweepOnly);
+  const hardStages = useFarm((s) => s.hardStages);
+  const setHardStages = useFarm((s) => s.setHardStages);
 
   useEffect(() => {
     loadGrowth().then(setGrowth).catch((e) => setError(String(e)));
@@ -63,6 +65,10 @@ export default function FarmPage() {
 
   const pool = useMemo(
     () => (growth && stages ? farmStages(growth, stages) : []), [growth, stages]);
+
+  // Routes only: the clear record still covers every stage.
+  const routePool = useMemo(
+    () => (hardStages ? pool : pool.filter((s) => !isHardStage(s))), [pool, hardStages]);
 
   // A hidden unit keeps its plan and stays out of the bill — "raise it, but not
   // now" is the whole reason the toggle exists.
@@ -82,18 +88,18 @@ export default function FarmPage() {
     const rest = billOf(false);
     if (billIsEmpty(first)) {
       return {
-        main: farmPlan(growth, pool, rest, inventory, clears, sweepOnly),
+        main: farmPlan(growth, routePool, rest, inventory, clears, sweepOnly),
         rest: null,
         leftover: inventory,
       };
     }
     const leftover = spendBill(growth, first, inventory);
     return {
-      main: farmPlan(growth, pool, first, inventory, clears, sweepOnly),
-      rest: farmPlan(growth, pool, rest, leftover, clears, sweepOnly),
+      main: farmPlan(growth, routePool, first, inventory, clears, sweepOnly),
+      rest: farmPlan(growth, routePool, rest, leftover, clears, sweepOnly),
       leftover,
     };
-  }, [growth, chars, units, inventory, clears, sweepOnly, pool]);
+  }, [growth, chars, units, inventory, clears, sweepOnly, routePool]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!growth || !chars || !stages || !plans) {
@@ -114,6 +120,10 @@ export default function FarmPage() {
         <FilterChip active={sweepOnly} onClick={() => setSweepOnly(!sweepOnly)}>
           {t('farmSweepOnly')}
           <Text as="span" color="gray.500">{t('farmSweepHint')}</Text>
+        </FilterChip>
+        <FilterChip active={hardStages} onClick={() => setHardStages(!hardStages)}>
+          {t('farmHardStages')}
+          <Text as="span" color="gray.500">{t('farmHardHint')}</Text>
         </FilterChip>
       </Flex>
 
@@ -164,45 +174,29 @@ export default function FarmPage() {
   );
 }
 
-const COMMIT_DELAY = 400;
-
 /**
  * A text field over a number: it accepts `2.5m` and `150k`, keeps what is being
- * typed in local state, commits after a pause, and commits again on blur or
- * Enter so a half-typed value is never what gets stored. It re-syncs when the
- * store changes underneath — a completed plan, a `Clear` — but not while it has
- * focus, which would fight the typist.
+ * typed in local state, and commits on blur so a half-typed value never
+ * reaches the store. It re-syncs from the store, but not while it has focus.
  */
-function AmountField({ value, min, max, onChange, width = '4.5rem', big }: {
+function AmountField({ value, min, max, onChange, width = '4.5rem', big, disabled }: {
   value: number; min: number; max: number; onChange: (v: number) => void;
-  width?: string; big?: boolean;
+  width?: string; big?: boolean; disabled?: boolean;
 }) {
   const shown = big ? formatAmount(value) : String(value);
   const [text, setText] = useState(shown);
   const [editing, setEditing] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => { if (!editing) setText(shown); }, [shown, editing]);
-  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
-
-  const commit = (raw: string) => {
-    const parsed = parseAmount(raw);
-    if (parsed != null) onChange(Math.min(max, Math.max(min, parsed)));
-  };
 
   return (
     <Input size="xs" value={text} w={width} textAlign="right" fontFamily="mono"
-      borderColor="whiteAlpha.300" inputMode="decimal"
+      borderColor="whiteAlpha.300" inputMode="decimal" isDisabled={disabled}
       onFocus={() => setEditing(true)}
-      onChange={(e) => {
-        const next = e.target.value;
-        setText(next);
-        if (timer.current) clearTimeout(timer.current);
-        timer.current = setTimeout(() => commit(next), COMMIT_DELAY);
-      }}
+      onChange={(e) => setText(e.target.value)}
       onBlur={() => {
-        if (timer.current) clearTimeout(timer.current);
-        commit(text);
+        const parsed = parseAmount(text);
+        if (parsed != null) onChange(Math.min(max, Math.max(min, parsed)));
         setEditing(false);
       }}
       onKeyDown={(e) => {
@@ -213,21 +207,27 @@ function AmountField({ value, min, max, onChange, width = '4.5rem', big }: {
 
 // The step is one because that is how loot arrives; a stack is typed instead,
 // with the `k`/`m` suffix for the materials that come in millions.
-function Stepper({ value, onChange, children }: {
-  value: number; onChange: (v: number) => void; children: React.ReactNode;
+function Stepper({
+  value, min = 0, max = Number.MAX_SAFE_INTEGER, onChange, disabled, children,
+}: {
+  value: number; min?: number; max?: number; onChange: (v: number) => void;
+  disabled?: boolean; children: React.ReactNode;
 }) {
   const button = {
     px: 1.5, borderWidth: '1px', borderRadius: 'md', borderColor: 'whiteAlpha.200',
     color: 'gray.400', lineHeight: 1.4, fontSize: 'sm', flexShrink: 0,
     _hover: { borderColor: 'yellow.400', color: 'yellow.200' },
   } as const;
+  const spent = { opacity: 0.35, pointerEvents: 'none' } as const;
   return (
     <HStack spacing={1}>
       <Box as="button" aria-label="minus one" {...button}
-        onClick={() => onChange(Math.max(0, value - 1))}>−</Box>
+        {...(disabled || value <= min ? spent : {})}
+        onClick={() => onChange(Math.max(min, value - 1))}>−</Box>
       {children}
       <Box as="button" aria-label="plus one" {...button}
-        onClick={() => onChange(value + 1)}>+</Box>
+        {...(disabled || value >= max ? spent : {})}
+        onClick={() => onChange(Math.min(max, value + 1))}>+</Box>
     </HStack>
   );
 }
@@ -251,6 +251,8 @@ function Units({ data, growth, icons, leftover }: {
   const units = useFarm((s) => s.units);
   const addUnit = useFarm((s) => s.addUnit);
   const [query, setQuery] = useState('');
+  const [open, setOpen] = useState(false);
+  const [shown, setShown] = useState<string | null>(null);
 
   // Only the playable roster carries a material group, so only it can be costed.
   const roster = useMemo(() => Object.values(data.characters)
@@ -259,38 +261,50 @@ function Units({ data, growth, icons, leftover }: {
   [data, lang]);
 
   const needle = query.trim().toLowerCase();
-  const matches = needle
-    ? roster.filter((e) => !units[e.code]
-      && (characterName(e, lang).toLowerCase().includes(needle)
-        || e.code.toLowerCase().includes(needle)
-        || (e.nameEn ?? '').toLowerCase().includes(needle))).slice(0, 12)
-    : [];
+  const matches = roster.filter((e) => !units[e.code]
+    && (!needle || characterName(e, lang).toLowerCase().includes(needle)
+      || e.code.toLowerCase().includes(needle)
+      || (e.nameEn ?? '').toLowerCase().includes(needle)));
 
   const tracked = Object.keys(units)
     .flatMap((code) => (data.characters[code] ? [data.characters[code]] : []));
 
+  const choose = (code: string) => {
+    addUnit(code);
+    setQuery('');
+    setOpen(false);
+  };
+
   return (
     <VStack align="stretch" spacing={3}>
-      <Box>
-        <Input size="sm" value={query} placeholder={t('farmSearchUnit')} maxW="320px"
-          onChange={(e) => setQuery(e.target.value)} borderColor="whiteAlpha.300" />
-        {matches.length > 0 && (
-          <Wrap spacing={1} mt={2}>
+      <Box position="relative" maxW="320px" zIndex={2}>
+        <Input size="sm" value={query} placeholder={t('farmSearchUnit')}
+          borderColor="whiteAlpha.300"
+          onFocus={() => setOpen(true)}
+          onClick={() => setOpen(true)}
+          onBlur={() => setOpen(false)}
+          onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') setOpen(false);
+            if (e.key === 'Enter' && matches[0]) choose(matches[0].code);
+          }} />
+        {open && matches.length > 0 && (
+          // Without this the blur closes the list before the click lands.
+          <VStack align="stretch" spacing={0} position="absolute" top="100%" left={0}
+            right={0} mt={1} maxH="18rem" overflowY="auto" borderWidth="1px"
+            borderColor="whiteAlpha.300" borderRadius="md" bg="gray.800"
+            boxShadow="lg" onMouseDown={(e) => e.preventDefault()}>
             {matches.map((entry) => (
-              <WrapItem key={entry.code}>
-                <Box as="button" px={2} py={1} borderWidth="1px" borderRadius="md"
-                  borderColor="whiteAlpha.300" fontSize="xs"
-                  _hover={{ borderColor: 'yellow.400' }}
-                  onClick={() => { addUnit(entry.code); setQuery(''); }}>
-                  <HStack spacing={1.5}>
-                    <GameIcon manifest={icons} group="char" size={5}
-                      names={[entry.iconPath, `Icon_${entry.code}`]} />
-                    <Text>{characterName(entry, lang)}</Text>
-                  </HStack>
-                </Box>
-              </WrapItem>
+              <Box as="button" key={entry.code} px={2} py={1} textAlign="left"
+                _hover={{ bg: 'whiteAlpha.200' }} onClick={() => choose(entry.code)}>
+                <HStack spacing={2}>
+                  <GameIcon manifest={icons} group="char" size={6}
+                    names={[entry.iconPath, `Icon_${entry.code}`]} />
+                  <Text fontSize="sm" noOfLines={1}>{characterName(entry, lang)}</Text>
+                </HStack>
+              </Box>
             ))}
-          </Wrap>
+          </VStack>
         )}
       </Box>
 
@@ -300,7 +314,8 @@ function Units({ data, growth, icons, leftover }: {
         <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3} alignItems="start">
           {tracked.map((entry) => (
             <UnitCard key={entry.code} entry={entry} data={data} growth={growth}
-              icons={icons} leftover={leftover} />
+              icons={icons} leftover={leftover} open={shown === entry.code}
+              onToggle={() => setShown(shown === entry.code ? null : entry.code)} />
           ))}
         </SimpleGrid>
       )}
@@ -308,9 +323,10 @@ function Units({ data, growth, icons, leftover }: {
   );
 }
 
-function UnitCard({ entry, data, growth, icons, leftover }: {
+function UnitCard({ entry, data, growth, icons, leftover, open, onToggle }: {
   entry: CharacterEntry; data: CharacterData; growth: GrowthData;
   icons: IconManifest | null; leftover: Record<string, number>;
+  open: boolean; onToggle: () => void;
 }) {
   const t = useT();
   const lang = useLang();
@@ -343,7 +359,11 @@ function UnitCard({ entry, data, growth, icons, leftover }: {
   return (
     <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md"
       bg="whiteAlpha.50" p={3} opacity={hidden ? 0.5 : 1}>
-      <Flex align="center" gap={2} mb={3} wrap="wrap">
+      <Flex align="center" gap={2} mb={open ? 3 : 0} wrap="wrap">
+        <Box as="button" fontSize="xs" color="gray.500" w={3} flexShrink={0}
+          aria-expanded={open} _hover={{ color: 'yellow.200' }} onClick={onToggle}>
+          {open ? '▾' : '▸'}
+        </Box>
         <GameIcon manifest={icons} group="char" size={7}
           names={[entry.iconPath, `Icon_${entry.code}`]} />
         <Text as={NextLink} href={{ pathname: '/character', query: { code: entry.code } }}
@@ -377,17 +397,23 @@ function UnitCard({ entry, data, growth, icons, leftover }: {
           onClick={() => removeUnit(entry.code)}>{t('farmRemove')}</Box>
       </Flex>
 
-      <Box overflowX="auto">
-        <Box display="grid" minW="320px" alignItems="center" gap={1.5}
+      <Box overflowX="auto" display={open ? undefined : 'none'}>
+        <Box display="grid" minW="520px" alignItems="center" gap={1.5}
           gridTemplateColumns="minmax(0, 1fr) auto auto">
           <Box />
           <SideHeads t={t} />
 
           <Text fontSize="sm">{t('dialLevel')}</Text>
-          <AmountField value={current.level} min={1} max={levelCap}
-            onChange={(v) => setPlan(entry.code, 'current', { level: v })} />
-          <AmountField value={target.level} min={1} max={levelCap}
-            onChange={(v) => setPlan(entry.code, 'target', { level: v })} />
+          <Stepper value={current.level} min={1} max={levelCap}
+            onChange={(v) => setPlan(entry.code, 'current', { level: v })}>
+            <AmountField value={current.level} min={1} max={levelCap}
+              onChange={(v) => setPlan(entry.code, 'current', { level: v })} />
+          </Stepper>
+          <Stepper value={target.level} min={1} max={levelCap}
+            onChange={(v) => setPlan(entry.code, 'target', { level: v })}>
+            <AmountField value={target.level} min={1} max={levelCap}
+              onChange={(v) => setPlan(entry.code, 'target', { level: v })} />
+          </Stepper>
 
           {skills.map(({ id, skill }) => {
             const cap = skillCap(growth, skill);
@@ -400,10 +426,16 @@ function UnitCard({ entry, data, growth, icons, leftover }: {
                     {pick(SKILL_CATEGORY_LABEL[skill.categorize], lang)}
                   </Badge>
                 </HStack>
-                <AmountField value={current.skills[String(id)] ?? 1} min={1} max={cap}
-                  onChange={(v) => setSkill(entry.code, 'current', id, v)} />
-                <AmountField value={target.skills[String(id)] ?? 1} min={1} max={cap}
-                  onChange={(v) => setSkill(entry.code, 'target', id, v)} />
+                <Stepper value={current.skills[String(id)] ?? 1} min={1} max={cap}
+                  onChange={(v) => setSkill(entry.code, 'current', id, v)}>
+                  <AmountField value={current.skills[String(id)] ?? 1} min={1} max={cap}
+                    onChange={(v) => setSkill(entry.code, 'current', id, v)} />
+                </Stepper>
+                <Stepper value={target.skills[String(id)] ?? 1} min={1} max={cap}
+                  onChange={(v) => setSkill(entry.code, 'target', id, v)}>
+                  <AmountField value={target.skills[String(id)] ?? 1} min={1} max={cap}
+                    onChange={(v) => setSkill(entry.code, 'target', id, v)} />
+                </Stepper>
               </Box>
             );
           })}
@@ -432,29 +464,29 @@ function UnitCard({ entry, data, growth, icons, leftover }: {
   );
 }
 
-// Tier 0 is an empty slot, so its level control is pointless and is left out.
+// A slot is re-tiered by feeding it a higher piece, so a new tier arrives at
+// that tier's cap.
 function GearField({ growth, slot, gear, onChange }: {
   growth: GrowthData; slot: { type: number; tiers?: { tier: number }[] };
   gear: { tier: number; level: number }; onChange: (g: { tier: number; level: number }) => void;
 }) {
-  const t = useT();
   const cap = gearLevelCap(growth, gear.tier);
+  const tierCap = (slot.tiers ?? []).reduce((n, row) => Math.max(n, row.tier), 0);
+  const empty = gear.tier === 0;
+  const setTier = (tier: number) =>
+    onChange({ tier, level: gearLevelCap(growth, tier) });
+  const setLevel = (level: number) => onChange({ tier: gear.tier, level });
   return (
     <HStack spacing={1} justify="flex-end">
-      <Select size="xs" w="4rem" value={gear.tier} borderColor="whiteAlpha.300"
-        onChange={(e) => {
-          const tier = Number(e.target.value);
-          onChange({ tier, level: Math.min(gear.level, gearLevelCap(growth, tier)) });
-        }}>
-        <option value={0}>{t('gearEmpty')}</option>
-        {(slot.tiers ?? []).map((row) => (
-          <option key={row.tier} value={row.tier}>T{row.tier}</option>
-        ))}
-      </Select>
-      {gear.tier > 0 && (
+      <Stepper value={gear.tier} min={0} max={tierCap} onChange={setTier}>
+        <AmountField value={gear.tier} min={0} max={tierCap} width="2.75rem"
+          onChange={setTier} />
+      </Stepper>
+      <Stepper value={Math.min(gear.level, cap)} min={1} max={cap} disabled={empty}
+        onChange={setLevel}>
         <AmountField value={Math.min(gear.level, cap)} min={1} max={cap} width="3.5rem"
-          onChange={(level) => onChange({ tier: gear.tier, level })} />
-      )}
+          disabled={empty} onChange={setLevel} />
+      </Stepper>
     </HStack>
   );
 }
@@ -660,7 +692,7 @@ function PlanPanel({ plan, growth, stages, icons, title }: {
           <VStack align="stretch" spacing={1}>
             {plan.routes.map((route) => (
               <RouteLine key={route.stage.id} route={route} labels={labels}
-                stages={stages} icons={icons} lang={lang} />
+                growth={growth} stages={stages} icons={icons} lang={lang} />
             ))}
           </VStack>
         </Panel>
@@ -678,45 +710,95 @@ function PlanPanel({ plan, growth, stages, icons, title }: {
 
 // What the stage is on the list for is the row: the same clear covering two
 // needs is the whole reason the run list is not one stage per material.
-function RouteLine({ route, labels, stages, icons, lang }: {
-  route: FarmRoute; labels: Map<string, NeedLabel>; stages: StageData;
-  icons: IconManifest | null; lang: Lang;
+function RouteLine({ route, labels, growth, stages, icons, lang }: {
+  route: FarmRoute; labels: Map<string, NeedLabel>; growth: GrowthData;
+  stages: StageData; icons: IconManifest | null; lang: Lang;
 }) {
   const t = useT();
+  const [open, setOpen] = useState(false);
   const spend = route.entry ? stages.drops[route.entry.ref] : null;
+  const drops = repeatDrops(route.stage);
   return (
-    <Flex align="center" gap={2} wrap="wrap" py={0.5}
-      borderTopWidth="1px" borderColor="whiteAlpha.100">
-      <Text as={NextLink} fontSize="sm" _hover={{ color: 'yellow.300' }}
-        href={{ pathname: '/stage', query: { id: route.stage.id } }}>
-        {stageName(stages, route.stage, lang)}
-      </Text>
-      <Text fontSize="0.65rem" color="gray.300" fontFamily="mono">
-        {t('farmRuns', { n: route.runs.toLocaleString() })}
-      </Text>
-      <Box flex="1" />
-      <HStack spacing={1}>
-        {Object.entries(route.covers).map(([key, amount]) => {
-          const label = labels.get(key);
-          return label ? (
-            <ItemIcon key={key} manifest={icons}
-              group={materialGroup(icons, label.icon)} name={label.icon}
-              grade={label.grade} size={6}
-              title={`${label.name} ${Math.round(amount).toLocaleString()}`} />
-          ) : null;
-        })}
-      </HStack>
-      {route.cost != null && (
+    <Box borderTopWidth="1px" borderColor="whiteAlpha.100" py={0.5}>
+      <Flex align="center" gap={2} wrap="wrap">
+        <Text as={NextLink} fontSize="sm" _hover={{ color: 'yellow.300' }}
+          href={{ pathname: '/stage', query: { id: route.stage.id } }}>
+          {stageName(stages, route.stage, lang)}
+        </Text>
+        <Text fontSize="0.65rem" color="gray.300" fontFamily="mono">
+          {t('farmRuns', { n: route.runs.toLocaleString() })}
+        </Text>
+        {drops.length > 0 && (
+          <Box as="button" fontSize="0.65rem" color={open ? 'gray.200' : 'gray.500'}
+            _hover={{ color: 'gray.200' }} onClick={() => setOpen(!open)}>
+            {t('farmDrops')} ({drops.length})
+          </Box>
+        )}
+        <Box flex="1" />
         <HStack spacing={1}>
-          <GameIcon manifest={icons} group={materialGroup(icons, spend?.icon)}
-            name={spend?.icon} size={3.5} reserve={false}
-            title={spend?.name ?? undefined} />
-          <Text fontSize="0.65rem" color="cyan.300" fontFamily="mono">
-            {route.cost.toLocaleString()}
-          </Text>
+          {Object.entries(route.covers).map(([key, amount]) => {
+            const label = labels.get(key);
+            return label ? (
+              <ItemIcon key={key} manifest={icons}
+                group={materialGroup(icons, label.icon)} name={label.icon}
+                grade={label.grade} size={6}
+                title={`${label.name} ${Math.round(amount).toLocaleString()}`} />
+            ) : null;
+          })}
         </HStack>
+        {route.cost != null && (
+          <HStack spacing={1}>
+            <GameIcon manifest={icons} group={materialGroup(icons, spend?.icon)}
+              name={spend?.icon} size={3.5} reserve={false}
+              title={spend?.name ?? undefined} />
+            <Text fontSize="0.65rem" color="cyan.300" fontFamily="mono">
+              {route.cost.toLocaleString()}
+            </Text>
+          </HStack>
+        )}
+      </Flex>
+      {open && (
+        <Wrap spacing={3} mt={1} pl={2}>
+          {drops.map((ref) => (
+            <WrapItem key={ref}>
+              <DropCell dropRef={ref} growth={growth} stages={stages} icons={icons} />
+            </WrapItem>
+          ))}
+        </Wrap>
       )}
-    </Flex>
+    </Box>
+  );
+}
+
+// Only the repeat channel is farm income. A ref listed twice, guaranteed and on
+// a chance, is still one thing to count.
+function repeatDrops(stage: StageEntry): string[] {
+  const seen = new Set<string>();
+  for (const drop of stage.rewards?.repeat ?? []) if (drop.ref) seen.add(drop.ref);
+  return [...seen];
+}
+
+// A ref outside `growth.materials` has no Items-tab row, so this is the only
+// place its count can be read back.
+function DropCell({ dropRef, growth, stages, icons }: {
+  dropRef: string; growth: GrowthData; stages: StageData; icons: IconManifest | null;
+}) {
+  const inventory = useFarm((s) => s.inventory);
+  const setInventory = useFarm((s) => s.setInventory);
+  const entry = stages.drops[dropRef];
+  const material = growth.materials[dropRef];
+  const held = inventory[dropRef] ?? 0;
+  return (
+    <VStack spacing={1}>
+      <ItemIcon manifest={icons} group={materialGroup(icons, entry?.icon)}
+        name={entry?.icon} grade={entry?.grade} size={10}
+        title={entry?.name || dropRef} />
+      <Stepper value={held} onChange={(v) => setInventory(dropRef, v)}>
+        <AmountField value={held} min={0} max={999_999_999} width="4rem"
+          big={material?.kind === 'goods'}
+          onChange={(v) => setInventory(dropRef, v)} />
+      </Stepper>
+    </VStack>
   );
 }
 
@@ -743,9 +825,13 @@ function NeedRow({ row, growth, stages, icons, lang }: {
 }) {
   const t = useT();
   const [open, setOpen] = useState(false);
+  const inventory = useFarm((s) => s.inventory);
+  const setInventory = useFarm((s) => s.setInventory);
   const { need } = row;
   const label = needLabel(growth, need, lang);
   const missing = (growth._noItemRow ?? []).includes(need.key);
+  // A pool total is a weighted sum over several items, not one slot.
+  const held = need.kind === 'material' ? need.key : null;
 
   return (
     <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md"
@@ -755,7 +841,17 @@ function NeedRow({ row, growth, stages, icons, lang }: {
           name={label.icon} grade={label.grade} size={10} />
         <Text fontSize="sm" flex="1" minW="8rem">{label.name}</Text>
         <Stat label={t('farmNeed')} value={need.required} />
-        <Stat label={t('farmHave')} value={need.have} muted />
+        {held ? (
+          <Box textAlign="right">
+            <Text fontSize="0.6rem" color="gray.600">{t('farmHave')}</Text>
+            <Stepper value={inventory[held] ?? 0} onChange={(v) => setInventory(held, v)}>
+              <AmountField value={inventory[held] ?? 0} min={0} max={999_999_999}
+                width="5rem" onChange={(v) => setInventory(held, v)} />
+            </Stepper>
+          </Box>
+        ) : (
+          <Stat label={t('farmHave')} value={need.have} muted />
+        )}
         <Stat label={t('farmShort')} value={need.short}
           color={need.short ? 'orange.300' : 'green.300'} />
       </Flex>
