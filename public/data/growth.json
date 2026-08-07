@@ -1,0 +1,5449 @@
+{
+ "source": "master_024105c9.mpks",
+ "materials": {
+  "goods:1": {
+   "name": "크레딧",
+   "icon": "Icon_Goods_gold",
+   "kind": "goods"
+  },
+  "goods:10000": {
+   "name": "파트너 경험치 포인트",
+   "icon": "Icon_Goods_Friendship_point",
+   "kind": "unitExp"
+  },
+  "goods:10001": {
+   "name": "장비 경험치 포인트",
+   "icon": "Icon_Goods_Friendship_point",
+   "kind": "equipExp"
+  },
+  "item:10011": {
+   "name": "C랭크 전투 로그",
+   "icon": "Icon_Char_Levelup_Rank_C_Tier1",
+   "kind": "unitExp",
+   "grade": 1
+  },
+  "item:10012": {
+   "name": "B랭크 전투 로그",
+   "icon": "Icon_Char_Levelup_Rank_B_Tier2",
+   "kind": "unitExp",
+   "grade": 2
+  },
+  "item:10013": {
+   "name": "A랭크 전투 로그",
+   "icon": "Icon_Char_Levelup_Rank_A_Tier3",
+   "kind": "unitExp",
+   "grade": 3
+  },
+  "item:10014": {
+   "name": "S랭크 전투 로그",
+   "icon": "Icon_Char_Levelup_Rank_S_Tier4",
+   "kind": "unitExp",
+   "grade": 4
+  },
+  "item:10021": {
+   "name": "샘플 에센스",
+   "icon": "Icon_Eq_GrowUp_Tier1",
+   "kind": "equipExp",
+   "grade": 1
+  },
+  "item:10022": {
+   "name": "소형 에센스",
+   "icon": "Icon_Eq_GrowUp_Tier2",
+   "kind": "equipExp",
+   "grade": 2
+  },
+  "item:10023": {
+   "name": "중형 에센스",
+   "icon": "Icon_Eq_GrowUp_Tier3",
+   "kind": "equipExp",
+   "grade": 3
+  },
+  "item:10024": {
+   "name": "대형 에센스",
+   "icon": "Icon_Eq_GrowUp_Tier4",
+   "kind": "equipExp",
+   "grade": 4
+  },
+  "item:10111": {
+   "name": "하급 열정의 깃털",
+   "icon": "Icon_Skill_Levelup_Passion_Normal_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10112": {
+   "name": "중급 열정의 깃털",
+   "icon": "Icon_Skill_Levelup_Passion_Normal_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10113": {
+   "name": "상급 열정의 깃털",
+   "icon": "Icon_Skill_Levelup_Passion_Normal_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10114": {
+   "name": "최상급 열정의 깃털",
+   "icon": "Icon_Skill_Levelup_Passion_Normal_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10115": {
+   "name": "하급 열정의 알",
+   "icon": "Icon_Skill_Levelup_Passion_Burst_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10116": {
+   "name": "중급 열정의 알",
+   "icon": "Icon_Skill_Levelup_Passion_Burst_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10117": {
+   "name": "상급 열정의 알",
+   "icon": "Icon_Skill_Levelup_Passion_Burst_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10118": {
+   "name": "최상급 열정의 알",
+   "icon": "Icon_Skill_Levelup_Passion_Burst_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10121": {
+   "name": "하급 욕망의 깃털",
+   "icon": "Icon_Skill_Levelup_Urge_Normal_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10122": {
+   "name": "중급 욕망의 깃털",
+   "icon": "Icon_Skill_Levelup_Urge_Normal_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10123": {
+   "name": "상급 욕망의 깃털",
+   "icon": "Icon_Skill_Levelup_Urge_Normal_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10124": {
+   "name": "최상급 욕망의 깃털",
+   "icon": "Icon_Skill_Levelup_Urge_Normal_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10125": {
+   "name": "하급 욕망의 알",
+   "icon": "Icon_Skill_Levelup_Urge_Burst_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10126": {
+   "name": "중급 욕망의 알",
+   "icon": "Icon_Skill_Levelup_Urge_Burst_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10127": {
+   "name": "상급 욕망의 알",
+   "icon": "Icon_Skill_Levelup_Urge_Burst_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10128": {
+   "name": "최상급 욕망의 알",
+   "icon": "Icon_Skill_Levelup_Urge_Burst_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10131": {
+   "name": "하급 의지의 깃털",
+   "icon": "Icon_Skill_Levelup_Will_Normal_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10132": {
+   "name": "중급 의지의 깃털",
+   "icon": "Icon_Skill_Levelup_Will_Normal_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10133": {
+   "name": "상급 의지의 깃털",
+   "icon": "Icon_Skill_Levelup_Will_Normal_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10134": {
+   "name": "최상급 의지의 깃털",
+   "icon": "Icon_Skill_Levelup_Will_Normal_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10135": {
+   "name": "하급 의지의 알",
+   "icon": "Icon_Skill_Levelup_Will_Burst_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10136": {
+   "name": "중급 의지의 알",
+   "icon": "Icon_Skill_Levelup_Will_Burst_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10137": {
+   "name": "상급 의지의 알",
+   "icon": "Icon_Skill_Levelup_Will_Burst_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10138": {
+   "name": "최상급 의지의 알",
+   "icon": "Icon_Skill_Levelup_Will_Burst_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10141": {
+   "name": "하급 이성의 깃털",
+   "icon": "Icon_Skill_Levelup_Reason_Normal_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10142": {
+   "name": "중급 이성의 깃털",
+   "icon": "Icon_Skill_Levelup_Reason_Normal_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10143": {
+   "name": "상급 이성의 깃털",
+   "icon": "Icon_Skill_Levelup_Reason_Normal_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10144": {
+   "name": "최상급 이성의 깃털",
+   "icon": "Icon_Skill_Levelup_Reason_Normal_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10145": {
+   "name": "하급 이성의 알",
+   "icon": "Icon_Skill_Levelup_Reason_Burst_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10146": {
+   "name": "중급 이성의 알",
+   "icon": "Icon_Skill_Levelup_Reason_Burst_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10147": {
+   "name": "상급 이성의 알",
+   "icon": "Icon_Skill_Levelup_Reason_Burst_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10148": {
+   "name": "최상급 이성의 알",
+   "icon": "Icon_Skill_Levelup_Reason_Burst_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10151": {
+   "name": "브론즈 다트",
+   "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10152": {
+   "name": "실버 다트",
+   "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10153": {
+   "name": "골드 다트",
+   "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10154": {
+   "name": "플래티넘 다트",
+   "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10161": {
+   "name": "브론즈 덤벨",
+   "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10162": {
+   "name": "실버 덤벨",
+   "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10163": {
+   "name": "골드 덤벨",
+   "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10164": {
+   "name": "플래티넘 덤벨",
+   "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10171": {
+   "name": "브론즈 마이크",
+   "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10172": {
+   "name": "실버 마이크",
+   "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10173": {
+   "name": "골드 마이크",
+   "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10174": {
+   "name": "플래티넘 마이크",
+   "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:10181": {
+   "name": "브론즈 케인",
+   "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier1",
+   "kind": "skill",
+   "grade": 1
+  },
+  "item:10182": {
+   "name": "실버 케인",
+   "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier2",
+   "kind": "skill",
+   "grade": 2
+  },
+  "item:10183": {
+   "name": "골드 케인",
+   "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier3",
+   "kind": "skill",
+   "grade": 3
+  },
+  "item:10184": {
+   "name": "플래티넘 케인",
+   "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier4",
+   "kind": "skill",
+   "grade": 4
+  },
+  "item:80201": {
+   "name": "T2 귀걸이 바우처",
+   "icon": "Icon_Equipment_Piece_Earring_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80202": {
+   "name": "T2 목걸이 바우처",
+   "icon": "Icon_Equipment_Piece_Necklace_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80203": {
+   "name": "T2 팔찌 바우처",
+   "icon": "Icon_Equipment_Piece_Bracelet_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80204": {
+   "name": "T2 반지 바우처",
+   "icon": "Icon_Equipment_Piece_Ring_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80205": {
+   "name": "T2 모자 바우처",
+   "icon": "Icon_Equipment_Piece_Hat_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80206": {
+   "name": "T2 신발 바우처",
+   "icon": "Icon_Equipment_Piece_Shoes_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80207": {
+   "name": "T2 가방 바우처",
+   "icon": "Icon_Equipment_Piece_Bag_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80208": {
+   "name": "T2 장갑 바우처",
+   "icon": "Icon_Equipment_Piece_Gloves_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80209": {
+   "name": "T2 키링 바우처",
+   "icon": "Icon_Equipment_Piece_Key_ring_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80210": {
+   "name": "T2 배지 바우처",
+   "icon": "Icon_Equipment_Piece_Badge_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80211": {
+   "name": "T2 브라 바우처",
+   "icon": "Icon_Equipment_Piece_Bra_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80212": {
+   "name": "T2 팬티 바우처",
+   "icon": "Icon_Equipment_Piece_Panties_Tier2",
+   "kind": "equipPiece",
+   "grade": 2
+  },
+  "item:80301": {
+   "name": "T3 귀걸이 바우처",
+   "icon": "Icon_Equipment_Piece_Earring_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80302": {
+   "name": "T3 목걸이 바우처",
+   "icon": "Icon_Equipment_Piece_Necklace_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80303": {
+   "name": "T3 팔찌 바우처",
+   "icon": "Icon_Equipment_Piece_Bracelet_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80304": {
+   "name": "T3 반지 바우처",
+   "icon": "Icon_Equipment_Piece_Ring_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80305": {
+   "name": "T3 모자 바우처",
+   "icon": "Icon_Equipment_Piece_Hat_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80306": {
+   "name": "T3 신발 바우처",
+   "icon": "Icon_Equipment_Piece_Shoes_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80307": {
+   "name": "T3 가방 바우처",
+   "icon": "Icon_Equipment_Piece_Bag_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80308": {
+   "name": "T3 장갑 바우처",
+   "icon": "Icon_Equipment_Piece_Gloves_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80309": {
+   "name": "T3 키링 바우처",
+   "icon": "Icon_Equipment_Piece_Key_ring_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80310": {
+   "name": "T3 배지 바우처",
+   "icon": "Icon_Equipment_Piece_Badge_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80311": {
+   "name": "T3 브라 바우처",
+   "icon": "Icon_Equipment_Piece_Bra_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80312": {
+   "name": "T3 팬티 바우처",
+   "icon": "Icon_Equipment_Piece_Panties_Tier3",
+   "kind": "equipPiece",
+   "grade": 3
+  },
+  "item:80401": {
+   "name": "T4 귀걸이 바우처",
+   "icon": "Icon_Equipment_Piece_Earring_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80402": {
+   "name": "T4 목걸이 바우처",
+   "icon": "Icon_Equipment_Piece_Necklace_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80403": {
+   "name": "T4 팔찌 바우처",
+   "icon": "Icon_Equipment_Piece_Bracelet_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80404": {
+   "name": "T4 반지 바우처",
+   "icon": "Icon_Equipment_Piece_Ring_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80405": {
+   "name": "T4 모자 바우처",
+   "icon": "Icon_Equipment_Piece_Hat_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80406": {
+   "name": "T4 신발 바우처",
+   "icon": "Icon_Equipment_Piece_Shoes_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80407": {
+   "name": "T4 가방 바우처",
+   "icon": "Icon_Equipment_Piece_Bag_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80408": {
+   "name": "T4 장갑 바우처",
+   "icon": "Icon_Equipment_Piece_Gloves_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80409": {
+   "name": "T4 키링 바우처",
+   "icon": "Icon_Equipment_Piece_Key_ring_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80410": {
+   "name": "T4 배지 바우처",
+   "icon": "Icon_Equipment_Piece_Badge_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80411": {
+   "name": "T4 브라 바우처",
+   "icon": "Icon_Equipment_Piece_Bra_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80412": {
+   "name": "T4 팬티 바우처",
+   "icon": "Icon_Equipment_Piece_Panties_Tier4",
+   "kind": "equipPiece",
+   "grade": 4
+  },
+  "item:80501": {
+   "name": "T5 귀걸이 바우처",
+   "icon": "Icon_Equipment_Piece_Earring_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80502": {
+   "name": "T5 목걸이 바우처",
+   "icon": "Icon_Equipment_Piece_Necklace_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80503": {
+   "name": "T5 팔찌 바우처",
+   "icon": "Icon_Equipment_Piece_Bracelet_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80504": {
+   "name": "T5 반지 바우처",
+   "icon": "Icon_Equipment_Piece_Ring_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80505": {},
+  "item:80506": {},
+  "item:80507": {},
+  "item:80508": {},
+  "item:80509": {},
+  "item:80510": {},
+  "item:80511": {},
+  "item:80512": {},
+  "item:90101": {
+   "name": "써지컬 귀걸이",
+   "icon": "Icon_Equipment_Earring_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90102": {
+   "name": "넥밴드 선풍기",
+   "icon": "Icon_Equipment_Necklace_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90103": {
+   "name": "미르가늄 팔찌",
+   "icon": "Icon_Equipment_Bracelet_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90104": {
+   "name": "미르가늄 반지",
+   "icon": "Icon_Equipment_Ring_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90105": {
+   "name": "검정 볼캡",
+   "icon": "Icon_Equipment_Hat_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90106": {
+   "name": "블루 러닝화",
+   "icon": "Icon_Equipment_Shoes_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90107": {
+   "name": "기본 더플백",
+   "icon": "Icon_Equipment_Bag_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90108": {
+   "name": "스포츠 반 장갑",
+   "icon": "Icon_Equipment_Gloves_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90109": {
+   "name": "네잎클로버 키링",
+   "icon": "Icon_Equipment_Key_ring_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90110": {
+   "name": "배드민턴 배지",
+   "icon": "Icon_Equipment_Badge_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90111": {
+   "name": "스포츠 브라",
+   "icon": "Icon_Equipment_Bra_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  },
+  "item:90112": {
+   "name": "심리스 티팬티",
+   "icon": "Icon_Equipment_Panties_Tier1",
+   "kind": "equipment",
+   "grade": 1
+  }
+ },
+ "_noItemRow": [
+  "item:80505",
+  "item:80506",
+  "item:80507",
+  "item:80508",
+  "item:80509",
+  "item:80510",
+  "item:80511",
+  "item:80512"
+ ],
+ "skill": {
+  "maxLevel": {
+   "2": 10,
+   "3": 5
+  },
+  "groups": {
+   "101": {
+    "2": 1011,
+    "3": 1012
+   },
+   "102": {
+    "2": 1021,
+    "3": 1022
+   },
+   "103": {
+    "2": 1031,
+    "3": 1032
+   },
+   "104": {
+    "2": 1041,
+    "3": 1042
+   },
+   "201": {
+    "2": 2011,
+    "3": 2012
+   },
+   "202": {
+    "2": 2021,
+    "3": 2022
+   },
+   "203": {
+    "2": 2031,
+    "3": 2032
+   },
+   "204": {
+    "2": 2041,
+    "3": 2042
+   },
+   "301": {
+    "2": 3011,
+    "3": 3012
+   },
+   "302": {
+    "2": 3021,
+    "3": 3022
+   },
+   "303": {
+    "2": 3031,
+    "3": 3032
+   },
+   "304": {
+    "2": 3041,
+    "3": 3042
+   },
+   "401": {
+    "2": 4011,
+    "3": 4012
+   },
+   "402": {
+    "2": 4021,
+    "3": 4022
+   },
+   "403": {
+    "2": 4031,
+    "3": 4032
+   },
+   "404": {
+    "2": 4041,
+    "3": 4042
+   }
+  },
+  "costs": {
+   "1011": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 8
+     },
+     {
+      "ref": "item:10151",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10111",
+      "amount": 10
+     },
+     {
+      "ref": "item:10112",
+      "amount": 4
+     },
+     {
+      "ref": "item:10151",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 14
+     },
+     {
+      "ref": "item:10112",
+      "amount": 6
+     },
+     {
+      "ref": "item:10151",
+      "amount": 15
+     },
+     {
+      "ref": "item:10152",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10112",
+      "amount": 8
+     },
+     {
+      "ref": "item:10113",
+      "amount": 2
+     },
+     {
+      "ref": "item:10152",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10112",
+      "amount": 12
+     },
+     {
+      "ref": "item:10113",
+      "amount": 5
+     },
+     {
+      "ref": "item:10152",
+      "amount": 12
+     },
+     {
+      "ref": "item:10153",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10113",
+      "amount": 8
+     },
+     {
+      "ref": "item:10114",
+      "amount": 8
+     },
+     {
+      "ref": "item:10153",
+      "amount": 6
+     },
+     {
+      "ref": "item:10154",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10113",
+      "amount": 10
+     },
+     {
+      "ref": "item:10114",
+      "amount": 12
+     },
+     {
+      "ref": "item:10153",
+      "amount": 10
+     },
+     {
+      "ref": "item:10154",
+      "amount": 10
+     }
+    ]
+   },
+   "1012": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10115",
+      "amount": 10
+     },
+     {
+      "ref": "item:10151",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10115",
+      "amount": 15
+     },
+     {
+      "ref": "item:10116",
+      "amount": 7
+     },
+     {
+      "ref": "item:10151",
+      "amount": 15
+     },
+     {
+      "ref": "item:10152",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10116",
+      "amount": 13
+     },
+     {
+      "ref": "item:10117",
+      "amount": 5
+     },
+     {
+      "ref": "item:10118",
+      "amount": 3
+     },
+     {
+      "ref": "item:10152",
+      "amount": 13
+     },
+     {
+      "ref": "item:10153",
+      "amount": 5
+     },
+     {
+      "ref": "item:10154",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10117",
+      "amount": 10
+     },
+     {
+      "ref": "item:10118",
+      "amount": 7
+     },
+     {
+      "ref": "item:10153",
+      "amount": 10
+     },
+     {
+      "ref": "item:10154",
+      "amount": 7
+     }
+    ]
+   },
+   "1021": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 8
+     },
+     {
+      "ref": "item:10161",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10111",
+      "amount": 10
+     },
+     {
+      "ref": "item:10112",
+      "amount": 4
+     },
+     {
+      "ref": "item:10161",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 14
+     },
+     {
+      "ref": "item:10112",
+      "amount": 6
+     },
+     {
+      "ref": "item:10161",
+      "amount": 15
+     },
+     {
+      "ref": "item:10162",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10112",
+      "amount": 8
+     },
+     {
+      "ref": "item:10113",
+      "amount": 2
+     },
+     {
+      "ref": "item:10162",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10112",
+      "amount": 12
+     },
+     {
+      "ref": "item:10113",
+      "amount": 5
+     },
+     {
+      "ref": "item:10162",
+      "amount": 12
+     },
+     {
+      "ref": "item:10163",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10113",
+      "amount": 8
+     },
+     {
+      "ref": "item:10114",
+      "amount": 8
+     },
+     {
+      "ref": "item:10163",
+      "amount": 6
+     },
+     {
+      "ref": "item:10164",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10113",
+      "amount": 10
+     },
+     {
+      "ref": "item:10114",
+      "amount": 12
+     },
+     {
+      "ref": "item:10163",
+      "amount": 10
+     },
+     {
+      "ref": "item:10164",
+      "amount": 10
+     }
+    ]
+   },
+   "1022": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10115",
+      "amount": 10
+     },
+     {
+      "ref": "item:10161",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10115",
+      "amount": 15
+     },
+     {
+      "ref": "item:10116",
+      "amount": 7
+     },
+     {
+      "ref": "item:10161",
+      "amount": 15
+     },
+     {
+      "ref": "item:10162",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10116",
+      "amount": 13
+     },
+     {
+      "ref": "item:10117",
+      "amount": 5
+     },
+     {
+      "ref": "item:10118",
+      "amount": 3
+     },
+     {
+      "ref": "item:10162",
+      "amount": 13
+     },
+     {
+      "ref": "item:10163",
+      "amount": 5
+     },
+     {
+      "ref": "item:10164",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10117",
+      "amount": 10
+     },
+     {
+      "ref": "item:10118",
+      "amount": 7
+     },
+     {
+      "ref": "item:10163",
+      "amount": 10
+     },
+     {
+      "ref": "item:10164",
+      "amount": 7
+     }
+    ]
+   },
+   "1031": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 8
+     },
+     {
+      "ref": "item:10171",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10111",
+      "amount": 10
+     },
+     {
+      "ref": "item:10112",
+      "amount": 4
+     },
+     {
+      "ref": "item:10171",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 14
+     },
+     {
+      "ref": "item:10112",
+      "amount": 6
+     },
+     {
+      "ref": "item:10171",
+      "amount": 15
+     },
+     {
+      "ref": "item:10172",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10112",
+      "amount": 8
+     },
+     {
+      "ref": "item:10113",
+      "amount": 2
+     },
+     {
+      "ref": "item:10172",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10112",
+      "amount": 12
+     },
+     {
+      "ref": "item:10113",
+      "amount": 5
+     },
+     {
+      "ref": "item:10172",
+      "amount": 12
+     },
+     {
+      "ref": "item:10173",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10113",
+      "amount": 8
+     },
+     {
+      "ref": "item:10114",
+      "amount": 8
+     },
+     {
+      "ref": "item:10173",
+      "amount": 6
+     },
+     {
+      "ref": "item:10174",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10113",
+      "amount": 10
+     },
+     {
+      "ref": "item:10114",
+      "amount": 12
+     },
+     {
+      "ref": "item:10173",
+      "amount": 10
+     },
+     {
+      "ref": "item:10174",
+      "amount": 10
+     }
+    ]
+   },
+   "1032": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10115",
+      "amount": 10
+     },
+     {
+      "ref": "item:10171",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10115",
+      "amount": 15
+     },
+     {
+      "ref": "item:10116",
+      "amount": 7
+     },
+     {
+      "ref": "item:10171",
+      "amount": 15
+     },
+     {
+      "ref": "item:10172",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10116",
+      "amount": 13
+     },
+     {
+      "ref": "item:10117",
+      "amount": 5
+     },
+     {
+      "ref": "item:10118",
+      "amount": 3
+     },
+     {
+      "ref": "item:10172",
+      "amount": 13
+     },
+     {
+      "ref": "item:10173",
+      "amount": 5
+     },
+     {
+      "ref": "item:10174",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10117",
+      "amount": 10
+     },
+     {
+      "ref": "item:10118",
+      "amount": 7
+     },
+     {
+      "ref": "item:10173",
+      "amount": 10
+     },
+     {
+      "ref": "item:10174",
+      "amount": 7
+     }
+    ]
+   },
+   "1041": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 8
+     },
+     {
+      "ref": "item:10181",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10111",
+      "amount": 10
+     },
+     {
+      "ref": "item:10112",
+      "amount": 4
+     },
+     {
+      "ref": "item:10181",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10111",
+      "amount": 14
+     },
+     {
+      "ref": "item:10112",
+      "amount": 6
+     },
+     {
+      "ref": "item:10181",
+      "amount": 15
+     },
+     {
+      "ref": "item:10182",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10112",
+      "amount": 8
+     },
+     {
+      "ref": "item:10113",
+      "amount": 2
+     },
+     {
+      "ref": "item:10182",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10112",
+      "amount": 12
+     },
+     {
+      "ref": "item:10113",
+      "amount": 5
+     },
+     {
+      "ref": "item:10182",
+      "amount": 12
+     },
+     {
+      "ref": "item:10183",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10113",
+      "amount": 8
+     },
+     {
+      "ref": "item:10114",
+      "amount": 8
+     },
+     {
+      "ref": "item:10183",
+      "amount": 6
+     },
+     {
+      "ref": "item:10184",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10113",
+      "amount": 10
+     },
+     {
+      "ref": "item:10114",
+      "amount": 12
+     },
+     {
+      "ref": "item:10183",
+      "amount": 10
+     },
+     {
+      "ref": "item:10184",
+      "amount": 10
+     }
+    ]
+   },
+   "1042": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10115",
+      "amount": 10
+     },
+     {
+      "ref": "item:10181",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10115",
+      "amount": 15
+     },
+     {
+      "ref": "item:10116",
+      "amount": 7
+     },
+     {
+      "ref": "item:10181",
+      "amount": 15
+     },
+     {
+      "ref": "item:10182",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10116",
+      "amount": 13
+     },
+     {
+      "ref": "item:10117",
+      "amount": 5
+     },
+     {
+      "ref": "item:10118",
+      "amount": 3
+     },
+     {
+      "ref": "item:10182",
+      "amount": 13
+     },
+     {
+      "ref": "item:10183",
+      "amount": 5
+     },
+     {
+      "ref": "item:10184",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10117",
+      "amount": 10
+     },
+     {
+      "ref": "item:10118",
+      "amount": 7
+     },
+     {
+      "ref": "item:10183",
+      "amount": 10
+     },
+     {
+      "ref": "item:10184",
+      "amount": 7
+     }
+    ]
+   },
+   "2011": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 8
+     },
+     {
+      "ref": "item:10151",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10121",
+      "amount": 10
+     },
+     {
+      "ref": "item:10122",
+      "amount": 4
+     },
+     {
+      "ref": "item:10151",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 14
+     },
+     {
+      "ref": "item:10122",
+      "amount": 6
+     },
+     {
+      "ref": "item:10151",
+      "amount": 15
+     },
+     {
+      "ref": "item:10152",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10122",
+      "amount": 8
+     },
+     {
+      "ref": "item:10123",
+      "amount": 2
+     },
+     {
+      "ref": "item:10152",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10122",
+      "amount": 12
+     },
+     {
+      "ref": "item:10123",
+      "amount": 5
+     },
+     {
+      "ref": "item:10152",
+      "amount": 12
+     },
+     {
+      "ref": "item:10153",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10123",
+      "amount": 8
+     },
+     {
+      "ref": "item:10124",
+      "amount": 8
+     },
+     {
+      "ref": "item:10153",
+      "amount": 6
+     },
+     {
+      "ref": "item:10154",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10123",
+      "amount": 10
+     },
+     {
+      "ref": "item:10124",
+      "amount": 12
+     },
+     {
+      "ref": "item:10153",
+      "amount": 10
+     },
+     {
+      "ref": "item:10154",
+      "amount": 10
+     }
+    ]
+   },
+   "2012": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10125",
+      "amount": 10
+     },
+     {
+      "ref": "item:10151",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10125",
+      "amount": 15
+     },
+     {
+      "ref": "item:10126",
+      "amount": 7
+     },
+     {
+      "ref": "item:10151",
+      "amount": 15
+     },
+     {
+      "ref": "item:10152",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10126",
+      "amount": 13
+     },
+     {
+      "ref": "item:10127",
+      "amount": 5
+     },
+     {
+      "ref": "item:10128",
+      "amount": 3
+     },
+     {
+      "ref": "item:10152",
+      "amount": 13
+     },
+     {
+      "ref": "item:10153",
+      "amount": 5
+     },
+     {
+      "ref": "item:10154",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10127",
+      "amount": 10
+     },
+     {
+      "ref": "item:10128",
+      "amount": 7
+     },
+     {
+      "ref": "item:10153",
+      "amount": 10
+     },
+     {
+      "ref": "item:10154",
+      "amount": 7
+     }
+    ]
+   },
+   "2021": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 8
+     },
+     {
+      "ref": "item:10161",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10121",
+      "amount": 10
+     },
+     {
+      "ref": "item:10122",
+      "amount": 4
+     },
+     {
+      "ref": "item:10161",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 14
+     },
+     {
+      "ref": "item:10122",
+      "amount": 6
+     },
+     {
+      "ref": "item:10161",
+      "amount": 15
+     },
+     {
+      "ref": "item:10162",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10122",
+      "amount": 8
+     },
+     {
+      "ref": "item:10123",
+      "amount": 2
+     },
+     {
+      "ref": "item:10162",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10122",
+      "amount": 12
+     },
+     {
+      "ref": "item:10123",
+      "amount": 5
+     },
+     {
+      "ref": "item:10162",
+      "amount": 12
+     },
+     {
+      "ref": "item:10163",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10123",
+      "amount": 8
+     },
+     {
+      "ref": "item:10124",
+      "amount": 8
+     },
+     {
+      "ref": "item:10163",
+      "amount": 6
+     },
+     {
+      "ref": "item:10164",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10123",
+      "amount": 10
+     },
+     {
+      "ref": "item:10124",
+      "amount": 12
+     },
+     {
+      "ref": "item:10163",
+      "amount": 10
+     },
+     {
+      "ref": "item:10164",
+      "amount": 10
+     }
+    ]
+   },
+   "2022": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10125",
+      "amount": 10
+     },
+     {
+      "ref": "item:10161",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10125",
+      "amount": 15
+     },
+     {
+      "ref": "item:10126",
+      "amount": 7
+     },
+     {
+      "ref": "item:10161",
+      "amount": 15
+     },
+     {
+      "ref": "item:10162",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10126",
+      "amount": 13
+     },
+     {
+      "ref": "item:10127",
+      "amount": 5
+     },
+     {
+      "ref": "item:10128",
+      "amount": 3
+     },
+     {
+      "ref": "item:10162",
+      "amount": 13
+     },
+     {
+      "ref": "item:10163",
+      "amount": 5
+     },
+     {
+      "ref": "item:10164",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10127",
+      "amount": 10
+     },
+     {
+      "ref": "item:10128",
+      "amount": 7
+     },
+     {
+      "ref": "item:10163",
+      "amount": 10
+     },
+     {
+      "ref": "item:10164",
+      "amount": 7
+     }
+    ]
+   },
+   "2031": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 8
+     },
+     {
+      "ref": "item:10171",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10121",
+      "amount": 10
+     },
+     {
+      "ref": "item:10122",
+      "amount": 4
+     },
+     {
+      "ref": "item:10171",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 14
+     },
+     {
+      "ref": "item:10122",
+      "amount": 6
+     },
+     {
+      "ref": "item:10171",
+      "amount": 15
+     },
+     {
+      "ref": "item:10172",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10122",
+      "amount": 8
+     },
+     {
+      "ref": "item:10123",
+      "amount": 2
+     },
+     {
+      "ref": "item:10172",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10122",
+      "amount": 12
+     },
+     {
+      "ref": "item:10123",
+      "amount": 5
+     },
+     {
+      "ref": "item:10172",
+      "amount": 12
+     },
+     {
+      "ref": "item:10173",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10123",
+      "amount": 8
+     },
+     {
+      "ref": "item:10124",
+      "amount": 8
+     },
+     {
+      "ref": "item:10173",
+      "amount": 6
+     },
+     {
+      "ref": "item:10174",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10123",
+      "amount": 10
+     },
+     {
+      "ref": "item:10124",
+      "amount": 12
+     },
+     {
+      "ref": "item:10173",
+      "amount": 10
+     },
+     {
+      "ref": "item:10174",
+      "amount": 10
+     }
+    ]
+   },
+   "2032": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10125",
+      "amount": 10
+     },
+     {
+      "ref": "item:10171",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10125",
+      "amount": 15
+     },
+     {
+      "ref": "item:10126",
+      "amount": 7
+     },
+     {
+      "ref": "item:10171",
+      "amount": 15
+     },
+     {
+      "ref": "item:10172",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10126",
+      "amount": 13
+     },
+     {
+      "ref": "item:10127",
+      "amount": 5
+     },
+     {
+      "ref": "item:10128",
+      "amount": 3
+     },
+     {
+      "ref": "item:10172",
+      "amount": 13
+     },
+     {
+      "ref": "item:10173",
+      "amount": 5
+     },
+     {
+      "ref": "item:10174",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10127",
+      "amount": 10
+     },
+     {
+      "ref": "item:10128",
+      "amount": 7
+     },
+     {
+      "ref": "item:10173",
+      "amount": 10
+     },
+     {
+      "ref": "item:10174",
+      "amount": 7
+     }
+    ]
+   },
+   "2041": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 8
+     },
+     {
+      "ref": "item:10181",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10121",
+      "amount": 10
+     },
+     {
+      "ref": "item:10122",
+      "amount": 4
+     },
+     {
+      "ref": "item:10181",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10121",
+      "amount": 14
+     },
+     {
+      "ref": "item:10122",
+      "amount": 6
+     },
+     {
+      "ref": "item:10181",
+      "amount": 15
+     },
+     {
+      "ref": "item:10182",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10122",
+      "amount": 8
+     },
+     {
+      "ref": "item:10123",
+      "amount": 2
+     },
+     {
+      "ref": "item:10182",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10122",
+      "amount": 12
+     },
+     {
+      "ref": "item:10123",
+      "amount": 5
+     },
+     {
+      "ref": "item:10182",
+      "amount": 12
+     },
+     {
+      "ref": "item:10183",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10123",
+      "amount": 8
+     },
+     {
+      "ref": "item:10124",
+      "amount": 8
+     },
+     {
+      "ref": "item:10183",
+      "amount": 6
+     },
+     {
+      "ref": "item:10184",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10123",
+      "amount": 10
+     },
+     {
+      "ref": "item:10124",
+      "amount": 12
+     },
+     {
+      "ref": "item:10183",
+      "amount": 10
+     },
+     {
+      "ref": "item:10184",
+      "amount": 10
+     }
+    ]
+   },
+   "2042": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10125",
+      "amount": 10
+     },
+     {
+      "ref": "item:10181",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10125",
+      "amount": 15
+     },
+     {
+      "ref": "item:10126",
+      "amount": 7
+     },
+     {
+      "ref": "item:10181",
+      "amount": 15
+     },
+     {
+      "ref": "item:10182",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10126",
+      "amount": 13
+     },
+     {
+      "ref": "item:10127",
+      "amount": 5
+     },
+     {
+      "ref": "item:10128",
+      "amount": 3
+     },
+     {
+      "ref": "item:10182",
+      "amount": 13
+     },
+     {
+      "ref": "item:10183",
+      "amount": 5
+     },
+     {
+      "ref": "item:10184",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10127",
+      "amount": 10
+     },
+     {
+      "ref": "item:10128",
+      "amount": 7
+     },
+     {
+      "ref": "item:10183",
+      "amount": 10
+     },
+     {
+      "ref": "item:10184",
+      "amount": 7
+     }
+    ]
+   },
+   "3011": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 8
+     },
+     {
+      "ref": "item:10151",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10131",
+      "amount": 10
+     },
+     {
+      "ref": "item:10132",
+      "amount": 4
+     },
+     {
+      "ref": "item:10151",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 14
+     },
+     {
+      "ref": "item:10132",
+      "amount": 6
+     },
+     {
+      "ref": "item:10151",
+      "amount": 15
+     },
+     {
+      "ref": "item:10152",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10132",
+      "amount": 8
+     },
+     {
+      "ref": "item:10133",
+      "amount": 2
+     },
+     {
+      "ref": "item:10152",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10132",
+      "amount": 12
+     },
+     {
+      "ref": "item:10133",
+      "amount": 5
+     },
+     {
+      "ref": "item:10152",
+      "amount": 12
+     },
+     {
+      "ref": "item:10153",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10133",
+      "amount": 8
+     },
+     {
+      "ref": "item:10134",
+      "amount": 8
+     },
+     {
+      "ref": "item:10153",
+      "amount": 6
+     },
+     {
+      "ref": "item:10154",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10133",
+      "amount": 10
+     },
+     {
+      "ref": "item:10134",
+      "amount": 12
+     },
+     {
+      "ref": "item:10153",
+      "amount": 10
+     },
+     {
+      "ref": "item:10154",
+      "amount": 10
+     }
+    ]
+   },
+   "3012": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10135",
+      "amount": 10
+     },
+     {
+      "ref": "item:10151",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10135",
+      "amount": 15
+     },
+     {
+      "ref": "item:10136",
+      "amount": 7
+     },
+     {
+      "ref": "item:10151",
+      "amount": 15
+     },
+     {
+      "ref": "item:10152",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10136",
+      "amount": 13
+     },
+     {
+      "ref": "item:10137",
+      "amount": 5
+     },
+     {
+      "ref": "item:10138",
+      "amount": 3
+     },
+     {
+      "ref": "item:10152",
+      "amount": 13
+     },
+     {
+      "ref": "item:10153",
+      "amount": 5
+     },
+     {
+      "ref": "item:10154",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10137",
+      "amount": 10
+     },
+     {
+      "ref": "item:10138",
+      "amount": 7
+     },
+     {
+      "ref": "item:10153",
+      "amount": 10
+     },
+     {
+      "ref": "item:10154",
+      "amount": 7
+     }
+    ]
+   },
+   "3021": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 8
+     },
+     {
+      "ref": "item:10161",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10131",
+      "amount": 10
+     },
+     {
+      "ref": "item:10132",
+      "amount": 4
+     },
+     {
+      "ref": "item:10161",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 14
+     },
+     {
+      "ref": "item:10132",
+      "amount": 6
+     },
+     {
+      "ref": "item:10161",
+      "amount": 15
+     },
+     {
+      "ref": "item:10162",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10132",
+      "amount": 8
+     },
+     {
+      "ref": "item:10133",
+      "amount": 2
+     },
+     {
+      "ref": "item:10162",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10132",
+      "amount": 12
+     },
+     {
+      "ref": "item:10133",
+      "amount": 5
+     },
+     {
+      "ref": "item:10162",
+      "amount": 12
+     },
+     {
+      "ref": "item:10163",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10133",
+      "amount": 8
+     },
+     {
+      "ref": "item:10134",
+      "amount": 8
+     },
+     {
+      "ref": "item:10163",
+      "amount": 6
+     },
+     {
+      "ref": "item:10164",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10133",
+      "amount": 10
+     },
+     {
+      "ref": "item:10134",
+      "amount": 12
+     },
+     {
+      "ref": "item:10163",
+      "amount": 10
+     },
+     {
+      "ref": "item:10164",
+      "amount": 10
+     }
+    ]
+   },
+   "3022": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10135",
+      "amount": 10
+     },
+     {
+      "ref": "item:10161",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10135",
+      "amount": 15
+     },
+     {
+      "ref": "item:10136",
+      "amount": 7
+     },
+     {
+      "ref": "item:10161",
+      "amount": 15
+     },
+     {
+      "ref": "item:10162",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10136",
+      "amount": 13
+     },
+     {
+      "ref": "item:10137",
+      "amount": 5
+     },
+     {
+      "ref": "item:10138",
+      "amount": 3
+     },
+     {
+      "ref": "item:10162",
+      "amount": 13
+     },
+     {
+      "ref": "item:10163",
+      "amount": 5
+     },
+     {
+      "ref": "item:10164",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10137",
+      "amount": 10
+     },
+     {
+      "ref": "item:10138",
+      "amount": 7
+     },
+     {
+      "ref": "item:10163",
+      "amount": 10
+     },
+     {
+      "ref": "item:10164",
+      "amount": 7
+     }
+    ]
+   },
+   "3031": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 8
+     },
+     {
+      "ref": "item:10171",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10131",
+      "amount": 10
+     },
+     {
+      "ref": "item:10132",
+      "amount": 4
+     },
+     {
+      "ref": "item:10171",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 14
+     },
+     {
+      "ref": "item:10132",
+      "amount": 6
+     },
+     {
+      "ref": "item:10171",
+      "amount": 15
+     },
+     {
+      "ref": "item:10172",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10132",
+      "amount": 8
+     },
+     {
+      "ref": "item:10133",
+      "amount": 2
+     },
+     {
+      "ref": "item:10172",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10132",
+      "amount": 12
+     },
+     {
+      "ref": "item:10133",
+      "amount": 5
+     },
+     {
+      "ref": "item:10172",
+      "amount": 12
+     },
+     {
+      "ref": "item:10173",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10133",
+      "amount": 8
+     },
+     {
+      "ref": "item:10134",
+      "amount": 8
+     },
+     {
+      "ref": "item:10173",
+      "amount": 6
+     },
+     {
+      "ref": "item:10174",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10133",
+      "amount": 10
+     },
+     {
+      "ref": "item:10134",
+      "amount": 12
+     },
+     {
+      "ref": "item:10173",
+      "amount": 10
+     },
+     {
+      "ref": "item:10174",
+      "amount": 10
+     }
+    ]
+   },
+   "3032": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10135",
+      "amount": 10
+     },
+     {
+      "ref": "item:10171",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10135",
+      "amount": 15
+     },
+     {
+      "ref": "item:10136",
+      "amount": 7
+     },
+     {
+      "ref": "item:10171",
+      "amount": 15
+     },
+     {
+      "ref": "item:10172",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10136",
+      "amount": 13
+     },
+     {
+      "ref": "item:10137",
+      "amount": 5
+     },
+     {
+      "ref": "item:10138",
+      "amount": 3
+     },
+     {
+      "ref": "item:10172",
+      "amount": 13
+     },
+     {
+      "ref": "item:10173",
+      "amount": 5
+     },
+     {
+      "ref": "item:10174",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10137",
+      "amount": 10
+     },
+     {
+      "ref": "item:10138",
+      "amount": 7
+     },
+     {
+      "ref": "item:10173",
+      "amount": 10
+     },
+     {
+      "ref": "item:10174",
+      "amount": 7
+     }
+    ]
+   },
+   "3041": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 8
+     },
+     {
+      "ref": "item:10181",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10131",
+      "amount": 10
+     },
+     {
+      "ref": "item:10132",
+      "amount": 4
+     },
+     {
+      "ref": "item:10181",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10131",
+      "amount": 14
+     },
+     {
+      "ref": "item:10132",
+      "amount": 6
+     },
+     {
+      "ref": "item:10181",
+      "amount": 15
+     },
+     {
+      "ref": "item:10182",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10132",
+      "amount": 8
+     },
+     {
+      "ref": "item:10133",
+      "amount": 2
+     },
+     {
+      "ref": "item:10182",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10132",
+      "amount": 12
+     },
+     {
+      "ref": "item:10133",
+      "amount": 5
+     },
+     {
+      "ref": "item:10182",
+      "amount": 12
+     },
+     {
+      "ref": "item:10183",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10133",
+      "amount": 8
+     },
+     {
+      "ref": "item:10134",
+      "amount": 8
+     },
+     {
+      "ref": "item:10183",
+      "amount": 6
+     },
+     {
+      "ref": "item:10184",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10133",
+      "amount": 10
+     },
+     {
+      "ref": "item:10134",
+      "amount": 12
+     },
+     {
+      "ref": "item:10183",
+      "amount": 10
+     },
+     {
+      "ref": "item:10184",
+      "amount": 10
+     }
+    ]
+   },
+   "3042": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10135",
+      "amount": 10
+     },
+     {
+      "ref": "item:10181",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10135",
+      "amount": 15
+     },
+     {
+      "ref": "item:10136",
+      "amount": 7
+     },
+     {
+      "ref": "item:10181",
+      "amount": 15
+     },
+     {
+      "ref": "item:10182",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10136",
+      "amount": 13
+     },
+     {
+      "ref": "item:10137",
+      "amount": 5
+     },
+     {
+      "ref": "item:10138",
+      "amount": 3
+     },
+     {
+      "ref": "item:10182",
+      "amount": 13
+     },
+     {
+      "ref": "item:10183",
+      "amount": 5
+     },
+     {
+      "ref": "item:10184",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10137",
+      "amount": 10
+     },
+     {
+      "ref": "item:10138",
+      "amount": 7
+     },
+     {
+      "ref": "item:10183",
+      "amount": 10
+     },
+     {
+      "ref": "item:10184",
+      "amount": 7
+     }
+    ]
+   },
+   "4011": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 8
+     },
+     {
+      "ref": "item:10151",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10141",
+      "amount": 10
+     },
+     {
+      "ref": "item:10142",
+      "amount": 4
+     },
+     {
+      "ref": "item:10151",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 14
+     },
+     {
+      "ref": "item:10142",
+      "amount": 6
+     },
+     {
+      "ref": "item:10151",
+      "amount": 15
+     },
+     {
+      "ref": "item:10152",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10142",
+      "amount": 8
+     },
+     {
+      "ref": "item:10143",
+      "amount": 2
+     },
+     {
+      "ref": "item:10152",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10142",
+      "amount": 12
+     },
+     {
+      "ref": "item:10143",
+      "amount": 5
+     },
+     {
+      "ref": "item:10152",
+      "amount": 12
+     },
+     {
+      "ref": "item:10153",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10143",
+      "amount": 8
+     },
+     {
+      "ref": "item:10144",
+      "amount": 8
+     },
+     {
+      "ref": "item:10153",
+      "amount": 6
+     },
+     {
+      "ref": "item:10154",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10143",
+      "amount": 10
+     },
+     {
+      "ref": "item:10144",
+      "amount": 12
+     },
+     {
+      "ref": "item:10153",
+      "amount": 10
+     },
+     {
+      "ref": "item:10154",
+      "amount": 10
+     }
+    ]
+   },
+   "4012": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10145",
+      "amount": 10
+     },
+     {
+      "ref": "item:10151",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10145",
+      "amount": 15
+     },
+     {
+      "ref": "item:10146",
+      "amount": 7
+     },
+     {
+      "ref": "item:10151",
+      "amount": 15
+     },
+     {
+      "ref": "item:10152",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10146",
+      "amount": 13
+     },
+     {
+      "ref": "item:10147",
+      "amount": 5
+     },
+     {
+      "ref": "item:10148",
+      "amount": 3
+     },
+     {
+      "ref": "item:10152",
+      "amount": 13
+     },
+     {
+      "ref": "item:10153",
+      "amount": 5
+     },
+     {
+      "ref": "item:10154",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10147",
+      "amount": 10
+     },
+     {
+      "ref": "item:10148",
+      "amount": 7
+     },
+     {
+      "ref": "item:10153",
+      "amount": 10
+     },
+     {
+      "ref": "item:10154",
+      "amount": 7
+     }
+    ]
+   },
+   "4021": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 8
+     },
+     {
+      "ref": "item:10161",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10141",
+      "amount": 10
+     },
+     {
+      "ref": "item:10142",
+      "amount": 4
+     },
+     {
+      "ref": "item:10161",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 14
+     },
+     {
+      "ref": "item:10142",
+      "amount": 6
+     },
+     {
+      "ref": "item:10161",
+      "amount": 15
+     },
+     {
+      "ref": "item:10162",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10142",
+      "amount": 8
+     },
+     {
+      "ref": "item:10143",
+      "amount": 2
+     },
+     {
+      "ref": "item:10162",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10142",
+      "amount": 12
+     },
+     {
+      "ref": "item:10143",
+      "amount": 5
+     },
+     {
+      "ref": "item:10162",
+      "amount": 12
+     },
+     {
+      "ref": "item:10163",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10143",
+      "amount": 8
+     },
+     {
+      "ref": "item:10144",
+      "amount": 8
+     },
+     {
+      "ref": "item:10163",
+      "amount": 6
+     },
+     {
+      "ref": "item:10164",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10143",
+      "amount": 10
+     },
+     {
+      "ref": "item:10144",
+      "amount": 12
+     },
+     {
+      "ref": "item:10163",
+      "amount": 10
+     },
+     {
+      "ref": "item:10164",
+      "amount": 10
+     }
+    ]
+   },
+   "4022": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10145",
+      "amount": 10
+     },
+     {
+      "ref": "item:10161",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10145",
+      "amount": 15
+     },
+     {
+      "ref": "item:10146",
+      "amount": 7
+     },
+     {
+      "ref": "item:10161",
+      "amount": 15
+     },
+     {
+      "ref": "item:10162",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10146",
+      "amount": 13
+     },
+     {
+      "ref": "item:10147",
+      "amount": 5
+     },
+     {
+      "ref": "item:10148",
+      "amount": 3
+     },
+     {
+      "ref": "item:10162",
+      "amount": 13
+     },
+     {
+      "ref": "item:10163",
+      "amount": 5
+     },
+     {
+      "ref": "item:10164",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10147",
+      "amount": 10
+     },
+     {
+      "ref": "item:10148",
+      "amount": 7
+     },
+     {
+      "ref": "item:10163",
+      "amount": 10
+     },
+     {
+      "ref": "item:10164",
+      "amount": 7
+     }
+    ]
+   },
+   "4031": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 8
+     },
+     {
+      "ref": "item:10171",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10141",
+      "amount": 10
+     },
+     {
+      "ref": "item:10142",
+      "amount": 4
+     },
+     {
+      "ref": "item:10171",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 14
+     },
+     {
+      "ref": "item:10142",
+      "amount": 6
+     },
+     {
+      "ref": "item:10171",
+      "amount": 15
+     },
+     {
+      "ref": "item:10172",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10142",
+      "amount": 8
+     },
+     {
+      "ref": "item:10143",
+      "amount": 2
+     },
+     {
+      "ref": "item:10172",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10142",
+      "amount": 12
+     },
+     {
+      "ref": "item:10143",
+      "amount": 5
+     },
+     {
+      "ref": "item:10172",
+      "amount": 12
+     },
+     {
+      "ref": "item:10173",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10143",
+      "amount": 8
+     },
+     {
+      "ref": "item:10144",
+      "amount": 8
+     },
+     {
+      "ref": "item:10173",
+      "amount": 6
+     },
+     {
+      "ref": "item:10174",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10143",
+      "amount": 10
+     },
+     {
+      "ref": "item:10144",
+      "amount": 12
+     },
+     {
+      "ref": "item:10173",
+      "amount": 10
+     },
+     {
+      "ref": "item:10174",
+      "amount": 10
+     }
+    ]
+   },
+   "4032": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10145",
+      "amount": 10
+     },
+     {
+      "ref": "item:10171",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10145",
+      "amount": 15
+     },
+     {
+      "ref": "item:10146",
+      "amount": 7
+     },
+     {
+      "ref": "item:10171",
+      "amount": 15
+     },
+     {
+      "ref": "item:10172",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10146",
+      "amount": 13
+     },
+     {
+      "ref": "item:10147",
+      "amount": 5
+     },
+     {
+      "ref": "item:10148",
+      "amount": 3
+     },
+     {
+      "ref": "item:10172",
+      "amount": 13
+     },
+     {
+      "ref": "item:10173",
+      "amount": 5
+     },
+     {
+      "ref": "item:10174",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10147",
+      "amount": 10
+     },
+     {
+      "ref": "item:10148",
+      "amount": 7
+     },
+     {
+      "ref": "item:10173",
+      "amount": 10
+     },
+     {
+      "ref": "item:10174",
+      "amount": 7
+     }
+    ]
+   },
+   "4041": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 4000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 3
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 8000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 14000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 8
+     },
+     {
+      "ref": "item:10181",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 31500
+     },
+     {
+      "ref": "item:10141",
+      "amount": 10
+     },
+     {
+      "ref": "item:10142",
+      "amount": 4
+     },
+     {
+      "ref": "item:10181",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "goods:1",
+      "amount": 55000
+     },
+     {
+      "ref": "item:10141",
+      "amount": 14
+     },
+     {
+      "ref": "item:10142",
+      "amount": 6
+     },
+     {
+      "ref": "item:10181",
+      "amount": 15
+     },
+     {
+      "ref": "item:10182",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "goods:1",
+      "amount": 92500
+     },
+     {
+      "ref": "item:10142",
+      "amount": 8
+     },
+     {
+      "ref": "item:10143",
+      "amount": 2
+     },
+     {
+      "ref": "item:10182",
+      "amount": 8
+     }
+    ],
+    "7": [
+     {
+      "ref": "goods:1",
+      "amount": 125000
+     },
+     {
+      "ref": "item:10142",
+      "amount": 12
+     },
+     {
+      "ref": "item:10143",
+      "amount": 5
+     },
+     {
+      "ref": "item:10182",
+      "amount": 12
+     },
+     {
+      "ref": "item:10183",
+      "amount": 4
+     }
+    ],
+    "8": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10143",
+      "amount": 8
+     },
+     {
+      "ref": "item:10144",
+      "amount": 8
+     },
+     {
+      "ref": "item:10183",
+      "amount": 6
+     },
+     {
+      "ref": "item:10184",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10143",
+      "amount": 10
+     },
+     {
+      "ref": "item:10144",
+      "amount": 12
+     },
+     {
+      "ref": "item:10183",
+      "amount": 10
+     },
+     {
+      "ref": "item:10184",
+      "amount": 10
+     }
+    ]
+   },
+   "4042": {
+    "1": [
+     {
+      "ref": "goods:1",
+      "amount": 80000
+     },
+     {
+      "ref": "item:10145",
+      "amount": 10
+     },
+     {
+      "ref": "item:10181",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "goods:1",
+      "amount": 170000
+     },
+     {
+      "ref": "item:10145",
+      "amount": 15
+     },
+     {
+      "ref": "item:10146",
+      "amount": 7
+     },
+     {
+      "ref": "item:10181",
+      "amount": 15
+     },
+     {
+      "ref": "item:10182",
+      "amount": 7
+     }
+    ],
+    "3": [
+     {
+      "ref": "goods:1",
+      "amount": 250000
+     },
+     {
+      "ref": "item:10146",
+      "amount": 13
+     },
+     {
+      "ref": "item:10147",
+      "amount": 5
+     },
+     {
+      "ref": "item:10148",
+      "amount": 3
+     },
+     {
+      "ref": "item:10182",
+      "amount": 13
+     },
+     {
+      "ref": "item:10183",
+      "amount": 5
+     },
+     {
+      "ref": "item:10184",
+      "amount": 3
+     }
+    ],
+    "4": [
+     {
+      "ref": "goods:1",
+      "amount": 500000
+     },
+     {
+      "ref": "item:10147",
+      "amount": 10
+     },
+     {
+      "ref": "item:10148",
+      "amount": 7
+     },
+     {
+      "ref": "item:10183",
+      "amount": 10
+     },
+     {
+      "ref": "item:10184",
+      "amount": 7
+     }
+    ]
+   }
+  }
+ },
+ "equipment": {
+  "tiers": [
+   {
+    "tier": 1,
+    "maxLevel": 10
+   },
+   {
+    "tier": 2,
+    "maxLevel": 20
+   },
+   {
+    "tier": 3,
+    "maxLevel": 30
+   },
+   {
+    "tier": 4,
+    "maxLevel": 40
+   },
+   {
+    "tier": 5,
+    "maxLevel": 45
+   }
+  ],
+  "accumExp": {
+   "1": 0,
+   "2": 7,
+   "3": 29,
+   "4": 75,
+   "5": 152,
+   "6": 269,
+   "7": 435,
+   "8": 660,
+   "9": 952,
+   "10": 1322,
+   "11": 1779,
+   "12": 2334,
+   "13": 2998,
+   "14": 3782,
+   "15": 4697,
+   "16": 5755,
+   "17": 6968,
+   "18": 8348,
+   "19": 9909,
+   "20": 11663,
+   "21": 13625,
+   "22": 15808,
+   "23": 18227,
+   "24": 20896,
+   "25": 23831,
+   "26": 27048,
+   "27": 30563,
+   "28": 34392,
+   "29": 38553,
+   "30": 43063,
+   "31": 47940,
+   "32": 53203,
+   "33": 58870,
+   "34": 64962,
+   "35": 71498,
+   "36": 78499,
+   "37": 85986,
+   "38": 93981,
+   "39": 102506,
+   "40": 111585,
+   "41": 121273,
+   "42": 131598,
+   "43": 142590,
+   "44": 154279,
+   "45": 166696
+  },
+  "pool": "goods:10001",
+  "expItems": {
+   "goods:10001": 1,
+   "item:10021": 10,
+   "item:10022": 100,
+   "item:10023": 500,
+   "item:10024": 2500
+  },
+  "tierUp": {
+   "2": {
+    "1": [
+     {
+      "ref": "item:80201",
+      "amount": 15
+     }
+    ],
+    "2": [
+     {
+      "ref": "item:80202",
+      "amount": 15
+     }
+    ],
+    "3": [
+     {
+      "ref": "item:80203",
+      "amount": 15
+     }
+    ],
+    "4": [
+     {
+      "ref": "item:80204",
+      "amount": 15
+     }
+    ],
+    "5": [
+     {
+      "ref": "item:80205",
+      "amount": 15
+     }
+    ],
+    "6": [
+     {
+      "ref": "item:80206",
+      "amount": 15
+     }
+    ],
+    "7": [
+     {
+      "ref": "item:80207",
+      "amount": 15
+     }
+    ],
+    "8": [
+     {
+      "ref": "item:80208",
+      "amount": 15
+     }
+    ],
+    "9": [
+     {
+      "ref": "item:80209",
+      "amount": 15
+     }
+    ],
+    "10": [
+     {
+      "ref": "item:80210",
+      "amount": 15
+     }
+    ],
+    "11": [
+     {
+      "ref": "item:80211",
+      "amount": 15
+     }
+    ],
+    "12": [
+     {
+      "ref": "item:80212",
+      "amount": 15
+     }
+    ]
+   },
+   "3": {
+    "1": [
+     {
+      "ref": "item:80301",
+      "amount": 25
+     },
+     {
+      "ref": "item:90101",
+      "amount": 5
+     }
+    ],
+    "2": [
+     {
+      "ref": "item:80302",
+      "amount": 25
+     },
+     {
+      "ref": "item:90102",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "item:80303",
+      "amount": 25
+     },
+     {
+      "ref": "item:90103",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "item:80304",
+      "amount": 25
+     },
+     {
+      "ref": "item:90104",
+      "amount": 5
+     }
+    ],
+    "5": [
+     {
+      "ref": "item:80305",
+      "amount": 25
+     },
+     {
+      "ref": "item:90105",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "item:80306",
+      "amount": 25
+     },
+     {
+      "ref": "item:90106",
+      "amount": 5
+     }
+    ],
+    "7": [
+     {
+      "ref": "item:80307",
+      "amount": 25
+     },
+     {
+      "ref": "item:90107",
+      "amount": 5
+     }
+    ],
+    "8": [
+     {
+      "ref": "item:80308",
+      "amount": 25
+     },
+     {
+      "ref": "item:90108",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "item:80309",
+      "amount": 25
+     },
+     {
+      "ref": "item:90109",
+      "amount": 5
+     }
+    ],
+    "10": [
+     {
+      "ref": "item:80310",
+      "amount": 25
+     },
+     {
+      "ref": "item:90110",
+      "amount": 5
+     }
+    ],
+    "11": [
+     {
+      "ref": "item:80311",
+      "amount": 25
+     },
+     {
+      "ref": "item:90111",
+      "amount": 5
+     }
+    ],
+    "12": [
+     {
+      "ref": "item:80312",
+      "amount": 25
+     },
+     {
+      "ref": "item:90112",
+      "amount": 5
+     }
+    ]
+   },
+   "4": {
+    "1": [
+     {
+      "ref": "item:80401",
+      "amount": 30
+     },
+     {
+      "ref": "item:90101",
+      "amount": 5
+     },
+     {
+      "ref": "item:80201",
+      "amount": 10
+     }
+    ],
+    "2": [
+     {
+      "ref": "item:80402",
+      "amount": 30
+     },
+     {
+      "ref": "item:90102",
+      "amount": 5
+     },
+     {
+      "ref": "item:80202",
+      "amount": 10
+     }
+    ],
+    "3": [
+     {
+      "ref": "item:80403",
+      "amount": 30
+     },
+     {
+      "ref": "item:90103",
+      "amount": 5
+     },
+     {
+      "ref": "item:80203",
+      "amount": 10
+     }
+    ],
+    "4": [
+     {
+      "ref": "item:80404",
+      "amount": 30
+     },
+     {
+      "ref": "item:90104",
+      "amount": 5
+     },
+     {
+      "ref": "item:80204",
+      "amount": 10
+     }
+    ],
+    "5": [
+     {
+      "ref": "item:80405",
+      "amount": 30
+     },
+     {
+      "ref": "item:90105",
+      "amount": 5
+     },
+     {
+      "ref": "item:80205",
+      "amount": 10
+     }
+    ],
+    "6": [
+     {
+      "ref": "item:80406",
+      "amount": 30
+     },
+     {
+      "ref": "item:90106",
+      "amount": 5
+     },
+     {
+      "ref": "item:80206",
+      "amount": 10
+     }
+    ],
+    "7": [
+     {
+      "ref": "item:80407",
+      "amount": 30
+     },
+     {
+      "ref": "item:90107",
+      "amount": 5
+     },
+     {
+      "ref": "item:80207",
+      "amount": 10
+     }
+    ],
+    "8": [
+     {
+      "ref": "item:80408",
+      "amount": 30
+     },
+     {
+      "ref": "item:90108",
+      "amount": 5
+     },
+     {
+      "ref": "item:80208",
+      "amount": 10
+     }
+    ],
+    "9": [
+     {
+      "ref": "item:80409",
+      "amount": 30
+     },
+     {
+      "ref": "item:90109",
+      "amount": 5
+     },
+     {
+      "ref": "item:80209",
+      "amount": 10
+     }
+    ],
+    "10": [
+     {
+      "ref": "item:80410",
+      "amount": 30
+     },
+     {
+      "ref": "item:90110",
+      "amount": 5
+     },
+     {
+      "ref": "item:80210",
+      "amount": 10
+     }
+    ],
+    "11": [
+     {
+      "ref": "item:80411",
+      "amount": 30
+     },
+     {
+      "ref": "item:90111",
+      "amount": 5
+     },
+     {
+      "ref": "item:80211",
+      "amount": 10
+     }
+    ],
+    "12": [
+     {
+      "ref": "item:80412",
+      "amount": 30
+     },
+     {
+      "ref": "item:90112",
+      "amount": 5
+     },
+     {
+      "ref": "item:80212",
+      "amount": 10
+     }
+    ]
+   },
+   "5": {
+    "1": [
+     {
+      "ref": "item:80501",
+      "amount": 35
+     },
+     {
+      "ref": "item:80201",
+      "amount": 10
+     },
+     {
+      "ref": "item:80301",
+      "amount": 5
+     }
+    ],
+    "2": [
+     {
+      "ref": "item:80502",
+      "amount": 35
+     },
+     {
+      "ref": "item:80202",
+      "amount": 10
+     },
+     {
+      "ref": "item:80302",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "item:80503",
+      "amount": 35
+     },
+     {
+      "ref": "item:80203",
+      "amount": 10
+     },
+     {
+      "ref": "item:80303",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "item:80504",
+      "amount": 35
+     },
+     {
+      "ref": "item:80204",
+      "amount": 10
+     },
+     {
+      "ref": "item:80304",
+      "amount": 5
+     }
+    ],
+    "5": [
+     {
+      "ref": "item:80505",
+      "amount": 35
+     },
+     {
+      "ref": "item:80205",
+      "amount": 10
+     },
+     {
+      "ref": "item:80305",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "item:80506",
+      "amount": 35
+     },
+     {
+      "ref": "item:80206",
+      "amount": 10
+     },
+     {
+      "ref": "item:80306",
+      "amount": 5
+     }
+    ],
+    "7": [
+     {
+      "ref": "item:80507",
+      "amount": 35
+     },
+     {
+      "ref": "item:80207",
+      "amount": 10
+     },
+     {
+      "ref": "item:80307",
+      "amount": 5
+     }
+    ],
+    "8": [
+     {
+      "ref": "item:80508",
+      "amount": 35
+     },
+     {
+      "ref": "item:80208",
+      "amount": 10
+     },
+     {
+      "ref": "item:80308",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "item:80509",
+      "amount": 35
+     },
+     {
+      "ref": "item:80209",
+      "amount": 10
+     },
+     {
+      "ref": "item:80309",
+      "amount": 5
+     }
+    ],
+    "10": [
+     {
+      "ref": "item:80510",
+      "amount": 35
+     },
+     {
+      "ref": "item:80210",
+      "amount": 10
+     },
+     {
+      "ref": "item:80310",
+      "amount": 5
+     }
+    ],
+    "11": [
+     {
+      "ref": "item:80511",
+      "amount": 35
+     },
+     {
+      "ref": "item:80211",
+      "amount": 10
+     },
+     {
+      "ref": "item:80311",
+      "amount": 5
+     }
+    ],
+    "12": [
+     {
+      "ref": "item:80512",
+      "amount": 35
+     },
+     {
+      "ref": "item:80212",
+      "amount": 10
+     },
+     {
+      "ref": "item:80312",
+      "amount": 5
+     }
+    ]
+   }
+  }
+ },
+ "unit": {
+  "accumExp": {
+   "1": 0,
+   "2": 4,
+   "3": 10,
+   "4": 19,
+   "5": 32,
+   "6": 49,
+   "7": 71,
+   "8": 99,
+   "9": 134,
+   "10": 177,
+   "11": 229,
+   "12": 292,
+   "13": 368,
+   "14": 458,
+   "15": 564,
+   "16": 689,
+   "17": 835,
+   "18": 1006,
+   "19": 1205,
+   "20": 1436,
+   "21": 1704,
+   "22": 2013,
+   "23": 2370,
+   "24": 2780,
+   "25": 3251,
+   "26": 3791,
+   "27": 4410,
+   "28": 5117,
+   "29": 5925,
+   "30": 6847,
+   "31": 7897,
+   "32": 9092,
+   "33": 10451,
+   "34": 11994,
+   "35": 13746,
+   "36": 15733,
+   "37": 17984,
+   "38": 20533,
+   "39": 23417,
+   "40": 26678,
+   "41": 30364,
+   "42": 34527,
+   "43": 39226,
+   "44": 44527,
+   "45": 50504,
+   "46": 57240,
+   "47": 64828,
+   "48": 73372,
+   "49": 82988,
+   "50": 93806,
+   "51": 105972,
+   "52": 119648,
+   "53": 135015,
+   "54": 152277,
+   "55": 171661,
+   "56": 193421,
+   "57": 217839,
+   "58": 245233,
+   "59": 275955,
+   "60": 310401
+  },
+  "pool": "goods:10000",
+  "expItems": {
+   "goods:10000": 1,
+   "item:10011": 10,
+   "item:10012": 100,
+   "item:10013": 500,
+   "item:10014": 2500
+  }
+ }
+}

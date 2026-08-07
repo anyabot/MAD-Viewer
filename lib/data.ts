@@ -86,6 +86,8 @@ export type CharacterEntry = {
   datePlaces?: number[];
   /** Join key into `CharacterData.skillSets`. */
   skillSetGroup?: number;
+  /** Join key into `GrowthData.skill.groups`; playable roster only. */
+  skillMaterialGroup?: number | null;
   /** Three equipment slot type ids, indexing `CharacterData.equipment`. */
   equipmentSlots?: number[];
   /** `start` runs once at the opening, `repeat` loops. */
@@ -450,6 +452,10 @@ export type StageEntry = {
   recommendLevel?: string;
   weakAttribute?: number;
   stamina?: number;
+  /** What one clear costs, and in which currency — not the same across modes:
+   *  story burns the recharging stamina, the daily dungeons a daily-resetting
+   *  one, an event stage that event's ticket. `ref` keys `StageData.drops`. */
+  entry?: { ref: string; amount: number };
   subMissionGroup?: string;
   /** Field prefab stem; the art itself is not extracted. */
   background?: string;
@@ -577,6 +583,56 @@ export function loadStages(): Promise<StageData> {
 
 export function loadIcons(): Promise<IconManifest> {
   return fetchJson<IconManifest>('icons.json');
+}
+
+/** One line of a growth bill. `ref` is keyed the same way a stage drop is. */
+export type MaterialCost = { ref: string; amount: number };
+
+export type GrowthMaterial = {
+  name?: string | null;
+  icon?: string | null;
+  /** What the tracker groups it under: `goods`, `skill`, `equipPiece`, … */
+  kind?: string;
+  grade?: number;
+};
+
+/**
+ * What it costs to raise a unit. `skill.costs` is keyed by the level being
+ * left, so raising 1 → 3 pays rows 1 and 2, and `accumExp` is the total
+ * experience to reach a level rather than the step to the next one.
+ */
+export type GrowthData = {
+  source: string;
+  /** Keyed `<type>:<id>`, the same key a stage drop's `ref` uses. */
+  materials: Record<string, GrowthMaterial>;
+  /** Bills naming an item this pack ships no row for — tier 5 on eight slots. */
+  _noItemRow?: string[];
+  skill: {
+    /** `SKILL_CATEGORIZE_TYPE` -> the level the material table reaches. */
+    maxLevel: Record<string, number>;
+    /** `CharacterEntry.skillMaterialGroup` -> categorize -> cost curve id. */
+    groups: Record<string, Record<string, number>>;
+    costs: Record<string, Record<string, MaterialCost[]>>;
+  };
+  equipment: {
+    tiers: { tier: number; maxLevel: number }[];
+    accumExp: Record<string, number>;
+    /** The stored balance's ref — where a feed's excess ends up. */
+    pool: string;
+    /** Ref -> the experience it is worth; the balance itself is worth one. */
+    expItems: Record<string, number>;
+    /** Tier reached -> slot type -> the bill. */
+    tierUp: Record<string, Record<string, MaterialCost[]>>;
+  };
+  unit: {
+    accumExp: Record<string, number>;
+    pool: string;
+    expItems: Record<string, number>;
+  };
+};
+
+export function loadGrowth(): Promise<GrowthData> {
+  return fetchJson<GrowthData>('growth.json');
 }
 
 // An emote is a Unity particle prefab: the manifest carries its emitters with

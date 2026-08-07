@@ -2626,6 +2626,10 @@
   }
  },
  "drops": {
+  "charge_goods:1": {
+   "name": "스태미나 비타민",
+   "icon": "Icon_Goods_Stamina_Stamina_Vitamins"
+  },
   "item:90101": {
    "name": "써지컬 귀걸이",
    "icon": "Icon_Equipment_Earring_Tier1",
@@ -3010,6 +3014,10 @@
    "icon": "Icon_Equipment_Piece_Ring_Tier5",
    "grade": 5
   },
+  "reset_goods:1": {
+   "name": "에너지 비타민",
+   "icon": "Icon_Goods_Stamina_Energy_Vitamins"
+  },
   "item:10011": {
    "name": "C랭크 전투 로그",
    "icon": "Icon_Char_Levelup_Rank_C_Tier1",
@@ -3290,13 +3298,25 @@
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier4",
    "grade": 4
   },
+  "goods:5001": {
+   "name": "떨어진 탄피",
+   "icon": "Icon_Item_ev1001_ticket"
+  },
   "goods:1001": {
    "name": "무서운 계약서",
    "icon": "Icon_Goods_EV1001_01"
   },
+  "goods:5002": {
+   "name": "시간의 파편",
+   "icon": "Icon_Item_EV1002_ticket"
+  },
   "goods:1002": {
    "name": "마력 덩어리(?)",
    "icon": "Icon_Goods_EV1002_01"
+  },
+  "goods:5003": {
+   "name": "조각난 보물 지도",
+   "icon": "Icon_Goods_EV1003_Ticket_01"
   },
   "goods:1003": {
    "name": "차가운 맥주",
@@ -3306,17 +3326,9 @@
    "name": "고단백 육포",
    "icon": "Icon_Goods_EV1004_Contract_01"
   },
-  "charge_goods:1": {
-   "name": "스태미나 비타민",
-   "icon": "Icon_Goods_Stamina_Stamina_Vitamins"
-  },
   "item:40013": {
    "name": "선물 선택 상자",
    "icon": "Icon_Item_select_gift_box"
-  },
-  "reset_goods:1": {
-   "name": "에너지 비타민",
-   "icon": "Icon_Goods_Stamina_Energy_Vitamins"
   },
   "item:40002": {
    "name": "중급 일반 스킬 재료 선택 상자",
@@ -3355,6 +3367,10 @@
    "recommendLevel": "1",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -3510,6 +3526,10 @@
    "recommendLevel": "2",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -3677,6 +3697,10 @@
    "recommendLevel": "2",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -3844,6 +3868,10 @@
    "recommendLevel": "3",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -4011,6 +4039,10 @@
    "recommendLevel": "3",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -4178,6 +4210,10 @@
    "recommendLevel": "4",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -4345,6 +4381,10 @@
    "recommendLevel": "4",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -4512,6 +4552,10 @@
    "recommendLevel": "5",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -4679,6 +4723,10 @@
    "recommendLevel": "5",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -4846,6 +4894,10 @@
    "recommendLevel": "6",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -5013,6 +5065,10 @@
    "recommendLevel": "6",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -5180,6 +5236,10 @@
    "recommendLevel": "7",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -5347,6 +5407,10 @@
    "recommendLevel": "8",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -5492,6 +5556,10 @@
    "recommendLevel": "9",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -5649,6 +5717,10 @@
    "recommendLevel": "10",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -5806,6 +5878,10 @@
    "recommendLevel": "12",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -5963,6 +6039,10 @@
    "recommendLevel": "8",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -6130,6 +6210,10 @@
    "recommendLevel": "8",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -6297,6 +6381,10 @@
    "recommendLevel": "9",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -6464,6 +6552,10 @@
    "recommendLevel": "9",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -6631,6 +6723,10 @@
    "recommendLevel": "10",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -6798,6 +6894,10 @@
    "recommendLevel": "10",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -6965,6 +7065,10 @@
    "recommendLevel": "11",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -7132,6 +7236,10 @@
    "recommendLevel": "11",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -7299,6 +7407,10 @@
    "recommendLevel": "12",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -7466,6 +7578,10 @@
    "recommendLevel": "12",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -7633,6 +7749,10 @@
    "recommendLevel": "13",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -7800,6 +7920,10 @@
    "recommendLevel": "13",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -7967,6 +8091,10 @@
    "recommendLevel": "13",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -8124,6 +8252,10 @@
    "recommendLevel": "14",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -8281,6 +8413,10 @@
    "recommendLevel": "15",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -8438,6 +8574,10 @@
    "recommendLevel": "17",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_02",
    "bgm": "BGM_Battle_Sam003",
@@ -8595,6 +8735,10 @@
    "recommendLevel": "14",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -8762,6 +8906,10 @@
    "recommendLevel": "14",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -8929,6 +9077,10 @@
    "recommendLevel": "14",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -9096,6 +9248,10 @@
    "recommendLevel": "15",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -9263,6 +9419,10 @@
    "recommendLevel": "15",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -9430,6 +9590,10 @@
    "recommendLevel": "15",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -9597,6 +9761,10 @@
    "recommendLevel": "16",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -9764,6 +9932,10 @@
    "recommendLevel": "16",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -9931,6 +10103,10 @@
    "recommendLevel": "16",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -10098,6 +10274,10 @@
    "recommendLevel": "17",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -10265,6 +10445,10 @@
    "recommendLevel": "17",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -10432,6 +10616,10 @@
    "recommendLevel": "17",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -10530,6 +10718,10 @@
    "recommendLevel": "18",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -10687,6 +10879,10 @@
    "recommendLevel": "19",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -10844,6 +11040,10 @@
    "recommendLevel": "20",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -11001,6 +11201,10 @@
    "recommendLevel": "22",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Humanitas_City_Center_03",
    "bgm": "BGM_Battle_Sam003",
@@ -11089,6 +11293,10 @@
    "recommendLevel": "18",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -11244,6 +11452,10 @@
    "recommendLevel": "18",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -11411,6 +11623,10 @@
    "recommendLevel": "19",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -11578,6 +11794,10 @@
    "recommendLevel": "19",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -11745,6 +11965,10 @@
    "recommendLevel": "19",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -11912,6 +12136,10 @@
    "recommendLevel": "20",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -12079,6 +12307,10 @@
    "recommendLevel": "20",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -12246,6 +12478,10 @@
    "recommendLevel": "21",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -12413,6 +12649,10 @@
    "recommendLevel": "21",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -12580,6 +12820,10 @@
    "recommendLevel": "21",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -12747,6 +12991,10 @@
    "recommendLevel": "22",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -12914,6 +13162,10 @@
    "recommendLevel": "22",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -13081,6 +13333,10 @@
    "recommendLevel": "23",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -13226,6 +13482,10 @@
    "recommendLevel": "24",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -13383,6 +13643,10 @@
    "recommendLevel": "25",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -13540,6 +13804,10 @@
    "recommendLevel": "27",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_01",
    "bgm": "BGM_Battle_Sam003",
@@ -13697,6 +13965,10 @@
    "recommendLevel": "23",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -13864,6 +14136,10 @@
    "recommendLevel": "23",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -14031,6 +14307,10 @@
    "recommendLevel": "23",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -14198,6 +14478,10 @@
    "recommendLevel": "24",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -14365,6 +14649,10 @@
    "recommendLevel": "24",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -14532,6 +14820,10 @@
    "recommendLevel": "25",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -14699,6 +14991,10 @@
    "recommendLevel": "25",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -14866,6 +15162,10 @@
    "recommendLevel": "25",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -15033,6 +15333,10 @@
    "recommendLevel": "26",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -15200,6 +15504,10 @@
    "recommendLevel": "26",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -15367,6 +15675,10 @@
    "recommendLevel": "27",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -15534,6 +15846,10 @@
    "recommendLevel": "27",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -15701,6 +16017,10 @@
    "recommendLevel": "28",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -15858,6 +16178,10 @@
    "recommendLevel": "29",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -16015,6 +16339,10 @@
    "recommendLevel": "30",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -16172,6 +16500,10 @@
    "recommendLevel": "32",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_02",
    "bgm": "BGM_Battle_Sam003",
@@ -16329,6 +16661,10 @@
    "recommendLevel": "27",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -16496,6 +16832,10 @@
    "recommendLevel": "28",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -16663,6 +17003,10 @@
    "recommendLevel": "28",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -16830,6 +17174,10 @@
    "recommendLevel": "29",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -16997,6 +17345,10 @@
    "recommendLevel": "29",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -17164,6 +17516,10 @@
    "recommendLevel": "29",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -17331,6 +17687,10 @@
    "recommendLevel": "30",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -17498,6 +17858,10 @@
    "recommendLevel": "30",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -17665,6 +18029,10 @@
    "recommendLevel": "31",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -17832,6 +18200,10 @@
    "recommendLevel": "31",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -17999,6 +18371,10 @@
    "recommendLevel": "31",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -18166,6 +18542,10 @@
    "recommendLevel": "32",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -18264,6 +18644,10 @@
    "recommendLevel": "33",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -18421,6 +18805,10 @@
    "recommendLevel": "34",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -18578,6 +18966,10 @@
    "recommendLevel": "35",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -18735,6 +19127,10 @@
    "recommendLevel": "37",
    "weakAttribute": 4,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Park_03",
    "bgm": "BGM_Battle_Sam003",
@@ -18823,6 +19219,10 @@
    "recommendLevel": "32",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -18989,6 +19389,10 @@
    "recommendLevel": "33",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -19167,6 +19571,10 @@
    "recommendLevel": "33",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -19345,6 +19753,10 @@
    "recommendLevel": "33",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -19523,6 +19935,10 @@
    "recommendLevel": "34",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -19701,6 +20117,10 @@
    "recommendLevel": "34",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -19879,6 +20299,10 @@
    "recommendLevel": "35",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -20057,6 +20481,10 @@
    "recommendLevel": "35",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -20235,6 +20663,10 @@
    "recommendLevel": "35",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -20413,6 +20845,10 @@
    "recommendLevel": "36",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -20591,6 +21027,10 @@
    "recommendLevel": "36",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -20769,6 +21209,10 @@
    "recommendLevel": "37",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -20947,6 +21391,10 @@
    "recommendLevel": "38",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -21102,6 +21550,10 @@
    "recommendLevel": "39",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -21269,6 +21721,10 @@
    "recommendLevel": "40",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -21436,6 +21892,10 @@
    "recommendLevel": "41",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_01",
    "bgm": "BGM_Battle_Sam003",
@@ -21603,6 +22063,10 @@
    "recommendLevel": "37",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -21781,6 +22245,10 @@
    "recommendLevel": "37",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -21959,6 +22427,10 @@
    "recommendLevel": "38",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -22137,6 +22609,10 @@
    "recommendLevel": "38",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -22315,6 +22791,10 @@
    "recommendLevel": "39",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -22493,6 +22973,10 @@
    "recommendLevel": "39",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -22671,6 +23155,10 @@
    "recommendLevel": "39",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -22849,6 +23337,10 @@
    "recommendLevel": "40",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -23027,6 +23519,10 @@
    "recommendLevel": "40",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -23205,6 +23701,10 @@
    "recommendLevel": "41",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -23383,6 +23883,10 @@
    "recommendLevel": "41",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -23561,6 +24065,10 @@
    "recommendLevel": "41",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -23739,6 +24247,10 @@
    "recommendLevel": "42",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -23906,6 +24418,10 @@
    "recommendLevel": "43",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -24073,6 +24589,10 @@
    "recommendLevel": "44",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -24240,6 +24760,10 @@
    "recommendLevel": "45",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_02",
    "bgm": "BGM_Battle_Sam003",
@@ -24407,6 +24931,10 @@
    "recommendLevel": "42",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -24585,6 +25113,10 @@
    "recommendLevel": "42",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -24763,6 +25295,10 @@
    "recommendLevel": "43",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -24941,6 +25477,10 @@
    "recommendLevel": "43",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -25119,6 +25659,10 @@
    "recommendLevel": "43",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -25297,6 +25841,10 @@
    "recommendLevel": "44",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -25475,6 +26023,10 @@
    "recommendLevel": "44",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -25653,6 +26205,10 @@
    "recommendLevel": "45",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -25831,6 +26387,10 @@
    "recommendLevel": "45",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -26009,6 +26569,10 @@
    "recommendLevel": "45",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -26187,6 +26751,10 @@
    "recommendLevel": "46",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -26365,6 +26933,10 @@
    "recommendLevel": "46",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -26474,6 +27046,10 @@
    "recommendLevel": "46",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -26641,6 +27217,10 @@
    "recommendLevel": "47",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -26808,6 +27388,10 @@
    "recommendLevel": "48",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -26975,6 +27559,10 @@
    "recommendLevel": "50",
    "weakAttribute": 2,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Casino_03",
    "bgm": "BGM_Battle_Sam003",
@@ -27073,6 +27661,10 @@
    "recommendLevel": "47",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -27239,6 +27831,10 @@
    "recommendLevel": "47",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -27417,6 +28013,10 @@
    "recommendLevel": "47",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -27595,6 +28195,10 @@
    "recommendLevel": "48",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -27773,6 +28377,10 @@
    "recommendLevel": "48",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -27951,6 +28559,10 @@
    "recommendLevel": "49",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -28129,6 +28741,10 @@
    "recommendLevel": "49",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -28307,6 +28923,10 @@
    "recommendLevel": "49",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -28485,6 +29105,10 @@
    "recommendLevel": "50",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -28663,6 +29287,10 @@
    "recommendLevel": "50",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -28841,6 +29469,10 @@
    "recommendLevel": "51",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -29019,6 +29651,10 @@
    "recommendLevel": "51",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -29197,6 +29833,10 @@
    "recommendLevel": "51",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -29352,6 +29992,10 @@
    "recommendLevel": "52",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -29519,6 +30163,10 @@
    "recommendLevel": "53",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -29686,6 +30334,10 @@
    "recommendLevel": "55",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_01",
    "bgm": "BGM_Battle_Sam003",
@@ -29853,6 +30505,10 @@
    "recommendLevel": "51",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -30031,6 +30687,10 @@
    "recommendLevel": "52",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -30209,6 +30869,10 @@
    "recommendLevel": "52",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -30387,6 +31051,10 @@
    "recommendLevel": "53",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -30565,6 +31233,10 @@
    "recommendLevel": "53",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -30743,6 +31415,10 @@
    "recommendLevel": "53",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -30921,6 +31597,10 @@
    "recommendLevel": "54",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -31099,6 +31779,10 @@
    "recommendLevel": "54",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -31277,6 +31961,10 @@
    "recommendLevel": "55",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -31455,6 +32143,10 @@
    "recommendLevel": "55",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -31633,6 +32325,10 @@
    "recommendLevel": "55",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -31811,6 +32507,10 @@
    "recommendLevel": "56",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -31989,6 +32689,10 @@
    "recommendLevel": "56",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -32156,6 +32860,10 @@
    "recommendLevel": "57",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -32323,6 +33031,10 @@
    "recommendLevel": "58",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -32490,6 +33202,10 @@
    "recommendLevel": "60",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_02",
    "bgm": "BGM_Battle_Sam003",
@@ -32657,6 +33373,10 @@
    "recommendLevel": "56",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -32835,6 +33555,10 @@
    "recommendLevel": "57",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -33013,6 +33737,10 @@
    "recommendLevel": "57",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -33191,6 +33919,10 @@
    "recommendLevel": "57",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -33369,6 +34101,10 @@
    "recommendLevel": "58",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -33547,6 +34283,10 @@
    "recommendLevel": "58",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -33725,6 +34465,10 @@
    "recommendLevel": "59",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -33903,6 +34647,10 @@
    "recommendLevel": "59",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -34081,6 +34829,10 @@
    "recommendLevel": "59",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -34259,6 +35011,10 @@
    "recommendLevel": "60",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -34437,6 +35193,10 @@
    "recommendLevel": "60",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -34615,6 +35375,10 @@
    "recommendLevel": "60",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -34724,6 +35488,10 @@
    "recommendLevel": "61",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -34891,6 +35659,10 @@
    "recommendLevel": "62",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -35058,6 +35830,10 @@
    "recommendLevel": "63",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -35225,6 +36001,10 @@
    "recommendLevel": "65",
    "weakAttribute": 3,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Vermont_Alleyway_03",
    "bgm": "BGM_Battle_Sam003",
@@ -35323,6 +36103,10 @@
    "recommendLevel": "61",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -35489,6 +36273,10 @@
    "recommendLevel": "61",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -35667,6 +36455,10 @@
    "recommendLevel": "61",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -35845,6 +36637,10 @@
    "recommendLevel": "61",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -36023,6 +36819,10 @@
    "recommendLevel": "61",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -36201,6 +37001,10 @@
    "recommendLevel": "61",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -36379,6 +37183,10 @@
    "recommendLevel": "62",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -36557,6 +37365,10 @@
    "recommendLevel": "62",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -36735,6 +37547,10 @@
    "recommendLevel": "62",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -36913,6 +37729,10 @@
    "recommendLevel": "62",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -37091,6 +37911,10 @@
    "recommendLevel": "62",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -37269,6 +38093,10 @@
    "recommendLevel": "62",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -37447,6 +38275,10 @@
    "recommendLevel": "65",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -37602,6 +38434,10 @@
    "recommendLevel": "65",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -37769,6 +38605,10 @@
    "recommendLevel": "65",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -37936,6 +38776,10 @@
    "recommendLevel": "65",
    "weakAttribute": 1,
    "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
    "subMissionGroup": "1001",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -38102,6 +38946,10 @@
    "recommendLevel": "5",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Ruined_Machineshop_01",
    "bgm": "BGM_Battle_Sam002",
@@ -38164,6 +39012,10 @@
    "recommendLevel": "20",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Ruined_Machineshop_01",
    "bgm": "BGM_Battle_Sam002",
@@ -38235,6 +39087,10 @@
    "recommendLevel": "30",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Ruined_Machineshop_01",
    "bgm": "BGM_Battle_Sam002",
@@ -38315,6 +39171,10 @@
    "recommendLevel": "40",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Ruined_Machineshop_01",
    "bgm": "BGM_Battle_Sam002",
@@ -38404,6 +39264,10 @@
    "recommendLevel": "50",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Ruined_Machineshop_01",
    "bgm": "BGM_Battle_Sam002",
@@ -38493,6 +39357,10 @@
    "recommendLevel": "5",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Credit_01",
    "bgm": "BGM_Gigantic",
@@ -38539,6 +39407,10 @@
    "recommendLevel": "20",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Credit_01",
    "bgm": "BGM_Gigantic",
@@ -38585,6 +39457,10 @@
    "recommendLevel": "30",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Credit_01",
    "bgm": "BGM_Gigantic",
@@ -38631,6 +39507,10 @@
    "recommendLevel": "40",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Credit_01",
    "bgm": "BGM_Gigantic",
@@ -38677,6 +39557,10 @@
    "recommendLevel": "50",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Credit_01",
    "bgm": "BGM_Gigantic",
@@ -38723,6 +39607,10 @@
    "recommendLevel": "5",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Laundry_01",
    "bgm": "BGM_Battle_Sam003",
@@ -38787,6 +39675,10 @@
    "recommendLevel": "20",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Laundry_01",
    "bgm": "BGM_Battle_Sam003",
@@ -38851,6 +39743,10 @@
    "recommendLevel": "30",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Laundry_01",
    "bgm": "BGM_Battle_Sam003",
@@ -38924,6 +39820,10 @@
    "recommendLevel": "40",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Laundry_01",
    "bgm": "BGM_Battle_Sam003",
@@ -38997,6 +39897,10 @@
    "recommendLevel": "50",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Laundry_01",
    "bgm": "BGM_Battle_Sam003",
@@ -39070,6 +39974,10 @@
    "recommendLevel": "10",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_passion_01",
    "bgm": "BGM_Battle_Sam004",
@@ -39201,6 +40109,10 @@
    "recommendLevel": "20",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_passion_01",
    "bgm": "BGM_Battle_Sam004",
@@ -39332,6 +40244,10 @@
    "recommendLevel": "30",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_passion_01",
    "bgm": "BGM_Battle_Sam004",
@@ -39493,6 +40409,10 @@
    "recommendLevel": "40",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_passion_01",
    "bgm": "BGM_Battle_Sam004",
@@ -39684,6 +40604,10 @@
    "recommendLevel": "50",
    "weakAttribute": 4,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_passion_01",
    "bgm": "BGM_Battle_Sam004",
@@ -39875,6 +40799,10 @@
    "recommendLevel": "10",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_urge_01",
    "bgm": "BGM_Battle_Sam004",
@@ -40006,6 +40934,10 @@
    "recommendLevel": "20",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_urge_01",
    "bgm": "BGM_Battle_Sam004",
@@ -40137,6 +41069,10 @@
    "recommendLevel": "30",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_urge_01",
    "bgm": "BGM_Battle_Sam004",
@@ -40298,6 +41234,10 @@
    "recommendLevel": "40",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_urge_01",
    "bgm": "BGM_Battle_Sam004",
@@ -40489,6 +41429,10 @@
    "recommendLevel": "50",
    "weakAttribute": 3,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_urge_01",
    "bgm": "BGM_Battle_Sam004",
@@ -40680,6 +41624,10 @@
    "recommendLevel": "10",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_will_01",
    "bgm": "BGM_Battle_Sam004",
@@ -40811,6 +41759,10 @@
    "recommendLevel": "20",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_will_01",
    "bgm": "BGM_Battle_Sam004",
@@ -40942,6 +41894,10 @@
    "recommendLevel": "30",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_will_01",
    "bgm": "BGM_Battle_Sam004",
@@ -41103,6 +42059,10 @@
    "recommendLevel": "40",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_will_01",
    "bgm": "BGM_Battle_Sam004",
@@ -41294,6 +42254,10 @@
    "recommendLevel": "50",
    "weakAttribute": 1,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_will_01",
    "bgm": "BGM_Battle_Sam004",
@@ -41485,6 +42449,10 @@
    "recommendLevel": "10",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_reason_01",
    "bgm": "BGM_Battle_Sam004",
@@ -41616,6 +42584,10 @@
    "recommendLevel": "20",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_reason_01",
    "bgm": "BGM_Battle_Sam004",
@@ -41747,6 +42719,10 @@
    "recommendLevel": "30",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_reason_01",
    "bgm": "BGM_Battle_Sam004",
@@ -41908,6 +42884,10 @@
    "recommendLevel": "40",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_reason_01",
    "bgm": "BGM_Battle_Sam004",
@@ -42099,6 +43079,10 @@
    "recommendLevel": "50",
    "weakAttribute": 2,
    "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
    "subMissionGroup": "1010",
    "background": "Battle_Field_Shanty_Town_reason_01",
    "bgm": "BGM_Battle_Sam004",
@@ -42289,6 +43273,10 @@
    },
    "recommendLevel": "10",
    "weakAttribute": 2,
+   "entry": {
+    "ref": "goods:5001",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -42413,6 +43401,10 @@
    },
    "recommendLevel": "15",
    "weakAttribute": 2,
+   "entry": {
+    "ref": "goods:5001",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Humanitas_City_Center_01",
    "bgm": "BGM_Battle_Sam003",
@@ -42549,6 +43541,10 @@
    },
    "recommendLevel": "20",
    "weakAttribute": 2,
+   "entry": {
+    "ref": "goods:5001",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Panoticon_Corridor_01",
    "bgm": "BGM_Battle_Sam003",
@@ -42685,6 +43681,10 @@
    },
    "recommendLevel": "25",
    "weakAttribute": 2,
+   "entry": {
+    "ref": "goods:5001",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Panoticon_Corridor_01",
    "bgm": "BGM_Battle_Sam003",
@@ -42821,6 +43821,10 @@
    },
    "recommendLevel": "30",
    "weakAttribute": 2,
+   "entry": {
+    "ref": "goods:5001",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -42957,6 +43961,10 @@
    },
    "recommendLevel": "35",
    "weakAttribute": 2,
+   "entry": {
+    "ref": "goods:5001",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Mafia_Room_01",
    "bgm": "BGM_Battle_Sam003",
@@ -43092,6 +44100,10 @@
     "en": null
    },
    "recommendLevel": "10",
+   "entry": {
+    "ref": "goods:5002",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Vermont_Alleyway_Tentacle_01",
    "bgm": "BGM_Battle_Sam003",
@@ -43215,6 +44227,10 @@
     "en": null
    },
    "recommendLevel": "15",
+   "entry": {
+    "ref": "goods:5002",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Vermont_Alleyway_Tentacle_01",
    "bgm": "BGM_Battle_Sam003",
@@ -43350,6 +44366,10 @@
     "en": null
    },
    "recommendLevel": "20",
+   "entry": {
+    "ref": "goods:5002",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Vermont_Alleyway_Tentacle_02",
    "bgm": "BGM_Battle_Sam003",
@@ -43485,6 +44505,10 @@
     "en": null
    },
    "recommendLevel": "25",
+   "entry": {
+    "ref": "goods:5002",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Vermont_Alleyway_Tentacle_02",
    "bgm": "BGM_Battle_Sam003",
@@ -43620,6 +44644,10 @@
     "en": null
    },
    "recommendLevel": "30",
+   "entry": {
+    "ref": "goods:5002",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Vermont_Alleyway_Tentacle_03",
    "bgm": "BGM_Battle_Sam003",
@@ -43755,6 +44783,10 @@
     "en": null
    },
    "recommendLevel": "35",
+   "entry": {
+    "ref": "goods:5002",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Vermont_Alleyway_Tentacle_03",
    "bgm": "BGM_Battle_Sam003",
@@ -43891,6 +44923,10 @@
    },
    "recommendLevel": "10",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_01",
    "bgm": "BGM_Battle_Sam003",
@@ -44015,6 +45051,10 @@
    },
    "recommendLevel": "15",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_01",
    "bgm": "BGM_Battle_Sam003",
@@ -44151,6 +45191,10 @@
    },
    "recommendLevel": "20",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_01",
    "bgm": "BGM_Battle_Sam003",
@@ -44287,6 +45331,10 @@
    },
    "recommendLevel": "25",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_02",
    "bgm": "BGM_Battle_Sam003",
@@ -44423,6 +45471,10 @@
    },
    "recommendLevel": "30",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_02",
    "bgm": "BGM_Battle_Sam003",
@@ -44559,6 +45611,10 @@
    },
    "recommendLevel": "35",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_02",
    "bgm": "BGM_Battle_Sam003",
@@ -44695,6 +45751,10 @@
    },
    "recommendLevel": "10",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_03",
    "bgm": "BGM_Battle_Sam003",
@@ -44819,6 +45879,10 @@
    },
    "recommendLevel": "15",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_03",
    "bgm": "BGM_Battle_Sam003",
@@ -44955,6 +46019,10 @@
    },
    "recommendLevel": "20",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_03",
    "bgm": "BGM_Battle_Sam003",
@@ -45091,6 +46159,10 @@
    },
    "recommendLevel": "25",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_04",
    "bgm": "BGM_Battle_Sam003",
@@ -45227,6 +46299,10 @@
    },
    "recommendLevel": "30",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_04",
    "bgm": "BGM_Battle_Sam003",
@@ -45363,6 +46439,10 @@
    },
    "recommendLevel": "35",
    "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5003",
+    "amount": 1
+   },
    "subMissionGroup": "3000",
    "background": "Battle_Field_Beach_04",
    "bgm": "BGM_Battle_Sam003",

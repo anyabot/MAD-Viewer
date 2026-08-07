@@ -7,15 +7,17 @@ import {
   Badge, Box, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
+import { ItemIcon } from '@/components/itemIcon';
+import { StageCrumbs } from '@/components/stageCrumbs';
 import { hasIcon } from '@/lib/icons';
 import { Panel, SkillList } from '@/components/skillKit';
 import { typeIcons, typeLabel } from '@/lib/characters';
 import {
   CHANNEL_LABEL, CHANNEL_ORDER, DIFFICULTY_LABEL, DROP_ICON_GROUPS, DROP_LABEL,
   ENCOUNTER_LABEL, EVENT_LABEL,
-  MISSION_ICON, TRIGGER_LABEL, dropAmount, dropChance, dropEntry, dropName, groupSlots,
-  levelRange, missionCheck, modeLabel, stageById, stageName, subMissionText, subMissionsOf,
-  zoneOf, type EnemyGroup,
+  MISSION_ICON, TRIGGER_LABEL, dropAmount, dropChance, dropEntry, dropName, groupByKey,
+  groupSlots, levelRange, missionCheck, modeLabel, stageById, stageName, subMissionText,
+  subMissionsOf, zoneOf, type EnemyGroup,
 } from '@/lib/stages';
 import { pick, useLang, useT, type Lang } from '@/lib/i18n';
 import {
@@ -43,6 +45,18 @@ export default function StagePage() {
 
   const stage = useMemo(
     () => (data && id != null ? stageById(data, id) : null), [data, id]);
+
+  // The group's own ordering is what "next" means; a stage outside any listed
+  // group simply has no neighbours.
+  const siblings = useMemo(() => {
+    if (!data || !stage) return { prev: null, next: null };
+    const list = groupByKey(data, stage.group)?.stages ?? [];
+    const at = list.findIndex((s) => s.id === stage.id);
+    return {
+      prev: at > 0 ? list[at - 1] : null,
+      next: at >= 0 && at < list.length - 1 ? list[at + 1] : null,
+    };
+  }, [data, stage]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!data || !router.isReady) {
@@ -75,9 +89,26 @@ export default function StagePage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Text as={NextLink} href="/stages" color="yellow.300" fontSize="sm">
-        {t('stageBack')}
-      </Text>
+      <StageCrumbs data={data} mode={stage.mode} group={data.groups[stage.group]}
+        leaf={stageName(data, stage, lang)} lang={lang} />
+
+      {(siblings.prev || siblings.next) && (
+        <Flex align="center" gap={3} wrap="wrap" fontSize="sm">
+          {siblings.prev && (
+            <Text as={NextLink} href={`/stage?id=${siblings.prev.id}`} color="yellow.300"
+              noOfLines={1}>
+              ← {stageName(data, siblings.prev, lang)}
+            </Text>
+          )}
+          <Box flex="1" />
+          {siblings.next && (
+            <Text as={NextLink} href={`/stage?id=${siblings.next.id}`} color="yellow.300"
+              noOfLines={1}>
+              {stageName(data, siblings.next, lang)} →
+            </Text>
+          )}
+        </Flex>
+      )}
 
       <Flex gap={3} align="start">
         <GameIcon manifest={icons} group="zone" name={zone?.image}
@@ -213,8 +244,8 @@ function Drop({ drop, data, icons, lang }: {
   return (
     <Flex align="center" gap={2} borderWidth="1px" borderColor="whiteAlpha.200"
       borderRadius="md" px={2} py={1} minW={0}>
-      <GameIcon manifest={icons} group={group}
-        names={[entry?.icon]} size={7} borderRadius="sm" />
+      <ItemIcon manifest={icons} group={group} names={[entry?.icon]}
+        grade={entry?.grade} size={10} />
       <Box minW={0}>
         <Text fontSize="xs" noOfLines={1}>{dropName(data, drop)}</Text>
         <HStack spacing={1.5}>

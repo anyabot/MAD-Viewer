@@ -9,18 +9,20 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { GameIcon } from '@/components/gameIcon';
+import { ItemIcon } from '@/components/itemIcon';
+import { StageCrumbs } from '@/components/stageCrumbs';
 import { hasIcon } from '@/lib/icons';
 import { FilterChip, FilterRow } from '@/components/filters';
 import { typeLabel } from '@/lib/characters';
 import {
   DROP_ICON_GROUPS, GROUP_ICON_GROUPS, dropAmount, dropName, enemyCodes, groupByKey,
-  groupIsLive, groupLabel, groupWindow, levelRange, modeLabel, modeSummaries, stageDrops,
+  groupIsLive, groupLabel, groupWindow, levelRange, modeSummaries, stageDrops,
   stageGroups, stageName, type StageGrouping,
 } from '@/lib/stages';
 import { pick, useLang, useT, type Lang } from '@/lib/i18n';
 import {
   loadCharacters, loadIcons, loadStages,
-  type CharacterData, type IconManifest, type StageData, type StageEntry, type StageGroup,
+  type CharacterData, type IconManifest, type StageData, type StageEntry,
 } from '@/lib/data';
 
 const iconGroup = (
@@ -141,7 +143,7 @@ function GroupList({ mode, data, icons, lang }: {
   const groups = useMemo(() => stageGroups(data, mode), [data, mode]);
   return (
     <VStack align="stretch" spacing={4}>
-      <Crumbs data={data} mode={mode} lang={lang} />
+      <StageCrumbs data={data} mode={mode} lang={lang} />
       <ModeTabs data={data} mode={mode} lang={lang} />
       <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={3}>
         {groups.map(({ group, stages }) => (
@@ -199,7 +201,7 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery }: {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Crumbs data={data} mode={group.mode} group={group} lang={lang} />
+      <StageCrumbs data={data} mode={group.mode} group={group} lang={lang} />
       <Flex align="center" gap={3} wrap="wrap">
         {group.banner ? (
           <GameIcon manifest={icons} group="banner" name={group.banner}
@@ -234,35 +236,6 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery }: {
         ))}
       </SimpleGrid>
     </VStack>
-  );
-}
-
-function Crumbs({ data, mode, group, lang }: {
-  data: StageData; mode: string; group?: StageGroup; lang: Lang;
-}) {
-  const t = useT();
-  return (
-    <Wrap spacing={2} align="center" fontSize="sm">
-      <WrapItem>
-        <Text as={NextLink} href="/stages" color="yellow.300">{t('stageAllModes')}</Text>
-      </WrapItem>
-      <WrapItem><Text color="gray.600">/</Text></WrapItem>
-      <WrapItem>
-        {group ? (
-          <Text as={NextLink} href={`/stages?mode=${mode}`} color="yellow.300">
-            {modeLabel(data, mode, lang)}
-          </Text>
-        ) : (
-          <Text color="gray.400">{modeLabel(data, mode, lang)}</Text>
-        )}
-      </WrapItem>
-      {group && (
-        <>
-          <WrapItem><Text color="gray.600">/</Text></WrapItem>
-          <WrapItem><Text color="gray.400">{groupLabel(data, group, lang)}</Text></WrapItem>
-        </>
-      )}
-    </Wrap>
   );
 }
 
@@ -362,11 +335,10 @@ function StageCard({ stage, data, chars, icons, lang }: {
           {drops.slice(0, PREVIEW).map((drop, i) => {
             const entry = drop.ref ? data.drops[drop.ref] : null;
             return (
-              <GameIcon key={i} manifest={icons}
+              <ItemIcon key={i} manifest={icons}
                 group={iconGroup(icons, DROP_ICON_GROUPS, entry?.icon)}
-                names={[entry?.icon]}
-                title={`${dropName(data, drop)} ×${dropAmount(drop)}`}
-                boxSize="22px" borderRadius="sm" reserve={false} />
+                names={[entry?.icon]} grade={entry?.grade} count={dropAmount(drop)}
+                title={`${dropName(data, drop)} ×${dropAmount(drop)}`} size="34px" />
             );
           })}
         </Preview>
