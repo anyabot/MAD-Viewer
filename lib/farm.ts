@@ -285,18 +285,16 @@ export type StageSource = {
 
 /**
  * Two stages paying the need at the same rate are not the same clear. The
- * tie-break is everything else on the repeat table, each drop discounted by how
- * much of it is already held, so the run that also restocks something scarce
- * wins. Nothing here has to be in the bill.
+ * tie-break is every other growth resource on the repeat table, each drop
+ * discounted by how much of it is already held. Character cards and other
+ * unrelated rewards do not make a farming route more useful.
  */
-function sideValue(
-  growth: GrowthData, stage: StageEntry, need: Need, inventory: Record<string, number>,
+function usefulSideValue(
+  growth: GrowthData, stage: StageEntry, own: Set<string>, inventory: Record<string, number>,
 ): number {
-  const own = need.kind === 'material'
-    ? new Set([need.key]) : new Set(Object.keys(poolItems(growth, need.kind)));
   let total = 0;
   for (const drop of stage.rewards?.repeat ?? []) {
-    if (!drop.ref || own.has(drop.ref)) continue;
+    if (!drop.ref || own.has(drop.ref) || !growth.materials[drop.ref]) continue;
     const [min, max] = drop.amount;
     const amount = (max ? (min + max) / 2 : min) * (drop.chance ?? 1);
     total += amount / (1 + (inventory[drop.ref] ?? 0));
@@ -304,14 +302,22 @@ function sideValue(
   return total;
 }
 
+function sideValue(
+  growth: GrowthData, stage: StageEntry, need: Need, inventory: Record<string, number>,
+): number {
+  const own = need.kind === 'material'
+    ? new Set([need.key]) : new Set(Object.keys(poolItems(growth, need.kind)));
+  return usefulSideValue(growth, stage, own, inventory);
+}
+
 /**
  * Every stage that pays this need on repeat, cheapest first. Locked stages stay
  * in the list — what is out of reach is the answer to "what is available", not
  * something to hide.
  *
- * **Entry costs are not one currency**, so ranking is by runs, not by price: a
- * story clear spends recharging stamina and a daily clear spends the
- * daily-resetting kind, and adding the two would be meaningless.
+ * Stages sharing an entry currency rank by total cost and then by useful drops
+ * over those clears. Across different currencies, ranking falls back to runs:
+ * story stamina and daily entries cannot be added or compared.
  */
 export function sourcesFor(
   growth: GrowthData, stages: StageEntry[], need: Need,
@@ -335,10 +341,18 @@ export function sourcesFor(
       side: sideValue(growth, stage, need, inventory),
     });
   }
-  return out.sort((a, b) => Number(b.open) - Number(a.open)
-    || (a.runs ?? Infinity) - (b.runs ?? Infinity)
-    || b.perRun - a.perRun
-    || b.side - a.side);
+  return out.sort((a, b) => {
+    const availability = Number(b.open) - Number(a.open);
+    if (availability) return availability;
+    if (a.entry?.ref === b.entry?.ref && a.cost != null && b.cost != null) {
+      return a.cost - b.cost
+        || b.side * (b.runs ?? 0) - a.side * (a.runs ?? 0)
+        || b.perRun - a.perRun;
+    }
+    return (a.runs ?? Infinity) - (b.runs ?? Infinity)
+      || b.perRun - a.perRun
+      || b.side - a.side;
+  });
 }
 
 export type FarmRoute = {
@@ -362,14 +376,18 @@ export type FarmRoute = {
  * Greedy, and committed in chunks: a pick runs only until it closes the first
  * of its needs, so the next pick is made against what that already brought in.
  * Each round closes at least one need, so the walk is bounded by their count.
+ * Within one entry currency, score is divided by its price; an efficiency tie
+ * goes to the stage paying more useful growth resources per unit of that price.
  */
 export function farmRoutes(
   growth: GrowthData, stages: StageEntry[], needs: Need[],
-  clears: Record<string, number>, sweepOnly: boolean,
+  inventory: Record<string, number>, clears: Record<string, number>, sweepOnly: boolean,
 ): FarmRoute[] {
   const remaining = new Map<string, number>();
   for (const need of needs) if (need.short > 0) remaining.set(need.key, need.short);
 
+  const own = new Set(needs.flatMap((need) => need.kind === 'material'
+    ? [need.key] : Object.keys(poolItems(growth, need.kind))));
   const open = stages
     .filter((stage) => isFarmable(starsOf(clears, stage), sweepOnly))
     .map((stage) => ({
@@ -378,6 +396,7 @@ export function farmRoutes(
         const perRun = yieldPerRun(growth, stage, need);
         return perRun > 0 ? [[need.key, perRun] as const] : [];
       })),
+      side: usefulSideValue(growth, stage, own, inventory),
     }))
     .filter((row) => row.per.size > 0);
 
@@ -386,15 +405,33 @@ export function farmRoutes(
   while (remaining.size > 0) {
     let best: (typeof open)[number] | null = null;
     let bestScore = 0;
+    let bestSide = 0;
+    const byEntry = new Map<string, {
+      row: (typeof open)[number]; score: number; efficiency: number; side: number;
+    }>();
     for (const row of open) {
       let score = 0;
       for (const [key, left] of remaining) {
         const perRun = row.per.get(key);
         if (perRun) score += perRun / left;
       }
-      if (score > bestScore) {
-        bestScore = score;
-        best = row;
+      if (score <= 0) continue;
+      const price = row.stage.entry?.amount ?? 1;
+      const candidate = { row, score, efficiency: score / price, side: row.side / price };
+      const key = row.stage.entry?.ref ?? '';
+      const current = byEntry.get(key);
+      if (!current || candidate.efficiency > current.efficiency + 1e-12
+        || (Math.abs(candidate.efficiency - current.efficiency) <= 1e-12
+          && candidate.side > current.side)) {
+        byEntry.set(key, candidate);
+      }
+    }
+    for (const candidate of byEntry.values()) {
+      if (candidate.score > bestScore + 1e-12
+        || (Math.abs(candidate.score - bestScore) <= 1e-12 && candidate.side > bestSide)) {
+        bestScore = candidate.score;
+        bestSide = candidate.side;
+        best = candidate.row;
       }
     }
     if (!best) break;
@@ -462,7 +499,8 @@ export function farmPlan(
       locked: sources.length - open.length,
     };
   });
-  const routes = farmRoutes(growth, stages, needs.map((p) => p.need), clears, sweepOnly);
+  const routes = farmRoutes(
+    growth, stages, needs.map((p) => p.need), inventory, clears, sweepOnly);
   const cost: Record<string, number> = {};
   let runs = 0;
   for (const route of routes) {

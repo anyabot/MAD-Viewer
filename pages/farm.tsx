@@ -221,11 +221,11 @@ function Stepper({
   const spent = { opacity: 0.35, pointerEvents: 'none' } as const;
   return (
     <HStack spacing={1}>
-      <Box as="button" aria-label="minus one" {...button}
+      <Box as="button" aria-label="minus one" tabIndex={-1} {...button}
         {...(disabled || value <= min ? spent : {})}
         onClick={() => onChange(Math.max(min, value - 1))}>−</Box>
       {children}
-      <Box as="button" aria-label="plus one" {...button}
+      <Box as="button" aria-label="plus one" tabIndex={-1} {...button}
         {...(disabled || value >= max ? spent : {})}
         onClick={() => onChange(Math.min(max, value + 1))}>+</Box>
     </HStack>
@@ -536,7 +536,7 @@ function Inventory({ growth, icons }: { growth: GrowthData; icons: IconManifest 
       {byKind.map(([kind, rows]) => (
         <Panel key={kind} title={pick(MATERIAL_KIND_LABEL[kind], lang) || kind}
           note={String(rows.length)}>
-          <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={2}>
+          <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={2}>
             {rows.map((row) => {
               const held = inventory[row.ref] ?? 0;
               return (
