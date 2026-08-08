@@ -1,5 +1,4 @@
-// Nothing here is bundled at build time, so refreshing the data does not
-// require a rebuild.
+// Fetched at runtime: refreshing the data needs no rebuild.
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
 import type { Localized } from '@/lib/i18n';
 import type { SceneTimelineData } from '@/components/skinViewer/scenes';
@@ -33,8 +32,7 @@ export type SkinList = {
   skins: SkinListEntry[];
 };
 
-// Only the Korean columns are finished content, so `name`/`desc`/`artist`/`cv`
-// come from them and `unfinished` is reference only.
+// The Korean columns are the finished content; `unfinished` is reference only.
 export type CharacterEntry = {
   code: string;
   /** No `Character_Base` row: a resources row and a prefab, nothing else. */
@@ -81,8 +79,7 @@ export type CharacterEntry = {
   giftItems?: number[];
   /** The regions dates are chosen from; their venues are `places[division]`. */
   dateDivisions?: number[];
-  /** The venues the date script visits, in the order it authors them. A region
-   *  holds more venues than any one character uses. */
+  /** The venues the date script visits, in author order; a region holds more. */
   datePlaces?: number[];
   /** Join key into `CharacterData.skillSets`. */
   skillSetGroup?: number;
@@ -92,19 +89,15 @@ export type CharacterEntry = {
   equipmentSlots?: number[];
   /** `start` runs once at the opening, `repeat` loops. */
   battlePatterns?: { start?: BattlePattern[]; repeat?: BattlePattern[] };
-  /** Level 1, keyed by star grade then `STAT_TYPE`. Grade 6 is a cap row equal
-   *  to grade 5, not a grade that can be reached. */
+  /** Level 1, by star grade then `STAT_TYPE`; grade 6 is a cap row, not reachable. */
   baseStats?: Record<string, Record<string, number>>;
   /** What each level after the first adds, keyed the same way as `baseStats`. */
   levelStats?: Record<string, Record<string, number>>;
-  /** Per affection rank, index 0 being rank 1. Ranks accumulate, so rank N is
-   *  the sum of the first N entries. */
+  /** Per affection rank from index 0; ranks accumulate. */
   loveStats?: Record<string, number>[];
 };
 
-// `steps` are skill ids in `CharacterData.skills`. Alternatives are evaluated
-// in `order`; condition 0 is unconditional, 20 and 21 test the state named in
-// `conditionValue` against its threshold.
+// Alternatives run in `order`; condition 0 is unconditional, 20 and 21 test `conditionValue`.
 export type BattlePattern = {
   name: string | null;
   order: number;
@@ -113,10 +106,7 @@ export type BattlePattern = {
   steps: number[];
 };
 
-/**
- * Value at equipment level L is `value + perLevel * (L - 1)`. `ADDTION` (the
- * game's own spelling) is a flat term, `MULTIPLICATION` a fraction of the base.
- */
+// Value at level L is `value + perLevel * (L - 1)`; `ADDTION` is flat, `MULTIPLICATION` a fraction of base.
 export type EquipmentOption = {
   stat: string | null;
   calc: string | null;
@@ -138,12 +128,7 @@ export type EquipmentEntry = {
   tiers?: EquipmentTier[];
 };
 
-/**
- * `display` is `STAT_UI_DISPLAY_TYPE`: 1 truncates to a whole number, 2 keeps
- * two decimals as a percentage, 0 leaves the value alone. Rounding is not
- * cosmetic — the game rounds the base block and the equipment delta separately
- * before adding them.
- */
+// `STAT_UI_DISPLAY_TYPE`: 1 whole number, 2 two-decimal percentage, 0 raw; base and equipment delta round separately.
 export type StatTypeEntry = {
   name: string | null;
   en: string | null;
@@ -157,8 +142,7 @@ export type StatCaps = {
   love: number;
 };
 
-// Magnitude and duration both scale with skill level, so these are carried per
-// level alongside the description.
+// Magnitude and duration are carried per skill level.
 export type BuffEntry = {
   name: string | null;
   desc: string | null;
@@ -184,42 +168,26 @@ export type PlaceEntry = {
   thumbnail: string | null;
 };
 
-/**
- * Grows with skill level:
- *
- *     base + up * (L - 1) + extra * floor((L - 1) / SkillEntry.levelPeriod)
- *
- * One entry per slot of the effect row's value array, which the game's
- * description templates index; nearly every effect uses slot 0.
- */
+// `base + up * (L - 1) + extra * floor((L - 1) / levelPeriod)`, one entry per value slot.
 export type SkillMagnitude = {
   base: number[];
   up: number[];
   extra: number[];
 };
 
-/** `name` is null for the internal markers a skill sets and then clears; the
- *  game shows the player nothing for those and `id` is all they have. */
+/** `name` is null for the internal markers a skill sets and then clears. */
 export type SkillDetailValue = {
   name: string | null;
   id: string;
 };
 
-/**
- * `state` / `instant` values are individual states, not whole categories.
- * `durationCategory` values are `DURATION_CATEGORIZE_TYPE` constants and
- * `instantCategory` values are `ONETIME_CATEGORIZE_TYPE` constants.
- */
+// Individual states, not categories; the category fields hold `DURATION_CATEGORIZE_TYPE` / `ONETIME_CATEGORIZE_TYPE`.
 export type SkillDetail = {
   kind: 'state' | 'instant' | 'durationCategory' | 'instantCategory';
   values: SkillDetailValue[];
 };
 
-/**
- * `condition` is a `SKILL_EFFECT_GIVE_CONDITION` constant and decides what the
- * values mean: a resolved state, a `*_type` id to look up in
- * `CharacterData.types`, a character id, an HP fraction, or a stack count.
- */
+// `SKILL_EFFECT_GIVE_CONDITION` decides what the values mean: state, `*_type` id, character id, HP fraction or stacks.
 export type SkillGate = {
   condition: string | null;
   /** Whose property is tested: `CASTER` or `HOLDER`. */
@@ -258,8 +226,7 @@ export type SkillOp = {
   interval?: number;
 };
 
-// `count` is how many times the skill spawns this same hitbox — a multi-hit
-// skill authors one event per hit.
+// `count` is how many times the skill spawns this same hitbox.
 export type SkillHit = {
   /** `X_AXIS`, `CIRCLE` or `GLOBAL`. */
   shape: string | null;
@@ -269,8 +236,7 @@ export type SkillHit = {
   cycle: number;
   delay: number;
   count: number;
-  /** What the hitbox anchors on, not who it affects. Authored per event, so
-   *  one skill's hitboxes can anchor on different things. */
+  /** What the hitbox anchors on, not who it affects; authored per event. */
   cast?: {
     team: string | null;
     range: string | null;
@@ -301,12 +267,7 @@ export type SkillTrigger = {
   ops: SkillOp[];
 };
 
-/**
- * An active skill has `hits`; a passive has `stats` and `triggers`.
- *
- * How the game turns an operation into a number against a defender is not
- * decoded, so nothing here may be combined into a damage or healing total.
- */
+// An active skill has `hits`, a passive `stats` and `triggers`; the battle arithmetic over them is not decoded.
 export type SkillBehaviour = {
   attack?: boolean;
   fever?: number;
@@ -317,8 +278,7 @@ export type SkillBehaviour = {
   triggers?: SkillTrigger[];
 };
 
-// `desc` is one pre-rendered description per skill level, length 1 when the
-// skill cannot be levelled, carrying the game's own `<color=#rrggbb>` markup.
+// One pre-rendered `desc` per skill level, carrying the game's `<color=#rrggbb>` markup.
 export type SkillEntry = {
   name: string | null;
   desc: string[];
@@ -339,10 +299,7 @@ export type SkillEntry = {
   behaviour?: SkillBehaviour;
 };
 
-// A resolved `*_type` integer. `icons` lists every icon column the table
-// declares, in preference order — `icon` alone is not always extractable.
-// `name` is Korean; only the element rows have finished English in the game's
-// own text table, so `en` is otherwise generated.
+// `icons` is every icon column in preference order; `name` is Korean and `en` is generated outside the element rows.
 export type TypeEntry = {
   name: string;
   en?: string | null;
@@ -377,8 +334,7 @@ export type CharacterData = {
   skills: Record<string, SkillEntry>;
 };
 
-// An enemy is a `Character_Base` row, so `code` is the same code the character
-// index is keyed by and the kit is already in `skillSets` / `skills`.
+// An enemy is a `Character_Base` row: same code, kit already in `skillSets` / `skills`.
 export type StageEnemy = {
   code: string;
   name: string | null;
@@ -454,9 +410,7 @@ export type StageEntry = {
   recommendLevel?: string;
   weakAttribute?: number;
   stamina?: number;
-  /** What one clear costs, and in which currency — not the same across modes:
-   *  story burns the recharging stamina, the daily dungeons a daily-resetting
-   *  one, an event stage that event's ticket. `ref` keys `StageData.drops`. */
+  /** What one clear costs and in which currency; varies by mode. `ref` keys `StageData.drops`. */
   entry?: { ref: string; amount: number };
   subMissionGroup?: string;
   /** Field prefab stem; the art itself is not extracted. */
@@ -473,8 +427,7 @@ export type StageZone = {
   id: number;
   order?: number;
   difficulty?: string;
-  /** The game's own zone name. Absent for the story zones, whose
-   *  `zone_name_id` has no `Lang_Data` row. */
+  /** Absent for the story zones, whose `zone_name_id` has no `Lang_Data` row. */
   name?: Localized;
   /** Korean authoring name; the story zones' only name. */
   devName?: string;
@@ -482,11 +435,7 @@ export type StageZone = {
   image?: string;
 };
 
-/**
- * What the game lists stages under, which is not the same axis in every mode:
- * a story chapter holds both difficulties, a Nemesis group is a season and an
- * event group is one event, both with their own run window.
- */
+// Not the same axis in every mode: a story chapter, a Nemesis season, or one event.
 export type StageGroup = {
   key: string;
   mode: string;
@@ -498,8 +447,7 @@ export type StageGroup = {
   difficulty?: string;
   /** Resolve through `GROUP_ICON_GROUPS`; a season's art is a boss portrait. */
   image?: string;
-  /** The page logo, in the `banner` group. Only pages whose bundle was
-   *  extracted have one; season 1's carries no logo sprite at all. */
+  /** The page logo, in the `banner` group; only extracted pages have one. */
   banner?: string;
   zoneId?: number;
   /** ISO dates, on the modes the game schedules. */
@@ -564,14 +512,12 @@ export function loadSceneAudio(): Promise<SceneAudioIndex> {
   return fetchJson<SceneAudioIndex>('scene_audio.json');
 }
 
-// Codes that are not characters (event, screen and cut-in assets) have no
-// entry, so callers fall back to the code.
+// Event, screen and cut-in codes have no entry, so callers fall back to the code.
 export function loadCharacters(): Promise<CharacterData> {
   return fetchJson<CharacterData>('characters.json');
 }
 
-// What the icon pipeline actually published, so an unpublished icon is never
-// rendered as a broken image.
+// What the icon pipeline published, so an unpublished icon is never rendered.
 export type IconManifest = {
   groups: Partial<Record<
     'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip'
@@ -590,6 +536,9 @@ export function loadIcons(): Promise<IconManifest> {
 /** One line of a growth bill. `ref` is keyed the same way a stage drop is. */
 export type MaterialCost = { ref: string; amount: number };
 
+/** Charged per point of experience applied, on top of the experience itself. */
+export type LevelFee = { ref: string; perExp: number } | null;
+
 export type GrowthMaterial = {
   name?: string | null;
   icon?: string | null;
@@ -598,11 +547,7 @@ export type GrowthMaterial = {
   grade?: number;
 };
 
-/**
- * What it costs to raise a unit. `skill.costs` is keyed by the level being
- * left, so raising 1 → 3 pays rows 1 and 2, and `accumExp` is the total
- * experience to reach a level rather than the step to the next one.
- */
+// `skill.costs` is keyed by the level being left; `accumExp` is a total, not a step.
 export type GrowthData = {
   source: string;
   /** Keyed `<type>:<id>`, the same key a stage drop's `ref` uses. */
@@ -623,6 +568,7 @@ export type GrowthData = {
     pool: string;
     /** Ref -> the experience it is worth; the balance itself is worth one. */
     expItems: Record<string, number>;
+    levelFee: LevelFee;
     /** Tier reached -> slot type -> the bill. */
     tierUp: Record<string, Record<string, MaterialCost[]>>;
   };
@@ -630,6 +576,7 @@ export type GrowthData = {
     accumExp: Record<string, number>;
     pool: string;
     expItems: Record<string, number>;
+    levelFee: LevelFee;
   };
 };
 
@@ -637,26 +584,13 @@ export function loadGrowth(): Promise<GrowthData> {
   return fetchJson<GrowthData>('growth.json');
 }
 
-// An emote is a Unity particle prefab: the manifest carries its emitters with
-// every module they enable, plus the untrimmed sheets. `height`/`aspect`
-// describe the still, which is the primary emitter's entry tile.
-//
-// Placement is authored — an emote names a slot, a rig names the bone that slot
-// hangs off and the offset from it. Only the particle-to-skeleton size factor
-// is applied in code.
+// Placement is authored: an emote names a slot, a rig the bone and offset; only the size factor is applied in code.
 export type EmoticonSlot = 'Mouth' | 'OutsideHead' | 'InsideHead';
 
-/**
- * Time, value, in slope, out slope. A null slope is Unity's infinite tangent:
- * the segment steps instead of interpolating, as a flipbook's frame curve does.
- */
+// Time, value, in slope, out slope; a null slope is Unity's infinite tangent, which steps.
 export type EmoteCurveKey = [number, number, number | null, number | null];
 
-/**
- * `m` is Unity's `MinMaxCurve` mode — 0 constant, 1 curve, 2 random between two
- * curves, 3 random between two constants — `s` the constant, curve multiplier
- * or maximum, and `n` the minimum of mode 3.
- */
+// Unity `MinMaxCurve`: `m` 0 constant, 1 curve, 2 two curves, 3 two constants; `s` value or maximum, `n` mode 3 minimum.
 export type EmoteCurve = {
   m: number;
   s: number;
@@ -672,10 +606,7 @@ export type EmoteGradientStops = {
   f: number;
 };
 
-/**
- * `m` is Unity's `MinMaxGradient` mode — 0 colour, 1 gradient, 2 two colours,
- * 3 two gradients, 4 a random point of one gradient.
- */
+// Unity `MinMaxGradient`: `m` 0 colour, 1 gradient, 2 two colours, 3 two gradients, 4 a random point.
 export type EmoteGradient = {
   m: number;
   c?: [number, number, number, number];
@@ -764,8 +695,7 @@ export type EmoticonManifest = {
     emitters: EmoteEmitter[];
   }>;
   actors: Record<string, {
-    /** The rig's baked look direction; mirrors an emote whose slot has no
-     *  side of its own. */
+    /** The rig's baked look direction; mirrors an emote whose slot has no side. */
     look: 'Center' | 'Left' | 'Right';
     bones: Record<EmoticonSlot, string>;
     offsets: Record<EmoticonSlot, [number, number]>;
@@ -776,8 +706,7 @@ export function loadEmoticons(): Promise<EmoticonManifest> {
   return fetchJson<EmoticonManifest>('emoticons.json');
 }
 
-// `grades` is the result grades that pick this rig: the child rig covers 1 and
-// 2, the adult rig covers 3.
+// `grades` is the result grades that pick this rig: child 1 and 2, adult 3.
 export type GachaRig = {
   key: string;
   asset: string;

@@ -103,8 +103,7 @@ export default function SkinViewer({
   const [layout, setLayout] = useState<Layout | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loadState, setLoadState] = useState<'fetching' | 'unpacking' | 'ready' | 'error'>('fetching');
-  // Bumped when a Pixi/Spine build finishes. `layout` lands earlier, before the
-  // build installs `autoDriveRef`, so anything driving the rig waits on this.
+  // Bumped when a Pixi/Spine build finishes; anything driving the rig waits on it, not on `layout`.
   const [rigBuilt, setRigBuilt] = useState(0);
   const [hasRigCamera, setHasRigCamera] = useState(false);
   const [panelSize, setPanelSize] = useState({ w: 0, h: 0 });
@@ -129,8 +128,7 @@ export default function SkinViewer({
   const setFollowGameFlow = (value: boolean) => setViewer({ followGameFlow: value });
   const [timelineRig, setTimelineRig] = useState<SceneTimelineRig | null>(null);
   const [sceneRunKey, setSceneRunKey] = useState(0);
-  // The cover is drawn in Pixi so its alpha runs on the scene clock: it stops
-  // while paused and follows the speed control in flight.
+  // Drawn in Pixi so its alpha runs on the scene clock.
   const fadeRef = useRef<SceneFadeState>({ color: 'black', opacity: 0, duration: 0 });
   const applyFadeRef = useRef<(next: SceneFadeState) => void>(() => {});
   const setFade = (
@@ -153,8 +151,7 @@ export default function SkinViewer({
   const [subtitle, setSubtitle] = useState<{ text: string; author?: string } | null>(null);
   // Lobby lines are a rotating set per (character, family), as in game.
   const lobbyLineRef = useRef(0);
-  // Scene time the current lobby line was staged at; -Infinity so the first
-  // touch can never fall inside `TOUCH_INTERRUPT_DELAY`.
+  // -Infinity so the first touch can never fall inside `TOUCH_INTERRUPT_DELAY`.
   const lobbyStagedAtRef = useRef(-Infinity);
   const [emoticons, setEmoticons] = useState<EmoticonManifest | null>(null);
   const emoticonsRef = useRef(emoticons); emoticonsRef.current = emoticons;
@@ -168,8 +165,7 @@ export default function SkinViewer({
 
   const boxOverlayRef = useRef<any>(null);
   const boundsRef = useRef<any>(null);
-  // Authored seconds on the scene clock, read per frame, so a speed change
-  // rescales what is already pending. Inert until the Pixi build installs it.
+  // Authored seconds on the scene clock, read per frame, so a speed change rescales what is pending.
   const sceneTimerRef = useRef<{
     set: (run: () => void, seconds: number) => number;
     clear: (handle: number | null) => void;
@@ -183,8 +179,7 @@ export default function SkinViewer({
     () => actorPhases(layout?.actor, layout?.animations ?? []), [layout]);
   const phase = phases[Math.min(phaseIdx, Math.max(phases.length - 1, 0))]
     ?? { idle: null, boring: null, active: null };
-  // NPC and scene-prop standings ship an idle and nothing to react with, so
-  // Lobby is offered only for a touch clip or a jiggler.
+  // NPC and scene-prop standings ship an idle and nothing to react with.
   const hasLobby = phases.some((p) => p.active)
     || (layout?.touch?.jigglers?.length ?? 0) > 0;
 
@@ -216,8 +211,7 @@ export default function SkinViewer({
   // The pan gesture otherwise swallows the in-game jiggler drag.
   const setDragJiggle = (value: boolean) => setViewer({ dragJiggle: value });
 
-  // Mirrors, so the async build effect can apply current UI state to a freshly
-  // built skeleton.
+  // Mirrors, so the async build effect can apply current UI state to a fresh skeleton.
   const playingRef = useRef(playing); playingRef.current = playing;
   const speedRef = useRef(speed); speedRef.current = speed;
   const loopRef = useRef(loop); loopRef.current = loop;
@@ -281,9 +275,7 @@ export default function SkinViewer({
     }
   };
 
-  // Lobby lines come from the master-data interaction table, not the scenario
-  // scripts. `Situation<N>` rows repeat per phase, so a rig that declares a
-  // phase takes it as part of the selector.
+  // Lobby lines come from the interaction table, not the scenario scripts; `Situation<N>` rows repeat per phase.
   const lobbyFamily = layout?.kind === 'affection' ? 'Affection'
     : layout?.kind === 'desire' ? 'Desire' : 'Standing';
   const lobbyCode = layout?.character ?? '';
@@ -310,8 +302,7 @@ export default function SkinViewer({
     return row;
   };
 
-  // A row without `ani` is an intentionally non-moving standing variation and
-  // must not fall through to the prefab's generic active clip.
+  // A row without `ani` is a non-moving standing variation, not a fall-through to the generic active clip.
   const stageLobbyRef = useRef<(row: VoiceInteraction | null) => string | null>(() => null);
   stageLobbyRef.current = (row) => {
     if (!row) return null;
@@ -332,15 +323,13 @@ export default function SkinViewer({
         }
       }
     }
-    // Independent of the clip: a line with no `ani` still pops one, and the
-    // prefab's own emitters decide how long it lasts.
+    // Independent of the clip: a line with no `ani` still pops one.
     const emote = emotePlacement(emoticonsRef.current, row.emo, layout?.character);
     if (emote) showEmoteRef.current(emote);
     return lobbyBodyAnimation(row, phase, anims);
   };
 
-  // Voice is jp-only and not every character is recorded, so the control is
-  // hidden rather than offering silence.
+  // Voice is jp-only and not every character is recorded.
   const hasVoice = useMemo(() => {
     if (!voiceIndex || !lobbyCode) return false;
     const owner = lobbyCode.toLowerCase();
@@ -349,8 +338,7 @@ export default function SkinViewer({
 
   const idleClipRef = useRef<() => string | null>(() => null);
   idleClipRef.current = () => phaseRef.current.idle;
-  // A clip's own name declares its track: `10_idle` is track 10, `lobby/idle`
-  // and `00_idle_normal` track 0.
+  // A clip's own name declares its track: `10_idle` is track 10, `lobby/idle` and `00_idle_normal` track 0.
   const bodyTrackRef = useRef<() => number>(() => 0);
   bodyTrackRef.current = () => spineTrack(idleClipRef.current() ?? '');
 
@@ -440,10 +428,7 @@ export default function SkinViewer({
     return () => { cancelled = true; };
   }, [layout]);
 
-  // A line fires together with its animation, so a clip that starts
-  // downloading at that moment lands after the reaction it belongs to. The
-  // whole table is taken because family and situation change while the rig
-  // stays loaded.
+  // Taken whole and up front: family and situation change while the rig stays loaded, and a fetch would land after the reaction.
   useEffect(() => {
     if (!voiceOn || !voiceIndex || !layout?.character) return;
     const ids = (voiceIndex.interactions[layout.character] ?? [])
@@ -457,8 +442,7 @@ export default function SkinViewer({
     prefetchVoice(voiceIndex, sceneVoiceIds(timelineRig));
   }, [voiceOn, voiceIndex, timelineRig]);
 
-  // Animation sounds are staged by a clip already playing and BGM by a script
-  // beat, so neither can wait on a fetch.
+  // Animation sounds are staged by a clip already playing and BGM by a script beat, so neither can wait on a fetch.
   useEffect(() => {
     if (!bgmOn || !sceneAudioIndex || !layout) return;
     const rig = baseSkinKey(layout.skin);
@@ -471,8 +455,7 @@ export default function SkinViewer({
     prefetchSceneAudio(sceneAudioIndex, sceneBgmIds(timelineRig));
   }, [bgmOn, sceneAudioIndex, timelineRig]);
 
-  // `followGameFlow` owns the script's own opening — the commands authored
-  // before its first label — so with it off the index starts at that label.
+  // `followGameFlow` owns the commands authored before the first label, so with it off the index starts at that label.
   useEffect(() => {
     const install = installScenePlayerRef.current;
     if (!rigBuilt || !scriptScene || !install) {
@@ -527,8 +510,7 @@ export default function SkinViewer({
       const files = filesRef.current;
       if (!files || !layout.atlas || !layout.skel) return;
 
-      // `pma` decides whether the page's bytes are already premultiplied or
-      // must be premultiplied on upload.
+      // `pma` decides whether the page's bytes are already premultiplied.
       const atlasText = await readText(files, layout.atlas);
       const atlas = new TextureAtlas(atlasText);
       await Promise.all(atlas.pages.map(async (page: any) => {
@@ -556,15 +538,12 @@ export default function SkinViewer({
 
       const W = layout.world ?? {};
       const sk = W.skeleton ?? { x: 0, y: 0, scale: 1, dataScale: 1 };
-      // Everything in `root` shares one space: Unity world units. `dataScale`
-      // is baked into the parsed skeleton and the exporter reports backgrounds
-      // in the same units, so only the prefab transform scale applies here.
+      // One space, Unity world units: `dataScale` is baked into the skeleton, so only the prefab transform scale applies here.
       const prefabScale = sk.scale || 1;
 
       const root = new PIXI.Container();
       root.sortableChildren = true;
-      // `view` carries the rig's `cam` bone alone: the fit, manual pan/zoom and
-      // the script camera write `root`, device staging writes `scene`.
+      // `view` carries the `cam` bone alone: fit, pan/zoom and script camera write `root`, device staging writes `scene`.
       const view = new PIXI.Container();
       view.sortableChildren = true;
       const scene = new PIXI.Container();
@@ -589,8 +568,7 @@ export default function SkinViewer({
       app.stage.addChild(root);
       rootRef.current = root;
 
-      // Built after the rig because the anchor bones the rooms hang on must
-      // exist; `zIndex` inside the sorted `scene` still orders them.
+      // Built after the rig: the anchor bones the rooms hang on must exist.
       const backgrounds = await buildBackgrounds({
         PIXI,
         archive,
@@ -624,9 +602,7 @@ export default function SkinViewer({
       app.ticker.add(fadeCover.tick);
       app.ticker.add(() => scenePlayerRef.current?.tick());
 
-      // The `cam` bone is the camera, so the view is the inverse of its pose.
-      // Its setup pose is the neutral framing and is not identity on every rig,
-      // so the baseline is measured here, before any animation is applied.
+      // The view is the inverse of the `cam` bone's pose, whose setup pose is not identity on every rig, so measure before animating.
       const camBone = spine.skeleton.findBone('cam');
       spine.update(0);
       setHasRigCamera(!!camBone);
@@ -638,8 +614,7 @@ export default function SkinViewer({
           rotation: camBone.getWorldRotationX(),
         }
         : null;
-      // A script camera offset is authored in the drawer's units: 100 to a
-      // world unit against its 1920-wide render target.
+      // A script camera offset is in the drawer's units: 100 to a world unit against a 1920-wide target.
       const scriptOffsetUnit = REFERENCE_VIEW_WIDTH * (sk.dataScale ?? 1)
         * prefabScale * (camSetup?.scale ?? 1) / 19.2;
 
@@ -649,9 +624,7 @@ export default function SkinViewer({
       const overlaySet = overlayAnimations(skeletonData.animations, isFaceAnim);
       setOverlayAnims(overlaySet);
 
-      // `Hold` reserves a track rather than describing the clip carrying it:
-      // the next animation set on that track takes `holdPrevious`, which keeps
-      // the previous pose applied instead of mixing it out. Consumed once.
+      // `Hold` reserves a track: the next animation on it takes `holdPrevious` and keeps the previous pose. Consumed once.
       const holdReservedTracks = new Set<number>();
       clearHoldReservationsRef.current = () => holdReservedTracks.clear();
       const consumeHold = (track: number, entry: any, reserve?: boolean) => {
@@ -721,8 +694,7 @@ export default function SkinViewer({
         const now = performance.now();
         const dt = Math.min((now - lastStep) / 1000, 0.1);
         lastStep = now;
-        // A held drag poses the bone directly and must survive a pause; only
-        // the spring simulation is tied to playback, on the rig's own clock.
+        // A held drag poses the bone directly and must survive a pause; only the spring is tied to playback.
         if (modeRef.current === 'home') {
           if (spine.state.timeScale !== 0) jiggle.step(dt * spine.state.timeScale);
           jiggle.apply();
@@ -732,13 +704,11 @@ export default function SkinViewer({
           if (slot) slot.color.a = 0;
         }
       };
-      // The bone's local pose must not keep the offset, or it compounds on
-      // bones no animation keys.
+      // The bone's local pose must not keep the offset, or it compounds on bones no animation keys.
       spine.afterUpdateWorldTransforms = () => jiggle.restore();
 
       // --- Lobby / Free play drive --------------------------------------------
-      // Scene playback does not come through here — a script owns its own
-      // animations.
+      // Scene playback does not come through here: a script owns its animations.
       const clearBoring = () => {
         cancelScene(boringTimerRef.current);
         boringTimerRef.current = null;
@@ -749,8 +719,7 @@ export default function SkinViewer({
         const p = phaseRef.current;
         if (!p.boring || !p.idle) return;
         boringTimerRef.current = scheduleScene(() => {
-          // Armed when a reaction starts, so it can come due mid-reaction:
-          // boredom is "nothing happened for a while", not a metronome.
+          // Armed when a reaction starts, so boredom can come due mid-reaction.
           if (!playingRef.current || reacting()) { armBoring(); return; }
           const row = modeRef.current === 'home' ? speakLobbyRef.current('Onlook') : null;
           const authored = stageLobbyRef.current(row);
@@ -780,8 +749,7 @@ export default function SkinViewer({
         const track = spineTrack(clip);
         const entry = driveAnimation(track, clip, false);
         requestSceneSoundRef.current(baseSkinKey(skin), clip);
-        // A layered clip is cut in: mixing one blends its slot from alpha 1 and
-        // flashes the finished art of a stamp clip before its reveal.
+        // A layered clip is cut in: mixing blends its slot from alpha 1 and flashes a stamp clip's finished art.
         entry.mixDuration = track === bodyTrack ? 0.15 : 0;
         if (track === bodyTrack) queueAnimation(bodyTrack, idle, true);
         setReaction(clip);
@@ -789,11 +757,9 @@ export default function SkinViewer({
       };
 
       // --- script playback ------------------------------------------------
-      // The actor's return target: a non-looping clip finishing on this track
-      // sets the idle there again.
+      // The actor's return target: a non-looping clip finishing here sets the idle on this track again.
       let sceneIdle: { clip: string; track: number } | null = null;
-      // Not the Lobby phase's track — a desire scene drives 10 while the lobby
-      // widget drives 0. The first clip played names it until an idle does.
+      // Not the Lobby phase's track — a desire scene drives 10, the lobby widget 0. The first clip played names it until an idle does.
       let sceneBodyTrack: number | null = null;
       const sceneTrack = (clip: string, track: number | null) => (
         track ?? spineTrack(clip));
@@ -841,16 +807,14 @@ export default function SkinViewer({
             setReaction(null);
           },
           clearAnimation: (clip) => {
-            // Its final frame is still posing the figure from its own track
-            // until something takes that track.
+            // Its final frame still poses the figure until something takes that track.
             const current = (spine.state.tracks ?? []).find(
               (t: any) => t?.animation?.name === clip);
             if (current) retireTrack(current.trackIndex);
           },
           clearTrack: (track) => retireTrack(track ?? bodyTrackRef.current()),
           resetActor: () => {
-            // Clearing tracks alone leaves every slot colour and attachment
-            // where the last clip left it, including a mid-fade `whiteout` quad.
+            // Clearing tracks alone leaves every slot colour and attachment where the last clip left it.
             spine.state.clearTracks();
             spine.skeleton.setToSetupPose();
             clearHoldReservationsRef.current();
@@ -869,9 +833,7 @@ export default function SkinViewer({
           },
           fade: (color, opacity, duration) => {
             dbg('fade', { color, opacity, duration });
-            // A fade to transparent clears whatever cover is up, so it keeps
-            // the current colour: the repaint is instant while only the opacity
-            // animates, which would flash the authored colour at full opacity.
+            // A fade to transparent keeps the current colour: repainting it would flash the authored colour at full opacity.
             setFade((current) => ({
               color: opacity <= 0 ? current.color : color,
               opacity,
@@ -909,9 +871,7 @@ export default function SkinViewer({
         setReaction(null);
       };
 
-      // Bounding-box attachments are the touch regions, hit-tested by the
-      // runtime's own polygon test so they follow the current pose. What a
-      // region does comes from the exporter's table, never from its name.
+      // Bounding-box attachments are the touch regions; what a region does comes from the exporter's table, never its name.
       const bounds = new SkeletonBounds();
       boundsRef.current = bounds;
       const regionByBox = new Map(
@@ -931,27 +891,20 @@ export default function SkinViewer({
         spine.cursor = 'pointer';
         spine.on('pointertap', (e: any) => {
           if (!autoModeRef.current) return;
-          // The DOM pointer-down handler below owns Lobby jiggle, so the
-          // matching Pixi tap must not kick a second time.
+          // The DOM pointer-down handler owns Lobby jiggle, so the matching Pixi tap must not kick a second time.
           if (modeRef.current === 'home' && performance.now() <= jiggleTapUntil) {
             jiggleTapUntil = 0;
             return;
           }
           const local = spine.toLocal(e.global);
           bounds.update(spine.skeleton, true);
-          // `local` is already in the Spine object's y-down space.
-          //
-          // Desire rigs attach every state's regions at once and they overlap
-          // heavily, so the phase restricts the hit test and the smallest match
-          // wins. Under a script the armed boxes decide instead, never the
-          // region's name suffix.
+          // `local` is already y-down; overlapping desire regions resolve by phase and smallest match, or by the armed boxes under a script.
           const player = scenePlayerRef.current;
           const armed = player?.armedBoxes();
           let hit: TouchRegion | null = null;
           let hitBox: string | null = null;
           let bestArea = Infinity;
-          // Boxes the script does not bind here, tracked separately so one can
-          // be reported without ever outranking a bound box.
+          // Tracked separately so an unbound box can be reported without outranking a bound one.
           let looseRegion: TouchRegion | null = null;
           let looseBox: string | null = null;
           let looseArea = Infinity;
@@ -973,14 +926,11 @@ export default function SkinViewer({
             if (area < bestArea) { bestArea = area; hit = region ?? null; hitBox = name; }
           }
 
-          // The script is the whole authority: an unbound box is genuinely
-          // inert and must leave playback alone rather than fall through to the
-          // phase's `active` clip.
+          // Under a script an unbound box is inert and must not fall through to the phase's `active` clip.
           if (player) {
             if (player.advance()) return;
             dbg('touch', { box: hitBox, vars: { ...(player.machine.vars) } });
-            // An onlook is bound to no box, so a tap that reached none still
-            // goes to the player before being reported inert.
+            // An onlook is bound to no box, so a tap that reached none still goes to the player.
             if (!player.touch(hitBox)) {
               if (hitBox) {
                 setTouchInfo({ box: hitBox, effect: 'inert', detail: 'no armed trigger here' });
@@ -1014,8 +964,7 @@ export default function SkinViewer({
             return;
           }
 
-          // The touched box selects its jiggler and supplies the direction from
-          // the live bone toward the touch point.
+          // The touched box selects its jiggler and the direction from the live bone toward the touch point.
           if (modeRef.current === 'home') {
             const box = hitBox ?? hit?.box ?? '';
             const jiggleHit = box ? jiggle.pokeToward(box, local.x, local.y) : null;
@@ -1024,12 +973,9 @@ export default function SkinViewer({
               armBoring();
               return;
             }
-            // Only a real bounding box is an input surface: a tap outside every
-            // box must not fall through to the phase's active clip.
+            // Only a real bounding box is an input surface.
             if (!box) return;
-            // A touch takes the current reaction over and restages the line
-            // from the top. The only refusal is one arriving inside
-            // `TOUCH_INTERRUPT_DELAY` of the line already staged.
+            // A touch restages the line from the top, unless it arrives inside `TOUCH_INTERRUPT_DELAY` of the staged one.
             const staged = sceneNow() - lobbyStagedAtRef.current;
             const busy = reacting() || voicePlaying() || lobbyFaceTimerRef.current !== null;
             if (busy && staged < TOUCH_INTERRUPT_DELAY) return;
@@ -1046,8 +992,7 @@ export default function SkinViewer({
               });
               autoDriveRef.current?.(clip);
             } else if (row) {
-              // A line with no `@ani` is a real reaction that keeps the idle
-              // running: the face, the emote and the quote carry it.
+              // A line with no `@ani` is a real reaction that keeps the idle running.
               setTouchInfo({
                 box,
                 effect: 'state',
@@ -1068,8 +1013,7 @@ export default function SkinViewer({
 
           const { effect, clip, bone } = effectOf(hit, phaseRef.current);
 
-          // The game springs a `gyro_*` bone with Unity-side physics that has no
-          // Spine equivalent, so report the binding rather than play something else.
+          // A `gyro_*` bone is sprung by Unity-side physics with no Spine equivalent.
           if (effect === 'physics') {
             setTouchInfo({ box: hit?.box ?? '', effect, detail: bone ?? '' });
             armBoring();
@@ -1104,8 +1048,7 @@ export default function SkinViewer({
           }
         },
         complete: (entry: any) => {
-          // A looping idle completes every cycle, which would re-arm boredom
-          // forever and never let `boring` play.
+          // A looping idle completes every cycle, which would re-arm boredom forever.
           if (!autoModeRef.current || entry?.loop) return;
           const track = entry?.trackIndex;
           const done = entry?.animation?.name;
@@ -1118,8 +1061,7 @@ export default function SkinViewer({
             resumeSceneIdle(track);
             return;
           }
-          // A completed clip's track is left alone: its pose stays applied until
-          // something else takes the track.
+          // A completed clip's track is left alone: its pose stays applied.
           if (track !== bodyTrackRef.current()) {
             setReaction((r) => (r === done ? null : r));
             return;
@@ -1150,8 +1092,7 @@ export default function SkinViewer({
           bounds,
           regionByBox,
           visible: showBoxesRef.current,
-          // Exactly the tests the input paths apply, so a drawn box is one a
-          // touch would reach. Jiggle is Lobby-only, so its boxes are too.
+          // Exactly the tests the input paths apply; jiggle is Lobby-only, so its boxes are too.
           isLive: (name, region, attachment) => {
             if (!attachmentIsVisible(attachment)) return false;
             const player = scenePlayerRef.current;
@@ -1181,18 +1122,14 @@ export default function SkinViewer({
         view.scale.set(1);
         view.rotation = 0;
       };
-      // Follows the `cam` bone every frame. Spine runs at a higher ticker
-      // priority, so the bone's world transform is already current here.
+      // Spine runs at a higher ticker priority, so the `cam` bone's world transform is already current here.
       const applyRigCamera = () => {
         if (!camBone || !camSetup) return;
         if (!followGameFlowRef.current) {
           resetRigCamera();
           return;
         }
-        // Skeleton units to `view` units. `spine.rotation` is always 0 and both
-        // scales are uniform, so a delta needs only the two scale factors and
-        // the staging rotation — the translations cancel. `bone.worldY` is
-        // already y-down, since spine-pixi sets `Skeleton.yDown`.
+        // Skeleton to `view` units: rotation is 0 and both scales uniform, so only the scale factors and staging rotation apply.
         const factor = spine.scale.x * scene.scale.x;
         const dx = (camBone.worldX - camSetup.x) * factor;
         const dy = (camBone.worldY - camSetup.y) * factor;
@@ -1229,18 +1166,15 @@ export default function SkinViewer({
         spine.position.set(sk.x, -sk.y);
         spine.scale.set(prefabScale);
         spine.rotation = 0;
-        // Measured in the authored base space, with device staging applied to
-        // the shared scene afterwards so room, actor and overlay move as one.
+        // Measured in the authored base space, device staging applied to the scene afterwards so room, actor and overlay move as one.
         scene.position.set(0, 0);
         scene.scale.set(1);
         scene.rotation = 0;
-        // Measuring during a zoomed-in enter frame would re-frame the whole
-        // composition around whatever corner the camera happens to be on.
+        // Measuring on a zoomed-in enter frame would re-frame the composition around whatever corner the camera is on.
         resetRigCamera();
         // The room is part of what is measured, so it must be on its bone first.
         applyBackgroundTransforms();
-        // Boxes can exceed the art and the emote hangs above the figure's head,
-        // so either would re-frame the character.
+        // Boxes can exceed the art and the emote hangs above the head, so either would re-frame the character.
         const boxOverlay = boxOverlayRef.current;
         const boxesVisible = boxOverlay?.visible ?? false;
         const emoteVisible = emoteSprite.visible;
@@ -1250,9 +1184,7 @@ export default function SkinViewer({
         if (boxOverlay) boxOverlay.visible = boxesVisible;
         emoteSprite.visible = emoteVisible;
         if (!b.width || !b.height) return;
-        // The game camera frames the reference view width around the bone,
-        // scaled by its setup scale and the device staging scale. The height is
-        // not authored: it is the width over the aspect drawn into.
+        // The reference view width around the bone, scaled by setup and staging scale; the height is that width over the drawn aspect.
         const gameCamera = !!(camBone && camSetup && followGameFlowRef.current);
         const stagingScale = staging?.scale ?? 1;
         const viewScale = dataScale * prefabScale * (camSetup?.scale ?? 1);
@@ -1266,8 +1198,7 @@ export default function SkinViewer({
             y: spine.position.y + camSetup!.y * prefabScale - viewH / 2,
           }
           : { x: b.x, y: b.y, width: b.width, height: b.height };
-        // `view` is at identity here, so the frame's centre is also the pivot
-        // the rig camera zooms and rotates about.
+        // `view` is at identity here, so the frame's centre is also the pivot.
         rigCameraCentre = {
           x: frame.x + frame.width / 2,
           y: frame.y + frame.height / 2,
@@ -1288,8 +1219,7 @@ export default function SkinViewer({
           (staging?.position.x ?? 0) * dataScale,
           -(staging?.position.y ?? 0) * dataScale,
         );
-        // The staging scale is a camera zoom, already in the frame width under
-        // the game camera, so it must not scale the scene as well.
+        // The staging scale is a camera zoom, already in the frame width, so it must not scale the scene as well.
         scene.scale.set(gameCamera ? 1 : stagingScale);
         scene.rotation = -(staging?.rotation ?? 0) * Math.PI / 180;
         const target = followGameFlowRef.current
@@ -1352,18 +1282,15 @@ export default function SkinViewer({
         fit();
       };
 
-      // Measured in the current pose, so a saved PNG comes out at native
-      // resolution rather than the on-screen one.
+      // Measured in the current pose, so a saved PNG comes out at native resolution.
       spinePixelScaleRef.current = () => sourcePixelScale(
         attachmentScales(spine, RegionAttachment, MeshAttachment), bgSpritesRef.current);
 
       app.renderer.on('resize', fit);
-      // Following the game's flow hands framing to the game entirely, so it
-      // refuses pan and zoom alike. A jiggle drag is not a camera gesture.
+      // Following the game's flow hands framing to the game, so it refuses pan and zoom.
       const manualCameraAllowed = () => !(followGameFlowRef.current
         && (camBone || scriptSceneRef.current));
-      // Pointer-down arrives here before pan/zoom can turn the gesture into a
-      // drag, so the jiggle kicks immediately and keeps the same spring.
+      // Pointer-down arrives before pan/zoom turns the gesture into a drag, so the jiggle kicks immediately.
       attachPanZoom(app.canvas as HTMLCanvasElement, root, (cx, cy) => {
         if (modeRef.current !== 'home') return null;
         const local = spine.toLocal({ x: cx, y: cy });
@@ -1441,8 +1368,7 @@ export default function SkinViewer({
   }, [layout, skin, archive]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // --- live state -> skeleton ---------------------------------------------
-  // One clock for the rig, the voice and the animation sounds, so a reaction
-  // played at 2x still lines up with the line that belongs to it.
+  // One clock for rig, voice and animation sounds, so a reaction played at 2x still lines up.
   useEffect(() => {
     const spine = spineRef.current;
     if (spine) spine.state.timeScale = playing ? speed : 0;
@@ -1450,14 +1376,12 @@ export default function SkinViewer({
     setSceneSoundRate(speed);
   }, [playing, speed]);
 
-  // The playback context survives a skin change, so a rig without a lobby has
-  // to hand the mode back rather than sit in one it no longer offers.
+  // The playback context survives a skin change, so a rig without a lobby hands the mode back.
   useEffect(() => {
     if (layout && mode === 'home' && !hasLobby) setMode('manual');
   }, [layout, mode, hasLobby]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // In auto mode the state machine owns track 0 and would overwrite a manual
-  // pick on the next return to idle.
+  // In auto mode the state machine owns track 0 and would overwrite a manual pick.
   useEffect(() => {
     const spine = spineRef.current;
     if (!spine || autoMode || !bodyAnim) return;
@@ -1482,8 +1406,7 @@ export default function SkinViewer({
     if (!spine) return;
     if (mode !== 'home') jiggleRef.current?.reset();
     clearHoldReservationsRef.current();
-    // Each mode owns different tracks — a desire scene drives 10, Free play and
-    // Lobby drive 0 — so an outgoing mode's clips would play over the incoming one.
+    // Each mode owns different tracks — a desire scene 10, Free play and Lobby 0 — so outgoing clips would play over the incoming mode.
     spine.state.clearTracks();
     spine.skeleton.setToSetupPose();
     setTouchInfo(null);
@@ -1494,9 +1417,7 @@ export default function SkinViewer({
     lobbyLineRef.current = 0;
     lobbyStagedAtRef.current = -Infinity;
     hideEmoteRef.current();
-    // Declared after the scene player's effect, so on a mode change the
-    // teardown above has just wiped the clips the player set. Re-entering
-    // restarts the script rather than leaving its opening cleared.
+    // Declared after the scene player's effect, whose teardown has just wiped the clips it set.
     const cameFrom = previousModeRef.current;
     previousModeRef.current = mode;
     if (mode === 'scene' && cameFrom !== mode) setSceneRunKey((key) => key + 1);
@@ -1513,15 +1434,13 @@ export default function SkinViewer({
     fitCameraRef.current();
   }, [mode, phaseIdx]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // The toggle moves the base framing from the composition bounds to the
-  // camera's viewport, so it has to re-fit.
+  // The toggle moves the base framing from composition bounds to the camera viewport, so it has to re-fit.
   useEffect(() => {
     if (!rigBuilt) return;
     fitCameraRef.current();
   }, [followGameFlow, rigBuilt]);
 
-  // Pixi's resize plugin only watches the window, so a layout change that
-  // resizes the canvas host alone needs its own observer.
+  // Pixi's resize plugin only watches the window, not the canvas host.
   useEffect(() => {
     const panel = panelRef.current;
     const host = hostRef.current;
@@ -1548,10 +1467,7 @@ export default function SkinViewer({
     return () => window.removeEventListener('keydown', onKey);
   }, [theater]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Lobby's own Enter row is a real interaction, not the first idle frame. It
-  // keys on `rigBuilt` because the archive parses before `autoDriveRef` exists,
-  // and must stay declared after the mode effect above, which clears the tracks
-  // on the same `mode` change.
+  // Lobby's Enter row is a real interaction; keyed on `rigBuilt` and declared after the mode effect, which clears the tracks.
   useEffect(() => {
     if (mode !== 'home' || !rigBuilt || !voiceIndex) return;
     const row = speakLobbyRef.current('Enter');
@@ -1591,8 +1507,7 @@ export default function SkinViewer({
     syncBackgroundVisibilityRef.current();
   }, [showBg]);
 
-  // Hiding is enforced per frame in the Spine hook; showing restores the setup
-  // alpha once and hands the slot back to the rig's timelines.
+  // Hiding is enforced per frame in the Spine hook; showing restores the setup alpha once.
   const setLayerHidden = (slots: string[], hide: boolean) => {
     setHiddenSlots((prev) => {
       const next = new Set(prev);
@@ -1626,8 +1541,7 @@ export default function SkinViewer({
     });
   };
 
-  // Memoised so the `?? []` fallback does not hand the option memos a fresh
-  // identity every render.
+  // Memoised so the `?? []` fallback does not hand the option memos a fresh identity every render.
   const anims = useMemo(() => layout?.animations ?? [], [layout]);
   const hasTouchBoxes = (layout?.touch?.regions?.length ?? 0) > 0;
   const jigglerCount = layout?.touch?.jigglers?.length ?? 0;
@@ -1703,8 +1617,7 @@ export default function SkinViewer({
     setSceneRunKey((key) => key + 1);
   };
 
-  // CSS `aspect-ratio` cannot letterbox this on its own: clamping the second
-  // axis with a max distorts the box instead of shrinking the first.
+  // CSS `aspect-ratio` cannot letterbox this: clamping the second axis distorts the box instead of shrinking the first.
   const aspectRatio = CANVAS_ASPECTS.find((a) => a.value === canvasAspect)?.ratio ?? 0;
   const hostBox = aspectRatio && panelSize.w && panelSize.h
     ? (panelSize.w / panelSize.h > aspectRatio
@@ -1712,8 +1625,7 @@ export default function SkinViewer({
       : { width: `${panelSize.w}px`, height: `${Math.round(panelSize.w / aspectRatio)}px` })
     : { width: '100%', height: '100%' };
 
-  // Takes a value rather than toggling: re-selecting the active side must not
-  // restart the scene.
+  // Takes a value rather than toggling: re-selecting the active side must not restart the scene.
   const setGameFlow = (next: boolean) => {
     if (next === followGameFlow) return;
     resetSceneVisualsRef.current();
@@ -1721,8 +1633,7 @@ export default function SkinViewer({
     setStoryIdx(0);
     setSceneRunKey((key) => key + 1);
   };
-  // The `cam` bone is consulted in every mode, so the choice is offered
-  // whenever there is a camera or a script to follow.
+  // The `cam` bone is consulted in every mode.
   const hasCameraControl = hasRigCamera || (mode === 'scene' && !!selectedScriptScene);
 
   return (

@@ -1,6 +1,4 @@
-// Three levels over one route, because `output: 'export'` prerenders every path
-// and the stage set is runtime data: the hub, then one mode's groups, then that
-// group's stages.
+// Three levels over one route, because `output: 'export'` prerenders every path and the stage set is runtime data.
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
@@ -254,8 +252,7 @@ function ModeTabs({ data, mode, lang }: { data: StageData; mode: string; lang: L
   );
 }
 
-// The two previews are what a reader scans a list for: who is in it, and what it
-// pays. Both are capped — a wave can field six and a drop list ten.
+// Both previews are capped: a wave can field six and a drop list ten.
 const PREVIEW = 8;
 
 function StageCard({ stage, data, chars, icons, lang }: {

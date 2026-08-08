@@ -1,5 +1,4 @@
-// A query route rather than a `[id]` segment, matching `/character`: the stage
-// list is fetched at runtime, so a build-time path list would need regenerating.
+// A query route rather than a `[id]` segment: the stage list is runtime data, so a build-time path list would need regenerating.
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
@@ -46,8 +45,7 @@ export default function StagePage() {
   const stage = useMemo(
     () => (data && id != null ? stageById(data, id) : null), [data, id]);
 
-  // The group's own ordering is what "next" means; a stage outside any listed
-  // group simply has no neighbours.
+  // The group's own ordering is what "next" means; a stage outside any listed group has no neighbours.
   const siblings = useMemo(() => {
     if (!data || !stage) return { prev: null, next: null };
     const list = groupByKey(data, stage.group)?.stages ?? [];
@@ -231,8 +229,7 @@ export default function StagePage() {
   );
 }
 
-// A drop that is not guaranteed says so; one that is stays unadorned, because
-// most of a stage's list is guaranteed and a "100%" on every row is noise.
+// Most of a stage's list is guaranteed, so only a chance drop is marked.
 function Drop({ drop, data, icons, lang }: {
   drop: StageDrop; data: StageData; icons: IconManifest | null; lang: Lang;
 }) {
@@ -258,8 +255,7 @@ function Drop({ drop, data, icons, lang }: {
   );
 }
 
-// A party check is drawn with the type's own art, which is what the row names;
-// the rest carry the game's own mark, where one exists.
+// A party check is drawn with the type's own art; the rest carry the game's mark where one exists.
 function Mission({ mission, chars, icons, lang }: {
   mission: StageSubMission; chars: CharacterData | null;
   icons: IconManifest | null; lang: Lang;
@@ -312,8 +308,7 @@ function Wave({ wave, data, chars, icons, lang }: {
   );
 }
 
-// The kit is folded away: a wave fields up to six enemies and each one carries
-// a full behaviour graph.
+// The kit is folded away: a wave fields up to six enemies, each with a full behaviour graph.
 function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
   group: EnemyGroup; data: StageData; chars: CharacterData | null;
   icons: IconManifest | null; lang: Lang; isBoss: boolean;
