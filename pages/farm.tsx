@@ -221,11 +221,11 @@ function Stepper({
   const spent = { opacity: 0.35, pointerEvents: 'none' } as const;
   return (
     <HStack spacing={1}>
-      <Box as="button" aria-label="minus one" {...button}
+      <Box as="button" aria-label="minus one" tabIndex={-1} {...button}
         {...(disabled || value <= min ? spent : {})}
         onClick={() => onChange(Math.max(min, value - 1))}>−</Box>
       {children}
-      <Box as="button" aria-label="plus one" {...button}
+      <Box as="button" aria-label="plus one" tabIndex={-1} {...button}
         {...(disabled || value >= max ? spent : {})}
         onClick={() => onChange(Math.min(max, value + 1))}>+</Box>
     </HStack>
