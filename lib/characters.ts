@@ -1,5 +1,4 @@
-// The node suites load this module directly, so nothing here may import a
-// runtime value through the `@/` alias.
+// Node suites load this module directly: no runtime import through `@/`.
 import type { SkinKind } from '@/components/skinViewer/types';
 import type { Lang, Localized } from '@/lib/i18n';
 import type {
@@ -48,28 +47,24 @@ export function typeOf(
   return v == null ? null : types[table][String(v)] ?? null;
 }
 
-// `icon` alone is not always extractable, so the table's whole candidate list
-// is preferred when present.
+// `icon` alone is not always extractable, so the whole candidate list is preferred.
 export function typeIcons(t: TypeEntry | null): string[] {
   if (!t) return [];
   return t.icons?.length ? t.icons : (t.icon ? [t.icon] : []);
 }
 
-// A row the generator's table does not cover yet still has to render, and the
-// game has no English column for every row.
+// A row the generator's table does not cover yet still has to render.
 export function typeLabel(t: TypeEntry | null, lang: Lang = 'en'): string {
   if (!t) return '';
   return lang === 'ko' ? (t.name || t.en || '') : (t.en || t.name);
 }
 
-// Only `Attribute_Icon_Data` carries a colour, and its icons are flat white
-// silhouettes the game tints — untinted, all four elements look identical.
+// Only `Attribute_Icon_Data` carries a colour; its icons are flat white silhouettes the game tints.
 export function typeTint(t: TypeEntry | null): string | null {
   return t?.color ?? null;
 }
 
-// `attribute` 0 is 모든 속성, a UI catch-all no character carries, so as a
-// filter it selects nothing.
+// `attribute` 0 is 모든 속성, a UI catch-all no character carries.
 export function filterRows(
   types: CharacterData['types'], table: TypeTable,
 ): [string, TypeEntry][] {
@@ -77,14 +72,12 @@ export function filterRows(
     .filter(([value]) => !(table === 'attribute' && value === '0'));
 }
 
-// `characterType` 1 is playable, 2 is an NPC. Only playable rows carry a
-// rarity, role or faction, so the list defaults to them.
+// `characterType` 1 is playable, 2 an NPC; only playable rows carry a rarity, role or faction.
 export function isPlayable(entry: CharacterEntry): boolean {
   return entry.characterType === 1;
 }
 
-// A playable character and an asset that is not a character at all both go
-// unbadged: the default and the asset key already say what they are.
+// A playable character and a non-character asset both go unbadged.
 const ROSTER_NOTE: Record<string, Localized> = {
   unreleased: { en: 'UNRELEASED', ko: '미출시' },
   story: { en: 'STORY', ko: '스토리' },
@@ -101,8 +94,7 @@ export function rosterNote(
   return null;
 }
 
-// Only playable characters carry an English name, so an NPC reads Korean in
-// either language rather than falling back to its code.
+// Only playable characters carry an English name, so an NPC reads Korean in either language.
 export function characterName(entry: CharacterEntry | null, lang: Lang = 'en'): string {
   if (!entry) return '';
   const primary = lang === 'ko' ? entry.name : (entry.nameEn || entry.name);
@@ -114,8 +106,7 @@ export function characterSubName(entry: CharacterEntry | null, lang: Lang = 'en'
   return lang === 'ko' ? entry.nameEn : entry.name;
 }
 
-// The game's second English name column is usually the same name in caps, so
-// it is only worth showing when the two genuinely differ.
+// The second English column is usually the same name in caps, so show it only when the two differ.
 export function altNameEn(entry: CharacterEntry): string | null {
   const alt = entry.nameUppercase;
   if (!alt) return null;
@@ -152,8 +143,7 @@ export function giftsOf(
   });
 }
 
-// Only the region is in the master data and it carries venues no date uses, so
-// a character with no script falls back to the whole region.
+// Only the region is in the master data, so a character with no script falls back to the whole region.
 export function datePlacesOf(
   entry: CharacterEntry, places: CharacterData['places'],
 ): { division: number; places: PlaceEntry[] }[] {
@@ -204,8 +194,7 @@ export type EquipInput = { type: number; tier: number; level: number };
 export type StatInput = {
   level: number;
   star: number;
-  /** Every character starts at rank 1, so the rank-1 gain is part of a unit's
-   *  baseline; 0 reads the block without any affection at all. */
+  /** Rank 1 is part of a unit's baseline; 0 reads the block without any affection. */
   love: number;
   equipment: EquipInput[];
 };
@@ -231,11 +220,7 @@ function truncate(value: number): number {
   return value < 0 ? Math.ceil(value) : Math.floor(value);
 }
 
-/**
- * Applied twice — to the base block and to the equipment delta, before the two
- * are added — so rounding only the total drifts from the game on any stat whose
- * display type is not 0.
- */
+// Applied to the base block and the equipment delta separately: rounding only the total drifts from the game.
 export function roundStat(display: number, value: number): number {
   if (display === 1) return truncate(value);
   if (display === 2) return truncate(value * 100) / 100;
@@ -270,8 +255,7 @@ export function equipmentGrants(
     : []));
 }
 
-// The tables carry a row per grade whatever the character's rarity, plus a cap
-// row above the ceiling repeating the top grade. Neither is reachable.
+// A row per grade whatever the rarity, plus a cap row repeating the top grade; neither is reachable.
 export function statGrades(entry: CharacterEntry, data: CharacterData): number[] {
   const floor = entry.defaultStar ?? 1;
   return Object.keys(entry.baseStats ?? {}).map(Number)
@@ -279,16 +263,7 @@ export function statGrades(entry: CharacterEntry, data: CharacterData): number[]
     .sort((a, b) => a - b);
 }
 
-/**
- * Combined the way the game combines them:
- *
- *     base   = round(battle[stat] + perLevel[stat] * (level - 1))
- *     equip  = round(sum of flat options + base * sum of fractional options)
- *     total  = base + equip + sum of affection ranks 1..love
- *
- * Equipment scales off the base stat, so it comes after the level term and
- * before the affection one. A stat that stays at zero throughout is dropped.
- */
+// `base = round(battle + perLevel * (level - 1))`, `equip = round(flat + base * fractional)`, plus affection ranks 1..love.
 export function computeStats(
   entry: CharacterEntry, data: CharacterData, input: StatInput, lang: Lang = 'en',
 ): StatRow[] {
@@ -355,8 +330,7 @@ export const SKILL_CATEGORY_LABEL: Record<number, Localized> = {
   5: { en: 'Trigger', ko: '트리거' },
 };
 
-// A grade below the character's own rarity is still listed by the master data,
-// which is what makes the passive's 3★/4★/5★ tiers visible.
+// A grade below the character's own rarity is still listed, which is what makes the passive's tiers visible.
 export function skillsAtGrade(
   entry: CharacterEntry, data: CharacterData, grade: number,
 ): (SkillEntry & { id: number })[] {
@@ -368,8 +342,7 @@ export function skillsAtGrade(
   });
 }
 
-// The master data carries a set for grades 1..5 whatever the rarity, but a
-// character that starts at 3★ can never be 1★ or 2★.
+// The master data carries grades 1..5 whatever the rarity, but a 3★ character can never be 1★ or 2★.
 export function skillGrades(entry: CharacterEntry, data: CharacterData): number[] {
   const set = data.skillSets[String(entry.skillSetGroup ?? '')];
   if (!set) return [];
@@ -377,11 +350,9 @@ export function skillGrades(entry: CharacterEntry, data: CharacterData): number[
   return Object.keys(set).map(Number).filter((g) => g >= floor).sort((a, b) => a - b);
 }
 
-// English for the behaviour graph's enum constants, which the master data has
-// no column for. Anything missing falls back to `prettyConst`.
+// English for the behaviour graph's enum constants; anything missing falls back to `prettyConst`.
 
-// `ONETIME_EFFECT_TYPE` and `DURATION_EFFECT_TYPE` share one table: an op is
-// only ever one or the other, and the two sets do not collide.
+// `ONETIME_EFFECT_TYPE` and `DURATION_EFFECT_TYPE` share one table and do not collide.
 export const OP_LABEL: Record<string, Localized> = {
   MARKER: { en: 'Internal state', ko: '내부 상태' },
   EMPTY_EFFECT: { en: 'No effect', ko: '효과 없음' },
@@ -449,8 +420,7 @@ export const OP_LABEL: Record<string, Localized> = {
   EXCLUDE_DETECTING_TARGET: { en: 'Cannot be hit', ko: '판정 대상에서 제외' },
 };
 
-// Which colour an op reads as. Falls back to the buff/debuff/CC category the
-// state itself declares, so an unmapped op still gets the right tone.
+// Falls back to the buff/debuff/CC category the state declares, so an unmapped op still gets a tone.
 export const OP_SCHEME: Record<string, string> = {
   ADD_DAMAGE: 'red',
   OVERTIME_DAMAGE: 'red',
@@ -511,8 +481,7 @@ export const STAT_LABEL: Record<string, Localized> = {
   ATTACK_SPEED_NORMAL: { en: 'Attack speed', ko: '공격 속도' },
 };
 
-// `SKILL_TARGET_TYPE` on a cast or a work, and `CHECK_TARGET_TYPE` on a
-// trigger. The two enums share every name they have in common.
+// `SKILL_TARGET_TYPE` on a cast or work, `CHECK_TARGET_TYPE` on a trigger; the two share every common name.
 export const TARGET_LABEL: Record<string, Localized> = {
   SELF: { en: 'self', ko: '자신' },
   ENEMY: { en: 'enemies', ko: '적' },
@@ -529,8 +498,7 @@ export const TARGET_LABEL: Record<string, Localized> = {
   SUMMON_ALL: { en: 'all summons', ko: '모든 소환수' },
 };
 
-// `STAT_MULTIPLE_TARGET_TYPE` / `APPLY_TARGET_TYPE`: whose stat, and who it
-// lands on.
+// `STAT_MULTIPLE_TARGET_TYPE` / `APPLY_TARGET_TYPE`: whose stat, and who it lands on.
 export const SIDE_LABEL: Record<string, Localized> = {
   CASTER: { en: 'caster', ko: '시전자' },
   HOLDER: { en: 'target', ko: '대상' },
@@ -553,8 +521,7 @@ export const SORT_LABEL: Record<string, Localized> = {
   RANDOM: { en: 'at random', ko: '무작위' },
 };
 
-// `SKILL_RANGE_TYPE` on a hitbox, and `SKILL_CAST_TARGET_SELECT_RANGE` on the
-// cast.
+// `SKILL_RANGE_TYPE` on a hitbox, `SKILL_CAST_TARGET_SELECT_RANGE` on the cast.
 export const SHAPE_LABEL: Record<string, Localized> = {
   X_AXIS: { en: 'Line', ko: '직선' },
   CIRCLE: { en: 'Circle', ko: '원형' },
@@ -564,8 +531,7 @@ export const SHAPE_LABEL: Record<string, Localized> = {
   ALL: { en: 'anywhere', ko: '전 범위' },
 };
 
-// `SKILL_EVENT_TYPE`, minus `SPAWN_DISPATCHER` — the non-hitbox things a cast
-// does, which is how a skill's movement and summons show up.
+// `SKILL_EVENT_TYPE` minus `SPAWN_DISPATCHER`: the non-hitbox things a cast does.
 export const MOVE_LABEL: Record<string, Localized> = {
   SPAWN_SUMMON: { en: 'summons', ko: '소환' },
   SPAWN_SUMMON_REPLACE: { en: 'replaces its summon', ko: '소환수 교체' },
@@ -644,8 +610,7 @@ export const SETUP_CONDITION_LABEL: Record<string, Localized> = {
   },
 };
 
-// `SCREAMING_SNAKE` -> `Screaming snake`. The fallback for any constant the
-// tables above do not name, so a client update never renders a blank chip.
+// `SCREAMING_SNAKE` -> `Screaming snake`, so a constant the tables miss never renders blank.
 export function prettyConst(name: string): string {
   const words = name.toLowerCase().replace(/_/g, ' ').trim();
   return words ? words[0].toUpperCase() + words.slice(1) : '';
@@ -667,8 +632,7 @@ export function everySecondsText(value: number, lang: Lang = 'en'): string {
   return lang === 'ko' ? `${value}초마다` : `every ${value}s`;
 }
 
-// `ticks` is how many detections one spawn makes, `count` how many times the
-// skill spawns it.
+// `ticks` is detections per spawn, `count` how many times the skill spawns it.
 export function hitSummary(hit: SkillHit, lang: Lang = 'en'): string {
   const parts: string[] = [];
   const lands = hit.count * Math.max(1, hit.ticks);
@@ -696,10 +660,7 @@ const TARGET_ONE: Record<string, string> = {
 
 const ORDINAL = ['', '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'];
 
-/**
- * The cast target, i.e. what the hitbox centres on. Who is affected is on the
- * operation — a hitbox anchored on `SELF` can still pick every enemy in it.
- */
+// What the hitbox centres on; who is affected is on the operation.
 export function castSummary(
   cast: NonNullable<SkillHit['cast']>, lang: Lang = 'en',
 ): string {
@@ -725,8 +686,7 @@ export function castSummary(
     : `the${how} ${one}${where}`;
 }
 
-// The Korean reads modifier-first — where, then how it picks, then the target —
-// so it is built rather than translated phrase by phrase.
+// The Korean reads modifier-first, so it is built rather than translated phrase by phrase.
 function castSummaryKo(cast: NonNullable<SkillHit['cast']>): string {
   if (cast.team === 'SELF') return '자신';
   const who = labelOf(TARGET_LABEL, cast.team, 'ko');
@@ -739,8 +699,7 @@ function castSummaryKo(cast: NonNullable<SkillHit['cast']>): string {
   return cast.count > 1 ? `${where}${how}${who} ${cast.count}명` : `${where}${how}${who}`;
 }
 
-// `DURATION_CATEGORIZE_TYPE` and `ONETIME_CATEGORIZE_TYPE`, as a clear or an
-// immunity names them.
+// `DURATION_CATEGORIZE_TYPE` and `ONETIME_CATEGORIZE_TYPE`, as a clear or immunity names them.
 export const CATEGORY_LABEL: Record<string, Localized> = {
   CATEGORIZE_BUFF: { en: 'buffs', ko: '버프' },
   CATEGORIZE_DEBUFF: { en: 'debuffs', ko: '디버프' },
@@ -751,27 +710,18 @@ export const CATEGORY_LABEL: Record<string, Localized> = {
   DISPELL: { en: 'dispels', ko: '해제 효과' },
 };
 
-/**
- * The extra step lands every `period` levels rather than on every level above
- * the first, as the game's own descriptions grow it.
- */
+// The extra step lands every `period` levels, as the game's own descriptions grow it.
 export function growValue(
   m: SkillMagnitude, level: number, period: number, slot = 0,
 ): number {
   const steps = Math.max(0, level - 1);
   const at = (xs: number[]) => xs[slot] ?? 0;
-  // Unrounded: rounding here and again at format time makes a grown value
-  // disagree with the game's own printed number.
+  // Unrounded: rounding here and again at format time disagrees with the game's printed number.
   return at(m.base) + at(m.up) * steps
     + (period ? at(m.extra) * Math.floor(steps / period) : 0);
 }
 
-/**
- * The magnitude the operation carries, not a predicted damage or heal — the
- * arithmetic against a defender is not decoded. A `*_RATE` stat reads as a
- * percentage; a coefficient with no stat to apply to means nothing on its own
- * and returns nothing.
- */
+// The magnitude the operation carries, not a damage or heal; a coefficient with no stat returns nothing.
 export function opAmounts(op: SkillOp, level: number, period: number): string[] {
   if (!op.value || !op.scale) return [];
   const pct = op.scale.endsWith('_RATE');
@@ -781,8 +731,7 @@ export function opAmounts(op: SkillOp, level: number, period: number): string[] 
     .map((v) => (pct ? `${sixSigFigs(v * 100)}%` : `${v}`));
 }
 
-// The generator renders the game's description numbers with `%g`, so a
-// coefficient has to round the same way or the two disagree on the last digit.
+// The generator renders description numbers with `%g`, so a coefficient must round the same way.
 function sixSigFigs(v: number): number {
   return Number(v.toPrecision(6));
 }
@@ -797,8 +746,7 @@ export function opSeconds(
   return secondsText(s, lang);
 }
 
-// A `*_RATE` is a coefficient on the stat rather than a flat amount, so it
-// reads as a percentage and anything else stays a raw multiplier.
+// A `*_RATE` is a coefficient on the stat, so it reads as a percentage.
 export function statAmount(stat: SkillStat): string {
   if (stat.scale && !stat.scale.endsWith('_RATE')) return `×${stat.multiple}`;
   const pct = sixSigFigs(stat.multiple * 100);
@@ -814,8 +762,7 @@ export function scaleSummary(op: SkillOp | SkillStat, lang: Lang = 'en'): string
   return lang === 'ko' ? `${side}의 ${stat}` : `${stat} of the ${side}`;
 }
 
-// A marker has no name the game ever shows, so it is named as what it is
-// rather than by printing its table id.
+// A marker has no name the game shows, so it is named rather than printed as a table id.
 export const INTERNAL_STATE: Localized = { en: 'an internal state', ko: '내부 상태' };
 
 export function detailSummary(detail: SkillDetail, lang: Lang = 'en'): string[] {
@@ -830,11 +777,7 @@ export function detailSummary(detail: SkillDetail, lang: Lang = 'en'): string[] 
   return [...named, internal > 1 ? more : INTERNAL_STATE[lang]];
 }
 
-/**
- * The condition constant decides what its values mean, which is why this needs
- * the type tables. `SAME_ATTRIBUTE_TYPE` / `SAME_POSITION_TYPE` also carry a
- * value whose role is not decoded, so only the comparison is stated.
- */
+// The condition constant decides what its values mean; `SAME_ATTRIBUTE_TYPE` / `SAME_POSITION_TYPE` carry an undecoded value.
 export function gateSummary(
   gate: SkillGate, data: CharacterData, lang: Lang = 'en',
 ): string {
@@ -899,8 +842,7 @@ export function gateSummary(
   }
 }
 
-// `DURATION_CATEGORIZE_TYPE` by value, for the gates that carry the integer
-// rather than the constant.
+// `DURATION_CATEGORIZE_TYPE` by value, for gates carrying the integer rather than the constant.
 const DURATION_CATEGORY_CONST: Record<string, string> = {
   1: 'CATEGORIZE_BUFF', 2: 'CATEGORIZE_DEBUFF', 3: 'CATEGORIZE_CC',
 };
@@ -920,8 +862,7 @@ export function colorRuns(text: string): { text: string; color?: string }[] {
   return out;
 }
 
-// A standing rig has no thumbnail of its own, because the portrait is the
-// standing art.
+// A standing rig has no thumbnail: the portrait is the standing art.
 export function skinIconNames(skin: SkinListEntry, entry: CharacterEntry | null): {
   skin: string[]; char: string[];
 } {

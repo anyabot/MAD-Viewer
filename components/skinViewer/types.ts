@@ -1,11 +1,9 @@
 import type { Jiggler } from './jiggle';
 
 // The prefab's `_actorType`: 0 standing, 1 desire, 2 affection, 3 pleasure.
-// The families differ in staging and phase count, not in rendering.
 export type SkinKind = 'standing' | 'affection' | 'desire' | 'pleasure';
 
-// OneStore ships the uncensored art, Google Play the censored edit. Standings
-// are identical across both; only affection art diverges.
+// OneStore ships the uncensored art; only affection art diverges between stores.
 export type StoreKey = 'onestore' | 'google';
 
 export const STORE_KEYS: StoreKey[] = ['onestore', 'google'];
@@ -31,13 +29,7 @@ export type ActorMeta = {
   volumeProfiles?: number[];
 };
 
-// Resolved at export time; the viewer never infers this from names.
-//   physics   springs a `gyro_*` bone; plays no animation
-//   reaction  plays a dedicated `reaction/<state>_<CODE>` clip
-//   region    plays a region clip (`00_breast_touch`)
-//   generic   plays the current phase's `active` clip
-// The primary action only: the click and jiggle handlers are independent in
-// game, so a region may carry both a `clip` and a `bone`.
+// Resolved at export time, never inferred from names: `physics` springs a `gyro_*` bone, `reaction` and `region` play their clip, `generic` the phase's active clip.
 export type TouchEffect = 'physics' | 'reaction' | 'region' | 'generic';
 
 export type TouchRegion = {
@@ -49,8 +41,7 @@ export type TouchRegion = {
   effect: TouchEffect;
   clip?: string;
   bone?: string;
-  /** Attributed by the exporter's escalation inference, not by an exact name
-   *  match — the authoritative mapping is server-side. */
+    /** Attributed by the exporter's escalation inference, not by an exact name match. */
   inferred?: boolean;
 };
 
@@ -132,9 +123,7 @@ export type Layout = {
   };
 };
 
-// A diverged skin is packed as two suffixed archives, but the embedded `skin`
-// field carries the bare key in both, so the stale-layout guard has to compare
-// on this rather than on the archive name.
+// A diverged skin packs two suffixed archives but keeps the bare key here, so the stale-layout guard compares on this, not the archive name.
 export function baseSkinKey(skin: string): string {
   return skin.replace(/__(onestore|google)$/, '');
 }
@@ -169,12 +158,7 @@ export function actorPhases(actor: ActorMeta | undefined, animations: string[]):
 
 export type StorySequence = { group: string; clips: string[] };
 
-/**
- * A sequence is a group whose clips all end in a number, sorted numerically —
- * a rig mixing `ani_009` with `ani_0010` interleaves the tens into the ones
- * under lexical order. A pleasure rig with no numbered group plays its whole
- * clip list in export order.
- */
+// A sequence sorts numerically: lexical order interleaves `ani_0010` into the tens.
 export function storySequences(
   layout: Layout,
   isFace: (name: string) => boolean,
@@ -208,12 +192,7 @@ export function storySequences(
   return out;
 }
 
-/**
- * The clip's own name declares its track, as the client derives it: the digits
- * before the first `_` of the segment after any `/`, else 0. A scenario
- * command's explicit `Track:` overrides it. The prefixes are not decoration —
- * a clip layers over or under another purely by that number.
- */
+// The digits before the first `_` of the segment after any `/`, else 0; an explicit `Track:` overrides it.
 export function spineTrack(name: string): number {
   const segment = name.slice(name.indexOf('/') + 1);
   const underscore = segment.indexOf('_');
@@ -222,8 +201,7 @@ export function spineTrack(name: string): number {
   return /^\d+$/.test(prefix) ? Number(prefix) : 0;
 }
 
-// A share of the rig's busiest clip. Groups the Free play dropdowns only;
-// playback tracks come from `spineTrack`.
+// Groups the Free play dropdowns only; playback tracks come from `spineTrack`.
 export const OVERLAY_BONE_SHARE = 0.28;
 
 /** Clips too partial to own track 0, measured from the parsed skeleton. */
@@ -248,10 +226,7 @@ export function overlayAnimations(
   return out;
 }
 
-/**
- * A `bg_on` / `bg_off` event addresses its layer by the bone it stands on, and
- * only the integer payload selects it. The string payload is not a selector.
- */
+// A `bg_on` / `bg_off` event selects its layer by the integer payload alone.
 export function backgroundBoneName(index: number): string {
   return index === 0 ? 'bg' : `bg_${index}`;
 }
@@ -264,16 +239,14 @@ export function phaseState(phase: ActorPhase): string | null {
   return STATE_TOKENS.find((s) => name.endsWith(`_${s}`) || name.endsWith(`/${s}`)) ?? null;
 }
 
-// Desire rigs attach every state's regions at once, so a region with a state
-// counts only in the matching phase; a stateless one is always live.
+// Desire rigs attach every state's regions at once, so a region with a state counts only in the matching phase.
 export function regionLiveInPhase(region: TouchRegion, phase: ActorPhase): boolean {
   if (!region.state) return true;
   const ps = phaseState(phase);
   return ps === null || ps === region.state;
 }
 
-// The exporter already decided the effect and clip; nothing is inferred from
-// names here, and repeated-touch escalation comes from the scenario script.
+// The exporter already decided the effect and clip; nothing is inferred from names here.
 export function effectOf(
   region: TouchRegion | null,
   phase: ActorPhase,
@@ -293,10 +266,7 @@ export function layerGroup(slot: string): string {
   return token || slot;
 }
 
-// A Spine mesh can carry a pixels-per-unit ratio compensating for a large Unity
-// transform, so transform scale alone is not a native-resolution measurement.
-// Every non-degenerate triangle is measured because a weighted mesh can have a
-// different affine mapping across the current pose.
+// A mesh can carry its own pixels-per-unit ratio, and a weighted mesh varies across the pose, so every triangle is measured.
 export function mappedSourcePixelScale(
   verts: ArrayLike<number>,
   uvs: ArrayLike<number>,
@@ -335,8 +305,7 @@ export function mappedSourcePixelScale(
   return maxScale;
 }
 
-// A claim takes a one-finger drag before panning does: the in-game jiggler
-// input is a drag, which pan would otherwise swallow.
+// A claim takes a one-finger drag before panning does, since the jiggler input is a drag.
 export type DragClaim = {
   move: (x: number, y: number) => void;
   end: () => void;
@@ -351,8 +320,7 @@ export function zoomAt(root: any, factor: number, x: number, y: number): void {
   root.scale.set(scale);
 }
 
-// Following the game's camera owns the framing, so both gates are refused
-// while it is on. A claimed drag is not a pan and still runs.
+// Following the game's camera owns the framing, so both gates are refused; a claimed drag still runs.
 export function attachPanZoom(
   canvas: HTMLCanvasElement,
   root: any,

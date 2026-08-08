@@ -1,10 +1,4 @@
-// A Naninovel script is a playlist walked by a playback index: most commands
-// advance it, flow commands move it, trigger and reset commands park on it.
-// This machine holds only that index, the variables and the effects a step
-// produced — never Pixi, Spine or the DOM.
-//
-// A command's nested body is the run of following commands with a greater
-// `indent`. It runs alongside the owner, which becomes a barrier on its exit.
+// Holds only the playback index, the variables and the effects a step produced: never Pixi, Spine or the DOM.
 
 import { evaluate, holds, type Vars } from './interactions.ts';
 import { spineTrack } from './types.ts';
@@ -58,11 +52,7 @@ type Registration = {
   at: number;
   /** Bumped every time the command re-registers, which re-arms the trigger. */
   stamp: number;
-  /**
-   * Evaluated when the trigger is tested, not when it was registered: a
-   * condition names variables that triggers listed before it set, and the index
-   * never walks back, so evaluating at registration makes every gate unreachable.
-   */
+  /** Evaluated when the trigger is tested, not when registered: the index never walks back, so a gate on a later variable would be unreachable. */
   when: string | null;
 };
 
@@ -106,9 +96,7 @@ export function applyExpression(expr: string | undefined, vars: Vars): Vars {
   const eq = expr.indexOf('=');
   if (eq <= 0) return vars;
   const name = expr.slice(0, eq).trim();
-  // A dot is part of a variable name, matching what the expression tokenizer
-  // accepts on the reading side — a name refused here still parses there, so
-  // the counter would never move while the gate reading it stays live.
+  // A dot is part of a variable name, matching the expression tokenizer on the reading side.
   if (!/^[A-Za-z_][\w.]*$/.test(name)) return vars;
   const value = evaluate(expr.slice(eq + 1), vars);
   if (value === null) return vars;
@@ -132,19 +120,7 @@ export function waitSeconds(mode: string): number {
   return Number.isFinite(n) ? n : 0;
 }
 
-/**
- * An open nested body.
- *
- * `command` — the owner started its own playback and is a barrier on exit.
- * `trigger` — on exit the owner waits for its own clip, then the index returns
- *   to the actor's idle command, which re-registers the whole phase.
- * `group`   — one `@PickRandom` alternative; exit continues past the pick.
- *
- * `depth` is the `Gosub` stack height the frame opened at. A body ends when the
- * index walks off it, not merely when it points past it: a `Gosub` inside the
- * body jumps further down the script, which the index alone reads as the body
- * finishing.
- */
+/** `command` is a barrier on exit, `trigger` returns to the actor's idle, `group` is one `@PickRandom` alternative; `depth` is the `Gosub` stack height it opened at. */
 type Frame =
   | { kind: 'command'; at: number; end: number; depth: number; track: number | null; wait: boolean }
   | { kind: 'trigger'; at: number; end: number; depth: number }
@@ -168,18 +144,12 @@ export class ScriptMachine {
   /** An empty `@desire.wait` waits for this, not for an assumed body track. */
   lastTrack: number | null = null;
 
-  /**
-   * The actor's idle spot: the index a finished trigger returns to. It belongs
-   * to the actor, so it survives a jump and is replaced only by another idle.
-   */
+  /** The actor's idle spot survives a jump and is replaced only by another idle. */
   private idleAt: number | null = null;
 
   private stack: number[] = [];
 
-  /**
-   * A registration outlives the command that created it, so this accumulates
-   * and is replaced per command rather than rebuilt per run.
-   */
+  /** A registration outlives the command that created it, so this is replaced per command, not per run. */
   private registered = new Map<number, Armed>();
 
   private stamp = 0;
@@ -229,10 +199,7 @@ export class ScriptMachine {
     return out;
   }
 
-  /**
-   * Registrations are dropped: the destination re-executes its own trigger
-   * commands, and a previous phase's touch zones are not live in the next one.
-   */
+  /** Registrations are dropped: the destination re-executes its own trigger commands. */
   gotoLabel(label: string): boolean {
     const target = this.labelIndex.get(label);
     if (target === undefined) return false;
@@ -245,11 +212,7 @@ export class ScriptMachine {
     return true;
   }
 
-  /**
-   * Firing clears the actor's whole registration list, so nothing else can be
-   * triggered until the reaction has finished and the index has walked the
-   * phase again. The view menu's reset is registered elsewhere and survives.
-   */
+  /** Firing clears the actor's whole registration list; the view menu's reset is registered elsewhere and survives. */
   fire(at: number): void {
     if (!this.program[at]) return;
     for (const [key, entry] of this.registered) {
@@ -259,19 +222,14 @@ export class ScriptMachine {
     this.halted = false;
   }
 
-  /** Every trigger the index has passed stays registered; the condition is
-   *  what decides whether it is live this instant. */
+  /** Every trigger the index has passed stays registered; the condition decides whether it is live. */
   armedList(): Armed[] {
     return [...this.registered.values()]
       .filter((a) => holds(a.when, this.vars))
       .sort((a, b) => a.at - b.at);
   }
 
-  /**
-   * The authored `Track:` resolved against the current variables, else the
-   * track the clip's own name declares. Never null for a clip: the host's
-   * fallback is the Lobby body track, which cuts every waited clip short.
-   */
+  /** The authored `Track:` resolved against the variables, else the track the clip's name declares. Never null for a clip. */
   private track(expr: string | undefined, clip: string | undefined): number | null {
     if (expr !== undefined && expr !== '') {
       const value = evaluate(expr, this.vars);
@@ -306,10 +264,7 @@ export class ScriptMachine {
     return track;
   }
 
-  /**
-   * Run until the machine parks. Commands that need the host to wait stop the
-   * run and are resumed by calling `run` again.
-   */
+  /** Commands that need the host to wait stop the run and are resumed by calling `run` again. */
   run(): StepResult {
     const effects: Effect[] = [];
     let guard = 0;
@@ -335,11 +290,7 @@ export class ScriptMachine {
           continue;
         }
         if (frame.kind === 'trigger') {
-          // The trigger holds until everything its body started has played, then
-          // hands the index back to the actor's idle — walking the phase from
-          // there is what re-arms every trigger, the onlook with a fresh
-          // deadline. A nested trigger returns to its host instead, so it keeps
-          // re-executing itself.
+          // Handing the index back to the actor's idle is what re-arms every trigger; a nested trigger returns to its host instead.
           this.pc = this.frames.length ? frame.at : this.idleAt ?? frame.at;
           return this.park({ kind: 'wait-reaction' }, effects);
         }
@@ -372,8 +323,7 @@ export class ScriptMachine {
 
         case 'ParametrizeGeneric':
           this.pc++;
-          // Desire views author the skip, affection views do not, which is what
-          // makes an affection view advance one line per tap.
+          // Desire views author the skip, affection views do not, so an affection view advances one line per tap.
           if (f.SkipWaitingInput !== 'true' && f.Wait === 'true') {
             return this.park({ kind: 'wait-input' }, effects);
           }
@@ -413,9 +363,7 @@ export class ScriptMachine {
 
         case 'BeginIf': {
           if (holds(f.Expression, this.vars)) { this.pc++; break; }
-          // A false `@if` steps into the matching `@else` body when there is
-          // one; falling out of a taken body instead lands on the `Else`, which
-          // skips its own body below.
+          // A false `@if` steps into the matching `@else` body; falling out of a taken body lands on the `Else`, which skips its own.
           const end = this.endOfBody(this.pc);
           const next = this.program[end];
           this.pc = next && next.class === 'Else' && next.indent === c.indent
@@ -443,8 +391,7 @@ export class ScriptMachine {
         case 'DesireCommand':
         case 'AffectionCommand': {
           if (!holds(f.ConditionalExpression, this.vars)) { this.pc++; break; }
-          // A camera cue alongside an appearance is awaited with it, so it
-          // never contributes a wait of its own.
+          // A camera cue alongside an appearance is awaited with it.
           if (f.Offset !== undefined || f.Zoom !== undefined) {
             effects.push({
               kind: 'camera',
@@ -454,9 +401,7 @@ export class ScriptMachine {
             });
           }
           if (bool(f.Reset)) {
-            // `Reset:true` naming an appearance clears that animation's track;
-            // a bare actor id clears a track, or resets the whole actor when no
-            // track is named. It never plays the clip.
+            // `Reset:true` clears a track, or the whole actor when none is named; it never plays the clip.
             if (c.clip) effects.push({ kind: 'clear-animation', clip: c.clip });
             else if (f.Track !== undefined) {
               effects.push({ kind: 'clear-track', track: this.track(f.Track, undefined) });
@@ -467,8 +412,7 @@ export class ScriptMachine {
           const track = this.play(c, effects);
           const loop = bool(f.Loop);
           const end = this.endOfBody(this.pc);
-          // `Wait` unset defaults to waiting; only a non-looping clip blocks,
-          // since a looping one's task is complete as soon as it is set.
+          // `Wait` unset defaults to waiting, and only a non-looping clip blocks.
           const wait = f.Wait !== 'false' && !!c.clip && !loop;
           if (end > this.pc + 1) {
             // The body runs alongside this command's own playback.
@@ -485,8 +429,7 @@ export class ScriptMachine {
 
         case 'DesireIdleCommand':
         case 'AffectionIdleCommand': {
-          // A `DesireCommand` with loop true, no track and no hold, so it can
-          // never block.
+          // A `DesireCommand` with loop true, no track and no hold, so it can never block.
           if (c.clip) {
             const track = this.track(f.Track, c.clip);
             effects.push({ kind: 'idle', clip: c.clip, track });
@@ -591,8 +534,7 @@ export class ScriptMachine {
           effects.push({
             kind: 'fade',
             color: (f.Color ?? 'black').toLowerCase(),
-            // `To` is the screen's target visibility, so the cover's opacity is
-            // its complement.
+            // `To` is the screen's target visibility, so the cover's opacity is its complement.
             opacity: Math.max(0, Math.min(1, 1 - num(f.To, 1))),
             duration,
           });

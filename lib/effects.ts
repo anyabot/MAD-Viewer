@@ -32,15 +32,11 @@ export type SkillFacets = Record<EffectGroup, Set<string>>;
 
 export type KitSkill = { id: number; skill: SkillEntry; facets: SkillFacets };
 
-/**
- * What a clear or immunity needs to know about the rest of the roster, since a
- * state is only meaningful as the thing some *other* character applies.
- */
+// A state is only meaningful as the thing some other character applies.
 export type EffectIndex = {
   /** Plain state name -> the characters whose kit applies it. */
   appliedBy: Map<string, Set<string>>;
-  /** Plain state name -> the effect type that best names it, for a label the
-   *  game itself has no English for. */
+    /** Plain state name -> the effect type that best names it. */
   stateOp: Map<string, string>;
 };
 
@@ -50,14 +46,10 @@ export type CharacterKit = {
   entry: CharacterEntry; skills: KitSkill[]; ctx: EffectContext;
 };
 
-// The game shows the player nothing for the markers a skill sets and then
-// clears, so they are not effects anyone can search for.
+// The game shows the player nothing for the markers a skill sets and then clears.
 const INTERNAL_OPS = new Set(['MARKER', 'EMPTY_EFFECT']);
 
-// A clear or an immunity reads as the thing it addresses rather than as the
-// bare operation: "Remove 보호막", not "Remove a named state".
-// The Korean puts the verb after what it addresses ("보호막 해제"), which
-// `effectLabel` composes rather than translating the pair as one phrase.
+// A clear reads as what it addresses ("Remove 보호막"); the Korean puts the verb last, which `effectLabel` composes.
 const DETAIL_VERB: Record<string, Localized> = {
   CLEAR_DURATION_DEFINE_ID: { en: 'Remove', ko: '해제' },
   CLEAR_DURATION_CATEGORIZE_TYPE: { en: 'Cleanse', ko: '정화' },
@@ -106,20 +98,7 @@ function lower(text: string, lang: Lang): string {
   return text[0].toLowerCase() + text.slice(1);
 }
 
-/**
- * One key per thing a clear or immunity addresses, so stripping a shield and
- * clearing a private marker are not the same search. Every other operation is
- * its own key. The key carries the label, since a state has no English name of
- * its own and is named by the effect type behind it.
- *
- * **Two kinds of clear yield no key at all**: one naming an unnamed state (the
- * markers a skill sets and clears, which the game never shows the player), and
- * one naming a state **no other character applies** — a skill ending its own
- * mechanic, not a dispel.
- *
- * The key holds the constant, never its label: a selection has to survive a
- * change of UI language.
- */
+// One key per thing a clear or immunity addresses, holding the constant so a selection survives a language change; a clear naming an unnamed state, or one no other character applies, yields none.
 function effectKeys(op: SkillOp, ctx: EffectContext): string[] {
   if (!op.op || INTERNAL_OPS.has(op.op)) return [];
   const detail = op.detail;
@@ -140,9 +119,7 @@ function effectKeys(op: SkillOp, ctx: EffectContext): string[] {
 export function effectLabel(value: string, lang: Lang = 'en'): string {
   const [op, addressed] = value.split('|');
   if (!addressed) return labelOf(OP_LABEL, op, lang);
-  // The operation decides which table names what it addresses: a category
-  // constant for the `*_CATEGORIZE_TYPE` ops, the effect type behind the state
-  // for the rest.
+  // A category constant for the `*_CATEGORIZE_TYPE` ops, the effect type behind the state for the rest.
   const what = op.includes('CATEGORIZE_TYPE')
     ? labelOf(CATEGORY_LABEL, addressed, lang)
     : lower(labelOf(OP_LABEL, addressed, lang), lang);
@@ -220,11 +197,7 @@ function allOps(skill: SkillEntry): SkillOp[] {
   ];
 }
 
-/**
- * Every skill the character can ever hold: a grade below its own rarity is
- * unreachable, and the passive tiers only appear at 3★/4★/5★, so no single
- * grade carries the whole kit.
- */
+// No single grade carries the whole kit: passive tiers appear at 3★/4★/5★.
 function kitSkills(
   entry: CharacterEntry, data: CharacterData,
 ): { id: number; skill: SkillEntry }[] {
@@ -242,12 +215,7 @@ function kitSkills(
   });
 }
 
-/**
- * A state is named by the effect type that applies it, taking the commonest
- * where several do — the state's own name is Korean and the game carries no
- * English for it. A state only ever applied by `MARKER` has nothing to name it
- * and stays unsearchable.
- */
+// A state is named by the commonest effect type applying it; one applied only by `MARKER` stays unsearchable.
 function buildIndex(
   rosters: { entry: CharacterEntry; skills: { skill: SkillEntry }[] }[],
 ): EffectIndex {
@@ -313,11 +281,7 @@ export function matchingSkills(kit: CharacterKit, selection: EffectSelection): K
 
 export type FacetOption = { value: string; label: string; count: number };
 
-/**
- * How many characters each value would leave, with every other group's
- * selection still applied — so a chip that reads 0 is one that cannot be
- * combined with what is already picked.
- */
+// Counted with every other group's selection applied, so a chip reading 0 cannot be combined with what is picked.
 export function facetOptions(
   kits: CharacterKit[], selection: EffectSelection, group: EffectGroup,
   lang: Lang = 'en',
@@ -340,8 +304,7 @@ export function facetOptions(
     .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }
 
-/** Operations that answer the filter, kept under the hitbox or the trigger
- *  they belong to — that is where their targeting is authored. */
+/** Kept under the hitbox or trigger they belong to, where their targeting is authored. */
 export type MatchedGroup = {
   hit: SkillHit | null;
   trigger: SkillTrigger | null;
@@ -363,11 +326,7 @@ function groupSignature(group: MatchedGroup): string {
   return [...head, ...group.ops.map(opSignature)].join('~');
 }
 
-/**
- * With no effect picked every operation the page can name is shown. A skill
- * that authors the same hitbox once per hit reads as one group rather than as
- * a dozen identical ones.
- */
+// With no effect picked, every operation the page can name is shown, one group per hitbox rather than one per hit.
 export function matchedGroups(
   skill: SkillEntry, selection: EffectSelection, ctx: EffectContext,
 ): MatchedGroup[] {

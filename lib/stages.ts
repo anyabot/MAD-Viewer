@@ -1,9 +1,4 @@
-// Stage list helpers over `stages.json`. Composition only — a wave's roster,
-// its levels and its scripted beats. Enemy stat totals are not in the data and
-// no number here is a battle number.
-//
-// The node suites load this module directly, so nothing here may import a
-// runtime value through the `@/` alias.
+// Node suites load this module directly: no runtime import through `@/`.
 import type {
   DropEntry, StageData, StageDrop, StageEntry, StageGroup, StageSubMission, StageZone,
   WaveSlot,
@@ -60,8 +55,7 @@ export const CHANNEL_LABEL: Record<string, Localized> = {
   repeat: { en: 'Every clear', ko: '반복 보상' },
 };
 
-// `DROP_TYPE`. `always` and a full `drop_per` both mean guaranteed, so only the
-// ones that change what a reader expects are named.
+// `DROP_TYPE`: `always` and a full `drop_per` both mean guaranteed, so only the surprising ones are named.
 export const DROP_LABEL: Record<string, Localized> = {
   weight: { en: 'weighted', ko: '가중치' },
   boss_hp: { en: 'by boss HP', ko: '보스 체력' },
@@ -84,12 +78,7 @@ export function dropChance(drop: StageDrop): string | null {
   return `${pct >= 10 ? Math.round(pct) : Number(pct.toFixed(2))}%`;
 }
 
-/**
- * A drop's art is spread over several icon groups — the equipment tiers were
- * already published under `equip` before the item atlas was scanned, and the
- * growth materials land under `item`. Resolve in this order, and keep the page
- * and the suite reading the same list.
- */
+// Resolve in this order, and keep the page and the suite reading the same list.
 export const DROP_ICON_GROUPS = ['item', 'equip', 'skill', 'ui'] as const;
 
 export function dropEntry(data: StageData, drop: StageDrop): DropEntry | null {
@@ -104,18 +93,12 @@ export function zoneOf(data: StageData, stage: StageEntry): StageZone | null {
   return stage.zoneId != null ? data.zones[String(stage.zoneId)] ?? null : null;
 }
 
-/**
- * The game's own template, filled. `{0}` is the zone's ordering and `{1}` the
- * stage's, which is what the authoring names ("작전 진행 1존 일반 01") spell out;
- * a one-argument template takes the stage ordering alone.
- */
+// `{0}` is the zone's ordering and `{1}` the stage's; a one-argument template takes the stage ordering alone.
 export function stageName(data: StageData, stage: StageEntry, lang: Lang): string {
   const template = say(stage.nameTemplate, lang) || stage.nameTemplate?.ko || '';
   const order = stage.order ?? 0;
   if (!template) return stage.devName || `#${stage.id}`;
-  // A Nemesis stage reuses its zone's name and carries no placeholder, so the
-  // ordering is appended rather than substituted — four stages a zone would
-  // otherwise all read the same.
+  // A Nemesis stage reuses its zone's name and carries no placeholder, so the ordering is appended.
   if (!/\{\d\}/.test(template)) return order ? `${template} ${order}` : template;
   const args = /\{1\}/.test(template)
     ? [zoneOf(data, stage)?.order ?? 0, order]
@@ -138,11 +121,7 @@ export const MISSION_ICON: Record<number, string> = {
   11: 'Icon_Clock',
 };
 
-/**
- * A party check's `values[0]` names a row of `checkTable` — a role, position,
- * attribute or division — and the rest are counts. Rendering it as a bare
- * number reads "1 클래스 파트너를…" instead of naming the class.
- */
+// A party check's `values[0]` names a row of `checkTable`; the rest are counts.
 export function missionCheck(
   mission: StageSubMission,
 ): { table: NonNullable<StageSubMission['checkTable']>; value: number } | null {
@@ -151,10 +130,7 @@ export function missionCheck(
   return table && value != null ? { table, value } : null;
 }
 
-/**
- * The game writes its arguments into the text as `[0]`, `[1]`. `resolve` names
- * a party check's type row; without it the slot falls back to the raw value.
- */
+// Arguments are written into the text as `[0]`, `[1]`; without `resolve` a slot falls back to the raw value.
 export function subMissionText(
   mission: StageSubMission, lang: Lang,
   resolve?: (table: NonNullable<StageSubMission['checkTable']>, value: number) => string,
@@ -203,17 +179,10 @@ export function levelRange(stage: StageEntry): [number, number] | null {
 
 export type StageGrouping = { group: StageGroup; stages: StageEntry[] };
 
-/**
- * A group's art is not always a zone plate: a Nemesis season uses a boss
- * portrait and a daily zone uses its activity-screen cover, which the icon
- * publisher files under `tile`.
- */
+// Not always a zone plate: a Nemesis season uses a boss portrait and a daily zone its `tile` cover.
 export const GROUP_ICON_GROUPS = ['zone', 'tile', 'char'] as const;
 
-/**
- * The heading a group renders under. A named group uses the game's own name; a
- * story chapter has none, so it falls back to the mode plus its chapter number.
- */
+// A story chapter has no name of its own, so it falls back to the mode plus its chapter number.
 export function groupLabel(data: StageData, group: StageGroup, lang: Lang): string {
   const own = say(group.name, lang) || group.name?.ko;
   if (own) return own;
@@ -244,8 +213,7 @@ export function stageGroups(data: StageData, mode: string): StageGrouping[] {
     if (stage.mode !== mode) continue;
     byKey.set(stage.group, [...(byKey.get(stage.group) ?? []), stage]);
   }
-  // A story chapter holds both difficulties and they share an ordering, so the
-  // difficulty has to lead or the two interleave.
+  // A story chapter holds both difficulties on one ordering, so the difficulty has to lead.
   const rank = (stage: StageEntry) =>
     DIFFICULTY_ORDER.indexOf(zoneOf(data, stage)?.difficulty ?? '');
   const out: StageGrouping[] = [];
@@ -254,8 +222,7 @@ export function stageGroups(data: StageData, mode: string): StageGrouping[] {
     if (!group) continue;
     out.push({
       group,
-      // zone before ordering, or a group spanning several zones interleaves
-      // them — a Nemesis season's Overture, Intermission and Finale runs
+      // Zone before ordering, or a group spanning several zones interleaves them.
       stages: [...stages].sort((a, b) =>
         rank(a) - rank(b) || (a.zoneId ?? 0) - (b.zoneId ?? 0)
         || (a.order ?? 0) - (b.order ?? 0) || a.id - b.id),
@@ -293,8 +260,7 @@ export function modeSummaries(data: StageData): ModeSummary[] {
       stages: groups.reduce((n, g) => n + g.stages.length, 0),
       image: (live ?? groups[0]?.group)?.image,
       tile: mode.tile,
-      // Event has no activity-screen tile, so the newest event's own logo
-      // stands in until one is extracted.
+      // Event has no activity-screen tile, so the newest event's own logo stands in.
       banner: groups.map((g) => g.group.banner).find(Boolean),
       live,
     };

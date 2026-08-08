@@ -1,5 +1,3 @@
-// The stage trail, shared by the list levels and the stage page so a stage
-// links back to the list it belongs to and not only to the hub.
 import NextLink from 'next/link';
 import { Text, Wrap, WrapItem } from '@chakra-ui/react';
 import { groupLabel, modeLabel } from '@/lib/stages';

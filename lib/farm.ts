@@ -1,23 +1,14 @@
-// What it costs to raise a unit, and where the materials come from. Everything
-// here is a material bill joined to `stages.json`'s repeat channel — no stat is
-// computed and nothing is a battle number.
-//
-// The node suites load this module directly, so nothing here may import a
-// runtime value through the `@/` alias.
+// The node suites load this module directly: no runtime import through `@/`.
 import type {
-  CharacterData, CharacterEntry, GrowthData, MaterialCost, SkillEntry, StageData,
-  StageEntry,
+  CharacterData, CharacterEntry, GrowthData, LevelFee, MaterialCost, SkillEntry,
+  StageData, StageEntry,
 } from '@/lib/data';
 import type { Localized } from '@/lib/i18n';
 
 /** `SKILL_CATEGORIZE_TYPE` rows a player can level; the rest open with the star. */
 export const LEVELLABLE = [2, 3];
 
-/**
- * Experience is spent from a pool rather than as a countable item: several
- * items feed the same pool at different values, so a shortfall is a number of
- * points, not a number of things.
- */
+/** Several items feed one pool at different values, so a shortfall is points. */
 export type PoolKey = 'unitExp' | 'equipExp';
 
 export const POOLS: PoolKey[] = ['unitExp', 'equipExp'];
@@ -49,15 +40,11 @@ export type UnitPlan = {
   gear: Record<string, GearPlan>;
 };
 
-/**
- * `hidden` keeps a plan on the books without letting it into the bill.
- * `priority` takes its share of the inventory before every other unit does.
- */
+/** `hidden` stays off the bill; `priority` takes its inventory share first. */
 export type UnitPlanPair = {
   current: UnitPlan; target: UnitPlan; hidden?: boolean; priority?: boolean;
 };
 
-/** Counts of discrete materials plus the two experience pools. */
 export type Bill = {
   materials: Record<string, number>;
   unitExp: number;
@@ -94,7 +81,7 @@ export function billIsEmpty(bill: Bill): boolean {
   return !bill.unitExp && !bill.equipExp && Object.keys(bill.materials).length === 0;
 }
 
-/** The levellable skills of a kit, in the game's own slot order. */
+/** In the game's own slot order. */
 export function levellableSkills(
   entry: CharacterEntry, data: CharacterData,
 ): { id: number; skill: SkillEntry }[] {
@@ -119,11 +106,7 @@ export function skillCap(growth: GrowthData, skill: SkillEntry): number {
   return growth.skill.maxLevel[String(skill.categorize)] ?? skill.maxLevel;
 }
 
-/**
- * A cost row is keyed by the level being left, so raising 1 -> 3 pays rows 1
- * and 2. A character whose material group has no curve for that categorize
- * contributes nothing rather than a guessed bill.
- */
+/** Keyed by the level being left, so 1 -> 3 pays rows 1 and 2. */
 export function skillCost(
   growth: GrowthData, materialGroup: number | null | undefined,
   categorize: number, from: number, to: number,
@@ -146,11 +129,7 @@ export function tierUpCost(
   return out;
 }
 
-/**
- * Equipment levels run on one accumulated curve and a tier only raises the cap
- * on it, so the experience already in a piece carries across a tier-up. That is
- * what the tables say; the game's own reset behaviour on tier-up is not decoded.
- */
+/** One accumulated curve that a tier only caps, so exp carries across a tier-up. */
 export function equipExp(growth: GrowthData, from: number, to: number): number {
   const accum = growth.equipment.accumExp;
   return Math.max(0, (accum[String(to)] ?? 0) - (accum[String(from)] ?? 0));
@@ -165,13 +144,21 @@ export function gearLevelCap(growth: GrowthData, tier: number): number {
   return growth.equipment.tiers.find((t) => t.tier === tier)?.maxLevel ?? 1;
 }
 
-/** What one unit's plan costs. A target below the current state costs nothing. */
+/** Charged on the experience applied, so holding the exp items does not avoid it. */
+export function addLevelFee(bill: Bill, fee: LevelFee, exp: number): void {
+  if (!fee || exp <= 0) return;
+  bill.materials[fee.ref] = (bill.materials[fee.ref] ?? 0) + exp * fee.perExp;
+}
+
+/** A target below the current state costs nothing. */
 export function unitBill(
   growth: GrowthData, entry: CharacterEntry, data: CharacterData, plan: UnitPlanPair,
 ): Bill {
   const bill = emptyBill();
   const { current, target } = plan;
-  bill.unitExp += unitExp(growth, current.level, Math.max(current.level, target.level));
+  const gained = unitExp(growth, current.level, Math.max(current.level, target.level));
+  bill.unitExp += gained;
+  addLevelFee(bill, growth.unit.levelFee, gained);
 
   for (const { id, skill } of levellableSkills(entry, data)) {
     const cap = skillCap(growth, skill);
@@ -187,12 +174,13 @@ export function unitBill(
     addCosts(bill, tierUpCost(growth, slot, from.tier, to.tier));
     // an empty slot starts the curve at level 1
     const fromLevel = from.tier ? from.level : 1;
-    bill.equipExp += equipExp(growth, Math.min(fromLevel, to.level), to.level);
+    const fed = equipExp(growth, Math.min(fromLevel, to.level), to.level);
+    bill.equipExp += fed;
+    addLevelFee(bill, growth.equipment.levelFee, fed);
   }
   return bill;
 }
 
-/** How much of a pool one of that pool's items is worth. */
 export function poolItems(growth: GrowthData, pool: PoolKey): Record<string, number> {
   return pool === 'unitExp' ? growth.unit.expItems : growth.equipment.expItems;
 }
@@ -206,7 +194,6 @@ export type Need = {
   short: number;
 };
 
-/** What the merged bill still needs, given what the player says they hold. */
 export function needsOf(
   growth: GrowthData, bill: Bill, inventory: Record<string, number>,
 ): Need[] {
@@ -226,19 +213,13 @@ export function needsOf(
   return out.sort((a, b) => b.short - a.short || a.key.localeCompare(b.key));
 }
 
-/** Whether the inventory already holds the whole bill, pools included. */
 export function billCovered(
   growth: GrowthData, bill: Bill, inventory: Record<string, number>,
 ): boolean {
   return needsOf(growth, bill, inventory).every((need) => need.short === 0);
 }
 
-/**
- * What a stage pays per clear towards one need. Only the repeat channel counts:
- * a first-clear or mission payout happens once and is not a farm route. Entries
- * are summed rather than deduped — a stage lists the same item twice, once
- * guaranteed and once on a chance.
- */
+/** Repeat channel only, and summed: a stage lists one item guaranteed and again on a chance. */
 export function yieldPerRun(growth: GrowthData, stage: StageEntry, need: Need): number {
   const values = need.kind === 'material' ? null : poolItems(growth, need.kind);
   let total = 0;
@@ -258,43 +239,34 @@ export function starsOf(clears: Record<string, number>, stage: StageEntry): numb
   return clears[String(stage.id)] ?? 0;
 }
 
-/**
- * A stage is farmable once it is cleared at all, and sweepable only at three
- * stars — the owner's rule, and the reason an unrecorded stage is out of every
- * pool rather than assumed open.
- */
+/** An unrecorded stage is out of every pool rather than assumed open. */
 export function isFarmable(stars: number, sweepOnly: boolean): boolean {
   return sweepOnly ? stars >= 3 : stars >= 1;
 }
 
 export type StageSource = {
   stage: StageEntry;
-  /** Expected units of the need per clear. */
   perRun: number;
   /** The entry currency and its per-clear price; null when the stage is free. */
   entry: { ref: string; amount: number } | null;
   stars: number;
   open: boolean;
-  /** Clears to cover the shortfall; null when the stage pays nothing. */
+  /** Null when the stage pays nothing. */
   runs: number | null;
-  /** `runs * entry.amount`, in `entry.ref` — never comparable across refs. */
+  /** In `entry.ref` — never comparable across refs. */
   cost: number | null;
-  /** What else the clear pays, weighted towards what is in short supply. */
   side: number;
 };
 
-/**
- * Two stages paying the need at the same rate are not the same clear. The
- * tie-break is every other growth resource on the repeat table, each drop
- * discounted by how much of it is already held. Character cards and other
- * unrelated rewards do not make a farming route more useful.
- */
+/** Credits are excluded: thousands a drop against a material's one or two would decide every tie. */
 function usefulSideValue(
   growth: GrowthData, stage: StageEntry, own: Set<string>, inventory: Record<string, number>,
 ): number {
   let total = 0;
   for (const drop of stage.rewards?.repeat ?? []) {
-    if (!drop.ref || own.has(drop.ref) || !growth.materials[drop.ref]) continue;
+    if (!drop.ref || own.has(drop.ref)) continue;
+    const material = growth.materials[drop.ref];
+    if (!material || material.kind === 'goods') continue;
     const [min, max] = drop.amount;
     const amount = (max ? (min + max) / 2 : min) * (drop.chance ?? 1);
     total += amount / (1 + (inventory[drop.ref] ?? 0));
@@ -310,15 +282,7 @@ function sideValue(
   return usefulSideValue(growth, stage, own, inventory);
 }
 
-/**
- * Every stage that pays this need on repeat, cheapest first. Locked stages stay
- * in the list — what is out of reach is the answer to "what is available", not
- * something to hide.
- *
- * Stages sharing an entry currency rank by total cost and then by useful drops
- * over those clears. Across different currencies, ranking falls back to runs:
- * story stamina and daily entries cannot be added or compared.
- */
+/** Ranks on cost within one entry currency; across currencies only runs compare. */
 export function sourcesFor(
   growth: GrowthData, stages: StageEntry[], need: Need,
   inventory: Record<string, number>, clears: Record<string, number>, sweepOnly: boolean,
@@ -364,21 +328,7 @@ export type FarmRoute = {
   cost: number | null;
 };
 
-/**
- * One run list for the whole shortfall, instead of a stage per need.
- *
- * A stage that pays two of the needs at once beats two stages with a better
- * rate on one each, and ranking every need on its own cannot see that. The
- * shortfalls are added up as **shares of what is left** — units of a material
- * and points of experience do not add — so a stage's score is how much of the
- * remaining plan one clear closes.
- *
- * Greedy, and committed in chunks: a pick runs only until it closes the first
- * of its needs, so the next pick is made against what that already brought in.
- * Each round closes at least one need, so the walk is bounded by their count.
- * Within one entry currency, score is divided by its price; an efficiency tie
- * goes to the stage paying more useful growth resources per unit of that price.
- */
+/** Scores shares of what is left, since material units and experience points do not add. */
 export function farmRoutes(
   growth: GrowthData, stages: StageEntry[], needs: Need[],
   inventory: Record<string, number>, clears: Record<string, number>, sweepOnly: boolean,
@@ -467,21 +417,18 @@ export function farmRoutes(
 export type NeedPlan = {
   need: Need;
   sources: StageSource[];
-  /** The cheapest open stage, which is what the estimate is built from. */
+  /** The cheapest open stage, which the estimate is built from. */
   best: StageSource | null;
-  /** Sources that exist but are not open under the current rules. */
   locked: number;
 };
 
 export type FarmPlan = {
   bill: Bill;
   needs: NeedPlan[];
-  /** The run list the totals are built from — every need at once, not one each. */
   routes: FarmRoute[];
-  /** Entry-cost total per currency ref, over the open routes only. */
+  /** Per currency ref, over the open routes only. */
   cost: Record<string, number>;
   runs: number;
-  /** Needs with a shortfall and no open route. */
   blocked: NeedPlan[];
 };
 
@@ -519,15 +466,7 @@ export function farmPlan(
   };
 }
 
-/**
- * Spend a bill out of an inventory, as finishing the plan would.
- *
- * Experience comes out of the stored balance first and then out of the items
- * that feed it, largest first — and **the remainder goes back into the
- * balance**, because feeding one banks the whole value whether the level needed
- * it or not. Anything the inventory cannot cover is left at zero rather than
- * going negative; the plan already reports that as a shortfall.
- */
+/** Feeding an item banks its whole value, so the remainder goes back to the balance. */
 export function spendBill(
   growth: GrowthData, bill: Bill, inventory: Record<string, number>,
 ): Record<string, number> {
@@ -562,10 +501,7 @@ export function spendBill(
 
 const SUFFIX: Record<string, number> = { k: 1e3, m: 1e6, b: 1e9 };
 
-/**
- * `2.5m` / `150k` / `1,200` -> a number. Returns null for anything that is not
- * an amount, so a field can leave a half-typed value alone.
- */
+/** `2.5m` / `150k` -> a number; null so a field leaves half-typed text alone. */
 export function parseAmount(text: string): number | null {
   const raw = text.trim().toLowerCase().replace(/[\s,_]/g, '');
   if (!raw) return 0;
@@ -575,7 +511,7 @@ export function parseAmount(text: string): number | null {
   return Number.isFinite(value) ? Math.round(value) : null;
 }
 
-/** The inverse, for a field that has to show a big number without a scrollbar. */
+/** The inverse, for a field too narrow for the digits. */
 export function formatAmount(value: number): string {
   if (value >= 1e6 && value % 1e5 === 0) return `${value / 1e6}m`;
   if (value >= 1e4 && value % 1e3 === 0) return `${value / 1e3}k`;
@@ -600,11 +536,7 @@ export function farmStages(growth: GrowthData, data: StageData): StageEntry[] {
     (s) => (s.rewards?.repeat ?? []).some((d) => d.ref && refs.has(d.ref)));
 }
 
-/**
- * A material's display row, whichever side of the item / pool split it is on. A
- * pool borrows its stored balance's art, since that is what the game shows the
- * quantity against.
- */
+/** A pool borrows its stored balance's art, which is what the game counts against. */
 export function needLabel(
   growth: GrowthData, need: Need, lang: 'en' | 'ko',
 ): { name: string; icon: string | null; grade: number | null } {

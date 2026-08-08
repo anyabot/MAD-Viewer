@@ -1,6 +1,3 @@
-// The farm tracker: what the tracked units still need, what the player already
-// holds, and which stages pay it. Every number here is a material count or a
-// stamina total — nothing is a battle number.
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
@@ -70,12 +67,7 @@ export default function FarmPage() {
   const routePool = useMemo(
     () => (hardStages ? pool : pool.filter((s) => !isHardStage(s))), [pool, hardStages]);
 
-  // A hidden unit keeps its plan and stays out of the bill — "raise it, but not
-  // now" is the whole reason the toggle exists.
-  //
-  // A prioritised unit is costed against the whole inventory and everything
-  // else against what that leaves, so the plan says what still has to be farmed
-  // to finish the priority first and stock up for the rest.
+  // A hidden unit keeps its plan and stays off the bill; a prioritised one is costed against the whole inventory, the rest against what is left.
   const plans = useMemo(() => {
     if (!growth || !chars) return null;
     const billOf = (wanted: boolean) => mergeBills(
@@ -174,11 +166,7 @@ export default function FarmPage() {
   );
 }
 
-/**
- * A text field over a number: it accepts `2.5m` and `150k`, keeps what is being
- * typed in local state, and commits on blur so a half-typed value never
- * reaches the store. It re-syncs from the store, but not while it has focus.
- */
+// Keeps the text being typed in local state and commits on blur, re-syncing from the store only while unfocused.
 function AmountField({ value, min, max, onChange, width = '4.5rem', big, disabled }: {
   value: number; min: number; max: number; onChange: (v: number) => void;
   width?: string; big?: boolean; disabled?: boolean;
@@ -205,8 +193,7 @@ function AmountField({ value, min, max, onChange, width = '4.5rem', big, disable
   );
 }
 
-// The step is one because that is how loot arrives; a stack is typed instead,
-// with the `k`/`m` suffix for the materials that come in millions.
+// The step is one because that is how loot arrives; a stack is typed with the `k`/`m` suffix.
 function Stepper({
   value, min = 0, max = Number.MAX_SAFE_INTEGER, onChange, disabled, children,
 }: {
@@ -351,9 +338,7 @@ function UnitCard({ entry, data, growth, icons, leftover, open, onToggle }: {
   const bill: Bill | null = pair ? unitBill(growth, entry, data, pair) : null;
   const owing = bill && (bill.unitExp || bill.equipExp
     || Object.keys(bill.materials).length > 0);
-  // A prioritised unit spends out of the whole inventory, everything else out
-  // of what those have left. Completing is only offered once that covers the
-  // bill — the plan is a record of what was actually raised.
+  // A prioritised unit spends out of the whole inventory, everything else out of what those leave.
   const covered = !!bill && billCovered(growth, bill, priority ? inventory : leftover);
 
   return (
@@ -464,8 +449,7 @@ function UnitCard({ entry, data, growth, icons, leftover, open, onToggle }: {
   );
 }
 
-// A slot is re-tiered by feeding it a higher piece, so a new tier arrives at
-// that tier's cap.
+// A slot is re-tiered by feeding it a higher piece, so a new tier arrives at that tier's cap.
 function GearField({ growth, slot, gear, onChange }: {
   growth: GrowthData; slot: { type: number; tiers?: { tier: number }[] };
   gear: { tier: number; level: number }; onChange: (g: { tier: number; level: number }) => void;
@@ -499,8 +483,7 @@ function Inventory({ growth, icons }: { growth: GrowthData; icons: IconManifest 
   const clearInventory = useFarm((s) => s.clearInventory);
   const missing = new Set(growth._noItemRow ?? []);
 
-  // The stored experience balance leads its group; the items that feed it are
-  // what a player has fewer opinions about.
+  // The stored experience balance leads its group.
   const pools = new Set([growth.unit.pool, growth.equipment.pool]);
   const byKind = useMemo(() => {
     const out = new Map<string, { ref: string; name: string; icon: string | null;
@@ -708,8 +691,7 @@ function PlanPanel({ plan, growth, stages, icons, title }: {
   );
 }
 
-// What the stage is on the list for is the row: the same clear covering two
-// needs is the whole reason the run list is not one stage per material.
+// The same clear covering two needs is why the run list is not one stage per material.
 function RouteLine({ route, labels, growth, stages, icons, lang }: {
   route: FarmRoute; labels: Map<string, NeedLabel>; growth: GrowthData;
   stages: StageData; icons: IconManifest | null; lang: Lang;
@@ -770,16 +752,14 @@ function RouteLine({ route, labels, growth, stages, icons, lang }: {
   );
 }
 
-// Only the repeat channel is farm income. A ref listed twice, guaranteed and on
-// a chance, is still one thing to count.
+// Repeat channel only, and a ref listed twice is still one thing to count.
 function repeatDrops(stage: StageEntry): string[] {
   const seen = new Set<string>();
   for (const drop of stage.rewards?.repeat ?? []) if (drop.ref) seen.add(drop.ref);
   return [...seen];
 }
 
-// A ref outside `growth.materials` has no Items-tab row, so this is the only
-// place its count can be read back.
+// A ref outside `growth.materials` has no Items-tab row, so its count can only be read back here.
 function DropCell({ dropRef, growth, stages, icons }: {
   dropRef: string; growth: GrowthData; stages: StageData; icons: IconManifest | null;
 }) {
@@ -906,8 +886,7 @@ function Stat({ label, value, muted, color }: {
   );
 }
 
-// A locked stage is dimmed rather than dropped: "what is available" is answered
-// by seeing what is not.
+// A locked stage is dimmed rather than dropped.
 function SourceLine({ source, stages, icons, lang, best }: {
   source: StageSource; stages: StageData; icons: IconManifest | null;
   lang: Lang; best?: boolean;

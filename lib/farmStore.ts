@@ -1,10 +1,4 @@
-// The farm tracker's own record: what the player holds, what they have cleared,
-// and where they want each unit to end up. Unlike `filterStore` this is meant
-// to outlive the session, so it is mirrored into `localStorage`.
-//
-// The store starts empty so the statically exported HTML and the first client
-// render agree; `restoreFarm` applies the saved record after mount, the same
-// way the language picker does.
+// Mirrored into `localStorage`, but the store starts empty so the exported HTML and the first client render agree.
 import { create } from 'zustand';
 import { emptyPlan, type GearPlan, type UnitPlan, type UnitPlanPair } from '@/lib/farm';
 
@@ -36,8 +30,7 @@ type FarmStore = FarmState & {
   setPlan: (code: string, side: 'current' | 'target', patch: Partial<UnitPlan>) => void;
   setSkill: (code: string, side: 'current' | 'target', id: number, level: number) => void;
   setGear: (code: string, side: 'current' | 'target', slot: number, gear: GearPlan) => void;
-  /** The target becomes the current state; the inventory it cost comes in
-   *  already spent, so both land in one write. */
+  /** The inventory the target cost comes in already spent, so both land in one write. */
   completeUnit: (code: string, inventory: Record<string, number>) => void;
   setStars: (stageId: number, stars: number) => void;
   setStarsMany: (stageIds: number[], stars: number) => void;
@@ -185,8 +178,7 @@ function plan(value: unknown): UnitPlan {
   };
 }
 
-/** Applied after mount; a malformed or foreign record is discarded field by
- *  field rather than throwing the whole tracker away. */
+/** A malformed or foreign record is discarded field by field, not thrown away whole. */
 export function restoreFarm(): void {
   let saved: string | null = null;
   try {
