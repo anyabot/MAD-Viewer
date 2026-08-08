@@ -19,11 +19,9 @@ const PLATE = '#A6A9BE';
 // carries the grade colour.
 const TIER_GRADIENT = 'linear(to-b, #53A5FF, #39FFF2)';
 
-// The band spans the slot width less a margin and is held at 3:1, which is where
-// these two fractions come from. It is drawn under the art rather than over it:
-// at list size the art would lose its lower third.
-const BAND_INSET = '3.75%';
-const BAND_HEIGHT = '30.8%';
+// The band bleeds into the frame and is clipped with it. It stays under the art:
+// at list size the art would lose its lower third if the band covered it.
+const BAND_HEIGHT = '29%';
 // The client's own band. Its shading is in the alpha channel over flat white,
 // so a mask filled with the grade colour is what the client draws, and it is
 // stretched rather than fitted — the sprite is 256x49 in a 3:1 box.
@@ -60,17 +58,18 @@ export function ItemIcon({
       borderRadius="15%" bg={PLATE} borderWidth="1px" borderColor="whiteAlpha.800"
       sx={{ containerType: 'size' }} title={title} {...rest}>
       {color && (
-        <Box position="absolute" left={BAND_INSET} right={BAND_INSET} bottom="2.5%"
+        <Box position="absolute" left="-1px" right="-1px" bottom="-1px"
           h={BAND_HEIGHT} bg={color}
           sx={band ? bandMask(band) : undefined} borderRadius={band ? undefined : '1px'} />
       )}
-      <Box position="absolute" inset="4%">
+      <Box position="absolute" inset="0">
         <GameIcon manifest={manifest} group={group} name={name} names={names}
           size="100%" reserve={false} />
       </Box>
       {grade ? (
-        <Text position="absolute" top="1%" left="6%" lineHeight={1} fontWeight="bold"
-          fontSize="34cqh" bgGradient={TIER_GRADIENT} bgClip="text" color="transparent">
+        <Text position="absolute" top="3%" left="5%" lineHeight={1} fontWeight="extrabold"
+          fontSize="40cqh" bgGradient={TIER_GRADIENT} bgClip="text" color="transparent"
+          sx={{ WebkitTextStroke: '0.025em rgba(8, 18, 32, 0.85)' }}>
           {grade}
         </Text>
       ) : null}
