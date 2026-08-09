@@ -19,8 +19,7 @@ import {
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
 
-// Faction has too many rows for a readable chip row, so it is the one axis
-// rendered as a scrolling icon strip.
+// Faction is the only axis rendered as a scrolling icon strip.
 const CHIP_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division'];
 const STARS = [1, 2, 3];
 
@@ -176,15 +175,17 @@ function CharacterCard({ entry, types, icons, skins, lang }: {
   const faction = typeOf(entry, types, 'faction');
   const kinds = KIND_ORDER.filter((k) => skins.some((s) => s.kind === k));
   const roster = rosterNote(entry, lang);
-  // the rig's own thumbnail first: a story-only character has no portrait, and
-  // an NPC's rig art is the better picture where both exist
+  // Prefer rig thumbnails because story-only characters can lack portraits.
   const art = characterIcon(icons, entry, skins);
 
   return (
     <Box as={NextLink} href={{ pathname: '/character', query: { code: entry.code } }}
-      borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" overflow="hidden"
-      bg="whiteAlpha.50" _hover={{ borderColor: element?.color ?? 'whiteAlpha.500' }}
-      transition="border-color 0.15s" display="block">
+      borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl" overflow="hidden"
+      bg="linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02))"
+      boxShadow="0 12px 28px rgba(0,0,0,0.14)" display="block"
+      _hover={{ borderColor: element?.color ?? 'whiteAlpha.500', transform: 'translateY(-2px)',
+        boxShadow: '0 18px 38px rgba(0,0,0,0.24)', textDecoration: 'none' }}
+      transition="border-color 0.16s, transform 0.16s, box-shadow 0.16s">
       <Box position="relative" bg="blackAlpha.400" sx={{ aspectRatio: '1 / 1' }}>
         {art && (
           <Box as="img" src={art} alt="" w="100%" h="100%" objectFit="contain" />

@@ -24,9 +24,7 @@ function skinTitle(skin: SkinListEntry, name: string): string {
   return name || skin.character || skin.key;
 }
 
-// Two things live on this route: the rig gallery, and the gacha result
-// cutscene, which is its own scene rather than a gallery entry. `isLazy` keeps
-// the cutscene's archives unfetched until its tab is opened.
+// Lazy tabs keep the separate gacha archives unfetched until opened.
 export default function ViewerPage() {
   const t = useT();
   return (
@@ -147,17 +145,22 @@ function SkinGallery() {
       </Wrap>
 
       <Grid templateColumns={{ base: '1fr', lg: '260px 1fr' }} gap={4} alignItems="start">
-        <Box maxH={{ base: '220px', lg: '75vh' }} overflowY="auto"
-          border="1px solid" borderColor="whiteAlpha.200" borderRadius="md" p={1}>
+        <Box maxH={{ base: '240px', lg: '75vh' }} overflowY="auto"
+          border="1px solid" borderColor="whiteAlpha.200" borderRadius="xl" p={1.5}
+          bg="blackAlpha.200" boxShadow="0 16px 36px rgba(0,0,0,0.14)">
           <VStack align="stretch" spacing={0.5}>
             {filtered.map((s) => {
               const entry = charOf(s);
               const thumb = skinIcon(icons, s, entry);
               const roster = rosterNote(entry, lang);
               return (
-                <Box key={s.key} as="button" textAlign="left" px={2} py={1.5} borderRadius="md"
-                  bg={s.key === selected ? 'whiteAlpha.300' : 'transparent'}
-                  _hover={{ bg: s.key === selected ? 'whiteAlpha.300' : 'whiteAlpha.100' }}
+                <Box key={s.key} as="button" w="100%" textAlign="left" px={2.5} py={2}
+                  borderRadius="lg" borderWidth="1px"
+                  borderColor={s.key === selected ? 'yellow.400' : 'transparent'}
+                  bg={s.key === selected ? 'whiteAlpha.200' : 'transparent'}
+                  boxShadow={s.key === selected ? 'inset 3px 0 0 #f6c445' : 'none'}
+                  _hover={{ bg: s.key === selected ? 'whiteAlpha.200' : 'whiteAlpha.100' }}
+                  transition="background 0.15s, border-color 0.15s"
                   onClick={() => set({ selected: s.key })}>
                   <Flex align="center" gap={2}>
                     <Box w="32px" h="32px" flexShrink={0} borderRadius="sm"
@@ -268,11 +271,14 @@ function Chip({ active, onClick, children }: {
   active: boolean; onClick: () => void; children: React.ReactNode;
 }) {
   return (
-    <Box as="button" onClick={onClick} px={3} py={1} borderRadius="full" fontSize="sm"
-      display="flex" alignItems="center" gap={1.5}
-      bg={active ? 'yellow.400' : 'whiteAlpha.150'} color={active ? 'gray.900' : 'gray.200'}
-      fontWeight={active ? 'bold' : 'normal'}
-      _hover={{ bg: active ? 'yellow.300' : 'whiteAlpha.300' }} transition="background 0.15s">
+    <Box as="button" onClick={onClick} px={3} py={1.5} minH="34px"
+      borderRadius="full" fontSize="sm" display="flex" alignItems="center" gap={1.5}
+      borderWidth="1px" borderColor={active ? 'yellow.400' : 'whiteAlpha.200'}
+      bg={active ? 'yellow.400' : 'whiteAlpha.50'} color={active ? 'gray.900' : 'gray.200'}
+      fontWeight={active ? '700' : '500'}
+      boxShadow={active ? '0 6px 18px rgba(246, 196, 69, 0.16)' : 'none'}
+      _hover={{ bg: active ? 'yellow.300' : 'whiteAlpha.200' }}
+      transition="background 0.15s, border-color 0.15s, box-shadow 0.15s">
       {children}
     </Box>
   );
