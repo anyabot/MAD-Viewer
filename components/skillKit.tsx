@@ -1,7 +1,4 @@
-// The skill kit as it renders on both the character page and a stage's wave
-// roster. Structure only — which operation lands on whom, scaled off which
-// stat. The arithmetic that turns a coefficient into a battle number is not
-// decoded and must not be implied here.
+// Skill kits show structure without implying undecoded battle arithmetic.
 import { useState } from 'react';
 import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
@@ -17,15 +14,16 @@ import type {
   SkillOp,
 } from '@/lib/data';
 
-// A titled panel. Used by every block that reads as one column.
 export function Panel({ title, note, children }: {
   title: string; note?: string; children: React.ReactNode;
 }) {
   return (
-    <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" p={3}>
-      <Flex align="baseline" gap={2} mb={2} wrap="wrap">
-        <Text fontSize="xs" color="gray.500" textTransform="uppercase"
-          letterSpacing="wide">{title}</Text>
+    <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl"
+      bg="linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018))"
+      boxShadow="0 12px 32px rgba(0,0,0,0.12)" p={{ base: 3, md: 4 }}>
+      <Flex align="baseline" gap={2} mb={3} wrap="wrap">
+        <Text fontSize="0.65rem" color="gray.400" textTransform="uppercase"
+          fontWeight="700" letterSpacing="0.11em">{title}</Text>
         {note && <Text fontSize="xs" color="gray.600">{note}</Text>}
       </Flex>
       {children}
@@ -99,8 +97,7 @@ export function BuffList({ buffs, icons }: {
   );
 }
 
-// What the tables say, as opposed to the description above it: this is where
-// the target side, the scaling stat and the unnamed effects become visible.
+// Operations expose target side, scaling stat and unnamed effects.
 function OpRow({ op, level, period, data, icons }: {
   op: SkillOp; level: number; period: number;
   data: CharacterData; icons: IconManifest | null;
@@ -259,8 +256,7 @@ function Behaviour({ behaviour, level, period, data, icons }: {
   );
 }
 
-// Skills level independently, so a shared level picker would misreport every
-// other row. A passive is keyed by star grade and a normal attack has no level.
+// Skills level independently; passives use star grade and normal attacks have no level.
 export function SkillRow({ skill, data, icons, showSlot }: {
   skill: SkillEntry & { id: number }; data: CharacterData;
   icons: IconManifest | null; showSlot?: boolean;
@@ -317,9 +313,7 @@ export function SkillRow({ skill, data, icons, showSlot }: {
   );
 }
 
-// A kit with no panel of its own, so a caller can nest it inside a row it
-// already owns. `skillSetGroup` is all it needs, which is what lets a stage's
-// enemy reuse it without a full character entry.
+// The unframed kit lets stage enemies reuse skill sets without a character entry.
 export function SkillList({ group, defaultStar, data, icons }: {
   group: number | null | undefined; defaultStar?: number | null;
   data: CharacterData; icons: IconManifest | null;
@@ -347,8 +341,7 @@ export function SkillList({ group, defaultStar, data, icons }: {
       <VStack align="stretch" spacing={3}>
         {skills.map((skill) => (
           <SkillRow key={skill.id} skill={skill} data={data} icons={icons}
-            // most enemy slots share one placeholder name, so the slot number
-            // is the only thing telling them apart
+            // The slot number distinguishes enemy skills that share a placeholder name.
             showSlot={skills.filter((s) => s.name === skill.name).length > 1} />
         ))}
       </VStack>
@@ -356,8 +349,7 @@ export function SkillList({ group, defaultStar, data, icons }: {
   );
 }
 
-// The grade is picked because a passive unlocks at 3★ and upgrades at 4★ and
-// 5★ regardless of the character's own rarity.
+// Passive grades unlock independently of character rarity.
 export function Skills({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
@@ -371,8 +363,7 @@ export function Skills({ entry, data, icons }: {
   );
 }
 
-// More than one rotation in a list is a set of alternatives the game picks by
-// the named condition, falling through to the unconditional 기본 패턴.
+// Rotation lists are alternatives selected by condition with an unconditional fallback.
 const ROTATION_LABEL: Record<string, UiKey> = { start: 'rotationOpening', repeat: 'rotationLoop' };
 
 export function Rotation({ entry, data, icons }: {
@@ -381,8 +372,7 @@ export function Rotation({ entry, data, icons }: {
   const t = useT();
   const patterns = entry.battlePatterns;
   if (!patterns) return null;
-  // A name is ambiguous when different skills carry it — an enemy's slots
-  // share one placeholder name. A rotation naming one skill twice is not.
+  // Names are ambiguous only when different skills carry the same name.
   const idsByName = new Map<string, Set<number>>();
   for (const rot of [...(patterns.start ?? []), ...(patterns.repeat ?? [])]) {
     for (const id of rot.steps) {
