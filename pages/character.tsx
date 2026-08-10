@@ -10,6 +10,7 @@ import {
   VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import SkinViewer from '@/components/skinViewer';
+import SdViewer from '@/components/sdViewer';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { StoreKey } from '@/components/skinViewer/types';
 import { GameIcon, StarRating } from '@/components/gameIcon';
@@ -29,9 +30,9 @@ import {
 } from '@/lib/characters';
 import { text, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
-  KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
+  KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSdIndex, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest,
-  type SkinListEntry,
+  type SdIndex, type SkinListEntry,
 } from '@/lib/data';
 
 const INFO_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division', 'faction'];
@@ -45,6 +46,7 @@ export default function CharacterPage() {
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [skins, setSkins] = useState<SkinListEntry[]>([]);
   const [icons, setIcons] = useState<IconManifest | null>(null);
+  const [sd, setSd] = useState<SdIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
   const [store, setStore] = useState<StoreKey>('onestore');
@@ -53,6 +55,7 @@ export default function CharacterPage() {
     loadCharacters().then(setChars).catch((e) => setError(String(e)));
     loadSkinList().then((l) => setSkins(l.skins)).catch(() => setSkins([]));
     loadIcons().then(setIcons).catch(() => setIcons(null));
+    loadSdIndex().then(setSd).catch(() => setSd(null));
   }, []);
 
   const mine = useMemo(
@@ -122,6 +125,16 @@ export default function CharacterPage() {
       </Grid>
     ),
   });
+
+  const sdCharacter = sd?.characters[entry.code];
+  if (sdCharacter) {
+    tabs.push({
+      key: 'sd',
+      label: t('tabSd'),
+      count: sdCharacter.animations.length,
+      panel: <SdViewer character={sdCharacter} />,
+    });
+  }
 
   if (skillGrades(entry, chars).length > 0) {
     tabs.push({

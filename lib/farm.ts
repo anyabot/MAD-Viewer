@@ -129,7 +129,7 @@ export function tierUpCost(
   return out;
 }
 
-/** One accumulated curve that a tier only caps, so exp carries across a tier-up. */
+/** EXP within one equipment tier; each tier uses the same level curve separately. */
 export function equipExp(growth: GrowthData, from: number, to: number): number {
   const accum = growth.equipment.accumExp;
   return Math.max(0, (accum[String(to)] ?? 0) - (accum[String(from)] ?? 0));
@@ -142,6 +142,22 @@ export function unitExp(growth: GrowthData, from: number, to: number): number {
 
 export function gearLevelCap(growth: GrowthData, tier: number): number {
   return growth.equipment.tiers.find((t) => t.tier === tier)?.maxLevel ?? 1;
+}
+
+/** Finish the current tier, then level every replacement tier independently. */
+export function gearExp(
+  growth: GrowthData, from: GearPlan, to: GearPlan,
+): number {
+  if (!to.tier || to.tier < from.tier) return 0;
+  if (to.tier === from.tier) return equipExp(growth, from.level, to.level);
+
+  let total = from.tier
+    ? equipExp(growth, from.level, gearLevelCap(growth, from.tier))
+    : 0;
+  for (let tier = Math.max(1, from.tier + 1); tier < to.tier; tier += 1) {
+    total += equipExp(growth, 1, gearLevelCap(growth, tier));
+  }
+  return total + equipExp(growth, 1, to.level);
 }
 
 /** Charged on the experience applied, so holding the exp items does not avoid it. */
@@ -172,9 +188,7 @@ export function unitBill(
     const to = target.gear[String(slot)] ?? { tier: 0, level: 1 };
     if (!to.tier || to.tier < from.tier) continue;
     addCosts(bill, tierUpCost(growth, slot, from.tier, to.tier));
-    // an empty slot starts the curve at level 1
-    const fromLevel = from.tier ? from.level : 1;
-    const fed = equipExp(growth, Math.min(fromLevel, to.level), to.level);
+    const fed = gearExp(growth, from, to);
     bill.equipExp += fed;
     addLevelFee(bill, growth.equipment.levelFee, fed);
   }

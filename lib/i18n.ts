@@ -72,6 +72,9 @@ export const UI = {
   countOf: { en: '{shown} of {total}', ko: '{total}개 중 {shown}개' },
 
   tabSkins: { en: 'Skins', ko: '스킨' },
+  tabSd: { en: 'Mini', ko: 'SD' },
+  sdAnimation: { en: 'Animation', ko: '애니메이션' },
+  sdPlayCutin: { en: 'Skill cut-in', ko: '스킬 컷인' },
   tabGacha: { en: 'Gacha', ko: '가챠' },
   filterAll: { en: 'All', ko: '전체' },
   storeDiff: { en: 'Store diff', ko: '스토어 차이' },
@@ -316,6 +319,7 @@ export const UI = {
   farmUncleared: { en: 'Not cleared', ko: '미클리어' },
   farmSetAll: { en: 'Set all', ko: '일괄 설정' },
   farmNeed: { en: 'Need', ko: '필요' },
+  farmMaterialsSummary: { en: 'Needed materials', ko: '필요 재료' },
   farmHave: { en: 'Have', ko: '보유' },
   farmShort: { en: 'Short', ko: '부족' },
   farmDone: { en: 'nothing left to farm', ko: '더 파밍할 것이 없음' },

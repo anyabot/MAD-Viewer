@@ -2,7 +2,7 @@
 // client-side into blobs the viewer builds `blob:` URLs from. `DecompressionStream`
 // does not support brotli, hence the WASM decoder.
 
-import { skinArchiveUrls } from '@/lib/cdn';
+import { sdArchiveUrls, skinArchiveUrls } from '@/lib/cdn';
 
 // Pinned to a plain ArrayBuffer: `Uint8Array` defaults to `ArrayBufferLike`,
 // which includes SharedArrayBuffer and is not a valid `BlobPart`.
@@ -40,6 +40,10 @@ const archiveCache = new Map<string, Promise<Map<string, Blob>>>();
 
 export function loadSkinArchive(skin: string): Promise<Map<string, Blob>> {
   return loadArchive(skin, () => skinArchiveUrls(skin));
+}
+
+export function loadSdArchive(archive: string): Promise<Map<string, Blob>> {
+  return loadArchive(`sd:${archive}`, () => sdArchiveUrls(archive));
 }
 
 /** The cache is shared, so names must stay unique across archive families. */

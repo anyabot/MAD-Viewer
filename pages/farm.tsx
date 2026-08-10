@@ -13,7 +13,7 @@ import { useFarm } from '@/lib/farmStore';
 import {
   MATERIAL_ICON_GROUPS, MATERIAL_KIND_LABEL, billCovered, billIsEmpty, emptyPlan,
   farmPlan, farmStages, formatAmount, gearLevelCap, isHardStage, levellableSkills,
-  mergeBills, needLabel, parseAmount, skillCap, spendBill, unitBill,
+  mergeBills, needLabel, needsOf, parseAmount, skillCap, spendBill, unitBill,
   type Bill, type FarmPlan, type FarmRoute, type NeedPlan, type StageSource,
   type UnitPlan,
 } from '@/lib/farm';
@@ -444,12 +444,48 @@ function UnitCard({ entry, data, growth, icons, leftover, open, onToggle }: {
             );
           })}
         </Box>
+        {bill && owing ? (
+          <MaterialSummary bill={bill} growth={growth} icons={icons} lang={lang} />
+        ) : null}
       </Box>
     </Box>
   );
 }
 
-// A slot is re-tiered by feeding it a higher piece, so a new tier arrives at that tier's cap.
+function MaterialSummary({ bill, growth, icons, lang }: {
+  bill: Bill; growth: GrowthData; icons: IconManifest | null; lang: Lang;
+}) {
+  const t = useT();
+  const needs = needsOf(growth, bill, {});
+  return (
+    <Box mt={3} pt={3} borderTopWidth="1px" borderColor="whiteAlpha.100">
+      <Text mb={2} fontSize="0.65rem" color="gray.500" textTransform="uppercase"
+        fontWeight="700" letterSpacing="wide">{t('farmMaterialsSummary')}</Text>
+      <Wrap spacing={2}>
+        {needs.map((need) => {
+          const label = needLabel(growth, need, lang);
+          return (
+            <WrapItem key={need.key}>
+              <HStack spacing={2} borderWidth="1px" borderColor="whiteAlpha.200"
+                borderRadius="md" bg="blackAlpha.200" py={1} pl={1} pr={2}>
+                <ItemIcon manifest={icons} group={materialGroup(icons, label.icon)}
+                  name={label.icon} grade={label.grade} size={7} />
+                <Box minW={0}>
+                  <Text fontSize="0.65rem" color="gray.500" noOfLines={1}
+                    maxW="9rem">{label.name}</Text>
+                  <Text fontSize="sm" fontWeight="bold" fontFamily="mono"
+                    color="yellow.200">{need.required.toLocaleString()}</Text>
+                </Box>
+              </HStack>
+            </WrapItem>
+          );
+        })}
+      </Wrap>
+    </Box>
+  );
+}
+
+// Tier changes default to that tier's cap for quick target entry.
 function GearField({ growth, slot, gear, onChange }: {
   growth: GrowthData; slot: { type: number; tiers?: { tier: number }[] };
   gear: { tier: number; level: number }; onChange: (g: { tier: number; level: number }) => void;
