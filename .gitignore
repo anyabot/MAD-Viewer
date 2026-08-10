@@ -5,6 +5,7 @@
 /docs
 /public/data-full
 /public/skins
+/public/sd
 /public/skin_test
 *.tsbuildinfo
 next-env.d.ts

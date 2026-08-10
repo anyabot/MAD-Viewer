@@ -32,6 +32,59 @@ export type SkinList = {
   skins: SkinListEntry[];
 };
 
+export type SdCharacter = {
+  code: string;
+  name: string;
+  archive: string;
+  skel: string;
+  atlas: string;
+  textures: string[];
+  animations: string[];
+  bounds: { x: number; y: number; width: number; height: number };
+  dataScale: number;
+  ppu: number | null;
+  defaultAnimation: string | null;
+  loop: boolean | null;
+  cutin: {
+    animation: string;
+    duration: number;
+    loop: boolean;
+    camera: { name: string | null; start: number; duration: number; timeScale: number }[];
+    audio: { name: string | null; start: number; duration: number; timeScale: number }[];
+    activations: {
+      track: string; name: string | null; start: number; duration: number; timeScale: number;
+    }[];
+    effects: {
+      track: string;
+      name: string;
+      start: number;
+      duration: number;
+      bone: string | null;
+      anchor: 'bone' | 'character' | 'camera' | 'ground';
+      emitters: (EmoteEmitter & { order?: number })[];
+    }[];
+    shakes: {
+      name: string | null; start: number; duration: number; timeScale: number;
+      minAmplitude: number; maxAmplitude: number; frequency: number; useCurve: boolean;
+      curve: { time: number; value: number; inSlope: number; outSlope: number }[];
+    }[];
+    tracks: {
+      name: string; parent: number | null; infiniteClip: string | null;
+      clips: {
+        name: string | null; start: number; duration: number;
+        timeScale: number; asset: string | null;
+      }[];
+    }[];
+    voiceMarkers: { time: number; fast: boolean }[];
+  } | null;
+};
+
+export type SdIndex = {
+  catalog: string;
+  count: number;
+  characters: Record<string, SdCharacter>;
+};
+
 // The Korean columns are the finished content; `unfinished` is reference only.
 export type CharacterEntry = {
   code: string;
@@ -500,6 +553,10 @@ export function loadSkinList(): Promise<SkinList> {
   return fetchJson<SkinList>('skin_list.json');
 }
 
+export function loadSdIndex(): Promise<SdIndex> {
+  return fetchJson<SdIndex>('sd.json');
+}
+
 export function loadSceneTimelines(): Promise<SceneTimelineData> {
   return fetchJson<SceneTimelineData>('scene_timelines.json');
 }
@@ -569,7 +626,7 @@ export type GrowthData = {
     /** Ref -> the experience it is worth; the balance itself is worth one. */
     expItems: Record<string, number>;
     levelFee: LevelFee;
-    /** Tier reached -> slot type -> the bill. */
+    /** Tier reached -> slot type -> that tier's bill. */
     tierUp: Record<string, Record<string, MaterialCost[]>>;
   };
   unit: {

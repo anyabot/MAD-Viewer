@@ -152,6 +152,7 @@
    "Logo_Faction_Saverim",
    "Logo_Faction_Superrich",
    "Logo_Faction_Unsigned",
+   "Logo_Felican_Company",
    "Logo_Pelican_Company",
    "Logo_Pelican_Feeling",
    "Slot_Icon_Star",
@@ -589,6 +590,7 @@
    "Icon_Item_select_box_skill_growth_upper_all",
    "Icon_Item_select_character_box_first_open",
    "Icon_Item_select_gift_box",
+   "Icon_Piece_Master",
    "Icon_Skill_Levelup_Passion_Burst_Tier1",
    "Icon_Skill_Levelup_Passion_Burst_Tier2",
    "Icon_Skill_Levelup_Passion_Burst_Tier3",
@@ -775,6 +777,9 @@
    "Icon_Ultimate_CH0063",
    "Icon_Ultimate_CH0068",
    "Icon_Ultimate_Magic",
+   "Icon_Ultimate_PC_Daisy",
+   "Icon_Ultimate_PC_Dummy",
+   "Icon_Ultimate_PC_Violet",
    "Icon_Ultimate_Physics"
   ],
   "skin": [

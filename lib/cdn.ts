@@ -18,6 +18,7 @@ const LOCAL_ASSETS = process.env.NEXT_PUBLIC_ASSET_SOURCE === 'local';
 const ARCHIVE_OVERRIDE = process.env.NEXT_PUBLIC_SKIN_ARCHIVE_BASE?.replace(/\/$/, '');
 const VOICE_OVERRIDE = process.env.NEXT_PUBLIC_VOICE_BASE?.replace(/\/$/, '');
 const AUDIO_OVERRIDE = process.env.NEXT_PUBLIC_SCENE_AUDIO_BASE?.replace(/\/$/, '');
+const SD_OVERRIDE = process.env.NEXT_PUBLIC_SD_ARCHIVE_BASE?.replace(/\/$/, '');
 
 type Bucket = { repo: string; ref: string };
 
@@ -32,7 +33,7 @@ type Family = {
 export type CdnManifest = {
   base: string;
   owner: string;
-  families: Partial<Record<'skins' | 'voice' | 'audio', Family>>;
+  families: Partial<Record<'skins' | 'voice' | 'audio' | 'sd', Family>>;
 };
 
 let manifestPromise: Promise<CdnManifest | null> | null = null;
@@ -54,7 +55,7 @@ export function loadCdnManifest(): Promise<CdnManifest | null> {
 }
 
 function bucketBase(
-  manifest: CdnManifest | null, family: 'skins' | 'voice' | 'audio', unit: string,
+  manifest: CdnManifest | null, family: 'skins' | 'voice' | 'audio' | 'sd', unit: string,
 ): string | null {
   const entry = manifest?.families?.[family];
   const bucket = entry?.buckets[entry.units[unit] ?? ''];
@@ -84,6 +85,18 @@ export async function skinArchiveUrls(name: string): Promise<string[]> {
 /** Not gallery skins, so not in the manifest's `skins` family. */
 export function gachaArchiveUrls(name: string): string[] {
   return [`${PUBLIC_BASE}/gacha/${name}.tar.br`];
+}
+
+export async function sdArchiveUrls(name: string): Promise<string[]> {
+  const file = `${name}.tar.br`;
+  if (SD_OVERRIDE) return [`${SD_OVERRIDE}/${file}`];
+  const local = `${PUBLIC_BASE}/sd/${file}`;
+  if (LOCAL_ASSETS) {
+    const base = bucketBase(await loadCdnManifest(), 'sd', name);
+    return base ? [local, `${base}/${file}`] : [local];
+  }
+  const base = bucketBase(await loadCdnManifest(), 'sd', name);
+  return base ? [`${base}/${file}`, local] : [local];
 }
 
 /** `folder` is the path the voice index records and the unit assignment works
