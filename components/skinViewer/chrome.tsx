@@ -12,13 +12,16 @@ import type { StoreKey } from './types';
 type IconName =
   | 'play' | 'pause' | 'reload' | 'save' | 'loop' | 'bg' | 'face' | 'body' | 'store'
   | 'auto' | 'touch' | 'home' | 'layers' | 'chevron' | 'close' | 'jiggle' | 'overlay'
-  | 'camera' | 'voice' | 'music' | 'speed' | 'aspect' | 'theater' | 'pan';
+  | 'camera' | 'voice' | 'music' | 'speed' | 'aspect' | 'theater' | 'pan' | 'share'
+  | 'record';
 
 const ICON_PATHS: Record<IconName, string> = {
   play: 'M8 5v14l11-7z',
   pause: 'M6 5h4v14H6zm8 0h4v14h-4z',
   reload: 'M17.65 6.35A8 8 0 1 0 19.73 14h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4z',
   save: 'M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z',
+  share: 'M18 16a3 3 0 0 0-2.4 1.2L8.9 13.8a3.2 3.2 0 0 0 0-3.6l6.7-3.4A3 3 0 1 0 15 4.2L8.3 7.6a3 3 0 1 0 0 8.8l6.7 3.4A3 3 0 1 0 18 16z',
+  record: 'M12 5a7 7 0 1 0 0 14 7 7 0 0 0 0-14z',
   loop: 'M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z',
   bg: 'M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z',
   face: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-3.5 7a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm7 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM12 17.5c-2.3 0-4.3-1.4-5.2-3.5h10.4c-.9 2.1-2.9 3.5-5.2 3.5z',
@@ -308,7 +311,7 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
   return (
     <Box bg="blackAlpha.400" borderRadius="md" border="1px solid" borderColor="whiteAlpha.300"
       display="flex" flexDirection="column" overflow="hidden"
-      maxH={{ base: '50vh', lg: '340px' }} minH="180px">
+      maxH={{ base: '60vh', lg: '520px' }} minH={{ base: '240px', lg: '320px' }}>
       <Flex align="center" gap={2} px={2} py={1.5} borderBottom="1px solid"
         borderColor="whiteAlpha.200">
         <Icon name="layers" size={16} />
@@ -350,22 +353,23 @@ export function LayerPanel({ items, hidden, onSet, onReset, onClose }: {
               {list.map((it) => {
                 const isHidden = hidden.has(it.slot);
                 return (
-                  <Flex key={it.slot} as="button" w="100%" align="center" gap={2} px={2} py={1}
-                    borderRadius="sm" textAlign="left" _hover={{ bg: 'whiteAlpha.150' }}
+                  <Flex key={it.slot} as="button" w="100%" align="center" gap={2.5}
+                    px={2.5} py={2} minH="44px" borderRadius="sm" textAlign="left"
+                    _hover={{ bg: 'whiteAlpha.150' }}
                     aria-label={t(isHidden ? 'layersShowSlot' : 'layersHideSlot',
                       { slot: it.slot })}
                     aria-pressed={!isHidden}
                     onClick={() => onSet([it.slot], !isHidden)}>
-                    <Box boxSize="12px" borderRadius="sm" border="1px solid" flexShrink={0}
+                    <Box boxSize="16px" borderRadius="sm" border="1px solid" flexShrink={0}
                       borderColor={isHidden ? 'whiteAlpha.400' : 'yellow.400'}
                       bg={isHidden ? 'transparent' : 'yellow.400'} />
                     <Box minW={0} flex="1">
-                      <Text fontSize="0.7rem" fontFamily="mono"
+                      <Text fontSize="0.8rem" fontFamily="mono"
                         color={isHidden ? 'gray.600' : 'gray.100'} noOfLines={1}>
                         {it.slot}
                       </Text>
                       {it.attachment !== it.slot && (
-                        <Text fontSize="0.6rem" color="gray.600" noOfLines={1}>
+                        <Text fontSize="0.7rem" color="gray.600" noOfLines={1}>
                           {it.attachment}
                         </Text>
                       )}

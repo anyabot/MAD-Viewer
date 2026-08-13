@@ -1,5 +1,4 @@
 {
- "source": "emoticons_assets_all_aeef6088f87ffe51fc230fe3e00f09ed.bundle",
  "sheets": {
   "T_DialogFX_emotion_01": [
    128,
@@ -14798,6 +14797,28 @@
     "InsideHead": [
      5.297,
      2.5501
+    ]
+   }
+  },
+  "CH0043": {
+   "look": "Right",
+   "bones": {
+    "Mouth": "mouth",
+    "OutsideHead": "face",
+    "InsideHead": "face"
+   },
+   "offsets": {
+    "Mouth": [
+     0.2501,
+     -0.0687
+    ],
+    "OutsideHead": [
+     2.7786,
+     6.7969
+    ],
+    "InsideHead": [
+     -2.9716,
+     4.9487
     ]
    }
   },

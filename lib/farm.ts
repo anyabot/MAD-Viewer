@@ -40,9 +40,10 @@ export type UnitPlan = {
   gear: Record<string, GearPlan>;
 };
 
-/** `hidden` stays off the bill; `priority` takes its inventory share first. */
+/** `listed` is on the farm list; `hidden` stays off the bill; `priority` takes its inventory share first. */
 export type UnitPlanPair = {
-  current: UnitPlan; target: UnitPlan; hidden?: boolean; priority?: boolean;
+  current: UnitPlan; target: UnitPlan;
+  listed?: boolean; hidden?: boolean; priority?: boolean;
 };
 
 export type Bill = {

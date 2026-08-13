@@ -12,7 +12,7 @@ import {
   type ActorPhase, type Layout, type PlayMode, type StoreKey, type TouchRegion,
 } from '@/components/skinViewer/types';
 import {
-  EFFECT_LABEL, REFERENCE_VIEW_WIDTH, TOUCH_INTERRUPT_DELAY,
+  EFFECT_LABEL, MAX_RECORD_DIM, REFERENCE_VIEW_WIDTH, TOUCH_INTERRUPT_DELAY,
   TRACK_BODY, TRACK_FACE, TRACK_OVERLAY, WIDE_CUTSCENE_STAGING_SKINS,
   animLabel, groupedOptions, isFaceAnim, pickDefault, polygonArea, speedOptions,
 } from '@/components/skinViewer/constants';
@@ -23,6 +23,9 @@ import { createTouchOverlay } from '@/components/skinViewer/touchOverlay';
 import {
   attachmentScales, saveStagePng, sourcePixelScale,
 } from '@/components/skinViewer/exportPng';
+import {
+  canRecordCanvas, startCanvasVideo, type VideoRecording,
+} from '@/components/skinViewer/exportVideo';
 import { createFadeCover, createSceneClock } from '@/components/skinViewer/sceneClock';
 import { JiggleField } from '@/components/skinViewer/jiggle';
 import type { Vars } from '@/components/skinViewer/interactions';
@@ -45,6 +48,9 @@ import {
   emotePlacement, loadEmoticons, type EmoticonManifest, type EmotePlacement,
 } from '@/lib/emoticons';
 import { CANVAS_ASPECTS, useViewerStore, type CanvasAspect } from '@/lib/viewerStore';
+import {
+  buildViewerShareUrl, parseViewerShare, type ViewerShareState,
+} from '@/lib/viewerShare';
 import {
   playBgm, playSceneSound, prefetchSceneAudio, setSceneSoundRate, stopBgm, stopSceneSound,
   type SceneAudioIndex,
@@ -108,6 +114,13 @@ export default function SkinViewer({
   const [hasRigCamera, setHasRigCamera] = useState(false);
   const [panelSize, setPanelSize] = useState({ w: 0, h: 0 });
   const [resetKey, setResetKey] = useState(0);
+  const sharedRef = useRef<ViewerShareState | null>(null);
+  const sharedSelectionsAppliedRef = useRef(false);
+  const sharedStageAppliedRef = useRef(false);
+  const [shareStatus, setShareStatus] = useState('');
+  const [recording, setRecording] = useState(false);
+  const [videoStatus, setVideoStatus] = useState('');
+  const recordingRef = useRef<VideoRecording | null>(null);
 
   const [bodyAnim, setBodyAnim] = useState('');
   const [faceAnim, setFaceAnim] = useState('');
@@ -162,6 +175,7 @@ export default function SkinViewer({
   const [layerItems, setLayerItems] = useState<LayerItem[]>([]);
   const [hiddenSlots, setHiddenSlots] = useState<Set<string>>(() => new Set());
   const hiddenSlotsRef = useRef(hiddenSlots); hiddenSlotsRef.current = hiddenSlots;
+  const layerHoverRef = useRef<HTMLDivElement>(null);
 
   const boxOverlayRef = useRef<any>(null);
   const boundsRef = useRef<any>(null);
@@ -211,6 +225,24 @@ export default function SkinViewer({
   // The pan gesture otherwise swallows the in-game jiggler drag.
   const setDragJiggle = (value: boolean) => setViewer({ dragJiggle: value });
 
+  useEffect(() => {
+    const shared = parseViewerShare(window.location.search);
+    if (!shared || shared.skin !== skin) return;
+    sharedRef.current = shared;
+    const patch: Partial<ReturnType<typeof useViewerStore.getState>> = {};
+    if (shared.context === 'free_play') patch.mode = 'manual';
+    else if (shared.context === 'lobby') patch.mode = 'home';
+    else if (shared.context) {
+      patch.mode = 'scene';
+      patch.sceneVariant = shared.context.endsWith('_view') ? 'view' : 'story';
+    }
+    if (shared.speed != null) patch.speed = shared.speed;
+    if (shared.background != null) patch.showBg = shared.background;
+    if (shared.camera) patch.followGameFlow = shared.camera === 'game';
+    if (shared.aspect) patch.canvasAspect = shared.aspect;
+    setViewer(patch);
+  }, [skin, setViewer]);
+
   // Mirrors, so the async build effect can apply current UI state to a fresh skeleton.
   const playingRef = useRef(playing); playingRef.current = playing;
   const speedRef = useRef(speed); speedRef.current = speed;
@@ -225,6 +257,7 @@ export default function SkinViewer({
   const autoModeRef = useRef(autoMode); autoModeRef.current = autoMode;
   const phaseRef = useRef(phase); phaseRef.current = phase;
   const showBoxesRef = useRef(showBoxes); showBoxesRef.current = showBoxes;
+  const showLayersRef = useRef(showLayers); showLayersRef.current = showLayers;
   const storySeqRef = useRef(storySeq); storySeqRef.current = storySeq;
   const scriptSceneRef = useRef(scriptScene);
   scriptSceneRef.current = scriptScene;
@@ -493,6 +526,7 @@ export default function SkinViewer({
     let destroyed = false;
     let app: any = null;
     let appReady = false;
+    let detachLayerHover = () => {};
     spineRef.current = null;
     bgSpritesRef.current = [];
     syncBackgroundVisibilityRef.current = () => {};
@@ -530,7 +564,10 @@ export default function SkinViewer({
       if (destroyed) return;
 
       app = new PIXI.Application();
-      await app.init({ backgroundAlpha: 0, antialias: true, resizeTo: hostRef.current! });
+      // `autoDensity` pins the CSS size, so recording can raise the backing store alone.
+      await app.init({
+        backgroundAlpha: 0, antialias: true, autoDensity: true, resizeTo: hostRef.current!,
+      });
       appReady = true;
       if (destroyed) { app.destroy(true); return; }
       appRef.current = app;
@@ -663,6 +700,7 @@ export default function SkinViewer({
         (name: string) => spine.skeleton.findBone(name));
       jiggleRef.current = jiggle;
       let jiggleTapUntil = 0;
+      let sceneDragTapUntil = 0;
 
       const activeSpineSkin = spine.skeleton.skin ?? skeletonData.defaultSkin;
       const attachmentsBySlot = new Map<number, string[]>();
@@ -686,6 +724,94 @@ export default function SkinViewer({
       renderableSlots.sort((a, b) =>
         a.group.localeCompare(b.group) || a.slot.localeCompare(b.slot));
       setLayerItems(renderableSlots);
+
+      const triangleContains = (
+        x: number, y: number,
+        ax: number, ay: number, bx: number, by: number, cx: number, cy: number,
+      ) => {
+        const ab = (x - bx) * (ay - by) - (ax - bx) * (y - by);
+        const bc = (x - cx) * (by - cy) - (bx - cx) * (y - cy);
+        const ca = (x - ax) * (cy - ay) - (cx - ax) * (y - ay);
+        return !((ab < 0 || bc < 0 || ca < 0) && (ab > 0 || bc > 0 || ca > 0));
+      };
+      const layerAt = (x: number, y: number) => {
+        const drawOrder = spine.skeleton.drawOrder ?? spine.skeleton.slots;
+        for (let slotIndex = drawOrder.length - 1; slotIndex >= 0; slotIndex--) {
+          const slot = drawOrder[slotIndex];
+          if (!slot.bone.active || hiddenSlotsRef.current.has(slot.data.name)
+            || slot.color.a * spine.skeleton.color.a <= 1e-3) continue;
+          const attachment = slot.getAttachment();
+          let vertices: Float32Array;
+          let triangles: ArrayLike<number>;
+          if (attachment instanceof RegionAttachment) {
+            if ((attachment.color?.a ?? 1) <= 1e-3) continue;
+            vertices = new Float32Array(8);
+            attachment.computeWorldVertices(slot, vertices, 0, 2);
+            triangles = [0, 1, 2, 0, 2, 3];
+          } else if (attachment instanceof MeshAttachment) {
+            if ((attachment.color?.a ?? 1) <= 1e-3) continue;
+            vertices = new Float32Array(attachment.worldVerticesLength);
+            attachment.computeWorldVertices(
+              slot, 0, attachment.worldVerticesLength, vertices, 0, 2);
+            triangles = attachment.triangles;
+          } else {
+            continue;
+          }
+          for (let i = 0; i < triangles.length; i += 3) {
+            const a = triangles[i] * 2;
+            const b = triangles[i + 1] * 2;
+            const c = triangles[i + 2] * 2;
+            if (triangleContains(
+              x, y,
+              vertices[a], vertices[a + 1],
+              vertices[b], vertices[b + 1],
+              vertices[c], vertices[c + 1],
+            )) return { slot: slot.data.name, attachment: attachment.name };
+          }
+        }
+        return null;
+      };
+      const hideLayerHover = () => {
+        if (layerHoverRef.current) layerHoverRef.current.style.display = 'none';
+      };
+      const moveLayerHover = (event: PointerEvent) => {
+        const tooltip = layerHoverRef.current;
+        const panel = panelRef.current;
+        if (!tooltip || !panel || !showLayersRef.current) {
+          hideLayerHover();
+          return;
+        }
+        const canvasRect = app.canvas.getBoundingClientRect();
+        if (!canvasRect.width || !canvasRect.height) return;
+        const local = spine.toLocal({
+          x: (event.clientX - canvasRect.left) * app.screen.width / canvasRect.width,
+          y: (event.clientY - canvasRect.top) * app.screen.height / canvasRect.height,
+        });
+        const layer = layerAt(local.x, local.y);
+        if (!layer) {
+          hideLayerHover();
+          return;
+        }
+        const panelRect = panel.getBoundingClientRect();
+        const x = event.clientX - panelRect.left;
+        const y = Math.min(event.clientY - panelRect.top + 12, panelRect.height - 52);
+        tooltip.textContent = layer.attachment === layer.slot
+          ? layer.slot
+          : `${layer.slot}\n${layer.attachment}`;
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${x}px`;
+        tooltip.style.top = `${Math.max(8, y)}px`;
+        tooltip.style.transform = x > panelRect.width / 2
+          ? 'translateX(calc(-100% - 12px))'
+          : 'translateX(12px)';
+      };
+      app.canvas.addEventListener('pointermove', moveLayerHover);
+      app.canvas.addEventListener('pointerleave', hideLayerHover);
+      detachLayerHover = () => {
+        app.canvas.removeEventListener('pointermove', moveLayerHover);
+        app.canvas.removeEventListener('pointerleave', hideLayerHover);
+        hideLayerHover();
+      };
 
       const slotByName = new Map<string, any>(
         spine.skeleton.slots.map((s: any) => [s.data.name, s]));
@@ -891,6 +1017,10 @@ export default function SkinViewer({
         spine.cursor = 'pointer';
         spine.on('pointertap', (e: any) => {
           if (!autoModeRef.current) return;
+          if (performance.now() <= sceneDragTapUntil) {
+            sceneDragTapUntil = 0;
+            return;
+          }
           // The DOM pointer-down handler owns Lobby jiggle, so the matching Pixi tap must not kick a second time.
           if (modeRef.current === 'home' && performance.now() <= jiggleTapUntil) {
             jiggleTapUntil = 0;
@@ -1292,11 +1422,65 @@ export default function SkinViewer({
         && (camBone || scriptSceneRef.current));
       // Pointer-down arrives before pan/zoom turns the gesture into a drag, so the jiggle kicks immediately.
       attachPanZoom(app.canvas as HTMLCanvasElement, root, (cx, cy) => {
-        if (modeRef.current !== 'home') return null;
         const local = spine.toLocal({ x: cx, y: cy });
         bounds.update(spine.skeleton, true);
         const boxList = bounds.boundingBoxes ?? [];
         const polyList = bounds.polygons ?? [];
+
+        if (modeRef.current === 'scene') {
+          const player = scenePlayerRef.current;
+          const liveEntries = player?.armed() ?? [];
+          const touchBoxes = new Set(liveEntries
+            .filter((entry) => entry.kind === 'touch')
+            .map((entry) => entry.box));
+          const dragBoxes = new Set(liveEntries
+            .filter((entry) => entry.kind === 'drag')
+            .map((entry) => entry.box));
+          // A newly armed touch target, such as CH0043's feather, owns an
+          // overlapping point instead of letting a broader drag zone swallow it.
+          for (let i = 0; i < polyList.length; i++) {
+            const name: string = boxList[i]?.name ?? '';
+            if (!name || !touchBoxes.has(name)) continue;
+            if (!attachmentIsVisible(boxList[i])) continue;
+            if (polyList[i] && bounds.containsPointPolygon(polyList[i], local.x, local.y)) {
+              return null;
+            }
+          }
+          let box: string | null = null;
+          let bestArea = Infinity;
+          for (let i = 0; i < polyList.length; i++) {
+            const name: string = boxList[i]?.name ?? '';
+            if (!name || !dragBoxes.has(name)) continue;
+            if (!attachmentIsVisible(boxList[i])) continue;
+            if (!polyList[i] || !bounds.containsPointPolygon(polyList[i], local.x, local.y)) continue;
+            const area = polygonArea(polyList[i]);
+            if (area < bestArea) { bestArea = area; box = name; }
+          }
+          if (!box || !player) return null;
+          const held = box;
+          const started = performance.now();
+          let last = local;
+          let distance = 0;
+          return {
+            move: (mx: number, my: number) => {
+              const point = spine.toLocal({ x: mx, y: my });
+              distance += Math.hypot(point.x - last.x, point.y - last.y);
+              last = point;
+            },
+            end: () => {
+              sceneDragTapUntil = performance.now() + 1000;
+              const seconds = (performance.now() - started) / 1000;
+              if (!player.drag(held, distance, seconds)) return;
+              setTouchInfo({
+                box: held,
+                effect: 'reaction',
+                detail: `${player.machine.label ?? 'start'}  drag ${distance.toFixed(1)}`,
+              });
+            },
+          };
+        }
+
+        if (modeRef.current !== 'home') return null;
         let box: string | null = null;
         let bestArea = Infinity;
         for (let i = 0; i < polyList.length; i++) {
@@ -1362,6 +1546,7 @@ export default function SkinViewer({
       rootRef.current = null;
       fitCameraRef.current = () => {};
       resetSceneVisualsRef.current = () => {};
+      detachLayerHover();
       // Destroying before init() resolves throws.
       if (app && appReady) app.destroy(true);
     };
@@ -1507,6 +1692,10 @@ export default function SkinViewer({
     syncBackgroundVisibilityRef.current();
   }, [showBg]);
 
+  useEffect(() => {
+    if (!showLayers && layerHoverRef.current) layerHoverRef.current.style.display = 'none';
+  }, [showLayers]);
+
   // Hiding is enforced per frame in the Spine hook; showing restores the setup alpha once.
   const setLayerHidden = (slots: string[], hide: boolean) => {
     setHiddenSlots((prev) => {
@@ -1541,6 +1730,66 @@ export default function SkinViewer({
     });
   };
 
+  // Screen px per world unit needed for the art's own resolution, capped by frame size.
+  const recordScale = (host: HTMLDivElement) => {
+    const fitScale = rootRef.current?.scale.x ?? 0;
+    const pixelScale = spinePixelScaleRef.current();
+    const native = fitScale > 0 && pixelScale > 0 ? (1 / pixelScale) / fitScale : 1;
+    const longEdge = Math.max(host.clientWidth, host.clientHeight);
+    const cap = longEdge > 0 ? MAX_RECORD_DIM / longEdge : 1;
+    const scale = Math.min(native, cap);
+    return Number.isFinite(scale) ? Math.max(1, scale) : 1;
+  };
+
+  const handleRecord = () => {
+    if (recordingRef.current) {
+      recordingRef.current.stop();
+      return;
+    }
+    const app = appRef.current;
+    const host = hostRef.current;
+    const canvas = app?.canvas ?? app?.renderer?.canvas;
+    if (!app || !host || !canvas || !canRecordCanvas()) {
+      setVideoStatus(t('videoUnsupported'));
+      return;
+    }
+    // The frame is the aspect box, so only its pixel density is raised.
+    const restore = app.renderer.resolution;
+    app.renderer.resolution = recordScale(host);
+    let recording_: VideoRecording | null = null;
+    try {
+      recording_ = startCanvasVideo({
+        canvas,
+        fileName: archive,
+        onStop: () => {
+          if (appRef.current) appRef.current.renderer.resolution = restore;
+          if (recordingRef.current !== recording_) return;
+          recordingRef.current = null;
+          setRecording(false);
+        },
+      });
+    } catch {
+      app.renderer.resolution = restore;
+      setVideoStatus(t('videoUnsupported'));
+      return;
+    }
+    if (!recording_) {
+      app.renderer.resolution = restore;
+      setVideoStatus(t('videoUnsupported'));
+      return;
+    }
+    recordingRef.current = recording_;
+    setVideoStatus(`${t(recording_.audio ? 'videoWithAudio' : 'videoVisualOnly')} ${
+      recording_.width}×${recording_.height}`);
+    setRecording(true);
+  };
+
+  useEffect(() => () => {
+    const recording_ = recordingRef.current;
+    recordingRef.current = null;
+    recording_?.cancel();
+  }, []);
+
   // Memoised so the `?? []` fallback does not hand the option memos a fresh identity every render.
   const anims = useMemo(() => layout?.animations ?? [], [layout]);
   const hasTouchBoxes = (layout?.touch?.regions?.length ?? 0) > 0;
@@ -1564,6 +1813,21 @@ export default function SkinViewer({
       ? [{ value: '', label: text(lang, 'optNone') }, ...groupedOptions(overlays)]
       : [];
   }, [anims, overlayAnims, lang]);
+
+  useEffect(() => {
+    const shared = sharedRef.current;
+    if (!shared || sharedSelectionsAppliedRef.current || !anims.length) return;
+    if (shared.body && bodyOptions.some((option) => option.value === shared.body)) {
+      setBodyAnim(shared.body);
+    }
+    if (shared.face != null && faceOptions.some((option) => option.value === shared.face)) {
+      setFaceAnim(shared.face);
+    }
+    if (shared.overlay != null && overlayOptions.some((option) => option.value === shared.overlay)) {
+      setOverlayAnim(shared.overlay);
+    }
+    sharedSelectionsAppliedRef.current = true;
+  }, [anims, bodyOptions, faceOptions, overlayOptions]);
 
   const playbackContext: PlaybackContext = mode === 'manual' ? 'free_play'
     : mode === 'home' ? 'lobby'
@@ -1617,6 +1881,38 @@ export default function SkinViewer({
     setSceneRunKey((key) => key + 1);
   };
 
+  useEffect(() => {
+    const stage = sharedRef.current?.stage;
+    if (!stage || sharedStageAppliedRef.current || !sceneLabels.includes(stage)) return;
+    const player = scenePlayerRef.current;
+    if (!player) return;
+    player.goto(stage);
+    sharedStageAppliedRef.current = true;
+  }, [rigBuilt, sceneRunKey, sceneLabels]);
+
+  const handleShare = async () => {
+    const url = buildViewerShareUrl(window.location.href, {
+      skin,
+      store,
+      context: playbackContext,
+      speed,
+      background: showBg,
+      camera: followGameFlow ? 'game' : 'free',
+      aspect: canvasAspect,
+      body: bodyAnim || undefined,
+      face: faceAnim || undefined,
+      overlay: overlayAnim || undefined,
+      stage: sceneState?.label ?? undefined,
+    });
+    window.history.replaceState(null, '', url);
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareStatus(t('shareCopied'));
+    } catch {
+      setShareStatus(t('shareCopyFailed'));
+    }
+  };
+
   // CSS `aspect-ratio` cannot letterbox this: clamping the second axis distorts the box instead of shrinking the first.
   const aspectRatio = CANVAS_ASPECTS.find((a) => a.value === canvasAspect)?.ratio ?? 0;
   const hostBox = aspectRatio && panelSize.w && panelSize.h
@@ -1663,6 +1959,10 @@ export default function SkinViewer({
             <Box ref={hostRef} style={hostBox}
               opacity={loadState === 'ready' ? 1 : 0} />
           </Center>
+          <Box ref={layerHoverRef} role="tooltip" display="none" position="absolute"
+            zIndex={3} pointerEvents="none" maxW="220px" px={2} py={1.5}
+            borderRadius="md" bg="blackAlpha.800" color="gray.100" fontSize="xs"
+            fontFamily="mono" lineHeight="short" whiteSpace="pre-line" boxShadow="md" />
           {loadState !== 'ready' && !error && !unavailable && (
             <Center position="absolute" inset={0} color="gray.500" pointerEvents="none"
               flexDirection="column" gap={2}>
@@ -1782,7 +2082,17 @@ export default function SkinViewer({
               <WrapItem>
                 <ActionButton icon="save" label={t('btnSavePng')} onClick={handleSave} />
               </WrapItem>
+              <WrapItem>
+                <ActionButton icon="share" label={t('btnShare')} onClick={handleShare} />
+              </WrapItem>
+              <WrapItem>
+                <ActionButton icon="record"
+                  label={recording ? t('btnStopRecording') : t('btnRecordVideo')}
+                  onClick={handleRecord} disabled={loadState !== 'ready'} />
+              </WrapItem>
             </Wrap>
+            {shareStatus && <Text fontSize="xs" color="green.300">{shareStatus}</Text>}
+            {videoStatus && <Text fontSize="xs" color="gray.500">{videoStatus}</Text>}
           </ControlSection>
 
           <ControlSection title={t('viewerAnimation')}>
@@ -1954,4 +2264,3 @@ export default function SkinViewer({
     </Box>
   );
 }
-

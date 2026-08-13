@@ -2,9 +2,9 @@
 // playing rather than layering over it.
 
 import { voiceClipUrl } from '@/lib/cdn';
+import { busAudio } from '@/lib/audioBus';
 
 export type VoiceIndex = {
-  locale: string;
   /** Voice id -> the `<locale>/<char>/<category>` folder holding its clip. */
   clips: Record<string, string>;
   /** Scenario script path -> localization text id -> voice id. */
@@ -116,7 +116,7 @@ export async function playVoice(index: VoiceIndex | null, voiceId: string): Prom
   if (!cached) download(index, voiceId)?.catch(() => { /* streamed instead */ });
   const src = cached ?? await voiceClipUrl(folder, voiceId);
   if (mine !== token) return;
-  if (!audio) audio = new Audio();
+  if (!audio) audio = busAudio();
   audio.src = src;
   audio.currentTime = 0;
   audio.playbackRate = rate;

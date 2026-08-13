@@ -1,9 +1,4 @@
 {
- "source": {
-  "bundle": "55bad43934f06f21f363dd639c0c1c1a.bundle",
-  "master": "master_024105c9.mpks"
- },
- "locale": "jp",
  "clips": {
   "voc_ch0001_ingame_burst_1_1": "jp/ch0001/ingame",
   "voc_ch0001_ingame_burst_1_2": "jp/ch0001/ingame",
@@ -3858,6 +3853,207 @@
   "voc_ch0042_outgame_skilllv_2": "jp/ch0042/outgame",
   "voc_ch0042_outgame_starup_1": "jp/ch0042/outgame",
   "voc_ch0042_outgame_starup_2": "jp/ch0042/outgame",
+  "voc_ch0043_affection_lobby_1": "jp/ch0043/affection",
+  "voc_ch0043_affection_lobby_2": "jp/ch0043/affection",
+  "voc_ch0043_affection_lobby_3": "jp/ch0043/affection",
+  "voc_ch0043_affection_lobby_4": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_1": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_10": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_11": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_12": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_13": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_14": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_15": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_16": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_17": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_18": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_19": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_2": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_20": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_21": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_22": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_23": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_24": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_25": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_26": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_27": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_28": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_29": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_3": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_30": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_31": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_4": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_5": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_6": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_7": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_8": "jp/ch0043/affection",
+  "voc_ch0043_affection_view_9": "jp/ch0043/affection",
+  "voc_ch0043_desire_enjoy_1": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_10": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_11": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_12": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_13": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_14": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_2": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_3": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_4_1": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_4_2": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_5": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_6_1": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_6_2": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_6_3": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_7": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_8": "jp/ch0043/desire",
+  "voc_ch0043_desire_enjoy_9": "jp/ch0043/desire",
+  "voc_ch0043_desire_lobby_1": "jp/ch0043/desire",
+  "voc_ch0043_desire_lobby_2": "jp/ch0043/desire",
+  "voc_ch0043_desire_lobby_3": "jp/ch0043/desire",
+  "voc_ch0043_desire_lobby_4": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_1": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_10": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_11": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_12": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_13": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_14": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_2": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_3": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_4": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_5": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_6": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_7": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_8": "jp/ch0043/desire",
+  "voc_ch0043_desire_story_9": "jp/ch0043/desire",
+  "voc_ch0043_event_lobby_enter_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_lobby_enter_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_lobby_enter_3": "jp/ch0043/outgame",
+  "voc_ch0043_event_lobby_enter_4": "jp/ch0043/outgame",
+  "voc_ch0043_event_lobby_enter_end_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_lobby_touch_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_lobby_touch_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_lobby_touch_end_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_mission_cleared_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_mission_cleared_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_mission_enter_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_mission_enter_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_mission_enter_end_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_mission_touch_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_mission_touch_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_mission_touch_end_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_buy_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_buy_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_enter_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_enter_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_enter_end_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_round_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_round_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_touch_1": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_touch_2": "jp/ch0043/outgame",
+  "voc_ch0043_event_shop_touch_end_1": "jp/ch0043/outgame",
+  "voc_ch0043_ingame_burst_1_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_burst_1_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_burst_2_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_burst_2_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_burst_3_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_burst_3_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_die_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_die_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_enter_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_enter_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_lose_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_lose_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_move_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_move_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_skill_1_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_skill_1_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_skill_2_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_skill_2_2": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_win_1": "jp/ch0043/ingame",
+  "voc_ch0043_ingame_win_2": "jp/ch0043/ingame",
+  "voc_ch0043_lobby_enter_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_birthday_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_birthday_1_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_birthday_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_birthday_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_christmas_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_christmas_1_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_christmas_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_christmas_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_halloween_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_halloween_1_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_halloween_1_3": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_halloween_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_halloween_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_newyear_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_newyear_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_newyear_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_summer_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_summer_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_valentine_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_valentine_1_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_valentine_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_enter_valentine_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_05": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_06": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_07": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_08": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_3": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_4": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_birthday_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_birthday_1_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_birthday_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_birthday_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_christmas_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_christmas_1_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_christmas_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_christmas_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_halloween_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_halloween_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_halloween_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_halloween_2_3": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_newyear_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_newyear_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_newyear_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_summer_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_summer_1_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_summer_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_summer_2_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_valentine_1": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_valentine_1_2": "jp/ch0043/lobby",
+  "voc_ch0043_lobby_touch_valentine_2": "jp/ch0043/lobby",
+  "voc_ch0043_outgame_charget_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_charlv_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_charlv_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_dispatch_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_dispatch_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_flirting_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_flirting_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_flirting_3": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_flirting_4": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_gift_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_gift_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_gift_3": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_gift_4": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_gift_5": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_gift_6": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_gift_7": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_gift_7_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_intro_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_intro_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_profile_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_profile_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_rankup_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_rankup_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_select_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_select_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_select_3": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_select_4": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_skilllv_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_skilllv_2": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_starup_1": "jp/ch0043/outgame",
+  "voc_ch0043_outgame_starup_2": "jp/ch0043/outgame",
   "voc_ch0046_event_lobby_enter_1": "jp/ch0046/outgame",
   "voc_ch0046_event_lobby_enter_2": "jp/ch0046/outgame",
   "voc_ch0046_event_lobby_enter_3": "jp/ch0046/outgame",
@@ -4606,183 +4802,200 @@
   "voc_ch0063_outgame_skilllv_2": "jp/ch0063/outgame",
   "voc_ch0063_outgame_starup_1": "jp/ch0063/outgame",
   "voc_ch0063_outgame_starup_2": "jp/ch0063/outgame",
-  "voc_np0199_ingame_die_1": "jp/np0199/ingame",
-  "voc_np0199_ingame_die_2": "jp/np0199/ingame",
-  "voc_np0199_ingame_enter_1": "jp/np0199/ingame",
-  "voc_np0199_ingame_enter_2": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_1_1": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_1_2": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_2_1": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_2_2": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_3_1": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_3_2": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_4_1": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_4_2": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_5_1": "jp/np0199/ingame",
-  "voc_np0199_ingame_skill_5_2": "jp/np0199/ingame",
-  "voc_np0299_ingame_die_1": "jp/np0299/ingame",
-  "voc_np0299_ingame_die_2": "jp/np0299/ingame",
-  "voc_np0299_ingame_enter_1": "jp/np0299/ingame",
-  "voc_np0299_ingame_enter_2": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_1_1": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_1_2": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_2_1": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_2_2": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_3_1": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_3_2": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_4_1": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_4_2": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_5_1": "jp/np0299/ingame",
-  "voc_np0299_ingame_skill_5_2": "jp/np0299/ingame",
-  "voc_np0399_ingame_die_1": "jp/np0399/ingame",
-  "voc_np0399_ingame_die_2": "jp/np0399/ingame",
-  "voc_np0399_ingame_enter_1": "jp/np0399/ingame",
-  "voc_np0399_ingame_enter_2": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_1_1": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_1_2": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_2_1": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_2_2": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_3_1": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_3_2": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_4_1": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_4_2": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_5_1": "jp/np0399/ingame",
-  "voc_np0399_ingame_skill_5_2": "jp/np0399/ingame",
-  "voc_np0499_ingame_die_1": "jp/np0499/ingame",
-  "voc_np0499_ingame_die_2": "jp/np0499/ingame",
-  "voc_np0499_ingame_enter_1": "jp/np0499/ingame",
-  "voc_np0499_ingame_enter_2": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_1_1": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_1_2": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_2_1": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_2_2": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_3_1": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_3_2": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_4_1": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_4_2": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_5_1": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_5_2": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_6_1": "jp/np0499/ingame",
-  "voc_np0499_ingame_skill_6_2": "jp/np0499/ingame",
-  "voc_np0799_event_lobby_enter_1": "jp/np0799/outgame",
-  "voc_np0799_event_lobby_enter_2": "jp/np0799/outgame",
-  "voc_np0799_event_lobby_enter_3": "jp/np0799/outgame",
-  "voc_np0799_event_lobby_enter_4": "jp/np0799/outgame",
-  "voc_np0799_event_lobby_enter_end_1": "jp/np0799/outgame",
-  "voc_np0799_event_lobby_touch_1": "jp/np0799/outgame",
-  "voc_np0799_event_lobby_touch_2": "jp/np0799/outgame",
-  "voc_np0799_event_lobby_touch_end_1": "jp/np0799/outgame",
-  "voc_np0799_event_mission_cleared_1": "jp/np0799/outgame",
-  "voc_np0799_event_mission_cleared_2": "jp/np0799/outgame",
-  "voc_np0799_event_mission_enter_1": "jp/np0799/outgame",
-  "voc_np0799_event_mission_enter_2": "jp/np0799/outgame",
-  "voc_np0799_event_mission_enter_end_1": "jp/np0799/outgame",
-  "voc_np0799_event_mission_touch_1": "jp/np0799/outgame",
-  "voc_np0799_event_mission_touch_2": "jp/np0799/outgame",
-  "voc_np0799_event_mission_touch_end_1": "jp/np0799/outgame",
-  "voc_np0799_event_shop_buy_1": "jp/np0799/outgame",
-  "voc_np0799_event_shop_buy_2": "jp/np0799/outgame",
-  "voc_np0799_event_shop_enter_1": "jp/np0799/outgame",
-  "voc_np0799_event_shop_enter_2": "jp/np0799/outgame",
-  "voc_np0799_event_shop_enter_end_1": "jp/np0799/outgame",
-  "voc_np0799_event_shop_touch_1": "jp/np0799/outgame",
-  "voc_np0799_event_shop_touch_2": "jp/np0799/outgame",
-  "voc_np0799_event_shop_touch_end_1": "jp/np0799/outgame",
-  "voc_np0799_ingame_die_1": "jp/np0799/ingame",
-  "voc_np0799_ingame_die_2": "jp/np0799/ingame",
-  "voc_np0799_ingame_enter_1": "jp/np0799/ingame",
-  "voc_np0799_ingame_enter_2": "jp/np0799/ingame",
-  "voc_np0799_ingame_skill_1_1": "jp/np0799/ingame",
-  "voc_np0799_ingame_skill_1_2": "jp/np0799/ingame",
-  "voc_np0799_ingame_skill_2_1": "jp/np0799/ingame",
-  "voc_np0799_ingame_skill_2_2": "jp/np0799/ingame",
-  "voc_np0799_ingame_skill_3_1": "jp/np0799/ingame",
-  "voc_np0799_ingame_skill_3_2": "jp/np0799/ingame",
-  "voc_np0799_ingame_skill_4_1": "jp/np0799/ingame",
-  "voc_np0799_ingame_skill_4_2": "jp/np0799/ingame",
-  "voc_np0799_outgame_intro_1": "jp/np0799/outgame",
-  "voc_np0799_outgame_intro_2": "jp/np0799/outgame",
-  "voc_np6012_ingame_skill_2_1": "jp/np6012/ingame",
-  "voc_np6012_ingame_skill_2_2": "jp/np6012/ingame",
-  "voc_np6012_ingame_skill_6_1": "jp/np6012/ingame",
-  "voc_np6012_ingame_skill_6_2": "jp/np6012/ingame",
-  "voc_np6023_ingame_die_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_die_2": "jp/np6023/ingame",
-  "voc_np6023_ingame_enter_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_enter_2": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_1_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_1_2": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_2_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_2_2": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_3_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_3_2": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_4_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_4_2": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_5_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_5_2": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_6_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_6_2": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_7_1": "jp/np6023/ingame",
-  "voc_np6023_ingame_skill_7_2": "jp/np6023/ingame",
-  "voc_np6023_outgame_intro_1": "jp/np6023/outgame",
-  "voc_np6023_outgame_intro_2": "jp/np6023/outgame",
-  "voc_np8094_ingame_skill_1_1": "jp/np8094/ingame",
-  "voc_np8094_ingame_skill_2_1": "jp/np8094/ingame",
-  "voc_np8095_ingame_skill_1_1": "jp/np8095/ingame",
-  "voc_np8095_ingame_skill_2_1": "jp/np8095/ingame",
-  "voc_np8096_ingame_skill_1_1": "jp/np8096/ingame",
-  "voc_np8096_ingame_skill_2_1": "jp/np8096/ingame",
-  "voc_np8097_ingame_skill_1_1": "jp/np8097/ingame",
-  "voc_np8097_ingame_skill_2_1": "jp/np8097/ingame",
-  "voc_np8199_ingame_skill_1_1": "jp/np8199/ingame",
-  "voc_np8199_ingame_skill_2_1": "jp/np8199/ingame",
-  "voc_np8199_ingame_skill_3_1": "jp/np8199/ingame",
-  "voc_np8199_ingame_skill_4_1": "jp/np8199/ingame",
-  "voc_sc0101_event_lobby_enter_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_lobby_enter_2": "jp/sc0101/outgame",
-  "voc_sc0101_event_lobby_enter_3": "jp/sc0101/outgame",
-  "voc_sc0101_event_lobby_enter_4": "jp/sc0101/outgame",
-  "voc_sc0101_event_lobby_enter_end_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_lobby_touch_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_lobby_touch_2": "jp/sc0101/outgame",
-  "voc_sc0101_event_lobby_touch_end_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_mission_cleared_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_mission_cleared_2": "jp/sc0101/outgame",
-  "voc_sc0101_event_mission_enter_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_mission_enter_2": "jp/sc0101/outgame",
-  "voc_sc0101_event_mission_enter_end_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_mission_touch_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_mission_touch_2": "jp/sc0101/outgame",
-  "voc_sc0101_event_mission_touch_end_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_shop_buy_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_shop_buy_2": "jp/sc0101/outgame",
-  "voc_sc0101_event_shop_enter_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_shop_enter_2": "jp/sc0101/outgame",
-  "voc_sc0101_event_shop_enter_end_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_shop_touch_1": "jp/sc0101/outgame",
-  "voc_sc0101_event_shop_touch_2": "jp/sc0101/outgame",
-  "voc_sc0101_event_shop_touch_end_1": "jp/sc0101/outgame",
-  "voc_sc0101_shop_buy_1": "jp/sc0101/outgame",
-  "voc_sc0101_shop_buy_2": "jp/sc0101/outgame",
-  "voc_sc0101_shop_buy_3": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_1": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_10": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_10_ver2": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_2": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_3": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_4": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_5": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_6": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_7": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_8": "jp/sc0101/outgame",
-  "voc_sc0101_shop_change_9": "jp/sc0101/outgame",
-  "voc_sc0101_shop_enter_1": "jp/sc0101/outgame",
-  "voc_sc0101_shop_enter_2": "jp/sc0101/outgame",
-  "voc_sc0101_shop_touch_1": "jp/sc0101/outgame",
-  "voc_sc0101_shop_touch_2": "jp/sc0101/outgame",
-  "voc_sc0101_shop_touch_3": "jp/sc0101/outgame",
-  "voc_sc0101_shop_touch_4": "jp/sc0101/outgame",
-  "voc_sc0101_shop_touch_5": "jp/sc0101/outgame"
+  "voc_ch0068_affection_lobby_1": "jp/ch0068/affection",
+  "voc_ch0068_affection_lobby_2": "jp/ch0068/affection",
+  "voc_ch0068_affection_lobby_3": "jp/ch0068/affection",
+  "voc_ch0068_affection_lobby_4": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_1": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_10": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_11": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_12": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_13": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_14": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_15": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_16": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_17": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_18": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_19": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_2": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_20": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_21": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_22": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_23": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_24": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_25": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_26": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_27": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_28": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_3": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_4": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_5": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_6": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_7": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_8": "jp/ch0068/affection",
+  "voc_ch0068_affection_view_9": "jp/ch0068/affection",
+  "voc_ch0068_desire_enjoy_1": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_10": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_11": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_12": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_2": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_3": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_4": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_5": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_6": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_7": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_8": "jp/ch0068/desire",
+  "voc_ch0068_desire_enjoy_9": "jp/ch0068/desire",
+  "voc_ch0068_desire_lobby_1": "jp/ch0068/desire",
+  "voc_ch0068_desire_lobby_2": "jp/ch0068/desire",
+  "voc_ch0068_desire_lobby_3": "jp/ch0068/desire",
+  "voc_ch0068_desire_lobby_4": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_1": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_10": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_11": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_12": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_13": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_14": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_15": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_2": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_3": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_4": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_5": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_6": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_7": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_8": "jp/ch0068/desire",
+  "voc_ch0068_desire_story_9": "jp/ch0068/desire",
+  "voc_ch0068_effect_affirmative_1": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_angry_2": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackmedium_1": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackmedium_2": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackmedium_3": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackstrong_1": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackstrong_2": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackstrong_3": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackweak_1": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackweak_2": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_attackweak_3": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_damagestrong_1": "jp/ch0068/effect/groan",
+  "voc_ch0068_effect_damagestrong_2": "jp/ch0068/effect/groan",
+  "voc_ch0068_effect_damagestrong_3": "jp/ch0068/effect/groan",
+  "voc_ch0068_effect_jumpmedium_1": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_jumpstrong_1": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_jumpweak_1": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_landstrong_1": "jp/ch0068/effect/exertion",
+  "voc_ch0068_effect_sensualrelease_1": "jp/ch0068/effect/groan",
+  "voc_ch0068_effect_sensualrelease_2": "jp/ch0068/effect/groan",
+  "voc_ch0068_effect_sensualstrong_1": "jp/ch0068/effect/groan",
+  "voc_ch0068_effect_sensualstrong_2": "jp/ch0068/effect/groan",
+  "voc_ch0068_effect_sensualweak_1": "jp/ch0068/effect/groan",
+  "voc_ch0068_effect_sensualweak_2": "jp/ch0068/effect/groan",
+  "voc_ch0068_event_lobby_enter_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_lobby_enter_2": "jp/ch0068/outgame",
+  "voc_ch0068_event_lobby_enter_3": "jp/ch0068/outgame",
+  "voc_ch0068_event_lobby_enter_4": "jp/ch0068/outgame",
+  "voc_ch0068_event_lobby_enter_end_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_lobby_touch_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_lobby_touch_2": "jp/ch0068/outgame",
+  "voc_ch0068_event_lobby_touch_end_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_mission_cleared_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_mission_cleared_2": "jp/ch0068/outgame",
+  "voc_ch0068_event_mission_enter_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_mission_enter_2": "jp/ch0068/outgame",
+  "voc_ch0068_event_mission_enter_end_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_mission_touch_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_mission_touch_2": "jp/ch0068/outgame",
+  "voc_ch0068_event_mission_touch_end_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_shop_buy_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_shop_buy_2": "jp/ch0068/outgame",
+  "voc_ch0068_event_shop_enter_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_shop_enter_2": "jp/ch0068/outgame",
+  "voc_ch0068_event_shop_enter_end_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_shop_touch_1": "jp/ch0068/outgame",
+  "voc_ch0068_event_shop_touch_2": "jp/ch0068/outgame",
+  "voc_ch0068_event_shop_touch_end_1": "jp/ch0068/outgame",
+  "voc_ch0068_ingame_burst_1_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_burst_1_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_burst_2_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_burst_2_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_burst_3_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_burst_3_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_die_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_die_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_enter_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_enter_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_lose_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_lose_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_move_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_move_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_skill_1_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_skill_1_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_skill_2_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_skill_2_2": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_win_1": "jp/ch0068/ingame",
+  "voc_ch0068_ingame_win_2": "jp/ch0068/ingame",
+  "voc_ch0068_lobby_enter_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_birthday_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_birthday_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_christmas_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_christmas_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_halloween_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_halloween_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_newyear_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_newyear_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_summer_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_summer_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_valentine_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_enter_valentine_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_3": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_4": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_5": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_6": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_7": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_8": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_birthday_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_birthday_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_christmas_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_christmas_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_halloween_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_halloween_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_newyear_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_newyear_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_summer_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_summer_2": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_valentine_1": "jp/ch0068/lobby",
+  "voc_ch0068_lobby_touch_valentine_2": "jp/ch0068/lobby",
+  "voc_ch0068_outgame_charget_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_charlv_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_charlv_2": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_gift_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_gift_2": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_gift_3": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_gift_4": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_gift_5": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_gift_6": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_intro_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_intro_2": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_list_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_list_2": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_profile_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_profile_2": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_profile_3": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_profile_4": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_rankup_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_rankup_2": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_rankup_3": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_rankup_4": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_rankup_5": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_rankup_6": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_select_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_select_2": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_skilllv_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_skilllv_2": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_starup_1": "jp/ch0068/outgame",
+  "voc_ch0068_outgame_starup_2": "jp/ch0068/outgame"
  },
  "scripts": {
   "relationshipstory/ch0009/ch0009_03_desire_story": {
@@ -5391,6 +5604,71 @@
    "~e1aa6919": "voc_ch0042_affection_view_11",
    "~e1d07e1b": "voc_ch0042_affection_view_9"
   },
+  "relationshipstory/ch0043/ch0043_03_desire_story": {
+   "~17bc9c7c": "voc_ch0043_desire_story_3",
+   "~18dd8239": "voc_ch0043_desire_story_5",
+   "~22842711": "voc_ch0043_desire_story_14",
+   "~2484aa6": "voc_ch0043_desire_story_8",
+   "~4cbe1baa": "voc_ch0043_desire_story_11",
+   "~56adf37c": "voc_ch0043_desire_story_7",
+   "~57b5d5c9": "voc_ch0043_desire_story_12",
+   "~6bd9461b": "voc_ch0043_desire_story_1",
+   "~a250af73": "voc_ch0043_desire_story_6",
+   "~ae89abf0": "voc_ch0043_desire_story_10",
+   "~c2e7ccba": "voc_ch0043_desire_story_13",
+   "~cd3fba3c": "voc_ch0043_desire_story_2",
+   "~dca82a99": "voc_ch0043_desire_story_9"
+  },
+  "relationshipstory/ch0043/ch0043_03_desire_view": {
+   "~27b1b1dd": "voc_ch0043_desire_enjoy_8",
+   "~2b50e3a0": "voc_ch0043_desire_enjoy_11",
+   "~5209890b": "voc_ch0043_desire_enjoy_5",
+   "~545df258": "voc_ch0043_desire_enjoy_10",
+   "~6292d4f1": "voc_ch0043_desire_enjoy_4_2",
+   "~73a7021d": "voc_ch0043_desire_enjoy_4_1",
+   "~982b80be": "voc_ch0043_desire_enjoy_2",
+   "~a77abaa": "voc_ch0043_desire_enjoy_1",
+   "~b7aab886": "voc_ch0043_desire_enjoy_3",
+   "~bb5493d8": "voc_ch0043_desire_enjoy_9",
+   "~d4568a79": "voc_ch0043_desire_enjoy_6_2",
+   "~e4d6a7e9": "voc_ch0043_desire_enjoy_7",
+   "~f1e4387e": "voc_ch0043_desire_enjoy_3",
+   "~f8652043": "voc_ch0043_desire_enjoy_5"
+  },
+  "relationshipstory/ch0043/ch0043_05_affection_story": {
+   "~2c4d5ce6": "voc_ch0043_affection_view_9",
+   "~3fba74bd": "voc_ch0043_affection_view_5",
+   "~47c2933": "voc_ch0043_affection_view_31",
+   "~4dc6c8d5": "voc_ch0043_affection_view_11",
+   "~53d64a6": "voc_ch0043_affection_view_3",
+   "~599ec82d": "voc_ch0043_affection_view_14",
+   "~aea8cef9": "voc_ch0043_affection_view_13",
+   "~b2ceaefd": "voc_ch0043_affection_view_15",
+   "~e9d05683": "voc_ch0043_affection_view_6",
+   "~ef57e462": "voc_ch0043_affection_view_2",
+   "~f1b51f32": "voc_ch0043_affection_view_7"
+  },
+  "relationshipstory/ch0043/ch0043_05_affection_view": {
+   "~2a32fdda": "voc_ch0043_affection_view_25",
+   "~2c4d5ce6": "voc_ch0043_affection_view_9",
+   "~3fba74bd": "voc_ch0043_affection_view_5",
+   "~47c2933": "voc_ch0043_affection_view_31",
+   "~4dc6c8d5": "voc_ch0043_affection_view_11",
+   "~53d64a6": "voc_ch0043_affection_view_3",
+   "~599ec82d": "voc_ch0043_affection_view_14",
+   "~aea8cef9": "voc_ch0043_affection_view_13",
+   "~b2ceaefd": "voc_ch0043_affection_view_15",
+   "~bbaaa48d": "voc_ch0043_affection_view_19",
+   "~ce348671": "voc_ch0043_affection_view_23",
+   "~e9d05683": "voc_ch0043_affection_view_6",
+   "~ea91ff7d": "voc_ch0043_affection_view_22",
+   "~ed52bd70": "voc_ch0043_affection_view_27",
+   "~ef57e462": "voc_ch0043_affection_view_2",
+   "~f0bc2e87": "voc_ch0043_affection_view_24",
+   "~f0d679d1": "voc_ch0043_affection_view_26",
+   "~f133224f": "voc_ch0043_affection_view_21",
+   "~f1b51f32": "voc_ch0043_affection_view_7"
+  },
   "relationshipstory/ch0057/ch0057_03_desire_story": {
    "~1be0d4de": "voc_ch0057_desire_story_1",
    "~3ea899f": "voc_ch0057_desire_story_1",
@@ -5460,6 +5738,46 @@
    "~cbee2716": "voc_ch0057_affection_view_15",
    "~da1cf854": "voc_ch0057_affection_view_4",
    "~f7827cda": "voc_ch0057_affection_view_3"
+  },
+  "relationshipstory/ch0068/ch0068_03_desire_story": {
+   "~16dc3296": "voc_ch0068_desire_story_14",
+   "~237938bf": "voc_ch0068_desire_story_6",
+   "~374d6291": "voc_ch0068_desire_story_1",
+   "~420f7f11": "voc_ch0068_desire_story_8",
+   "~464f55da": "voc_ch0068_desire_story_14",
+   "~46e7bcfe": "voc_ch0068_desire_story_11",
+   "~5bd068": "voc_ch0068_desire_story_13",
+   "~70bd9212": "voc_ch0068_desire_story_7",
+   "~7bc462dc": "voc_ch0068_desire_story_2",
+   "~7e0c28a4": "voc_ch0068_desire_story_13",
+   "~87e43531": "voc_ch0068_desire_story_15",
+   "~887e6814": "voc_ch0068_desire_story_15",
+   "~8df09f96": "voc_ch0068_desire_story_10",
+   "~909a4d11": "voc_ch0068_desire_story_5",
+   "~97f0936b": "voc_ch0068_desire_story_10",
+   "~a4e8f768": "voc_ch0068_desire_story_3",
+   "~bbca2883": "voc_ch0068_desire_story_12",
+   "~bf74feb2": "voc_ch0068_desire_story_9",
+   "~cdd9b02": "voc_ch0068_desire_story_4",
+   "~e21b5d6c": "voc_ch0068_desire_story_15",
+   "~e4baaaa2": "voc_ch0068_desire_story_8",
+   "~eb50e260": "voc_ch0068_desire_story_9",
+   "~f8156a70": "voc_ch0068_desire_story_11",
+   "~fd0e987a": "voc_ch0068_desire_story_3"
+  },
+  "relationshipstory/ch0068/ch0068_03_desire_view": {
+   "~1020103e": "voc_ch0068_desire_enjoy_6",
+   "~27e5e4e1": "voc_ch0068_desire_enjoy_3",
+   "~4ab96d32": "voc_ch0068_desire_enjoy_4",
+   "~5e534a53": "voc_ch0068_desire_enjoy_10",
+   "~89d8643f": "voc_ch0068_desire_enjoy_8",
+   "~8ebbe0e6": "voc_ch0068_desire_enjoy_5",
+   "~a0cea6f4": "voc_ch0068_desire_enjoy_9",
+   "~a9833d26": "voc_ch0068_desire_enjoy_1",
+   "~b66e1e57": "voc_ch0068_desire_enjoy_2",
+   "~b73ffa9": "voc_ch0068_desire_enjoy_12",
+   "~eb3077d": "voc_ch0068_desire_enjoy_11",
+   "~f6ea7662": "voc_ch0068_desire_enjoy_7"
   }
  },
  "interactions": {
@@ -12074,6 +12392,733 @@
     "emo": "shy"
    }
   ],
+  "CH0043": [
+   {
+    "id": "CH0035_ST_EV1005_LOBBY_ENTER_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Lobby",
+     "Enter",
+     "Progress"
+    ],
+    "text": "안녕~ 당연히 도와주러 온 거지? 기다리고 있었어.",
+    "voice": "voc_ch0043_event_lobby_enter_1",
+    "ani": "active",
+    "emo": "question",
+    "wait": 4.0
+   },
+   {
+    "id": "CH0035_ST_EV1005_LOBBY_ENTER_02",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Lobby",
+     "Enter",
+     "Progress"
+    ],
+    "text": "한탕 할 준비는 됐어?\n우린 당연히 준비 완료지.",
+    "voice": "voc_ch0043_event_lobby_enter_2",
+    "ani": "active",
+    "face": "question",
+    "emo": "question",
+    "wait": 2.5
+   },
+   {
+    "id": "CH0035_ST_EV1005_LOBBY_ENTER_03",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Lobby",
+     "Enter",
+     "Progress"
+    ],
+    "text": "너같은 사람을 기다려왔다니까.\n얼른 가보자~!",
+    "voice": "voc_ch0043_event_lobby_enter_3",
+    "ani": "active",
+    "emo": "surprise",
+    "wait": 3.0
+   },
+   {
+    "id": "CH0035_ST_EV1005_LOBBY_ENTER_04",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Lobby",
+     "Enter",
+     "Progress"
+    ],
+    "text": "함께 힘내서 부자로 발돋음 해보자!",
+    "voice": "voc_ch0043_event_lobby_enter_4",
+    "face": "unique02",
+    "emo": "twinkle"
+   },
+   {
+    "id": "CH0035_ST_EV1005_LOBBY_ENTER_END_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Lobby",
+     "Enter",
+     "Reward"
+    ],
+    "text": "작전 종료~ 현장을 얼쩡거리다가 붙잡힐지도 몰라!",
+    "voice": "voc_ch0043_event_lobby_enter_end_1",
+    "face": "serious",
+    "emo": "surprise"
+   },
+   {
+    "id": "CH0035_ST_EV1005_LOBBY_TOUCH_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Lobby",
+     "Touch",
+     "Progress"
+    ],
+    "text": "걱정 마.\n우리 작전은 완벽하니까!",
+    "voice": "voc_ch0043_event_lobby_touch_1",
+    "ani": "active",
+    "emo": "twinkle",
+    "wait": 1.5
+   },
+   {
+    "id": "CH0035_ST_EV1005_LOBBY_TOUCH_02",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Lobby",
+     "Touch",
+     "Progress"
+    ],
+    "text": "하필 이럴 때 한 명이 빠져서 말이야…\n너라면 잘 해줄 거라 믿어.",
+    "voice": "voc_ch0043_event_lobby_touch_2",
+    "face": "ignore",
+    "emo": "sigh",
+    "wait": 3.0
+   },
+   {
+    "id": "CH0035_ST_EV1005_LOBBY_TOUCH_END_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Lobby",
+     "Touch",
+     "Reward"
+    ],
+    "text": "우리, 처음인 것치곤 잘 하지 않았어? 물론 너도 잘했어!",
+    "voice": "voc_ch0043_event_lobby_touch_end_1",
+    "face": "question",
+    "emo": "question",
+    "wait": 3.0
+   },
+   {
+    "id": "CH0005_ST_EV1005_QUEST_ENTER_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Quest",
+     "Enter",
+     "Progress"
+    ],
+    "text": "네가 도와줬으면 하는 일들이 있는데 말이야...",
+    "voice": "voc_ch0043_event_mission_enter_1",
+    "face": "ignore",
+    "emo": "silence"
+   },
+   {
+    "id": "CH0005_ST_EV1005_QUEST_ENTER_02",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Quest",
+     "Enter",
+     "Progress"
+    ],
+    "text": "제발 이것들 좀 처리해 줘~!\n일손이 부족해!",
+    "voice": "voc_ch0043_event_mission_enter_2",
+    "face": "surprised",
+    "emo": "sweat3",
+    "wait": 2.5
+   },
+   {
+    "id": "CH0005_ST_EV1005_QUEST_ENTER_END_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Quest",
+     "Enter",
+     "Reward"
+    ],
+    "text": "네 덕분에 일이 잘 끝났어. 수고했어!",
+    "voice": "voc_ch0043_event_mission_enter_end_1",
+    "face": "shy",
+    "emo": "love"
+   },
+   {
+    "id": "CH0005_ST_EV1005_QUEST_TOUCH_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Quest",
+     "Touch",
+     "Progress"
+    ],
+    "text": "꾸물대다간 아무것도 못 얻게 될지도 몰라!",
+    "voice": "voc_ch0043_event_mission_touch_1",
+    "face": "anger",
+    "emo": "angry2"
+   },
+   {
+    "id": "CH0005_ST_EV1005_QUEST_TOUCH_02",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Quest",
+     "Touch",
+     "Progress"
+    ],
+    "text": "이것도 작전의 일부라고~!\n절대 땡땡이치면 안 돼!",
+    "voice": "voc_ch0043_event_mission_touch_2",
+    "face": "serious",
+    "emo": "surprise3",
+    "wait": 1.0
+   },
+   {
+    "id": "CH0005_ST_EV1005_QUEST_TOUCH_END_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Quest",
+     "Touch",
+     "Reward"
+    ],
+    "text": "이번이 마지막은 아닐 거야. 다음에도 잘 부탁해~!",
+    "voice": "voc_ch0043_event_mission_touch_end_1",
+    "face": "unique02",
+    "emo": "respond",
+    "wait": 2.0
+   },
+   {
+    "id": "CH0005_ST_EV1005_QUEST_CLEAR_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Quest",
+     "Cleared"
+    ],
+    "text": "고마워! 이걸로 우리 작전이 한결 완벽해졌어!",
+    "voice": "voc_ch0043_event_mission_cleared_1",
+    "ani": "active",
+    "emo": "twinkle"
+   },
+   {
+    "id": "CH0005_ST_EV1005_QUEST_CLEAR_02",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Quest",
+     "Cleared"
+    ],
+    "text": "역시 네가 최고라니까. 부르길 잘했어!",
+    "voice": "voc_ch0043_event_mission_cleared_2",
+    "ani": "active",
+    "emo": "love2"
+   },
+   {
+    "id": "CH0005_ST_EV1005_SHOP_ENTER_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Shop",
+     "Enter",
+     "Progress"
+    ],
+    "text": "어서 와~ 널 위해 특별히 준비한 금고야!",
+    "voice": "voc_ch0043_event_shop_enter_1",
+    "ani": "active",
+    "emo": "respond"
+   },
+   {
+    "id": "CH0005_ST_EV1005_SHOP_ENTER_02",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Shop",
+     "Enter",
+     "Progress"
+    ],
+    "text": "여기서 서로 원하는 물건을 가져갔으면 좋겠네!",
+    "voice": "voc_ch0043_event_shop_enter_2",
+    "face": "unique02",
+    "emo": "twinkle"
+   },
+   {
+    "id": "CH0005_ST_EV1005_SHOP_ENTER_END_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Shop",
+     "Enter",
+     "Reward"
+    ],
+    "text": "아직 금고는 남아 있으니까, 언제든지 찾아 와!",
+    "voice": "voc_ch0043_event_shop_enter_end_1",
+    "ani": "active",
+    "emo": "love2"
+   },
+   {
+    "id": "CH0005_ST_EV1005_SHOP_TOUCH_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Shop",
+     "Touch",
+     "Progress"
+    ],
+    "text": "나오는 물건은 공평하게 반반 나누는 거야! 그 이상은 안 돼!",
+    "voice": "voc_ch0043_event_shop_touch_1",
+    "face": "serious",
+    "emo": "surprise",
+    "wait": 3.5
+   },
+   {
+    "id": "CH0005_ST_EV1005_SHOP_TOUCH_02",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Shop",
+     "Touch",
+     "Progress"
+    ],
+    "text": "이 무거운 걸 들고오느라 힘들었다니까.",
+    "voice": "voc_ch0043_event_shop_touch_2",
+    "face": "surprised",
+    "emo": "sweat3"
+   },
+   {
+    "id": "CH0005_ST_EV1005_SHOP_TOUCH_END_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Shop",
+     "Touch",
+     "Reward"
+    ],
+    "text": "시간을 더 줄 순 없어. 꼬리가 길면 잡히는 법이니까.",
+    "voice": "voc_ch0043_event_shop_touch_end_1",
+    "face": "ignore",
+    "emo": "silence"
+   },
+   {
+    "id": "CH0005_ST_EV1005_SHOP_BUY_01",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Shop",
+     "Buy"
+    ],
+    "text": "과연 금고에서 뭐가 나올까나~",
+    "voice": "voc_ch0043_event_shop_buy_1",
+    "face": "closeeye",
+    "emo": "twinkle"
+   },
+   {
+    "id": "CH0005_ST_EV1005_SHOP_BUY_02",
+    "filter": [
+     "Standing",
+     "EV1005",
+     "Event_Shop",
+     "Buy"
+    ],
+    "text": "좋은 물건이 나왔으면 좋겠다. 그치?",
+    "voice": "voc_ch0043_event_shop_buy_2",
+    "ani": "active",
+    "emo": "question"
+   },
+   {
+    "id": "CH0043_ST_LOBBY_TOUCH_01",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "혹시 여행 떠나고 싶어졌어?\n난 언제든지 환영이야!",
+    "voice": "voc_ch0043_lobby_touch_1",
+    "face": "question",
+    "emo": "question",
+    "wait": 2.5
+   },
+   {
+    "id": "CH0043_ST_LOBBY_TOUCH_02",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "오늘은 뭘 먹었냐면…\n헤헤헤, 꼭 말해야 돼?",
+    "voice": "voc_ch0043_lobby_touch_2",
+    "ani": "active",
+    "face": "question",
+    "emo": "sweat",
+    "wait": 4.0
+   },
+   {
+    "id": "CH0043_ST_LOBBY_TOUCH_03",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "길을 잃었을 땐, 되돌아가는 게 가장 좋아. 일상에서도 마찬가지고!",
+    "voice": "voc_ch0043_lobby_touch_3",
+    "ani": "active",
+    "emo": "surprise",
+    "wait": 4.5
+   },
+   {
+    "id": "CH0043_ST_LOBBY_TOUCH_04",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "여행이라는 특별함만을 쫓다가 일상의 소중함을 잊으면 안 돼.\n그건 그거, 이건 이거!",
+    "voice": "voc_ch0043_lobby_touch_4",
+    "face": "serious",
+    "emo": "twinkle",
+    "wait": 5.0
+   },
+   {
+    "id": "CH0043_ST_LOBBY_TOUCH_05",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch",
+     "Breast"
+    ],
+    "text": "흡…",
+    "voice": "voc_ch0043_lobby_touch_5",
+    "ani": "breast_touch",
+    "emo": "shy"
+   },
+   {
+    "id": "CH0043_ST_LOBBY_TOUCH_06",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch",
+     "Breast"
+    ],
+    "text": "흐앗...!",
+    "voice": "voc_ch0043_lobby_touch_6",
+    "ani": "breast_touch",
+    "emo": "love"
+   },
+   {
+    "id": "CH0043_ST_LOBBY_TOUCH_07",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch",
+     "Breast"
+    ],
+    "text": "으앗...!",
+    "voice": "voc_ch0043_lobby_touch_7",
+    "ani": "breast_touch",
+    "emo": "surprise2"
+   },
+   {
+    "id": "CH0043_ST_LOBBY_TOUCH_08",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch",
+     "Breast"
+    ],
+    "text": "어라...!",
+    "voice": "voc_ch0043_lobby_touch_8",
+    "ani": "breast_touch",
+    "emo": "surprise4"
+   },
+   {
+    "id": "CH0043_ST_LOBBY_ENTER_01",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Enter"
+    ],
+    "text": "안녕~ 오늘 하루는 어때?\n나는 지금 널 만났으니까 절호조!",
+    "voice": "voc_ch0043_lobby_enter_1",
+    "face": "happy",
+    "emo": "respond",
+    "wait": 3.5
+   },
+   {
+    "id": "CH0043_ST_LOBBY_ENTER_02",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Enter"
+    ],
+    "text": "특별한 일상을 원해?\n날 만났으니 벌써 특별한 날이지 아닐까?",
+    "voice": "voc_ch0043_lobby_enter_2",
+    "ani": "active",
+    "emo": "question",
+    "wait": 3.5
+   },
+   {
+    "id": "CH0043_ST_LOBBY_ONLOOK_01",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Onlook"
+    ],
+    "text": "음... 이번에는 어느 방향으로 떠나 볼까나…",
+    "voice": "voc_ch0043_outgame_profile_1",
+    "ani": "idle_boring",
+    "face": "closeeye",
+    "emo": "silence"
+   },
+   {
+    "id": "CH0043_ST_LOBBY_ONLOOK_02",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Onlook"
+    ],
+    "text": "이번 달 월급까지 남은 돈이…\n그렇다면 식비가... 으아아아!!",
+    "voice": "voc_ch0043_outgame_profile_2",
+    "face": "embarrassed",
+    "emo": "sweat3",
+    "wait": 5.5
+   },
+   {
+    "id": "CH0043_DE_LOBBY_TOUCH_01",
+    "filter": [
+     "Desire",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "내가 함정에 빠지다니…",
+    "voice": "voc_ch0043_desire_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_DE_LOBBY_TOUCH_02",
+    "filter": [
+     "Desire",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "으으... 혼자서는 못 빠져나가겠어…",
+    "voice": "voc_ch0043_desire_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_DE_LOBBY_TOUCH_03",
+    "filter": [
+     "Desire",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "이 자세 이곳저곳이 훤히 보여서 부끄러운데…",
+    "voice": "voc_ch0043_desire_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_DE_LOBBY_TOUCH_04",
+    "filter": [
+     "Desire",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "언제까지 바라만 볼 거야... 빨리 도와줘...!",
+    "voice": "voc_ch0043_desire_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_DE_LOBBY_TOUCH_05",
+    "filter": [
+     "Desire",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "내가 함정에 빠지다니…",
+    "voice": "voc_ch0043_desire_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_DE_LOBBY_TOUCH_06",
+    "filter": [
+     "Desire",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "으으... 혼자서는 못 빠져나가겠어…",
+    "voice": "voc_ch0043_desire_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_DE_LOBBY_TOUCH_07",
+    "filter": [
+     "Desire",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "이 자세 이곳저곳이 훤히 보여서 부끄러운데…",
+    "voice": "voc_ch0043_desire_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_DE_LOBBY_TOUCH_08",
+    "filter": [
+     "Desire",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "언제까지 바라만 볼 거야... 빨리 도와줘...!",
+    "voice": "voc_ch0043_desire_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_AF_LOBBY_TOUCH_01",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "시원한데 정말 안 들어올 거야?",
+    "voice": "voc_ch0043_affection_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_AF_LOBBY_TOUCH_02",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "여행의 마지막은 기억에 남는 일을 해야하는 법이야!",
+    "voice": "voc_ch0043_affection_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_AF_LOBBY_TOUCH_03",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "그렇게 앉아만 있으면 돌아가서 후회할걸?",
+    "voice": "voc_ch0043_affection_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_AF_LOBBY_TOUCH_04",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "너답지 않게 왜 그렇게 망설여?",
+    "voice": "voc_ch0043_affection_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_AF_LOBBY_TOUCH_05",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "시원한데 정말 안 들어올 거야?",
+    "voice": "voc_ch0043_affection_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_AF_LOBBY_TOUCH_06",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "여행의 마지막은 기억에 남는 일을 해야하는 법이야!",
+    "voice": "voc_ch0043_affection_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_AF_LOBBY_TOUCH_07",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "그렇게 앉아만 있으면 돌아가서 후회할걸?",
+    "voice": "voc_ch0043_affection_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_AF_LOBBY_TOUCH_08",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "너답지 않게 왜 그렇게 망설여?",
+    "voice": "voc_ch0043_affection_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0043_ST_PARTNER_TOUCH_01",
+    "filter": [
+     "Standing",
+     "Partner",
+     "Touch"
+    ],
+    "text": "네가 어딜 가든 내가 함께 길을 찾아줄게.",
+    "voice": "voc_ch0043_outgame_select_1",
+    "ani": "active",
+    "emo": "gogo"
+   },
+   {
+    "id": "CH0043_ST_PARTNER_TOUCH_02",
+    "filter": [
+     "Standing",
+     "Partner",
+     "Touch"
+    ],
+    "text": "좋았어. 여행은 함께해야 더욱 재밌는 법이거든.",
+    "voice": "voc_ch0043_outgame_select_2",
+    "ani": "active",
+    "emo": "hehe",
+    "wait": 2.0
+   },
+   {
+    "id": "CH0043_ST_RELATION_RANKUP_TOUCH_01",
+    "filter": [
+     "Standing",
+     "Relation",
+     "Rankup"
+    ],
+    "text": "널 향한 지도가 좀 더 뚜렷해졌어!",
+    "voice": "voc_ch0043_outgame_rankup_1",
+    "face": "shy",
+    "emo": "love2"
+   },
+   {
+    "id": "CH0043_ST_RELATION_RANKUP_TOUCH_02",
+    "filter": [
+     "Standing",
+     "Relation",
+     "Rankup"
+    ],
+    "text": "너 덕분에 세상보는 눈이 넓어졌어!",
+    "voice": "voc_ch0043_outgame_rankup_2",
+    "face": "happy",
+    "emo": "yureka"
+   }
+  ],
   "CH0046": [
    {
     "id": "CH0046_ST_LOBBY_TOUCH_01",
@@ -13196,6 +14241,673 @@
     "face": "embarrassed",
     "emo": "shy",
     "wait": 4.0
+   }
+  ],
+  "CH0068": [
+   {
+    "id": "CH0068_ST_EV1003_QUEST_ENTER_01",
+    "filter": [
+     "Standing",
+     "EV1003",
+     "Event_Quest",
+     "Enter",
+     "Progress"
+    ],
+    "text": "집요정들이 말하더라고.\n할 일이 많은 게 좋은 거라고. 어떻게 생각해?",
+    "voice": "voc_ch0068_event_mission_enter_1",
+    "face": "closeeye",
+    "emo": "respond",
+    "wait": 5.0
+   },
+   {
+    "id": "CH0068_ST_EV1003_QUEST_ENTER_02",
+    "filter": [
+     "Standing",
+     "EV1003",
+     "Event_Quest",
+     "Enter",
+     "Progress"
+    ],
+    "text": "아가씨들도 기록 세우는 거 좋아하던데.\n다 그런 건가 싶기도 하고?",
+    "voice": "voc_ch0068_event_mission_enter_2",
+    "face": "question",
+    "emo": "surprise2",
+    "wait": 3.0
+   },
+   {
+    "id": "CH0068_ST_EV1003_QUEST_ENTER_END_01",
+    "filter": [
+     "Standing",
+     "EV1003",
+     "Event_Quest",
+     "Enter",
+     "Reward"
+    ],
+    "text": "기억을 되짚어보는 것도 나쁘지 않아.",
+    "voice": "voc_ch0068_event_mission_enter_end_1",
+    "ani": "active",
+    "emo": "twinkle"
+   },
+   {
+    "id": "CH0068_ST_EV1003_QUEST_TOUCH_01",
+    "filter": [
+     "Standing",
+     "EV1003",
+     "Event_Quest",
+     "Touch",
+     "Progress"
+    ],
+    "text": "집안일이 쌓이면 빠르게 해결하는 타입?\n아니면 끝까지 방치하는 타입?",
+    "voice": "voc_ch0068_event_mission_touch_1",
+    "face": "surprised",
+    "emo": "question",
+    "wait": 2.5
+   },
+   {
+    "id": "CH0068_ST_EV1003_QUEST_TOUCH_02",
+    "filter": [
+     "Standing",
+     "EV1003",
+     "Event_Quest",
+     "Touch",
+     "Progress"
+    ],
+    "text": "하나씩 하다보면 언젠가 끝나겠지.\n누군가가 일을 늘리지만 않는다면 말이야.",
+    "voice": "voc_ch0068_event_mission_touch_2",
+    "face": "smile",
+    "emo": "harmony",
+    "wait": 2.0
+   },
+   {
+    "id": "CH0068_ST_EV1003_QUEST_TOUCH_END_01",
+    "filter": [
+     "Standing",
+     "EV1003",
+     "Event_Quest",
+     "Touch",
+     "Reward"
+    ],
+    "text": "꽤 열심히 활약했네?\n괜찮아, 내가 네 몫까지 쉬었어.",
+    "voice": "voc_ch0068_event_mission_touch_end_1",
+    "face": "question",
+    "emo": "question",
+    "wait": 1.5
+   },
+   {
+    "id": "CH0068_ST_EV1003_QUEST_CLEAR_01",
+    "filter": [
+     "Standing",
+     "EV1003",
+     "Event_Quest",
+     "Cleared"
+    ],
+    "text": "달성 완료~ 열심이네.",
+    "voice": "voc_ch0068_event_mission_cleared_1",
+    "ani": "active",
+    "emo": "love"
+   },
+   {
+    "id": "CH0068_ST_EV1003_QUEST_CLEAR_02",
+    "filter": [
+     "Standing",
+     "EV1003",
+     "Event_Quest",
+     "Cleared"
+    ],
+    "text": "네 활약, 기억에 새겨뒀어.",
+    "voice": "voc_ch0068_event_mission_cleared_2",
+    "ani": "active",
+    "emo": "harmony"
+   },
+   {
+    "id": "CH0068_ST_EV1004_SHOP_ENTER_01",
+    "filter": [
+     "Standing",
+     "EV1004",
+     "Event_Shop",
+     "Enter",
+     "Progress"
+    ],
+    "text": "물건? 아, 뭐가 좋은지 몰라서 그냥 잔뜩 진열해놓긴 했는데.",
+    "voice": "voc_ch0068_event_shop_enter_1",
+    "face": "question",
+    "emo": "question",
+    "wait": 2.0
+   },
+   {
+    "id": "CH0068_ST_EV1004_SHOP_ENTER_02",
+    "filter": [
+     "Standing",
+     "EV1004",
+     "Event_Shop",
+     "Enter",
+     "Progress"
+    ],
+    "text": "할인은 없지만, 시간은 충분할 거야. 아니면 말고.",
+    "voice": "voc_ch0068_event_shop_enter_2",
+    "ani": "active",
+    "emo": "hehe"
+   },
+   {
+    "id": "CH0068_ST_EV1004_SHOP_ENTER_END_01",
+    "filter": [
+     "Standing",
+     "EV1004",
+     "Event_Shop",
+     "Enter",
+     "Reward"
+    ],
+    "text": "살 거 다 샀는지 확인하러 온거야? 아니면 뭔가 미련이라도 남은 거야?",
+    "voice": "voc_ch0068_event_shop_enter_end_1",
+    "face": "question",
+    "emo": "question"
+   },
+   {
+    "id": "CH0068_ST_EV1004_SHOP_TOUCH_01",
+    "filter": [
+     "Standing",
+     "EV1004",
+     "Event_Shop",
+     "Touch",
+     "Progress"
+    ],
+    "text": "물건을 보러 온 게 아니라 날 보러 온건가..? 흐음…",
+    "voice": "voc_ch0068_event_shop_touch_1",
+    "face": "closeeye",
+    "emo": "silence",
+    "wait": 3.0
+   },
+   {
+    "id": "CH0068_ST_EV1004_SHOP_TOUCH_02",
+    "filter": [
+     "Standing",
+     "EV1004",
+     "Event_Shop",
+     "Touch",
+     "Progress"
+    ],
+    "text": "할인? 그게 뭐야? 먹는 건가.",
+    "voice": "voc_ch0068_event_shop_touch_2",
+    "face": "question",
+    "emo": "question"
+   },
+   {
+    "id": "CH0068_ST_EV1004_SHOP_TOUCH_END_01",
+    "filter": [
+     "Standing",
+     "EV1004",
+     "Event_Shop",
+     "Touch",
+     "Reward"
+    ],
+    "text": "아쉬워도 재고는 이게 전부야. 하지만... 다음 기회가 있겠지. 안 그래?",
+    "voice": "voc_ch0068_event_shop_touch_end_1",
+    "face": "unique01",
+    "emo": "sigh",
+    "wait": 3.0
+   },
+   {
+    "id": "CH0068_ST_EV1004_SHOP_BUY_01",
+    "filter": [
+     "Standing",
+     "EV1004",
+     "Event_Shop",
+     "Buy"
+    ],
+    "text": "그거 사려고? 좋아.",
+    "voice": "voc_ch0068_event_shop_buy_1",
+    "ani": "active",
+    "emo": "twinkle"
+   },
+   {
+    "id": "CH0068_ST_EV1004_SHOP_BUY_02",
+    "filter": [
+     "Standing",
+     "EV1004",
+     "Event_Shop",
+     "Buy"
+    ],
+    "text": "교환 성립. 가져가, 가져가.",
+    "voice": "voc_ch0068_event_shop_buy_2",
+    "ani": "active",
+    "emo": "harmony"
+   },
+   {
+    "id": "CH0068_ST_LOBBY_TOUCH_01",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "...'봉사정신'을 배우기 위해 묵고 있는 호텔의 메이드들을 관찰 중인데... 생각보다 어렵네.",
+    "voice": "voc_ch0068_lobby_touch_1",
+    "face": "closeeye",
+    "emo": "silence",
+    "wait": 4.5
+   },
+   {
+    "id": "CH0068_ST_LOBBY_TOUCH_02",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "이 수영복은 에밀리 아가씨가 골라준 거야. 그럴 것 같았다고? 왜?",
+    "voice": "voc_ch0068_lobby_touch_2",
+    "ani": "active",
+    "emo": "hehe"
+   },
+   {
+    "id": "CH0068_ST_LOBBY_TOUCH_03",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "해변에서 바베큐 파티 해봤어?\n난 아직 해본 적 없거든. 한번 하자. 무한 리필로.",
+    "voice": "voc_ch0068_lobby_touch_3",
+    "face": "question",
+    "emo": "question",
+    "wait": 4.5
+   },
+   {
+    "id": "CH0068_ST_LOBBY_TOUCH_04",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "휴가 중이라고 해봐야 평소랑 다를 게 없어. 어차피 일을 많이 하진 않으니까.",
+    "voice": "voc_ch0068_lobby_touch_4",
+    "face": "closeeye",
+    "emo": "silence",
+    "wait": 3.0
+   },
+   {
+    "id": "CH0068_ST_LOBBY_TOUCH_05",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch",
+     "Breast"
+    ],
+    "text": "헙…",
+    "voice": "voc_ch0068_lobby_touch_5",
+    "ani": "breast_touch",
+    "emo": "sweat3"
+   },
+   {
+    "id": "CH0068_ST_LOBBY_TOUCH_06",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch",
+     "Breast"
+    ],
+    "text": "아앗…",
+    "voice": "voc_ch0068_lobby_touch_6",
+    "ani": "breast_touch",
+    "emo": "shy"
+   },
+   {
+    "id": "CH0068_ST_LOBBY_TOUCH_07",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch",
+     "Breast"
+    ],
+    "text": "으앗..!!!",
+    "voice": "voc_ch0068_lobby_touch_7",
+    "ani": "breast_touch",
+    "emo": "surprise3"
+   },
+   {
+    "id": "CH0068_ST_LOBBY_TOUCH_08",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Touch",
+     "Breast"
+    ],
+    "text": "히얏..!!!",
+    "voice": "voc_ch0068_lobby_touch_8",
+    "ani": "breast_touch",
+    "emo": "surprise2"
+   },
+   {
+    "id": "CH0068_ST_LOBBY_ENTER_01",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Enter"
+    ],
+    "text": "응? 뭐야, 언제 왔어? 올 때 아이스크림 사 올 수 있는지 물어보려 했는데.",
+    "voice": "voc_ch0068_lobby_enter_1",
+    "ani": "active",
+    "emo": "question",
+    "wait": 4.0
+   },
+   {
+    "id": "CH0068_ST_LOBBY_ENTER_02",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Enter"
+    ],
+    "text": "어서와. 해결사의 오늘 일정은 안 바쁜 편? 나는 휴가 중이라, 전혀 안 바뻐.",
+    "voice": "voc_ch0068_lobby_enter_2",
+    "ani": "active",
+    "face": "happy",
+    "emo": "twinkle",
+    "wait": 4.0
+   },
+   {
+    "id": "CH0068_ST_LOBBY_ONLOOK_01",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Onlook"
+    ],
+    "text": "어디 혼자 놀러 간건가? 흐음…",
+    "voice": "voc_ch0068_outgame_profile_1",
+    "ani": "idle_boring",
+    "emo": "question2",
+    "wait": 1.5
+   },
+   {
+    "id": "CH0068_ST_LOBBY_ONLOOK_02",
+    "filter": [
+     "Standing",
+     "Lobby",
+     "Onlook"
+    ],
+    "text": "잠깐 자리 비운 건가?\n뭐, 기다리면 언젠가 오겠지.",
+    "voice": "voc_ch0068_outgame_profile_2",
+    "ani": "idle_boring",
+    "face": "smile",
+    "emo": "question",
+    "wait": 2.0
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_01",
+    "filter": [
+     "Desire",
+     "Situation1",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "이런 자세를... 왜 하라는 건지 잘 모르겠지만…",
+    "voice": "voc_ch0068_desire_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_02",
+    "filter": [
+     "Desire",
+     "Situation1",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "어쨋든... 이걸로 '봉사정신'을 배울 수 있다는 거지...?",
+    "voice": "voc_ch0068_desire_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_03",
+    "filter": [
+     "Desire",
+     "Situation1",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "뭔가... 으음... 다리가 땡기는 것 같기도 하고…",
+    "voice": "voc_ch0068_desire_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_04",
+    "filter": [
+     "Desire",
+     "Situation1",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "미끌미끌하고... 뭔가 기분이 묘해…",
+    "voice": "voc_ch0068_desire_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_05",
+    "filter": [
+     "Desire",
+     "Situation2",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "이런 자세를... 왜 하라는 건지 잘 모르겠지만…",
+    "voice": "voc_ch0068_desire_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_06",
+    "filter": [
+     "Desire",
+     "Situation2",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "어쨋든... 이걸로 '봉사정신'을 배울 수 있다는 거지...?",
+    "voice": "voc_ch0068_desire_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_07",
+    "filter": [
+     "Desire",
+     "Situation2",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "뭔가... 으음... 다리가 땡기는 것 같기도 하고…",
+    "voice": "voc_ch0068_desire_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_08",
+    "filter": [
+     "Desire",
+     "Situation2",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "미끌미끌하고... 뭔가 기분이 묘해…",
+    "voice": "voc_ch0068_desire_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_09",
+    "filter": [
+     "Desire",
+     "Situation3",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "이런 자세를... 왜 하라는 건지 잘 모르겠지만…",
+    "voice": "voc_ch0068_desire_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_10",
+    "filter": [
+     "Desire",
+     "Situation3",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "어쨋든... 이걸로 '봉사정신'을 배울 수 있다는 거지...?",
+    "voice": "voc_ch0068_desire_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_11",
+    "filter": [
+     "Desire",
+     "Situation3",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "뭔가... 으음... 다리가 땡기는 것 같기도 하고…",
+    "voice": "voc_ch0068_desire_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_DE_LOBBY_TOUCH_12",
+    "filter": [
+     "Desire",
+     "Situation3",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "미끌미끌하고... 뭔가 기분이 묘해…",
+    "voice": "voc_ch0068_desire_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_AF_LOBBY_TOUCH_01",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "너 덕분에 봉사정신이 뭔지 확실히 깨달았으니까... 이제, 내가 보여줄 차례야.",
+    "voice": "voc_ch0068_affection_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_AF_LOBBY_TOUCH_02",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "믿고 맡겨줘. 이번엔 아프지 않게... 기분 좋게 해줄게.",
+    "voice": "voc_ch0068_affection_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_AF_LOBBY_TOUCH_03",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "몸으로 하는 마사지는 처음이지만... 어때? 이렇게 봉사 받는 기분은?",
+    "voice": "voc_ch0068_affection_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_AF_LOBBY_TOUCH_04",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "따뜻하고 포근해서, 나도 기분이 좋아져 버려... 이대로 시간이 멈춰버려도 좋을 정도로…",
+    "voice": "voc_ch0068_affection_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_AF_LOBBY_TOUCH_05",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "너 덕분에 봉사정신이 뭔지 확실히 깨달았으니까... 이제, 내가 보여줄 차례야.",
+    "voice": "voc_ch0068_affection_lobby_1",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_AF_LOBBY_TOUCH_06",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "믿고 맡겨줘. 이번엔 아프지 않게... 기분 좋게 해줄게.",
+    "voice": "voc_ch0068_affection_lobby_2",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_AF_LOBBY_TOUCH_07",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "몸으로 하는 마사지는 처음이지만... 어때? 이렇게 봉사 받는 기분은?",
+    "voice": "voc_ch0068_affection_lobby_3",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_AF_LOBBY_TOUCH_08",
+    "filter": [
+     "Affection",
+     "Lobby",
+     "Touch"
+    ],
+    "text": "따뜻하고 포근해서, 나도 기분이 좋아져 버려... 이대로 시간이 멈춰버려도 좋을 정도로…",
+    "voice": "voc_ch0068_affection_lobby_4",
+    "ani": "active"
+   },
+   {
+    "id": "CH0068_ST_PARTNER_TOUCH_01",
+    "filter": [
+     "Standing",
+     "Partner",
+     "Touch"
+    ],
+    "text": "적당히 놀다 올게.",
+    "voice": "voc_ch0068_outgame_select_1",
+    "ani": "active",
+    "emo": "harmony"
+   },
+   {
+    "id": "CH0068_ST_PARTNER_TOUCH_02",
+    "filter": [
+     "Standing",
+     "Partner",
+     "Touch"
+    ],
+    "text": "하암, 끝나면 또 낮잠 자야지.",
+    "voice": "voc_ch0068_outgame_select_2",
+    "face": "unique01",
+    "emo": "sigh"
+   },
+   {
+    "id": "CH0068_ST_RELATION_RANKUP_TOUCH_01",
+    "filter": [
+     "Standing",
+     "Relation",
+     "Rankup"
+    ],
+    "text": "맛있는 거 사주는 사람은 좋은 사람이지.",
+    "voice": "voc_ch0068_outgame_rankup_1",
+    "face": "happy",
+    "emo": "love2"
+   },
+   {
+    "id": "CH0068_ST_RELATION_RANKUP_TOUCH_02",
+    "filter": [
+     "Standing",
+     "Relation",
+     "Rankup"
+    ],
+    "text": "즐거운 휴가가 될 거 같은 기분이네.",
+    "voice": "voc_ch0068_outgame_rankup_2",
+    "ani": "active",
+    "emo": "hehe"
    }
   ],
   "NP0799": [

@@ -123,7 +123,7 @@ export function waitSeconds(mode: string): number {
 /** `command` is a barrier on exit, `trigger` returns to the actor's idle, `group` is one `@PickRandom` alternative; `depth` is the `Gosub` stack height it opened at. */
 type Frame =
   | { kind: 'command'; at: number; end: number; depth: number; track: number | null; wait: boolean }
-  | { kind: 'trigger'; at: number; end: number; depth: number }
+  | { kind: 'trigger'; at: number; end: number; depth: number; destination: number | null }
   | { kind: 'group'; at: number; end: number; depth: number; after: number };
 
 export class ScriptMachine {
@@ -213,8 +213,9 @@ export class ScriptMachine {
   }
 
   /** Firing clears the actor's whole registration list; the view menu's reset is registered elsewhere and survives. */
-  fire(at: number): void {
+  fire(at: number, input: Vars = {}): void {
     if (!this.program[at]) return;
+    this.vars = { ...this.vars, ...input };
     for (const [key, entry] of this.registered) {
       if (entry.kind !== 'reset') this.registered.delete(key);
     }
@@ -225,8 +226,32 @@ export class ScriptMachine {
   /** Every trigger the index has passed stays registered; the condition decides whether it is live. */
   armedList(): Armed[] {
     return [...this.registered.values()]
-      .filter((a) => holds(a.when, this.vars))
+      .filter((a) => holds(a.when, this.vars)
+        && (a.kind !== 'drag' || this.dragHasLiveReaction(a.at)))
       .sort((a, b) => a.at - b.at);
+  }
+
+  /** A drag with no reachable non-empty release/resolve body is visually inert. */
+  private dragHasLiveReaction(at: number): boolean {
+    const branches = this.childrenOf(at).filter((child) => {
+      const c = this.program[child];
+      return (c.class === 'DesireDragReleaseCommand'
+        || c.class === 'DesireDragResolveCommand')
+        && this.endOfBody(child) > child + 1;
+    });
+    if (!branches.length) return true;
+    return branches.some((child) => {
+      const condition = this.program[child].fields?.ConditionalExpression;
+      if (!condition) {
+        return this.program[child].class === 'DesireDragReleaseCommand';
+      }
+      // Pointer-derived clauses cannot be tested before the gesture. The
+      // remaining clauses are persistent scene gates such as `z1=false`.
+      const stable = condition.replace(/&&/g, '&').split('&')
+        .map((clause) => clause.trim())
+        .filter((clause) => clause && !/\bdrag\./.test(clause));
+      return !stable.length || holds(stable.join('&&'), this.vars);
+    });
   }
 
   /** The authored `Track:` resolved against the variables, else the track the clip's name declares. Never null for a clip. */
@@ -276,6 +301,7 @@ export class ScriptMachine {
       this.play(c, effects);
       this.frames.push({
         kind: 'trigger', at, end: this.endOfBody(at), depth: this.stack.length,
+        destination: null,
       });
       this.pc = at + 1;
     }
@@ -291,7 +317,8 @@ export class ScriptMachine {
         }
         if (frame.kind === 'trigger') {
           // Handing the index back to the actor's idle is what re-arms every trigger; a nested trigger returns to its host instead.
-          this.pc = this.frames.length ? frame.at : this.idleAt ?? frame.at;
+          this.pc = frame.destination
+            ?? (this.frames.length ? frame.at : this.idleAt ?? frame.at);
           return this.park({ kind: 'wait-reaction' }, effects);
         }
         // On its body's exit the owner still waits for its own playback.
@@ -336,7 +363,20 @@ export class ScriptMachine {
 
         case 'Goto': {
           if (!holds(f.ConditionalExpression, this.vars)) { this.pc++; break; }
-          if (!f.Path || !this.gotoLabel(stripLabel(f.Path))) this.pc++;
+          const target = f.Path ? this.labelIndex.get(stripLabel(f.Path)) : undefined;
+          if (target === undefined) { this.pc++; break; }
+          const triggerIndex = this.frames.findLastIndex((entry) => entry.kind === 'trigger');
+          if (triggerIndex < 0) {
+            this.gotoLabel(stripLabel(f.Path ?? ''));
+            break;
+          }
+          const trigger = this.frames[triggerIndex];
+          if (trigger.kind !== 'trigger') break;
+          trigger.destination = target;
+          this.frames.length = triggerIndex + 1;
+          this.registered.clear();
+          this.stack = [];
+          this.pc = trigger.end;
           break;
         }
 
@@ -390,7 +430,10 @@ export class ScriptMachine {
 
         case 'DesireCommand':
         case 'AffectionCommand': {
-          if (!holds(f.ConditionalExpression, this.vars)) { this.pc++; break; }
+          if (!holds(f.ConditionalExpression, this.vars)) {
+            this.pc = this.endOfBody(this.pc);
+            break;
+          }
           // A camera cue alongside an appearance is awaited with it.
           if (f.Offset !== undefined || f.Zoom !== undefined) {
             effects.push({
@@ -477,6 +520,16 @@ export class ScriptMachine {
             threshold: num(f.Threshold, 0),
           } as Omit<ArmedDrag, 'at' | 'stamp' | 'when'>);
           this.pc = this.endOfBody(this.pc);
+          break;
+        }
+
+        case 'DesireDragReleaseCommand':
+        case 'DesireDragResolveCommand': {
+          if (!holds(f.ConditionalExpression, this.vars)) {
+            this.pc = this.endOfBody(this.pc);
+          } else {
+            this.pc++;
+          }
           break;
         }
 

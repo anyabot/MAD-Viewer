@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import NextLink from 'next/link';
 import {
   Badge, Box, Center, Flex, HStack, Input, SimpleGrid, Spinner, Tab, TabList,
@@ -8,20 +8,20 @@ import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { Panel } from '@/components/skillKit';
 import { FilterChip } from '@/components/filters';
+import { AmountField, PlanGrid, Stepper } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
+import { useCollection } from '@/lib/collectionStore';
+import { exportPlan, importPlan, planFileName } from '@/lib/planFile';
 import {
-  MATERIAL_ICON_GROUPS, MATERIAL_KIND_LABEL, billCovered, billIsEmpty, emptyPlan,
-  farmPlan, farmStages, formatAmount, gearLevelCap, isHardStage, levellableSkills,
-  mergeBills, needLabel, needsOf, parseAmount, skillCap, spendBill, unitBill,
+  MATERIAL_ICON_GROUPS, MATERIAL_KIND_LABEL, billCovered, billIsEmpty,
+  farmPlan, farmStages, isHardStage, mergeBills, needLabel, needsOf, spendBill,
+  unitBill,
   type Bill, type FarmPlan, type FarmRoute, type NeedPlan, type StageSource,
-  type UnitPlan,
 } from '@/lib/farm';
 
 type NeedLabel = ReturnType<typeof needLabel>;
-import {
-  SKILL_CATEGORY_LABEL, characterName, equipLabel, equipmentSlotsOf, isPlayable,
-} from '@/lib/characters';
+import { characterName, isPlayable } from '@/lib/characters';
 import { groupLabel, stageName } from '@/lib/stages';
 import { pick, useLang, useT, type Lang } from '@/lib/i18n';
 import {
@@ -73,7 +73,7 @@ export default function FarmPage() {
     const billOf = (wanted: boolean) => mergeBills(
       Object.entries(units).flatMap(([code, pair]) => {
         const entry = chars.characters[code];
-        return entry && !pair.hidden && !!pair.priority === wanted
+        return entry && pair.listed && !pair.hidden && !!pair.priority === wanted
           ? [unitBill(growth, entry, chars, pair)] : [];
       }));
     const first = billOf(true);
@@ -109,6 +109,7 @@ export default function FarmPage() {
       <Flex align="center" gap={3} wrap="wrap">
         <Text fontSize="2xl" fontWeight="bold">{t('navFarm')}</Text>
         <Box flex="1" />
+        <PlanFile />
         <FilterChip active={sweepOnly} onClick={() => setSweepOnly(!sweepOnly)}>
           {t('farmSweepOnly')}
           <Text as="span" color="gray.500">{t('farmSweepHint')}</Text>
@@ -125,9 +126,9 @@ export default function FarmPage() {
             <HStack spacing={2}>
               <Text>{t('farmTabUnits')}</Text>
               <Badge fontSize="0.6rem">
-                {Object.values(units).filter((u) => !u.hidden).length}
-                {Object.values(units).some((u) => u.hidden)
-                  ? `/${Object.keys(units).length}` : ''}
+                {Object.values(units).filter((u) => u.listed && !u.hidden).length}
+                {Object.values(units).some((u) => u.listed && u.hidden)
+                  ? `/${Object.values(units).filter((u) => u.listed).length}` : ''}
               </Badge>
             </HStack>
           </Tab>
@@ -166,65 +167,45 @@ export default function FarmPage() {
   );
 }
 
-// Keeps the text being typed in local state and commits on blur, re-syncing from the store only while unfocused.
-function AmountField({ value, min, max, onChange, width = '4.5rem', big, disabled }: {
-  value: number; min: number; max: number; onChange: (v: number) => void;
-  width?: string; big?: boolean; disabled?: boolean;
-}) {
-  const shown = big ? formatAmount(value) : String(value);
-  const [text, setText] = useState(shown);
-  const [editing, setEditing] = useState(false);
+function PlanFile() {
+  const t = useT();
+  const units = useFarm((s) => s.units);
+  const clears = useFarm((s) => s.clears);
+  const inventory = useFarm((s) => s.inventory);
+  const [failed, setFailed] = useState(false);
+  const picker = useRef<HTMLInputElement>(null);
 
-  useEffect(() => { if (!editing) setText(shown); }, [shown, editing]);
+  const save = () => {
+    const url = URL.createObjectURL(
+      new Blob([exportPlan()], { type: 'application/json' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = planFileName();
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const load = async (file: File | undefined) => {
+    if (!file) return;
+    const held = Object.keys(units).length || Object.keys(clears).length
+      || Object.keys(inventory).length;
+    if (held && !window.confirm(t('farmImportConfirm'))) return;
+    setFailed(!importPlan(await file.text()));
+  };
 
   return (
-    <Input size="xs" value={text} w={width} textAlign="right" fontFamily="mono"
-      borderColor="whiteAlpha.300" inputMode="decimal" isDisabled={disabled}
-      onFocus={() => setEditing(true)}
-      onChange={(e) => setText(e.target.value)}
-      onBlur={() => {
-        const parsed = parseAmount(text);
-        if (parsed != null) onChange(Math.min(max, Math.max(min, parsed)));
-        setEditing(false);
-      }}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
-      }} />
-  );
-}
-
-// The step is one because that is how loot arrives; a stack is typed with the `k`/`m` suffix.
-function Stepper({
-  value, min = 0, max = Number.MAX_SAFE_INTEGER, onChange, disabled, children,
-}: {
-  value: number; min?: number; max?: number; onChange: (v: number) => void;
-  disabled?: boolean; children: React.ReactNode;
-}) {
-  const button = {
-    px: 1.5, borderWidth: '1px', borderRadius: 'md', borderColor: 'whiteAlpha.200',
-    color: 'gray.400', lineHeight: 1.4, fontSize: 'sm', flexShrink: 0,
-    _hover: { borderColor: 'yellow.400', color: 'yellow.200' },
-  } as const;
-  const spent = { opacity: 0.35, pointerEvents: 'none' } as const;
-  return (
-    <HStack spacing={1}>
-      <Box as="button" aria-label="minus one" tabIndex={-1} {...button}
-        {...(disabled || value <= min ? spent : {})}
-        onClick={() => onChange(Math.max(min, value - 1))}>−</Box>
-      {children}
-      <Box as="button" aria-label="plus one" tabIndex={-1} {...button}
-        {...(disabled || value >= max ? spent : {})}
-        onClick={() => onChange(Math.min(max, value + 1))}>+</Box>
+    <HStack spacing={2}>
+      {failed && <Text fontSize="xs" color="red.300">{t('farmImportFailed')}</Text>}
+      <Box as="button" fontSize="xs" color="gray.400" _hover={{ color: 'yellow.200' }}
+        onClick={save}>{t('farmExport')}</Box>
+      <Box as="button" fontSize="xs" color="gray.400" _hover={{ color: 'yellow.200' }}
+        onClick={() => picker.current?.click()}>{t('farmImport')}</Box>
+      <Input ref={picker} type="file" accept="application/json,.json" display="none"
+        onChange={(e) => {
+          void load(e.target.files?.[0]);
+          e.target.value = '';
+        }} />
     </HStack>
-  );
-}
-
-function SideHeads({ t }: { t: (k: 'farmCurrent' | 'farmTarget') => string }) {
-  return (
-    <>
-      <Text fontSize="0.6rem" color="gray.500" textAlign="right">{t('farmCurrent')}</Text>
-      <Text fontSize="0.6rem" color="gray.500" textAlign="right">{t('farmTarget')}</Text>
-    </>
   );
 }
 
@@ -237,7 +218,12 @@ function Units({ data, growth, icons, leftover }: {
   const lang = useLang();
   const units = useFarm((s) => s.units);
   const addUnit = useFarm((s) => s.addUnit);
+  const addUnits = useFarm((s) => s.addUnits);
+  const collected = useCollection((s) => s.collected);
+  const favorites = useCollection((s) => s.favorites);
   const [query, setQuery] = useState('');
+  const [ownedOnly, setOwnedOnly] = useState(false);
+  const [favesOnly, setFavesOnly] = useState(false);
   const [open, setOpen] = useState(false);
   const [shown, setShown] = useState<string | null>(null);
 
@@ -248,13 +234,22 @@ function Units({ data, growth, icons, leftover }: {
   [data, lang]);
 
   const needle = query.trim().toLowerCase();
-  const matches = roster.filter((e) => !units[e.code]
+  const matches = roster.filter((e) => !units[e.code]?.listed
+    && (!ownedOnly || collected[e.code])
+    && (!favesOnly || favorites[e.code])
     && (!needle || characterName(e, lang).toLowerCase().includes(needle)
       || e.code.toLowerCase().includes(needle)
       || (e.nameEn ?? '').toLowerCase().includes(needle)));
 
-  const tracked = Object.keys(units)
-    .flatMap((code) => (data.characters[code] ? [data.characters[code]] : []));
+  // A hidden unit keeps its place on the list, at the bottom of it.
+  const tracked = Object.entries(units)
+    .filter(([code, pair]) => pair.listed && data.characters[code])
+    .sort((a, b) => Number(!!a[1].hidden) - Number(!!b[1].hidden))
+    .map(([code]) => data.characters[code]);
+
+  const unlisted = roster.filter((e) => !units[e.code]?.listed);
+  const pending = unlisted.filter((e) => collected[e.code]);
+  const pendingFaves = unlisted.filter((e) => favorites[e.code]);
 
   const choose = (code: string) => {
     addUnit(code);
@@ -264,36 +259,58 @@ function Units({ data, growth, icons, leftover }: {
 
   return (
     <VStack align="stretch" spacing={3}>
-      <Box position="relative" maxW="320px" zIndex={2}>
-        <Input size="sm" value={query} placeholder={t('farmSearchUnit')}
-          borderColor="whiteAlpha.300"
-          onFocus={() => setOpen(true)}
-          onClick={() => setOpen(true)}
-          onBlur={() => setOpen(false)}
-          onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
-          onKeyDown={(e) => {
-            if (e.key === 'Escape') setOpen(false);
-            if (e.key === 'Enter' && matches[0]) choose(matches[0].code);
-          }} />
-        {open && matches.length > 0 && (
-          // Without this the blur closes the list before the click lands.
-          <VStack align="stretch" spacing={0} position="absolute" top="100%" left={0}
-            right={0} mt={1} maxH="18rem" overflowY="auto" borderWidth="1px"
-            borderColor="whiteAlpha.300" borderRadius="md" bg="gray.800"
-            boxShadow="lg" onMouseDown={(e) => e.preventDefault()}>
-            {matches.map((entry) => (
-              <Box as="button" key={entry.code} px={2} py={1} textAlign="left"
-                _hover={{ bg: 'whiteAlpha.200' }} onClick={() => choose(entry.code)}>
-                <HStack spacing={2}>
-                  <GameIcon manifest={icons} group="char" size={6}
-                    names={[entry.iconPath, `Icon_${entry.code}`]} />
-                  <Text fontSize="sm" noOfLines={1}>{characterName(entry, lang)}</Text>
-                </HStack>
-              </Box>
-            ))}
-          </VStack>
+      <Flex align="center" gap={2} wrap="wrap">
+        <Box position="relative" maxW="320px" flex="1" minW="180px" zIndex={2}>
+          <Input size="sm" value={query} placeholder={t('farmSearchUnit')}
+            borderColor="whiteAlpha.300"
+            onFocus={() => setOpen(true)}
+            onClick={() => setOpen(true)}
+            onBlur={() => setOpen(false)}
+            onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') setOpen(false);
+              if (e.key === 'Enter' && matches[0]) choose(matches[0].code);
+            }} />
+          {open && matches.length > 0 && (
+            // Without this the blur closes the list before the click lands.
+            <VStack align="stretch" spacing={0} position="absolute" top="100%" left={0}
+              right={0} mt={1} maxH="18rem" overflowY="auto" borderWidth="1px"
+              borderColor="whiteAlpha.300" borderRadius="md" bg="gray.800"
+              boxShadow="lg" onMouseDown={(e) => e.preventDefault()}>
+              {matches.map((entry) => (
+                <Box as="button" key={entry.code} px={2} py={1} textAlign="left"
+                  _hover={{ bg: 'whiteAlpha.200' }} onClick={() => choose(entry.code)}>
+                  <HStack spacing={2}>
+                    <GameIcon manifest={icons} group="char" size={6}
+                      names={[entry.iconPath, `Icon_${entry.code}`]} />
+                    <Text fontSize="sm" noOfLines={1}>{characterName(entry, lang)}</Text>
+                  </HStack>
+                </Box>
+              ))}
+            </VStack>
+          )}
+        </Box>
+        <FilterChip active={ownedOnly} onClick={() => setOwnedOnly(!ownedOnly)}>
+          {t('farmOnlyCollected')}
+        </FilterChip>
+        <FilterChip active={favesOnly} onClick={() => setFavesOnly(!favesOnly)}>
+          {t('farmOnlyFavorites')}
+        </FilterChip>
+        {pending.length > 0 && (
+          <FilterChip active={false}
+            onClick={() => addUnits(pending.map((e) => e.code))}>
+            {t('farmAddCollected')}
+            <Text as="span" color="gray.500">{pending.length}</Text>
+          </FilterChip>
         )}
-      </Box>
+        {pendingFaves.length > 0 && (
+          <FilterChip active={false}
+            onClick={() => addUnits(pendingFaves.map((e) => e.code))}>
+            {t('farmAddFavorites')}
+            <Text as="span" color="gray.500">{pendingFaves.length}</Text>
+          </FilterChip>
+        )}
+      </Flex>
 
       {tracked.length === 0 ? (
         <Text fontSize="sm" color="gray.500">{t('farmNoUnits')}</Text>
@@ -320,21 +337,14 @@ function UnitCard({ entry, data, growth, icons, leftover, open, onToggle }: {
   const pair = useFarm((s) => s.units[entry.code]);
   const inventory = useFarm((s) => s.inventory);
   const removeUnit = useFarm((s) => s.removeUnit);
+  const setListed = useFarm((s) => s.setListed);
   const setHidden = useFarm((s) => s.setHidden);
   const setPriority = useFarm((s) => s.setPriority);
   const completeUnit = useFarm((s) => s.completeUnit);
-  const setPlan = useFarm((s) => s.setPlan);
-  const setSkill = useFarm((s) => s.setSkill);
-  const setGear = useFarm((s) => s.setGear);
-  const current = pair?.current ?? emptyPlan();
-  const target = pair?.target ?? emptyPlan();
+  const collected = useCollection((s) => !!s.collected[entry.code]);
   const hidden = pair?.hidden ?? false;
   const priority = pair?.priority ?? false;
-  const levelCap = data.statCaps.level;
-  const skills = levellableSkills(entry, data);
-  const slots = equipmentSlotsOf(entry, data.equipment);
 
-  const gearOf = (plan: UnitPlan, slot: number) => plan.gear[String(slot)] ?? { tier: 0, level: 1 };
   const bill: Bill | null = pair ? unitBill(growth, entry, data, pair) : null;
   const owing = bill && (bill.unitExp || bill.equipExp
     || Object.keys(bill.materials).length > 0);
@@ -379,71 +389,15 @@ function UnitCard({ entry, data, growth, icons, leftover, open, onToggle }: {
           </Box>
         )}
         <Box as="button" fontSize="xs" color="gray.500" _hover={{ color: 'red.300' }}
-          onClick={() => removeUnit(entry.code)}>{t('farmRemove')}</Box>
+          onClick={() => (collected
+            ? setListed(entry.code, false) : removeUnit(entry.code))}>
+          {t('farmRemove')}
+        </Box>
       </Flex>
 
-      <Box overflowX="auto" display={open ? undefined : 'none'}>
-        <Box display="grid" minW="520px" alignItems="center" gap={1.5}
-          gridTemplateColumns="minmax(0, 1fr) auto auto">
-          <Box />
-          <SideHeads t={t} />
-
-          <Text fontSize="sm">{t('dialLevel')}</Text>
-          <Stepper value={current.level} min={1} max={levelCap}
-            onChange={(v) => setPlan(entry.code, 'current', { level: v })}>
-            <AmountField value={current.level} min={1} max={levelCap}
-              onChange={(v) => setPlan(entry.code, 'current', { level: v })} />
-          </Stepper>
-          <Stepper value={target.level} min={1} max={levelCap}
-            onChange={(v) => setPlan(entry.code, 'target', { level: v })}>
-            <AmountField value={target.level} min={1} max={levelCap}
-              onChange={(v) => setPlan(entry.code, 'target', { level: v })} />
-          </Stepper>
-
-          {skills.map(({ id, skill }) => {
-            const cap = skillCap(growth, skill);
-            return (
-              <Box key={id} display="contents">
-                <HStack spacing={1.5} minW={0}>
-                  <GameIcon manifest={icons} group="skill" name={skill.icon} size={5} />
-                  <Text fontSize="sm" noOfLines={1}>{skill.name ?? id}</Text>
-                  <Badge fontSize="0.55rem" colorScheme="gray">
-                    {pick(SKILL_CATEGORY_LABEL[skill.categorize], lang)}
-                  </Badge>
-                </HStack>
-                <Stepper value={current.skills[String(id)] ?? 1} min={1} max={cap}
-                  onChange={(v) => setSkill(entry.code, 'current', id, v)}>
-                  <AmountField value={current.skills[String(id)] ?? 1} min={1} max={cap}
-                    onChange={(v) => setSkill(entry.code, 'current', id, v)} />
-                </Stepper>
-                <Stepper value={target.skills[String(id)] ?? 1} min={1} max={cap}
-                  onChange={(v) => setSkill(entry.code, 'target', id, v)}>
-                  <AmountField value={target.skills[String(id)] ?? 1} min={1} max={cap}
-                    onChange={(v) => setSkill(entry.code, 'target', id, v)} />
-                </Stepper>
-              </Box>
-            );
-          })}
-
-          {slots.map((slot) => {
-            const cur = gearOf(current, slot.type);
-            const tgt = gearOf(target, slot.type);
-            return (
-              <Box key={slot.type} display="contents">
-                <HStack spacing={1.5} minW={0}>
-                  <GameIcon manifest={icons} group="equip" size={5}
-                    name={(slot.tiers ?? []).find((r) => r.tier === tgt.tier)?.icon
-                      ?? slot.icon} />
-                  <Text fontSize="sm" noOfLines={1}>{equipLabel(slot, lang)}</Text>
-                </HStack>
-                <GearField growth={growth} slot={slot} gear={cur}
-                  onChange={(g) => setGear(entry.code, 'current', slot.type, g)} />
-                <GearField growth={growth} slot={slot} gear={tgt}
-                  onChange={(g) => setGear(entry.code, 'target', slot.type, g)} />
-              </Box>
-            );
-          })}
-        </Box>
+      <Box display={open ? undefined : 'none'}>
+        <PlanGrid entry={entry} data={data} growth={growth} icons={icons}
+          sides={['current', 'target']} />
         {bill && owing ? (
           <MaterialSummary bill={bill} growth={growth} icons={icons} lang={lang} />
         ) : null}
@@ -482,32 +436,6 @@ function MaterialSummary({ bill, growth, icons, lang }: {
         })}
       </Wrap>
     </Box>
-  );
-}
-
-// Tier changes default to that tier's cap for quick target entry.
-function GearField({ growth, slot, gear, onChange }: {
-  growth: GrowthData; slot: { type: number; tiers?: { tier: number }[] };
-  gear: { tier: number; level: number }; onChange: (g: { tier: number; level: number }) => void;
-}) {
-  const cap = gearLevelCap(growth, gear.tier);
-  const tierCap = (slot.tiers ?? []).reduce((n, row) => Math.max(n, row.tier), 0);
-  const empty = gear.tier === 0;
-  const setTier = (tier: number) =>
-    onChange({ tier, level: gearLevelCap(growth, tier) });
-  const setLevel = (level: number) => onChange({ tier: gear.tier, level });
-  return (
-    <HStack spacing={1} justify="flex-end">
-      <Stepper value={gear.tier} min={0} max={tierCap} onChange={setTier}>
-        <AmountField value={gear.tier} min={0} max={tierCap} width="2.75rem"
-          onChange={setTier} />
-      </Stepper>
-      <Stepper value={Math.min(gear.level, cap)} min={1} max={cap} disabled={empty}
-        onChange={setLevel}>
-        <AmountField value={Math.min(gear.level, cap)} min={1} max={cap} width="3.5rem"
-          disabled={empty} onChange={setLevel} />
-      </Stepper>
-    </HStack>
   );
 }
 

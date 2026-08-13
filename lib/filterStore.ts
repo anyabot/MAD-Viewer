@@ -6,11 +6,16 @@ import type { SkinKind } from '@/components/skinViewer/types';
 import type { TypeTable } from '@/lib/characters';
 import type { EffectGroup, EffectSelection } from '@/lib/effects';
 
-type CharacterFilters = {
+/** `no` is as much a filter as `yes`: the list can show what is missing. */
+export type Tri = 'all' | 'yes' | 'no';
+
+export type CharacterFilters = {
   query: string;
   npcs: boolean;
   unreleased: boolean;
   skinsOnly: boolean;
+  collected: Tri;
+  favorite: Tri;
   star: number | null;
   picked: Partial<Record<TypeTable, number>>;
 };
@@ -30,7 +35,8 @@ type EffectFilters = {
 };
 
 const EMPTY_CHARACTERS: CharacterFilters = {
-  query: '', npcs: false, unreleased: false, skinsOnly: false, star: null, picked: {},
+  query: '', npcs: false, unreleased: false, skinsOnly: false,
+  collected: 'all', favorite: 'all', star: null, picked: {},
 };
 
 const EMPTY_SKINS: SkinFilters = {

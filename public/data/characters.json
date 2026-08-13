@@ -315,13 +315,13 @@
   "CH0002": {
    "code": "CH0002",
    "name": "라일라",
-   "nameEn": "Lila",
+   "nameEn": "Laila",
    "desc": "도넛 연구에 인생을 건 경찰. 겉모습으로 평가하지 말라며 이상한 모양의 도넛을 내놓아 사람들을 당황하게 한다. 악의는 없지만, 본인도 모르는 사이에 상대의 약점을 정확히 찌르는 저격수 같은 면모가 있다. 오늘도 라일라는 실체 없는 궁극의 도넛을 찾아 묵묵히 오븐 앞을 지킨다.",
    "iconPath": "Icon_CH0002",
    "resourcesId": "ch0002_resources",
    "voiceGroupId": "voc_ch0002_group",
    "unfinished": {
-    "eng": "Lila",
+    "eng": "Laila",
     "jpn": "ライラ"
    },
    "id": 2,
@@ -927,7 +927,7 @@
    "voiceGroupId": "voc_ch0006_group",
    "unfinished": {
     "eng": "Eileen",
-    "jpn": "エイリン"
+    "jpn": "エイリーン"
    },
    "id": 6,
    "characterType": 1,
@@ -1330,7 +1330,7 @@
     "2": {
      "PHYSICS_ATTACK": 125.0,
      "PHYSICS_DEFENSE": 58.0,
-     "MAX_LIFE": 3168.0,
+     "MAX_LIFE": 3178.0,
      "ACCURACY": 24.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -1345,7 +1345,7 @@
     "3": {
      "PHYSICS_ATTACK": 125.0,
      "PHYSICS_DEFENSE": 58.0,
-     "MAX_LIFE": 3168.0,
+     "MAX_LIFE": 3188.0,
      "ACCURACY": 24.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -1360,7 +1360,7 @@
     "4": {
      "PHYSICS_ATTACK": 125.0,
      "PHYSICS_DEFENSE": 58.0,
-     "MAX_LIFE": 3168.0,
+     "MAX_LIFE": 3198.0,
      "ACCURACY": 24.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -1375,7 +1375,7 @@
     "5": {
      "PHYSICS_ATTACK": 125.0,
      "PHYSICS_DEFENSE": 58.0,
-     "MAX_LIFE": 3168.0,
+     "MAX_LIFE": 3208.0,
      "ACCURACY": 24.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -1390,7 +1390,7 @@
     "6": {
      "PHYSICS_ATTACK": 125.0,
      "PHYSICS_DEFENSE": 58.0,
-     "MAX_LIFE": 3168.0,
+     "MAX_LIFE": 3218.0,
      "ACCURACY": 24.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -1830,14 +1830,14 @@
   "CH0010": {
    "code": "CH0010",
    "name": "마네(수영복)",
-   "nameEn": "Mane(Summer)",
+   "nameEn": "Mane (Swimsuit)",
    "desc": "<자유의 날>을 맞이하여 수영복으로 갈아입은 마네. 아지랑이 피는 여름의 더위를 이겨내고자, 온갖 준비를 하여 베르몬트 해안가로 보물을 찾으러 떠난다.",
    "iconPath": "Icon_CH0010",
    "resourcesId": "ch0010_resources",
    "voiceGroupId": "voc_ch0010_group",
    "unfinished": {
-    "eng": "Mane(Summer)",
-    "jpn": "マーネ（水着）"
+    "eng": "Mane (Swimsuit)",
+    "jpn": "マーネ(水着)"
    },
    "id": 10,
    "characterType": 1,
@@ -2731,13 +2731,13 @@
   "CH0013": {
    "code": "CH0013",
    "name": "로망스 경",
-   "nameEn": "Romance",
+   "nameEn": "Sir Romance",
    "desc": "낭만을 위해 살고, 낭만을 위해 죽는, 낭만에 목숨을 건 낭만 소녀. 모험을 떠나는 것도 낭만이고, 동료와 함께하는 것도 낭만이며, 그 과정에 싹트는 관계까지도 낭만이다. 너무 긍정적인 나머지, '이것도 낭만이지?'라는 말에 수긍하면 무슨 일을 벌이더라도 받아들여 버린다.",
    "iconPath": "Icon_CH0013",
    "resourcesId": "ch0013_resources",
    "voiceGroupId": "voc_ch0013_group",
    "unfinished": {
-    "eng": "Romance",
+    "eng": "Sir Romance",
     "jpn": "ロマンス卿"
    },
    "id": 13,
@@ -4264,13 +4264,13 @@
   "CH0020": {
    "code": "CH0020",
    "name": "단희",
-   "nameEn": "Danhee",
+   "nameEn": "Dan Xi",
    "desc": "풍월회에 속한 유유자적하고 호쾌한 성격의 한량. 축제 거리나 야시장에 나타나 사람들에게 각종 게임이나 승부를 거는 것을 즐긴다. 승자의 부탁을 들어주기 때문에, 사군자의 거리에서는 복신의 일종으로 모셔지기도 한다.",
    "iconPath": "Icon_CH0020",
    "resourcesId": "ch0020_resources",
    "voiceGroupId": "voc_ch0020_group",
    "unfinished": {
-    "eng": "Danhee",
+    "eng": "Dan Xi",
     "jpn": "タンキ"
    },
    "id": 20,
@@ -4564,13 +4564,13 @@
   "CH0021": {
    "code": "CH0021",
    "name": "홍접",
-   "nameEn": "Hongjeop",
+   "nameEn": "Kouchou",
    "desc": "원령들이 남긴 부정한 힘을 정화하는 무녀. 겉으로는 사람들에게 차갑고 거리를 두는 태도를 보이지만, 원령을 끌어들이는 자신의 특성으로 인해 주변 사람들이 상처 받지 않기를 바란 상냥한 마음 때문이었다. 그러나 그런 거리를 개의치 않는 누군가의 등장으로 닫아둔 감정의 문이 서서히 흔들리기 시작했다.",
    "iconPath": "Icon_CH0021",
    "resourcesId": "ch0021_resources",
    "voiceGroupId": "voc_ch0021_group",
    "unfinished": {
-    "eng": "Hongjeop",
+    "eng": "Kouchou",
     "jpn": "コウチョウ"
    },
    "id": 21,
@@ -5282,7 +5282,7 @@
     "2": {
      "PHYSICS_ATTACK": 63.0,
      "PHYSICS_DEFENSE": 153.0,
-     "MAX_LIFE": 5227.0,
+     "MAX_LIFE": 5237.0,
      "ACCURACY": 14.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -5297,7 +5297,7 @@
     "3": {
      "PHYSICS_ATTACK": 63.0,
      "PHYSICS_DEFENSE": 153.0,
-     "MAX_LIFE": 5227.0,
+     "MAX_LIFE": 5247.0,
      "ACCURACY": 14.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -5312,7 +5312,7 @@
     "4": {
      "PHYSICS_ATTACK": 63.0,
      "PHYSICS_DEFENSE": 153.0,
-     "MAX_LIFE": 5227.0,
+     "MAX_LIFE": 5257.0,
      "ACCURACY": 14.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -5327,7 +5327,7 @@
     "5": {
      "PHYSICS_ATTACK": 63.0,
      "PHYSICS_DEFENSE": 153.0,
-     "MAX_LIFE": 5227.0,
+     "MAX_LIFE": 5267.0,
      "ACCURACY": 14.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -5342,7 +5342,7 @@
     "6": {
      "PHYSICS_ATTACK": 63.0,
      "PHYSICS_DEFENSE": 153.0,
-     "MAX_LIFE": 5227.0,
+     "MAX_LIFE": 5277.0,
      "ACCURACY": 14.0,
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
@@ -5481,13 +5481,13 @@
   "CH0024": {
    "code": "CH0024",
    "name": "아로네",
-   "nameEn": "Alone",
+   "nameEn": "Aronne",
    "desc": "블러디 메리의 마족 아가씨. 엘리시아, 그리고 블러디 메리의 공식적인 후계자. 사람과 눈도 못 마주칠 정도로 극심하게 낯을 가린다. 사역하는 슬라임, '이쁜이'가 유일한 친구. 보드게임을 잘하며, 보드게임에 한해서는 말이 많아진다.",
    "iconPath": "Icon_CH0024",
    "resourcesId": "ch0024_resources",
    "voiceGroupId": "voc_ch0024_group",
    "unfinished": {
-    "eng": "Alone",
+    "eng": "Aronne",
     "jpn": "アロネ"
    },
    "id": 24,
@@ -7310,7 +7310,7 @@
    "resourcesId": "ch0030_resources",
    "voiceGroupId": "voc_ch0030_group",
    "unfinished": {
-    "eng": "セブン",
+    "eng": "Seven",
     "jpn": "セブン"
    },
    "id": 30,
@@ -7610,7 +7610,7 @@
    "resourcesId": "ch0031_resources",
    "voiceGroupId": "voc_ch0031_group",
    "unfinished": {
-    "eng": "ヒナタ",
+    "eng": "Hinata",
     "jpn": "ヒナタ"
    },
    "id": 31,
@@ -7924,7 +7924,7 @@
    "resourcesId": "ch0032_resources",
    "voiceGroupId": "voc_ch0032_group",
    "unfinished": {
-    "eng": "スジ",
+    "eng": "Suji",
     "jpn": "スージー"
    },
    "id": 32,
@@ -8249,7 +8249,7 @@
    "resourcesId": "ch0034_resources",
    "voiceGroupId": "voc_ch0034_group",
    "unfinished": {
-    "eng": "シータ",
+    "eng": "Theta",
     "jpn": "セタ"
    },
    "id": 34,
@@ -8550,8 +8550,8 @@
    "resourcesId": "ch0035_resources",
    "voiceGroupId": "voc_ch0035_group",
    "unfinished": {
-    "eng": "Lumina",
-    "jpn": "ルミナ"
+    "eng": "Yuria",
+    "jpn": "ユリア"
    },
    "id": 35,
    "characterType": 1,
@@ -8949,7 +8949,7 @@
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
      "PHYSICS_CRITICAL_DAMAGE": 1.5,
-     "HEAL": 195.0,
+     "HEAL": 197.0,
      "WEIGHT": 1.0,
      "CRITICAL_CHANCE_RESIST": 34.0,
      "HEAL_RECEIVE": 1.0,
@@ -8965,7 +8965,7 @@
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
      "PHYSICS_CRITICAL_DAMAGE": 1.5,
-     "HEAL": 195.0,
+     "HEAL": 199.0,
      "WEIGHT": 1.0,
      "CRITICAL_CHANCE_RESIST": 34.0,
      "HEAL_RECEIVE": 1.0,
@@ -8981,7 +8981,7 @@
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
      "PHYSICS_CRITICAL_DAMAGE": 1.5,
-     "HEAL": 195.0,
+     "HEAL": 201.0,
      "WEIGHT": 1.0,
      "CRITICAL_CHANCE_RESIST": 34.0,
      "HEAL_RECEIVE": 1.0,
@@ -8997,7 +8997,7 @@
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
      "PHYSICS_CRITICAL_DAMAGE": 1.5,
-     "HEAL": 195.0,
+     "HEAL": 203.0,
      "WEIGHT": 1.0,
      "CRITICAL_CHANCE_RESIST": 34.0,
      "HEAL_RECEIVE": 1.0,
@@ -9013,7 +9013,7 @@
      "EVASION": 10.0,
      "PHYSICS_CRITICAL_CHANCE": 100.0,
      "PHYSICS_CRITICAL_DAMAGE": 1.5,
-     "HEAL": 195.0,
+     "HEAL": 205.0,
      "WEIGHT": 1.0,
      "CRITICAL_CHANCE_RESIST": 34.0,
      "HEAL_RECEIVE": 1.0,
@@ -9461,7 +9461,7 @@
    "voiceGroupId": "voc_ch0038_group",
    "unfinished": {
     "eng": "Valentina",
-    "jpn": "バレンティーナ"
+    "jpn": "ヴァレンティーナ"
    },
    "id": 38,
    "characterType": 1,
@@ -10378,6 +10378,321 @@
     100205
    ]
   },
+  "CH0043": {
+   "code": "CH0043",
+   "name": "라피네",
+   "nameEn": "Lafine",
+   "desc": "한 번 본 길은 정확히 기억하는 여행가. 자신만의 지도를 그리겠다는 이상을 품고 고향을 떠났지만, 월세 사기로 노잣돈을 전부 잃고 알바처를 전전한다. 언젠가 금고 털이로 크게 한탕해 편안하게 여행하는 걸 꿈꾼다.",
+   "iconPath": "Icon_CH0043",
+   "resourcesId": "ch0043_resources",
+   "voiceGroupId": "voc_ch0043_group",
+   "unfinished": {
+    "eng": "Lafine",
+    "jpn": "ラフィネ"
+   },
+   "id": 43,
+   "characterType": 1,
+   "nameKey": "character_name_ch0043",
+   "roleType": 3,
+   "divisionType": 1,
+   "factionType": 106,
+   "attributeType": 2,
+   "positionType": 2,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "equipmentSlots": [
+    2,
+    6,
+    10
+   ],
+   "skillMaterialGroup": 202,
+   "nameUppercaseKey": "character_uppercase_name_ch0043",
+   "nameUppercase": "LAFINE",
+   "birthday": [
+    1,
+    2
+   ],
+   "giftItems": [
+    9107,
+    9204,
+    9114
+   ],
+   "dateDivisions": [
+    1
+   ],
+   "hobby": "여행, 노래 가사 외우기",
+   "specialty": "지도 그리기, 작전 짜기",
+   "likes": "배낭 여행, 빠른 것",
+   "comment": "나한테 밥 사줄 사람!",
+   "birthdayComment": "다들 생일 축하 고마워! 오늘은 내가 쏠게!",
+   "artist": "Lilith",
+   "cv": "아이마이 모코",
+   "skillSetGroup": 43,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": "침투 작전 효과를 보유한 아군이 없을 경우",
+      "order": 0,
+      "condition": 21,
+      "conditionValue": [
+       "define_trigger_ch0043_skill02",
+       "0"
+      ],
+      "steps": [
+       4330
+      ]
+     },
+     {
+      "name": "침투 작전 효과를 보유한 아군이 있을 경우",
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       4320,
+       4310,
+       4310
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": "침투 작전 효과를 보유한 아군이 없을 경우",
+      "order": 0,
+      "condition": 21,
+      "conditionValue": [
+       "define_trigger_ch0043_skill02",
+       "0"
+      ],
+      "steps": [
+       4330
+      ]
+     },
+     {
+      "name": "침투 작전 효과를 보유한 아군이 있을 경우",
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       4320,
+       4310,
+       4310
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 96.0,
+     "PHYSICS_DEFENSE": 30.0,
+     "MAX_LIFE": 2640.0,
+     "ACCURACY": 15.0,
+     "EVASION": 23.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 5.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 98.0,
+     "PHYSICS_DEFENSE": 31.0,
+     "MAX_LIFE": 2693.0,
+     "ACCURACY": 15.0,
+     "EVASION": 23.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 5.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 102.0,
+     "PHYSICS_DEFENSE": 32.0,
+     "MAX_LIFE": 2798.0,
+     "ACCURACY": 16.0,
+     "EVASION": 24.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 21.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 5.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 108.0,
+     "PHYSICS_DEFENSE": 34.0,
+     "MAX_LIFE": 2957.0,
+     "ACCURACY": 17.0,
+     "EVASION": 25.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 22.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 6.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 115.0,
+     "PHYSICS_DEFENSE": 36.0,
+     "MAX_LIFE": 3168.0,
+     "ACCURACY": 18.0,
+     "EVASION": 27.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 6.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 115.0,
+     "PHYSICS_DEFENSE": 36.0,
+     "MAX_LIFE": 3168.0,
+     "ACCURACY": 18.0,
+     "EVASION": 27.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 6.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 10.75,
+     "MAX_LIFE": 132.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 10.97,
+     "MAX_LIFE": 134.64,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 11.4,
+     "MAX_LIFE": 139.92,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 12.04,
+     "MAX_LIFE": 147.84,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 12.9,
+     "MAX_LIFE": 158.4,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 12.9,
+     "MAX_LIFE": 158.4,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   },
+   "loveStats": [
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    }
+   ]
+  },
   "CH0046": {
    "code": "CH0046",
    "name": "제니",
@@ -10388,7 +10703,7 @@
    "voiceGroupId": "voc_ch0046_group",
    "unfinished": {
     "eng": "Jennie",
-    "jpn": "ジェニ"
+    "jpn": "ジェニー"
    },
    "id": 46,
    "characterType": 1,
@@ -10688,7 +11003,7 @@
    "voiceGroupId": "voc_ch0050_group",
    "unfinished": {
     "eng": "Mio",
-    "jpn": "みお"
+    "jpn": "ミオ"
    },
    "id": 50,
    "characterType": 1,
@@ -11376,7 +11691,7 @@
      "ATTACK_SPEED_NORMAL": 1.0
     },
     "2": {
-     "PHYSICS_ATTACK": 92.0,
+     "PHYSICS_ATTACK": 93.0,
      "PHYSICS_DEFENSE": 54.0,
      "MAX_LIFE": 2640.0,
      "ACCURACY": 14.0,
@@ -11391,7 +11706,7 @@
      "ATTACK_SPEED_NORMAL": 1.0
     },
     "3": {
-     "PHYSICS_ATTACK": 92.0,
+     "PHYSICS_ATTACK": 94.0,
      "PHYSICS_DEFENSE": 54.0,
      "MAX_LIFE": 2640.0,
      "ACCURACY": 14.0,
@@ -11406,7 +11721,7 @@
      "ATTACK_SPEED_NORMAL": 1.0
     },
     "4": {
-     "PHYSICS_ATTACK": 92.0,
+     "PHYSICS_ATTACK": 95.0,
      "PHYSICS_DEFENSE": 54.0,
      "MAX_LIFE": 2640.0,
      "ACCURACY": 14.0,
@@ -11421,7 +11736,7 @@
      "ATTACK_SPEED_NORMAL": 1.0
     },
     "5": {
-     "PHYSICS_ATTACK": 92.0,
+     "PHYSICS_ATTACK": 96.0,
      "PHYSICS_DEFENSE": 54.0,
      "MAX_LIFE": 2640.0,
      "ACCURACY": 14.0,
@@ -11436,7 +11751,7 @@
      "ATTACK_SPEED_NORMAL": 1.0
     },
     "6": {
-     "PHYSICS_ATTACK": 92.0,
+     "PHYSICS_ATTACK": 97.0,
      "PHYSICS_DEFENSE": 54.0,
      "MAX_LIFE": 2640.0,
      "ACCURACY": 14.0,
@@ -11584,7 +11899,7 @@
    "voiceGroupId": "voc_ch0056_group",
    "unfinished": {
     "eng": "Airen",
-    "jpn": "アイリーン"
+    "jpn": "アイレン"
    },
    "id": 56,
    "characterType": 1,
@@ -12019,7 +12334,7 @@
      "ATTACK_SPEED_NORMAL": 1.0
     },
     "4": {
-     "PHYSICS_ATTACK": 109.0,
+     "PHYSICS_ATTACK": 111.0,
      "PHYSICS_DEFENSE": 36.0,
      "MAX_LIFE": 3168.0,
      "ACCURACY": 24.0,
@@ -12034,7 +12349,7 @@
      "ATTACK_SPEED_NORMAL": 1.0
     },
     "5": {
-     "PHYSICS_ATTACK": 109.0,
+     "PHYSICS_ATTACK": 113.0,
      "PHYSICS_DEFENSE": 36.0,
      "MAX_LIFE": 3168.0,
      "ACCURACY": 24.0,
@@ -12049,7 +12364,7 @@
      "ATTACK_SPEED_NORMAL": 1.0
     },
     "6": {
-     "PHYSICS_ATTACK": 109.0,
+     "PHYSICS_ATTACK": 115.0,
      "PHYSICS_DEFENSE": 36.0,
      "MAX_LIFE": 3168.0,
      "ACCURACY": 24.0,
@@ -12187,17 +12502,33 @@
     110
    ]
   },
+  "CH0059": {
+   "code": "CH0059",
+   "name": "스피카",
+   "nameEn": null,
+   "desc": "#####준비중입니다.",
+   "iconPath": "Icon_CH0059",
+   "resourcesId": "ch0059_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "Casey",
+    "jpn": "ケイシー"
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
+  },
   "CH0062": {
    "code": "CH0062",
    "name": "트리체",
-   "nameEn": "treache",
+   "nameEn": "Treache",
    "desc": "극도로 희미한 존재감을 가진 스텔스 소녀. 타고난 체질 탓에 매번 없는 사람 취급을 당하지만, 그 덕분에 누구에게도 들키지 않고 잠입하거나 정보를 수집하는 데 특화되었다. 현재는, 이 능력을 살려 자신을 필요로 하는 이들의 의뢰를 받으며 생활한다. 다만 그렇게 번 돈을 모두 미소녀 피규어에 쏟아부을 정도로 맹목적이고 열렬한 오타쿠이기도 하다.",
    "iconPath": "Icon_CH0062",
    "resourcesId": "ch0062_resources",
    "voiceGroupId": "voc_ch0062_group",
    "unfinished": {
-    "eng": "treache",
-    "jpn": "トリチェ"
+    "eng": "Treache",
+    "jpn": "トリーチェ"
    },
    "id": 62,
    "characterType": 1,
@@ -12807,8 +13138,8 @@
    "resourcesId": "ch0068_resources",
    "voiceGroupId": "voc_ch0068_group",
    "unfinished": {
-    "eng": "Sera",
-    "jpn": "セラ"
+    "eng": "Claire (Swimsuit)",
+    "jpn": "クレア（水着）"
    },
    "id": 68,
    "characterType": 1,
@@ -13102,8 +13433,23 @@
     100203,
     100204,
     100205
-   ],
-   "skinsLockedUntil": "2026-08-13"
+   ]
+  },
+  "CH0069": {
+   "code": "CH0069",
+   "name": "단희(할로윈)",
+   "nameEn": null,
+   "desc": "#####준비중입니다.",
+   "iconPath": "Icon_CH0069",
+   "resourcesId": "ch0069_resources",
+   "voiceGroupId": "voc_ch0069_group",
+   "unfinished": {
+    "eng": "Sera",
+    "jpn": "セラ"
+   },
+   "artist": null,
+   "cv": null,
+   "unreleased": true
   },
   "NP0101": {
    "code": "NP0101",
@@ -13114,8 +13460,8 @@
    "resourcesId": "np0101_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイドアルバ（清掃）",
-    "jpn": "メイドアルバイト（掃除）"
+    "eng": "Maid Part-Timer (Cleaning)",
+    "jpn": "バイトメイド（掃除）"
    },
    "id": 200101,
    "characterType": 2,
@@ -13139,8 +13485,8 @@
    "resourcesId": "np0102_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイドアルバ（浴室）",
-    "jpn": "メイドアルバイト（浴室）"
+    "eng": "Maid Part-Timer (Bathroom)",
+    "jpn": "バイトメイド（浴室）"
    },
    "id": 200102,
    "characterType": 2,
@@ -13164,8 +13510,8 @@
    "resourcesId": "np0103_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイドアルバ（ローラー）",
-    "jpn": "メイドアルバイト（ローラー）"
+    "eng": "Maid Part-Timer (Roller)",
+    "jpn": "バイトメイド（ローラー）"
    },
    "id": 200103,
    "characterType": 2,
@@ -13189,8 +13535,8 @@
    "resourcesId": "np0104_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイドアルバ（警護）",
-    "jpn": "メイドアルバイト（警護）"
+    "eng": "Maid Part-Timer (Guard)",
+    "jpn": "バイトメイド（警護）"
    },
    "id": 200104,
    "characterType": 2,
@@ -13214,8 +13560,8 @@
    "resourcesId": "np0105_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイドアルバ（狙撃）",
-    "jpn": "メイドアルバイト（狙撃）"
+    "eng": "Maid Part-Timer (Sniper)",
+    "jpn": "バイトメイド（狙撃）"
    },
    "id": 200105,
    "characterType": 2,
@@ -13239,8 +13585,8 @@
    "resourcesId": "np0106_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイドアルバ（ほこり）",
-    "jpn": "メイドアルバイト（はたき）"
+    "eng": "Maid Part-Timer (Dusting)",
+    "jpn": "バイトメイド（ほこり）"
    },
    "id": 200106,
    "characterType": 2,
@@ -13264,8 +13610,8 @@
    "resourcesId": "np0107_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイド正職員（料理）",
-    "jpn": "メイド正社員（料理）"
+    "eng": "Full-Time Maid (Cooking)",
+    "jpn": "正社員メイド（料理）"
    },
    "id": 200107,
    "characterType": 2,
@@ -13289,8 +13635,8 @@
    "resourcesId": "np0108_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイド正職員（キッチン）",
-    "jpn": "メイド正社員（厨房）"
+    "eng": "Full-Time Maid (Kitchen)",
+    "jpn": "正社員メイド（厨房）"
    },
    "id": 200108,
    "characterType": 2,
@@ -13314,8 +13660,8 @@
    "resourcesId": "np0109_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイド正職員（真空）",
-    "jpn": "メイド正社員（掃除機）"
+    "eng": "Full-Time Maid (Vacuum)",
+    "jpn": "正社員メイド（真空）"
    },
    "id": 200109,
    "characterType": 2,
@@ -13339,8 +13685,8 @@
    "resourcesId": "np0110_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイド正職員（逮捕）",
-    "jpn": "メイド正社員（拳銃）"
+    "eng": "Full-Time Maid (Arrest)",
+    "jpn": "正社員メイド（逮捕）"
    },
    "id": 200110,
    "characterType": 2,
@@ -13364,8 +13710,8 @@
    "resourcesId": "np0111_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイド正職員（狙撃）",
-    "jpn": "メイド正社員（狙撃）"
+    "eng": "Full-Time Maid (Sniper)",
+    "jpn": "正社員メイド（狙撃）"
    },
    "id": 200111,
    "characterType": 2,
@@ -13389,8 +13735,8 @@
    "resourcesId": "np0112_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "メイド正職員（呪術）",
-    "jpn": "メイド正社員（呪術）"
+    "eng": "Full-Time Maid (Sorcery)",
+    "jpn": "正社員メイド（呪術）"
    },
    "id": 200112,
    "characterType": 2,
@@ -13414,7 +13760,7 @@
    "resourcesId": "np0199_resources",
    "voiceGroupId": "voc_np0199_group",
    "unfinished": {
-    "eng": "メイド場",
+    "eng": "Head Maid",
     "jpn": "メイド長"
    },
    "id": 200199,
@@ -13439,7 +13785,7 @@
    "resourcesId": "np0201_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ブルーエンジェル（ダンベル）",
+    "eng": "Blue Angel (Dumbbell)",
     "jpn": "ブルーエンジェル（ダンベル）"
    },
    "id": 200201,
@@ -13464,8 +13810,8 @@
    "resourcesId": "np0202_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ブルーエンジェル（アンミット）",
-    "jpn": "ブルーエンジェル（ミット）"
+    "eng": "Blue Angel (Arm Mitt)",
+    "jpn": "ブルーエンジェル（アームミット）"
    },
    "id": 200202,
    "characterType": 2,
@@ -13489,7 +13835,7 @@
    "resourcesId": "np0203_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ブルーエンジェル（ボクシング）",
+    "eng": "Blue Angel (Boxing)",
     "jpn": "ブルーエンジェル（ボクシング）"
    },
    "id": 200203,
@@ -13514,8 +13860,8 @@
    "resourcesId": "np0204_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ブルーエンジェル（ツポファン）",
-    "jpn": "ブルーエンジェル（砲丸）"
+    "eng": "Blue Angel (Shot Put)",
+    "jpn": "ブルーエンジェル（砲丸投げ）"
    },
    "id": 200204,
    "characterType": 2,
@@ -13539,8 +13885,8 @@
    "resourcesId": "np0205_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ブルーエンジェル（ディスク）",
-    "jpn": "ブルーエンジェル（円盤）"
+    "eng": "Blue Angel (Discus)",
+    "jpn": "ブルーエンジェル（ディスク）"
    },
    "id": 200205,
    "characterType": 2,
@@ -13564,7 +13910,7 @@
    "resourcesId": "np0206_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ブルーマネージャー（スリングショット）",
+    "eng": "Blue Manager (Slingshot)",
     "jpn": "ブルーマネージャー（スリングショット）"
    },
    "id": 200206,
@@ -13589,7 +13935,7 @@
    "resourcesId": "np0207_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "レッドエンジェル（ダンベル）",
+    "eng": "Red Angel (Dumbbell)",
     "jpn": "レッドエンジェル（ダンベル）"
    },
    "id": 200207,
@@ -13614,8 +13960,8 @@
    "resourcesId": "np0208_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "レッドエンジェル（アームシールド）",
-    "jpn": "レッドエンジェル（ミット）"
+    "eng": "Red Angel (Arm Shield)",
+    "jpn": "レッドエンジェル（アームシールド）"
    },
    "id": 200208,
    "characterType": 2,
@@ -13639,8 +13985,8 @@
    "resourcesId": "np0209_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "レッドエンジェル（ファイト）",
-    "jpn": "レッドエンジェル（ファイター）"
+    "eng": "Red Angel (Fight)",
+    "jpn": "レッドエンジェル（ファイト）"
    },
    "id": 200209,
    "characterType": 2,
@@ -13664,7 +14010,7 @@
    "resourcesId": "np0210_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "レッドエンジェル（ケトルベル）",
+    "eng": "Red Angel (Kettlebell)",
     "jpn": "レッドエンジェル（ケトルベル）"
    },
    "id": 200210,
@@ -13689,8 +14035,8 @@
    "resourcesId": "np0211_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "レッドエンジェル（ディスク）",
-    "jpn": "レッドエンジェル（円盤）"
+    "eng": "Red Angel (Discus)",
+    "jpn": "レッドエンジェル（ディスク）"
    },
    "id": 200211,
    "characterType": 2,
@@ -13714,7 +14060,7 @@
    "resourcesId": "np0212_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "レッドマネージャー（スリングショット）",
+    "eng": "Red Manager (Slingshot)",
     "jpn": "レッドマネージャー（スリングショット）"
    },
    "id": 200212,
@@ -13739,7 +14085,7 @@
    "resourcesId": "np0299_resources",
    "voiceGroupId": "voc_np0299_group",
    "unfinished": {
-    "eng": "ブラックエンジェル",
+    "eng": "Black Angel",
     "jpn": "ブラックエンジェル"
    },
    "id": 200299,
@@ -13764,8 +14110,8 @@
    "resourcesId": "np0301_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バーニールーキー(キッカー)",
-    "jpn": "バーニールーキー(キッカー)"
+    "eng": "Bunny Rookie (Kicker)",
+    "jpn": "バニー・ルーキー（キッカー）"
    },
    "id": 200301,
    "characterType": 2,
@@ -13789,8 +14135,8 @@
    "resourcesId": "np0302_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニールーキー(ガード)",
-    "jpn": "バニールーキー(ガード)"
+    "eng": "Bunny Rookie (Guard)",
+    "jpn": "バニー・ルーキー（ガード）"
    },
    "id": 200302,
    "characterType": 2,
@@ -13814,8 +14160,8 @@
    "resourcesId": "np0303_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニールーキー(ルーレット)",
-    "jpn": "バニールーキー(ルーレット)"
+    "eng": "Bunny Rookie (Roulette)",
+    "jpn": "バニー・ルーキー（ルーレット）"
    },
    "id": 200303,
    "characterType": 2,
@@ -13839,8 +14185,8 @@
    "resourcesId": "np0304_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニー·ルーキー(親衛)",
-    "jpn": "バニー·ルーキー(親衛)"
+    "eng": "Bunny Rookie (Royal Guard)",
+    "jpn": "バニー・ルーキー（親衛）"
    },
    "id": 200304,
    "characterType": 2,
@@ -13864,8 +14210,8 @@
    "resourcesId": "np0305_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニールーキー(ダーツ)",
-    "jpn": "バニールーキー(ダーツ)"
+    "eng": "Bunny Rookie (Darts)",
+    "jpn": "バニー・ルーキー（ダーツ）"
    },
    "id": 200305,
    "characterType": 2,
@@ -13889,8 +14235,8 @@
    "resourcesId": "np0306_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バーニールーキー(魔術)",
-    "jpn": "バーニールーキー(魔術)"
+    "eng": "Bunny Rookie (Magic)",
+    "jpn": "バニー・ルーキー（マジック）"
    },
    "id": 200306,
    "characterType": 2,
@@ -13914,8 +14260,8 @@
    "resourcesId": "np0307_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニーラバーズ（キッカー）",
-    "jpn": "バニーラバーズ（キッカー）"
+    "eng": "Bunny Lovers (Kicker)",
+    "jpn": "バニー・ラバーズ（キッカー）"
    },
    "id": 200307,
    "characterType": 2,
@@ -13939,8 +14285,8 @@
    "resourcesId": "np0308_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニーラバーズ（ガード）",
-    "jpn": "バニーラバーズ（ガード）"
+    "eng": "Bunny Lovers (Guard)",
+    "jpn": "バニー・ラバーズ（ガード）"
    },
    "id": 200308,
    "characterType": 2,
@@ -13964,8 +14310,8 @@
    "resourcesId": "np0309_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニーラバーズ（ルーレット）",
-    "jpn": "バニーラバーズ（ルーレット）"
+    "eng": "Bunny Lovers (Roulette)",
+    "jpn": "バニー・ラバーズ（ルーレット）"
    },
    "id": 200309,
    "characterType": 2,
@@ -13989,8 +14335,8 @@
    "resourcesId": "np0310_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニーラバーズ（親衛）",
-    "jpn": "バニーラバーズ（親衛）"
+    "eng": "Bunny Lovers (Royal Guard)",
+    "jpn": "バニー・ラバーズ（親衛）"
    },
    "id": 200310,
    "characterType": 2,
@@ -14014,8 +14360,8 @@
    "resourcesId": "np0311_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニーラバーズ（ダーツ）",
-    "jpn": "バニーラバーズ（ダーツ）"
+    "eng": "Bunny Lovers (Darts)",
+    "jpn": "バニー・ラバーズ（ダーツ）"
    },
    "id": 200311,
    "characterType": 2,
@@ -14039,8 +14385,8 @@
    "resourcesId": "np0312_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニーラバーズ（魔法）",
-    "jpn": "バニーラバーズ（魔法）"
+    "eng": "Bunny Lovers (Magic)",
+    "jpn": "バニー・ラバーズ（マジック）"
    },
    "id": 200312,
    "characterType": 2,
@@ -14064,8 +14410,8 @@
    "resourcesId": "np0399_resources",
    "voiceGroupId": "voc_np0399_group",
    "unfinished": {
-    "eng": "バニーグロリア",
-    "jpn": "バニーグロリア"
+    "eng": "Bunny Gloria",
+    "jpn": "バニー・グローリア"
    },
    "id": 200399,
    "characterType": 2,
@@ -14089,8 +14435,8 @@
    "resourcesId": "np0401_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ノビス（参会）",
-    "jpn": "ノビス（参会）"
+    "eng": "Novice (Confession)",
+    "jpn": "ノビス（懺悔）"
    },
    "id": 200401,
    "characterType": 2,
@@ -14114,7 +14460,7 @@
    "resourcesId": "np0402_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ノビス（守護）",
+    "eng": "Novice (Protection)",
     "jpn": "ノビス（守護）"
    },
    "id": 200402,
@@ -14139,7 +14485,7 @@
    "resourcesId": "np0403_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ノビス（啓示）",
+    "eng": "Novice (Revelation)",
     "jpn": "ノビス（啓示）"
    },
    "id": 200403,
@@ -14164,8 +14510,8 @@
    "resourcesId": "np0404_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ノビス（宣布）",
-    "jpn": "ノビス（宣布）"
+    "eng": "Novice (Proclamation)",
+    "jpn": "ノビス（宣告）"
    },
    "id": 200404,
    "characterType": 2,
@@ -14189,7 +14535,7 @@
    "resourcesId": "np0405_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ノビス（祝福）",
+    "eng": "Novice (Blessing)",
     "jpn": "ノビス（祝福）"
    },
    "id": 200405,
@@ -14214,8 +14560,8 @@
    "resourcesId": "np0406_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ノビス（優美）",
-    "jpn": "ノビス（優美）"
+    "eng": "Novice (Grace)",
+    "jpn": "ノビス（恩寵）"
    },
    "id": 200406,
    "characterType": 2,
@@ -14239,8 +14585,8 @@
    "resourcesId": "np0407_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "オーディナ（献身）",
-    "jpn": "オーディナ（献身）"
+    "eng": "Odina (Devotion)",
+    "jpn": "オディナ（献身）"
    },
    "id": 200407,
    "characterType": 2,
@@ -14264,8 +14610,8 @@
    "resourcesId": "np0408_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "オーディナ（贖罪）",
-    "jpn": "オーディナ（贖罪）"
+    "eng": "Odina (Atonement)",
+    "jpn": "オディナ（贖罪）"
    },
    "id": 200408,
    "characterType": 2,
@@ -14289,8 +14635,8 @@
    "resourcesId": "np0409_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "オーディナ（神格）",
-    "jpn": "オーディナ（神格）"
+    "eng": "Odina (Divinity)",
+    "jpn": "オディナ（神格）"
    },
    "id": 200409,
    "characterType": 2,
@@ -14314,8 +14660,8 @@
    "resourcesId": "np0410_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "オーディナ（予言）",
-    "jpn": "オーディナ（予言）"
+    "eng": "Odina (Prophecy)",
+    "jpn": "オディナ（予言）"
    },
    "id": 200410,
    "characterType": 2,
@@ -14339,8 +14685,8 @@
    "resourcesId": "np0411_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "オーディナ（意識）",
-    "jpn": "オーディナ（意識）"
+    "eng": "Odina (Ritual)",
+    "jpn": "オディナ（儀式）"
    },
    "id": 200411,
    "characterType": 2,
@@ -14364,8 +14710,8 @@
    "resourcesId": "np0412_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "オーディナ（癒し）",
-    "jpn": "オーディナ（癒し）"
+    "eng": "Odina (Healing)",
+    "jpn": "オディナ（治癒）"
    },
    "id": 200412,
    "characterType": 2,
@@ -14389,7 +14735,7 @@
    "resourcesId": "np0499_resources",
    "voiceGroupId": "voc_np0499_group",
    "unfinished": {
-    "eng": "エクセノス",
+    "eng": "Exenos",
     "jpn": "エクセノス"
    },
    "id": 200499,
@@ -14414,7 +14760,7 @@
    "resourcesId": "np0501_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（パディ）",
+    "eng": "Kitty Bully (Paddy)",
     "jpn": "キティブリー（パディ）"
    },
    "id": 200501,
@@ -14439,8 +14785,8 @@
    "resourcesId": "np0502_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（カーティ）",
-    "jpn": "キティブリー（カーティ）"
+    "eng": "Kitty Bully (Cutty)",
+    "jpn": "キティブリー（カティ）"
    },
    "id": 200502,
    "characterType": 2,
@@ -14464,7 +14810,7 @@
    "resourcesId": "np0503_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（ブロックス）",
+    "eng": "Kitty Bully (Blocks)",
     "jpn": "キティブリー（ブロックス）"
    },
    "id": 200503,
@@ -14489,8 +14835,8 @@
    "resourcesId": "np0504_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（ブロックス）",
-    "jpn": "キティブリー（ブロックス）"
+    "eng": "Kitty Bully (Bang-Bang)",
+    "jpn": "キティブリー（バンバン）"
    },
    "id": 200504,
    "characterType": 2,
@@ -14514,8 +14860,8 @@
    "resourcesId": "np0505_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（ブロックス）",
-    "jpn": "キティブリー（ブロックス）"
+    "eng": "Kitty Bully (Rumble)",
+    "jpn": "キティブリー（ランブル）"
    },
    "id": 200505,
    "characterType": 2,
@@ -14539,7 +14885,7 @@
    "resourcesId": "np0506_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
+    "eng": "Kitty Bully (Buzzdock)",
     "jpn": "キティブリー（バズダック）"
    },
    "id": 200506,
@@ -14564,8 +14910,8 @@
    "resourcesId": "np0507_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Pussycat Noir (Lucy)",
+    "jpn": "プッシーキャット・ノワール（ルーシー）"
    },
    "id": 200507,
    "characterType": 2,
@@ -14589,8 +14935,8 @@
    "resourcesId": "np0508_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Pussycat Noir (Sting)",
+    "jpn": "プッシーキャット・ノワール（スティング）"
    },
    "id": 200508,
    "characterType": 2,
@@ -14614,8 +14960,8 @@
    "resourcesId": "np0509_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Pussycat Noir (Rattle)",
+    "jpn": "プッシーキャット・ノワール（ラトル）"
    },
    "id": 200509,
    "characterType": 2,
@@ -14639,8 +14985,8 @@
    "resourcesId": "np0510_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Pussycat Noir (Aiming)",
+    "jpn": "プッシーキャット・ノワール（エイミング）"
    },
    "id": 200510,
    "characterType": 2,
@@ -14664,8 +15010,8 @@
    "resourcesId": "np0511_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Pussycat Noir (Shad)",
+    "jpn": "プッシーキャット・ノワール（シャッド）"
    },
    "id": 200511,
    "characterType": 2,
@@ -14689,8 +15035,8 @@
    "resourcesId": "np0512_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Pussycat Noir (Merlot)",
+    "jpn": "プッシーキャット・ノワール（メルロー）"
    },
    "id": 200512,
    "characterType": 2,
@@ -14714,8 +15060,8 @@
    "resourcesId": "np0599_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Godmother",
+    "jpn": "ゴッドマザー"
    },
    "id": 200599,
    "characterType": 2,
@@ -14730,6 +15076,31 @@
    "cv": null,
    "skillSetGroup": 200599
   },
+  "NP0605": {
+   "code": "NP0605",
+   "name": "펠리버리 크루(봄버)",
+   "nameEn": null,
+   "desc": "",
+   "iconPath": "Icon_np0605",
+   "resourcesId": "np0605_resources",
+   "voiceGroupId": "0",
+   "unfinished": {
+    "eng": "キティブリー（ブロックス）",
+    "jpn": "キティブリー（ブロックス）"
+   },
+   "id": 200605,
+   "characterType": 2,
+   "nameKey": "character_name_np0605",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 3,
+   "positionType": 3,
+   "tribeType": 0,
+   "artist": null,
+   "cv": null,
+   "skillSetGroup": 200605
+  },
   "NP0701": {
    "code": "NP0701",
    "name": "메이드 수영복(센티넬)",
@@ -14739,8 +15110,8 @@
    "resourcesId": "np0701_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Swimsuit (Sentinel)",
+    "jpn": "メイド水着（センチネル）"
    },
    "id": 200701,
    "characterType": 2,
@@ -14764,8 +15135,8 @@
    "resourcesId": "np0702_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Swimsuit (Janitor)",
+    "jpn": "メイド水着（ジャニター）"
    },
    "id": 200702,
    "characterType": 2,
@@ -14829,8 +15200,8 @@
    "resourcesId": "np0703_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Swimsuit (Lifeguard)",
+    "jpn": "メイド水着（ライフガード）"
    },
    "id": 200703,
    "characterType": 2,
@@ -14854,8 +15225,8 @@
    "resourcesId": "np0704_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Swimsuit (Washer)",
+    "jpn": "メイド水着（ウォッシャー）"
    },
    "id": 200704,
    "characterType": 2,
@@ -14919,8 +15290,8 @@
    "resourcesId": "np0705_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Swimsuit (Coordinator)",
+    "jpn": "メイド水着（コーディネーター）"
    },
    "id": 200705,
    "characterType": 2,
@@ -14944,8 +15315,8 @@
    "resourcesId": "np0706_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Swimsuit (Cleaner)",
+    "jpn": "メイド水着（クリーナー）"
    },
    "id": 200706,
    "characterType": 2,
@@ -14969,8 +15340,8 @@
    "resourcesId": "np0707_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Bikini (Surfer)",
+    "jpn": "メイドビキニ（サーファー）"
    },
    "id": 200707,
    "characterType": 2,
@@ -14994,8 +15365,8 @@
    "resourcesId": "np0708_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Bikini (Tanning)",
+    "jpn": "メイドビキニ（タンニング）"
    },
    "id": 200708,
    "characterType": 2,
@@ -15019,8 +15390,8 @@
    "resourcesId": "np0709_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Bikini (Floater)",
+    "jpn": "メイドビキニ（フローター）"
    },
    "id": 200709,
    "characterType": 2,
@@ -15044,8 +15415,8 @@
    "resourcesId": "np0710_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Bikini (Watershot)",
+    "jpn": "メイドビキニ（ウォーターショット）"
    },
    "id": 200710,
    "characterType": 2,
@@ -15069,8 +15440,8 @@
    "resourcesId": "np0711_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Bikini (Balloon Launcher)",
+    "jpn": "メイドビキニ（バルーンランチャー）"
    },
    "id": 200711,
    "characterType": 2,
@@ -15094,8 +15465,8 @@
    "resourcesId": "np0712_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Maid Bikini (Water Gun)",
+    "jpn": "メイドビキニ（ウォーターガン）"
    },
    "id": 200712,
    "characterType": 2,
@@ -15119,8 +15490,8 @@
    "resourcesId": "np0799_resources",
    "voiceGroupId": "voc_np0799_group",
    "unfinished": {
-    "eng": "キティブリー（バズダック）",
-    "jpn": "キティブリー（バズダック）"
+    "eng": "Head Maid (Swimsuit)",
+    "jpn": "メイド長（水着）"
    },
    "id": 200799,
    "characterType": 2,
@@ -15192,8 +15563,8 @@
    "resourcesId": "np6010_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "オブリビオン",
-    "jpn": "オブリビオン"
+    "eng": "Sinistra",
+    "jpn": "シニストラ"
    },
    "id": 206010,
    "characterType": 2,
@@ -15247,8 +15618,8 @@
    "resourcesId": "np6011_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ナイトメア",
-    "jpn": "ナイトメア"
+    "eng": "Dextra",
+    "jpn": "デクストラ"
    },
    "id": 206011,
    "characterType": 2,
@@ -15321,8 +15692,8 @@
    "resourcesId": "np6012_resources",
    "voiceGroupId": "voc_np6012_group",
    "unfinished": {
-    "eng": "アポカリプス",
-    "jpn": "アポカリプス"
+    "eng": "Umbra Dei",
+    "jpn": "ウンブラ・デイ"
    },
    "id": 206012,
    "characterType": 2,
@@ -15425,8 +15796,8 @@
    "resourcesId": "np6020_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "オブリビオン",
-    "jpn": "オブリビオン"
+    "eng": "Elegant Guest",
+    "jpn": "優雅な客"
    },
    "id": 206020,
    "characterType": 2,
@@ -15495,8 +15866,8 @@
    "resourcesId": "np6021_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ナイトメア",
-    "jpn": "ナイトメア"
+    "eng": "Lively Guest",
+    "jpn": "陽気な客"
    },
    "id": 206021,
    "characterType": 2,
@@ -15565,8 +15936,8 @@
    "resourcesId": "np6022_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "アポカリプス",
-    "jpn": "アポカリプス"
+    "eng": "Relaxed Guest",
+    "jpn": "のんびりした客"
    },
    "id": 206022,
    "characterType": 2,
@@ -15634,8 +16005,8 @@
    "resourcesId": "np6023_resources",
    "voiceGroupId": "voc_np6023_group",
    "unfinished": {
-    "eng": "ナイトメア",
-    "jpn": "ナイトメア"
+    "eng": "Mari",
+    "jpn": "マリ"
    },
    "id": 206023,
    "characterType": 2,
@@ -15736,8 +16107,8 @@
    "resourcesId": "np6024_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "アポカリプス",
-    "jpn": "アポカリプス"
+    "eng": "Anna",
+    "jpn": "アンナ"
    },
    "id": 206024,
    "characterType": 2,
@@ -15828,7 +16199,7 @@
    "resourcesId": "np7998_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "クワク卿",
+    "eng": "Sir Kuwak",
     "jpn": "クワク卿"
    },
    "id": 4000303,
@@ -15853,7 +16224,7 @@
    "resourcesId": "np7999_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ゴールドフェザー",
+    "eng": "Gold Feather",
     "jpn": "ゴールドフェザー"
    },
    "id": 3000201,
@@ -15878,7 +16249,7 @@
    "resourcesId": "np8004_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "Maid flully (Roller)",
+    "eng": "Maid Flurry (Roller)",
     "jpn": "メイドフラリー（ローラー）"
    },
    "id": 208004,
@@ -15903,8 +16274,8 @@
    "resourcesId": "np8005_resources",
    "voiceGroupId": null,
    "unfinished": {
-    "eng": "Maid flully (Sniper)",
-    "jpn": "メイドフラリー（スナイパー）"
+    "eng": "Maid Flurry (Sniper)",
+    "jpn": "メイドフラリー（狙撃）"
    },
    "id": 208005,
    "characterType": 2,
@@ -15928,8 +16299,8 @@
    "resourcesId": "np8006_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "フィートフラリー（ボクシング）",
-    "jpn": "フィートフラリー（ボクシング）"
+    "eng": "Fit Flurry (Boxing)",
+    "jpn": "フィットフラリー（ボクシング）"
    },
    "id": 208006,
    "characterType": 2,
@@ -15953,8 +16324,8 @@
    "resourcesId": "np8007_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "フィートフラリー（筋力）",
-    "jpn": "フィートフラリー（筋力）"
+    "eng": "Fit Flurry (Strength)",
+    "jpn": "フィットフラリー（筋力）"
    },
    "id": 208007,
    "characterType": 2,
@@ -15978,8 +16349,8 @@
    "resourcesId": "np8008_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "バニーフラリー（うさぎ手袋）",
-    "jpn": "バニーフラリー（うさぎ手袋）"
+    "eng": "Bunny Flurry (Rabbit Gloves)",
+    "jpn": "バニーフラリー（うさぎグローブ）"
    },
    "id": 208008,
    "characterType": 2,
@@ -16003,7 +16374,7 @@
    "resourcesId": "np8009_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "Bunny flully (Gold Coin)",
+    "eng": "Bunny Flurry (Gold Coin)",
     "jpn": "バニーフラリー（金貨）"
    },
    "id": 208009,
@@ -16028,8 +16399,8 @@
    "resourcesId": "np8010_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "シスターフラリー（撤退）",
-    "jpn": "シスターフラリー（撤退）"
+    "eng": "Sister Flurry (Mace)",
+    "jpn": "シスターフラリー（鉄槌）"
    },
    "id": 208010,
    "characterType": 2,
@@ -16053,7 +16424,7 @@
    "resourcesId": "np8011_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "Sister flully (Staff)",
+    "eng": "Sister Flurry (Staff)",
     "jpn": "シスターフラリー（スタッフ）"
    },
    "id": 208011,
@@ -16078,8 +16449,8 @@
    "resourcesId": "np8094_resources",
    "voiceGroupId": "voc_np8094_group",
    "unfinished": {
-    "eng": "メイドジャンフラリー",
-    "jpn": "メイドジャンフラリー"
+    "eng": "Head Maid Flurry",
+    "jpn": "メイド長フラリー"
    },
    "id": 208094,
    "characterType": 2,
@@ -16103,7 +16474,7 @@
    "resourcesId": "np8095_resources",
    "voiceGroupId": "voc_np8094_group",
    "unfinished": {
-    "eng": "Angel flully",
+    "eng": "Angel Flurry",
     "jpn": "エンジェルフラリー"
    },
    "id": 208095,
@@ -16128,7 +16499,7 @@
    "resourcesId": "np8096_resources",
    "voiceGroupId": "voc_np8094_group",
    "unfinished": {
-    "eng": "キングラビットフラリー",
+    "eng": "King Rabbit Flurry",
     "jpn": "キングラビットフラリー"
    },
    "id": 208096,
@@ -16153,7 +16524,7 @@
    "resourcesId": "np8097_resources",
    "voiceGroupId": "voc_np8094_group",
    "unfinished": {
-    "eng": "Abbess flully",
+    "eng": "Mother Superior Flurry",
     "jpn": "修道院長フラリー"
    },
    "id": 208097,
@@ -16178,8 +16549,8 @@
    "resourcesId": "np8101_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ミニシスター(CUB-E 01)",
-    "jpn": "ミニシスター(CUB-E 01)"
+    "eng": "Mini Sister (CUB-E 01)",
+    "jpn": "ミニシスター（CUB-E 01）"
    },
    "id": 208101,
    "characterType": 2,
@@ -16203,8 +16574,8 @@
    "resourcesId": "np8102_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "ミニシスター(CUB-E 08)",
-    "jpn": "ミニシスター(CUB-E 08)"
+    "eng": "Mini Sister (CUB-E 08)",
+    "jpn": "ミニシスター（CUB-E 08）"
    },
    "id": 208102,
    "characterType": 2,
@@ -16228,7 +16599,7 @@
    "resourcesId": "np8199_resources",
    "voiceGroupId": "voc_np8199_group",
    "unfinished": {
-    "eng": "スモールシスター",
+    "eng": "Small Sister",
     "jpn": "スモールシスター"
    },
    "id": 208199,
@@ -16253,8 +16624,8 @@
    "resourcesId": "np8200_resources",
    "voiceGroupId": "voc_np8200_group",
    "unfinished": {
-    "eng": "スモールシスター",
-    "jpn": "スモールシスター"
+    "eng": "Laundry Bot Mk.1",
+    "jpn": "洗濯ロボMk.1"
    },
    "id": 208200,
    "characterType": 2,
@@ -16278,8 +16649,8 @@
    "resourcesId": "np8201_resources",
    "voiceGroupId": "0",
    "unfinished": {
-    "eng": "도넛하우스 파트타이머",
-    "jpn": "도넛하우스 파트타이머"
+    "eng": "Donut House Part-Timer",
+    "jpn": "ドーナツハウスのバイト"
    },
    "id": 208201,
    "characterType": 2,
@@ -18364,7 +18735,7 @@
  "statTypes": {
   "PHYSICS_ATTACK": {
    "name": "공격력",
-   "en": "Attack",
+   "en": "Attack Power",
    "display": 1,
    "order": 1
   },
@@ -18388,25 +18759,25 @@
   },
   "EVASION": {
    "name": "회피",
-   "en": "Dodge",
+   "en": "Evasion",
    "display": 1,
    "order": 5
   },
   "PHYSICS_CRITICAL_CHANCE": {
    "name": "치명",
-   "en": "Critical Rate",
+   "en": "Critical Chance",
    "display": 1,
    "order": 6
   },
   "PHYSICS_CRITICAL_DAMAGE": {
    "name": "치명 피해율",
-   "en": "Critical damage",
+   "en": "Critical Damage Rate",
    "display": 2,
    "order": 7
   },
   "HEAL": {
    "name": "치유력",
-   "en": "Healing power",
+   "en": "Healing Power",
    "display": 1,
    "order": 8
   },
@@ -18418,25 +18789,25 @@
   },
   "RESIST_NORMAL_DEBUFF": {
    "name": "해로운 효과 저항",
-   "en": "CC Resist",
+   "en": "Negative Status Effect Resistance",
    "display": 2,
    "order": 10
   },
   "CRITICAL_CHANCE_RESIST": {
    "name": "치명 저항",
-   "en": "Critical Resist",
+   "en": "Critical Resistance",
    "display": 1,
    "order": 11
   },
   "CRITICAL_POWER_ADD_RESIST": {
    "name": "치명 피해 저항률",
-   "en": "Critical damage resist",
+   "en": "Critical Damage Resistance Rate",
    "display": 2,
    "order": 12
   },
   "HEAL_RECEIVE": {
    "name": "받는 치유량",
-   "en": "Incoming Heals",
+   "en": "Healing Received",
    "display": 2,
    "order": 13
   },
@@ -18448,7 +18819,7 @@
   },
   "PENETRATION_DEFEND": {
    "name": "관통 저항",
-   "en": "Penetration resist",
+   "en": "Penetration Resistance",
    "display": 1,
    "order": 15
   },
@@ -19677,6 +20048,41 @@
     4290
    ]
   },
+  "43": {
+   "1": [
+    4310,
+    4320,
+    4330,
+    4390
+   ],
+   "2": [
+    4310,
+    4320,
+    4330,
+    4390
+   ],
+   "3": [
+    4300,
+    4310,
+    4320,
+    4330,
+    4390
+   ],
+   "4": [
+    4301,
+    4310,
+    4320,
+    4330,
+    4390
+   ],
+   "5": [
+    4302,
+    4310,
+    4320,
+    4330,
+    4390
+   ]
+  },
   "46": {
    "1": [
     4610,
@@ -20410,6 +20816,11 @@
     2005995
    ]
   },
+  "200605": {
+   "1": [
+    2006051
+   ]
+  },
   "200701": {
    "1": [
     2007011
@@ -21020,7 +21431,7 @@
        "range": "ALL",
        "rangeValue": 0.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 3
@@ -32608,7 +33019,7 @@
        "range": "FRONT",
        "rangeValue": 7.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 1
@@ -35481,7 +35892,7 @@
        "range": "FRONT",
        "rangeValue": 5.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 10
@@ -39715,7 +40126,7 @@
        "range": "ALL",
        "rangeValue": 0.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 11
@@ -41716,7 +42127,7 @@
        "range": "ALL",
        "rangeValue": 0.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 1
@@ -41986,7 +42397,7 @@
        "range": "ALL",
        "rangeValue": 0.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 3
@@ -42187,7 +42598,7 @@
        "range": "ALL",
        "rangeValue": 0.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 7
@@ -43294,8 +43705,8 @@
           0.0
          ]
         },
-        "team": "FRIENDLY",
-        "pick": "ALL",
+        "team": "CAST_TARGET",
+        "pick": null,
         "sort": null,
         "count": 0
        }
@@ -51478,6 +51889,1479 @@
     ]
    }
   },
+  "4300": {
+   "name": "작전계획 I",
+   "desc": [
+    "<color=#0C9F14>회피 작전</color> 효과를 보유한 아군의 <color=#FF5179>디버프</color>가 해제될 때마다 <color=#0C9F14>작전 성공</color> 효과를 획득합니다."
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>회피 작전</color>",
+      "desc": "<color=#0094FF>5</color>초 동안 버프 시전자 회피의 <color=#0094FF>10%</color> 만큼 회피 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Ulti",
+      "categorize": 1,
+      "seconds": 5.0,
+      "maxStack": 99,
+      "dispellable": true
+     },
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_01",
+   "openStar": 3,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_APPLY",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_CATEGORIZE_TYPE",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "durationCategory",
+         "values": [
+          {
+           "name": "CATEGORIZE_DEBUFF",
+           "id": "2"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>작전 성공</color>",
+        "icon": "Icon_BattleBuff_Ch0043_Passive",
+        "categorize": 1,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_USE_SKILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          6.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>작전 성공</color>",
+           "id": "define_trigger_ch0043"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_ACTOR_DEAD",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>침투 작전</color>",
+           "id": "define_buff_ch0043_cridmg"
+          }
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "id": "define_trigger_ch0043_skill02"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_EXPIRED",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "id": "define_trigger_ch0043_skill02"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "4301": {
+   "name": "작전계획 II",
+   "desc": [
+    "<color=#0C9F14>회피 작전</color> 효과를 보유한 아군의 <color=#FF5179>디버프</color>가 해제될 때마다 <color=#0C9F14>작전 성공</color> 효과를 획득합니다. <color=#0C9F14>침투 작전</color> 효과를 보유한 아군이 치명타 피해를 입힐 시 <color=#0C9F14>작전 성공</color> 효과를 획득합니다."
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>회피 작전</color>",
+      "desc": "<color=#0094FF>5</color>초 동안 버프 시전자 회피의 <color=#0094FF>10%</color> 만큼 회피 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Ulti",
+      "categorize": 1,
+      "seconds": 5.0,
+      "maxStack": 99,
+      "dispellable": true
+     },
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     },
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>12%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_02",
+   "openStar": 4,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_APPLY",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_CATEGORIZE_TYPE",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "durationCategory",
+         "values": [
+          {
+           "name": "CATEGORIZE_DEBUFF",
+           "id": "2"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>작전 성공</color>",
+        "icon": "Icon_BattleBuff_Ch0043_Passive",
+        "categorize": 1,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_ATTACK_CRI",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>작전 성공</color>",
+        "icon": "Icon_BattleBuff_Ch0043_Passive",
+        "categorize": 1,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_USE_SKILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          6.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>작전 성공</color>",
+           "id": "define_trigger_ch0043"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_ACTOR_DEAD",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>침투 작전</color>",
+           "id": "define_buff_ch0043_cridmg"
+          }
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "id": "define_trigger_ch0043_skill02"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_EXPIRED",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "id": "define_trigger_ch0043_skill02"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "4302": {
+   "name": "작전계획 III",
+   "desc": [
+    "라피네의 공격력이 <color=#0094FF>15%</color> 증가합니다. <color=#0C9F14>회피 작전</color> 효과를 보유한 아군의 <color=#FF5179>디버프</color>가 해제될 때마다 <color=#0C9F14>작전 성공</color> 효과를 획득합니다. <color=#0C9F14>침투 작전</color> 효과를 보유한 아군이 치명타 피해를 입힐 시 <color=#0C9F14>작전 성공</color> 효과를 획득합니다."
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>회피 작전</color>",
+      "desc": "<color=#0094FF>5</color>초 동안 버프 시전자 회피의 <color=#0094FF>10%</color> 만큼 회피 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Ulti",
+      "categorize": 1,
+      "seconds": 5.0,
+      "maxStack": 99,
+      "dispellable": true
+     },
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     },
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>12%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_03",
+   "openStar": 5,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "stats": [
+     {
+      "stat": "PHYSICS_ATTACK",
+      "scale": "PHYSICAL_ATTACK_RATE",
+      "multiple": 0.15,
+      "condition": null,
+      "conditionValue": []
+     }
+    ],
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_APPLY",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_CATEGORIZE_TYPE",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "durationCategory",
+         "values": [
+          {
+           "name": "CATEGORIZE_DEBUFF",
+           "id": "2"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>작전 성공</color>",
+        "icon": "Icon_BattleBuff_Ch0043_Passive",
+        "categorize": 1,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_ATTACK_CRI",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>작전 성공</color>",
+        "icon": "Icon_BattleBuff_Ch0043_Passive",
+        "categorize": 1,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_USE_SKILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          6.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>작전 성공</color>",
+           "id": "define_trigger_ch0043"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_ACTOR_DEAD",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>침투 작전</color>",
+           "id": "define_buff_ch0043_cridmg"
+          }
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "id": "define_trigger_ch0043_skill02"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_EXPIRED",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "id": "define_trigger_ch0043_skill02"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "4310": {
+   "name": "이쪽이야!",
+   "desc": [
+    "가까운 적 1명에게 공격력의 <color=#0094FF>150%</color> 만큼 피해를 입힙니다."
+   ],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 1,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          1.5,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "4320": {
+   "name": "길을 열어줄게",
+   "desc": [
+    "가까운 적 1명에게 공격력의 <color=#0094FF>180%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>180%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>183%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>183%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>186%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>186%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>195%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>195%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>198%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>198%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>201%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>201%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>210%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>210%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>213%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>213%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>216%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>216%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다.",
+    "가까운 적 1명에게 공격력의 <color=#0094FF>225%</color> 만큼 피해를 입힙니다. <color=#0C9F14>작전 성공</color> 효과가 <color=#0094FF>6</color>중첩이 되면 다음에 사용하는 <color=#0C9F14>길을 열어줄게</color> 스킬이 <color=#0C9F14>작전 성공</color> 효과를 <color=#0094FF>6</color>중첩 제거하고  공격력의 <color=#0094FF>225%</color> 만큼 피해를 <color=#0094FF>3</color>회 입힙니다."
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>작전 성공</color>",
+      "desc": "<color=#0094FF>라피네의 작전이 성공적으로 수행되었습니다.</color> (최대 12 중첩)",
+      "icon": "Icon_BattleBuff_Ch0043_Passive",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_01",
+   "openStar": 1,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          1.8,
+          0.0
+         ],
+         "up": [
+          0.03,
+          0.0
+         ],
+         "extra": [
+          0.06,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "4330": {
+   "name": "내 계획을 들어줘",
+   "desc": [
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다.",
+    "치명 수치가 높은 아군 2명에게 <color=#0C9F14>침투 작전</color> 효과를 부여합니다. 라피네가 <color=#0094FF>전투 불능</color>이 되면 <color=#0C9F14>침투 작전</color> 효과가 제거됩니다."
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>12%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>14%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>16%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>23%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>25%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>27%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>34%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>36%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>38%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>침투 작전</color>",
+      "desc": "치명 피해 <color=#0094FF>45%</color> 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Skill02",
+      "categorize": 1,
+      "seconds": 99999.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_02",
+   "openStar": 1,
+   "categorize": 2,
+   "skillType": 3,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 4.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>침투 작전</color>",
+        "icon": "Icon_BattleBuff_Ch0043_Skill02",
+        "categorize": 1,
+        "value": {
+         "base": [
+          0.12,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.02,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.05,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "BUFF_PHYSICS_CRITICAL_POWER_ADD_UP",
+        "scale": "PHYSICAL_CRITICAL_POWER_ADD_RATE",
+        "scaleOf": "HOLDER",
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "CASTER",
+        "categorize": 1,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "FRIENDLY",
+       "range": "ALL",
+       "rangeValue": 0.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": null,
+       "count": 2
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "4390": {
+   "name": "이 경로로 진입하자!",
+   "desc": [
+    "전방 범위 내 자신을 제외한 아군에게 <color=#0C9F14>회피 작전</color> 효과를 부여합니다. <color=#0C9F14>회피 작전</color> 효과를 보유한 아군이 <color=#FF5179>디버프</color>를 획득하면 해당 아군이 가진 모든 <color=#FF5179>디버프</color>를 해제합니다.",
+    "전방 범위 내 자신을 제외한 아군에게 <color=#0C9F14>회피 작전</color> 효과를 부여합니다. <color=#0C9F14>회피 작전</color> 효과를 보유한 아군이 <color=#FF5179>디버프</color>를 획득하면 해당 아군이 가진 모든 <color=#FF5179>디버프</color>를 해제합니다.",
+    "전방 범위 내 자신을 제외한 아군에게 <color=#0C9F14>회피 작전</color> 효과를 부여합니다. <color=#0C9F14>회피 작전</color> 효과를 보유한 아군이 <color=#FF5179>디버프</color>를 획득하면 해당 아군이 가진 모든 <color=#FF5179>디버프</color>를 해제합니다.",
+    "전방 범위 내 자신을 제외한 아군에게 <color=#0C9F14>회피 작전</color> 효과를 부여합니다. <color=#0C9F14>회피 작전</color> 효과를 보유한 아군이 <color=#FF5179>디버프</color>를 획득하면 해당 아군이 가진 모든 <color=#FF5179>디버프</color>를 해제합니다.",
+    "전방 범위 내 자신을 제외한 아군에게 <color=#0C9F14>회피 작전</color> 효과를 부여합니다. <color=#0C9F14>회피 작전</color> 효과를 보유한 아군이 <color=#FF5179>디버프</color>를 획득하면 해당 아군이 가진 모든 <color=#FF5179>디버프</color>를 해제합니다."
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>회피 작전</color>",
+      "desc": "<color=#0094FF>5</color>초 동안 버프 시전자 회피의 <color=#0094FF>10%</color> 만큼 회피 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Ulti",
+      "categorize": 1,
+      "seconds": 5.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>회피 작전</color>",
+      "desc": "<color=#0094FF>5</color>초 동안 버프 시전자 회피의 <color=#0094FF>15%</color> 만큼 회피 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Ulti",
+      "categorize": 1,
+      "seconds": 5.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>회피 작전</color>",
+      "desc": "<color=#0094FF>6</color>초 동안 버프 시전자 회피의 <color=#0094FF>30%</color> 만큼 회피 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Ulti",
+      "categorize": 1,
+      "seconds": 6.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>회피 작전</color>",
+      "desc": "<color=#0094FF>6</color>초 동안 버프 시전자 회피의 <color=#0094FF>35%</color> 만큼 회피 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Ulti",
+      "categorize": 1,
+      "seconds": 6.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>회피 작전</color>",
+      "desc": "<color=#0094FF>7</color>초 동안 버프 시전자 회피의 <color=#0094FF>50%</color> 만큼 회피 증가",
+      "icon": "Icon_BattleBuff_Ch0043_Ulti",
+      "categorize": 1,
+      "seconds": 7.0,
+      "maxStack": 99,
+      "dispellable": true
+     }
+    ]
+   ],
+   "icon": "Icon_Ultimate_CH0043",
+   "openStar": 1,
+   "categorize": 3,
+   "skillType": 12,
+   "maxLevel": 5,
+   "levelable": true,
+   "levelPeriod": 2,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 4.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>회피 작전</color>",
+        "icon": "Icon_BattleBuff_Ch0043_Ulti",
+        "categorize": 1,
+        "value": {
+         "base": [
+          0.1,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.05,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.1,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          5.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          1.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "BUFF_EVASION_UP",
+        "scale": "EVASION_RATE",
+        "scaleOf": "CASTER",
+        "team": "FRIENDLY_NOT_SELF",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 0
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
   "4600": {
    "name": "숨겨진 야성 I",
    "desc": [
@@ -56195,7 +58079,7 @@
        "range": "ALL",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 2
@@ -56206,19 +58090,28 @@
   "5730": {
    "name": "타겟 포착",
    "desc": [
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다.",
-    "자신에게 <color=#0C9F14>치명타 피해 증가</color> 효과를 부여하고, 공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여합니다."
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다.",
+    "공격력이 높은 적 2명에게 <color=#FF5179>타겟 포착</color> 효과를 부여하고, <color=#FF5179>타겟 포착</color> 효과가 부여된 적 수에 비례해 <color=#0C9F14>치명타 피해 증가</color> 효과를 획득합니다."
    ],
    "buffs": [
     [
+     {
+      "name": "<color=#FF5179>타겟 포착</color>",
+      "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
+      "icon": "Icon_BattleDebuff_Ch0057_Skill02",
+      "categorize": 2,
+      "seconds": 10.0,
+      "maxStack": 5,
+      "dispellable": true
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>5%</color> 증가",
@@ -56227,7 +58120,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56236,9 +58131,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>5.3333%</color> 증가",
@@ -56247,7 +58140,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56256,9 +58151,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>5.6666%</color> 증가",
@@ -56267,7 +58160,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56276,9 +58171,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>6.6666%</color> 증가",
@@ -56287,7 +58180,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56296,9 +58191,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>6.9999%</color> 증가",
@@ -56307,7 +58200,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56316,9 +58211,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>7.3332%</color> 증가",
@@ -56327,7 +58220,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56336,9 +58231,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>8.3332%</color> 증가",
@@ -56347,7 +58240,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56356,9 +58251,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>8.6665%</color> 증가",
@@ -56367,7 +58260,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56376,9 +58271,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>8.9998%</color> 증가",
@@ -56387,7 +58280,9 @@
       "seconds": 10.0,
       "maxStack": 99,
       "dispellable": true
-     },
+     }
+    ],
+    [
      {
       "name": "<color=#FF5179>타겟 포착</color>",
       "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
@@ -56396,9 +58291,7 @@
       "seconds": 10.0,
       "maxStack": 5,
       "dispellable": true
-     }
-    ],
-    [
+     },
      {
       "name": "<color=#0C9F14>치명타 피해 증가</color>",
       "desc": "<color=#0094FF>10</color>초 동안 치명 피해 <color=#0094FF>9.9998%</color> 증가",
@@ -56406,15 +58299,6 @@
       "categorize": 1,
       "seconds": 10.0,
       "maxStack": 99,
-      "dispellable": true
-     },
-     {
-      "name": "<color=#FF5179>타겟 포착</color>",
-      "desc": "<color=#0094FF>10</color>초 동안 타겟을 향한 <color=#0C9F14>[퀵 드로우]</color>와 <color=#0C9F14>[황야의 쇼다운]</color> 스킬의 치명타 확률이 고정됩니다.",
-      "icon": "Icon_BattleDebuff_Ch0057_Skill02",
-      "categorize": 2,
-      "seconds": 10.0,
-      "maxStack": 5,
       "dispellable": true
      }
     ]
@@ -56697,7 +58581,7 @@
        "range": "ALL",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 5
@@ -68893,7 +70777,7 @@
        "range": "FRONT",
        "rangeValue": 99.0,
        "pick": "ALL",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 3
       },
       "count": 1
@@ -68966,7 +70850,7 @@
         },
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69009,7 +70893,7 @@
         "scaleOf": null,
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69052,7 +70936,7 @@
         "scaleOf": "HOLDER",
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69095,7 +70979,7 @@
         "scaleOf": "CASTER",
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69139,7 +71023,7 @@
         "interval": 1.0,
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69182,7 +71066,7 @@
         "scaleOf": "CASTER",
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69226,7 +71110,7 @@
         "interval": 4.0,
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69269,7 +71153,7 @@
         "scaleOf": "CASTER",
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69295,7 +71179,7 @@
         "scaleOf": "HOLDER",
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69322,7 +71206,7 @@
         "interval": 0.5,
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        },
        {
@@ -69347,7 +71231,7 @@
         },
         "team": "ALL_UNIT",
         "pick": "ALL",
-        "sort": "RANDOM",
+        "sort": null,
         "count": 4
        }
       ],
@@ -69356,7 +71240,7 @@
        "range": "ALL",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 4
       },
       "count": 1
@@ -75700,6 +77584,70 @@
     ]
    }
   },
+  "2006051": {
+   "name": "일반 공격",
+   "desc": [
+    ""
+   ],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "CIRCLE",
+      "range": 2.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
   "2007011": {
    "name": "일반 공격",
    "desc": [
@@ -79038,7 +80986,7 @@
        "range": "FRONT",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 7
@@ -79186,7 +81134,7 @@
        "range": "FRONT",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 1
@@ -80350,7 +82298,7 @@
        "range": "FRONT",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 7
@@ -80498,7 +82446,7 @@
        "range": "FRONT",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 1
@@ -82473,7 +84421,7 @@
        "range": "ALL",
        "rangeValue": 0.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "RANDOM",
+       "sort": null,
        "count": 1
       },
       "count": 26
@@ -87940,11 +89888,5 @@
     ]
    }
   }
- },
- "_unresolvedEffects": [
-  "ch0007_attack_onetime_02"
- ],
- "_danglingBehaviourIds": [
-  "30011201"
- ]
+ }
 }

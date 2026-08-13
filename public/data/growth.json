@@ -1,5 +1,4 @@
 {
- "source": "master_024105c9.mpks",
  "materials": {
   "goods:1": {
    "name": "크레딧",
@@ -592,10 +591,30 @@
    "kind": "equipPiece",
    "grade": 5
   },
-  "item:80505": {},
-  "item:80506": {},
-  "item:80507": {},
-  "item:80508": {},
+  "item:80505": {
+   "name": "T5 모자 바우처",
+   "icon": "Icon_Equipment_Piece_Hat_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80506": {
+   "name": "T5 신발 바우처",
+   "icon": "Icon_Equipment_Piece_Shoes_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80507": {
+   "name": "T5 가방 바우처",
+   "icon": "Icon_Equipment_Piece_Bag_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80508": {
+   "name": "T5 장갑 바우처",
+   "icon": "Icon_Equipment_Piece_Gloves_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
   "item:80509": {},
   "item:80510": {},
   "item:80511": {},
@@ -674,10 +693,6 @@
   }
  },
  "_noItemRow": [
-  "item:80505",
-  "item:80506",
-  "item:80507",
-  "item:80508",
   "item:80509",
   "item:80510",
   "item:80511",

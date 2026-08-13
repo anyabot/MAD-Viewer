@@ -28,7 +28,6 @@ export type SkinListEntry = {
 };
 
 export type SkinList = {
-  version: string;
   skins: SkinListEntry[];
 };
 
@@ -80,8 +79,6 @@ export type SdCharacter = {
 };
 
 export type SdIndex = {
-  catalog: string;
-  count: number;
   characters: Record<string, SdCharacter>;
 };
 
@@ -606,7 +603,6 @@ export type GrowthMaterial = {
 
 // `skill.costs` is keyed by the level being left; `accumExp` is a total, not a step.
 export type GrowthData = {
-  source: string;
   /** Keyed `<type>:<id>`, the same key a stage drop's `ref` uses. */
   materials: Record<string, GrowthMaterial>;
   /** Bills naming an item this pack ships no row for — tier 5 on eight slots. */
@@ -780,7 +776,6 @@ export type GachaRig = {
 };
 
 export type GachaIndex = {
-  bundle: string;
   drawer: { pixelPerUnit: number };
   jiggler: { maxDistance: number; springStrength: number; springDamping: number };
   rigs: Record<'child' | 'adult', GachaRig>;

@@ -51,6 +51,8 @@ const PRECEDENCE: Record<string, number> = {
   '+': 5, '-': 5, '*': 6, '/': 6,
 };
 
+const COMPARISON = new Set(['<', '<=', '>', '>=']);
+
 function apply(op: string, a: number, b: number): number {
   switch (op) {
     case '||': case '|': return a || b ? 1 : 0;
@@ -113,7 +115,20 @@ export function evaluate(expr: string, vars: Vars): number | null {
       pos++;
       const right = expression(prec + 1);
       if (right === null) return null;
-      left = apply(t.text, left, right);
+      if (COMPARISON.has(t.text)) {
+        let ok: boolean = apply(t.text, left, right) !== 0;
+        let previous: number = right;
+        while (tokens[pos]?.kind === 'op' && COMPARISON.has(tokens[pos].text)) {
+          const nextOp = tokens[pos++].text;
+          const next = expression(prec + 1);
+          if (next === null) return null;
+          ok = ok && apply(nextOp, previous, next) !== 0;
+          previous = next;
+        }
+        left = ok ? 1 : 0;
+      } else {
+        left = apply(t.text, left, right);
+      }
     }
     return left;
   };

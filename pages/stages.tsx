@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { StageCrumbs } from '@/components/stageCrumbs';
+import { ShareButton } from '@/components/shareButton';
 import { hasIcon } from '@/lib/icons';
 import { FilterChip, FilterRow } from '@/components/filters';
 import { typeLabel } from '@/lib/characters';
@@ -141,7 +142,11 @@ function GroupList({ mode, data, icons, lang }: {
   const groups = useMemo(() => stageGroups(data, mode), [data, mode]);
   return (
     <VStack align="stretch" spacing={4}>
-      <StageCrumbs data={data} mode={mode} lang={lang} />
+      <Flex align="center" gap={3} wrap="wrap">
+        <StageCrumbs data={data} mode={mode} lang={lang} />
+        <Box flex="1" />
+        <ShareButton query={{ mode }} />
+      </Flex>
       <ModeTabs data={data} mode={mode} lang={lang} />
       <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={3}>
         {groups.map(({ group, stages }) => (
@@ -219,6 +224,7 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery }: {
         {groupWindow(group) && (
           <Text fontSize="xs" color="gray.600">{groupWindow(group)}</Text>
         )}
+        <ShareButton query={{ group: group.key }} />
         <Box flex="1" />
         <Input size="sm" maxW="260px" placeholder={t('search')} value={query}
           onChange={(e) => onQuery(e.target.value)} />
