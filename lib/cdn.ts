@@ -10,12 +10,11 @@ const DATA_BASE = (
     : `${PUBLIC_BASE}/data`
 ).replace(/\/$/, '');
 
-/** Only the skin archives have a complete local copy; voice and scene audio
- *  keep resolving through the manifest whatever this says. */
+// Only skins have a complete local copy; voice and scene audio remain manifest-backed.
 const LOCAL_ASSETS = process.env.NEXT_PUBLIC_ASSET_SOURCE === 'local';
 
 /** Explicit override; set it and the manifest is not consulted at all. */
-const ARCHIVE_OVERRIDE = process.env.NEXT_PUBLIC_SKIN_ARCHIVE_BASE?.replace(/\/$/, '');
+const SKIN_OVERRIDE = process.env.NEXT_PUBLIC_SKIN_ARCHIVE_BASE?.replace(/\/$/, '');
 const VOICE_OVERRIDE = process.env.NEXT_PUBLIC_VOICE_BASE?.replace(/\/$/, '');
 const AUDIO_OVERRIDE = process.env.NEXT_PUBLIC_SCENE_AUDIO_BASE?.replace(/\/$/, '');
 const SD_OVERRIDE = process.env.NEXT_PUBLIC_SD_ARCHIVE_BASE?.replace(/\/$/, '');
@@ -63,23 +62,16 @@ function bucketBase(
   return `${manifest!.base}/${manifest!.owner}/${bucket.repo}@${bucket.ref}/${entry.dir}`;
 }
 
-/**
- * Candidates in order. The site's own copy stays last even when a bucket is
- * named, so an unreachable bucket degrades to a slower load rather than a
- * broken gallery.
- */
-export async function skinArchiveUrls(name: string): Promise<string[]> {
-  const file = `${name}.tar.br`;
-  if (ARCHIVE_OVERRIDE) return [`${ARCHIVE_OVERRIDE}/${file}`];
-  const local = `${PUBLIC_BASE}/skins/${file}`;
-  // Local mode leads with this checkout's archive so an export under test is
-  // what loads; the bucket stays behind it, for a skin not packed here.
+// The site copy remains the final fallback after the CDN candidate.
+export async function skinFileBases(name: string): Promise<string[]> {
+  if (SKIN_OVERRIDE) return [`${SKIN_OVERRIDE}/${name}`];
+  const local = `${PUBLIC_BASE}/skins/${name}`;
   if (LOCAL_ASSETS) {
     const base = bucketBase(await loadCdnManifest(), 'skins', name);
-    return base ? [local, `${base}/${file}`] : [local];
+    return base ? [local, `${base}/${name}`] : [local];
   }
   const base = bucketBase(await loadCdnManifest(), 'skins', name);
-  return base ? [`${base}/${file}`, local] : [local];
+  return base ? [`${base}/${name}`, local] : [local];
 }
 
 /** Not gallery skins, so not in the manifest's `skins` family. */

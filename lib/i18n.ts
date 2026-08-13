@@ -251,7 +251,7 @@ export const UI = {
   },
   aspectFill: { en: 'Fill panel', ko: '패널 채우기' },
 
-  stateUnpacking: { en: 'unpacking…', ko: '압축 해제 중…' },
+  stateUnpacking: { en: 'loading files…', ko: '파일 불러오는 중…' },
   stateFetching: { en: 'fetching…', ko: '받는 중…' },
   hintClickAdvance: { en: 'click to advance', ko: '클릭하여 진행' },
   hintStoryStep: {
