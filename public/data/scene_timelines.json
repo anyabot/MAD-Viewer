@@ -1,5 +1,4 @@
 {
- "source": "55bad43934f06f21f363dd639c0c1c1a.bundle",
  "rigs": {
   "af_ch0009": {
    "story": {
@@ -20907,6 +20906,1131 @@
     ]
    }
   },
+  "af_ch0068": {
+   "story": {
+    "script": "ch0068_05_affection_story",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "affection"
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Unskippable"
+      }
+     },
+     {
+      "class": "NaniSummary",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 3,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_032_lp",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 6,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/enter"
+      },
+      "clip": "basic/enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 8,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Default",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 9,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_001"
+      },
+      "clip": "asmr/ani_001"
+     },
+     {
+      "class": "PrintText",
+      "line": 10,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "너를 기분 좋게 하려면 뭘 해야 할지, 머리를 굉장히 많이 썼단 말이지.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 12,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_002"
+      },
+      "clip": "asmr/ani_002"
+     },
+     {
+      "class": "PrintText",
+      "line": 13,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "손도 안 된다, 발도 안 된다... 그래서 내린 결론이, 바로 이거야.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 15,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_003"
+      },
+      "clip": "asmr/ani_003"
+     },
+     {
+      "class": "PrintText",
+      "line": 16,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "바로 몸으로 마사지해 주는 거지. 이렇게... 이렇게.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 18,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_004"
+      },
+      "clip": "asmr/ani_004"
+     },
+     {
+      "class": "PrintText",
+      "line": 19,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아, 영감은 메이드들한테 얻었어.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 21,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_005"
+      },
+      "clip": "asmr/ani_005"
+     },
+     {
+      "class": "PrintText",
+      "line": 22,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "메이드들은 같이 씻으면서, 서로의 등을 밀어준다고 하더라.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 24,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_006"
+      },
+      "clip": "asmr/ani_006"
+     },
+     {
+      "class": "PrintText",
+      "line": 25,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그리고 좁은 목욕탕에서 밀착해서 서로 밀어주다 보면,",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 27,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_007"
+      },
+      "clip": "asmr/ani_007"
+     },
+     {
+      "class": "PrintText",
+      "line": 28,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "몸과 몸이 딱 달라붙은 채로 하는 경우도 흔하다고...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 30,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_008"
+      },
+      "clip": "asmr/ani_008"
+     },
+     {
+      "class": "PrintText",
+      "line": 31,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그래서 생각했지. 이렇게... 몸을 맞대고, 힘 대신 온기로 마사지해 주는 거야.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 33,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_009"
+      },
+      "clip": "asmr/ani_009"
+     },
+     {
+      "class": "PrintText",
+      "line": 34,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "이렇게 하면... 너를 망가뜨리지 않고 마사지할 수 있어.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 36,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_010"
+      },
+      "clip": "asmr/ani_010"
+     },
+     {
+      "class": "PrintText",
+      "line": 37,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "어때? 기분 좋아?",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 39,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_011"
+      },
+      "clip": "asmr/ani_011"
+     },
+     {
+      "class": "PrintText",
+      "line": 40,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "전에 했던 마사지하고는 차원이 다르지?",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 42,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_012"
+      },
+      "clip": "asmr/ani_012"
+     },
+     {
+      "class": "PrintText",
+      "line": 43,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "후후... 괜찮아, 대답하지 않아도 돼.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 45,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_013"
+      },
+      "clip": "asmr/ani_013"
+     },
+     {
+      "class": "PrintText",
+      "line": 46,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "얼굴에 전부 드러나니까.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 48,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/story_018"
+      },
+      "clip": "asmr/story_018"
+     },
+     {
+      "class": "PrintText",
+      "line": 49,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그나저나, 혹시 더워...? 얼굴에 땀이 맺혔네...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 51,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_019"
+      },
+      "clip": "asmr/ani_019"
+     },
+     {
+      "class": "PrintText",
+      "line": 52,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "훗... 이런 경우에 뭘 해야 할지도 미리 생각해 뒀다고.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 54,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_020"
+      },
+      "clip": "asmr/ani_020"
+     },
+     {
+      "class": "PrintText",
+      "line": 55,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "봉사정신은 상대를 기분 좋게 하기 위해 뭐가 필요한지 미리 생각하는 거잖아?",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 57,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_021"
+      },
+      "clip": "asmr/ani_021"
+     },
+     {
+      "class": "PrintText",
+      "line": 58,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그래서 이런 것도 준비했지... 아앙...~",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "ShowUI",
+      "line": 60,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Default",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 62,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "AffectionEndingCommand",
+      "line": 64,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "End",
+      "line": 66,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   },
+   "view": {
+    "script": "ch0068_05_affection_view",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "affection"
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_032_lp",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/enter"
+      },
+      "clip": "basic/enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 5,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "DesireAffectionViewMenuPanel",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 7,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_001"
+      },
+      "clip": "asmr/ani_001"
+     },
+     {
+      "class": "PrintText",
+      "line": 8,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "너를 기분 좋게 하려면 뭘 해야 할지, 머리를 굉장히 많이 썼단 말이지.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 10,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_002"
+      },
+      "clip": "asmr/ani_002"
+     },
+     {
+      "class": "PrintText",
+      "line": 11,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "손도 안 된다, 발도 안 된다... 그래서 내린 결론이, 바로 이거야.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 13,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_003"
+      },
+      "clip": "asmr/ani_003"
+     },
+     {
+      "class": "PrintText",
+      "line": 14,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "바로 몸으로 마사지해 주는 거지. 이렇게... 이렇게.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 16,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_004"
+      },
+      "clip": "asmr/ani_004"
+     },
+     {
+      "class": "PrintText",
+      "line": 17,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아, 영감은 메이드들한테 얻었어.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 19,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_005"
+      },
+      "clip": "asmr/ani_005"
+     },
+     {
+      "class": "PrintText",
+      "line": 20,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "메이드들은 같이 씻으면서, 서로의 등을 밀어준다고 하더라.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 22,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_006"
+      },
+      "clip": "asmr/ani_006"
+     },
+     {
+      "class": "PrintText",
+      "line": 23,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그리고 좁은 목욕탕에서 밀착해서 서로 밀어주다 보면,",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 25,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_007"
+      },
+      "clip": "asmr/ani_007"
+     },
+     {
+      "class": "PrintText",
+      "line": 26,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "몸과 몸이 딱 달라붙은 채로 하는 경우도 흔하다고...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 28,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_008"
+      },
+      "clip": "asmr/ani_008"
+     },
+     {
+      "class": "PrintText",
+      "line": 29,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그래서 생각했지. 이렇게... 몸을 맞대고, 힘 대신 온기로 마사지해 주는 거야.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 31,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_009"
+      },
+      "clip": "asmr/ani_009"
+     },
+     {
+      "class": "PrintText",
+      "line": 32,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "이렇게 하면... 너를 망가뜨리지 않고 마사지할 수 있어.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 34,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_010"
+      },
+      "clip": "asmr/ani_010"
+     },
+     {
+      "class": "PrintText",
+      "line": 35,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "어때? 기분 좋아?",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 37,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_011"
+      },
+      "clip": "asmr/ani_011"
+     },
+     {
+      "class": "PrintText",
+      "line": 38,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "전에 했던 마사지하고는 차원이 다르지?",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 40,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_012"
+      },
+      "clip": "asmr/ani_012"
+     },
+     {
+      "class": "PrintText",
+      "line": 41,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "후후... 괜찮아, 대답하지 않아도 돼.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 43,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_013"
+      },
+      "clip": "asmr/ani_013"
+     },
+     {
+      "class": "PrintText",
+      "line": 44,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "얼굴에 전부 드러나니까.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 46,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_014"
+      },
+      "clip": "asmr/ani_014"
+     },
+     {
+      "class": "PrintText",
+      "line": 47,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "이전에 했던 마사지들은 기분 좋기는 커녕, 아프기만 했지...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 49,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_015"
+      },
+      "clip": "asmr/ani_015"
+     },
+     {
+      "class": "PrintText",
+      "line": 50,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아프게 하려고 한 건 아니지만, 힘조절이 쉽진 않아서 말이야.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 52,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_016"
+      },
+      "clip": "asmr/ani_016"
+     },
+     {
+      "class": "PrintText",
+      "line": 53,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그 부분에 대해서는 반성하고 있어.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 55,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_017"
+      },
+      "clip": "asmr/ani_017"
+     },
+     {
+      "class": "PrintText",
+      "line": 56,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그러니까 이건 봉사이자, 나름의 사죄인 셈이야.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 58,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_018"
+      },
+      "clip": "asmr/ani_018"
+     },
+     {
+      "class": "PrintText",
+      "line": 59,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그나저나, 혹시 더워...? 얼굴에 땀이 맺혔네...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 61,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_019"
+      },
+      "clip": "asmr/ani_019"
+     },
+     {
+      "class": "PrintText",
+      "line": 62,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "훗... 이런 경우에 뭘 해야 할지도 미리 생각해 뒀다고.",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 64,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_020"
+      },
+      "clip": "asmr/ani_020"
+     },
+     {
+      "class": "PrintText",
+      "line": 65,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "봉사정신은 상대를 기분 좋게 하기 위해 뭐가 필요한지 미리 생각하는 거잖아?",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 67,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_021"
+      },
+      "clip": "asmr/ani_021"
+     },
+     {
+      "class": "PrintText",
+      "line": 68,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그래서 이런 것도 준비했지... 아앙...~",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 70,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_022"
+      },
+      "clip": "asmr/ani_022"
+     },
+     {
+      "class": "PrintText",
+      "line": 71,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "(하음... 하아아....흐에....)",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 73,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_023"
+      },
+      "clip": "asmr/ani_023"
+     },
+     {
+      "class": "PrintText",
+      "line": 74,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "후후후... 깨끄하게 해주테니가... 가지러워도 가마히 이허...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 76,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_024"
+      },
+      "clip": "asmr/ani_024"
+     },
+     {
+      "class": "PrintText",
+      "line": 77,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "(후에... 하아... 합... 후으에....)",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 79,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_025"
+      },
+      "clip": "asmr/ani_025"
+     },
+     {
+      "class": "PrintText",
+      "line": 80,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "헤헤헤... 마이써...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 82,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_026"
+      },
+      "clip": "asmr/ani_026"
+     },
+     {
+      "class": "PrintText",
+      "line": 83,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으음... 역시, 네 기운은 특별한 것 같아...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 85,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_027"
+      },
+      "clip": "asmr/ani_027"
+     },
+     {
+      "class": "PrintText",
+      "line": 86,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "저번에도 맛은 봤지만... 중독될 것 같은 맛이야...",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 88,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.asmr/ani_028"
+      },
+      "clip": "asmr/ani_028"
+     },
+     {
+      "class": "PrintText",
+      "line": 89,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "흐으응... 조금 더... 맛볼래... 하음...~",
+      "author": "claire_swimsuit"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 91,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "AffectionEndingCommand",
+      "line": 93,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "End",
+      "line": 95,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   }
+  },
   "ds_ch0009": {
    "story": {
     "script": "ch0009_03_desire_story",
@@ -40399,6 +41523,2038 @@
      {
       "class": "Stop",
       "line": 113,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   }
+  },
+  "ds_ch0068": {
+   "story": {
+    "script": "ch0068_03_desire_story",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "desire"
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Unskippable"
+      }
+     },
+     {
+      "class": "NaniSummary",
+      "line": 3,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_031_lp",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 5,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/enter"
+      },
+      "clip": "basic/enter"
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 6,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/idle_close"
+      },
+      "clip": "basic/idle_close"
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 8,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 10,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Default",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 12,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 14,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/wait_close"
+      },
+      "clip": "basic/wait_close"
+     },
+     {
+      "class": "PrintText",
+      "line": 15,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그래서, 이런 자세로 봉사정신은 어떻게 배운다는 거야?",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_1"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 16,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 18,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "기다려봐, 지금 여기 뭉쳐있는 곳부터 풀어줘야 하니까.",
+      "author": "player"
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 19,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Offset": "-2,-1",
+       "Zoom": "0.3",
+       "Duration": "2",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 20,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "4"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 22,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/touch_close"
+      },
+      "clip": "basic/touch_close"
+     },
+     {
+      "class": "PrintText",
+      "line": 23,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "여기? 허벅지 아래쪽 얘긴가?",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_2"
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 25,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Offset": "0,0",
+       "Zoom": "0",
+       "Duration": "1",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 26,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "뭐, 아래쪽은 맞지.",
+      "author": "player"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 27,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 28,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 30,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.reaction/close_A1"
+      },
+      "clip": "reaction/close_A1"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 31,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "14f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 32,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으음... 으읏...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_3"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 33,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.3"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 34,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "느낌 어때.",
+      "author": "player"
+     },
+     {
+      "class": "PrintText",
+      "line": 36,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으응… 나쁘진 않은 거 같은데…",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_4"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 38,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/wait_close"
+      },
+      "clip": "basic/wait_close"
+     },
+     {
+      "class": "PrintText",
+      "line": 39,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "거기가 뭉쳐있는지는 몰랐지...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_5"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 40,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 42,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Offset": "1",
+       "Zoom": "0.5",
+       "Duration": "2",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 43,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "모르는 부분까지 잡아내서 케어 해준다, 그게 바로 봉사정신의 기본이야. 잘 알아둬.",
+      "author": "player"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 44,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "5"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 46,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/touch_close"
+      },
+      "clip": "basic/touch_close"
+     },
+     {
+      "class": "PrintText",
+      "line": 47,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으음... 그건 어떻게 하는 건데?",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_6"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 48,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 50,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "잘.",
+      "author": "player"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 51,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 53,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/touch_close"
+      },
+      "clip": "basic/touch_close"
+     },
+     {
+      "class": "PrintText",
+      "line": 54,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "...? 그게 무슨...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_7"
+     },
+     {
+      "class": "PrintText",
+      "line": 56,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "봉사해주는 사람을 잘 살펴보고 공부해봐. 마사지하면서 보이는 반응을 꾸준히 관찰하고.",
+      "author": "player"
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 57,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Offset": "-1,0",
+       "Duration": "5",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 58,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "5.5"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 60,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/wait_close"
+      },
+      "clip": "basic/wait_close"
+     },
+     {
+      "class": "PrintText",
+      "line": 61,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "흠... 잘 모르겠어. 너무 어려운데.",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_8"
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 63,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Zoom": "0.55",
+       "Duration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 64,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "좀더... 자세히 알려줘.",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_9"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 65,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 67,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Zoom": "0.2",
+       "Duration": "2",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 68,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그래? 그럼 다음은 여기다. 여기를 문질러주면…",
+      "author": "player"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 69,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "3"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 71,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.reaction/close_A2"
+      },
+      "clip": "reaction/close_A2"
+     },
+     {
+      "class": "PrintText",
+      "line": 72,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으읏... 으응... 거, 거긴...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_10"
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 74,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Offset": "0,0",
+       "Zoom": "0.3",
+       "Duration": "1.5",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 75,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "거봐, 기분 좋지? 이게 바로 관찰의 힘이야.",
+      "author": "player"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 76,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "3"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 78,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/wait_close"
+      },
+      "clip": "basic/wait_close"
+     },
+     {
+      "class": "PrintText",
+      "line": 79,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으읏... 응, 막혀있던 뭔가가 뚫리는 듯한 기분이야…",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_11"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 80,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 82,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Offset": "-1,0",
+       "Zoom": "0.5",
+       "Duration": "10",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 83,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "마치, 따뜻한 기운이 구석구석 퍼지는 것 같은…",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_12"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 84,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 86,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "하지만 뭔가 살짝 아쉽지?",
+      "author": "player"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 87,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "2.5"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 89,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/touch_close"
+      },
+      "clip": "basic/touch_close"
+     },
+     {
+      "class": "PrintText",
+      "line": 90,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "...? 그, 그렇긴 한데...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_13"
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 92,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Zoom": "0.55",
+       "Duration": "1",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 93,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.reaction/close_B1"
+      },
+      "clip": "reaction/close_B1"
+     },
+     {
+      "class": "PrintText",
+      "line": 94,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "...아, 아앗...!",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_14"
+     },
+     {
+      "class": "ModifyCamera",
+      "line": 96,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Offset": "-1.1",
+       "Zoom": "0.65",
+       "Duration": "1",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 97,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/idle_open"
+      },
+      "clip": "basic/idle_open"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 98,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.reaction/open_H1",
+       "Wait": "false"
+      },
+      "clip": "reaction/open_H1"
+     },
+     {
+      "class": "PrintText",
+      "line": 99,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "...?!! 앗... 으응...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_story_15"
+     },
+     {
+      "class": "DesireEndingCommand",
+      "line": 101,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Skip",
+      "line": 103,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Enable": "false"
+      }
+     },
+     {
+      "class": "End",
+      "line": 105,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   },
+   "view": {
+    "script": "ch0068_03_desire_view",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "desire"
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_031_lp",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/enter"
+      },
+      "clip": "basic/enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "DesireAffectionViewMenuPanel",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 5,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0",
+       "IdAndAppearance": "DesireAffectionSubtitle",
+       "MakeDefault": "true"
+      }
+     },
+     {
+      "class": "Label",
+      "label": "phase1",
+      "line": 7,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 8,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "x=0"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 9,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "y=0"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 10,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "a=0"
+      }
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 12,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/idle_close"
+      },
+      "clip": "basic/idle_close"
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 14,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0.5",
+       "Wait": "false",
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 16,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "DesireOnlookTriggerCommand",
+      "line": 18,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "basic/wait_close",
+       "Id": "claire_swimsuit",
+       "Threshold": "10"
+      },
+      "clip": "basic/wait_close"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 20,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/close_A1",
+       "IdAndBoundingBox": "claire_swimsuit.A1_L_close"
+      },
+      "clip": "reaction/close_A1",
+      "box": "bd_A1_L_close"
+     },
+     {
+      "class": "PickRandom",
+      "line": 21,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Group",
+      "line": 22,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 23,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "14f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 24,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아... 피로가 풀리는 느낌이야...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_1"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 25,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "x=1"
+      }
+     },
+     {
+      "class": "Group",
+      "line": 26,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 27,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "14f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 28,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아으... 거기, 뭉쳐 있을지도...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_2"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 29,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "x=1"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 31,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/close_A1",
+       "IdAndBoundingBox": "claire_swimsuit.A1_R_close"
+      },
+      "clip": "reaction/close_A1",
+      "box": "bd_A1_R_close"
+     },
+     {
+      "class": "PickRandom",
+      "line": 32,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Group",
+      "line": 33,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 34,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "14f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 35,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아... 피로가 풀리는 느낌이야...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_1"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 36,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "x=1"
+      }
+     },
+     {
+      "class": "Group",
+      "line": 37,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 38,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "14f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 39,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아으... 거기, 뭉쳐 있을지도...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_2"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 40,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "x=1"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 42,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/close_A2",
+       "IdAndBoundingBox": "claire_swimsuit.A2_close"
+      },
+      "clip": "reaction/close_A2",
+      "box": "bd_A2_close"
+     },
+     {
+      "class": "PickRandom",
+      "line": 43,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Group",
+      "line": 44,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 45,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "10f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 46,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으음... 거기도 하는 거야..?",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_3"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 47,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "y=1"
+      }
+     },
+     {
+      "class": "Group",
+      "line": 48,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 49,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "10f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 50,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으흣... 조금, 간지러울지도...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_4"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 51,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "y=1"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 53,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "x*y=1",
+       "Appearance": "reaction/close_B1",
+       "IdAndBoundingBox": "claire_swimsuit.A3_close"
+      },
+      "clip": "reaction/close_B1",
+      "box": "bd_A3_close"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 54,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "10f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 55,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "응, 아... 어, 어딜 만지는... 으읏...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_5"
+     },
+     {
+      "class": "Goto",
+      "line": 56,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".phase2"
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 58,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Label",
+      "label": "phase2",
+      "line": 60,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 62,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/idle_open"
+      },
+      "clip": "basic/idle_open"
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 64,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0.5",
+       "Wait": "false",
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 66,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "DesireOnlookTriggerCommand",
+      "line": 68,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "basic/wait_open",
+       "Id": "claire_swimsuit",
+       "Threshold": "10"
+      },
+      "clip": "basic/wait_open"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 70,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/open_A1",
+       "IdAndBoundingBox": "claire_swimsuit.A1_L_open"
+      },
+      "clip": "reaction/open_A1",
+      "box": "bd_A1_L_open"
+     },
+     {
+      "class": "PickRandom",
+      "line": 71,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Group",
+      "line": 72,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 73,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "10f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 74,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으으응... 거기, 조금 더 세게...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_6"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 75,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "a=a+1"
+      }
+     },
+     {
+      "class": "Group",
+      "line": 76,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 77,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "10f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 78,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으으읏... 괜찮아, 안 아프니까...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_7"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 79,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "a=a+1"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 81,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/open_A1",
+       "IdAndBoundingBox": "claire_swimsuit.A1_R_open"
+      },
+      "clip": "reaction/open_A1",
+      "box": "bd_A1_R_open"
+     },
+     {
+      "class": "PickRandom",
+      "line": 82,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Group",
+      "line": 83,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 84,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "10f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 85,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으으응... 거기, 조금 더 세게...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_6"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 86,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "a=a+1"
+      }
+     },
+     {
+      "class": "Group",
+      "line": 87,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 88,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "10f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 89,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으으읏... 괜찮아, 안 아프니까...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_7"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 90,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "a=a+1"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 92,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/open_A2",
+       "IdAndBoundingBox": "claire_swimsuit.A2_open"
+      },
+      "clip": "reaction/open_A2",
+      "box": "bd_A2_open"
+     },
+     {
+      "class": "PickRandom",
+      "line": 93,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Group",
+      "line": 94,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 95,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "15f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 96,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "우으음... 거기도 뭉치는 거였어...?",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_8"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 97,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "a=a+1"
+      }
+     },
+     {
+      "class": "Group",
+      "line": 98,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 99,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "15f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 100,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "흐아아... 어, 얼마나 더 하는...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_9"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 101,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "a=a+1"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 103,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "a<4",
+       "Appearance": "reaction/open_A3",
+       "IdAndBoundingBox": "claire_swimsuit.A3_open"
+      },
+      "clip": "reaction/open_A3",
+      "box": "bd_A3_open"
+     },
+     {
+      "class": "PickRandom",
+      "line": 104,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Group",
+      "line": 105,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 106,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "9f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 107,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "읏, 아앗...!!",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_10"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 108,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "a=a+1"
+      }
+     },
+     {
+      "class": "Group",
+      "line": 109,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 110,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "9f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 111,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "흐, 흐으응...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_11"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 112,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Expression": "a=a+1"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 114,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "a>=4",
+       "Appearance": "reaction/open_H1",
+       "Hold": "true",
+       "IdAndBoundingBox": "claire_swimsuit.A3_open"
+      },
+      "clip": "reaction/open_H1",
+      "box": "bd_A3_open"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 115,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "17f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 116,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "읏으읏... 흐아아아앙~!! 하아... 하아...",
+      "author": "claire_swimsuit",
+      "voice": "voc_ch0068_desire_enjoy_12"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 117,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 118,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Duration": "0",
+       "ScenePosition": ",,-1",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 119,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit",
+       "Reset": "true"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 120,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 121,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Expression": "a=0"
+      }
+     },
+     {
+      "class": "Goto",
+      "line": 122,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".after"
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 124,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Label",
+      "label": "after",
+      "line": 126,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 128,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.lobby/idle_after",
+       "Loop": "true"
+      },
+      "clip": "lobby/idle_after"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 130,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 131,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Visible": "false",
+       "Duration": "1",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 133,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.lobby/idle_after"
+      },
+      "clip": "lobby/idle_after"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 135,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 137,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/touch_after",
+       "IdAndBoundingBox": "claire_swimsuit.A1_L_close"
+      },
+      "clip": "lobby/touch_after",
+      "box": "bd_A1_L_close"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 138,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/touch_after",
+       "IdAndBoundingBox": "claire_swimsuit.A1_L_open"
+      },
+      "clip": "lobby/touch_after",
+      "box": "bd_A1_L_open"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 139,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/touch_after",
+       "IdAndBoundingBox": "claire_swimsuit.A1_R_close"
+      },
+      "clip": "lobby/touch_after",
+      "box": "bd_A1_R_close"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 140,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/touch_after",
+       "IdAndBoundingBox": "claire_swimsuit.A1_R_open"
+      },
+      "clip": "lobby/touch_after",
+      "box": "bd_A1_R_open"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 141,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/touch_after",
+       "IdAndBoundingBox": "claire_swimsuit.A2_close"
+      },
+      "clip": "lobby/touch_after",
+      "box": "bd_A2_close"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 142,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/touch_after",
+       "IdAndBoundingBox": "claire_swimsuit.A2_open"
+      },
+      "clip": "lobby/touch_after",
+      "box": "bd_A2_open"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 143,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/touch_after",
+       "IdAndBoundingBox": "claire_swimsuit.A3_close"
+      },
+      "clip": "lobby/touch_after",
+      "box": "bd_A3_close"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 144,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/touch_after",
+       "IdAndBoundingBox": "claire_swimsuit.A3_open"
+      },
+      "clip": "lobby/touch_after",
+      "box": "bd_A3_open"
+     },
+     {
+      "class": "DesireResetCommand",
+      "line": 146,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Destination": ".phase1"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 147,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0.5",
+       "Wait": "false",
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 148,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Transition": "Crossfade",
+       "Duration": "0.5",
+       "Wait": "false",
+       "ScenePosition": ",,-50",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 149,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 150,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit",
+       "Reset": "true"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 151,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 152,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Visible": "false",
+       "Duration": "1",
+       "Wait": "false",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 153,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "claire_swimsuit.basic/idle_close"
+      },
+      "clip": "basic/idle_close"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 154,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 156,
       "inline": 0,
       "indent": 0,
       "fields": {}

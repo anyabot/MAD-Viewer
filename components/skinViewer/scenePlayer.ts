@@ -148,9 +148,9 @@ export function createScenePlayer(
     }
   };
 
-  const triggerFor = (box: string): Armed | null => {
+  const triggerFor = (box: string, kind: 'touch' | 'drag'): Armed | null => {
     const hits = armed.filter(
-      (a) => (a.kind === 'touch' || a.kind === 'drag') && a.box === box);
+      (a) => a.kind === kind && a.box === box);
     if (!hits.length) return null;
     // Several triggers can bind one box, a conditional one being the specific
     // variant beside an unconditional catch-all, so taking the first match
@@ -203,9 +203,23 @@ export function createScenePlayer(
     touch(box: string | null): boolean {
       if (stopped || park.kind === 'end') return false;
       restampOnlooks();
-      const entry = box ? triggerFor(box) : null;
+      const entry = box ? triggerFor(box, 'touch') : null;
       if (!entry) return false;
       machine.fire(entry.at);
+      step();
+      return true;
+    },
+
+    /** A completed drag uses the actor-local accumulated distance and elapsed seconds. */
+    drag(box: string, distance: number, seconds: number): boolean {
+      if (stopped || park.kind === 'end') return false;
+      restampOnlooks();
+      const entry = triggerFor(box, 'drag');
+      if (!entry || entry.kind !== 'drag' || distance < entry.threshold) return false;
+      machine.fire(entry.at, {
+        'drag.distance': distance,
+        'drag.time': seconds,
+      });
       step();
       return true;
     },

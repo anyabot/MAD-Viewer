@@ -8,6 +8,7 @@ import {
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { StageCrumbs } from '@/components/stageCrumbs';
+import { ShareButton } from '@/components/shareButton';
 import { hasIcon } from '@/lib/icons';
 import { Panel, SkillList } from '@/components/skillKit';
 import { typeIcons, typeLabel } from '@/lib/characters';
@@ -128,6 +129,7 @@ export default function StagePage() {
           <WrapItem>
             <Text fontFamily="mono" fontSize="xs" color="gray.500">{stage.id}</Text>
           </WrapItem>
+          <WrapItem><ShareButton query={{ id: stage.id }} /></WrapItem>
         </Wrap>
         <Wrap spacing={3} align="center">
           {stage.recommendLevel && (

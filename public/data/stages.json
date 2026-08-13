@@ -290,13 +290,31 @@
    "code": 1013,
    "group": 101
   },
+  "10141": {
+   "id": 10141,
+   "order": 14,
+   "difficulty": "normal",
+   "devName": "14존 노말",
+   "image": "BgImg_Stage_Zone_014",
+   "code": 1014,
+   "group": 101
+  },
+  "10142": {
+   "id": 10142,
+   "order": 14,
+   "difficulty": "hard",
+   "devName": "14존 하드",
+   "image": "BgImg_Stage_Zone_014",
+   "code": 1014,
+   "group": 101
+  },
   "100011": {
    "id": 100011,
    "order": 1,
    "difficulty": "normal",
    "name": {
     "ko": "전투",
-    "en": "Combat Zone"
+    "en": "Battle"
    },
    "image": "BgImg_EV1001_Zone_001"
   },
@@ -306,7 +324,7 @@
    "difficulty": "normal",
    "name": {
     "ko": "전투",
-    "en": "Combat Zone"
+    "en": "Battle"
    },
    "image": "BgImg_EV1002_Zone_001"
   },
@@ -316,7 +334,7 @@
    "difficulty": "normal",
    "name": {
     "ko": "전투",
-    "en": "Combat Zone"
+    "en": "Battle"
    },
    "image": "BgImg_EV1003_Zone_001"
   },
@@ -326,15 +344,25 @@
    "difficulty": "normal",
    "name": {
     "ko": "전투",
-    "en": "Combat Zone"
+    "en": "Battle"
    },
    "image": "BgImg_EV1004_Zone_001"
+  },
+  "100051": {
+   "id": 100051,
+   "order": 1,
+   "difficulty": "normal",
+   "name": {
+    "ko": "전투",
+    "en": "Battle"
+   },
+   "image": "BgImg_EV1005_Zone_001"
   },
   "30401": {
    "id": 30401,
    "name": {
     "ko": "데이터 탈취",
-    "en": null
+    "en": "Data Heist"
    },
    "image": "BgImg_Daily_Cover_Experience",
    "group": 304,
@@ -344,7 +372,7 @@
    "id": 30402,
    "name": {
     "ko": "금품 갈취",
-    "en": null
+    "en": "Extortion"
    },
    "image": "BgImg_Daily_Cover_Credit",
    "group": 304,
@@ -354,7 +382,7 @@
    "id": 30403,
    "name": {
     "ko": "세탁소 습격",
-    "en": null
+    "en": "Laundromat Raid"
    },
    "image": "BgImg_Daily_Cover_Essence",
    "group": 304,
@@ -364,7 +392,7 @@
    "id": 30501,
    "name": {
     "ko": "열정의 단련장",
-    "en": null
+    "en": "Training Ground of Passion"
    },
    "image": "BgImg_Attribute_Cover_Fit",
    "group": 305,
@@ -374,7 +402,7 @@
    "id": 30502,
    "name": {
     "ko": "욕망의 찬미당",
-    "en": null
+    "en": "Sanctuary of Drive"
    },
    "image": "BgImg_Attribute_Cover_Bad",
    "group": 305,
@@ -384,7 +412,7 @@
    "id": 30503,
    "name": {
     "ko": "의지의 휴식처",
-    "en": null
+    "en": "Resting Place of Will"
    },
    "image": "BgImg_Attribute_Bg_Maid",
    "group": 305,
@@ -394,7 +422,7 @@
    "id": 30504,
    "name": {
     "ko": "이성의 도박판",
-    "en": null
+    "en": "Gambling Den of Reason"
    },
    "image": "BgImg_Attribute_Cover_Bunny",
    "group": 305,
@@ -405,7 +433,7 @@
    "order": 1,
    "name": {
     "ko": "베이직 아카이브",
-    "en": null
+    "en": "Basic Archive"
    }
   },
   "41001": {
@@ -413,14 +441,22 @@
    "order": 1,
    "name": {
     "ko": "코어 아카이브",
-    "en": null
+    "en": "Core Archive"
+   }
+  },
+  "41002": {
+   "id": 41002,
+   "order": 2,
+   "name": {
+    "ko": "코어 아카이브",
+    "en": "Core Archive"
    }
   },
   "70131": {
    "id": 70131,
    "name": {
     "ko": "13호 업무센터",
-    "en": null
+    "en": "No. 13 Business Center"
    },
    "image": "Icon_NP6010",
    "group": 7013
@@ -429,7 +465,7 @@
    "id": 70132,
    "name": {
     "ko": "반파된 종합상황실",
-    "en": null
+    "en": "Half-destroyed General Control Room"
    },
    "image": "Icon_NP6011",
    "group": 7013
@@ -438,7 +474,7 @@
    "id": 70133,
    "name": {
     "ko": "절체절명의 연결교",
-    "en": null
+    "en": "Desperate Connecting Bridge"
    },
    "image": "Icon_NP6012",
    "group": 7013
@@ -576,6 +612,14 @@
    "order": 13,
    "chapter": 13
   },
+  "story:1014": {
+   "key": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "image": "BgImg_Stage_Zone_014",
+   "order": 14,
+   "chapter": 14
+  },
   "daily:30401": {
    "key": "daily:30401",
    "mode": "daily",
@@ -583,7 +627,7 @@
    "image": "BgImg_Daily_Cover_Experience",
    "name": {
     "ko": "데이터 탈취",
-    "en": null
+    "en": "Data Heist"
    }
   },
   "daily:30402": {
@@ -593,7 +637,7 @@
    "image": "BgImg_Daily_Cover_Credit",
    "name": {
     "ko": "금품 갈취",
-    "en": null
+    "en": "Extortion"
    }
   },
   "daily:30403": {
@@ -603,7 +647,7 @@
    "image": "BgImg_Daily_Cover_Essence",
    "name": {
     "ko": "세탁소 습격",
-    "en": null
+    "en": "Laundromat Raid"
    }
   },
   "flurry:30501": {
@@ -613,7 +657,7 @@
    "image": "BgImg_Attribute_Cover_Fit",
    "name": {
     "ko": "열정의 단련장",
-    "en": null
+    "en": "Training Ground of Passion"
    }
   },
   "flurry:30502": {
@@ -623,7 +667,7 @@
    "image": "BgImg_Attribute_Cover_Bad",
    "name": {
     "ko": "욕망의 찬미당",
-    "en": null
+    "en": "Sanctuary of Drive"
    }
   },
   "flurry:30503": {
@@ -633,7 +677,7 @@
    "image": "BgImg_Attribute_Bg_Maid",
    "name": {
     "ko": "의지의 휴식처",
-    "en": null
+    "en": "Resting Place of Will"
    }
   },
   "flurry:30504": {
@@ -643,7 +687,7 @@
    "image": "BgImg_Attribute_Cover_Bunny",
    "name": {
     "ko": "이성의 도박판",
-    "en": null
+    "en": "Gambling Den of Reason"
    }
   },
   "event:1001": {
@@ -653,7 +697,7 @@
    "image": "BgImg_EV1001_Zone_001",
    "name": {
     "ko": "갱스 오브 두부거리",
-    "en": "Gangs Of Tofu Street"
+    "en": "Gangs of Tofu Street"
    },
    "order": 1001,
    "banner": "Event01_Logo",
@@ -702,13 +746,26 @@
    "from": "2026-07-30",
    "to": "2026-08-20"
   },
+  "event:1005": {
+   "key": "event:1005",
+   "mode": "event",
+   "zoneId": 100051,
+   "image": "BgImg_EV1005_Zone_001",
+   "name": {
+    "ko": "Cash Crush Rush",
+    "en": "Cash Crush Rush"
+   },
+   "order": 1005,
+   "from": "2026-08-13",
+   "to": "2026-09-03"
+  },
   "ascent:40000": {
    "key": "ascent:40000",
    "mode": "ascent",
    "zoneId": 40000,
    "name": {
     "ko": "베이직 아카이브",
-    "en": null
+    "en": "Basic Archive"
    },
    "order": 1
   },
@@ -718,9 +775,19 @@
    "zoneId": 41001,
    "name": {
     "ko": "코어 아카이브",
-    "en": null
+    "en": "Core Archive"
    },
    "order": 1
+  },
+  "ascent:41002": {
+   "key": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "name": {
+    "ko": "코어 아카이브",
+    "en": "Core Archive"
+   },
+   "order": 2
   },
   "nemesis:7011": {
    "key": "nemesis:7011",
@@ -729,25 +796,25 @@
    "image": "Icon_NP6010",
    "name": {
     "ko": "움브라 데이",
-    "en": null
+    "en": "Umbra Dei"
    },
    "order": 7011,
    "from": "2026-07-09",
    "to": "2026-07-16"
   },
-  "nemesis:7012": {
-   "key": "nemesis:7012",
+  "nemesis:7016": {
+   "key": "nemesis:7016",
    "mode": "nemesis",
    "zoneId": 70211,
    "image": "Icon_NP6020_ALL",
    "name": {
     "ko": "마리스커레이드",
-    "en": null
+    "en": "Marisquerade"
    },
-   "order": 7012,
+   "order": 7016,
    "banner": "Nemesis2_Logo",
-   "from": "2026-08-06",
-   "to": "2026-08-13"
+   "from": "2026-07-09",
+   "to": "2026-07-16"
   },
   "raid": {
    "key": "raid",
@@ -765,7 +832,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -777,7 +844,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -789,7 +856,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": null
+     "en": "Clear within [0] seconds"
     }
    }
   ],
@@ -803,7 +870,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -815,7 +882,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -827,7 +894,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": null
+     "en": "Clear within [0] seconds"
     }
    }
   ],
@@ -841,7 +908,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -853,7 +920,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -865,7 +932,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": null
+     "en": "Clear within [0] seconds"
     }
    }
   ],
@@ -879,7 +946,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -891,7 +958,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -903,7 +970,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": null
+     "en": "Clear within [0] seconds"
     }
    }
   ],
@@ -917,7 +984,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -929,7 +996,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -941,7 +1008,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": null
+     "en": "Clear within [0] seconds"
     }
    }
   ],
@@ -955,7 +1022,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -967,7 +1034,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -979,7 +1046,7 @@
     ],
     "text": {
      "ko": "[0] 속성 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Attribute Partners"
     },
     "checkTable": "attribute"
    }
@@ -994,7 +1061,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1006,7 +1073,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1018,7 +1085,7 @@
     ],
     "text": {
      "ko": "[0] 속성 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Attribute Partners"
     },
     "checkTable": "attribute"
    }
@@ -1033,7 +1100,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1045,7 +1112,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1057,7 +1124,7 @@
     ],
     "text": {
      "ko": "[0] 속성 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Attribute Partners"
     },
     "checkTable": "attribute"
    }
@@ -1072,7 +1139,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1084,7 +1151,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1096,7 +1163,7 @@
     ],
     "text": {
      "ko": "[0] 속성 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Attribute Partners"
     },
     "checkTable": "attribute"
    }
@@ -1111,7 +1178,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1123,7 +1190,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1135,7 +1202,7 @@
     ],
     "text": {
      "ko": "[0] 클래스 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Class Partners"
     },
     "checkTable": "role"
    }
@@ -1150,7 +1217,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1162,7 +1229,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1174,7 +1241,7 @@
     ],
     "text": {
      "ko": "[0] 클래스 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Class Partners"
     },
     "checkTable": "role"
    }
@@ -1189,7 +1256,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1201,7 +1268,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1213,7 +1280,7 @@
     ],
     "text": {
      "ko": "[0] 클래스 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Class Partners"
     },
     "checkTable": "role"
    }
@@ -1228,7 +1295,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1240,7 +1307,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1252,7 +1319,7 @@
     ],
     "text": {
      "ko": "[0] 포지션 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Position Partners"
     },
     "checkTable": "position"
    }
@@ -1267,7 +1334,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1279,7 +1346,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1291,7 +1358,7 @@
     ],
     "text": {
      "ko": "[0] 포지션 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Position Partners"
     },
     "checkTable": "position"
    }
@@ -1306,7 +1373,7 @@
     ],
     "text": {
      "ko": "스테이지 클리어",
-     "en": null
+     "en": "Clear Stage"
     }
    },
    {
@@ -1318,7 +1385,7 @@
     ],
     "text": {
      "ko": "파트너 전원 생존",
-     "en": null
+     "en": "All Partners survive"
     }
    },
    {
@@ -1330,7 +1397,7 @@
     ],
     "text": {
      "ko": "[0] 포지션 파트너를 최대 [1]명 이하 편성",
-     "en": null
+     "en": "Deploy [1] or fewer [0] Position Partners"
     },
     "checkTable": "position"
    }
@@ -3014,6 +3081,26 @@
    "icon": "Icon_Equipment_Piece_Ring_Tier5",
    "grade": 5
   },
+  "item:80505": {
+   "name": "T5 모자 바우처",
+   "icon": "Icon_Equipment_Piece_Hat_Tier5",
+   "grade": 5
+  },
+  "item:80506": {
+   "name": "T5 신발 바우처",
+   "icon": "Icon_Equipment_Piece_Shoes_Tier5",
+   "grade": 5
+  },
+  "item:80507": {
+   "name": "T5 가방 바우처",
+   "icon": "Icon_Equipment_Piece_Bag_Tier5",
+   "grade": 5
+  },
+  "item:80508": {
+   "name": "T5 장갑 바우처",
+   "icon": "Icon_Equipment_Piece_Gloves_Tier5",
+   "grade": 5
+  },
   "reset_goods:1": {
    "name": "에너지 비타민",
    "icon": "Icon_Goods_Stamina_Energy_Vitamins"
@@ -3058,24 +3145,14 @@
    "icon": "Icon_Eq_GrowUp_Tier4",
    "grade": 4
   },
-  "item:10112": {
-   "name": "중급 열정의 깃털",
-   "icon": "Icon_Skill_Levelup_Passion_Normal_Tier2",
-   "grade": 2
-  },
-  "item:10116": {
-   "name": "중급 열정의 알",
-   "icon": "Icon_Skill_Levelup_Passion_Burst_Tier2",
-   "grade": 2
-  },
-  "item:10152": {
-   "name": "실버 다트",
-   "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier2",
-   "grade": 2
-  },
   "item:10111": {
    "name": "하급 열정의 깃털",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier1",
+   "grade": 1
+  },
+  "item:10151": {
+   "name": "브론즈 다트",
+   "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier1",
    "grade": 1
   },
   "item:10115": {
@@ -3083,10 +3160,20 @@
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier1",
    "grade": 1
   },
-  "item:10151": {
-   "name": "브론즈 다트",
-   "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier1",
-   "grade": 1
+  "item:10112": {
+   "name": "중급 열정의 깃털",
+   "icon": "Icon_Skill_Levelup_Passion_Normal_Tier2",
+   "grade": 2
+  },
+  "item:10152": {
+   "name": "실버 다트",
+   "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier2",
+   "grade": 2
+  },
+  "item:10116": {
+   "name": "중급 열정의 알",
+   "icon": "Icon_Skill_Levelup_Passion_Burst_Tier2",
+   "grade": 2
   },
   "item:10113": {
    "name": "상급 열정의 깃털",
@@ -3108,34 +3195,24 @@
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier4",
    "grade": 4
   },
-  "item:10118": {
-   "name": "최상급 열정의 알",
-   "icon": "Icon_Skill_Levelup_Passion_Burst_Tier4",
-   "grade": 4
-  },
   "item:10154": {
    "name": "플래티넘 다트",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier4",
    "grade": 4
   },
-  "item:10122": {
-   "name": "중급 욕망의 깃털",
-   "icon": "Icon_Skill_Levelup_Urge_Normal_Tier2",
-   "grade": 2
-  },
-  "item:10126": {
-   "name": "중급 욕망의 알",
-   "icon": "Icon_Skill_Levelup_Urge_Burst_Tier2",
-   "grade": 2
-  },
-  "item:10162": {
-   "name": "실버 덤벨",
-   "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier2",
-   "grade": 2
+  "item:10118": {
+   "name": "최상급 열정의 알",
+   "icon": "Icon_Skill_Levelup_Passion_Burst_Tier4",
+   "grade": 4
   },
   "item:10121": {
    "name": "하급 욕망의 깃털",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier1",
+   "grade": 1
+  },
+  "item:10161": {
+   "name": "브론즈 덤벨",
+   "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier1",
    "grade": 1
   },
   "item:10125": {
@@ -3143,10 +3220,20 @@
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier1",
    "grade": 1
   },
-  "item:10161": {
-   "name": "브론즈 덤벨",
-   "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier1",
-   "grade": 1
+  "item:10122": {
+   "name": "중급 욕망의 깃털",
+   "icon": "Icon_Skill_Levelup_Urge_Normal_Tier2",
+   "grade": 2
+  },
+  "item:10162": {
+   "name": "실버 덤벨",
+   "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier2",
+   "grade": 2
+  },
+  "item:10126": {
+   "name": "중급 욕망의 알",
+   "icon": "Icon_Skill_Levelup_Urge_Burst_Tier2",
+   "grade": 2
   },
   "item:10123": {
    "name": "상급 욕망의 깃털",
@@ -3168,34 +3255,24 @@
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier4",
    "grade": 4
   },
-  "item:10128": {
-   "name": "최상급 욕망의 알",
-   "icon": "Icon_Skill_Levelup_Urge_Burst_Tier4",
-   "grade": 4
-  },
   "item:10164": {
    "name": "플래티넘 덤벨",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier4",
    "grade": 4
   },
-  "item:10132": {
-   "name": "중급 의지의 깃털",
-   "icon": "Icon_Skill_Levelup_Will_Normal_Tier2",
-   "grade": 2
-  },
-  "item:10136": {
-   "name": "중급 의지의 알",
-   "icon": "Icon_Skill_Levelup_Will_Burst_Tier2",
-   "grade": 2
-  },
-  "item:10172": {
-   "name": "실버 마이크",
-   "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier2",
-   "grade": 2
+  "item:10128": {
+   "name": "최상급 욕망의 알",
+   "icon": "Icon_Skill_Levelup_Urge_Burst_Tier4",
+   "grade": 4
   },
   "item:10131": {
    "name": "하급 의지의 깃털",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier1",
+   "grade": 1
+  },
+  "item:10171": {
+   "name": "브론즈 마이크",
+   "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier1",
    "grade": 1
   },
   "item:10135": {
@@ -3203,10 +3280,20 @@
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier1",
    "grade": 1
   },
-  "item:10171": {
-   "name": "브론즈 마이크",
-   "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier1",
-   "grade": 1
+  "item:10132": {
+   "name": "중급 의지의 깃털",
+   "icon": "Icon_Skill_Levelup_Will_Normal_Tier2",
+   "grade": 2
+  },
+  "item:10172": {
+   "name": "실버 마이크",
+   "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier2",
+   "grade": 2
+  },
+  "item:10136": {
+   "name": "중급 의지의 알",
+   "icon": "Icon_Skill_Levelup_Will_Burst_Tier2",
+   "grade": 2
   },
   "item:10133": {
    "name": "상급 의지의 깃털",
@@ -3228,34 +3315,24 @@
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier4",
    "grade": 4
   },
-  "item:10138": {
-   "name": "최상급 의지의 알",
-   "icon": "Icon_Skill_Levelup_Will_Burst_Tier4",
-   "grade": 4
-  },
   "item:10174": {
    "name": "플래티넘 마이크",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier4",
    "grade": 4
   },
-  "item:10142": {
-   "name": "중급 이성의 깃털",
-   "icon": "Icon_Skill_Levelup_Reason_Normal_Tier2",
-   "grade": 2
-  },
-  "item:10146": {
-   "name": "중급 이성의 알",
-   "icon": "Icon_Skill_Levelup_Reason_Burst_Tier2",
-   "grade": 2
-  },
-  "item:10182": {
-   "name": "실버 케인",
-   "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier2",
-   "grade": 2
+  "item:10138": {
+   "name": "최상급 의지의 알",
+   "icon": "Icon_Skill_Levelup_Will_Burst_Tier4",
+   "grade": 4
   },
   "item:10141": {
    "name": "하급 이성의 깃털",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier1",
+   "grade": 1
+  },
+  "item:10181": {
+   "name": "브론즈 케인",
+   "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier1",
    "grade": 1
   },
   "item:10145": {
@@ -3263,10 +3340,20 @@
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier1",
    "grade": 1
   },
-  "item:10181": {
-   "name": "브론즈 케인",
-   "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier1",
-   "grade": 1
+  "item:10142": {
+   "name": "중급 이성의 깃털",
+   "icon": "Icon_Skill_Levelup_Reason_Normal_Tier2",
+   "grade": 2
+  },
+  "item:10182": {
+   "name": "실버 케인",
+   "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier2",
+   "grade": 2
+  },
+  "item:10146": {
+   "name": "중급 이성의 알",
+   "icon": "Icon_Skill_Levelup_Reason_Burst_Tier2",
+   "grade": 2
   },
   "item:10143": {
    "name": "상급 이성의 깃털",
@@ -3288,14 +3375,14 @@
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier4",
    "grade": 4
   },
-  "item:10148": {
-   "name": "최상급 이성의 알",
-   "icon": "Icon_Skill_Levelup_Reason_Burst_Tier4",
-   "grade": 4
-  },
   "item:10184": {
    "name": "플래티넘 케인",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier4",
+   "grade": 4
+  },
+  "item:10148": {
+   "name": "최상급 이성의 알",
+   "icon": "Icon_Skill_Levelup_Reason_Burst_Tier4",
    "grade": 4
   },
   "goods:5001": {
@@ -3325,6 +3412,14 @@
   "goods:1004": {
    "name": "고단백 육포",
    "icon": "Icon_Goods_EV1004_Contract_01"
+  },
+  "goods:5005": {
+   "name": "기업 ID 카드",
+   "icon": "Icon_Goods_EV1005_Ticket_01"
+  },
+  "goods:1005": {
+   "name": "금고 식별기",
+   "icon": "Icon_Goods_EV1005_01"
   },
   "item:40013": {
    "name": "선물 선택 상자",
@@ -38933,6 +39028,2874 @@
    ]
   },
   {
+   "id": 1014101,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 1,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 01",
+   "recommendLevel": "63",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014101,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80505"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80201,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80201"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0507",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0511",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0508",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      },
+      {
+       "code": "NP0502",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014102,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 2,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 02",
+   "recommendLevel": "63",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014102,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80505"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80202,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80202"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0512",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0511",
+       "level": 63
+      },
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014103,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 3,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 03",
+   "recommendLevel": "63",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014103,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80505"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80203,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80203"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0510",
+       "level": 63
+      },
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0508",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      },
+      {
+       "code": "NP0502",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014104,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 4,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 04",
+   "recommendLevel": "63",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014104,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80506"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80204,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80204"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0511",
+       "level": 63
+      },
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0512",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0509",
+       "level": 63
+      },
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014105,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 5,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 05",
+   "recommendLevel": "63",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014105,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80506"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80205,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80205"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0511",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0510",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0507",
+       "level": 63
+      },
+      {
+       "code": "NP0511",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      },
+      {
+       "code": "NP0502",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014106,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 6,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 06",
+   "recommendLevel": "63",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014106,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80506"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       60
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80206,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80206"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0508",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0512",
+       "level": 63
+      },
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0503",
+       "level": 63
+      },
+      {
+       "code": "NP0505",
+       "level": 63
+      },
+      {
+       "code": "NP0504",
+       "level": 63
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 63
+      },
+      {
+       "code": "NP0511",
+       "level": 63
+      },
+      {
+       "code": "NP0509",
+       "level": 63
+      },
+      {
+       "code": "NP0501",
+       "level": 63
+      },
+      {
+       "code": "NP0506",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014107,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 7,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 07",
+   "recommendLevel": "64",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014107,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80507"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80207,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80207"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0510",
+       "level": 64
+      },
+      {
+       "code": "NP0501",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0505",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0505",
+       "level": 64
+      },
+      {
+       "code": "NP0502",
+       "level": 64
+      },
+      {
+       "code": "NP0506",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0505",
+       "level": 64
+      },
+      {
+       "code": "NP0508",
+       "level": 64
+      },
+      {
+       "code": "NP0511",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      },
+      {
+       "code": "NP0501",
+       "level": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014108,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 8,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 08",
+   "recommendLevel": "64",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014108,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80507"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80208,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80208"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0512",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      },
+      {
+       "code": "NP0506",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 64
+      },
+      {
+       "code": "NP0502",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0505",
+       "level": 64
+      },
+      {
+       "code": "NP0501",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0510",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      },
+      {
+       "code": "NP0506",
+       "level": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014109,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 9,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 09",
+   "recommendLevel": "64",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014109,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80507"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80209,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80209"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0505",
+       "level": 64
+      },
+      {
+       "code": "NP0508",
+       "level": 64
+      },
+      {
+       "code": "NP0511",
+       "level": 64
+      },
+      {
+       "code": "NP0506",
+       "level": 64
+      },
+      {
+       "code": "NP0502",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0501",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0509",
+       "level": 64
+      },
+      {
+       "code": "NP0512",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0510",
+       "level": 64
+      },
+      {
+       "code": "NP0502",
+       "level": 64
+      },
+      {
+       "code": "NP0511",
+       "level": 64
+      },
+      {
+       "code": "NP0505",
+       "level": 64
+      },
+      {
+       "code": "NP0506",
+       "level": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014110,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 10,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 010",
+   "recommendLevel": "64",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014110,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80508"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80210,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80210"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0512",
+       "level": 64
+      },
+      {
+       "code": "NP0501",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 64
+      },
+      {
+       "code": "NP0502",
+       "level": 64
+      },
+      {
+       "code": "NP0511",
+       "level": 64
+      },
+      {
+       "code": "NP0505",
+       "level": 64
+      },
+      {
+       "code": "NP0506",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0508",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0510",
+       "level": 64
+      },
+      {
+       "code": "NP0501",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014111,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 11,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 011",
+   "recommendLevel": "64",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014111,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80508"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80211,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80211"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0505",
+       "level": 64
+      },
+      {
+       "code": "NP0507",
+       "level": 64
+      },
+      {
+       "code": "NP0511",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      },
+      {
+       "code": "NP0501",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0508",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0512",
+       "level": 64
+      },
+      {
+       "code": "NP0502",
+       "level": 64
+      },
+      {
+       "code": "NP0506",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 64
+      },
+      {
+       "code": "NP0501",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0510",
+       "level": 64
+      },
+      {
+       "code": "NP0505",
+       "level": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014112,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10141,
+   "order": 12,
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "devName": "작전 진행 14존 일반 012",
+   "recommendLevel": "64",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1000",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014112,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "item:80508"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       60
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.55,
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.33,
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80212,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.6,
+      "ref": "item:80212"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 64
+      },
+      {
+       "code": "NP0511",
+       "level": 64
+      },
+      {
+       "code": "NP0512",
+       "level": 64
+      },
+      {
+       "code": "NP0502",
+       "level": 64
+      },
+      {
+       "code": "NP0504",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 64
+      },
+      {
+       "code": "NP0508",
+       "level": 64
+      },
+      {
+       "code": "NP0503",
+       "level": 64
+      },
+      {
+       "code": "NP0510",
+       "level": 64
+      },
+      {
+       "code": "NP0506",
+       "level": 64
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 64
+      },
+      {
+       "code": "NP0511",
+       "level": 64
+      },
+      {
+       "code": "NP0509",
+       "level": 64
+      },
+      {
+       "code": "NP0501",
+       "level": 64
+      },
+      {
+       "code": "NP0512",
+       "level": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014201,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10142,
+   "order": 1,
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "devName": "작전 진행 14존 하드 01",
+   "recommendLevel": "65",
+   "weakAttribute": 1,
+   "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
+   "subMissionGroup": "1001",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014201,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 25,
+      "amount": [
+       5
+      ],
+      "drop": "each",
+      "ref": "item:25"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 25,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.266666,
+      "ref": "item:25"
+     },
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:80505"
+     },
+     {
+      "type": "item",
+      "id": 80505,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:80505"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0504",
+       "level": 65
+      },
+      {
+       "code": "NP0508",
+       "level": 65
+      },
+      {
+       "code": "NP0511",
+       "level": 65
+      },
+      {
+       "code": "NP0506",
+       "level": 65
+      },
+      {
+       "code": "NP0502",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 65
+      },
+      {
+       "code": "NP0503",
+       "level": 65
+      },
+      {
+       "code": "NP0510",
+       "level": 65
+      },
+      {
+       "code": "NP0501",
+       "level": 65
+      },
+      {
+       "code": "NP0505",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 65
+      },
+      {
+       "code": "NP0502",
+       "level": 65
+      },
+      {
+       "code": "NP0511",
+       "level": 65
+      },
+      {
+       "code": "NP0512",
+       "level": 65
+      },
+      {
+       "code": "NP0506",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014202,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10142,
+   "order": 2,
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "devName": "작전 진행 14존 하드 02",
+   "recommendLevel": "65",
+   "weakAttribute": 1,
+   "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
+   "subMissionGroup": "1001",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014202,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 1,
+      "amount": [
+       5
+      ],
+      "drop": "each",
+      "ref": "item:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 1,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.266666,
+      "ref": "item:1"
+     },
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:80506"
+     },
+     {
+      "type": "item",
+      "id": 80506,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:80506"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0508",
+       "level": 65
+      },
+      {
+       "code": "NP0511",
+       "level": 65
+      },
+      {
+       "code": "NP0510",
+       "level": 65
+      },
+      {
+       "code": "NP0505",
+       "level": 65
+      },
+      {
+       "code": "NP0504",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 65
+      },
+      {
+       "code": "NP0507",
+       "level": 65
+      },
+      {
+       "code": "NP0503",
+       "level": 65
+      },
+      {
+       "code": "NP0512",
+       "level": 65
+      },
+      {
+       "code": "NP0501",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0508",
+       "level": 65
+      },
+      {
+       "code": "NP0511",
+       "level": 65
+      },
+      {
+       "code": "NP0510",
+       "level": 65
+      },
+      {
+       "code": "NP0502",
+       "level": 65
+      },
+      {
+       "code": "NP0506",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014203,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10142,
+   "order": 3,
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "devName": "작전 진행 14존 하드 03",
+   "recommendLevel": "65",
+   "weakAttribute": 1,
+   "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
+   "subMissionGroup": "1001",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014203,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 6,
+      "amount": [
+       5
+      ],
+      "drop": "each",
+      "ref": "item:6"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 6,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.266666,
+      "ref": "item:6"
+     },
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:80507"
+     },
+     {
+      "type": "item",
+      "id": 80507,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:80507"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0512",
+       "level": 65
+      },
+      {
+       "code": "NP0507",
+       "level": 65
+      },
+      {
+       "code": "NP0503",
+       "level": 65
+      },
+      {
+       "code": "NP0505",
+       "level": 65
+      },
+      {
+       "code": "NP0508",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0501",
+       "level": 65
+      },
+      {
+       "code": "NP0511",
+       "level": 65
+      },
+      {
+       "code": "NP0509",
+       "level": 65
+      },
+      {
+       "code": "NP0510",
+       "level": 65
+      },
+      {
+       "code": "NP0504",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 65
+      },
+      {
+       "code": "NP0507",
+       "level": 65
+      },
+      {
+       "code": "NP0503",
+       "level": 65
+      },
+      {
+       "code": "NP0512",
+       "level": 65
+      },
+      {
+       "code": "NP0508",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 1014204,
+   "group": "story:1014",
+   "mode": "story",
+   "zoneId": 10142,
+   "order": 4,
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "devName": "작전 진행 14존 하드 04",
+   "recommendLevel": "65",
+   "weakAttribute": 1,
+   "stamina": 20,
+   "entry": {
+    "ref": "charge_goods:1",
+    "amount": 20
+   },
+   "subMissionGroup": "1001",
+   "background": "Battle_Field_Mafia_Room_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 1014204,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 27,
+      "amount": [
+       5
+      ],
+      "drop": "each",
+      "ref": "item:27"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "item",
+      "id": 27,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.266666,
+      "ref": "item:27"
+     },
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:80508"
+     },
+     {
+      "type": "item",
+      "id": 80508,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:80508"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 65
+      },
+      {
+       "code": "NP0511",
+       "level": 65
+      },
+      {
+       "code": "NP0510",
+       "level": 65
+      },
+      {
+       "code": "NP0502",
+       "level": 65
+      },
+      {
+       "code": "NP0512",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0509",
+       "level": 65
+      },
+      {
+       "code": "NP0508",
+       "level": 65
+      },
+      {
+       "code": "NP0511",
+       "level": 65
+      },
+      {
+       "code": "NP0510",
+       "level": 65
+      },
+      {
+       "code": "NP0506",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 65
+      },
+      {
+       "code": "NP0503",
+       "level": 65
+      },
+      {
+       "code": "NP0510",
+       "level": 65
+      },
+      {
+       "code": "NP0508",
+       "level": 65
+      },
+      {
+       "code": "NP0512",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 3040101,
    "group": "daily:30401",
    "mode": "daily",
@@ -38941,7 +41904,7 @@
    "nameKey": "contents_stage_list_name_data_theft",
    "nameTemplate": {
     "ko": "공장 데이터 {0}",
-    "en": null
+    "en": "Factory Data {0}"
    },
    "recommendLevel": "5",
    "weakAttribute": 1,
@@ -39007,7 +41970,7 @@
    "nameKey": "contents_stage_list_name_data_theft",
    "nameTemplate": {
     "ko": "공장 데이터 {0}",
-    "en": null
+    "en": "Factory Data {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 1,
@@ -39082,7 +42045,7 @@
    "nameKey": "contents_stage_list_name_data_theft",
    "nameTemplate": {
     "ko": "공장 데이터 {0}",
-    "en": null
+    "en": "Factory Data {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 1,
@@ -39166,7 +42129,7 @@
    "nameKey": "contents_stage_list_name_data_theft",
    "nameTemplate": {
     "ko": "공장 데이터 {0}",
-    "en": null
+    "en": "Factory Data {0}"
    },
    "recommendLevel": "40",
    "weakAttribute": 1,
@@ -39259,7 +42222,7 @@
    "nameKey": "contents_stage_list_name_data_theft",
    "nameTemplate": {
     "ko": "공장 데이터 {0}",
-    "en": null
+    "en": "Factory Data {0}"
    },
    "recommendLevel": "50",
    "weakAttribute": 1,
@@ -39352,7 +42315,7 @@
    "nameKey": "contents_stage_list_name_money_extortion",
    "nameTemplate": {
     "ko": "은닉 금품 {0}",
-    "en": null
+    "en": "Hidden Valuables {0}"
    },
    "recommendLevel": "5",
    "weakAttribute": 2,
@@ -39402,7 +42365,7 @@
    "nameKey": "contents_stage_list_name_money_extortion",
    "nameTemplate": {
     "ko": "은닉 금품 {0}",
-    "en": null
+    "en": "Hidden Valuables {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 2,
@@ -39452,7 +42415,7 @@
    "nameKey": "contents_stage_list_name_money_extortion",
    "nameTemplate": {
     "ko": "은닉 금품 {0}",
-    "en": null
+    "en": "Hidden Valuables {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 2,
@@ -39502,7 +42465,7 @@
    "nameKey": "contents_stage_list_name_money_extortion",
    "nameTemplate": {
     "ko": "은닉 금품 {0}",
-    "en": null
+    "en": "Hidden Valuables {0}"
    },
    "recommendLevel": "40",
    "weakAttribute": 2,
@@ -39552,7 +42515,7 @@
    "nameKey": "contents_stage_list_name_money_extortion",
    "nameTemplate": {
     "ko": "은닉 금품 {0}",
-    "en": null
+    "en": "Hidden Valuables {0}"
    },
    "recommendLevel": "50",
    "weakAttribute": 2,
@@ -39602,7 +42565,7 @@
    "nameKey": "contents_stage_list_name_laundry_room",
    "nameTemplate": {
     "ko": "세탁소 지점 {0}",
-    "en": null
+    "en": "Laundromat Branch {0}"
    },
    "recommendLevel": "5",
    "weakAttribute": 3,
@@ -39670,7 +42633,7 @@
    "nameKey": "contents_stage_list_name_laundry_room",
    "nameTemplate": {
     "ko": "세탁소 지점 {0}",
-    "en": null
+    "en": "Laundromat Branch {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 3,
@@ -39738,7 +42701,7 @@
    "nameKey": "contents_stage_list_name_laundry_room",
    "nameTemplate": {
     "ko": "세탁소 지점 {0}",
-    "en": null
+    "en": "Laundromat Branch {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 3,
@@ -39815,7 +42778,7 @@
    "nameKey": "contents_stage_list_name_laundry_room",
    "nameTemplate": {
     "ko": "세탁소 지점 {0}",
-    "en": null
+    "en": "Laundromat Branch {0}"
    },
    "recommendLevel": "40",
    "weakAttribute": 3,
@@ -39892,7 +42855,7 @@
    "nameKey": "contents_stage_list_name_laundry_room",
    "nameTemplate": {
     "ko": "세탁소 지점 {0}",
-    "en": null
+    "en": "Laundromat Branch {0}"
    },
    "recommendLevel": "50",
    "weakAttribute": 3,
@@ -39969,7 +42932,7 @@
    "nameKey": "contents_stage_list_name_flully_area_fitness",
    "nameTemplate": {
     "ko": "피트 플러리 구역 {0}",
-    "en": null
+    "en": "Fit Flurry Zone {0}"
    },
    "recommendLevel": "10",
    "weakAttribute": 4,
@@ -39986,42 +42949,11 @@
     "repeat": [
      {
       "type": "item",
-      "id": 10112,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.056348,
-      "ref": "item:10112"
-     },
-     {
-      "type": "item",
-      "id": 10116,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.015026,
-      "ref": "item:10116"
-     },
-     {
-      "type": "item",
-      "id": 10152,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.056348,
-      "ref": "item:10152"
-     },
-     {
-      "type": "item",
       "id": 10111,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.090909,
       "ref": "item:10111"
      },
      {
@@ -40031,7 +42963,27 @@
        1
       ],
       "drop": "each",
+      "chance": 0.0909,
       "ref": "item:10111"
+     },
+     {
+      "type": "item",
+      "id": 10151,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10151"
+     },
+     {
+      "type": "item",
+      "id": 10151,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0909,
+      "ref": "item:10151"
      },
      {
       "type": "item",
@@ -40042,25 +42994,6 @@
       "drop": "each",
       "chance": 0.022727,
       "ref": "item:10115"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.090909,
-      "ref": "item:10151"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10151"
      }
     ]
    },
@@ -40104,7 +43037,7 @@
    "nameKey": "contents_stage_list_name_flully_area_fitness",
    "nameTemplate": {
     "ko": "피트 플러리 구역 {0}",
-    "en": null
+    "en": "Fit Flurry Zone {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 4,
@@ -40126,18 +43059,8 @@
        1
       ],
       "drop": "each",
-      "chance": 0.061983,
+      "chance": 0.03,
       "ref": "item:10112"
-     },
-     {
-      "type": "item",
-      "id": 10116,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.016528,
-      "ref": "item:10116"
      },
      {
       "type": "item",
@@ -40146,8 +43069,27 @@
        1
       ],
       "drop": "each",
-      "chance": 0.061983,
+      "chance": 0.03,
       "ref": "item:10152"
+     },
+     {
+      "type": "item",
+      "id": 10116,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0075,
+      "ref": "item:10116"
+     },
+     {
+      "type": "item",
+      "id": 10111,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10111"
      },
      {
       "type": "item",
@@ -40161,12 +43103,22 @@
      },
      {
       "type": "item",
-      "id": 10111,
+      "id": 10151,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10111"
+      "ref": "item:10151"
+     },
+     {
+      "type": "item",
+      "id": 10151,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10151"
      },
      {
       "type": "item",
@@ -40177,25 +43129,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10115"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10151"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10151"
      }
     ]
    },
@@ -40239,7 +43172,7 @@
    "nameKey": "contents_stage_list_name_flully_area_fitness",
    "nameTemplate": {
     "ko": "피트 플러리 구역 {0}",
-    "en": null
+    "en": "Fit Flurry Zone {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 4,
@@ -40256,12 +43189,42 @@
     "repeat": [
      {
       "type": "item",
+      "id": 10112,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.15,
+      "ref": "item:10112"
+     },
+     {
+      "type": "item",
+      "id": 10152,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.15,
+      "ref": "item:10152"
+     },
+     {
+      "type": "item",
+      "id": 10116,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.05,
+      "ref": "item:10116"
+     },
+     {
+      "type": "item",
       "id": 10113,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.041322,
+      "chance": 0.01,
       "ref": "item:10113"
      },
      {
@@ -40271,7 +43234,7 @@
        1
       ],
       "drop": "each",
-      "chance": 0.01033,
+      "chance": 0.005,
       "ref": "item:10117"
      },
      {
@@ -40281,38 +43244,17 @@
        1
       ],
       "drop": "each",
-      "chance": 0.041322,
+      "chance": 0.01,
       "ref": "item:10153"
      },
      {
       "type": "item",
-      "id": 10112,
+      "id": 10111,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.068181,
-      "ref": "item:10112"
-     },
-     {
-      "type": "item",
-      "id": 10116,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.018181,
-      "ref": "item:10116"
-     },
-     {
-      "type": "item",
-      "id": 10152,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.068181,
-      "ref": "item:10152"
+      "ref": "item:10111"
      },
      {
       "type": "item",
@@ -40326,12 +43268,22 @@
      },
      {
       "type": "item",
-      "id": 10111,
+      "id": 10151,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10111"
+      "ref": "item:10151"
+     },
+     {
+      "type": "item",
+      "id": 10151,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10151"
      },
      {
       "type": "item",
@@ -40342,25 +43294,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10115"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10151"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10151"
      }
     ]
    },
@@ -40404,7 +43337,7 @@
    "nameKey": "contents_stage_list_name_flully_area_fitness",
    "nameTemplate": {
     "ko": "피트 플러리 구역 {0}",
-    "en": null
+    "en": "Fit Flurry Zone {0}"
    },
    "recommendLevel": "40",
    "weakAttribute": 4,
@@ -40421,53 +43354,13 @@
     "repeat": [
      {
       "type": "item",
-      "id": 10114,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.03409,
-      "ref": "item:10114"
-     },
-     {
-      "type": "item",
-      "id": 10118,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.006818,
-      "ref": "item:10118"
-     },
-     {
-      "type": "item",
-      "id": 10154,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.03409,
-      "ref": "item:10154"
-     },
-     {
-      "type": "item",
       "id": 10113,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.045454,
+      "chance": 0.1,
       "ref": "item:10113"
-     },
-     {
-      "type": "item",
-      "id": 10117,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.011363,
-      "ref": "item:10117"
      },
      {
       "type": "item",
@@ -40476,8 +43369,18 @@
        1
       ],
       "drop": "each",
-      "chance": 0.045454,
+      "chance": 0.1,
       "ref": "item:10153"
+     },
+     {
+      "type": "item",
+      "id": 10117,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.03,
+      "ref": "item:10117"
      },
      {
       "type": "item",
@@ -40486,18 +43389,8 @@
        1
       ],
       "drop": "each",
-      "chance": 0.075,
+      "chance": 0.05,
       "ref": "item:10112"
-     },
-     {
-      "type": "item",
-      "id": 10116,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.02,
-      "ref": "item:10116"
      },
      {
       "type": "item",
@@ -40506,8 +43399,27 @@
        1
       ],
       "drop": "each",
-      "chance": 0.075,
+      "chance": 0.05,
       "ref": "item:10152"
+     },
+     {
+      "type": "item",
+      "id": 10116,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.015,
+      "ref": "item:10116"
+     },
+     {
+      "type": "item",
+      "id": 10111,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10111"
      },
      {
       "type": "item",
@@ -40521,12 +43433,22 @@
      },
      {
       "type": "item",
-      "id": 10111,
+      "id": 10151,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10111"
+      "ref": "item:10151"
+     },
+     {
+      "type": "item",
+      "id": 10151,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10151"
      },
      {
       "type": "item",
@@ -40537,25 +43459,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10115"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10151"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10151"
      }
     ]
    },
@@ -40599,7 +43502,7 @@
    "nameKey": "contents_stage_list_name_flully_area_fitness",
    "nameTemplate": {
     "ko": "피트 플러리 구역 {0}",
-    "en": null
+    "en": "Fit Flurry Zone {0}"
    },
    "recommendLevel": "50",
    "weakAttribute": 4,
@@ -40626,16 +43529,6 @@
      },
      {
       "type": "item",
-      "id": 10118,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.0075,
-      "ref": "item:10118"
-     },
-     {
-      "type": "item",
       "id": 10154,
       "amount": [
        1
@@ -40643,6 +43536,16 @@
       "drop": "each",
       "chance": 0.0375,
       "ref": "item:10154"
+     },
+     {
+      "type": "item",
+      "id": 10118,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0075,
+      "ref": "item:10118"
      },
      {
       "type": "item",
@@ -40656,16 +43559,6 @@
      },
      {
       "type": "item",
-      "id": 10117,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.0125,
-      "ref": "item:10117"
-     },
-     {
-      "type": "item",
       "id": 10153,
       "amount": [
        1
@@ -40673,6 +43566,16 @@
       "drop": "each",
       "chance": 0.05,
       "ref": "item:10153"
+     },
+     {
+      "type": "item",
+      "id": 10117,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0125,
+      "ref": "item:10117"
      },
      {
       "type": "item",
@@ -40686,16 +43589,6 @@
      },
      {
       "type": "item",
-      "id": 10116,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.02,
-      "ref": "item:10116"
-     },
-     {
-      "type": "item",
       "id": 10152,
       "amount": [
        1
@@ -40706,6 +43599,25 @@
      },
      {
       "type": "item",
+      "id": 10116,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.02,
+      "ref": "item:10116"
+     },
+     {
+      "type": "item",
+      "id": 10111,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10111"
+     },
+     {
+      "type": "item",
       "id": 10111,
       "amount": [
        1
@@ -40716,12 +43628,22 @@
      },
      {
       "type": "item",
-      "id": 10111,
+      "id": 10151,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10111"
+      "ref": "item:10151"
+     },
+     {
+      "type": "item",
+      "id": 10151,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10151"
      },
      {
       "type": "item",
@@ -40732,25 +43654,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10115"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10151"
-     },
-     {
-      "type": "item",
-      "id": 10151,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10151"
      }
     ]
    },
@@ -40794,7 +43697,7 @@
    "nameKey": "contents_stage_list_name_flully_area_sister",
    "nameTemplate": {
     "ko": "시스터 플러리 구역 {0}",
-    "en": null
+    "en": "Sister Flurry Zone {0}"
    },
    "recommendLevel": "10",
    "weakAttribute": 3,
@@ -40811,42 +43714,11 @@
     "repeat": [
      {
       "type": "item",
-      "id": 10122,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.056348,
-      "ref": "item:10122"
-     },
-     {
-      "type": "item",
-      "id": 10126,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.015026,
-      "ref": "item:10126"
-     },
-     {
-      "type": "item",
-      "id": 10162,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.056348,
-      "ref": "item:10162"
-     },
-     {
-      "type": "item",
       "id": 10121,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.090909,
       "ref": "item:10121"
      },
      {
@@ -40856,7 +43728,27 @@
        1
       ],
       "drop": "each",
+      "chance": 0.0909,
       "ref": "item:10121"
+     },
+     {
+      "type": "item",
+      "id": 10161,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10161"
+     },
+     {
+      "type": "item",
+      "id": 10161,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0909,
+      "ref": "item:10161"
      },
      {
       "type": "item",
@@ -40867,25 +43759,6 @@
       "drop": "each",
       "chance": 0.022727,
       "ref": "item:10125"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.090909,
-      "ref": "item:10161"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10161"
      }
     ]
    },
@@ -40929,7 +43802,7 @@
    "nameKey": "contents_stage_list_name_flully_area_sister",
    "nameTemplate": {
     "ko": "시스터 플러리 구역 {0}",
-    "en": null
+    "en": "Sister Flurry Zone {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 3,
@@ -40951,18 +43824,8 @@
        1
       ],
       "drop": "each",
-      "chance": 0.061983,
+      "chance": 0.03,
       "ref": "item:10122"
-     },
-     {
-      "type": "item",
-      "id": 10126,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.016528,
-      "ref": "item:10126"
      },
      {
       "type": "item",
@@ -40971,8 +43834,27 @@
        1
       ],
       "drop": "each",
-      "chance": 0.061983,
+      "chance": 0.03,
       "ref": "item:10162"
+     },
+     {
+      "type": "item",
+      "id": 10126,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0075,
+      "ref": "item:10126"
+     },
+     {
+      "type": "item",
+      "id": 10121,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10121"
      },
      {
       "type": "item",
@@ -40986,12 +43868,22 @@
      },
      {
       "type": "item",
-      "id": 10121,
+      "id": 10161,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10121"
+      "ref": "item:10161"
+     },
+     {
+      "type": "item",
+      "id": 10161,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10161"
      },
      {
       "type": "item",
@@ -41002,25 +43894,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10125"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10161"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10161"
      }
     ]
    },
@@ -41064,7 +43937,7 @@
    "nameKey": "contents_stage_list_name_flully_area_sister",
    "nameTemplate": {
     "ko": "시스터 플러리 구역 {0}",
-    "en": null
+    "en": "Sister Flurry Zone {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 3,
@@ -41081,12 +43954,42 @@
     "repeat": [
      {
       "type": "item",
+      "id": 10122,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.15,
+      "ref": "item:10122"
+     },
+     {
+      "type": "item",
+      "id": 10162,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.15,
+      "ref": "item:10162"
+     },
+     {
+      "type": "item",
+      "id": 10126,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.05,
+      "ref": "item:10126"
+     },
+     {
+      "type": "item",
       "id": 10123,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.041322,
+      "chance": 0.01,
       "ref": "item:10123"
      },
      {
@@ -41096,7 +43999,7 @@
        1
       ],
       "drop": "each",
-      "chance": 0.01033,
+      "chance": 0.005,
       "ref": "item:10127"
      },
      {
@@ -41106,38 +44009,17 @@
        1
       ],
       "drop": "each",
-      "chance": 0.041322,
+      "chance": 0.01,
       "ref": "item:10163"
      },
      {
       "type": "item",
-      "id": 10122,
+      "id": 10121,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.068181,
-      "ref": "item:10122"
-     },
-     {
-      "type": "item",
-      "id": 10126,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.018181,
-      "ref": "item:10126"
-     },
-     {
-      "type": "item",
-      "id": 10162,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.068181,
-      "ref": "item:10162"
+      "ref": "item:10121"
      },
      {
       "type": "item",
@@ -41151,12 +44033,22 @@
      },
      {
       "type": "item",
-      "id": 10121,
+      "id": 10161,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10121"
+      "ref": "item:10161"
+     },
+     {
+      "type": "item",
+      "id": 10161,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10161"
      },
      {
       "type": "item",
@@ -41167,25 +44059,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10125"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10161"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10161"
      }
     ]
    },
@@ -41229,7 +44102,7 @@
    "nameKey": "contents_stage_list_name_flully_area_sister",
    "nameTemplate": {
     "ko": "시스터 플러리 구역 {0}",
-    "en": null
+    "en": "Sister Flurry Zone {0}"
    },
    "recommendLevel": "40",
    "weakAttribute": 3,
@@ -41246,53 +44119,13 @@
     "repeat": [
      {
       "type": "item",
-      "id": 10124,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.03409,
-      "ref": "item:10124"
-     },
-     {
-      "type": "item",
-      "id": 10128,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.006818,
-      "ref": "item:10128"
-     },
-     {
-      "type": "item",
-      "id": 10164,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.03409,
-      "ref": "item:10164"
-     },
-     {
-      "type": "item",
       "id": 10123,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.045454,
+      "chance": 0.1,
       "ref": "item:10123"
-     },
-     {
-      "type": "item",
-      "id": 10127,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.011363,
-      "ref": "item:10127"
      },
      {
       "type": "item",
@@ -41301,8 +44134,18 @@
        1
       ],
       "drop": "each",
-      "chance": 0.045454,
+      "chance": 0.1,
       "ref": "item:10163"
+     },
+     {
+      "type": "item",
+      "id": 10127,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.03,
+      "ref": "item:10127"
      },
      {
       "type": "item",
@@ -41311,18 +44154,8 @@
        1
       ],
       "drop": "each",
-      "chance": 0.075,
+      "chance": 0.05,
       "ref": "item:10122"
-     },
-     {
-      "type": "item",
-      "id": 10126,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.02,
-      "ref": "item:10126"
      },
      {
       "type": "item",
@@ -41331,8 +44164,27 @@
        1
       ],
       "drop": "each",
-      "chance": 0.075,
+      "chance": 0.05,
       "ref": "item:10162"
+     },
+     {
+      "type": "item",
+      "id": 10126,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.015,
+      "ref": "item:10126"
+     },
+     {
+      "type": "item",
+      "id": 10121,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10121"
      },
      {
       "type": "item",
@@ -41346,12 +44198,22 @@
      },
      {
       "type": "item",
-      "id": 10121,
+      "id": 10161,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10121"
+      "ref": "item:10161"
+     },
+     {
+      "type": "item",
+      "id": 10161,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10161"
      },
      {
       "type": "item",
@@ -41362,25 +44224,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10125"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10161"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10161"
      }
     ]
    },
@@ -41424,7 +44267,7 @@
    "nameKey": "contents_stage_list_name_flully_area_sister",
    "nameTemplate": {
     "ko": "시스터 플러리 구역 {0}",
-    "en": null
+    "en": "Sister Flurry Zone {0}"
    },
    "recommendLevel": "50",
    "weakAttribute": 3,
@@ -41451,16 +44294,6 @@
      },
      {
       "type": "item",
-      "id": 10128,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.0075,
-      "ref": "item:10128"
-     },
-     {
-      "type": "item",
       "id": 10164,
       "amount": [
        1
@@ -41468,6 +44301,16 @@
       "drop": "each",
       "chance": 0.0375,
       "ref": "item:10164"
+     },
+     {
+      "type": "item",
+      "id": 10128,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0075,
+      "ref": "item:10128"
      },
      {
       "type": "item",
@@ -41481,16 +44324,6 @@
      },
      {
       "type": "item",
-      "id": 10127,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.0125,
-      "ref": "item:10127"
-     },
-     {
-      "type": "item",
       "id": 10163,
       "amount": [
        1
@@ -41498,6 +44331,16 @@
       "drop": "each",
       "chance": 0.05,
       "ref": "item:10163"
+     },
+     {
+      "type": "item",
+      "id": 10127,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0125,
+      "ref": "item:10127"
      },
      {
       "type": "item",
@@ -41511,16 +44354,6 @@
      },
      {
       "type": "item",
-      "id": 10126,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.02,
-      "ref": "item:10126"
-     },
-     {
-      "type": "item",
       "id": 10162,
       "amount": [
        1
@@ -41531,6 +44364,25 @@
      },
      {
       "type": "item",
+      "id": 10126,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.02,
+      "ref": "item:10126"
+     },
+     {
+      "type": "item",
+      "id": 10121,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10121"
+     },
+     {
+      "type": "item",
       "id": 10121,
       "amount": [
        1
@@ -41541,12 +44393,22 @@
      },
      {
       "type": "item",
-      "id": 10121,
+      "id": 10161,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10121"
+      "ref": "item:10161"
+     },
+     {
+      "type": "item",
+      "id": 10161,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10161"
      },
      {
       "type": "item",
@@ -41557,25 +44419,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10125"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10161"
-     },
-     {
-      "type": "item",
-      "id": 10161,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10161"
      }
     ]
    },
@@ -41619,7 +44462,7 @@
    "nameKey": "contents_stage_list_name_flully_area_maid",
    "nameTemplate": {
     "ko": "메이드 플러리 구역 {0}",
-    "en": null
+    "en": "Maid Flurry Zone {0}"
    },
    "recommendLevel": "10",
    "weakAttribute": 1,
@@ -41636,42 +44479,11 @@
     "repeat": [
      {
       "type": "item",
-      "id": 10132,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.056348,
-      "ref": "item:10132"
-     },
-     {
-      "type": "item",
-      "id": 10136,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.015026,
-      "ref": "item:10136"
-     },
-     {
-      "type": "item",
-      "id": 10172,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.056348,
-      "ref": "item:10172"
-     },
-     {
-      "type": "item",
       "id": 10131,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.090909,
       "ref": "item:10131"
      },
      {
@@ -41681,7 +44493,27 @@
        1
       ],
       "drop": "each",
+      "chance": 0.0909,
       "ref": "item:10131"
+     },
+     {
+      "type": "item",
+      "id": 10171,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10171"
+     },
+     {
+      "type": "item",
+      "id": 10171,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0909,
+      "ref": "item:10171"
      },
      {
       "type": "item",
@@ -41692,25 +44524,6 @@
       "drop": "each",
       "chance": 0.022727,
       "ref": "item:10135"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.090909,
-      "ref": "item:10171"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10171"
      }
     ]
    },
@@ -41754,7 +44567,7 @@
    "nameKey": "contents_stage_list_name_flully_area_maid",
    "nameTemplate": {
     "ko": "메이드 플러리 구역 {0}",
-    "en": null
+    "en": "Maid Flurry Zone {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 1,
@@ -41776,18 +44589,8 @@
        1
       ],
       "drop": "each",
-      "chance": 0.061983,
+      "chance": 0.03,
       "ref": "item:10132"
-     },
-     {
-      "type": "item",
-      "id": 10136,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.016528,
-      "ref": "item:10136"
      },
      {
       "type": "item",
@@ -41796,8 +44599,27 @@
        1
       ],
       "drop": "each",
-      "chance": 0.061983,
+      "chance": 0.03,
       "ref": "item:10172"
+     },
+     {
+      "type": "item",
+      "id": 10136,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0075,
+      "ref": "item:10136"
+     },
+     {
+      "type": "item",
+      "id": 10131,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10131"
      },
      {
       "type": "item",
@@ -41811,12 +44633,22 @@
      },
      {
       "type": "item",
-      "id": 10131,
+      "id": 10171,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10131"
+      "ref": "item:10171"
+     },
+     {
+      "type": "item",
+      "id": 10171,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10171"
      },
      {
       "type": "item",
@@ -41827,25 +44659,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10135"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10171"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10171"
      }
     ]
    },
@@ -41889,7 +44702,7 @@
    "nameKey": "contents_stage_list_name_flully_area_maid",
    "nameTemplate": {
     "ko": "메이드 플러리 구역 {0}",
-    "en": null
+    "en": "Maid Flurry Zone {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 1,
@@ -41906,12 +44719,42 @@
     "repeat": [
      {
       "type": "item",
+      "id": 10132,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.15,
+      "ref": "item:10132"
+     },
+     {
+      "type": "item",
+      "id": 10172,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.15,
+      "ref": "item:10172"
+     },
+     {
+      "type": "item",
+      "id": 10136,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.05,
+      "ref": "item:10136"
+     },
+     {
+      "type": "item",
       "id": 10133,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.041322,
+      "chance": 0.01,
       "ref": "item:10133"
      },
      {
@@ -41921,7 +44764,7 @@
        1
       ],
       "drop": "each",
-      "chance": 0.01033,
+      "chance": 0.005,
       "ref": "item:10137"
      },
      {
@@ -41931,38 +44774,17 @@
        1
       ],
       "drop": "each",
-      "chance": 0.041322,
+      "chance": 0.01,
       "ref": "item:10173"
      },
      {
       "type": "item",
-      "id": 10132,
+      "id": 10131,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.068181,
-      "ref": "item:10132"
-     },
-     {
-      "type": "item",
-      "id": 10136,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.018181,
-      "ref": "item:10136"
-     },
-     {
-      "type": "item",
-      "id": 10172,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.068181,
-      "ref": "item:10172"
+      "ref": "item:10131"
      },
      {
       "type": "item",
@@ -41976,12 +44798,22 @@
      },
      {
       "type": "item",
-      "id": 10131,
+      "id": 10171,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10131"
+      "ref": "item:10171"
+     },
+     {
+      "type": "item",
+      "id": 10171,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10171"
      },
      {
       "type": "item",
@@ -41992,25 +44824,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10135"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10171"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10171"
      }
     ]
    },
@@ -42054,7 +44867,7 @@
    "nameKey": "contents_stage_list_name_flully_area_maid",
    "nameTemplate": {
     "ko": "메이드 플러리 구역 {0}",
-    "en": null
+    "en": "Maid Flurry Zone {0}"
    },
    "recommendLevel": "40",
    "weakAttribute": 1,
@@ -42071,53 +44884,13 @@
     "repeat": [
      {
       "type": "item",
-      "id": 10134,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.03409,
-      "ref": "item:10134"
-     },
-     {
-      "type": "item",
-      "id": 10138,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.006818,
-      "ref": "item:10138"
-     },
-     {
-      "type": "item",
-      "id": 10174,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.03409,
-      "ref": "item:10174"
-     },
-     {
-      "type": "item",
       "id": 10133,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.045454,
+      "chance": 0.1,
       "ref": "item:10133"
-     },
-     {
-      "type": "item",
-      "id": 10137,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.011363,
-      "ref": "item:10137"
      },
      {
       "type": "item",
@@ -42126,8 +44899,18 @@
        1
       ],
       "drop": "each",
-      "chance": 0.045454,
+      "chance": 0.1,
       "ref": "item:10173"
+     },
+     {
+      "type": "item",
+      "id": 10137,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.03,
+      "ref": "item:10137"
      },
      {
       "type": "item",
@@ -42136,18 +44919,8 @@
        1
       ],
       "drop": "each",
-      "chance": 0.075,
+      "chance": 0.05,
       "ref": "item:10132"
-     },
-     {
-      "type": "item",
-      "id": 10136,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.02,
-      "ref": "item:10136"
      },
      {
       "type": "item",
@@ -42156,8 +44929,27 @@
        1
       ],
       "drop": "each",
-      "chance": 0.075,
+      "chance": 0.05,
       "ref": "item:10172"
+     },
+     {
+      "type": "item",
+      "id": 10136,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.015,
+      "ref": "item:10136"
+     },
+     {
+      "type": "item",
+      "id": 10131,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10131"
      },
      {
       "type": "item",
@@ -42171,12 +44963,22 @@
      },
      {
       "type": "item",
-      "id": 10131,
+      "id": 10171,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10131"
+      "ref": "item:10171"
+     },
+     {
+      "type": "item",
+      "id": 10171,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10171"
      },
      {
       "type": "item",
@@ -42187,25 +44989,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10135"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10171"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10171"
      }
     ]
    },
@@ -42249,7 +45032,7 @@
    "nameKey": "contents_stage_list_name_flully_area_maid",
    "nameTemplate": {
     "ko": "메이드 플러리 구역 {0}",
-    "en": null
+    "en": "Maid Flurry Zone {0}"
    },
    "recommendLevel": "50",
    "weakAttribute": 1,
@@ -42276,16 +45059,6 @@
      },
      {
       "type": "item",
-      "id": 10138,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.0075,
-      "ref": "item:10138"
-     },
-     {
-      "type": "item",
       "id": 10174,
       "amount": [
        1
@@ -42293,6 +45066,16 @@
       "drop": "each",
       "chance": 0.0375,
       "ref": "item:10174"
+     },
+     {
+      "type": "item",
+      "id": 10138,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0075,
+      "ref": "item:10138"
      },
      {
       "type": "item",
@@ -42306,16 +45089,6 @@
      },
      {
       "type": "item",
-      "id": 10137,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.0125,
-      "ref": "item:10137"
-     },
-     {
-      "type": "item",
       "id": 10173,
       "amount": [
        1
@@ -42323,6 +45096,16 @@
       "drop": "each",
       "chance": 0.05,
       "ref": "item:10173"
+     },
+     {
+      "type": "item",
+      "id": 10137,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0125,
+      "ref": "item:10137"
      },
      {
       "type": "item",
@@ -42336,16 +45119,6 @@
      },
      {
       "type": "item",
-      "id": 10136,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.02,
-      "ref": "item:10136"
-     },
-     {
-      "type": "item",
       "id": 10172,
       "amount": [
        1
@@ -42356,6 +45129,25 @@
      },
      {
       "type": "item",
+      "id": 10136,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.02,
+      "ref": "item:10136"
+     },
+     {
+      "type": "item",
+      "id": 10131,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10131"
+     },
+     {
+      "type": "item",
       "id": 10131,
       "amount": [
        1
@@ -42366,12 +45158,22 @@
      },
      {
       "type": "item",
-      "id": 10131,
+      "id": 10171,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10131"
+      "ref": "item:10171"
+     },
+     {
+      "type": "item",
+      "id": 10171,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10171"
      },
      {
       "type": "item",
@@ -42382,25 +45184,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10135"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10171"
-     },
-     {
-      "type": "item",
-      "id": 10171,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10171"
      }
     ]
    },
@@ -42444,7 +45227,7 @@
    "nameKey": "contents_stage_list_name_flully_area_bunny",
    "nameTemplate": {
     "ko": "바니 플러리 구역 {0}",
-    "en": null
+    "en": "Bunny Flurry Zone {0}"
    },
    "recommendLevel": "10",
    "weakAttribute": 2,
@@ -42461,42 +45244,11 @@
     "repeat": [
      {
       "type": "item",
-      "id": 10142,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.056348,
-      "ref": "item:10142"
-     },
-     {
-      "type": "item",
-      "id": 10146,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.015026,
-      "ref": "item:10146"
-     },
-     {
-      "type": "item",
-      "id": 10182,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.056348,
-      "ref": "item:10182"
-     },
-     {
-      "type": "item",
       "id": 10141,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.090909,
       "ref": "item:10141"
      },
      {
@@ -42506,7 +45258,27 @@
        1
       ],
       "drop": "each",
+      "chance": 0.0909,
       "ref": "item:10141"
+     },
+     {
+      "type": "item",
+      "id": 10181,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10181"
+     },
+     {
+      "type": "item",
+      "id": 10181,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0909,
+      "ref": "item:10181"
      },
      {
       "type": "item",
@@ -42517,25 +45289,6 @@
       "drop": "each",
       "chance": 0.022727,
       "ref": "item:10145"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.090909,
-      "ref": "item:10181"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10181"
      }
     ]
    },
@@ -42579,7 +45332,7 @@
    "nameKey": "contents_stage_list_name_flully_area_bunny",
    "nameTemplate": {
     "ko": "바니 플러리 구역 {0}",
-    "en": null
+    "en": "Bunny Flurry Zone {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 2,
@@ -42601,18 +45354,8 @@
        1
       ],
       "drop": "each",
-      "chance": 0.061983,
+      "chance": 0.03,
       "ref": "item:10142"
-     },
-     {
-      "type": "item",
-      "id": 10146,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.016528,
-      "ref": "item:10146"
      },
      {
       "type": "item",
@@ -42621,8 +45364,27 @@
        1
       ],
       "drop": "each",
-      "chance": 0.061983,
+      "chance": 0.03,
       "ref": "item:10182"
+     },
+     {
+      "type": "item",
+      "id": 10146,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0075,
+      "ref": "item:10146"
+     },
+     {
+      "type": "item",
+      "id": 10141,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10141"
      },
      {
       "type": "item",
@@ -42636,12 +45398,22 @@
      },
      {
       "type": "item",
-      "id": 10141,
+      "id": 10181,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10141"
+      "ref": "item:10181"
+     },
+     {
+      "type": "item",
+      "id": 10181,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10181"
      },
      {
       "type": "item",
@@ -42652,25 +45424,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10145"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10181"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10181"
      }
     ]
    },
@@ -42714,7 +45467,7 @@
    "nameKey": "contents_stage_list_name_flully_area_bunny",
    "nameTemplate": {
     "ko": "바니 플러리 구역 {0}",
-    "en": null
+    "en": "Bunny Flurry Zone {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 2,
@@ -42731,12 +45484,42 @@
     "repeat": [
      {
       "type": "item",
+      "id": 10142,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.15,
+      "ref": "item:10142"
+     },
+     {
+      "type": "item",
+      "id": 10182,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.15,
+      "ref": "item:10182"
+     },
+     {
+      "type": "item",
+      "id": 10146,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.05,
+      "ref": "item:10146"
+     },
+     {
+      "type": "item",
       "id": 10143,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.041322,
+      "chance": 0.01,
       "ref": "item:10143"
      },
      {
@@ -42746,7 +45529,7 @@
        1
       ],
       "drop": "each",
-      "chance": 0.01033,
+      "chance": 0.005,
       "ref": "item:10147"
      },
      {
@@ -42756,38 +45539,17 @@
        1
       ],
       "drop": "each",
-      "chance": 0.041322,
+      "chance": 0.01,
       "ref": "item:10183"
      },
      {
       "type": "item",
-      "id": 10142,
+      "id": 10141,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.068181,
-      "ref": "item:10142"
-     },
-     {
-      "type": "item",
-      "id": 10146,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.018181,
-      "ref": "item:10146"
-     },
-     {
-      "type": "item",
-      "id": 10182,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.068181,
-      "ref": "item:10182"
+      "ref": "item:10141"
      },
      {
       "type": "item",
@@ -42801,12 +45563,22 @@
      },
      {
       "type": "item",
-      "id": 10141,
+      "id": 10181,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10141"
+      "ref": "item:10181"
+     },
+     {
+      "type": "item",
+      "id": 10181,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10181"
      },
      {
       "type": "item",
@@ -42817,25 +45589,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10145"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10181"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10181"
      }
     ]
    },
@@ -42879,7 +45632,7 @@
    "nameKey": "contents_stage_list_name_flully_area_bunny",
    "nameTemplate": {
     "ko": "바니 플러리 구역 {0}",
-    "en": null
+    "en": "Bunny Flurry Zone {0}"
    },
    "recommendLevel": "40",
    "weakAttribute": 2,
@@ -42896,53 +45649,13 @@
     "repeat": [
      {
       "type": "item",
-      "id": 10144,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.03409,
-      "ref": "item:10144"
-     },
-     {
-      "type": "item",
-      "id": 10148,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.006818,
-      "ref": "item:10148"
-     },
-     {
-      "type": "item",
-      "id": 10184,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.03409,
-      "ref": "item:10184"
-     },
-     {
-      "type": "item",
       "id": 10143,
       "amount": [
        1
       ],
       "drop": "each",
-      "chance": 0.045454,
+      "chance": 0.1,
       "ref": "item:10143"
-     },
-     {
-      "type": "item",
-      "id": 10147,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.011363,
-      "ref": "item:10147"
      },
      {
       "type": "item",
@@ -42951,8 +45664,18 @@
        1
       ],
       "drop": "each",
-      "chance": 0.045454,
+      "chance": 0.1,
       "ref": "item:10183"
+     },
+     {
+      "type": "item",
+      "id": 10147,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.03,
+      "ref": "item:10147"
      },
      {
       "type": "item",
@@ -42961,18 +45684,8 @@
        1
       ],
       "drop": "each",
-      "chance": 0.075,
+      "chance": 0.05,
       "ref": "item:10142"
-     },
-     {
-      "type": "item",
-      "id": 10146,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.02,
-      "ref": "item:10146"
      },
      {
       "type": "item",
@@ -42981,8 +45694,27 @@
        1
       ],
       "drop": "each",
-      "chance": 0.075,
+      "chance": 0.05,
       "ref": "item:10182"
+     },
+     {
+      "type": "item",
+      "id": 10146,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.015,
+      "ref": "item:10146"
+     },
+     {
+      "type": "item",
+      "id": 10141,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10141"
      },
      {
       "type": "item",
@@ -42996,12 +45728,22 @@
      },
      {
       "type": "item",
-      "id": 10141,
+      "id": 10181,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10141"
+      "ref": "item:10181"
+     },
+     {
+      "type": "item",
+      "id": 10181,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10181"
      },
      {
       "type": "item",
@@ -43012,25 +45754,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10145"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10181"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10181"
      }
     ]
    },
@@ -43074,7 +45797,7 @@
    "nameKey": "contents_stage_list_name_flully_area_bunny",
    "nameTemplate": {
     "ko": "바니 플러리 구역 {0}",
-    "en": null
+    "en": "Bunny Flurry Zone {0}"
    },
    "recommendLevel": "50",
    "weakAttribute": 2,
@@ -43101,16 +45824,6 @@
      },
      {
       "type": "item",
-      "id": 10148,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.0075,
-      "ref": "item:10148"
-     },
-     {
-      "type": "item",
       "id": 10184,
       "amount": [
        1
@@ -43118,6 +45831,16 @@
       "drop": "each",
       "chance": 0.0375,
       "ref": "item:10184"
+     },
+     {
+      "type": "item",
+      "id": 10148,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0075,
+      "ref": "item:10148"
      },
      {
       "type": "item",
@@ -43131,16 +45854,6 @@
      },
      {
       "type": "item",
-      "id": 10147,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.0125,
-      "ref": "item:10147"
-     },
-     {
-      "type": "item",
       "id": 10183,
       "amount": [
        1
@@ -43148,6 +45861,16 @@
       "drop": "each",
       "chance": 0.05,
       "ref": "item:10183"
+     },
+     {
+      "type": "item",
+      "id": 10147,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.0125,
+      "ref": "item:10147"
      },
      {
       "type": "item",
@@ -43161,16 +45884,6 @@
      },
      {
       "type": "item",
-      "id": 10146,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.02,
-      "ref": "item:10146"
-     },
-     {
-      "type": "item",
       "id": 10182,
       "amount": [
        1
@@ -43181,6 +45894,25 @@
      },
      {
       "type": "item",
+      "id": 10146,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.02,
+      "ref": "item:10146"
+     },
+     {
+      "type": "item",
+      "id": 10141,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10141"
+     },
+     {
+      "type": "item",
       "id": 10141,
       "amount": [
        1
@@ -43191,12 +45923,22 @@
      },
      {
       "type": "item",
-      "id": 10141,
+      "id": 10181,
       "amount": [
        1
       ],
       "drop": "each",
-      "ref": "item:10141"
+      "ref": "item:10181"
+     },
+     {
+      "type": "item",
+      "id": 10181,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.1,
+      "ref": "item:10181"
      },
      {
       "type": "item",
@@ -43207,25 +45949,6 @@
       "drop": "each",
       "chance": 0.025,
       "ref": "item:10145"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "chance": 0.1,
-      "ref": "item:10181"
-     },
-     {
-      "type": "item",
-      "id": 10181,
-      "amount": [
-       1
-      ],
-      "drop": "each",
-      "ref": "item:10181"
      }
     ]
    },
@@ -43269,7 +45992,7 @@
    "nameKey": "event_story_stage_name_ev1001_normal",
    "nameTemplate": {
     "ko": "사채업자 잔당 {0}",
-    "en": null
+    "en": "Loan Shark Remnants {0}"
    },
    "recommendLevel": "10",
    "weakAttribute": 2,
@@ -43397,7 +46120,7 @@
    "nameKey": "event_story_stage_name_ev1001_normal",
    "nameTemplate": {
     "ko": "사채업자 잔당 {0}",
-    "en": null
+    "en": "Loan Shark Remnants {0}"
    },
    "recommendLevel": "15",
    "weakAttribute": 2,
@@ -43537,7 +46260,7 @@
    "nameKey": "event_story_stage_name_ev1001_normal",
    "nameTemplate": {
     "ko": "사채업자 잔당 {0}",
-    "en": null
+    "en": "Loan Shark Remnants {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 2,
@@ -43677,7 +46400,7 @@
    "nameKey": "event_story_stage_name_ev1001_normal",
    "nameTemplate": {
     "ko": "사채업자 잔당 {0}",
-    "en": null
+    "en": "Loan Shark Remnants {0}"
    },
    "recommendLevel": "25",
    "weakAttribute": 2,
@@ -43817,7 +46540,7 @@
    "nameKey": "event_story_stage_name_ev1001_normal",
    "nameTemplate": {
     "ko": "사채업자 잔당 {0}",
-    "en": null
+    "en": "Loan Shark Remnants {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 2,
@@ -43957,7 +46680,7 @@
    "nameKey": "event_story_stage_name_ev1001_normal",
    "nameTemplate": {
     "ko": "사채업자 잔당 {0}",
-    "en": null
+    "en": "Loan Shark Remnants {0}"
    },
    "recommendLevel": "35",
    "weakAttribute": 2,
@@ -44097,7 +46820,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": null
+    "en": "Belmont Street {0}"
    },
    "recommendLevel": "10",
    "entry": {
@@ -44224,7 +46947,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": null
+    "en": "Belmont Street {0}"
    },
    "recommendLevel": "15",
    "entry": {
@@ -44363,7 +47086,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": null
+    "en": "Belmont Street {0}"
    },
    "recommendLevel": "20",
    "entry": {
@@ -44502,7 +47225,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": null
+    "en": "Belmont Street {0}"
    },
    "recommendLevel": "25",
    "entry": {
@@ -44641,7 +47364,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": null
+    "en": "Belmont Street {0}"
    },
    "recommendLevel": "30",
    "entry": {
@@ -44780,7 +47503,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": null
+    "en": "Belmont Street {0}"
    },
    "recommendLevel": "35",
    "entry": {
@@ -44919,7 +47642,7 @@
    "nameKey": "event_story_stage_name_ev1003_normal",
    "nameTemplate": {
     "ko": "드넓은 모래사장 {0}",
-    "en": null
+    "en": "Vast Sandy Beach {0}"
    },
    "recommendLevel": "10",
    "weakAttribute": 4,
@@ -45047,7 +47770,7 @@
    "nameKey": "event_story_stage_name_ev1003_normal",
    "nameTemplate": {
     "ko": "드넓은 모래사장 {0}",
-    "en": null
+    "en": "Vast Sandy Beach {0}"
    },
    "recommendLevel": "15",
    "weakAttribute": 4,
@@ -45187,7 +47910,7 @@
    "nameKey": "event_story_stage_name_ev1003_normal",
    "nameTemplate": {
     "ko": "드넓은 모래사장 {0}",
-    "en": null
+    "en": "Vast Sandy Beach {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 4,
@@ -45327,7 +48050,7 @@
    "nameKey": "event_story_stage_name_ev1003_normal",
    "nameTemplate": {
     "ko": "드넓은 모래사장 {0}",
-    "en": null
+    "en": "Vast Sandy Beach {0}"
    },
    "recommendLevel": "25",
    "weakAttribute": 4,
@@ -45467,7 +48190,7 @@
    "nameKey": "event_story_stage_name_ev1003_normal",
    "nameTemplate": {
     "ko": "드넓은 모래사장 {0}",
-    "en": null
+    "en": "Vast Sandy Beach {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 4,
@@ -45607,7 +48330,7 @@
    "nameKey": "event_story_stage_name_ev1003_normal",
    "nameTemplate": {
     "ko": "드넓은 모래사장 {0}",
-    "en": null
+    "en": "Vast Sandy Beach {0}"
    },
    "recommendLevel": "35",
    "weakAttribute": 4,
@@ -46560,6 +49283,828 @@
       },
       {
        "code": "NP0712",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10005101,
+   "group": "event:1005",
+   "mode": "event",
+   "zoneId": 100051,
+   "order": 1,
+   "nameKey": "event_story_stage_name_ev1005_normal",
+   "nameTemplate": {
+    "ko": "화사한 사무실 복도 {0}",
+    "en": null
+   },
+   "recommendLevel": "10",
+   "entry": {
+    "ref": "goods:5005",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Office_Corridor_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10005101,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1005,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:1005"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8008",
+       "level": 10
+      },
+      {
+       "code": "NP8008",
+       "level": 10
+      },
+      {
+       "code": "NP8009",
+       "level": 10
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8006",
+       "level": 10
+      },
+      {
+       "code": "NP0209",
+       "level": 10
+      },
+      {
+       "code": "NP8007",
+       "level": 10
+      },
+      {
+       "code": "NP8007",
+       "level": 10
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8008",
+       "level": 10
+      },
+      {
+       "code": "NP8006",
+       "level": 10
+      },
+      {
+       "code": "NP0310",
+       "level": 10
+      },
+      {
+       "code": "NP8007",
+       "level": 10
+      },
+      {
+       "code": "NP8009",
+       "level": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10005102,
+   "group": "event:1005",
+   "mode": "event",
+   "zoneId": 100051,
+   "order": 2,
+   "nameKey": "event_story_stage_name_ev1005_normal",
+   "nameTemplate": {
+    "ko": "화사한 사무실 복도 {0}",
+    "en": null
+   },
+   "recommendLevel": "15",
+   "entry": {
+    "ref": "goods:5005",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Office_Corridor_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10005102,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1005,
+      "amount": [
+       12
+      ],
+      "drop": "each",
+      "ref": "goods:1005"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8006",
+       "level": 15
+      },
+      {
+       "code": "NP8006",
+       "level": 15
+      },
+      {
+       "code": "NP8007",
+       "level": 15
+      },
+      {
+       "code": "NP8007",
+       "level": 15
+      },
+      {
+       "code": "NP0210",
+       "level": 15
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8004",
+       "level": 15
+      },
+      {
+       "code": "NP8004",
+       "level": 15
+      },
+      {
+       "code": "NP0109",
+       "level": 15
+      },
+      {
+       "code": "NP8005",
+       "level": 15
+      },
+      {
+       "code": "NP8005",
+       "level": 15
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8004",
+       "level": 15
+      },
+      {
+       "code": "NP0208",
+       "level": 15
+      },
+      {
+       "code": "NP0110",
+       "level": 15
+      },
+      {
+       "code": "NP8005",
+       "level": 15
+      },
+      {
+       "code": "NP8007",
+       "level": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10005103,
+   "group": "event:1005",
+   "mode": "event",
+   "zoneId": 100051,
+   "order": 3,
+   "nameKey": "event_story_stage_name_ev1005_normal",
+   "nameTemplate": {
+    "ko": "화사한 사무실 복도 {0}",
+    "en": null
+   },
+   "recommendLevel": "20",
+   "entry": {
+    "ref": "goods:5005",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Office_Corridor_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10005103,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1005,
+      "amount": [
+       14
+      ],
+      "drop": "each",
+      "ref": "goods:1005"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8004",
+       "level": 20
+      },
+      {
+       "code": "NP8004",
+       "level": 20
+      },
+      {
+       "code": "NP8005",
+       "level": 20
+      },
+      {
+       "code": "NP8005",
+       "level": 20
+      },
+      {
+       "code": "NP0112",
+       "level": 20
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8010",
+       "level": 20
+      },
+      {
+       "code": "NP0407",
+       "level": 20
+      },
+      {
+       "code": "NP0409",
+       "level": 20
+      },
+      {
+       "code": "NP8011",
+       "level": 20
+      },
+      {
+       "code": "NP8011",
+       "level": 20
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP0107",
+       "level": 20
+      },
+      {
+       "code": "NP8010",
+       "level": 20
+      },
+      {
+       "code": "NP0412",
+       "level": 20
+      },
+      {
+       "code": "NP8005",
+       "level": 20
+      },
+      {
+       "code": "NP8011",
+       "level": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10005104,
+   "group": "event:1005",
+   "mode": "event",
+   "zoneId": 100051,
+   "order": 4,
+   "nameKey": "event_story_stage_name_ev1005_normal",
+   "nameTemplate": {
+    "ko": "화사한 사무실 복도 {0}",
+    "en": null
+   },
+   "recommendLevel": "25",
+   "entry": {
+    "ref": "goods:5005",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Office_Corridor_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10005104,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1005,
+      "amount": [
+       16
+      ],
+      "drop": "each",
+      "ref": "goods:1005"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8010",
+       "level": 25
+      },
+      {
+       "code": "NP8010",
+       "level": 25
+      },
+      {
+       "code": "NP0409",
+       "level": 25
+      },
+      {
+       "code": "NP0412",
+       "level": 25
+      },
+      {
+       "code": "NP8011",
+       "level": 25
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8008",
+       "level": 25
+      },
+      {
+       "code": "NP8008",
+       "level": 25
+      },
+      {
+       "code": "NP0310",
+       "level": 25
+      },
+      {
+       "code": "NP0312",
+       "level": 25
+      },
+      {
+       "code": "NP8009",
+       "level": 25
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP0408",
+       "level": 25
+      },
+      {
+       "code": "NP8008",
+       "level": 25
+      },
+      {
+       "code": "NP0412",
+       "level": 25
+      },
+      {
+       "code": "NP8011",
+       "level": 25
+      },
+      {
+       "code": "NP0311",
+       "level": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10005105,
+   "group": "event:1005",
+   "mode": "event",
+   "zoneId": 100051,
+   "order": 5,
+   "nameKey": "event_story_stage_name_ev1005_normal",
+   "nameTemplate": {
+    "ko": "화사한 사무실 복도 {0}",
+    "en": null
+   },
+   "recommendLevel": "30",
+   "entry": {
+    "ref": "goods:5005",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Office_Corridor_03",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10005105,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1005,
+      "amount": [
+       18
+      ],
+      "drop": "each",
+      "ref": "goods:1005"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP8008",
+       "level": 30
+      },
+      {
+       "code": "NP8006",
+       "level": 30
+      },
+      {
+       "code": "NP0211",
+       "level": 30
+      },
+      {
+       "code": "NP0310",
+       "level": 30
+      },
+      {
+       "code": "NP8007",
+       "level": 30
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP0308",
+       "level": 30
+      },
+      {
+       "code": "NP8010",
+       "level": 30
+      },
+      {
+       "code": "NP0409",
+       "level": 30
+      },
+      {
+       "code": "NP0409",
+       "level": 30
+      },
+      {
+       "code": "NP8009",
+       "level": 30
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP0208",
+       "level": 30
+      },
+      {
+       "code": "NP8008",
+       "level": 30
+      },
+      {
+       "code": "NP0412",
+       "level": 30
+      },
+      {
+       "code": "NP8009",
+       "level": 30
+      },
+      {
+       "code": "NP0311",
+       "level": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10005106,
+   "group": "event:1005",
+   "mode": "event",
+   "zoneId": 100051,
+   "order": 6,
+   "nameKey": "event_story_stage_name_ev1005_normal",
+   "nameTemplate": {
+    "ko": "화사한 사무실 복도 {0}",
+    "en": null
+   },
+   "recommendLevel": "35",
+   "entry": {
+    "ref": "goods:5005",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Office_Corridor_03",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10005106,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1005,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "goods:1005"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP0308",
+       "level": 35
+      },
+      {
+       "code": "NP0308",
+       "level": 35
+      },
+      {
+       "code": "NP0310",
+       "level": 35
+      },
+      {
+       "code": "NP8005",
+       "level": 35
+      },
+      {
+       "code": "NP8005",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP0408",
+       "level": 35
+      },
+      {
+       "code": "NP8010",
+       "level": 35
+      },
+      {
+       "code": "NP0409",
+       "level": 35
+      },
+      {
+       "code": "NP8009",
+       "level": 35
+      },
+      {
+       "code": "NP0312",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_014",
+     "enemies": [
+      {
+       "code": "NP0407",
+       "level": 35
+      },
+      {
+       "code": "NP0407",
+       "level": 35
+      },
+      {
+       "code": "NP0110",
+       "level": 35
+      },
+      {
+       "code": "NP8009",
+       "level": 35
+      },
+      {
+       "code": "NP0311",
        "level": 35
       }
      ]
@@ -53431,6 +56976,2346 @@
    ]
   },
   {
+   "id": 4100201,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 1,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "51",
+   "subMissionGroup": "20000",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100201,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "NP8006",
+       "level": 51
+      },
+      {
+       "code": "NP8008",
+       "level": 51
+      },
+      {
+       "code": "NP8005",
+       "level": 51
+      },
+      {
+       "code": "NP8011",
+       "level": 51
+      },
+      {
+       "code": "CH0013",
+       "level": 51
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100202,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 2,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "51",
+   "subMissionGroup": "20000",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100202,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40002,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:40002"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0046",
+       "level": 51
+      },
+      {
+       "code": "NP0208",
+       "level": 51
+      },
+      {
+       "code": "CH0028",
+       "level": 51
+      },
+      {
+       "code": "NP0210",
+       "level": 51
+      },
+      {
+       "code": "NP0210",
+       "level": 51
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100203,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 3,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "52",
+   "subMissionGroup": "20000",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100203,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0006",
+       "level": 52
+      },
+      {
+       "code": "NP0307",
+       "level": 52
+      },
+      {
+       "code": "NP0310",
+       "level": 52
+      },
+      {
+       "code": "NP0310",
+       "level": 52
+      },
+      {
+       "code": "CH0026",
+       "level": 52
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100204,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 4,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "52",
+   "subMissionGroup": "20000",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100204,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0012",
+       "level": 52
+      },
+      {
+       "code": "NP0110",
+       "level": 52
+      },
+      {
+       "code": "CH0057",
+       "level": 52
+      },
+      {
+       "code": "NP0110",
+       "level": 52
+      },
+      {
+       "code": "CH0002",
+       "level": 52
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100205,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 5,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "53",
+   "subMissionGroup": "20000",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100205,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40002,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:40002"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "NP0501",
+       "level": 53
+      },
+      {
+       "code": "NP0501",
+       "level": 53
+      },
+      {
+       "code": "CH0053",
+       "level": 53
+      },
+      {
+       "code": "CH0024",
+       "level": 53
+      },
+      {
+       "code": "CH0009",
+       "level": 53
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100206,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 6,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "53",
+   "subMissionGroup": "20000",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100206,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0022",
+       "level": 53
+      },
+      {
+       "code": "NP0310",
+       "level": 53
+      },
+      {
+       "code": "CH0017",
+       "level": 53
+      },
+      {
+       "code": "NP0310",
+       "level": 53
+      },
+      {
+       "code": "CH0031",
+       "level": 53
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100207,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 7,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "54",
+   "subMissionGroup": "20002",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100207,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0034",
+       "level": 54
+      },
+      {
+       "code": "CH0029",
+       "level": 54
+      },
+      {
+       "code": "CH0036",
+       "level": 54
+      },
+      {
+       "code": "NP0111",
+       "level": 54
+      },
+      {
+       "code": "NP0111",
+       "level": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100208,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 8,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "54",
+   "subMissionGroup": "20003",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100208,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40002,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:40002"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0056",
+       "level": 54
+      },
+      {
+       "code": "NP0407",
+       "level": 54
+      },
+      {
+       "code": "NP0407",
+       "level": 54
+      },
+      {
+       "code": "CH0001",
+       "level": 54
+      },
+      {
+       "code": "CH0015",
+       "level": 54
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100209,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 9,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "55",
+   "subMissionGroup": "20004",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100209,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0005",
+       "level": 55
+      },
+      {
+       "code": "NP0209",
+       "level": 55
+      },
+      {
+       "code": "NP0209",
+       "level": 55
+      },
+      {
+       "code": "CH0027",
+       "level": 55
+      },
+      {
+       "code": "CH0035",
+       "level": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100210,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 10,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "55",
+   "subMissionGroup": "20001",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100210,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40002,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:40002"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       250000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       400
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0023",
+       "level": 55
+      },
+      {
+       "code": "NP0508",
+       "level": 55
+      },
+      {
+       "code": "CH0019",
+       "level": 55
+      },
+      {
+       "code": "CH0037",
+       "level": 55
+      },
+      {
+       "code": "CH0032",
+       "level": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100211,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 11,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "56",
+   "subMissionGroup": "20005",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100211,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0022",
+       "level": 56
+      },
+      {
+       "code": "NP0409",
+       "level": 56
+      },
+      {
+       "code": "NP0409",
+       "level": 56
+      },
+      {
+       "code": "CH0026",
+       "level": 56
+      },
+      {
+       "code": "CH0031",
+       "level": 56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100212,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 12,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "56",
+   "subMissionGroup": "20007",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100212,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0023",
+       "level": 56
+      },
+      {
+       "code": "CH0022",
+       "level": 56
+      },
+      {
+       "code": "CH0001",
+       "level": 56
+      },
+      {
+       "code": "NP0311",
+       "level": 56
+      },
+      {
+       "code": "NP0311",
+       "level": 56
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100213,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 13,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "57",
+   "subMissionGroup": "20006",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100213,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0056",
+       "level": 57
+      },
+      {
+       "code": "CH0011",
+       "level": 57
+      },
+      {
+       "code": "NP0412",
+       "level": 57
+      },
+      {
+       "code": "NP0412",
+       "level": 57
+      },
+      {
+       "code": "CH0009",
+       "level": 57
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100214,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 14,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "57",
+   "subMissionGroup": "20010",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100214,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0046",
+       "level": 57
+      },
+      {
+       "code": "CH0011",
+       "level": 57
+      },
+      {
+       "code": "CH0036",
+       "level": 57
+      },
+      {
+       "code": "CH0020",
+       "level": 57
+      },
+      {
+       "code": "CH0002",
+       "level": 57
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100215,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 15,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "58",
+   "subMissionGroup": "20010",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100215,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40003,
+      "amount": [
+       8
+      ],
+      "drop": "each",
+      "ref": "item:40003"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0005",
+       "level": 58
+      },
+      {
+       "code": "CH0011",
+       "level": 58
+      },
+      {
+       "code": "CH0029",
+       "level": 58
+      },
+      {
+       "code": "CH0036",
+       "level": 58
+      },
+      {
+       "code": "CH0038",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100216,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 16,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "58",
+   "subMissionGroup": "20009",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100216,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0023",
+       "level": 58
+      },
+      {
+       "code": "CH0056",
+       "level": 58
+      },
+      {
+       "code": "CH0063",
+       "level": 58
+      },
+      {
+       "code": "CH0042",
+       "level": 58
+      },
+      {
+       "code": "CH0032",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100217,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 17,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "59",
+   "subMissionGroup": "20009",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100217,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40003,
+      "amount": [
+       8
+      ],
+      "drop": "each",
+      "ref": "item:40003"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0012",
+       "level": 59
+      },
+      {
+       "code": "CH0006",
+       "level": 59
+      },
+      {
+       "code": "CH0054",
+       "level": 59
+      },
+      {
+       "code": "CH0035",
+       "level": 59
+      },
+      {
+       "code": "CH0032",
+       "level": 59
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100218,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 18,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "59",
+   "subMissionGroup": "20009",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100218,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0050",
+       "level": 59
+      },
+      {
+       "code": "CH0019",
+       "level": 59
+      },
+      {
+       "code": "CH0021",
+       "level": 59
+      },
+      {
+       "code": "CH0009",
+       "level": 59
+      },
+      {
+       "code": "CH0015",
+       "level": 59
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100219,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 19,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "60",
+   "subMissionGroup": "20008",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100219,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0005",
+       "level": 60
+      },
+      {
+       "code": "CH0007",
+       "level": 60
+      },
+      {
+       "code": "CH0062",
+       "level": 60
+      },
+      {
+       "code": "CH0024",
+       "level": 60
+      },
+      {
+       "code": "CH0038",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100220,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 20,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "60",
+   "subMissionGroup": "20008",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100220,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40011,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:40011"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       250000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       400
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0022",
+       "level": 60
+      },
+      {
+       "code": "CH0017",
+       "level": 60
+      },
+      {
+       "code": "CH0027",
+       "level": 60
+      },
+      {
+       "code": "CH0039",
+       "level": 60
+      },
+      {
+       "code": "CH0015",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100221,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 21,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "61",
+   "subMissionGroup": "20004",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100221,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       40
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0005",
+       "level": 61
+      },
+      {
+       "code": "CH0005",
+       "level": 61
+      },
+      {
+       "code": "CH0021",
+       "level": 61
+      },
+      {
+       "code": "CH0025",
+       "level": 61
+      },
+      {
+       "code": "CH0028",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100222,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 22,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "61",
+   "subMissionGroup": "20004",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100222,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0034",
+       "level": 61
+      },
+      {
+       "code": "CH0057",
+       "level": 61
+      },
+      {
+       "code": "CH0057",
+       "level": 61
+      },
+      {
+       "code": "CH0016",
+       "level": 61
+      },
+      {
+       "code": "CH0031",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100223,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 23,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "62",
+   "subMissionGroup": "20004",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100223,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0022",
+       "level": 62
+      },
+      {
+       "code": "CH0013",
+       "level": 62
+      },
+      {
+       "code": "CH0037",
+       "level": 62
+      },
+      {
+       "code": "CH0039",
+       "level": 62
+      },
+      {
+       "code": "CH0039",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100224,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 24,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "62",
+   "subMissionGroup": "20002",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100224,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0034",
+       "level": 62
+      },
+      {
+       "code": "CH0007",
+       "level": 62
+      },
+      {
+       "code": "CH0007",
+       "level": 62
+      },
+      {
+       "code": "CH0062",
+       "level": 62
+      },
+      {
+       "code": "CH0026",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100225,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 25,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "63",
+   "subMissionGroup": "20002",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100225,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40004,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:40004"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0050",
+       "level": 63
+      },
+      {
+       "code": "CH0053",
+       "level": 63
+      },
+      {
+       "code": "CH0053",
+       "level": 63
+      },
+      {
+       "code": "CH0017",
+       "level": 63
+      },
+      {
+       "code": "CH0030",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100226,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 26,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "63",
+   "subMissionGroup": "20001",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100226,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40004,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:40004"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0046",
+       "level": 63
+      },
+      {
+       "code": "CH0019",
+       "level": 63
+      },
+      {
+       "code": "CH0019",
+       "level": 63
+      },
+      {
+       "code": "CH0028",
+       "level": 63
+      },
+      {
+       "code": "CH0009",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100227,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 27,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "64",
+   "subMissionGroup": "20001",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100227,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0046",
+       "level": 64
+      },
+      {
+       "code": "CH0046",
+       "level": 64
+      },
+      {
+       "code": "CH0028",
+       "level": 64
+      },
+      {
+       "code": "CH0001",
+       "level": 64
+      },
+      {
+       "code": "CH0042",
+       "level": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100228,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 28,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "64",
+   "subMissionGroup": "20003",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100228,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0050",
+       "level": 64
+      },
+      {
+       "code": "CH0063",
+       "level": 64
+      },
+      {
+       "code": "CH0063",
+       "level": 64
+      },
+      {
+       "code": "CH0038",
+       "level": 64
+      },
+      {
+       "code": "CH0037",
+       "level": 64
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100229,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 29,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "65",
+   "subMissionGroup": "20003",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100229,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       100000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0006",
+       "level": 65
+      },
+      {
+       "code": "CH0006",
+       "level": 65
+      },
+      {
+       "code": "CH0025",
+       "level": 65
+      },
+      {
+       "code": "CH0026",
+       "level": 65
+      },
+      {
+       "code": "CH0042",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4100230,
+   "group": "ascent:41002",
+   "mode": "ascent",
+   "zoneId": 41002,
+   "order": 30,
+   "nameKey": "contents_ascent_stage_core",
+   "nameTemplate": {
+    "ko": "Core Stage {0}",
+    "en": "Core Stage {0}"
+   },
+   "recommendLevel": "65",
+   "subMissionGroup": "20003",
+   "background": "Battle_Field_Ascent_04",
+   "waveGroup": 4100230,
+   "rewards": {
+    "first": [
+     {
+      "type": "item",
+      "id": 40012,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:40012"
+     },
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       250000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       400
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_008",
+     "enemies": [
+      {
+       "code": "CH0056",
+       "level": 65
+      },
+      {
+       "code": "CH0012",
+       "level": 65
+      },
+      {
+       "code": "CH0035",
+       "level": 65
+      },
+      {
+       "code": "CH0035",
+       "level": 65
+      },
+      {
+       "code": "CH0031",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 7013101,
    "group": "nemesis:7011",
    "bossName": "시니스트라",
@@ -53440,7 +59325,7 @@
    "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
     "ko": "13호 업무센터",
-    "en": null
+    "en": "No. 13 Business Center"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Corridor_Destroyed_01",
@@ -53471,7 +59356,7 @@
    "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
     "ko": "13호 업무센터",
-    "en": null
+    "en": "No. 13 Business Center"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Corridor_Destroyed_01",
@@ -53502,7 +59387,7 @@
    "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
     "ko": "13호 업무센터",
-    "en": null
+    "en": "No. 13 Business Center"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Corridor_Destroyed_01",
@@ -53533,7 +59418,7 @@
    "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
     "ko": "13호 업무센터",
-    "en": null
+    "en": "No. 13 Business Center"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Corridor_Destroyed_01",
@@ -53564,7 +59449,7 @@
    "nameKey": "contents_nemesis_np6010_zone_02",
    "nameTemplate": {
     "ko": "반파된 종합상황실",
-    "en": null
+    "en": "Half-destroyed General Control Room"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Corridor_Destroyed_02",
@@ -53595,7 +59480,7 @@
    "nameKey": "contents_nemesis_np6010_zone_02",
    "nameTemplate": {
     "ko": "반파된 종합상황실",
-    "en": null
+    "en": "Half-destroyed General Control Room"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Corridor_Destroyed_02",
@@ -53626,7 +59511,7 @@
    "nameKey": "contents_nemesis_np6010_zone_02",
    "nameTemplate": {
     "ko": "반파된 종합상황실",
-    "en": null
+    "en": "Half-destroyed General Control Room"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Corridor_Destroyed_02",
@@ -53657,7 +59542,7 @@
    "nameKey": "contents_nemesis_np6010_zone_02",
    "nameTemplate": {
     "ko": "반파된 종합상황실",
-    "en": null
+    "en": "Half-destroyed General Control Room"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Corridor_Destroyed_02",
@@ -53688,7 +59573,7 @@
    "nameKey": "contents_nemesis_np6010_zone_03",
    "nameTemplate": {
     "ko": "절체절명의 연결교",
-    "en": null
+    "en": "Desperate Connecting Bridge"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Bridge_Destroyed_01",
@@ -53719,7 +59604,7 @@
    "nameKey": "contents_nemesis_np6010_zone_03",
    "nameTemplate": {
     "ko": "절체절명의 연결교",
-    "en": null
+    "en": "Desperate Connecting Bridge"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Bridge_Destroyed_01",
@@ -53750,7 +59635,7 @@
    "nameKey": "contents_nemesis_np6010_zone_03",
    "nameTemplate": {
     "ko": "절체절명의 연결교",
-    "en": null
+    "en": "Desperate Connecting Bridge"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Bridge_Destroyed_01",
@@ -53781,7 +59666,7 @@
    "nameKey": "contents_nemesis_np6010_zone_03",
    "nameTemplate": {
     "ko": "절체절명의 연결교",
-    "en": null
+    "en": "Desperate Connecting Bridge"
    },
    "weakAttribute": 1,
    "background": "Battle_Field_Office_Bridge_Destroyed_01",
@@ -53804,7 +59689,7 @@
   },
   {
    "id": 7021101,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -53899,7 +59784,7 @@
   },
   {
    "id": 7021102,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -53994,7 +59879,7 @@
   },
   {
    "id": 7021103,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -54089,7 +59974,7 @@
   },
   {
    "id": 7021104,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -54184,7 +60069,7 @@
   },
   {
    "id": 7021105,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -54279,7 +60164,7 @@
   },
   {
    "id": 7021201,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -54310,7 +60195,7 @@
   },
   {
    "id": 7021202,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -54341,7 +60226,7 @@
   },
   {
    "id": 7021203,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -54372,7 +60257,7 @@
   },
   {
    "id": 7021204,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -54403,7 +60288,7 @@
   },
   {
    "id": 7021205,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -54434,7 +60319,7 @@
   },
   {
    "id": 7021301,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -54465,7 +60350,7 @@
   },
   {
    "id": 7021302,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -54496,7 +60381,7 @@
   },
   {
    "id": 7021303,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -54527,7 +60412,7 @@
   },
   {
    "id": 7021304,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -54558,7 +60443,7 @@
   },
   {
    "id": 7021305,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -54615,8 +60500,5 @@
     }
    ]
   }
- ],
- "_skipped": {
-  "nemesis": 81
- }
+ ]
 }

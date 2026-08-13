@@ -23,8 +23,11 @@ type FarmStore = FarmState & {
   /** One write for a whole recount, so a completed plan is a single update. */
   replaceInventory: (inventory: Record<string, number>) => void;
   clearInventory: () => void;
+  /** Puts the unit on the farm list, keeping any plan it already carries. */
   addUnit: (code: string) => void;
+  addUnits: (codes: string[]) => void;
   removeUnit: (code: string) => void;
+  setListed: (code: string, listed: boolean) => void;
   setHidden: (code: string, hidden: boolean) => void;
   setPriority: (code: string, priority: boolean) => void;
   setPlan: (code: string, side: 'current' | 'target', patch: Partial<UnitPlan>) => void;
@@ -86,7 +89,7 @@ function withSide(
   units: FarmState['units'], code: string, side: 'current' | 'target',
   update: (plan: UnitPlan) => UnitPlan,
 ): FarmState['units'] {
-  const pair = units[code] ?? { current: emptyPlan(), target: emptyPlan() };
+  const pair = units[code] ?? { current: emptyPlan(), target: emptyPlan(), listed: false };
   const next = { ...pair, [side]: update(pair[side]) };
   return { ...units, [code]: side === 'current' ? atLeastCurrent(next) : next };
 }
@@ -101,13 +104,28 @@ export const useFarm = create<FarmStore>((set) => ({
   replaceInventory: (inventory) => set((s) => save(s, { inventory })),
   clearInventory: () => set((s) => save(s, { inventory: {} })),
 
-  addUnit: (code) => set((s) => (s.units[code] ? {} : save(s, {
-    units: { ...s.units, [code]: { current: emptyPlan(), target: emptyPlan() } },
-  }))),
+  addUnit: (code) => set((s) => {
+    const pair = s.units[code] ?? { current: emptyPlan(), target: emptyPlan() };
+    return pair.listed ? {} : save(s, {
+      units: { ...s.units, [code]: { ...pair, listed: true } },
+    });
+  }),
+  addUnits: (codes) => set((s) => {
+    const units = { ...s.units };
+    for (const code of codes) {
+      const pair = units[code] ?? { current: emptyPlan(), target: emptyPlan() };
+      units[code] = { ...pair, listed: true };
+    }
+    return save(s, { units });
+  }),
   removeUnit: (code) => set((s) => {
     const units = { ...s.units };
     delete units[code];
     return save(s, { units });
+  }),
+  setListed: (code, listed) => set((s) => {
+    const pair = s.units[code];
+    return pair ? save(s, { units: { ...s.units, [code]: { ...pair, listed } } }) : {};
   }),
   setHidden: (code, hidden) => set((s) => {
     const pair = s.units[code];
@@ -179,6 +197,39 @@ function plan(value: unknown): UnitPlan {
 }
 
 /** A malformed or foreign record is discarded field by field, not thrown away whole. */
+function parse(doc: Partial<FarmState>): FarmState {
+  const units: FarmState['units'] = {};
+  for (const [code, pair] of Object.entries(doc.units ?? {})) {
+    units[code] = {
+      current: plan(pair?.current),
+      target: plan(pair?.target),
+      // a record written before the farm list became opt-in stays on it
+      listed: pair?.listed !== false,
+      ...(pair?.hidden ? { hidden: true } : {}),
+      ...(pair?.priority ? { priority: true } : {}),
+    };
+  }
+  return {
+    inventory: record(doc.inventory),
+    units,
+    clears: record(doc.clears),
+    sweepOnly: doc.sweepOnly === true,
+    hardStages: doc.hardStages !== false,
+  };
+}
+
+export function farmRecord(): FarmState {
+  const { inventory, units, clears, sweepOnly, hardStages } = useFarm.getState();
+  return { inventory, units, clears, sweepOnly, hardStages };
+}
+
+/** Replaces the whole record, as a restore would, and persists it. */
+export function importFarm(doc: unknown): void {
+  const next = parse((doc ?? {}) as Partial<FarmState>);
+  persist(next);
+  useFarm.setState({ ...next, ready: true });
+}
+
 export function restoreFarm(): void {
   let saved: string | null = null;
   try {
@@ -192,22 +243,8 @@ export function restoreFarm(): void {
     return;
   }
   try {
-    const doc = JSON.parse(saved) as Partial<FarmState>;
-    const units: FarmState['units'] = {};
-    for (const [code, pair] of Object.entries(doc.units ?? {})) {
-      units[code] = {
-        current: plan(pair?.current),
-        target: plan(pair?.target),
-        ...(pair?.hidden ? { hidden: true } : {}),
-        ...(pair?.priority ? { priority: true } : {}),
-      };
-    }
     useFarm.setState({
-      inventory: record(doc.inventory),
-      units,
-      clears: record(doc.clears),
-      sweepOnly: doc.sweepOnly === true,
-      hardStages: doc.hardStages !== false,
+      ...parse(JSON.parse(saved) as Partial<FarmState>),
       ready: true,
     });
   } catch {

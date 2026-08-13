@@ -12,7 +12,8 @@ import {
   typeValue, type TypeTable,
 } from '@/lib/characters';
 import { characterIcon } from '@/lib/icons';
-import { useFilters } from '@/lib/filterStore';
+import { useFilters, type Tri } from '@/lib/filterStore';
+import { useCollection } from '@/lib/collectionStore';
 import { useLang, useT, type Lang } from '@/lib/i18n';
 import {
   KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
@@ -21,6 +22,8 @@ import {
 
 // Faction is the only axis rendered as a scrolling icon strip.
 const CHIP_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division'];
+
+const nextTri = (tri: Tri): Tri => (tri === 'all' ? 'yes' : tri === 'yes' ? 'no' : 'all');
 const STARS = [1, 2, 3];
 
 export default function CharactersPage() {
@@ -31,8 +34,12 @@ export default function CharactersPage() {
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [error, setError] = useState<string | null>(null);
   // Filters live in the store so returning from a character page restores them.
-  const { query, npcs, unreleased, skinsOnly, star, picked } =
-    useFilters((s) => s.characters);
+  const { query, npcs, unreleased, skinsOnly, collected: wantCollected,
+    favorite: wantFavorite, star, picked } = useFilters((s) => s.characters);
+  const collected = useCollection((s) => s.collected);
+  const favorites = useCollection((s) => s.favorites);
+  const setCollected = useCollection((s) => s.setCollected);
+  const setCollectedMany = useCollection((s) => s.setCollectedMany);
   const set = useFilters((s) => s.setCharacters);
   const toggle = useFilters((s) => s.toggleType);
   const clearTypes = useFilters((s) => s.clearCharacterTypes);
@@ -54,6 +61,12 @@ export default function CharactersPage() {
         if (!unreleased) return false;
       } else if (!npcs && !isPlayable(c)) return false;
       if (skinsOnly && !byCharacter.has(c.code)) return false;
+      if (wantCollected !== 'all' && !!collected[c.code] !== (wantCollected === 'yes')) {
+        return false;
+      }
+      if (wantFavorite !== 'all' && !!favorites[c.code] !== (wantFavorite === 'yes')) {
+        return false;
+      }
       if (star != null && c.defaultStar !== star) return false;
       for (const [table, want] of Object.entries(picked)) {
         if (want == null) continue;
@@ -65,7 +78,8 @@ export default function CharactersPage() {
         || (c.nameEn ?? '').toLowerCase().includes(q)
         || (c.nameUppercase ?? '').toLowerCase().includes(q);
     }).sort((a, b) => a.code.localeCompare(b.code));
-  }, [chars, query, npcs, unreleased, skinsOnly, star, picked, byCharacter]);
+  }, [chars, query, npcs, unreleased, skinsOnly, wantCollected, wantFavorite, star,
+    picked, byCharacter, collected, favorites]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!chars) {
@@ -78,6 +92,12 @@ export default function CharactersPage() {
 
   const total = Object.values(chars.characters).filter(
     (c) => (c.unreleased ? unreleased : npcs || isPlayable(c))).length;
+
+  const markable = list.filter((c) => isPlayable(c) && !collected[c.code]);
+  const markAll = () => {
+    if (!window.confirm(t('collectionMarkAllConfirm', { n: markable.length }))) return;
+    setCollectedMany(markable.map((c) => c.code), true);
+  };
 
   return (
     <VStack align="stretch" spacing={4}>
@@ -128,6 +148,32 @@ export default function CharactersPage() {
             </FilterChip>
           </WrapItem>
           <WrapItem>
+            <FilterChip active={wantCollected !== 'all'}
+              onClick={() => set({ collected: nextTri(wantCollected) })}>
+              <Text>
+                {wantCollected === 'no'
+                  ? t('collectionNotCollected') : t('collectionCollected')}
+              </Text>
+            </FilterChip>
+          </WrapItem>
+          <WrapItem>
+            <FilterChip active={wantFavorite !== 'all'}
+              onClick={() => set({ favorite: nextTri(wantFavorite) })}>
+              <Text>
+                {wantFavorite === 'no'
+                  ? t('collectionNotFavorite') : t('collectionFavorites')}
+              </Text>
+            </FilterChip>
+          </WrapItem>
+          {markable.length > 0 && (
+            <WrapItem>
+              <FilterChip active={false} onClick={markAll}>
+                <Text>{t('collectionMarkAll')}</Text>
+                <Text color="gray.500">{markable.length}</Text>
+              </FilterChip>
+            </WrapItem>
+          )}
+          <WrapItem>
             <FilterChip active={npcs} onClick={() => set({ npcs: !npcs })}>
               <Text>{t('includeNpcs')}</Text>
             </FilterChip>
@@ -158,7 +204,9 @@ export default function CharactersPage() {
       }}>
         {list.map((c) => (
           <CharacterCard key={c.code} entry={c} types={chars.types} icons={icons}
-            skins={byCharacter.get(c.code) ?? []} lang={lang} />
+            skins={byCharacter.get(c.code) ?? []} lang={lang}
+            collected={!!collected[c.code]} favorite={!!favorites[c.code]}
+            onCollect={() => setCollected(c.code, !collected[c.code])} />
         ))}
       </Grid>
       {list.length === 0 && <Text fontSize="sm" color="gray.500">{t('noMatch')}</Text>}
@@ -166,10 +214,14 @@ export default function CharactersPage() {
   );
 }
 
-function CharacterCard({ entry, types, icons, skins, lang }: {
+function CharacterCard({
+  entry, types, icons, skins, lang, collected, favorite, onCollect,
+}: {
   entry: CharacterEntry; types: CharacterData['types'];
   icons: IconManifest | null; skins: SkinListEntry[]; lang: Lang;
+  collected: boolean; favorite: boolean; onCollect: () => void;
 }) {
+  const t = useT();
   const element = typeOf(entry, types, 'attribute');
   const role = typeOf(entry, types, 'role');
   const faction = typeOf(entry, types, 'faction');
@@ -190,18 +242,40 @@ function CharacterCard({ entry, types, icons, skins, lang }: {
         {art && (
           <Box as="img" src={art} alt="" w="100%" h="100%" objectFit="contain" />
         )}
-        <HStack position="absolute" top={1} left={1} spacing={1}>
+        <HStack position="absolute" top={1} left={1} spacing={1}
+          bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
+          backdropFilter="blur(2px)" _empty={{ display: 'none' }}>
           <GameIcon manifest={icons} group="ui" names={typeIcons(element)} size={5}
             tint={typeTint(element)} title={typeLabel(element, lang)} reserve={false} />
           <GameIcon manifest={icons} group="ui" names={typeIcons(role)} size={5}
             title={typeLabel(role, lang)} reserve={false} />
         </HStack>
-        <HStack position="absolute" top={1} right={1} spacing={1}>
+        <HStack position="absolute" top={1} right={1} spacing={1}
+          bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
+          backdropFilter="blur(2px)" _empty={{ display: 'none' }}>
+          {favorite && <Badge colorScheme="pink" fontSize="0.55rem">♥</Badge>}
+          {isPlayable(entry) && (
+            // The card is a link, so the toggle has to keep the click.
+            <Box as="button" fontSize="0.55rem" lineHeight={1.4} px={1} borderRadius="sm"
+              fontWeight="700" title={t('collectionCollected')}
+              bg={collected ? 'yellow.400' : 'whiteAlpha.300'}
+              color={collected ? 'gray.900' : 'gray.500'}
+              _hover={{ bg: collected ? 'yellow.300' : 'whiteAlpha.600', color: collected ? 'gray.900' : 'gray.100' }}
+              onClick={(e: React.MouseEvent) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onCollect();
+              }}>
+              ✓
+            </Box>
+          )}
           <GameIcon manifest={icons} group="ui" names={typeIcons(faction)} size={5}
             title={typeLabel(faction, lang)} reserve={false} />
         </HStack>
         {kinds.length > 0 && (
-          <HStack position="absolute" bottom={1} right={1} spacing={0.5}>
+          <HStack position="absolute" bottom={1} right={1} spacing={0.5}
+            bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
+            backdropFilter="blur(2px)" _empty={{ display: 'none' }}>
             {kinds.map((k) => (
               <GameIcon key={k} manifest={icons} group="ui" name={KIND_ICON[k]}
                 size={4} title={KIND_LABEL[k][lang]} opacity={0.9} reserve={false} />

@@ -63,6 +63,10 @@ export const MAX_EXPORT_DIM = 16384;
 // Position in the sorted per-attachment source-pixel scales.
 export const EXPORT_SCALE_PERCENTILE = 0.1;
 
+// Recording renders the canvas at native art scale; this caps its long edge so
+// a big rig cannot ask the encoder for a frame it drops.
+export const MAX_RECORD_DIM = 2160;
+
 // Affections namespace with "/" (lobby/idle); standings use a numeric prefix
 // ("00_idle_normal", "01_anger").
 export function animGroup(name: string): string {

@@ -1,6 +1,7 @@
 // Character dialogue stays independent in `voice.ts`, so muting one channel
 // does not mute the other.
 import { sceneAudioClipUrl } from '@/lib/cdn';
+import { busAudio } from '@/lib/audioBus';
 
 export type SceneAudioIndex = {
   clips: Record<string, string>;
@@ -103,7 +104,7 @@ export async function playSceneSound(
   if (!clip) return;
   const source = await url(index, clip);
   if (!source) return;
-  if (!effect) effect = new Audio();
+  if (!effect) effect = busAudio();
   effect.src = source;
   effect.currentTime = 0;
   effect.playbackRate = effectRate;
@@ -123,7 +124,7 @@ export async function playBgm(
   if (!loopUrl || mine !== musicToken) return;
   const introUrl = intro ? await url(index, intro) : null;
   if (mine !== musicToken) return;
-  if (!music) music = new Audio();
+  if (!music) music = busAudio();
   const player = music;
   player.pause();
   player.volume = fade > 0 ? 0 : 1;

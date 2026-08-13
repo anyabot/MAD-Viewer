@@ -1,6 +1,4 @@
 {
- "catalog": "catalog_1.4.5_49800478.bin",
- "count": 43,
  "characters": {
   "CH0001": {
    "code": "CH0001",
@@ -172,7 +170,7 @@
   },
   "CH0002": {
    "code": "CH0002",
-   "name": "Lila",
+   "name": "Laila",
    "archive": "sd_ch0002",
    "skel": "SD_CH0002.skel",
    "atlas": "SD_CH0002.atlas",
@@ -3177,7 +3175,7 @@
   },
   "CH0010": {
    "code": "CH0010",
-   "name": "Mane(Summer)",
+   "name": "Mane (Swimsuit)",
    "archive": "sd_ch0010",
    "skel": "SD_CH0010.skel",
    "atlas": "SD_CH0010.atlas",
@@ -3801,7 +3799,7 @@
   },
   "CH0013": {
    "code": "CH0013",
-   "name": "Romance",
+   "name": "Sir Romance",
    "archive": "sd_ch0013",
    "skel": "SD_CH0013.skel",
    "atlas": "SD_CH0013.atlas",
@@ -36432,7 +36430,7 @@
   },
   "CH0020": {
    "code": "CH0020",
-   "name": "Danhee",
+   "name": "Dan Xi",
    "archive": "sd_ch0020",
    "skel": "SD_CH0020.skel",
    "atlas": "SD_CH0020.atlas",
@@ -44473,7 +44471,7 @@
   },
   "CH0021": {
    "code": "CH0021",
-   "name": "Hongjeop",
+   "name": "Kouchou",
    "archive": "sd_ch0021",
    "skel": "SD_CH0021.skel",
    "atlas": "SD_CH0021.atlas",
@@ -46597,7 +46595,7 @@
   },
   "CH0024": {
    "code": "CH0024",
-   "name": "Alone",
+   "name": "Aronne",
    "archive": "sd_ch0024",
    "skel": "SD_CH0024.skel",
    "atlas": "SD_CH0024.atlas",
@@ -61316,6 +61314,1607 @@
     ]
    }
   },
+  "CH0043": {
+   "code": "CH0043",
+   "name": "Lafine",
+   "archive": "sd_ch0043",
+   "skel": "SD_CH0043.skel",
+   "atlas": "SD_CH0043.atlas",
+   "textures": [
+    "SD_CH0043.png"
+   ],
+   "animations": [
+    "00_basic",
+    "00_common",
+    "00_damage",
+    "00_damage_in",
+    "00_damage_loop",
+    "00_damage_out",
+    "00_death",
+    "00_idle",
+    "00_knockdown",
+    "00_knockdown_in",
+    "00_knockdown_loop",
+    "00_knockdown_out",
+    "00_lose",
+    "00_lose_loop",
+    "00_prepare",
+    "00_run",
+    "00_skill_01",
+    "00_skill_02",
+    "00_stun",
+    "00_ulti",
+    "00_ulti_cutin",
+    "00_win",
+    "00_win_levelup",
+    "00_win_loop"
+   ],
+   "bounds": {
+    "x": -237,
+    "y": -104.5,
+    "width": 1317.6948,
+    "height": 896.6202
+   },
+   "dataScale": 0.009999999776482582,
+   "ppu": 55.0,
+   "defaultAnimation": "00_idle",
+   "loop": true,
+   "cutin": {
+    "animation": "00_ulti_cutin",
+    "duration": 4.333333492279053,
+    "loop": false,
+    "camera": [
+     {
+      "name": "StageCamera",
+      "start": 0.0,
+      "duration": 0.13333333333333333,
+      "timeScale": 1.0
+     },
+     {
+      "name": "CharacterCamera",
+      "start": 0.13333333333333333,
+      "duration": 4.1,
+      "timeScale": 1.0
+     },
+     {
+      "name": "StageCamera",
+      "start": 4.233333333333333,
+      "duration": 0.10000015894571934,
+      "timeScale": 1.0
+     }
+    ],
+    "audio": [],
+    "activations": [
+     {
+      "track": "Activation Track",
+      "name": "Active",
+      "start": 0.13333333333333333,
+      "duration": 4.199999999999999,
+      "timeScale": 1.0
+     },
+     {
+      "track": "Activation Track (1)",
+      "name": "Active",
+      "start": 1.7333333333333334,
+      "duration": 2.6000001589457193,
+      "timeScale": 1.0
+     }
+    ],
+    "effects": [
+     {
+      "track": "Activation Track",
+      "name": "FX_Light_A",
+      "start": 0.13333333333333333,
+      "duration": 4.199999999999999,
+      "bone": null,
+      "anchor": "character",
+      "emitters": [
+       {
+        "name": "A_Light (1)",
+        "sheet": "fx_T_FX_light_02.png",
+        "tiles": [
+         1,
+         1
+        ],
+        "position": [
+         0.248,
+         0.005
+        ],
+        "angle": 0.0,
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "duration": 5.0,
+        "looping": false,
+        "startDelay": {
+         "m": 0,
+         "s": 0.0
+        },
+        "simulationSpeed": 1.0,
+        "maxParticles": 1000,
+        "align": 2,
+        "pivot": [
+         0.0,
+         0.0
+        ],
+        "start": {
+         "lifetime": {
+          "m": 0,
+          "s": 4.0
+         },
+         "speed": {
+          "m": 0,
+          "s": 0.0
+         },
+         "size": {
+          "m": 0,
+          "s": 12.0
+         },
+         "rotation": {
+          "m": 0,
+          "s": 0.0
+         },
+         "color": {
+          "m": 0,
+          "c": [
+           0.0,
+           0.25,
+           1.0,
+           1.0
+          ]
+         },
+         "gravity": {
+          "m": 0,
+          "s": 0.0
+         },
+         "flipRotation": 0.0
+        },
+        "emission": {
+         "rate": {
+          "m": 0,
+          "s": 0.0
+         },
+         "bursts": [
+          {
+           "t": 0.0,
+           "n": {
+            "m": 0,
+            "s": 1.0
+           },
+           "cycles": 1,
+           "interval": 0.01,
+           "probability": 1.0
+          }
+         ]
+        },
+        "color": {
+         "gradient": {
+          "m": 1,
+          "g": {
+           "c": [
+            [
+             0.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            [
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ]
+           ],
+           "a": [
+            [
+             0.0,
+             0.0
+            ],
+            [
+             0.10993,
+             1.0
+            ],
+            [
+             0.30001,
+             0.27843
+            ],
+            [
+             0.50001,
+             1.0
+            ],
+            [
+             0.68086,
+             0.21569
+            ],
+            [
+             0.85106,
+             1.0
+            ],
+            [
+             1.0,
+             0.0
+            ]
+           ],
+           "f": 0
+          }
+         }
+        },
+        "order": 50
+       },
+       {
+        "name": "A_beam (1)",
+        "sheet": "fx_T_FX_light_04.png",
+        "tiles": [
+         1,
+         1
+        ],
+        "position": [
+         0.248,
+         0.005
+        ],
+        "angle": 0.0,
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "duration": 5.0,
+        "looping": false,
+        "startDelay": {
+         "m": 0,
+         "s": 0.0
+        },
+        "simulationSpeed": 1.0,
+        "maxParticles": 1000,
+        "align": 1,
+        "pivot": [
+         0.44,
+         0.0
+        ],
+        "start": {
+         "lifetime": {
+          "m": 3,
+          "s": 0.88,
+          "n": 0.88
+         },
+         "speed": {
+          "m": 0,
+          "s": 0.0
+         },
+         "size": {
+          "m": 3,
+          "s": 2.0,
+          "n": 4.0
+         },
+         "rotation": {
+          "m": 3,
+          "s": -3.14159,
+          "n": 6.28319
+         },
+         "color": {
+          "m": 0,
+          "c": [
+           0.36321,
+           0.51804,
+           1.0,
+           1.0
+          ]
+         },
+         "gravity": {
+          "m": 0,
+          "s": 0.0
+         },
+         "flipRotation": 0.0,
+         "sizeY": {
+          "m": 3,
+          "s": 0.24,
+          "n": 0.6
+         }
+        },
+        "emission": {
+         "rate": {
+          "m": 0,
+          "s": 0.0
+         },
+         "bursts": [
+          {
+           "t": 0.0,
+           "n": {
+            "m": 0,
+            "s": 4.0
+           },
+           "cycles": 12,
+           "interval": 0.3,
+           "probability": 1.0
+          }
+         ]
+        },
+        "size": {
+         "curve": {
+          "m": 1,
+          "s": 1.0,
+          "k": [
+           [
+            0.0,
+            0.52174,
+            0.47826,
+            0.47826
+           ],
+           [
+            1.0,
+            1.0,
+            0.47826,
+            0.47826
+           ]
+          ]
+         },
+         "y": {
+          "m": 1,
+          "s": 1.0,
+          "k": [
+           [
+            0.0,
+            0.0,
+            2.0,
+            2.0
+           ],
+           [
+            1.0,
+            1.0,
+            0.0,
+            0.0
+           ]
+          ]
+         },
+         "separateAxes": true
+        },
+        "color": {
+         "gradient": {
+          "m": 1,
+          "g": {
+           "c": [
+            [
+             0.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            [
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ]
+           ],
+           "a": [
+            [
+             0.0,
+             0.0
+            ],
+            [
+             0.15,
+             0.15686
+            ],
+            [
+             0.45,
+             1.0
+            ],
+            [
+             0.79965,
+             0.15686
+            ],
+            [
+             1.0,
+             0.0
+            ]
+           ],
+           "f": 0
+          }
+         }
+        },
+        "spin": {
+         "curve": {
+          "m": 3,
+          "s": -0.7854,
+          "n": 0.7854
+         }
+        },
+        "order": 50
+       },
+       {
+        "name": "A_light_particle_01 (1)",
+        "sheet": "fx_T_FX_lightparticle_02.png",
+        "tiles": [
+         1,
+         1
+        ],
+        "position": [
+         0.248,
+         0.005
+        ],
+        "angle": 0.0,
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "duration": 5.0,
+        "looping": false,
+        "startDelay": {
+         "m": 0,
+         "s": 0.0
+        },
+        "simulationSpeed": 1.0,
+        "maxParticles": 1000,
+        "align": 1,
+        "pivot": [
+         0.0,
+         0.0
+        ],
+        "start": {
+         "lifetime": {
+          "m": 3,
+          "s": 1.2,
+          "n": 0.46
+         },
+         "speed": {
+          "m": 0,
+          "s": 0.0
+         },
+         "size": {
+          "m": 3,
+          "s": 0.84,
+          "n": 0.26
+         },
+         "rotation": {
+          "m": 0,
+          "s": 1.5708
+         },
+         "color": {
+          "m": 0,
+          "c": [
+           1.0,
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "gravity": {
+          "m": 0,
+          "s": 0.0
+         },
+         "flipRotation": 0.0
+        },
+        "emission": {
+         "rate": {
+          "m": 0,
+          "s": 0.0
+         },
+         "bursts": [
+          {
+           "t": 0.0,
+           "n": {
+            "m": 0,
+            "s": 2.0
+           },
+           "cycles": 10,
+           "interval": 0.14,
+           "probability": 1.0
+          }
+         ]
+        },
+        "shape": {
+         "type": 10,
+         "radius": 0.4,
+         "radiusThickness": 0.0,
+         "arc": 360.0,
+         "arcMode": 0,
+         "rotation": 0.0,
+         "position": [
+          0.0,
+          0.0
+         ],
+         "randomDirection": 0.0,
+         "alignToDirection": false
+        },
+        "size": {
+         "curve": {
+          "m": 2,
+          "s": 1.0,
+          "k": [
+           [
+            0.20195,
+            0.98324,
+            -0.07291,
+            -0.07291
+           ],
+           [
+            1.0,
+            0.36485,
+            -1.37239,
+            -1.37239
+           ]
+          ],
+          "j": [
+           [
+            0.0,
+            0.60219,
+            0.16581,
+            0.16581
+           ],
+           [
+            1.0,
+            0.0,
+            -1.12415,
+            -1.12415
+           ]
+          ]
+         },
+         "y": {
+          "m": 2,
+          "s": 1.0,
+          "k": [
+           [
+            0.16667,
+            1.0,
+            0.0,
+            0.0
+           ],
+           [
+            1.0,
+            0.7057,
+            -0.73282,
+            -0.73282
+           ]
+          ],
+          "j": [
+           [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+           ],
+           [
+            1.0,
+            1.0,
+            0.0,
+            0.0
+           ]
+          ]
+         },
+         "separateAxes": false
+        },
+        "color": {
+         "gradient": {
+          "m": 1,
+          "g": {
+           "c": [
+            [
+             0.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            [
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ]
+           ],
+           "a": [
+            [
+             0.0,
+             0.0
+            ],
+            [
+             0.13475,
+             1.0
+            ],
+            [
+             0.78,
+             1.0
+            ],
+            [
+             0.88475,
+             0.32928
+            ],
+            [
+             1.0,
+             0.0
+            ]
+           ],
+           "f": 0
+          }
+         }
+        },
+        "velocity": {
+         "x": {
+          "m": 0,
+          "s": 0.0
+         },
+         "y": {
+          "m": 0,
+          "s": 0.0
+         },
+         "radial": {
+          "m": 2,
+          "s": 2.0,
+          "k": [
+           [
+            0.00173,
+            1.0,
+            -2.31867,
+            -2.31867
+           ],
+           [
+            0.45562,
+            0.28967,
+            -0.69807,
+            -0.69807
+           ],
+           [
+            1.0,
+            0.09555,
+            -0.35659,
+            -0.35659
+           ]
+          ],
+          "j": [
+           [
+            0.0,
+            0.19703,
+            -0.62474,
+            -0.62474
+           ],
+           [
+            0.35324,
+            0.07688,
+            -0.1637,
+            -0.1637
+           ],
+           [
+            1.0,
+            0.03333,
+            -0.06734,
+            -0.06734
+           ]
+          ]
+         },
+         "speedModifier": {
+          "m": 0,
+          "s": 1.0
+         },
+         "inWorldSpace": false
+        },
+        "order": 55
+       }
+      ]
+     },
+     {
+      "track": "Activation Track (1)",
+      "name": "FX_Light_B",
+      "start": 1.7333333333333334,
+      "duration": 2.6000001589457193,
+      "bone": null,
+      "anchor": "character",
+      "emitters": [
+       {
+        "name": "A_Light",
+        "sheet": "fx_T_FX_light_02.png",
+        "tiles": [
+         1,
+         1
+        ],
+        "position": [
+         0.248,
+         0.005
+        ],
+        "angle": 0.0,
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "duration": 5.0,
+        "looping": false,
+        "startDelay": {
+         "m": 0,
+         "s": 0.0
+        },
+        "simulationSpeed": 1.0,
+        "maxParticles": 1000,
+        "align": 2,
+        "pivot": [
+         0.0,
+         0.0
+        ],
+        "start": {
+         "lifetime": {
+          "m": 0,
+          "s": 4.0
+         },
+         "speed": {
+          "m": 0,
+          "s": 0.0
+         },
+         "size": {
+          "m": 0,
+          "s": 4.0
+         },
+         "rotation": {
+          "m": 0,
+          "s": 0.0
+         },
+         "color": {
+          "m": 0,
+          "c": [
+           0.0,
+           0.25,
+           1.0,
+           0.6
+          ]
+         },
+         "gravity": {
+          "m": 0,
+          "s": 0.0
+         },
+         "flipRotation": 0.0
+        },
+        "emission": {
+         "rate": {
+          "m": 0,
+          "s": 0.0
+         },
+         "bursts": [
+          {
+           "t": 0.0,
+           "n": {
+            "m": 0,
+            "s": 1.0
+           },
+           "cycles": 1,
+           "interval": 0.01,
+           "probability": 1.0
+          }
+         ]
+        },
+        "color": {
+         "gradient": {
+          "m": 1,
+          "g": {
+           "c": [
+            [
+             0.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            [
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ]
+           ],
+           "a": [
+            [
+             0.0,
+             0.0
+            ],
+            [
+             0.10993,
+             1.0
+            ],
+            [
+             0.30001,
+             0.27843
+            ],
+            [
+             0.50001,
+             1.0
+            ],
+            [
+             0.68086,
+             0.21569
+            ],
+            [
+             0.85106,
+             1.0
+            ],
+            [
+             1.0,
+             0.0
+            ]
+           ],
+           "f": 0
+          }
+         }
+        },
+        "order": 50
+       },
+       {
+        "name": "A_Light_alpha",
+        "sheet": "fx_T_FX_light_02.png",
+        "tiles": [
+         1,
+         1
+        ],
+        "position": [
+         0.248,
+         0.005
+        ],
+        "angle": 0.0,
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "duration": 5.0,
+        "looping": false,
+        "startDelay": {
+         "m": 0,
+         "s": 0.0
+        },
+        "simulationSpeed": 1.0,
+        "maxParticles": 1000,
+        "align": 2,
+        "pivot": [
+         0.0,
+         0.0
+        ],
+        "start": {
+         "lifetime": {
+          "m": 0,
+          "s": 4.0
+         },
+         "speed": {
+          "m": 0,
+          "s": 0.0
+         },
+         "size": {
+          "m": 0,
+          "s": 6.79
+         },
+         "rotation": {
+          "m": 0,
+          "s": 0.0
+         },
+         "color": {
+          "m": 0,
+          "c": [
+           0.0,
+           0.25,
+           1.0,
+           0.65098
+          ]
+         },
+         "gravity": {
+          "m": 0,
+          "s": 0.0
+         },
+         "flipRotation": 0.0
+        },
+        "emission": {
+         "rate": {
+          "m": 0,
+          "s": 0.0
+         },
+         "bursts": [
+          {
+           "t": 0.0,
+           "n": {
+            "m": 0,
+            "s": 1.0
+           },
+           "cycles": 1,
+           "interval": 0.01,
+           "probability": 1.0
+          }
+         ]
+        },
+        "color": {
+         "gradient": {
+          "m": 1,
+          "g": {
+           "c": [
+            [
+             0.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            [
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ]
+           ],
+           "a": [
+            [
+             0.0,
+             0.0
+            ],
+            [
+             0.10993,
+             1.0
+            ],
+            [
+             0.30001,
+             0.27843
+            ],
+            [
+             0.50001,
+             1.0
+            ],
+            [
+             0.68086,
+             0.21569
+            ],
+            [
+             0.85106,
+             1.0
+            ],
+            [
+             1.0,
+             0.0
+            ]
+           ],
+           "f": 0
+          }
+         }
+        },
+        "order": -30
+       },
+       {
+        "name": "A_Ring",
+        "sheet": "fx_T_FX_air_01.png",
+        "tiles": [
+         1,
+         1
+        ],
+        "position": [
+         0.248,
+         0.005
+        ],
+        "angle": 0.0,
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "duration": 5.0,
+        "looping": false,
+        "startDelay": {
+         "m": 0,
+         "s": 0.0
+        },
+        "simulationSpeed": 1.0,
+        "maxParticles": 1000,
+        "align": 1,
+        "pivot": [
+         0.0,
+         0.0
+        ],
+        "start": {
+         "lifetime": {
+          "m": 0,
+          "s": 0.68
+         },
+         "speed": {
+          "m": 0,
+          "s": 0.0
+         },
+         "size": {
+          "m": 0,
+          "s": 20.0
+         },
+         "rotation": {
+          "m": 3,
+          "s": 0.0,
+          "n": 6.28319
+         },
+         "color": {
+          "m": 0,
+          "c": [
+           0.0,
+           0.98173,
+           1.0,
+           0.6
+          ]
+         },
+         "gravity": {
+          "m": 0,
+          "s": 0.0
+         },
+         "flipRotation": 0.0
+        },
+        "emission": {
+         "rate": {
+          "m": 0,
+          "s": 0.0
+         },
+         "bursts": [
+          {
+           "t": 0.0,
+           "n": {
+            "m": 0,
+            "s": 1.0
+           },
+           "cycles": 5,
+           "interval": 0.4,
+           "probability": 1.0
+          }
+         ]
+        },
+        "size": {
+         "curve": {
+          "m": 1,
+          "s": 1.0,
+          "k": [
+           [
+            0.0,
+            0.10405,
+            0.89595,
+            0.89595
+           ],
+           [
+            1.0,
+            1.0,
+            0.89595,
+            0.89595
+           ]
+          ]
+         },
+         "y": {
+          "m": 1,
+          "s": 1.0,
+          "k": [
+           [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+           ],
+           [
+            1.0,
+            1.0,
+            1.0,
+            0.0
+           ]
+          ]
+         },
+         "separateAxes": false
+        },
+        "color": {
+         "gradient": {
+          "m": 1,
+          "g": {
+           "c": [
+            [
+             0.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            [
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ]
+           ],
+           "a": [
+            [
+             0.0,
+             0.0
+            ],
+            [
+             0.2,
+             0.35294
+            ],
+            [
+             0.43439,
+             1.0
+            ],
+            [
+             0.65,
+             0.31373
+            ],
+            [
+             0.85,
+             0.13528
+            ],
+            [
+             1.0,
+             0.0
+            ]
+           ],
+           "f": 0
+          }
+         }
+        },
+        "order": 50
+       },
+       {
+        "name": "A_beam",
+        "sheet": "fx_T_FX_Light_beam_01.png",
+        "tiles": [
+         1,
+         2
+        ],
+        "position": [
+         0.248,
+         0.005
+        ],
+        "angle": -0.0,
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "duration": 5.0,
+        "looping": false,
+        "startDelay": {
+         "m": 0,
+         "s": 0.0
+        },
+        "simulationSpeed": 1.0,
+        "maxParticles": 1000,
+        "align": 1,
+        "pivot": [
+         0.44,
+         0.0
+        ],
+        "start": {
+         "lifetime": {
+          "m": 3,
+          "s": 0.88,
+          "n": 0.56
+         },
+         "speed": {
+          "m": 0,
+          "s": 0.0
+         },
+         "size": {
+          "m": 3,
+          "s": 4.0,
+          "n": 12.0
+         },
+         "rotation": {
+          "m": 3,
+          "s": -2.79253,
+          "n": 6.28319
+         },
+         "color": {
+          "m": 0,
+          "c": [
+           0.2217,
+           0.41013,
+           1.0,
+           1.0
+          ]
+         },
+         "gravity": {
+          "m": 0,
+          "s": 0.0
+         },
+         "flipRotation": 0.0,
+         "sizeY": {
+          "m": 3,
+          "s": 1.4,
+          "n": 0.6
+         }
+        },
+        "emission": {
+         "rate": {
+          "m": 0,
+          "s": 0.0
+         },
+         "bursts": [
+          {
+           "t": 0.0,
+           "n": {
+            "m": 0,
+            "s": 4.0
+           },
+           "cycles": 6,
+           "interval": 0.36,
+           "probability": 1.0
+          }
+         ]
+        },
+        "size": {
+         "curve": {
+          "m": 1,
+          "s": 1.0,
+          "k": [
+           [
+            0.0,
+            0.52174,
+            0.47826,
+            0.47826
+           ],
+           [
+            1.0,
+            1.0,
+            0.47826,
+            0.47826
+           ]
+          ]
+         },
+         "y": {
+          "m": 1,
+          "s": 1.0,
+          "k": [
+           [
+            0.0,
+            0.0,
+            2.0,
+            2.0
+           ],
+           [
+            1.0,
+            1.0,
+            0.0,
+            0.0
+           ]
+          ]
+         },
+         "separateAxes": true
+        },
+        "color": {
+         "gradient": {
+          "m": 1,
+          "g": {
+           "c": [
+            [
+             0.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            [
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ]
+           ],
+           "a": [
+            [
+             0.0,
+             0.0
+            ],
+            [
+             0.15,
+             0.15686
+            ],
+            [
+             0.45,
+             1.0
+            ],
+            [
+             0.79965,
+             0.15686
+            ],
+            [
+             1.0,
+             0.0
+            ]
+           ],
+           "f": 0
+          }
+         }
+        },
+        "spin": {
+         "curve": {
+          "m": 3,
+          "s": -0.7854,
+          "n": 0.7854
+         }
+        },
+        "uv": {
+         "frame": {
+          "m": 0,
+          "s": 0.87
+         },
+         "startFrame": {
+          "m": 0,
+          "s": 0.0
+         },
+         "cycles": 1.0,
+         "animationType": 0,
+         "rowMode": 1,
+         "rowIndex": 0
+        },
+        "order": 50
+       },
+       {
+        "name": "A_Light (1)",
+        "sheet": "fx_T_FX_lensflare_01.png",
+        "tiles": [
+         2,
+         2
+        ],
+        "position": [
+         0.248,
+         0.005
+        ],
+        "angle": 0.0,
+        "scale": [
+         1.0,
+         1.0
+        ],
+        "duration": 5.0,
+        "looping": false,
+        "startDelay": {
+         "m": 0,
+         "s": 0.0
+        },
+        "simulationSpeed": 1.0,
+        "maxParticles": 1000,
+        "align": 2,
+        "pivot": [
+         0.0,
+         0.0
+        ],
+        "start": {
+         "lifetime": {
+          "m": 0,
+          "s": 4.0
+         },
+         "speed": {
+          "m": 0,
+          "s": 0.0
+         },
+         "size": {
+          "m": 0,
+          "s": 2.0
+         },
+         "rotation": {
+          "m": 0,
+          "s": 0.0
+         },
+         "color": {
+          "m": 0,
+          "c": [
+           1.0,
+           1.0,
+           1.0,
+           0.4
+          ]
+         },
+         "gravity": {
+          "m": 0,
+          "s": 0.0
+         },
+         "flipRotation": 0.0
+        },
+        "emission": {
+         "rate": {
+          "m": 0,
+          "s": 0.0
+         },
+         "bursts": [
+          {
+           "t": 0.0,
+           "n": {
+            "m": 0,
+            "s": 1.0
+           },
+           "cycles": 1,
+           "interval": 0.01,
+           "probability": 1.0
+          }
+         ]
+        },
+        "color": {
+         "gradient": {
+          "m": 1,
+          "g": {
+           "c": [
+            [
+             0.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            [
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ]
+           ],
+           "a": [
+            [
+             0.0,
+             0.0
+            ],
+            [
+             0.10993,
+             1.0
+            ],
+            [
+             0.30001,
+             0.27843
+            ],
+            [
+             0.50001,
+             1.0
+            ],
+            [
+             0.68086,
+             0.21569
+            ],
+            [
+             0.85106,
+             1.0
+            ],
+            [
+             1.0,
+             0.0
+            ]
+           ],
+           "f": 0
+          }
+         }
+        },
+        "uv": {
+         "frame": {
+          "m": 0,
+          "s": 0.60125
+         },
+         "startFrame": {
+          "m": 0,
+          "s": 0.0
+         },
+         "cycles": 1.0,
+         "animationType": 0,
+         "rowMode": 1,
+         "rowIndex": 0
+        },
+        "order": 50
+       }
+      ]
+     }
+    ],
+    "shakes": [],
+    "tracks": [
+     {
+      "name": "Spine Animation State Track",
+      "parent": -3574783509330550940,
+      "clips": [
+       {
+        "name": "00_ulti_cutin",
+        "start": 0.0,
+        "duration": 4.333333492279053,
+        "timeScale": 1.0,
+        "asset": "SpineAnimationStateClip"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "imation_TrackAnimation_Track",
+      "parent": -3574783509330550940,
+      "clips": [],
+      "infiniteClip": "Recorded (1)"
+     },
+     {
+      "name": "Cinemachine_Track",
+      "parent": -3574783509330550940,
+      "clips": [
+       {
+        "name": "CharacterCamera",
+        "start": 0.13333333333333333,
+        "duration": 4.1,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)"
+       },
+       {
+        "name": "StageCamera",
+        "start": 4.233333333333333,
+        "duration": 0.10000015894571934,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)"
+       },
+       {
+        "name": "StageCamera",
+        "start": 0.0,
+        "duration": 0.13333333333333333,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "CharacterCameraAnimationTrack",
+      "parent": -3574783509330550940,
+      "clips": [],
+      "infiniteClip": "Recorded (3)"
+     },
+     {
+      "name": "body_fx",
+      "parent": -3574783509330550940,
+      "clips": [],
+      "infiniteClip": null
+     },
+     {
+      "name": "Activation Track",
+      "parent": 458736487417749348,
+      "clips": [
+       {
+        "name": "Active",
+        "start": 0.13333333333333333,
+        "duration": 4.199999999999999,
+        "timeScale": 1.0,
+        "asset": "ActivationPlayableAsset"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "Activation Track (1)",
+      "parent": 458736487417749348,
+      "clips": [
+       {
+        "name": "Active",
+        "start": 1.7333333333333334,
+        "duration": 2.6000001589457193,
+        "timeScale": 1.0,
+        "asset": "ActivationPlayableAsset(Clone)"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "SFX_Audio Track",
+      "parent": -3574783509330550940,
+      "clips": [
+       {
+        "name": "SFX_CH0043_Ultimate_Skill",
+        "start": 0.0,
+        "duration": 4.333333333333333,
+        "timeScale": 1.0,
+        "asset": "AudioPlayableAsset"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "Random Voice Marker Track",
+      "parent": -3574783509330550940,
+      "clips": [],
+      "infiniteClip": null
+     }
+    ],
+    "voiceMarkers": [
+     {
+      "time": 0.0,
+      "fast": false
+     },
+     {
+      "time": 0.0,
+      "fast": true
+     },
+     {
+      "time": 0.03333333333333333,
+      "fast": false
+     },
+     {
+      "time": 0.03333333333333333,
+      "fast": true
+     },
+     {
+      "time": 0.16666666666666666,
+      "fast": false
+     },
+     {
+      "time": 0.5666666666666667,
+      "fast": true
+     }
+    ]
+   }
+  },
   "CH0046": {
    "code": "CH0046",
    "name": "Jennie",
@@ -68066,7 +69665,7 @@
   },
   "CH0062": {
    "code": "CH0062",
-   "name": "treache",
+   "name": "Treache",
    "archive": "sd_ch0062",
    "skel": "SD_CH0062.skel",
    "atlas": "SD_CH0062.atlas",

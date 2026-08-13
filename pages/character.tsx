@@ -10,10 +10,12 @@ import {
   VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import SkinViewer from '@/components/skinViewer';
+import CollectionEditor from '@/components/collectionEditor';
 import SdViewer from '@/components/sdViewer';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { StoreKey } from '@/components/skinViewer/types';
 import { GameIcon, StarRating } from '@/components/gameIcon';
+import { ShareButton } from '@/components/shareButton';
 import { GameText, Panel, Rotation, Skills } from '@/components/skillKit';
 import { characterIcon, resolveIcon, skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
@@ -30,9 +32,9 @@ import {
 } from '@/lib/characters';
 import { text, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
-  KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSdIndex, loadSkinList,
+  KIND_COLOR, KIND_LABEL, loadCharacters, loadGrowth, loadIcons, loadSdIndex, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest,
-  type SdIndex, type SkinListEntry,
+  type GrowthData, type SdIndex, type SkinListEntry,
 } from '@/lib/data';
 
 const INFO_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division', 'faction'];
@@ -42,11 +44,15 @@ export default function CharacterPage() {
   const lang = useLang();
   const router = useRouter();
   const code = typeof router.query.code === 'string' ? router.query.code : null;
+  const sharedSkin = typeof router.query.skin === 'string' ? router.query.skin : null;
+  const sharedStore = router.query.store === 'google' || router.query.store === 'onestore'
+    ? router.query.store : null;
 
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [skins, setSkins] = useState<SkinListEntry[]>([]);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [sd, setSd] = useState<SdIndex | null>(null);
+  const [growth, setGrowth] = useState<GrowthData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
   const [store, setStore] = useState<StoreKey>('onestore');
@@ -56,18 +62,23 @@ export default function CharacterPage() {
     loadSkinList().then((l) => setSkins(l.skins)).catch(() => setSkins([]));
     loadIcons().then(setIcons).catch(() => setIcons(null));
     loadSdIndex().then(setSd).catch(() => setSd(null));
+    loadGrowth().then(setGrowth).catch(() => setGrowth(null));
   }, []);
 
   const mine = useMemo(
     () => (code ? skinsByCharacter(skins).get(code) ?? [] : []), [skins, code]);
 
-  useEffect(() => { setSelected(null); }, [code]);
+  useEffect(() => { setSelected(sharedSkin); }, [code, sharedSkin]);
   const current = useMemo(
     () => mine.find((s) => s.key === selected) ?? mine[0] ?? null, [mine, selected]);
 
   useEffect(() => {
+    if (current && sharedStore && current.stores.includes(sharedStore)) {
+      setStore(sharedStore);
+      return;
+    }
     if (current && !current.stores.includes(store)) setStore(current.stores[0] ?? 'onestore');
-  }, [current, store]);
+  }, [current, store, sharedStore]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!chars || !router.isReady) {
@@ -237,7 +248,13 @@ export default function CharacterPage() {
         {entry.actorId && (
           <Text fontFamily="mono" fontSize="xs" color="gray.500">{entry.actorId}</Text>
         )}
+        <Box flex="1" />
+        <ShareButton query={{ code: entry.code }} />
       </Flex>
+
+      {isPlayable(entry) && growth && (
+        <CollectionEditor entry={entry} data={chars} growth={growth} icons={icons} />
+      )}
 
       {tabs.length === 1 ? (
         <Box pt={1}>{tabs[0].panel}</Box>
@@ -767,7 +784,8 @@ function SkinStrip({ skins, entry, icons, selected, onSelect }: {
                 {src && (
                   <Box as="img" src={src} alt="" w="100%" h="100%" objectFit="contain" />
                 )}
-                <Box position="absolute" bottom={0.5} left={0.5}>
+                <Box position="absolute" bottom={0.5} left={0.5} bg="blackAlpha.700"
+                  borderRadius="md" p={0.5} backdropFilter="blur(2px)">
                   <GameIcon manifest={icons} group="ui" name={KIND_ICON[s.kind]} size={4} />
                 </Box>
                 {s.stores.length > 1 && (

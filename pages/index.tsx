@@ -12,6 +12,7 @@ import { GameIcon } from '@/components/gameIcon';
 import { KIND_ICON, characterName, characterSubName, rosterNote } from '@/lib/characters';
 import { skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
+import { parseViewerShare } from '@/lib/viewerShare';
 import { useLang, useT } from '@/lib/i18n';
 import {
   KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
@@ -57,7 +58,12 @@ function SkinGallery() {
     loadSkinList()
       .then((l) => {
         setSkins(l.skins);
-        set({ selected: useFilters.getState().skins.selected ?? l.skins[0]?.key ?? null });
+        const shared = typeof window === 'undefined' ? null : parseViewerShare(window.location.search);
+        const selected = shared && l.skins.some((skin) => skin.key === shared.skin)
+          ? shared.skin : useFilters.getState().skins.selected ?? l.skins[0]?.key ?? null;
+        set({ selected });
+        const entry = l.skins.find((skin) => skin.key === selected);
+        if (shared?.store && entry?.stores.includes(shared.store)) setStore(shared.store);
       })
       .catch((e) => setError(String(e)));
   }, [set]);
