@@ -7,13 +7,13 @@ import {
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { Panel } from '@/components/skillKit';
+import { MaterialNeeds } from '@/components/materialNeeds';
 import { AmountField, PlanGrid, Stepper, type PlanDraft } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
 import { useCollection } from '@/lib/collectionStore';
 import {
-  MATERIAL_ICON_GROUPS, applySide, billCovered, emptyPlan, needLabel, needsOf, planStar,
-  spendBill, unitBill,
+  MATERIAL_ICON_GROUPS, applySide, billCovered, emptyPlan, planStar, spendBill, unitBill,
   type Bill, type UnitPlanPair,
 } from '@/lib/farm';
 import { memoryPlan, sellsMemory, starCap, stepCost } from '@/lib/rank';
@@ -27,44 +27,6 @@ import type {
 const materialGroup = (icons: IconManifest | null, name?: string | null) =>
   (MATERIAL_ICON_GROUPS.find((g) => hasIcon(icons, g, name))
     ?? MATERIAL_ICON_GROUPS[0]) as never;
-
-function MaterialSummary({ bill, growth, icons, lang, inventory }: {
-  bill: Bill; growth: GrowthData; icons: IconManifest | null; lang: Lang;
-  inventory: Record<string, number>;
-}) {
-  const needs = needsOf(growth, bill, inventory);
-  return (
-    <Wrap spacing={2}>
-      {needs.map((need) => {
-        const label = needLabel(growth, need, lang);
-        return (
-          <WrapItem key={need.key}>
-            <HStack spacing={2} borderWidth="1px" borderColor="whiteAlpha.200"
-              borderRadius="md" bg="blackAlpha.200" py={1} pl={1} pr={2}>
-              <ItemIcon manifest={icons} group={materialGroup(icons, label.icon)}
-                name={label.icon} grade={label.grade} size={7} />
-              <Box minW={0}>
-                <Text fontSize="0.65rem" color="gray.500" noOfLines={1}
-                  maxW="9rem">{label.name}</Text>
-                <HStack spacing={1.5} align="baseline">
-                  <Text fontSize="sm" fontWeight="bold" fontFamily="mono"
-                    color={need.short ? 'yellow.200' : 'green.300'}>
-                    {need.required.toLocaleString()}
-                  </Text>
-                  {need.have > 0 && (
-                    <Text fontSize="0.6rem" color="gray.600" fontFamily="mono">
-                      −{need.have.toLocaleString()}
-                    </Text>
-                  )}
-                </HStack>
-              </Box>
-            </HStack>
-          </WrapItem>
-        );
-      })}
-    </Wrap>
-  );
-}
 
 // The exchange is the one route the run list cannot plan: it is a shop, not a stage.
 function MemoryPanel({
@@ -302,7 +264,7 @@ export function UnitPlanDialog({
 
             <Panel title={t('farmMaterialsSummary')}>
               {owing ? (
-                <MaterialSummary bill={bill} growth={growth} icons={icons} lang={lang}
+                <MaterialNeeds bill={bill} growth={growth} icons={icons} lang={lang}
                   inventory={priority ? spendable : previewed} />
               ) : (
                 <Text fontSize="sm" color="gray.600">{t('planNothingOwed')}</Text>

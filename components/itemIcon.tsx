@@ -14,6 +14,8 @@ export const ITEM_GRADE_COLOR: Record<number, string> = {
   5: '#FFDF00',
 };
 
+const UNGRADED_COLOR = '#CFD3DE';
+
 const PLATE = '#A6A9BE';
 // The tier reading is the same two-stop gradient at every tier — only the band
 // carries the grade colour.
@@ -49,7 +51,7 @@ export function ItemIcon({
   size?: BoxProps['boxSize'];
   title?: string;
 } & Omit<BoxProps, 'children'>) {
-  const color = grade ? ITEM_GRADE_COLOR[grade] : null;
+  const color = (grade && ITEM_GRADE_COLOR[grade]) || UNGRADED_COLOR;
   const band = resolveIcon(manifest, 'ui', [BAND_SPRITE]);
   return (
     // the text sizes are fractions of the slot, so the slot is the query
@@ -57,11 +59,9 @@ export function ItemIcon({
     <Box position="relative" boxSize={size} flexShrink={0} overflow="hidden"
       borderRadius="15%" bg={PLATE} borderWidth="1px" borderColor="whiteAlpha.800"
       sx={{ containerType: 'size' }} title={title} {...rest}>
-      {color && (
-        <Box position="absolute" left="-1px" right="-1px" bottom="-1px"
-          h={BAND_HEIGHT} bg={color}
-          sx={band ? bandMask(band) : undefined} borderRadius={band ? undefined : '1px'} />
-      )}
+      <Box position="absolute" left="-1px" right="-1px" bottom="-1px"
+        h={BAND_HEIGHT} bg={color}
+        sx={band ? bandMask(band) : undefined} borderRadius={band ? undefined : '1px'} />
       <Box position="absolute" inset="0">
         <GameIcon manifest={manifest} group={group} name={name} names={names}
           size="100%" reserve={false} />
