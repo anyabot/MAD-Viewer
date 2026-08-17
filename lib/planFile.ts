@@ -2,7 +2,7 @@ import { collectionRecord, importCollection } from '@/lib/collectionStore';
 import { farmRecord, importFarm } from '@/lib/farmStore';
 
 const FORMAT = 'mad.plan';
-const VERSION = 1;
+const VERSION = 2;
 
 export function planFileName(): string {
   return `mad-plan-${new Date().toISOString().slice(0, 10)}.json`;

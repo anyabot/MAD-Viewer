@@ -6,6 +6,7 @@ import Layout from '@/components/Layout';
 import { restoreLang } from '@/lib/i18n';
 import { restoreFarm } from '@/lib/farmStore';
 import { restoreCollection } from '@/lib/collectionStore';
+import { restoreTutorial } from '@/lib/tutorialStore';
 
 const theme = extendTheme({
   config: { initialColorMode: 'dark', useSystemColorMode: false },
@@ -158,6 +159,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreLang, []);
   useEffect(restoreFarm, []);
   useEffect(restoreCollection, []);
+  useEffect(restoreTutorial, []);
   return (
     <ChakraProvider theme={theme}>
       <Head>

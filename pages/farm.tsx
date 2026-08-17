@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { CheckIcon, CloseIcon, StarIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 import {
+  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel,
   Badge, Box, Center, Flex, HStack, Input, SimpleGrid, Spinner, Tab, TabList,
   TabPanel, TabPanels, Tabs, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
@@ -8,27 +10,41 @@ import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { Panel } from '@/components/skillKit';
 import { FilterChip } from '@/components/filters';
-import { AmountField, PlanGrid, Stepper } from '@/components/unitPlan';
+import { InventoryDialog } from '@/components/inventoryDialog';
+import { UnitPlanDialog } from '@/components/unitPlanDialog';
+import { PlannerTutorial, TutorialReplay } from '@/components/plannerTutorial';
+import { AmountField, Stepper } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
 import { useCollection } from '@/lib/collectionStore';
 import { exportPlan, importPlan, planFileName } from '@/lib/planFile';
 import {
-  MATERIAL_ICON_GROUPS, MATERIAL_KIND_LABEL, billCovered, billIsEmpty,
-  farmPlan, farmStages, isHardStage, mergeBills, needLabel, needsOf, spendBill,
-  unitBill,
+  MATERIAL_ICON_GROUPS, billCovered, billIsEmpty, farmPlan, farmStages, isHardStage,
+  mergeBills, needLabel, needsOf, planStar, spendBill, unitBill,
   type Bill, type FarmPlan, type FarmRoute, type NeedPlan, type StageSource,
+  type UnitPlanPair,
 } from '@/lib/farm';
+import { memoryPlan, starCap, stepCost, type MemoryPlan } from '@/lib/rank';
 
 type NeedLabel = ReturnType<typeof needLabel>;
 import { characterName, isPlayable } from '@/lib/characters';
 import { groupLabel, stageName } from '@/lib/stages';
-import { pick, useLang, useT, type Lang } from '@/lib/i18n';
+import { useLang, useT, type Lang } from '@/lib/i18n';
 import {
   loadCharacters, loadGrowth, loadIcons, loadStages,
   type CharacterData, type CharacterEntry, type GrowthData, type IconManifest,
   type StageData, type StageEntry,
 } from '@/lib/data';
+
+type UnitSort = 'name' | 'memories' | 'materials' | 'star';
+
+const UNIT_SORTS: { key: UnitSort; label: 'planSortName' | 'planSortMemories'
+  | 'planSortMaterials' | 'planSortStar' }[] = [
+  { key: 'name', label: 'planSortName' },
+  { key: 'memories', label: 'planSortMemories' },
+  { key: 'materials', label: 'planSortMaterials' },
+  { key: 'star', label: 'planSortStar' },
+];
 
 const materialGroup = (icons: IconManifest | null, name?: string | null) =>
   (MATERIAL_ICON_GROUPS.find((g) => hasIcon(icons, g, name))
@@ -44,6 +60,7 @@ export default function FarmPage() {
   const [growth, setGrowth] = useState<GrowthData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showInventory, setShowInventory] = useState(false);
 
   const units = useFarm((s) => s.units);
   const inventory = useFarm((s) => s.inventory);
@@ -103,13 +120,19 @@ export default function FarmPage() {
   }
 
   const recorded = Object.values(clears).filter((n) => n > 0).length;
+  const counted = Object.values(inventory).filter((n) => n > 0).length;
 
   return (
     <VStack align="stretch" spacing={4}>
       <Flex align="center" gap={3} wrap="wrap">
-        <Text fontSize="2xl" fontWeight="bold">{t('navFarm')}</Text>
+        <Text fontSize="2xl" fontWeight="bold">{t('planTitle')}</Text>
         <Box flex="1" />
+        <TutorialReplay />
         <PlanFile />
+        <FilterChip active={false} onClick={() => setShowInventory(true)}>
+          {t('planInventory')}
+          <Text as="span" color="gray.500">{counted || ''}</Text>
+        </FilterChip>
         <FilterChip active={sweepOnly} onClick={() => setSweepOnly(!sweepOnly)}>
           {t('farmSweepOnly')}
           <Text as="span" color="gray.500">{t('farmSweepHint')}</Text>
@@ -119,6 +142,10 @@ export default function FarmPage() {
           <Text as="span" color="gray.500">{t('farmHardHint')}</Text>
         </FilterChip>
       </Flex>
+
+      <InventoryDialog growth={growth} icons={icons} isOpen={showInventory}
+        onClose={() => setShowInventory(false)} />
+      <PlannerTutorial />
 
       <Tabs variant="line" colorScheme="yellow" isLazy>
         <TabList borderColor="whiteAlpha.200" overflowX="auto">
@@ -133,7 +160,6 @@ export default function FarmPage() {
             </HStack>
           </Tab>
           <Tab fontSize="sm" whiteSpace="nowrap">{t('farmTabPlan')}</Tab>
-          <Tab fontSize="sm" whiteSpace="nowrap">{t('farmTabItems')}</Tab>
           <Tab fontSize="sm" whiteSpace="nowrap">
             <HStack spacing={2}>
               <Text>{t('farmTabClears')}</Text>
@@ -143,7 +169,8 @@ export default function FarmPage() {
         </TabList>
         <TabPanels>
           <TabPanel px={0} pt={4}>
-            <Units data={chars} growth={growth} icons={icons} leftover={plans.leftover} />
+            <Units data={chars} growth={growth} stages={stages} pool={pool} icons={icons}
+              leftover={plans.leftover} />
           </TabPanel>
           <TabPanel px={0} pt={4}>
             <VStack align="stretch" spacing={5}>
@@ -154,9 +181,6 @@ export default function FarmPage() {
                   title={t('farmRest')} />
               )}
             </VStack>
-          </TabPanel>
-          <TabPanel px={0} pt={4}>
-            <Inventory growth={growth} icons={icons} />
           </TabPanel>
           <TabPanel px={0} pt={4}>
             <Clears data={stages} pool={pool} />
@@ -209,14 +233,16 @@ function PlanFile() {
   );
 }
 
-function Units({ data, growth, icons, leftover }: {
-  data: CharacterData; growth: GrowthData; icons: IconManifest | null;
+function Units({ data, growth, stages, pool, icons, leftover }: {
+  data: CharacterData; growth: GrowthData; stages: StageData; pool: StageEntry[];
+  icons: IconManifest | null;
   /** What is left once the prioritised units have taken their share. */
   leftover: Record<string, number>;
 }) {
   const t = useT();
   const lang = useLang();
   const units = useFarm((s) => s.units);
+  const inventory = useFarm((s) => s.inventory);
   const addUnit = useFarm((s) => s.addUnit);
   const addUnits = useFarm((s) => s.addUnits);
   const collected = useCollection((s) => s.collected);
@@ -225,6 +251,7 @@ function Units({ data, growth, icons, leftover }: {
   const [ownedOnly, setOwnedOnly] = useState(false);
   const [favesOnly, setFavesOnly] = useState(false);
   const [open, setOpen] = useState(false);
+  const [sort, setSort] = useState<UnitSort>('name');
   const [shown, setShown] = useState<string | null>(null);
 
   // Only the playable roster carries a material group, so only it can be costed.
@@ -232,6 +259,8 @@ function Units({ data, growth, icons, leftover }: {
     .filter((e) => isPlayable(e) && e.skillMaterialGroup)
     .sort((a, b) => characterName(a, lang).localeCompare(characterName(b, lang))),
   [data, lang]);
+
+  const hard = useMemo(() => pool.filter(isHardStage), [pool]);
 
   const needle = query.trim().toLowerCase();
   const matches = roster.filter((e) => !units[e.code]?.listed
@@ -241,28 +270,63 @@ function Units({ data, growth, icons, leftover }: {
       || e.code.toLowerCase().includes(needle)
       || (e.nameEn ?? '').toLowerCase().includes(needle)));
 
-  // A hidden unit keeps its place on the list, at the bottom of it.
-  const tracked = Object.entries(units)
-    .filter(([code, pair]) => pair.listed && data.characters[code])
-    .sort((a, b) => Number(!!a[1].hidden) - Number(!!b[1].hidden))
-    .map(([code]) => data.characters[code]);
+  // Costed once per render, then reused by the sort and by every row.
+  const tracked = useMemo(() => Object.entries(units)
+    .flatMap(([code, pair]) => {
+      const entry = data.characters[code];
+      if (!entry || !pair.listed) return [];
+      const bill = unitBill(growth, entry, data, pair);
+      const from = planStar(pair.current, entry);
+      const to = Math.min(planStar(pair.target, entry), starCap(growth.star));
+      const ref = growth.star?.pieces[code] ?? null;
+      return [{
+        entry,
+        pair,
+        bill,
+        from,
+        to,
+        memories: memoryPlan(growth.star, code, stepCost(growth.star, from, to),
+          ref ? inventory[ref] ?? 0 : 0, pair.bought ?? 0, hard),
+        materials: needsOf(growth, bill, inventory)
+          .reduce((n, need) => n + need.short, 0),
+      }];
+    }), [units, data, growth, inventory, hard]);
 
-  const unlisted = roster.filter((e) => !units[e.code]?.listed);
-  const pending = unlisted.filter((e) => collected[e.code]);
-  const pendingFaves = unlisted.filter((e) => favorites[e.code]);
+  const ordered = useMemo(() => [...tracked].sort((a, b) => {
+    const away = Number(!!a.pair.hidden) - Number(!!b.pair.hidden);
+    if (away) return away;
+    const name = () => characterName(a.entry, lang).localeCompare(characterName(b.entry, lang));
+    switch (sort) {
+      case 'memories': return b.memories.short - a.memories.short || name();
+      case 'materials': return b.materials - a.materials || name();
+      case 'star': return a.from - b.from || b.to - a.to || name();
+      default: return name();
+    }
+  }), [tracked, sort, lang]);
 
   const choose = (code: string) => {
     addUnit(code);
     setQuery('');
     setOpen(false);
+    setShown(code);
   };
+
+  const unlisted = roster.filter((e) => !units[e.code]?.listed);
+  const pending = unlisted.filter((e) => collected[e.code]);
+  const pendingFaves = unlisted.filter((e) => favorites[e.code]);
 
   return (
     <VStack align="stretch" spacing={3}>
       <Flex align="center" gap={2} wrap="wrap">
-        <Box position="relative" maxW="320px" flex="1" minW="180px" zIndex={2}>
-          <Input size="sm" value={query} placeholder={t('farmSearchUnit')}
-            borderColor="whiteAlpha.300"
+        {/* the entry point people missed: full width until the list has units */}
+        <Box position="relative" flex="1" minW={{ base: '100%', md: '22rem' }}
+          maxW={{ base: 'none', md: tracked.length ? '26rem' : 'none' }} zIndex={2}>
+          <Input size="lg" value={query} placeholder={t('farmSearchUnit')}
+            fontSize="md" fontWeight="600" pl={12} h="3.25rem"
+            borderWidth="2px" borderColor={open ? 'yellow.400' : 'yellow.500'}
+            bg="whiteAlpha.100" _hover={{ borderColor: 'yellow.400' }}
+            _placeholder={{ color: 'gray.300', fontWeight: '600' }}
+            _focusVisible={{ borderColor: 'yellow.300', boxShadow: '0 0 0 1px var(--chakra-colors-yellow-300)' }}
             onFocus={() => setOpen(true)}
             onClick={() => setOpen(true)}
             onBlur={() => setOpen(false)}
@@ -271,6 +335,9 @@ function Units({ data, growth, icons, leftover }: {
               if (e.key === 'Escape') setOpen(false);
               if (e.key === 'Enter' && matches[0]) choose(matches[0].code);
             }} />
+          <Text position="absolute" left={5} top="50%" transform="translateY(-50%)"
+            fontSize="2xl" lineHeight={1} fontWeight="800" color="yellow.400"
+            pointerEvents="none" aria-hidden>+</Text>
           {open && matches.length > 0 && (
             // Without this the blur closes the list before the click lands.
             <VStack align="stretch" spacing={0} position="absolute" top="100%" left={0}
@@ -312,198 +379,169 @@ function Units({ data, growth, icons, leftover }: {
         )}
       </Flex>
 
-      {tracked.length === 0 ? (
-        <Text fontSize="sm" color="gray.500">{t('farmNoUnits')}</Text>
+      {tracked.length > 1 && (
+        <Flex align="center" gap={2} wrap="wrap">
+          <Text fontSize="0.65rem" color="gray.500" textTransform="uppercase"
+            letterSpacing="0.11em" fontWeight="700">{t('rankSortBy')}</Text>
+          {UNIT_SORTS.map(({ key, label }) => (
+            <FilterChip key={key} active={sort === key} onClick={() => setSort(key)}>
+              {t(label)}
+            </FilterChip>
+          ))}
+        </Flex>
+      )}
+
+      {ordered.length === 0 ? (
+        <Box borderWidth="1px" borderStyle="dashed" borderColor="whiteAlpha.300"
+          borderRadius="xl" py={10} px={6} textAlign="center">
+          <Text fontSize="md" fontWeight="700" color="gray.200">{t('farmNoUnits')}</Text>
+          <Text fontSize="sm" color="gray.500" mt={1}>{t('planAddHint')}</Text>
+        </Box>
       ) : (
-        <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3} alignItems="start">
-          {tracked.map((entry) => (
-            <UnitCard key={entry.code} entry={entry} data={data} growth={growth}
-              icons={icons} leftover={leftover} open={shown === entry.code}
-              onToggle={() => setShown(shown === entry.code ? null : entry.code)} />
+        <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={2} alignItems="start">
+          {ordered.map((row) => (
+            <UnitRow key={row.entry.code} row={row} growth={growth} icons={icons}
+              leftover={leftover} lang={lang} onOpen={() => setShown(row.entry.code)} />
           ))}
         </SimpleGrid>
       )}
+
+      <UnitPlanDialog entry={shown ? data.characters[shown] ?? null : null} data={data}
+        growth={growth} stages={stages} hard={hard} icons={icons} leftover={leftover}
+        isOpen={!!shown} onClose={() => setShown(null)} />
     </VStack>
   );
 }
 
-function UnitCard({ entry, data, growth, icons, leftover, open, onToggle }: {
-  entry: CharacterEntry; data: CharacterData; growth: GrowthData;
-  icons: IconManifest | null; leftover: Record<string, number>;
-  open: boolean; onToggle: () => void;
+type TrackedUnit = {
+  entry: CharacterEntry;
+  pair: UnitPlanPair;
+  bill: Bill;
+  from: number;
+  to: number;
+  memories: MemoryPlan;
+  materials: number;
+};
+
+function RowAction({ label, hint, active, disabled, danger, onClick, children }: {
+  /** The accessible name: what the button does, never its current state. */
+  label: string; hint?: string; active?: boolean; disabled?: boolean;
+  danger?: boolean; onClick: () => void; children: React.ReactNode;
+}) {
+  const idle = active ? 'yellow.300' : 'gray.500';
+  return (
+    <Box as="button" aria-label={label} title={hint ?? label} aria-pressed={active}
+      aria-disabled={disabled || undefined}
+      px={1.5} py={1} borderRadius="md" lineHeight={1} flexShrink={0}
+      color={disabled ? 'whiteAlpha.300' : idle}
+      cursor={disabled ? 'not-allowed' : 'pointer'}
+      _hover={disabled ? undefined
+        : { bg: 'whiteAlpha.200', color: danger ? 'red.300' : 'yellow.200' }}
+      onClick={(e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (!disabled) onClick();
+      }}>
+      {children}
+    </Box>
+  );
+}
+
+// The row is a summary plus its own actions; the dialog is only for editing.
+function UnitRow({ row, growth, icons, leftover, lang, onOpen }: {
+  row: TrackedUnit; growth: GrowthData; icons: IconManifest | null;
+  leftover: Record<string, number>; lang: Lang; onOpen: () => void;
 }) {
   const t = useT();
-  const lang = useLang();
-  const pair = useFarm((s) => s.units[entry.code]);
   const inventory = useFarm((s) => s.inventory);
-  const removeUnit = useFarm((s) => s.removeUnit);
-  const setListed = useFarm((s) => s.setListed);
   const setHidden = useFarm((s) => s.setHidden);
   const setPriority = useFarm((s) => s.setPriority);
+  const setListed = useFarm((s) => s.setListed);
+  const removeUnit = useFarm((s) => s.removeUnit);
   const completeUnit = useFarm((s) => s.completeUnit);
-  const collected = useCollection((s) => !!s.collected[entry.code]);
-  const hidden = pair?.hidden ?? false;
-  const priority = pair?.priority ?? false;
-
-  const bill: Bill | null = pair ? unitBill(growth, entry, data, pair) : null;
-  const owing = bill && (bill.unitExp || bill.equipExp
-    || Object.keys(bill.materials).length > 0);
-  // A prioritised unit spends out of the whole inventory, everything else out of what those leave.
-  const covered = !!bill && billCovered(growth, bill, priority ? inventory : leftover);
+  const collected = useCollection((s) => !!s.collected[row.entry.code]);
+  const { entry, pair, bill, from, to, memories, materials } = row;
+  const priority = pair.priority ?? false;
+  const hidden = pair.hidden ?? false;
+  const owing = !!(bill.unitExp || bill.equipExp || Object.keys(bill.materials).length > 0);
+  const covered = billCovered(growth, bill, priority ? inventory : leftover);
+  const material = memories.ref ? growth.materials[memories.ref] : null;
+  const gear = Object.values(pair.target.gear ?? {})
+    .reduce((n, g) => Math.max(n, g.tier), 0);
 
   return (
-    <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md"
-      bg="whiteAlpha.50" p={3} opacity={hidden ? 0.5 : 1}>
-      <Flex align="center" gap={2} mb={open ? 3 : 0} wrap="wrap">
-        <Box as="button" fontSize="xs" color="gray.500" w={3} flexShrink={0}
-          aria-expanded={open} _hover={{ color: 'yellow.200' }} onClick={onToggle}>
-          {open ? '▾' : '▸'}
-        </Box>
-        <GameIcon manifest={icons} group="char" size={7}
+    <Flex align="center" gap={2} px={3} py={2} w="100%"
+      borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md"
+      bg="whiteAlpha.50" opacity={hidden ? 0.45 : 1}
+      _hover={{ borderColor: 'yellow.400', bg: 'whiteAlpha.100' }}>
+      <Flex as="button" onClick={onOpen} align="center" gap={2.5} flex="1" minW={0}
+        textAlign="left" title={t('planOpenPlan')}>
+        <GameIcon manifest={icons} group="char" size={8}
           names={[entry.iconPath, `Icon_${entry.code}`]} />
-        <Text as={NextLink} href={{ pathname: '/character', query: { code: entry.code } }}
-          fontWeight="bold" _hover={{ color: 'yellow.300' }}>
-          {characterName(entry, lang)}
-        </Text>
-        <Text fontFamily="mono" fontSize="xs" color="gray.600">{entry.code}</Text>
-        <Box flex="1" />
-        <Box as="button" fontSize="xs" color={priority ? 'yellow.300' : 'gray.500'}
-          _hover={{ color: 'yellow.200' }} title={t('farmPriorityHint')}
-          onClick={() => setPriority(entry.code, !priority)}>
-          {t('farmPriority')}
+        <Box minW={0} flex="1">
+          <HStack spacing={1.5}>
+            <Text fontWeight="bold" fontSize="sm" noOfLines={1}>
+              {characterName(entry, lang)}
+            </Text>
+            {priority && (
+              <Badge fontSize="0.5rem" colorScheme="yellow">{t('farmPriority')}</Badge>
+            )}
+          </HStack>
+          <HStack spacing={2} fontSize="0.65rem" color="gray.500">
+            <Text fontFamily="mono" color={to > from ? 'yellow.300' : 'gray.600'}>
+              {from === to ? `${from}★` : `${from}★→${to}★`}
+            </Text>
+            <Text fontFamily="mono">
+              {t('dialLevel')} {pair.current.level}
+              {pair.target.level > pair.current.level ? `→${pair.target.level}` : ''}
+            </Text>
+            {gear > 0 && <Text fontFamily="mono">T{gear}</Text>}
+          </HStack>
         </Box>
-        <Box as="button" fontSize="xs" color={hidden ? 'gray.600' : 'gray.400'}
-          _hover={{ color: 'yellow.200' }}
-          onClick={() => setHidden(entry.code, !hidden)}>
-          {hidden ? t('farmShow') : t('farmHide')}
-        </Box>
-        {owing && (
-          <Box as="button" fontSize="xs" disabled={!covered}
-            color={covered ? 'green.300' : 'gray.600'}
-            cursor={covered ? 'pointer' : 'not-allowed'}
-            _hover={covered ? { color: 'green.200' } : undefined}
-            title={covered ? t('farmCompleteHint') : t('farmCompleteShort')}
-            onClick={() => covered
-              && completeUnit(entry.code, spendBill(growth, bill, inventory))}>
-            {t('farmComplete')}
-          </Box>
+
+        {memories.short > 0 && (
+          <HStack spacing={1.5} flexShrink={0}>
+            <ItemIcon manifest={icons} group={materialGroup(icons, material?.icon)}
+              name={material?.icon} grade={material?.grade} size={6}
+              title={material?.name ?? undefined} />
+            <Text fontSize="sm" fontFamily="mono" color="yellow.200">
+              {memories.short.toLocaleString()}
+            </Text>
+          </HStack>
         )}
-        <Box as="button" fontSize="xs" color="gray.500" _hover={{ color: 'red.300' }}
-          onClick={() => (collected
-            ? setListed(entry.code, false) : removeUnit(entry.code))}>
-          {t('farmRemove')}
+
+        <Box textAlign="right" flexShrink={0} minW="3.5rem">
+          <Text fontSize="0.6rem" color="gray.500" textTransform="uppercase"
+            letterSpacing="0.08em">{t('planShort')}</Text>
+          <Text fontSize="sm" fontFamily="mono"
+            color={materials ? 'gray.200' : 'green.300'}>
+            {materials ? materials.toLocaleString() : covered ? '✓' : '—'}
+          </Text>
         </Box>
       </Flex>
 
-      <Box display={open ? undefined : 'none'}>
-        <PlanGrid entry={entry} data={data} growth={growth} icons={icons}
-          sides={['current', 'target']} />
-        {bill && owing ? (
-          <MaterialSummary bill={bill} growth={growth} icons={icons} lang={lang} />
-        ) : null}
-      </Box>
-    </Box>
-  );
-}
-
-function MaterialSummary({ bill, growth, icons, lang }: {
-  bill: Bill; growth: GrowthData; icons: IconManifest | null; lang: Lang;
-}) {
-  const t = useT();
-  const needs = needsOf(growth, bill, {});
-  return (
-    <Box mt={3} pt={3} borderTopWidth="1px" borderColor="whiteAlpha.100">
-      <Text mb={2} fontSize="0.65rem" color="gray.500" textTransform="uppercase"
-        fontWeight="700" letterSpacing="wide">{t('farmMaterialsSummary')}</Text>
-      <Wrap spacing={2}>
-        {needs.map((need) => {
-          const label = needLabel(growth, need, lang);
-          return (
-            <WrapItem key={need.key}>
-              <HStack spacing={2} borderWidth="1px" borderColor="whiteAlpha.200"
-                borderRadius="md" bg="blackAlpha.200" py={1} pl={1} pr={2}>
-                <ItemIcon manifest={icons} group={materialGroup(icons, label.icon)}
-                  name={label.icon} grade={label.grade} size={7} />
-                <Box minW={0}>
-                  <Text fontSize="0.65rem" color="gray.500" noOfLines={1}
-                    maxW="9rem">{label.name}</Text>
-                  <Text fontSize="sm" fontWeight="bold" fontFamily="mono"
-                    color="yellow.200">{need.required.toLocaleString()}</Text>
-                </Box>
-              </HStack>
-            </WrapItem>
-          );
-        })}
-      </Wrap>
-    </Box>
-  );
-}
-
-function Inventory({ growth, icons }: { growth: GrowthData; icons: IconManifest | null }) {
-  const t = useT();
-  const lang = useLang();
-  const inventory = useFarm((s) => s.inventory);
-  const setInventory = useFarm((s) => s.setInventory);
-  const clearInventory = useFarm((s) => s.clearInventory);
-  const missing = new Set(growth._noItemRow ?? []);
-
-  // The stored experience balance leads its group.
-  const pools = new Set([growth.unit.pool, growth.equipment.pool]);
-  const byKind = useMemo(() => {
-    const out = new Map<string, { ref: string; name: string; icon: string | null;
-      grade: number | null; big: boolean }[]>();
-    for (const [ref, material] of Object.entries(growth.materials)) {
-      if (missing.has(ref)) continue;
-      const kind = material.kind ?? 'goods';
-      out.set(kind, [...(out.get(kind) ?? []), {
-        ref,
-        name: material.name || ref,
-        icon: material.icon ?? null,
-        grade: material.grade ?? null,
-        big: kind === 'goods' || pools.has(ref),
-      }]);
-    }
-    for (const rows of out.values()) {
-      rows.sort((a, b) => Number(pools.has(b.ref)) - Number(pools.has(a.ref)));
-    }
-    return [...out.entries()].sort((a, b) => a[0].localeCompare(b[0]));
-    // both sets are rebuilt each render from the same document
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [growth]);
-
-  const total = byKind.reduce((n, [, rows]) => n + rows.length, 0);
-
-  return (
-    <VStack align="stretch" spacing={3}>
-      <Flex align="center" gap={3} wrap="wrap">
-        <Text fontSize="sm" color="gray.500">{t('farmItemsHint', { n: total })}</Text>
-        <Box as="button" fontSize="xs" color="gray.500" _hover={{ color: 'red.300' }}
-          onClick={clearInventory}>{t('clear')}</Box>
-      </Flex>
-      {byKind.map(([kind, rows]) => (
-        <Panel key={kind} title={pick(MATERIAL_KIND_LABEL[kind], lang) || kind}
-          note={String(rows.length)}>
-          <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={2}>
-            {rows.map((row) => {
-              const held = inventory[row.ref] ?? 0;
-              return (
-                <HStack key={row.ref} spacing={2}>
-                  <ItemIcon manifest={icons} group={materialGroup(icons, row.icon)}
-                    name={row.icon} grade={row.grade} size={10} />
-                  <Text fontSize="sm" noOfLines={1} flex="1" minW={0} title={row.name}>
-                    {row.name}
-                  </Text>
-                  <Stepper value={held} onChange={(v) => setInventory(row.ref, v)}>
-                    <AmountField value={held} min={0} max={999_999_999} big={row.big}
-                      width="5rem" onChange={(v) => setInventory(row.ref, v)} />
-                  </Stepper>
-                </HStack>
-              );
-            })}
-          </SimpleGrid>
-        </Panel>
-      ))}
-    </VStack>
+      <HStack spacing={0} flexShrink={0} borderLeftWidth="1px"
+        borderColor="whiteAlpha.200" pl={1.5}>
+        <RowAction label={t('farmPriority')} active={priority}
+          onClick={() => setPriority(entry.code, !priority)}>
+          <StarIcon boxSize={3} />
+        </RowAction>
+        <RowAction label={hidden ? t('farmShow') : t('farmHide')} active={hidden}
+          onClick={() => setHidden(entry.code, !hidden)}>
+          {hidden ? <ViewOffIcon boxSize={3.5} /> : <ViewIcon boxSize={3.5} />}
+        </RowAction>
+        <RowAction label={t('farmComplete')} disabled={!owing || !covered}
+          hint={!owing ? t('planNothingOwed')
+            : covered ? t('farmCompleteHint') : t('farmCompleteShort')}
+          onClick={() => completeUnit(entry.code, spendBill(growth, bill, inventory))}>
+          <CheckIcon boxSize={3} color={owing && covered ? 'green.300' : undefined} />
+        </RowAction>
+        <RowAction label={t('farmRemove')} danger
+          onClick={() => (collected ? setListed(entry.code, false)
+            : removeUnit(entry.code))}>
+          <CloseIcon boxSize={2.5} />
+        </RowAction>
+      </HStack>
+    </Flex>
   );
 }
 
@@ -530,57 +568,85 @@ function Clears({ data, pool }: { data: StageData; pool: StageEntry[] }) {
       <Text fontSize="sm" color="gray.500">
         {t('farmClearsHint', { n: recorded, total: pool.length })}
       </Text>
-      {groups.map(({ group, stages }) => (
-        <Panel key={group.key} title={groupLabel(data, group, lang)}
-          note={`${stages.length}`}>
-          <Wrap spacing={1} mb={2}>
-            {STARS.map((star) => (
-              <WrapItem key={star}>
-                <Box as="button" px={2} py={0.5} fontSize="xs" borderWidth="1px"
-                  borderRadius="md" borderColor="whiteAlpha.200" color="gray.400"
-                  _hover={{ borderColor: 'yellow.400', color: 'yellow.200' }}
-                  onClick={() => setStarsMany(stages.map((s) => s.id), star)}>
-                  {t('farmSetAll')} {star ? `${star}★` : t('farmUncleared')}
-                </Box>
-              </WrapItem>
-            ))}
-          </Wrap>
-          <Box overflowX="auto">
-            <VStack align="stretch" spacing={0.5} minW="300px">
-              {stages.map((stage) => {
-                const stars = clears[String(stage.id)] ?? 0;
-                return (
-                  <Flex key={stage.id} align="center" gap={2} py={0.5}
-                    borderTopWidth="1px" borderColor="whiteAlpha.100">
-                    <Text as={NextLink} fontSize="sm" flex="1" minW={0} noOfLines={1}
-                      href={{ pathname: '/stage', query: { id: stage.id } }}
-                      _hover={{ color: 'yellow.300' }}>
-                      {stageName(data, stage, lang)}
-                    </Text>
-                    {stage.stamina != null && (
-                      <Text fontSize="0.6rem" color="gray.600" whiteSpace="nowrap">
-                        {t('farmStamina', { n: stage.stamina })}
+      {/* every zone collapsed: 259 stages over 21 lists is not a page you scroll */}
+      <Accordion allowMultiple reduceMotion>
+        <VStack align="stretch" spacing={2}>
+          {groups.map(({ group, stages }) => {
+            const done = stages.filter((s) => (clears[String(s.id)] ?? 0) > 0).length;
+            return (
+              <AccordionItem key={group.key} border="none">
+                <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl"
+                  bg="linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018))"
+                  boxShadow="0 12px 32px rgba(0,0,0,0.12)" overflow="hidden">
+                  <AccordionButton px={{ base: 3, md: 4 }} py={3}
+                    _hover={{ bg: 'whiteAlpha.100' }}>
+                    <Flex flex="1" align="baseline" gap={2} wrap="wrap" textAlign="left">
+                      <Text fontSize="0.65rem" color="gray.400" textTransform="uppercase"
+                        fontWeight="700" letterSpacing="0.11em">
+                        {groupLabel(data, group, lang)}
                       </Text>
-                    )}
-                    <HStack spacing={0.5}>
+                      <Text fontSize="xs" fontFamily="mono"
+                        color={done === stages.length ? 'green.300'
+                          : done ? 'yellow.200' : 'gray.600'}>
+                        {done}/{stages.length}
+                      </Text>
+                    </Flex>
+                    <AccordionIcon color="gray.500" />
+                  </AccordionButton>
+                  <AccordionPanel px={{ base: 3, md: 4 }} pb={4} pt={0}>
+                    <Wrap spacing={1} mb={2}>
                       {STARS.map((star) => (
-                        <Box key={star} as="button" px={1.5} py={0.5} fontSize="xs"
-                          borderWidth="1px" borderRadius="md" lineHeight={1.2}
-                          borderColor={star === stars ? 'yellow.400' : 'whiteAlpha.200'}
-                          color={star === stars ? 'yellow.200' : 'gray.500'}
-                          onClick={() => setStars(stage.id, star)}
-                          aria-label={`${stageName(data, stage, lang)} ${star}`}>
-                          {star ? `${star}★` : '—'}
-                        </Box>
+                        <WrapItem key={star}>
+                          <Box as="button" px={2} py={0.5} fontSize="xs" borderWidth="1px"
+                            borderRadius="md" borderColor="whiteAlpha.200" color="gray.400"
+                            _hover={{ borderColor: 'yellow.400', color: 'yellow.200' }}
+                            onClick={() => setStarsMany(stages.map((s) => s.id), star)}>
+                            {t('farmSetAll')} {star ? `${star}★` : t('farmUncleared')}
+                          </Box>
+                        </WrapItem>
                       ))}
-                    </HStack>
-                  </Flex>
-                );
-              })}
-            </VStack>
-          </Box>
-        </Panel>
-      ))}
+                    </Wrap>
+                    <Box overflowX="auto">
+                      <VStack align="stretch" spacing={0.5} minW="300px">
+                        {stages.map((stage) => {
+                          const stars = clears[String(stage.id)] ?? 0;
+                          return (
+                            <Flex key={stage.id} align="center" gap={2} py={0.5}
+                              borderTopWidth="1px" borderColor="whiteAlpha.100">
+                              <Text as={NextLink} fontSize="sm" flex="1" minW={0} noOfLines={1}
+                                href={{ pathname: '/stage', query: { id: stage.id } }}
+                                _hover={{ color: 'yellow.300' }}>
+                                {stageName(data, stage, lang)}
+                              </Text>
+                              {stage.stamina != null && (
+                                <Text fontSize="0.6rem" color="gray.600" whiteSpace="nowrap">
+                                  {t('farmStamina', { n: stage.stamina })}
+                                </Text>
+                              )}
+                              <HStack spacing={0.5}>
+                                {STARS.map((star) => (
+                                  <Box key={star} as="button" px={1.5} py={0.5} fontSize="xs"
+                                    borderWidth="1px" borderRadius="md" lineHeight={1.2}
+                                    borderColor={star === stars ? 'yellow.400' : 'whiteAlpha.200'}
+                                    color={star === stars ? 'yellow.200' : 'gray.500'}
+                                    onClick={() => setStars(stage.id, star)}
+                                    aria-label={`${stageName(data, stage, lang)} ${star}`}>
+                                    {star ? `${star}★` : '—'}
+                                  </Box>
+                                ))}
+                              </HStack>
+                            </Flex>
+                          );
+                        })}
+                      </VStack>
+                    </Box>
+                  </AccordionPanel>
+                </Box>
+              </AccordionItem>
+            );
+          })}
+        </VStack>
+      </Accordion>
     </VStack>
   );
 }
