@@ -78,6 +78,13 @@ export const RELEASES: Release[] = [
       {
         kind: 'feature',
         text: {
+          en: 'The unit list shows what a plan consumes without opening it: a total needed-over-held panel above the list, and a per-unit breakdown on each row. Both collapse.',
+          ko: '유닛 목록에서 계획을 열지 않아도 소비량을 볼 수 있습니다. 목록 위의 총 필요/보유 패널과 유닛별 내역이 각각 접힙니다.',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
           en: 'The Clears tab is one collapsed accordion per zone, each showing its own recorded count.',
           ko: '클리어 탭이 존별 아코디언으로 바뀌고, 각 존의 기록 수를 표시합니다.',
         },
@@ -110,6 +117,13 @@ export const RELEASES: Release[] = [
         text: {
           en: 'Cash Crush Rush was missing its logo, currency and ticket art, and the raid stage had no art at all.',
           ko: '캐시 크러시 러시의 로고·재화·티켓 아트와 레이드 스테이지 아트가 누락되어 있던 문제를 수정했습니다.',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Item slots with no grade — every character memory among them — were drawn without their ribbon.',
+          ko: '등급이 없는 아이템 슬롯에 리본이 표시되지 않던 문제를 수정했습니다. 캐릭터 메모리가 모두 여기 해당합니다.',
         },
       },
     ],

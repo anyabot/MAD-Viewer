@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { CheckIcon, CloseIcon, StarIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import {
+  CheckIcon, ChevronDownIcon, CloseIcon, StarIcon, ViewIcon, ViewOffIcon,
+} from '@chakra-ui/icons';
 import NextLink from 'next/link';
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel,
@@ -12,6 +14,7 @@ import { Panel } from '@/components/skillKit';
 import { FilterChip } from '@/components/filters';
 import { InventoryDialog } from '@/components/inventoryDialog';
 import { UnitPlanDialog } from '@/components/unitPlanDialog';
+import { MaterialNeeds } from '@/components/materialNeeds';
 import { PlannerTutorial, TutorialReplay } from '@/components/plannerTutorial';
 import { AmountField, Stepper } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
@@ -253,6 +256,8 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState<UnitSort>('name');
   const [shown, setShown] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<Record<string, true>>({});
+  const [totalsOpen, setTotalsOpen] = useState(false);
 
   // Only the playable roster carries a material group, so only it can be costed.
   const roster = useMemo(() => Object.values(data.characters)
@@ -291,6 +296,12 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
           .reduce((n, need) => n + need.short, 0),
       }];
     }), [units, data, growth, inventory, hard]);
+
+  const totalBill = useMemo(
+    () => mergeBills(tracked.filter((r) => !r.pair.hidden).map((r) => r.bill)), [tracked]);
+  const totalShort = useMemo(
+    () => needsOf(growth, totalBill, inventory).filter((n) => n.short > 0).length,
+    [growth, totalBill, inventory]);
 
   const ordered = useMemo(() => [...tracked].sort((a, b) => {
     const away = Number(!!a.pair.hidden) - Number(!!b.pair.hidden);
@@ -391,6 +402,32 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
         </Flex>
       )}
 
+      {tracked.length > 0 && (
+        <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="lg"
+          bg="whiteAlpha.50">
+          <Flex as="button" w="100%" align="center" gap={2} px={3} py={2.5}
+            aria-expanded={totalsOpen} onClick={() => setTotalsOpen(!totalsOpen)}
+            _hover={{ bg: 'whiteAlpha.100' }} borderRadius="lg">
+            <Text fontSize="0.65rem" color="gray.400" textTransform="uppercase"
+              fontWeight="700" letterSpacing="0.11em">{t('planTotalNeeds')}</Text>
+            <Text fontSize="xs" color={totalShort ? 'yellow.200' : 'green.300'}
+              fontFamily="mono">
+              {totalShort ? t('planShortCount', { n: totalShort }) : t('planAllCovered')}
+            </Text>
+            <Box flex="1" />
+            <ChevronDownIcon color="gray.500" boxSize={4}
+              transform={totalsOpen ? 'rotate(180deg)' : undefined}
+              transition="transform 0.15s" />
+          </Flex>
+          {totalsOpen && (
+            <Box px={3} pb={3} pt={0.5}>
+              <MaterialNeeds bill={totalBill} growth={growth} icons={icons} lang={lang}
+                inventory={inventory} />
+            </Box>
+          )}
+        </Box>
+      )}
+
       {ordered.length === 0 ? (
         <Box borderWidth="1px" borderStyle="dashed" borderColor="whiteAlpha.300"
           borderRadius="xl" py={10} px={6} textAlign="center">
@@ -401,7 +438,14 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
         <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={2} alignItems="start">
           {ordered.map((row) => (
             <UnitRow key={row.entry.code} row={row} growth={growth} icons={icons}
-              leftover={leftover} lang={lang} onOpen={() => setShown(row.entry.code)} />
+              leftover={leftover} lang={lang} onOpen={() => setShown(row.entry.code)}
+              open={!!expanded[row.entry.code]}
+              onExpand={() => setExpanded((held) => {
+                const next = { ...held };
+                if (next[row.entry.code]) delete next[row.entry.code];
+                else next[row.entry.code] = true;
+                return next;
+              })} />
           ))}
         </SimpleGrid>
       )}
@@ -447,9 +491,10 @@ function RowAction({ label, hint, active, disabled, danger, onClick, children }:
 }
 
 // The row is a summary plus its own actions; the dialog is only for editing.
-function UnitRow({ row, growth, icons, leftover, lang, onOpen }: {
+function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }: {
   row: TrackedUnit; growth: GrowthData; icons: IconManifest | null;
   leftover: Record<string, number>; lang: Lang; onOpen: () => void;
+  open: boolean; onExpand: () => void;
 }) {
   const t = useT();
   const inventory = useFarm((s) => s.inventory);
@@ -469,10 +514,10 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen }: {
     .reduce((n, g) => Math.max(n, g.tier), 0);
 
   return (
-    <Flex align="center" gap={2} px={3} py={2} w="100%"
-      borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md"
+    <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md"
       bg="whiteAlpha.50" opacity={hidden ? 0.45 : 1}
-      _hover={{ borderColor: 'yellow.400', bg: 'whiteAlpha.100' }}>
+      _hover={{ borderColor: 'yellow.400' }}>
+    <Flex align="center" gap={2} px={3} py={2} w="100%">
       <Flex as="button" onClick={onOpen} align="center" gap={2.5} flex="1" minW={0}
         textAlign="left" title={t('planOpenPlan')}>
         <GameIcon manifest={icons} group="char" size={8}
@@ -540,8 +585,23 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen }: {
             : removeUnit(entry.code))}>
           <CloseIcon boxSize={2.5} />
         </RowAction>
+        <RowAction label={t('planShowMaterials')} active={open} onClick={onExpand}>
+          <ChevronDownIcon boxSize={4}
+            transform={open ? 'rotate(180deg)' : undefined} transition="transform 0.15s" />
+        </RowAction>
       </HStack>
     </Flex>
+      {open && (
+        <Box px={3} pb={3} borderTopWidth="1px" borderColor="whiteAlpha.100" pt={2.5}>
+          {owing ? (
+            <MaterialNeeds bill={bill} growth={growth} icons={icons} lang={lang}
+              inventory={priority ? inventory : leftover} size={6} />
+          ) : (
+            <Text fontSize="xs" color="gray.600">{t('planNothingOwed')}</Text>
+          )}
+        </Box>
+      )}
+    </Box>
   );
 }
 
