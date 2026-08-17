@@ -14,6 +14,7 @@ const NAV: { href: string; label: UiKey; match: (p: string) => boolean }[] = [
   { href: '/effects', label: 'navEffects', match: (p: string) => p === '/effects' },
   { href: '/stages', label: 'navStages', match: (p: string) => p.startsWith('/stage') },
   { href: '/farm', label: 'navFarm', match: (p: string) => p === '/farm' },
+  { href: '/changelog', label: 'navChangelog', match: (p: string) => p === '/changelog' },
 ];
 
 function LanguagePicker() {

@@ -3,7 +3,7 @@ import {
   Box, Flex, HStack, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader,
   ModalOverlay, Text,
 } from '@chakra-ui/react';
-import { useTutorial, useShouldShow } from '@/lib/tutorialStore';
+import { useSeen, useShouldShow } from '@/lib/seenStore';
 import { useT, type UiKey } from '@/lib/i18n';
 
 export const PLANNER_TUTORIAL = 'planner';
@@ -19,7 +19,7 @@ const STEPS: { title: UiKey; body: UiKey }[] = [
 export function PlannerTutorial() {
   const t = useT();
   const show = useShouldShow(PLANNER_TUTORIAL);
-  const markSeen = useTutorial((s) => s.markSeen);
+  const markSeen = useSeen((s) => s.markSeen);
   const [step, setStep] = useState(0);
   // a replay reopens the same component, so the last step would still be showing
   useEffect(() => { if (show) setStep(0); }, [show]);
@@ -78,7 +78,7 @@ export function PlannerTutorial() {
 export function TutorialReplay() {
   const t = useT();
   const show = useShouldShow(PLANNER_TUTORIAL);
-  const reset = useTutorial((s) => s.reset);
+  const reset = useSeen((s) => s.reset);
   if (show) return null;
   return (
     <Flex as="button" align="center" fontSize="xs" color="gray.500"

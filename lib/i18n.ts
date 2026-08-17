@@ -62,6 +62,7 @@ export const UI = {
   navEffects: { en: 'Effects', ko: '효과' },
   navStages: { en: 'Stages', ko: '스테이지' },
   navFarm: { en: 'Planner', ko: '플래너' },
+  navChangelog: { en: 'Changelog', ko: '변경사항' },
 
   loading: { en: 'loading…', ko: '불러오는 중…' },
   noMatch: { en: 'no match', ko: '결과 없음' },
@@ -404,6 +405,9 @@ export const UI = {
   planShort: { en: 'Short', ko: '부족' },
   planOpenPlan: { en: 'Open the plan', ko: '계획 열기' },
   tutStep: { en: 'Step {n} of {total}', ko: '{total}단계 중 {n}단계' },
+  changeWhatsNew: { en: 'What’s new', ko: '새로운 소식' },
+  changeSeeAll: { en: 'See the full changelog →', ko: '전체 변경사항 보기 →' },
+  changeReleases: { en: '{n} releases', ko: '{n}개 업데이트' },
   tutBack: { en: 'Back', ko: '이전' },
   tutSkip: { en: 'Skip', ko: '건너뛰기' },
   tutNext: { en: 'Next', ko: '다음' },
