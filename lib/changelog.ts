@@ -71,6 +71,13 @@ export const RELEASES: Release[] = [
       {
         kind: 'feature',
         text: {
+          en: 'How many of a unit’s memories you hold can be typed straight into her plan, next to what she still needs.',
+          ko: '해당 유닛의 보유 메모리 수를 계획 팝업에서 바로 입력할 수 있습니다. 부족한 수량 옆에 표시됩니다.',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
           en: 'The Clears tab is one collapsed accordion per zone, each showing its own recorded count.',
           ko: '클리어 탭이 존별 아코디언으로 바뀌고, 각 존의 기록 수를 표시합니다.',
         },
