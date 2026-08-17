@@ -67,13 +67,15 @@ function MaterialSummary({ bill, growth, icons, lang, inventory }: {
 }
 
 // The exchange is the one route the run list cannot plan: it is a shop, not a stage.
-function MemoryPanel({ entry, growth, stages, hard, icons, lang, pair, setBought }: {
+function MemoryPanel({
+  entry, growth, stages, hard, icons, lang, pair, held, setHeld, setBought,
+}: {
   entry: CharacterEntry; growth: GrowthData; stages: StageData; hard: StageEntry[];
   icons: IconManifest | null; lang: Lang; pair: UnitPlanPair;
+  held: number; setHeld: (held: number) => void;
   setBought: (bought: number) => void;
 }) {
   const t = useT();
-  const inventory = useFarm((s) => s.inventory);
   const star = growth.star;
   if (!star) return null;
 
@@ -82,8 +84,7 @@ function MemoryPanel({ entry, growth, stages, hard, icons, lang, pair, setBought
   const required = stepCost(star, from, to);
   const bought = pair.bought ?? 0;
   const ref = star.pieces[entry.code] ?? null;
-  const plan = memoryPlan(star, entry.code, required, ref ? inventory[ref] ?? 0 : 0,
-    bought, hard);
+  const plan = memoryPlan(star, entry.code, required, held, bought, hard);
   const material = ref ? growth.materials[ref] : null;
   const currency = star.exchange?.ref ? growth.materials[star.exchange.ref] : null;
 
@@ -108,6 +109,21 @@ function MemoryPanel({ entry, growth, stages, hard, icons, lang, pair, setBought
                     </Text>
                   )}
                 </Text>
+              </Box>
+            </HStack>
+          </WrapItem>
+          <WrapItem>
+            <HStack spacing={2}>
+              <ItemIcon manifest={icons} group={materialGroup(icons, material?.icon)}
+                name={material?.icon} grade={material?.grade} size={8}
+                title={material?.name ?? undefined} />
+              <Box>
+                <Text fontSize="0.6rem" color="gray.500" textTransform="uppercase"
+                  letterSpacing="0.08em">{t('planHeld')}</Text>
+                <Stepper value={held} min={0} max={999999} onChange={setHeld}>
+                  <AmountField value={held} min={0} max={999999} width="4.5rem" big
+                    onChange={setHeld} />
+                </Stepper>
               </Box>
             </HStack>
           </WrapItem>
@@ -197,9 +213,12 @@ export function UnitPlanDialog({
 
   // The dialog edits a copy: nothing reaches the record until Save.
   const [draft, setDraft] = useState<UnitPlanPair | null>(null);
+  const [held, setHeld] = useState(0);
   const code = entry?.code ?? null;
+  const memoryRef = code ? growth.star?.pieces[code] ?? null : null;
   useEffect(() => {
     setDraft(isOpen && code ? stored ?? { current: emptyPlan(), target: emptyPlan() } : null);
+    setHeld(memoryRef ? inventory[memoryRef] ?? 0 : 0);
     // re-snapshot on open and on unit change, never on every store write
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, code]);
@@ -221,22 +240,27 @@ export function UnitPlanDialog({
     edit((held) => ({ ...held, bought: Math.max(0, Math.floor(bought) || 0) }));
 
   const base = stored ?? { current: emptyPlan(), target: emptyPlan() };
-  const dirty = JSON.stringify({ ...base, listed: undefined, hidden: undefined,
-    priority: undefined }) !== JSON.stringify({ ...draft, listed: undefined,
-    hidden: undefined, priority: undefined });
+  const storedHeld = memoryRef ? inventory[memoryRef] ?? 0 : 0;
+  const dirty = held !== storedHeld
+    || JSON.stringify({ ...base, listed: undefined, hidden: undefined,
+      priority: undefined }) !== JSON.stringify({ ...draft, listed: undefined,
+      hidden: undefined, priority: undefined });
 
   const hidden = stored?.hidden ?? false;
   const priority = stored?.priority ?? false;
   const bill: Bill = unitBill(growth, entry, data, draft);
+  const previewed = memoryRef ? { ...leftover, [memoryRef]: held } : leftover;
+  const spendable = memoryRef ? { ...inventory, [memoryRef]: held } : inventory;
   const owing = !!(bill.unitExp || bill.equipExp || Object.keys(bill.materials).length > 0);
-  const covered = billCovered(growth, bill, priority ? inventory : leftover);
+  const covered = billCovered(growth, bill, priority ? spendable : previewed);
 
   const leave = () => {
     if (dirty && !window.confirm(t('planDiscardConfirm'))) return;
     onClose();
   };
   const save = () => {
-    commitUnit(entry.code, draft);
+    commitUnit(entry.code, draft,
+      memoryRef && held !== storedHeld ? { [memoryRef]: held } : undefined);
     onClose();
   };
 
@@ -272,12 +296,14 @@ export function UnitPlanDialog({
             </Panel>
 
             <MemoryPanel entry={entry} growth={growth} stages={stages} hard={hard}
-              icons={icons} lang={lang} pair={draft} setBought={setBought} />
+              icons={icons} lang={lang} pair={draft} held={held}
+              setHeld={(v) => setHeld(Math.max(0, Math.floor(v) || 0))}
+              setBought={setBought} />
 
             <Panel title={t('farmMaterialsSummary')}>
               {owing ? (
                 <MaterialSummary bill={bill} growth={growth} icons={icons} lang={lang}
-                  inventory={priority ? inventory : leftover} />
+                  inventory={priority ? spendable : previewed} />
               ) : (
                 <Text fontSize="sm" color="gray.600">{t('planNothingOwed')}</Text>
               )}

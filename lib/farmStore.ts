@@ -35,8 +35,9 @@ type FarmStore = FarmState & {
   setPriority: (code: string, priority: boolean) => void;
   /** Lifetime memory-shop purchases, which decide the exchange rung. */
   setBought: (code: string, bought: number) => void;
-  /** One write for a whole edited plan, so a dialog commits in a single update. */
-  commitUnit: (code: string, pair: UnitPlanPair) => void;
+  /** One write for a whole edited plan and the counts it changed. */
+  commitUnit: (code: string, pair: UnitPlanPair,
+               inventory?: Record<string, number>) => void;
   setPlan: (code: string, side: 'current' | 'target', patch: Partial<UnitPlan>) => void;
   setSkill: (code: string, side: 'current' | 'target', id: number, level: number) => void;
   setGear: (code: string, side: 'current' | 'target', slot: number, gear: GearPlan) => void;
@@ -126,8 +127,9 @@ export const useFarm = create<FarmStore>((set) => ({
       units: { ...s.units, [code]: { ...pair, bought: Math.max(0, Math.floor(bought) || 0) } },
     });
   }),
-  commitUnit: (code, pair) => set((s) => save(s, {
+  commitUnit: (code, pair, inventory) => set((s) => save(s, {
     units: { ...s.units, [code]: atLeastCurrent({ ...s.units[code], ...pair }) },
+    ...(inventory ? { inventory: { ...s.inventory, ...inventory } } : {}),
   })),
   completeUnit: (code, inventory) => set((s) => {
     const pair = s.units[code];

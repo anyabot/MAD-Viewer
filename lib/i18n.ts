@@ -403,6 +403,7 @@ export const UI = {
   planNothingOwed: { en: 'nothing owed', ko: '필요 없음' },
   planOwned: { en: 'Owned', ko: '보유' },
   planShort: { en: 'Short', ko: '부족' },
+  planHeld: { en: 'Held', ko: '보유' },
   planOpenPlan: { en: 'Open the plan', ko: '계획 열기' },
   tutStep: { en: 'Step {n} of {total}', ko: '{total}단계 중 {n}단계' },
   changeWhatsNew: { en: 'What’s new', ko: '새로운 소식' },
