@@ -1,6 +1,9 @@
 // Mirrored into `localStorage`, but the store starts empty so the exported HTML and the first client render agree.
 import { create } from 'zustand';
-import { emptyPlan, type GearPlan, type UnitPlan, type UnitPlanPair } from '@/lib/farm';
+import {
+  applySide, atLeastCurrent, emptyPlan,
+  type GearPlan, type UnitPlan, type UnitPlanPair,
+} from '@/lib/farm';
 
 const STORAGE_KEY = 'mad.farm';
 
@@ -30,6 +33,10 @@ type FarmStore = FarmState & {
   setListed: (code: string, listed: boolean) => void;
   setHidden: (code: string, hidden: boolean) => void;
   setPriority: (code: string, priority: boolean) => void;
+  /** Lifetime memory-shop purchases, which decide the exchange rung. */
+  setBought: (code: string, bought: number) => void;
+  /** One write for a whole edited plan, so a dialog commits in a single update. */
+  commitUnit: (code: string, pair: UnitPlanPair) => void;
   setPlan: (code: string, side: 'current' | 'target', patch: Partial<UnitPlan>) => void;
   setSkill: (code: string, side: 'current' | 'target', id: number, level: number) => void;
   setGear: (code: string, side: 'current' | 'target', slot: number, gear: GearPlan) => void;
@@ -64,34 +71,12 @@ function save<T extends Partial<FarmState>>(state: FarmStore, patch: T): T {
   return patch;
 }
 
-/** A target below the current state is not a plan. */
-function atLeastCurrent(pair: UnitPlanPair): UnitPlanPair {
-  const { current, target } = pair;
-  const skills = { ...target.skills };
-  for (const [id, level] of Object.entries(current.skills)) {
-    if ((skills[id] ?? 1) < level) skills[id] = level;
-  }
-  const gear = { ...target.gear };
-  for (const [slot, worn] of Object.entries(current.gear)) {
-    const want = gear[slot];
-    if (!want || want.tier < worn.tier
-      || (want.tier === worn.tier && want.level < worn.level)) {
-      gear[slot] = { ...worn };
-    }
-  }
-  return {
-    ...pair,
-    target: { level: Math.max(target.level, current.level), skills, gear },
-  };
-}
-
 function withSide(
   units: FarmState['units'], code: string, side: 'current' | 'target',
   update: (plan: UnitPlan) => UnitPlan,
 ): FarmState['units'] {
   const pair = units[code] ?? { current: emptyPlan(), target: emptyPlan(), listed: false };
-  const next = { ...pair, [side]: update(pair[side]) };
-  return { ...units, [code]: side === 'current' ? atLeastCurrent(next) : next };
+  return { ...units, [code]: applySide(pair, side, update) };
 }
 
 export const useFarm = create<FarmStore>((set) => ({
@@ -135,6 +120,15 @@ export const useFarm = create<FarmStore>((set) => ({
     const pair = s.units[code];
     return pair ? save(s, { units: { ...s.units, [code]: { ...pair, priority } } }) : {};
   }),
+  setBought: (code, bought) => set((s) => {
+    const pair = s.units[code] ?? { current: emptyPlan(), target: emptyPlan() };
+    return save(s, {
+      units: { ...s.units, [code]: { ...pair, bought: Math.max(0, Math.floor(bought) || 0) } },
+    });
+  }),
+  commitUnit: (code, pair) => set((s) => save(s, {
+    units: { ...s.units, [code]: atLeastCurrent({ ...s.units[code], ...pair }) },
+  })),
   completeUnit: (code, inventory) => set((s) => {
     const pair = s.units[code];
     if (!pair) return {};
@@ -191,6 +185,8 @@ function plan(value: unknown): UnitPlan {
   }
   return {
     level: typeof raw.level === 'number' ? raw.level : 1,
+    ...(typeof raw.star === 'number' && raw.star > 0
+      ? { star: Math.floor(raw.star) } : {}),
     skills: record(raw.skills),
     gear,
   };
@@ -207,6 +203,8 @@ function parse(doc: Partial<FarmState>): FarmState {
       listed: pair?.listed !== false,
       ...(pair?.hidden ? { hidden: true } : {}),
       ...(pair?.priority ? { priority: true } : {}),
+      ...(typeof pair?.bought === 'number' && pair.bought > 0
+        ? { bought: Math.floor(pair.bought) } : {}),
     };
   }
   return {

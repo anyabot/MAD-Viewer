@@ -3,8 +3,10 @@ import { Badge, Box, HStack, Input, Text } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import { useFarm } from '@/lib/farmStore';
 import {
-  emptyPlan, formatAmount, gearLevelCap, levellableSkills, parseAmount, skillCap,
+  emptyPlan, formatAmount, gearLevelCap, levellableSkills, parseAmount, planStar, skillCap,
+  type GearPlan, type UnitPlan, type UnitPlanPair,
 } from '@/lib/farm';
+import { baseStar, starCap } from '@/lib/rank';
 import { SKILL_CATEGORY_LABEL, equipLabel, equipmentSlotsOf } from '@/lib/characters';
 import { pick, useLang, useT } from '@/lib/i18n';
 import type {
@@ -94,20 +96,36 @@ export function GearField({ growth, slot, gear, onChange }: {
   );
 }
 
-export function PlanGrid({ entry, data, growth, icons, sides }: {
+/** A caller holding the plan itself, so a dialog can edit a draft before committing. */
+export type PlanDraft = {
+  pair: UnitPlanPair;
+  setPlan: (code: string, side: PlanSide, patch: Partial<UnitPlan>) => void;
+  setSkill: (code: string, side: PlanSide, id: number, level: number) => void;
+  setGear: (code: string, side: PlanSide, slot: number, gear: GearPlan) => void;
+};
+
+export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
   entry: CharacterEntry; data: CharacterData; growth: GrowthData;
   icons: IconManifest | null; sides: PlanSide[];
+  /** Absent writes straight to the store, which is what the character page wants. */
+  draft?: PlanDraft;
 }) {
   const t = useT();
   const lang = useLang();
-  const pair = useFarm((s) => s.units[entry.code]);
-  const setPlan = useFarm((s) => s.setPlan);
-  const setSkill = useFarm((s) => s.setSkill);
-  const setGear = useFarm((s) => s.setGear);
+  const stored = useFarm((s) => s.units[entry.code]);
+  const storePlan = useFarm((s) => s.setPlan);
+  const storeSkill = useFarm((s) => s.setSkill);
+  const storeGear = useFarm((s) => s.setGear);
+  const pair = draft ? draft.pair : stored;
+  const setPlan = draft ? draft.setPlan : storePlan;
+  const setSkill = draft ? draft.setSkill : storeSkill;
+  const setGear = draft ? draft.setGear : storeGear;
 
   const planOf = (side: PlanSide) =>
     (side === 'current' ? pair?.current : pair?.target) ?? emptyPlan();
   const levelCap = data.statCaps.level;
+  const floor = baseStar(entry);
+  const cap = starCap(growth.star);
   const skills = levellableSkills(entry, data);
   const slots = equipmentSlotsOf(entry, data.equipment);
 
@@ -129,6 +147,17 @@ export function PlanGrid({ entry, data, growth, icons, sides }: {
           return (
             <Stepper key={side} value={level} min={1} max={levelCap} onChange={set}>
               <AmountField value={level} min={1} max={levelCap} onChange={set} />
+            </Stepper>
+          );
+        })}
+
+        <Text fontSize="sm">{t('rankStar')}</Text>
+        {sides.map((side) => {
+          const set = (v: number) => setPlan(entry.code, side, { star: v });
+          const star = planStar(planOf(side), entry);
+          return (
+            <Stepper key={side} value={star} min={floor} max={cap} onChange={set}>
+              <AmountField value={star} min={floor} max={cap} onChange={set} />
             </Stepper>
           );
         })}

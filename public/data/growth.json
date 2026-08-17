@@ -15,6 +15,21 @@
    "icon": "Icon_Goods_Friendship_point",
    "kind": "equipExp"
   },
+  "goods:6": {
+   "name": "이데아의 메모리",
+   "icon": "Icon_Goods_Idea_Memory",
+   "kind": "goods"
+  },
+  "item:1": {
+   "name": "루시아의 메모리",
+   "icon": "Icon_Character_Piece_CH0001",
+   "kind": "piece"
+  },
+  "item:10": {
+   "name": "마네(수영복)의 메모리",
+   "icon": "Icon_Character_Piece_CH0010",
+   "kind": "piece"
+  },
   "item:10011": {
    "name": "C랭크 전투 로그",
    "icon": "Icon_Char_Levelup_Rank_C_Tier1",
@@ -351,6 +366,211 @@
    "kind": "skill",
    "grade": 4
   },
+  "item:11": {
+   "name": "치세의 메모리",
+   "icon": "Icon_Character_Piece_CH0011",
+   "kind": "piece"
+  },
+  "item:12": {
+   "name": "마샤의 메모리",
+   "icon": "Icon_Character_Piece_CH0012",
+   "kind": "piece"
+  },
+  "item:13": {
+   "name": "로망스 경의 메모리",
+   "icon": "Icon_Character_Piece_CH0013",
+   "kind": "piece"
+  },
+  "item:15": {
+   "name": "이네스의 메모리",
+   "icon": "Icon_Character_Piece_CH0015",
+   "kind": "piece"
+  },
+  "item:16": {
+   "name": "레안나의 메모리",
+   "icon": "Icon_Character_Piece_CH0016",
+   "kind": "piece"
+  },
+  "item:17": {
+   "name": "시즈쿠의 메모리",
+   "icon": "Icon_Character_Piece_CH0017",
+   "kind": "piece"
+  },
+  "item:19": {
+   "name": "빅토리아의 메모리",
+   "icon": "Icon_Character_Piece_CH0019",
+   "kind": "piece"
+  },
+  "item:2": {
+   "name": "라일라의 메모리",
+   "icon": "Icon_Character_Piece_CH0002",
+   "kind": "piece"
+  },
+  "item:20": {
+   "name": "단희의 메모리",
+   "icon": "Icon_Character_Piece_CH0020",
+   "kind": "piece"
+  },
+  "item:21": {
+   "name": "홍접의 메모리",
+   "icon": "Icon_Character_Piece_CH0021",
+   "kind": "piece"
+  },
+  "item:22": {
+   "name": "미드웬의 메모리",
+   "icon": "Icon_Character_Piece_CH0022",
+   "kind": "piece"
+  },
+  "item:23": {
+   "name": "로나의 메모리",
+   "icon": "Icon_Character_Piece_CH0023",
+   "kind": "piece"
+  },
+  "item:24": {
+   "name": "아로네의 메모리",
+   "icon": "Icon_Character_Piece_CH0024",
+   "kind": "piece"
+  },
+  "item:25": {
+   "name": "카게의 메모리",
+   "icon": "Icon_Character_Piece_CH0025",
+   "kind": "piece"
+  },
+  "item:26": {
+   "name": "소피아의 메모리",
+   "icon": "Icon_Character_Piece_CH0026",
+   "kind": "piece"
+  },
+  "item:27": {
+   "name": "에밀리의 메모리",
+   "icon": "Icon_Character_Piece_CH0027",
+   "kind": "piece"
+  },
+  "item:28": {
+   "name": "샬럿의 메모리",
+   "icon": "Icon_Character_Piece_CH0028",
+   "kind": "piece"
+  },
+  "item:29": {
+   "name": "프레이아의 메모리",
+   "icon": "Icon_Character_Piece_CH0029",
+   "kind": "piece"
+  },
+  "item:30": {
+   "name": "세븐의 메모리",
+   "icon": "Icon_Character_Piece_CH0030",
+   "kind": "piece"
+  },
+  "item:31": {
+   "name": "히나타의 메모리",
+   "icon": "Icon_Character_Piece_CH0031",
+   "kind": "piece"
+  },
+  "item:32": {
+   "name": "수지의 메모리",
+   "icon": "Icon_Character_Piece_CH0032",
+   "kind": "piece"
+  },
+  "item:34": {
+   "name": "세타의 메모리",
+   "icon": "Icon_Character_Piece_CH0034",
+   "kind": "piece"
+  },
+  "item:35": {
+   "name": "유리아의 메모리",
+   "icon": "Icon_Character_Piece_CH0035",
+   "kind": "piece"
+  },
+  "item:36": {
+   "name": "루미나의 메모리",
+   "icon": "Icon_Character_Piece_CH0036",
+   "kind": "piece"
+  },
+  "item:37": {
+   "name": "카사의 메모리",
+   "icon": "Icon_Character_Piece_CH0037",
+   "kind": "piece"
+  },
+  "item:38": {
+   "name": "발렌티나의 메모리",
+   "icon": "Icon_Character_Piece_CH0038",
+   "kind": "piece"
+  },
+  "item:39": {
+   "name": "카렌의 메모리",
+   "icon": "Icon_Character_Piece_CH0039",
+   "kind": "piece"
+  },
+  "item:42": {
+   "name": "오블리아의 메모리",
+   "icon": "Icon_Character_Piece_CH0042",
+   "kind": "piece"
+  },
+  "item:43": {
+   "name": "라피네의 메모리",
+   "icon": "Icon_Character_Piece_CH0043",
+   "kind": "piece"
+  },
+  "item:46": {
+   "name": "제니의 메모리",
+   "icon": "Icon_Character_Piece_CH0046",
+   "kind": "piece"
+  },
+  "item:5": {
+   "name": "클레어의 메모리",
+   "icon": "Icon_Character_Piece_CH0005",
+   "kind": "piece"
+  },
+  "item:50": {
+   "name": "미오의 메모리",
+   "icon": "Icon_Character_Piece_CH0050",
+   "kind": "piece"
+  },
+  "item:53": {
+   "name": "진의 메모리",
+   "icon": "Icon_Character_Piece_CH0053",
+   "kind": "piece"
+  },
+  "item:54": {
+   "name": "하리의 메모리",
+   "icon": "Icon_Character_Piece_CH0054",
+   "kind": "piece"
+  },
+  "item:56": {
+   "name": "아이렌의 메모리",
+   "icon": "Icon_Character_Piece_CH0056",
+   "kind": "piece"
+  },
+  "item:57": {
+   "name": "케이시의 메모리",
+   "icon": "Icon_Character_Piece_CH0057",
+   "kind": "piece"
+  },
+  "item:6": {
+   "name": "에일린의 메모리",
+   "icon": "Icon_Character_Piece_CH0006",
+   "kind": "piece"
+  },
+  "item:62": {
+   "name": "트리체의 메모리",
+   "icon": "Icon_Character_Piece_CH0062",
+   "kind": "piece"
+  },
+  "item:63": {
+   "name": "세라의 메모리",
+   "icon": "Icon_Character_Piece_CH0063",
+   "kind": "piece"
+  },
+  "item:68": {
+   "name": "클레어(수영복)의 메모리",
+   "icon": "Icon_Character_Piece_CH0068",
+   "kind": "piece"
+  },
+  "item:7": {
+   "name": "마네의 메모리",
+   "icon": "Icon_Character_Piece_CH0007",
+   "kind": "piece"
+  },
   "item:80201": {
    "name": "T2 귀걸이 바우처",
    "icon": "Icon_Equipment_Piece_Earring_Tier2",
@@ -619,6 +839,11 @@
   "item:80510": {},
   "item:80511": {},
   "item:80512": {},
+  "item:9": {
+   "name": "엘리시아의 메모리",
+   "icon": "Icon_Character_Piece_CH0009",
+   "kind": "piece"
+  },
   "item:90101": {
    "name": "써지컬 귀걸이",
    "icon": "Icon_Equipment_Earring_Tier1",
@@ -5467,6 +5692,155 @@
   "levelFee": {
    "ref": "goods:1",
    "perExp": 2
+  }
+ },
+ "star": {
+  "max": 5,
+  "upgrade": {
+   "1": 30,
+   "2": 80,
+   "3": 120,
+   "4": 140
+  },
+  "upgradeFee": null,
+  "open": {
+   "1": 10,
+   "2": 20,
+   "3": 80
+  },
+  "duplicate": {
+   "1": {
+    "pieces": 1,
+    "amount": 1
+   },
+   "2": {
+    "pieces": 10,
+    "amount": 5
+   },
+   "3": {
+    "pieces": 50,
+    "amount": 30
+   }
+  },
+  "duplicateRef": "goods:6",
+  "pieces": {
+   "CH0001": "item:1",
+   "CH0002": "item:2",
+   "CH0005": "item:5",
+   "CH0006": "item:6",
+   "CH0007": "item:7",
+   "CH0009": "item:9",
+   "CH0010": "item:10",
+   "CH0011": "item:11",
+   "CH0012": "item:12",
+   "CH0013": "item:13",
+   "CH0015": "item:15",
+   "CH0016": "item:16",
+   "CH0017": "item:17",
+   "CH0019": "item:19",
+   "CH0020": "item:20",
+   "CH0021": "item:21",
+   "CH0022": "item:22",
+   "CH0023": "item:23",
+   "CH0024": "item:24",
+   "CH0025": "item:25",
+   "CH0026": "item:26",
+   "CH0027": "item:27",
+   "CH0028": "item:28",
+   "CH0029": "item:29",
+   "CH0030": "item:30",
+   "CH0031": "item:31",
+   "CH0032": "item:32",
+   "CH0034": "item:34",
+   "CH0035": "item:35",
+   "CH0036": "item:36",
+   "CH0037": "item:37",
+   "CH0038": "item:38",
+   "CH0039": "item:39",
+   "CH0042": "item:42",
+   "CH0043": "item:43",
+   "CH0046": "item:46",
+   "CH0050": "item:50",
+   "CH0053": "item:53",
+   "CH0054": "item:54",
+   "CH0056": "item:56",
+   "CH0057": "item:57",
+   "CH0062": "item:62",
+   "CH0063": "item:63",
+   "CH0068": "item:68"
+  },
+  "exchange": {
+   "ref": "goods:6",
+   "name": "메모리",
+   "resets": false,
+   "tiers": [
+    {
+     "through": 20,
+     "price": 1
+    },
+    {
+     "through": 40,
+     "price": 2
+    },
+    {
+     "through": 60,
+     "price": 3
+    },
+    {
+     "through": 80,
+     "price": 4
+    },
+    {
+     "through": null,
+     "price": 5
+    }
+   ],
+   "codes": [
+    "CH0001",
+    "CH0002",
+    "CH0005",
+    "CH0006",
+    "CH0007",
+    "CH0009",
+    "CH0010",
+    "CH0011",
+    "CH0012",
+    "CH0013",
+    "CH0015",
+    "CH0016",
+    "CH0017",
+    "CH0019",
+    "CH0020",
+    "CH0021",
+    "CH0022",
+    "CH0023",
+    "CH0024",
+    "CH0025",
+    "CH0026",
+    "CH0027",
+    "CH0028",
+    "CH0029",
+    "CH0030",
+    "CH0031",
+    "CH0034",
+    "CH0035",
+    "CH0036",
+    "CH0037",
+    "CH0038",
+    "CH0039",
+    "CH0042",
+    "CH0043",
+    "CH0046",
+    "CH0050",
+    "CH0053",
+    "CH0054",
+    "CH0056",
+    "CH0057",
+    "CH0062",
+    "CH0063",
+    "CH0068"
+   ],
+   "ladders": null
   }
  }
 }

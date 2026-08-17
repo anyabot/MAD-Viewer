@@ -4,6 +4,7 @@ import type {
   StageData, StageEntry,
 } from '@/lib/data';
 import type { Localized } from '@/lib/i18n';
+import { baseStar, memoryRef, starCap, stepCost } from './rank.ts';
 
 /** `SKILL_CATEGORIZE_TYPE` rows a player can level; the rest open with the star. */
 export const LEVELLABLE = [2, 3];
@@ -25,6 +26,7 @@ export const MATERIAL_KIND_LABEL: Record<string, Localized> = {
   equipExp: { en: 'Equipment EXP', ko: '장비 경험치' },
   equipPiece: { en: 'Equipment voucher', ko: '장비 바우처' },
   equipment: { en: 'Equipment', ko: '장비' },
+  piece: { en: 'Memories', ko: '메모리' },
 };
 
 /** A material's art straddles the item and equipment atlases. */
@@ -34,6 +36,8 @@ export type GearPlan = { tier: number; level: number };
 
 export type UnitPlan = {
   level: number;
+  /** Absent means the unit's release star — the store cannot know it, `planStar` resolves it. */
+  star?: number;
   /** Skill id -> level. A skill the plan does not name sits at 1. */
   skills: Record<string, number>;
   /** Equipment slot type -> what is in it. Tier 0 is an empty slot. */
@@ -44,6 +48,8 @@ export type UnitPlan = {
 export type UnitPlanPair = {
   current: UnitPlan; target: UnitPlan;
   listed?: boolean; hidden?: boolean; priority?: boolean;
+  /** Lifetime memory-shop purchases for this unit — what the price ladder counts. */
+  bought?: number;
 };
 
 export type Bill = {
@@ -54,6 +60,50 @@ export type Bill = {
 
 export function emptyPlan(level = 1): UnitPlan {
   return { level, skills: {}, gear: {} };
+}
+
+/** A target below the current state is not a plan. */
+export function atLeastCurrent(pair: UnitPlanPair): UnitPlanPair {
+  const { current, target } = pair;
+  // Both sides default to the release star, which only the caller knows, so an
+  // unset side stays unset rather than being pinned to a number here.
+  const star = current.star == null ? target.star
+    : Math.max(target.star ?? current.star, current.star);
+  const skills = { ...target.skills };
+  for (const [id, level] of Object.entries(current.skills)) {
+    if ((skills[id] ?? 1) < level) skills[id] = level;
+  }
+  const gear = { ...target.gear };
+  for (const [slot, worn] of Object.entries(current.gear)) {
+    const want = gear[slot];
+    if (!want || want.tier < worn.tier
+      || (want.tier === worn.tier && want.level < worn.level)) {
+      gear[slot] = { ...worn };
+    }
+  }
+  return {
+    ...pair,
+    target: {
+      level: Math.max(target.level, current.level),
+      ...(star == null ? {} : { star }),
+      skills,
+      gear,
+    },
+  };
+}
+
+/** One edit to one side, coerced. The store and the dialog's draft share it. */
+export function applySide(
+  pair: UnitPlanPair, side: 'current' | 'target', update: (plan: UnitPlan) => UnitPlan,
+): UnitPlanPair {
+  const next = { ...pair, [side]: update(pair[side]) };
+  return side === 'current' ? atLeastCurrent(next) : next;
+}
+
+/** A plan with no star recorded sits at the unit's release star, never at zero. */
+export function planStar(plan: UnitPlan | undefined, entry: CharacterEntry): number {
+  const base = baseStar(entry);
+  return Math.max(base, plan?.star ?? base);
 }
 
 export function emptyBill(): Bill {
@@ -183,6 +233,11 @@ export function unitBill(
     const to = Math.min(Math.max(target.skills[String(id)] ?? 1, from), cap);
     addCosts(bill, skillCost(growth, entry.skillMaterialGroup, skill.categorize, from, to));
   }
+
+  const ref = memoryRef(growth.star, entry.code);
+  const stars = stepCost(growth.star, planStar(current, entry),
+    Math.min(planStar(target, entry), starCap(growth.star)));
+  if (ref && stars > 0) bill.materials[ref] = (bill.materials[ref] ?? 0) + stars;
 
   for (const slot of entry.equipmentSlots ?? []) {
     const from = current.gear[String(slot)] ?? { tier: 0, level: 1 };

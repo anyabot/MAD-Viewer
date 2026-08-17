@@ -100,6 +100,10 @@
    64,
    64
   ],
+  "T_DialogFX_emotion_36": [
+   128,
+   128
+  ],
   "T_FX_trail_07": [
    128,
    256
@@ -11447,6 +11451,168 @@
     }
    ]
   },
+  "surprise4": {
+   "slot": "OutsideHead",
+   "height": 1.5,
+   "aspect": 0.9844,
+   "emitters": [
+    {
+     "name": "emotion (3)",
+     "sheet": "T_DialogFX_emotion_36",
+     "tiles": [
+      1,
+      1
+     ],
+     "position": [
+      0.0,
+      -0.5
+     ],
+     "angle": 0.0,
+     "scale": [
+      1.0,
+      1.0
+     ],
+     "duration": 5.0,
+     "looping": false,
+     "startDelay": {
+      "m": 0,
+      "s": 0.0
+     },
+     "simulationSpeed": 1.0,
+     "maxParticles": 1000,
+     "align": 2,
+     "pivot": [
+      -0.5,
+      0.5
+     ],
+     "start": {
+      "lifetime": {
+       "m": 0,
+       "s": 0.2
+      },
+      "speed": {
+       "m": 0,
+       "s": 0.0
+      },
+      "size": {
+       "m": 0,
+       "s": 1.5
+      },
+      "rotation": {
+       "m": 0,
+       "s": -0.08727
+      },
+      "color": {
+       "m": 0,
+       "c": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ]
+      },
+      "gravity": {
+       "m": 0,
+       "s": 0.0
+      },
+      "flipRotation": 0.0,
+      "sizeY": {
+       "m": 0,
+       "s": 1.7
+      }
+     },
+     "emission": {
+      "rate": {
+       "m": 0,
+       "s": 0.0
+      },
+      "bursts": [
+       {
+        "t": 0.0,
+        "n": {
+         "m": 0,
+         "s": 1.0
+        },
+        "cycles": 1,
+        "interval": 0.4,
+        "probability": 1.0
+       }
+      ]
+     },
+     "size": {
+      "curve": {
+       "m": 1,
+       "s": 1.0,
+       "k": [
+        [
+         0.0,
+         0.6973,
+         0.3027,
+         0.3027
+        ],
+        [
+         1.0,
+         1.0,
+         0.3027,
+         0.3027
+        ]
+       ]
+      },
+      "y": {
+       "m": 1,
+       "s": 1.0,
+       "k": [
+        [
+         0.0,
+         0.0,
+         0.0,
+         1.0
+        ],
+        [
+         1.0,
+         1.0,
+         1.0,
+         0.0
+        ]
+       ]
+      },
+      "separateAxes": false
+     },
+     "color": {
+      "gradient": {
+       "m": 1,
+       "g": {
+        "c": [
+         [
+          0.70001,
+          1.0,
+          1.0,
+          1.0
+         ],
+         [
+          1.0,
+          1.0,
+          0.55858,
+          0.0
+         ]
+        ],
+        "a": [
+         [
+          0.70001,
+          1.0
+         ],
+         [
+          1.0,
+          0.0
+         ]
+        ],
+        "f": 0
+       }
+      }
+     }
+    }
+   ]
+  },
   "sweat": {
    "slot": "InsideHead",
    "height": 1.0,
@@ -15549,7 +15715,7 @@
    }
   },
   "SC0201": {
-   "look": "Left",
+   "look": "Right",
    "bones": {
     "Mouth": "mouth",
     "OutsideHead": "face",
@@ -15557,16 +15723,16 @@
    },
    "offsets": {
     "Mouth": [
-     0.0,
-     0.0
+     0.3588,
+     -0.4192
     ],
     "OutsideHead": [
-     0.0,
-     0.0
+     4.2826,
+     4.3281
     ],
     "InsideHead": [
-     0.0,
-     0.0
+     -4.1012,
+     4.7954
     ]
    }
   },

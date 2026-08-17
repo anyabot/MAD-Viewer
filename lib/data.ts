@@ -631,6 +631,34 @@ export type GrowthData = {
     expItems: Record<string, number>;
     levelFee: LevelFee;
   };
+  star: StarGrowth;
+};
+
+/** A purchase tier holds through that lifetime count; a null `through` is the last, uncapped one. */
+export type ExchangeTier = { through: number | null; price: number };
+
+/** Memories, the second economy: a unit's own memory item plus the currency the shop takes. */
+export type StarGrowth = {
+  max: number;
+  /** Star being left -> memories it costs. */
+  upgrade: Record<string, number>;
+  upgradeFee: Record<string, MaterialCost> | null;
+  /** Default star -> memories to unlock an unowned unit. */
+  open: Record<string, number>;
+  /** Default star -> what one duplicate pays. */
+  duplicate: Record<string, { pieces: number; amount: number }>;
+  duplicateRef: string | null;
+  /** Character code -> its memory item's ref. */
+  pieces: Record<string, string>;
+  exchange: {
+    ref: string | null;
+    name: string;
+    resets: boolean;
+    tiers: ExchangeTier[];
+    codes: string[];
+    /** Only the characters priced off the shared ladder. */
+    ladders: Record<string, ExchangeTier[]> | null;
+  } | null;
 };
 
 export function loadGrowth(): Promise<GrowthData> {

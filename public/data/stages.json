@@ -756,6 +756,7 @@
     "en": "Cash Crush Rush"
    },
    "order": 1005,
+   "banner": "EvCCR_Lobby_Logo",
    "from": "2026-08-13",
    "to": "2026-09-03"
   },
@@ -818,7 +819,8 @@
   },
   "raid": {
    "key": "raid",
-   "mode": "raid"
+   "mode": "raid",
+   "image": "Event_Raid_NP0799_Bg"
   }
  },
  "subMissions": {

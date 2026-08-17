@@ -6,6 +6,8 @@ import Layout from '@/components/Layout';
 import { restoreLang } from '@/lib/i18n';
 import { restoreFarm } from '@/lib/farmStore';
 import { restoreCollection } from '@/lib/collectionStore';
+import { restoreSeen } from '@/lib/seenStore';
+import { ChangelogDialog } from '@/components/changelog';
 
 const theme = extendTheme({
   config: { initialColorMode: 'dark', useSystemColorMode: false },
@@ -158,6 +160,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreLang, []);
   useEffect(restoreFarm, []);
   useEffect(restoreCollection, []);
+  useEffect(restoreSeen, []);
   return (
     <ChakraProvider theme={theme}>
       <Head>
@@ -165,6 +168,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Layout>
+        <ChangelogDialog />
         <Component {...pageProps} />
       </Layout>
     </ChakraProvider>
