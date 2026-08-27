@@ -20,7 +20,7 @@ import {
 } from '@/lib/effects';
 import { characterIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
-import { text, useLang, useT, type Lang } from '@/lib/i18n';
+import { dataText, text, useLang, useT, type Lang } from '@/lib/i18n';
 import {
   loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type IconManifest, type SkillOp, type SkinListEntry,
@@ -250,7 +250,9 @@ function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot, lang }: 
             borderRadius="sm" />
         </WrapItem>
         <WrapItem>
-          <Text fontSize="sm" fontWeight="bold">{skill.name}</Text>
+          <Text fontSize="sm" fontWeight="bold">
+            {dataText(lang, skill.name, skill.nameEn)}
+          </Text>
         </WrapItem>
         {showSlot && (
           <WrapItem>
@@ -347,12 +349,12 @@ function OpChip({ op, ctx, data, icons, lang }: {
   );
 }
 
-// Skill text carries the game's own colour markup.
+// Skill text carries the game's own colour and `<br>` markup.
 function GameText({ text, bold }: { text: string; bold?: boolean }) {
   return (
     <Text as="span" fontSize="xs" fontWeight={bold ? 'bold' : undefined}>
       {colorRuns(text).map((run, i) => (
-        <Text as="span" key={i} color={run.color}>{run.text}</Text>
+        run.break ? <br key={i} /> : <Text as="span" key={i} color={run.color}>{run.text}</Text>
       ))}
     </Text>
   );

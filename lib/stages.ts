@@ -85,8 +85,12 @@ export function dropEntry(data: StageData, drop: StageDrop): DropEntry | null {
   return drop.ref ? data.drops[drop.ref] ?? null : null;
 }
 
-export function dropName(data: StageData, drop: StageDrop): string {
-  return dropEntry(data, drop)?.name || `${drop.type} ${drop.id}`;
+export function dropName(
+  data: StageData, drop: StageDrop, lang: Lang = 'en',
+): string {
+  const entry = dropEntry(data, drop);
+  const both = lang === 'en' ? [entry?.nameEn, entry?.name] : [entry?.name, entry?.nameEn];
+  return both.find(Boolean) || `${drop.type} ${drop.id}`;
 }
 
 export function zoneOf(data: StageData, stage: StageEntry): StageZone | null {

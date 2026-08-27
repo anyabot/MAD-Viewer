@@ -30,6 +30,89 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-08-27',
+    title: { en: 'Estelle, and English', ko: '에스텔, 그리고 영어' },
+    entries: [
+      {
+        kind: 'unit',
+        code: 'CH0033',
+        text: { en: 'Estelle added.', ko: '에스텔 추가' },
+      },
+      {
+        kind: 'scene',
+        code: 'CH0033',
+        text: {
+          en: 'Estelle’s skins, scenes and voice stay locked for 14 days, as the existing policy has it.',
+          ko: '에스텔의 스킨·장면·보이스는 기존 정책대로 14일간 잠금',
+        },
+      },
+      {
+        kind: 'scene',
+        code: 'CH0043',
+        text: {
+          en: 'Lafine’s scenes unlocked.',
+          ko: '라피네 장면 잠금 해제',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'The game’s own English text everywhere, not just names.',
+          ko: '이름 외 게임 자체 영어 텍스트 전체 적용',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Skill levels, equipment slots and lobby subtitles in both languages.',
+          ko: '스킬 레벨별 설명·장비 슬롯·로비 자막 양쪽 언어 지원',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Stage search matches English names.',
+          ko: '스테이지 검색 영어 이름 지원',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'A complete button on every plan row.',
+          ko: '계획 항목별 완료 버튼 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'MADness in a Dream event stages.',
+          ko: 'MADness in a Dream 이벤트 스테이지 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Nemesis season 3, Umbra Dei.',
+          ko: '네메시스 3시즌 움브라 데이 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Event history art on the stage list.',
+          ko: '스테이지 목록 이벤트 기록 아트 추가',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Unclosed colour tags and line breaks showed as raw markup.',
+          ko: '닫히지 않은 색상 태그·줄바꿈 태그가 원문 그대로 표시되던 문제를 수정했습니다.',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-08-17',
     title: { en: 'The Planner', ko: '플래너' },
     entries: [

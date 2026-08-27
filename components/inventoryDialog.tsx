@@ -9,7 +9,7 @@ import { AmountField, Stepper } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
 import { MATERIAL_ICON_GROUPS, MATERIAL_KIND_LABEL } from '@/lib/farm';
-import { pick, useLang, useT } from '@/lib/i18n';
+import { dataText, pick, useLang, useT } from '@/lib/i18n';
 import type { GrowthData, IconManifest } from '@/lib/data';
 
 const materialGroup = (icons: IconManifest | null, name?: string | null) =>
@@ -38,7 +38,7 @@ export function InventoryDialog({ growth, icons, isOpen, onClose }: {
       const kind = material.kind ?? 'goods';
       out.set(kind, [...(out.get(kind) ?? []), {
         ref,
-        name: material.name || ref,
+        name: dataText(lang, material.name, material.nameEn) || ref,
         icon: material.icon ?? null,
         grade: material.grade ?? null,
         big: kind === 'goods' || pools.has(ref),
@@ -48,7 +48,7 @@ export function InventoryDialog({ growth, icons, isOpen, onClose }: {
       rows.sort((a, b) => Number(pools.has(b.ref)) - Number(pools.has(a.ref)));
     }
     return [...out.entries()].sort((a, b) => a[0].localeCompare(b[0]));
-  }, [growth]);
+  }, [growth, lang]);
 
   const total = byKind.reduce((n, [, rows]) => n + rows.length, 0);
   const counted = byKind.reduce((n, [, rows]) =>

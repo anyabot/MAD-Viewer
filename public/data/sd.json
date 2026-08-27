@@ -49762,6 +49762,237 @@
     ]
    }
   },
+  "CH0033": {
+   "code": "CH0033",
+   "name": "Estelle",
+   "archive": "sd_ch0033",
+   "skel": "SD_CH0033.skel",
+   "atlas": "SD_CH0033.atlas",
+   "textures": [
+    "SD_CH0033.png"
+   ],
+   "animations": [
+    "00_basic",
+    "00_common",
+    "00_damage",
+    "00_damage_in",
+    "00_damage_loop",
+    "00_damage_out",
+    "00_death",
+    "00_idle",
+    "00_knockdown",
+    "00_knockdown_in",
+    "00_knockdown_loop",
+    "00_knockdown_out",
+    "00_lose",
+    "00_lose_loop",
+    "00_prepare",
+    "00_run",
+    "00_skill_01",
+    "00_skill_02",
+    "00_stun",
+    "00_ulti",
+    "00_ulti_cutin",
+    "00_win",
+    "00_win_levelup",
+    "00_win_loop"
+   ],
+   "bounds": {
+    "x": -473.2679,
+    "y": -104.5,
+    "width": 709.7679,
+    "height": 880.0714
+   },
+   "dataScale": 0.009999999776482582,
+   "ppu": 55.0,
+   "defaultAnimation": "00_idle",
+   "loop": true,
+   "cutin": {
+    "animation": "00_ulti_cutin",
+    "duration": 9.666666984558105,
+    "loop": false,
+    "camera": [
+     {
+      "name": "StageCamera",
+      "start": 0.0,
+      "duration": 0.06666666666666667,
+      "timeScale": 1.0
+     },
+     {
+      "name": "CharacterCamera",
+      "start": 0.06666666666666667,
+      "duration": 9.50000031789144,
+      "timeScale": 1.0
+     },
+     {
+      "name": "StageCamera",
+      "start": 9.566666984558106,
+      "duration": 0.09999999999999964,
+      "timeScale": 1.0
+     }
+    ],
+    "audio": [
+     {
+      "name": "SFX_CH0033_Ultimate_Skill",
+      "start": 0.0,
+      "duration": 9.666666984558105,
+      "timeScale": 1.0
+     }
+    ],
+    "activations": [],
+    "effects": [],
+    "shakes": [],
+    "tracks": [
+     {
+      "name": "SpineAnimationStateTrack",
+      "parent": 4999322581682452244,
+      "clips": [
+       {
+        "name": "00_ulti_cutin",
+        "start": 0.0,
+        "duration": 9.666666984558105,
+        "timeScale": 1.0,
+        "asset": "SpineAnimationStateClip"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "imation_TrackAnimation_Track",
+      "parent": 4999322581682452244,
+      "clips": [],
+      "infiniteClip": "Recorded"
+     },
+     {
+      "name": "Cinemachine_Track",
+      "parent": 4999322581682452244,
+      "clips": [
+       {
+        "name": "CharacterCamera",
+        "start": 0.06666666666666667,
+        "duration": 9.50000031789144,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot"
+       },
+       {
+        "name": "StageCamera",
+        "start": 9.566666984558106,
+        "duration": 0.09999999999999964,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot"
+       },
+       {
+        "name": "StageCamera",
+        "start": 0.0,
+        "duration": 0.06666666666666667,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "CharacterCameraAnimationTrack",
+      "parent": 4999322581682452244,
+      "clips": [],
+      "infiniteClip": "Recorded (1)"
+     },
+     {
+      "name": "Post Processing Track",
+      "parent": 4999322581682452244,
+      "clips": [
+       {
+        "name": "PostProcessingPlayableClip",
+        "start": 1.2,
+        "duration": 1.2666666666666668,
+        "timeScale": 1.0,
+        "asset": "PostProcessingPlayableClip"
+       },
+       {
+        "name": "PostProcessingPlayableClip",
+        "start": 2.466666666666667,
+        "duration": 0.7999999999999998,
+        "timeScale": 1.0,
+        "asset": "PostProcessingPlayableClip"
+       },
+       {
+        "name": "PostProcessingPlayableClip",
+        "start": 3.2666666666666666,
+        "duration": 0.6333333333333333,
+        "timeScale": 1.0,
+        "asset": "PostProcessingPlayableClip(Clone)(Clone)"
+       },
+       {
+        "name": "PostProcessingPlayableClip",
+        "start": 3.9,
+        "duration": 0.6000000000000001,
+        "timeScale": 1.0,
+        "asset": "PostProcessingPlayableClip(Clone)(Clone)(Clone)(Clone)"
+       },
+       {
+        "name": "PostProcessingPlayableClip",
+        "start": 4.5,
+        "duration": 0.5666666666666664,
+        "timeScale": 1.0,
+        "asset": "PostProcessingPlayableClip(Clone)(Clone)(Clone)(Clone)"
+       },
+       {
+        "name": "PostProcessingPlayableClip",
+        "start": 5.066666666666666,
+        "duration": 0.3333333333333339,
+        "timeScale": 1.0,
+        "asset": "PostProcessingPlayableClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)"
+       },
+       {
+        "name": "PostProcessingPlayableClip",
+        "start": 5.4,
+        "duration": 3.4333333333333336,
+        "timeScale": 1.0,
+        "asset": "PostProcessingPlayableClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)"
+       },
+       {
+        "name": "PostProcessingPlayableClip",
+        "start": 8.6,
+        "duration": 0.36666666666666714,
+        "timeScale": 1.0,
+        "asset": "PostProcessingPlayableClip"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "Audio Track",
+      "parent": 4999322581682452244,
+      "clips": [
+       {
+        "name": "SFX_CH0033_Ultimate_Skill",
+        "start": 0.0,
+        "duration": 9.666666984558105,
+        "timeScale": 1.0,
+        "asset": "AudioPlayableAsset"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "Random Voice Marker Track",
+      "parent": 4999322581682452244,
+      "clips": [],
+      "infiniteClip": null
+     }
+    ],
+    "voiceMarkers": [
+     {
+      "time": 0.0333333,
+      "fast": true
+     },
+     {
+      "time": 0.0333333,
+      "fast": false
+     }
+    ]
+   }
+  },
   "CH0034": {
    "code": "CH0034",
    "name": "Theta",

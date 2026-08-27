@@ -82,7 +82,7 @@ export type SdIndex = {
   characters: Record<string, SdCharacter>;
 };
 
-// The Korean columns are the finished content; `unfinished` is reference only.
+// `*En` is the game's own English column, null where that row is untranslated.
 export type CharacterEntry = {
   code: string;
   /** No `Character_Base` row: a resources row and a prefab, nothing else. */
@@ -94,15 +94,16 @@ export type CharacterEntry = {
   /** The id the scripts address this character by, e.g. `dandelion`. */
   actorId?: string;
   name: string;
-  /** Playable roster only; the game's English column holds Japanese for NPCs. */
   nameEn: string | null;
   desc: string;
+  descEn: string | null;
   iconPath: string | null;
   resourcesId: string | null;
   voiceGroupId: string | null;
-  unfinished: { eng: string; jpn: string };
   artist: string | null;
+  artistEn: string | null;
   cv: string | null;
+  cvEn: string | null;
   id?: number;
   characterType?: number;
   nameKey?: string;
@@ -116,15 +117,20 @@ export type CharacterEntry = {
   charGrade?: number;
   defaultStar?: number;
   nameUppercaseKey?: string;
-  /** All-caps English gloss; the independent source that fixes `nameEn`. */
+  /** All-caps English gloss; a second, independent romanisation. */
   nameUppercase?: string | null;
   birthday?: number[] | null;
   // absent while the row is still a placeholder
   hobby?: string | null;
+  hobbyEn?: string | null;
   specialty?: string | null;
+  specialtyEn?: string | null;
   likes?: string | null;
+  likesEn?: string | null;
   comment?: string | null;
+  commentEn?: string | null;
   birthdayComment?: string | null;
+  birthdayCommentEn?: string | null;
   /** Three liked gift item ids, indexing `CharacterData.items`. */
   giftItems?: number[];
   /** The regions dates are chosen from; their venues are `places[division]`. */
@@ -150,6 +156,7 @@ export type CharacterEntry = {
 // Alternatives run in `order`; condition 0 is unconditional, 20 and 21 test `conditionValue`.
 export type BattlePattern = {
   name: string | null;
+  nameEn: string | null;
   order: number;
   condition: number;
   conditionValue: string[];
@@ -174,6 +181,7 @@ export type EquipmentTier = {
 // `icon` is the empty slot's art; a tier carries the filled art.
 export type EquipmentEntry = {
   name: string | null;
+  nameEn: string | null;
   icon: string | null;
   tiers?: EquipmentTier[];
 };
@@ -195,7 +203,9 @@ export type StatCaps = {
 // Magnitude and duration are carried per skill level.
 export type BuffEntry = {
   name: string | null;
+  nameEn: string | null;
   desc: string | null;
+  descEn: string | null;
   icon: string | null;
   /** 1 buff, 2 debuff, 3 crowd control, 0 uncategorised. */
   categorize: number;
@@ -206,15 +216,20 @@ export type BuffEntry = {
 
 export type ItemEntry = {
   name: string | null;
+  nameEn: string | null;
   desc: string | null;
+  descEn: string | null;
   flavor: string | null;
+  flavorEn: string | null;
   icon: string | null;
 };
 
 export type PlaceEntry = {
   id: number;
   name: string | null;
+  nameEn: string | null;
   desc: string | null;
+  descEn: string | null;
   thumbnail: string | null;
 };
 
@@ -228,6 +243,7 @@ export type SkillMagnitude = {
 /** `name` is null for the internal markers a skill sets and then clears. */
 export type SkillDetailValue = {
   name: string | null;
+  nameEn: string | null;
   id: string;
 };
 
@@ -266,6 +282,7 @@ export type SkillOp = {
   gate?: SkillGate;
   // duration operations only
   name?: string | null;
+  nameEn?: string | null;
   icon?: string | null;
   /** 1 buff, 2 debuff, 3 crowd control, 0 uncategorised. */
   categorize?: number;
@@ -331,7 +348,9 @@ export type SkillBehaviour = {
 // One pre-rendered `desc` per skill level, carrying the game's `<color=#rrggbb>` markup.
 export type SkillEntry = {
   name: string | null;
+  nameEn: string | null;
   desc: string[];
+  descEn: string[] | null;
   /** The states it applies, one list per skill level; aligned with `desc`. */
   buffs: BuffEntry[][];
   icon: string | null;
@@ -349,7 +368,7 @@ export type SkillEntry = {
   behaviour?: SkillBehaviour;
 };
 
-// `icons` is every icon column in preference order; `name` is Korean and `en` is generated outside the element rows.
+// `icons` is every icon column in preference order.
 export type TypeEntry = {
   name: string;
   en?: string | null;
@@ -378,7 +397,7 @@ export type CharacterData = {
   statTypes: Record<string, StatTypeEntry>;
   statCaps: StatCaps;
   /** Index 0 is affection level 1. */
-  loveTitles: (string | null)[];
+  loveTitles: { name: string | null; en: string | null }[];
   /** `skillSetGroup` -> star grade -> the skill ids that grade has. */
   skillSets: Record<string, Record<string, number[]>>;
   skills: Record<string, SkillEntry>;
@@ -388,6 +407,7 @@ export type CharacterData = {
 export type StageEnemy = {
   code: string;
   name: string | null;
+  nameEn: string | null;
   iconPath: string | null;
   roleType?: number | null;
   attributeType?: number | null;
@@ -437,6 +457,7 @@ export type StageDrop = {
 
 export type DropEntry = {
   name: string | null;
+  nameEn: string | null;
   icon: string | null;
   grade?: number;
 };
@@ -595,6 +616,7 @@ export type LevelFee = { ref: string; perExp: number } | null;
 
 export type GrowthMaterial = {
   name?: string | null;
+  nameEn?: string | null;
   icon?: string | null;
   /** What the tracker groups it under: `goods`, `skill`, `equipPiece`, … */
   kind?: string;

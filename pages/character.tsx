@@ -30,7 +30,7 @@ import {
   statGrades, statText, typeIcons, typeLabel, typeOf, typeTint, typeValue,
   type EquipInput, type TypeTable,
 } from '@/lib/characters';
-import { text, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
+import { dataText, text, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
   KIND_COLOR, KIND_LABEL, loadCharacters, loadGrowth, loadIcons, loadSdIndex, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest,
@@ -122,7 +122,9 @@ export default function CharacterPage() {
         <VStack align="stretch" spacing={3} minW={0}>
           {entry.desc && (
             <Panel title={t('tabProfile')}>
-              <Text fontSize="sm" whiteSpace="pre-wrap">{entry.desc}</Text>
+              <Text fontSize="sm" whiteSpace="pre-wrap">
+                {dataText(lang, entry.desc, entry.descEn)}
+              </Text>
             </Panel>
           )}
 
@@ -383,11 +385,11 @@ function Infobox({ entry, data, icons, accent, skins }: {
 
   const facts: [UiKey, string | null | undefined][] = [
     ['rowBirthday', birthdayText(entry, lang)],
-    ['rowArtist', entry.artist],
-    ['rowCv', entry.cv],
-    ['rowHobby', entry.hobby],
-    ['rowSpecialty', entry.specialty],
-    ['rowLikes', entry.likes],
+    ['rowArtist', dataText(lang, entry.artist, entry.artistEn)],
+    ['rowCv', dataText(lang, entry.cv, entry.cvEn)],
+    ['rowHobby', dataText(lang, entry.hobby, entry.hobbyEn)],
+    ['rowSpecialty', dataText(lang, entry.specialty, entry.specialtyEn)],
+    ['rowLikes', dataText(lang, entry.likes, entry.likesEn)],
   ];
   for (const [key, value] of facts) {
     if (value) rows.push({ label: t(key), node: <Text>{value}</Text> });
@@ -428,13 +430,15 @@ function Infobox({ entry, data, icons, accent, skins }: {
             {entry.comment && (
               <Box>
                 <Text fontSize="xs" color="gray.500">{t('statusMessage')}</Text>
-                <Text>{entry.comment}</Text>
+                <Text>{dataText(lang, entry.comment, entry.commentEn)}</Text>
               </Box>
             )}
             {entry.birthdayComment && (
               <Box>
                 <Text fontSize="xs" color="gray.500">{t('birthdayMessage')}</Text>
-                <Text>{entry.birthdayComment}</Text>
+                <Text>
+                  {dataText(lang, entry.birthdayComment, entry.birthdayCommentEn)}
+                </Text>
               </Box>
             )}
           </VStack>
@@ -479,6 +483,7 @@ function Gifts({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
   const t = useT();
+  const lang = useLang();
   const gifts = giftsOf(entry, data.items);
   if (!gifts.length) return null;
   return (
@@ -488,9 +493,11 @@ function Gifts({ entry, data, icons }: {
           <HStack key={gift.id} align="start" spacing={2}>
             <GameIcon manifest={icons} group="item" name={gift.icon} size={8} reserve={false} />
             <Box minW={0}>
-              <Text fontSize="sm">{gift.name ?? gift.id}</Text>
+              <Text fontSize="sm">{dataText(lang, gift.name, gift.nameEn) || gift.id}</Text>
               {gift.flavor && (
-                <Text fontSize="xs" color="gray.500" noOfLines={2}>{gift.flavor}</Text>
+                <Text fontSize="xs" color="gray.500" noOfLines={2}>
+                  {dataText(lang, gift.flavor, gift.flavorEn)}
+                </Text>
               )}
             </Box>
           </HStack>
@@ -517,11 +524,14 @@ function DateVenues({ entry, data, icons }: {
             <Wrap spacing={2}>
               {places.map((place) => (
                 <WrapItem key={place.id}>
-                  <VStack spacing={1} w="72px" title={place.desc ?? undefined}>
+                  <VStack spacing={1} w="72px"
+                    title={dataText(lang, place.desc, place.descEn) || undefined}>
                     <GameIcon manifest={icons} group="place" name={place.thumbnail}
                       size="auto" w="72px" h="44px" borderRadius="sm" reserve={false} />
                     <Text fontSize="0.65rem" color="gray.400" noOfLines={2}
-                      textAlign="center">{place.name ?? place.id}</Text>
+                      textAlign="center">
+                      {dataText(lang, place.name, place.nameEn) || place.id}
+                    </Text>
                   </VStack>
                 </WrapItem>
               ))}
@@ -669,7 +679,8 @@ function StatCalculator({ entry, data, icons }: {
             <Dial label={t('dialLevel')} value={level} min={1} max={caps.level}
               onChange={setLevel} />
             <Dial label={t('dialAffection')} value={love} min={1} max={caps.love}
-              note={data.loveTitles[love - 1]} onChange={setLove} />
+              note={dataText(lang, data.loveTitles[love - 1]?.name,
+                data.loveTitles[love - 1]?.en)} onChange={setLove} />
           </VStack>
         </Panel>
 

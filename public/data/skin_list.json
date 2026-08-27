@@ -165,8 +165,8 @@
     ]
    },
    "bytes": {
-    "google": 7925379,
-    "onestore": 7948678
+    "google": 7891829,
+    "onestore": 7913574
    }
   },
   {
@@ -226,8 +226,8 @@
     "added": []
    },
    "bytes": {
-    "google": 5761229,
-    "onestore": 5765618
+    "google": 5792572,
+    "onestore": 5795890
    }
   },
   {
@@ -513,8 +513,8 @@
     ]
    },
    "bytes": {
-    "google": 9484756,
-    "onestore": 9375965
+    "google": 9416617,
+    "onestore": 9305695
    }
   },
   {
@@ -633,22 +633,22 @@
    "divergeEdit": {
     "censorship": true,
     "mechanisms": [
-     "dropped",
-     "added"
+     "rename",
+     "dropped"
     ],
-    "renamed": [],
+    "renamed": [
+     "oppai_L",
+     "oppai_R"
+    ],
     "dropped": [
      "oppai_L",
      "oppai_R"
     ],
-    "added": [
-     "oppai_L_censor",
-     "oppai_R_censor"
-    ]
+    "added": []
    },
    "bytes": {
-    "google": 7004693,
-    "onestore": 6969253
+    "google": 7007119,
+    "onestore": 6971025
    }
   },
   {
@@ -738,7 +738,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 6205100
+    "onestore": 6205659
    }
   },
   {
@@ -1108,7 +1108,7 @@
     "google",
     "onestore"
    ],
-   "animations": 35,
+   "animations": 36,
    "faces": 0,
    "bodyGroups": [
     "10_basic",
@@ -1146,8 +1146,8 @@
     "added": []
    },
    "bytes": {
-    "google": 11760214,
-    "onestore": 11825801
+    "google": 11669132,
+    "onestore": 11728558
    }
   },
   {
@@ -1376,7 +1376,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4474254
+    "onestore": 4477705
    }
   },
   {
@@ -1396,7 +1396,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3948328
+    "onestore": 3967134
    }
   },
   {
@@ -1416,7 +1416,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3537815
+    "onestore": 3546188
    }
   },
   {
@@ -1436,7 +1436,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4283404
+    "onestore": 4276411
    }
   },
   {
@@ -1456,7 +1456,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4454099
+    "onestore": 4484164
    }
   },
   {
@@ -1492,8 +1492,8 @@
     ]
    },
    "bytes": {
-    "google": 3379377,
-    "onestore": 3267265
+    "google": 3377159,
+    "onestore": 3264089
    }
   },
   {
@@ -1530,8 +1530,8 @@
     "added": []
    },
    "bytes": {
-    "google": 4255426,
-    "onestore": 4259817
+    "google": 4221344,
+    "onestore": 4225929
    }
   },
   {
@@ -1551,7 +1551,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3792820
+    "onestore": 3800706
    }
   },
   {
@@ -1571,7 +1571,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4939109
+    "onestore": 4974029
    }
   },
   {
@@ -1591,7 +1591,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4036637
+    "onestore": 4063073
    }
   },
   {
@@ -1611,7 +1611,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3288388
+    "onestore": 3292070
    }
   },
   {
@@ -1631,7 +1631,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3858756
+    "onestore": 3857379
    }
   },
   {
@@ -1651,7 +1651,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3898018
+    "onestore": 3936198
    }
   },
   {
@@ -1671,7 +1671,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3922032
+    "onestore": 3941718
    }
   },
   {
@@ -1692,7 +1692,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 5247361
+    "onestore": 5278037
    }
   },
   {
@@ -1712,7 +1712,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4181332
+    "onestore": 4166755
    }
   },
   {
@@ -1732,7 +1732,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4000404
+    "onestore": 4028545
    }
   },
   {
@@ -1752,7 +1752,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3636733
+    "onestore": 3624006
    }
   },
   {
@@ -1772,7 +1772,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4590051
+    "onestore": 4571635
    }
   },
   {
@@ -1793,7 +1793,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4646362
+    "onestore": 4641858
    }
   },
   {
@@ -1813,7 +1813,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3729007
+    "onestore": 3747453
    }
   },
   {
@@ -1848,8 +1848,8 @@
     "added": []
    },
    "bytes": {
-    "google": 4204734,
-    "onestore": 4214001
+    "google": 4216714,
+    "onestore": 4225811
    }
   },
   {
@@ -1869,7 +1869,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4638659
+    "onestore": 4630001
    }
   },
   {
@@ -1889,7 +1889,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4905585
+    "onestore": 4898494
    }
   },
   {
@@ -1909,7 +1909,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3764548
+    "onestore": 3791932
    }
   },
   {
@@ -1930,7 +1930,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3971279
+    "onestore": 3985088
    }
   },
   {
@@ -1951,7 +1951,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4415462
+    "onestore": 4439229
    }
   },
   {
@@ -1972,7 +1972,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3561581
+    "onestore": 3551890
    }
   },
   {
@@ -1992,7 +1992,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3888962
+    "onestore": 3889947
    }
   },
   {
@@ -2032,8 +2032,8 @@
     "added": []
    },
    "bytes": {
-    "google": 3927461,
-    "onestore": 3942056
+    "google": 3919401,
+    "onestore": 3929233
    }
   },
   {
@@ -2053,7 +2053,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4438343
+    "onestore": 4468941
    }
   },
   {
@@ -2094,8 +2094,8 @@
     ]
    },
    "bytes": {
-    "google": 4069816,
-    "onestore": 4072835
+    "google": 4065943,
+    "onestore": 4068792
    }
   },
   {
@@ -2115,7 +2115,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4996508
+    "onestore": 5104480
    }
   },
   {
@@ -2136,7 +2136,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4893874
+    "onestore": 4891121
    }
   },
   {
@@ -2156,7 +2156,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4491058
+    "onestore": 4506809
    }
   },
   {
@@ -2177,7 +2177,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4345087
+    "onestore": 4346226
    }
   },
   {
@@ -2198,7 +2198,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3987318
+    "onestore": 3977359
    }
   },
   {
@@ -2218,7 +2218,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4007109
+    "onestore": 4001339
    }
   },
   {
@@ -2238,7 +2238,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 5256650
+    "onestore": 5250865
    }
   },
   {
@@ -2258,7 +2258,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4051943
+    "onestore": 4051089
    }
   },
   {
@@ -2278,7 +2278,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4271267
+    "onestore": 4287108
    }
   },
   {
@@ -2298,7 +2298,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4531318
+    "onestore": 4555359
    }
   },
   {
@@ -2318,7 +2318,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4230270
+    "onestore": 4236542
    }
   },
   {
@@ -2369,8 +2369,8 @@
     ]
    },
    "bytes": {
-    "google": 3377749,
-    "onestore": 3438291
+    "google": 3382789,
+    "onestore": 3440645
    }
   },
   {
@@ -2390,7 +2390,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3004541
+    "onestore": 3046804
    }
   },
   {
@@ -2411,7 +2411,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3289481
+    "onestore": 3335711
    }
   },
   {
@@ -2431,7 +2431,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3528279
+    "onestore": 3576917
    }
   },
   {
@@ -2451,7 +2451,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3416243
+    "onestore": 3422225
    }
   },
   {
@@ -2471,7 +2471,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3339954
+    "onestore": 3353027
    }
   },
   {
@@ -2491,7 +2491,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3565408
+    "onestore": 3606784
    }
   },
   {
@@ -2511,7 +2511,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 2888135
+    "onestore": 2905696
    }
   },
   {
@@ -2531,7 +2531,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3416421
+    "onestore": 3438460
    }
   },
   {
@@ -2551,7 +2551,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3257791
+    "onestore": 3280392
    }
   },
   {
@@ -2571,7 +2571,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3090901
+    "onestore": 3089601
    }
   },
   {
@@ -2591,7 +2591,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 2633219
+    "onestore": 2659716
    }
   },
   {
@@ -2611,7 +2611,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3435179
+    "onestore": 3464197
    }
   },
   {
@@ -2631,7 +2631,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 2879120
+    "onestore": 2898148
    }
   },
   {
@@ -2651,7 +2651,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 2974400
+    "onestore": 3004322
    }
   },
   {
@@ -2671,7 +2671,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3307301
+    "onestore": 3316508
    }
   },
   {
@@ -2691,7 +2691,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3473673
+    "onestore": 3538502
    }
   },
   {
@@ -2711,7 +2711,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 2955333
+    "onestore": 2976932
    }
   },
   {
@@ -2731,7 +2731,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3400386
+    "onestore": 3408177
    }
   },
   {
@@ -2775,8 +2775,8 @@
     "added": []
    },
    "bytes": {
-    "google": 3876519,
-    "onestore": 3905198
+    "google": 3903770,
+    "onestore": 3930995
    }
   },
   {
@@ -2797,7 +2797,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 6235515
+    "onestore": 6303132
    }
   },
   {
@@ -2817,7 +2817,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4538514
+    "onestore": 4552319
    }
   },
   {
@@ -2837,7 +2837,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3897891
+    "onestore": 3933716
    }
   },
   {
@@ -2857,7 +2857,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4281756
+    "onestore": 4308499
    }
   },
   {
@@ -2877,7 +2877,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4371698
+    "onestore": 4385582
    }
   },
   {
@@ -2897,7 +2897,47 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 2943541
+    "onestore": 2943814
+   }
+  },
+  {
+   "key": "st_sc0202",
+   "kind": "standing",
+   "character": "SC0202",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 5,
+   "faces": 4,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3030871
+   }
+  },
+  {
+   "key": "st_sc0203",
+   "kind": "standing",
+   "character": "SC0203",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 5,
+   "faces": 4,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3887984
    }
   },
   {
@@ -2917,7 +2957,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3251044
+    "onestore": 3324319
    }
   },
   {
@@ -2937,7 +2977,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 2442770
+    "onestore": 2446692
    }
   },
   {
@@ -2957,7 +2997,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4422361
+    "onestore": 4444719
    }
   },
   {
@@ -2977,7 +3017,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3653784
+    "onestore": 3691517
    }
   },
   {
@@ -3017,8 +3057,8 @@
     ]
    },
    "bytes": {
-    "google": 4030392,
-    "onestore": 4033360
+    "google": 4053694,
+    "onestore": 4056510
    }
   },
   {
@@ -3038,7 +3078,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 2468527
+    "onestore": 2483135
    }
   },
   {
@@ -3058,7 +3098,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3718018
+    "onestore": 3709165
    }
   }
  ]

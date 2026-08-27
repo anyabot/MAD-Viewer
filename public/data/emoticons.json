@@ -14812,6 +14812,28 @@
     ]
    }
   },
+  "CH0033": {
+   "look": "Left",
+   "bones": {
+    "Mouth": "mouth",
+    "OutsideHead": "face",
+    "InsideHead": "face"
+   },
+   "offsets": {
+    "Mouth": [
+     0.0,
+     0.0
+    ],
+    "OutsideHead": [
+     4.2753,
+     3.1121
+    ],
+    "InsideHead": [
+     2.0534,
+     -2.7867
+    ]
+   }
+  },
   "CH0034": {
    "look": "Left",
    "bones": {
@@ -15463,12 +15485,12 @@
      0.0
     ],
     "OutsideHead": [
-     0.0,
-     0.0
+     3.4424,
+     4.0357
     ],
     "InsideHead": [
-     0.0,
-     0.0
+     -3.4209,
+     3.6282
     ]
    }
   },
@@ -15733,6 +15755,50 @@
     "InsideHead": [
      -4.1012,
      4.7954
+    ]
+   }
+  },
+  "SC0202": {
+   "look": "Left",
+   "bones": {
+    "Mouth": "mouth",
+    "OutsideHead": "face",
+    "InsideHead": "face"
+   },
+   "offsets": {
+    "Mouth": [
+     0.0,
+     0.0
+    ],
+    "OutsideHead": [
+     -3.8931,
+     7.5567
+    ],
+    "InsideHead": [
+     2.4072,
+     5.9991
+    ]
+   }
+  },
+  "SC0203": {
+   "look": "Right",
+   "bones": {
+    "Mouth": "mouth",
+    "OutsideHead": "face",
+    "InsideHead": "face"
+   },
+   "offsets": {
+    "Mouth": [
+     0.0,
+     0.0
+    ],
+    "OutsideHead": [
+     4.0349,
+     6.2377
+    ],
+    "InsideHead": [
+     -2.4562,
+     5.3853
     ]
    }
   },

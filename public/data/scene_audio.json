@@ -133,6 +133,10 @@
   "bgm_romance_013_lp": "bgm",
   "bgm_romance_014_in": "bgm",
   "bgm_romance_014_lp": "bgm",
+  "bgm_romance_017_in": "bgm",
+  "bgm_romance_017_lp": "bgm",
+  "bgm_romance_018_in": "bgm",
+  "bgm_romance_018_lp": "bgm",
   "bgm_romance_019_in": "bgm",
   "bgm_romance_019_lp": "bgm",
   "bgm_romance_020_in": "bgm",
@@ -158,6 +162,9 @@
   "bgm_romance_030_lp": "bgm",
   "bgm_romance_031_lp": "bgm",
   "bgm_romance_032_lp": "bgm",
+  "bgm_romance_033": "bgm",
+  "bgm_romance_034_in": "bgm",
+  "bgm_romance_034_lp": "bgm",
   "bgm_story_007": "bgm"
  },
  "animations": {
@@ -187,6 +194,9 @@
   },
   "af_ch0042": {
    "asmr/enter": "AF_CH0042_asmr_enter"
+  },
+  "af_ch0043": {
+   "basic/enter": "AF_CH0043_basic_enter"
   },
   "ds_ch0009": {
    "10_basic/10_enter": "DS_CH0009_basic_enter",
@@ -291,6 +301,17 @@
    "30_overlay/30_A5_06": "DS_CH0042_overlay_A5_06",
    "30_overlay/30_B1": "DS_CH0042_overlay_B1",
    "30_overlay/30_B2": "DS_CH0042_overlay_B2"
+  },
+  "ds_ch0043": {
+   "10_basic/10_enter": "DS_CH0043_basic_enter",
+   "10_reaction/10_A1": "DS_CH0043_reaction_A1",
+   "10_reaction/10_A2": "DS_CH0043_reaction_A2",
+   "10_reaction/10_A3": "DS_CH0043_reaction_A3",
+   "10_reaction/10_A4": "DS_CH0043_reaction_A4",
+   "10_reaction/10_A5": "DS_CH0043_reaction_A5",
+   "10_reaction/10_A7": "DS_CH0043_reaction_A7",
+   "10_reaction/10_H1": "DS_CH0043_reaction_H1",
+   "10_reaction/10_H1_2": "DS_CH0043_reaction_H1_2"
   },
   "ds_ch0057": {
    "10_basic/10_enter": "DS_CH0057_basic_enter",

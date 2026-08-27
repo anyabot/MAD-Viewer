@@ -2,835 +2,988 @@
  "materials": {
   "goods:1": {
    "name": "크레딧",
+   "nameEn": "Credits",
    "icon": "Icon_Goods_gold",
    "kind": "goods"
   },
   "goods:10000": {
    "name": "파트너 경험치 포인트",
+   "nameEn": "Partner EXP Points",
    "icon": "Icon_Goods_Friendship_point",
    "kind": "unitExp"
   },
   "goods:10001": {
    "name": "장비 경험치 포인트",
+   "nameEn": "Equipment EXP Points",
    "icon": "Icon_Goods_Friendship_point",
    "kind": "equipExp"
   },
   "goods:6": {
    "name": "이데아의 메모리",
+   "nameEn": "Edea's Memory",
    "icon": "Icon_Goods_Idea_Memory",
    "kind": "goods"
   },
   "item:1": {
    "name": "루시아의 메모리",
+   "nameEn": "Lucia's Memory",
    "icon": "Icon_Character_Piece_CH0001",
    "kind": "piece"
   },
   "item:10": {
    "name": "마네(수영복)의 메모리",
+   "nameEn": "Mane (Swimsuit)'s Memory",
    "icon": "Icon_Character_Piece_CH0010",
    "kind": "piece"
   },
   "item:10011": {
    "name": "C랭크 전투 로그",
+   "nameEn": "C-Rank Combat Log",
    "icon": "Icon_Char_Levelup_Rank_C_Tier1",
    "kind": "unitExp",
    "grade": 1
   },
   "item:10012": {
    "name": "B랭크 전투 로그",
+   "nameEn": "B-Rank Combat Log",
    "icon": "Icon_Char_Levelup_Rank_B_Tier2",
    "kind": "unitExp",
    "grade": 2
   },
   "item:10013": {
    "name": "A랭크 전투 로그",
+   "nameEn": "A-Rank Combat Log",
    "icon": "Icon_Char_Levelup_Rank_A_Tier3",
    "kind": "unitExp",
    "grade": 3
   },
   "item:10014": {
    "name": "S랭크 전투 로그",
+   "nameEn": "S-Rank Combat Log",
    "icon": "Icon_Char_Levelup_Rank_S_Tier4",
    "kind": "unitExp",
    "grade": 4
   },
   "item:10021": {
    "name": "샘플 에센스",
+   "nameEn": "Sample Essence",
    "icon": "Icon_Eq_GrowUp_Tier1",
    "kind": "equipExp",
    "grade": 1
   },
   "item:10022": {
    "name": "소형 에센스",
+   "nameEn": "Small Essence",
    "icon": "Icon_Eq_GrowUp_Tier2",
    "kind": "equipExp",
    "grade": 2
   },
   "item:10023": {
    "name": "중형 에센스",
+   "nameEn": "Medium Essence",
    "icon": "Icon_Eq_GrowUp_Tier3",
    "kind": "equipExp",
    "grade": 3
   },
   "item:10024": {
    "name": "대형 에센스",
+   "nameEn": "Large Essence",
    "icon": "Icon_Eq_GrowUp_Tier4",
    "kind": "equipExp",
    "grade": 4
   },
   "item:10111": {
    "name": "하급 열정의 깃털",
+   "nameEn": "Lesser Feather of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10112": {
    "name": "중급 열정의 깃털",
+   "nameEn": "Intermediate Feather of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10113": {
    "name": "상급 열정의 깃털",
+   "nameEn": "Advanced Feather of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10114": {
    "name": "최상급 열정의 깃털",
+   "nameEn": "Superior Feather of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10115": {
    "name": "하급 열정의 알",
+   "nameEn": "Lesser Egg of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10116": {
    "name": "중급 열정의 알",
+   "nameEn": "Intermediate Egg of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10117": {
    "name": "상급 열정의 알",
+   "nameEn": "Advanced Egg of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10118": {
    "name": "최상급 열정의 알",
+   "nameEn": "Superior Egg of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10121": {
    "name": "하급 욕망의 깃털",
+   "nameEn": "Lesser Feather of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10122": {
    "name": "중급 욕망의 깃털",
+   "nameEn": "Intermediate Feather of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10123": {
    "name": "상급 욕망의 깃털",
+   "nameEn": "Advanced Feather of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10124": {
    "name": "최상급 욕망의 깃털",
+   "nameEn": "Superior Feather of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10125": {
    "name": "하급 욕망의 알",
+   "nameEn": "Lesser Egg of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10126": {
    "name": "중급 욕망의 알",
+   "nameEn": "Intermediate Egg of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10127": {
    "name": "상급 욕망의 알",
+   "nameEn": "Advanced Egg of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10128": {
    "name": "최상급 욕망의 알",
+   "nameEn": "Superior Egg of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10131": {
    "name": "하급 의지의 깃털",
+   "nameEn": "Lesser Feather of Will",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10132": {
    "name": "중급 의지의 깃털",
+   "nameEn": "Intermediate Feather of Will",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10133": {
    "name": "상급 의지의 깃털",
+   "nameEn": "Advanced Feather of Will",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10134": {
    "name": "최상급 의지의 깃털",
+   "nameEn": "Superior Feather of Will",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10135": {
    "name": "하급 의지의 알",
+   "nameEn": "Lesser Egg of Will",
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10136": {
    "name": "중급 의지의 알",
+   "nameEn": "Intermediate Egg of Will",
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10137": {
    "name": "상급 의지의 알",
+   "nameEn": "Advanced Egg of Will",
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10138": {
    "name": "최상급 의지의 알",
+   "nameEn": "Superior Egg of Will",
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10141": {
    "name": "하급 이성의 깃털",
+   "nameEn": "Lesser Feather of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10142": {
    "name": "중급 이성의 깃털",
+   "nameEn": "Intermediate Feather of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10143": {
    "name": "상급 이성의 깃털",
+   "nameEn": "Advanced Feather of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10144": {
    "name": "최상급 이성의 깃털",
+   "nameEn": "Superior Feather of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10145": {
    "name": "하급 이성의 알",
+   "nameEn": "Lesser Egg of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10146": {
    "name": "중급 이성의 알",
+   "nameEn": "Intermediate Egg of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10147": {
    "name": "상급 이성의 알",
+   "nameEn": "Advanced Egg of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10148": {
    "name": "최상급 이성의 알",
+   "nameEn": "Superior Egg of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10151": {
    "name": "브론즈 다트",
+   "nameEn": "Bronze Dart",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10152": {
    "name": "실버 다트",
+   "nameEn": "Silver Dart",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10153": {
    "name": "골드 다트",
+   "nameEn": "Gold Dart",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10154": {
    "name": "플래티넘 다트",
+   "nameEn": "Platinum Dart",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10161": {
    "name": "브론즈 덤벨",
+   "nameEn": "Bronze Dumbbell",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10162": {
    "name": "실버 덤벨",
+   "nameEn": "Silver Dumbbell",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10163": {
    "name": "골드 덤벨",
+   "nameEn": "Gold Dumbbell",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10164": {
    "name": "플래티넘 덤벨",
+   "nameEn": "Platinum Dumbbell",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10171": {
    "name": "브론즈 마이크",
+   "nameEn": "Bronze Microphone",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10172": {
    "name": "실버 마이크",
+   "nameEn": "Silver Microphone",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10173": {
    "name": "골드 마이크",
+   "nameEn": "Gold Microphone",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10174": {
    "name": "플래티넘 마이크",
+   "nameEn": "Platinum Microphone",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:10181": {
    "name": "브론즈 케인",
+   "nameEn": "Bronze Cane",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier1",
    "kind": "skill",
    "grade": 1
   },
   "item:10182": {
    "name": "실버 케인",
+   "nameEn": "Silver Cane",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier2",
    "kind": "skill",
    "grade": 2
   },
   "item:10183": {
    "name": "골드 케인",
+   "nameEn": "Gold Cane",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier3",
    "kind": "skill",
    "grade": 3
   },
   "item:10184": {
    "name": "플래티넘 케인",
+   "nameEn": "Platinum Cane",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier4",
    "kind": "skill",
    "grade": 4
   },
   "item:11": {
    "name": "치세의 메모리",
+   "nameEn": "Chise's Memory",
    "icon": "Icon_Character_Piece_CH0011",
    "kind": "piece"
   },
   "item:12": {
    "name": "마샤의 메모리",
+   "nameEn": "Marcia's Memory",
    "icon": "Icon_Character_Piece_CH0012",
    "kind": "piece"
   },
   "item:13": {
    "name": "로망스 경의 메모리",
+   "nameEn": "Sir Romance's Memory",
    "icon": "Icon_Character_Piece_CH0013",
    "kind": "piece"
   },
   "item:15": {
    "name": "이네스의 메모리",
+   "nameEn": "Ines's Memory",
    "icon": "Icon_Character_Piece_CH0015",
    "kind": "piece"
   },
   "item:16": {
    "name": "레안나의 메모리",
+   "nameEn": "Reanna's Memory",
    "icon": "Icon_Character_Piece_CH0016",
    "kind": "piece"
   },
   "item:17": {
    "name": "시즈쿠의 메모리",
+   "nameEn": "Shizuku's Memory",
    "icon": "Icon_Character_Piece_CH0017",
    "kind": "piece"
   },
   "item:19": {
    "name": "빅토리아의 메모리",
+   "nameEn": "Victoria's Memory",
    "icon": "Icon_Character_Piece_CH0019",
    "kind": "piece"
   },
   "item:2": {
    "name": "라일라의 메모리",
+   "nameEn": "Laila's Memory",
    "icon": "Icon_Character_Piece_CH0002",
    "kind": "piece"
   },
   "item:20": {
    "name": "단희의 메모리",
+   "nameEn": "Dan Xi's Memory",
    "icon": "Icon_Character_Piece_CH0020",
    "kind": "piece"
   },
   "item:21": {
    "name": "홍접의 메모리",
+   "nameEn": "Kouchou's Memory",
    "icon": "Icon_Character_Piece_CH0021",
    "kind": "piece"
   },
   "item:22": {
    "name": "미드웬의 메모리",
+   "nameEn": "Midwen's Memory",
    "icon": "Icon_Character_Piece_CH0022",
    "kind": "piece"
   },
   "item:23": {
    "name": "로나의 메모리",
+   "nameEn": "Rona's Memory",
    "icon": "Icon_Character_Piece_CH0023",
    "kind": "piece"
   },
   "item:24": {
    "name": "아로네의 메모리",
+   "nameEn": "Aronne's Memory",
    "icon": "Icon_Character_Piece_CH0024",
    "kind": "piece"
   },
   "item:25": {
    "name": "카게의 메모리",
+   "nameEn": "Kage's Memory",
    "icon": "Icon_Character_Piece_CH0025",
    "kind": "piece"
   },
   "item:26": {
    "name": "소피아의 메모리",
+   "nameEn": "Sophia's Memory",
    "icon": "Icon_Character_Piece_CH0026",
    "kind": "piece"
   },
   "item:27": {
    "name": "에밀리의 메모리",
+   "nameEn": "Emily's Memory",
    "icon": "Icon_Character_Piece_CH0027",
    "kind": "piece"
   },
   "item:28": {
    "name": "샬럿의 메모리",
+   "nameEn": "Charlotte's Memory",
    "icon": "Icon_Character_Piece_CH0028",
    "kind": "piece"
   },
   "item:29": {
    "name": "프레이아의 메모리",
+   "nameEn": "Freya's Memory",
    "icon": "Icon_Character_Piece_CH0029",
    "kind": "piece"
   },
   "item:30": {
    "name": "세븐의 메모리",
+   "nameEn": "Seven's Memory",
    "icon": "Icon_Character_Piece_CH0030",
    "kind": "piece"
   },
   "item:31": {
    "name": "히나타의 메모리",
+   "nameEn": "Hinata's Memory",
    "icon": "Icon_Character_Piece_CH0031",
    "kind": "piece"
   },
   "item:32": {
    "name": "수지의 메모리",
+   "nameEn": "Suji's Memory",
    "icon": "Icon_Character_Piece_CH0032",
+   "kind": "piece"
+  },
+  "item:33": {
+   "name": "에스텔의 메모리",
+   "nameEn": "Estelle's Memory",
+   "icon": "Icon_Character_Piece_CH0033",
    "kind": "piece"
   },
   "item:34": {
    "name": "세타의 메모리",
+   "nameEn": "Theta's Memory",
    "icon": "Icon_Character_Piece_CH0034",
    "kind": "piece"
   },
   "item:35": {
    "name": "유리아의 메모리",
+   "nameEn": "Yuria's Memory",
    "icon": "Icon_Character_Piece_CH0035",
    "kind": "piece"
   },
   "item:36": {
    "name": "루미나의 메모리",
+   "nameEn": "Lumina's Memory",
    "icon": "Icon_Character_Piece_CH0036",
    "kind": "piece"
   },
   "item:37": {
    "name": "카사의 메모리",
+   "nameEn": "Kasa's Memory",
    "icon": "Icon_Character_Piece_CH0037",
    "kind": "piece"
   },
   "item:38": {
    "name": "발렌티나의 메모리",
+   "nameEn": "Valentina's Memory",
    "icon": "Icon_Character_Piece_CH0038",
    "kind": "piece"
   },
   "item:39": {
    "name": "카렌의 메모리",
+   "nameEn": "Caren's Memory",
    "icon": "Icon_Character_Piece_CH0039",
    "kind": "piece"
   },
   "item:42": {
    "name": "오블리아의 메모리",
+   "nameEn": "Oblia's Memory",
    "icon": "Icon_Character_Piece_CH0042",
    "kind": "piece"
   },
   "item:43": {
    "name": "라피네의 메모리",
+   "nameEn": "Lafine's Memory",
    "icon": "Icon_Character_Piece_CH0043",
    "kind": "piece"
   },
   "item:46": {
    "name": "제니의 메모리",
+   "nameEn": "Jennie's Memory",
    "icon": "Icon_Character_Piece_CH0046",
    "kind": "piece"
   },
   "item:5": {
    "name": "클레어의 메모리",
+   "nameEn": "Claire's Memory",
    "icon": "Icon_Character_Piece_CH0005",
    "kind": "piece"
   },
   "item:50": {
    "name": "미오의 메모리",
+   "nameEn": "Mio's Memory",
    "icon": "Icon_Character_Piece_CH0050",
    "kind": "piece"
   },
   "item:53": {
    "name": "진의 메모리",
+   "nameEn": "Gin's Memory",
    "icon": "Icon_Character_Piece_CH0053",
    "kind": "piece"
   },
   "item:54": {
    "name": "하리의 메모리",
+   "nameEn": "Hari's Memory",
    "icon": "Icon_Character_Piece_CH0054",
    "kind": "piece"
   },
   "item:56": {
    "name": "아이렌의 메모리",
+   "nameEn": "Airen's Memory",
    "icon": "Icon_Character_Piece_CH0056",
    "kind": "piece"
   },
   "item:57": {
    "name": "케이시의 메모리",
+   "nameEn": "Casey's Memory",
    "icon": "Icon_Character_Piece_CH0057",
    "kind": "piece"
   },
   "item:6": {
    "name": "에일린의 메모리",
+   "nameEn": "Eileen's Memory",
    "icon": "Icon_Character_Piece_CH0006",
    "kind": "piece"
   },
   "item:62": {
    "name": "트리체의 메모리",
+   "nameEn": "Treache's Memory",
    "icon": "Icon_Character_Piece_CH0062",
    "kind": "piece"
   },
   "item:63": {
    "name": "세라의 메모리",
+   "nameEn": "Sera's Memory",
    "icon": "Icon_Character_Piece_CH0063",
    "kind": "piece"
   },
   "item:68": {
    "name": "클레어(수영복)의 메모리",
+   "nameEn": "Claire (Swimsuit)'s Memory",
    "icon": "Icon_Character_Piece_CH0068",
    "kind": "piece"
   },
   "item:7": {
    "name": "마네의 메모리",
+   "nameEn": "Mane's Memory",
    "icon": "Icon_Character_Piece_CH0007",
    "kind": "piece"
   },
   "item:80201": {
    "name": "T2 귀걸이 바우처",
+   "nameEn": "T2 Earrings Voucher",
    "icon": "Icon_Equipment_Piece_Earring_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80202": {
    "name": "T2 목걸이 바우처",
+   "nameEn": "T2 Necklace Voucher",
    "icon": "Icon_Equipment_Piece_Necklace_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80203": {
    "name": "T2 팔찌 바우처",
+   "nameEn": "T2 Bracelet Voucher",
    "icon": "Icon_Equipment_Piece_Bracelet_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80204": {
    "name": "T2 반지 바우처",
+   "nameEn": "T2 Ring Voucher",
    "icon": "Icon_Equipment_Piece_Ring_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80205": {
    "name": "T2 모자 바우처",
+   "nameEn": "T2 Hat Voucher",
    "icon": "Icon_Equipment_Piece_Hat_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80206": {
    "name": "T2 신발 바우처",
+   "nameEn": "T2 Shoes Voucher",
    "icon": "Icon_Equipment_Piece_Shoes_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80207": {
    "name": "T2 가방 바우처",
+   "nameEn": "T2 Bag Voucher",
    "icon": "Icon_Equipment_Piece_Bag_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80208": {
    "name": "T2 장갑 바우처",
+   "nameEn": "T2 Gloves Voucher",
    "icon": "Icon_Equipment_Piece_Gloves_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80209": {
    "name": "T2 키링 바우처",
+   "nameEn": "T2 Keyring Voucher",
    "icon": "Icon_Equipment_Piece_Key_ring_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80210": {
    "name": "T2 배지 바우처",
+   "nameEn": "T2 Badge Voucher",
    "icon": "Icon_Equipment_Piece_Badge_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80211": {
    "name": "T2 브라 바우처",
+   "nameEn": "T2 Bra Voucher",
    "icon": "Icon_Equipment_Piece_Bra_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80212": {
    "name": "T2 팬티 바우처",
+   "nameEn": "T2 Panties Voucher",
    "icon": "Icon_Equipment_Piece_Panties_Tier2",
    "kind": "equipPiece",
    "grade": 2
   },
   "item:80301": {
    "name": "T3 귀걸이 바우처",
+   "nameEn": "T3 Earrings Voucher",
    "icon": "Icon_Equipment_Piece_Earring_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80302": {
    "name": "T3 목걸이 바우처",
+   "nameEn": "T3 Necklace Voucher",
    "icon": "Icon_Equipment_Piece_Necklace_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80303": {
    "name": "T3 팔찌 바우처",
+   "nameEn": "T3 Bracelet Voucher",
    "icon": "Icon_Equipment_Piece_Bracelet_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80304": {
    "name": "T3 반지 바우처",
+   "nameEn": "T3 Ring Voucher",
    "icon": "Icon_Equipment_Piece_Ring_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80305": {
    "name": "T3 모자 바우처",
+   "nameEn": "T3 Hat Voucher",
    "icon": "Icon_Equipment_Piece_Hat_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80306": {
    "name": "T3 신발 바우처",
+   "nameEn": "T3 Shoes Voucher",
    "icon": "Icon_Equipment_Piece_Shoes_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80307": {
    "name": "T3 가방 바우처",
+   "nameEn": "T3 Bag Voucher",
    "icon": "Icon_Equipment_Piece_Bag_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80308": {
    "name": "T3 장갑 바우처",
+   "nameEn": "T3 Gloves Voucher",
    "icon": "Icon_Equipment_Piece_Gloves_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80309": {
    "name": "T3 키링 바우처",
+   "nameEn": "T3 Keyring Voucher",
    "icon": "Icon_Equipment_Piece_Key_ring_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80310": {
    "name": "T3 배지 바우처",
+   "nameEn": "T3 Badge Voucher",
    "icon": "Icon_Equipment_Piece_Badge_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80311": {
    "name": "T3 브라 바우처",
+   "nameEn": "T3 Bra Voucher",
    "icon": "Icon_Equipment_Piece_Bra_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80312": {
    "name": "T3 팬티 바우처",
+   "nameEn": "T3 Panties Voucher",
    "icon": "Icon_Equipment_Piece_Panties_Tier3",
    "kind": "equipPiece",
    "grade": 3
   },
   "item:80401": {
    "name": "T4 귀걸이 바우처",
+   "nameEn": "T4 Earrings Voucher",
    "icon": "Icon_Equipment_Piece_Earring_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80402": {
    "name": "T4 목걸이 바우처",
+   "nameEn": "T4 Necklace Voucher",
    "icon": "Icon_Equipment_Piece_Necklace_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80403": {
    "name": "T4 팔찌 바우처",
+   "nameEn": "T4 Bracelet Voucher",
    "icon": "Icon_Equipment_Piece_Bracelet_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80404": {
    "name": "T4 반지 바우처",
+   "nameEn": "T4 Ring Voucher",
    "icon": "Icon_Equipment_Piece_Ring_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80405": {
    "name": "T4 모자 바우처",
+   "nameEn": "T4 Hat Voucher",
    "icon": "Icon_Equipment_Piece_Hat_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80406": {
    "name": "T4 신발 바우처",
+   "nameEn": "T4 Shoes Voucher",
    "icon": "Icon_Equipment_Piece_Shoes_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80407": {
    "name": "T4 가방 바우처",
+   "nameEn": "T4 Bag Voucher",
    "icon": "Icon_Equipment_Piece_Bag_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80408": {
    "name": "T4 장갑 바우처",
+   "nameEn": "T4 Gloves Voucher",
    "icon": "Icon_Equipment_Piece_Gloves_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80409": {
    "name": "T4 키링 바우처",
+   "nameEn": "T4 Keyring Voucher",
    "icon": "Icon_Equipment_Piece_Key_ring_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80410": {
    "name": "T4 배지 바우처",
+   "nameEn": "T4 Badge Voucher",
    "icon": "Icon_Equipment_Piece_Badge_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80411": {
    "name": "T4 브라 바우처",
+   "nameEn": "T4 Bra Voucher",
    "icon": "Icon_Equipment_Piece_Bra_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80412": {
    "name": "T4 팬티 바우처",
+   "nameEn": "T4 Panties Voucher",
    "icon": "Icon_Equipment_Piece_Panties_Tier4",
    "kind": "equipPiece",
    "grade": 4
   },
   "item:80501": {
    "name": "T5 귀걸이 바우처",
+   "nameEn": "T5 Earrings Voucher",
    "icon": "Icon_Equipment_Piece_Earring_Tier5",
    "kind": "equipPiece",
    "grade": 5
   },
   "item:80502": {
    "name": "T5 목걸이 바우처",
+   "nameEn": "T5 Necklace Voucher",
    "icon": "Icon_Equipment_Piece_Necklace_Tier5",
    "kind": "equipPiece",
    "grade": 5
   },
   "item:80503": {
    "name": "T5 팔찌 바우처",
+   "nameEn": "T5 Bracelet Voucher",
    "icon": "Icon_Equipment_Piece_Bracelet_Tier5",
    "kind": "equipPiece",
    "grade": 5
   },
   "item:80504": {
    "name": "T5 반지 바우처",
+   "nameEn": "T5 Ring Voucher",
    "icon": "Icon_Equipment_Piece_Ring_Tier5",
    "kind": "equipPiece",
    "grade": 5
   },
   "item:80505": {
    "name": "T5 모자 바우처",
+   "nameEn": "T5 Hat Voucher",
    "icon": "Icon_Equipment_Piece_Hat_Tier5",
    "kind": "equipPiece",
    "grade": 5
   },
   "item:80506": {
    "name": "T5 신발 바우처",
+   "nameEn": "T5 Shoes Voucher",
    "icon": "Icon_Equipment_Piece_Shoes_Tier5",
    "kind": "equipPiece",
    "grade": 5
   },
   "item:80507": {
    "name": "T5 가방 바우처",
+   "nameEn": "T5 Bag Voucher",
    "icon": "Icon_Equipment_Piece_Bag_Tier5",
    "kind": "equipPiece",
    "grade": 5
   },
   "item:80508": {
    "name": "T5 장갑 바우처",
+   "nameEn": "T5 Gloves Voucher",
    "icon": "Icon_Equipment_Piece_Gloves_Tier5",
    "kind": "equipPiece",
    "grade": 5
@@ -841,77 +994,90 @@
   "item:80512": {},
   "item:9": {
    "name": "엘리시아의 메모리",
+   "nameEn": "Elisia's Memory",
    "icon": "Icon_Character_Piece_CH0009",
    "kind": "piece"
   },
   "item:90101": {
    "name": "써지컬 귀걸이",
+   "nameEn": "Surgical Steel Earrings",
    "icon": "Icon_Equipment_Earring_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90102": {
    "name": "넥밴드 선풍기",
+   "nameEn": "Neckband Fan",
    "icon": "Icon_Equipment_Necklace_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90103": {
    "name": "미르가늄 팔찌",
+   "nameEn": "Mirganium Bracelet",
    "icon": "Icon_Equipment_Bracelet_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90104": {
    "name": "미르가늄 반지",
+   "nameEn": "Mirganium Ring",
    "icon": "Icon_Equipment_Ring_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90105": {
    "name": "검정 볼캡",
+   "nameEn": "Black Ball Cap",
    "icon": "Icon_Equipment_Hat_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90106": {
    "name": "블루 러닝화",
+   "nameEn": "Blue Running Shoes",
    "icon": "Icon_Equipment_Shoes_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90107": {
    "name": "기본 더플백",
+   "nameEn": "Basic Duffle Bag",
    "icon": "Icon_Equipment_Bag_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90108": {
    "name": "스포츠 반 장갑",
+   "nameEn": "Sports Half Gloves",
    "icon": "Icon_Equipment_Gloves_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90109": {
    "name": "네잎클로버 키링",
+   "nameEn": "Four-Leaf Clover Keyring",
    "icon": "Icon_Equipment_Key_ring_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90110": {
    "name": "배드민턴 배지",
+   "nameEn": "Badminton Badge",
    "icon": "Icon_Equipment_Badge_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90111": {
    "name": "스포츠 브라",
+   "nameEn": "Sports Bra",
    "icon": "Icon_Equipment_Bra_Tier1",
    "kind": "equipment",
    "grade": 1
   },
   "item:90112": {
    "name": "심리스 티팬티",
+   "nameEn": "Seamless Thong",
    "icon": "Icon_Equipment_Panties_Tier1",
    "kind": "equipment",
    "grade": 1
@@ -5751,6 +5917,7 @@
    "CH0030": "item:30",
    "CH0031": "item:31",
    "CH0032": "item:32",
+   "CH0033": "item:33",
    "CH0034": "item:34",
    "CH0035": "item:35",
    "CH0036": "item:36",
@@ -5772,6 +5939,7 @@
   "exchange": {
    "ref": "goods:6",
    "name": "메모리",
+   "nameEn": "Memory",
    "resets": false,
    "tiers": [
     {
@@ -5822,6 +5990,7 @@
     "CH0029",
     "CH0030",
     "CH0031",
+    "CH0033",
     "CH0034",
     "CH0035",
     "CH0036",

@@ -19,7 +19,7 @@ import {
   groupSlots, levelRange, missionCheck, modeLabel, stageById, stageName, subMissionText,
   subMissionsOf, zoneOf, type EnemyGroup,
 } from '@/lib/stages';
-import { pick, useLang, useT, type Lang } from '@/lib/i18n';
+import { dataText, pick, useLang, useT, type Lang } from '@/lib/i18n';
 import {
   loadCharacters, loadIcons, loadStages,
   type CharacterData, type IconManifest, type StageData, type StageDrop,
@@ -246,7 +246,7 @@ function Drop({ drop, data, icons, lang }: {
       <ItemIcon manifest={icons} group={group} names={[entry?.icon]}
         grade={entry?.grade} size={10} />
       <Box minW={0}>
-        <Text fontSize="xs" noOfLines={1}>{dropName(data, drop)}</Text>
+        <Text fontSize="xs" noOfLines={1}>{dropName(data, drop, lang)}</Text>
         <HStack spacing={1.5}>
           <Text fontSize="0.65rem" color="yellow.200">×{dropAmount(drop)}</Text>
           {chance && <Text fontSize="0.6rem" color="gray.500">{chance}</Text>}
@@ -337,11 +337,11 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
               {group.code && entry ? (
                 <Text as={NextLink} href={`/character?code=${group.code}`}
                   fontSize="sm" fontWeight="bold" color="yellow.200">
-                  {enemy?.name || group.code}
+                  {dataText(lang, enemy?.name, enemy?.nameEn) || group.code}
                 </Text>
               ) : (
                 <Text fontSize="sm" fontWeight="bold">
-                  {enemy?.name || group.code
+                  {dataText(lang, enemy?.name, enemy?.nameEn) || group.code
                     || t('stageUnnamedEnemy', { id: group.id ?? 0 })}
                 </Text>
               )}
