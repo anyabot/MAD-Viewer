@@ -18,7 +18,7 @@ import {
   groupIsLive, groupLabel, groupWindow, levelRange, modeSummaries, stageDrops,
   stageGroups, stageName, type StageGrouping,
 } from '@/lib/stages';
-import { pick, useLang, useT, type Lang } from '@/lib/i18n';
+import { dataText, pick, useLang, useT, type Lang } from '@/lib/i18n';
 import {
   loadCharacters, loadIcons, loadStages,
   type CharacterData, type IconManifest, type StageData, type StageEntry,
@@ -198,8 +198,10 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery }: {
       stageName(data, s, lang).toLowerCase().includes(q)
       || String(s.id).includes(q)
       || enemyCodes(s).some((c) => c.toLowerCase().includes(q)
-        || (data.enemies[c]?.name ?? '').toLowerCase().includes(q))
-      || stageDrops(s).some((d) => dropName(data, d).toLowerCase().includes(q)))
+        || (data.enemies[c]?.name ?? '').toLowerCase().includes(q)
+        || (data.enemies[c]?.nameEn ?? '').toLowerCase().includes(q))
+      || stageDrops(s).some((d) => `${dropName(data, d, 'ko')} ${dropName(data, d, 'en')}`
+        .toLowerCase().includes(q)))
     : grouping.stages;
 
   return (
@@ -328,7 +330,8 @@ function StageCard({ stage, data, chars, icons, lang }: {
         {codes.slice(0, PREVIEW).map((code) => (
           <GameIcon key={code} manifest={icons} group="char"
             names={[data.enemies[code]?.iconPath, `Icon_${code}`]}
-            title={data.enemies[code]?.name ?? code}
+            title={dataText(lang, data.enemies[code]?.name, data.enemies[code]?.nameEn)
+              || code}
             boxSize="26px" borderRadius="sm" objectFit="cover" reserve={false} />
         ))}
       </Preview>
@@ -341,7 +344,7 @@ function StageCard({ stage, data, chars, icons, lang }: {
               <ItemIcon key={i} manifest={icons}
                 group={iconGroup(icons, DROP_ICON_GROUPS, entry?.icon)}
                 names={[entry?.icon]} grade={entry?.grade} count={dropAmount(drop)}
-                title={`${dropName(data, drop)} ×${dropAmount(drop)}`} size="34px" />
+                title={`${dropName(data, drop, lang)} ×${dropAmount(drop)}`} size="34px" />
             );
           })}
         </Preview>

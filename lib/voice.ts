@@ -20,6 +20,7 @@ export type VoiceInteraction = {
   filter: string[];
   priority?: number;
   text?: string;
+  textEn?: string;
   voice?: string;
   /** Body clip, face clip and emoticon the line is staged with. */
   ani?: string;

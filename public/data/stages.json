@@ -358,6 +358,16 @@
    },
    "image": "BgImg_EV1005_Zone_001"
   },
+  "100061": {
+   "id": 100061,
+   "order": 1,
+   "difficulty": "normal",
+   "name": {
+    "ko": "전투",
+    "en": "Battle"
+   },
+   "image": "BgImg_EV1006_Zone_001"
+  },
   "30401": {
    "id": 30401,
    "name": {
@@ -444,13 +454,32 @@
     "en": "Core Archive"
    }
   },
-  "41002": {
-   "id": 41002,
-   "order": 2,
+  "70121": {
+   "id": 70121,
    "name": {
-    "ko": "코어 아카이브",
-    "en": "Core Archive"
-   }
+    "ko": "13호 업무센터",
+    "en": "No. 13 Business Center"
+   },
+   "image": "Icon_NP6010",
+   "group": 7012
+  },
+  "70122": {
+   "id": 70122,
+   "name": {
+    "ko": "반파된 종합상황실",
+    "en": "Half-destroyed General Control Room"
+   },
+   "image": "Icon_NP6011",
+   "group": 7012
+  },
+  "70123": {
+   "id": 70123,
+   "name": {
+    "ko": "절체절명의 연결교",
+    "en": "Desperate Connecting Bridge"
+   },
+   "image": "Icon_NP6012",
+   "group": 7012
   },
   "70131": {
    "id": 70131,
@@ -700,7 +729,7 @@
     "en": "Gangs of Tofu Street"
    },
    "order": 1001,
-   "banner": "Event01_Logo",
+   "banner": "Thumbnail_PastStory_Event_Ev1001",
    "from": "2026-06-04",
    "to": "2026-06-25"
   },
@@ -714,7 +743,7 @@
     "en": "Chrono Paradox"
    },
    "order": 1002,
-   "banner": "Event02_Logo",
+   "banner": "Thumbnail_PastStory_Event_Ev1002",
    "from": "2026-06-18",
    "to": "2026-07-09"
   },
@@ -728,7 +757,7 @@
     "en": "Treasure In Summer"
    },
    "order": 1003,
-   "banner": "Event03_Logo",
+   "banner": "Thumbnail_PastStory_Event_Ev1003",
    "from": "2026-07-16",
    "to": "2026-08-20"
   },
@@ -742,7 +771,7 @@
     "en": "Summer with MAiD"
    },
    "order": 1004,
-   "banner": "Event04_Logo",
+   "banner": "Thumbnail_PastStory_Event_Ev1004",
    "from": "2026-07-30",
    "to": "2026-08-20"
   },
@@ -756,9 +785,23 @@
     "en": "Cash Crush Rush"
    },
    "order": 1005,
-   "banner": "EvCCR_Lobby_Logo",
+   "banner": "Thumbnail_PastStory_Event_Ev1005",
    "from": "2026-08-13",
    "to": "2026-09-03"
+  },
+  "event:1006": {
+   "key": "event:1006",
+   "mode": "event",
+   "zoneId": 100061,
+   "image": "BgImg_EV1006_Zone_001",
+   "name": {
+    "ko": "MADness in a Dream",
+    "en": null
+   },
+   "order": 1006,
+   "banner": "Thumbnail_PastStory_Event_Ev1006",
+   "from": "2026-08-27",
+   "to": "2026-09-17"
   },
   "ascent:40000": {
    "key": "ascent:40000",
@@ -780,15 +823,19 @@
    },
    "order": 1
   },
-  "ascent:41002": {
-   "key": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
+  "nemesis:7013": {
+   "key": "nemesis:7013",
+   "mode": "nemesis",
+   "zoneId": 70121,
+   "image": "Icon_NP6010",
    "name": {
-    "ko": "코어 아카이브",
-    "en": "Core Archive"
+    "ko": "움브라 데이",
+    "en": "Umbra Dei"
    },
-   "order": 2
+   "order": 7013,
+   "banner": "Thumbnail_PastStory_Content_Nemesis_0001",
+   "from": "2026-09-03",
+   "to": "2026-09-10"
   },
   "nemesis:7011": {
    "key": "nemesis:7011",
@@ -800,6 +847,7 @@
     "en": "Umbra Dei"
    },
    "order": 7011,
+   "banner": "Thumbnail_PastStory_Content_Nemesis_0001",
    "from": "2026-07-09",
    "to": "2026-07-16"
   },
@@ -814,8 +862,8 @@
    },
    "order": 7016,
    "banner": "Nemesis2_Logo",
-   "from": "2026-07-09",
-   "to": "2026-07-16"
+   "from": "2026-11-26",
+   "to": "2026-12-03"
   },
   "raid": {
    "key": "raid",
@@ -1409,6 +1457,7 @@
   "CH0001": {
    "code": "CH0001",
    "name": "루시아",
+   "nameEn": "Lucia",
    "iconPath": "Icon_CH0001",
    "roleType": 3,
    "attributeType": 2,
@@ -1418,6 +1467,7 @@
   "CH0002": {
    "code": "CH0002",
    "name": "라일라",
+   "nameEn": "Laila",
    "iconPath": "Icon_CH0002",
    "roleType": 2,
    "attributeType": 2,
@@ -1427,6 +1477,7 @@
   "CH0005": {
    "code": "CH0005",
    "name": "클레어",
+   "nameEn": "Claire",
    "iconPath": "Icon_CH0005",
    "roleType": 1,
    "attributeType": 1,
@@ -1436,6 +1487,7 @@
   "CH0006": {
    "code": "CH0006",
    "name": "에일린",
+   "nameEn": "Eileen",
    "iconPath": "Icon_CH0006",
    "roleType": 1,
    "attributeType": 2,
@@ -1445,6 +1497,7 @@
   "CH0007": {
    "code": "CH0007",
    "name": "마네",
+   "nameEn": "Mane",
    "iconPath": "Icon_CH0007",
    "roleType": 2,
    "attributeType": 4,
@@ -1454,6 +1507,7 @@
   "CH0009": {
    "code": "CH0009",
    "name": "엘리시아",
+   "nameEn": "Elisia",
    "iconPath": "Icon_CH0009",
    "roleType": 2,
    "attributeType": 4,
@@ -1463,6 +1517,7 @@
   "CH0011": {
    "code": "CH0011",
    "name": "치세",
+   "nameEn": "Chise",
    "iconPath": "Icon_CH0011",
    "roleType": 2,
    "attributeType": 2,
@@ -1472,6 +1527,7 @@
   "CH0012": {
    "code": "CH0012",
    "name": "마샤",
+   "nameEn": "Marcia",
    "iconPath": "Icon_CH0012",
    "roleType": 1,
    "attributeType": 3,
@@ -1481,6 +1537,7 @@
   "CH0013": {
    "code": "CH0013",
    "name": "로망스 경",
+   "nameEn": "Sir Romance",
    "iconPath": "Icon_CH0013",
    "roleType": 2,
    "attributeType": 3,
@@ -1490,6 +1547,7 @@
   "CH0015": {
    "code": "CH0015",
    "name": "이네스",
+   "nameEn": "Ines",
    "iconPath": "Icon_CH0015",
    "roleType": 3,
    "attributeType": 1,
@@ -1499,6 +1557,7 @@
   "CH0016": {
    "code": "CH0016",
    "name": "레안나",
+   "nameEn": "Reanna",
    "iconPath": "Icon_CH0016",
    "roleType": 3,
    "attributeType": 3,
@@ -1508,6 +1567,7 @@
   "CH0017": {
    "code": "CH0017",
    "name": "시즈쿠",
+   "nameEn": "Shizuku",
    "iconPath": "Icon_CH0017",
    "roleType": 2,
    "attributeType": 2,
@@ -1517,6 +1577,7 @@
   "CH0019": {
    "code": "CH0019",
    "name": "빅토리아",
+   "nameEn": "Victoria",
    "iconPath": "Icon_CH0019",
    "roleType": 2,
    "attributeType": 3,
@@ -1526,6 +1587,7 @@
   "CH0020": {
    "code": "CH0020",
    "name": "단희",
+   "nameEn": "Dan Xi",
    "iconPath": "Icon_CH0020",
    "roleType": 2,
    "attributeType": 3,
@@ -1535,6 +1597,7 @@
   "CH0021": {
    "code": "CH0021",
    "name": "홍접",
+   "nameEn": "Kouchou",
    "iconPath": "Icon_CH0021",
    "roleType": 2,
    "attributeType": 1,
@@ -1544,6 +1607,7 @@
   "CH0022": {
    "code": "CH0022",
    "name": "미드웬",
+   "nameEn": "Midwen",
    "iconPath": "Icon_CH0022",
    "roleType": 1,
    "attributeType": 1,
@@ -1553,6 +1617,7 @@
   "CH0023": {
    "code": "CH0023",
    "name": "로나",
+   "nameEn": "Rona",
    "iconPath": "Icon_CH0023",
    "roleType": 1,
    "attributeType": 3,
@@ -1562,6 +1627,7 @@
   "CH0024": {
    "code": "CH0024",
    "name": "아로네",
+   "nameEn": "Aronne",
    "iconPath": "Icon_CH0024",
    "roleType": 3,
    "attributeType": 1,
@@ -1571,6 +1637,7 @@
   "CH0025": {
    "code": "CH0025",
    "name": "카게",
+   "nameEn": "Kage",
    "iconPath": "Icon_CH0025",
    "roleType": 3,
    "attributeType": 3,
@@ -1580,6 +1647,7 @@
   "CH0026": {
    "code": "CH0026",
    "name": "소피아",
+   "nameEn": "Sophia",
    "iconPath": "Icon_CH0026",
    "roleType": 3,
    "attributeType": 1,
@@ -1589,6 +1657,7 @@
   "CH0027": {
    "code": "CH0027",
    "name": "에밀리",
+   "nameEn": "Emily",
    "iconPath": "Icon_CH0027",
    "roleType": 2,
    "attributeType": 1,
@@ -1598,6 +1667,7 @@
   "CH0028": {
    "code": "CH0028",
    "name": "샬럿",
+   "nameEn": "Charlotte",
    "iconPath": "Icon_CH0028",
    "roleType": 3,
    "attributeType": 3,
@@ -1607,6 +1677,7 @@
   "CH0029": {
    "code": "CH0029",
    "name": "프레이아",
+   "nameEn": "Freya",
    "iconPath": "Icon_CH0029",
    "roleType": 2,
    "attributeType": 4,
@@ -1616,6 +1687,7 @@
   "CH0030": {
    "code": "CH0030",
    "name": "세븐",
+   "nameEn": "Seven",
    "iconPath": "Icon_CH0030",
    "roleType": 3,
    "attributeType": 2,
@@ -1625,6 +1697,7 @@
   "CH0031": {
    "code": "CH0031",
    "name": "히나타",
+   "nameEn": "Hinata",
    "iconPath": "Icon_CH0031",
    "roleType": 3,
    "attributeType": 2,
@@ -1634,6 +1707,7 @@
   "CH0032": {
    "code": "CH0032",
    "name": "수지",
+   "nameEn": "Suji",
    "iconPath": "Icon_CH0032",
    "roleType": 3,
    "attributeType": 3,
@@ -1643,6 +1717,7 @@
   "CH0034": {
    "code": "CH0034",
    "name": "세타",
+   "nameEn": "Theta",
    "iconPath": "Icon_CH0034",
    "roleType": 1,
    "attributeType": 4,
@@ -1652,6 +1727,7 @@
   "CH0035": {
    "code": "CH0035",
    "name": "유리아",
+   "nameEn": "Yuria",
    "iconPath": "Icon_CH0035",
    "roleType": 2,
    "attributeType": 2,
@@ -1661,6 +1737,7 @@
   "CH0036": {
    "code": "CH0036",
    "name": "루미나",
+   "nameEn": "Lumina",
    "iconPath": "Icon_CH0036",
    "roleType": 3,
    "attributeType": 4,
@@ -1670,6 +1747,7 @@
   "CH0037": {
    "code": "CH0037",
    "name": "카사",
+   "nameEn": "Kasa",
    "iconPath": "Icon_CH0037",
    "roleType": 3,
    "attributeType": 4,
@@ -1679,6 +1757,7 @@
   "CH0038": {
    "code": "CH0038",
    "name": "발렌티나",
+   "nameEn": "Valentina",
    "iconPath": "Icon_CH0038",
    "roleType": 2,
    "attributeType": 4,
@@ -1688,6 +1767,7 @@
   "CH0039": {
    "code": "CH0039",
    "name": "카렌",
+   "nameEn": "Caren",
    "iconPath": "Icon_CH0039",
    "roleType": 3,
    "attributeType": 2,
@@ -1697,6 +1777,7 @@
   "CH0042": {
    "code": "CH0042",
    "name": "오블리아",
+   "nameEn": "Oblia",
    "iconPath": "Icon_CH0042",
    "roleType": 2,
    "attributeType": 1,
@@ -1706,6 +1787,7 @@
   "CH0046": {
    "code": "CH0046",
    "name": "제니",
+   "nameEn": "Jennie",
    "iconPath": "Icon_CH0046",
    "roleType": 1,
    "attributeType": 3,
@@ -1715,6 +1797,7 @@
   "CH0050": {
    "code": "CH0050",
    "name": "미오",
+   "nameEn": "Mio",
    "iconPath": "Icon_CH0050",
    "roleType": 1,
    "attributeType": 2,
@@ -1724,6 +1807,7 @@
   "CH0053": {
    "code": "CH0053",
    "name": "진",
+   "nameEn": "Gin",
    "iconPath": "Icon_CH0053",
    "roleType": 2,
    "attributeType": 4,
@@ -1733,6 +1817,7 @@
   "CH0054": {
    "code": "CH0054",
    "name": "하리",
+   "nameEn": "Hari",
    "iconPath": "Icon_CH0054",
    "roleType": 3,
    "attributeType": 2,
@@ -1742,6 +1827,7 @@
   "CH0056": {
    "code": "CH0056",
    "name": "아이렌",
+   "nameEn": "Airen",
    "iconPath": "Icon_CH0056",
    "roleType": 1,
    "attributeType": 1,
@@ -1751,6 +1837,7 @@
   "CH0057": {
    "code": "CH0057",
    "name": "케이시",
+   "nameEn": "Casey",
    "iconPath": "Icon_CH0057",
    "roleType": 2,
    "attributeType": 1,
@@ -1760,6 +1847,7 @@
   "CH0062": {
    "code": "CH0062",
    "name": "트리체",
+   "nameEn": "Treache",
    "iconPath": "Icon_CH0062",
    "roleType": 2,
    "attributeType": 1,
@@ -1769,6 +1857,7 @@
   "CH0063": {
    "code": "CH0063",
    "name": "세라",
+   "nameEn": "Sera",
    "iconPath": "Icon_CH0063",
    "roleType": 1,
    "attributeType": 2,
@@ -1778,6 +1867,7 @@
   "NP0101": {
    "code": "NP0101",
    "name": "메이드 알바(청소)",
+   "nameEn": "Maid Part-Timer (Cleaning)",
    "iconPath": "Icon_NPC_Maid_Novice_101",
    "roleType": 1,
    "attributeType": 3,
@@ -1787,6 +1877,7 @@
   "NP0102": {
    "code": "NP0102",
    "name": "메이드 알바(욕실)",
+   "nameEn": "Maid Part-Timer (Bathroom)",
    "iconPath": "Icon_NPC_Maid_Novice_102",
    "roleType": 1,
    "attributeType": 3,
@@ -1796,6 +1887,7 @@
   "NP0103": {
    "code": "NP0103",
    "name": "메이드 알바(롤러)",
+   "nameEn": "Maid Part-Timer (Roller)",
    "iconPath": "Icon_NPC_Maid_Novice_201",
    "roleType": 2,
    "attributeType": 3,
@@ -1805,6 +1897,7 @@
   "NP0104": {
    "code": "NP0104",
    "name": "메이드 알바(경호)",
+   "nameEn": "Maid Part-Timer (Guard)",
    "iconPath": "Icon_NPC_Maid_Novice_202",
    "roleType": 2,
    "attributeType": 3,
@@ -1814,6 +1907,7 @@
   "NP0105": {
    "code": "NP0105",
    "name": "메이드 알바(저격)",
+   "nameEn": "Maid Part-Timer (Sniper)",
    "iconPath": "Icon_NPC_Maid_Novice_203",
    "roleType": 2,
    "attributeType": 3,
@@ -1823,6 +1917,7 @@
   "NP0106": {
    "code": "NP0106",
    "name": "메이드 알바(먼지)",
+   "nameEn": "Maid Part-Timer (Dusting)",
    "iconPath": "Icon_NPC_Maid_Novice_301",
    "roleType": 3,
    "attributeType": 3,
@@ -1832,6 +1927,7 @@
   "NP0107": {
    "code": "NP0107",
    "name": "메이드 정직원(요리)",
+   "nameEn": "Full-Time Maid (Cooking)",
    "iconPath": "Icon_NPC_Maid_Elite_101_E",
    "roleType": 1,
    "attributeType": 3,
@@ -1841,6 +1937,7 @@
   "NP0108": {
    "code": "NP0108",
    "name": "메이드 정직원(주방)",
+   "nameEn": "Full-Time Maid (Kitchen)",
    "iconPath": "Icon_NPC_Maid_Elite_102_E",
    "roleType": 1,
    "attributeType": 3,
@@ -1850,6 +1947,7 @@
   "NP0109": {
    "code": "NP0109",
    "name": "메이드 정직원(진공)",
+   "nameEn": "Full-Time Maid (Vacuum)",
    "iconPath": "Icon_NPC_Maid_Elite_201_E",
    "roleType": 2,
    "attributeType": 3,
@@ -1859,6 +1957,7 @@
   "NP0110": {
    "code": "NP0110",
    "name": "메이드 정직원(체포)",
+   "nameEn": "Full-Time Maid (Arrest)",
    "iconPath": "Icon_NPC_Maid_Elite_202_E",
    "roleType": 2,
    "attributeType": 3,
@@ -1868,6 +1967,7 @@
   "NP0111": {
    "code": "NP0111",
    "name": "메이드 정직원(저격)",
+   "nameEn": "Full-Time Maid (Sniper)",
    "iconPath": "Icon_NPC_Maid_Elite_203_E",
    "roleType": 2,
    "attributeType": 3,
@@ -1877,6 +1977,7 @@
   "NP0112": {
    "code": "NP0112",
    "name": "메이드 정직원(주술)",
+   "nameEn": "Full-Time Maid (Sorcery)",
    "iconPath": "Icon_NPC_Maid_Elite_301_E",
    "roleType": 3,
    "attributeType": 3,
@@ -1886,6 +1987,7 @@
   "NP0199": {
    "code": "NP0199",
    "name": "메이드장",
+   "nameEn": "Head Maid",
    "iconPath": "Icon_Boss_Manageress",
    "roleType": 1,
    "attributeType": 3,
@@ -1895,6 +1997,7 @@
   "NP0201": {
    "code": "NP0201",
    "name": "블루 엔젤(아령)",
+   "nameEn": "Blue Angel (Dumbbell)",
    "iconPath": "Icon_NPC_Healthy_Blue_101",
    "roleType": 1,
    "attributeType": 1,
@@ -1904,6 +2007,7 @@
   "NP0202": {
    "code": "NP0202",
    "name": "블루 엔젤(암미트)",
+   "nameEn": "Blue Angel (Arm Mitt)",
    "iconPath": "Icon_NPC_Healthy_Blue_102",
    "roleType": 1,
    "attributeType": 1,
@@ -1913,6 +2017,7 @@
   "NP0203": {
    "code": "NP0203",
    "name": "블루 엔젤(복싱)",
+   "nameEn": "Blue Angel (Boxing)",
    "iconPath": "Icon_NPC_Healthy_Blue_201",
    "roleType": 2,
    "attributeType": 1,
@@ -1922,6 +2027,7 @@
   "NP0204": {
    "code": "NP0204",
    "name": "블루 엔젤(투포환)",
+   "nameEn": "Blue Angel (Shot Put)",
    "iconPath": "Icon_NPC_Healthy_Blue_202",
    "roleType": 2,
    "attributeType": 1,
@@ -1931,6 +2037,7 @@
   "NP0205": {
    "code": "NP0205",
    "name": "블루 엔젤(디스크)",
+   "nameEn": "Blue Angel (Discus)",
    "iconPath": "Icon_NPC_Healthy_Blue_204",
    "roleType": 2,
    "attributeType": 1,
@@ -1940,6 +2047,7 @@
   "NP0206": {
    "code": "NP0206",
    "name": "블루 매니저(슬링샷)",
+   "nameEn": "Blue Manager (Slingshot)",
    "iconPath": "Icon_NPC_Healthy_Blue_301",
    "roleType": 3,
    "attributeType": 1,
@@ -1949,6 +2057,7 @@
   "NP0207": {
    "code": "NP0207",
    "name": "레드 엔젤(덤벨)",
+   "nameEn": "Red Angel (Dumbbell)",
    "iconPath": "Icon_NPC_Healthy_Red_101_E",
    "roleType": 1,
    "attributeType": 1,
@@ -1958,6 +2067,7 @@
   "NP0208": {
    "code": "NP0208",
    "name": "레드 엔젤(암쉴드)",
+   "nameEn": "Red Angel (Arm Shield)",
    "iconPath": "Icon_NPC_Healthy_Red_102_E",
    "roleType": 1,
    "attributeType": 1,
@@ -1967,6 +2077,7 @@
   "NP0209": {
    "code": "NP0209",
    "name": "레드 엔젤(파이트)",
+   "nameEn": "Red Angel (Fight)",
    "iconPath": "Icon_NPC_Healthy_Red_201_E",
    "roleType": 2,
    "attributeType": 1,
@@ -1976,6 +2087,7 @@
   "NP0210": {
    "code": "NP0210",
    "name": "레드 엔젤(케틀벨)",
+   "nameEn": "Red Angel (Kettlebell)",
    "iconPath": "Icon_NPC_Healthy_Red_202_E",
    "roleType": 2,
    "attributeType": 1,
@@ -1985,6 +2097,7 @@
   "NP0211": {
    "code": "NP0211",
    "name": "레드 엔젤(디스크)",
+   "nameEn": "Red Angel (Discus)",
    "iconPath": "Icon_NPC_Healthy_Red_204_E",
    "roleType": 2,
    "attributeType": 1,
@@ -1994,6 +2107,7 @@
   "NP0212": {
    "code": "NP0212",
    "name": "레드 매니저(슬링샷)",
+   "nameEn": "Red Manager (Slingshot)",
    "iconPath": "Icon_NPC_Healthy_Red_301_E",
    "roleType": 3,
    "attributeType": 1,
@@ -2003,6 +2117,7 @@
   "NP0299": {
    "code": "NP0299",
    "name": "블랙엔젤",
+   "nameEn": "Black Angel",
    "iconPath": "Icon_NP0299",
    "roleType": 1,
    "attributeType": 1,
@@ -2012,6 +2127,7 @@
   "NP0301": {
    "code": "NP0301",
    "name": "바니 루키(키커)",
+   "nameEn": "Bunny Rookie (Kicker)",
    "iconPath": "Icon_NP0301",
    "roleType": 1,
    "attributeType": 4,
@@ -2021,6 +2137,7 @@
   "NP0302": {
    "code": "NP0302",
    "name": "바니 루키(가드)",
+   "nameEn": "Bunny Rookie (Guard)",
    "iconPath": "Icon_NP0302",
    "roleType": 1,
    "attributeType": 4,
@@ -2030,6 +2147,7 @@
   "NP0303": {
    "code": "NP0303",
    "name": "바니 루키(룰렛)",
+   "nameEn": "Bunny Rookie (Roulette)",
    "iconPath": "Icon_NP0303",
    "roleType": 2,
    "attributeType": 4,
@@ -2039,6 +2157,7 @@
   "NP0304": {
    "code": "NP0304",
    "name": "바니 루키(친위)",
+   "nameEn": "Bunny Rookie (Royal Guard)",
    "iconPath": "Icon_NP0304",
    "roleType": 2,
    "attributeType": 4,
@@ -2048,6 +2167,7 @@
   "NP0305": {
    "code": "NP0305",
    "name": "바니 루키(다트)",
+   "nameEn": "Bunny Rookie (Darts)",
    "iconPath": "Icon_NP0305",
    "roleType": 2,
    "attributeType": 4,
@@ -2057,6 +2177,7 @@
   "NP0306": {
    "code": "NP0306",
    "name": "바니 루키(마술)",
+   "nameEn": "Bunny Rookie (Magic)",
    "iconPath": "Icon_NP0306",
    "roleType": 3,
    "attributeType": 4,
@@ -2066,6 +2187,7 @@
   "NP0307": {
    "code": "NP0307",
    "name": "바니 러버즈(키커)",
+   "nameEn": "Bunny Lovers (Kicker)",
    "iconPath": "Icon_NP0307",
    "roleType": 1,
    "attributeType": 4,
@@ -2075,6 +2197,7 @@
   "NP0308": {
    "code": "NP0308",
    "name": "바니 러버즈(가드)",
+   "nameEn": "Bunny Lovers (Guard)",
    "iconPath": "Icon_NP0308",
    "roleType": 1,
    "attributeType": 4,
@@ -2084,6 +2207,7 @@
   "NP0309": {
    "code": "NP0309",
    "name": "바니 러버즈(룰렛)",
+   "nameEn": "Bunny Lovers (Roulette)",
    "iconPath": "Icon_NP0309",
    "roleType": 1,
    "attributeType": 4,
@@ -2093,6 +2217,7 @@
   "NP0310": {
    "code": "NP0310",
    "name": "바니 러버즈(친위)",
+   "nameEn": "Bunny Lovers (Royal Guard)",
    "iconPath": "Icon_NP0310",
    "roleType": 2,
    "attributeType": 4,
@@ -2102,6 +2227,7 @@
   "NP0311": {
    "code": "NP0311",
    "name": "바니 러버즈(다트)",
+   "nameEn": "Bunny Lovers (Darts)",
    "iconPath": "Icon_NP0311",
    "roleType": 2,
    "attributeType": 4,
@@ -2111,6 +2237,7 @@
   "NP0312": {
    "code": "NP0312",
    "name": "바니 러버즈(마술)",
+   "nameEn": "Bunny Lovers (Magic)",
    "iconPath": "Icon_NP0312",
    "roleType": 3,
    "attributeType": 4,
@@ -2120,6 +2247,7 @@
   "NP0399": {
    "code": "NP0399",
    "name": "바니 글로리아",
+   "nameEn": "Bunny Gloria",
    "iconPath": "Icon_NP0399",
    "roleType": 2,
    "attributeType": 4,
@@ -2129,6 +2257,7 @@
   "NP0401": {
    "code": "NP0401",
    "name": "노비스(참회)",
+   "nameEn": "Novice (Confession)",
    "iconPath": "Icon_NP0401",
    "roleType": 1,
    "attributeType": 2,
@@ -2138,6 +2267,7 @@
   "NP0402": {
    "code": "NP0402",
    "name": "노비스(수호)",
+   "nameEn": "Novice (Protection)",
    "iconPath": "Icon_NP0402",
    "roleType": 1,
    "attributeType": 2,
@@ -2147,6 +2277,7 @@
   "NP0403": {
    "code": "NP0403",
    "name": "노비스(계시)",
+   "nameEn": "Novice (Revelation)",
    "iconPath": "Icon_NP0403",
    "roleType": 2,
    "attributeType": 2,
@@ -2156,6 +2287,7 @@
   "NP0404": {
    "code": "NP0404",
    "name": "노비스(선포)",
+   "nameEn": "Novice (Proclamation)",
    "iconPath": "Icon_NP0404",
    "roleType": 2,
    "attributeType": 2,
@@ -2165,6 +2297,7 @@
   "NP0405": {
    "code": "NP0405",
    "name": "노비스(축복)",
+   "nameEn": "Novice (Blessing)",
    "iconPath": "Icon_NP0405",
    "roleType": 3,
    "attributeType": 2,
@@ -2174,6 +2307,7 @@
   "NP0406": {
    "code": "NP0406",
    "name": "노비스(은총)",
+   "nameEn": "Novice (Grace)",
    "iconPath": "Icon_NP0406",
    "roleType": 4,
    "attributeType": 2,
@@ -2183,6 +2317,7 @@
   "NP0407": {
    "code": "NP0407",
    "name": "오디나(헌신)",
+   "nameEn": "Odina (Devotion)",
    "iconPath": "Icon_NP0407",
    "roleType": 1,
    "attributeType": 2,
@@ -2192,6 +2327,7 @@
   "NP0408": {
    "code": "NP0408",
    "name": "오디나(속죄)",
+   "nameEn": "Odina (Atonement)",
    "iconPath": "Icon_NP0408",
    "roleType": 1,
    "attributeType": 2,
@@ -2201,6 +2337,7 @@
   "NP0409": {
    "code": "NP0409",
    "name": "오디나(신격)",
+   "nameEn": "Odina (Divinity)",
    "iconPath": "Icon_NP0409",
    "roleType": 2,
    "attributeType": 2,
@@ -2210,6 +2347,7 @@
   "NP0410": {
    "code": "NP0410",
    "name": "오디나(예언)",
+   "nameEn": "Odina (Prophecy)",
    "iconPath": "Icon_NP0410",
    "roleType": 2,
    "attributeType": 2,
@@ -2219,6 +2357,7 @@
   "NP0411": {
    "code": "NP0411",
    "name": "오디나(의식)",
+   "nameEn": "Odina (Ritual)",
    "iconPath": "Icon_NP0411",
    "roleType": 3,
    "attributeType": 2,
@@ -2228,6 +2367,7 @@
   "NP0412": {
    "code": "NP0412",
    "name": "오디나(치유)",
+   "nameEn": "Odina (Healing)",
    "iconPath": "Icon_NP0412",
    "roleType": 4,
    "attributeType": 2,
@@ -2237,6 +2377,7 @@
   "NP0499": {
    "code": "NP0499",
    "name": "엑세노스",
+   "nameEn": "Exenos",
    "iconPath": "Icon_NP0499",
    "roleType": 2,
    "attributeType": 2,
@@ -2246,6 +2387,7 @@
   "NP0501": {
    "code": "NP0501",
    "name": "키티 불리(패디)",
+   "nameEn": "Kitty Bully (Paddy)",
    "iconPath": "Icon_NP0501",
    "roleType": 1,
    "attributeType": 3,
@@ -2255,6 +2397,7 @@
   "NP0502": {
    "code": "NP0502",
    "name": "키티 불리(커티)",
+   "nameEn": "Kitty Bully (Cutty)",
    "iconPath": "Icon_NP0502",
    "roleType": 2,
    "attributeType": 3,
@@ -2264,6 +2407,7 @@
   "NP0503": {
    "code": "NP0503",
    "name": "키티 불리(블럭스)",
+   "nameEn": "Kitty Bully (Blocks)",
    "iconPath": "Icon_NP0503",
    "roleType": 2,
    "attributeType": 3,
@@ -2273,6 +2417,7 @@
   "NP0504": {
    "code": "NP0504",
    "name": "키티 불리(뱅뱅)",
+   "nameEn": "Kitty Bully (Bang-Bang)",
    "iconPath": "Icon_NP0504",
    "roleType": 2,
    "attributeType": 3,
@@ -2282,6 +2427,7 @@
   "NP0505": {
    "code": "NP0505",
    "name": "키티 불리(럼블)",
+   "nameEn": "Kitty Bully (Rumble)",
    "iconPath": "Icon_NP0505",
    "roleType": 2,
    "attributeType": 3,
@@ -2291,6 +2437,7 @@
   "NP0506": {
    "code": "NP0506",
    "name": "키티 불리(버즈닥)",
+   "nameEn": "Kitty Bully (Buzzdock)",
    "iconPath": "Icon_NP0506",
    "roleType": 4,
    "attributeType": 3,
@@ -2300,6 +2447,7 @@
   "NP0507": {
    "code": "NP0507",
    "name": "푸시캣 느와르(루시)",
+   "nameEn": "Pussycat Noir (Lucy)",
    "iconPath": "Icon_NP0507",
    "roleType": 1,
    "attributeType": 3,
@@ -2309,6 +2457,7 @@
   "NP0508": {
    "code": "NP0508",
    "name": "푸시캣 느와르(스팅)",
+   "nameEn": "Pussycat Noir (Sting)",
    "iconPath": "Icon_NP0508",
    "roleType": 1,
    "attributeType": 3,
@@ -2318,6 +2467,7 @@
   "NP0509": {
    "code": "NP0509",
    "name": "푸시캣 느와르(래틀)",
+   "nameEn": "Pussycat Noir (Rattle)",
    "iconPath": "Icon_NP0509",
    "roleType": 2,
    "attributeType": 3,
@@ -2327,6 +2477,7 @@
   "NP0510": {
    "code": "NP0510",
    "name": "푸시캣 느와르(에이밍)",
+   "nameEn": "Pussycat Noir (Aiming)",
    "iconPath": "Icon_NP0510",
    "roleType": 2,
    "attributeType": 3,
@@ -2336,6 +2487,7 @@
   "NP0511": {
    "code": "NP0511",
    "name": "푸시캣 느와르(섀드)",
+   "nameEn": "Pussycat Noir (Shad)",
    "iconPath": "Icon_NP0511",
    "roleType": 3,
    "attributeType": 3,
@@ -2345,6 +2497,7 @@
   "NP0512": {
    "code": "NP0512",
    "name": "푸시캣 느와르(메를로)",
+   "nameEn": "Pussycat Noir (Merlot)",
    "iconPath": "Icon_NP0512",
    "roleType": 3,
    "attributeType": 3,
@@ -2354,6 +2507,7 @@
   "NP0701": {
    "code": "NP0701",
    "name": "메이드 수영복(센티넬)",
+   "nameEn": "Maid Swimsuit (Sentinel)",
    "iconPath": "Icon_NP0701",
    "roleType": 1,
    "attributeType": 1,
@@ -2363,6 +2517,7 @@
   "NP0702": {
    "code": "NP0702",
    "name": "메이드 수영복(재니터)",
+   "nameEn": "Maid Swimsuit (Janitor)",
    "iconPath": "Icon_NP0702",
    "roleType": 1,
    "attributeType": 1,
@@ -2372,6 +2527,7 @@
   "NP0703": {
    "code": "NP0703",
    "name": "메이드 수영복(라이프가드)",
+   "nameEn": "Maid Swimsuit (Lifeguard)",
    "iconPath": "Icon_NP0703",
    "roleType": 2,
    "attributeType": 1,
@@ -2381,6 +2537,7 @@
   "NP0704": {
    "code": "NP0704",
    "name": "메이드 수영복(워셔)",
+   "nameEn": "Maid Swimsuit (Washer)",
    "iconPath": "Icon_NP0704",
    "roleType": 2,
    "attributeType": 1,
@@ -2390,6 +2547,7 @@
   "NP0705": {
    "code": "NP0705",
    "name": "메이드 수영복(코디네이터)",
+   "nameEn": "Maid Swimsuit (Coordinator)",
    "iconPath": "Icon_NP0705",
    "roleType": 2,
    "attributeType": 1,
@@ -2399,6 +2557,7 @@
   "NP0706": {
    "code": "NP0706",
    "name": "메이드 수영복(클리너)",
+   "nameEn": "Maid Swimsuit (Cleaner)",
    "iconPath": "Icon_NP0706",
    "roleType": 3,
    "attributeType": 1,
@@ -2408,6 +2567,7 @@
   "NP0707": {
    "code": "NP0707",
    "name": "메이드 비키니(서퍼)",
+   "nameEn": "Maid Bikini (Surfer)",
    "iconPath": "Icon_NP0707",
    "roleType": 1,
    "attributeType": 1,
@@ -2417,6 +2577,7 @@
   "NP0708": {
    "code": "NP0708",
    "name": "메이드 비키니(태닝)",
+   "nameEn": "Maid Bikini (Tanning)",
    "iconPath": "Icon_NP0708",
    "roleType": 1,
    "attributeType": 1,
@@ -2426,6 +2587,7 @@
   "NP0709": {
    "code": "NP0709",
    "name": "메이드 비키니(플로터)",
+   "nameEn": "Maid Bikini (Floater)",
    "iconPath": "Icon_NP0709",
    "roleType": 2,
    "attributeType": 1,
@@ -2435,6 +2597,7 @@
   "NP0710": {
    "code": "NP0710",
    "name": "메이드 비키니(워터샷)",
+   "nameEn": "Maid Bikini (Watershot)",
    "iconPath": "Icon_NP0710",
    "roleType": 2,
    "attributeType": 1,
@@ -2444,6 +2607,7 @@
   "NP0711": {
    "code": "NP0711",
    "name": "메이드 비키니(벌룬런처)",
+   "nameEn": "Maid Bikini (Balloon Launcher)",
    "iconPath": "Icon_NP0711",
    "roleType": 2,
    "attributeType": 1,
@@ -2453,6 +2617,7 @@
   "NP0712": {
    "code": "NP0712",
    "name": "메이드 비키니(워터건)",
+   "nameEn": "Maid Bikini (Water Gun)",
    "iconPath": "Icon_NP0712",
    "roleType": 3,
    "attributeType": 1,
@@ -2462,6 +2627,7 @@
   "NP0799": {
    "code": "NP0799",
    "name": "메이드장(수영복)",
+   "nameEn": "Head Maid (Swimsuit)",
    "iconPath": "Icon_NP0799",
    "roleType": 1,
    "attributeType": 1,
@@ -2471,6 +2637,7 @@
   "NP6010": {
    "code": "NP6010",
    "name": "시니스트라",
+   "nameEn": "Sinistra",
    "iconPath": "Icon_NP6010",
    "roleType": 2,
    "attributeType": 3,
@@ -2480,6 +2647,7 @@
   "NP6011": {
    "code": "NP6011",
    "name": "덱스트라",
+   "nameEn": "Dextra",
    "iconPath": "Icon_NP6011",
    "roleType": 2,
    "attributeType": 3,
@@ -2489,6 +2657,7 @@
   "NP6012": {
    "code": "NP6012",
    "name": "움브라 데이",
+   "nameEn": "Umbra Dei",
    "iconPath": "Icon_NP6012",
    "roleType": 2,
    "attributeType": 3,
@@ -2498,6 +2667,7 @@
   "NP6020": {
    "code": "NP6020",
    "name": "우아한 게스트",
+   "nameEn": "Elegant Guest",
    "iconPath": "Icon_NP6020",
    "roleType": 1,
    "attributeType": 1,
@@ -2507,6 +2677,7 @@
   "NP6021": {
    "code": "NP6021",
    "name": "발랄한 게스트",
+   "nameEn": "Lively Guest",
    "iconPath": "Icon_NP6021",
    "roleType": 2,
    "attributeType": 1,
@@ -2516,6 +2687,7 @@
   "NP6022": {
    "code": "NP6022",
    "name": "느긋한 게스트",
+   "nameEn": "Relaxed Guest",
    "iconPath": "Icon_NP6022",
    "roleType": 3,
    "attributeType": 1,
@@ -2525,6 +2697,7 @@
   "NP6023": {
    "code": "NP6023",
    "name": "마리",
+   "nameEn": "Mari",
    "iconPath": "Icon_NP6023",
    "roleType": 2,
    "attributeType": 1,
@@ -2534,6 +2707,7 @@
   "NP6024": {
    "code": "NP6024",
    "name": "안나",
+   "nameEn": "Anna",
    "iconPath": "Icon_NP6024",
    "roleType": 1,
    "attributeType": 1,
@@ -2543,6 +2717,7 @@
   "NP7999": {
    "code": "NP7999",
    "name": "골드 페더",
+   "nameEn": "Gold Feather",
    "iconPath": "Icon_Boss_600006_Dimension_Gold_Duck_Leader",
    "roleType": 1,
    "attributeType": 4,
@@ -2552,6 +2727,7 @@
   "NP8004": {
    "code": "NP8004",
    "name": "메이드 플러리(롤러)",
+   "nameEn": "Maid Flurry (Roller)",
    "iconPath": "Icon_NP8004",
    "roleType": 2,
    "attributeType": 3,
@@ -2561,6 +2737,7 @@
   "NP8005": {
    "code": "NP8005",
    "name": "메이드 플러리(저격)",
+   "nameEn": "Maid Flurry (Sniper)",
    "iconPath": "Icon_NP8005",
    "roleType": 2,
    "attributeType": 3,
@@ -2570,6 +2747,7 @@
   "NP8006": {
    "code": "NP8006",
    "name": "피트 플러리(복싱)",
+   "nameEn": "Fit Flurry (Boxing)",
    "iconPath": "Icon_NP8006",
    "roleType": 2,
    "attributeType": 1,
@@ -2579,6 +2757,7 @@
   "NP8007": {
    "code": "NP8007",
    "name": "피트 플러리(근력)",
+   "nameEn": "Fit Flurry (Strength)",
    "iconPath": "Icon_NP8007",
    "roleType": 2,
    "attributeType": 1,
@@ -2588,6 +2767,7 @@
   "NP8008": {
    "code": "NP8008",
    "name": "바니 플러리(토끼 장갑)",
+   "nameEn": "Bunny Flurry (Rabbit Gloves)",
    "iconPath": "Icon_NP8008",
    "roleType": 2,
    "attributeType": 4,
@@ -2597,6 +2777,7 @@
   "NP8009": {
    "code": "NP8009",
    "name": "바니 플러리(금화)",
+   "nameEn": "Bunny Flurry (Gold Coin)",
    "iconPath": "Icon_NP8009",
    "roleType": 2,
    "attributeType": 4,
@@ -2606,6 +2787,7 @@
   "NP8010": {
    "code": "NP8010",
    "name": "시스터 플러리(철퇴)",
+   "nameEn": "Sister Flurry (Mace)",
    "iconPath": "Icon_NP8010",
    "roleType": 2,
    "attributeType": 2,
@@ -2615,6 +2797,7 @@
   "NP8011": {
    "code": "NP8011",
    "name": "시스터 플러리(스태프)",
+   "nameEn": "Sister Flurry (Staff)",
    "iconPath": "Icon_NP8011",
    "roleType": 2,
    "attributeType": 2,
@@ -2624,6 +2807,7 @@
   "NP8094": {
    "code": "NP8094",
    "name": "메이드장 플러리",
+   "nameEn": "Head Maid Flurry",
    "iconPath": "Icon_NP8094",
    "roleType": 2,
    "attributeType": 3,
@@ -2633,6 +2817,7 @@
   "NP8095": {
    "code": "NP8095",
    "name": "엔젤 플러리",
+   "nameEn": "Angel Flurry",
    "iconPath": "Icon_NP8095",
    "roleType": 2,
    "attributeType": 1,
@@ -2642,6 +2827,7 @@
   "NP8096": {
    "code": "NP8096",
    "name": "킹 래빗 플러리",
+   "nameEn": "King Rabbit Flurry",
    "iconPath": "Icon_NP8096",
    "roleType": 2,
    "attributeType": 4,
@@ -2651,6 +2837,7 @@
   "NP8097": {
    "code": "NP8097",
    "name": "수녀원장 플러리",
+   "nameEn": "Mother Superior Flurry",
    "iconPath": "Icon_NP8097",
    "roleType": 2,
    "attributeType": 2,
@@ -2660,6 +2847,7 @@
   "NP8101": {
    "code": "NP8101",
    "name": "미니 시스터(CUB-E 01)",
+   "nameEn": "Mini Sister (CUB-E 01)",
    "iconPath": "Icon_NP8101",
    "roleType": 1,
    "attributeType": 3,
@@ -2669,6 +2857,7 @@
   "NP8102": {
    "code": "NP8102",
    "name": "미니 시스터(CUB-E 08)",
+   "nameEn": "Mini Sister (CUB-E 08)",
    "iconPath": "Icon_NP8102",
    "roleType": 2,
    "attributeType": 3,
@@ -2678,6 +2867,7 @@
   "NP8199": {
    "code": "NP8199",
    "name": "스몰 시스터",
+   "nameEn": "Small Sister",
    "iconPath": "Icon_Boss_600002_SmallBrother",
    "roleType": 3,
    "attributeType": 3,
@@ -2687,6 +2877,7 @@
   "NP8200": {
    "code": "NP8200",
    "name": "세탁봇 mk.1",
+   "nameEn": "Laundry Bot Mk.1",
    "iconPath": "Icon_NP8200",
    "roleType": 1,
    "attributeType": 2,
@@ -2697,754 +2888,924 @@
  "drops": {
   "charge_goods:1": {
    "name": "스태미나 비타민",
+   "nameEn": "Stamina Vitamin",
    "icon": "Icon_Goods_Stamina_Stamina_Vitamins"
   },
   "item:90101": {
    "name": "써지컬 귀걸이",
+   "nameEn": "Surgical Steel Earrings",
    "icon": "Icon_Equipment_Earring_Tier1",
    "grade": 1
   },
   "goods:2": {
    "name": "시드",
+   "nameEn": "Seed",
    "icon": "Icon_Goods_gem_free"
   },
   "item:90102": {
    "name": "넥밴드 선풍기",
+   "nameEn": "Neckband Fan",
    "icon": "Icon_Equipment_Necklace_Tier1",
    "grade": 1
   },
   "item:90103": {
    "name": "미르가늄 팔찌",
+   "nameEn": "Mirganium Bracelet",
    "icon": "Icon_Equipment_Bracelet_Tier1",
    "grade": 1
   },
   "goods:1": {
    "name": "크레딧",
+   "nameEn": "Credits",
    "icon": "Icon_Goods_gold"
   },
   "item:90104": {
    "name": "미르가늄 반지",
+   "nameEn": "Mirganium Ring",
    "icon": "Icon_Equipment_Ring_Tier1",
    "grade": 1
   },
   "item:29": {
    "name": "프레이아의 메모리",
+   "nameEn": "Freya's Memory",
    "icon": "Icon_Character_Piece_CH0029"
   },
   "item:34": {
    "name": "세타의 메모리",
+   "nameEn": "Theta's Memory",
    "icon": "Icon_Character_Piece_CH0034"
   },
   "item:36": {
    "name": "루미나의 메모리",
+   "nameEn": "Lumina's Memory",
    "icon": "Icon_Character_Piece_CH0036"
   },
   "item:53": {
    "name": "진의 메모리",
+   "nameEn": "Gin's Memory",
    "icon": "Icon_Character_Piece_CH0053"
   },
   "item:90105": {
    "name": "검정 볼캡",
+   "nameEn": "Black Ball Cap",
    "icon": "Icon_Equipment_Hat_Tier1",
    "grade": 1
   },
   "item:90106": {
    "name": "블루 러닝화",
+   "nameEn": "Blue Running Shoes",
    "icon": "Icon_Equipment_Shoes_Tier1",
    "grade": 1
   },
   "item:90107": {
    "name": "기본 더플백",
+   "nameEn": "Basic Duffle Bag",
    "icon": "Icon_Equipment_Bag_Tier1",
    "grade": 1
   },
   "item:90108": {
    "name": "스포츠 반 장갑",
+   "nameEn": "Sports Half Gloves",
    "icon": "Icon_Equipment_Gloves_Tier1",
    "grade": 1
   },
   "item:2": {
    "name": "라일라의 메모리",
+   "nameEn": "Laila's Memory",
    "icon": "Icon_Character_Piece_CH0002"
   },
   "item:13": {
    "name": "로망스 경의 메모리",
+   "nameEn": "Sir Romance's Memory",
    "icon": "Icon_Character_Piece_CH0013"
   },
   "item:16": {
    "name": "레안나의 메모리",
+   "nameEn": "Reanna's Memory",
    "icon": "Icon_Character_Piece_CH0016"
   },
   "item:26": {
    "name": "소피아의 메모리",
+   "nameEn": "Sophia's Memory",
    "icon": "Icon_Character_Piece_CH0026"
   },
   "item:90109": {
    "name": "네잎클로버 키링",
+   "nameEn": "Four-Leaf Clover Keyring",
    "icon": "Icon_Equipment_Key_ring_Tier1",
    "grade": 1
   },
   "item:90110": {
    "name": "배드민턴 배지",
+   "nameEn": "Badminton Badge",
    "icon": "Icon_Equipment_Badge_Tier1",
    "grade": 1
   },
   "item:90111": {
    "name": "스포츠 브라",
+   "nameEn": "Sports Bra",
    "icon": "Icon_Equipment_Bra_Tier1",
    "grade": 1
   },
   "item:90112": {
    "name": "심리스 티팬티",
+   "nameEn": "Seamless Thong",
    "icon": "Icon_Equipment_Panties_Tier1",
    "grade": 1
   },
   "item:21": {
    "name": "홍접의 메모리",
+   "nameEn": "Kouchou's Memory",
    "icon": "Icon_Character_Piece_CH0021"
   },
   "item:5": {
    "name": "클레어의 메모리",
+   "nameEn": "Claire's Memory",
    "icon": "Icon_Character_Piece_CH0005"
   },
   "item:7": {
    "name": "마네의 메모리",
+   "nameEn": "Mane's Memory",
    "icon": "Icon_Character_Piece_CH0007"
   },
   "item:12": {
    "name": "마샤의 메모리",
+   "nameEn": "Marcia's Memory",
    "icon": "Icon_Character_Piece_CH0012"
   },
   "item:80201": {
    "name": "T2 귀걸이 바우처",
+   "nameEn": "T2 Earrings Voucher",
    "icon": "Icon_Equipment_Piece_Earring_Tier2",
    "grade": 2
   },
   "item:80202": {
    "name": "T2 목걸이 바우처",
+   "nameEn": "T2 Necklace Voucher",
    "icon": "Icon_Equipment_Piece_Necklace_Tier2",
    "grade": 2
   },
   "item:80203": {
    "name": "T2 팔찌 바우처",
+   "nameEn": "T2 Bracelet Voucher",
    "icon": "Icon_Equipment_Piece_Bracelet_Tier2",
    "grade": 2
   },
   "item:80204": {
    "name": "T2 반지 바우처",
+   "nameEn": "T2 Ring Voucher",
    "icon": "Icon_Equipment_Piece_Ring_Tier2",
    "grade": 2
   },
   "item:62": {
    "name": "트리체의 메모리",
+   "nameEn": "Treache's Memory",
    "icon": "Icon_Character_Piece_CH0062"
   },
   "item:39": {
    "name": "카렌의 메모리",
+   "nameEn": "Caren's Memory",
    "icon": "Icon_Character_Piece_CH0039"
   },
   "item:20": {
    "name": "단희의 메모리",
+   "nameEn": "Dan Xi's Memory",
    "icon": "Icon_Character_Piece_CH0020"
   },
   "item:56": {
    "name": "아이렌의 메모리",
+   "nameEn": "Airen's Memory",
    "icon": "Icon_Character_Piece_CH0056"
   },
   "item:80205": {
    "name": "T2 모자 바우처",
+   "nameEn": "T2 Hat Voucher",
    "icon": "Icon_Equipment_Piece_Hat_Tier2",
    "grade": 2
   },
   "item:80206": {
    "name": "T2 신발 바우처",
+   "nameEn": "T2 Shoes Voucher",
    "icon": "Icon_Equipment_Piece_Shoes_Tier2",
    "grade": 2
   },
   "item:80207": {
    "name": "T2 가방 바우처",
+   "nameEn": "T2 Bag Voucher",
    "icon": "Icon_Equipment_Piece_Bag_Tier2",
    "grade": 2
   },
   "item:80208": {
    "name": "T2 장갑 바우처",
+   "nameEn": "T2 Gloves Voucher",
    "icon": "Icon_Equipment_Piece_Gloves_Tier2",
    "grade": 2
   },
   "item:37": {
    "name": "카사의 메모리",
+   "nameEn": "Kasa's Memory",
    "icon": "Icon_Character_Piece_CH0037"
   },
   "item:46": {
    "name": "제니의 메모리",
+   "nameEn": "Jennie's Memory",
    "icon": "Icon_Character_Piece_CH0046"
   },
   "item:27": {
    "name": "에밀리의 메모리",
+   "nameEn": "Emily's Memory",
    "icon": "Icon_Character_Piece_CH0027"
   },
   "item:50": {
    "name": "미오의 메모리",
+   "nameEn": "Mio's Memory",
    "icon": "Icon_Character_Piece_CH0050"
   },
   "item:80209": {
    "name": "T2 키링 바우처",
+   "nameEn": "T2 Keyring Voucher",
    "icon": "Icon_Equipment_Piece_Key_ring_Tier2",
    "grade": 2
   },
   "item:80210": {
    "name": "T2 배지 바우처",
+   "nameEn": "T2 Badge Voucher",
    "icon": "Icon_Equipment_Piece_Badge_Tier2",
    "grade": 2
   },
   "item:80211": {
    "name": "T2 브라 바우처",
+   "nameEn": "T2 Bra Voucher",
    "icon": "Icon_Equipment_Piece_Bra_Tier2",
    "grade": 2
   },
   "item:80212": {
    "name": "T2 팬티 바우처",
+   "nameEn": "T2 Panties Voucher",
    "icon": "Icon_Equipment_Piece_Panties_Tier2",
    "grade": 2
   },
   "item:54": {
    "name": "하리의 메모리",
+   "nameEn": "Hari's Memory",
    "icon": "Icon_Character_Piece_CH0054"
   },
   "item:23": {
    "name": "로나의 메모리",
+   "nameEn": "Rona's Memory",
    "icon": "Icon_Character_Piece_CH0023"
   },
   "item:17": {
    "name": "시즈쿠의 메모리",
+   "nameEn": "Shizuku's Memory",
    "icon": "Icon_Character_Piece_CH0017"
   },
   "item:1": {
    "name": "루시아의 메모리",
+   "nameEn": "Lucia's Memory",
    "icon": "Icon_Character_Piece_CH0001"
   },
   "item:80301": {
    "name": "T3 귀걸이 바우처",
+   "nameEn": "T3 Earrings Voucher",
    "icon": "Icon_Equipment_Piece_Earring_Tier3",
    "grade": 3
   },
   "item:80302": {
    "name": "T3 목걸이 바우처",
+   "nameEn": "T3 Necklace Voucher",
    "icon": "Icon_Equipment_Piece_Necklace_Tier3",
    "grade": 3
   },
   "item:80303": {
    "name": "T3 팔찌 바우처",
+   "nameEn": "T3 Bracelet Voucher",
    "icon": "Icon_Equipment_Piece_Bracelet_Tier3",
    "grade": 3
   },
   "item:80304": {
    "name": "T3 반지 바우처",
+   "nameEn": "T3 Ring Voucher",
    "icon": "Icon_Equipment_Piece_Ring_Tier3",
    "grade": 3
   },
   "item:6": {
    "name": "에일린의 메모리",
+   "nameEn": "Eileen's Memory",
    "icon": "Icon_Character_Piece_CH0006"
   },
   "item:63": {
    "name": "세라의 메모리",
+   "nameEn": "Sera's Memory",
    "icon": "Icon_Character_Piece_CH0063"
   },
   "item:80305": {
    "name": "T3 모자 바우처",
+   "nameEn": "T3 Hat Voucher",
    "icon": "Icon_Equipment_Piece_Hat_Tier3",
    "grade": 3
   },
   "item:80306": {
    "name": "T3 신발 바우처",
+   "nameEn": "T3 Shoes Voucher",
    "icon": "Icon_Equipment_Piece_Shoes_Tier3",
    "grade": 3
   },
   "item:80307": {
    "name": "T3 가방 바우처",
+   "nameEn": "T3 Bag Voucher",
    "icon": "Icon_Equipment_Piece_Bag_Tier3",
    "grade": 3
   },
   "item:80308": {
    "name": "T3 장갑 바우처",
+   "nameEn": "T3 Gloves Voucher",
    "icon": "Icon_Equipment_Piece_Gloves_Tier3",
    "grade": 3
   },
   "item:30": {
    "name": "세븐의 메모리",
+   "nameEn": "Seven's Memory",
    "icon": "Icon_Character_Piece_CH0030"
   },
   "item:31": {
    "name": "히나타의 메모리",
+   "nameEn": "Hinata's Memory",
    "icon": "Icon_Character_Piece_CH0031"
   },
   "item:80309": {
    "name": "T3 키링 바우처",
+   "nameEn": "T3 Keyring Voucher",
    "icon": "Icon_Equipment_Piece_Key_ring_Tier3",
    "grade": 3
   },
   "item:80310": {
    "name": "T3 배지 바우처",
+   "nameEn": "T3 Badge Voucher",
    "icon": "Icon_Equipment_Piece_Badge_Tier3",
    "grade": 3
   },
   "item:80311": {
    "name": "T3 브라 바우처",
+   "nameEn": "T3 Bra Voucher",
    "icon": "Icon_Equipment_Piece_Bra_Tier3",
    "grade": 3
   },
   "item:80312": {
    "name": "T3 팬티 바우처",
+   "nameEn": "T3 Panties Voucher",
    "icon": "Icon_Equipment_Piece_Panties_Tier3",
    "grade": 3
   },
   "item:80401": {
    "name": "T4 귀걸이 바우처",
+   "nameEn": "T4 Earrings Voucher",
    "icon": "Icon_Equipment_Piece_Earring_Tier4",
    "grade": 4
   },
   "item:80402": {
    "name": "T4 목걸이 바우처",
+   "nameEn": "T4 Necklace Voucher",
    "icon": "Icon_Equipment_Piece_Necklace_Tier4",
    "grade": 4
   },
   "item:80403": {
    "name": "T4 팔찌 바우처",
+   "nameEn": "T4 Bracelet Voucher",
    "icon": "Icon_Equipment_Piece_Bracelet_Tier4",
    "grade": 4
   },
   "item:80404": {
    "name": "T4 반지 바우처",
+   "nameEn": "T4 Ring Voucher",
    "icon": "Icon_Equipment_Piece_Ring_Tier4",
    "grade": 4
   },
   "item:80405": {
    "name": "T4 모자 바우처",
+   "nameEn": "T4 Hat Voucher",
    "icon": "Icon_Equipment_Piece_Hat_Tier4",
    "grade": 4
   },
   "item:80406": {
    "name": "T4 신발 바우처",
+   "nameEn": "T4 Shoes Voucher",
    "icon": "Icon_Equipment_Piece_Shoes_Tier4",
    "grade": 4
   },
   "item:80407": {
    "name": "T4 가방 바우처",
+   "nameEn": "T4 Bag Voucher",
    "icon": "Icon_Equipment_Piece_Bag_Tier4",
    "grade": 4
   },
   "item:80408": {
    "name": "T4 장갑 바우처",
+   "nameEn": "T4 Gloves Voucher",
    "icon": "Icon_Equipment_Piece_Gloves_Tier4",
    "grade": 4
   },
   "item:80409": {
    "name": "T4 키링 바우처",
+   "nameEn": "T4 Keyring Voucher",
    "icon": "Icon_Equipment_Piece_Key_ring_Tier4",
    "grade": 4
   },
   "item:80410": {
    "name": "T4 배지 바우처",
+   "nameEn": "T4 Badge Voucher",
    "icon": "Icon_Equipment_Piece_Badge_Tier4",
    "grade": 4
   },
   "item:80411": {
    "name": "T4 브라 바우처",
+   "nameEn": "T4 Bra Voucher",
    "icon": "Icon_Equipment_Piece_Bra_Tier4",
    "grade": 4
   },
   "item:80412": {
    "name": "T4 팬티 바우처",
+   "nameEn": "T4 Panties Voucher",
    "icon": "Icon_Equipment_Piece_Panties_Tier4",
    "grade": 4
   },
   "item:25": {
    "name": "카게의 메모리",
+   "nameEn": "Kage's Memory",
    "icon": "Icon_Character_Piece_CH0025"
   },
   "item:80501": {
    "name": "T5 귀걸이 바우처",
+   "nameEn": "T5 Earrings Voucher",
    "icon": "Icon_Equipment_Piece_Earring_Tier5",
    "grade": 5
   },
   "item:80502": {
    "name": "T5 목걸이 바우처",
+   "nameEn": "T5 Necklace Voucher",
    "icon": "Icon_Equipment_Piece_Necklace_Tier5",
    "grade": 5
   },
   "item:80503": {
    "name": "T5 팔찌 바우처",
+   "nameEn": "T5 Bracelet Voucher",
    "icon": "Icon_Equipment_Piece_Bracelet_Tier5",
    "grade": 5
   },
   "item:80504": {
    "name": "T5 반지 바우처",
+   "nameEn": "T5 Ring Voucher",
    "icon": "Icon_Equipment_Piece_Ring_Tier5",
    "grade": 5
   },
   "item:80505": {
    "name": "T5 모자 바우처",
+   "nameEn": "T5 Hat Voucher",
    "icon": "Icon_Equipment_Piece_Hat_Tier5",
    "grade": 5
   },
   "item:80506": {
    "name": "T5 신발 바우처",
+   "nameEn": "T5 Shoes Voucher",
    "icon": "Icon_Equipment_Piece_Shoes_Tier5",
    "grade": 5
   },
   "item:80507": {
    "name": "T5 가방 바우처",
+   "nameEn": "T5 Bag Voucher",
    "icon": "Icon_Equipment_Piece_Bag_Tier5",
    "grade": 5
   },
   "item:80508": {
    "name": "T5 장갑 바우처",
+   "nameEn": "T5 Gloves Voucher",
    "icon": "Icon_Equipment_Piece_Gloves_Tier5",
    "grade": 5
   },
   "reset_goods:1": {
    "name": "에너지 비타민",
+   "nameEn": "Energy Vitamin",
    "icon": "Icon_Goods_Stamina_Energy_Vitamins"
   },
   "item:10011": {
    "name": "C랭크 전투 로그",
+   "nameEn": "C-Rank Combat Log",
    "icon": "Icon_Char_Levelup_Rank_C_Tier1",
    "grade": 1
   },
   "item:10012": {
    "name": "B랭크 전투 로그",
+   "nameEn": "B-Rank Combat Log",
    "icon": "Icon_Char_Levelup_Rank_B_Tier2",
    "grade": 2
   },
   "item:10013": {
    "name": "A랭크 전투 로그",
+   "nameEn": "A-Rank Combat Log",
    "icon": "Icon_Char_Levelup_Rank_A_Tier3",
    "grade": 3
   },
   "item:10014": {
    "name": "S랭크 전투 로그",
+   "nameEn": "S-Rank Combat Log",
    "icon": "Icon_Char_Levelup_Rank_S_Tier4",
    "grade": 4
   },
   "item:10023": {
    "name": "중형 에센스",
+   "nameEn": "Medium Essence",
    "icon": "Icon_Eq_GrowUp_Tier3",
    "grade": 3
   },
   "item:10022": {
    "name": "소형 에센스",
+   "nameEn": "Small Essence",
    "icon": "Icon_Eq_GrowUp_Tier2",
    "grade": 2
   },
   "item:10021": {
    "name": "샘플 에센스",
+   "nameEn": "Sample Essence",
    "icon": "Icon_Eq_GrowUp_Tier1",
    "grade": 1
   },
   "item:10024": {
    "name": "대형 에센스",
+   "nameEn": "Large Essence",
    "icon": "Icon_Eq_GrowUp_Tier4",
    "grade": 4
   },
   "item:10111": {
    "name": "하급 열정의 깃털",
+   "nameEn": "Lesser Feather of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier1",
    "grade": 1
   },
   "item:10151": {
    "name": "브론즈 다트",
+   "nameEn": "Bronze Dart",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier1",
    "grade": 1
   },
   "item:10115": {
    "name": "하급 열정의 알",
+   "nameEn": "Lesser Egg of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier1",
    "grade": 1
   },
   "item:10112": {
    "name": "중급 열정의 깃털",
+   "nameEn": "Intermediate Feather of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier2",
    "grade": 2
   },
   "item:10152": {
    "name": "실버 다트",
+   "nameEn": "Silver Dart",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier2",
    "grade": 2
   },
   "item:10116": {
    "name": "중급 열정의 알",
+   "nameEn": "Intermediate Egg of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier2",
    "grade": 2
   },
   "item:10113": {
    "name": "상급 열정의 깃털",
+   "nameEn": "Advanced Feather of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier3",
    "grade": 3
   },
   "item:10117": {
    "name": "상급 열정의 알",
+   "nameEn": "Advanced Egg of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier3",
    "grade": 3
   },
   "item:10153": {
    "name": "골드 다트",
+   "nameEn": "Gold Dart",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier3",
    "grade": 3
   },
   "item:10114": {
    "name": "최상급 열정의 깃털",
+   "nameEn": "Superior Feather of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Normal_Tier4",
    "grade": 4
   },
   "item:10154": {
    "name": "플래티넘 다트",
+   "nameEn": "Platinum Dart",
    "icon": "Icon_Skill_Levelup_Type_A_Extra_Tier4",
    "grade": 4
   },
   "item:10118": {
    "name": "최상급 열정의 알",
+   "nameEn": "Superior Egg of Passion",
    "icon": "Icon_Skill_Levelup_Passion_Burst_Tier4",
    "grade": 4
   },
   "item:10121": {
    "name": "하급 욕망의 깃털",
+   "nameEn": "Lesser Feather of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier1",
    "grade": 1
   },
   "item:10161": {
    "name": "브론즈 덤벨",
+   "nameEn": "Bronze Dumbbell",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier1",
    "grade": 1
   },
   "item:10125": {
    "name": "하급 욕망의 알",
+   "nameEn": "Lesser Egg of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier1",
    "grade": 1
   },
   "item:10122": {
    "name": "중급 욕망의 깃털",
+   "nameEn": "Intermediate Feather of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier2",
    "grade": 2
   },
   "item:10162": {
    "name": "실버 덤벨",
+   "nameEn": "Silver Dumbbell",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier2",
    "grade": 2
   },
   "item:10126": {
    "name": "중급 욕망의 알",
+   "nameEn": "Intermediate Egg of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier2",
    "grade": 2
   },
   "item:10123": {
    "name": "상급 욕망의 깃털",
+   "nameEn": "Advanced Feather of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier3",
    "grade": 3
   },
   "item:10127": {
    "name": "상급 욕망의 알",
+   "nameEn": "Advanced Egg of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier3",
    "grade": 3
   },
   "item:10163": {
    "name": "골드 덤벨",
+   "nameEn": "Gold Dumbbell",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier3",
    "grade": 3
   },
   "item:10124": {
    "name": "최상급 욕망의 깃털",
+   "nameEn": "Superior Feather of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Normal_Tier4",
    "grade": 4
   },
   "item:10164": {
    "name": "플래티넘 덤벨",
+   "nameEn": "Platinum Dumbbell",
    "icon": "Icon_Skill_Levelup_Type_B_Extra_Tier4",
    "grade": 4
   },
   "item:10128": {
    "name": "최상급 욕망의 알",
+   "nameEn": "Superior Egg of Drive",
    "icon": "Icon_Skill_Levelup_Urge_Burst_Tier4",
    "grade": 4
   },
   "item:10131": {
    "name": "하급 의지의 깃털",
+   "nameEn": "Lesser Feather of Will",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier1",
    "grade": 1
   },
   "item:10171": {
    "name": "브론즈 마이크",
+   "nameEn": "Bronze Microphone",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier1",
    "grade": 1
   },
   "item:10135": {
    "name": "하급 의지의 알",
+   "nameEn": "Lesser Egg of Will",
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier1",
    "grade": 1
   },
   "item:10132": {
    "name": "중급 의지의 깃털",
+   "nameEn": "Intermediate Feather of Will",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier2",
    "grade": 2
   },
   "item:10172": {
    "name": "실버 마이크",
+   "nameEn": "Silver Microphone",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier2",
    "grade": 2
   },
   "item:10136": {
    "name": "중급 의지의 알",
+   "nameEn": "Intermediate Egg of Will",
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier2",
    "grade": 2
   },
   "item:10133": {
    "name": "상급 의지의 깃털",
+   "nameEn": "Advanced Feather of Will",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier3",
    "grade": 3
   },
   "item:10137": {
    "name": "상급 의지의 알",
+   "nameEn": "Advanced Egg of Will",
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier3",
    "grade": 3
   },
   "item:10173": {
    "name": "골드 마이크",
+   "nameEn": "Gold Microphone",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier3",
    "grade": 3
   },
   "item:10134": {
    "name": "최상급 의지의 깃털",
+   "nameEn": "Superior Feather of Will",
    "icon": "Icon_Skill_Levelup_Will_Normal_Tier4",
    "grade": 4
   },
   "item:10174": {
    "name": "플래티넘 마이크",
+   "nameEn": "Platinum Microphone",
    "icon": "Icon_Skill_Levelup_Type_C_Extra_Tier4",
    "grade": 4
   },
   "item:10138": {
    "name": "최상급 의지의 알",
+   "nameEn": "Superior Egg of Will",
    "icon": "Icon_Skill_Levelup_Will_Burst_Tier4",
    "grade": 4
   },
   "item:10141": {
    "name": "하급 이성의 깃털",
+   "nameEn": "Lesser Feather of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier1",
    "grade": 1
   },
   "item:10181": {
    "name": "브론즈 케인",
+   "nameEn": "Bronze Cane",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier1",
    "grade": 1
   },
   "item:10145": {
    "name": "하급 이성의 알",
+   "nameEn": "Lesser Egg of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier1",
    "grade": 1
   },
   "item:10142": {
    "name": "중급 이성의 깃털",
+   "nameEn": "Intermediate Feather of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier2",
    "grade": 2
   },
   "item:10182": {
    "name": "실버 케인",
+   "nameEn": "Silver Cane",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier2",
    "grade": 2
   },
   "item:10146": {
    "name": "중급 이성의 알",
+   "nameEn": "Intermediate Egg of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier2",
    "grade": 2
   },
   "item:10143": {
    "name": "상급 이성의 깃털",
+   "nameEn": "Advanced Feather of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier3",
    "grade": 3
   },
   "item:10147": {
    "name": "상급 이성의 알",
+   "nameEn": "Advanced Egg of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier3",
    "grade": 3
   },
   "item:10183": {
    "name": "골드 케인",
+   "nameEn": "Gold Cane",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier3",
    "grade": 3
   },
   "item:10144": {
    "name": "최상급 이성의 깃털",
+   "nameEn": "Superior Feather of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Normal_Tier4",
    "grade": 4
   },
   "item:10184": {
    "name": "플래티넘 케인",
+   "nameEn": "Platinum Cane",
    "icon": "Icon_Skill_Levelup_Type_D_Extra_Tier4",
    "grade": 4
   },
   "item:10148": {
    "name": "최상급 이성의 알",
+   "nameEn": "Superior Egg of Reason",
    "icon": "Icon_Skill_Levelup_Reason_Burst_Tier4",
    "grade": 4
   },
   "goods:5001": {
    "name": "떨어진 탄피",
+   "nameEn": "Spent Shell Casing",
    "icon": "Icon_Item_ev1001_ticket"
   },
   "goods:1001": {
    "name": "무서운 계약서",
+   "nameEn": "Scary Contract",
    "icon": "Icon_Goods_EV1001_01"
   },
   "goods:5002": {
    "name": "시간의 파편",
+   "nameEn": "Time Fragment",
    "icon": "Icon_Item_EV1002_ticket"
   },
   "goods:1002": {
    "name": "마력 덩어리(?)",
+   "nameEn": "Mana Lump(?)",
    "icon": "Icon_Goods_EV1002_01"
   },
   "goods:5003": {
    "name": "조각난 보물 지도",
+   "nameEn": "Torn Treasure Map",
    "icon": "Icon_Goods_EV1003_Ticket_01"
   },
   "goods:1003": {
    "name": "차가운 맥주",
+   "nameEn": "Cold Beer",
    "icon": "Icon_Goods_EV1003_Contract_01"
   },
   "goods:1004": {
    "name": "고단백 육포",
+   "nameEn": "Event Currency 4",
    "icon": "Icon_Goods_EV1004_Contract_01"
   },
   "goods:5005": {
    "name": "기업 ID 카드",
+   "nameEn": "Cash Crush Rush Event Entry Currency",
    "icon": "Icon_Goods_EV1005_Ticket_01"
   },
   "goods:1005": {
    "name": "금고 식별기",
+   "nameEn": "Cash Crush Rush Currency",
    "icon": "Icon_Goods_EV1005_01"
+  },
+  "goods:5006": {
+   "name": "실버 스크린 티켓",
+   "nameEn": "Silver Screen Ticket",
+   "icon": "Icon_Goods_EV1006_Ticket_01"
+  },
+  "goods:1006": {
+   "name": "분실된 필름",
+   "nameEn": "Lost Movie Film",
+   "icon": "Icon_Goods_EV1006_01"
   },
   "item:40013": {
    "name": "선물 선택 상자",
+   "nameEn": "Gift Selection Box",
    "icon": "Icon_Item_select_gift_box"
   },
   "item:40002": {
    "name": "중급 일반 스킬 재료 선택 상자",
+   "nameEn": "Intermediate Normal Skill Material Selection Box",
    "icon": "Icon_Item_select_box_normal_skill_growth_middle"
   },
   "item:40003": {
    "name": "상급 일반 스킬 재료 선택 상자",
+   "nameEn": "Advanced Normal Skill Material Selection Box",
    "icon": "Icon_Item_select_box_normal_skill_growth_upper"
   },
   "item:40011": {
    "name": "상급 공통 스킬 재료 선택 상자",
+   "nameEn": "Advanced Common Skill Material Selection Box",
    "icon": "Icon_Item_select_box_all_skill_growth_upper"
   },
   "item:40004": {
    "name": "최상급 일반 스킬 재료 선택 상자",
+   "nameEn": "Superior Normal Skill Material Selection Box",
    "icon": "Icon_Item_select_box_normal_skill_growth_high"
   },
   "item:40012": {
    "name": "최상급 공통 스킬 재료 선택 상자",
+   "nameEn": "Superior Common Skill Material Selection Box",
    "icon": "Icon_Item_select_box_all_skill_growth_high"
   }
  },
@@ -48472,7 +48833,7 @@
    "nameKey": "event_story_stage_name_ev1004_normal",
    "nameTemplate": {
     "ko": "호화로운 해변가 {0}",
-    "en": null
+    "en": "Luxurious Beachfront {0}"
    },
    "recommendLevel": "10",
    "weakAttribute": 4,
@@ -48600,7 +48961,7 @@
    "nameKey": "event_story_stage_name_ev1004_normal",
    "nameTemplate": {
     "ko": "호화로운 해변가 {0}",
-    "en": null
+    "en": "Luxurious Beachfront {0}"
    },
    "recommendLevel": "15",
    "weakAttribute": 4,
@@ -48740,7 +49101,7 @@
    "nameKey": "event_story_stage_name_ev1004_normal",
    "nameTemplate": {
     "ko": "호화로운 해변가 {0}",
-    "en": null
+    "en": "Luxurious Beachfront {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 4,
@@ -48880,7 +49241,7 @@
    "nameKey": "event_story_stage_name_ev1004_normal",
    "nameTemplate": {
     "ko": "호화로운 해변가 {0}",
-    "en": null
+    "en": "Luxurious Beachfront {0}"
    },
    "recommendLevel": "25",
    "weakAttribute": 4,
@@ -49020,7 +49381,7 @@
    "nameKey": "event_story_stage_name_ev1004_normal",
    "nameTemplate": {
     "ko": "호화로운 해변가 {0}",
-    "en": null
+    "en": "Luxurious Beachfront {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 4,
@@ -49160,7 +49521,7 @@
    "nameKey": "event_story_stage_name_ev1004_normal",
    "nameTemplate": {
     "ko": "호화로운 해변가 {0}",
-    "en": null
+    "en": "Luxurious Beachfront {0}"
    },
    "recommendLevel": "35",
    "weakAttribute": 4,
@@ -49300,7 +49661,7 @@
    "nameKey": "event_story_stage_name_ev1005_normal",
    "nameTemplate": {
     "ko": "화사한 사무실 복도 {0}",
-    "en": null
+    "en": "Bright Office Hallway {0}"
    },
    "recommendLevel": "10",
    "entry": {
@@ -49427,7 +49788,7 @@
    "nameKey": "event_story_stage_name_ev1005_normal",
    "nameTemplate": {
     "ko": "화사한 사무실 복도 {0}",
-    "en": null
+    "en": "Bright Office Hallway {0}"
    },
    "recommendLevel": "15",
    "entry": {
@@ -49566,7 +49927,7 @@
    "nameKey": "event_story_stage_name_ev1005_normal",
    "nameTemplate": {
     "ko": "화사한 사무실 복도 {0}",
-    "en": null
+    "en": "Bright Office Hallway {0}"
    },
    "recommendLevel": "20",
    "entry": {
@@ -49705,7 +50066,7 @@
    "nameKey": "event_story_stage_name_ev1005_normal",
    "nameTemplate": {
     "ko": "화사한 사무실 복도 {0}",
-    "en": null
+    "en": "Bright Office Hallway {0}"
    },
    "recommendLevel": "25",
    "entry": {
@@ -49844,7 +50205,7 @@
    "nameKey": "event_story_stage_name_ev1005_normal",
    "nameTemplate": {
     "ko": "화사한 사무실 복도 {0}",
-    "en": null
+    "en": "Bright Office Hallway {0}"
    },
    "recommendLevel": "30",
    "entry": {
@@ -49983,7 +50344,7 @@
    "nameKey": "event_story_stage_name_ev1005_normal",
    "nameTemplate": {
     "ko": "화사한 사무실 복도 {0}",
-    "en": null
+    "en": "Bright Office Hallway {0}"
    },
    "recommendLevel": "35",
    "entry": {
@@ -50107,6 +50468,828 @@
       },
       {
        "code": "NP0311",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10006101,
+   "group": "event:1006",
+   "mode": "event",
+   "zoneId": 100061,
+   "order": 1,
+   "nameKey": "event_story_stage_name_ev1006_normal",
+   "nameTemplate": {
+    "ko": "에스텔 애비뉴 {0}",
+    "en": null
+   },
+   "recommendLevel": "10",
+   "entry": {
+    "ref": "goods:5006",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Estelle_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10006101,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1006,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1006"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 10
+      },
+      {
+       "code": "NP0502",
+       "level": 10
+      },
+      {
+       "code": "NP0505",
+       "level": 10
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0501",
+       "level": 10
+      },
+      {
+       "code": "NP0501",
+       "level": 10
+      },
+      {
+       "code": "NP0404",
+       "level": 10
+      },
+      {
+       "code": "NP0411",
+       "level": 10
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0401",
+       "level": 10
+      },
+      {
+       "code": "NP0401",
+       "level": 10
+      },
+      {
+       "code": "NP0511",
+       "level": 10
+      },
+      {
+       "code": "NP0505",
+       "level": 10
+      },
+      {
+       "code": "NP0505",
+       "level": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10006102,
+   "group": "event:1006",
+   "mode": "event",
+   "zoneId": 100061,
+   "order": 2,
+   "nameKey": "event_story_stage_name_ev1006_normal",
+   "nameTemplate": {
+    "ko": "에스텔 애비뉴 {0}",
+    "en": null
+   },
+   "recommendLevel": "15",
+   "entry": {
+    "ref": "goods:5006",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Estelle_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10006102,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1006,
+      "amount": [
+       52
+      ],
+      "drop": "each",
+      "ref": "goods:1006"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0101",
+       "level": 15
+      },
+      {
+       "code": "NP0101",
+       "level": 15
+      },
+      {
+       "code": "NP0403",
+       "level": 15
+      },
+      {
+       "code": "NP0403",
+       "level": 15
+      },
+      {
+       "code": "NP0411",
+       "level": 15
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0102",
+       "level": 15
+      },
+      {
+       "code": "NP0109",
+       "level": 15
+      },
+      {
+       "code": "NP0104",
+       "level": 15
+      },
+      {
+       "code": "NP0404",
+       "level": 15
+      },
+      {
+       "code": "NP0404",
+       "level": 15
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0401",
+       "level": 15
+      },
+      {
+       "code": "NP0408",
+       "level": 15
+      },
+      {
+       "code": "NP0110",
+       "level": 15
+      },
+      {
+       "code": "NP0105",
+       "level": 15
+      },
+      {
+       "code": "NP0105",
+       "level": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10006103,
+   "group": "event:1006",
+   "mode": "event",
+   "zoneId": 100061,
+   "order": 3,
+   "nameKey": "event_story_stage_name_ev1006_normal",
+   "nameTemplate": {
+    "ko": "에스텔 애비뉴 {0}",
+    "en": null
+   },
+   "recommendLevel": "20",
+   "entry": {
+    "ref": "goods:5006",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Estelle_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10006103,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1006,
+      "amount": [
+       54
+      ],
+      "drop": "each",
+      "ref": "goods:1006"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0402",
+       "level": 20
+      },
+      {
+       "code": "NP0402",
+       "level": 20
+      },
+      {
+       "code": "NP0511",
+       "level": 20
+      },
+      {
+       "code": "NP0504",
+       "level": 20
+      },
+      {
+       "code": "NP0504",
+       "level": 20
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0103",
+       "level": 20
+      },
+      {
+       "code": "NP0103",
+       "level": 20
+      },
+      {
+       "code": "NP0409",
+       "level": 20
+      },
+      {
+       "code": "NP0510",
+       "level": 20
+      },
+      {
+       "code": "NP0106",
+       "level": 20
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0508",
+       "level": 20
+      },
+      {
+       "code": "NP0501",
+       "level": 20
+      },
+      {
+       "code": "NP0104",
+       "level": 20
+      },
+      {
+       "code": "NP0104",
+       "level": 20
+      },
+      {
+       "code": "NP0112",
+       "level": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10006104,
+   "group": "event:1006",
+   "mode": "event",
+   "zoneId": 100061,
+   "order": 4,
+   "nameKey": "event_story_stage_name_ev1006_normal",
+   "nameTemplate": {
+    "ko": "에스텔 애비뉴 {0}",
+    "en": null
+   },
+   "recommendLevel": "25",
+   "entry": {
+    "ref": "goods:5006",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Estelle_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10006104,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1006,
+      "amount": [
+       56
+      ],
+      "drop": "each",
+      "ref": "goods:1006"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0108",
+       "level": 25
+      },
+      {
+       "code": "NP0107",
+       "level": 25
+      },
+      {
+       "code": "NP0403",
+       "level": 25
+      },
+      {
+       "code": "NP0403",
+       "level": 25
+      },
+      {
+       "code": "NP0404",
+       "level": 25
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0402",
+       "level": 25
+      },
+      {
+       "code": "NP0401",
+       "level": 25
+      },
+      {
+       "code": "NP0110",
+       "level": 25
+      },
+      {
+       "code": "NP0110",
+       "level": 25
+      },
+      {
+       "code": "NP0106",
+       "level": 25
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 25
+      },
+      {
+       "code": "NP0502",
+       "level": 25
+      },
+      {
+       "code": "NP0502",
+       "level": 25
+      },
+      {
+       "code": "NP0111",
+       "level": 25
+      },
+      {
+       "code": "NP0112",
+       "level": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10006105,
+   "group": "event:1006",
+   "mode": "event",
+   "zoneId": 100061,
+   "order": 5,
+   "nameKey": "event_story_stage_name_ev1006_normal",
+   "nameTemplate": {
+    "ko": "에스텔 애비뉴 {0}",
+    "en": null
+   },
+   "recommendLevel": "30",
+   "entry": {
+    "ref": "goods:5006",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Estelle_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10006105,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1006,
+      "amount": [
+       58
+      ],
+      "drop": "each",
+      "ref": "goods:1006"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0402",
+       "level": 30
+      },
+      {
+       "code": "NP0401",
+       "level": 30
+      },
+      {
+       "code": "NP0503",
+       "level": 30
+      },
+      {
+       "code": "NP0510",
+       "level": 30
+      },
+      {
+       "code": "NP0510",
+       "level": 30
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0407",
+       "level": 30
+      },
+      {
+       "code": "NP0407",
+       "level": 30
+      },
+      {
+       "code": "NP0403",
+       "level": 30
+      },
+      {
+       "code": "NP0503",
+       "level": 30
+      },
+      {
+       "code": "NP0512",
+       "level": 30
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 30
+      },
+      {
+       "code": "NP0508",
+       "level": 30
+      },
+      {
+       "code": "NP0508",
+       "level": 30
+      },
+      {
+       "code": "NP0406",
+       "level": 30
+      },
+      {
+       "code": "NP0405",
+       "level": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10006106,
+   "group": "event:1006",
+   "mode": "event",
+   "zoneId": 100061,
+   "order": 6,
+   "nameKey": "event_story_stage_name_ev1006_normal",
+   "nameTemplate": {
+    "ko": "에스텔 애비뉴 {0}",
+    "en": null
+   },
+   "recommendLevel": "35",
+   "entry": {
+    "ref": "goods:5006",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Estelle_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10006106,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1006,
+      "amount": [
+       60
+      ],
+      "drop": "each",
+      "ref": "goods:1006"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0408",
+       "level": 35
+      },
+      {
+       "code": "NP0406",
+       "level": 35
+      },
+      {
+       "code": "NP0110",
+       "level": 35
+      },
+      {
+       "code": "NP0110",
+       "level": 35
+      },
+      {
+       "code": "NP0106",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0109",
+       "level": 35
+      },
+      {
+       "code": "NP0109",
+       "level": 35
+      },
+      {
+       "code": "NP0412",
+       "level": 35
+      },
+      {
+       "code": "NP0405",
+       "level": 35
+      },
+      {
+       "code": "NP0105",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_015",
+     "enemies": [
+      {
+       "code": "NP0408",
+       "level": 35
+      },
+      {
+       "code": "NP0408",
+       "level": 35
+      },
+      {
+       "code": "NP0110",
+       "level": 35
+      },
+      {
+       "code": "NP0404",
+       "level": 35
+      },
+      {
+       "code": "NP0112",
        "level": 35
       }
      ]
@@ -56978,2261 +58161,154 @@
    ]
   },
   {
-   "id": 4100201,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
+   "id": 7012101,
+   "group": "nemesis:7013",
+   "bossName": "시니스트라",
+   "mode": "nemesis",
+   "zoneId": 70121,
    "order": 1,
-   "nameKey": "contents_ascent_stage_core",
+   "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
+    "ko": "13호 업무센터",
+    "en": "No. 13 Business Center"
    },
-   "recommendLevel": "51",
-   "subMissionGroup": "20000",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100201,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012101,
    "waves": [
     {
      "sequence": 1,
      "encounter": "run",
-     "bgm": "bgm_battle_008",
+     "bossCode": "NP6010",
+     "bgm": "bgm_battle_009",
      "enemies": [
       {
-       "code": "NP8006",
-       "level": 51
-      },
-      {
-       "code": "NP8008",
-       "level": 51
-      },
-      {
-       "code": "NP8005",
-       "level": 51
-      },
-      {
-       "code": "NP8011",
-       "level": 51
-      },
-      {
-       "code": "CH0013",
-       "level": 51
+       "code": "NP6010",
+       "level": 35
       }
      ]
     }
    ]
   },
   {
-   "id": 4100202,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
+   "id": 7012102,
+   "group": "nemesis:7013",
+   "bossName": "시니스트라",
+   "mode": "nemesis",
+   "zoneId": 70121,
    "order": 2,
-   "nameKey": "contents_ascent_stage_core",
+   "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
+    "ko": "13호 업무센터",
+    "en": "No. 13 Business Center"
    },
-   "recommendLevel": "51",
-   "subMissionGroup": "20000",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100202,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40002,
-      "amount": [
-       4
-      ],
-      "drop": "each",
-      "ref": "item:40002"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012102,
    "waves": [
     {
      "sequence": 1,
      "encounter": "run",
-     "bgm": "bgm_battle_008",
+     "bossCode": "NP6010",
+     "bgm": "bgm_battle_009",
      "enemies": [
       {
-       "code": "CH0046",
-       "level": 51
-      },
-      {
-       "code": "NP0208",
-       "level": 51
-      },
-      {
-       "code": "CH0028",
-       "level": 51
-      },
-      {
-       "code": "NP0210",
-       "level": 51
-      },
-      {
-       "code": "NP0210",
-       "level": 51
+       "code": "NP6010",
+       "level": 45
       }
      ]
     }
    ]
   },
   {
-   "id": 4100203,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
+   "id": 7012103,
+   "group": "nemesis:7013",
+   "bossName": "시니스트라",
+   "mode": "nemesis",
+   "zoneId": 70121,
    "order": 3,
-   "nameKey": "contents_ascent_stage_core",
+   "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
+    "ko": "13호 업무센터",
+    "en": "No. 13 Business Center"
    },
-   "recommendLevel": "52",
-   "subMissionGroup": "20000",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100203,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012103,
    "waves": [
     {
      "sequence": 1,
      "encounter": "run",
-     "bgm": "bgm_battle_008",
+     "bossCode": "NP6010",
+     "bgm": "bgm_battle_009",
      "enemies": [
       {
-       "code": "CH0006",
-       "level": 52
-      },
-      {
-       "code": "NP0307",
-       "level": 52
-      },
-      {
-       "code": "NP0310",
-       "level": 52
-      },
-      {
-       "code": "NP0310",
-       "level": 52
-      },
-      {
-       "code": "CH0026",
-       "level": 52
+       "code": "NP6010",
+       "level": 50
       }
      ]
     }
    ]
   },
   {
-   "id": 4100204,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
+   "id": 7012104,
+   "group": "nemesis:7013",
+   "bossName": "시니스트라",
+   "mode": "nemesis",
+   "zoneId": 70121,
    "order": 4,
-   "nameKey": "contents_ascent_stage_core",
+   "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
+    "ko": "13호 업무센터",
+    "en": "No. 13 Business Center"
    },
-   "recommendLevel": "52",
-   "subMissionGroup": "20000",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100204,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012104,
    "waves": [
     {
      "sequence": 1,
      "encounter": "run",
-     "bgm": "bgm_battle_008",
+     "bossCode": "NP6010",
+     "bgm": "bgm_battle_009",
      "enemies": [
       {
-       "code": "CH0012",
-       "level": 52
-      },
-      {
-       "code": "NP0110",
-       "level": 52
-      },
-      {
-       "code": "CH0057",
-       "level": 52
-      },
-      {
-       "code": "NP0110",
-       "level": 52
-      },
-      {
-       "code": "CH0002",
-       "level": 52
+       "code": "NP6010",
+       "level": 60
       }
      ]
     }
    ]
   },
   {
-   "id": 4100205,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
+   "id": 7012105,
+   "group": "nemesis:7013",
+   "bossName": "시니스트라",
+   "mode": "nemesis",
+   "zoneId": 70121,
    "order": 5,
-   "nameKey": "contents_ascent_stage_core",
+   "nameKey": "contents_nemesis_np6010_zone_01",
    "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
+    "ko": "13호 업무센터",
+    "en": "No. 13 Business Center"
    },
-   "recommendLevel": "53",
-   "subMissionGroup": "20000",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100205,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40002,
-      "amount": [
-       4
-      ],
-      "drop": "each",
-      "ref": "item:40002"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012105,
    "waves": [
     {
      "sequence": 1,
      "encounter": "run",
-     "bgm": "bgm_battle_008",
+     "bossCode": "NP6010",
+     "bgm": "bgm_battle_009",
      "enemies": [
       {
-       "code": "NP0501",
-       "level": 53
-      },
-      {
-       "code": "NP0501",
-       "level": 53
-      },
-      {
-       "code": "CH0053",
-       "level": 53
-      },
-      {
-       "code": "CH0024",
-       "level": 53
-      },
-      {
-       "code": "CH0009",
-       "level": 53
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100206,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 6,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "53",
-   "subMissionGroup": "20000",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100206,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0022",
-       "level": 53
-      },
-      {
-       "code": "NP0310",
-       "level": 53
-      },
-      {
-       "code": "CH0017",
-       "level": 53
-      },
-      {
-       "code": "NP0310",
-       "level": 53
-      },
-      {
-       "code": "CH0031",
-       "level": 53
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100207,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 7,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "54",
-   "subMissionGroup": "20002",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100207,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0034",
-       "level": 54
-      },
-      {
-       "code": "CH0029",
-       "level": 54
-      },
-      {
-       "code": "CH0036",
-       "level": 54
-      },
-      {
-       "code": "NP0111",
-       "level": 54
-      },
-      {
-       "code": "NP0111",
-       "level": 54
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100208,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 8,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "54",
-   "subMissionGroup": "20003",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100208,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40002,
-      "amount": [
-       4
-      ],
-      "drop": "each",
-      "ref": "item:40002"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0056",
-       "level": 54
-      },
-      {
-       "code": "NP0407",
-       "level": 54
-      },
-      {
-       "code": "NP0407",
-       "level": 54
-      },
-      {
-       "code": "CH0001",
-       "level": 54
-      },
-      {
-       "code": "CH0015",
-       "level": 54
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100209,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 9,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "55",
-   "subMissionGroup": "20004",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100209,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0005",
-       "level": 55
-      },
-      {
-       "code": "NP0209",
-       "level": 55
-      },
-      {
-       "code": "NP0209",
-       "level": 55
-      },
-      {
-       "code": "CH0027",
-       "level": 55
-      },
-      {
-       "code": "CH0035",
-       "level": 55
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100210,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 10,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "55",
-   "subMissionGroup": "20001",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100210,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40002,
-      "amount": [
-       4
-      ],
-      "drop": "each",
-      "ref": "item:40002"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       250000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       400
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0023",
-       "level": 55
-      },
-      {
-       "code": "NP0508",
-       "level": 55
-      },
-      {
-       "code": "CH0019",
-       "level": 55
-      },
-      {
-       "code": "CH0037",
-       "level": 55
-      },
-      {
-       "code": "CH0032",
-       "level": 55
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100211,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 11,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "56",
-   "subMissionGroup": "20005",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100211,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0022",
-       "level": 56
-      },
-      {
-       "code": "NP0409",
-       "level": 56
-      },
-      {
-       "code": "NP0409",
-       "level": 56
-      },
-      {
-       "code": "CH0026",
-       "level": 56
-      },
-      {
-       "code": "CH0031",
-       "level": 56
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100212,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 12,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "56",
-   "subMissionGroup": "20007",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100212,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0023",
-       "level": 56
-      },
-      {
-       "code": "CH0022",
-       "level": 56
-      },
-      {
-       "code": "CH0001",
-       "level": 56
-      },
-      {
-       "code": "NP0311",
-       "level": 56
-      },
-      {
-       "code": "NP0311",
-       "level": 56
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100213,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 13,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "57",
-   "subMissionGroup": "20006",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100213,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0056",
-       "level": 57
-      },
-      {
-       "code": "CH0011",
-       "level": 57
-      },
-      {
-       "code": "NP0412",
-       "level": 57
-      },
-      {
-       "code": "NP0412",
-       "level": 57
-      },
-      {
-       "code": "CH0009",
-       "level": 57
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100214,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 14,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "57",
-   "subMissionGroup": "20010",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100214,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0046",
-       "level": 57
-      },
-      {
-       "code": "CH0011",
-       "level": 57
-      },
-      {
-       "code": "CH0036",
-       "level": 57
-      },
-      {
-       "code": "CH0020",
-       "level": 57
-      },
-      {
-       "code": "CH0002",
-       "level": 57
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100215,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 15,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "58",
-   "subMissionGroup": "20010",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100215,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40003,
-      "amount": [
-       8
-      ],
-      "drop": "each",
-      "ref": "item:40003"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0005",
-       "level": 58
-      },
-      {
-       "code": "CH0011",
-       "level": 58
-      },
-      {
-       "code": "CH0029",
-       "level": 58
-      },
-      {
-       "code": "CH0036",
-       "level": 58
-      },
-      {
-       "code": "CH0038",
-       "level": 58
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100216,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 16,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "58",
-   "subMissionGroup": "20009",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100216,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0023",
-       "level": 58
-      },
-      {
-       "code": "CH0056",
-       "level": 58
-      },
-      {
-       "code": "CH0063",
-       "level": 58
-      },
-      {
-       "code": "CH0042",
-       "level": 58
-      },
-      {
-       "code": "CH0032",
-       "level": 58
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100217,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 17,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "59",
-   "subMissionGroup": "20009",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100217,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40003,
-      "amount": [
-       8
-      ],
-      "drop": "each",
-      "ref": "item:40003"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0012",
-       "level": 59
-      },
-      {
-       "code": "CH0006",
-       "level": 59
-      },
-      {
-       "code": "CH0054",
-       "level": 59
-      },
-      {
-       "code": "CH0035",
-       "level": 59
-      },
-      {
-       "code": "CH0032",
-       "level": 59
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100218,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 18,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "59",
-   "subMissionGroup": "20009",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100218,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0050",
-       "level": 59
-      },
-      {
-       "code": "CH0019",
-       "level": 59
-      },
-      {
-       "code": "CH0021",
-       "level": 59
-      },
-      {
-       "code": "CH0009",
-       "level": 59
-      },
-      {
-       "code": "CH0015",
-       "level": 59
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100219,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 19,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "60",
-   "subMissionGroup": "20008",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100219,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0005",
-       "level": 60
-      },
-      {
-       "code": "CH0007",
-       "level": 60
-      },
-      {
-       "code": "CH0062",
-       "level": 60
-      },
-      {
-       "code": "CH0024",
-       "level": 60
-      },
-      {
-       "code": "CH0038",
-       "level": 60
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100220,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 20,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "60",
-   "subMissionGroup": "20008",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100220,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40011,
-      "amount": [
-       4
-      ],
-      "drop": "each",
-      "ref": "item:40011"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       250000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       400
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0022",
-       "level": 60
-      },
-      {
-       "code": "CH0017",
-       "level": 60
-      },
-      {
-       "code": "CH0027",
-       "level": 60
-      },
-      {
-       "code": "CH0039",
-       "level": 60
-      },
-      {
-       "code": "CH0015",
-       "level": 60
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100221,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 21,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "61",
-   "subMissionGroup": "20004",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100221,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       40
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0005",
-       "level": 61
-      },
-      {
-       "code": "CH0005",
-       "level": 61
-      },
-      {
-       "code": "CH0021",
-       "level": 61
-      },
-      {
-       "code": "CH0025",
-       "level": 61
-      },
-      {
-       "code": "CH0028",
-       "level": 61
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100222,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 22,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "61",
-   "subMissionGroup": "20004",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100222,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0034",
-       "level": 61
-      },
-      {
-       "code": "CH0057",
-       "level": 61
-      },
-      {
-       "code": "CH0057",
-       "level": 61
-      },
-      {
-       "code": "CH0016",
-       "level": 61
-      },
-      {
-       "code": "CH0031",
-       "level": 61
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100223,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 23,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "62",
-   "subMissionGroup": "20004",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100223,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0022",
-       "level": 62
-      },
-      {
-       "code": "CH0013",
-       "level": 62
-      },
-      {
-       "code": "CH0037",
-       "level": 62
-      },
-      {
-       "code": "CH0039",
-       "level": 62
-      },
-      {
-       "code": "CH0039",
-       "level": 62
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100224,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 24,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "62",
-   "subMissionGroup": "20002",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100224,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0034",
-       "level": 62
-      },
-      {
-       "code": "CH0007",
-       "level": 62
-      },
-      {
-       "code": "CH0007",
-       "level": 62
-      },
-      {
-       "code": "CH0062",
-       "level": 62
-      },
-      {
-       "code": "CH0026",
-       "level": 62
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100225,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 25,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "63",
-   "subMissionGroup": "20002",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100225,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40004,
-      "amount": [
-       4
-      ],
-      "drop": "each",
-      "ref": "item:40004"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0050",
-       "level": 63
-      },
-      {
-       "code": "CH0053",
-       "level": 63
-      },
-      {
-       "code": "CH0053",
-       "level": 63
-      },
-      {
-       "code": "CH0017",
-       "level": 63
-      },
-      {
-       "code": "CH0030",
-       "level": 63
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100226,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 26,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "63",
-   "subMissionGroup": "20001",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100226,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40004,
-      "amount": [
-       4
-      ],
-      "drop": "each",
-      "ref": "item:40004"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0046",
-       "level": 63
-      },
-      {
-       "code": "CH0019",
-       "level": 63
-      },
-      {
-       "code": "CH0019",
-       "level": 63
-      },
-      {
-       "code": "CH0028",
-       "level": 63
-      },
-      {
-       "code": "CH0009",
-       "level": 63
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100227,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 27,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "64",
-   "subMissionGroup": "20001",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100227,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0046",
-       "level": 64
-      },
-      {
-       "code": "CH0046",
-       "level": 64
-      },
-      {
-       "code": "CH0028",
-       "level": 64
-      },
-      {
-       "code": "CH0001",
-       "level": 64
-      },
-      {
-       "code": "CH0042",
-       "level": 64
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100228,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 28,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "64",
-   "subMissionGroup": "20003",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100228,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10024,
-      "amount": [
-       20
-      ],
-      "drop": "each",
-      "ref": "item:10024"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0050",
-       "level": 64
-      },
-      {
-       "code": "CH0063",
-       "level": 64
-      },
-      {
-       "code": "CH0063",
-       "level": 64
-      },
-      {
-       "code": "CH0038",
-       "level": 64
-      },
-      {
-       "code": "CH0037",
-       "level": 64
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": 4100229,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 29,
-   "nameKey": "contents_ascent_stage_core",
-   "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
-   },
-   "recommendLevel": "65",
-   "subMissionGroup": "20003",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100229,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 10014,
-      "amount": [
-       13
-      ],
-      "drop": "each",
-      "ref": "item:10014"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       100000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       30
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
-   "waves": [
-    {
-     "sequence": 1,
-     "encounter": "run",
-     "bgm": "bgm_battle_008",
-     "enemies": [
-      {
-       "code": "CH0006",
-       "level": 65
-      },
-      {
-       "code": "CH0006",
-       "level": 65
-      },
-      {
-       "code": "CH0025",
-       "level": 65
-      },
-      {
-       "code": "CH0026",
-       "level": 65
-      },
-      {
-       "code": "CH0042",
+       "code": "NP6010",
        "level": 65
       }
      ]
@@ -59240,77 +58316,309 @@
    ]
   },
   {
-   "id": 4100230,
-   "group": "ascent:41002",
-   "mode": "ascent",
-   "zoneId": 41002,
-   "order": 30,
-   "nameKey": "contents_ascent_stage_core",
+   "id": 7012201,
+   "group": "nemesis:7013",
+   "bossName": "덱스트라",
+   "mode": "nemesis",
+   "zoneId": 70122,
+   "order": 1,
+   "nameKey": "contents_nemesis_np6010_zone_02",
    "nameTemplate": {
-    "ko": "Core Stage {0}",
-    "en": "Core Stage {0}"
+    "ko": "반파된 종합상황실",
+    "en": "Half-destroyed General Control Room"
    },
-   "recommendLevel": "65",
-   "subMissionGroup": "20003",
-   "background": "Battle_Field_Ascent_04",
-   "waveGroup": 4100230,
-   "rewards": {
-    "first": [
-     {
-      "type": "item",
-      "id": 40012,
-      "amount": [
-       4
-      ],
-      "drop": "each",
-      "ref": "item:40012"
-     },
-     {
-      "type": "goods",
-      "id": 1,
-      "amount": [
-       250000
-      ],
-      "drop": "each",
-      "ref": "goods:1"
-     }
-    ],
-    "star": [
-     {
-      "type": "goods",
-      "id": 2,
-      "amount": [
-       400
-      ],
-      "drop": "each",
-      "ref": "goods:2"
-     }
-    ]
-   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012201,
    "waves": [
     {
      "sequence": 1,
      "encounter": "run",
-     "bgm": "bgm_battle_008",
+     "bossCode": "NP6011",
+     "bgm": "bgm_battle_009",
      "enemies": [
       {
-       "code": "CH0056",
-       "level": 65
-      },
+       "code": "NP6011",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012202,
+   "group": "nemesis:7013",
+   "bossName": "덱스트라",
+   "mode": "nemesis",
+   "zoneId": 70122,
+   "order": 2,
+   "nameKey": "contents_nemesis_np6010_zone_02",
+   "nameTemplate": {
+    "ko": "반파된 종합상황실",
+    "en": "Half-destroyed General Control Room"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012202,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6011",
+     "bgm": "bgm_battle_009",
+     "enemies": [
       {
-       "code": "CH0012",
-       "level": 65
-      },
+       "code": "NP6011",
+       "level": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012203,
+   "group": "nemesis:7013",
+   "bossName": "덱스트라",
+   "mode": "nemesis",
+   "zoneId": 70122,
+   "order": 3,
+   "nameKey": "contents_nemesis_np6010_zone_02",
+   "nameTemplate": {
+    "ko": "반파된 종합상황실",
+    "en": "Half-destroyed General Control Room"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012203,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6011",
+     "bgm": "bgm_battle_009",
+     "enemies": [
       {
-       "code": "CH0035",
-       "level": 65
-      },
+       "code": "NP6011",
+       "level": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012204,
+   "group": "nemesis:7013",
+   "bossName": "덱스트라",
+   "mode": "nemesis",
+   "zoneId": 70122,
+   "order": 4,
+   "nameKey": "contents_nemesis_np6010_zone_02",
+   "nameTemplate": {
+    "ko": "반파된 종합상황실",
+    "en": "Half-destroyed General Control Room"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012204,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6011",
+     "bgm": "bgm_battle_009",
+     "enemies": [
       {
-       "code": "CH0035",
-       "level": 65
-      },
+       "code": "NP6011",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012205,
+   "group": "nemesis:7013",
+   "bossName": "덱스트라",
+   "mode": "nemesis",
+   "zoneId": 70122,
+   "order": 5,
+   "nameKey": "contents_nemesis_np6010_zone_02",
+   "nameTemplate": {
+    "ko": "반파된 종합상황실",
+    "en": "Half-destroyed General Control Room"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Corridor_Destroyed_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012205,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6011",
+     "bgm": "bgm_battle_009",
+     "enemies": [
       {
-       "code": "CH0031",
+       "code": "NP6011",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012301,
+   "group": "nemesis:7013",
+   "bossName": "움브라 데이",
+   "mode": "nemesis",
+   "zoneId": 70123,
+   "order": 1,
+   "nameKey": "contents_nemesis_np6010_zone_03",
+   "nameTemplate": {
+    "ko": "절체절명의 연결교",
+    "en": "Desperate Connecting Bridge"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Bridge_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012301,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6012",
+     "bgm": "bgm_battle_010",
+     "enemies": [
+      {
+       "code": "NP6012",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012302,
+   "group": "nemesis:7013",
+   "bossName": "움브라 데이",
+   "mode": "nemesis",
+   "zoneId": 70123,
+   "order": 2,
+   "nameKey": "contents_nemesis_np6010_zone_03",
+   "nameTemplate": {
+    "ko": "절체절명의 연결교",
+    "en": "Desperate Connecting Bridge"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Bridge_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012302,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6012",
+     "bgm": "bgm_battle_010",
+     "enemies": [
+      {
+       "code": "NP6012",
+       "level": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012303,
+   "group": "nemesis:7013",
+   "bossName": "움브라 데이",
+   "mode": "nemesis",
+   "zoneId": 70123,
+   "order": 3,
+   "nameKey": "contents_nemesis_np6010_zone_03",
+   "nameTemplate": {
+    "ko": "절체절명의 연결교",
+    "en": "Desperate Connecting Bridge"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Bridge_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012303,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6012",
+     "bgm": "bgm_battle_010",
+     "enemies": [
+      {
+       "code": "NP6012",
+       "level": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012304,
+   "group": "nemesis:7013",
+   "bossName": "움브라 데이",
+   "mode": "nemesis",
+   "zoneId": 70123,
+   "order": 4,
+   "nameKey": "contents_nemesis_np6010_zone_03",
+   "nameTemplate": {
+    "ko": "절체절명의 연결교",
+    "en": "Desperate Connecting Bridge"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Bridge_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012304,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6012",
+     "bgm": "bgm_battle_010",
+     "enemies": [
+      {
+       "code": "NP6012",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7012305,
+   "group": "nemesis:7013",
+   "bossName": "움브라 데이",
+   "mode": "nemesis",
+   "zoneId": 70123,
+   "order": 5,
+   "nameKey": "contents_nemesis_np6010_zone_03",
+   "nameTemplate": {
+    "ko": "절체절명의 연결교",
+    "en": "Desperate Connecting Bridge"
+   },
+   "weakAttribute": 3,
+   "background": "Battle_Field_Office_Bridge_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7012305,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6012",
+     "bgm": "bgm_battle_010",
+     "enemies": [
+      {
+       "code": "NP6012",
        "level": 65
       }
      ]
@@ -59373,7 +58681,7 @@
      "enemies": [
       {
        "code": "NP6010",
-       "level": 50
+       "level": 45
       }
      ]
     }
@@ -59404,7 +58712,7 @@
      "enemies": [
       {
        "code": "NP6010",
-       "level": 60
+       "level": 50
       }
      ]
     }
@@ -59426,6 +58734,37 @@
    "background": "Battle_Field_Office_Corridor_Destroyed_01",
    "bgm": "bgm_battle_001",
    "waveGroup": 7013104,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6010",
+     "bgm": "bgm_battle_009",
+     "enemies": [
+      {
+       "code": "NP6010",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7013105,
+   "group": "nemesis:7011",
+   "bossName": "시니스트라",
+   "mode": "nemesis",
+   "zoneId": 70131,
+   "order": 5,
+   "nameKey": "contents_nemesis_np6010_zone_01",
+   "nameTemplate": {
+    "ko": "13호 업무센터",
+    "en": "No. 13 Business Center"
+   },
+   "weakAttribute": 1,
+   "background": "Battle_Field_Office_Corridor_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7013105,
    "waves": [
     {
      "sequence": 1,
@@ -59497,7 +58836,7 @@
      "enemies": [
       {
        "code": "NP6011",
-       "level": 50
+       "level": 45
       }
      ]
     }
@@ -59528,7 +58867,7 @@
      "enemies": [
       {
        "code": "NP6011",
-       "level": 60
+       "level": 50
       }
      ]
     }
@@ -59550,6 +58889,37 @@
    "background": "Battle_Field_Office_Corridor_Destroyed_02",
    "bgm": "bgm_battle_001",
    "waveGroup": 7013204,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6011",
+     "bgm": "bgm_battle_009",
+     "enemies": [
+      {
+       "code": "NP6011",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7013205,
+   "group": "nemesis:7011",
+   "bossName": "덱스트라",
+   "mode": "nemesis",
+   "zoneId": 70132,
+   "order": 5,
+   "nameKey": "contents_nemesis_np6010_zone_02",
+   "nameTemplate": {
+    "ko": "반파된 종합상황실",
+    "en": "Half-destroyed General Control Room"
+   },
+   "weakAttribute": 1,
+   "background": "Battle_Field_Office_Corridor_Destroyed_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7013205,
    "waves": [
     {
      "sequence": 1,
@@ -59621,7 +58991,7 @@
      "enemies": [
       {
        "code": "NP6012",
-       "level": 50
+       "level": 45
       }
      ]
     }
@@ -59652,7 +59022,7 @@
      "enemies": [
       {
        "code": "NP6012",
-       "level": 60
+       "level": 50
       }
      ]
     }
@@ -59674,6 +59044,37 @@
    "background": "Battle_Field_Office_Bridge_Destroyed_01",
    "bgm": "bgm_battle_001",
    "waveGroup": 7013304,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6012",
+     "bgm": "bgm_battle_010",
+     "enemies": [
+      {
+       "code": "NP6012",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7013305,
+   "group": "nemesis:7011",
+   "bossName": "움브라 데이",
+   "mode": "nemesis",
+   "zoneId": 70133,
+   "order": 5,
+   "nameKey": "contents_nemesis_np6010_zone_03",
+   "nameTemplate": {
+    "ko": "절체절명의 연결교",
+    "en": "Desperate Connecting Bridge"
+   },
+   "weakAttribute": 1,
+   "background": "Battle_Field_Office_Bridge_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7013305,
    "waves": [
     {
      "sequence": 1,

@@ -16,7 +16,7 @@ import {
   TRACK_BODY, TRACK_FACE, TRACK_OVERLAY, WIDE_CUTSCENE_STAGING_SKINS,
   animLabel, groupedOptions, isFaceAnim, pickDefault, polygonArea, speedOptions,
 } from '@/components/skinViewer/constants';
-import { text, useLang, useT } from '@/lib/i18n';
+import { dataText, text, useLang, useT } from '@/lib/i18n';
 import { buildBackgrounds } from '@/components/skinViewer/background';
 import { createEmoteBubble } from '@/components/skinViewer/emote';
 import { createTouchOverlay } from '@/components/skinViewer/touchOverlay';
@@ -266,6 +266,7 @@ export default function SkinViewer({
   const dragJiggleRef = useRef(dragJiggle); dragJiggleRef.current = dragJiggle;
   const voiceIndexRef = useRef(voiceIndex); voiceIndexRef.current = voiceIndex;
   const voiceOnRef = useRef(voiceOn); voiceOnRef.current = voiceOn;
+  const langRef = useRef(lang); langRef.current = lang;
   const bgmOnRef = useRef(bgmOn); bgmOnRef.current = bgmOn;
   const sceneAudioIndexRef = useRef(sceneAudioIndex); sceneAudioIndexRef.current = sceneAudioIndex;
   const pendingSceneSoundRef = useRef<{ rig: string; animation: string } | null>(null);
@@ -331,7 +332,9 @@ export default function SkinViewer({
     const row = rows[lobbyLineRef.current % rows.length];
     lobbyLineRef.current += 1;
     lobbyStagedAtRef.current = sceneTimerRef.current.now();
-    sayRef.current({ text: row.text ?? '', voice: row.voice });
+    sayRef.current({
+      text: dataText(langRef.current, row.text, row.textEn), voice: row.voice,
+    });
     return row;
   };
 

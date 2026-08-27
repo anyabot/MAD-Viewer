@@ -1,8 +1,8 @@
 // Mirrored into `localStorage`, but the store starts empty so the exported HTML and the first client render agree.
 import { create } from 'zustand';
 import {
-  applySide, atLeastCurrent, emptyPlan,
-  type GearPlan, type UnitPlan, type UnitPlanPair,
+  applyPart, applySide, atLeastCurrent, emptyPlan,
+  type GearPlan, type PlanPart, type UnitPlan, type UnitPlanPair,
 } from '@/lib/farm';
 
 const STORAGE_KEY = 'mad.farm';
@@ -43,6 +43,9 @@ type FarmStore = FarmState & {
   setGear: (code: string, side: 'current' | 'target', slot: number, gear: GearPlan) => void;
   /** The inventory the target cost comes in already spent, so both land in one write. */
   completeUnit: (code: string, inventory: Record<string, number>) => void;
+  /** The same for one row of the plan: only that part's current state moves up. */
+  completePart: (code: string, part: PlanPart,
+                 inventory: Record<string, number>) => void;
   setStars: (stageId: number, stars: number) => void;
   setStarsMany: (stageIds: number[], stars: number) => void;
   setSweepOnly: (on: boolean) => void;
@@ -138,6 +141,12 @@ export const useFarm = create<FarmStore>((set) => ({
       inventory,
       units: { ...s.units, [code]: { ...pair, current: pair.target } },
     });
+  }),
+
+  completePart: (code, part, inventory) => set((s) => {
+    const pair = s.units[code];
+    if (!pair) return {};
+    return save(s, { inventory, units: { ...s.units, [code]: applyPart(pair, part) } });
   }),
 
   setPlan: (code, side, patch) => set((s) => save(s, {

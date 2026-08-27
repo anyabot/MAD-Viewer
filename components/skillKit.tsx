@@ -6,9 +6,9 @@ import {
   BUFF_CATEGORY, MOVE_LABEL, OP_LABEL, OP_SCHEME, SETUP_CONDITION_LABEL, SIDE_LABEL,
   SKILL_CATEGORY_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, colorRuns,
   detailSummary, everySecondsText, gateSummary, hitSummary, labelOf, opAmounts, opSeconds,
-  scaleSummary, secondsText, skillGrades, skillsAtGrade, statAmount,
+  scaleSummary, secondsText, skillDescs, skillGrades, skillsAtGrade, statAmount,
 } from '@/lib/characters';
-import { useLang, useT, type UiKey } from '@/lib/i18n';
+import { dataText, useLang, useT, type UiKey } from '@/lib/i18n';
 import type {
   BuffEntry, CharacterData, CharacterEntry, IconManifest, SkillBehaviour, SkillEntry,
   SkillOp,
@@ -31,12 +31,12 @@ export function Panel({ title, note, children }: {
   );
 }
 
-// The game's own `<color=#rrggbb>` markup around the numbers it highlights.
+// The game's own `<color=#rrggbb>` and `<br>` markup.
 export function GameText({ text }: { text: string }) {
   return (
     <>
       {colorRuns(text).map((run, i) => (
-        <Text as="span" key={i} color={run.color}>{run.text}</Text>
+        run.break ? <br key={i} /> : <Text as="span" key={i} color={run.color}>{run.text}</Text>
       ))}
     </>
   );
@@ -61,7 +61,7 @@ export function BuffList({ buffs, icons }: {
               <Wrap spacing={1.5} align="baseline">
                 <WrapItem>
                   <Text fontSize="xs" fontWeight="bold">
-                    <GameText text={buff.name ?? ''} />
+                    <GameText text={dataText(lang, buff.name, buff.nameEn)} />
                   </Text>
                 </WrapItem>
                 {cat && (
@@ -86,7 +86,7 @@ export function BuffList({ buffs, icons }: {
               </Wrap>
               {buff.desc && (
                 <Text fontSize="xs" color="gray.500">
-                  <GameText text={buff.desc} />
+                  <GameText text={dataText(lang, buff.desc, buff.descEn)} />
                 </Text>
               )}
             </Box>
@@ -129,7 +129,7 @@ function OpRow({ op, level, period, data, icons }: {
       </Badge>
       {op.name && (
         <Text fontSize="xs" fontWeight="bold">
-          <GameText text={op.name} />
+          <GameText text={dataText(lang, op.name, op.nameEn)} />
         </Text>
       )}
       {amounts.length > 0 && (
@@ -264,13 +264,18 @@ export function SkillRow({ skill, data, icons, showSlot }: {
   const t = useT();
   const lang = useLang();
   const [level, setLevel] = useState(1);
-  const at = Math.min(level, skill.desc.length) - 1;
+  const descs = skillDescs(skill, lang);
+  const at = Math.min(level, descs.length) - 1;
   return (
     <Flex gap={3} align="start" borderTopWidth="1px" borderColor="whiteAlpha.100" pt={2}>
       <GameIcon manifest={icons} group="skill" name={skill.icon} size={9} borderRadius="md" />
       <Box minW={0} flex="1">
         <Wrap spacing={2} align="center">
-          <WrapItem><Text fontSize="sm" fontWeight="bold">{skill.name}</Text></WrapItem>
+          <WrapItem>
+            <Text fontSize="sm" fontWeight="bold">
+              {dataText(lang, skill.name, skill.nameEn)}
+            </Text>
+          </WrapItem>
           {showSlot && (
             <WrapItem>
               <Text fontFamily="mono" fontSize="0.6rem" color="gray.600">
@@ -290,7 +295,7 @@ export function SkillRow({ skill, data, icons, showSlot }: {
             <WrapItem>
               <HStack spacing={1}>
                 <Text fontSize="0.65rem" color="gray.600">{t('skillLevel')}</Text>
-                {skill.desc.map((_d, i) => (
+                {descs.map((_d, i) => (
                   <Box key={i} as="button" onClick={() => setLevel(i + 1)} px={1.5}
                     fontSize="0.65rem" borderWidth="1px" borderRadius="sm"
                     borderColor={i === at ? 'yellow.400' : 'whiteAlpha.200'}
@@ -301,7 +306,7 @@ export function SkillRow({ skill, data, icons, showSlot }: {
           )}
         </Wrap>
         <Text fontSize="sm" color="gray.300" mt={0.5}>
-          <GameText text={skill.desc[at] ?? ''} />
+          <GameText text={descs[at] ?? ''} />
         </Text>
         <BuffList buffs={skill.buffs[at] ?? []} icons={icons} />
         {skill.behaviour && (
@@ -370,6 +375,7 @@ export function Rotation({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
   const t = useT();
+  const lang = useLang();
   const patterns = entry.battlePatterns;
   if (!patterns) return null;
   // Names are ambiguous only when different skills carry the same name.
@@ -388,7 +394,11 @@ export function Rotation({ entry, data, icons }: {
             <Wrap spacing={2} align="baseline" mb={1}>
               <WrapItem><Badge fontSize="0.6rem">{t(ROTATION_LABEL[key])}</Badge></WrapItem>
               {rot.name && (
-                <WrapItem><Text fontSize="xs" color="gray.500">{rot.name}</Text></WrapItem>
+                <WrapItem>
+                  <Text fontSize="xs" color="gray.500">
+                    {dataText(lang, rot.name, rot.nameEn)}
+                  </Text>
+                </WrapItem>
               )}
             </Wrap>
             <Box overflowX="auto">
@@ -403,7 +413,9 @@ export function Rotation({ entry, data, icons }: {
                         borderRadius="md" px={1.5} py={0.5}>
                         <GameIcon manifest={icons} group="skill" name={skill?.icon}
                           size={4} reserve={false} />
-                        <Text fontSize="xs" whiteSpace="nowrap">{skill?.name ?? id}</Text>
+                        <Text fontSize="xs" whiteSpace="nowrap">
+                          {skill ? dataText(lang, skill.name, skill.nameEn) : id}
+                        </Text>
                         {ambiguous && skill && (
                           <Text fontFamily="mono" fontSize="0.6rem" color="gray.600">
                             {skill.skillType}

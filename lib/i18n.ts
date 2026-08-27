@@ -48,6 +48,13 @@ export function pick(value: Localized | null | undefined, lang: Lang): string {
   return value ? value[lang] : '';
 }
 
+// A game label carried in both columns; either side falls back to the other.
+export function dataText(
+  lang: Lang, ko?: string | null, en?: string | null,
+): string {
+  return (lang === 'en' ? (en || ko) : (ko || en)) || '';
+}
+
 /** `{name}` placeholders, so a translated sentence can reorder its parts. */
 export function fill(text: string, vars: Record<string, string | number>): string {
   return text.replace(/\{(\w+)\}/g, (whole, key: string) =>
@@ -332,6 +339,11 @@ export const UI = {
     ko: '재료를 차감하고 목표를 현재 상태로',
   },
   farmCompleteShort: { en: 'Materials short', ko: '재료 부족' },
+  farmCompletePart: { en: 'Complete this goal', ko: '이 목표 완료' },
+  farmCompletePartHint: {
+    en: 'Deduct this row alone and make it current',
+    ko: '이 항목만 차감하고 현재 상태로',
+  },
   farmPriority: { en: 'Priority', ko: '우선' },
   farmPriorityHint: {
     en: 'Finish this unit first; the rest gets what is left',

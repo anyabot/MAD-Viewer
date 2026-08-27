@@ -13,13 +13,14 @@ import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
 import { useCollection } from '@/lib/collectionStore';
 import {
-  MATERIAL_ICON_GROUPS, applySide, billCovered, emptyPlan, planStar, spendBill, unitBill,
-  type Bill, type UnitPlanPair,
+  MATERIAL_ICON_GROUPS, applyPart, applySide, billCovered, emptyPlan, partBill, planStar,
+  spendBill, unitBill,
+  type Bill, type PlanPart, type UnitPlanPair,
 } from '@/lib/farm';
 import { memoryPlan, sellsMemory, starCap, stepCost } from '@/lib/rank';
 import { characterName } from '@/lib/characters';
 import { stageName } from '@/lib/stages';
-import { useLang, useT, type Lang } from '@/lib/i18n';
+import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
 import type {
   CharacterData, CharacterEntry, GrowthData, IconManifest, StageData, StageEntry,
 } from '@/lib/data';
@@ -58,7 +59,7 @@ function MemoryPanel({
             <HStack spacing={2}>
               <ItemIcon manifest={icons} group={materialGroup(icons, material?.icon)}
                 name={material?.icon} grade={material?.grade} size={8}
-                title={material?.name ?? undefined} />
+                title={dataText(lang, material?.name, material?.nameEn) || undefined} />
               <Box>
                 <Text fontSize="0.6rem" color="gray.500" textTransform="uppercase"
                   letterSpacing="0.08em">{t('rankToTarget')}</Text>
@@ -78,7 +79,7 @@ function MemoryPanel({
             <HStack spacing={2}>
               <ItemIcon manifest={icons} group={materialGroup(icons, material?.icon)}
                 name={material?.icon} grade={material?.grade} size={8}
-                title={material?.name ?? undefined} />
+                title={dataText(lang, material?.name, material?.nameEn) || undefined} />
               <Box>
                 <Text fontSize="0.6rem" color="gray.500" textTransform="uppercase"
                   letterSpacing="0.08em">{t('planHeld')}</Text>
@@ -92,7 +93,8 @@ function MemoryPanel({
           <WrapItem>
             <HStack spacing={2}>
               <ItemIcon manifest={icons} group={materialGroup(icons, currency?.icon)}
-                name={currency?.icon} size={8} title={currency?.name ?? undefined} />
+                name={currency?.icon} size={8}
+                title={dataText(lang, currency?.name, currency?.nameEn) || undefined} />
               <Box>
                 <Text fontSize="0.6rem" color="gray.500" textTransform="uppercase"
                   letterSpacing="0.08em">{t('rankBuy')}</Text>
@@ -171,6 +173,7 @@ export function UnitPlanDialog({
   const removeUnit = useFarm((s) => s.removeUnit);
   const commitUnit = useFarm((s) => s.commitUnit);
   const completeUnit = useFarm((s) => s.completeUnit);
+  const completePart = useFarm((s) => s.completePart);
   const collected = useCollection((s) => (entry ? !!s.collected[entry.code] : false));
 
   // The dialog edits a copy: nothing reaches the record until Save.
@@ -216,6 +219,14 @@ export function UnitPlanDialog({
   const owing = !!(bill.unitExp || bill.equipExp || Object.keys(bill.materials).length > 0);
   const covered = billCovered(growth, bill, priority ? spendable : previewed);
 
+  // Banking one row writes the record, so the draft and the held count follow it.
+  const bankPart = (part: PlanPart) => {
+    const spent = spendBill(growth, partBill(growth, entry, data, draft, part), inventory);
+    completePart(entry.code, part, spent);
+    setDraft((kept) => (kept ? applyPart(kept, part) : kept));
+    if (memoryRef) setHeld(spent[memoryRef] ?? 0);
+  };
+
   const leave = () => {
     if (dirty && !window.confirm(t('planDiscardConfirm'))) return;
     onClose();
@@ -254,7 +265,9 @@ export function UnitPlanDialog({
           <VStack align="stretch" spacing={4}>
             <Panel title={t('planTargets')}>
               <PlanGrid entry={entry} data={data} growth={growth} icons={icons}
-                sides={['current', 'target']} draft={planDraft} />
+                sides={['current', 'target']} draft={planDraft}
+                check={{ inventory: priority ? spendable : previewed, disabled: dirty,
+                  reason: t('planSaveFirst'), onComplete: bankPart }} />
             </Panel>
 
             <MemoryPanel entry={entry} growth={growth} stages={stages} hard={hard}

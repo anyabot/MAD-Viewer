@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
+import { CheckIcon } from '@chakra-ui/icons';
 import { Badge, Box, HStack, Input, Text } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import { useFarm } from '@/lib/farmStore';
 import {
-  emptyPlan, formatAmount, gearLevelCap, levellableSkills, parseAmount, planStar, skillCap,
-  type GearPlan, type UnitPlan, type UnitPlanPair,
+  billCovered, billIsEmpty, emptyPlan, formatAmount, gearLevelCap, levellableSkills,
+  parseAmount, partBill, planStar, skillCap,
+  type GearPlan, type PlanPart, type UnitPlan, type UnitPlanPair,
 } from '@/lib/farm';
 import { baseStar, starCap } from '@/lib/rank';
 import { SKILL_CATEGORY_LABEL, equipLabel, equipmentSlotsOf } from '@/lib/characters';
-import { pick, useLang, useT } from '@/lib/i18n';
+import { dataText, pick, useLang, useT } from '@/lib/i18n';
 import type {
   CharacterData, CharacterEntry, GrowthData, IconManifest,
 } from '@/lib/data';
@@ -104,11 +106,45 @@ export type PlanDraft = {
   setGear: (code: string, side: PlanSide, slot: number, gear: GearPlan) => void;
 };
 
-export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
+/** A per-row check that banks one goal on its own; absent leaves the column out. */
+export type PartCheck = {
+  /** What coverage is judged against, which is not always the whole inventory. */
+  inventory: Record<string, number>;
+  disabled?: boolean;
+  reason?: string;
+  onComplete: (part: PlanPart) => void;
+};
+
+function PartCheckCell({ part, entry, data, growth, pair, check }: {
+  part: PlanPart; entry: CharacterEntry; data: CharacterData; growth: GrowthData;
+  pair: UnitPlanPair; check: PartCheck;
+}) {
+  const t = useT();
+  const bill = partBill(growth, entry, data, pair, part);
+  const owing = !billIsEmpty(bill);
+  const ready = owing && !check.disabled && billCovered(growth, bill, check.inventory);
+  return (
+    <Box as="button" aria-label={t('farmCompletePart')} aria-disabled={!ready || undefined}
+      px={1} py={0.5} borderRadius="md" lineHeight={1} justifySelf="center"
+      title={ready ? t('farmCompletePartHint')
+        : !owing ? t('planNothingOwed')
+          : check.disabled ? check.reason ?? t('farmCompletePart')
+            : t('farmCompleteShort')}
+      color={ready ? 'green.300' : 'whiteAlpha.300'}
+      cursor={ready ? 'pointer' : 'not-allowed'}
+      _hover={ready ? { bg: 'whiteAlpha.200', color: 'green.200' } : undefined}
+      onClick={() => ready && check.onComplete(part)}>
+      <CheckIcon boxSize={3} />
+    </Box>
+  );
+}
+
+export function PlanGrid({ entry, data, growth, icons, sides, draft, check }: {
   entry: CharacterEntry; data: CharacterData; growth: GrowthData;
   icons: IconManifest | null; sides: PlanSide[];
   /** Absent writes straight to the store, which is what the character page wants. */
   draft?: PlanDraft;
+  check?: PartCheck;
 }) {
   const t = useT();
   const lang = useLang();
@@ -123,6 +159,11 @@ export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
 
   const planOf = (side: PlanSide) =>
     (side === 'current' ? pair?.current : pair?.target) ?? emptyPlan();
+  const checked = pair ?? { current: emptyPlan(), target: emptyPlan() };
+  const cell = (part: PlanPart) => (check
+    ? <PartCheckCell part={part} entry={entry} data={data} growth={growth}
+        pair={checked} check={check} />
+    : null);
   const levelCap = data.statCaps.level;
   const floor = baseStar(entry);
   const cap = starCap(growth.star);
@@ -132,13 +173,15 @@ export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
   return (
     <Box overflowX="auto">
       <Box display="grid" minW={sides.length > 1 ? '520px' : '340px'} alignItems="center"
-        gap={1.5} gridTemplateColumns={`minmax(0, 1fr)${' auto'.repeat(sides.length)}`}>
+        gap={1.5} gridTemplateColumns={
+          `minmax(0, 1fr)${' auto'.repeat(sides.length + (check ? 1 : 0))}`}>
         <Box />
         {sides.map((side) => (
           <Text key={side} fontSize="0.6rem" color="gray.500" textAlign="right">
             {t(SIDE_LABEL[side])}
           </Text>
         ))}
+        {check && <Box />}
 
         <Text fontSize="sm">{t('dialLevel')}</Text>
         {sides.map((side) => {
@@ -150,6 +193,7 @@ export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
             </Stepper>
           );
         })}
+        {cell({ kind: 'level' })}
 
         <Text fontSize="sm">{t('rankStar')}</Text>
         {sides.map((side) => {
@@ -161,6 +205,7 @@ export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
             </Stepper>
           );
         })}
+        {cell({ kind: 'star' })}
 
         {skills.map(({ id, skill }) => {
           const cap = skillCap(growth, skill);
@@ -168,7 +213,9 @@ export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
             <Box key={id} display="contents">
               <HStack spacing={1.5} minW={0}>
                 <GameIcon manifest={icons} group="skill" name={skill.icon} size={5} />
-                <Text fontSize="sm" noOfLines={1}>{skill.name ?? id}</Text>
+                <Text fontSize="sm" noOfLines={1}>
+                  {dataText(lang, skill.name, skill.nameEn) || id}
+                </Text>
                 <Badge fontSize="0.55rem" colorScheme="gray">
                   {pick(SKILL_CATEGORY_LABEL[skill.categorize], lang)}
                 </Badge>
@@ -182,6 +229,7 @@ export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
                   </Stepper>
                 );
               })}
+              {cell({ kind: 'skill', id })}
             </Box>
           );
         })}
@@ -201,6 +249,7 @@ export function PlanGrid({ entry, data, growth, icons, sides, draft }: {
                 <GearField key={side} growth={growth} slot={slot} gear={worn[i]}
                   onChange={(g) => setGear(entry.code, side, slot.type, g)} />
               ))}
+              {cell({ kind: 'gear', slot: slot.type })}
             </Box>
           );
         })}

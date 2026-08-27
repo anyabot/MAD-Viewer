@@ -217,38 +217,107 @@ export function addLevelFee(bill: Bill, fee: LevelFee, exp: number): void {
   bill.materials[fee.ref] = (bill.materials[fee.ref] ?? 0) + exp * fee.perExp;
 }
 
+/** One row of the plan grid: the smallest goal that can be banked on its own. */
+export type PlanPart =
+  | { kind: 'level' }
+  | { kind: 'star' }
+  | { kind: 'skill'; id: number }
+  | { kind: 'gear'; slot: number };
+
+/** In the plan grid's own order. */
+export function planParts(entry: CharacterEntry, data: CharacterData): PlanPart[] {
+  return [
+    { kind: 'level' },
+    { kind: 'star' },
+    ...levellableSkills(entry, data).map(({ id }): PlanPart => ({ kind: 'skill', id })),
+    ...(entry.equipmentSlots ?? []).map((slot): PlanPart => ({ kind: 'gear', slot })),
+  ];
+}
+
 /** A target below the current state costs nothing. */
-export function unitBill(
-  growth: GrowthData, entry: CharacterEntry, data: CharacterData, plan: UnitPlanPair,
+export function partBill(
+  growth: GrowthData, entry: CharacterEntry, data: CharacterData,
+  plan: UnitPlanPair, part: PlanPart,
 ): Bill {
   const bill = emptyBill();
   const { current, target } = plan;
-  const gained = unitExp(growth, current.level, Math.max(current.level, target.level));
-  bill.unitExp += gained;
-  addLevelFee(bill, growth.unit.levelFee, gained);
 
-  for (const { id, skill } of levellableSkills(entry, data)) {
+  if (part.kind === 'level') {
+    const gained = unitExp(growth, current.level, Math.max(current.level, target.level));
+    bill.unitExp += gained;
+    addLevelFee(bill, growth.unit.levelFee, gained);
+    return bill;
+  }
+
+  if (part.kind === 'star') {
+    const ref = memoryRef(growth.star, entry.code);
+    const stars = stepCost(growth.star, planStar(current, entry),
+      Math.min(planStar(target, entry), starCap(growth.star)));
+    if (ref && stars > 0) bill.materials[ref] = stars;
+    return bill;
+  }
+
+  if (part.kind === 'skill') {
+    const skill = data.skills[String(part.id)];
+    if (!skill) return bill;
     const cap = skillCap(growth, skill);
-    const from = Math.min(current.skills[String(id)] ?? 1, cap);
-    const to = Math.min(Math.max(target.skills[String(id)] ?? 1, from), cap);
+    const from = Math.min(current.skills[String(part.id)] ?? 1, cap);
+    const to = Math.min(Math.max(target.skills[String(part.id)] ?? 1, from), cap);
     addCosts(bill, skillCost(growth, entry.skillMaterialGroup, skill.categorize, from, to));
+    return bill;
   }
 
-  const ref = memoryRef(growth.star, entry.code);
-  const stars = stepCost(growth.star, planStar(current, entry),
-    Math.min(planStar(target, entry), starCap(growth.star)));
-  if (ref && stars > 0) bill.materials[ref] = (bill.materials[ref] ?? 0) + stars;
-
-  for (const slot of entry.equipmentSlots ?? []) {
-    const from = current.gear[String(slot)] ?? { tier: 0, level: 1 };
-    const to = target.gear[String(slot)] ?? { tier: 0, level: 1 };
-    if (!to.tier || to.tier < from.tier) continue;
-    addCosts(bill, tierUpCost(growth, slot, from.tier, to.tier));
-    const fed = gearExp(growth, from, to);
-    bill.equipExp += fed;
-    addLevelFee(bill, growth.equipment.levelFee, fed);
-  }
+  const from = current.gear[String(part.slot)] ?? { tier: 0, level: 1 };
+  const to = target.gear[String(part.slot)] ?? { tier: 0, level: 1 };
+  if (!to.tier || to.tier < from.tier) return bill;
+  addCosts(bill, tierUpCost(growth, part.slot, from.tier, to.tier));
+  const fed = gearExp(growth, from, to);
+  bill.equipExp += fed;
+  addLevelFee(bill, growth.equipment.levelFee, fed);
   return bill;
+}
+
+export function unitBill(
+  growth: GrowthData, entry: CharacterEntry, data: CharacterData, plan: UnitPlanPair,
+): Bill {
+  return mergeBills(planParts(entry, data)
+    .map((part) => partBill(growth, entry, data, plan, part)));
+}
+
+/** Banks one part of the target: only that row's current state moves up. */
+export function applyPart(pair: UnitPlanPair, part: PlanPart): UnitPlanPair {
+  const { target } = pair;
+  switch (part.kind) {
+    case 'level':
+      return applySide(pair, 'current',
+        (plan) => ({ ...plan, level: Math.max(plan.level, target.level) }));
+    case 'star': {
+      const star = target.star;
+      if (star == null) return pair;
+      return applySide(pair, 'current',
+        (plan) => ({ ...plan, star: Math.max(star, plan.star ?? 0) }));
+    }
+    case 'skill': {
+      const want = target.skills[String(part.id)] ?? 1;
+      return applySide(pair, 'current', (plan) => ({
+        ...plan,
+        skills: {
+          ...plan.skills,
+          [part.id]: Math.max(want, plan.skills[String(part.id)] ?? 1),
+        },
+      }));
+    }
+    default: {
+      const want = target.gear[String(part.slot)];
+      if (!want?.tier) return pair;
+      return applySide(pair, 'current', (plan) => {
+        const worn = plan.gear[String(part.slot)] ?? { tier: 0, level: 1 };
+        return want.tier > worn.tier || (want.tier === worn.tier && want.level > worn.level)
+          ? { ...plan, gear: { ...plan.gear, [part.slot]: { ...want } } }
+          : plan;
+      });
+    }
+  }
 }
 
 export function poolItems(growth: GrowthData, pool: PoolKey): Record<string, number> {
@@ -619,8 +688,10 @@ export function needLabel(
     };
   }
   const material = growth.materials[need.key];
+  const both = lang === 'en'
+    ? [material?.nameEn, material?.name] : [material?.name, material?.nameEn];
   return {
-    name: material?.name || need.key,
+    name: both.find(Boolean) || need.key,
     icon: material?.icon ?? null,
     grade: material?.grade ?? null,
   };

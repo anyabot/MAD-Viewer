@@ -59,6 +59,12 @@ export function typeLabel(t: TypeEntry | null, lang: Lang = 'en'): string {
   return lang === 'ko' ? (t.name || t.en || '') : (t.en || t.name);
 }
 
+// One rendered description per skill level, so an index stays valid either way.
+export function skillDescs(skill: SkillEntry, lang: Lang = 'en'): string[] {
+  const en = lang === 'en' ? skill.descEn : null;
+  return en && en.length === skill.desc.length ? en : skill.desc;
+}
+
 // Only `Attribute_Icon_Data` carries a colour; its icons are flat white silhouettes the game tints.
 export function typeTint(t: TypeEntry | null): string | null {
   return t?.color ?? null;
@@ -155,28 +161,12 @@ export function datePlacesOf(
   });
 }
 
-// The master data has no English column for equipment slots.
-const EQUIP_EN: Record<number, string> = {
-  1: 'Earring',
-  2: 'Necklace',
-  3: 'Bracelet',
-  4: 'Ring',
-  5: 'Hat',
-  6: 'Shoes',
-  7: 'Bag',
-  8: 'Gloves',
-  9: 'Keyring',
-  10: 'Badge',
-  11: 'Bra',
-  12: 'Panties',
-};
-
 export function equipLabel(
-  slot: { type: number; name?: string | null }, lang: Lang = 'en',
+  slot: { type: number; name?: string | null; nameEn?: string | null },
+  lang: Lang = 'en',
 ): string {
-  const own = slot.name ?? '';
-  if (lang === 'ko') return own || EQUIP_EN[slot.type] || String(slot.type);
-  return EQUIP_EN[slot.type] ?? own ?? String(slot.type);
+  const both = lang === 'en' ? [slot.nameEn, slot.name] : [slot.name, slot.nameEn];
+  return both.find(Boolean) || String(slot.type);
 }
 
 export function equipmentSlotsOf(
@@ -769,7 +759,8 @@ export function detailSummary(detail: SkillDetail, lang: Lang = 'en'): string[] 
   if (detail.kind.endsWith('Category')) {
     return detail.values.map((v) => labelOf(CATEGORY_LABEL, v.name ?? v.id, lang));
   }
-  const named = detail.values.filter((v) => v.name).map((v) => v.name as string);
+  const named = detail.values.filter((v) => v.name)
+    .map((v) => (lang === 'en' ? (v.nameEn || v.name) : v.name) as string);
   const internal = detail.values.length - named.length;
   if (!internal) return named;
   const more = lang === 'ko'
@@ -848,18 +839,41 @@ const DURATION_CATEGORY_CONST: Record<string, string> = {
 };
 
 // Skill text carries the game's own markup; it becomes runs rather than HTML.
-const COLOR_RE = /<color=(#[0-9a-fA-F]{3,8})>([\s\S]*?)<\/color>/g;
+// Some authored strings open a `<color>` and never close it (it runs to the
+// end of the string, or until the next tag) — matching only paired
+// `<color>...</color>` left those visible as literal text, so this scans
+// color state token-by-token instead of requiring a closing tag.
+const COLOR_TOKEN_RE = /<color=(#[0-9a-fA-F]{3,8})>|<\/color>/gi;
+const BR_RE = /<br\s*\/?>/gi;
 
-export function colorRuns(text: string): { text: string; color?: string }[] {
-  const out: { text: string; color?: string }[] = [];
+export type GameTextRun = { text: string; color?: string; break?: true };
+
+export function colorRuns(text: string): GameTextRun[] {
+  // An uncoloured run carries no `color` key at all, rather than an explicit
+  // undefined, so a run compares equal to the plain `{ text }` it represents.
+  const run = (part: string, color?: string): GameTextRun =>
+    (color ? { text: part, color } : { text: part });
+  const out: GameTextRun[] = [];
   let at = 0;
-  for (const m of text.matchAll(COLOR_RE)) {
-    if (m.index > at) out.push({ text: text.slice(at, m.index) });
-    out.push({ text: m[2], color: m[1] });
+  let color: string | undefined;
+  for (const m of text.matchAll(COLOR_TOKEN_RE)) {
+    if (m.index > at) out.push(run(text.slice(at, m.index), color));
     at = m.index + m[0].length;
+    color = m[1]; // an open tag sets it; a close tag (m[1] undefined) resets it
   }
-  if (at < text.length) out.push({ text: text.slice(at) });
-  return out;
+  if (at < text.length) out.push(run(text.slice(at), color));
+  // A run's own text can still carry a `<br>` — split it after color parsing
+  // so a break inside or outside a colored span renders as a real line break
+  // rather than the literal tag.
+  const split: GameTextRun[] = [];
+  for (const piece of out) {
+    const parts = piece.text.split(BR_RE);
+    parts.forEach((part, i) => {
+      if (i > 0) split.push({ break: true, text: '' });
+      if (part) split.push(run(part, piece.color));
+    });
+  }
+  return split;
 }
 
 // A standing rig has no thumbnail: the portrait is the standing art.

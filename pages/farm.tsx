@@ -32,7 +32,7 @@ import { memoryPlan, starCap, stepCost, type MemoryPlan } from '@/lib/rank';
 type NeedLabel = ReturnType<typeof needLabel>;
 import { characterName, isPlayable } from '@/lib/characters';
 import { groupLabel, stageName } from '@/lib/stages';
-import { useLang, useT, type Lang } from '@/lib/i18n';
+import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
 import {
   loadCharacters, loadGrowth, loadIcons, loadStages,
   type CharacterData, type CharacterEntry, type GrowthData, type IconManifest,
@@ -547,7 +547,7 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }:
           <HStack spacing={1.5} flexShrink={0}>
             <ItemIcon manifest={icons} group={materialGroup(icons, material?.icon)}
               name={material?.icon} grade={material?.grade} size={6}
-              title={material?.name ?? undefined} />
+              title={dataText(lang, material?.name, material?.nameEn) || undefined} />
             <Text fontSize="sm" fontFamily="mono" color="yellow.200">
               {memories.short.toLocaleString()}
             </Text>

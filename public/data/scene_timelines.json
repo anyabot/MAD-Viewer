@@ -18467,6 +18467,2063 @@
     ]
    }
   },
+  "af_ch0043": {
+   "story": {
+    "script": "ch0043_05_affection_story",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "affection"
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_018_lp",
+       "IntroBgmPath": "bgm_romance_018_in",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "NaniSummary",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 3,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Unskippable"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 6,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/enter"
+      },
+      "clip": "basic/enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 8,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Default",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 9,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_01"
+      },
+      "clip": "asmr/ani_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 11,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "시원하다. 여기까지 오면서 계속 상상했다니까.",
+      "author": "lafine"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 13,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_01",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_01"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 14,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 15,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.2"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 17,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "아무도 없는 호수에서 단 둘이 물놀이 하는 거 말이야.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_2"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 17,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 18,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 19,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.24"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 21,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "넌 그런 기대 안 했어?",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_3"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 21,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 22,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 23,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.24"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 25,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_02"
+      },
+      "clip": "asmr/ani_02"
+     },
+     {
+      "class": "PrintText",
+      "line": 27,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "후훗, 거짓말 하기는...",
+      "author": "lafine"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 29,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_01",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_01"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 30,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 32,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "넌 얼굴에 다 티 나거든.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_5"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 32,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 33,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 35,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "널 몇 번 만나다보면 알게 되던데.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_6"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 35,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 36,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 38,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "그야 넌 대체로 솔직하고, 난 그 솔직함이 난 너무 좋거든.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_7"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 38,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 39,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 40,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.08"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 42,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_02_01"
+      },
+      "clip": "asmr/ani_02_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 44,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그런 네가 왜 계속 거기에 앉아 있으려고 할까나?",
+      "author": "lafine"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 47,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_02",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_02"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 48,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 49,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 51,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "물에도 안 들어오고 여행을 끝내기엔 아쉽지 않겠어?",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_9"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 52,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 53,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.2"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 55,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_03"
+      },
+      "clip": "asmr/ani_03"
+     },
+     {
+      "class": "PrintText",
+      "line": 57,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "에이 또 내빼기는...",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 58,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 60,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_02",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_02"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 62,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 63,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "말보다 행동이 빠른 네가 그러고 있는데는 이유가 있을 텐데...",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_11"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 64,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 65,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.3"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 67,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_03_01"
+      },
+      "clip": "asmr/ani_03_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 69,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "혹시 물놀이보다도 이 호수를 더 즐겁게 즐길 방법을 알아?",
+      "author": "lafine"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 71,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_01",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_01"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 72,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 73,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.8"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 75,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "대답이 없는 걸 보니 더 좋은 생각은 안 떠오르나 보네.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_13"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 75,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 76,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 77,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.8"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 79,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "있잖아, 여행의 끝에는 항상 기억에 남는 일을 해야하는 법이야.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_14"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 79,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 80,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 81,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.6"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 83,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "게다가 이런 좋은 호수가 있는데, 들어오지 않으면 손해거든!",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_15"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 83,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 84,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 85,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 87,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_04"
+      },
+      "clip": "asmr/ani_04"
+     },
+     {
+      "class": "PrintText",
+      "line": 89,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그러니 고집 그만 부리고 나랑 같이 물놀이 어때?",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 90,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 92,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Duration": "1",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 94,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "AffectionEndingCommand",
+      "line": 96,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "End",
+      "line": 98,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   },
+   "view": {
+    "script": "ch0043_05_affection_view",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "affection"
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_018_lp",
+       "IntroBgmPath": "bgm_romance_018_in",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/enter"
+      },
+      "clip": "basic/enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 5,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "DesireAffectionViewMenuPanel",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 7,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_01"
+      },
+      "clip": "asmr/ani_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 9,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "시원하다. 여기까지 오면서 계속 상상했다니까.",
+      "author": "lafine"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 11,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_01",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_01"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 12,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 13,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.2"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 15,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "아무도 없는 호수에서 단 둘이 물놀이 하는 거 말이야.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_2"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 15,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 16,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 17,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.24"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 19,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "넌 그런 기대 안 했어?",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_3"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 19,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 20,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 21,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.24"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 23,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_02"
+      },
+      "clip": "asmr/ani_02"
+     },
+     {
+      "class": "PrintText",
+      "line": 25,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "후훗, 거짓말 하기는...",
+      "author": "lafine"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 27,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_01",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_01"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 28,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 30,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "넌 얼굴에 다 티 나거든.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_5"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 30,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 31,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 33,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "널 몇 번 만나다보면 알게 되던데.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_6"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 33,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 34,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 36,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "그야 넌 대체로 솔직하고, 난 그 솔직함이 난 너무 좋거든.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_7"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 36,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 37,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 38,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.08"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 40,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_02_01"
+      },
+      "clip": "asmr/ani_02_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 42,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그런 네가 왜 계속 거기에 앉아 있으려고 할까나?",
+      "author": "lafine"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 45,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_02",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_02"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 46,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 47,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 49,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "물에도 안 들어오고 여행을 끝내기엔 아쉽지 않겠어?",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_9"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 50,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 51,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.2"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 53,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_03"
+      },
+      "clip": "asmr/ani_03"
+     },
+     {
+      "class": "PrintText",
+      "line": 55,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "에이 또 내빼기는...",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 56,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 58,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_02",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_02"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 60,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 61,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "말보다 행동이 빠른 네가 그러고 있는데는 이유가 있을 텐데...",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_11"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 62,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 63,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.3"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 65,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_03_01"
+      },
+      "clip": "asmr/ani_03_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 67,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "혹시 물놀이보다도 이 호수를 더 즐겁게 즐길 방법을 알아?",
+      "author": "lafine"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 69,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_01",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_01"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 70,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 71,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.8"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 73,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "대답이 없는 걸 보니 더 좋은 생각은 안 떠오르나 보네.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_13"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 73,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 74,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 75,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.8"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 77,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "있잖아, 여행의 끝에는 항상 기억에 남는 일을 해야하는 법이야.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_14"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 77,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 78,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 79,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.6"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 81,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "게다가 이런 좋은 호수가 있는데, 들어오지 않으면 손해거든!",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_15"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 81,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 82,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 83,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 85,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_04"
+      },
+      "clip": "asmr/ani_04"
+     },
+     {
+      "class": "PrintText",
+      "line": 87,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그러니 고집 그만 부리고 나랑 같이 물놀이 어때?",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 88,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 90,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_05"
+      },
+      "clip": "asmr/ani_05"
+     },
+     {
+      "class": "PrintText",
+      "line": 92,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "너 답지 않게 망설이고 말이야.",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 93,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 95,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_05_01"
+      },
+      "clip": "asmr/ani_05_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 97,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "뭔가 바라는 게 있나 보네.",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 98,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 100,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_02",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_02"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 102,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 103,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그럼 나부터 원하는 걸 말해볼까...?",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_19"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 104,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 105,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 107,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_06"
+      },
+      "clip": "asmr/ani_06"
+     },
+     {
+      "class": "PrintText",
+      "line": 109,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "네가 지금 당장 옷을 벗어던지고 호수로 들어왔으면 좋겠어.",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 110,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 112,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_03",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_03"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 113,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.2"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 115,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "그리고... 둘이서 온몸에 힘이 빠질 때까지 물장구치고 놀다가 호수변에서 같이 뒹구는 거야.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_21"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 115,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 116,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 117,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.2"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 119,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "가져온 간식을 꺼내 먹으면서 열심히 수다떨다가, 찰싹 붙어 한숨 자고 일어나는 거지.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_22"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 119,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 120,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 121,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.2"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 123,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "잠들기 전까지는 널 어떻게 생각하는지 하나부터 열까지 귓가에 속삭여줄게.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_23"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 123,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 124,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 125,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.2"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 127,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "네가 내킨다면, 날 어떻게 생각하는지도 듣고 싶어.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_24"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 127,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 128,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 130,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_03_end"
+      },
+      "clip": "asmr/loop_03_end"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 132,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/loop_04",
+       "Loop": "true"
+      },
+      "clip": "asmr/loop_04"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 133,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.7"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 135,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "그러니까 이제 호수로 들어와 나랑 같이 놀자.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_25"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 135,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 136,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 137,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.8"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 139,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "내가 최고로 즐거운 추억을 만들어 줄게.",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_26"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 139,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 140,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 141,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.8"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 143,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "어때 기대되지 않아?",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_27"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 143,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 144,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 145,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.9"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 147,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_07"
+      },
+      "clip": "asmr/ani_07"
+     },
+     {
+      "class": "PrintText",
+      "line": 149,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아마 이 말을 듣고 싶었던 게 아닐까 싶은데...",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 150,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 152,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_08"
+      },
+      "clip": "asmr/ani_08"
+     },
+     {
+      "class": "PrintText",
+      "line": 154,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "후훗, 정답이지?",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 155,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 157,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.asmr/ani_09"
+      },
+      "clip": "asmr/ani_09"
+     },
+     {
+      "class": "PrintText",
+      "line": 159,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그럼 원하는 걸 이뤘으니, 우리 둘의 여행을 화려하게 마무리 해보자.",
+      "author": "lafine"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 160,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 162,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Duration": "1.5",
+       "AppearanceAndTransition": "BG_Fade_Black"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 165,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "꺄핫~! 갑자기 물에 그렇게 뛰어드는 법이 어딨어~!",
+      "author": "lafine",
+      "voice": "voc_ch0043_affection_view_31"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 166,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 168,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Duration": "1",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 170,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "AffectionEndingCommand",
+      "line": 172,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "End",
+      "line": 174,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   }
+  },
   "af_ch0057": {
    "story": {
     "script": "ch0057_05_affection_story",
@@ -39951,6 +42008,2143 @@
      {
       "class": "Return",
       "line": 149,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   }
+  },
+  "ds_ch0043": {
+   "story": {
+    "script": "ch0043_03_desire_story",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "desire"
+      }
+     },
+     {
+      "class": "NaniSummary",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_017_lp",
+       "IntroBgmPath": "bgm_romance_017_in",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 3,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Unskippable"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/enter"
+      },
+      "clip": "10_basic/10_enter"
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 5,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/idle"
+      },
+      "clip": "10_basic/10_idle"
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 7,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 9,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Default",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 10,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/touch",
+       "Wait": "true"
+      },
+      "clip": "10_basic/10_touch"
+     },
+     {
+      "class": "PrintText",
+      "line": 11,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으아아아, 이게 대체 무슨 일이야.",
+      "voice": "voc_ch0043_desire_story_1"
+     },
+     {
+      "class": "AddChoice",
+      "line": 13,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "AddChoice",
+      "line": 14,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 15,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "PrintText",
+      "line": 17,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그건 나도 알고 있어…!",
+      "voice": "voc_ch0043_desire_story_2"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 19,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/wait",
+       "Wait": "true"
+      },
+      "clip": "10_basic/10_wait"
+     },
+     {
+      "class": "PrintText",
+      "line": 20,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그치만 혼자서 못 빠져 나가겠어.",
+      "voice": "voc_ch0043_desire_story_3"
+     },
+     {
+      "class": "AddChoice",
+      "line": 22,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 23,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 25,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine",
+       "Offset": "3,1",
+       "Zoom": "0.3",
+       "Duration": "6",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 26,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "뭐야? 날 구해주려는 게 맞는 거지?"
+     },
+     {
+      "class": "AddChoice",
+      "line": 28,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "AddChoice",
+      "line": 29,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 30,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 32,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/A1",
+       "Wait": "true"
+      },
+      "clip": "10_reaction/10_A1"
+     },
+     {
+      "class": "PrintText",
+      "line": 33,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으앗! 구해준다면서 머리는 왜 쓰다듬는 거야!",
+      "voice": "voc_ch0043_desire_story_5"
+     },
+     {
+      "class": "AddChoice",
+      "line": 35,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 36,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 39,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine",
+       "Offset": "1,0.5",
+       "Zoom": "0.1",
+       "Duration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 40,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그걸로 긴장이 풀릴 리 없잖아…",
+      "voice": "voc_ch0043_desire_story_6"
+     },
+     {
+      "class": "AddChoice",
+      "line": 42,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 43,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 45,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/A1",
+       "Wait": "true"
+      },
+      "clip": "10_reaction/10_A1"
+     },
+     {
+      "class": "PrintText",
+      "line": 46,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아앗! 뭐하는 거야!!",
+      "voice": "voc_ch0043_desire_story_7"
+     },
+     {
+      "class": "AddChoice",
+      "line": 48,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 49,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 51,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/touch",
+       "Wait": "true"
+      },
+      "clip": "10_basic/10_touch"
+     },
+     {
+      "class": "PrintText",
+      "line": 52,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으읏… 풀렸어! 풀렸다구!",
+      "voice": "voc_ch0043_desire_story_8"
+     },
+     {
+      "class": "PrintText",
+      "line": 53,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그러니 이제 그물을 풀어줘!",
+      "voice": "voc_ch0043_desire_story_9"
+     },
+     {
+      "class": "AddChoice",
+      "line": 55,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 56,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 58,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/A2",
+       "Wait": "true"
+      },
+      "clip": "10_reaction/10_A2"
+     },
+     {
+      "class": "PrintText",
+      "line": 59,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "흐읏! 가슴은 대체… 왜…!",
+      "voice": "voc_ch0043_desire_story_10"
+     },
+     {
+      "class": "AddChoice",
+      "line": 61,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 62,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "AddChoice",
+      "line": 64,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 65,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 67,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/wait",
+       "Wait": "true"
+      },
+      "clip": "10_basic/10_wait"
+     },
+     {
+      "class": "PrintText",
+      "line": 68,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으읏… 그 말이 맞는데…",
+      "voice": "voc_ch0043_desire_story_11"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 70,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/touch",
+       "Wait": "true"
+      },
+      "clip": "10_basic/10_touch"
+     },
+     {
+      "class": "PrintText",
+      "line": 71,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "틀린 말은 아닌데…",
+      "voice": "voc_ch0043_desire_story_12"
+     },
+     {
+      "class": "PrintText",
+      "line": 72,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "뭔가 기분이 이상해진다고!",
+      "voice": "voc_ch0043_desire_story_13"
+     },
+     {
+      "class": "AddChoice",
+      "line": 74,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "AddChoice",
+      "line": 75,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 76,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 78,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/H1",
+       "Wait": "false"
+      },
+      "clip": "10_reaction/10_H1"
+     },
+     {
+      "class": "PrintText",
+      "line": 79,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      },
+      "text": "흐읏… 그만… 거긴 안 돼!!",
+      "voice": "voc_ch0043_desire_story_14"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 81,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "HideAllActors",
+      "line": 82,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireEndingCommand",
+      "line": 83,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Skip",
+      "line": 85,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Enable": "false"
+      }
+     },
+     {
+      "class": "End",
+      "line": 87,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   },
+   "view": {
+    "script": "ch0043_03_desire_view",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "desire"
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_017_lp",
+       "IntroBgmPath": "bgm_romance_017_in",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/enter"
+      },
+      "clip": "10_basic/10_enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "DesireAffectionViewMenuPanel",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 6,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0",
+       "IdAndAppearance": "DesireAffectionSubtitle",
+       "MakeDefault": "true"
+      }
+     },
+     {
+      "class": "Label",
+      "label": "setting",
+      "line": 8,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 9,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "x=0"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 10,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "overlay=11"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 11,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "y1=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 12,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "y2=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 14,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "z1=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 15,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "z2=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 16,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "z3=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 17,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "z4=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 19,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "feather1=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 20,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "feather2=false"
+      }
+     },
+     {
+      "class": "Label",
+      "label": "start",
+      "line": 22,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 23,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.basic/idle"
+      },
+      "clip": "10_basic/10_idle"
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 24,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0.5",
+       "Wait": "false",
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 26,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "y2=true",
+       "Appearance": "reaction/A7",
+       "IdAndBoundingBox": "lafine.unique3"
+      },
+      "clip": "10_reaction/10_A7",
+      "box": "bd_unique3"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 27,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/T5",
+       "Track": "32"
+      },
+      "clip": "30_overlay/30_T5"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 28,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "0.62"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 29,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "흐흐... 하하하핫...!",
+      "author": "lafine",
+      "voice": "voc_ch0043_desire_enjoy_6_2"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 31,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/A1",
+       "IdAndBoundingBox": "lafine.face"
+      },
+      "clip": "10_reaction/10_A1",
+      "box": "bd_face"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 32,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Expression": "x=x+30"
+      }
+     },
+     {
+      "class": "Gosub",
+      "line": 33,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".feather"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 34,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "으아아~ 뭐하는 거야! 머리가 헝클어지잖아!",
+      "author": "lafine",
+      "voice": "voc_ch0043_desire_enjoy_1"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 36,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/A2",
+       "IdAndBoundingBox": "lafine.breast"
+      },
+      "clip": "10_reaction/10_A2",
+      "box": "bd_breast"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 37,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Expression": "x=x+20"
+      }
+     },
+     {
+      "class": "Gosub",
+      "line": 38,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".feather"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 39,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "안 그래도 그물이 엉켜 답답한데, 너까지 그러기야…!",
+      "author": "lafine",
+      "voice": "voc_ch0043_desire_enjoy_2"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 42,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "reaction/A6",
+       "IdAndBoundingBox": "lafine.unique"
+      },
+      "clip": "10_reaction/10_A6",
+      "box": "bd_unique"
+     },
+     {
+      "class": "PlayVoice",
+      "line": 43,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "VoicePath": "ch0043/desire/voc_ch0043_desire_enjoy_11"
+      },
+      "voice": "voc_ch0043_desire_enjoy_11"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 44,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Expression": "x=x+20"
+      }
+     },
+     {
+      "class": "Gosub",
+      "line": 45,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".feather"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 46,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Gosub",
+      "line": 47,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".overlay"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 48,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/oppai",
+       "Track": "overlay"
+      },
+      "clip": "30_overlay/30_oppai"
+     },
+     {
+      "class": "DesireDragCommand",
+      "line": 51,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "lafine.leg_L"
+      },
+      "box": "bd_leg_L"
+     },
+     {
+      "class": "DesireDragReleaseCommand",
+      "line": 52,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "ConditionalExpression": "drag.time>0.3"
+      }
+     },
+     {
+      "class": "DesireDragReleaseCommand",
+      "line": 54,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "ConditionalExpression": "drag.distance>5&&drag.time<0.3&&z1=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 55,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Expression": "x=x+10"
+      }
+     },
+     {
+      "class": "Gosub",
+      "line": 56,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Path": ".feather"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 57,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/A3"
+      },
+      "clip": "10_reaction/10_A3"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 58,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 59,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "흐읏… 그쪽엔 그물이 없잖아! 읏, 아무튼 안 돼!",
+      "author": "lafine",
+      "voice": "voc_ch0043_desire_enjoy_3"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 60,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "Gosub",
+      "line": 61,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Path": ".overlay"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 62,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/stocking_leg_L",
+       "Track": "overlay"
+      },
+      "clip": "30_overlay/30_stocking_leg_L"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 63,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Expression": "z1=true"
+      }
+     },
+     {
+      "class": "DesireDragCommand",
+      "line": 66,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "lafine.leg_R"
+      },
+      "box": "bd_leg_R"
+     },
+     {
+      "class": "DesireDragReleaseCommand",
+      "line": 67,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "ConditionalExpression": "drag.time>0.3"
+      }
+     },
+     {
+      "class": "DesireDragReleaseCommand",
+      "line": 69,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "ConditionalExpression": "drag.distance>5&&drag.time<0.3&&z2=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 70,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Expression": "x=x+10"
+      }
+     },
+     {
+      "class": "Gosub",
+      "line": 71,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Path": ".feather"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 72,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/A4"
+      },
+      "clip": "10_reaction/10_A4"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 73,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "PlayVoice",
+      "line": 74,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "VoicePath": "ch0043/desire/voc_ch0043_desire_enjoy_9"
+      },
+      "voice": "voc_ch0043_desire_enjoy_9"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 75,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "Gosub",
+      "line": 76,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Path": ".overlay"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 77,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/stocking_leg_R",
+       "Track": "overlay"
+      },
+      "clip": "30_overlay/30_stocking_leg_R"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 78,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Expression": "z2=true"
+      }
+     },
+     {
+      "class": "DesireDragCommand",
+      "line": 81,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "z3=false",
+       "IdAndBoundingBox": "lafine.pelvis"
+      },
+      "box": "bd_pelvis"
+     },
+     {
+      "class": "DesireDragReleaseCommand",
+      "line": 82,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "ConditionalExpression": "drag.distance>5&&drag.time<0.3"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 83,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Expression": "x=x+15"
+      }
+     },
+     {
+      "class": "Gosub",
+      "line": 84,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Path": ".feather"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 85,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/H1_2"
+      },
+      "clip": "10_reaction/10_H1_2"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 86,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "PlayVoice",
+      "line": 87,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "VoicePath": "ch0043/desire/voc_ch0043_desire_enjoy_7"
+      },
+      "voice": "voc_ch0043_desire_enjoy_7"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 88,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "0.8"
+      }
+     },
+     {
+      "class": "PlayVoice",
+      "line": 89,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "VoicePath": "ch0043/desire/voc_ch0043_desire_enjoy_8"
+      },
+      "voice": "voc_ch0043_desire_enjoy_8"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 90,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "Gosub",
+      "line": 91,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Path": ".overlay"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 92,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/pelvis",
+       "Track": "overlay"
+      },
+      "clip": "30_overlay/30_pelvis"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 93,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Expression": "z3=true"
+      }
+     },
+     {
+      "class": "DesireDragCommand",
+      "line": 95,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "lafine.leg_R2"
+      },
+      "box": "bd_leg_R2"
+     },
+     {
+      "class": "DesireDragResolveCommand",
+      "line": 96,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "ConditionalExpression": "drag.distance>5&&drag.time<0.3&&z4=false"
+      }
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 97,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Expression": "x=x+10"
+      }
+     },
+     {
+      "class": "Gosub",
+      "line": 98,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Path": ".feather"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 99,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/A5"
+      },
+      "clip": "10_reaction/10_A5"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 100,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "PlayVoice",
+      "line": 101,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "VoicePath": "ch0043/desire/voc_ch0043_desire_enjoy_10"
+      },
+      "voice": "voc_ch0043_desire_enjoy_10"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 102,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "Gosub",
+      "line": 103,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Path": ".overlay"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 104,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/stocking_leg_R2",
+       "Track": "overlay"
+      },
+      "clip": "30_overlay/30_stocking_leg_R2"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 105,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Expression": "z4=true"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 107,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "y1=true&&y2=false",
+       "IdAndBoundingBox": "lafine.feather"
+      },
+      "box": "bd_feather"
+     },
+     {
+      "class": "Await",
+      "line": 108,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 109,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/T4",
+       "Track": "31"
+      },
+      "clip": "30_overlay/30_T4"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 110,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/B1"
+      },
+      "clip": "10_reaction/10_B1"
+     },
+     {
+      "class": "Group",
+      "line": 111,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "PrintText",
+      "line": 112,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "이 함정은 플러리 짓이었구나. ",
+      "author": "lafine",
+      "voice": "voc_ch0043_desire_enjoy_4_1"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 112,
+      "inline": 1,
+      "indent": 3,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "true"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 113,
+      "inline": 0,
+      "indent": 3,
+      "fields": {
+       "Text": ""
+      },
+      "text": "근데 그걸 왜 줍는 거야?",
+      "author": "lafine",
+      "voice": "voc_ch0043_desire_enjoy_4_2"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 114,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Expression": "y2=true"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 116,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "y2=true&&z3=true",
+       "Appearance": "reaction/H1",
+       "Track": "33",
+       "IdAndBoundingBox": "lafine.pelvis"
+      },
+      "clip": "10_reaction/10_H1",
+      "box": "bd_pelvis"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 117,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/T6",
+       "Track": "34",
+       "Wait": "false"
+      },
+      "clip": "30_overlay/30_T6"
+     },
+     {
+      "class": "PrintText",
+      "line": 118,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "자, 잠시만! 거기를 간지럼 피우면… 흐읏 아… 안 돼!!",
+      "author": "lafine",
+      "voice": "voc_ch0043_desire_enjoy_5"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 119,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 120,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "ScreenFadeCommand",
+      "line": 121,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Duration": "2",
+       "To": "0",
+       "Wait": "true",
+       "Color": "white"
+      }
+     },
+     {
+      "class": "Goto",
+      "line": 123,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".after"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 125,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "y2=true&&z3=false",
+       "IdAndAppearance": "lafine.overlay/twinkle_drag"
+      },
+      "clip": "30_overlay/30_twinkle_drag"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 126,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 127,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 128,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/twinkle_drag"
+      },
+      "clip": "30_overlay/30_twinkle_drag"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 130,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ConditionalExpression": "y2=true&&z3=true",
+       "IdAndAppearance": "lafine.overlay/twinkle"
+      },
+      "clip": "30_overlay/30_twinkle"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 131,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 132,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/twinkle"
+      },
+      "clip": "30_overlay/30_twinkle"
+     },
+     {
+      "class": "Stop",
+      "line": 134,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Label",
+      "label": "after",
+      "line": 136,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 137,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.reaction/H1",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "10_reaction/10_H1"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 138,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/T6",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "30_overlay/30_T6"
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 139,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "lafine.lobby/after_idle"
+      },
+      "clip": "lobby/10_after_idle"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 140,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "0.5"
+      }
+     },
+     {
+      "class": "ScreenFadeCommand",
+      "line": 141,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Duration": "2",
+       "To": "1",
+       "Wait": "false",
+       "Color": "white"
+      }
+     },
+     {
+      "class": "PlayVoice",
+      "line": 143,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "VoicePath": "ch0043/desire/voc_ch0043_desire_enjoy_12",
+       "Loop": "true"
+      },
+      "voice": "voc_ch0043_desire_enjoy_12"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 145,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/after_touch",
+       "IdAndBoundingBox": "lafine.breast"
+      },
+      "clip": "lobby/10_after_touch",
+      "box": "bd_breast"
+     },
+     {
+      "class": "Gosub",
+      "line": 146,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".aftervoice"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 147,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/after_touch",
+       "IdAndBoundingBox": "lafine.face"
+      },
+      "clip": "lobby/10_after_touch",
+      "box": "bd_face"
+     },
+     {
+      "class": "Gosub",
+      "line": 148,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".aftervoice"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 149,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/after_touch",
+       "IdAndBoundingBox": "lafine.leg_L"
+      },
+      "clip": "lobby/10_after_touch",
+      "box": "bd_leg_L"
+     },
+     {
+      "class": "Gosub",
+      "line": 150,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".aftervoice"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 151,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/after_touch",
+       "IdAndBoundingBox": "lafine.leg_R"
+      },
+      "clip": "lobby/10_after_touch",
+      "box": "bd_leg_R"
+     },
+     {
+      "class": "Gosub",
+      "line": 152,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".aftervoice"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 153,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/after_touch",
+       "IdAndBoundingBox": "lafine.pelvis"
+      },
+      "clip": "lobby/10_after_touch",
+      "box": "bd_pelvis"
+     },
+     {
+      "class": "Gosub",
+      "line": 154,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".aftervoice"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 155,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/after_touch",
+       "IdAndBoundingBox": "lafine.leg_R2"
+      },
+      "clip": "lobby/10_after_touch",
+      "box": "bd_leg_R2"
+     },
+     {
+      "class": "Gosub",
+      "line": 156,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".aftervoice"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 157,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/after_touch",
+       "IdAndBoundingBox": "lafine.unique"
+      },
+      "clip": "lobby/10_after_touch",
+      "box": "bd_unique"
+     },
+     {
+      "class": "Gosub",
+      "line": 158,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".aftervoice"
+      }
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 159,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "lobby/after_touch",
+       "IdAndBoundingBox": "lafine.unique3"
+      },
+      "clip": "lobby/10_after_touch",
+      "box": "bd_unique3"
+     },
+     {
+      "class": "Gosub",
+      "line": 160,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".aftervoice"
+      }
+     },
+     {
+      "class": "DesireResetCommand",
+      "line": 162,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Destination": ".setting"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 163,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0.5",
+       "Wait": "false",
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 164,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Transition": "Crossfade",
+       "Duration": "0.5",
+       "Wait": "false",
+       "ScenePosition": ",,-50",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 165,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 166,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine",
+       "Reset": "true"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 167,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Visible": "false",
+       "Duration": "3",
+       "Wait": "false",
+       "AppearanceAndTransition": "BG_Fade_Black"
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 169,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Label",
+      "label": "feather",
+      "line": 171,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "BeginIf",
+      "line": 172,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "feather1=false&25<x<75&y1=false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 173,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/T1"
+      },
+      "clip": "30_overlay/30_T1"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 174,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Expression": "feather1=true"
+      }
+     },
+     {
+      "class": "BeginIf",
+      "line": 176,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "feather2=false&75<x<100&y2=false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 177,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/T2"
+      },
+      "clip": "30_overlay/30_T2"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 178,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Expression": "feather2=true"
+      }
+     },
+     {
+      "class": "BeginIf",
+      "line": 181,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "100<x&y1=false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 182,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "lafine.overlay/T3"
+      },
+      "clip": "30_overlay/30_T3"
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 183,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Expression": "y1=true"
+      }
+     },
+     {
+      "class": "Return",
+      "line": 185,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Label",
+      "label": "overlay",
+      "line": 188,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "SetCustomVariable",
+      "line": 189,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Expression": "overlay=overlay+1"
+      }
+     },
+     {
+      "class": "Return",
+      "line": 190,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Label",
+      "label": "aftervoice",
+      "line": 192,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "PickRandom",
+      "line": 193,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "PlayVoice",
+      "line": 194,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "VoicePath": "ch0043/desire/voc_ch0043_desire_enjoy_13"
+      },
+      "voice": "voc_ch0043_desire_enjoy_13"
+     },
+     {
+      "class": "PlayVoice",
+      "line": 195,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "VoicePath": "ch0043/desire/voc_ch0043_desire_enjoy_14"
+      },
+      "voice": "voc_ch0043_desire_enjoy_14"
+     },
+     {
+      "class": "Return",
+      "line": 197,
       "inline": 0,
       "indent": 0,
       "fields": {}
