@@ -30,6 +30,46 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-09-10',
+    title: { en: 'Drama scenes and 1.7.3', ko: '드라마 장면과 1.7.3' },
+    entries: [
+      {
+        kind: 'unit',
+        code: 'CH0058',
+        text: { en: 'Bianca added.', ko: '비앙카 추가' },
+      },
+      {
+        kind: 'scene',
+        code: 'CH0058',
+        text: {
+          en: 'Bianca’s skins, scenes and voice stay locked for 14 days, as the existing policy has it.',
+          ko: '비앙카의 스킨·장면·보이스는 기존 정책대로 14일간 잠금',
+        },
+      },
+      {
+        kind: 'scene',
+        text: {
+          en: 'Static Drama scenes can now be opened in the viewer.',
+          ko: '정적 드라마 장면을 이제 뷰어에서 열 수 있습니다.',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Content support updated for game version 1.7.3.',
+          ko: '게임 버전 1.7.3 콘텐츠 지원을 업데이트했습니다.',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'The updater now reads the current live configuration correctly.',
+          ko: '업데이터가 현재 라이브 설정을 올바르게 읽도록 수정했습니다.',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-08-27',
     title: { en: 'Estelle, and English', ko: '에스텔, 그리고 영어' },
     entries: [

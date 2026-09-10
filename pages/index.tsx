@@ -19,7 +19,7 @@ import {
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
 
-const KINDS: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure'];
+const KINDS: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure', 'drama'];
 
 function skinTitle(skin: SkinListEntry, name: string): string {
   return name || skin.character || skin.key;

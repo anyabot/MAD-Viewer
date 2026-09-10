@@ -840,6 +840,7 @@ export const KIND_LABEL: Record<SkinKind, Localized> = {
   affection: { en: 'Affection', ko: '애정' },
   desire: { en: 'Desire', ko: '욕망' },
   pleasure: { en: 'Pleasure', ko: '쾌락' },
+  drama: { en: 'Drama', ko: '드라마' },
 };
 
 export const KIND_BADGE: Record<SkinKind, string> = {
@@ -847,6 +848,7 @@ export const KIND_BADGE: Record<SkinKind, string> = {
   affection: 'AF',
   desire: 'DS',
   pleasure: 'PL',
+  drama: 'DM',
 };
 
 export const KIND_COLOR: Record<SkinKind, string> = {
@@ -854,4 +856,5 @@ export const KIND_COLOR: Record<SkinKind, string> = {
   affection: 'purple',
   desire: 'pink',
   pleasure: 'orange',
+  drama: 'cyan',
 };
