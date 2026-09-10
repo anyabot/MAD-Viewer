@@ -13808,8 +13808,7 @@
       "inline": 0,
       "indent": 0,
       "fields": {
-       "IdAndAppearance": "estelle.basic/enter",
-       "Track": "0"
+       "IdAndAppearance": "estelle.basic/enter"
       },
       "clip": "basic/10_enter"
      },
@@ -13825,18 +13824,31 @@
      },
      {
       "class": "AffectionCommand",
-      "line": 9,
+      "line": 10,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/idle",
+       "Track": "0",
+       "Loop": "true"
+      },
+      "clip": "basic/10_idle"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 12,
       "inline": 0,
       "indent": 0,
       "fields": {
        "IdAndAppearance": "estelle.asmr/ani_01",
-       "Track": "10"
+       "Track": "10",
+       "Hold": "true"
       },
       "clip": "asmr/ani_01"
      },
      {
       "class": "PrintText",
-      "line": 10,
+      "line": 13,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13848,7 +13860,7 @@
      },
      {
       "class": "AffectionCommand",
-      "line": 12,
+      "line": 15,
       "inline": 0,
       "indent": 0,
       "fields": {
@@ -13860,7 +13872,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 13,
+      "line": 16,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13869,7 +13881,7 @@
      },
      {
       "class": "PrintText",
-      "line": 16,
+      "line": 19,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13882,7 +13894,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 16,
+      "line": 19,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -13892,7 +13904,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 17,
+      "line": 20,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13901,7 +13913,7 @@
      },
      {
       "class": "PrintText",
-      "line": 20,
+      "line": 23,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13914,7 +13926,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 20,
+      "line": 23,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -13924,7 +13936,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 21,
+      "line": 24,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13933,7 +13945,7 @@
      },
      {
       "class": "PrintText",
-      "line": 24,
+      "line": 27,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13946,7 +13958,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 24,
+      "line": 27,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -13956,7 +13968,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 25,
+      "line": 28,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13965,7 +13977,7 @@
      },
      {
       "class": "PrintText",
-      "line": 28,
+      "line": 31,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13978,7 +13990,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 28,
+      "line": 31,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -13988,7 +14000,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 29,
+      "line": 32,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -13997,7 +14009,7 @@
      },
      {
       "class": "PrintText",
-      "line": 32,
+      "line": 35,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14010,7 +14022,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 32,
+      "line": 35,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14020,7 +14032,7 @@
      },
      {
       "class": "AffectionCommand",
-      "line": 34,
+      "line": 37,
       "inline": 0,
       "indent": 0,
       "fields": {
@@ -14032,7 +14044,7 @@
      },
      {
       "class": "PrintText",
-      "line": 35,
+      "line": 38,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14045,7 +14057,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 35,
+      "line": 38,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14055,7 +14067,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 37,
+      "line": 40,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14064,7 +14076,7 @@
      },
      {
       "class": "PrintText",
-      "line": 39,
+      "line": 42,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14076,7 +14088,7 @@
      },
      {
       "class": "AffectionCommand",
-      "line": 41,
+      "line": 44,
       "inline": 0,
       "indent": 0,
       "fields": {
@@ -14088,7 +14100,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 42,
+      "line": 45,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14097,7 +14109,7 @@
      },
      {
       "class": "PrintText",
-      "line": 44,
+      "line": 47,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14110,7 +14122,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 44,
+      "line": 47,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14120,7 +14132,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 45,
+      "line": 48,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14129,7 +14141,7 @@
      },
      {
       "class": "PrintText",
-      "line": 48,
+      "line": 51,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14142,7 +14154,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 48,
+      "line": 51,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14152,7 +14164,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 49,
+      "line": 52,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14161,7 +14173,7 @@
      },
      {
       "class": "PrintText",
-      "line": 52,
+      "line": 55,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14174,7 +14186,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 52,
+      "line": 55,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14184,7 +14196,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 53,
+      "line": 56,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14193,7 +14205,7 @@
      },
      {
       "class": "PrintText",
-      "line": 56,
+      "line": 59,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14206,7 +14218,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 56,
+      "line": 59,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14216,7 +14228,7 @@
      },
      {
       "class": "AffectionCommand",
-      "line": 58,
+      "line": 61,
       "inline": 0,
       "indent": 0,
       "fields": {
@@ -14228,7 +14240,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 59,
+      "line": 62,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14237,7 +14249,7 @@
      },
      {
       "class": "PrintText",
-      "line": 60,
+      "line": 63,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14249,7 +14261,7 @@
      },
      {
       "class": "AffectionCommand",
-      "line": 62,
+      "line": 65,
       "inline": 0,
       "indent": 0,
       "fields": {
@@ -14261,7 +14273,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 63,
+      "line": 66,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14270,7 +14282,7 @@
      },
      {
       "class": "PrintText",
-      "line": 66,
+      "line": 69,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14283,7 +14295,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 66,
+      "line": 69,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14293,7 +14305,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 67,
+      "line": 70,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14302,7 +14314,7 @@
      },
      {
       "class": "PrintText",
-      "line": 70,
+      "line": 73,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14315,7 +14327,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 70,
+      "line": 73,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14325,7 +14337,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 71,
+      "line": 74,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14334,7 +14346,7 @@
      },
      {
       "class": "PrintText",
-      "line": 74,
+      "line": 77,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14347,7 +14359,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 74,
+      "line": 77,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14357,7 +14369,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 75,
+      "line": 78,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14366,7 +14378,7 @@
      },
      {
       "class": "PrintText",
-      "line": 78,
+      "line": 81,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14379,7 +14391,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 78,
+      "line": 81,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14389,7 +14401,7 @@
      },
      {
       "class": "AffectionCommand",
-      "line": 80,
+      "line": 83,
       "inline": 0,
       "indent": 0,
       "fields": {
@@ -14401,7 +14413,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 81,
+      "line": 84,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14410,7 +14422,7 @@
      },
      {
       "class": "PrintText",
-      "line": 82,
+      "line": 85,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14422,7 +14434,7 @@
      },
      {
       "class": "AffectionCommand",
-      "line": 84,
+      "line": 87,
       "inline": 0,
       "indent": 0,
       "fields": {
@@ -14434,7 +14446,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 85,
+      "line": 88,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14443,7 +14455,7 @@
      },
      {
       "class": "PrintText",
-      "line": 87,
+      "line": 90,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14456,7 +14468,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 87,
+      "line": 90,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14466,7 +14478,7 @@
      },
      {
       "class": "AffectionWaitCommand",
-      "line": 89,
+      "line": 92,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14475,7 +14487,7 @@
      },
      {
       "class": "PrintText",
-      "line": 91,
+      "line": 94,
       "inline": 0,
       "indent": 1,
       "fields": {
@@ -14488,7 +14500,7 @@
      },
      {
       "class": "ParametrizeGeneric",
-      "line": 91,
+      "line": 94,
       "inline": 1,
       "indent": 1,
       "fields": {
@@ -14498,7 +14510,7 @@
      },
      {
       "class": "ModifyBackground",
-      "line": 93,
+      "line": 96,
       "inline": 0,
       "indent": 0,
       "fields": {
@@ -14508,21 +14520,21 @@
      },
      {
       "class": "HidePrinter",
-      "line": 95,
+      "line": 98,
       "inline": 0,
       "indent": 0,
       "fields": {}
      },
      {
       "class": "AffectionEndingCommand",
-      "line": 97,
+      "line": 100,
       "inline": 0,
       "indent": 0,
       "fields": {}
      },
      {
       "class": "End",
-      "line": 99,
+      "line": 102,
       "inline": 0,
       "indent": 0,
       "fields": {}
@@ -40457,9 +40469,10 @@
       "inline": 0,
       "indent": 0,
       "fields": {
-       "IdAndAppearance": "estelle.emotion/face_C2",
+       "IdAndAppearance": "estelle.reaction/face_A/10_A2_A",
        "Track": "11"
-      }
+      },
+      "clip": "10_reaction/face_A/10_A2_A"
      },
      {
       "class": "DesireWaitCommand",
