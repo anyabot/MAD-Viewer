@@ -617,6 +617,51 @@
    }
   },
   {
+   "key": "af_ch0058",
+   "kind": "affection",
+   "character": "CH0058",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 29,
+   "faces": 4,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0058.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "nipple_L_1_UNCEN",
+     "nipple_L_2_UNCEN",
+     "nipple_L_3_UNCEN",
+     "nipple_L_4_UNCEN",
+     "nipple_R_1_UNCEN",
+     "nipple_R_2_UNCEN"
+    ],
+    "added": [
+     "light_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 13223324,
+    "onestore": 13656175
+   }
+  },
+  {
    "key": "af_ch0068",
    "kind": "affection",
    "character": "CH0068",
@@ -1320,6 +1365,71 @@
    }
   },
   {
+   "key": "ds_ch0058",
+   "kind": "desire",
+   "character": "CH0058",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 36,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0058.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "leg_upper_L",
+     "leg_upper_R",
+     "panty"
+    ],
+    "dropped": [
+     "nipple_L_UNCEN_1",
+     "nipple_L_UNCEN_2",
+     "nipple_L_UNCEN_3",
+     "nipple_L_UNCEN_4",
+     "nipple_L_UNCEN_5",
+     "nipple_R_UNCEN_1",
+     "nipple_R_UNCEN_2",
+     "nipple_R_UNCEN_3",
+     "nipple_R_UNCEN_4",
+     "nipple_R_UNCEN_5",
+     "panty_2_UNCEN",
+     "panty_UNCEN_shadow",
+     "water_1_UNCEN",
+     "water_2_UNCEN",
+     "water_3_UNCEN",
+     "water_4_UNCEN",
+     "water_5_UNCEN",
+     "water_6_UNCEN"
+    ],
+    "added": [
+     "bra_L_2_CEN",
+     "bra_R_2_CEN",
+     "panty_CEN_shadow"
+    ]
+   },
+   "bytes": {
+    "google": 13527199,
+    "onestore": 13745822
+   }
+  },
+  {
    "key": "ds_ch0068",
    "kind": "desire",
    "character": "CH0068",
@@ -1483,6 +1593,48 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 8993172
+   }
+  },
+  {
+   "key": "pl_ma0003",
+   "kind": "pleasure",
+   "character": "MA0003",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 9,
+   "faces": 0,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:PL_MA0003.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "R_ass_L",
+     "R_ass_R",
+     "R_pus"
+    ],
+    "dropped": [
+     "L_nipple_L_UNCEN",
+     "L_nipple_R_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 4619401,
+    "onestore": 4640146
    }
   },
   {
@@ -2285,6 +2437,52 @@
    }
   },
   {
+   "key": "st_ch0040",
+   "kind": "standing",
+   "character": "CH0040",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 28,
+   "faces": 11,
+   "bodyGroups": [
+    "",
+    "00",
+    "emotion_pose"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0040.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "areola_L_UNCEN",
+     "areola_R_UNCEN",
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN"
+    ],
+    "added": [
+     "oppai_L_CEN",
+     "oppai_R_CEN",
+     "pelvis_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 4813333,
+    "onestore": 4796645
+   }
+  },
+  {
    "key": "st_ch0042",
    "kind": "standing",
    "character": "CH0042",
@@ -2368,6 +2566,27 @@
    }
   },
   {
+   "key": "st_ch0052",
+   "kind": "standing",
+   "character": "CH0052",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 19,
+   "faces": 13,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 5130734
+   }
+  },
+  {
    "key": "st_ch0053",
    "kind": "standing",
    "character": "CH0053",
@@ -2445,6 +2664,26 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 4287108
+   }
+  },
+  {
+   "key": "st_ch0058",
+   "kind": "standing",
+   "character": "CH0058",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 15,
+   "faces": 11,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3424993
    }
   },
   {
