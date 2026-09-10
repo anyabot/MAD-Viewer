@@ -625,6 +625,36 @@
     110
    ]
   },
+  "CH0003": {
+   "code": "CH0003",
+   "name": "요미",
+   "nameEn": "Laila",
+   "desc": "####",
+   "descEn": "####",
+   "iconPath": "Icon_CH0003",
+   "resourcesId": "ch0003_resources",
+   "voiceGroupId": "0",
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "unreleased": true
+  },
+  "CH0004": {
+   "code": "CH0004",
+   "name": "",
+   "nameEn": null,
+   "desc": "",
+   "descEn": null,
+   "iconPath": "Icon_CH0004",
+   "resourcesId": "ch0004_resources",
+   "voiceGroupId": "0",
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "unreleased": true
+  },
   "CH0005": {
    "code": "CH0005",
    "name": "클레어",
@@ -1555,6 +1585,21 @@
     100204,
     100205
    ]
+  },
+  "CH0008": {
+   "code": "CH0008",
+   "name": "",
+   "nameEn": null,
+   "desc": "",
+   "descEn": null,
+   "iconPath": "Icon_CH0008",
+   "resourcesId": "ch0008_resources",
+   "voiceGroupId": "0",
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "unreleased": true
   },
   "CH0009": {
    "code": "CH0009",
@@ -3090,6 +3135,21 @@
     100205
    ]
   },
+  "CH0014": {
+   "code": "CH0014",
+   "name": "베스페리",
+   "nameEn": "Vesperi",
+   "desc": "",
+   "descEn": null,
+   "iconPath": "Icon_CH0014",
+   "resourcesId": "ch0014_resources",
+   "voiceGroupId": "voc_ch0014_group",
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "unreleased": true
+  },
   "CH0015": {
    "code": "CH0015",
    "name": "이네스",
@@ -4023,6 +4083,21 @@
     103,
     110
    ]
+  },
+  "CH0018": {
+   "code": "CH0018",
+   "name": "",
+   "nameEn": null,
+   "desc": "",
+   "descEn": null,
+   "iconPath": "Icon_CH0018",
+   "resourcesId": "ch0018_resources",
+   "voiceGroupId": "0",
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "unreleased": true
   },
   "CH0019": {
    "code": "CH0019",
@@ -10590,6 +10665,21 @@
     110
    ]
   },
+  "CH0040": {
+   "code": "CH0040",
+   "name": "이자벨",
+   "nameEn": "Isabel",
+   "desc": "<블러디 메리>의 여왕님 포지션을 담당하는 매혹적인 서큐버스. 전신에서 풍기는 특유의 달콤한 향기를 자유자재로 다룬다. 이자벨의 향기에 매료된 이들은 그녀를 두 번 다시 잊을 수 없게 된다고 한다.",
+   "descEn": null,
+   "iconPath": "Icon_CH0040",
+   "resourcesId": "ch0040_resources",
+   "voiceGroupId": "0",
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "unreleased": true
+  },
   "CH0042": {
    "code": "CH0042",
    "name": "오블리아",
@@ -11856,6 +11946,21 @@
     103,
     110
    ]
+  },
+  "CH0052": {
+   "code": "CH0052",
+   "name": "라나",
+   "nameEn": "Rana",
+   "desc": "고독한 운명을 타고난 세이브림의 약제사. 세계의 평화를 위해 이 세상의 모든 병을 치료하겠다는 사명을 갖고 있다. 얼핏 알 수 없는 말을 읊어대는 안쓰러운 중2병 같아 보여도, 약제사로서의 실력은 진짜이다. 그러나 하나같이 괴상하고 독특한 약만 만들기 때문에, 라나의 약을 선뜻 받아들이는 이는 거의 없다고 한다.",
+   "descEn": null,
+   "iconPath": "Icon_CH0052",
+   "resourcesId": "ch0052_resources",
+   "voiceGroupId": "voc_ch0052_group",
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "unreleased": true
   },
   "CH0053": {
    "code": "CH0053",
@@ -13419,8 +13524,7 @@
     {
      "PHYSICS_ATTACK": 1.0
     }
-   ],
-   "skinsLockedUntil": "2026-09-24"
+   ]
   },
   "CH0059": {
    "code": "CH0059",
@@ -14382,6 +14486,21 @@
    "iconPath": "Icon_CH0069",
    "resourcesId": "ch0069_resources",
    "voiceGroupId": "voc_ch0069_group",
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "unreleased": true
+  },
+  "CH0075": {
+   "code": "CH0075",
+   "name": "홍접(할로윈)",
+   "nameEn": "Sera",
+   "desc": "",
+   "descEn": "Coming Soon",
+   "iconPath": "Icon_CH0075",
+   "resourcesId": "ch0075_resources",
+   "voiceGroupId": "voc_ch0075_group",
    "artist": null,
    "artistEn": null,
    "cv": null,
