@@ -13750,6 +13750,1924 @@
     ]
    }
   },
+  "af_ch0033": {
+   "story": {
+    "script": "ch0033_05_affection_story",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "affection"
+      }
+     },
+     {
+      "class": "NaniSummary",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_034_lp",
+       "IntroBgmPath": "bgm_romance_034_in",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 3,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Unskippable"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 6,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/enter",
+       "Track": "0"
+      },
+      "clip": "basic/10_enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 8,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Default",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 9,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_01",
+       "Track": "10"
+      },
+      "clip": "asmr/ani_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 10,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "오늘 나 어때? 평소보다 더 예쁘지 않아?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_1"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 12,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_01",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_01"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 13,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 16,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "으응? 이상한 생각 하지마... 우린 지금 일을 하는 거니까.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_2"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 16,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 17,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "49f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 20,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "우리가 화면에 잘 나왔으면 좋겠어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_3"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 20,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 21,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "38f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 24,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "긴장하지 마.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_4"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 24,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 25,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "20f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 28,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "나도 이런 건 처음이야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_5"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 28,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 29,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "36f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 32,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "사람들이 우릴 보고 어떤 반응을 보일까?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_6"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 32,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 34,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_02",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_02"
+     },
+     {
+      "class": "PrintText",
+      "line": 35,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "후후훗... 여기까지 올 수 있었던 건 네 덕분이야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_7"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 35,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 37,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "42f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 39,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "이제 대중의 반응에 겁 먹지 않을거야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_8"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 41,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_02",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_02"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 42,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "3f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 44,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "너도... 조금은 긴장되지 않아?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_9"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 44,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 45,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "39f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 48,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "나도 촬영할 때 긴장을 해. 두렵고, 혼란스럽고, 가끔은… 흥분도 하지.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_10"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 48,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 49,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "52f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 52,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "카메라 의식하지 말고, 우리 둘만 있다고 생각하자.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_11"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 52,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 53,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "33f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 56,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "우리 그 날... 꽤 멋진 춤을 췄잖아.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_12"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 56,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 58,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_03",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_03"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 59,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "8f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 60,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "자, 몸에서 힘을 빼봐. 심호흡을 하듯이.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_13"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 62,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_03",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_03"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 63,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 66,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "후우... 그래... 바로 그렇게.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_14"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 66,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 67,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "43f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 70,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "흐응... 생각보다 몸이 많이 굳었었구나?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_15"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 70,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 71,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "29f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 74,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "네 얼굴이 영화에 나오진 않겠지만…",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_16"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 74,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 75,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "26f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 78,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "최선을 다할 거라 믿을게.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_17"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 78,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 80,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_04",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_04"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 81,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 82,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "날 위해 그 정도는 할 수 있겠지?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_18"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 84,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_04",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_04"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 85,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "3f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 87,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "이제야 긴장이 좀 풀렸나보네.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_19"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 87,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 89,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "40f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 91,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "곧 촬영이 시작돼. 준비하자.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_20"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 91,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 93,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Duration": "1",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 95,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "AffectionEndingCommand",
+      "line": 97,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "End",
+      "line": 99,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   },
+   "view": {
+    "script": "ch0033_05_affection_view",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "affection"
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_034_lp",
+       "IntroBgmPath": "bgm_romance_034_in",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/enter"
+      },
+      "clip": "basic/10_enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 5,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "DesireAffectionViewMenuPanel",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 7,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/idle",
+       "Track": "0",
+       "Loop": "true"
+      },
+      "clip": "basic/10_idle"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 9,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_01",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_01"
+     },
+     {
+      "class": "PrintText",
+      "line": 10,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "오늘 나 어때? 평소보다 더 예쁘지 않아?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_1"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 12,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_01",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_01"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 13,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 16,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "으응? 이상한 생각 하지마... 우린 지금 일을 하는 거니까.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_2"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 16,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 17,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "49f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 20,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "우리가 화면에 잘 나왔으면 좋겠어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_3"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 20,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 21,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "38f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 24,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "긴장하지 마.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_4"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 24,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 25,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "20f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 28,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "나도 이런 건 처음이야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_5"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 28,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 29,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "36f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 32,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "사람들이 우릴 보고 어떤 반응을 보일까?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_6"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 32,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 34,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_02",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_02"
+     },
+     {
+      "class": "PrintText",
+      "line": 35,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "후후훗... 여기까지 올 수 있었던 건 네 덕분이야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_7"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 35,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 37,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "42f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 39,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "이제 대중의 반응에 겁 먹지 않을거야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_8"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 41,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_02",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_02"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 42,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "3f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 44,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "너도... 조금은 긴장되지 않아?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_9"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 44,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 45,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "39f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 48,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "나도 촬영할 때 긴장을 해. 두렵고, 혼란스럽고, 가끔은… 흥분도 하지.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_10"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 48,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 49,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "52f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 52,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "카메라 의식하지 말고, 우리 둘만 있다고 생각하자.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_11"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 52,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 53,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "33f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 56,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "우리 그 날... 꽤 멋진 춤을 췄잖아.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_12"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 56,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 58,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_03",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_03"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 59,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "8f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 60,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "자, 몸에서 힘을 빼봐. 심호흡을 하듯이.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_13"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 62,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_03",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_03"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 63,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 66,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "후우... 그래... 바로 그렇게.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_14"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 66,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 67,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "43f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 70,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "흐응... 생각보다 몸이 많이 굳었었구나?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_15"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 70,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 71,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "29f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 74,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "네 얼굴이 영화에 나오진 않겠지만…",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_16"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 74,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 75,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "26f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 78,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "최선을 다할 거라 믿을게.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_17"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 78,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 80,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_04",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_04"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 81,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 82,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "날 위해 그 정도는 할 수 있겠지?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_18"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 84,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_04",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_04"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 85,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "3f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 87,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "이제야 긴장이 좀 풀렸나보네.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_19"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 87,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 89,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "40f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 91,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "곧 촬영이 시작돼. 준비하자.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_20"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 91,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 93,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_05",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_05"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 94,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "19f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 95,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "어머... 지금은 못 일어나겠다구?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_21"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 95,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 96,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "38f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 99,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "응? ...앗... 아, 괜찮아. 일부러 숨길 필요 없어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_22"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 99,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 101,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_05",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_05"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 102,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "5f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 105,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "몰입의 과정이라고 생각해도 돼.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_23"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 105,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 106,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "31f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 109,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "우린 지금부터... 연인이 되는 거니까.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_24"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 109,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 111,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_06",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_06"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 112,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "6f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 113,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "참고로 나... 아니, 내가 맡은 캐릭터는 부드러운 스킨십을 좋아해.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_25"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 115,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_07",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_07"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 116,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "44f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 117,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "내 발을? 네가 맡은 캐릭터는 그런 취향이 있다구?",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_26"
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 119,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/loop_06",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/loop_06"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 120,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "5f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 123,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "재밌는 설정이네. 후후.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_27"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 123,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 124,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "9f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 127,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "너와 얘기하는 건 즐겁지만, 이젠 정말 촬영장으로 가야 해.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_28"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 127,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 128,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "30f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 131,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": "",
+       "Wait": "true"
+      },
+      "text": "나는 네 연기도 기대되지만...",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_29"
+     },
+     {
+      "class": "ParametrizeGeneric",
+      "line": 131,
+      "inline": 1,
+      "indent": 1,
+      "fields": {
+       "Wait": "true",
+       "SkipWaitingInput": "false"
+      }
+     },
+     {
+      "class": "AffectionCommand",
+      "line": 133,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.asmr/ani_08",
+       "Track": "10",
+       "Hold": "true"
+      },
+      "clip": "asmr/ani_08"
+     },
+     {
+      "class": "AffectionWaitCommand",
+      "line": 134,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 135,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "관객은 사실, '진짜'를 좋아하니까.",
+      "author": "estelle",
+      "voice": "voc_ch0033_affection_view_30"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 138,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 139,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Duration": "1",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "HidePrinter",
+      "line": 141,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "AffectionEndingCommand",
+      "line": 143,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "End",
+      "line": 145,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   }
+  },
   "af_ch0035": {
    "story": {
     "script": "ch0035_05_affection_story",
@@ -38120,6 +40038,2287 @@
      {
       "class": "Return",
       "line": 53,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   }
+  },
+  "ds_ch0033": {
+   "story": {
+    "script": "ch0033_03_desire_story",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "desire"
+      }
+     },
+     {
+      "class": "NaniSummary",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Text": ""
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_033",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 3,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Unskippable"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/enter"
+      },
+      "clip": "10_basic/10_enter"
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 5,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/idle"
+      },
+      "clip": "10_basic/10_idle"
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 7,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "ShowUI",
+      "line": 9,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "ExControlPanel.Default",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 10,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A3_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A3_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 11,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 12,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그만 쳐다봐.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_1"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 13,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "AddChoice",
+      "line": 15,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "AddChoice",
+      "line": 16,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "ChoiceSummary": ""
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 17,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 19,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A2_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A2_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 20,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "6"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 21,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "연기할 때 보다 100배는 더 떨려.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_2"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 22,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 24,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "3"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 26,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/T1_B",
+       "Track": "11"
+      },
+      "clip": "20_emotion/20_T1_B"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 27,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "4"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 28,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "혹시나 사람들이 알아보지 않겠지?",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_3"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 29,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 31,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A3_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A3_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 32,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 33,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "허리를 조이는 코르셋 없이 사람들 앞에 나선 게 얼마만인지 모르겠어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_4"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 34,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 36,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A5_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A5_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 37,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 38,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "너도 나와 비슷한 감정을 느껴?",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_5"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 39,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 41,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A2_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A2_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 42,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "6"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 43,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "어떤 느낌이라고 설명해야할지 모르겠어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_6"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 44,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 46,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 48,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A1_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A1_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 49,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "4"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 50,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "이런 게… 해방감일까?",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_7"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 51,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 53,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 55,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_C2",
+       "Track": "11"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 56,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 57,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "여기 사람들을 봐.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_8"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 58,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 60,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A5_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A5_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 61,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 62,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "다들 아무렇지 않게 파티를 즐기고 있어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_9"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 63,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 65,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A1_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A1_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 66,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "4"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 67,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "나도 저 사람들처럼 이 파티를 즐기고 싶어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_10"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 68,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 70,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 72,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/wait",
+       "Track": "11"
+      },
+      "clip": "10_basic/10_wait"
+     },
+     {
+      "class": "PrintText",
+      "line": 73,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그러니, 네게 숙녀를 에스코트할 수 있는 영광을 줄게.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_11"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 74,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 76,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A1_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A1_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 77,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "4"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 78,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "오늘 밤만 허락하는 거야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_12"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 79,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 81,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "3"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 83,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A4_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A4_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 84,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 85,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "어머. 얼굴이 와인처럼 빨개졌어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_13"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 86,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 88,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A5_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A5_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 89,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 90,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "진짜 술을 마셨다고? 너 혼자?",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_14"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 91,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 93,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A3_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A3_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 94,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 95,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그럼, 이제 이 손을 잡고 용기를 내봐.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_15"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 96,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 98,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A1_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A1_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 99,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "4"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 100,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "나랑 춤을 추는거야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_16"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 101,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireCommand",
+      "line": 103,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A5_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A5_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 104,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 105,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "발은 여기에, 손은 어깨에…",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_17"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 106,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 108,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 110,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A1_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A1_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 111,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "4"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 112,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "점점 나아지고 있어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_18"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 113,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 115,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 117,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A3_A",
+       "Track": "11"
+      },
+      "clip": "10_reaction/face_A/10_A3_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 118,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "3"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 119,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Text": ""
+      },
+      "text": "넌 꽤… 괜찮은 파트너인 것 같아.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_story_19"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 120,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 122,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "1.5"
+      }
+     },
+     {
+      "class": "HideAllActors",
+      "line": 123,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireEndingCommand",
+      "line": 124,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Skip",
+      "line": 126,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Enable": "false"
+      }
+     },
+     {
+      "class": "End",
+      "line": 128,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     }
+    ]
+   },
+   "view": {
+    "script": "ch0033_03_desire_view",
+    "modelCommands": [
+     {
+      "class": "UsingScopeCommand",
+      "line": 0,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Scopes": "desire"
+      }
+     },
+     {
+      "class": "PlayBgm",
+      "line": 1,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "BgmPath": "bgm_romance_033",
+       "FadeInDuration": "3",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 2,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/enter"
+      },
+      "clip": "10_basic/10_enter"
+     },
+     {
+      "class": "ShowUI",
+      "line": 4,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "UINames": "DesireAffectionViewMenuPanel",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 5,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0",
+       "IdAndAppearance": "DesireAffectionSubtitle",
+       "MakeDefault": "true"
+      }
+     },
+     {
+      "class": "Label",
+      "label": "phase1",
+      "line": 7,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 8,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/idle"
+      },
+      "clip": "10_basic/10_idle"
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 10,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0.5",
+       "Wait": "false",
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "DesireOnlookTriggerCommand",
+      "line": 12,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "basic/wait",
+       "Track": "12",
+       "Id": "estelle",
+       "Threshold": "10"
+      },
+      "clip": "10_basic/10_wait"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 15,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A1"
+      },
+      "box": "bd_A1"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 16,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A1_A",
+       "Track": "12"
+      },
+      "clip": "10_reaction/face_A/10_A1_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 17,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "54f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 18,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "저기, 신사분. 거긴 허리가 아니랍니다.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_1"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 19,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 22,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A2"
+      },
+      "box": "bd_A2"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 23,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A2_A",
+       "Track": "12"
+      },
+      "clip": "10_reaction/face_A/10_A2_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 24,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "65f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 25,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "촬영할 때보다 더 가슴이 떨려. 내가 왜 이럴까?",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_2"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 26,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 29,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A3"
+      },
+      "box": "bd_A3"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 30,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A3_A",
+       "Track": "12"
+      },
+      "clip": "10_reaction/face_A/10_A3_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 31,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "30f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 32,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "손이 참 따뜻하네. 고마워. 덕분에 진정됐어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_3"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 33,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 36,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A4"
+      },
+      "box": "bd_A4"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 37,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A4_A",
+       "Track": "12"
+      },
+      "clip": "10_reaction/face_A/10_A4_A"
+     },
+     {
+      "class": "PrintText",
+      "line": 38,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아이, 간지러워! 그래도 조금은 긴장이 풀려. 고마워.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_4"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 39,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 42,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A5"
+      },
+      "box": "bd_A5"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 43,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_A/10_A5_A",
+       "Track": "12"
+      },
+      "clip": "10_reaction/face_A/10_A5_A"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 44,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "20f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 45,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그렇게 만지고 싶었어? 공들여서 관리한 보람이 있네.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_5"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 46,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 49,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.T1"
+      },
+      "box": "bd_T1"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 50,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/T1_B",
+       "Track": "12"
+      },
+      "clip": "20_emotion/20_T1_B"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 51,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "150f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 52,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "장난치지 마! 내가 여기 온 게 알려지면 안 된단 말이야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_6"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 53,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "HidePrinter",
+      "line": 54,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Goto",
+      "line": 55,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".phase2"
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 57,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Label",
+      "label": "phase2",
+      "line": 60,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 62,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/idle"
+      },
+      "clip": "10_basic/10_idle"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 63,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_B",
+       "Wait": "false"
+      },
+      "clip": "20_emotion/20_face_B"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 64,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "DesireOnlookTriggerCommand",
+      "line": 66,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "basic/wait",
+       "Track": "22",
+       "Id": "estelle",
+       "Threshold": "10"
+      },
+      "clip": "10_basic/10_wait"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 69,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A1"
+      },
+      "box": "bd_A1"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 70,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_B",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_B"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 71,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_B/10_A1_B",
+       "Track": "22"
+      },
+      "clip": "10_reaction/face_B/10_A1_B"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 72,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "54f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 73,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "저기, 신사분. 거긴 허리가 아니랍니다.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_1"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 74,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 77,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A2"
+      },
+      "box": "bd_A2"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 78,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_B",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_B"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 79,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_B/10_A2_B",
+       "Track": "22"
+      },
+      "clip": "10_reaction/face_B/10_A2_B"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 80,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "65f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 81,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "촬영할 때보다 더 가슴이 떨려. 내가 왜 이럴까?",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_2"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 82,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 85,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A3"
+      },
+      "box": "bd_A3"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 86,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_B",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_B"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 87,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_B/10_A3_B",
+       "Track": "22"
+      },
+      "clip": "10_reaction/face_B/10_A3_B"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 88,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "30f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 89,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "손이 참 따뜻하네. 고마워. 덕분에 진정됐어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_3"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 90,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 93,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A4"
+      },
+      "box": "bd_A4"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 94,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_B",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_B"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 95,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_B/10_A4_B",
+       "Track": "22"
+      },
+      "clip": "10_reaction/face_B/10_A4_B"
+     },
+     {
+      "class": "PrintText",
+      "line": 96,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아이, 간지러워! 그래도 조금은 긴장이 풀려. 고마워.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_4"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 97,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 100,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A5"
+      },
+      "box": "bd_A5"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 101,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_B",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_B"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 102,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_B/10_A5_B",
+       "Track": "22"
+      },
+      "clip": "10_reaction/face_B/10_A5_B"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 103,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "20f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 104,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그렇게 만지고 싶었어? 공들여서 관리한 보람이 있네.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_5"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 105,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 108,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.T1"
+      },
+      "box": "bd_T1"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 109,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_B",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_B"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 110,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/T1_C",
+       "Track": "22"
+      },
+      "clip": "20_emotion/20_T1_C"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 111,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "240f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 112,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "장난치지 마! 내가 여기 온 게 알려지면 안 된단 말이야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_6"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 113,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "HidePrinter",
+      "line": 114,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "Goto",
+      "line": 115,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".phase3"
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 117,
+      "inline": 0,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "Label",
+      "label": "phase3",
+      "line": 120,
+      "inline": null,
+      "indent": 0,
+      "fields": {}
+     },
+     {
+      "class": "DesireIdleCommand",
+      "line": 122,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.basic/idle"
+      },
+      "clip": "10_basic/10_idle"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 123,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_C",
+       "Wait": "false"
+      },
+      "clip": "20_emotion/20_face_C"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 124,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "WaitMode": "1"
+      }
+     },
+     {
+      "class": "DesireOnlookTriggerCommand",
+      "line": 126,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "Appearance": "basic/wait",
+       "Track": "32",
+       "Id": "estelle",
+       "Threshold": "10"
+      },
+      "clip": "10_basic/10_wait"
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 129,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A1"
+      },
+      "box": "bd_A1"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 130,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_C",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_C"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 131,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_C/10_A1_C",
+       "Track": "32"
+      },
+      "clip": "10_reaction/face_C/10_A1_C"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 132,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "54f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 133,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "저기, 신사분. 거긴 허리가 아니랍니다.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_1"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 134,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 137,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A2"
+      },
+      "box": "bd_A2"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 138,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_C",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_C"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 139,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_C/10_A2_C",
+       "Track": "32"
+      },
+      "clip": "10_reaction/face_C/10_A2_C"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 140,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "65f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 141,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "촬영할 때보다 더 가슴이 떨려. 내가 왜 이럴까?",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_2"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 142,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 145,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A3"
+      },
+      "box": "bd_A3"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 146,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_C",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_C"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 147,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_C/10_A3_C",
+       "Track": "32"
+      },
+      "clip": "10_reaction/face_C/10_A3_C"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 148,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "30f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 149,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "손이 참 따뜻하네. 고마워. 덕분에 진정됐어.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_3"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 150,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 153,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A4"
+      },
+      "box": "bd_A4"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 154,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_C",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_C"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 155,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_C/10_A4_C",
+       "Track": "32"
+      },
+      "clip": "10_reaction/face_C/10_A4_C"
+     },
+     {
+      "class": "PrintText",
+      "line": 156,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "아이, 간지러워! 그래도 조금은 긴장이 풀려. 고마워.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_4"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 157,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 160,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.A5"
+      },
+      "box": "bd_A5"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 161,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_C",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_C"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 162,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.reaction/face_C/10_A5_C",
+       "Track": "32"
+      },
+      "clip": "10_reaction/face_C/10_A5_C"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 163,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "20f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 164,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "그렇게 만지고 싶었어? 공들여서 관리한 보람이 있네.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_5"
+     },
+     {
+      "class": "HidePrinter",
+      "line": 165,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "DesireTouchTriggerCommand",
+      "line": 168,
+      "inline": 0,
+      "indent": 0,
+      "fields": {
+       "IdAndBoundingBox": "estelle.T1"
+      },
+      "box": "bd_T1"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 169,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/face_C",
+       "Wait": "false",
+       "Reset": "true"
+      },
+      "clip": "20_emotion/20_face_C"
+     },
+     {
+      "class": "DesireCommand",
+      "line": 170,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle.emotion/T1_D",
+       "Track": "32"
+      },
+      "clip": "20_emotion/20_T1_D"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 171,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "WaitMode": "208f"
+      }
+     },
+     {
+      "class": "PrintText",
+      "line": 172,
+      "inline": 0,
+      "indent": 2,
+      "fields": {
+       "Text": ""
+      },
+      "text": "장난치지 마! 내가 여기 온 게 알려지면 안 된단 말이야.",
+      "author": "estelle",
+      "voice": "voc_ch0033_desire_enjoy_6"
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 173,
+      "inline": 0,
+      "indent": 2,
+      "fields": {}
+     },
+     {
+      "class": "HidePrinter",
+      "line": 174,
+      "inline": 0,
+      "indent": 1,
+      "fields": {}
+     },
+     {
+      "class": "ModifyTextPrinter",
+      "line": 175,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Visible": "false",
+       "Duration": "0.5",
+       "Wait": "false",
+       "IdAndAppearance": "DesireAffectionSubtitle"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 176,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Transition": "Crossfade",
+       "Duration": "0.5",
+       "Wait": "false",
+       "ScenePosition": ",,-50",
+       "AppearanceAndTransition": "BG_Fade_White"
+      }
+     },
+     {
+      "class": "StopBgm",
+      "line": 177,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "BgmPath": "bgm_romance_027_lp",
+       "FadeOutDuration": "5",
+       "Wait": "false"
+      }
+     },
+     {
+      "class": "DesireWaitCommand",
+      "line": 178,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "WaitMode": "2"
+      }
+     },
+     {
+      "class": "DesireCommand",
+      "line": 179,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "IdAndAppearance": "estelle",
+       "Reset": "true"
+      }
+     },
+     {
+      "class": "ModifyBackground",
+      "line": 180,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Visible": "false",
+       "Duration": "3",
+       "Wait": "false",
+       "AppearanceAndTransition": "BG_Fade_Black"
+      }
+     },
+     {
+      "class": "Goto",
+      "line": 181,
+      "inline": 0,
+      "indent": 1,
+      "fields": {
+       "Path": ".phase1"
+      }
+     },
+     {
+      "class": "Stop",
+      "line": 183,
       "inline": 0,
       "indent": 0,
       "fields": {}

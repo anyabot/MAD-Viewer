@@ -7,6 +7,7 @@
   "AF_CH0022_basic_enter": "view/af_ch0022",
   "AF_CH0024_basic_enter": "view/af_ch0024",
   "AF_CH0028_basic_enter": "view/af_ch0028",
+  "AF_CH0033_basic_enter": "view/af_ch0033",
   "AF_CH0035_basic_enter": "view/af_ch0035",
   "AF_CH0042_asmr_enter": "view/af_ch0042",
   "AF_CH0043_basic_enter": "view/af_ch0043",
@@ -51,6 +52,7 @@
   "DS_CH0032_a1": "view/ds_ch0032",
   "DS_CH0032_b2": "view/ds_ch0032",
   "DS_CH0032_intro": "view/ds_ch0032",
+  "DS_CH0033_basic_enter": "view/ds_ch0033",
   "DS_CH0035_A1": "view/ds_ch0035",
   "DS_CH0035_A2": "view/ds_ch0035",
   "DS_CH0035_A3": "view/ds_ch0035",
@@ -189,6 +191,9 @@
   "af_ch0028": {
    "basic/10_enter": "AF_CH0028_basic_enter"
   },
+  "af_ch0033": {
+   "basic/10_enter": "AF_CH0033_basic_enter"
+  },
   "af_ch0035": {
    "basic/enter": "AF_CH0035_basic_enter"
   },
@@ -256,6 +261,9 @@
    "10_a1": "DS_CH0032_a1",
    "10_b2": "DS_CH0032_b2",
    "10_intro": "DS_CH0032_intro"
+  },
+  "ds_ch0033": {
+   "10_basic/10_enter": "DS_CH0033_basic_enter"
   },
   "ds_ch0035": {
    "10_A1": "DS_CH0035_A1",

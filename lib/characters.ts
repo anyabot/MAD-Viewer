@@ -888,7 +888,7 @@ export function skinIconNames(skin: SkinListEntry, entry: CharacterEntry | null)
 }
 
 // The order the game lists rig families in.
-export const KIND_ORDER: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure'];
+export const KIND_ORDER: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure', 'drama'];
 
 // Standing has no category icon of its own; the game shows the profile one.
 export const KIND_ICON: Record<SkinKind, string> = {
@@ -896,6 +896,7 @@ export const KIND_ICON: Record<SkinKind, string> = {
   affection: 'Talk_Icon_Affection',
   desire: 'Talk_Icon_Desire',
   pleasure: 'Talk_Icon_Pleasure',
+  drama: 'Talk_Icon_Profile',
 };
 
 export function skinsByCharacter(skins: SkinListEntry[]): Map<string, SkinListEntry[]> {

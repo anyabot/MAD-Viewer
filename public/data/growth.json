@@ -650,6 +650,12 @@
    "icon": "Icon_Character_Piece_CH0057",
    "kind": "piece"
   },
+  "item:58": {
+   "name": "비앙카의 메모리",
+   "nameEn": "Bianca's Memory",
+   "icon": "Icon_Character_Piece_CH0058",
+   "kind": "piece"
+  },
   "item:6": {
    "name": "에일린의 메모리",
    "nameEn": "Eileen's Memory",
@@ -988,10 +994,34 @@
    "kind": "equipPiece",
    "grade": 5
   },
-  "item:80509": {},
-  "item:80510": {},
-  "item:80511": {},
-  "item:80512": {},
+  "item:80509": {
+   "name": "T5 키링 바우처",
+   "nameEn": "T5 Keyring Voucher",
+   "icon": "Icon_Equipment_Piece_Key_ring_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80510": {
+   "name": "T5 배지 바우처",
+   "nameEn": "T5 Badge Voucher",
+   "icon": "Icon_Equipment_Piece_Badge_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80511": {
+   "name": "T5 브라 바우처",
+   "nameEn": "T5 Bra Voucher",
+   "icon": "Icon_Equipment_Piece_Bra_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
+  "item:80512": {
+   "name": "T5 팬티 바우처",
+   "nameEn": "T5 Panties Voucher",
+   "icon": "Icon_Equipment_Piece_Panties_Tier5",
+   "kind": "equipPiece",
+   "grade": 5
+  },
   "item:9": {
    "name": "엘리시아의 메모리",
    "nameEn": "Elisia's Memory",
@@ -1083,12 +1113,7 @@
    "grade": 1
   }
  },
- "_noItemRow": [
-  "item:80509",
-  "item:80510",
-  "item:80511",
-  "item:80512"
- ],
+ "_noItemRow": [],
  "skill": {
   "maxLevel": {
    "2": 10,
@@ -5845,7 +5870,9 @@
    "57": 217839,
    "58": 245233,
    "59": 275955,
-   "60": 310401
+   "60": 310401,
+   "61": 349491,
+   "62": 394255
   },
   "pool": "goods:10000",
   "expItems": {
@@ -5932,6 +5959,7 @@
    "CH0054": "item:54",
    "CH0056": "item:56",
    "CH0057": "item:57",
+   "CH0058": "item:58",
    "CH0062": "item:62",
    "CH0063": "item:63",
    "CH0068": "item:68"
@@ -6005,6 +6033,7 @@
     "CH0054",
     "CH0056",
     "CH0057",
+    "CH0058",
     "CH0062",
     "CH0063",
     "CH0068"

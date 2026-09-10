@@ -8412,7 +8412,7 @@
    "name": "에스텔",
    "nameEn": "Estelle",
    "desc": "자유로운 영혼을 가진 스타 여배우. 동 나이대 최고의 연기력을 자랑하며 영화계의 스포트라이트를 독점하지만, 명성에 비해 출연작이 소규모 예술 영화에 치중됐다는 점에 의문을 품는 평론가가 많다고 한다. 파파라치를 따돌리는 실력이 일품이라, 지켜보는 눈이 많아도 그녀의 사생활은 베일에 싸여있다.",
-   "descEn": "A star actress with a free spirit. Although he boasts the best acting skills among his peers and dominates the spotlight in the film industry, many critics have expressed doubts about the fact that, despite his reputation, his filmography has been heavily focused on small-scale art films. She is so skilled at evading paparazzi that, despite the many watchful eyes, her private life remains shrouded in mystery.",
+   "descEn": null,
    "iconPath": "Icon_CH0033",
    "resourcesId": "ch0033_resources",
    "voiceGroupId": "voc_ch0033_group",
@@ -8448,11 +8448,11 @@
     2
    ],
    "hobby": "영화 감상",
-   "hobbyEn": "Watching movies",
+   "hobbyEn": null,
    "specialty": "노래, 스턴트 액션",
-   "specialtyEn": "Song, stunt action",
+   "specialtyEn": null,
    "likes": "칭찬, 박수, 환호, 인디 영화",
-   "likesEn": "Compliment, applause, cheers, indie film",
+   "likesEn": null,
    "comment": "기대하세요. 당신이 원하는 사람이 되어줄게요.",
    "commentEn": "Look forward to it. I will be whoever you want me to be.",
    "birthdayComment": "선물은 괜찮아요. 당신의 사랑만 있다면.",
@@ -8460,7 +8460,7 @@
    "artist": "Cruno",
    "artistEn": "Cruno",
    "cv": "잇시키 히카루",
-   "cvEn": "Issiki Hikaru",
+   "cvEn": null,
    "skillSetGroup": 33,
    "battlePatterns": {
     "start": [
@@ -8737,8 +8737,7 @@
     100203,
     100204,
     100205
-   ],
-   "skinsLockedUntil": "2026-09-10"
+   ]
   },
   "CH0034": {
    "code": "CH0034",
@@ -10927,7 +10926,7 @@
    "name": "라피네",
    "nameEn": "Lafine",
    "desc": "한 번 본 길은 정확히 기억하는 여행가. 자신만의 지도를 그리겠다는 이상을 품고 고향을 떠났지만, 월세 사기로 노잣돈을 전부 잃고 알바처를 전전한다. 언젠가 금고 털이로 크게 한탕해 편안하게 여행하는 걸 꿈꾼다.",
-   "descEn": "A traveler who accurately remembers every route once seen. Left home with the dream of drawing their own map, but lost all travel funds to a rent scam and now drifts from one part-time job to another. Dreams of striking it rich through a safe heist one day to travel in comfort.",
+   "descEn": null,
    "iconPath": "Icon_CH0043",
    "resourcesId": "ch0043_resources",
    "voiceGroupId": "voc_ch0043_group",
@@ -10963,11 +10962,11 @@
     1
    ],
    "hobby": "여행, 노래 가사 외우기",
-   "hobbyEn": "Traveling, Memorizing song lyrics",
+   "hobbyEn": null,
    "specialty": "지도 그리기, 작전 짜기",
-   "specialtyEn": "Mapmaking, Devising plans",
+   "specialtyEn": null,
    "likes": "배낭 여행, 빠른 것",
-   "likesEn": "Backpacking, Fast things",
+   "likesEn": null,
    "comment": "나한테 밥 사줄 사람!",
    "commentEn": "Who's buying me dinner?!",
    "birthdayComment": "다들 생일 축하 고마워! 오늘은 내가 쏠게!",
@@ -10975,7 +10974,7 @@
    "artist": "Lilith",
    "artistEn": "Lilith",
    "cv": "아이마이 모코",
-   "cvEn": "Aimai Moko",
+   "cvEn": null,
    "skillSetGroup": 43,
    "battlePatterns": {
     "start": [
@@ -13097,6 +13096,332 @@
     110
    ]
   },
+  "CH0058": {
+   "code": "CH0058",
+   "name": "비앙카",
+   "nameEn": "Bianca",
+   "desc": "셀레스티얼 수도원의 수녀장.마치 한 자루 검처럼 올곧고 냉정한 그녀는, 수녀장이 되기 이전에는 셀레스티얼 최고의 [처형자]였다.교리를 지키지 않는 자, 믿음이 약한 자, 믿었다가 돌아선 자들을 가차없이 처벌하기로 명성이 자자하다.",
+   "descEn": null,
+   "iconPath": "Icon_CH0058",
+   "resourcesId": "ch0058_resources",
+   "voiceGroupId": "voc_ch0058_group",
+   "id": 58,
+   "characterType": 1,
+   "nameKey": "character_name_ch0058",
+   "roleType": 2,
+   "divisionType": 2,
+   "factionType": 201,
+   "attributeType": 4,
+   "positionType": 1,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "equipmentSlots": [
+    4,
+    7,
+    10
+   ],
+   "skillMaterialGroup": 403,
+   "nameUppercaseKey": "character_uppercase_name_ch0058",
+   "nameUppercase": "BIANCA",
+   "birthday": [
+    7,
+    27
+   ],
+   "giftItems": [
+    9101,
+    9109,
+    9115
+   ],
+   "dateDivisions": [
+    2
+   ],
+   "hobby": "명상",
+   "hobbyEn": null,
+   "specialty": "검술, 추적, 심문",
+   "specialtyEn": null,
+   "likes": "수면, 검술 훈련",
+   "likesEn": null,
+   "comment": "그대의 육신에 하모닉스의 축복을",
+   "commentEn": null,
+   "birthdayComment": "하모닉스 님께 은혜를 받은 날, 선물은 사절",
+   "birthdayCommentEn": null,
+   "artist": "CHoney",
+   "artistEn": "CHoney",
+   "cv": "츠키모리 네네",
+   "cvEn": null,
+   "skillSetGroup": 58,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": "선고 효과 보유",
+      "nameEn": null,
+      "order": 0,
+      "condition": 20,
+      "conditionValue": [
+       "define_trigger_ch0058",
+       "1"
+      ],
+      "steps": [
+       5820
+      ]
+     },
+     {
+      "name": "선고 효과 미보유",
+      "nameEn": null,
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       5830,
+       5810,
+       5810,
+       5810
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": "선고 효과 보유",
+      "nameEn": null,
+      "order": 0,
+      "condition": 20,
+      "conditionValue": [
+       "define_trigger_ch0058",
+       "1"
+      ],
+      "steps": [
+       5820
+      ]
+     },
+     {
+      "name": "선고 효과 미보유",
+      "nameEn": null,
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       5830,
+       5810,
+       5810,
+       5810
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 128.0,
+     "PHYSICS_DEFENSE": 38.0,
+     "MAX_LIFE": 3520.0,
+     "ACCURACY": 20.0,
+     "EVASION": 15.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 10.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 131.0,
+     "PHYSICS_DEFENSE": 38.0,
+     "MAX_LIFE": 3590.0,
+     "ACCURACY": 20.0,
+     "EVASION": 15.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 10.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 136.0,
+     "PHYSICS_DEFENSE": 40.0,
+     "MAX_LIFE": 3731.0,
+     "ACCURACY": 21.0,
+     "EVASION": 16.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 21.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 11.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 143.0,
+     "PHYSICS_DEFENSE": 42.0,
+     "MAX_LIFE": 3942.0,
+     "ACCURACY": 22.0,
+     "EVASION": 17.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 22.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 11.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 154.0,
+     "PHYSICS_DEFENSE": 45.0,
+     "MAX_LIFE": 4224.0,
+     "ACCURACY": 24.0,
+     "EVASION": 18.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 12.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 154.0,
+     "PHYSICS_DEFENSE": 45.0,
+     "MAX_LIFE": 4224.0,
+     "ACCURACY": 24.0,
+     "EVASION": 18.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 12.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 14.34,
+     "MAX_LIFE": 176.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 14.62,
+     "MAX_LIFE": 179.52,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 15.2,
+     "MAX_LIFE": 186.56,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 16.06,
+     "MAX_LIFE": 197.12,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 17.2,
+     "MAX_LIFE": 211.2,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 17.2,
+     "MAX_LIFE": 211.2,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   },
+   "loveStats": [
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    },
+    {
+     "PHYSICS_ATTACK": 1.0
+    }
+   ],
+   "skinsLockedUntil": "2026-09-24"
+  },
   "CH0059": {
    "code": "CH0059",
    "name": "스피카",
@@ -13740,7 +14065,7 @@
    "name": "클레어(수영복)",
    "nameEn": "Claire (Swimsuit)",
    "desc": "<자유의 날>을 맞이하여 수영복으로 갈아입은 클레어. 평소에도 자유롭게 사는 편이라 자유의 날에 대해 별다른 감흥은 없지만, 아가씨들이 밀린 휴가를 쓰라고 강력하게 권해서 여름을 만끽하러 나왔다.",
-   "descEn": "Claire, who changed into a swimsuit to mark . She usually lives freely anyway, so she doesn't feel any particular thrill about Freedom Day, but she stepped out to enjoy the summer after the young ladies strongly urged her to use her saved-up vacation.",
+   "descEn": null,
    "iconPath": "Icon_CH0068",
    "resourcesId": "ch0068_resources",
    "voiceGroupId": "voc_ch0068_group",
@@ -13776,11 +14101,11 @@
     2
    ],
    "hobby": "사냥, 고기 먹기, 간식 먹기",
-   "hobbyEn": "Hunting, Eating meat, Eating snacks",
+   "hobbyEn": null,
    "specialty": "고기 품질 감별하기",
-   "specialtyEn": "Judging meat quality",
+   "specialtyEn": null,
    "likes": "고기, 일광욕",
-   "likesEn": "Meat, Sunbathing",
+   "likesEn": null,
    "comment": "휴가란 무엇일까",
    "commentEn": "What Is Vacation?",
    "birthdayComment": "아가씨 카드 한도를 고기로 채우는 날",
@@ -13788,7 +14113,7 @@
    "artist": "SNOWBALL",
    "artistEn": "SNOWBALL",
    "cv": "우이",
-   "cvEn": "Ui",
+   "cvEn": null,
    "skillSetGroup": 68,
    "battlePatterns": {
     "start": [
@@ -15607,7 +15932,7 @@
    "descEn": "The boss of a city-spanning criminal syndicate leading in loan sharking and smuggling. Pay her a hefty tribute and pledge eternal obedience, and you can establish a 'good relationship' with her.",
    "iconPath": "Icon_NP0599",
    "resourcesId": "np0599_resources",
-   "voiceGroupId": "0",
+   "voiceGroupId": "voc_np0599_group",
    "id": 200599,
    "characterType": 2,
    "nameKey": "character_name_np0599",
@@ -19514,7 +19839,7 @@
   }
  },
  "statCaps": {
-  "level": 60,
+  "level": 62,
   "star": 5,
   "love": 20
  },
@@ -21069,6 +21394,41 @@
     5720,
     5730,
     5790
+   ]
+  },
+  "58": {
+   "1": [
+    5810,
+    5820,
+    5830,
+    5890
+   ],
+   "2": [
+    5810,
+    5820,
+    5830,
+    5890
+   ],
+   "3": [
+    5800,
+    5810,
+    5820,
+    5830,
+    5890
+   ],
+   "4": [
+    5801,
+    5810,
+    5820,
+    5830,
+    5890
+   ],
+   "5": [
+    5802,
+    5810,
+    5820,
+    5830,
+    5890
    ]
   },
   "62": {
@@ -44761,10 +45121,10 @@
           }
          ]
         },
-        "team": "FRIENDLY",
-        "pick": "ALL",
+        "team": "CAST_TARGET",
+        "pick": null,
         "sort": null,
-        "count": 1
+        "count": 0
        }
       ]
      }
@@ -44814,10 +45174,10 @@
           }
          ]
         },
-        "team": "FRIENDLY",
-        "pick": "ALL",
+        "team": "CAST_TARGET",
+        "pick": null,
         "sort": null,
-        "count": 1
+        "count": 0
        }
       ]
      }
@@ -44867,10 +45227,10 @@
           }
          ]
         },
-        "team": "FRIENDLY",
-        "pick": "ALL",
+        "team": "CAST_TARGET",
+        "pick": null,
         "sort": null,
-        "count": 1
+        "count": 0
        }
       ]
      }
@@ -47501,11 +47861,13 @@
   },
   "3300": {
    "name": "주연의 품격 I",
-   "nameEn": "Dignity of the Lead I",
+   "nameEn": "# Estelle [ch0033]Passive 01",
    "desc": [
     "에스텔의 공격력이 <color=#0094FF>15%</color> 증가합니다."
    ],
-   "descEn": [],
+   "descEn": [
+    "# Estelle [ch0033] Passive 01"
+   ],
    "buffs": [
     []
    ],
@@ -47596,11 +47958,13 @@
   },
   "3301": {
    "name": "주연의 품격 II",
-   "nameEn": "Dignity of the Lead II",
+   "nameEn": "# Estelle [ch0033]Passive 02",
    "desc": [
     "에스텔의 공격력이 <color=#0094FF>15%</color> 증가하고, 치명 피해율이 <color=#0094FF>20%</color> 증가합니다."
    ],
-   "descEn": [],
+   "descEn": [
+    "# Estelle [ch0033] Passive 01"
+   ],
    "buffs": [
     []
    ],
@@ -47698,11 +48062,13 @@
   },
   "3302": {
    "name": "주연의 품격 III",
-   "nameEn": "Dignity of the Lead III",
+   "nameEn": "# Estelle [ch0033]Passive 03",
    "desc": [
     "에스텔의 공격력이 <color=#0094FF>30%</color> 증가하고, 치명 피해율이 <color=#0094FF>20%</color> 증가합니다."
    ],
-   "descEn": [],
+   "descEn": [
+    "# Estelle [ch0033] Passive 01"
+   ],
    "buffs": [
     []
    ],
@@ -47800,12 +48166,12 @@
   },
   "3310": {
    "name": "컷!",
-   "nameEn": "Cut!",
+   "nameEn": "Basic Attack",
    "desc": [
     "가까운 적 1명에게 공격력의 <color=#0094FF>150%</color> 만큼 피해를 입힙니다."
    ],
    "descEn": [
-    "Inflicts Deals DMG equal to <color=#0094FF>150%</color> of Attack Power on 1 nearby enemy."
+    "Deals DMG equal to <color=#0094FF>150%</color> of Attack Power to 1 nearby enemy"
    ],
    "buffs": [
     []
@@ -47883,16 +48249,16 @@
     "가까운 적 1명에게 공격력의 <color=#0094FF>195%</color> 만큼 피해를 입힙니다. <br><color=#0C9F14>메소드</color> : 가까운 적 1명에게 공격력의 <color=#0094FF>300%</color> 만큼 피해를 입히고, <color=#0094FF>100%</color> 확률로 치명타가 발생합니다."
    ],
    "descEn": [
-    "Inflicts Deals DMG equal to <color=#0094FF>180%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>180%</color> of Attack Power, with a <color=#0094FF>40%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>181%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>188%</color> of Attack Power, with a <color=#0094FF>45%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>182%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>196%</color> of Attack Power, with a <color=#0094FF>50%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>185%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>220%</color> of Attack Power, with a <color=#0094FF>60%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>186%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>228%</color> of Attack Power, with a <color=#0094FF>65%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>187%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>236%</color> of Attack Power, with a <color=#0094FF>70%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>190%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>260%</color> of Attack Power, with a <color=#0094FF>80%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>191%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>268%</color> of Attack Power, with a <color=#0094FF>85%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>192%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>276%</color> of Attack Power, with a <color=#0094FF>90%</color> chance to land a Critical Hit. on 1 nearby enemy.",
-    "Inflicts Deals DMG equal to <color=#0094FF>195%</color> of Attack Power on 1 nearby enemy. <br><color=#0C9F14>Method : Inflicts Deals DMG equal to <color=#0094FF>300%</color> of Attack Power, with a <color=#0094FF>100%</color> chance to land a Critical Hit. on 1 nearby enemy."
+    "Deals DMG equal to <color=#0094FF>180%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>181%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>182%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>185%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>186%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>187%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>190%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>191%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>192%</color> of Attack Power to 1 nearby enemy",
+    "Deals DMG equal to <color=#0094FF>195%</color> of Attack Power to 1 nearby enemy"
    ],
    "buffs": [
     [
@@ -48145,7 +48511,18 @@
     "<color=#0C9F14>큐 사인</color> 효과를 제거하고 자신을 <color=#0C9F14>메소드</color> 상태로 만듭니다.",
     "<color=#0C9F14>큐 사인</color> 효과를 제거하고 자신을 <color=#0C9F14>메소드</color> 상태로 만듭니다."
    ],
-   "descEn": null,
+   "descEn": [
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self",
+    "Grants <color=#0C9F14>Method to self"
+   ],
    "buffs": [
     [
      {
@@ -48474,7 +48851,13 @@
     "자신에게 <color=#0C9F14>큐 사인</color> 효과를 부여하고 가까운 적 1명에게 공격력의 <color=#0094FF>514%</color> 만큼 피해를 입힙니다. <br><color=#0C9F14>메소드</color> : 자신에게 <color=#0C9F14>큐 사인</color> 효과를 부여하고 가까운 적 1명에게 공격력의 <color=#0094FF>650%</color> 만큼 피해를 입히고, <color=#0094FF>80%</color> 확률로 치명타가 발생합니다.",
     "자신에게 <color=#0C9F14>큐 사인</color> 효과를 부여하고 가까운 적 1명에게 공격력의 <color=#0094FF>520%</color> 만큼 피해를 입힙니다. <br><color=#0C9F14>메소드</color> : 자신에게 <color=#0C9F14>큐 사인</color> 효과를 부여하고 가까운 적 1명에게 공격력의 <color=#0094FF>710%</color> 만큼 피해를 입히고, <color=#0094FF>100%</color> 확률로 치명타가 발생합니다."
    ],
-   "descEn": null,
+   "descEn": [
+    "Deals Deals DMG equal to <color=#0094FF>500%</color> of Attack Power to 1 nearby enemy and grants  to self",
+    "Deals Deals DMG equal to <color=#0094FF>504%</color> of Attack Power to 1 nearby enemy and grants  to self",
+    "Deals Deals DMG equal to <color=#0094FF>510%</color> of Attack Power to 1 nearby enemy and grants  to self",
+    "Deals Deals DMG equal to <color=#0094FF>514%</color> of Attack Power to 1 nearby enemy and grants  to self",
+    "Deals Deals DMG equal to <color=#0094FF>520%</color> of Attack Power to 1 nearby enemy and grants  to self"
+   ],
    "buffs": [
     [
      {
@@ -57341,7 +57724,7 @@
     "<color=#0C9F14>회피 작전</color> 효과를 보유한 아군의 <color=#FF5179>디버프</color>가 해제될 때마다 <color=#0C9F14>작전 성공</color> 효과를 획득합니다."
    ],
    "descEn": [
-    "Gains the <color=#0C9F14>Operation Success effect whenever a <color=#FF5179>debuff is removed from an ally with the <color=#0C9F14>Evasion Operation effect."
+    "# Lafine [ch0043] Passive 01"
    ],
    "buffs": [
     [
@@ -57610,7 +57993,7 @@
     "<color=#0C9F14>회피 작전</color> 효과를 보유한 아군의 <color=#FF5179>디버프</color>가 해제될 때마다 <color=#0C9F14>작전 성공</color> 효과를 획득합니다. <color=#0C9F14>침투 작전</color> 효과를 보유한 아군이 치명타 피해를 입힐 시 <color=#0C9F14>작전 성공</color> 효과를 획득합니다."
    ],
    "descEn": [
-    "Gains the <color=#0C9F14>Operation Success effect whenever a <color=#FF5179>debuff is removed from an ally with the <color=#0C9F14>Evasion Operation effect. Gains the <color=#0C9F14>Operation Success effect when an ally with the <color=#0C9F14>Infiltration Operation effect deals critical damage."
+    "# Lafine [ch0043] Passive 01"
    ],
    "buffs": [
     [
@@ -57925,7 +58308,7 @@
     "라피네의 공격력이 <color=#0094FF>15%</color> 증가합니다. <color=#0C9F14>회피 작전</color> 효과를 보유한 아군의 <color=#FF5179>디버프</color>가 해제될 때마다 <color=#0C9F14>작전 성공</color> 효과를 획득합니다. <color=#0C9F14>침투 작전</color> 효과를 보유한 아군이 치명타 피해를 입힐 시 <color=#0C9F14>작전 성공</color> 효과를 획득합니다."
    ],
    "descEn": [
-    "Increases Raffine's ATK by <color=#0094FF>15%. Gains the <color=#0C9F14>Operation Success effect whenever a <color=#FF5179>debuff is removed from an ally with the <color=#0C9F14>Evasion Operation effect. Gains the <color=#0C9F14>Operation Success effect when an ally with the <color=#0C9F14>Infiltration Operation effect deals critical damage."
+    "# Lafine [ch0043] Passive 01"
    ],
    "buffs": [
     [
@@ -64861,6 +65244,1234 @@
        "count": 1
       },
       "count": 5
+     }
+    ]
+   }
+  },
+  "5800": {
+   "name": "처형자의 사명 I",
+   "nameEn": "##",
+   "desc": [
+    "비앙카의 공격력이 <color=#0094FF>10%</color> 증가합니다. 전투 시작 시 <color=#0C9F14>선고</color> 효과를 획득합니다. 적 처치 시 최대 체력의 <color=#0094FF>5%</color> 만큼 회복하고 <color=#0C9F14>선고</color> 효과를 획득합니다."
+   ],
+   "descEn": [
+    "# Bianca [ch0058] Passive 01"
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_01",
+   "openStar": 3,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "stats": [
+     {
+      "stat": "PHYSICS_ATTACK",
+      "scale": "PHYSICAL_ATTACK_RATE",
+      "multiple": 0.1,
+      "condition": null,
+      "conditionValue": []
+     }
+    ],
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_BATTLE_START",
+      "check": null,
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>선고</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0058_Trigger",
+        "categorize": 0,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_KILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>선고</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0058_Trigger",
+        "categorize": 0,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "ADD_HEAL",
+        "applyTo": "HOLDER",
+        "scale": "MAX_LIFE_RATE",
+        "scaleOf": "HOLDER",
+        "value": {
+         "base": [
+          0.05,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_USE_SKILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>선고</color>",
+           "nameEn": null,
+           "id": "define_trigger_ch0058"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "5801": {
+   "name": "처형자의 사명 II",
+   "nameEn": "##",
+   "desc": [
+    "비앙카의 공격력이 <color=#0094FF>20%</color> 증가합니다. 전투 시작 시 <color=#0C9F14>선고</color> 효과와 <color=#0C9F14>보호막</color> 효과를 획득합니다. 적 처치 시 최대 체력의 <color=#0094FF>10%</color> 만큼 회복하고 <color=#0C9F14>선고</color> 효과를 획득합니다."
+   ],
+   "descEn": [
+    "# Bianca [ch0058] Passive 01"
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>보호막</color>",
+      "desc": "<color=#0094FF>10</color>초 동안 최대 체력의 <color=#0094FF>10%</color> 만큼 보호막 생성",
+      "icon": "Icon_BattleBuff_Shield",
+      "categorize": 1,
+      "seconds": 10.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Shield</color>",
+      "descEn": "Creates a shield equal to <color=#0094FF>10%</color> of Max HP for <color=#0094FF>10</color> seconds"
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_02",
+   "openStar": 4,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "stats": [
+     {
+      "stat": "PHYSICS_ATTACK",
+      "scale": "PHYSICAL_ATTACK_RATE",
+      "multiple": 0.2,
+      "condition": null,
+      "conditionValue": []
+     }
+    ],
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_BATTLE_START",
+      "check": null,
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>선고</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0058_Trigger",
+        "categorize": 0,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_BATTLE_START",
+      "check": null,
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>보호막</color>",
+        "nameEn": "<color=#0C9F14>Shield</color>",
+        "icon": "Icon_BattleBuff_Shield",
+        "categorize": 1,
+        "value": {
+         "base": [
+          0.1,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          10.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "BUFF_TOTAL_DAMAGE_BARRIER",
+        "scale": "MAX_LIFE_RATE",
+        "scaleOf": "CASTER",
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_KILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>선고</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0058_Trigger",
+        "categorize": 0,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "ADD_HEAL",
+        "applyTo": "HOLDER",
+        "scale": "MAX_LIFE_RATE",
+        "scaleOf": "HOLDER",
+        "value": {
+         "base": [
+          0.1,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_USE_SKILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>선고</color>",
+           "nameEn": null,
+           "id": "define_trigger_ch0058"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "5802": {
+   "name": "처형자의 사명 III",
+   "nameEn": "##",
+   "desc": [
+    "비앙카의 공격력이 <color=#0094FF>30%</color> 증가합니다. 전투 시작 시 <color=#0C9F14>선고</color> 효과와 <color=#0C9F14>보호막</color> 효과를 획득합니다. 적 처치 시 최대 체력의 <color=#0094FF>15%</color> 만큼 회복하고 <color=#0C9F14>선고</color> 효과를 획득합니다."
+   ],
+   "descEn": [
+    "# Bianca [ch0058] Passive 01"
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>보호막</color>",
+      "desc": "<color=#0094FF>10</color>초 동안 최대 체력의 <color=#0094FF>20%</color> 만큼 보호막 생성",
+      "icon": "Icon_BattleBuff_Shield",
+      "categorize": 1,
+      "seconds": 10.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Shield</color>",
+      "descEn": "Creates a shield equal to <color=#0094FF>20%</color> of Max HP for <color=#0094FF>10</color> seconds"
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_03",
+   "openStar": 5,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "stats": [
+     {
+      "stat": "PHYSICS_ATTACK",
+      "scale": "PHYSICAL_ATTACK_RATE",
+      "multiple": 0.3,
+      "condition": null,
+      "conditionValue": []
+     }
+    ],
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_BATTLE_START",
+      "check": null,
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>선고</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0058_Trigger",
+        "categorize": 0,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_BATTLE_START",
+      "check": null,
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>보호막</color>",
+        "nameEn": "<color=#0C9F14>Shield</color>",
+        "icon": "Icon_BattleBuff_Shield",
+        "categorize": 1,
+        "value": {
+         "base": [
+          0.2,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          10.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "BUFF_TOTAL_DAMAGE_BARRIER",
+        "scale": "MAX_LIFE_RATE",
+        "scaleOf": "CASTER",
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_KILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>선고</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0058_Trigger",
+        "categorize": 0,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "ADD_HEAL",
+        "applyTo": "HOLDER",
+        "scale": "MAX_LIFE_RATE",
+        "scaleOf": "HOLDER",
+        "value": {
+         "base": [
+          0.15,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_USE_SKILL",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>선고</color>",
+           "nameEn": null,
+           "id": "define_trigger_ch0058"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "5810": {
+   "name": "심판",
+   "nameEn": "Bianca Basic Attack",
+   "desc": [
+    "가까운 적 1명을 <color=#0094FF>5회</color> 공격해 공격력의 <color=#0094FF>150%</color> 만큼 피해를 나누어 입힙니다."
+   ],
+   "descEn": [
+    "Before desc work"
+   ],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 1,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          1.5,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 5.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 5
+     }
+    ]
+   }
+  },
+  "5820": {
+   "name": "집행",
+   "nameEn": "Bianca Skill 01",
+   "desc": [
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>320%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>328%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>336%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>360%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>368%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>376%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>400%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>408%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>416%</color> 만큼 피해를 입힙니다.",
+    "<color=#0C9F14>선고</color> 효과를 제거하고, 전방의 가장 먼 적 뒤로 이동해 공격력의 <color=#0094FF>440%</color> 만큼 피해를 입힙니다."
+   ],
+   "descEn": [
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work"
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>선고</color>",
+      "desc": "다음 스킬 사용 시 <color=#0094FF>집행</color> 스킬을 사용합니다.",
+      "icon": "Icon_BattleBuff_Ch0058_Trigger",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_01",
+   "openStar": 1,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          3.2,
+          0.0
+         ],
+         "up": [
+          0.08,
+          0.0
+         ],
+         "extra": [
+          0.16,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 5.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ],
+    "moves": [
+     "MOVE_TO_TARGET"
+    ]
+   }
+  },
+  "5830": {
+   "name": "최후의 자비",
+   "nameEn": "Bianca Skill 02",
+   "desc": [
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>300%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>500%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>500%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>304%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>508%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>508%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>308%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>516%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>516%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>320%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>540%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>540%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>324%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>548%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>548%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>328%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>556%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>556%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>340%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>580%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>580%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>344%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>588%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>588%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>348%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>596%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>596%</color> 만큼 피해를 나누어 입힙니다.",
+    "가까운 적 1명을 <color=#0094FF>20회</color> 공격해 공격력의 <color=#0094FF>360%</color> 만큼 피해를 나누어 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>620%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>620%</color> 만큼 피해를 나누어 입힙니다."
+   ],
+   "descEn": [
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work"
+   ],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_Skill_02",
+   "openStar": 1,
+   "categorize": 2,
+   "skillType": 3,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          3.0,
+          0.0
+         ],
+         "up": [
+          0.04,
+          0.0
+         ],
+         "extra": [
+          0.08,
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "HP_GREATER_THAN",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "0.4"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          5.0,
+          0.0
+         ],
+         "up": [
+          0.08,
+          0.0
+         ],
+         "extra": [
+          0.16,
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "HP_LESS_OR_EQUAL",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "0.4"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 5.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 20
+     }
+    ]
+   }
+  },
+  "5890": {
+   "name": "심판의 날",
+   "nameEn": "Bianca Burst",
+   "desc": [
+    "전방의 가까운 적 1명을 공격해 공격력의 <color=#0094FF>450%</color> 만큼 피해를 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>600%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>600%</color> 만큼 피해를 입힙니다.",
+    "전방의 가까운 적 1명을 공격해 공격력의 <color=#0094FF>463.5%</color> 만큼 피해를 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>618%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>618%</color> 만큼 피해를 입힙니다.",
+    "전방의 가까운 적 1명을 공격해 공격력의 <color=#0094FF>495%</color> 만큼 피해를 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>660%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>660%</color> 만큼 피해를 입힙니다.",
+    "전방의 가까운 적 1명을 공격해 공격력의 <color=#0094FF>508.5%</color> 만큼 피해를 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>678%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>678%</color> 만큼 피해를 입힙니다.",
+    "전방의 가까운 적 1명을 공격해 공격력의 <color=#0094FF>540%</color> 만큼 피해를 입힙니다. 대상의 체력이 <color=#0094FF>공격력의 <color=#0094FF>720%</color> 만큼 피해%</color> 이하라면 대신 공격력의 <color=#0094FF>720%</color> 만큼 피해를 입힙니다."
+   ],
+   "descEn": [
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work",
+    "Before desc work"
+   ],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_Ultimate_CH0058",
+   "openStar": 1,
+   "categorize": 3,
+   "skillType": 12,
+   "maxLevel": 5,
+   "levelable": true,
+   "levelPeriod": 2,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.3,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          4.5,
+          0.0
+         ],
+         "up": [
+          0.135,
+          0.0
+         ],
+         "extra": [
+          0.18,
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "HP_GREATER_THAN",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "0.4"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          6.0,
+          0.0
+         ],
+         "up": [
+          0.18,
+          0.0
+         ],
+         "extra": [
+          0.24,
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "HP_LESS_OR_EQUAL",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "0.4"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 5.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
      }
     ]
    }
@@ -81461,7 +83072,7 @@
           0.0
          ],
          "up": [
-          0.0,
+          -0.25,
           0.0
          ],
          "extra": [
@@ -81647,7 +83258,7 @@
           0.0
          ],
          "up": [
-          0.0,
+          -0.5,
           0.0
          ],
          "extra": [
@@ -81731,7 +83342,7 @@
           0.0
          ],
          "up": [
-          0.0,
+          -0.25,
           0.0
          ],
          "extra": [
@@ -81815,7 +83426,7 @@
           0.0
          ],
          "up": [
-          0.0,
+          -0.75,
           0.0
          ],
          "extra": [
@@ -81969,7 +83580,7 @@
           0.0
          ],
          "up": [
-          0.0,
+          -1.0,
           0.0
          ],
          "extra": [
@@ -82021,7 +83632,7 @@
           0.0
          ],
          "up": [
-          0.0,
+          -0.1,
           0.0,
           0.0
          ],
@@ -84014,7 +85625,7 @@
         "scaleOf": "CASTER",
         "value": {
          "base": [
-          2.0,
+          1.0,
           0.0
          ],
          "up": [
@@ -84026,8 +85637,8 @@
           0.0
          ]
         },
-        "team": "ENEMY",
-        "pick": "ALL",
+        "team": "CAST_TARGET",
+        "pick": null,
         "sort": null,
         "count": 0
        }
@@ -84098,7 +85709,7 @@
         "scaleOf": "CASTER",
         "value": {
          "base": [
-          2.0,
+          1.0,
           0.0
          ],
          "up": [
@@ -84141,7 +85752,7 @@
         "scaleOf": "CASTER",
         "value": {
          "base": [
-          2.0,
+          1.5,
           0.0
          ],
          "up": [
@@ -84253,7 +85864,7 @@
         "scaleOf": "CASTER",
         "value": {
          "base": [
-          2.0,
+          2.25,
           0.0
          ],
          "up": [
@@ -84363,20 +85974,6 @@
         "applyTo": "HOLDER",
         "scale": "PHYSICAL_ATTACK_RATE",
         "scaleOf": "CASTER",
-        "value": {
-         "base": [
-          2.0,
-          0.0
-         ],
-         "up": [
-          0.0,
-          0.0
-         ],
-         "extra": [
-          0.0,
-          0.0
-         ]
-        },
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
@@ -84516,7 +86113,7 @@
         "scaleOf": "CASTER",
         "value": {
          "base": [
-          2.0,
+          4.5,
           0.0
          ],
          "up": [

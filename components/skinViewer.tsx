@@ -539,12 +539,44 @@ export default function SkinViewer({
     (async () => {
       const PIXI = await import('pixi.js');
       pixiRef.current = PIXI;
+      const files = filesRef.current;
+      if (!files) return;
+
+      if (layout.kind === 'drama' && layout.static?.image) {
+        app = new PIXI.Application();
+        await app.init({
+          backgroundAlpha: 0, antialias: true, autoDensity: true, resizeTo: hostRef.current!,
+        });
+        appReady = true;
+        if (destroyed) { app.destroy(true); return; }
+        appRef.current = app;
+        hostRef.current!.replaceChildren(app.canvas);
+        const root = new PIXI.Container();
+        const texture = await loadTexture(PIXI, archive, files, layout.static.image);
+        if (destroyed) { app.destroy(true); return; }
+        const sprite = new PIXI.Sprite(texture);
+        sprite.anchor.set(0.5);
+        root.addChild(sprite);
+        app.stage.addChild(root);
+        rootRef.current = root;
+        const fit = () => {
+          const scale = Math.min(app.screen.width / texture.width, app.screen.height / texture.height);
+          root.position.set(app.screen.width / 2, app.screen.height / 2);
+          root.scale.set(scale);
+        };
+        fitCameraRef.current = fit;
+        spinePixelScaleRef.current = () => 1;
+        app.renderer.on('resize', fit);
+        fit();
+        setRigBuilt((built) => built + 1);
+        return;
+      }
+
       const {
         Spine, SkeletonBinary, AtlasAttachmentLoader, TextureAtlas, SpineTexture,
         RegionAttachment, MeshAttachment, SkeletonBounds,
       } = await import('@esotericsoftware/spine-pixi-v8') as any;
 
-      const files = filesRef.current;
       if (!files || !layout.atlas || !layout.skel) return;
 
       // `pma` decides whether the page's bytes are already premultiplied.
@@ -1564,9 +1596,10 @@ export default function SkinViewer({
     setSceneSoundRate(speed);
   }, [playing, speed]);
 
-  // The playback context survives a skin change, so a rig without a lobby hands the mode back.
+  // The playback context survives a skin change, so unsupported contexts hand the mode back.
   useEffect(() => {
-    if (layout && mode === 'home' && !hasLobby) setMode('manual');
+    if (layout?.kind === 'drama' && mode !== 'manual') setMode('manual');
+    else if (layout && mode === 'home' && !hasLobby) setMode('manual');
   }, [layout, mode, hasLobby]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // In auto mode the state machine owns track 0 and would overwrite a manual pick.

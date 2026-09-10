@@ -1,7 +1,7 @@
 import type { Jiggler } from './jiggle';
 
-// The prefab's `_actorType`: 0 standing, 1 desire, 2 affection, 3 pleasure.
-export type SkinKind = 'standing' | 'affection' | 'desire' | 'pleasure';
+// The prefab's `_actorType`: 0 standing, 1 desire, 2 affection, 3 pleasure, 5 drama.
+export type SkinKind = 'standing' | 'affection' | 'desire' | 'pleasure' | 'drama';
 
 // OneStore ships the uncensored art; only affection art diverges between stores.
 export type StoreKey = 'onestore' | 'google';
@@ -68,8 +68,9 @@ export type Layout = {
   skin: string;
   kind: SkinKind;
   character?: string;
-  skel: string;
-  atlas: string;
+  skel?: string;
+  atlas?: string;
+  static?: { image: string; variants?: string[] };
   textures?: string[];
   animations?: string[];
   animationGroups?: Record<string, string[]>;
