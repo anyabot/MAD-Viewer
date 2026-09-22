@@ -626,6 +626,12 @@
    "icon": "Icon_Character_Piece_CH0050",
    "kind": "piece"
   },
+  "item:52": {
+   "name": "라나의 메모리",
+   "nameEn": "Rana's Memory",
+   "icon": "Icon_Character_Piece_CH0052",
+   "kind": "piece"
+  },
   "item:53": {
    "name": "진의 메모리",
    "nameEn": "Gin's Memory",
@@ -5955,6 +5961,7 @@
    "CH0043": "item:43",
    "CH0046": "item:46",
    "CH0050": "item:50",
+   "CH0052": "item:52",
    "CH0053": "item:53",
    "CH0054": "item:54",
    "CH0056": "item:56",
@@ -6029,6 +6036,7 @@
     "CH0043",
     "CH0046",
     "CH0050",
+    "CH0052",
     "CH0053",
     "CH0054",
     "CH0056",

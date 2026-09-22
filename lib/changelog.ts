@@ -30,6 +30,39 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-09-22',
+    title: { en: 'Rana and 1.8.3', ko: '라나와 1.8.3' },
+    entries: [
+      {
+        kind: 'unit',
+        code: 'CH0052',
+        text: { en: 'Rana added.', ko: '라나 추가' },
+      },
+      {
+        kind: 'scene',
+        code: 'CH0052',
+        text: {
+          en: 'Rana’s Affection and Desire scenes and voice added.',
+          ko: '라나의 어펙션·데자이어 장면과 보이스 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'PLEASE SAVE ME! event stages and new Marisquerade stages added.',
+          ko: 'PLEASE SAVE ME! 이벤트 스테이지와 새로운 마리스커레이드 스테이지 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Content support updated for game version 1.8.3.',
+          ko: '게임 버전 1.8.3 콘텐츠 지원을 업데이트했습니다.',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-09-10',
     title: { en: 'Drama scenes and 1.7.3', ko: '드라마 장면과 1.7.3' },
     entries: [

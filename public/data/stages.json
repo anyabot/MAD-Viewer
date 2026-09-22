@@ -386,6 +386,16 @@
    },
    "image": "BgImg_EV1006_Zone_001"
   },
+  "100081": {
+   "id": 100081,
+   "order": 1,
+   "difficulty": "normal",
+   "name": {
+    "ko": "전투",
+    "en": "Battle"
+   },
+   "image": "BgImg_EV1008_Zone_001"
+  },
   "30401": {
    "id": 30401,
    "name": {
@@ -560,6 +570,33 @@
    },
    "image": "Icon_NP6023",
    "group": 7021
+  },
+  "70241": {
+   "id": 70241,
+   "name": {
+    "ko": "Overture",
+    "en": "Overture"
+   },
+   "image": "Icon_NP6020_ALL",
+   "group": 7024
+  },
+  "70242": {
+   "id": 70242,
+   "name": {
+    "ko": "Intermission",
+    "en": "Intermission"
+   },
+   "image": "Icon_NP6024",
+   "group": 7024
+  },
+  "70243": {
+   "id": 70243,
+   "name": {
+    "ko": "Finale",
+    "en": "Finale"
+   },
+   "image": "Icon_NP6023",
+   "group": 7024
   }
  },
  "groups": {
@@ -802,7 +839,7 @@
    "image": "BgImg_EV1004_Zone_001",
    "name": {
     "ko": "Summer with MAiD",
-    "en": "Summer with MAiD"
+    "en": "Summer WITH MAiD"
    },
    "order": 1004,
    "banner": "Thumbnail_PastStory_Event_Ev1004",
@@ -830,12 +867,26 @@
    "image": "BgImg_EV1006_Zone_001",
    "name": {
     "ko": "MADness in a Dream",
-    "en": null
+    "en": "MADness in a Dream"
    },
    "order": 1006,
    "banner": "Thumbnail_PastStory_Event_Ev1006",
    "from": "2026-08-27",
    "to": "2026-09-17"
+  },
+  "event:1008": {
+   "key": "event:1008",
+   "mode": "event",
+   "zoneId": 100081,
+   "image": "BgImg_EV1008_Zone_001",
+   "name": {
+    "ko": "PLEASE SAVE ME!",
+    "en": null
+   },
+   "order": 1008,
+   "banner": "Thumbnail_PastStory_Event_Ev1008",
+   "from": "2026-09-24",
+   "to": "2026-10-15"
   },
   "ascent:40000": {
    "key": "ascent:40000",
@@ -895,8 +946,8 @@
    "from": "2026-07-09",
    "to": "2026-07-16"
   },
-  "nemesis:7016": {
-   "key": "nemesis:7016",
+  "nemesis:7012": {
+   "key": "nemesis:7012",
    "mode": "nemesis",
    "zoneId": 70211,
    "image": "Icon_NP6020_ALL",
@@ -904,10 +955,24 @@
     "ko": "마리스커레이드",
     "en": "Marisquerade"
    },
-   "order": 7016,
+   "order": 7012,
    "banner": "Nemesis2_Logo",
-   "from": "2026-11-26",
-   "to": "2026-12-03"
+   "from": "2026-08-06",
+   "to": "2026-08-13"
+  },
+  "nemesis:7014": {
+   "key": "nemesis:7014",
+   "mode": "nemesis",
+   "zoneId": 70241,
+   "image": "Icon_NP6020_ALL",
+   "name": {
+    "ko": "마리스커레이드",
+    "en": "Marisquerade"
+   },
+   "order": 7014,
+   "banner": "Nemesis2_Logo",
+   "from": "2026-10-01",
+   "to": "2026-10-08"
   },
   "raid": {
    "key": "raid",
@@ -950,7 +1015,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": "Clear within [0] seconds"
+     "en": "Clear within [0]s"
     }
    }
   ],
@@ -988,7 +1053,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": "Clear within [0] seconds"
+     "en": "Clear within [0]s"
     }
    }
   ],
@@ -1026,7 +1091,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": "Clear within [0] seconds"
+     "en": "Clear within [0]s"
     }
    }
   ],
@@ -1064,7 +1129,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": "Clear within [0] seconds"
+     "en": "Clear within [0]s"
     }
    }
   ],
@@ -1102,7 +1167,7 @@
     ],
     "text": {
      "ko": "전투 시간 [0]초 이내 클리어",
-     "en": "Clear within [0] seconds"
+     "en": "Clear within [0]s"
     }
    }
   ],
@@ -3873,17 +3938,17 @@
   },
   "goods:1004": {
    "name": "고단백 육포",
-   "nameEn": "Event Currency 4",
+   "nameEn": "High-Protein Jerky",
    "icon": "Icon_Goods_EV1004_Contract_01"
   },
   "goods:5005": {
    "name": "기업 ID 카드",
-   "nameEn": "Cash Crush Rush Event Entry Currency",
+   "nameEn": "Corporate ID Card",
    "icon": "Icon_Goods_EV1005_Ticket_01"
   },
   "goods:1005": {
    "name": "금고 식별기",
-   "nameEn": "Cash Crush Rush Currency",
+   "nameEn": "Vault ID Scanner",
    "icon": "Icon_Goods_EV1005_01"
   },
   "goods:5006": {
@@ -3893,8 +3958,18 @@
   },
   "goods:1006": {
    "name": "분실된 필름",
-   "nameEn": "Lost Movie Film",
+   "nameEn": "Lost Film",
    "icon": "Icon_Goods_EV1006_01"
+  },
+  "goods:5008": {
+   "name": "디톡스 푸딩",
+   "nameEn": "Detox Pudding",
+   "icon": "Icon_Goods_EV1008_Ticket_01"
+  },
+  "goods:1008": {
+   "name": "진단 테스트기",
+   "nameEn": "Diagnostic Tester",
+   "icon": "Icon_Goods_EV1008_01"
   },
   "item:40013": {
    "name": "선물 선택 상자",
@@ -53363,7 +53438,7 @@
    "nameKey": "event_story_stage_name_ev1006_normal",
    "nameTemplate": {
     "ko": "에스텔 애비뉴 {0}",
-    "en": null
+    "en": "Estelle Avenue {0}"
    },
    "recommendLevel": "10",
    "entry": {
@@ -53490,7 +53565,7 @@
    "nameKey": "event_story_stage_name_ev1006_normal",
    "nameTemplate": {
     "ko": "에스텔 애비뉴 {0}",
-    "en": null
+    "en": "Estelle Avenue {0}"
    },
    "recommendLevel": "15",
    "entry": {
@@ -53629,7 +53704,7 @@
    "nameKey": "event_story_stage_name_ev1006_normal",
    "nameTemplate": {
     "ko": "에스텔 애비뉴 {0}",
-    "en": null
+    "en": "Estelle Avenue {0}"
    },
    "recommendLevel": "20",
    "entry": {
@@ -53768,7 +53843,7 @@
    "nameKey": "event_story_stage_name_ev1006_normal",
    "nameTemplate": {
     "ko": "에스텔 애비뉴 {0}",
-    "en": null
+    "en": "Estelle Avenue {0}"
    },
    "recommendLevel": "25",
    "entry": {
@@ -53907,7 +53982,7 @@
    "nameKey": "event_story_stage_name_ev1006_normal",
    "nameTemplate": {
     "ko": "에스텔 애비뉴 {0}",
-    "en": null
+    "en": "Estelle Avenue {0}"
    },
    "recommendLevel": "30",
    "entry": {
@@ -54046,7 +54121,7 @@
    "nameKey": "event_story_stage_name_ev1006_normal",
    "nameTemplate": {
     "ko": "에스텔 애비뉴 {0}",
-    "en": null
+    "en": "Estelle Avenue {0}"
    },
    "recommendLevel": "35",
    "entry": {
@@ -54170,6 +54245,828 @@
       },
       {
        "code": "NP0112",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10008101,
+   "group": "event:1008",
+   "mode": "event",
+   "zoneId": 100081,
+   "order": 1,
+   "nameKey": "event_story_stage_name_ev1008_normal",
+   "nameTemplate": {
+    "ko": "후마니타스 일대 {0}",
+    "en": null
+   },
+   "recommendLevel": "10",
+   "entry": {
+    "ref": "goods:5008",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Humanitas_City_Center_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10008101,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1008,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1008"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP8006",
+       "level": 10
+      },
+      {
+       "code": "NP8006",
+       "level": 10
+      },
+      {
+       "code": "NP8005",
+       "level": 10
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP8004",
+       "level": 10
+      },
+      {
+       "code": "NP0109",
+       "level": 10
+      },
+      {
+       "code": "NP8007",
+       "level": 10
+      },
+      {
+       "code": "NP8007",
+       "level": 10
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0501",
+       "level": 10
+      },
+      {
+       "code": "NP0502",
+       "level": 10
+      },
+      {
+       "code": "NP0110",
+       "level": 10
+      },
+      {
+       "code": "NP8005",
+       "level": 10
+      },
+      {
+       "code": "NP0505",
+       "level": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10008102,
+   "group": "event:1008",
+   "mode": "event",
+   "zoneId": 100081,
+   "order": 2,
+   "nameKey": "event_story_stage_name_ev1008_normal",
+   "nameTemplate": {
+    "ko": "후마니타스 일대 {0}",
+    "en": null
+   },
+   "recommendLevel": "15",
+   "entry": {
+    "ref": "goods:5008",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Humanitas_City_Center_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10008102,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1008,
+      "amount": [
+       52
+      ],
+      "drop": "each",
+      "ref": "goods:1008"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP8010",
+       "level": 15
+      },
+      {
+       "code": "NP8010",
+       "level": 15
+      },
+      {
+       "code": "NP0412",
+       "level": 15
+      },
+      {
+       "code": "NP8011",
+       "level": 15
+      },
+      {
+       "code": "NP8011",
+       "level": 15
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP8010",
+       "level": 15
+      },
+      {
+       "code": "NP8010",
+       "level": 15
+      },
+      {
+       "code": "NP0502",
+       "level": 15
+      },
+      {
+       "code": "NP0410",
+       "level": 15
+      },
+      {
+       "code": "NP8011",
+       "level": 15
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 15
+      },
+      {
+       "code": "NP0408",
+       "level": 15
+      },
+      {
+       "code": "NP0409",
+       "level": 15
+      },
+      {
+       "code": "NP0504",
+       "level": 15
+      },
+      {
+       "code": "NP0506",
+       "level": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10008103,
+   "group": "event:1008",
+   "mode": "event",
+   "zoneId": 100081,
+   "order": 3,
+   "nameKey": "event_story_stage_name_ev1008_normal",
+   "nameTemplate": {
+    "ko": "후마니타스 일대 {0}",
+    "en": null
+   },
+   "recommendLevel": "20",
+   "entry": {
+    "ref": "goods:5008",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Casino_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10008103,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1008,
+      "amount": [
+       54
+      ],
+      "drop": "each",
+      "ref": "goods:1008"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP8008",
+       "level": 20
+      },
+      {
+       "code": "NP0301",
+       "level": 20
+      },
+      {
+       "code": "NP0304",
+       "level": 20
+      },
+      {
+       "code": "NP8009",
+       "level": 20
+      },
+      {
+       "code": "NP0312",
+       "level": 20
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP8004",
+       "level": 20
+      },
+      {
+       "code": "NP0107",
+       "level": 20
+      },
+      {
+       "code": "NP0109",
+       "level": 20
+      },
+      {
+       "code": "NP0105",
+       "level": 20
+      },
+      {
+       "code": "NP8005",
+       "level": 20
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0108",
+       "level": 20
+      },
+      {
+       "code": "NP8008",
+       "level": 20
+      },
+      {
+       "code": "NP0310",
+       "level": 20
+      },
+      {
+       "code": "NP8005",
+       "level": 20
+      },
+      {
+       "code": "NP0306",
+       "level": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10008104,
+   "group": "event:1008",
+   "mode": "event",
+   "zoneId": 100081,
+   "order": 4,
+   "nameKey": "event_story_stage_name_ev1008_normal",
+   "nameTemplate": {
+    "ko": "후마니타스 일대 {0}",
+    "en": null
+   },
+   "recommendLevel": "25",
+   "entry": {
+    "ref": "goods:5008",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Casino_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10008104,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1008,
+      "amount": [
+       56
+      ],
+      "drop": "each",
+      "ref": "goods:1008"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0501",
+       "level": 25
+      },
+      {
+       "code": "NP0303",
+       "level": 25
+      },
+      {
+       "code": "NP0110",
+       "level": 25
+      },
+      {
+       "code": "NP0505",
+       "level": 25
+      },
+      {
+       "code": "NP0112",
+       "level": 25
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0301",
+       "level": 25
+      },
+      {
+       "code": "NP0502",
+       "level": 25
+      },
+      {
+       "code": "NP0307",
+       "level": 25
+      },
+      {
+       "code": "NP0312",
+       "level": 25
+      },
+      {
+       "code": "NP0506",
+       "level": 25
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0108",
+       "level": 25
+      },
+      {
+       "code": "NP0303",
+       "level": 25
+      },
+      {
+       "code": "NP0310",
+       "level": 25
+      },
+      {
+       "code": "NP0306",
+       "level": 25
+      },
+      {
+       "code": "NP0111",
+       "level": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10008105,
+   "group": "event:1008",
+   "mode": "event",
+   "zoneId": 100081,
+   "order": 5,
+   "nameKey": "event_story_stage_name_ev1008_normal",
+   "nameTemplate": {
+    "ko": "후마니타스 일대 {0}",
+    "en": null
+   },
+   "recommendLevel": "30",
+   "entry": {
+    "ref": "goods:5008",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Park_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10008105,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1008,
+      "amount": [
+       58
+      ],
+      "drop": "each",
+      "ref": "goods:1008"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0201",
+       "level": 30
+      },
+      {
+       "code": "NP0203",
+       "level": 30
+      },
+      {
+       "code": "NP0110",
+       "level": 30
+      },
+      {
+       "code": "NP0212",
+       "level": 30
+      },
+      {
+       "code": "NP0105",
+       "level": 30
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 30
+      },
+      {
+       "code": "NP0207",
+       "level": 30
+      },
+      {
+       "code": "NP0209",
+       "level": 30
+      },
+      {
+       "code": "NP0210",
+       "level": 30
+      },
+      {
+       "code": "NP0506",
+       "level": 30
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 30
+      },
+      {
+       "code": "NP0208",
+       "level": 30
+      },
+      {
+       "code": "NP0212",
+       "level": 30
+      },
+      {
+       "code": "NP0505",
+       "level": 30
+      },
+      {
+       "code": "NP0210",
+       "level": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10008106,
+   "group": "event:1008",
+   "mode": "event",
+   "zoneId": 100081,
+   "order": 6,
+   "nameKey": "event_story_stage_name_ev1008_normal",
+   "nameTemplate": {
+    "ko": "후마니타스 일대 {0}",
+    "en": null
+   },
+   "recommendLevel": "35",
+   "entry": {
+    "ref": "goods:5008",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Park_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10008106,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1008,
+      "amount": [
+       60
+      ],
+      "drop": "each",
+      "ref": "goods:1008"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0208",
+       "level": 35
+      },
+      {
+       "code": "NP0207",
+       "level": 35
+      },
+      {
+       "code": "NP0110",
+       "level": 35
+      },
+      {
+       "code": "NP0105",
+       "level": 35
+      },
+      {
+       "code": "NP0506",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0107",
+       "level": 35
+      },
+      {
+       "code": "NP0501",
+       "level": 35
+      },
+      {
+       "code": "NP0505",
+       "level": 35
+      },
+      {
+       "code": "NP0210",
+       "level": 35
+      },
+      {
+       "code": "NP0210",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_003",
+     "enemies": [
+      {
+       "code": "NP0208",
+       "level": 35
+      },
+      {
+       "code": "NP0209",
+       "level": 35
+      },
+      {
+       "code": "NP0110",
+       "level": 35
+      },
+      {
+       "code": "NP0104",
+       "level": 35
+      },
+      {
+       "code": "NP0210",
        "level": 35
       }
      ]
@@ -64312,7 +65209,7 @@
   },
   {
    "id": 7021101,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -64407,7 +65304,7 @@
   },
   {
    "id": 7021102,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -64502,7 +65399,7 @@
   },
   {
    "id": 7021103,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -64597,7 +65494,7 @@
   },
   {
    "id": 7021104,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -64692,7 +65589,7 @@
   },
   {
    "id": 7021105,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -64787,7 +65684,7 @@
   },
   {
    "id": 7021201,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -64818,7 +65715,7 @@
   },
   {
    "id": 7021202,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -64849,7 +65746,7 @@
   },
   {
    "id": 7021203,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -64880,7 +65777,7 @@
   },
   {
    "id": 7021204,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -64911,7 +65808,7 @@
   },
   {
    "id": 7021205,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -64942,7 +65839,7 @@
   },
   {
    "id": 7021301,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -64973,7 +65870,7 @@
   },
   {
    "id": 7021302,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -65004,7 +65901,7 @@
   },
   {
    "id": 7021303,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -65035,7 +65932,7 @@
   },
   {
    "id": 7021304,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -65066,7 +65963,7 @@
   },
   {
    "id": 7021305,
-   "group": "nemesis:7016",
+   "group": "nemesis:7012",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -65096,6 +65993,791 @@
    ]
   },
   {
+   "id": 7024101,
+   "group": "nemesis:7014",
+   "bossName": "무도회 게스트",
+   "mode": "nemesis",
+   "zoneId": 70241,
+   "order": 1,
+   "nameKey": "contents_nemesis_np6020_zone_01",
+   "nameTemplate": {
+    "ko": "Overture",
+    "en": "Overture"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024101,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6020",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6020",
+       "level": 35
+      },
+      {
+       "code": "NP0110",
+       "level": 35
+      },
+      {
+       "code": "NP0111",
+       "level": 35
+      },
+      {
+       "code": "NP0112",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bossCode": "NP6022",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6022",
+       "level": 35
+      },
+      {
+       "code": "NP0307",
+       "level": 35
+      },
+      {
+       "code": "NP0307",
+       "level": 35
+      },
+      {
+       "code": "NP0311",
+       "level": 35
+      },
+      {
+       "code": "NP0311",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bossCode": "NP6021",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6021",
+       "level": 35
+      },
+      {
+       "code": "NP0207",
+       "level": 35
+      },
+      {
+       "code": "NP0209",
+       "level": 35
+      },
+      {
+       "code": "NP0211",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024102,
+   "group": "nemesis:7014",
+   "bossName": "무도회 게스트",
+   "mode": "nemesis",
+   "zoneId": 70241,
+   "order": 2,
+   "nameKey": "contents_nemesis_np6020_zone_01",
+   "nameTemplate": {
+    "ko": "Overture",
+    "en": "Overture"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024102,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6020",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6020",
+       "level": 45
+      },
+      {
+       "code": "NP0110",
+       "level": 45
+      },
+      {
+       "code": "NP0111",
+       "level": 45
+      },
+      {
+       "code": "NP0112",
+       "level": 45
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bossCode": "NP6022",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6022",
+       "level": 45
+      },
+      {
+       "code": "NP0307",
+       "level": 45
+      },
+      {
+       "code": "NP0307",
+       "level": 45
+      },
+      {
+       "code": "NP0311",
+       "level": 45
+      },
+      {
+       "code": "NP0311",
+       "level": 45
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bossCode": "NP6021",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6021",
+       "level": 45
+      },
+      {
+       "code": "NP0207",
+       "level": 45
+      },
+      {
+       "code": "NP0209",
+       "level": 45
+      },
+      {
+       "code": "NP0211",
+       "level": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024103,
+   "group": "nemesis:7014",
+   "bossName": "무도회 게스트",
+   "mode": "nemesis",
+   "zoneId": 70241,
+   "order": 3,
+   "nameKey": "contents_nemesis_np6020_zone_01",
+   "nameTemplate": {
+    "ko": "Overture",
+    "en": "Overture"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024103,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6020",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6020",
+       "level": 50
+      },
+      {
+       "code": "NP0110",
+       "level": 50
+      },
+      {
+       "code": "NP0111",
+       "level": 50
+      },
+      {
+       "code": "NP0112",
+       "level": 50
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bossCode": "NP6022",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6022",
+       "level": 50
+      },
+      {
+       "code": "NP0307",
+       "level": 50
+      },
+      {
+       "code": "NP0307",
+       "level": 50
+      },
+      {
+       "code": "NP0311",
+       "level": 50
+      },
+      {
+       "code": "NP0311",
+       "level": 50
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bossCode": "NP6021",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6021",
+       "level": 50
+      },
+      {
+       "code": "NP0207",
+       "level": 50
+      },
+      {
+       "code": "NP0209",
+       "level": 50
+      },
+      {
+       "code": "NP0211",
+       "level": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024104,
+   "group": "nemesis:7014",
+   "bossName": "무도회 게스트",
+   "mode": "nemesis",
+   "zoneId": 70241,
+   "order": 4,
+   "nameKey": "contents_nemesis_np6020_zone_01",
+   "nameTemplate": {
+    "ko": "Overture",
+    "en": "Overture"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024104,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6020",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6020",
+       "level": 60
+      },
+      {
+       "code": "NP0110",
+       "level": 60
+      },
+      {
+       "code": "NP0111",
+       "level": 60
+      },
+      {
+       "code": "NP0112",
+       "level": 60
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bossCode": "NP6022",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6022",
+       "level": 60
+      },
+      {
+       "code": "NP0307",
+       "level": 60
+      },
+      {
+       "code": "NP0307",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bossCode": "NP6021",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6021",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0211",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024105,
+   "group": "nemesis:7014",
+   "bossName": "무도회 게스트",
+   "mode": "nemesis",
+   "zoneId": 70241,
+   "order": 5,
+   "nameKey": "contents_nemesis_np6020_zone_01",
+   "nameTemplate": {
+    "ko": "Overture",
+    "en": "Overture"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024105,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6020",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6020",
+       "level": 65
+      },
+      {
+       "code": "NP0110",
+       "level": 65
+      },
+      {
+       "code": "NP0111",
+       "level": 65
+      },
+      {
+       "code": "NP0112",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bossCode": "NP6022",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6022",
+       "level": 65
+      },
+      {
+       "code": "NP0307",
+       "level": 65
+      },
+      {
+       "code": "NP0307",
+       "level": 65
+      },
+      {
+       "code": "NP0311",
+       "level": 65
+      },
+      {
+       "code": "NP0311",
+       "level": 65
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bossCode": "NP6021",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6021",
+       "level": 65
+      },
+      {
+       "code": "NP0207",
+       "level": 65
+      },
+      {
+       "code": "NP0209",
+       "level": 65
+      },
+      {
+       "code": "NP0211",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024201,
+   "group": "nemesis:7014",
+   "bossName": "안나",
+   "mode": "nemesis",
+   "zoneId": 70242,
+   "order": 1,
+   "nameKey": "contents_nemesis_np6020_zone_02",
+   "nameTemplate": {
+    "ko": "Intermission",
+    "en": "Intermission"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024201,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6024",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6024",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024202,
+   "group": "nemesis:7014",
+   "bossName": "안나",
+   "mode": "nemesis",
+   "zoneId": 70242,
+   "order": 2,
+   "nameKey": "contents_nemesis_np6020_zone_02",
+   "nameTemplate": {
+    "ko": "Intermission",
+    "en": "Intermission"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024202,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6024",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6024",
+       "level": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024203,
+   "group": "nemesis:7014",
+   "bossName": "안나",
+   "mode": "nemesis",
+   "zoneId": 70242,
+   "order": 3,
+   "nameKey": "contents_nemesis_np6020_zone_02",
+   "nameTemplate": {
+    "ko": "Intermission",
+    "en": "Intermission"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024203,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6024",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6024",
+       "level": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024204,
+   "group": "nemesis:7014",
+   "bossName": "안나",
+   "mode": "nemesis",
+   "zoneId": 70242,
+   "order": 4,
+   "nameKey": "contents_nemesis_np6020_zone_02",
+   "nameTemplate": {
+    "ko": "Intermission",
+    "en": "Intermission"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024204,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6024",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6024",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024205,
+   "group": "nemesis:7014",
+   "bossName": "안나",
+   "mode": "nemesis",
+   "zoneId": 70242,
+   "order": 5,
+   "nameKey": "contents_nemesis_np6020_zone_02",
+   "nameTemplate": {
+    "ko": "Intermission",
+    "en": "Intermission"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024205,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6024",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6024",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024301,
+   "group": "nemesis:7014",
+   "bossName": "마리",
+   "mode": "nemesis",
+   "zoneId": 70243,
+   "order": 1,
+   "nameKey": "contents_nemesis_np6020_zone_03",
+   "nameTemplate": {
+    "ko": "Finale",
+    "en": "Finale"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_03",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024301,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6023",
+     "bgm": "bgm_battle_012",
+     "enemies": [
+      {
+       "code": "NP6023",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024302,
+   "group": "nemesis:7014",
+   "bossName": "마리",
+   "mode": "nemesis",
+   "zoneId": 70243,
+   "order": 2,
+   "nameKey": "contents_nemesis_np6020_zone_03",
+   "nameTemplate": {
+    "ko": "Finale",
+    "en": "Finale"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_03",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024302,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6023",
+     "bgm": "bgm_battle_012",
+     "enemies": [
+      {
+       "code": "NP6023",
+       "level": 45
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024303,
+   "group": "nemesis:7014",
+   "bossName": "마리",
+   "mode": "nemesis",
+   "zoneId": 70243,
+   "order": 3,
+   "nameKey": "contents_nemesis_np6020_zone_03",
+   "nameTemplate": {
+    "ko": "Finale",
+    "en": "Finale"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_03",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024303,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6023",
+     "bgm": "bgm_battle_012",
+     "enemies": [
+      {
+       "code": "NP6023",
+       "level": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024304,
+   "group": "nemesis:7014",
+   "bossName": "마리",
+   "mode": "nemesis",
+   "zoneId": 70243,
+   "order": 4,
+   "nameKey": "contents_nemesis_np6020_zone_03",
+   "nameTemplate": {
+    "ko": "Finale",
+    "en": "Finale"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_03",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024304,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6023",
+     "bgm": "bgm_battle_012",
+     "enemies": [
+      {
+       "code": "NP6023",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024305,
+   "group": "nemesis:7014",
+   "bossName": "마리",
+   "mode": "nemesis",
+   "zoneId": 70243,
+   "order": 5,
+   "nameKey": "contents_nemesis_np6020_zone_03",
+   "nameTemplate": {
+    "ko": "Finale",
+    "en": "Finale"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_03",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024305,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6023",
+     "bgm": "bgm_battle_012",
+     "enemies": [
+      {
+       "code": "NP6023",
+       "level": 65
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 10004201,
    "group": "raid",
    "bossName": "메이드장(수영복)",
@@ -65103,7 +66785,7 @@
    "nameKey": "contents_stage_name_event_raid_1004",
    "nameTemplate": {
     "ko": "메이드장 토벌전(?)",
-    "en": null
+    "en": "Head Maid Raid Battle (?)"
    },
    "weakAttribute": 4,
    "background": "Battle_Field_Beach_03_1",

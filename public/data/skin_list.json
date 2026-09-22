@@ -95,8 +95,8 @@
     ]
    },
    "bytes": {
-    "google": 10599972,
-    "onestore": 10577018
+    "google": 10574884,
+    "onestore": 10551888
    }
   },
   {
@@ -118,7 +118,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 8313388
+    "onestore": 8313895
    }
   },
   {
@@ -165,8 +165,8 @@
     ]
    },
    "bytes": {
-    "google": 7891829,
-    "onestore": 7913574
+    "google": 7891323,
+    "onestore": 7913068
    }
   },
   {
@@ -188,7 +188,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 10629410
+    "onestore": 10611059
    }
   },
   {
@@ -320,8 +320,8 @@
     "added": []
    },
    "bytes": {
-    "google": 6032229,
-    "onestore": 6159867
+    "google": 6031126,
+    "onestore": 6160192
    }
   },
   {
@@ -341,7 +341,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 8811269
+    "onestore": 8783255
    }
   },
   {
@@ -397,8 +397,8 @@
     ]
    },
    "bytes": {
-    "google": 10753948,
-    "onestore": 10748523
+    "google": 10761165,
+    "onestore": 10752478
    }
   },
   {
@@ -439,8 +439,8 @@
     "added": []
    },
    "bytes": {
-    "google": 10455583,
-    "onestore": 10464799
+    "google": 10455080,
+    "onestore": 10464296
    }
   },
   {
@@ -483,8 +483,8 @@
     ]
    },
    "bytes": {
-    "google": 10083122,
-    "onestore": 9977610
+    "google": 10108510,
+    "onestore": 10003394
    }
   },
   {
@@ -572,6 +572,44 @@
    "bytes": {
     "google": 9416617,
     "onestore": 9305695
+   }
+  },
+  {
+   "key": "af_ch0052",
+   "kind": "affection",
+   "character": "CH0052",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 31,
+   "faces": 1,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0052.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "body_upper",
+     "oppai"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 14425278,
+    "onestore": 14422654
    }
   },
   {
@@ -705,8 +743,8 @@
     ]
    },
    "bytes": {
-    "google": 6136202,
-    "onestore": 6142313
+    "google": 6145231,
+    "onestore": 6149631
    }
   },
   {
@@ -796,8 +834,8 @@
     "added": []
    },
    "bytes": {
-    "google": 7007119,
-    "onestore": 6971025
+    "google": 7006610,
+    "onestore": 6970516
    }
   },
   {
@@ -819,7 +857,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 9810566
+    "onestore": 9741232
    }
   },
   {
@@ -863,8 +901,8 @@
     ]
    },
    "bytes": {
-    "google": 9020931,
-    "onestore": 8988006
+    "google": 9020422,
+    "onestore": 8987497
    }
   },
   {
@@ -972,8 +1010,8 @@
     "added": []
    },
    "bytes": {
-    "google": 9552545,
-    "onestore": 9549369
+    "google": 9552036,
+    "onestore": 9548860
    }
   },
   {
@@ -1014,8 +1052,8 @@
     "added": []
    },
    "bytes": {
-    "google": 7197299,
-    "onestore": 7218408
+    "google": 7196790,
+    "onestore": 7217899
    }
   },
   {
@@ -1061,8 +1099,8 @@
     ]
    },
    "bytes": {
-    "google": 6958223,
-    "onestore": 6957532
+    "google": 6957723,
+    "onestore": 6957032
    }
   },
   {
@@ -1098,8 +1136,8 @@
     "added": []
    },
    "bytes": {
-    "google": 6463950,
-    "onestore": 6463426
+    "google": 6463450,
+    "onestore": 6462926
    }
   },
   {
@@ -1140,8 +1178,8 @@
     "added": []
    },
    "bytes": {
-    "google": 13659898,
-    "onestore": 13660098
+    "google": 13659518,
+    "onestore": 13659718
    }
   },
   {
@@ -1227,8 +1265,8 @@
     "added": []
    },
    "bytes": {
-    "google": 9461294,
-    "onestore": 11282736
+    "google": 9460787,
+    "onestore": 11282229
    }
   },
   {
@@ -1287,8 +1325,8 @@
     ]
    },
    "bytes": {
-    "google": 13924858,
-    "onestore": 13793274
+    "google": 13855117,
+    "onestore": 13722256
    }
   },
   {
@@ -1337,8 +1375,48 @@
     "added": []
    },
    "bytes": {
-    "google": 11669132,
-    "onestore": 11728558
+    "google": 11668800,
+    "onestore": 11728226
+   }
+  },
+  {
+   "key": "ds_ch0052",
+   "kind": "desire",
+   "character": "CH0052",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 34,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0052.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "body_suit",
+     "oppai_down",
+     "oppai_up"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 14872677,
+    "onestore": 14833955
    }
   },
   {
@@ -1361,7 +1439,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 9339078
+    "onestore": 9338569
    }
   },
   {
@@ -1425,8 +1503,8 @@
     ]
    },
    "bytes": {
-    "google": 13527199,
-    "onestore": 13745822
+    "google": 13527201,
+    "onestore": 13745823
    }
   },
   {
@@ -1479,8 +1557,8 @@
     ]
    },
    "bytes": {
-    "google": 6548958,
-    "onestore": 6670821
+    "google": 6534892,
+    "onestore": 6654946
    }
   },
   {
@@ -1525,8 +1603,8 @@
     ]
    },
    "bytes": {
-    "google": 9487466,
-    "onestore": 9058501
+    "google": 9455799,
+    "onestore": 9033414
    }
   },
   {
@@ -1569,8 +1647,8 @@
     "added": []
    },
    "bytes": {
-    "google": 8889927,
-    "onestore": 8874466
+    "google": 8848674,
+    "onestore": 8834181
    }
   },
   {
@@ -1790,7 +1868,7 @@
     ]
    },
    "bytes": {
-    "google": 3377159,
+    "google": 3377157,
     "onestore": 3264089
    }
   },
@@ -1909,7 +1987,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3292070
+    "onestore": 3292068
    }
   },
   {
@@ -2060,9 +2138,10 @@
    "stores": [
     "onestore"
    ],
-   "animations": 19,
+   "animations": 20,
    "faces": 16,
    "bodyGroups": [
+    "",
     "00"
    ],
    "hasBg": false,
@@ -2070,7 +2149,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4571635
+    "onestore": 4570001
    }
   },
   {
@@ -2572,7 +2651,7 @@
    "stores": [
     "onestore"
    ],
-   "animations": 19,
+   "animations": 20,
    "faces": 13,
    "bodyGroups": [
     "",
@@ -2583,7 +2662,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 5130734
+    "onestore": 5251733
    }
   },
   {
@@ -2822,8 +2901,8 @@
    "stores": [
     "onestore"
    ],
-   "animations": 3,
-   "faces": 2,
+   "animations": 4,
+   "faces": 3,
    "bodyGroups": [
     "00"
    ],
@@ -2832,7 +2911,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3046804
+    "onestore": 3077011
    }
   },
   {
@@ -2933,7 +3012,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3606784
+    "onestore": 3606783
    }
   },
   {
@@ -3309,8 +3388,8 @@
    "stores": [
     "onestore"
    ],
-   "animations": 8,
-   "faces": 0,
+   "animations": 21,
+   "faces": 13,
    "bodyGroups": [
     ""
    ],
@@ -3319,7 +3398,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4385582
+    "onestore": 4574796
    }
   },
   {
@@ -3359,7 +3438,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3030871
+    "onestore": 3031000
    }
   },
   {
@@ -3379,7 +3458,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3887984
+    "onestore": 3888113
    }
   },
   {
@@ -3603,8 +3682,8 @@
     ]
    },
    "bytes": {
-    "google": 5069354,
-    "onestore": 4925615
+    "google": 5069483,
+    "onestore": 4925744
    }
   }
  ]

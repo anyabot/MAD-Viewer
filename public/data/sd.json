@@ -32099,6 +32099,176 @@
     ]
    }
   },
+  "CH0052": {
+   "code": "CH0052",
+   "name": "Rana",
+   "archive": "sd_ch0052",
+   "skel": "SD_CH0052.skel",
+   "atlas": "SD_CH0052.atlas",
+   "textures": [
+    "SD_CH0052.png"
+   ],
+   "animations": [
+    "00_basic",
+    "00_common",
+    "00_common_change",
+    "00_damage",
+    "00_damage_in",
+    "00_damage_loop",
+    "00_damage_out",
+    "00_death",
+    "00_idle",
+    "00_knockdown",
+    "00_knockdown_in",
+    "00_knockdown_loop",
+    "00_knockdown_out",
+    "00_lose",
+    "00_lose_loop",
+    "00_prepare",
+    "00_run",
+    "00_skill_01",
+    "00_skill_02",
+    "00_skill_02_change",
+    "00_stun",
+    "00_ulti",
+    "00_ulti_cutin",
+    "00_win",
+    "00_win_levelup",
+    "00_win_loop"
+   ],
+   "bounds": {
+    "x": -647.45,
+    "y": -127.8428,
+    "width": 882.0978,
+    "height": 910.8903
+   },
+   "dataScale": 0.009999999776482582,
+   "ppu": 55.0,
+   "defaultAnimation": "00_idle",
+   "loop": true,
+   "cutin": {
+    "animation": "00_ulti_cutin",
+    "duration": 8.0,
+    "loop": false,
+    "camera": [
+     {
+      "name": "StageCamera",
+      "start": 0.0,
+      "duration": 0.23333333333333334,
+      "timeScale": 1.0
+     },
+     {
+      "name": "CharacterCamera",
+      "start": 0.23333333333333334,
+      "duration": 7.699999999999999,
+      "timeScale": 1.0
+     },
+     {
+      "name": "StageCamera",
+      "start": 7.933333333333333,
+      "duration": 0.06666666666666701,
+      "timeScale": 1.0
+     }
+    ],
+    "audio": [
+     {
+      "name": "SFX_CH0052_Ultimate_Skill",
+      "start": 0.23333333333333334,
+      "duration": 7.716666666666667,
+      "timeScale": 1.0
+     }
+    ],
+    "activations": [],
+    "effects": [],
+    "shakes": [],
+    "tracks": [
+     {
+      "name": "SpineAnimationStateTrack",
+      "parent": 1692109683694749703,
+      "clips": [
+       {
+        "name": "00_ulti_cutin",
+        "start": 0.0,
+        "duration": 8.0,
+        "timeScale": 1.0,
+        "asset": "SpineAnimationStateClip"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "imation_TrackAnimation_Track",
+      "parent": 1692109683694749703,
+      "clips": [],
+      "infiniteClip": "Recorded"
+     },
+     {
+      "name": "Cinemachine_Track",
+      "parent": 1692109683694749703,
+      "clips": [
+       {
+        "name": "StageCamera",
+        "start": 0.0,
+        "duration": 0.23333333333333334,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot"
+       },
+       {
+        "name": "CharacterCamera",
+        "start": 0.23333333333333334,
+        "duration": 7.699999999999999,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot"
+       },
+       {
+        "name": "StageCamera",
+        "start": 7.933333333333333,
+        "duration": 0.06666666666666701,
+        "timeScale": 1.0,
+        "asset": "CinemachineShot(Clone)(Clone)"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "CharacterCameraAnimationTrack",
+      "parent": 1692109683694749703,
+      "clips": [],
+      "infiniteClip": "Recorded (1)"
+     },
+     {
+      "name": "Audio Track",
+      "parent": 1692109683694749703,
+      "clips": [
+       {
+        "name": "SFX_CH0052_Ultimate_Skill",
+        "start": 0.23333333333333334,
+        "duration": 7.716666666666667,
+        "timeScale": 1.0,
+        "asset": "AudioPlayableAsset"
+       }
+      ],
+      "infiniteClip": null
+     },
+     {
+      "name": "Random Voice Marker Track",
+      "parent": 1692109683694749703,
+      "clips": [],
+      "infiniteClip": null
+     }
+    ],
+    "voiceMarkers": [
+     {
+      "time": 0.23333333333333334,
+      "fast": false
+     },
+     {
+      "time": 0.23333333333333334,
+      "fast": true
+     }
+    ]
+   }
+  },
   "CH0053": {
    "code": "CH0053",
    "name": "Gin",
@@ -39581,7 +39751,7 @@
   },
   "CH0059": {
    "code": "CH0059",
-   "name": "Casey",
+   "name": "Spica",
    "archive": "sd_ch0059",
    "skel": "SD_CH0059.skel",
    "atlas": "SD_CH0059.atlas",

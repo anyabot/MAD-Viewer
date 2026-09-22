@@ -22454,6 +22454,923 @@
         ]
       }
     },
+    "af_ch0052": {
+      "story": {
+        "script": "ch0052_05_affection_story",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "affection"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Unskippable"
+            }
+          },
+          {
+            "class": "NaniSummary",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 3,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_038_lp",
+              "IntroBgmPath": "bgm_romance_038_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 6,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/enter"
+            },
+            "clip": "basic/00_enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 7,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 9,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0001"
+            },
+            "clip": "asmr/ani_0001"
+          },
+          {
+            "class": "PrintText",
+            "line": 10,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "퓨우... 음, 므믐... 으므므으...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 12,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0002"
+            },
+            "clip": "asmr/ani_0002"
+          },
+          {
+            "class": "PrintText",
+            "line": 13,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므힛... 더는 못 머거... 히힛...!",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 15,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0003"
+            },
+            "clip": "asmr/ani_0003"
+          },
+          {
+            "class": "PrintText",
+            "line": 16,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "퓨우... 믓! ...으므... 므으음...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0004"
+            },
+            "clip": "asmr/ani_0004"
+          },
+          {
+            "class": "PrintText",
+            "line": 19,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...가지 마라아, 권속이여어...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 21,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0005"
+            },
+            "clip": "asmr/ani_0005"
+          },
+          {
+            "class": "PrintText",
+            "line": 22,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "평생 옆에 있겠다고... 약속 했지 안느냐...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 24,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0006"
+            },
+            "clip": "asmr/ani_0006"
+          },
+          {
+            "class": "PrintText",
+            "line": 25,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "갈 거며는... 푸딩 천 개를 노코 가라는 거다... 음냐아...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 27,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0007"
+            },
+            "clip": "asmr/ani_0007"
+          },
+          {
+            "class": "PrintText",
+            "line": 28,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...으므믑, 브븟... 답답해애... 이제 박스는 시러어...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0008"
+            },
+            "clip": "asmr/ani_0008"
+          },
+          {
+            "class": "PrintText",
+            "line": 31,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......므응?",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 33,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0009"
+            },
+            "clip": "asmr/ani_0009"
+          },
+          {
+            "class": "PrintText",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...에헤헤, 나의 권속이구나아.",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 36,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0010"
+            },
+            "clip": "asmr/ani_0010"
+          },
+          {
+            "class": "PrintText",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "역시이... 꿈이었떤 거다아...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 39,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0011"
+            },
+            "clip": "asmr/ani_0011"
+          },
+          {
+            "class": "PrintText",
+            "line": 40,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "네가 나를 두고 갈 리 없으니까아... 히힛...",
+            "author": "rana"
+          },
+          {
+            "class": "ShowUI",
+            "line": 42,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 44,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "AffectionEndingCommand",
+            "line": 46,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 48,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "view": {
+        "script": "ch0052_05_affection_view",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "affection"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_038_lp",
+              "IntroBgmPath": "bgm_romance_038_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/enter"
+            },
+            "clip": "basic/00_enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "DesireAffectionViewMenuPanel",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 7,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0001"
+            },
+            "clip": "asmr/ani_0001"
+          },
+          {
+            "class": "PrintText",
+            "line": 8,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "퓨우... 음, 므믐... 으므므으...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 10,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0002"
+            },
+            "clip": "asmr/ani_0002"
+          },
+          {
+            "class": "PrintText",
+            "line": 11,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므힛... 더는 못 머거... 히힛...!",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 13,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0003"
+            },
+            "clip": "asmr/ani_0003"
+          },
+          {
+            "class": "PrintText",
+            "line": 14,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "퓨우... 믓! ...으므... 므으음...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 16,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0004"
+            },
+            "clip": "asmr/ani_0004"
+          },
+          {
+            "class": "PrintText",
+            "line": 17,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...가지 마라아, 권속이여어...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 19,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0005"
+            },
+            "clip": "asmr/ani_0005"
+          },
+          {
+            "class": "PrintText",
+            "line": 20,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "평생 옆에 있겠다고... 약속 했지 안느냐...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 22,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0006"
+            },
+            "clip": "asmr/ani_0006"
+          },
+          {
+            "class": "PrintText",
+            "line": 23,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "갈 거며는... 푸딩 천 개를 노코 가라는 거다... 음냐아...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 25,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0007"
+            },
+            "clip": "asmr/ani_0007"
+          },
+          {
+            "class": "PrintText",
+            "line": 26,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...으므믑, 브븟... 답답해애... 이제 박스는 시러어...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 28,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0008"
+            },
+            "clip": "asmr/ani_0008"
+          },
+          {
+            "class": "PrintText",
+            "line": 29,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......므응?",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 31,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0009"
+            },
+            "clip": "asmr/ani_0009"
+          },
+          {
+            "class": "PrintText",
+            "line": 32,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...에헤헤, 나의 권속이구나아.",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 34,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0010"
+            },
+            "clip": "asmr/ani_0010"
+          },
+          {
+            "class": "PrintText",
+            "line": 35,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "역시이... 꿈이었떤 거다아...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 37,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0011"
+            },
+            "clip": "asmr/ani_0011"
+          },
+          {
+            "class": "PrintText",
+            "line": 38,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "네가 나를 두고 갈 리 없으니까아... 히힛...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 40,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0012"
+            },
+            "clip": "asmr/ani_0012"
+          },
+          {
+            "class": "PrintText",
+            "line": 41,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "천 년 전에도... 너는 항상... 내 곁에 이썼던 거다...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 43,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0013"
+            },
+            "clip": "asmr/ani_0013"
+          },
+          {
+            "class": "PrintText",
+            "line": 44,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...므응? 그런 적 업따고오..?",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 46,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0014"
+            },
+            "clip": "asmr/ani_0014"
+          },
+          {
+            "class": "PrintText",
+            "line": 47,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "상관 업는 거다아...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 49,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0015"
+            },
+            "clip": "asmr/ani_0015"
+          },
+          {
+            "class": "PrintText",
+            "line": 50,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "네가 잊어써도... 내가 기억하니까...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 52,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0016"
+            },
+            "clip": "asmr/ani_0016"
+          },
+          {
+            "class": "PrintText",
+            "line": 53,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그냥... 이 몸 곁에만 잇쓰라는 거다...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 55,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0017"
+            },
+            "clip": "asmr/ani_0017"
+          },
+          {
+            "class": "PrintText",
+            "line": 56,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "혼자 있는 건 실타앙...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 58,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0018"
+            },
+            "clip": "asmr/ani_0018"
+          },
+          {
+            "class": "PrintText",
+            "line": 59,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이제 네 말두 잘 들을 테니까아...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 61,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0019"
+            },
+            "clip": "asmr/ani_0019"
+          },
+          {
+            "class": "PrintText",
+            "line": 62,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이 몸을 두고 가지 말라는 거다...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 64,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0020"
+            },
+            "clip": "asmr/ani_0020"
+          },
+          {
+            "class": "PrintText",
+            "line": 65,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...므히힛, 이제야 안심이 되는 거당...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 67,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0021"
+            },
+            "clip": "asmr/ani_0021"
+          },
+          {
+            "class": "PrintText",
+            "line": 68,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후아아암~ 졸려어...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 70,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0022"
+            },
+            "clip": "asmr/ani_0022"
+          },
+          {
+            "class": "PrintText",
+            "line": 71,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "잘 자라는 거다... 나의 권속이여...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 73,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0023"
+            },
+            "clip": "asmr/ani_0023"
+          },
+          {
+            "class": "PrintText",
+            "line": 74,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이 몸이 깨어나면... 그때도...",
+            "author": "rana"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 76,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.asmr/ani_0024"
+            },
+            "clip": "asmr/ani_0024"
+          },
+          {
+            "class": "PrintText",
+            "line": 77,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "옆에 잇써.. 줘야하는... 거다아...?",
+            "author": "rana"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 79,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "AffectionEndingCommand",
+            "line": 81,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 83,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      }
+    },
     "af_ch0057": {
       "story": {
         "script": "ch0057_05_affection_story",
@@ -50555,6 +51472,3913 @@
           {
             "class": "Return",
             "line": 197,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      }
+    },
+    "ds_ch0052": {
+      "story": {
+        "script": "ch0052_03_desire_story",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "desire"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Unskippable"
+            }
+          },
+          {
+            "class": "NaniSummary",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 3,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_035_lp",
+              "IntroBgmPath": "bgm_romance_035_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/enter"
+            },
+            "clip": "10_basic/10_enter"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 7,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 9,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 11,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 13,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/touch"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "PrintText",
+            "line": 14,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "나, 나의 권속이여어... 도와달―",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_1"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 15,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 16,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "PrintText",
+            "line": 19,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": "",
+              "Wait": "false"
+            },
+            "text": "...크큭, 역시 나의 권속이구나. 이렇게 빨리 구하러 오다니.",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_2"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 19,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "Wait": "false",
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 20,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 21,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Offset": "-3,1",
+              "Zoom": "0.5",
+              "Duration": "1"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 22,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 23,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Offset": "4,-1",
+              "Duration": "8",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 24,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 25,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 26,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "4"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 28,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "PrintText",
+            "line": 29,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": "",
+              "Wait": "false"
+            },
+            "text": "자, 어서 이 가증스러운 봉인을 풀고 이 몸을 여기서 꺼내다오!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_3"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 29,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "Wait": "false",
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 30,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 31,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Offset": "0,0",
+              "Zoom": "0",
+              "Duration": "1.5"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 32,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 33,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "AddChoice",
+            "line": 36,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ChoiceSummary": ""
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 37,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Await",
+            "line": 39,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 40,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Offset": "-4,2",
+              "Zoom": "0.4",
+              "Duration": "0.5",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 41,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므음. 그, 그게에...",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_4"
+          },
+          {
+            "class": "Group",
+            "line": 42,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 43,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 44,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_end",
+              "Wait": "false"
+            },
+            "clip": "10_reaction/10_B2_end"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 45,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "Await",
+            "line": 47,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 48,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "자, 잠깐만 숨어 있으려고 했단 말이다. 근데...",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_5"
+          },
+          {
+            "class": "Group",
+            "line": 49,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 50,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_end"
+            },
+            "clip": "10_reaction/10_B2_end"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 51,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 52,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_end"
+            },
+            "clip": "10_reaction/10_B2_end"
+          },
+          {
+            "class": "Await",
+            "line": 54,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 55,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "나오려고 하니까, 몸이 꼼짝도 하지 않는다는 거다...",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_6"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 55,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 56,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 57,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_idle",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_B2_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 58,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 59,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_end"
+            },
+            "clip": "10_reaction/10_B2_end"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 60,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "2"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 62,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "PrintText",
+            "line": 63,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": "",
+              "Wait": "false"
+            },
+            "text": "히잉... 원래는 이 몸에게 딱 맞는 크기였는데...",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_7"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 63,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "Wait": "false",
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 64,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Offset": "-2,-2",
+              "Duration": "7",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 66,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 67,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 68,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 69,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "Await",
+            "line": 71,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 72,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...므음? 잠깐, 그 말은... 이 몸이 성장했다는 건가?!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_8"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 72,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 73,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 74,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "2"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 75,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.basic/touch",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 76,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "5"
+            }
+          },
+          {
+            "class": "Await",
+            "line": 78,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 79,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "큭, 크큭! 태초의 종말조차 이 몸의 성장을 억제할 순 없었다는 건가...!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_9"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 79,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 80,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 81,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Offset": "-4,2",
+              "Duration": "6",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 82,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 83,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/A3",
+              "Wait": "false"
+            },
+            "clip": "10_reaction/10_A3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 84,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "7"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 85,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 86,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "AddChoice",
+            "line": 88,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ChoiceSummary": ""
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 89,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 91,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Offset": "0,0",
+              "Zoom": "0",
+              "Duration": "4",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 92,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "Await",
+            "line": 93,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 94,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......설마 봉인으로 약해진 이 몸을 두, 두고 갈 생각은 아니겠지?",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_10"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 94,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 95,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 96,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 97,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 98,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 99,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 100,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 101,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 102,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 103,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 104,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "AddChoice",
+            "line": 106,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ChoiceSummary": ""
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 107,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Await",
+            "line": 109,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 110,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "크큭... 감사를 표하지 나의 권속이―",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_11"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 110,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 111,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 112,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "2"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 113,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/A4",
+              "Wait": "false"
+            },
+            "clip": "10_reaction/10_A4"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 114,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 115,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므으응!! 자, 잠깐! 아푸다는 거닷!!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_12"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 116,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/T1_b",
+              "Track": "9",
+              "Wait": "false"
+            },
+            "clip": "30_overlay/30_T1_b"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 117,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/arm_up",
+              "Wait": "false"
+            },
+            "clip": "30_overlay/30_arm_up"
+          },
+          {
+            "class": "PrintText",
+            "line": 119,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......크윽, 이 봉인은 평범한 방법으로는 풀 수 없는 건가.",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_13"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 121,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 122,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Offset": "-4,2",
+              "Zoom": "0.6",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "Await",
+            "line": 123,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 124,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/T1"
+            },
+            "clip": "10_reaction/10_T1"
+          },
+          {
+            "class": "Group",
+            "line": 125,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 126,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1.8"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 127,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...앗, 맞다! 몸이 미끌미끌해지는 약!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_14"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 127,
+            "inline": 1,
+            "indent": 2,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 128,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 129,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "6.4"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 130,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Offset": "0,0",
+              "Zoom": "0",
+              "Duration": "2",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 131,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "나의 권속이여, 이 몸의 외투다! 외투 안을 뒤져보라는 거다!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_15"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 131,
+            "inline": 1,
+            "indent": 2,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Await",
+            "line": 133,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 134,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "크큭, 이 몸은 이런 비상 상황도 완벽하게 대비해뒀다는 거다...!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_16"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 134,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 135,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 136,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 137,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/T1"
+            },
+            "clip": "10_reaction/10_T1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 138,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/T1",
+              "Track": "31",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_T1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 139,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/arm_up",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_arm_up"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 141,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 142,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "AddChoice",
+            "line": 144,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ChoiceSummary": ""
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 145,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 147,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 148,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Offset": "5,-3",
+              "Zoom": "0.6",
+              "Duration": "0.5"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 149,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "AddChoice",
+            "line": 151,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ChoiceSummary": ""
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 152,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Await",
+            "line": 154,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 155,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "자아, 나의 권속이여. 그걸 이 몸에게― 므앗?! 자, 잠깐!!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_story_17"
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 156,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Offset": "0,0",
+              "Zoom": "0",
+              "Duration": "3"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 157,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 158,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 159,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/H1",
+              "Track": "31",
+              "Wait": "false"
+            },
+            "clip": "10_reaction/10_H1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 160,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 161,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Offset": "0,1",
+              "Zoom": "0.3",
+              "Duration": "0.1",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 162,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.3"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 163,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Duration": "0.5",
+              "Wait": "false",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 164,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "2"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 165,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireEndingCommand",
+            "line": 167,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Skip",
+            "line": 169,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Enable": "false"
+            }
+          },
+          {
+            "class": "End",
+            "line": 171,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "view": {
+        "script": "ch0052_03_desire_view",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "desire"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_035_lp",
+              "IntroBgmPath": "bgm_romance_035_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/enter"
+            },
+            "clip": "10_basic/10_enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "DesireAffectionViewMenuPanel",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0",
+              "IdAndAppearance": "DesireAffectionSubtitle",
+              "MakeDefault": "true"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "phase_set",
+            "line": 7,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 8,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "x=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 9,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 10,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "n=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 11,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "yy=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 12,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "zz=0"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "phase1",
+            "line": 14,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 16,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 20,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireOnlookTriggerCommand",
+            "line": 22,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/wait",
+              "Id": "rana",
+              "Threshold": "10"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 24,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x=0",
+              "Appearance": "reaction/A1",
+              "IdAndBoundingBox": "rana.A1"
+            },
+            "clip": "10_reaction/10_A1",
+            "box": "bd_A1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 25,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "25f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 26,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므으, 뭐 하는 거냐 나의 권속이여어!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_1"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 27,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 28,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "n=n+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x=1",
+              "Appearance": "reaction/A1",
+              "IdAndBoundingBox": "rana.A1"
+            },
+            "clip": "10_reaction/10_A1",
+            "box": "bd_A1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 31,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "25f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 32,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "장난치지 말고 빨리 꺼내달라는 거다아!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_2"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 33,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "n=n+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 36,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x>=2",
+              "Appearance": "reaction/A1",
+              "IdAndBoundingBox": "rana.A1"
+            },
+            "clip": "10_reaction/10_A1",
+            "box": "bd_A1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "25f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 38,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므으으...! 그만하라고 이 바부팅아아!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_3"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 39,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "n=n+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 41,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=0",
+              "Appearance": "reaction/A2",
+              "IdAndBoundingBox": "rana.A2"
+            },
+            "clip": "10_reaction/10_A2",
+            "box": "bd_A2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 42,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "10f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 43,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므항?! 뭐, 뭐 하는 거냐하핫!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_4"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 44,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=y+1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 45,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "n=n+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 47,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=1",
+              "Appearance": "reaction/A2",
+              "IdAndBoundingBox": "rana.A2"
+            },
+            "clip": "10_reaction/10_A2",
+            "box": "bd_A2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 48,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "10f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 49,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "냐, 냐의 권속히혀! 그마내애헷!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_5"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 50,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "n=n+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 52,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "reaction/A3",
+              "IdAndBoundingBox": "rana.A3"
+            },
+            "clip": "10_reaction/10_A3",
+            "box": "bd_A3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 53,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "6f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 54,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므햑! 거, 거긴 진짜 안 댄다는 거댜아하핫!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_8"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 55,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "n=n+1"
+            }
+          },
+          {
+            "class": "DesireDragCommand",
+            "line": 57,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana.B2",
+              "Threshold": "0"
+            },
+            "box": "bd_B2"
+          },
+          {
+            "class": "LoopCommand",
+            "line": 58,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Count": "1",
+              "Id": "drag",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 60,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_18_2"
+            },
+            "voice": "voc_ch0052_desire_enjoy_18_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 61,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_idle",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_B2_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 62,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0"
+            }
+          },
+          {
+            "class": "DesireDragUpdateCommand",
+            "line": 63,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireDragBoneCommand",
+            "line": 64,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndBone": "rana.eye_patch",
+              "Position": "drag.position",
+              "Range": "2.78",
+              "Center": "-0.036,0.064",
+              "Direction": "16.444",
+              "Angle": "92.028",
+              "Spring": "500",
+              "Damping": "0.5"
+            }
+          },
+          {
+            "class": "DesireDragReleaseCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "LoopCommand",
+            "line": 66,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Id": "drag",
+              "Active": "false"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 68,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_17_3"
+            },
+            "voice": "voc_ch0052_desire_enjoy_17_3"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 69,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_end"
+            },
+            "clip": "10_reaction/10_B2_end"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 71,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana.B3"
+            },
+            "box": "bd_B3"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 72,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_16_4"
+            },
+            "voice": "voc_ch0052_desire_enjoy_16_4"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 73,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B3_1",
+              "Track": "11",
+              "Wait": "true"
+            },
+            "clip": "10_reaction/10_B3_1"
+          },
+          {
+            "class": "Goto",
+            "line": 74,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase_box1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 76,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "n>=3",
+              "Appearance": "reaction/A4",
+              "Hold": "true",
+              "IdAndBoundingBox": "rana.A4"
+            },
+            "clip": "10_reaction/10_A4",
+            "box": "bd_A4"
+          },
+          {
+            "class": "Await",
+            "line": 78,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 79,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 80,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "16f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 81,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "크큭, 드디어 해방인가...",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_11_1"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 81,
+            "inline": 1,
+            "indent": 3,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 82,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 83,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "129f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 84,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므그그으응! 사, 살살 하라는 거다!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_11_2"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 84,
+            "inline": 1,
+            "indent": 3,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 85,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Goto",
+            "line": 87,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase2_set"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 89,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_box1",
+            "line": 91,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 92,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/idle_box",
+              "Track": "11",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_idle_box"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 93,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 95,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 97,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana.B3"
+            },
+            "box": "bd_B3"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 98,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_16_2"
+            },
+            "voice": "voc_ch0052_desire_enjoy_16_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 99,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana",
+              "Track": "11",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 101,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B3_2",
+              "Track": "12",
+              "Wait": "true"
+            },
+            "clip": "10_reaction/10_B3_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 102,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana",
+              "Track": "12",
+              "Duration": "0.5",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 104,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase1"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 106,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase2_set",
+            "line": 108,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 109,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "yy=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 110,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "zz=0"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 111,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/arm_up",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_arm_up"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 112,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/wait2"
+            },
+            "clip": "10_basic/10_wait2"
+          },
+          {
+            "class": "Label",
+            "label": "phase2",
+            "line": 114,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 115,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/arm_up",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_arm_up"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 116,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/idle2"
+            },
+            "clip": "10_basic/10_idle2"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 118,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 120,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireOnlookTriggerCommand",
+            "line": 122,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/wait2",
+              "Id": "rana",
+              "Threshold": "10"
+            },
+            "clip": "10_basic/10_wait2"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 124,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x=0",
+              "Appearance": "reaction/A1",
+              "IdAndBoundingBox": "rana.A1"
+            },
+            "clip": "10_reaction/10_A1",
+            "box": "bd_A1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 125,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "25f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 126,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므으, 뭐 하는 거냐 나의 권속이여어!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_1"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 127,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 129,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x=1",
+              "Appearance": "reaction/A1",
+              "IdAndBoundingBox": "rana.A1"
+            },
+            "clip": "10_reaction/10_A1",
+            "box": "bd_A1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 130,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "25f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 131,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "장난치지 말고 빨리 꺼내달라는 거다아!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_2"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 132,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 134,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x>=2",
+              "Appearance": "reaction/A1",
+              "IdAndBoundingBox": "rana.A1"
+            },
+            "clip": "10_reaction/10_A1",
+            "box": "bd_A1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 135,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "25f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 136,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므으으...! 그만하라고 이 바부팅아아!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_3"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 138,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "yy=0",
+              "Appearance": "reaction/A2_2",
+              "IdAndBoundingBox": "rana.A2"
+            },
+            "clip": "10_reaction/10_A2_2",
+            "box": "bd_A2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 139,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "10f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 140,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이 바부팅이힛! 두고 보라는 거댜핫!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_6"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 141,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "yy=yy+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 143,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "yy=1",
+              "Appearance": "reaction/A2_2",
+              "IdAndBoundingBox": "rana.A2"
+            },
+            "clip": "10_reaction/10_A2_2",
+            "box": "bd_A2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 144,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "10f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 145,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "거짓말! 거짓말이어써! 그러니꺄 그마내햇!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_7"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 147,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "zz=0",
+              "Appearance": "reaction/A3_2",
+              "IdAndBoundingBox": "rana.A3"
+            },
+            "clip": "10_reaction/10_A3_2",
+            "box": "bd_A3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 148,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "6f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 149,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하, 항보옥! 항복이햐는 거댜아핫!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_9"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 150,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "zz=zz+1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 152,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "zz=1",
+              "Appearance": "reaction/A3_2",
+              "IdAndBoundingBox": "rana.A3"
+            },
+            "clip": "10_reaction/10_A3_2",
+            "box": "bd_A3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 153,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "6f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 154,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므햣! 항복이햐고 해짜나! 잘못했따고오!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_10"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 156,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "reaction/B1_start",
+              "IdAndBoundingBox": "rana.B1"
+            },
+            "clip": "10_reaction/10_B1_start",
+            "box": "bd_B1"
+          },
+          {
+            "class": "Await",
+            "line": 157,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 158,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...응? 므아앗?! 뭐하는 거냐! 돌려줘라 이 몸의 예언서!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_12_1"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 158,
+            "inline": 1,
+            "indent": 2,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 159,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 160,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "0.3"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 161,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B1_idle"
+            },
+            "clip": "10_reaction/10_B1_idle"
+          },
+          {
+            "class": "PopupImage",
+            "line": 162,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "ImageId": "Popup_Ranabook"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 163,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "8"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 164,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Path": ".phase_book"
+            }
+          },
+          {
+            "class": "DesireDragCommand",
+            "line": 166,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana.B2",
+              "Threshold": "0"
+            },
+            "box": "bd_B2"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 167,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_18_2"
+            },
+            "voice": "voc_ch0052_desire_enjoy_18_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 169,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_idle",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_B2_idle"
+          },
+          {
+            "class": "DesireDragUpdateCommand",
+            "line": 170,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireDragBoneCommand",
+            "line": 171,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndBone": "rana.eye_patch",
+              "Position": "drag.position",
+              "Range": "2.78",
+              "Center": "-0.036,0.064",
+              "Direction": "16.444",
+              "Angle": "92.028",
+              "Spring": "500",
+              "Damping": "0.5"
+            }
+          },
+          {
+            "class": "DesireDragReleaseCommand",
+            "line": 172,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 173,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_idle",
+              "Wait": "false",
+              "Reset": "true"
+            },
+            "clip": "10_reaction/10_B2_idle"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 175,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_17_2"
+            },
+            "voice": "voc_ch0052_desire_enjoy_17_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 176,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B2_end"
+            },
+            "clip": "10_reaction/10_B2_end"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 178,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana.B3"
+            },
+            "box": "bd_B3"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 179,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_16_4"
+            },
+            "voice": "voc_ch0052_desire_enjoy_16_4"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 180,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/arm_up",
+              "Wait": "false",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_arm_up"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 181,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B3_3",
+              "Track": "11",
+              "Wait": "true"
+            },
+            "clip": "10_reaction/10_B3_3"
+          },
+          {
+            "class": "Goto",
+            "line": 182,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase_box2"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 184,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana.T1"
+            },
+            "box": "bd_T1"
+          },
+          {
+            "class": "Await",
+            "line": 185,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 186,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 187,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므응? 갑자기 뭐냐?",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_14_1"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 187,
+            "inline": 1,
+            "indent": 3,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 188,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "과연, '그거'인가! 역시 나의 권속이구나!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_14_2"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 188,
+            "inline": 1,
+            "indent": 3,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 189,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 190,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 191,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/T1"
+            },
+            "clip": "10_reaction/10_T1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 192,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/T1",
+              "Track": "32",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_T1"
+          },
+          {
+            "class": "Goto",
+            "line": 193,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase_H1"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 195,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_book",
+            "line": 197,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 198,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B1_idle"
+            },
+            "clip": "10_reaction/10_B1_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 199,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 200,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 202,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 203,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase_book2"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 205,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_book2",
+            "line": 207,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 208,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/idle2"
+            },
+            "clip": "10_basic/10_idle2"
+          },
+          {
+            "class": "PopupImage",
+            "line": 210,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0",
+              "Wait": "false",
+              "ImageId": "Popup_Ranabook"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 211,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B1_end"
+            },
+            "clip": "10_reaction/10_B1_end"
+          },
+          {
+            "class": "PrintText",
+            "line": 212,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므으응! 살살 만지라는 거다!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_12_2"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 212,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 213,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Path": ".phase2"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 215,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_box2",
+            "line": 217,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 218,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/idle_box",
+              "Track": "11",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_idle_box"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 219,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/idle2"
+            },
+            "clip": "10_basic/10_idle2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 221,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 223,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana.B3"
+            },
+            "box": "bd_B3"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 224,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_16_3"
+            },
+            "voice": "voc_ch0052_desire_enjoy_16_3"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 225,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana",
+              "Track": "11",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 227,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/B3_4",
+              "Track": "12",
+              "Wait": "true"
+            },
+            "clip": "10_reaction/10_B3_4"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 228,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana",
+              "Track": "12",
+              "Duration": "0.5",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 230,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase2"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 232,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_H1",
+            "line": 254,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 255,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/idle2"
+            },
+            "clip": "10_basic/10_idle2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 256,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/twinkle_drag",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_twinkle_drag"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 257,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 258,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireDragCommand",
+            "line": 260,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "rana.T2",
+              "Threshold": "0"
+            },
+            "box": "bd_T2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 261,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.overlay/twinkle_drag",
+              "Wait": "false",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_twinkle_drag"
+          },
+          {
+            "class": "DesireDragUpdateCommand",
+            "line": 263,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireDragBoneCommand",
+            "line": 264,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndBone": "rana.b",
+              "Position": "drag.position"
+            }
+          },
+          {
+            "class": "DesireDragReleaseCommand",
+            "line": 265,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "drag.isInside(\"H1\")"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 266,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/H1",
+              "Track": "33",
+              "Wait": "false"
+            },
+            "clip": "10_reaction/10_H1"
+          },
+          {
+            "class": "Await",
+            "line": 267,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 268,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 269,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "40f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 270,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므앙! 뿌리면 안 되는 거다! 아, 안 돼애애!",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_15_1"
+          },
+          {
+            "class": "Group",
+            "line": 271,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 272,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "194f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 273,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": ""
+            },
+            "text": "히잉... 이건 먹는 거란 말이다...",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_15_2"
+          },
+          {
+            "class": "Group",
+            "line": 274,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 275,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "366f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 276,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": "",
+              "Wait": "false"
+            },
+            "text": "므으... 몸이 끈적끈적해애....",
+            "author": "rana",
+            "voice": "voc_ch0052_desire_enjoy_15_3"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 276,
+            "inline": 1,
+            "indent": 4,
+            "fields": {
+              "Wait": "false",
+              "SkipWaitingInput": "true"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 277,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "4"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 278,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Duration": "0.3",
+              "ScenePosition": ",,-1",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 279,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "IdAndAppearance": "rana",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 280,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 281,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 282,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Expression": "x=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 283,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Expression": "y=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 284,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Expression": "n=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 285,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Expression": "yy=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 286,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Expression": "zz=0"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 287,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Path": ".phase_after"
+            }
+          },
+          {
+            "class": "DesireDragReleaseCommand",
+            "line": 288,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 289,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "rana.reaction/drag",
+              "Reset": "true"
+            },
+            "clip": "10_reaction/10_drag"
+          },
+          {
+            "class": "Stop",
+            "line": 290,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_after",
+            "line": 292,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 293,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/after_idle",
+              "Loop": "true"
+            },
+            "clip": "10_basic/10_after_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 294,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.2"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 295,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 297,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "rana.basic/after_idle"
+            },
+            "clip": "10_basic/10_after_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 299,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 301,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireOnlookTriggerCommand",
+            "line": 303,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/after_wait",
+              "Id": "rana",
+              "Threshold": "10"
+            },
+            "clip": "10_basic/10_after_wait"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 305,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/after_touch",
+              "IdAndBoundingBox": "rana"
+            },
+            "clip": "10_basic/10_after_touch"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 306,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PickRandom",
+            "line": 307,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 308,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 309,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "므으응...!",
+            "author": "rana"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 310,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_18_1"
+            },
+            "voice": "voc_ch0052_desire_enjoy_18_1"
+          },
+          {
+            "class": "Group",
+            "line": 311,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 312,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐읏...!",
+            "author": "rana"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 313,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "VoicePath": "ch0052/desire/voc_ch0052_desire_enjoy_18_3"
+            },
+            "voice": "voc_ch0052_desire_enjoy_18_3"
+          },
+          {
+            "class": "DesireResetCommand",
+            "line": 315,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Destination": ".phase_set"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 316,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 317,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Transition": "Crossfade",
+              "Duration": "0.5",
+              "Wait": "false",
+              "ScenePosition": ",,-50",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 318,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 319,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 320,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 321,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Visible": "false",
+              "Duration": "1",
+              "Wait": "false",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 322,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "rana.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 323,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 325,
             "inline": 0,
             "indent": 0,
             "fields": {}
