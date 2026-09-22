@@ -40,6 +40,8 @@
         "af_ch0042__onestore": "1",
         "af_ch0043__google": "2",
         "af_ch0043__onestore": "2",
+        "af_ch0052__google": "2",
+        "af_ch0052__onestore": "2",
         "af_ch0057__google": "1",
         "af_ch0057__onestore": "1",
         "af_ch0058__google": "2",
@@ -75,6 +77,8 @@
         "ds_ch0042__onestore": "1",
         "ds_ch0043__google": "2",
         "ds_ch0043__onestore": "2",
+        "ds_ch0052__google": "2",
+        "ds_ch0052__onestore": "2",
         "ds_ch0057": "1",
         "ds_ch0058__google": "2",
         "ds_ch0058__onestore": "2",
@@ -339,6 +343,11 @@
         "jp/ch0050/ingame": "1",
         "jp/ch0050/lobby": "1",
         "jp/ch0050/outgame": "1",
+        "jp/ch0052/affection": "1",
+        "jp/ch0052/desire": "1",
+        "jp/ch0052/ingame": "1",
+        "jp/ch0052/lobby": "1",
+        "jp/ch0052/outgame": "1",
         "jp/ch0053/ingame": "1",
         "jp/ch0053/lobby": "1",
         "jp/ch0053/outgame": "1",
@@ -378,7 +387,7 @@
       "buckets": {
         "1": {
           "repo": "MAD-audio-1",
-          "ref": "v6"
+          "ref": "v8"
         }
       },
       "units": {
@@ -409,6 +418,7 @@
         "view/ds_ch0038": "1",
         "view/ds_ch0042": "1",
         "view/ds_ch0043": "1",
+        "view/ds_ch0052": "1",
         "view/ds_ch0057": "1",
         "view/ds_ch0058": "1",
         "view/ds_ch0068": "1"
@@ -419,7 +429,7 @@
       "buckets": {
         "1": {
           "repo": "MAD-sd-1",
-          "ref": "v7"
+          "ref": "v8"
         }
       },
       "units": {
@@ -461,6 +471,7 @@
         "sd_ch0043": "1",
         "sd_ch0046": "1",
         "sd_ch0050": "1",
+        "sd_ch0052": "1",
         "sd_ch0053": "1",
         "sd_ch0054": "1",
         "sd_ch0056": "1",

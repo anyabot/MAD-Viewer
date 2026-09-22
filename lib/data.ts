@@ -837,9 +837,9 @@ export function loadGachaIndex(): Promise<GachaIndex> {
 
 export const KIND_LABEL: Record<SkinKind, Localized> = {
   standing: { en: 'Standing', ko: '스탠딩' },
-  affection: { en: 'Affection', ko: '애정' },
-  desire: { en: 'Desire', ko: '욕망' },
-  pleasure: { en: 'Pleasure', ko: '쾌락' },
+  affection: { en: 'Affection', ko: '어펙션' },
+  desire: { en: 'Desire', ko: '데자이어' },
+  pleasure: { en: 'Pleasure', ko: '플레저' },
   drama: { en: 'Drama', ko: '드라마' },
 };
 
