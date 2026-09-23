@@ -1065,7 +1065,7 @@ export default function SkinViewer({
           bounds.update(spine.skeleton, true);
           // `local` is already y-down; overlapping desire regions resolve by phase and smallest match, or by the armed boxes under a script.
           const player = scenePlayerRef.current;
-          const armed = player?.armedBoxes();
+          const armed = player ? (name: string) => player.armsBox(name) : null;
           let hit: TouchRegion | null = null;
           let hitBox: string | null = null;
           let bestArea = Infinity;
@@ -1080,7 +1080,7 @@ export default function SkinViewer({
             if (!name) continue;
             if (!attachmentIsVisible(boxList[i])) continue;
             const region = name ? regionByBox.get(name) : undefined;
-            const bound = armed ? armed.has(name) : false;
+            const bound = armed ? armed(name) : false;
             if (!armed && (!region || !regionLiveInPhase(region, phaseRef.current))) continue;
             if (!polyList[i] || !bounds.containsPointPolygon(polyList[i], local.x, local.y)) continue;
             const area = polygonArea(polyList[i]);
@@ -1261,7 +1261,7 @@ export default function SkinViewer({
           isLive: (name, region, attachment) => {
             if (!attachmentIsVisible(attachment)) return false;
             const player = scenePlayerRef.current;
-            if (player) return player.armedBoxes().has(name);
+            if (player) return player.armsBox(name);
             if (region && !regionLiveInPhase(region, phaseRef.current)) return false;
             if (jiggle.hasBox(name)) return modeRef.current === 'home';
             return true;
