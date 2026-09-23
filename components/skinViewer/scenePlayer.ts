@@ -148,28 +148,27 @@ export function createScenePlayer(
     }
   };
 
+  // A trigger naming only the actor has an empty box filter, which the client matches against any box.
+  const reaches = (a: Armed, box: string): boolean => (
+    (a.kind === 'touch' || a.kind === 'drag') && (!a.box || a.box === box));
+
   const triggerFor = (box: string, kind: 'touch' | 'drag'): Armed | null => {
-    const hits = armed.filter(
-      (a) => a.kind === kind && a.box === box);
+    const hits = armed.filter((a) => a.kind === kind && reaches(a, box));
     if (!hits.length) return null;
     // Several triggers can bind one box, a conditional one being the specific
     // variant beside an unconditional catch-all, so taking the first match
     // would make the variant unreachable.
-    return hits.find((a) => a.when) ?? hits[0];
+    const named = hits.filter((a) => (a.kind === 'touch' || a.kind === 'drag') && a.box);
+    const pool = named.length ? named : hits;
+    return pool.find((a) => a.when) ?? pool[0];
   };
 
   return {
     machine,
 
-    /** Boxes a touch would currently reach. */
-    armedBoxes(): Set<string> {
-      const out = new Set<string>();
-      for (const entry of armed) {
-        if ((entry.kind === 'touch' || entry.kind === 'drag') && entry.box) {
-          out.add(entry.box);
-        }
-      }
-      return out;
+    /** Whether a touch on this box would currently reach a trigger. */
+    armsBox(box: string): boolean {
+      return armed.some((a) => reaches(a, box));
     },
 
     armed: () => armed,
