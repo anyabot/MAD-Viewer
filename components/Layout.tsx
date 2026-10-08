@@ -1,4 +1,5 @@
-import { Box, Container, Flex, HStack, Text } from '@chakra-ui/react';
+import { Box, Container, Flex, HStack } from '@chakra-ui/react';
+import { HubBar, HubFooter } from '@altterisk/game-hub';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
@@ -45,53 +46,33 @@ function LanguagePicker() {
 }
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const { pathname } = useRouter();
+  const { pathname, basePath } = useRouter();
   const t = useT();
   return (
     <Flex direction="column" minH="100vh">
-      <Box as="header" borderBottom="1px solid" borderColor="whiteAlpha.200"
-        bg="rgba(11, 15, 23, 0.82)" backdropFilter="blur(18px) saturate(140%)"
-        position="sticky" top={0} zIndex={10} boxShadow="0 1px 0 rgba(255,255,255,0.02)">
-        <Container maxW="90rem" px={{ base: 3, md: 6 }} py={2}>
-          <Flex align="center" gap={{ base: 2, md: 4 }} wrap="wrap">
-            <HStack as={NextLink} href="/" spacing={2.5} flexShrink={0}
-              _hover={{ textDecoration: 'none' }}>
-              <Box boxSize="11px" bg="yellow.400" borderRadius="3px"
-                transform="rotate(45deg)" boxShadow="0 0 18px rgba(246, 196, 69, 0.42)" />
-              <Text fontWeight="800" letterSpacing="0.06em" whiteSpace="nowrap">
-                MAD <Text as="span" color="gray.400" fontWeight="600">Viewer</Text>
-              </Text>
-            </HStack>
-            <Flex as="nav" aria-label="Primary" gap={1} order={{ base: 3, md: 0 }}
-              flex={{ base: '0 0 100%', md: '1' }} overflowX="auto" minW={0}
-              mx={{ base: -1, md: 0 }} pb={{ base: 0.5, md: 0 }}>
-              {NAV.map((item) => {
-                const active = item.match(pathname);
-                return (
-                  <Box key={item.href} as={NextLink} href={item.href} px={3} py={2}
-                    borderRadius="lg" fontSize="sm" whiteSpace="nowrap"
-                    bg={active ? 'whiteAlpha.200' : 'transparent'}
-                    color={active ? 'yellow.300' : 'gray.400'}
-                    fontWeight={active ? 'bold' : 'normal'}
-                    boxShadow={active ? 'inset 0 0 0 1px rgba(246, 196, 69, 0.12)' : 'none'}
-                    _hover={{ bg: 'whiteAlpha.100', color: 'gray.100', textDecoration: 'none' }}
-                    transition="background 0.15s, color 0.15s">
-                    {t(item.label)}
-                  </Box>
-                );
-              })}
-            </Flex>
-            <Box flex={{ base: '1', md: '0' }} />
-            <LanguagePicker />
-          </Flex>
-        </Container>
-      </Box>
+      <HubBar
+        game="mad"
+        homeHref={`${basePath}/`}
+        labels={{ switchGame: t('hubSwitchGame'), allGames: t('hubAllGames'), here: t('hubHere') }}
+        renderHomeLink={({ className, children: brand }) => (
+          <NextLink href="/" className={className}>{brand}</NextLink>
+        )}
+        nav={NAV.map((item) => (
+          <NextLink key={item.href} href={item.href}
+            aria-current={item.match(pathname) ? 'page' : undefined}>
+            {t(item.label)}
+          </NextLink>
+        ))}
+        actions={<LanguagePicker />}
+      />
       <Box as="main" flex="1">
         <Container maxW="90rem" px={{ base: 3, md: 6 }} py={{ base: 4, md: 6 }}
           pb={{ base: 8, md: 12 }}>
           {children}
         </Container>
       </Box>
+      <HubFooter game="mad"
+        labels={{ source: t('hubSource'), portfolio: t('hubPortfolio'), allGames: t('hubAllGames') }} />
     </Flex>
   );
 }
