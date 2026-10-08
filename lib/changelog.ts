@@ -30,6 +30,53 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-10-08',
+    title: { en: 'Isabel, Aura Infusion and 1.9.7', ko: '이자벨, 성력 주입과 1.9.7' },
+    entries: [
+      {
+        kind: 'unit',
+        code: 'CH0040',
+        text: { en: 'Isabel added.', ko: '이자벨 추가' },
+      },
+      {
+        kind: 'scene',
+        code: 'CH0040',
+        text: {
+          en: 'Isabel’s Affection and Desire scenes and voice added.',
+          ko: '이자벨의 어펙션·데자이어 장면과 보이스 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Aura Infusion: every character’s Surface and Deep paths, with their bonuses and costs, in the stat calculator and the Planner.',
+          ko: '성력 주입: 캐릭터별 표층·심부 경로의 보너스와 비용을 스탯 계산기와 플래너에 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Parcel Raid supply run added; it drops the Aura Infusion material.',
+          ko: '성력 주입 재료를 주는 특별 조달 택배 털이 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Bloody Mary Go Round event stages and new Umbra Dei and Marisquerade seasons added.',
+          ko: 'Bloody Mary Go Round 이벤트 스테이지와 새로운 움브라 데이·마리스커레이드 시즌 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Content support updated for game version 1.9.7.',
+          ko: '게임 버전 1.9.7 콘텐츠 지원을 업데이트했습니다.',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-09-22',
     title: { en: 'Rana and 1.8.3', ko: '라나와 1.8.3' },
     entries: [
