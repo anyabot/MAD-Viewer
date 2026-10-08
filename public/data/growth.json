@@ -596,6 +596,12 @@
    "icon": "Icon_Character_Piece_CH0039",
    "kind": "piece"
   },
+  "item:40": {
+   "name": "이자벨의 메모리",
+   "nameEn": "Isabel's Memory",
+   "icon": "Icon_Character_Piece_CH0040",
+   "kind": "piece"
+  },
   "item:42": {
    "name": "오블리아의 메모리",
    "nameEn": "Oblia's Memory",
@@ -5957,6 +5963,7 @@
    "CH0037": "item:37",
    "CH0038": "item:38",
    "CH0039": "item:39",
+   "CH0040": "item:40",
    "CH0042": "item:42",
    "CH0043": "item:43",
    "CH0046": "item:46",
@@ -6025,6 +6032,7 @@
     "CH0029",
     "CH0030",
     "CH0031",
+    "CH0032",
     "CH0033",
     "CH0034",
     "CH0035",
@@ -6032,6 +6040,7 @@
     "CH0037",
     "CH0038",
     "CH0039",
+    "CH0040",
     "CH0042",
     "CH0043",
     "CH0046",

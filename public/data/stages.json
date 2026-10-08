@@ -396,6 +396,16 @@
    },
    "image": "BgImg_EV1008_Zone_001"
   },
+  "100091": {
+   "id": 100091,
+   "order": 1,
+   "difficulty": "normal",
+   "name": {
+    "ko": "전투",
+    "en": "Battle"
+   },
+   "image": "BgImg_EV1009_Zone_001"
+  },
   "30401": {
    "id": 30401,
    "name": {
@@ -425,6 +435,15 @@
    "image": "BgImg_Daily_Cover_Essence",
    "group": 304,
    "dailyType": 3
+  },
+  "30404": {
+   "id": 30404,
+   "name": {
+    "ko": "택배 털이",
+    "en": "Parcel Raid"
+   },
+   "group": 304,
+   "dailyType": 4
   },
   "30501": {
    "id": 30501,
@@ -750,6 +769,15 @@
     "en": "Laundromat Raid"
    }
   },
+  "daily:30404": {
+   "key": "daily:30404",
+   "mode": "daily",
+   "zoneId": 30404,
+   "name": {
+    "ko": "택배 털이",
+    "en": "Parcel Raid"
+   }
+  },
   "flurry:30501": {
    "key": "flurry:30501",
    "mode": "flurry",
@@ -800,9 +828,7 @@
     "en": "Gangs of Tofu Street"
    },
    "order": 1001,
-   "banner": "Thumbnail_PastStory_Event_Ev1001",
-   "from": "2026-06-04",
-   "to": "2026-06-25"
+   "banner": "Thumbnail_PastStory_Event_Ev1001"
   },
   "event:1002": {
    "key": "event:1002",
@@ -814,9 +840,7 @@
     "en": "Chrono Paradox"
    },
    "order": 1002,
-   "banner": "Thumbnail_PastStory_Event_Ev1002",
-   "from": "2026-06-18",
-   "to": "2026-07-09"
+   "banner": "Thumbnail_PastStory_Event_Ev1002"
   },
   "event:1003": {
    "key": "event:1003",
@@ -828,9 +852,7 @@
     "en": "Treasure In Summer"
    },
    "order": 1003,
-   "banner": "Thumbnail_PastStory_Event_Ev1003",
-   "from": "2026-07-16",
-   "to": "2026-08-20"
+   "banner": "Thumbnail_PastStory_Event_Ev1003"
   },
   "event:1004": {
    "key": "event:1004",
@@ -842,9 +864,7 @@
     "en": "Summer WITH MAiD"
    },
    "order": 1004,
-   "banner": "Thumbnail_PastStory_Event_Ev1004",
-   "from": "2026-07-30",
-   "to": "2026-08-20"
+   "banner": "Thumbnail_PastStory_Event_Ev1004"
   },
   "event:1005": {
    "key": "event:1005",
@@ -856,9 +876,7 @@
     "en": "Cash Crush Rush"
    },
    "order": 1005,
-   "banner": "Thumbnail_PastStory_Event_Ev1005",
-   "from": "2026-08-13",
-   "to": "2026-09-03"
+   "banner": "Thumbnail_PastStory_Event_Ev1005"
   },
   "event:1006": {
    "key": "event:1006",
@@ -870,9 +888,7 @@
     "en": "MADness in a Dream"
    },
    "order": 1006,
-   "banner": "Thumbnail_PastStory_Event_Ev1006",
-   "from": "2026-08-27",
-   "to": "2026-09-17"
+   "banner": "Thumbnail_PastStory_Event_Ev1006"
   },
   "event:1008": {
    "key": "event:1008",
@@ -881,12 +897,21 @@
    "image": "BgImg_EV1008_Zone_001",
    "name": {
     "ko": "PLEASE SAVE ME!",
-    "en": null
+    "en": "PLEASE SAVE ME!"
    },
    "order": 1008,
-   "banner": "Thumbnail_PastStory_Event_Ev1008",
-   "from": "2026-09-24",
-   "to": "2026-10-15"
+   "banner": "Thumbnail_PastStory_Event_Ev1008"
+  },
+  "event:1009": {
+   "key": "event:1009",
+   "mode": "event",
+   "zoneId": 100091,
+   "image": "BgImg_EV1009_Zone_001",
+   "name": {
+    "ko": "Bloody Mary Go Round",
+    "en": "Bloody Mary Go Round"
+   },
+   "order": 1009
   },
   "ascent:40000": {
    "key": "ascent:40000",
@@ -928,12 +953,10 @@
     "en": "Umbra Dei"
    },
    "order": 7013,
-   "banner": "Thumbnail_PastStory_Content_Nemesis_0001",
-   "from": "2026-09-03",
-   "to": "2026-09-10"
+   "banner": "Thumbnail_PastStory_Content_Nemesis_0001"
   },
-  "nemesis:7011": {
-   "key": "nemesis:7011",
+  "nemesis:7015": {
+   "key": "nemesis:7015",
    "mode": "nemesis",
    "zoneId": 70131,
    "image": "Icon_NP6010",
@@ -941,13 +964,11 @@
     "ko": "움브라 데이",
     "en": "Umbra Dei"
    },
-   "order": 7011,
-   "banner": "Thumbnail_PastStory_Content_Nemesis_0001",
-   "from": "2026-07-09",
-   "to": "2026-07-16"
+   "order": 7015,
+   "banner": "Thumbnail_PastStory_Content_Nemesis_0001"
   },
-  "nemesis:7012": {
-   "key": "nemesis:7012",
+  "nemesis:7016": {
+   "key": "nemesis:7016",
    "mode": "nemesis",
    "zoneId": 70211,
    "image": "Icon_NP6020_ALL",
@@ -955,10 +976,8 @@
     "ko": "마리스커레이드",
     "en": "Marisquerade"
    },
-   "order": 7012,
-   "banner": "Nemesis2_Logo",
-   "from": "2026-08-06",
-   "to": "2026-08-13"
+   "order": 7016,
+   "banner": "Nemesis2_Logo"
   },
   "nemesis:7014": {
    "key": "nemesis:7014",
@@ -970,9 +989,7 @@
     "en": "Marisquerade"
    },
    "order": 7014,
-   "banner": "Nemesis2_Logo",
-   "from": "2026-10-01",
-   "to": "2026-10-08"
+   "banner": "Nemesis2_Logo"
   },
   "raid": {
    "key": "raid",
@@ -2663,6 +2680,46 @@
    "positionType": 1,
    "skillSetGroup": 200599
   },
+  "NP0607": {
+   "code": "NP0607",
+   "name": "펠리버리 매니저(헬멧)",
+   "nameEn": "Pelibery Manager (Helmet)",
+   "iconPath": "Icon_NP0607",
+   "roleType": 1,
+   "attributeType": 1,
+   "positionType": 1,
+   "skillSetGroup": 200607
+  },
+  "NP0608": {
+   "code": "NP0608",
+   "name": "펠리버리 매니저(킥보드)",
+   "nameEn": "Pelibery Manager (Kickboard)",
+   "iconPath": "Icon_NP0608",
+   "roleType": 1,
+   "attributeType": 1,
+   "positionType": 1,
+   "skillSetGroup": 200608
+  },
+  "NP0610": {
+   "code": "NP0610",
+   "name": "펠리버리 매니저(백팩)",
+   "nameEn": "Pelibery Manager (Backpack)",
+   "iconPath": "Icon_NP0610",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 2,
+   "skillSetGroup": 200610
+  },
+  "NP0611": {
+   "code": "NP0611",
+   "name": "펠리버리 매니저(봄버)",
+   "nameEn": "Pelibery Manager (Bomber)",
+   "iconPath": "Icon_NP0611",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 3,
+   "skillSetGroup": 200611
+  },
   "NP0701": {
    "code": "NP0701",
    "name": "메이드 수영복(센티넬)",
@@ -2996,7 +3053,7 @@
   "NP8097": {
    "code": "NP8097",
    "name": "수녀원장 플러리",
-   "nameEn": "Mother Superior Flurry",
+   "nameEn": "Abbess Flurry",
    "iconPath": "Icon_NP8097",
    "roleType": 2,
    "attributeType": 2,
@@ -3042,6 +3099,16 @@
    "attributeType": 2,
    "positionType": 1,
    "skillSetGroup": 208200
+  },
+  "NP8202": {
+   "code": "NP8202",
+   "name": "VVIP 택배 상자 더미",
+   "nameEn": "VVIP Delivery Box Stack",
+   "iconPath": "Icon_NP8202",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 3,
+   "skillSetGroup": 208202
   }
  },
  "drops": {
@@ -3618,6 +3685,12 @@
    "icon": "Icon_Eq_GrowUp_Tier4",
    "grade": 4
   },
+  "item:10031": {
+   "name": "특제 마사지 젤",
+   "nameEn": "Special Massage Gel",
+   "icon": "Icon_Char_Nodeup_01",
+   "grade": 4
+  },
   "item:10111": {
    "name": "하급 열정의 깃털",
    "nameEn": "Lesser Feather of Passion",
@@ -3968,8 +4041,18 @@
   },
   "goods:1008": {
    "name": "진단 테스트기",
-   "nameEn": "Diagnostic Tester",
+   "nameEn": "Diagnostic Test Kit",
    "icon": "Icon_Goods_EV1008_01"
+  },
+  "goods:5009": {
+   "name": "축복의 로자리오",
+   "nameEn": "Rosary of Blessing",
+   "icon": "Icon_Goods_EV1009_Ticket_01"
+  },
+  "goods:1009": {
+   "name": "매혹의 기원",
+   "nameEn": "Origin of Charm",
+   "icon": "Icon_Goods_EV1009_01"
   },
   "item:40013": {
    "name": "선물 선택 상자",
@@ -46242,6 +46325,356 @@
    ]
   },
   {
+   "id": 3040401,
+   "group": "daily:30404",
+   "mode": "daily",
+   "zoneId": 30404,
+   "order": 1,
+   "nameKey": "contents_stage_list_name_delivery_room",
+   "nameTemplate": {
+    "ko": "물류 터미널 {0}",
+    "en": "Logistics Terminal {0}"
+   },
+   "recommendLevel": "5",
+   "weakAttribute": 4,
+   "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1010",
+   "background": "Battle_Field_Logistics_Terminal_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 3040401,
+   "rewards": {
+    "repeat": [
+     {
+      "type": "item",
+      "id": 10031,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "ref": "item:10031"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "place",
+     "bossCode": "NP8202",
+     "bgm": "bgm_battle_017",
+     "enemies": [
+      {
+       "code": "NP8202",
+       "level": 5
+      },
+      {
+       "code": "NP0607",
+       "level": 5
+      },
+      {
+       "code": "NP0608",
+       "level": 5
+      },
+      {
+       "code": "NP0610",
+       "level": 5
+      },
+      {
+       "code": "NP0611",
+       "level": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3040402,
+   "group": "daily:30404",
+   "mode": "daily",
+   "zoneId": 30404,
+   "order": 2,
+   "nameKey": "contents_stage_list_name_delivery_room",
+   "nameTemplate": {
+    "ko": "물류 터미널 {0}",
+    "en": "Logistics Terminal {0}"
+   },
+   "recommendLevel": "20",
+   "weakAttribute": 4,
+   "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1010",
+   "background": "Battle_Field_Logistics_Terminal_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 3040402,
+   "rewards": {
+    "repeat": [
+     {
+      "type": "item",
+      "id": 10031,
+      "amount": [
+       2
+      ],
+      "drop": "each",
+      "ref": "item:10031"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "place",
+     "bossCode": "NP8202",
+     "bgm": "bgm_battle_017",
+     "enemies": [
+      {
+       "code": "NP8202",
+       "level": 20
+      },
+      {
+       "code": "NP0607",
+       "level": 20
+      },
+      {
+       "code": "NP0608",
+       "level": 20
+      },
+      {
+       "code": "NP0610",
+       "level": 20
+      },
+      {
+       "code": "NP0611",
+       "level": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3040403,
+   "group": "daily:30404",
+   "mode": "daily",
+   "zoneId": 30404,
+   "order": 3,
+   "nameKey": "contents_stage_list_name_delivery_room",
+   "nameTemplate": {
+    "ko": "물류 터미널 {0}",
+    "en": "Logistics Terminal {0}"
+   },
+   "recommendLevel": "30",
+   "weakAttribute": 4,
+   "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1010",
+   "background": "Battle_Field_Logistics_Terminal_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 3040403,
+   "rewards": {
+    "repeat": [
+     {
+      "type": "item",
+      "id": 10031,
+      "amount": [
+       2
+      ],
+      "drop": "each",
+      "ref": "item:10031"
+     },
+     {
+      "type": "item",
+      "id": 10031,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.75,
+      "ref": "item:10031"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "place",
+     "bossCode": "NP8202",
+     "bgm": "bgm_battle_017",
+     "enemies": [
+      {
+       "code": "NP8202",
+       "level": 30
+      },
+      {
+       "code": "NP0607",
+       "level": 30
+      },
+      {
+       "code": "NP0608",
+       "level": 30
+      },
+      {
+       "code": "NP0610",
+       "level": 30
+      },
+      {
+       "code": "NP0611",
+       "level": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3040404,
+   "group": "daily:30404",
+   "mode": "daily",
+   "zoneId": 30404,
+   "order": 4,
+   "nameKey": "contents_stage_list_name_delivery_room",
+   "nameTemplate": {
+    "ko": "물류 터미널 {0}",
+    "en": "Logistics Terminal {0}"
+   },
+   "recommendLevel": "40",
+   "weakAttribute": 4,
+   "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1010",
+   "background": "Battle_Field_Logistics_Terminal_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 3040404,
+   "rewards": {
+    "repeat": [
+     {
+      "type": "item",
+      "id": 10031,
+      "amount": [
+       3
+      ],
+      "drop": "each",
+      "ref": "item:10031"
+     },
+     {
+      "type": "item",
+      "id": 10031,
+      "amount": [
+       1
+      ],
+      "drop": "each",
+      "chance": 0.5,
+      "ref": "item:10031"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "place",
+     "bossCode": "NP8202",
+     "bgm": "bgm_battle_017",
+     "enemies": [
+      {
+       "code": "NP8202",
+       "level": 40
+      },
+      {
+       "code": "NP0607",
+       "level": 40
+      },
+      {
+       "code": "NP0608",
+       "level": 40
+      },
+      {
+       "code": "NP0610",
+       "level": 40
+      },
+      {
+       "code": "NP0611",
+       "level": 40
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3040405,
+   "group": "daily:30404",
+   "mode": "daily",
+   "zoneId": 30404,
+   "order": 5,
+   "nameKey": "contents_stage_list_name_delivery_room",
+   "nameTemplate": {
+    "ko": "물류 터미널 {0}",
+    "en": "Logistics Terminal {0}"
+   },
+   "recommendLevel": "50",
+   "weakAttribute": 4,
+   "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1010",
+   "background": "Battle_Field_Logistics_Terminal_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 3040405,
+   "rewards": {
+    "repeat": [
+     {
+      "type": "item",
+      "id": 10031,
+      "amount": [
+       4
+      ],
+      "drop": "each",
+      "ref": "item:10031"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "place",
+     "bossCode": "NP8202",
+     "bgm": "bgm_battle_017",
+     "enemies": [
+      {
+       "code": "NP8202",
+       "level": 50
+      },
+      {
+       "code": "NP0607",
+       "level": 50
+      },
+      {
+       "code": "NP0608",
+       "level": 50
+      },
+      {
+       "code": "NP0610",
+       "level": 50
+      },
+      {
+       "code": "NP0611",
+       "level": 50
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 3050101,
    "group": "flurry:30501",
    "mode": "flurry",
@@ -50138,7 +50571,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": "Belmont Street {0}"
+    "en": "Vermont Street {0}"
    },
    "recommendLevel": "10",
    "entry": {
@@ -50265,7 +50698,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": "Belmont Street {0}"
+    "en": "Vermont Street {0}"
    },
    "recommendLevel": "15",
    "entry": {
@@ -50404,7 +50837,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": "Belmont Street {0}"
+    "en": "Vermont Street {0}"
    },
    "recommendLevel": "20",
    "entry": {
@@ -50543,7 +50976,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": "Belmont Street {0}"
+    "en": "Vermont Street {0}"
    },
    "recommendLevel": "25",
    "entry": {
@@ -50682,7 +51115,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": "Belmont Street {0}"
+    "en": "Vermont Street {0}"
    },
    "recommendLevel": "30",
    "entry": {
@@ -50821,7 +51254,7 @@
    "nameKey": "event_story_stage_name_ev1002_normal",
    "nameTemplate": {
     "ko": "베르몬트 거리 {0}",
-    "en": "Belmont Street {0}"
+    "en": "Vermont Street {0}"
    },
    "recommendLevel": "35",
    "entry": {
@@ -54260,7 +54693,7 @@
    "nameKey": "event_story_stage_name_ev1008_normal",
    "nameTemplate": {
     "ko": "후마니타스 일대 {0}",
-    "en": null
+    "en": "Humanitas Area {0}"
    },
    "recommendLevel": "10",
    "entry": {
@@ -54387,7 +54820,7 @@
    "nameKey": "event_story_stage_name_ev1008_normal",
    "nameTemplate": {
     "ko": "후마니타스 일대 {0}",
-    "en": null
+    "en": "Humanitas Area {0}"
    },
    "recommendLevel": "15",
    "entry": {
@@ -54526,7 +54959,7 @@
    "nameKey": "event_story_stage_name_ev1008_normal",
    "nameTemplate": {
     "ko": "후마니타스 일대 {0}",
-    "en": null
+    "en": "Humanitas Area {0}"
    },
    "recommendLevel": "20",
    "entry": {
@@ -54665,7 +55098,7 @@
    "nameKey": "event_story_stage_name_ev1008_normal",
    "nameTemplate": {
     "ko": "후마니타스 일대 {0}",
-    "en": null
+    "en": "Humanitas Area {0}"
    },
    "recommendLevel": "25",
    "entry": {
@@ -54804,7 +55237,7 @@
    "nameKey": "event_story_stage_name_ev1008_normal",
    "nameTemplate": {
     "ko": "후마니타스 일대 {0}",
-    "en": null
+    "en": "Humanitas Area {0}"
    },
    "recommendLevel": "30",
    "entry": {
@@ -54943,7 +55376,7 @@
    "nameKey": "event_story_stage_name_ev1008_normal",
    "nameTemplate": {
     "ko": "후마니타스 일대 {0}",
-    "en": null
+    "en": "Humanitas Area {0}"
    },
    "recommendLevel": "35",
    "entry": {
@@ -55067,6 +55500,828 @@
       },
       {
        "code": "NP0210",
+       "level": 35
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10009101,
+   "group": "event:1009",
+   "mode": "event",
+   "zoneId": 100091,
+   "order": 1,
+   "nameKey": "event_story_stage_name_ev1009_normal",
+   "nameTemplate": {
+    "ko": "매혹적인 거리 {0}",
+    "en": "Alluring Street {0}"
+   },
+   "recommendLevel": "10",
+   "entry": {
+    "ref": "goods:5009",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Aroma_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10009101,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1009,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:1009"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0201",
+       "level": 10
+      },
+      {
+       "code": "NP0502",
+       "level": 10
+      },
+      {
+       "code": "NP0206",
+       "level": 10
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0507",
+       "level": 10
+      },
+      {
+       "code": "NP0204",
+       "level": 10
+      },
+      {
+       "code": "NP0503",
+       "level": 10
+      },
+      {
+       "code": "NP0205",
+       "level": 10
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0501",
+       "level": 10
+      },
+      {
+       "code": "NP0508",
+       "level": 10
+      },
+      {
+       "code": "NP0503",
+       "level": 10
+      },
+      {
+       "code": "NP0206",
+       "level": 10
+      },
+      {
+       "code": "NP0205",
+       "level": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10009102,
+   "group": "event:1009",
+   "mode": "event",
+   "zoneId": 100091,
+   "order": 2,
+   "nameKey": "event_story_stage_name_ev1009_normal",
+   "nameTemplate": {
+    "ko": "매혹적인 거리 {0}",
+    "en": "Alluring Street {0}"
+   },
+   "recommendLevel": "15",
+   "entry": {
+    "ref": "goods:5009",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Aroma_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10009102,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1009,
+      "amount": [
+       12
+      ],
+      "drop": "each",
+      "ref": "goods:1009"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0201",
+       "level": 15
+      },
+      {
+       "code": "NP0107",
+       "level": 15
+      },
+      {
+       "code": "NP0204",
+       "level": 15
+      },
+      {
+       "code": "NP0204",
+       "level": 15
+      },
+      {
+       "code": "NP0106",
+       "level": 15
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 15
+      },
+      {
+       "code": "NP0202",
+       "level": 15
+      },
+      {
+       "code": "NP0101",
+       "level": 15
+      },
+      {
+       "code": "NP0105",
+       "level": 15
+      },
+      {
+       "code": "NP0205",
+       "level": 15
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 15
+      },
+      {
+       "code": "NP0107",
+       "level": 15
+      },
+      {
+       "code": "NP0204",
+       "level": 15
+      },
+      {
+       "code": "NP0205",
+       "level": 15
+      },
+      {
+       "code": "NP0106",
+       "level": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10009103,
+   "group": "event:1009",
+   "mode": "event",
+   "zoneId": 100091,
+   "order": 3,
+   "nameKey": "event_story_stage_name_ev1009_normal",
+   "nameTemplate": {
+    "ko": "매혹적인 거리 {0}",
+    "en": "Alluring Street {0}"
+   },
+   "recommendLevel": "20",
+   "entry": {
+    "ref": "goods:5009",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Aroma_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10009103,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1009,
+      "amount": [
+       14
+      ],
+      "drop": "each",
+      "ref": "goods:1009"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0201",
+       "level": 20
+      },
+      {
+       "code": "NP0507",
+       "level": 20
+      },
+      {
+       "code": "NP0204",
+       "level": 20
+      },
+      {
+       "code": "NP0503",
+       "level": 20
+      },
+      {
+       "code": "NP0506",
+       "level": 20
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0508",
+       "level": 20
+      },
+      {
+       "code": "NP0204",
+       "level": 20
+      },
+      {
+       "code": "NP0212",
+       "level": 20
+      },
+      {
+       "code": "NP0504",
+       "level": 20
+      },
+      {
+       "code": "NP0504",
+       "level": 20
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0502",
+       "level": 20
+      },
+      {
+       "code": "NP0207",
+       "level": 20
+      },
+      {
+       "code": "NP0512",
+       "level": 20
+      },
+      {
+       "code": "NP0205",
+       "level": 20
+      },
+      {
+       "code": "NP0205",
+       "level": 20
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10009104,
+   "group": "event:1009",
+   "mode": "event",
+   "zoneId": 100091,
+   "order": 4,
+   "nameKey": "event_story_stage_name_ev1009_normal",
+   "nameTemplate": {
+    "ko": "매혹적인 거리 {0}",
+    "en": "Alluring Street {0}"
+   },
+   "recommendLevel": "25",
+   "entry": {
+    "ref": "goods:5009",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Aroma_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10009104,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1009,
+      "amount": [
+       16
+      ],
+      "drop": "each",
+      "ref": "goods:1009"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0108",
+       "level": 25
+      },
+      {
+       "code": "NP0211",
+       "level": 25
+      },
+      {
+       "code": "NP0104",
+       "level": 25
+      },
+      {
+       "code": "NP0104",
+       "level": 25
+      },
+      {
+       "code": "NP0206",
+       "level": 25
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 25
+      },
+      {
+       "code": "NP0203",
+       "level": 25
+      },
+      {
+       "code": "NP0203",
+       "level": 25
+      },
+      {
+       "code": "NP0111",
+       "level": 25
+      },
+      {
+       "code": "NP0106",
+       "level": 25
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 25
+      },
+      {
+       "code": "NP0108",
+       "level": 25
+      },
+      {
+       "code": "NP0211",
+       "level": 25
+      },
+      {
+       "code": "NP0206",
+       "level": 25
+      },
+      {
+       "code": "NP0106",
+       "level": 25
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10009105,
+   "group": "event:1009",
+   "mode": "event",
+   "zoneId": 100091,
+   "order": 5,
+   "nameKey": "event_story_stage_name_ev1009_normal",
+   "nameTemplate": {
+    "ko": "매혹적인 거리 {0}",
+    "en": "Alluring Street {0}"
+   },
+   "recommendLevel": "30",
+   "entry": {
+    "ref": "goods:5009",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Aroma_03",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10009105,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1009,
+      "amount": [
+       18
+      ],
+      "drop": "each",
+      "ref": "goods:1009"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0103",
+       "level": 30
+      },
+      {
+       "code": "NP0507",
+       "level": 30
+      },
+      {
+       "code": "NP0212",
+       "level": 30
+      },
+      {
+       "code": "NP0503",
+       "level": 30
+      },
+      {
+       "code": "NP0105",
+       "level": 30
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0202",
+       "level": 30
+      },
+      {
+       "code": "NP0108",
+       "level": 30
+      },
+      {
+       "code": "NP0104",
+       "level": 30
+      },
+      {
+       "code": "NP0111",
+       "level": 30
+      },
+      {
+       "code": "NP0510",
+       "level": 30
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0208",
+       "level": 30
+      },
+      {
+       "code": "NP0104",
+       "level": 30
+      },
+      {
+       "code": "NP0104",
+       "level": 30
+      },
+      {
+       "code": "NP0210",
+       "level": 30
+      },
+      {
+       "code": "NP0512",
+       "level": 30
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10009106,
+   "group": "event:1009",
+   "mode": "event",
+   "zoneId": 100091,
+   "order": 6,
+   "nameKey": "event_story_stage_name_ev1009_normal",
+   "nameTemplate": {
+    "ko": "매혹적인 거리 {0}",
+    "en": "Alluring Street {0}"
+   },
+   "recommendLevel": "35",
+   "entry": {
+    "ref": "goods:5009",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Vermont_Alleyway_Aroma_03",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10009106,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1009,
+      "amount": [
+       20
+      ],
+      "drop": "each",
+      "ref": "goods:1009"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0101",
+       "level": 35
+      },
+      {
+       "code": "NP0208",
+       "level": 35
+      },
+      {
+       "code": "NP0104",
+       "level": 35
+      },
+      {
+       "code": "NP0511",
+       "level": 35
+      },
+      {
+       "code": "NP0112",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0207",
+       "level": 35
+      },
+      {
+       "code": "NP0508",
+       "level": 35
+      },
+      {
+       "code": "NP0503",
+       "level": 35
+      },
+      {
+       "code": "NP0105",
+       "level": 35
+      },
+      {
+       "code": "NP0512",
+       "level": 35
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_016",
+     "enemies": [
+      {
+       "code": "NP0208",
+       "level": 35
+      },
+      {
+       "code": "NP0109",
+       "level": 35
+      },
+      {
+       "code": "NP0507",
+       "level": 35
+      },
+      {
+       "code": "NP0212",
+       "level": 35
+      },
+      {
+       "code": "NP0205",
        "level": 35
       }
      ]
@@ -64744,7 +65999,7 @@
   },
   {
    "id": 7013101,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "시니스트라",
    "mode": "nemesis",
    "zoneId": 70131,
@@ -64775,7 +66030,7 @@
   },
   {
    "id": 7013102,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "시니스트라",
    "mode": "nemesis",
    "zoneId": 70131,
@@ -64806,7 +66061,7 @@
   },
   {
    "id": 7013103,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "시니스트라",
    "mode": "nemesis",
    "zoneId": 70131,
@@ -64837,7 +66092,7 @@
   },
   {
    "id": 7013104,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "시니스트라",
    "mode": "nemesis",
    "zoneId": 70131,
@@ -64868,7 +66123,7 @@
   },
   {
    "id": 7013105,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "시니스트라",
    "mode": "nemesis",
    "zoneId": 70131,
@@ -64899,7 +66154,7 @@
   },
   {
    "id": 7013201,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "덱스트라",
    "mode": "nemesis",
    "zoneId": 70132,
@@ -64930,7 +66185,7 @@
   },
   {
    "id": 7013202,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "덱스트라",
    "mode": "nemesis",
    "zoneId": 70132,
@@ -64961,7 +66216,7 @@
   },
   {
    "id": 7013203,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "덱스트라",
    "mode": "nemesis",
    "zoneId": 70132,
@@ -64992,7 +66247,7 @@
   },
   {
    "id": 7013204,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "덱스트라",
    "mode": "nemesis",
    "zoneId": 70132,
@@ -65023,7 +66278,7 @@
   },
   {
    "id": 7013205,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "덱스트라",
    "mode": "nemesis",
    "zoneId": 70132,
@@ -65054,7 +66309,7 @@
   },
   {
    "id": 7013301,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "움브라 데이",
    "mode": "nemesis",
    "zoneId": 70133,
@@ -65085,7 +66340,7 @@
   },
   {
    "id": 7013302,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "움브라 데이",
    "mode": "nemesis",
    "zoneId": 70133,
@@ -65116,7 +66371,7 @@
   },
   {
    "id": 7013303,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "움브라 데이",
    "mode": "nemesis",
    "zoneId": 70133,
@@ -65147,7 +66402,7 @@
   },
   {
    "id": 7013304,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "움브라 데이",
    "mode": "nemesis",
    "zoneId": 70133,
@@ -65178,7 +66433,7 @@
   },
   {
    "id": 7013305,
-   "group": "nemesis:7011",
+   "group": "nemesis:7015",
    "bossName": "움브라 데이",
    "mode": "nemesis",
    "zoneId": 70133,
@@ -65209,7 +66464,7 @@
   },
   {
    "id": 7021101,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -65304,7 +66559,7 @@
   },
   {
    "id": 7021102,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -65399,7 +66654,7 @@
   },
   {
    "id": 7021103,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -65494,7 +66749,7 @@
   },
   {
    "id": 7021104,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -65589,7 +66844,7 @@
   },
   {
    "id": 7021105,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "무도회 게스트",
    "mode": "nemesis",
    "zoneId": 70211,
@@ -65684,7 +66939,7 @@
   },
   {
    "id": 7021201,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -65715,7 +66970,7 @@
   },
   {
    "id": 7021202,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -65746,7 +67001,7 @@
   },
   {
    "id": 7021203,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -65777,7 +67032,7 @@
   },
   {
    "id": 7021204,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -65808,7 +67063,7 @@
   },
   {
    "id": 7021205,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "안나",
    "mode": "nemesis",
    "zoneId": 70212,
@@ -65839,7 +67094,7 @@
   },
   {
    "id": 7021301,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -65870,7 +67125,7 @@
   },
   {
    "id": 7021302,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -65901,7 +67156,7 @@
   },
   {
    "id": 7021303,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -65932,7 +67187,7 @@
   },
   {
    "id": 7021304,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
@@ -65963,7 +67218,7 @@
   },
   {
    "id": 7021305,
-   "group": "nemesis:7012",
+   "group": "nemesis:7016",
    "bossName": "마리",
    "mode": "nemesis",
    "zoneId": 70213,
