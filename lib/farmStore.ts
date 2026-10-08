@@ -200,6 +200,8 @@ function plan(value: unknown): UnitPlan {
       ? { star: Math.floor(raw.star) } : {}),
     skills: record(raw.skills),
     gear,
+    ...(Object.keys(record(raw.infusion)).length
+      ? { infusion: record(raw.infusion) } : {}),
   };
 }
 

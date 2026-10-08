@@ -4,12 +4,15 @@ import { Badge, Box, HStack, Input, Text } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import { useFarm } from '@/lib/farmStore';
 import {
-  billCovered, billIsEmpty, emptyPlan, formatAmount, gearLevelCap, levellableSkills,
-  parseAmount, partBill, planStar, skillCap,
+  billCovered, billIsEmpty, emptyPlan, formatAmount, gearLevelCap, infusionPayerRef,
+  levellableSkills, parseAmount, partBill, planStar, skillCap,
   type GearPlan, type PlanPart, type UnitPlan, type UnitPlanPair,
 } from '@/lib/farm';
 import { baseStar, starCap } from '@/lib/rank';
-import { SKILL_CATEGORY_LABEL, equipLabel, equipmentSlotsOf } from '@/lib/characters';
+import {
+  INFUSION_PATHS, SKILL_CATEGORY_LABEL, equipLabel, equipmentSlotsOf, infusionNodes,
+  infusionReach,
+} from '@/lib/characters';
 import { dataText, pick, useLang, useT } from '@/lib/i18n';
 import type {
   CharacterData, CharacterEntry, GrowthData, IconManifest,
@@ -250,6 +253,36 @@ export function PlanGrid({ entry, data, growth, icons, sides, draft, check }: {
                   onChange={(g) => setGear(entry.code, side, slot.type, g)} />
               ))}
               {cell({ kind: 'gear', slot: slot.type })}
+            </Box>
+          );
+        })}
+
+        {INFUSION_PATHS.map((path) => {
+          const nodes = infusionNodes(entry, path);
+          if (nodes.length === 0) return null;
+          const name = data.infusion?.paths[path];
+          const payer = growth.materials[infusionPayerRef(growth, entry, path) ?? ''];
+          return (
+            <Box key={path} display="contents">
+              <HStack spacing={1.5} minW={0}>
+                <GameIcon manifest={icons} group="item" name={payer?.icon} size={5} />
+                <Text fontSize="sm" noOfLines={1}>
+                  {dataText(lang, name?.name, name?.nameEn) || path}
+                </Text>
+              </HStack>
+              {sides.map((side) => {
+                const own = planOf(side);
+                const reach = infusionReach(entry, path, planStar(own, entry));
+                const count = Math.min(own.infusion?.[path] ?? 0, reach);
+                const set = (v: number) => setPlan(entry.code, side,
+                  { infusion: { ...own.infusion, [path]: v } });
+                return (
+                  <Stepper key={side} value={count} min={0} max={reach} onChange={set}>
+                    <AmountField value={count} min={0} max={reach} onChange={set} />
+                  </Stepper>
+                );
+              })}
+              {cell({ kind: 'infusion', path })}
             </Box>
           );
         })}

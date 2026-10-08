@@ -17,10 +17,12 @@ import type { StoreKey } from '@/components/skinViewer/types';
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import { ShareButton } from '@/components/shareButton';
 import { GameText, Panel, Rotation, Skills } from '@/components/skillKit';
+import InfusionTree, { bonusText, infusionLabel } from '@/components/infusionTree';
 import { characterIcon, resolveIcon, skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
 import {
-  KIND_ICON, STAT_LABEL, TYPE_LABEL, altNameEn, birthdayText, characterName,
+  INFUSION_PATHS, KIND_ICON, STAT_LABEL, TYPE_LABEL, activeInfusion, altNameEn, birthdayText,
+  characterName, infusionNodes, infusionReach,
   characterSubName,
   computeStats, datePlacesOf, equipLabel, equipmentGrants, equipmentSlotsOf,
   giftsOf, isPlayable, labelOf, lockedUntilText,
@@ -167,6 +169,14 @@ export default function CharacterPage() {
       key: 'stats',
       label: t('tabStats'),
       panel: <StatCalculator entry={entry} data={chars} icons={icons} />,
+    });
+  }
+
+  if (entry.infusion && chars.infusion) {
+    tabs.push({
+      key: 'infusion',
+      label: infusionLabel(chars, 'title', lang),
+      panel: <InfusionTree entry={entry} data={chars} icons={icons} />,
     });
   }
 
@@ -654,6 +664,7 @@ function StatCalculator({ entry, data, icons }: {
   // every character starts at affection rank 1
   const [love, setLove] = useState(1);
   const [gear, setGear] = useState<Record<number, { tier: number; level: number }>>({});
+  const [infuse, setInfuse] = useState<Record<string, number>>({});
 
   const shown = star ?? grades[grades.length - 1] ?? entry.defaultStar ?? 1;
   const equipment: EquipInput[] = slots.flatMap((slot) => {
@@ -661,10 +672,13 @@ function StatCalculator({ entry, data, icons }: {
     return set?.tier ? [{ type: slot.type, tier: set.tier, level: set.level }] : [];
   });
   const rows = useMemo(
-    () => computeStats(entry, data, { level, star: shown, love, equipment }, lang),
+    () => computeStats(entry, data,
+      { level, star: shown, love, equipment, infusion: infuse }, lang),
     // `equipment` is rebuilt every render; `gear` is what actually changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [entry, data, level, shown, love, gear, slots, lang]);
+    [entry, data, level, shown, love, gear, infuse, slots, lang]);
+  const hasInfusion = Boolean(entry.infusion && data.infusion);
+  const infused = activeInfusion(entry, infuse, shown);
 
   return (
     <Grid templateColumns={{ base: '1fr', lg: 'minmax(0, 320px) minmax(0, 1fr)' }}
@@ -700,6 +714,27 @@ function StatCalculator({ entry, data, icons }: {
             </VStack>
           </Panel>
         )}
+
+        {hasInfusion && (
+          <Panel title={infusionLabel(data, 'title', lang)}>
+            <VStack align="stretch" spacing={3}>
+              {INFUSION_PATHS.map((path) => {
+                const nodes = infusionNodes(entry, path);
+                const reach = infusionReach(entry, path, shown);
+                const value = Math.min(infuse[path] ?? 0, reach);
+                const locked = nodes[reach];
+                const name = data.infusion?.paths[path];
+                return (
+                  <Dial key={path} label={dataText(lang, name?.name, name?.nameEn) || path}
+                    value={value} min={0} max={Math.max(reach, 0)}
+                    note={locked ? infusionLabel(data, 'unlock', lang)
+                      .replace('{0}', String(locked.grade)) : `/ ${nodes.length}`}
+                    onChange={(next) => setInfuse((prev) => ({ ...prev, [path]: next }))} />
+                );
+              })}
+            </VStack>
+          </Panel>
+        )}
       </VStack>
 
       <Panel title={t('tabStats')} note={t('statsNote', { star: shown, level, love })}>
@@ -713,6 +748,9 @@ function StatCalculator({ entry, data, icons }: {
                 <Box as="th" fontWeight="normal">{t('headBase')}</Box>
                 <Box as="th" fontWeight="normal">{t('headGear')}</Box>
                 <Box as="th" fontWeight="normal">{t('headAffection')}</Box>
+                {hasInfusion && (
+                  <Box as="th" fontWeight="normal">{infusionLabel(data, 'title', lang)}</Box>
+                )}
                 <Box as="th" fontWeight="normal">{t('headTotal')}</Box>
               </Box>
             </Box>
@@ -737,6 +775,12 @@ function StatCalculator({ entry, data, icons }: {
                     fontFamily="mono">
                     {row.love ? `+${statText(row.display, row.love)}` : '—'}
                   </Box>
+                  {hasInfusion && (
+                    <Box as="td" color={row.infusion ? 'teal.300' : 'gray.700'}
+                      fontFamily="mono">
+                      {row.infusion ? `+${statText(row.display, row.infusion)}` : '—'}
+                    </Box>
+                  )}
                   <Box as="td" fontWeight="bold" fontFamily="mono">
                     {statText(row.display, row.total)}
                   </Box>
@@ -746,6 +790,19 @@ function StatCalculator({ entry, data, icons }: {
           </Box>
         </Box>
         {equipment.length > 0 && <GearGrants data={data} equipment={equipment} />}
+        {infused.length > 0 && (
+          <Wrap spacing={2} mt={3} pt={2} borderTopWidth="1px" borderColor="whiteAlpha.100">
+            {infused.flatMap((node) => node.bonuses.map((bonus, i) => (
+              <WrapItem key={`${node.path}-${node.step}-${i}`}>
+                <Badge fontSize="0.6rem" variant="subtle"
+                  colorScheme={bonus.special ? 'purple' : 'teal'}
+                  title={bonus.special ? infusionLabel(data, 'special', lang) : undefined}>
+                  {bonusText(data, bonus, lang)}
+                </Badge>
+              </WrapItem>
+            )))}
+          </Wrap>
+        )}
       </Panel>
     </Grid>
   );

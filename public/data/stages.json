@@ -442,6 +442,7 @@
     "ko": "택배 털이",
     "en": "Parcel Raid"
    },
+   "image": "BgImg_Daily_Cover_DeliveryBox",
    "group": 304,
    "dailyType": 4
   },
@@ -773,6 +774,7 @@
    "key": "daily:30404",
    "mode": "daily",
    "zoneId": 30404,
+   "image": "BgImg_Daily_Cover_DeliveryBox",
    "name": {
     "ko": "택배 털이",
     "en": "Parcel Raid"
@@ -828,7 +830,9 @@
     "en": "Gangs of Tofu Street"
    },
    "order": 1001,
-   "banner": "Thumbnail_PastStory_Event_Ev1001"
+   "banner": "Thumbnail_PastStory_Event_Ev1001",
+   "from": "2026-06-04",
+   "to": "2026-06-25"
   },
   "event:1002": {
    "key": "event:1002",
@@ -840,7 +844,9 @@
     "en": "Chrono Paradox"
    },
    "order": 1002,
-   "banner": "Thumbnail_PastStory_Event_Ev1002"
+   "banner": "Thumbnail_PastStory_Event_Ev1002",
+   "from": "2026-06-18",
+   "to": "2026-07-09"
   },
   "event:1003": {
    "key": "event:1003",
@@ -852,7 +858,9 @@
     "en": "Treasure In Summer"
    },
    "order": 1003,
-   "banner": "Thumbnail_PastStory_Event_Ev1003"
+   "banner": "Thumbnail_PastStory_Event_Ev1003",
+   "from": "2026-07-16",
+   "to": "2026-08-20"
   },
   "event:1004": {
    "key": "event:1004",
@@ -864,7 +872,9 @@
     "en": "Summer WITH MAiD"
    },
    "order": 1004,
-   "banner": "Thumbnail_PastStory_Event_Ev1004"
+   "banner": "Thumbnail_PastStory_Event_Ev1004",
+   "from": "2026-07-30",
+   "to": "2026-08-20"
   },
   "event:1005": {
    "key": "event:1005",
@@ -876,7 +886,9 @@
     "en": "Cash Crush Rush"
    },
    "order": 1005,
-   "banner": "Thumbnail_PastStory_Event_Ev1005"
+   "banner": "Thumbnail_PastStory_Event_Ev1005",
+   "from": "2026-08-13",
+   "to": "2026-09-03"
   },
   "event:1006": {
    "key": "event:1006",
@@ -888,7 +900,9 @@
     "en": "MADness in a Dream"
    },
    "order": 1006,
-   "banner": "Thumbnail_PastStory_Event_Ev1006"
+   "banner": "Thumbnail_PastStory_Event_Ev1006",
+   "from": "2026-08-27",
+   "to": "2026-09-17"
   },
   "event:1008": {
    "key": "event:1008",
@@ -900,7 +914,9 @@
     "en": "PLEASE SAVE ME!"
    },
    "order": 1008,
-   "banner": "Thumbnail_PastStory_Event_Ev1008"
+   "banner": "Thumbnail_PastStory_Event_Ev1008",
+   "from": "2026-09-24",
+   "to": "2026-10-15"
   },
   "event:1009": {
    "key": "event:1009",
@@ -911,7 +927,10 @@
     "ko": "Bloody Mary Go Round",
     "en": "Bloody Mary Go Round"
    },
-   "order": 1009
+   "order": 1009,
+   "banner": "Thumbnail_PastStory_Event_Ev1009",
+   "from": "2026-10-08",
+   "to": "2026-10-29"
   },
   "ascent:40000": {
    "key": "ascent:40000",
@@ -953,7 +972,9 @@
     "en": "Umbra Dei"
    },
    "order": 7013,
-   "banner": "Thumbnail_PastStory_Content_Nemesis_0001"
+   "banner": "Thumbnail_PastStory_Content_Nemesis_0001",
+   "from": "2026-09-03",
+   "to": "2026-09-10"
   },
   "nemesis:7015": {
    "key": "nemesis:7015",
@@ -965,7 +986,9 @@
     "en": "Umbra Dei"
    },
    "order": 7015,
-   "banner": "Thumbnail_PastStory_Content_Nemesis_0001"
+   "banner": "Thumbnail_PastStory_Content_Nemesis_0001",
+   "from": "2026-10-29",
+   "to": "2026-11-05"
   },
   "nemesis:7016": {
    "key": "nemesis:7016",
@@ -977,7 +1000,9 @@
     "en": "Marisquerade"
    },
    "order": 7016,
-   "banner": "Nemesis2_Logo"
+   "banner": "Nemesis2_Logo",
+   "from": "2026-11-26",
+   "to": "2026-12-03"
   },
   "nemesis:7014": {
    "key": "nemesis:7014",
@@ -989,7 +1014,9 @@
     "en": "Marisquerade"
    },
    "order": 7014,
-   "banner": "Nemesis2_Logo"
+   "banner": "Nemesis2_Logo",
+   "from": "2026-10-01",
+   "to": "2026-10-08"
   },
   "raid": {
    "key": "raid",

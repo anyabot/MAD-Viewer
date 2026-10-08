@@ -92,6 +92,13 @@
    "kind": "equipExp",
    "grade": 4
   },
+  "item:10031": {
+   "name": "특제 마사지 젤",
+   "nameEn": "Special Massage Gel",
+   "icon": "Icon_Char_Nodeup_01",
+   "kind": "infusion",
+   "grade": 4
+  },
   "item:10111": {
    "name": "하급 열정의 깃털",
    "nameEn": "Lesser Feather of Passion",
@@ -6057,5 +6064,8 @@
    ],
    "ladders": null
   }
+ },
+ "infusion": {
+  "material": "item:10031"
  }
 }

@@ -151,6 +151,44 @@ export type CharacterEntry = {
   levelStats?: Record<string, Record<string, number>>;
   /** Per affection rank from index 0; ranks accumulate. */
   loveStats?: Record<string, number>[];
+  /** Playable roster only; `piece` pays the deep path. */
+  infusion?: { piece: InfusionItem | null; nodes: InfusionNode[] };
+};
+
+export type InfusionPath = 'surface' | 'deep';
+
+// `calc` follows `EquipmentOption`; `special` marks a skill damage rate, which is not a unit stat.
+export type InfusionBonus = {
+  stat: string | null;
+  calc: string | null;
+  value: number;
+  special?: true;
+};
+
+export type InfusionNode = {
+  path: InfusionPath;
+  step: number;
+  grade: number;
+  core: boolean;
+  cost: number;
+  name: string | null;
+  nameEn: string | null;
+  icon: string | null;
+  bonuses: InfusionBonus[];
+};
+
+export type InfusionItem = {
+  ref: string;
+  name: string | null;
+  nameEn: string | null;
+  icon: string | null;
+};
+
+export type InfusionInfo = {
+  /** Pays the surface path. */
+  material: InfusionItem | null;
+  paths: Record<InfusionPath, { name: string | null; nameEn: string | null }>;
+  labels: Record<string, { ko: string | null; en: string | null }>;
 };
 
 // Alternatives run in `order`; condition 0 is unconditional, 20 and 21 test `conditionValue`.
@@ -401,6 +439,7 @@ export type CharacterData = {
   /** `skillSetGroup` -> star grade -> the skill ids that grade has. */
   skillSets: Record<string, Record<string, number[]>>;
   skills: Record<string, SkillEntry>;
+  infusion?: InfusionInfo;
 };
 
 // An enemy is a `Character_Base` row: same code, kit already in `skillSets` / `skills`.
@@ -596,7 +635,7 @@ export function loadCharacters(): Promise<CharacterData> {
 export type IconManifest = {
   groups: Partial<Record<
     'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip'
-    | 'zone' | 'tile' | 'banner',
+    | 'zone' | 'tile' | 'banner' | 'infusion',
     string[]>>;
 };
 
@@ -654,6 +693,7 @@ export type GrowthData = {
     levelFee: LevelFee;
   };
   star: StarGrowth;
+  infusion?: { material: string };
 };
 
 /** A purchase tier holds through that lifetime count; a null `through` is the last, uncapped one. */

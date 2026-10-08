@@ -2,7 +2,8 @@
 import type { SkinKind } from '@/components/skinViewer/types';
 import type { Lang, Localized } from '@/lib/i18n';
 import type {
-  CharacterData, CharacterEntry, EquipmentEntry, EquipmentTier, ItemEntry, PlaceEntry,
+  CharacterData, CharacterEntry, EquipmentEntry, EquipmentTier, InfusionNode, InfusionPath,
+  ItemEntry, PlaceEntry,
   SkillDetail, SkillEntry, SkillGate, SkillHit, SkillMagnitude, SkillOp, SkillStat,
   SkinListEntry, TypeEntry,
 } from '@/lib/data';
@@ -187,6 +188,8 @@ export type StatInput = {
   /** Rank 1 is part of a unit's baseline; 0 reads the block without any affection. */
   love: number;
   equipment: EquipInput[];
+  /** Nodes infused per path, counted from step 1. */
+  infusion?: Partial<Record<InfusionPath, number>>;
 };
 
 // The terms are kept apart so the page can show where the number comes from.
@@ -198,8 +201,34 @@ export type StatRow = {
   base: number;
   equipment: number;
   love: number;
+  infusion: number;
   total: number;
 };
+
+export const INFUSION_PATHS: InfusionPath[] = ['surface', 'deep'];
+
+export function infusionNodes(entry: CharacterEntry, path: InfusionPath): InfusionNode[] {
+  return (entry.infusion?.nodes ?? [])
+    .filter((node) => node.path === path)
+    .sort((a, b) => a.step - b.step);
+}
+
+// A node needs every earlier step on its own path and its own star grade.
+export function infusionReach(entry: CharacterEntry, path: InfusionPath, star: number): number {
+  const nodes = infusionNodes(entry, path);
+  const blocked = nodes.findIndex((node) => node.grade > star);
+  return blocked < 0 ? nodes.length : blocked;
+}
+
+export function activeInfusion(
+  entry: CharacterEntry, counts: StatInput['infusion'], star: number,
+): InfusionNode[] {
+  return INFUSION_PATHS.flatMap((path) => {
+    const count = Math.min(Math.max(Math.round(counts?.[path] ?? 0), 0),
+      infusionReach(entry, path, star));
+    return infusionNodes(entry, path).slice(0, count);
+  });
+}
 
 function clamp(value: number, low: number, high: number): number {
   return Math.min(high, Math.max(low, Math.round(value) || low));
@@ -281,6 +310,17 @@ export function computeStats(
     }
   }
 
+  const infuseAdd: Record<string, number> = {};
+  const infuseMul: Record<string, number> = {};
+  for (const node of activeInfusion(entry, input.infusion, Number(star))) {
+    for (const bonus of node.bonuses) {
+      if (bonus.special || !bonus.stat) continue;
+      const into = bonus.calc === 'MULTIPLICATION' ? infuseMul
+        : bonus.calc === 'ADDTION' ? infuseAdd : null;
+      if (into) into[bonus.stat] = (into[bonus.stat] ?? 0) + bonus.value;
+    }
+  }
+
   const rows: StatRow[] = [];
   for (const [stat, type] of Object.entries(data.statTypes)) {
     const own = roundStat(type.display,
@@ -288,7 +328,10 @@ export function computeStats(
     const gear = roundStat(type.display,
       (add[stat] ?? 0) + own * (mul[stat] ?? 0));
     const bond = love[stat] ?? 0;
-    if (!own && !gear && !bond) continue;
+    // Scales off the base block like equipment, added after affection.
+    const infused = roundStat(type.display,
+      (infuseAdd[stat] ?? 0) + own * (infuseMul[stat] ?? 0));
+    if (!own && !gear && !bond && !infused) continue;
     rows.push({
       stat,
       label: (lang === 'ko' ? type.name : type.en) || labelOf(STAT_LABEL, stat, lang),
@@ -297,7 +340,8 @@ export function computeStats(
       base: own,
       equipment: gear,
       love: bond,
-      total: own + gear + bond,
+      infusion: infused,
+      total: own + gear + bond + infused,
     });
   }
   return rows.sort((a, b) =>
@@ -469,6 +513,10 @@ export const STAT_LABEL: Record<string, Localized> = {
   PENETRATION: { en: 'Penetration', ko: '관통력' },
   PENETRATION_DEFEND: { en: 'Penetration resist', ko: '관통 저항' },
   ATTACK_SPEED_NORMAL: { en: 'Attack speed', ko: '공격 속도' },
+  NORMAL_ATTACK_DAMAGE_RATE: { en: 'Basic Attack Damage', ko: '일반 공격 피해' },
+  SKILL_01_DAMAGE_RATE: { en: 'Skill 1 Damage', ko: '스킬 1 피해' },
+  SKILL_02_DAMAGE_RATE: { en: 'Skill 2 Damage', ko: '스킬 2 피해' },
+  SPECIAL_SKILL_DAMAGE_RATE: { en: 'Burst Damage', ko: '버스트 피해' },
 };
 
 // `SKILL_TARGET_TYPE` on a cast or work, `CHECK_TARGET_TYPE` on a trigger; the two share every common name.

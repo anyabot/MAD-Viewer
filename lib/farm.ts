@@ -1,9 +1,10 @@
 // The node suites load this module directly: no runtime import through `@/`.
 import type {
-  CharacterData, CharacterEntry, GrowthData, LevelFee, MaterialCost, SkillEntry,
+  CharacterData, CharacterEntry, GrowthData, InfusionPath, LevelFee, MaterialCost, SkillEntry,
   StageData, StageEntry,
 } from '@/lib/data';
 import type { Localized } from '@/lib/i18n';
+import { INFUSION_PATHS, infusionNodes, infusionReach } from './characters.ts';
 import { baseStar, memoryRef, starCap, stepCost } from './rank.ts';
 
 /** `SKILL_CATEGORIZE_TYPE` rows a player can level; the rest open with the star. */
@@ -27,6 +28,7 @@ export const MATERIAL_KIND_LABEL: Record<string, Localized> = {
   equipPiece: { en: 'Equipment voucher', ko: '장비 바우처' },
   equipment: { en: 'Equipment', ko: '장비' },
   piece: { en: 'Memories', ko: '메모리' },
+  infusion: { en: 'Infusion', ko: '성력 주입' },
 };
 
 /** A material's art straddles the item and equipment atlases. */
@@ -42,6 +44,8 @@ export type UnitPlan = {
   skills: Record<string, number>;
   /** Equipment slot type -> what is in it. Tier 0 is an empty slot. */
   gear: Record<string, GearPlan>;
+  /** Nodes infused per path, counted from step 1. */
+  infusion?: Partial<Record<InfusionPath, number>>;
 };
 
 /** `listed` is on the farm list; `hidden` stays off the bill; `priority` takes its inventory share first. */
@@ -81,6 +85,11 @@ export function atLeastCurrent(pair: UnitPlanPair): UnitPlanPair {
       gear[slot] = { ...worn };
     }
   }
+  const infusion: Partial<Record<InfusionPath, number>> = { ...target.infusion };
+  for (const path of INFUSION_PATHS) {
+    const done = current.infusion?.[path] ?? 0;
+    if ((infusion[path] ?? 0) < done) infusion[path] = done;
+  }
   return {
     ...pair,
     target: {
@@ -88,6 +97,7 @@ export function atLeastCurrent(pair: UnitPlanPair): UnitPlanPair {
       ...(star == null ? {} : { star }),
       skills,
       gear,
+      ...(Object.keys(infusion).length ? { infusion } : {}),
     },
   };
 }
@@ -222,7 +232,8 @@ export type PlanPart =
   | { kind: 'level' }
   | { kind: 'star' }
   | { kind: 'skill'; id: number }
-  | { kind: 'gear'; slot: number };
+  | { kind: 'gear'; slot: number }
+  | { kind: 'infusion'; path: InfusionPath };
 
 /** In the plan grid's own order. */
 export function planParts(entry: CharacterEntry, data: CharacterData): PlanPart[] {
@@ -231,7 +242,24 @@ export function planParts(entry: CharacterEntry, data: CharacterData): PlanPart[
     { kind: 'star' },
     ...levellableSkills(entry, data).map(({ id }): PlanPart => ({ kind: 'skill', id })),
     ...(entry.equipmentSlots ?? []).map((slot): PlanPart => ({ kind: 'gear', slot })),
+    ...INFUSION_PATHS.filter((path) => infusionNodes(entry, path).length > 0)
+      .map((path): PlanPart => ({ kind: 'infusion', path })),
   ];
+}
+
+// The surface path pays the shared infusion material, the deep path the unit's own memory.
+export function infusionPayerRef(
+  growth: GrowthData, entry: CharacterEntry, path: InfusionPath,
+): string | null {
+  return path === 'surface' ? growth.infusion?.material ?? null : memoryRef(growth.star, entry.code);
+}
+
+/** Capped at what the plan's own star grade unlocks. */
+export function infusionCount(
+  entry: CharacterEntry, plan: UnitPlan, path: InfusionPath,
+): number {
+  const reach = infusionReach(entry, path, planStar(plan, entry));
+  return Math.min(Math.max(Math.round(plan.infusion?.[path] ?? 0), 0), reach);
 }
 
 /** A target below the current state costs nothing. */
@@ -254,6 +282,16 @@ export function partBill(
     const stars = stepCost(growth.star, planStar(current, entry),
       Math.min(planStar(target, entry), starCap(growth.star)));
     if (ref && stars > 0) bill.materials[ref] = stars;
+    return bill;
+  }
+
+  if (part.kind === 'infusion') {
+    const ref = infusionPayerRef(growth, entry, part.path);
+    const from = infusionCount(entry, current, part.path);
+    const to = Math.max(infusionCount(entry, target, part.path), from);
+    const owed = infusionNodes(entry, part.path).slice(from, to)
+      .reduce((sum, node) => sum + node.cost, 0);
+    if (ref && owed > 0) bill.materials[ref] = owed;
     return bill;
   }
 
@@ -296,6 +334,16 @@ export function applyPart(pair: UnitPlanPair, part: PlanPart): UnitPlanPair {
       if (star == null) return pair;
       return applySide(pair, 'current',
         (plan) => ({ ...plan, star: Math.max(star, plan.star ?? 0) }));
+    }
+    case 'infusion': {
+      const want = target.infusion?.[part.path] ?? 0;
+      return applySide(pair, 'current', (plan) => ({
+        ...plan,
+        infusion: {
+          ...plan.infusion,
+          [part.path]: Math.max(want, plan.infusion?.[part.path] ?? 0),
+        },
+      }));
     }
     case 'skill': {
       const want = target.skills[String(part.id)] ?? 1;
