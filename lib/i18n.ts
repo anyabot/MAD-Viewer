@@ -71,6 +71,12 @@ export const UI = {
   navFarm: { en: 'Planner', ko: '플래너' },
   navChangelog: { en: 'Changelog', ko: '변경사항' },
 
+  hubSwitchGame: { en: 'Switch game', ko: '게임 전환' },
+  hubAllGames: { en: 'All games', ko: '모든 게임' },
+  hubHere: { en: 'here', ko: '현재' },
+  hubSource: { en: 'Source', ko: '소스' },
+  hubPortfolio: { en: 'Portfolio', ko: '포트폴리오' },
+
   loading: { en: 'loading…', ko: '불러오는 중…' },
   noMatch: { en: 'no match', ko: '결과 없음' },
   search: { en: 'search…', ko: '검색…' },
