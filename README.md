@@ -36,8 +36,8 @@ repository. Point the app at an alternative host with `NEXT_PUBLIC_DATA_SOURCE`,
 
 Push the `main` branch to GitHub and select **GitHub Actions** as the Pages
 source in the repository settings. The included workflow builds and deploys
-`out/` automatically. It derives the correct `/<repository>/` base path for a
-project site and uses no prefix for a `<user>.github.io` root site.
+`out/` automatically. The site is served from the root of its custom domain,
+`mad.altterisk.cc`, so it is built without a base path.
 
 ## Using the viewer
 
