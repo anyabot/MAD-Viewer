@@ -488,6 +488,37 @@
    }
   },
   {
+   "key": "af_ch0040",
+   "kind": "affection",
+   "character": "CH0040",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 20,
+   "faces": 2,
+   "bodyGroups": [
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton"
+   ],
+   "divergeEdit": {
+    "censorship": false,
+    "mechanisms": [],
+    "renamed": [],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 14646997,
+    "onestore": 14646995
+   }
+  },
+  {
    "key": "af_ch0042",
    "kind": "affection",
    "character": "CH0042",
@@ -1270,6 +1301,55 @@
    }
   },
   {
+   "key": "ds_ch0040",
+   "kind": "desire",
+   "character": "CH0040",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 27,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "20_overlay",
+    "lobby"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0040.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "areola_L_UNCEN",
+     "areola_R_UNCEN",
+     "nipple_L_SD_UNCEN",
+     "nipple_L_UNCEN",
+     "nipple_R_SD_UNCEN",
+     "nipple_R_UNCEN"
+    ],
+    "added": [
+     "crotch_CEN",
+     "tit_L_CEN",
+     "tit_R_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 18877747,
+    "onestore": 18795123
+   }
+  },
+  {
    "key": "ds_ch0042",
    "kind": "desire",
    "character": "CH0042",
@@ -1415,8 +1495,8 @@
     "added": []
    },
    "bytes": {
-    "google": 14872677,
-    "onestore": 14833955
+    "google": 14872644,
+    "onestore": 14833924
    }
   },
   {
@@ -2523,8 +2603,8 @@
     "google",
     "onestore"
    ],
-   "animations": 28,
-   "faces": 11,
+   "animations": 30,
+   "faces": 13,
    "bodyGroups": [
     "",
     "00",
@@ -2557,8 +2637,8 @@
     ]
    },
    "bytes": {
-    "google": 4813333,
-    "onestore": 4796645
+    "google": 4812385,
+    "onestore": 4798218
    }
   },
   {
@@ -3362,6 +3442,26 @@
    }
   },
   {
+   "key": "st_sc0003_01",
+   "kind": "standing",
+   "character": "SC0003_01",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 1,
+   "faces": 0,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3947919
+   }
+  },
+  {
    "key": "st_sc0004",
    "kind": "standing",
    "character": "SC0004",
@@ -3499,6 +3599,27 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 2446692
+   }
+  },
+  {
+   "key": "st_sc0213",
+   "kind": "standing",
+   "character": "SC0213",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 9,
+   "faces": 6,
+   "bodyGroups": [
+    "00",
+    "backup"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4252964
    }
   },
   {
@@ -3684,6 +3805,26 @@
    "bytes": {
     "google": 5069483,
     "onestore": 4925744
+   }
+  },
+  {
+   "key": "st_sc3012",
+   "kind": "standing",
+   "character": "SC3012",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 4,
+   "faces": 3,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 1999437
    }
   }
  ]

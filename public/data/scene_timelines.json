@@ -19154,6 +19154,1066 @@
         ]
       }
     },
+    "af_ch0040": {
+      "story": {
+        "script": "ch0040_05_affection_story",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "affection"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_040_lp",
+              "IntroBgmPath": "bgm_romance_040_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "NaniSummary",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 3,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Unskippable"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 6,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/enter"
+            },
+            "clip": "basic/enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 8,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 10,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0001"
+            },
+            "clip": "asmr/ani_0001"
+          },
+          {
+            "class": "PrintText",
+            "line": 12,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "잘 왔어. 여기가 나의 땅, 나의 왕국이야.",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 14,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_001",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_001"
+          },
+          {
+            "class": "PrintText",
+            "line": 16,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...흥, 뭐야 그 표정? 설마 별 거 없다고 생각하는 거야?",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_2"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 17,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 19,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "뭐, 인정할게. 아직 네 성에 차지 않을 수도 있겠지.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_3"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 21,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0002"
+            },
+            "clip": "asmr/ani_0002"
+          },
+          {
+            "class": "PrintText",
+            "line": 23,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하지만 처음은 누구나 이런 법이잖아?",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 25,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_002",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_002"
+          },
+          {
+            "class": "PrintText",
+            "line": 27,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "작은 것부터 시작해서... 조금씩 키워나가는 거지.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_5"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 28,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 30,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗, 게다가 있을 건 다 있어. 왕도, 땅도, 궁전도 있지.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_6"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 32,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0003"
+            },
+            "clip": "asmr/ani_0003"
+          },
+          {
+            "class": "PrintText",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그런데 딱 하나 빠진 게 있어.",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 36,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_003",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_003"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 39,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...바로, 내 곁에 설 백성 말이야.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_8"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 40,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 42,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그러니까 네게 기회를 줄게. 내 첫 번째가 되렴, 후훗.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_9"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 44,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0004"
+            },
+            "clip": "asmr/ani_0004"
+          },
+          {
+            "class": "PrintText",
+            "line": 46,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......읏. 왜, 왜 아무 말도 안 하는 거야...?",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 48,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_004",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_004"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 49,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 51,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...아, 아하핫. 맞아, 그 말을 안 했네.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_11"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 53,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.2"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 55,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "내 백성이 되겠다고 약속하면, 원하는 걸 뭐든 하나 들어줄게.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_12"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 57,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0005"
+            },
+            "clip": "asmr/ani_0005"
+          },
+          {
+            "class": "PrintText",
+            "line": 59,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...뭐든, 정말로 뭐든지 말이야.",
+            "author": "isabel"
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 61,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Duration": "1",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 63,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "AffectionEndingCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 67,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "view": {
+        "script": "ch0040_05_affection_view",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "affection"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_040_lp",
+              "IntroBgmPath": "bgm_romance_040_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/enter"
+            },
+            "clip": "basic/enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "DesireAffectionViewMenuPanel",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 8,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0001"
+            },
+            "clip": "asmr/ani_0001"
+          },
+          {
+            "class": "PrintText",
+            "line": 10,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "잘 왔어. 여기가 나의 땅, 나의 왕국이야.",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 12,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_001",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_001"
+          },
+          {
+            "class": "PrintText",
+            "line": 14,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...흥, 뭐야 그 표정? 설마 별 거 없다고 생각하는 거야?",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_2"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 15,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 17,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "뭐, 인정할게. 아직 네 성에 차지 않을 수도 있겠지.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_3"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 19,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0002"
+            },
+            "clip": "asmr/ani_0002"
+          },
+          {
+            "class": "PrintText",
+            "line": 21,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하지만 처음은 누구나 이런 법이잖아?",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 23,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_002",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_002"
+          },
+          {
+            "class": "PrintText",
+            "line": 25,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "작은 것부터 시작해서... 조금씩 키워나가는 거지.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_5"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 26,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 28,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗, 게다가 있을 건 다 있어. 왕도, 땅도, 궁전도 있지.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_6"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0003"
+            },
+            "clip": "asmr/ani_0003"
+          },
+          {
+            "class": "PrintText",
+            "line": 32,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그런데 딱 하나 빠진 게 있어.",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 34,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_003",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_003"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 35,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...바로, 내 곁에 설 백성 말이야.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_8"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 38,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 40,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그러니까 네게 기회를 줄게. 내 첫 번째가 되렴, 후훗.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_9"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 42,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0004"
+            },
+            "clip": "asmr/ani_0004"
+          },
+          {
+            "class": "PrintText",
+            "line": 44,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......읏. 왜, 왜 아무 말도 안 하는 거야...?",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 46,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_004",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_004"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 47,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 49,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...아, 아하핫. 맞아, 그 말을 안 했네.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_11"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 51,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.2"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 53,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "내 백성이 되겠다고 약속하면, 원하는 걸 뭐든 하나 들어줄게.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_12"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 55,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0005"
+            },
+            "clip": "asmr/ani_0005"
+          },
+          {
+            "class": "PrintText",
+            "line": 57,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...뭐든, 정말로 뭐든지 말이야.",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 59,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_005",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_005"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 60,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 62,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......흐, 흐응. 이걸로도 부족한 거야?",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_14"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 64,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 66,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...아핫. 역시 너답네. 그, 그래도 예상대로야.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_15"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 68,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.3"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 70,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "좋아... 그, 그럼... 너한테만 특별히 보여줄게.",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_16"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 72,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.4"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 74,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "내 첫 번째가 된다는 게 어떤 건지 말이야...",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_17"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 76,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0006"
+            },
+            "clip": "asmr/ani_0006"
+          },
+          {
+            "class": "PrintText",
+            "line": 78,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "조, 조금만 더 가까이 와... 그, 그럼... 하우웁...",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 80,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_006",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_006"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 81,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 83,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "츄읍... 이, 이언 결 해듀능 왕흔 나바께 업따고... 하읍...",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_19"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 84,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 86,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "에음... 이러케 진햐게 묻텨두며언... 츄웁...",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_20"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 88,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0007"
+            },
+            "clip": "asmr/ani_0007"
+          },
+          {
+            "class": "PrintText",
+            "line": 90,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "댜들 녜가... 하으음, 츕... 뉴규 편인지 알게찌... 츄읍...",
+            "author": "isabel"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 92,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/loop_007",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_007"
+          },
+          {
+            "class": "PrintText",
+            "line": 94,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "쯉, 쮸읍... 네갸 원햐면, 하음... 얼먀든지 해쥴 테니까아...",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_22"
+          },
+          {
+            "class": "PrintText",
+            "line": 97,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하웁, 음... 너, 너만은 놓치고 싶지 않아...",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_23"
+          },
+          {
+            "class": "PrintText",
+            "line": 100,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "나, 나아... 노력하고 있다구... 적어도 네가 인정해줄 만큼은 되려구우...",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_24"
+          },
+          {
+            "class": "PrintText",
+            "line": 103,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그러니까, 내 편이 되겠다고 약속해주면...",
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_25"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 105,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.asmr/ani_0008"
+            },
+            "clip": "asmr/ani_0008"
+          },
+          {
+            "class": "PrintText",
+            "line": 107,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "츄읍, 쯉... 내, 내 쳣 번째는 네게 쥴계에...",
+            "author": "isabel"
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 109,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Duration": "1",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 111,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "AffectionEndingCommand",
+            "line": 113,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 115,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      }
+    },
     "af_ch0042": {
       "story": {
         "script": "ch0042_05_affection_story",
@@ -47722,6 +48782,3174 @@
         ]
       }
     },
+    "ds_ch0040": {
+      "story": {
+        "script": "ch0040_03_desire_story",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "desire"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Unskippable"
+            }
+          },
+          {
+            "class": "NaniSummary",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 3,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_039_lp",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/enter"
+            },
+            "clip": "10_basic/10_enter"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 7,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 9,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 11,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "Delay",
+            "line": 13,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Seconds": "0"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 14,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/wait",
+              "Track": "11"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 15,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A1_1",
+              "Track": "11"
+            },
+            "clip": "10_reaction/10_A1_1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 16,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A2_2",
+              "Track": "11"
+            },
+            "clip": "10_reaction/10_A2_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 17,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "11",
+              "Reset": "true",
+              "Mix": "0.2"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이… 이러면 되는 거지?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 20,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 21,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 22,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 23,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "좋아, 자세는 완벽하군.",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 25,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "4.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 26,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "생각보다 재능 있는데?",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 28,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "6"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 29,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 31,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...흐, 흥. 당연하지. 날 누구라고 생각하는 거야.",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 33,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 34,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "너도 대충할 생각은 하지 말라고.",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 36,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 37,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "네가 꺼낸 말이니까, 끝까지 확실하게 책임져.",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_4"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 39,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 40,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 41,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 42,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "물론 나도 진지하게 임할 거다.",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 44,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 45,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "널 진짜 왕으로 만들어야 하니까.",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 47,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 48,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 49,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "Delay",
+            "line": 50,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Seconds": "0"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 51,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A4_2",
+              "Track": "11"
+            },
+            "clip": "10_reaction/10_A4_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 52,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A3_1",
+              "Track": "11"
+            },
+            "clip": "10_reaction/10_A3_1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 53,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "11",
+              "Reset": "true",
+              "Mix": "0.2"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 54,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......흐, 흐응. 그, 근데 말이야.",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_5"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 56,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.3"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 57,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "정말 이런 게... 왕이 되는데 도움이 돼?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_6"
+          },
+          {
+            "class": "PrintText",
+            "line": 58,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이, 이런... 이상한 자세가...?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_7"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 60,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 61,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 62,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 63,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "뭐야, 벌써 까먹은 거냐?",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 66,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "왕은 사람을 끌어당길 줄 알아야 한다니까.",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 68,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 69,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 70,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "Delay",
+            "line": 71,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Seconds": "0"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 72,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A3_2",
+              "Track": "11"
+            },
+            "clip": "10_reaction/10_A3_2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 73,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "265f"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 74,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_6_2"
+            },
+            "voice": "voc_ch0040_desire_enjoy_6_2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 75,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 76,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "11",
+              "Reset": "true",
+              "Mix": "0.2"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 77,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "Await",
+            "line": 78,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 79,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 80,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/wait",
+              "Track": "11"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 81,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "11",
+              "Reset": "true",
+              "Mix": "0.2"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 82,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 83,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Offset": "-3,2",
+              "Zoom": "0.5",
+              "Duration": "1"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 84,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 85,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Offset": "5,-2",
+              "Zoom": "0.5",
+              "Duration": "6.8"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 86,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 87,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Offset": "0,0",
+              "Zoom": "0",
+              "Duration": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 88,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...그, 그건 나도 알아. 아는데...",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_8"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 90,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 91,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.3"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 92,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "적어도 지금은.",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 94,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 95,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "예전보다 훨씬 눈을 떼기 힘들어.",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 97,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 98,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 99,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......저, 정말?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_9"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 101,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.3"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 102,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그, 그럼 조금만 더 해보지 뭐.",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_10"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 104,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 105,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 106,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 107,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "좋아, 그럼 다음으로 넘어가볼까.",
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 109,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 110,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 111,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1.2"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 112,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "......다음?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_11"
+          },
+          {
+            "class": "Delay",
+            "line": 114,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Seconds": "0"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 115,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_A",
+              "Track": "12",
+              "Hold": "true"
+            },
+            "clip": "10_reaction/10_H1_A"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 116,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_B",
+              "Track": "13"
+            },
+            "clip": "10_reaction/10_H1_B"
+          },
+          {
+            "class": "PrintText",
+            "line": 118,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "자, 잠깐! 너 뭐 하려는―",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_story_12"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 119,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 120,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.4"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 121,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Offset": "-3,1",
+              "Zoom": "0.5",
+              "Duration": "0.3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 122,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.1"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 123,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Duration": "0.3",
+              "ScenePosition": ",,-100",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "HideAllActors",
+            "line": 124,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 125,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Duration": "0",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireEndingCommand",
+            "line": 126,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Skip",
+            "line": 128,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Enable": "false"
+            }
+          },
+          {
+            "class": "End",
+            "line": 130,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "view": {
+        "script": "ch0040_03_desire_view",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "desire"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_039_lp",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/enter"
+            },
+            "clip": "10_basic/10_enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "DesireAffectionViewMenuPanel",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0",
+              "IdAndAppearance": "DesireAffectionSubtitle",
+              "MakeDefault": "true"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "set",
+            "line": 7,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 8,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "x1=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 9,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "x2=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 10,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "x3=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 11,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "x4=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 12,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y1=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 13,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y2=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 14,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y3=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 15,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y4=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 16,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "onlookEnable=true"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "phase1",
+            "line": 18,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 19,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 21,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 23,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireOnlookTriggerCommand",
+            "line": 25,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "onlookEnable",
+              "Id": "isabel",
+              "Threshold": "20"
+            }
+          },
+          {
+            "class": "Delay",
+            "line": 26,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Seconds": "0"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 27,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/wait",
+              "Track": "11",
+              "Mix": "0.3"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 28,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 29,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/wait",
+              "Track": "11",
+              "Reset": "true",
+              "Mix": "0.4"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 30,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "onlookEnable=false"
+            }
+          },
+          {
+            "class": "Delay",
+            "line": 31,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Seconds": "35"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 32,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Expression": "onlookEnable=true"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 34,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y1=0",
+              "Appearance": "reaction/A1_1",
+              "Track": "11",
+              "Mix": "0.2",
+              "IdAndBoundingBox": "isabel.A1"
+            },
+            "clip": "10_reaction/10_A1_1",
+            "box": "bd_A1"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 35,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x1=1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 36,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y1=1"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "30f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 38,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗, 이 정도쯤이야... 읏! 조, 좋아하는 거 아니거든!",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 39,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 40,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A1_1",
+              "Reset": "true",
+              "Mix": "0.4"
+            },
+            "clip": "10_reaction/10_A1_1"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 42,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y1=1",
+              "Appearance": "reaction/A1_2",
+              "Track": "11",
+              "Mix": "0.2",
+              "IdAndBoundingBox": "isabel.A1"
+            },
+            "clip": "10_reaction/10_A1_2",
+            "box": "bd_A1"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 43,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x1=1"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 44,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "25f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 45,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐흥~ 별 거 아니네. ...흐읏! 자, 자꾸 쓰다듬지 말라고...!",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 46,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 47,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A1_2",
+              "Reset": "true",
+              "Mix": "0.4"
+            },
+            "clip": "10_reaction/10_A1_2"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 49,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y2=0",
+              "Appearance": "reaction/A2_1",
+              "Track": "11",
+              "Mix": "0.2",
+              "IdAndBoundingBox": "isabel.A2"
+            },
+            "clip": "10_reaction/10_A2_1",
+            "box": "bd_A2"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 50,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x2=1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 51,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y2=1"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 52,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "15f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 53,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "뭐 하려는― 자, 잠깐! 만지지 마! 뿔은 왕의 상징이라고!",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 54,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 55,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A2_1",
+              "Reset": "true",
+              "Mix": "0.4"
+            },
+            "clip": "10_reaction/10_A2_1"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 57,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y2=1",
+              "Appearance": "reaction/A2_2",
+              "Track": "11",
+              "Mix": "0.2",
+              "IdAndBoundingBox": "isabel.A2"
+            },
+            "clip": "10_reaction/10_A2_2",
+            "box": "bd_A2"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 58,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x2=1"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 59,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "15f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 60,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...뿔은 그만하라니까! 왜, 왜 자꾸 만지려는 건데...!",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_4"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 61,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 62,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A2_2",
+              "Reset": "true",
+              "Mix": "0.4"
+            },
+            "clip": "10_reaction/10_A2_2"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 64,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y3=0",
+              "Appearance": "reaction/A3_1",
+              "Track": "11",
+              "Mix": "0.1",
+              "IdAndBoundingBox": "isabel.A3"
+            },
+            "clip": "10_reaction/10_A3_1",
+            "box": "bd_A3"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 65,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x3=1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 66,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y3=1"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 67,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "5f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 68,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "읏... 너, 일부러 이상한 데만 만지는 건 아니지...?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_5"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 69,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 70,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A3_1",
+              "Reset": "true",
+              "Mix": "0.3"
+            },
+            "clip": "10_reaction/10_A3_1"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 72,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y3=1",
+              "Appearance": "reaction/A3_2",
+              "Track": "11",
+              "Mix": "0.1",
+              "IdAndBoundingBox": "isabel.A3"
+            },
+            "clip": "10_reaction/10_A3_2",
+            "box": "bd_A3"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 73,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x3=1"
+            }
+          },
+          {
+            "class": "Await",
+            "line": 74,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 75,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 76,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 77,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "여, 여긴 이제 됐잖아... 그만해도 되는 거 아니야...?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_6"
+          },
+          {
+            "class": "Group",
+            "line": 78,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 79,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "265f"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 80,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_6_2"
+            },
+            "voice": "voc_ch0040_desire_enjoy_6_2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 81,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 82,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A3_2",
+              "Reset": "true",
+              "Mix": "0.1"
+            },
+            "clip": "10_reaction/10_A3_2"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 84,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y4=0",
+              "Appearance": "reaction/A4_1",
+              "Track": "11",
+              "Mix": "0.1",
+              "IdAndBoundingBox": "isabel.H1"
+            },
+            "clip": "10_reaction/10_A4_1",
+            "box": "bd_H1"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 85,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x4=1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 86,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y4=1"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 87,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "5f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 88,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐읏! 자, 잠깐...! 저, 정말 이런 게 필요한 거야...?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_7"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 89,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 90,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A4_1",
+              "Reset": "true",
+              "Mix": "0.4"
+            },
+            "clip": "10_reaction/10_A4_1"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 92,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y4=1",
+              "Appearance": "reaction/A4_2",
+              "Track": "11",
+              "IdAndBoundingBox": "isabel.H1"
+            },
+            "clip": "10_reaction/10_A4_2",
+            "box": "bd_H1"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 93,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x4=1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 94,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하읏! 너, 너어...! 이, 이거 정말 훈련 맞는 거지...?",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_8"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 95,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 96,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/A4_2",
+              "Reset": "true",
+              "Mix": "0.4"
+            },
+            "clip": "10_reaction/10_A4_2"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 99,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x1+x2+x3+x4=4",
+              "IdAndBoundingBox": "isabel.A4"
+            },
+            "box": "bd_A4"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 100,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_A",
+              "Track": "11",
+              "Hold": "true",
+              "Mix": "0.1"
+            },
+            "clip": "10_reaction/10_H1_A"
+          },
+          {
+            "class": "PlayBgm",
+            "line": 101,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "BgmPath": "bgm_romance_039_lp",
+              "FadeInDuration": "1",
+              "Pause": "true",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PlaySfx",
+            "line": 102,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "SfxPath": "SE_Heartbeat_02",
+              "Loop": "true",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 103,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "5f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 104,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐윽!? 너, 너어!",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_9_1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 105,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "Goto",
+            "line": 106,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase2"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 108,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase2",
+            "line": 110,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Await",
+            "line": 112,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 113,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_A-B",
+              "Track": "11",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_H1_A-B"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 114,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/idle",
+              "Track": "10",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 115,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 118,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.overlay/eff_circle",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "20_overlay/20_eff_circle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 120,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 122,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireDragCommand",
+            "line": 124,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "isabel.A4",
+              "Threshold": "0"
+            },
+            "box": "bd_A4"
+          },
+          {
+            "class": "StopSfx",
+            "line": 130,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "SfxPath": "SE_Heartbeat_02",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PlaySfx",
+            "line": 131,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "SfxPath": "SE_Heartbeat_03",
+              "Loop": "true",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 132,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_A-B",
+              "Track": "11",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_H1_A-B"
+          },
+          {
+            "class": "PickRandom",
+            "line": 133,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 134,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 135,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_2"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_2"
+          },
+          {
+            "class": "Group",
+            "line": 136,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 137,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_4"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_4"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 138,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.overlay/eff_circle",
+              "Reset": "true"
+            },
+            "clip": "20_overlay/20_eff_circle"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 139,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_compete_in",
+              "Track": "12",
+              "Hold": "true"
+            },
+            "clip": "10_reaction/10_H1_compete_in"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 140,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_compete_loop",
+              "Track": "12",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_H1_compete_loop"
+          },
+          {
+            "class": "DesireDragUpdateCommand",
+            "line": 141,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireDragBoneCommand",
+            "line": 142,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndBone": "isabel.tail_C",
+              "Position": "drag.position+drag.direction*drag.distance/20*sin(drag.time*60)",
+              "Range": "7.118",
+              "Center": "0.015,-0.024",
+              "Direction": "334.087",
+              "Angle": "181.963",
+              "Spring": "2500",
+              "Damping": "0.3"
+            }
+          },
+          {
+            "class": "DesireDragResolveCommand",
+            "line": 143,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "length(drag.delta)>2&&(Angle(drag.delta)<360&&Angle(drag.delta)>270)"
+            }
+          },
+          {
+            "class": "StopSfx",
+            "line": 144,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "SfxPath": "SE_Heartbeat_03",
+              "FadeOutDuration": "7",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 145,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.overlay/eff_circle",
+              "Reset": "true"
+            },
+            "clip": "20_overlay/20_eff_circle"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 146,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "12",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 147,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_B",
+              "Track": "11",
+              "Mix": "0.1"
+            },
+            "clip": "10_reaction/10_H1_B"
+          },
+          {
+            "class": "Await",
+            "line": 148,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 149,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 151,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이건 아무리 생각해도 이상하잖―",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_9_2"
+          },
+          {
+            "class": "Group",
+            "line": 152,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 153,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "63f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 154,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하으응!! 기, 기다리라니까아...!",
+            "author": "isabel",
+            "voice": "voc_ch0040_desire_enjoy_9_3"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 155,
+            "inline": 0,
+            "indent": 5,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 156,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 157,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "186f"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 158,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_10_1"
+            },
+            "voice": "voc_ch0040_desire_enjoy_10_1"
+          },
+          {
+            "class": "Group",
+            "line": 159,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 160,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "624f"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 161,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_10_2"
+            },
+            "voice": "voc_ch0040_desire_enjoy_10_2"
+          },
+          {
+            "class": "Group",
+            "line": 162,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 163,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "723f"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 164,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_10_3"
+            },
+            "voice": "voc_ch0040_desire_enjoy_10_3"
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 166,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Duration": "0",
+              "Color": "black",
+              "Direction": "Out"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 167,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "11",
+              "Wait": "false",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 168,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Path": ".phase_after"
+            }
+          },
+          {
+            "class": "DesireDragReleaseCommand",
+            "line": 169,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "StopSfx",
+            "line": 170,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "SfxPath": "SE_Heartbeat_03",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PlaySfx",
+            "line": 171,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "SfxPath": "SE_Heartbeat_02",
+              "Loop": "true",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 172,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.overlay/eff_circle",
+              "Reset": "true"
+            },
+            "clip": "20_overlay/20_eff_circle"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 173,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_tail_failure",
+              "Track": "12"
+            },
+            "clip": "10_reaction/10_H1_tail_failure"
+          },
+          {
+            "class": "PickRandom",
+            "line": 174,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 175,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 176,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_8"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_8"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 177,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "1.6"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 178,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_12_8"
+            },
+            "voice": "voc_ch0040_desire_enjoy_12_8"
+          },
+          {
+            "class": "Group",
+            "line": 179,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 180,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_9"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_9"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 181,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "1.6"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 182,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_12_4"
+            },
+            "voice": "voc_ch0040_desire_enjoy_12_4"
+          },
+          {
+            "class": "Group",
+            "line": 183,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 184,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_8"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_8"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 185,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "1.6"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 186,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_12_5"
+            },
+            "voice": "voc_ch0040_desire_enjoy_12_5"
+          },
+          {
+            "class": "Group",
+            "line": 187,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 188,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_9"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_9"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 189,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "1.6"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 190,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_12_6"
+            },
+            "voice": "voc_ch0040_desire_enjoy_12_6"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 195,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "12",
+              "Reset": "true",
+              "Mix": "0.4"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 196,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_A-B",
+              "Track": "11",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_H1_A-B"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 197,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/idle",
+              "Track": "10",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireDragResolveCommand",
+            "line": 199,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "drag.time>5"
+            }
+          },
+          {
+            "class": "StopSfx",
+            "line": 200,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "SfxPath": "SE_Heartbeat_03",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PlaySfx",
+            "line": 201,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "SfxPath": "SE_Heartbeat_02",
+              "Loop": "true",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 202,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.overlay/eff_circle",
+              "Reset": "true"
+            },
+            "clip": "20_overlay/20_eff_circle"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 203,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_tail_failure",
+              "Track": "12"
+            },
+            "clip": "10_reaction/10_H1_tail_failure"
+          },
+          {
+            "class": "PickRandom",
+            "line": 204,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 205,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 206,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_8"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_8"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 207,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "1.6"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 208,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_12_8"
+            },
+            "voice": "voc_ch0040_desire_enjoy_12_8"
+          },
+          {
+            "class": "Group",
+            "line": 209,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 210,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_9"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_9"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 211,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "1.6"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 212,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_12_4"
+            },
+            "voice": "voc_ch0040_desire_enjoy_12_4"
+          },
+          {
+            "class": "Group",
+            "line": 213,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 214,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_8"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_8"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 215,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "1.6"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 216,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_12_5"
+            },
+            "voice": "voc_ch0040_desire_enjoy_12_5"
+          },
+          {
+            "class": "Group",
+            "line": 217,
+            "inline": 0,
+            "indent": 4,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 218,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_9"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_9"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 219,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "WaitMode": "1.6"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 220,
+            "inline": 0,
+            "indent": 5,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_12_6"
+            },
+            "voice": "voc_ch0040_desire_enjoy_12_6"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 225,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "12",
+              "Reset": "true",
+              "Mix": "0.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 226,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.reaction/H1_A-B",
+              "Track": "11",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_reaction/10_H1_A-B"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 227,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/idle",
+              "Track": "10",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "Stop",
+            "line": 228,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_after",
+            "line": 230,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 234,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/after_idle",
+              "Track": "10",
+              "Loop": "true"
+            },
+            "clip": "10_basic/10_after_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 235,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 236,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_039_lp",
+              "FadeInDuration": "1",
+              "Pause": "false",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 237,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Duration": "1",
+              "Color": "black",
+              "Direction": "In"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 238,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/after_idle"
+            },
+            "clip": "10_basic/10_after_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 240,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 242,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 244,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "isabel"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 245,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/after_touch",
+              "Track": "11",
+              "Mix": "0.2"
+            },
+            "clip": "10_basic/10_after_touch"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 246,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.1"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 247,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_13_1"
+            },
+            "voice": "voc_ch0040_desire_enjoy_13_1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 248,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 249,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_11_11"
+            },
+            "voice": "voc_ch0040_desire_enjoy_11_11"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 250,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "3.7"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 251,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0040/desire/voc_ch0040_desire_enjoy_13_3"
+            },
+            "voice": "voc_ch0040_desire_enjoy_13_3"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 252,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Track": "11",
+              "Reset": "true",
+              "Mix": "0.4"
+            }
+          },
+          {
+            "class": "DesireResetCommand",
+            "line": 254,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Destination": ".set"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 255,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 256,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Transition": "Crossfade",
+              "Duration": "0.5",
+              "Wait": "false",
+              "ScenePosition": ",,-50",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 257,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 258,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 259,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 260,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Visible": "false",
+              "Duration": "1",
+              "Wait": "false",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 261,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "isabel.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 262,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 264,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      }
+    },
     "ds_ch0042": {
       "story": {
         "script": "ch0042_03_desire_story",
@@ -53760,8 +57988,8 @@
             "fields": {
               "IdAndAppearance": "rana",
               "Track": "12",
-              "Duration": "0.5",
-              "Reset": "true"
+              "Reset": "true",
+              "Mix": "0.5"
             }
           },
           {
@@ -54757,8 +58985,8 @@
             "fields": {
               "IdAndAppearance": "rana",
               "Track": "12",
-              "Duration": "0.5",
-              "Reset": "true"
+              "Reset": "true",
+              "Mix": "0.5"
             }
           },
           {
