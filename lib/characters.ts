@@ -102,14 +102,27 @@ export function rosterNote(
 }
 
 // Only playable characters carry an English name, so an NPC reads Korean in either language.
+type TextResolver = (lang: Lang, ko?: string | null, en?: string | null) => string;
+let resolveText: TextResolver | null = null;
+
+// Set by the app to `dataText`; left unset under node, where the plain ko/en choice applies.
+export function setTextResolver(fn: TextResolver): void {
+  resolveText = fn;
+}
+
 export function characterName(entry: CharacterEntry | null, lang: Lang = 'en'): string {
   if (!entry) return '';
-  const primary = lang === 'ko' ? entry.name : (entry.nameEn || entry.name);
+  const primary = resolveText ? resolveText(lang, entry.name, entry.nameEn)
+    : lang === 'ko' ? entry.name : (entry.nameEn || entry.name);
   return primary || entry.code;
 }
 
 export function characterSubName(entry: CharacterEntry | null, lang: Lang = 'en'): string {
   if (!entry || !entry.nameEn) return '';
+  if (resolveText) {
+    const primary = resolveText(lang, entry.name, entry.nameEn);
+    return primary === entry.name ? entry.nameEn : entry.name;
+  }
   return lang === 'ko' ? entry.nameEn : entry.name;
 }
 

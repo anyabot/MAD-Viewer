@@ -30,6 +30,82 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-10-09',
+    title: { en: 'Home, events, story and items', ko: '홈, 이벤트, 스토리와 아이템' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Home page with what is running now: events, pickup banners and seasonal content, with countdowns. The viewer moved to its own page; old links still work.',
+          ko: '진행 중인 이벤트·픽업 배너·시즌 콘텐츠와 남은 시간을 보여주는 홈 추가. 뷰어는 별도 페이지로 이동했으며 기존 링크도 그대로 열립니다.',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'A page for each event: its story, bonus partners with their drop bonus, and the exchange shop or draw steps.',
+          ko: '이벤트별 페이지 추가: 스토리, 보너스 파트너와 드롭 보너스, 교환 상점 또는 뽑기 단계',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Story reader: main, event and Nemesis story as text.',
+          ko: '스토리 열람: 메인·이벤트·네메시스 스토리를 텍스트로 제공',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Item list and item pages: where each item comes from, what uses it, and your Planner count, editable in place.',
+          ko: '아이템 목록과 아이템 페이지 추가: 획득처, 사용처, 플래너 보유 수량을 바로 수정',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Infinity Archive seasons and Game Packs, under Ascent with Basic and Core Archive.',
+          ko: '어센트에 무한 아카이브 시즌과 게임 팩 추가, 기본·코어 아카이브와 함께 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Voice lines tab on each character, with playback.',
+          ko: '캐릭터별 보이스 탭 추가, 재생 지원',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Each skill shows its use time and delay.',
+          ko: '스킬별 사용 시간과 딜레이 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Filter characters by artist; the artist on a character page links to it.',
+          ko: '일러스트레이터별 캐릭터 필터 추가, 캐릭터 페이지의 일러스트레이터에서 바로 이동',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Game text in all seven of the game’s languages, chosen separately from the site language.',
+          ko: '게임 텍스트를 게임의 7개 언어로 표시, 사이트 언어와 별도로 선택',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Stage and story cards share one art size.',
+          ko: '스테이지·스토리 카드 아트 크기 통일',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-10-08',
     title: { en: 'Isabel, Aura Infusion and 1.9.7', ko: '이자벨, 성력 주입과 1.9.7' },
     entries: [

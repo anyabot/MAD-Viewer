@@ -3,17 +3,20 @@ import { HubBar, HubFooter } from '@altterisk/game-hub';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
+import { GameTextPicker } from '@/components/gameTextPicker';
 import { LANGS, useLangStore, useT, type UiKey } from '@/lib/i18n';
 
 const NAV: { href: string; label: UiKey; match: (p: string) => boolean }[] = [
-  { href: '/', label: 'navViewer', match: (p: string) => p === '/' },
+  { href: '/viewer', label: 'navViewer', match: (p: string) => p === '/viewer' },
   {
     href: '/characters',
     label: 'navCharacters',
     match: (p: string) => p.startsWith('/character'),
   },
   { href: '/effects', label: 'navEffects', match: (p: string) => p === '/effects' },
-  { href: '/stages', label: 'navStages', match: (p: string) => p.startsWith('/stage') },
+  { href: '/story', label: 'navStory', match: (p: string) => p === '/story' },
+  { href: '/stages', label: 'navStages', match: (p: string) => p.startsWith('/stage') || p === '/events' },
+  { href: '/items', label: 'navItems', match: (p: string) => p === '/items' || p === '/item' },
   { href: '/farm', label: 'navFarm', match: (p: string) => p === '/farm' },
   { href: '/changelog', label: 'navChangelog', match: (p: string) => p === '/changelog' },
 ];
@@ -63,7 +66,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             {t(item.label)}
           </NextLink>
         ))}
-        actions={<LanguagePicker />}
+        actions={<HStack spacing={2}><GameTextPicker /><LanguagePicker /></HStack>}
       />
       <Box as="main" flex="1">
         <Container maxW="90rem" px={{ base: 3, md: 6 }} py={{ base: 4, md: 6 }}

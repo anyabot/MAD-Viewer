@@ -8,6 +8,7 @@ import { Panel } from '@/components/skillKit';
 import { AmountField, Stepper } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
+import { itemHref } from '@/lib/items';
 import { MATERIAL_ICON_GROUPS, MATERIAL_KIND_LABEL } from '@/lib/farm';
 import { dataText, pick, useLang, useT } from '@/lib/i18n';
 import type { GrowthData, IconManifest } from '@/lib/data';
@@ -82,7 +83,7 @@ export function InventoryDialog({ growth, icons, isOpen, onClose }: {
                     return (
                       <HStack key={row.ref} spacing={2}>
                         <ItemIcon manifest={icons} group={materialGroup(icons, row.icon)}
-                          name={row.icon} grade={row.grade} size={10} />
+                          name={row.icon} grade={row.grade} size={10} href={itemHref(row.ref)} />
                         <Text fontSize="sm" noOfLines={1} flex="1" minW={0} title={row.name}>
                           {row.name}
                         </Text>

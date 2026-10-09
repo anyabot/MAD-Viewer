@@ -4,6 +4,21 @@ A web viewer for **Make Drama** character art — Spine rigs for standing
 portraits and affection scenes, with animation playback and a switch between the
 two store builds for the skins whose art differs between them.
 
+## Pages
+
+- **Home** — what is running now: events, pickup banners, Nemesis and Infinity
+  Archive, with countdowns.
+- **Viewer** (`/viewer`) — every skin, live. Older `/?skin=…` links forward here.
+- **Characters** — profiles, skill kits, the stat calculator and voice lines.
+- **Story** — the main, event and Nemesis story as text.
+- **Events & Stages** — each event's page (story, bonus units, exchange), every
+  battle mode, and the Infinity Archive season with its Game Packs.
+- **Items** — every item: where it comes from, what uses it, and your Planner count.
+- **Planner** — growth plans and the stages to farm for them.
+
+Game text (names, skills, items, story, subtitles) can be shown in any of the
+game's seven languages, separately from the site's own English/Korean labels.
+
 ## Stack
 
 Next.js (pages router, static export) · Chakra UI · PixiJS v8 ·

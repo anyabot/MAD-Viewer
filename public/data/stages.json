@@ -53,6 +53,13 @@
     "en": "Raid",
     "ko": "레이드"
    }
+  },
+  {
+   "key": "archive",
+   "label": {
+    "en": "Infinity Archive",
+    "ko": "인피니티 아카이브"
+   }
   }
  ],
  "zones": {
@@ -492,7 +499,8 @@
    "name": {
     "ko": "베이직 아카이브",
     "en": "Basic Archive"
-   }
+   },
+   "schedule": 0
   },
   "41001": {
    "id": 41001,
@@ -500,7 +508,8 @@
    "name": {
     "ko": "코어 아카이브",
     "en": "Core Archive"
-   }
+   },
+   "schedule": 4001
   },
   "41002": {
    "id": 41002,
@@ -508,7 +517,8 @@
    "name": {
     "ko": "코어 아카이브",
     "en": "Core Archive"
-   }
+   },
+   "schedule": 4002
   },
   "70121": {
    "id": 70121,
@@ -950,7 +960,9 @@
     "ko": "코어 아카이브",
     "en": "Core Archive"
    },
-   "order": 1
+   "order": 1,
+   "from": "2026-07-16",
+   "to": "2026-09-10"
   },
   "ascent:41002": {
    "key": "ascent:41002",
@@ -960,7 +972,9 @@
     "ko": "코어 아카이브",
     "en": "Core Archive"
    },
-   "order": 2
+   "order": 2,
+   "from": "2026-09-10",
+   "to": "2026-11-05"
   },
   "nemesis:7013": {
    "key": "nemesis:7013",
@@ -1022,6 +1036,326 @@
    "key": "raid",
    "mode": "raid",
    "image": "Event_Raid_NP0799_Bg"
+  },
+  "archive:101": {
+   "key": "archive:101",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 101,
+   "archiveDifficulty": 1,
+   "archiveNode": 1
+  },
+  "archive:102": {
+   "key": "archive:102",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 102,
+   "archiveDifficulty": 1,
+   "archiveNode": 2
+  },
+  "archive:103": {
+   "key": "archive:103",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 103,
+   "archiveDifficulty": 1,
+   "archiveNode": 3
+  },
+  "archive:104": {
+   "key": "archive:104",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 104,
+   "archiveDifficulty": 1,
+   "archiveNode": 4
+  },
+  "archive:105": {
+   "key": "archive:105",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 105,
+   "archiveDifficulty": 1,
+   "archiveNode": 5
+  },
+  "archive:106": {
+   "key": "archive:106",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 106,
+   "archiveDifficulty": 1,
+   "archiveNode": 6
+  },
+  "archive:107": {
+   "key": "archive:107",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 107,
+   "archiveDifficulty": 1,
+   "archiveNode": 7
+  },
+  "archive:108": {
+   "key": "archive:108",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 108,
+   "archiveDifficulty": 1,
+   "archiveNode": 8
+  },
+  "archive:109": {
+   "key": "archive:109",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 109,
+   "archiveDifficulty": 1,
+   "archiveNode": 9
+  },
+  "archive:110": {
+   "key": "archive:110",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 110,
+   "archiveDifficulty": 1,
+   "archiveNode": 10
+  },
+  "archive:111": {
+   "key": "archive:111",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 111,
+   "archiveDifficulty": 1,
+   "archiveNode": 11
+  },
+  "archive:112": {
+   "key": "archive:112",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 112,
+   "archiveDifficulty": 1,
+   "archiveNode": 12
+  },
+  "archive:113": {
+   "key": "archive:113",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 113,
+   "archiveDifficulty": 1,
+   "archiveNode": 13
+  },
+  "archive:114": {
+   "key": "archive:114",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 114,
+   "archiveDifficulty": 1,
+   "archiveNode": 14
+  },
+  "archive:115": {
+   "key": "archive:115",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 115,
+   "archiveDifficulty": 1,
+   "archiveNode": 15
+  },
+  "archive:116": {
+   "key": "archive:116",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 116,
+   "archiveDifficulty": 1,
+   "archiveNode": 16
+  },
+  "archive:117": {
+   "key": "archive:117",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 117,
+   "archiveDifficulty": 1,
+   "archiveNode": 17
+  },
+  "archive:118": {
+   "key": "archive:118",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 118,
+   "archiveDifficulty": 1,
+   "archiveNode": 18
+  },
+  "archive:119": {
+   "key": "archive:119",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 119,
+   "archiveDifficulty": 1,
+   "archiveNode": 19
+  },
+  "archive:120": {
+   "key": "archive:120",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 120,
+   "archiveDifficulty": 1,
+   "archiveNode": 20
+  },
+  "archive:201": {
+   "key": "archive:201",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 201,
+   "archiveDifficulty": 2,
+   "archiveNode": 1
+  },
+  "archive:202": {
+   "key": "archive:202",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 202,
+   "archiveDifficulty": 2,
+   "archiveNode": 2
+  },
+  "archive:203": {
+   "key": "archive:203",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 203,
+   "archiveDifficulty": 2,
+   "archiveNode": 3
+  },
+  "archive:204": {
+   "key": "archive:204",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 204,
+   "archiveDifficulty": 2,
+   "archiveNode": 4
+  },
+  "archive:205": {
+   "key": "archive:205",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 205,
+   "archiveDifficulty": 2,
+   "archiveNode": 5
+  },
+  "archive:206": {
+   "key": "archive:206",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 206,
+   "archiveDifficulty": 2,
+   "archiveNode": 6
+  },
+  "archive:207": {
+   "key": "archive:207",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 207,
+   "archiveDifficulty": 2,
+   "archiveNode": 7
+  },
+  "archive:208": {
+   "key": "archive:208",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 208,
+   "archiveDifficulty": 2,
+   "archiveNode": 8
+  },
+  "archive:209": {
+   "key": "archive:209",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 209,
+   "archiveDifficulty": 2,
+   "archiveNode": 9
+  },
+  "archive:210": {
+   "key": "archive:210",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 210,
+   "archiveDifficulty": 2,
+   "archiveNode": 10
+  },
+  "archive:211": {
+   "key": "archive:211",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 211,
+   "archiveDifficulty": 2,
+   "archiveNode": 11
+  },
+  "archive:212": {
+   "key": "archive:212",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 212,
+   "archiveDifficulty": 2,
+   "archiveNode": 12
+  },
+  "archive:213": {
+   "key": "archive:213",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 213,
+   "archiveDifficulty": 2,
+   "archiveNode": 13
+  },
+  "archive:214": {
+   "key": "archive:214",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 214,
+   "archiveDifficulty": 2,
+   "archiveNode": 14
+  },
+  "archive:215": {
+   "key": "archive:215",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 215,
+   "archiveDifficulty": 2,
+   "archiveNode": 15
+  },
+  "archive:216": {
+   "key": "archive:216",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 216,
+   "archiveDifficulty": 2,
+   "archiveNode": 16
+  },
+  "archive:217": {
+   "key": "archive:217",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 217,
+   "archiveDifficulty": 2,
+   "archiveNode": 17
+  },
+  "archive:218": {
+   "key": "archive:218",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 218,
+   "archiveDifficulty": 2,
+   "archiveNode": 18
+  },
+  "archive:219": {
+   "key": "archive:219",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 219,
+   "archiveDifficulty": 2,
+   "archiveNode": 19
+  },
+  "archive:220": {
+   "key": "archive:220",
+   "mode": "archive",
+   "image": "Thumbnail_PastStory_Content_ArchiveAscent",
+   "order": 220,
+   "archiveDifficulty": 2,
+   "archiveNode": 20
   }
  },
  "subMissions": {
@@ -1947,6 +2281,16 @@
    "positionType": 3,
    "skillSetGroup": 100039
   },
+  "CH0040": {
+   "code": "CH0040",
+   "name": "이자벨",
+   "nameEn": "Isabel",
+   "iconPath": "Icon_CH0040",
+   "roleType": 3,
+   "attributeType": 3,
+   "positionType": 2,
+   "skillSetGroup": 100040
+  },
   "CH0042": {
    "code": "CH0042",
    "name": "오블리아",
@@ -1987,6 +2331,16 @@
    "positionType": 1,
    "skillSetGroup": 100050
   },
+  "CH0052": {
+   "code": "CH0052",
+   "name": "라나",
+   "nameEn": "Rana",
+   "iconPath": "Icon_CH0052",
+   "roleType": 3,
+   "attributeType": 2,
+   "positionType": 3,
+   "skillSetGroup": 100052
+  },
   "CH0053": {
    "code": "CH0053",
    "name": "진",
@@ -2026,6 +2380,16 @@
    "attributeType": 1,
    "positionType": 2,
    "skillSetGroup": 100057
+  },
+  "CH0058": {
+   "code": "CH0058",
+   "name": "비앙카",
+   "nameEn": "Bianca",
+   "iconPath": "Icon_CH0058",
+   "roleType": 2,
+   "attributeType": 4,
+   "positionType": 1,
+   "skillSetGroup": 100058
   },
   "CH0062": {
    "code": "CH0062",
@@ -68082,6 +68446,8986 @@
       {
        "code": "NP0799",
        "level": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 101001,
+   "group": "archive:101",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011011,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0101",
+       "level": 58
+      },
+      {
+       "code": "NP0103",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0112",
+       "level": 58
+      },
+      {
+       "code": "CH0012",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 101002,
+   "group": "archive:101",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011012,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0101",
+       "level": 58
+      },
+      {
+       "code": "NP0103",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0112",
+       "level": 58
+      },
+      {
+       "code": "CH0023",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 101003,
+   "group": "archive:101",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011013,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0101",
+       "level": 58
+      },
+      {
+       "code": "NP0103",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0112",
+       "level": 58
+      },
+      {
+       "code": "CH0046",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 102001,
+   "group": "archive:102",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011021,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0102",
+       "level": 58
+      },
+      {
+       "code": "NP0105",
+       "level": 58
+      },
+      {
+       "code": "NP0106",
+       "level": 58
+      },
+      {
+       "code": "NP0107",
+       "level": 58
+      },
+      {
+       "code": "CH0013",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 102002,
+   "group": "archive:102",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011022,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0102",
+       "level": 58
+      },
+      {
+       "code": "NP0105",
+       "level": 58
+      },
+      {
+       "code": "NP0106",
+       "level": 58
+      },
+      {
+       "code": "NP0107",
+       "level": 58
+      },
+      {
+       "code": "CH0019",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 102003,
+   "group": "archive:102",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011023,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0102",
+       "level": 58
+      },
+      {
+       "code": "NP0105",
+       "level": 58
+      },
+      {
+       "code": "NP0106",
+       "level": 58
+      },
+      {
+       "code": "NP0107",
+       "level": 58
+      },
+      {
+       "code": "CH0033",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 103001,
+   "group": "archive:103",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011031,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0103",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0105",
+       "level": 58
+      },
+      {
+       "code": "NP0108",
+       "level": 58
+      },
+      {
+       "code": "CH0016",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 103002,
+   "group": "archive:103",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011032,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0103",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0105",
+       "level": 58
+      },
+      {
+       "code": "NP0108",
+       "level": 58
+      },
+      {
+       "code": "CH0025",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 103003,
+   "group": "archive:103",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011033,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0103",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0105",
+       "level": 58
+      },
+      {
+       "code": "NP0108",
+       "level": 58
+      },
+      {
+       "code": "CH0032",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 104001,
+   "group": "archive:104",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011041,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0110",
+       "level": 58
+      },
+      {
+       "code": "NP0101",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0106",
+       "level": 58
+      },
+      {
+       "code": "CH0020",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 104002,
+   "group": "archive:104",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011042,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0110",
+       "level": 58
+      },
+      {
+       "code": "NP0101",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0106",
+       "level": 58
+      },
+      {
+       "code": "CH0028",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 104003,
+   "group": "archive:104",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011043,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0110",
+       "level": 58
+      },
+      {
+       "code": "NP0101",
+       "level": 58
+      },
+      {
+       "code": "NP0104",
+       "level": 58
+      },
+      {
+       "code": "NP0106",
+       "level": 58
+      },
+      {
+       "code": "CH0032",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 105001,
+   "group": "archive:105",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_01",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 6000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011051,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP0199",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0199",
+       "level": 58
+      },
+      {
+       "code": "CH0030",
+       "level": 58
+      },
+      {
+       "code": "CH0030",
+       "level": 58
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 106001,
+   "group": "archive:106",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011061,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0201",
+       "level": 60
+      },
+      {
+       "code": "NP0204",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      },
+      {
+       "code": "CH0005",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 106002,
+   "group": "archive:106",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011062,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0201",
+       "level": 60
+      },
+      {
+       "code": "NP0204",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      },
+      {
+       "code": "CH0022",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 106003,
+   "group": "archive:106",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011063,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0201",
+       "level": 60
+      },
+      {
+       "code": "NP0204",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      },
+      {
+       "code": "CH0056",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 107001,
+   "group": "archive:107",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011071,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0202",
+       "level": 60
+      },
+      {
+       "code": "NP0205",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      },
+      {
+       "code": "CH0015",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 107002,
+   "group": "archive:107",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011072,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0202",
+       "level": 60
+      },
+      {
+       "code": "NP0205",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      },
+      {
+       "code": "CH0024",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 107003,
+   "group": "archive:107",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011073,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0202",
+       "level": 60
+      },
+      {
+       "code": "NP0205",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      },
+      {
+       "code": "CH0026",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 108001,
+   "group": "archive:108",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011081,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0211",
+       "level": 60
+      },
+      {
+       "code": "NP0203",
+       "level": 60
+      },
+      {
+       "code": "NP0206",
+       "level": 60
+      },
+      {
+       "code": "NP0208",
+       "level": 60
+      },
+      {
+       "code": "CH0021",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 108002,
+   "group": "archive:108",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011082,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0211",
+       "level": 60
+      },
+      {
+       "code": "NP0203",
+       "level": 60
+      },
+      {
+       "code": "NP0206",
+       "level": 60
+      },
+      {
+       "code": "NP0208",
+       "level": 60
+      },
+      {
+       "code": "CH0027",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 108003,
+   "group": "archive:108",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011083,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0211",
+       "level": 60
+      },
+      {
+       "code": "NP0203",
+       "level": 60
+      },
+      {
+       "code": "NP0206",
+       "level": 60
+      },
+      {
+       "code": "NP0208",
+       "level": 60
+      },
+      {
+       "code": "CH0057",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 109001,
+   "group": "archive:109",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011091,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0204",
+       "level": 60
+      },
+      {
+       "code": "NP0206",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "CH0042",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 109002,
+   "group": "archive:109",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011092,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0204",
+       "level": 60
+      },
+      {
+       "code": "NP0206",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "CH0062",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 109003,
+   "group": "archive:109",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 3500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011093,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0204",
+       "level": 60
+      },
+      {
+       "code": "NP0206",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "CH0026",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 110001,
+   "group": "archive:110",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_01",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 7000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011101,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP0299",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0299",
+       "level": 60
+      },
+      {
+       "code": "CH0007",
+       "level": 60
+      },
+      {
+       "code": "CH0007",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 111001,
+   "group": "archive:111",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011111,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0301",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "CH0038",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 111002,
+   "group": "archive:111",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011112,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0301",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "CH0034",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 111003,
+   "group": "archive:111",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011113,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0301",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "CH0068",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 112001,
+   "group": "archive:112",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011121,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0302",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0007",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 112002,
+   "group": "archive:112",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011122,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0302",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0029",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 112003,
+   "group": "archive:112",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011123,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0302",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0053",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 113001,
+   "group": "archive:113",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011131,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0303",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0009",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 113002,
+   "group": "archive:113",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011132,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0303",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0038",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 113003,
+   "group": "archive:113",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011133,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0303",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0068",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 114001,
+   "group": "archive:114",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011141,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "NP0304",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "CH0010",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 114002,
+   "group": "archive:114",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011142,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "NP0304",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "CH0036",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 114003,
+   "group": "archive:114",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011143,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "NP0304",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "CH0037",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 115001,
+   "group": "archive:115",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_01",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 8000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011151,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP0399",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0399",
+       "level": 61
+      },
+      {
+       "code": "CH0015",
+       "level": 61
+      },
+      {
+       "code": "CH0015",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 116001,
+   "group": "archive:116",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011161,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "CH0001",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 116002,
+   "group": "archive:116",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011162,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "CH0006",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 116003,
+   "group": "archive:116",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011163,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "CH0050",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 117001,
+   "group": "archive:117",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011171,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "CH0002",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 117002,
+   "group": "archive:117",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011172,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "CH0011",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 117003,
+   "group": "archive:117",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011173,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "CH0031",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 118001,
+   "group": "archive:118",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011181,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "CH0054",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 118002,
+   "group": "archive:118",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011182,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "CH0030",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 118003,
+   "group": "archive:118",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011183,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "CH0043",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 119001,
+   "group": "archive:119",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011191,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "CH0017",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 119002,
+   "group": "archive:119",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011192,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "CH0031",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 119003,
+   "group": "archive:119",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 4500,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011193,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "CH0039",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 120001,
+   "group": "archive:120",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_normal",
+   "nameTemplate": {
+    "ko": "NORMAL {0} - {1}",
+    "en": "NORMAL {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_01",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5011201,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP0499",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0499",
+       "level": 62
+      },
+      {
+       "code": "CH0005",
+       "level": 62
+      },
+      {
+       "code": "CH0005",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 201001,
+   "group": "archive:201",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501011,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0110",
+       "level": 60
+      },
+      {
+       "code": "NP0107",
+       "level": 60
+      },
+      {
+       "code": "NP0108",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 201002,
+   "group": "archive:201",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501012,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0110",
+       "level": 60
+      },
+      {
+       "code": "NP0107",
+       "level": 60
+      },
+      {
+       "code": "NP0112",
+       "level": 60
+      },
+      {
+       "code": "NP0407",
+       "level": 60
+      },
+      {
+       "code": "NP0411",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 201003,
+   "group": "archive:201",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501013,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0211",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      },
+      {
+       "code": "NP0312",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 201004,
+   "group": "archive:201",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501014,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      },
+      {
+       "code": "NP0109",
+       "level": 60
+      },
+      {
+       "code": "NP0112",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 201005,
+   "group": "archive:201",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501015,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0312",
+       "level": 60
+      },
+      {
+       "code": "NP0307",
+       "level": 60
+      },
+      {
+       "code": "NP0308",
+       "level": 60
+      },
+      {
+       "code": "NP0409",
+       "level": 60
+      },
+      {
+       "code": "NP0410",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 201006,
+   "group": "archive:201",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501016,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0312",
+       "level": 60
+      },
+      {
+       "code": "NP0309",
+       "level": 60
+      },
+      {
+       "code": "NP0310",
+       "level": 60
+      },
+      {
+       "code": "NP0208",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 201007,
+   "group": "archive:201",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501017,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0409",
+       "level": 60
+      },
+      {
+       "code": "NP0408",
+       "level": 60
+      },
+      {
+       "code": "NP0412",
+       "level": 60
+      },
+      {
+       "code": "NP0109",
+       "level": 60
+      },
+      {
+       "code": "NP0111",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 201008,
+   "group": "archive:201",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501018,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0409",
+       "level": 60
+      },
+      {
+       "code": "NP0411",
+       "level": 60
+      },
+      {
+       "code": "NP0412",
+       "level": 60
+      },
+      {
+       "code": "NP0307",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 202001,
+   "group": "archive:202",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501021,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0112",
+       "level": 60
+      },
+      {
+       "code": "NP0108",
+       "level": 60
+      },
+      {
+       "code": "NP0111",
+       "level": 60
+      },
+      {
+       "code": "NP0208",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 202002,
+   "group": "archive:202",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501022,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0112",
+       "level": 60
+      },
+      {
+       "code": "NP0109",
+       "level": 60
+      },
+      {
+       "code": "NP0110",
+       "level": 60
+      },
+      {
+       "code": "NP0407",
+       "level": 60
+      },
+      {
+       "code": "NP0410",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 202003,
+   "group": "archive:202",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501023,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0211",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      },
+      {
+       "code": "NP0308",
+       "level": 60
+      },
+      {
+       "code": "NP0312",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 202004,
+   "group": "archive:202",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501024,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0211",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0107",
+       "level": 60
+      },
+      {
+       "code": "NP0112",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 202005,
+   "group": "archive:202",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501025,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0307",
+       "level": 60
+      },
+      {
+       "code": "NP0309",
+       "level": 60
+      },
+      {
+       "code": "NP0310",
+       "level": 60
+      },
+      {
+       "code": "NP0411",
+       "level": 60
+      },
+      {
+       "code": "NP0412",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 202006,
+   "group": "archive:202",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501026,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0307",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      },
+      {
+       "code": "NP0312",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 202007,
+   "group": "archive:202",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501027,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0412",
+       "level": 60
+      },
+      {
+       "code": "NP0408",
+       "level": 60
+      },
+      {
+       "code": "NP0411",
+       "level": 60
+      },
+      {
+       "code": "NP0109",
+       "level": 60
+      },
+      {
+       "code": "NP0111",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 202008,
+   "group": "archive:202",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501028,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0412",
+       "level": 60
+      },
+      {
+       "code": "NP0409",
+       "level": 60
+      },
+      {
+       "code": "NP0410",
+       "level": 60
+      },
+      {
+       "code": "NP0308",
+       "level": 60
+      },
+      {
+       "code": "NP0309",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203001,
+   "group": "archive:203",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501031,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0107",
+       "level": 60
+      },
+      {
+       "code": "NP0110",
+       "level": 60
+      },
+      {
+       "code": "NP0111",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203002,
+   "group": "archive:203",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501032,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0107",
+       "level": 60
+      },
+      {
+       "code": "NP0109",
+       "level": 60
+      },
+      {
+       "code": "NP0112",
+       "level": 60
+      },
+      {
+       "code": "NP0409",
+       "level": 60
+      },
+      {
+       "code": "NP0411",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203003,
+   "group": "archive:203",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501033,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0208",
+       "level": 60
+      },
+      {
+       "code": "NP0310",
+       "level": 60
+      },
+      {
+       "code": "NP0312",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203004,
+   "group": "archive:203",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501034,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0208",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      },
+      {
+       "code": "NP0108",
+       "level": 60
+      },
+      {
+       "code": "NP0112",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203005,
+   "group": "archive:203",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501035,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0310",
+       "level": 60
+      },
+      {
+       "code": "NP0308",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      },
+      {
+       "code": "NP0410",
+       "level": 60
+      },
+      {
+       "code": "NP0412",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203006,
+   "group": "archive:203",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501036,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0310",
+       "level": 60
+      },
+      {
+       "code": "NP0309",
+       "level": 60
+      },
+      {
+       "code": "NP0312",
+       "level": 60
+      },
+      {
+       "code": "NP0211",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203007,
+   "group": "archive:203",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501037,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0411",
+       "level": 60
+      },
+      {
+       "code": "NP0407",
+       "level": 60
+      },
+      {
+       "code": "NP0408",
+       "level": 60
+      },
+      {
+       "code": "NP0110",
+       "level": 60
+      },
+      {
+       "code": "NP0111",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203008,
+   "group": "archive:203",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501038,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0411",
+       "level": 60
+      },
+      {
+       "code": "NP0407",
+       "level": 60
+      },
+      {
+       "code": "NP0412",
+       "level": 60
+      },
+      {
+       "code": "NP0307",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 204001,
+   "group": "archive:204",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501041,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0111",
+       "level": 60
+      },
+      {
+       "code": "NP0108",
+       "level": 60
+      },
+      {
+       "code": "NP0112",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      },
+      {
+       "code": "NP0212",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 204002,
+   "group": "archive:204",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501042,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0111",
+       "level": 60
+      },
+      {
+       "code": "NP0107",
+       "level": 60
+      },
+      {
+       "code": "NP0109",
+       "level": 60
+      },
+      {
+       "code": "NP0408",
+       "level": 60
+      },
+      {
+       "code": "NP0412",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 204003,
+   "group": "archive:204",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501043,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0212",
+       "level": 60
+      },
+      {
+       "code": "NP0207",
+       "level": 60
+      },
+      {
+       "code": "NP0211",
+       "level": 60
+      },
+      {
+       "code": "NP0308",
+       "level": 60
+      },
+      {
+       "code": "NP0312",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 204004,
+   "group": "archive:204",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501044,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0212",
+       "level": 60
+      },
+      {
+       "code": "NP0209",
+       "level": 60
+      },
+      {
+       "code": "NP0210",
+       "level": 60
+      },
+      {
+       "code": "NP0108",
+       "level": 60
+      },
+      {
+       "code": "NP0110",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 204005,
+   "group": "archive:204",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501045,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0308",
+       "level": 60
+      },
+      {
+       "code": "NP0310",
+       "level": 60
+      },
+      {
+       "code": "NP0312",
+       "level": 60
+      },
+      {
+       "code": "NP0410",
+       "level": 60
+      },
+      {
+       "code": "NP0411",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 204006,
+   "group": "archive:204",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501046,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0308",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      },
+      {
+       "code": "NP0312",
+       "level": 60
+      },
+      {
+       "code": "NP0208",
+       "level": 60
+      },
+      {
+       "code": "NP0211",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 204007,
+   "group": "archive:204",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501047,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0410",
+       "level": 60
+      },
+      {
+       "code": "NP0407",
+       "level": 60
+      },
+      {
+       "code": "NP0412",
+       "level": 60
+      },
+      {
+       "code": "NP0107",
+       "level": 60
+      },
+      {
+       "code": "NP0112",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 204008,
+   "group": "archive:204",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 9000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501048,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0410",
+       "level": 60
+      },
+      {
+       "code": "NP0409",
+       "level": 60
+      },
+      {
+       "code": "NP0411",
+       "level": 60
+      },
+      {
+       "code": "NP0309",
+       "level": 60
+      },
+      {
+       "code": "NP0311",
+       "level": 60
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 205001,
+   "group": "archive:205",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_01",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 18000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501051,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP0199",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0199",
+       "level": 61
+      },
+      {
+       "code": "CH0030",
+       "level": 61
+      },
+      {
+       "code": "CH0030",
+       "level": 61
+      },
+      {
+       "code": "NP0110",
+       "level": 61
+      },
+      {
+       "code": "NP0112",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 206001,
+   "group": "archive:206",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501061,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0112",
+       "level": 61
+      },
+      {
+       "code": "NP0108",
+       "level": 61
+      },
+      {
+       "code": "NP0207",
+       "level": 61
+      },
+      {
+       "code": "NP0210",
+       "level": 61
+      },
+      {
+       "code": "CH0028",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 206002,
+   "group": "archive:206",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501062,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0112",
+       "level": 61
+      },
+      {
+       "code": "NP0109",
+       "level": 61
+      },
+      {
+       "code": "NP0110",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "CH0011",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 206003,
+   "group": "archive:206",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501063,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0211",
+       "level": 61
+      },
+      {
+       "code": "NP0208",
+       "level": 61
+      },
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "CH0015",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 206004,
+   "group": "archive:206",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501064,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0211",
+       "level": 61
+      },
+      {
+       "code": "NP0209",
+       "level": 61
+      },
+      {
+       "code": "NP0107",
+       "level": 61
+      },
+      {
+       "code": "NP0108",
+       "level": 61
+      },
+      {
+       "code": "CH0026",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 206005,
+   "group": "archive:206",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501065,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "CH0036",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 206006,
+   "group": "archive:206",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501066,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "NP0210",
+       "level": 61
+      },
+      {
+       "code": "CH0024",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 206007,
+   "group": "archive:206",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501067,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0111",
+       "level": 61
+      },
+      {
+       "code": "CH0032",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 206008,
+   "group": "archive:206",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501068,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "CH0038",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 207001,
+   "group": "archive:207",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501071,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0107",
+       "level": 61
+      },
+      {
+       "code": "NP0109",
+       "level": 61
+      },
+      {
+       "code": "NP0209",
+       "level": 61
+      },
+      {
+       "code": "NP0210",
+       "level": 61
+      },
+      {
+       "code": "CH0016",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 207002,
+   "group": "archive:207",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501072,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0107",
+       "level": 61
+      },
+      {
+       "code": "NP0110",
+       "level": 61
+      },
+      {
+       "code": "NP0111",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "CH0030",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 207003,
+   "group": "archive:207",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501073,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 61
+      },
+      {
+       "code": "NP0207",
+       "level": 61
+      },
+      {
+       "code": "NP0211",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "CH0037",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 207004,
+   "group": "archive:207",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501074,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0209",
+       "level": 61
+      },
+      {
+       "code": "NP0208",
+       "level": 61
+      },
+      {
+       "code": "NP0212",
+       "level": 61
+      },
+      {
+       "code": "NP0108",
+       "level": 61
+      },
+      {
+       "code": "CH0032",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 207005,
+   "group": "archive:207",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501075,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "CH0010",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 207006,
+   "group": "archive:207",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501076,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "NP0210",
+       "level": 61
+      },
+      {
+       "code": "CH0015",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 207007,
+   "group": "archive:207",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501077,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0108",
+       "level": 61
+      },
+      {
+       "code": "CH0013",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 207008,
+   "group": "archive:207",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501078,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0001",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208001,
+   "group": "archive:208",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501081,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0111",
+       "level": 61
+      },
+      {
+       "code": "NP0109",
+       "level": 61
+      },
+      {
+       "code": "NP0207",
+       "level": 61
+      },
+      {
+       "code": "NP0212",
+       "level": 61
+      },
+      {
+       "code": "CH0040",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208002,
+   "group": "archive:208",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501082,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0111",
+       "level": 61
+      },
+      {
+       "code": "NP0110",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "CH0025",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208003,
+   "group": "archive:208",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501083,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0212",
+       "level": 61
+      },
+      {
+       "code": "NP0208",
+       "level": 61
+      },
+      {
+       "code": "NP0211",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "CH0037",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208004,
+   "group": "archive:208",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501084,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0212",
+       "level": 61
+      },
+      {
+       "code": "NP0210",
+       "level": 61
+      },
+      {
+       "code": "NP0108",
+       "level": 61
+      },
+      {
+       "code": "NP0109",
+       "level": 61
+      },
+      {
+       "code": "CH0062",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208005,
+   "group": "archive:208",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501085,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "CH0031",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208006,
+   "group": "archive:208",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501086,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0209",
+       "level": 61
+      },
+      {
+       "code": "CH0026",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208007,
+   "group": "archive:208",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501087,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0107",
+       "level": 61
+      },
+      {
+       "code": "NP0112",
+       "level": 61
+      },
+      {
+       "code": "CH0054",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208008,
+   "group": "archive:208",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501088,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "CH0029",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 209001,
+   "group": "archive:209",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501091,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0110",
+       "level": 61
+      },
+      {
+       "code": "NP0111",
+       "level": 61
+      },
+      {
+       "code": "NP0207",
+       "level": 61
+      },
+      {
+       "code": "NP0208",
+       "level": 61
+      },
+      {
+       "code": "CH0028",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 209002,
+   "group": "archive:209",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501092,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0110",
+       "level": 61
+      },
+      {
+       "code": "NP0108",
+       "level": 61
+      },
+      {
+       "code": "NP0112",
+       "level": 61
+      },
+      {
+       "code": "NP0407",
+       "level": 61
+      },
+      {
+       "code": "CH0052",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 209003,
+   "group": "archive:209",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501093,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0207",
+       "level": 61
+      },
+      {
+       "code": "NP0210",
+       "level": 61
+      },
+      {
+       "code": "NP0211",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0036",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 209004,
+   "group": "archive:209",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501094,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0207",
+       "level": 61
+      },
+      {
+       "code": "NP0209",
+       "level": 61
+      },
+      {
+       "code": "NP0109",
+       "level": 61
+      },
+      {
+       "code": "NP0112",
+       "level": 61
+      },
+      {
+       "code": "CH0024",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 209005,
+   "group": "archive:209",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501095,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "NP0307",
+       "level": 61
+      },
+      {
+       "code": "NP0408",
+       "level": 61
+      },
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "CH0068",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 209006,
+   "group": "archive:209",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501096,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0312",
+       "level": 61
+      },
+      {
+       "code": "NP0309",
+       "level": 61
+      },
+      {
+       "code": "NP0310",
+       "level": 61
+      },
+      {
+       "code": "NP0208",
+       "level": 61
+      },
+      {
+       "code": "CH0015",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 209007,
+   "group": "archive:209",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501097,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0410",
+       "level": 61
+      },
+      {
+       "code": "NP0412",
+       "level": 61
+      },
+      {
+       "code": "NP0107",
+       "level": 61
+      },
+      {
+       "code": "CH0033",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 209008,
+   "group": "archive:209",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 10000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501098,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0409",
+       "level": 61
+      },
+      {
+       "code": "NP0411",
+       "level": 61
+      },
+      {
+       "code": "NP0308",
+       "level": 61
+      },
+      {
+       "code": "NP0311",
+       "level": 61
+      },
+      {
+       "code": "CH0039",
+       "level": 61
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 210001,
+   "group": "archive:210",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_01",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 21000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501101,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP0299",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0299",
+       "level": 62
+      },
+      {
+       "code": "CH0034",
+       "level": 62
+      },
+      {
+       "code": "CH0010",
+       "level": 62
+      },
+      {
+       "code": "CH0026",
+       "level": 62
+      },
+      {
+       "code": "NP0212",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 211001,
+   "group": "archive:211",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501111,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0013",
+       "level": 62
+      },
+      {
+       "code": "CH0016",
+       "level": 62
+      },
+      {
+       "code": "NP0108",
+       "level": 62
+      },
+      {
+       "code": "CH0021",
+       "level": 62
+      },
+      {
+       "code": "CH0042",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 211002,
+   "group": "archive:211",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501112,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0013",
+       "level": 62
+      },
+      {
+       "code": "CH0012",
+       "level": 62
+      },
+      {
+       "code": "NP0109",
+       "level": 62
+      },
+      {
+       "code": "CH0030",
+       "level": 62
+      },
+      {
+       "code": "CH0043",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 211003,
+   "group": "archive:211",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501113,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0005",
+       "level": 62
+      },
+      {
+       "code": "CH0057",
+       "level": 62
+      },
+      {
+       "code": "NP0208",
+       "level": 62
+      },
+      {
+       "code": "CH0009",
+       "level": 62
+      },
+      {
+       "code": "CH0010",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 211004,
+   "group": "archive:211",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501114,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0005",
+       "level": 62
+      },
+      {
+       "code": "CH0022",
+       "level": 62
+      },
+      {
+       "code": "NP0211",
+       "level": 62
+      },
+      {
+       "code": "CH0032",
+       "level": 62
+      },
+      {
+       "code": "CH0040",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 211005,
+   "group": "archive:211",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501115,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0036",
+       "level": 62
+      },
+      {
+       "code": "CH0053",
+       "level": 62
+      },
+      {
+       "code": "NP0307",
+       "level": 62
+      },
+      {
+       "code": "CH0002",
+       "level": 62
+      },
+      {
+       "code": "CH0017",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 211006,
+   "group": "archive:211",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501116,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0036",
+       "level": 62
+      },
+      {
+       "code": "CH0007",
+       "level": 62
+      },
+      {
+       "code": "NP0309",
+       "level": 62
+      },
+      {
+       "code": "CH0026",
+       "level": 62
+      },
+      {
+       "code": "CH0027",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 211007,
+   "group": "archive:211",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501117,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0011",
+       "level": 62
+      },
+      {
+       "code": "CH0031",
+       "level": 62
+      },
+      {
+       "code": "NP0407",
+       "level": 62
+      },
+      {
+       "code": "CH0019",
+       "level": 62
+      },
+      {
+       "code": "CH0046",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 211008,
+   "group": "archive:211",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501118,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0011",
+       "level": 62
+      },
+      {
+       "code": "CH0001",
+       "level": 62
+      },
+      {
+       "code": "NP0408",
+       "level": 62
+      },
+      {
+       "code": "CH0034",
+       "level": 62
+      },
+      {
+       "code": "CH0037",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 212001,
+   "group": "archive:212",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501121,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0046",
+       "level": 62
+      },
+      {
+       "code": "CH0025",
+       "level": 62
+      },
+      {
+       "code": "NP0110",
+       "level": 62
+      },
+      {
+       "code": "CH0024",
+       "level": 62
+      },
+      {
+       "code": "CH0042",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 212002,
+   "group": "archive:212",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501122,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0046",
+       "level": 62
+      },
+      {
+       "code": "CH0020",
+       "level": 62
+      },
+      {
+       "code": "NP0109",
+       "level": 62
+      },
+      {
+       "code": "CH0054",
+       "level": 62
+      },
+      {
+       "code": "CH0063",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 212003,
+   "group": "archive:212",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501123,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0021",
+       "level": 62
+      },
+      {
+       "code": "CH0056",
+       "level": 62
+      },
+      {
+       "code": "NP0207",
+       "level": 62
+      },
+      {
+       "code": "CH0010",
+       "level": 62
+      },
+      {
+       "code": "CH0037",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 212004,
+   "group": "archive:212",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501124,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0021",
+       "level": 62
+      },
+      {
+       "code": "CH0062",
+       "level": 62
+      },
+      {
+       "code": "NP0210",
+       "level": 62
+      },
+      {
+       "code": "CH0023",
+       "level": 62
+      },
+      {
+       "code": "CH0028",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 212005,
+   "group": "archive:212",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501125,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0007",
+       "level": 62
+      },
+      {
+       "code": "CH0058",
+       "level": 62
+      },
+      {
+       "code": "NP0307",
+       "level": 62
+      },
+      {
+       "code": "CH0039",
+       "level": 62
+      },
+      {
+       "code": "CH0052",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 212006,
+   "group": "archive:212",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501126,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0007",
+       "level": 62
+      },
+      {
+       "code": "CH0029",
+       "level": 62
+      },
+      {
+       "code": "NP0309",
+       "level": 62
+      },
+      {
+       "code": "CH0015",
+       "level": 62
+      },
+      {
+       "code": "CH0022",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 212007,
+   "group": "archive:212",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501127,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0001",
+       "level": 62
+      },
+      {
+       "code": "CH0030",
+       "level": 62
+      },
+      {
+       "code": "NP0407",
+       "level": 62
+      },
+      {
+       "code": "CH0012",
+       "level": 62
+      },
+      {
+       "code": "CH0033",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 212008,
+   "group": "archive:212",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501128,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0001",
+       "level": 62
+      },
+      {
+       "code": "CH0035",
+       "level": 62
+      },
+      {
+       "code": "NP0408",
+       "level": 62
+      },
+      {
+       "code": "CH0038",
+       "level": 62
+      },
+      {
+       "code": "CH0068",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 213001,
+   "group": "archive:213",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501131,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0016",
+       "level": 62
+      },
+      {
+       "code": "CH0020",
+       "level": 62
+      },
+      {
+       "code": "NP0107",
+       "level": 62
+      },
+      {
+       "code": "CH0056",
+       "level": 62
+      },
+      {
+       "code": "CH0057",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 213002,
+   "group": "archive:213",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501132,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0016",
+       "level": 62
+      },
+      {
+       "code": "CH0040",
+       "level": 62
+      },
+      {
+       "code": "NP0111",
+       "level": 62
+      },
+      {
+       "code": "CH0006",
+       "level": 62
+      },
+      {
+       "code": "CH0050",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 213003,
+   "group": "archive:213",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501133,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0027",
+       "level": 62
+      },
+      {
+       "code": "CH0024",
+       "level": 62
+      },
+      {
+       "code": "NP0208",
+       "level": 62
+      },
+      {
+       "code": "CH0009",
+       "level": 62
+      },
+      {
+       "code": "CH0053",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 213004,
+   "group": "archive:213",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501134,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0027",
+       "level": 62
+      },
+      {
+       "code": "CH0026",
+       "level": 62
+      },
+      {
+       "code": "NP0211",
+       "level": 62
+      },
+      {
+       "code": "CH0023",
+       "level": 62
+      },
+      {
+       "code": "CH0025",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 213005,
+   "group": "archive:213",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501135,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0034",
+       "level": 62
+      },
+      {
+       "code": "CH0058",
+       "level": 62
+      },
+      {
+       "code": "NP0310",
+       "level": 62
+      },
+      {
+       "code": "CH0043",
+       "level": 62
+      },
+      {
+       "code": "CH0063",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 213006,
+   "group": "archive:213",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501136,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0034",
+       "level": 62
+      },
+      {
+       "code": "CH0010",
+       "level": 62
+      },
+      {
+       "code": "NP0307",
+       "level": 62
+      },
+      {
+       "code": "CH0015",
+       "level": 62
+      },
+      {
+       "code": "CH0062",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 213007,
+   "group": "archive:213",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501137,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0035",
+       "level": 62
+      },
+      {
+       "code": "CH0031",
+       "level": 62
+      },
+      {
+       "code": "NP0410",
+       "level": 62
+      },
+      {
+       "code": "CH0012",
+       "level": 62
+      },
+      {
+       "code": "CH0019",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 213008,
+   "group": "archive:213",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501138,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0035",
+       "level": 62
+      },
+      {
+       "code": "CH0052",
+       "level": 62
+      },
+      {
+       "code": "NP0407",
+       "level": 62
+      },
+      {
+       "code": "CH0029",
+       "level": 62
+      },
+      {
+       "code": "CH0036",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 214001,
+   "group": "archive:214",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501141,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0020",
+       "level": 62
+      },
+      {
+       "code": "CH0028",
+       "level": 62
+      },
+      {
+       "code": "NP0108",
+       "level": 62
+      },
+      {
+       "code": "CH0005",
+       "level": 62
+      },
+      {
+       "code": "CH0024",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 214002,
+   "group": "archive:214",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501142,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0020",
+       "level": 62
+      },
+      {
+       "code": "CH0032",
+       "level": 62
+      },
+      {
+       "code": "NP0110",
+       "level": 62
+      },
+      {
+       "code": "CH0017",
+       "level": 62
+      },
+      {
+       "code": "CH0050",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 214003,
+   "group": "archive:214",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501143,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0015",
+       "level": 62
+      },
+      {
+       "code": "CH0057",
+       "level": 62
+      },
+      {
+       "code": "NP0207",
+       "level": 62
+      },
+      {
+       "code": "CH0037",
+       "level": 62
+      },
+      {
+       "code": "CH0068",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 214004,
+   "group": "archive:214",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501144,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0015",
+       "level": 62
+      },
+      {
+       "code": "CH0022",
+       "level": 62
+      },
+      {
+       "code": "NP0208",
+       "level": 62
+      },
+      {
+       "code": "CH0019",
+       "level": 62
+      },
+      {
+       "code": "CH0033",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 214005,
+   "group": "archive:214",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501145,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0009",
+       "level": 62
+      },
+      {
+       "code": "CH0034",
+       "level": 62
+      },
+      {
+       "code": "NP0308",
+       "level": 62
+      },
+      {
+       "code": "CH0039",
+       "level": 62
+      },
+      {
+       "code": "CH0054",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 214006,
+   "group": "archive:214",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501146,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0009",
+       "level": 62
+      },
+      {
+       "code": "CH0053",
+       "level": 62
+      },
+      {
+       "code": "NP0309",
+       "level": 62
+      },
+      {
+       "code": "CH0026",
+       "level": 62
+      },
+      {
+       "code": "CH0042",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 214007,
+   "group": "archive:214",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501147,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0006",
+       "level": 62
+      },
+      {
+       "code": "CH0002",
+       "level": 62
+      },
+      {
+       "code": "NP0412",
+       "level": 62
+      },
+      {
+       "code": "CH0013",
+       "level": 62
+      },
+      {
+       "code": "CH0040",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 214008,
+   "group": "archive:214",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 12000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501148,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0006",
+       "level": 62
+      },
+      {
+       "code": "CH0043",
+       "level": 62
+      },
+      {
+       "code": "NP0408",
+       "level": 62
+      },
+      {
+       "code": "CH0038",
+       "level": 62
+      },
+      {
+       "code": "CH0058",
+       "level": 62
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 215001,
+   "group": "archive:215",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_01",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 24000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501151,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP0399",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0399",
+       "level": 63
+      },
+      {
+       "code": "CH0015",
+       "level": 63
+      },
+      {
+       "code": "CH0015",
+       "level": 63
+      },
+      {
+       "code": "CH0068",
+       "level": 63
+      },
+      {
+       "code": "CH0058",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 216001,
+   "group": "archive:216",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501161,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0032",
+       "level": 63
+      },
+      {
+       "code": "CH0025",
+       "level": 63
+      },
+      {
+       "code": "CH0033",
+       "level": 63
+      },
+      {
+       "code": "CH0056",
+       "level": 63
+      },
+      {
+       "code": "CH0062",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 216002,
+   "group": "archive:216",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501162,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0032",
+       "level": 63
+      },
+      {
+       "code": "CH0012",
+       "level": 63
+      },
+      {
+       "code": "CH0023",
+       "level": 63
+      },
+      {
+       "code": "CH0002",
+       "level": 63
+      },
+      {
+       "code": "CH0017",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 216003,
+   "group": "archive:216",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501163,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0042",
+       "level": 63
+      },
+      {
+       "code": "CH0005",
+       "level": 63
+      },
+      {
+       "code": "CH0022",
+       "level": 63
+      },
+      {
+       "code": "CH0010",
+       "level": 63
+      },
+      {
+       "code": "CH0036",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 216004,
+   "group": "archive:216",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501164,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0042",
+       "level": 63
+      },
+      {
+       "code": "CH0021",
+       "level": 63
+      },
+      {
+       "code": "CH0057",
+       "level": 63
+      },
+      {
+       "code": "CH0028",
+       "level": 63
+      },
+      {
+       "code": "CH0046",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 216005,
+   "group": "archive:216",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501165,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0038",
+       "level": 63
+      },
+      {
+       "code": "CH0029",
+       "level": 63
+      },
+      {
+       "code": "CH0034",
+       "level": 63
+      },
+      {
+       "code": "CH0030",
+       "level": 63
+      },
+      {
+       "code": "CH0031",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 216006,
+   "group": "archive:216",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501166,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0038",
+       "level": 63
+      },
+      {
+       "code": "CH0037",
+       "level": 63
+      },
+      {
+       "code": "CH0053",
+       "level": 63
+      },
+      {
+       "code": "CH0005",
+       "level": 63
+      },
+      {
+       "code": "CH0056",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 216007,
+   "group": "archive:216",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501167,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0043",
+       "level": 63
+      },
+      {
+       "code": "CH0050",
+       "level": 63
+      },
+      {
+       "code": "CH0063",
+       "level": 63
+      },
+      {
+       "code": "CH0016",
+       "level": 63
+      },
+      {
+       "code": "CH0019",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 216008,
+   "group": "archive:216",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501168,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0043",
+       "level": 63
+      },
+      {
+       "code": "CH0006",
+       "level": 63
+      },
+      {
+       "code": "CH0011",
+       "level": 63
+      },
+      {
+       "code": "CH0009",
+       "level": 63
+      },
+      {
+       "code": "CH0068",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 217001,
+   "group": "archive:217",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501171,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0019",
+       "level": 63
+      },
+      {
+       "code": "CH0012",
+       "level": 63
+      },
+      {
+       "code": "CH0023",
+       "level": 63
+      },
+      {
+       "code": "CH0026",
+       "level": 63
+      },
+      {
+       "code": "CH0027",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 217002,
+   "group": "archive:217",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501172,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0019",
+       "level": 63
+      },
+      {
+       "code": "CH0040",
+       "level": 63
+      },
+      {
+       "code": "CH0046",
+       "level": 63
+      },
+      {
+       "code": "CH0052",
+       "level": 63
+      },
+      {
+       "code": "CH0063",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 217003,
+   "group": "archive:217",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501173,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0057",
+       "level": 63
+      },
+      {
+       "code": "CH0022",
+       "level": 63
+      },
+      {
+       "code": "CH0062",
+       "level": 63
+      },
+      {
+       "code": "CH0007",
+       "level": 63
+      },
+      {
+       "code": "CH0037",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 217004,
+   "group": "archive:217",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501174,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0057",
+       "level": 63
+      },
+      {
+       "code": "CH0024",
+       "level": 63
+      },
+      {
+       "code": "CH0056",
+       "level": 63
+      },
+      {
+       "code": "CH0020",
+       "level": 63
+      },
+      {
+       "code": "CH0025",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 217005,
+   "group": "archive:217",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501175,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0068",
+       "level": 63
+      },
+      {
+       "code": "CH0029",
+       "level": 63
+      },
+      {
+       "code": "CH0034",
+       "level": 63
+      },
+      {
+       "code": "CH0039",
+       "level": 63
+      },
+      {
+       "code": "CH0050",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 217006,
+   "group": "archive:217",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501176,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0068",
+       "level": 63
+      },
+      {
+       "code": "CH0010",
+       "level": 63
+      },
+      {
+       "code": "CH0034",
+       "level": 63
+      },
+      {
+       "code": "CH0005",
+       "level": 63
+      },
+      {
+       "code": "CH0015",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 217007,
+   "group": "archive:217",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501177,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0035",
+       "level": 63
+      },
+      {
+       "code": "CH0002",
+       "level": 63
+      },
+      {
+       "code": "CH0054",
+       "level": 63
+      },
+      {
+       "code": "CH0013",
+       "level": 63
+      },
+      {
+       "code": "CH0023",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 217008,
+   "group": "archive:217",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501178,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0035",
+       "level": 63
+      },
+      {
+       "code": "CH0006",
+       "level": 63
+      },
+      {
+       "code": "CH0030",
+       "level": 63
+      },
+      {
+       "code": "CH0036",
+       "level": 63
+      },
+      {
+       "code": "CH0058",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 218001,
+   "group": "archive:218",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501181,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0033",
+       "level": 63
+      },
+      {
+       "code": "CH0028",
+       "level": 63
+      },
+      {
+       "code": "CH0032",
+       "level": 63
+      },
+      {
+       "code": "CH0022",
+       "level": 63
+      },
+      {
+       "code": "CH0056",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 218002,
+   "group": "archive:218",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501182,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0033",
+       "level": 63
+      },
+      {
+       "code": "CH0012",
+       "level": 63
+      },
+      {
+       "code": "CH0013",
+       "level": 63
+      },
+      {
+       "code": "CH0017",
+       "level": 63
+      },
+      {
+       "code": "CH0031",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 218003,
+   "group": "archive:218",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501183,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0015",
+       "level": 63
+      },
+      {
+       "code": "CH0005",
+       "level": 63
+      },
+      {
+       "code": "CH0021",
+       "level": 63
+      },
+      {
+       "code": "CH0010",
+       "level": 63
+      },
+      {
+       "code": "CH0053",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 218004,
+   "group": "archive:218",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501184,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0015",
+       "level": 63
+      },
+      {
+       "code": "CH0027",
+       "level": 63
+      },
+      {
+       "code": "CH0062",
+       "level": 63
+      },
+      {
+       "code": "CH0023",
+       "level": 63
+      },
+      {
+       "code": "CH0046",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 218005,
+   "group": "archive:218",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501185,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0009",
+       "level": 63
+      },
+      {
+       "code": "CH0034",
+       "level": 63
+      },
+      {
+       "code": "CH0036",
+       "level": 63
+      },
+      {
+       "code": "CH0001",
+       "level": 63
+      },
+      {
+       "code": "CH0063",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 218006,
+   "group": "archive:218",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501186,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0009",
+       "level": 63
+      },
+      {
+       "code": "CH0007",
+       "level": 63
+      },
+      {
+       "code": "CH0058",
+       "level": 63
+      },
+      {
+       "code": "CH0022",
+       "level": 63
+      },
+      {
+       "code": "CH0024",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 218007,
+   "group": "archive:218",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501187,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0043",
+       "level": 63
+      },
+      {
+       "code": "CH0011",
+       "level": 63
+      },
+      {
+       "code": "CH0050",
+       "level": 63
+      },
+      {
+       "code": "CH0016",
+       "level": 63
+      },
+      {
+       "code": "CH0020",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 218008,
+   "group": "archive:218",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501188,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0043",
+       "level": 63
+      },
+      {
+       "code": "CH0006",
+       "level": 63
+      },
+      {
+       "code": "CH0063",
+       "level": 63
+      },
+      {
+       "code": "CH0029",
+       "level": 63
+      },
+      {
+       "code": "CH0038",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219001,
+   "group": "archive:219",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501191,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0028",
+       "level": 63
+      },
+      {
+       "code": "CH0012",
+       "level": 63
+      },
+      {
+       "code": "CH0013",
+       "level": 63
+      },
+      {
+       "code": "CH0021",
+       "level": 63
+      },
+      {
+       "code": "CH0042",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219002,
+   "group": "archive:219",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501192,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0028",
+       "level": 63
+      },
+      {
+       "code": "CH0040",
+       "level": 63
+      },
+      {
+       "code": "CH0046",
+       "level": 63
+      },
+      {
+       "code": "CH0002",
+       "level": 63
+      },
+      {
+       "code": "CH0017",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219003,
+   "group": "archive:219",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501193,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0022",
+       "level": 63
+      },
+      {
+       "code": "CH0026",
+       "level": 63
+      },
+      {
+       "code": "CH0056",
+       "level": 63
+      },
+      {
+       "code": "CH0007",
+       "level": 63
+      },
+      {
+       "code": "CH0053",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219004,
+   "group": "archive:219",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501194,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0022",
+       "level": 63
+      },
+      {
+       "code": "CH0005",
+       "level": 63
+      },
+      {
+       "code": "CH0027",
+       "level": 63
+      },
+      {
+       "code": "CH0025",
+       "level": 63
+      },
+      {
+       "code": "CH0032",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219005,
+   "group": "archive:219",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501195,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0010",
+       "level": 63
+      },
+      {
+       "code": "CH0038",
+       "level": 63
+      },
+      {
+       "code": "CH0058",
+       "level": 63
+      },
+      {
+       "code": "CH0011",
+       "level": 63
+      },
+      {
+       "code": "CH0050",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219006,
+   "group": "archive:219",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501196,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0010",
+       "level": 63
+      },
+      {
+       "code": "CH0034",
+       "level": 63
+      },
+      {
+       "code": "CH0037",
+       "level": 63
+      },
+      {
+       "code": "CH0057",
+       "level": 63
+      },
+      {
+       "code": "CH0062",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219007,
+   "group": "archive:219",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501197,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0011",
+       "level": 63
+      },
+      {
+       "code": "CH0054",
+       "level": 63
+      },
+      {
+       "code": "CH0063",
+       "level": 63
+      },
+      {
+       "code": "CH0023",
+       "level": 63
+      },
+      {
+       "code": "CH0033",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219008,
+   "group": "archive:219",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_02",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 14000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501198,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "CH0011",
+       "level": 63
+      },
+      {
+       "code": "CH0006",
+       "level": 63
+      },
+      {
+       "code": "CH0052",
+       "level": 63
+      },
+      {
+       "code": "CH0034",
+       "level": 63
+      },
+      {
+       "code": "CH0036",
+       "level": 63
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 220001,
+   "group": "archive:220",
+   "mode": "archive",
+   "nameKey": "contents_stage_list_name_conquest_zone_hard",
+   "nameTemplate": {
+    "ko": "HARD {0} - {1}",
+    "en": "HARD {0} - {1}"
+   },
+   "background": "Battle_Field_InfinityArchive_01",
+   "bgm": "BGM_Battle_Sam003",
+   "score": {
+    "stage": 38000,
+    "time": 1,
+    "waveRate": [
+     1.0
+    ]
+   },
+   "waveGroup": 5501201,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP0499",
+     "bgm": "bgm_battle_005",
+     "enemies": [
+      {
+       "code": "NP0499",
+       "level": 64
+      },
+      {
+       "code": "NP0599",
+       "level": 64
       }
      ]
     }

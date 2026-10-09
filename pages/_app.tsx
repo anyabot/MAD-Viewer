@@ -6,11 +6,15 @@ import { accentScale, getGame } from '@altterisk/game-hub';
 import { hubChakraTheme } from '@altterisk/game-hub/chakra';
 import '@altterisk/game-hub/hub.css';
 import Layout from '@/components/Layout';
-import { restoreLang } from '@/lib/i18n';
+import { dataText, restoreLang } from '@/lib/i18n';
+import { setTextResolver } from '@/lib/characters';
+import { restoreGameLang } from '@/lib/gameText';
 import { restoreFarm } from '@/lib/farmStore';
 import { restoreCollection } from '@/lib/collectionStore';
 import { restoreSeen } from '@/lib/seenStore';
 import { ChangelogDialog } from '@/components/changelog';
+
+setTextResolver(dataText);
 
 const theme = extendTheme(hubChakraTheme('mad'), {
   colors: {
@@ -31,6 +35,7 @@ const theme = extendTheme(hubChakraTheme('mad'), {
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreLang, []);
+  useEffect(restoreGameLang, []);
   useEffect(restoreFarm, []);
   useEffect(restoreCollection, []);
   useEffect(restoreSeen, []);

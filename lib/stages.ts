@@ -79,7 +79,7 @@ export function dropChance(drop: StageDrop): string | null {
 }
 
 // Resolve in this order, and keep the page and the suite reading the same list.
-export const DROP_ICON_GROUPS = ['item', 'equip', 'skill', 'ui'] as const;
+export const DROP_ICON_GROUPS = ['item', 'equip', 'skill', 'ui', 'deco', 'char'] as const;
 
 export function dropEntry(data: StageData, drop: StageDrop): DropEntry | null {
   return drop.ref ? data.drops[drop.ref] ?? null : null;
@@ -184,12 +184,17 @@ export function levelRange(stage: StageEntry): [number, number] | null {
 export type StageGrouping = { group: StageGroup; stages: StageEntry[] };
 
 // Not always a zone plate: a Nemesis season uses a boss portrait and a daily zone its `tile` cover.
-export const GROUP_ICON_GROUPS = ['zone', 'tile', 'char'] as const;
+export const GROUP_ICON_GROUPS = ['zone', 'tile', 'char', 'banner'] as const;
 
 // A story chapter has no name of its own, so it falls back to the mode plus its chapter number.
 export function groupLabel(data: StageData, group: StageGroup, lang: Lang): string {
   const own = say(group.name, lang) || group.name?.ko;
   if (own) return own;
+  if (group.archiveDifficulty != null) {
+    return lang === 'ko'
+      ? `난이도 ${group.archiveDifficulty} · 전투 ${group.archiveNode}`
+      : `Difficulty ${group.archiveDifficulty} · Battle ${group.archiveNode}`;
+  }
   if (group.chapter != null) {
     return lang === 'ko' ? `${group.chapter}장` : `Chapter ${group.chapter}`;
   }

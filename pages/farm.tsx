@@ -19,6 +19,7 @@ import { PlannerTutorial, TutorialReplay } from '@/components/plannerTutorial';
 import { AmountField, Stepper } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
+import { itemHref } from '@/lib/items';
 import { useCollection } from '@/lib/collectionStore';
 import { exportPlan, importPlan, planFileName } from '@/lib/planFile';
 import {
@@ -747,7 +748,7 @@ function PlanPanel({ plan, growth, stages, icons, title }: {
               label={stages.drops[ref]?.name || ref}
               icon={<ItemIcon manifest={icons} group={materialGroup(icons,
                 stages.drops[ref]?.icon)} name={stages.drops[ref]?.icon} size={5}
-                grade={stages.drops[ref]?.grade} />} />
+                grade={stages.drops[ref]?.grade} href={itemHref(ref)} />} />
           </WrapItem>
         ))}
       </Wrap>
@@ -862,7 +863,7 @@ function DropCell({ dropRef, growth, stages, icons }: {
     <VStack spacing={1}>
       <ItemIcon manifest={icons} group={materialGroup(icons, entry?.icon)}
         name={entry?.icon} grade={entry?.grade} size={10}
-        title={entry?.name || dropRef} />
+        title={entry?.name || dropRef} href={itemHref(dropRef)} />
       <Stepper value={held} onChange={(v) => setInventory(dropRef, v)}>
         <AmountField value={held} min={0} max={999_999_999} width="4rem"
           big={material?.kind === 'goods'}
@@ -908,7 +909,8 @@ function NeedRow({ row, growth, stages, icons, lang }: {
       bg="whiteAlpha.50" px={3} py={2}>
       <Flex align="center" gap={2} wrap="wrap">
         <ItemIcon manifest={icons} group={materialGroup(icons, label.icon)}
-          name={label.icon} grade={label.grade} size={10} />
+          name={label.icon} grade={label.grade} size={10}
+          href={held ? itemHref(held) : undefined} />
         <Text fontSize="sm" flex="1" minW="8rem">{label.name}</Text>
         <Stat label={t('farmNeed')} value={need.required} />
         {held ? (
