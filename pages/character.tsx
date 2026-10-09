@@ -12,6 +12,7 @@ import {
 import SkinViewer from '@/components/skinViewer';
 import CollectionEditor from '@/components/collectionEditor';
 import SdViewer from '@/components/sdViewer';
+import { VoiceLines } from '@/components/voiceLines';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { StoreKey } from '@/components/skinViewer/types';
 import { GameIcon, StarRating } from '@/components/gameIcon';
@@ -169,6 +170,14 @@ export default function CharacterPage() {
       key: 'stats',
       label: t('tabStats'),
       panel: <StatCalculator entry={entry} data={chars} icons={icons} />,
+    });
+  }
+
+  if (entry.voiceGroupId) {
+    tabs.push({
+      key: 'voice',
+      label: t('tabVoice'),
+      panel: <VoiceLines code={entry.code} />,
     });
   }
 
