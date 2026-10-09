@@ -26,6 +26,8 @@ jobs:
       - run: npm ci
       - run: npm install --no-save @altterisk/game-hub@github:Altterisk/game-hub
       - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /MAD-Viewer
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
