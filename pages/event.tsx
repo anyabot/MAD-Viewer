@@ -68,7 +68,7 @@ export default function EventPage() {
 
       <Flex direction={{ base: 'column', md: 'row' }} gap={5}>
         <Box w={{ base: '100%', md: '360px' }} flexShrink={0}>
-          <EventArt event={event} icons={icons} h="200px" />
+          <EventArt event={event} icons={icons} />
         </Box>
         <VStack align="stretch" spacing={2} minW={0} flex="1">
           <EventTiming event={event} now={now} serverTime={serverTime} />

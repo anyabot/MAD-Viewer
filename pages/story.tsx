@@ -7,8 +7,8 @@ import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Center,
   Flex, HStack, IconButton, SimpleGrid, Spinner, Text, VStack,
 } from '@chakra-ui/react';
+import { ArtBox } from '@/components/artBox';
 import { GameIcon } from '@/components/gameIcon';
-import { GameTextPicker } from '@/components/gameTextPicker';
 import {
   loadCharacters, loadEvents, loadIcons, loadStoryChapter, loadStoryIndex, loadVoice,
   type CharacterData, type EventIndex, type IconManifest, type StoryChapter,
@@ -69,7 +69,6 @@ function StoryList({ index, events, icons }: {
       <Flex align="center" gap={3} wrap="wrap">
         <Text fontSize="2xl" fontWeight="bold">{t('navStory')}</Text>
         <Box flex="1" />
-        <GameTextPicker />
       </Flex>
       {KIND_ORDER.map((kind) => {
         const list = chapters.filter((c) => c.kind === kind)
@@ -81,14 +80,16 @@ function StoryList({ index, events, icons }: {
             <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={3}>
               {list.map((chapter) => {
                 const event = events?.events.find((e) => e.kind === 'main' && e.id === chapter.event);
+                const nemesis = chapter.kind === 'nemesis'
+                  ? `Thumbnail_PastStory_Content_Nemesis_${String(chapter.episode % 100).padStart(4, '0')}` : null;
                 return (
                   <Flex key={chapter.id} as={NextLink} href={`/story?chapter=${chapter.id}`} gap={3}
                     p={3} borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" minW={0}
                     align="center" _hover={{ borderColor: 'yellow.400', bg: 'whiteAlpha.50' }}>
-                    {event?.banner && (
-                      <GameIcon manifest={icons} group="banner" names={bannerNames(event, lang)}
-                        h="56px" w="auto" maxW="120px" objectFit="contain" reserve={false} />
-                    )}
+                    <ArtBox manifest={icons} w="104px" sources={[
+                      ...(event ? bannerNames(event, lang).map((n) => ['banner', n] as ['banner', string]) : []),
+                      ['banner', nemesis], ['story', chapter.background],
+                    ]} />
                     <Box minW={0}>
                       <Text fontWeight="bold" fontSize="sm" noOfLines={1}>
                         {(event ? gameText(event.name, lang) : '') || gameText(chapter.name, lang)}
@@ -142,7 +143,6 @@ function Reader({ chapter, scene, chars, icons }: {
         <Text color="gray.600">/</Text>
         <Text fontSize="xl" fontWeight="bold">{gameText(chapter.name, lang)}</Text>
         <Box flex="1" />
-        <GameTextPicker />
       </Flex>
       {failed && <Text color="red.400" fontSize="sm">{t('storyMissing')}</Text>}
       <Accordion allowMultiple defaultIndex={open} key={`${chapter.id}:${open[0]}`}>

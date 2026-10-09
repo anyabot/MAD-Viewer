@@ -4,9 +4,9 @@ import {
   Badge, Box, Button, ButtonGroup, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
   WrapItem,
 } from '@chakra-ui/react';
+import { ArtBox } from '@/components/artBox';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
-import { GameTextPicker } from '@/components/gameTextPicker';
 import {
   loadCharacters, loadEvents, loadIcons,
   type CharacterData, type EventExchange, type EventIndex, type EventReward, type GameEvent,
@@ -63,7 +63,6 @@ export function TimeControls({ serverTime, onChange }: {
         <Button onClick={() => onChange(true)} isActive={serverTime}>{t('eventsServerTime')}</Button>
         <Button onClick={() => onChange(false)} isActive={!serverTime}>{t('eventsLocalTime')}</Button>
       </ButtonGroup>
-      <GameTextPicker />
     </HStack>
   );
 }
@@ -106,21 +105,12 @@ export function EventTiming({ event, now, serverTime }: {
   );
 }
 
-export function EventArt({ event, icons, h }: {
-  event: GameEvent; icons: IconManifest | null; h: string;
-}) {
+export function EventArt({ event, icons }: { event: GameEvent; icons: IconManifest | null }) {
   const gameLang = useGameLang();
-  const name = gameText(event.name, gameLang);
   return (
-    <Center w="100%" h={h} borderRadius="md" overflow="hidden" bg="blackAlpha.400">
-      {event.banner ? (
-        <GameIcon manifest={icons} group="banner" names={bannerNames(event, gameLang)}
-          w="100%" h="100%" objectFit="cover" reserve={false} title={name} />
-      ) : (
-        <GameIcon manifest={icons} group="item" name={event.goodsIcon}
-          boxSize="80px" reserve={false} title={name} />
-      )}
-    </Center>
+    <ArtBox manifest={icons} w="100%" title={gameText(event.name, gameLang)}
+      sources={[...bannerNames(event, gameLang).map((n) => ['banner', n] as ['banner', string]),
+        ['item', event.goodsIcon]]} />
   );
 }
 
@@ -188,7 +178,7 @@ export function EventsBoard() {
   );
 }
 
-function EventCard({ event, now, serverTime, chars, icons }: {
+export function EventCard({ event, now, serverTime, chars, icons }: {
   event: GameEvent; now: number; serverTime: boolean;
   chars: CharacterData | null; icons: IconManifest | null;
 }) {
@@ -204,8 +194,8 @@ function EventCard({ event, now, serverTime, chars, icons }: {
       borderColor={phase === 'running' ? 'pink.400' : 'whiteAlpha.200'}
       bg={phase === 'ended' ? 'blackAlpha.200' : 'whiteAlpha.50'}
       _hover={{ borderColor: 'yellow.400' }}>
-      <Box w={{ base: '100%', sm: '180px' }} flexShrink={0}>
-        <EventArt event={event} icons={icons} h="120px" />
+      <Box w={{ base: '100%', sm: '184px' }} flexShrink={0}>
+        <EventArt event={event} icons={icons} />
       </Box>
       <VStack align="stretch" spacing={1.5} minW={0} flex="1">
         <EventTiming event={event} now={now} serverTime={serverTime} />
@@ -320,7 +310,7 @@ export function ExchangePanel({ exchange, refs, icons, gameLang }: {
               <WrapItem key={j}>
                 <VStack spacing={1} minW="64px" p={1.5} borderRadius="md" bg="whiteAlpha.50">
                   <HStack spacing={0.5}>
-                    {p.rewards.map((r, k) => (
+                    {(p.rewards ?? []).map((r, k) => (
                       <RewardSlot key={k} reward={r} refs={refs} icons={icons} gameLang={gameLang} />
                     ))}
                   </HStack>
@@ -362,7 +352,7 @@ export function ExchangePanel({ exchange, refs, icons, gameLang }: {
                       <WrapItem key={j}>
                         <VStack spacing={0.5}>
                           <HStack spacing={0.5}>
-                            {item.rewards.map((r, k) => (
+                            {(item.rewards ?? []).map((r, k) => (
                               <RewardSlot key={k} reward={r} refs={refs} icons={icons} gameLang={gameLang} />
                             ))}
                           </HStack>
@@ -384,7 +374,7 @@ export function ExchangePanel({ exchange, refs, icons, gameLang }: {
                                 grade: goal.grade && BOX_GRADE_LABEL[goal.grade] ? t(BOX_GRADE_LABEL[goal.grade]) : '',
                               })}
                             </Text>
-                            {goal.rewards.map((r, k) => (
+                            {(goal.rewards ?? []).map((r, k) => (
                               <RewardSlot key={k} reward={r} refs={refs} icons={icons} gameLang={gameLang} />
                             ))}
                           </HStack>
