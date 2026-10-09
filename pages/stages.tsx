@@ -2,11 +2,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Center, Flex, HStack, Input, SimpleGrid, Spinner, Text, VStack, Wrap,
+  Badge, Box, Button, Center, Flex, HStack, Input, SimpleGrid, Spinner, Text, VStack, Wrap,
   WrapItem,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { ArtBox } from '@/components/artBox';
 import { EventsBoard } from '@/components/eventsBoard';
+import { gameText, useGameLang } from '@/lib/gameText';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { StageCrumbs } from '@/components/stageCrumbs';
@@ -19,9 +21,9 @@ import {
   groupIsLive, groupLabel, groupWindow, levelRange, modeSummaries, stageDrops,
   stageGroups, stageName, type StageGrouping,
 } from '@/lib/stages';
-import { dataText, pick, useLang, useT, type Lang } from '@/lib/i18n';
+import { dataText, pick, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
-  loadCharacters, loadIcons, loadStages,
+  loadArchive, loadCharacters, loadIcons, loadStages, type ArchiveIndex,
   type CharacterData, type IconManifest, type StageData, type StageEntry,
 } from '@/lib/data';
 
@@ -75,60 +77,46 @@ export default function StagesPage() {
 
 // --- level 1: the modes ----------------------------------------------------
 
+const GROUP_NOUN: Record<string, UiKey> = {
+  story: 'stageChapters', event: 'stageEventCount', nemesis: 'stageSeasons', archive: 'stageNodes',
+};
+
 function ModeHub({ data, icons, lang }: {
   data: StageData; icons: IconManifest | null; lang: Lang;
 }) {
   const t = useT();
-  const modes = useMemo(() => modeSummaries(data), [data]);
+  const modes = useMemo(() => modeSummaries(data).filter((m) => m.key !== 'archive'), [data]);
   return (
     <VStack align="stretch" spacing={3}>
-      <Text fontSize="xs" color="gray.500" textTransform="uppercase" letterSpacing="wide">
-        {t('stageMode')}
-      </Text>
-      <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={3}>
-        {modes.map((m) => (
-          <Box key={m.key} as={NextLink} href={`/stages?mode=${m.key}`} borderWidth="1px"
-            borderColor="whiteAlpha.200" borderRadius="md" overflow="hidden" minW={0}
-            _hover={{ borderColor: 'yellow.400' }}>
-            <Box position="relative" h="104px" bg="blackAlpha.400">
-              {/* Event and Raid have no activity-screen tile. Event borrows its
-                  newest event's logo, drawn whole; Raid falls back to zone art. */}
-              {!m.tile && m.banner ? (
-                <Center h="100%" px={3}>
-                  {/* `GameIcon` defaults `boxSize`, which sets the height too —
-                      an explicit `h` is required or `maxH` never applies. */}
-                  <GameIcon manifest={icons} group="banner" name={m.banner}
-                    h="84px" w="auto" maxW="100%" objectFit="contain"
-                    reserve={false} />
-                </Center>
-              ) : (
-                <GameIcon manifest={icons}
-                  group={m.tile ? 'tile' : iconGroup(icons, GROUP_ICON_GROUPS, m.image)}
-                  name={m.tile ?? m.image} w="100%" h="100%"
-                  objectFit="cover" objectPosition="center" reserve={false} />
-              )}
-              <Box position="absolute" inset={0}
-                bgGradient="linear(to-t, blackAlpha.800, blackAlpha.300 55%, transparent)" />
-              <Flex position="absolute" left={3} right={3} bottom={2} align="baseline"
-                gap={2} wrap="wrap">
-                <Text fontSize="md" fontWeight="bold">{pick(m.label, lang)}</Text>
+      <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
+        {modes.map((m) => {
+          const art = m.live?.banner ?? (m.tile ? null : m.banner);
+          return (
+            <Flex key={m.key} as={NextLink} href={`/stages?mode=${m.key}`}
+              direction={{ base: 'column', sm: 'row' }} gap={3} p={3} borderRadius="lg" minW={0}
+              borderWidth={m.live ? '2px' : '1px'} borderColor={m.live ? 'pink.400' : 'whiteAlpha.200'}
+              bg="whiteAlpha.50" _hover={{ borderColor: 'yellow.400' }}>
+              <ArtBox manifest={icons} w={{ base: '100%', sm: '184px' }}
+                sources={art ? [['banner', art]]
+                  : [[m.tile ? 'tile' : iconGroup(icons, GROUP_ICON_GROUPS, m.image), m.tile ?? m.image]]} />
+              <VStack align="stretch" spacing={1.5} minW={0} flex="1">
+                <HStack spacing={2} wrap="wrap">
+                  {m.live && <Badge colorScheme="pink" variant="solid">{t('stageLive')}</Badge>}
+                  {m.live && groupWindow(m.live) && (
+                    <Badge colorScheme="blue" textTransform="none" fontWeight="normal">{groupWindow(m.live)}</Badge>
+                  )}
+                </HStack>
+                <Text fontWeight="bold" fontSize="lg">{pick(m.label, lang)} ›</Text>
                 {m.live && (
-                  <Badge fontSize="0.6rem" colorScheme="green">{t('stageLive')}</Badge>
+                  <Text fontSize="sm" color="gray.300" noOfLines={1}>{groupLabel(data, m.live, lang)}</Text>
                 )}
-              </Flex>
-            </Box>
-            <Box p={3} minW={0}>
-              <Text fontSize="xs" color="gray.500">
-                {t('stageGroupCount', { n: m.groups })} · {t('stageCount', { n: m.stages })}
-              </Text>
-              {m.live && (
-                <Text fontSize="xs" color="gray.400" noOfLines={1}>
-                  {groupLabel(data, m.live, lang)}
+                <Text fontSize="sm" color="gray.500">
+                  {t(GROUP_NOUN[m.key] ?? 'stageGroupCount', { n: m.groups })} · {t('stageCount', { n: m.stages })}
                 </Text>
-              )}
-            </Box>
-          </Box>
-        ))}
+              </VStack>
+            </Flex>
+          );
+        })}
       </SimpleGrid>
     </VStack>
   );
@@ -149,14 +137,54 @@ function GroupList({ mode, data, icons, lang }: {
         <ShareButton query={{ mode }} />
       </Flex>
       <ModeTabs data={data} mode={mode} lang={lang} />
+      {mode === 'archive' && (
+        <Button as={NextLink} href="/archive" size="sm" colorScheme="yellow" alignSelf="start">
+          {t('archiveOverview')}
+        </Button>
+      )}
       {mode === 'event' ? <EventsBoard /> : (
       <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
         {groups.map((grouping) => (
           <GroupCard key={grouping.group.key} grouping={grouping} data={data} icons={icons} lang={lang} />
         ))}
+        {mode === 'ascent' && <InfinityCard data={data} icons={icons} />}
       </SimpleGrid>
       )}
     </VStack>
+  );
+}
+
+function InfinityCard({ data, icons }: { data: StageData; icons: IconManifest | null }) {
+  const t = useT();
+  const [archive, setArchive] = useState<ArchiveIndex | null>(null);
+  useEffect(() => { loadArchive().then(setArchive).catch(() => setArchive(null)); }, []);
+  const gameLang = useGameLang();
+  const season = archive?.seasons[0];
+  const nodes = data.stages.filter((s) => s.mode === 'archive').length;
+  const today = new Date().toISOString().slice(0, 10);
+  const from = season?.open?.start.slice(0, 10);
+  const to = season?.open?.end.slice(0, 10);
+  const live = !!from && !!to && from <= today && today <= to;
+  return (
+    <Flex as={NextLink} href="/archive" direction={{ base: 'column', sm: 'row' }} gap={3} p={3}
+      borderRadius="lg" minW={0} borderWidth={live ? '2px' : '1px'}
+      borderColor={live ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50" _hover={{ borderColor: 'yellow.400' }}>
+      <ArtBox manifest={icons} w={{ base: '100%', sm: '184px' }}
+        sources={[['banner', 'Ascent_Infinity'], ['banner', 'Thumbnail_PastStory_Content_ArchiveAscent']]} />
+      <VStack align="stretch" spacing={1.5} minW={0} flex="1">
+        <Wrap spacing={1.5}>
+          {live && <WrapItem><Badge colorScheme="pink" variant="solid">{t('stageLive')}</Badge></WrapItem>}
+          {from && to && (
+            <WrapItem><Badge colorScheme="blue" textTransform="none" fontWeight="normal">{from} – {to}</Badge></WrapItem>
+          )}
+        </Wrap>
+        <Text fontWeight="bold" fontSize="lg">
+          {gameText(archive?.title, gameLang) || t('archiveTitle')}
+          {season ? ` · ${t('archiveSeason', { n: season.id })}` : ''} ›
+        </Text>
+        <Text fontSize="sm" color="gray.400">{t('stageCount', { n: nodes })} · {t('archivePacks')}</Text>
+      </VStack>
+    </Flex>
   );
 }
 
@@ -180,16 +208,12 @@ function GroupCard({ grouping, data, icons, lang }: {
       direction={{ base: 'column', sm: 'row' }} gap={3} p={3} borderRadius="lg" minW={0}
       borderWidth={live ? '2px' : '1px'} borderColor={live ? 'pink.400' : 'whiteAlpha.200'}
       bg={ended ? 'blackAlpha.200' : 'whiteAlpha.50'} _hover={{ borderColor: 'yellow.400' }}>
-      <Center w={{ base: '100%', sm: '180px' }} h="120px" flexShrink={0} borderRadius="md"
-        overflow="hidden" bg="blackAlpha.400">
-        {group.banner ? (
-          <GameIcon manifest={icons} group="banner" name={group.banner}
-            w="100%" h="100%" objectFit="cover" reserve={false} />
-        ) : (
-          <GameIcon manifest={icons} group={iconGroup(icons, GROUP_ICON_GROUPS, group.image)}
-            name={group.image} w="100%" h="100%" objectFit="cover" reserve={false} />
-        )}
-      </Center>
+      <ArtBox manifest={icons} w={{ base: '100%', sm: '184px' }} sources={[
+        ['banner', group.banner],
+        ['banner', group.mode === 'ascent' ? (group.from ? 'Ascent_Core' : 'Ascent_Basic') : null],
+        [iconGroup(icons, GROUP_ICON_GROUPS, group.image), group.image],
+        ['tile', data.modes.find((m) => m.key === group.mode)?.tile],
+      ]} />
       <VStack align="stretch" spacing={1.5} minW={0} flex="1">
         <Wrap spacing={1.5} align="center">
           {live && <WrapItem><Badge colorScheme="pink" variant="solid">{t('stageLive')}</Badge></WrapItem>}
@@ -290,8 +314,8 @@ function ModeTabs({ data, mode, lang }: { data: StageData; mode: string; lang: L
   const router = useRouter();
   return (
     <FilterRow label={t('stageMode')}>
-      {data.modes.map((m) => (
-        <FilterChip key={m.key} active={m.key === mode}
+      {data.modes.filter((m) => m.key !== 'archive').map((m) => (
+        <FilterChip key={m.key} active={m.key === mode || (m.key === 'ascent' && mode === 'archive')}
           onClick={() => router.push(`/stages?mode=${m.key}`)}>
           {pick(m.label, lang)}
         </FilterChip>
