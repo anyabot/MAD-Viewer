@@ -6,6 +6,7 @@ import {
 } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
+import { itemHref } from '@/lib/items';
 import { Panel } from '@/components/skillKit';
 import { MaterialNeeds } from '@/components/materialNeeds';
 import { AmountField, PlanGrid, Stepper, type PlanDraft } from '@/components/unitPlan';
@@ -79,7 +80,8 @@ function MemoryPanel({
             <HStack spacing={2}>
               <ItemIcon manifest={icons} group={materialGroup(icons, material?.icon)}
                 name={material?.icon} grade={material?.grade} size={8}
-                title={dataText(lang, material?.name, material?.nameEn) || undefined} />
+                title={dataText(lang, material?.name, material?.nameEn) || undefined}
+                href={ref ? itemHref(ref) : undefined} />
               <Box>
                 <Text fontSize="0.6rem" color="gray.500" textTransform="uppercase"
                   letterSpacing="0.08em">{t('planHeld')}</Text>

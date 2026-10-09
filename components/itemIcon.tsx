@@ -1,6 +1,7 @@
 // The game's own item slot: a plate, the art, the grade-coloured band and the
 // tier in the corner. Material art repeats across tiers, so the slot is the only
 // thing separating them.
+import NextLink from 'next/link';
 import { Box, Text, type BoxProps } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import { resolveIcon, type IconGroup, type IconManifest } from '@/lib/icons';
@@ -38,7 +39,7 @@ function bandMask(url: string) {
 }
 
 export function ItemIcon({
-  manifest, group, name, names, grade, count, size = 7, title, ...rest
+  manifest, group, name, names, grade, count, size = 7, title, href, ...rest
 }: {
   manifest: IconManifest | null;
   group: IconGroup;
@@ -50,6 +51,7 @@ export function ItemIcon({
   count?: string | number | null;
   size?: BoxProps['boxSize'];
   title?: string;
+  href?: string;
 } & Omit<BoxProps, 'children'>) {
   const color = (grade && ITEM_GRADE_COLOR[grade]) || UNGRADED_COLOR;
   const band = resolveIcon(manifest, 'ui', [BAND_SPRITE]);
@@ -58,7 +60,8 @@ export function ItemIcon({
     // container — one component covers a 22px preview and a 40px row
     <Box position="relative" boxSize={size} flexShrink={0} overflow="hidden"
       borderRadius="15%" bg={PLATE} borderWidth="1px" borderColor="whiteAlpha.800"
-      sx={{ containerType: 'size' }} title={title} {...rest}>
+      sx={{ containerType: 'size' }} title={title}
+      {...(href ? { as: NextLink, href, _hover: { borderColor: 'yellow.300' } } : {})} {...rest}>
       <Box position="absolute" left="-1px" right="-1px" bottom="-1px"
         h={BAND_HEIGHT} bg={color}
         sx={band ? bandMask(band) : undefined} borderRadius={band ? undefined : '1px'} />

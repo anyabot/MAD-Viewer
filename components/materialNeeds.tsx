@@ -1,5 +1,6 @@
 import { Box, HStack, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import { ItemIcon } from '@/components/itemIcon';
+import { itemHref } from '@/lib/items';
 import { hasIcon } from '@/lib/icons';
 import { MATERIAL_ICON_GROUPS, needLabel, needsOf, type Bill } from '@/lib/farm';
 import type { GrowthData, IconManifest } from '@/lib/data';
@@ -30,7 +31,8 @@ export function MaterialNeeds({ bill, growth, icons, lang, inventory, size = 7, 
               borderRadius="md" bg="blackAlpha.200" py={1} pl={1} pr={2}>
               <ItemIcon manifest={icons} group={materialGroup(icons, label.icon)}
                 name={label.icon} grade={label.grade} size={size}
-                title={label.name ?? undefined} />
+                title={label.name ?? undefined}
+                href={need.kind === 'material' ? itemHref(need.key) : undefined} />
               <Box minW={0}>
                 <Text fontSize="0.65rem" color="gray.500" noOfLines={1}
                   maxW="9rem">{label.name}</Text>

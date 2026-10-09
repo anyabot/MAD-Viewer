@@ -10,6 +10,7 @@ import { ItemIcon } from '@/components/itemIcon';
 import { StageCrumbs } from '@/components/stageCrumbs';
 import { ShareButton } from '@/components/shareButton';
 import { hasIcon } from '@/lib/icons';
+import { itemHref } from '@/lib/items';
 import { Panel, SkillList } from '@/components/skillKit';
 import { typeIcons, typeLabel } from '@/lib/characters';
 import {
@@ -244,7 +245,7 @@ function Drop({ drop, data, icons, lang }: {
     <Flex align="center" gap={2} borderWidth="1px" borderColor="whiteAlpha.200"
       borderRadius="md" px={2} py={1} minW={0}>
       <ItemIcon manifest={icons} group={group} names={[entry?.icon]}
-        grade={entry?.grade} size={10} />
+        grade={entry?.grade} size={10} href={drop.ref ? itemHref(drop.ref) : undefined} />
       <Box minW={0}>
         <Text fontSize="xs" noOfLines={1}>{dropName(data, drop, lang)}</Text>
         <HStack spacing={1.5}>
