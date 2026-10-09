@@ -13,7 +13,8 @@ const NAV: { href: string; label: UiKey; match: (p: string) => boolean }[] = [
     match: (p: string) => p.startsWith('/character'),
   },
   { href: '/effects', label: 'navEffects', match: (p: string) => p === '/effects' },
-  { href: '/stages', label: 'navStages', match: (p: string) => p.startsWith('/stage') },
+  { href: '/story', label: 'navStory', match: (p: string) => p === '/story' },
+  { href: '/stages', label: 'navStages', match: (p: string) => p.startsWith('/stage') || p === '/events' },
   { href: '/farm', label: 'navFarm', match: (p: string) => p === '/farm' },
   { href: '/changelog', label: 'navChangelog', match: (p: string) => p === '/changelog' },
 ];

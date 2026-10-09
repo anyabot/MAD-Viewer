@@ -6,6 +6,7 @@ import {
   WrapItem,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { EventsBoard } from '@/components/eventsBoard';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { StageCrumbs } from '@/components/stageCrumbs';
@@ -14,7 +15,7 @@ import { hasIcon } from '@/lib/icons';
 import { FilterChip, FilterRow } from '@/components/filters';
 import { typeLabel } from '@/lib/characters';
 import {
-  DROP_ICON_GROUPS, GROUP_ICON_GROUPS, dropAmount, dropName, enemyCodes, groupByKey,
+  DIFFICULTY_LABEL, DROP_ICON_GROUPS, GROUP_ICON_GROUPS, dropAmount, dropName, enemyCodes, groupByKey,
   groupIsLive, groupLabel, groupWindow, levelRange, modeSummaries, stageDrops,
   stageGroups, stageName, type StageGrouping,
 } from '@/lib/stages';
@@ -148,39 +149,78 @@ function GroupList({ mode, data, icons, lang }: {
         <ShareButton query={{ mode }} />
       </Flex>
       <ModeTabs data={data} mode={mode} lang={lang} />
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={3}>
-        {groups.map(({ group, stages }) => (
-          <Box key={group.key} as={NextLink} href={`/stages?group=${encodeURIComponent(group.key)}`}
-            borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" p={3} minW={0}
-            _hover={{ borderColor: 'yellow.400', bg: 'whiteAlpha.50' }}>
-            <Flex align="center" gap={3}>
-              {group.banner ? (
-                <GameIcon manifest={icons} group="banner" name={group.banner}
-                  h="60px" w="auto" maxW="140px" objectFit="contain" reserve={false} />
-              ) : (
-                <GameIcon manifest={icons}
-                  group={iconGroup(icons, GROUP_ICON_GROUPS, group.image)} name={group.image}
-                  boxSize="56px" borderRadius="md" objectFit="cover" reserve={false} />
-              )}
-              <Box minW={0}>
-                <Flex align="center" gap={2} wrap="wrap">
-                  <Text fontSize="sm" fontWeight="bold">{groupLabel(data, group, lang)}</Text>
-                  {groupIsLive(group) && (
-                    <Badge fontSize="0.6rem" colorScheme="green">{t('stageLive')}</Badge>
-                  )}
-                </Flex>
-                <Text fontSize="xs" color="gray.500">
-                  {t('stageCount', { n: stages.length })}
-                </Text>
-                {groupWindow(group) && (
-                  <Text fontSize="xs" color="gray.600">{groupWindow(group)}</Text>
-                )}
-              </Box>
-            </Flex>
-          </Box>
+      {mode === 'event' ? <EventsBoard /> : (
+      <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
+        {groups.map((grouping) => (
+          <GroupCard key={grouping.group.key} grouping={grouping} data={data} icons={icons} lang={lang} />
         ))}
       </SimpleGrid>
+      )}
     </VStack>
+  );
+}
+
+function GroupCard({ grouping, data, icons, lang }: {
+  grouping: StageGrouping; data: StageData; icons: IconManifest | null; lang: Lang;
+}) {
+  const t = useT();
+  const { group, stages } = grouping;
+  const live = groupIsLive(group);
+  const today = new Date().toISOString().slice(0, 10);
+  const ended = !!group.to && !live && group.to < today;
+  const upcoming = !!group.from && group.from > today;
+  const enemies = [...new Set(stages.flatMap((s) => enemyCodes(s)))];
+  const bosses = enemies.filter((c) => stages.some((s) => s.waves.some((w) => w.bossCode === c)));
+  const shown = [...bosses, ...enemies.filter((c) => !bosses.includes(c))].slice(0, 8);
+  const levels = stages.map(levelRange).filter((r): r is [number, number] => !!r);
+  const low = levels.length ? Math.min(...levels.map((r) => r[0])) : null;
+  const high = levels.length ? Math.max(...levels.map((r) => r[1])) : null;
+  return (
+    <Flex as={NextLink} href={`/stages?group=${encodeURIComponent(group.key)}`}
+      direction={{ base: 'column', sm: 'row' }} gap={3} p={3} borderRadius="lg" minW={0}
+      borderWidth={live ? '2px' : '1px'} borderColor={live ? 'pink.400' : 'whiteAlpha.200'}
+      bg={ended ? 'blackAlpha.200' : 'whiteAlpha.50'} _hover={{ borderColor: 'yellow.400' }}>
+      <Center w={{ base: '100%', sm: '180px' }} h="120px" flexShrink={0} borderRadius="md"
+        overflow="hidden" bg="blackAlpha.400">
+        {group.banner ? (
+          <GameIcon manifest={icons} group="banner" name={group.banner}
+            w="100%" h="100%" objectFit="cover" reserve={false} />
+        ) : (
+          <GameIcon manifest={icons} group={iconGroup(icons, GROUP_ICON_GROUPS, group.image)}
+            name={group.image} w="100%" h="100%" objectFit="cover" reserve={false} />
+        )}
+      </Center>
+      <VStack align="stretch" spacing={1.5} minW={0} flex="1">
+        <Wrap spacing={1.5} align="center">
+          {live && <WrapItem><Badge colorScheme="pink" variant="solid">{t('stageLive')}</Badge></WrapItem>}
+          {ended && <WrapItem><Badge variant="solid">{t('stageEnded')}</Badge></WrapItem>}
+          {upcoming && <WrapItem><Badge colorScheme="blue" variant="solid">{t('stageUpcoming')}</Badge></WrapItem>}
+          {groupWindow(group) && (
+            <WrapItem>
+              <Badge colorScheme="blue" textTransform="none" fontWeight="normal">{groupWindow(group)}</Badge>
+            </WrapItem>
+          )}
+          {group.difficulty && (
+            <WrapItem><Badge textTransform="none">{pick(DIFFICULTY_LABEL[group.difficulty], lang) || group.difficulty}</Badge></WrapItem>
+          )}
+        </Wrap>
+        <Text fontWeight="bold" fontSize="lg" noOfLines={2}>{groupLabel(data, group, lang)} ›</Text>
+        <Text fontSize="sm" color="gray.400">
+          {t('stageCount', { n: stages.length })}
+          {low != null && high != null && ` · ${t('stageLevelRange', { from: low, to: high })}`}
+        </Text>
+        {shown.length > 0 && (
+          <HStack spacing={-1.5} pt={1}>
+            {shown.map((code) => (
+              <GameIcon key={code} manifest={icons} group="char"
+                names={[data.enemies[code]?.iconPath, `Icon_${code}`]} size={8} borderRadius="full"
+                borderWidth="2px" borderColor={bosses.includes(code) ? 'red.400' : 'gray.800'}
+                title={dataText(lang, data.enemies[code]?.name, data.enemies[code]?.nameEn)} />
+            ))}
+          </HStack>
+        )}
+      </VStack>
+    </Flex>
   );
 }
 

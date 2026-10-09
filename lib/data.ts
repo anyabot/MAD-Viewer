@@ -4,6 +4,7 @@ import type { Localized } from '@/lib/i18n';
 import type { SceneTimelineData } from '@/components/skinViewer/scenes';
 import type { VoiceIndex } from '@/lib/voice';
 import type { SceneAudioIndex } from '@/lib/sceneAudio';
+import type { GameLang, GameLocalized } from '@/lib/gameText';
 
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const DATA_BASE = (
@@ -873,6 +874,108 @@ export type GachaIndex = {
 
 export function loadGachaIndex(): Promise<GachaIndex> {
   return fetchJson<GachaIndex>('gacha.json');
+}
+
+export type GameEvent = {
+  id: number;
+  kind: 'main' | 'luckyDraw';
+  name: GameLocalized;
+  desc?: GameLocalized;
+  start: string;
+  end: string;
+  stagesEnd?: string;
+  accountDays?: number;
+  banner?: string;
+  goodsIcon?: string;
+  stageGroup?: string;
+  chapter?: number;
+  scenes?: number;
+  pickups?: string[];
+  cast?: string[];
+  exchange?: EventExchange[];
+  bonus?: { code: string; rate: number }[];
+};
+
+export type EventReward = { ref?: string; type?: string; id?: number; amount?: number[] };
+
+export type EventExchange =
+  | {
+    kind: 'shop';
+    products: { rewards: EventReward[]; price?: { ref: string; amount: number }; limit?: number }[];
+  }
+  | {
+    kind: 'box';
+    cost: { ref: string; amount: number };
+    maxDraws?: number;
+    rounds: {
+      round: number; repeat: boolean;
+      items: { rewards: EventReward[]; count: number; grade?: string }[];
+      collection?: { grade?: string; count: number; rewards: EventReward[] }[];
+    }[];
+  };
+
+export type EventRef = { name?: GameLocalized; icon?: string; grade?: number };
+
+export type EventIndex = {
+  offset: string; bonusMax?: number; events: GameEvent[]; refs: Record<string, EventRef>;
+};
+
+export function loadEvents(): Promise<EventIndex> {
+  return fetchJson<EventIndex>('events.json');
+}
+
+export type StoryScene = {
+  id: number;
+  route: 'main' | 'high' | 'low';
+  name?: GameLocalized;
+  desc?: GameLocalized;
+  script?: string;
+  battle?: number;
+  lines?: number;
+  voiced?: number;
+};
+
+export type StoryChapter = {
+  id: number;
+  episode: number;
+  kind: 'main' | 'event' | 'nemesis';
+  name: GameLocalized;
+  desc?: GameLocalized;
+  background?: string;
+  event?: number;
+  cast?: string[];
+  scenes: StoryScene[];
+};
+
+export type StoryEpisode = {
+  id: number;
+  kind: StoryChapter['kind'];
+  name?: GameLocalized;
+  chapters: number[];
+};
+
+export type StoryIndex = {
+  langs: GameLang[];
+  episodes: StoryEpisode[];
+  chapters: Record<string, StoryChapter>;
+};
+
+export type StoryLine = {
+  k: 'line' | 'narration' | 'place' | 'choice' | 'chat';
+  t: string;
+  n?: string;
+  c?: string;
+  v?: string;
+};
+
+export type StoryChapterText = { scenes: Record<string, StoryLine[]> };
+
+export function loadStoryIndex(): Promise<StoryIndex> {
+  return fetchJson<StoryIndex>('story/index.json');
+}
+
+export function loadStoryChapter(lang: GameLang, chapter: number): Promise<StoryChapterText> {
+  return fetchJson<StoryChapterText>(`story/${lang}/${chapter}.json`);
 }
 
 export const KIND_LABEL: Record<SkinKind, Localized> = {
