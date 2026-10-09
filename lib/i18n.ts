@@ -2,6 +2,7 @@
 // stats, so a label is localised by reading the other column where one exists
 // and from a table here where the game has none.
 import { create } from 'zustand';
+import { useGameLangStore, useTextTables, type GameLang } from '@/lib/gameLangStore';
 
 export type Lang = 'en' | 'ko';
 
@@ -30,8 +31,16 @@ export const useLangStore = create<LangStore>((set) => ({
   },
 }));
 
+// Every reader re-renders on a game-text change too, because `dataText` reads that setting.
 export function useLang(): Lang {
+  useGameLangStore((s) => s.choice);
+  useTextTables((s) => s.version);
   return useLangStore((s) => s.lang);
+}
+
+function gameLangOf(lang: Lang): GameLang {
+  const choice = useGameLangStore.getState().choice;
+  return choice === 'auto' ? lang : choice;
 }
 
 export function restoreLang(): void {
@@ -52,7 +61,10 @@ export function pick(value: Localized | null | undefined, lang: Lang): string {
 export function dataText(
   lang: Lang, ko?: string | null, en?: string | null,
 ): string {
-  return (lang === 'en' ? (en || ko) : (ko || en)) || '';
+  const game = gameLangOf(lang);
+  if (game === 'ko') return ko || en || '';
+  if (game === 'en') return en || ko || '';
+  return (ko && useTextTables.getState().tables[game]?.[ko]) || en || ko || '';
 }
 
 /** `{name}` placeholders, so a translated sentence can reorder its parts. */
@@ -71,6 +83,42 @@ export const UI = {
   navFarm: { en: 'Planner', ko: '플래너' },
   navChangelog: { en: 'Changelog', ko: '변경사항' },
   navEvents: { en: 'Events', ko: '이벤트' },
+  navItems: { en: 'Items', ko: '아이템' },
+  homeTagline: { en: 'Skins, story, events and data for MAke Drama: MAD', ko: 'MAke Drama: MAD의 스킨, 스토리, 이벤트, 데이터' },
+  homeNow: { en: 'Now running', ko: '진행 중' },
+  homePickup: { en: 'Pickup banner', ko: '픽업 모집' },
+  homeEvents: { en: 'Events', ko: '이벤트' },
+  homeBanners: { en: 'Pickup banners', ko: '픽업 모집' },
+  homeSeasonal: { en: 'Seasonal content', ko: '시즌 콘텐츠' },
+  homeReveal: { en: 'Upcoming partner · click to reveal', ko: '예정 파트너 · 클릭해서 보기' },
+  homeNemesis: { en: 'Nemesis', ko: '네메시스' },
+  homeViewer: { en: 'Every skin, live: lobby, affection and desire scenes', ko: '모든 스킨을 로비·어펙션·디자이어로 재생' },
+  homeCharacters: { en: 'Profiles, kits, stats and voice lines', ko: '프로필, 스킬, 스탯, 보이스' },
+  homeStory: { en: 'Main, event and Nemesis story as text', ko: '메인·이벤트·네메시스 스토리 텍스트' },
+  homeStages: { en: 'Events, stages, enemies and drops', ko: '이벤트, 스테이지, 적, 드롭' },
+  homeItems: { en: 'Every item: where it drops, what uses it', ko: '모든 아이템의 획득처와 용도' },
+  homeFarm: { en: 'Plan growth and the stages to farm', ko: '육성 계획과 파밍 스테이지' },
+  homeEffects: { en: 'Find units by what their skills do', ko: '스킬 효과로 캐릭터 찾기' },
+  homeChangelog: { en: 'What changed on this site', ko: '사이트 변경 내역' },
+  itemsAll: { en: 'All', ko: '전체' },
+  itemsPlanner: { en: 'Held or needed', ko: '보유·필요' },
+  itemsCategory: { en: 'Category', ko: '분류' },
+  itemsHeldN: { en: 'held {n}', ko: '보유 {n}' },
+  itemsNeedN: { en: 'need {n}', ko: '필요 {n}' },
+  itemsShortN: { en: 'short {n}', ko: '부족 {n}' },
+  itemHeld: { en: 'Held (Planner inventory)', ko: '보유 (플래너 인벤토리)' },
+  itemNeeded: { en: 'Your plan needs {n} · short {short}', ko: '플랜 필요 {n} · 부족 {short}' },
+  itemOpenPlanner: { en: 'Open Planner', ko: '플래너 열기' },
+  itemSellsFor: { en: 'Sells for', ko: '판매가' },
+  itemContents: { en: 'Contents', ko: '내용물' },
+  itemBoxRandom: { en: 'one at random', ko: '무작위 1개' },
+  itemBoxSelect: { en: 'pick', ko: '선택' },
+  itemBoxAll: { en: 'all of these', ko: '전부 획득' },
+  itemPick: { en: '{n}', ko: '{n}개' },
+  itemLikedBy: { en: 'Liked gift of', ko: '선호 선물' },
+  itemObtained: { en: 'Obtained from', ko: '획득처' },
+  itemFromShop: { en: 'shop · {price} each · limit {limit}', ko: '상점 · 개당 {price} · 최대 {limit}' },
+  itemFromBox: { en: 'draw · {n} in the boxes', ko: '뽑기 · 박스에 {n}개' },
   navStory: { en: 'Story', ko: '스토리' },
 
   gameText: { en: 'Game text', ko: '게임 텍스트' },
@@ -136,6 +184,8 @@ export const UI = {
   countOf: { en: '{shown} of {total}', ko: '{total}개 중 {shown}개' },
 
   tabSkins: { en: 'Skins', ko: '스킨' },
+  tabVoice: { en: 'Voice', ko: '보이스' },
+  voiceMissing: { en: 'Voice lines failed to load.', ko: '보이스를 불러오지 못했습니다.' },
   tabSd: { en: 'Mini', ko: 'SD' },
   sdAnimation: { en: 'Animation', ko: '애니메이션' },
   sdPlayCutin: { en: 'Skill cut-in', ko: '스킬 컷인' },
@@ -457,6 +507,30 @@ export const UI = {
   stageUnnamedEnemy: { en: 'unnamed #{id}', ko: '이름 없음 #{id}' },
   stageDrops: { en: 'Drops', ko: '보상' },
   stageLive: { en: 'LIVE', ko: '진행 중' },
+  archiveTitle: { en: 'Infinity Archive', ko: '인피니티 아카이브' },
+  archiveOverview: { en: 'Season overview · Game Packs ›', ko: '시즌 개요 · 게임 팩 ›' },
+  archiveSeason: { en: 'Season {n}', ko: '시즌 {n}' },
+  archiveStartCount: { en: 'Start a run with {n} partners', ko: '파트너 {n}명으로 런 시작' },
+  archiveMinStar: { en: 'Star {n} floor', ko: '성급 최소 {n}' },
+  archiveMinLevel: { en: 'Level {n} floor', ko: '레벨 최소 {n}' },
+  archiveMinNormal: { en: 'Skill Lv {n} floor', ko: '일반 스킬 최소 {n}' },
+  archiveMinBurst: { en: 'Burst Lv {n} floor', ko: '버스트 스킬 최소 {n}' },
+  archiveMinTier: { en: 'Gear T{n} floor', ko: '장비 최소 {n}티어' },
+  archiveSupport: { en: 'Support partners', ko: '지원 파트너' },
+  archiveScores: { en: 'Score rewards', ko: '점수 보상' },
+  archivePath: { en: 'Run path', ko: '런 경로' },
+  archiveDifficulty: { en: 'Difficulty {n}', ko: '난이도 {n}' },
+  archivePick: { en: 'Pick a Game Pack', ko: '게임 팩 선택' },
+  archivePool: { en: 'Pool {n}', ko: '풀 {n}' },
+  archiveBattle: { en: 'Battle', ko: '전투' },
+  archivePacks: { en: 'Game Packs', ko: '게임 팩' },
+  stageChapters: { en: '{n} chapters', ko: '{n}개 챕터' },
+  stageEventCount: { en: '{n} events', ko: '이벤트 {n}개' },
+  stageSeasons: { en: '{n} seasons', ko: '{n}개 시즌' },
+  stageNodes: { en: '{n} battle nodes', ko: '전투 노드 {n}개' },
+  timingUse: { en: 'Use {s}s', ko: '사용 {s}초' },
+  timingUseHint: { en: 'Length of the battle animation; the next action starts after it', ko: '전투 애니메이션 길이 — 끝나야 다음 행동' },
+  timingDelay: { en: 'Delay {s}s', ko: '딜레이 {s}초' },
   stageEnded: { en: 'Ended', ko: '종료' },
   stageUpcoming: { en: 'Upcoming', ko: '예정' },
   stageAllModes: { en: 'All modes', ko: '전체 모드' },

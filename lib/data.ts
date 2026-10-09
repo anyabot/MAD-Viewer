@@ -5,6 +5,7 @@ import type { SceneTimelineData } from '@/components/skinViewer/scenes';
 import type { VoiceIndex } from '@/lib/voice';
 import type { SceneAudioIndex } from '@/lib/sceneAudio';
 import type { GameLang, GameLocalized } from '@/lib/gameText';
+import type { ItemIndex } from '@/lib/items';
 
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const DATA_BASE = (
@@ -561,6 +562,8 @@ export type StageGroup = {
   /** The page logo, in the `banner` group; only extracted pages have one. */
   banner?: string;
   zoneId?: number;
+  archiveDifficulty?: number;
+  archiveNode?: number;
   /** ISO dates, on the modes the game schedules. */
   from?: string;
   to?: string;
@@ -636,7 +639,7 @@ export function loadCharacters(): Promise<CharacterData> {
 export type IconManifest = {
   groups: Partial<Record<
     'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip'
-    | 'zone' | 'tile' | 'banner' | 'infusion',
+    | 'zone' | 'tile' | 'banner' | 'infusion' | 'archive' | 'story' | 'deco',
     string[]>>;
 };
 
@@ -872,6 +875,52 @@ export type GachaIndex = {
   rigs: Record<'child' | 'adult', GachaRig>;
 };
 
+export type ArchiveWindow = { start: string; end: string };
+
+export type ArchiveIndex = {
+  title?: GameLocalized;
+  seasons: {
+    id: number;
+    open?: ArchiveWindow;
+    progress?: ArchiveWindow;
+    reward?: ArchiveWindow;
+    support: string[];
+    startCount: number;
+    minimum: { star: number; level: number; normalSkill: number; burstSkill: number; equipmentTier: number };
+    scores: { score: number; rewards: EventReward[] }[];
+    difficulties: {
+      difficulty: number;
+      nodes: { order: number; type: 'battle' | 'augment'; groups?: string[]; pools?: string[] }[];
+    }[];
+  }[];
+  augments: Record<string, {
+    name?: GameLocalized; desc?: GameLocalized; icon?: string; trigger?: string; rarity?: string;
+    appear?: string; appearValue?: number; tags?: string[]; joinCode?: string;
+  }>;
+  pools: Record<string, number[]>;
+  refs: Record<string, EventRef>;
+};
+
+export function loadArchive(): Promise<ArchiveIndex> {
+  return fetchJson<ArchiveIndex>('archive.json');
+}
+
+export type SkillTiming = { clip?: string; seconds?: number; cooldown?: number };
+
+export function loadSkillTiming(): Promise<{ characters: Record<string, Record<string, SkillTiming>> }> {
+  return fetchJson<{ characters: Record<string, Record<string, SkillTiming>> }>('skilltiming.json');
+}
+
+export type VoiceLine = { id: string; cat: string; text?: GameLocalized };
+
+export function loadVoiceLines(): Promise<{ characters: Record<string, VoiceLine[]> }> {
+  return fetchJson<{ characters: Record<string, VoiceLine[]> }>('voicelines.json');
+}
+
+export function loadItems(): Promise<ItemIndex> {
+  return fetchJson<ItemIndex>('items.json');
+}
+
 export function loadGachaIndex(): Promise<GachaIndex> {
   return fetchJson<GachaIndex>('gacha.json');
 }
@@ -918,6 +967,7 @@ export type EventRef = { name?: GameLocalized; icon?: string; grade?: number };
 
 export type EventIndex = {
   offset: string; bonusMax?: number; events: GameEvent[]; refs: Record<string, EventRef>;
+  banners?: { start: string; end: string; codes: string[] }[];
 };
 
 export function loadEvents(): Promise<EventIndex> {
