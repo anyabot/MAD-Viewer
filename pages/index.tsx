@@ -1,291 +1,223 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import {
-  Badge, Box, Center, Flex, Grid, HStack, Input, Spinner, Tab, TabList, TabPanel,
-  TabPanels, Tabs, Text, VStack, Wrap, WrapItem,
+  Badge, Box, Center, Flex, HStack, SimpleGrid, Text, VStack,
 } from '@chakra-ui/react';
-import GachaScene from '@/components/gachaScene';
-import SkinViewer from '@/components/skinViewer';
-import { STORE_META } from '@/components/skinViewer/chrome';
-import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
-import { GameIcon } from '@/components/gameIcon';
-import { KIND_ICON, characterName, characterSubName, rosterNote } from '@/lib/characters';
-import { skinIcon } from '@/lib/icons';
-import { useFilters } from '@/lib/filterStore';
-import { parseViewerShare } from '@/lib/viewerShare';
-import { useLang, useT } from '@/lib/i18n';
 import {
-  KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
-  type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
+  EventCard, TimeControls, useNow, useServerTime,
+} from '@/components/eventsBoard';
+import { ArtBox } from '@/components/artBox';
+import { GameIcon } from '@/components/gameIcon';
+import {
+  loadArchive, loadCharacters, loadEvents, loadIcons, loadStages,
+  type ArchiveIndex, type CharacterData, type EventIndex, type IconManifest, type StageData,
 } from '@/lib/data';
+import { eventPhase, formatMoment, remaining, zoneLabel } from '@/lib/events';
+import { gameText, useGameLang } from '@/lib/gameText';
+import { characterName } from '@/lib/characters';
+import type { IconGroup } from '@/lib/icons';
+import { useLang, useT, type UiKey } from '@/lib/i18n';
+import { groupIsLive, groupLabel, groupWindow } from '@/lib/stages';
 
-const KINDS: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure', 'drama'];
+const VIEWER_KEYS = ['skin', 'store', 'view', 'speed', 'bg', 'camera', 'aspect', 'body', 'face', 'overlay', 'stage', 'tab'];
 
-function skinTitle(skin: SkinListEntry, name: string): string {
-  return name || skin.character || skin.key;
-}
+const SECTIONS: { href: string; label: UiKey; desc: UiKey }[] = [
+  { href: '/viewer', label: 'navViewer', desc: 'homeViewer' },
+  { href: '/characters', label: 'navCharacters', desc: 'homeCharacters' },
+  { href: '/story', label: 'navStory', desc: 'homeStory' },
+  { href: '/stages', label: 'navStages', desc: 'homeStages' },
+  { href: '/items', label: 'navItems', desc: 'homeItems' },
+  { href: '/farm', label: 'navFarm', desc: 'homeFarm' },
+  { href: '/effects', label: 'navEffects', desc: 'homeEffects' },
+  { href: '/changelog', label: 'navChangelog', desc: 'homeChangelog' },
+];
 
-// Lazy tabs keep the separate gacha archives unfetched until opened.
-export default function ViewerPage() {
-  const t = useT();
-  return (
-    <Tabs variant="line" colorScheme="yellow" isLazy>
-      <TabList borderColor="whiteAlpha.200" overflowX="auto">
-        <Tab fontSize="sm" whiteSpace="nowrap">{t('tabSkins')}</Tab>
-        <Tab fontSize="sm" whiteSpace="nowrap">{t('tabGacha')}</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel px={0} pt={4}><SkinGallery /></TabPanel>
-        <TabPanel px={0} pt={4}><GachaScene /></TabPanel>
-      </TabPanels>
-    </Tabs>
-  );
-}
-
-function SkinGallery() {
+export default function Home() {
   const t = useT();
   const lang = useLang();
-  const [skins, setSkins] = useState<SkinListEntry[] | null>(null);
-  const [charData, setCharData] = useState<CharacterData | null>(null);
+  const gameLang = useGameLang();
+  const router = useRouter();
+  const [events, setEvents] = useState<EventIndex | null>(null);
+  const [stages, setStages] = useState<StageData | null>(null);
+  const [archive, setArchive] = useState<ArchiveIndex | null>(null);
+  const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [store, setStore] = useState<StoreKey>('onestore');
-  // In the store so leaving for a character page and back restores the search.
-  const { kind, query, divergedOnly, selected } = useFilters((s) => s.skins);
-  const set = useFilters((s) => s.setSkins);
+  const [serverTime, setServerTime] = useServerTime();
+  const now = useNow(30_000);
+
+  // Share links from before the viewer had its own route.
+  useEffect(() => {
+    if (!router.isReady) return;
+    const query = new URLSearchParams(window.location.search);
+    if (VIEWER_KEYS.some((k) => query.has(k))) void router.replace(`/viewer${window.location.search}`);
+  }, [router]);
 
   useEffect(() => {
-    loadSkinList()
-      .then((l) => {
-        setSkins(l.skins);
-        const shared = typeof window === 'undefined' ? null : parseViewerShare(window.location.search);
-        const selected = shared && l.skins.some((skin) => skin.key === shared.skin)
-          ? shared.skin : useFilters.getState().skins.selected ?? l.skins[0]?.key ?? null;
-        set({ selected });
-        const entry = l.skins.find((skin) => skin.key === selected);
-        if (shared?.store && entry?.stores.includes(shared.store)) setStore(shared.store);
-      })
-      .catch((e) => setError(String(e)));
-  }, [set]);
-
-  // Names and icons are decoration: a failed fetch must leave the gallery usable.
-  useEffect(() => {
-    loadCharacters().then(setCharData).catch(() => setCharData(null));
+    loadEvents().then(setEvents).catch(() => setEvents(null));
+    loadStages().then(setStages).catch(() => setStages(null));
+    loadArchive().then(setArchive).catch(() => setArchive(null));
+    loadCharacters().then(setChars).catch(() => setChars(null));
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
 
-  const charOf = useMemo(
-    () => (s: SkinListEntry): CharacterEntry | null =>
-      charData?.characters[s.character] ?? null, [charData]);
-  const nameOf = useMemo(
-    () => (s: SkinListEntry) => characterName(charOf(s), lang), [charOf, lang]);
-  // Playable characters only; it is empty for every NPC.
-  const subNameOf = useMemo(
-    () => (s: SkinListEntry) => characterSubName(charOf(s), lang), [charOf, lang]);
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return (skins ?? []).filter((s) =>
-      (kind === 'all' || s.kind === kind)
-      && (!divergedOnly || s.stores.length > 1)
-      && (!q || s.key.toLowerCase().includes(q)
-        || s.character.toLowerCase().includes(q)
-        || (charOf(s)?.name ?? '').toLowerCase().includes(q)
-        || (charOf(s)?.nameEn ?? '').toLowerCase().includes(q)));
-  }, [skins, kind, query, divergedOnly, charOf]);
-
-  const current = useMemo(
-    () => (skins ?? []).find((s) => s.key === selected) ?? null, [skins, selected]);
-
-  // Keep the store selection valid when switching to a skin that has only one.
-  useEffect(() => {
-    if (current && !current.stores.includes(store)) setStore(current.stores[0] ?? 'onestore');
-  }, [current, store]);
-
-  if (error) return <Text color="red.400">{error}</Text>;
-  if (!skins) {
-    return (
-      <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-      </Center>
-    );
-  }
-
-  const currentRoster = current ? rosterNote(charOf(current), lang) : null;
+  const live = (events?.events ?? []).filter((e) => eventPhase(e, now) !== 'ended')
+    .sort((a, b) => Date.parse(a.end) - Date.parse(b.end));
+  const banners = (events?.banners ?? [])
+    .filter((b) => now <= Date.parse(b.end))
+    .sort((a, b) => Date.parse(a.start) - Date.parse(b.start));
+  const nemesis = stages ? Object.values(stages.groups).filter((g) => g.mode === 'nemesis'
+    && (groupIsLive(g) || (g.from && g.from > new Date(now).toISOString().slice(0, 10))))
+    .sort((a, b) => (a.from ?? '').localeCompare(b.from ?? '')) : [];
+  const season = archive?.seasons.find((s) => s.open && now <= Date.parse(s.open.end));
+  const core = stages ? Object.values(stages.groups).filter((g) => g.mode === 'ascent' && groupIsLive(g)) : [];
 
   return (
-    <VStack align="stretch" spacing={4}>
-      <Wrap spacing={2} align="center">
-        <WrapItem>
-          <Wrap spacing={1}>
-            <WrapItem>
-              <Chip active={kind === 'all'} onClick={() => set({ kind: 'all' })}>
-                {t('filterAll')}
-              </Chip>
-            </WrapItem>
-            {KINDS.map((k) => (
-              <WrapItem key={k}>
-                <Chip active={kind === k} onClick={() => set({ kind: k })}>
-                  <GameIcon manifest={icons} group="ui" name={KIND_ICON[k]} size={4}
-                    reserve={false} />
-                  {KIND_LABEL[k][lang]}
-                </Chip>
-              </WrapItem>
+    <VStack align="stretch" spacing={8}>
+      <Head><title>MAD Viewer</title></Head>
+      <VStack spacing={2} textAlign="center" pt={2}>
+        <Text fontSize={{ base: '3xl', md: '4xl' }} fontWeight="bold">MAD Viewer</Text>
+        <Text color="gray.400">{t('homeTagline')}</Text>
+      </VStack>
+
+      <Flex align="center" gap={3} wrap="wrap">
+        <Text fontSize="xl" fontWeight="bold">{t('homeNow')}</Text>
+        <Box flex="1" />
+        <TimeControls serverTime={serverTime} onChange={setServerTime} />
+      </Flex>
+
+      {live.length > 0 && (
+        <Section title={t('homeEvents')} href="/stages?mode=event">
+          <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
+            {live.map((event) => (
+              <EventCard key={`${event.kind}:${event.id}`} event={event} now={now} serverTime={serverTime}
+                chars={chars} icons={icons} />
             ))}
-          </Wrap>
-        </WrapItem>
-        <WrapItem>
-          <Chip active={divergedOnly} onClick={() => set({ divergedOnly: !divergedOnly })}>
-            {t('storeDiff')}
-          </Chip>
-        </WrapItem>
-        <WrapItem>
-          <Input size="sm" maxW="220px" placeholder={t('search')} value={query}
-            onChange={(e) => set({ query: e.target.value })} bg="whiteAlpha.100" borderColor="whiteAlpha.300" />
-        </WrapItem>
-        <WrapItem>
-          <Text fontSize="xs" color="gray.500">
-            {t('countOf', { shown: filtered.length, total: skins.length })}
-          </Text>
-        </WrapItem>
-      </Wrap>
+          </SimpleGrid>
+        </Section>
+      )}
 
-      <Grid templateColumns={{ base: '1fr', lg: '260px 1fr' }} gap={4} alignItems="start">
-        <Box maxH={{ base: '240px', lg: '75vh' }} overflowY="auto"
-          border="1px solid" borderColor="whiteAlpha.200" borderRadius="xl" p={1.5}
-          bg="blackAlpha.200" boxShadow="0 16px 36px rgba(0,0,0,0.14)">
-          <VStack align="stretch" spacing={0.5}>
-            {filtered.map((s) => {
-              const entry = charOf(s);
-              const thumb = skinIcon(icons, s, entry);
-              const roster = rosterNote(entry, lang);
-              return (
-                <Box key={s.key} as="button" w="100%" textAlign="left" px={2.5} py={2}
-                  borderRadius="lg" borderWidth="1px"
-                  borderColor={s.key === selected ? 'yellow.400' : 'transparent'}
-                  bg={s.key === selected ? 'whiteAlpha.200' : 'transparent'}
-                  boxShadow={s.key === selected ? 'inset 3px 0 0 #f6c445' : 'none'}
-                  _hover={{ bg: s.key === selected ? 'whiteAlpha.200' : 'whiteAlpha.100' }}
-                  transition="background 0.15s, border-color 0.15s"
-                  onClick={() => set({ selected: s.key })}>
-                  <Flex align="center" gap={2}>
-                    <Box w="32px" h="32px" flexShrink={0} borderRadius="sm"
-                      bg="blackAlpha.400" overflow="hidden">
-                      {thumb && (
-                        <Box as="img" src={thumb} alt="" w="100%" h="100%" objectFit="contain" />
-                      )}
-                    </Box>
-                    <Box minW={0} flex="1">
-                      <Flex align="center" gap={1.5} wrap="wrap">
-                        <GameIcon manifest={icons} group="ui" name={KIND_ICON[s.kind]}
-                          size={3.5} title={KIND_LABEL[s.kind][lang]} />
-                        <Text fontSize="sm" noOfLines={1}>{skinTitle(s, nameOf(s))}</Text>
-                        {subNameOf(s) && (
-                          <Text fontSize="xs" color="gray.500" noOfLines={1}>
-                            {subNameOf(s)}
-                          </Text>
-                        )}
-                        <Badge colorScheme={KIND_COLOR[s.kind]} fontSize="0.55rem">
-                          {KIND_LABEL[s.kind][lang]}
-                        </Badge>
-                        {roster && (
-                          <Badge colorScheme={roster.scheme} fontSize="0.55rem">
-                            {roster.label}
-                          </Badge>
-                        )}
-                        {s.stores.length > 1 && (
-                          <Badge colorScheme="yellow" fontSize="0.55rem">{t('badgeDiff')}</Badge>
-                        )}
-                      </Flex>
-                      <Text fontSize="xs" color="gray.500" noOfLines={1}>
-                        <Text as="span" fontFamily="mono">{s.key}</Text>
-                        {' · '}
-                        {t('animCount', { n: s.animations })}
-                        {s.faces ? ` · ${t('faceCount', { n: s.faces })}` : ''}
-                      </Text>
-                    </Box>
-                  </Flex>
-                </Box>
-              );
-            })}
-            {filtered.length === 0 && (
-              <Text fontSize="sm" color="gray.500" p={2}>{t('noMatch')}</Text>
+      {banners.length > 0 && (
+        <Section title={t('homeBanners')}>
+          <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={3}>
+            {banners.map((b) => (
+              <BannerTile key={b.start} banner={b} now={now} serverTime={serverTime} chars={chars} icons={icons} />
+            ))}
+          </SimpleGrid>
+        </Section>
+      )}
+
+      {(nemesis.length > 0 || season?.open || core.length > 0) && (
+        <Section title={t('homeSeasonal')} href="/stages">
+          <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={3}>
+            {season?.open && (
+              <Tile href="/archive" live={now >= Date.parse(season.open.start)}
+                art={[['banner', 'Ascent_Infinity'], ['banner', 'Thumbnail_PastStory_Content_ArchiveAscent']]} icons={icons}
+                title={`${gameText(archive?.title, gameLang) || t('archiveTitle')} · ${t('archiveSeason', { n: season.id })}`}
+                note={t('eventsEndsIn', { time: remaining(Date.parse(season.open.end) - now, lang) })} />
             )}
-          </VStack>
-        </Box>
+            {core.map((g) => (
+              <Tile key={g.key} href={`/stages?group=${encodeURIComponent(g.key)}`} live icons={icons}
+                art={[['banner', 'Ascent_Core'], ['tile', stages?.modes.find((m) => m.key === 'ascent')?.tile]]}
+                title={stages ? groupLabel(stages, g, lang) : ''} note={groupWindow(g) ?? ''} />
+            ))}
+            {nemesis.map((g) => (
+              <Tile key={g.key} href={`/stages?group=${encodeURIComponent(g.key)}`} live={groupIsLive(g)}
+                icons={icons} art={[['banner', g.banner], ['zone', g.image]]}
+                title={`${t('homeNemesis')} · ${stages ? groupLabel(stages, g, lang) : ''}`} note={groupWindow(g) ?? ''} />
+            ))}
+          </SimpleGrid>
+        </Section>
+      )}
 
-        <Box minW={0}>
-          {current ? (
-            <VStack align="stretch" spacing={2}>
-              <Wrap spacing={2} align="center">
-                <WrapItem>
-                  <HStack spacing={1.5}>
-                    <GameIcon manifest={icons} group="ui" name={KIND_ICON[current.kind]}
-                      size={5} title={KIND_LABEL[current.kind][lang]} />
-                    <Text fontWeight="bold" fontSize="lg">
-                      {skinTitle(current, nameOf(current))}
-                    </Text>
-                    {subNameOf(current) && (
-                      <Text fontSize="md" color="gray.500">{subNameOf(current)}</Text>
-                    )}
-                    <Badge colorScheme={KIND_COLOR[current.kind]}>
-                      {KIND_LABEL[current.kind][lang]}
-                    </Badge>
-                    {currentRoster && (
-                      <Badge colorScheme={currentRoster.scheme}>
-                        {currentRoster.label}
-                      </Badge>
-                    )}
-                  </HStack>
-                </WrapItem>
-                <WrapItem>
-                  <Text fontFamily="mono" color="gray.400">{current.key}</Text>
-                </WrapItem>
-                {current.stores.length > 1 && (
-                  <WrapItem>
-                    <Badge colorScheme="yellow" title={t('storeDiffTitle')}>
-                      {t('badgeDiff')} · {STORE_META[store].short}
-                    </Badge>
-                  </WrapItem>
-                )}
-                {current.hasBg && (
-                  <WrapItem><Badge colorScheme="blue">{t('badgeBackground')}</Badge></WrapItem>
-                )}
-                {charOf(current) && (
-                  <WrapItem>
-                    <Text as={NextLink} fontSize="xs" color="yellow.300"
-                      href={{ pathname: '/character', query: { code: current.character } }}
-                      _hover={{ color: 'yellow.200' }}>
-                      {t('toCharacter')}
-                    </Text>
-                  </WrapItem>
-                )}
-              </Wrap>
-              <SkinViewer key={current.key} skin={current.key} stores={current.stores}
-                store={store} onStoreChange={setStore} height="70vh" />
-            </VStack>
-          ) : (
-            <Center h="40vh"><Text color="gray.500">{t('selectSkin')}</Text></Center>
-          )}
-        </Box>
-      </Grid>
+      <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={3}>
+        {SECTIONS.map((s) => (
+          <Box key={s.href} as={NextLink} href={s.href} p={4} borderRadius="lg" borderWidth="1px"
+            borderColor="whiteAlpha.200" bg="whiteAlpha.50" _hover={{ borderColor: 'yellow.400' }}>
+            <Text fontWeight="bold" mb={1}>{t(s.label)}</Text>
+            <Text fontSize="sm" color="gray.400">{t(s.desc)}</Text>
+          </Box>
+        ))}
+      </SimpleGrid>
     </VStack>
   );
 }
 
-function Chip({ active, onClick, children }: {
-  active: boolean; onClick: () => void; children: React.ReactNode;
-}) {
+function Section({ title, href, children }: { title: string; href?: string; children: React.ReactNode }) {
   return (
-    <Box as="button" onClick={onClick} px={3} py={1.5} minH="34px"
-      borderRadius="full" fontSize="sm" display="flex" alignItems="center" gap={1.5}
-      borderWidth="1px" borderColor={active ? 'yellow.400' : 'whiteAlpha.200'}
-      bg={active ? 'yellow.400' : 'whiteAlpha.50'} color={active ? 'gray.900' : 'gray.200'}
-      fontWeight={active ? '700' : '500'}
-      boxShadow={active ? '0 6px 18px rgba(246, 196, 69, 0.16)' : 'none'}
-      _hover={{ bg: active ? 'yellow.300' : 'whiteAlpha.200' }}
-      transition="background 0.15s, border-color 0.15s, box-shadow 0.15s">
+    <VStack align="stretch" spacing={2}>
+      <HStack spacing={3}>
+        <Text fontSize="sm" fontWeight="bold" color="gray.400" textTransform="uppercase" letterSpacing="wide">
+          {title}
+        </Text>
+        {href && <Text as={NextLink} href={href} fontSize="xs" color="yellow.300">›</Text>}
+      </HStack>
       {children}
-    </Box>
+    </VStack>
+  );
+}
+
+function Tile({ href, live, art, icons, title, note }: {
+  href: string; live: boolean; art: [IconGroup, string | null | undefined][];
+  icons: IconManifest | null; title: string; note: string;
+}) {
+  const t = useT();
+  return (
+    <VStack as={NextLink} href={href} align="stretch" spacing={2} p={2} borderRadius="lg" minW={0}
+      borderWidth={live ? '2px' : '1px'} borderColor={live ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50"
+      _hover={{ borderColor: 'yellow.400' }}>
+      <ArtBox manifest={icons} w="100%" sources={art} />
+      <HStack spacing={1.5} wrap="wrap">
+        <Badge colorScheme={live ? 'pink' : 'blue'} variant="solid">{live ? t('stageLive') : t('stageUpcoming')}</Badge>
+        <Text fontSize="xs" color="gray.400">{note}</Text>
+      </HStack>
+      <Text fontSize="sm" fontWeight="bold" noOfLines={2}>{title}</Text>
+    </VStack>
+  );
+}
+
+// A banner not yet open names a partner the game has not announced in-client, so it stays covered until asked.
+function BannerTile({ banner, now, serverTime, chars, icons }: {
+  banner: { start: string; end: string; codes: string[] }; now: number; serverTime: boolean;
+  chars: CharacterData | null; icons: IconManifest | null;
+}) {
+  const t = useT();
+  const lang = useLang();
+  const running = now >= Date.parse(banner.start);
+  const [revealed, setRevealed] = useState(running);
+  const code = banner.codes[0];
+  const entry = chars?.characters[code];
+  const name = banner.codes.map((c) => characterName(chars?.characters[c] ?? null, lang) || c).join(' · ');
+  const when = running
+    ? t('eventsEndsIn', { time: remaining(Date.parse(banner.end) - now, lang) })
+    : t('eventsStartsIn', { time: remaining(Date.parse(banner.start) - now, lang) });
+  return (
+    <VStack align="stretch" spacing={2} p={2} borderRadius="lg" minW={0}
+      borderWidth={running ? '2px' : '1px'} borderColor={running ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50">
+      {revealed ? (
+        <Box as={NextLink} href={`/character?code=${code}`} position="relative">
+          <ArtBox manifest={icons} w="100%"
+            sources={[['char', entry?.iconPath], ['char', `Icon_${code}`]]} />
+        </Box>
+      ) : (
+        <Center as="button" onClick={() => setRevealed(true)} w="100%" sx={{ aspectRatio: '430 / 280' }}
+          borderRadius="md" bg="blackAlpha.500" borderWidth="1px" borderStyle="dashed" borderColor="whiteAlpha.300"
+          flexDirection="column" gap={1} _hover={{ borderColor: 'yellow.400' }}>
+          <Text fontSize="2xl" color="gray.500">?</Text>
+          <Text fontSize="xs" color="gray.400">{t('homeReveal')}</Text>
+        </Center>
+      )}
+      <HStack spacing={1.5} wrap="wrap">
+        <Badge colorScheme={running ? 'pink' : 'blue'} variant="solid">{running ? t('stageLive') : t('stageUpcoming')}</Badge>
+        <Text fontSize="xs" color="gray.400">{when}</Text>
+      </HStack>
+      <Text fontSize="sm" fontWeight="bold" noOfLines={1}>
+        {t('homePickup')}{revealed ? ` · ${name}` : ''}
+      </Text>
+      <Text fontSize="2xs" color="gray.500">
+        {formatMoment(banner.start, lang, serverTime)} – {formatMoment(banner.end, lang, serverTime)} {zoneLabel(serverTime)}
+      </Text>
+    </VStack>
   );
 }
