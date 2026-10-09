@@ -30,6 +30,10 @@ import { createFadeCover, createSceneClock } from '@/components/skinViewer/scene
 import { JiggleField } from '@/components/skinViewer/jiggle';
 import type { Vars } from '@/components/skinViewer/interactions';
 import {
+  boneSettings, constrainOffset, isSettled, stepMotion,
+  type DragBoneMotion, type DragBoneSettings,
+} from '@/components/skinViewer/dragBone';
+import {
   cutsceneOffsetAt, rigCameraTransform,
   sceneBgmIds, sceneVoiceIds, scriptCameraTransform,
   type CameraBase, type CameraState, type SceneFadeState, type SceneTimelineRig,
@@ -851,6 +855,66 @@ export default function SkinViewer({
       const slotByName = new Map<string, any>(
         spine.skeleton.slots.map((s: any) => [s.data.name, s]));
       let lastStep = performance.now();
+      type DragBoneRun = {
+        bone: any; motion: DragBoneMotion; settings: DragBoneSettings;
+        origin: [number, number]; goal: [number, number] | null;
+        rest: [number, number] | null; saved: [number, number] | null;
+      };
+      const dragBones = new Map<string, DragBoneRun>();
+      // The script's targets are y-up and the constraint works on y-up offsets; the skeleton here is y-down.
+      const stepDragBones = (dt: number) => {
+        const held = new Set<string>();
+        for (const spec of scenePlayerRef.current?.dragBones() ?? []) {
+          const bone = spine.skeleton.findBone(spec.bone);
+          if (!bone) continue;
+          held.add(spec.bone);
+          let run = dragBones.get(spec.bone);
+          if (!run) {
+            run = {
+              bone,
+              motion: { x: bone.worldX, y: bone.worldY, vx: 0, vy: 0 },
+              settings: boneSettings(spec.fields),
+              origin: [bone.worldX, bone.worldY],
+              goal: null, rest: null, saved: null,
+            };
+            dragBones.set(spec.bone, run);
+          }
+          if (spec.target) {
+            const [cx, cy] = constrainOffset(spec.target[0] - run.origin[0],
+              spec.target[1] + run.origin[1], run.settings.constraint);
+            run.goal = [run.origin[0] + cx, run.origin[1] - cy];
+          }
+        }
+        for (const [name, run] of dragBones) {
+          const goal = held.has(name) ? run.goal : run.rest;
+          if (!goal) continue;
+          stepMotion(run.motion, goal[0], goal[1], run.settings, dt);
+          if (!held.has(name) && isSettled(run.motion, goal[0], goal[1])) {
+            dragBones.delete(name);
+            continue;
+          }
+          run.saved = [run.bone.x, run.bone.y];
+          if (run.bone.parent) {
+            const local = run.bone.parent.worldToLocal({ x: run.motion.x, y: run.motion.y });
+            run.bone.x = local.x;
+            run.bone.y = local.y;
+          }
+        }
+      };
+      // The animated pose is the release target and must come back, or the offset compounds on an unkeyed bone.
+      const restoreDragBones = () => {
+        for (const run of dragBones.values()) {
+          if (run.saved && run.bone.parent) {
+            run.bone.x = run.saved[0];
+            run.bone.y = run.saved[1];
+            const world = run.bone.parent.localToWorld({ x: run.saved[0], y: run.saved[1] });
+            run.rest = [world.x, world.y];
+          } else {
+            run.rest = [run.bone.worldX, run.bone.worldY];
+          }
+          run.saved = null;
+        }
+      };
       spine.beforeUpdateWorldTransforms = () => {
         const now = performance.now();
         const dt = Math.min((now - lastStep) / 1000, 0.1);
@@ -860,13 +924,17 @@ export default function SkinViewer({
           if (spine.state.timeScale !== 0) jiggle.step(dt * spine.state.timeScale);
           jiggle.apply();
         }
+        if (modeRef.current === 'scene') stepDragBones(dt);
         for (const name of hiddenSlotsRef.current) {
           const slot = slotByName.get(name);
           if (slot) slot.color.a = 0;
         }
       };
       // The bone's local pose must not keep the offset, or it compounds on bones no animation keys.
-      spine.afterUpdateWorldTransforms = () => jiggle.restore();
+      spine.afterUpdateWorldTransforms = () => {
+        jiggle.restore();
+        restoreDragBones();
+      };
 
       // --- Lobby / Free play drive --------------------------------------------
       // Scene playback does not come through here: a script owns its animations.
@@ -1012,7 +1080,7 @@ export default function SkinViewer({
           },
           ending: () => setReaction(null),
           onState: (state) => {
-            dbg('park', {
+            dbg(`park ${state.label ?? 'start'} ${JSON.stringify(state.park)}`, {
               label: state.label,
               park: state.park,
               armed: state.armed.map(
@@ -1493,24 +1561,48 @@ export default function SkinViewer({
           }
           if (!box || !player) return null;
           const held = box;
-          const started = performance.now();
-          let last = local;
-          let distance = 0;
+          // The script's drag values are y-up; the Pixi skeleton is y-down.
+          if (!player.dragBegin(held, local.x, -local.y)) return null;
+          dbg('drag begin', { box: held, x: local.x, y: -local.y });
+          let point = local;
+          let frameAt = performance.now();
+          const report = () => {
+            dbg('drag step', { label: player.machine.label, park: player.park().kind });
+            reportTouch();
+          };
+          const reportTouch = () => setTouchInfo({
+            box: held,
+            effect: 'reaction',
+            detail: `${player.machine.label ?? 'start'}  drag`,
+          });
+          const frame = () => {
+            const now = performance.now();
+            const seconds = (now - frameAt) / 1000;
+            frameAt = now;
+            if (player.dragFrame(point.x, -point.y, seconds)) report();
+            const trace = player.dragTrace();
+            if (trace) {
+              const delta = trace['drag.delta'] as readonly [number, number];
+              const speed = Math.hypot(delta[0], delta[1]);
+              let angle = Math.atan2(delta[1], delta[0]) * 57.29578;
+              angle -= Math.floor(angle / 360) * 360;
+              if (speed > 0.05) {
+                dbg(`drag |delta| ${speed.toFixed(2)} angle ${angle.toFixed(0)} `
+                  + `distance ${(trace['drag.distance'] as number).toFixed(2)} `
+                  + `time ${(trace['drag.time'] as number).toFixed(2)} `
+                  + `swipe ${speed > 2 && angle > 270 && angle < 360 ? 'PASS' : 'no'}`);
+              }
+            }
+          };
+          app.ticker.add(frame);
           return {
             move: (mx: number, my: number) => {
-              const point = spine.toLocal({ x: mx, y: my });
-              distance += Math.hypot(point.x - last.x, point.y - last.y);
-              last = point;
+              point = spine.toLocal({ x: mx, y: my });
             },
             end: () => {
+              app.ticker.remove(frame);
               sceneDragTapUntil = performance.now() + 1000;
-              const seconds = (performance.now() - started) / 1000;
-              if (!player.drag(held, distance, seconds)) return;
-              setTouchInfo({
-                box: held,
-                effect: 'reaction',
-                detail: `${player.machine.label ?? 'start'}  drag ${distance.toFixed(1)}`,
-              });
+              if (player.dragEnd()) report();
             },
           };
         }

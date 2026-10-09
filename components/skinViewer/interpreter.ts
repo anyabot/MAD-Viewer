@@ -34,6 +34,8 @@ export type Effect =
   | { kind: 'bgm'; clip: string; intro: string | null; fade: number }
   | { kind: 'stop-bgm'; fade: number }
   | { kind: 'ending' }
+  /** `@Delay`: run the body at `at` after `seconds`, without blocking. */
+  | { kind: 'delay'; at: number; seconds: number }
   | { kind: 'unsupported'; command: string };
 
 /** Why the machine stopped. The host resolves it and calls `run` again. */
@@ -44,6 +46,8 @@ export type Park =
   /** Wait for everything a trigger's body started, on whatever track. */
   | { kind: 'wait-reaction' }
   | { kind: 'wait-input' }
+  /** A fired drag waits here for `resolveDrag`, called every frame the pointer is held. */
+  | { kind: 'drag-session' }
   | { kind: 'armed' }
   | { kind: 'end' };
 
@@ -123,7 +127,7 @@ export function waitSeconds(mode: string): number {
 /** `command` is a barrier on exit, `trigger` returns to the actor's idle, `group` is one `@PickRandom` alternative; `depth` is the `Gosub` stack height it opened at. */
 type Frame =
   | { kind: 'command'; at: number; end: number; depth: number; track: number | null; wait: boolean }
-  | { kind: 'trigger'; at: number; end: number; depth: number; destination: number | null }
+  | { kind: 'trigger'; at: number; end: number; depth: number; destination: number | null; session?: boolean }
   | { kind: 'group'; at: number; end: number; depth: number; after: number };
 
 export class ScriptMachine {
@@ -159,6 +163,12 @@ export class ScriptMachine {
   private halted = false;
 
   private firing: number | null = null;
+
+  /** The fired drag whose branches are waiting on the pointer. */
+  private session: number | null = null;
+
+  /** A delayed body runs up to here and stops. */
+  private bound: number | null = null;
 
   constructor(program: Command[], vars: Vars = {}) {
     this.program = program;
@@ -206,6 +216,7 @@ export class ScriptMachine {
     this.pc = target;
     this.halted = false;
     this.firing = null;
+    this.session = null;
     this.stack = [];
     this.frames = [];
     this.registered.clear();
@@ -220,7 +231,64 @@ export class ScriptMachine {
       if (entry.kind !== 'reset') this.registered.delete(key);
     }
     this.firing = at;
+    this.session = null;
     this.halted = false;
+  }
+
+  /** Runs only the body of the command at `at`, for a body that plays on its own cursor. */
+  startBody(at: number): void {
+    this.pc = at + 1;
+    this.bound = this.endOfBody(at);
+    this.halted = false;
+  }
+
+  get dragSession(): number | null {
+    return this.session;
+  }
+
+  /** The bone actions under the parked session's update commands. */
+  sessionBones(): Command[] {
+    if (this.session === null) return [];
+    return this.childrenOf(this.session)
+      .filter((i) => this.program[i].class === 'DesireDragUpdateCommand')
+      .flatMap((i) => this.childrenOf(i))
+      .map((i) => this.program[i])
+      .filter((c) => c.class === 'DesireDragBoneCommand');
+  }
+
+  /**
+   * The session's per-frame check. A resolve arms on its condition while the
+   * pointer is held; an unassigned one never does. On release a release branch
+   * arms when its condition is empty or holds. The chosen body runs and then
+   * hands the index back to the idle; a release with nothing armed goes straight
+   * back.
+   */
+  resolveDrag(input: Vars, released: boolean): boolean {
+    const at = this.session;
+    if (at === null) return false;
+    this.vars = { ...this.vars, ...input };
+    const children = this.childrenOf(at);
+    const condition = (i: number) => this.program[i].fields?.ConditionalExpression;
+    let pick = children.find((i) => this.program[i].class === 'DesireDragResolveCommand'
+      && !!condition(i) && holds(condition(i), this.vars)) ?? null;
+    if (pick === null && released) {
+      pick = children.find((i) => this.program[i].class === 'DesireDragReleaseCommand'
+        && (!condition(i) || holds(condition(i), this.vars))) ?? null;
+    }
+    if (pick === null && !released) return false;
+    this.session = null;
+    this.halted = false;
+    const back = this.idleAt ?? at;
+    if (pick === null) {
+      this.pc = back;
+      return true;
+    }
+    this.frames.push({
+      kind: 'trigger', at: pick, end: this.endOfBody(pick), depth: this.stack.length,
+      destination: back,
+    });
+    this.pc = pick + 1;
+    return true;
   }
 
   /** Every trigger the index has passed stays registered; the condition decides whether it is live. */
@@ -301,12 +369,13 @@ export class ScriptMachine {
       this.play(c, effects);
       this.frames.push({
         kind: 'trigger', at, end: this.endOfBody(at), depth: this.stack.length,
-        destination: null,
+        destination: null, session: c.class === 'DesireDragCommand',
       });
       this.pc = at + 1;
     }
 
-    while (!this.halted && this.pc < this.program.length) {
+    const limit = this.bound ?? this.program.length;
+    while (!this.halted) {
       if (++guard > 10000) break;   // a script cannot legitimately loop this long
       const frame = this.frames[this.frames.length - 1];
       if (frame && this.pc >= frame.end && this.stack.length <= frame.depth) {
@@ -314,6 +383,10 @@ export class ScriptMachine {
         if (frame.kind === 'group') {
           this.pc = frame.after;
           continue;
+        }
+        if (frame.kind === 'trigger' && frame.session && frame.destination === null) {
+          this.session = frame.at;
+          return this.park({ kind: 'drag-session' }, effects);
         }
         if (frame.kind === 'trigger') {
           // Handing the index back to the actor's idle is what re-arms every trigger; a nested trigger returns to its host instead.
@@ -328,6 +401,8 @@ export class ScriptMachine {
         }
         continue;
       }
+      // Checked after the frames, so a body ending at the playlist's end still closes.
+      if (this.pc >= limit) break;
 
       const c = this.program[this.pc];
       const f = c.fields ?? {};
@@ -523,15 +598,17 @@ export class ScriptMachine {
           break;
         }
 
+        // The session picks a branch itself; the walk only runs the drag's plain body.
+        case 'DesireDragUpdateCommand':
         case 'DesireDragReleaseCommand':
-        case 'DesireDragResolveCommand': {
-          if (!holds(f.ConditionalExpression, this.vars)) {
-            this.pc = this.endOfBody(this.pc);
-          } else {
-            this.pc++;
-          }
+        case 'DesireDragResolveCommand':
+          this.pc = this.endOfBody(this.pc);
           break;
-        }
+
+        case 'Delay':
+          effects.push({ kind: 'delay', at: this.pc, seconds: num(f.Seconds, 0) });
+          this.pc = this.endOfBody(this.pc);
+          break;
 
         case 'DesireResetCommand': {
           this.register(this.pc, f.ConditionalExpression, {
