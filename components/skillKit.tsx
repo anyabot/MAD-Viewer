@@ -1,5 +1,7 @@
 // Skill kits show structure without implying undecoded battle arithmetic.
 import { useState } from 'react';
+import { useSkillTiming } from '@/lib/skillTiming';
+import type { SkillTiming } from '@/lib/data';
 import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import {
@@ -264,7 +266,8 @@ export function SkillRow({ skill, data, icons, showSlot }: {
   const t = useT();
   const lang = useLang();
   const [level, setLevel] = useState(1);
-  const descs = skillDescs(skill, lang);
+  const descs = skillDescs(skill, 'ko').map((ko, i) => dataText(lang, ko, skill.descEn?.[i]));
+  const timing = useSkillTiming()?.[String(skill.id)];
   const at = Math.min(level, descs.length) - 1;
   return (
     <Flex gap={3} align="start" borderTopWidth="1px" borderColor="whiteAlpha.100" pt={2}>
@@ -286,6 +289,20 @@ export function SkillRow({ skill, data, icons, showSlot }: {
           <WrapItem>
             <Badge fontSize="0.6rem">{SKILL_CATEGORY_LABEL[skill.categorize]?.[lang]}</Badge>
           </WrapItem>
+          {timing?.seconds != null && (
+            <WrapItem>
+              <Badge fontSize="0.6rem" colorScheme="blue" textTransform="none" title={t('timingUseHint')}>
+                {t('timingUse', { s: timing.seconds })}
+              </Badge>
+            </WrapItem>
+          )}
+          {timing?.cooldown != null && (
+            <WrapItem>
+              <Badge fontSize="0.6rem" colorScheme="purple" textTransform="none">
+                {t('timingDelay', { s: timing.cooldown })}
+              </Badge>
+            </WrapItem>
+          )}
           {skill.openStar > 1 && (
             <WrapItem>
               <Badge fontSize="0.6rem" colorScheme="yellow">{skill.openStar}★</Badge>
@@ -376,6 +393,7 @@ export function Rotation({ entry, data, icons }: {
 }) {
   const t = useT();
   const lang = useLang();
+  const timing = useSkillTiming();
   const patterns = entry.battlePatterns;
   if (!patterns) return null;
   // Names are ambiguous only when different skills carry the same name.
@@ -421,6 +439,9 @@ export function Rotation({ entry, data, icons }: {
                             {skill.skillType}
                           </Text>
                         )}
+                        {timing?.[String(id)] && (
+                          <TimingText timing={timing[String(id)]} />
+                        )}
                       </HStack>
                     </HStack>
                   );
@@ -431,5 +452,15 @@ export function Rotation({ entry, data, icons }: {
         )))}
       </VStack>
     </Panel>
+  );
+}
+
+function TimingText({ timing }: { timing: SkillTiming }) {
+  const t = useT();
+  return (
+    <Text fontSize="0.6rem" color="blue.200" whiteSpace="nowrap">
+      {timing.seconds != null && t('timingUse', { s: timing.seconds })}
+      {timing.cooldown != null && ` · ${t('timingDelay', { s: timing.cooldown })}`}
+    </Text>
   );
 }
