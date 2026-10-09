@@ -17,6 +17,7 @@ export type CharacterFilters = {
   collected: Tri;
   favorite: Tri;
   star: number | null;
+  artist: string | null;
   picked: Partial<Record<TypeTable, number>>;
 };
 
@@ -36,7 +37,7 @@ type EffectFilters = {
 
 const EMPTY_CHARACTERS: CharacterFilters = {
   query: '', npcs: false, unreleased: false, skinsOnly: false,
-  collected: 'all', favorite: 'all', star: null, picked: {},
+  collected: 'all', favorite: 'all', star: null, artist: null, picked: {},
 };
 
 const EMPTY_SKINS: SkinFilters = {
@@ -65,6 +66,7 @@ type FilterStore = {
    */
   focusType: (table: TypeTable, value: number, npcs?: boolean) => void;
   focusStar: (star: number) => void;
+  focusArtist: (artist: string) => void;
   clearCharacterTypes: () => void;
   setSkins: (patch: Partial<SkinFilters>) => void;
   setEffects: (patch: Partial<EffectFilters>) => void;
@@ -91,8 +93,11 @@ export const useFilters = create<FilterStore>((set) => ({
   focusStar: (star) => set((s) => ({
     characters: { ...EMPTY_CHARACTERS, npcs: s.characters.npcs, star },
   })),
+  focusArtist: (artist) => set((s) => ({
+    characters: { ...EMPTY_CHARACTERS, npcs: s.characters.npcs, artist },
+  })),
   clearCharacterTypes: () => set((s) => ({
-    characters: { ...s.characters, picked: {}, star: null },
+    characters: { ...s.characters, picked: {}, star: null, artist: null },
   })),
   setSkins: (patch) => set((s) => ({ skins: { ...s.skins, ...patch } })),
   effects: EMPTY_EFFECTS,

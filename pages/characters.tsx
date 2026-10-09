@@ -14,7 +14,7 @@ import {
 import { characterIcon } from '@/lib/icons';
 import { useFilters, type Tri } from '@/lib/filterStore';
 import { useCollection } from '@/lib/collectionStore';
-import { useLang, useT, type Lang } from '@/lib/i18n';
+import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
 import {
   KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
@@ -35,7 +35,7 @@ export default function CharactersPage() {
   const [error, setError] = useState<string | null>(null);
   // Filters live in the store so returning from a character page restores them.
   const { query, npcs, unreleased, skinsOnly, collected: wantCollected,
-    favorite: wantFavorite, star, picked } = useFilters((s) => s.characters);
+    favorite: wantFavorite, star, artist, picked } = useFilters((s) => s.characters);
   const collected = useCollection((s) => s.collected);
   const favorites = useCollection((s) => s.favorites);
   const setCollected = useCollection((s) => s.setCollected);
@@ -68,6 +68,7 @@ export default function CharactersPage() {
         return false;
       }
       if (star != null && c.defaultStar !== star) return false;
+      if (artist != null && c.artist !== artist) return false;
       for (const [table, want] of Object.entries(picked)) {
         if (want == null) continue;
         if (typeValue(c, table as TypeTable) !== want) return false;
@@ -79,7 +80,17 @@ export default function CharactersPage() {
         || (c.nameUppercase ?? '').toLowerCase().includes(q);
     }).sort((a, b) => a.code.localeCompare(b.code));
   }, [chars, query, npcs, unreleased, skinsOnly, wantCollected, wantFavorite, star,
-    picked, byCharacter, collected, favorites]);
+    artist, picked, byCharacter, collected, favorites]);
+
+  const artists = useMemo(() => {
+    const count = new Map<string, { n: number; en?: string | null }>();
+    for (const c of Object.values(chars?.characters ?? {})) {
+      if (!c.artist || !isPlayable(c)) continue;
+      const seen = count.get(c.artist);
+      count.set(c.artist, { n: (seen?.n ?? 0) + 1, en: seen?.en ?? c.artistEn });
+    }
+    return [...count.entries()].sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
+  }, [chars]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!chars) {
@@ -121,6 +132,16 @@ export default function CharactersPage() {
             <FilterChip key={s} active={star === s}
               onClick={() => set({ star: star === s ? null : s })}>
               <StarRating manifest={icons} star={s} size={4} />
+            </FilterChip>
+          ))}
+        </FilterRow>
+
+        <FilterRow label={t('rowArtist')}>
+          {artists.map(([name, info]) => (
+            <FilterChip key={name} active={artist === name}
+              onClick={() => set({ artist: artist === name ? null : name })}>
+              <Text>{dataText(lang, name, info.en)}</Text>
+              <Text color="gray.500">{info.n}</Text>
             </FilterChip>
           ))}
         </FilterRow>
@@ -183,7 +204,7 @@ export default function CharactersPage() {
               <Text>{t('includeUnreleased')}</Text>
             </FilterChip>
           </WrapItem>
-          {(star != null || Object.values(picked).some((v) => v != null)) && (
+          {(star != null || artist != null || Object.values(picked).some((v) => v != null)) && (
             <WrapItem>
               <FilterChip active={false} onClick={clearTypes}>
                 <Text>{t('clear')}</Text>

@@ -362,6 +362,7 @@ function Infobox({ entry, data, icons, accent, skins }: {
   const lang = useLang();
   const focusType = useFilters((s) => s.focusType);
   const focusStar = useFilters((s) => s.focusStar);
+  const focusArtist = useFilters((s) => s.focusArtist);
   const rows: { label: string; node: React.ReactNode }[] = [];
 
   for (const table of INFO_TABLES) {
@@ -404,12 +405,21 @@ function Infobox({ entry, data, icons, accent, skins }: {
 
   const facts: [UiKey, string | null | undefined][] = [
     ['rowBirthday', birthdayText(entry, lang)],
-    ['rowArtist', dataText(lang, entry.artist, entry.artistEn)],
     ['rowCv', dataText(lang, entry.cv, entry.cvEn)],
     ['rowHobby', dataText(lang, entry.hobby, entry.hobbyEn)],
     ['rowSpecialty', dataText(lang, entry.specialty, entry.specialtyEn)],
     ['rowLikes', dataText(lang, entry.likes, entry.likesEn)],
   ];
+  if (entry.artist) {
+    rows.push({
+      label: t('rowArtist'),
+      node: (
+        <FilterLink onClick={() => focusArtist(entry.artist!)}>
+          <Text>{dataText(lang, entry.artist, entry.artistEn)}</Text>
+        </FilterLink>
+      ),
+    });
+  }
   for (const [key, value] of facts) {
     if (value) rows.push({ label: t(key), node: <Text>{value}</Text> });
   }
