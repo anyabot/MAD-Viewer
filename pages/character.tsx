@@ -169,7 +169,7 @@ export default function CharacterPage() {
     tabs.push({
       key: 'stats',
       label: t('tabStats'),
-      panel: <StatCalculator entry={entry} data={chars} icons={icons} />,
+      panel: <StatCalculator key={entry.code} entry={entry} data={chars} icons={icons} />,
     });
   }
 
@@ -669,6 +669,42 @@ function GearSlot({ slot, icons, tier, level, onChange }: {
   );
 }
 
+function PresetButtons({ onMax, onMin, max, min }: {
+  onMax: () => void; onMin: () => void; max: string; min: string;
+}) {
+  return (
+    <HStack spacing={1}>
+      {[{ text: max, onClick: onMax }, { text: min, onClick: onMin }].map((b) => (
+        <Box key={b.text} as="button" onClick={b.onClick} px={2} py={0.5} fontSize="xs"
+          borderWidth="1px" borderRadius="md" borderColor="whiteAlpha.200" color="gray.400"
+          _hover={{ borderColor: 'yellow.400', color: 'yellow.200' }}>
+          {b.text}
+        </Box>
+      ))}
+    </HStack>
+  );
+}
+
+type Preset = 'max' | 'min';
+const PRESET_KEY = 'mad.statPreset';
+
+function savedPreset(): Preset | null {
+  try {
+    const saved = window.localStorage.getItem(PRESET_KEY);
+    return saved === 'max' || saved === 'min' ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+function savePreset(preset: Preset) {
+  try {
+    window.localStorage.setItem(PRESET_KEY, preset);
+  } catch {
+    // private mode or a blocked store: the choice just does not persist
+  }
+}
+
 // The terms are shown apart because each has its own source.
 function StatCalculator({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
@@ -678,12 +714,38 @@ function StatCalculator({ entry, data, icons }: {
   const caps = data.statCaps;
   const grades = statGrades(entry, data);
   const slots = equipmentSlotsOf(entry, data.equipment);
-  const [star, setStar] = useState<number | null>(null);
-  const [level, setLevel] = useState(caps.level);
+  const [initial] = useState(savedPreset);
+  const unitFor = (preset: Preset) => (preset === 'max'
+    ? { star: grades[grades.length - 1] ?? null, level: caps.level, love: caps.love }
+    : { star: grades[0] ?? null, level: 1, love: 1 });
+  const gearFor = (preset: Preset) => Object.fromEntries(preset === 'max'
+    ? slots.flatMap((slot) => {
+      const top = (slot.tiers ?? []).reduce<NonNullable<typeof slot.tiers>[number] | null>(
+        (best, row) => (!best || row.tier > best.tier ? row : best), null);
+      return top ? [[slot.type, { tier: top.tier, level: top.maxLevel }]] : [];
+    })
+    : []) as Record<number, { tier: number; level: number }>;
+  const infuseFor = (preset: Preset): Record<string, number> => (preset === 'max'
+    ? Object.fromEntries(INFUSION_PATHS.map((path) => [path, infusionNodes(entry, path).length]))
+    : {});
+  const [star, setStar] = useState<number | null>(initial ? unitFor(initial).star : null);
+  const [level, setLevel] = useState(initial ? unitFor(initial).level : caps.level);
   // every character starts at affection rank 1
-  const [love, setLove] = useState(1);
-  const [gear, setGear] = useState<Record<number, { tier: number; level: number }>>({});
-  const [infuse, setInfuse] = useState<Record<string, number>>({});
+  const [love, setLove] = useState(initial ? unitFor(initial).love : 1);
+  const [gear, setGear] = useState(() => (initial ? gearFor(initial) : {}));
+  const [infuse, setInfuse] = useState(() => (initial ? infuseFor(initial) : {}));
+  const applyUnit = (preset: Preset) => {
+    const unit = unitFor(preset);
+    setStar(unit.star);
+    setLevel(unit.level);
+    setLove(unit.love);
+  };
+  const applyAll = (preset: Preset) => {
+    applyUnit(preset);
+    setGear(gearFor(preset));
+    setInfuse(infuseFor(preset));
+    savePreset(preset);
+  };
 
   const shown = star ?? grades[grades.length - 1] ?? entry.defaultStar ?? 1;
   const equipment: EquipInput[] = slots.flatMap((slot) => {
@@ -703,7 +765,14 @@ function StatCalculator({ entry, data, icons }: {
     <Grid templateColumns={{ base: '1fr', lg: 'minmax(0, 320px) minmax(0, 1fr)' }}
       gap={4} alignItems="start">
       <VStack align="stretch" spacing={3}>
-        <Panel title={t('panelUnit')}>
+        <Flex justify="flex-end">
+          <PresetButtons max={t('presetMaxAll')} min={t('presetMinAll')}
+            onMax={() => applyAll('max')} onMin={() => applyAll('min')} />
+        </Flex>
+        <Panel title={t('panelUnit')} actions={
+          <PresetButtons max={t('presetMax')} min={t('presetMin')}
+            onMax={() => applyUnit('max')} onMin={() => applyUnit('min')} />
+        }>
           <VStack align="stretch" spacing={3}>
             {grades.length > 1 && (
               <Choices label={t('dialStar')} value={shown} onChange={setStar}
@@ -718,7 +787,10 @@ function StatCalculator({ entry, data, icons }: {
         </Panel>
 
         {slots.length > 0 && (
-          <Panel title={t('panelEquipment')}>
+          <Panel title={t('panelEquipment')} actions={
+            <PresetButtons max={t('presetMax')} min={t('presetMin')}
+              onMax={() => setGear(gearFor('max'))} onMin={() => setGear(gearFor('min'))} />
+          }>
             <VStack align="stretch" spacing={3}>
               {slots.map((slot) => {
                 const set = gear[slot.type] ?? { tier: 0, level: 1 };
@@ -735,7 +807,10 @@ function StatCalculator({ entry, data, icons }: {
         )}
 
         {hasInfusion && (
-          <Panel title={infusionLabel(data, 'title', lang)}>
+          <Panel title={infusionLabel(data, 'title', lang)} actions={
+            <PresetButtons max={t('presetMax')} min={t('presetMin')}
+              onMax={() => setInfuse(infuseFor('max'))} onMin={() => setInfuse(infuseFor('min'))} />
+          }>
             <VStack align="stretch" spacing={3}>
               {INFUSION_PATHS.map((path) => {
                 const nodes = infusionNodes(entry, path);

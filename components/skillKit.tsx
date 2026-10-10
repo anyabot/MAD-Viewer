@@ -16,8 +16,8 @@ import type {
   SkillOp,
 } from '@/lib/data';
 
-export function Panel({ title, note, children }: {
-  title: string; note?: string; children: React.ReactNode;
+export function Panel({ title, note, actions, children }: {
+  title: string; note?: string; actions?: React.ReactNode; children: React.ReactNode;
 }) {
   return (
     <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl"
@@ -27,6 +27,7 @@ export function Panel({ title, note, children }: {
         <Text fontSize="0.65rem" color="gray.400" textTransform="uppercase"
           fontWeight="700" letterSpacing="0.11em">{title}</Text>
         {note && <Text fontSize="xs" color="gray.600">{note}</Text>}
+        {actions && <Box ml="auto">{actions}</Box>}
       </Flex>
       {children}
     </Box>
