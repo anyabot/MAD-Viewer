@@ -1,4 +1,5 @@
 // Three levels over one route, because `output: 'export'` prerenders every path and the stage set is runtime data.
+import { textMatch } from '@altterisk/game-hub/filters';
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
@@ -256,16 +257,13 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery }: {
 }) {
   const t = useT();
   const { group } = grouping;
-  const q = query.trim().toLowerCase();
+  const q = query.trim();
   const stages = q
-    ? grouping.stages.filter((s) =>
-      stageName(data, s, lang).toLowerCase().includes(q)
-      || String(s.id).includes(q)
-      || enemyCodes(s).some((c) => c.toLowerCase().includes(q)
-        || (data.enemies[c]?.name ?? '').toLowerCase().includes(q)
-        || (data.enemies[c]?.nameEn ?? '').toLowerCase().includes(q))
-      || stageDrops(s).some((d) => `${dropName(data, d, 'ko')} ${dropName(data, d, 'en')}`
-        .toLowerCase().includes(q)))
+    ? grouping.stages.filter((s) => textMatch(q, [
+      stageName(data, s, lang), s.id,
+      ...enemyCodes(s).flatMap((c) => [c, data.enemies[c]?.name, data.enemies[c]?.nameEn]),
+      ...stageDrops(s).flatMap((d) => [dropName(data, d, 'ko'), dropName(data, d, 'en')]),
+    ]))
     : grouping.stages;
 
   return (

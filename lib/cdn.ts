@@ -3,21 +3,23 @@
 // regenerations, and the manifest is optional: without it every lookup falls
 // back to the site's own origin.
 
+import { createJsonLoader, jsdelivrBase, trimSlash } from '@altterisk/game-hub/data';
+
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-const DATA_BASE = (
+const DATA_BASE = trimSlash(
   process.env.NEXT_PUBLIC_DATA_SOURCE === 'bucket'
     ? (process.env.NEXT_PUBLIC_DATA_BASE ?? '')
-    : `${PUBLIC_BASE}/data`
-).replace(/\/$/, '');
+    : `${PUBLIC_BASE}/data`,
+);
 
 // Only skins have a complete local copy; voice and scene audio remain manifest-backed.
 const LOCAL_ASSETS = process.env.NEXT_PUBLIC_ASSET_SOURCE === 'local';
 
 /** Explicit override; set it and the manifest is not consulted at all. */
-const SKIN_OVERRIDE = process.env.NEXT_PUBLIC_SKIN_ARCHIVE_BASE?.replace(/\/$/, '');
-const VOICE_OVERRIDE = process.env.NEXT_PUBLIC_VOICE_BASE?.replace(/\/$/, '');
-const AUDIO_OVERRIDE = process.env.NEXT_PUBLIC_SCENE_AUDIO_BASE?.replace(/\/$/, '');
-const SD_OVERRIDE = process.env.NEXT_PUBLIC_SD_ARCHIVE_BASE?.replace(/\/$/, '');
+const SKIN_OVERRIDE = trimSlash(process.env.NEXT_PUBLIC_SKIN_ARCHIVE_BASE);
+const VOICE_OVERRIDE = trimSlash(process.env.NEXT_PUBLIC_VOICE_BASE);
+const AUDIO_OVERRIDE = trimSlash(process.env.NEXT_PUBLIC_SCENE_AUDIO_BASE);
+const SD_OVERRIDE = trimSlash(process.env.NEXT_PUBLIC_SD_ARCHIVE_BASE);
 
 type Bucket = { repo: string; ref: string };
 
@@ -35,20 +37,13 @@ export type CdnManifest = {
   families: Partial<Record<'skins' | 'voice' | 'audio' | 'sd', Family>>;
 };
 
+const json = createJsonLoader({ urls: (name) => [`${DATA_BASE}/${name}`] });
 let manifestPromise: Promise<CdnManifest | null> | null = null;
 
 /** Null when the site serves its own assets. */
 export function loadCdnManifest(): Promise<CdnManifest | null> {
   if (!manifestPromise) {
-    manifestPromise = (async () => {
-      try {
-        const res = await fetch(`${DATA_BASE}/cdn.json`);
-        if (!res.ok) return null;
-        return (await res.json()) as CdnManifest;
-      } catch {
-        return null;
-      }
-    })();
+    manifestPromise = json.load<CdnManifest>('cdn.json').catch(() => null);
   }
   return manifestPromise;
 }
@@ -59,7 +54,9 @@ function bucketBase(
   const entry = manifest?.families?.[family];
   const bucket = entry?.buckets[entry.units[unit] ?? ''];
   if (!entry || !bucket) return null;
-  return `${manifest!.base}/${manifest!.owner}/${bucket.repo}@${bucket.ref}/${entry.dir}`;
+  return jsdelivrBase({
+    base: manifest!.base, owner: manifest!.owner, repo: bucket.repo, ref: bucket.ref, dir: entry.dir,
+  });
 }
 
 // The site copy remains the final fallback after the CDN candidate.

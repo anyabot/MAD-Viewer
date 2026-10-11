@@ -1,4 +1,5 @@
 // Fetched at runtime: refreshing the data needs no rebuild.
+import { createJsonLoader, trimSlash } from '@altterisk/game-hub/data';
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
 import type { Localized } from '@/lib/i18n';
 import type { SceneTimelineData } from '@/components/skinViewer/scenes';
@@ -8,11 +9,11 @@ import type { GameLang, GameLocalized } from '@/lib/gameText';
 import type { ItemIndex } from '@/lib/items';
 
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-const DATA_BASE = (
+const DATA_BASE = trimSlash(
   process.env.NEXT_PUBLIC_DATA_SOURCE === 'bucket'
     ? (process.env.NEXT_PUBLIC_DATA_BASE ?? '')
-    : `${PUBLIC_BASE}/data`
-).replace(/\/$/, '');
+    : `${PUBLIC_BASE}/data`,
+);
 
 export type SkinListEntry = {
   key: string;
@@ -595,19 +596,10 @@ export type StageData = {
   _skipped?: Record<string, number>;
 };
 
-const cache = new Map<string, Promise<unknown>>();
+const json = createJsonLoader({ urls: (name) => [`${DATA_BASE}/${name}`] });
 
 function fetchJson<T>(name: string): Promise<T> {
-  let p = cache.get(name) as Promise<T> | undefined;
-  if (!p) {
-    p = (async () => {
-      const res = await fetch(`${DATA_BASE}/${name}`);
-      if (!res.ok) throw new Error(`failed to fetch ${name}: ${res.status}`);
-      return res.json() as Promise<T>;
-    })();
-    cache.set(name, p as Promise<unknown>);
-  }
-  return p;
+  return json.load<T>(name);
 }
 
 export function loadSkinList(): Promise<SkinList> {

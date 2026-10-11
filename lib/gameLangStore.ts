@@ -1,4 +1,6 @@
 // No import from `lib/i18n`: that module reads this store, so the dependency runs one way.
+import { createJsonLoader, trimSlash } from '@altterisk/game-hub/data';
+import { createPersisted } from '@altterisk/game-hub/persist';
 import { create } from 'zustand';
 
 export type GameLang = 'ko' | 'en' | 'ja' | 'zh-Hans' | 'zh-Hant' | 'th' | 'es';
@@ -14,57 +16,47 @@ export const GAME_LANGS: { value: GameLang; label: string }[] = [
   { value: 'es', label: 'Español' },
 ];
 
-const STORAGE_KEY = 'mad.gameLang';
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-const DATA_BASE = (
+const DATA_BASE = trimSlash(
   process.env.NEXT_PUBLIC_DATA_SOURCE === 'bucket'
     ? (process.env.NEXT_PUBLIC_DATA_BASE ?? '')
-    : `${PUBLIC_BASE}/data`
-).replace(/\/$/, '');
+    : `${PUBLIC_BASE}/data`,
+);
 
 type GameLangStore = { choice: GameLangChoice; setChoice: (choice: GameLangChoice) => void };
+
+const storedChoice = createPersisted<GameLangChoice>({
+  key: 'mad.gameLang', version: 1, empty: () => 'auto',
+  sanitize: (raw) => (GAME_LANGS.some((l) => l.value === raw) ? raw as GameLang : 'auto'),
+});
 
 export const useGameLangStore = create<GameLangStore>((set) => ({
   choice: 'auto',
   setChoice: (choice) => {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, choice);
-    } catch {
-      // private mode or a blocked store: the choice just does not persist
-    }
+    storedChoice.save(choice);
     set({ choice });
     if (choice !== 'auto') void ensureTextTable(choice);
   },
 }));
 
 export function restoreGameLang(): void {
-  let saved: string | null = null;
-  try {
-    saved = window.localStorage.getItem(STORAGE_KEY);
-  } catch {
-    return;
-  }
-  if (saved && (saved === 'auto' || GAME_LANGS.some((l) => l.value === saved))) {
-    useGameLangStore.setState({ choice: saved as GameLangChoice });
-    if (saved !== 'auto') void ensureTextTable(saved as GameLang);
-  }
+  const choice = storedChoice.load();
+  useGameLangStore.setState({ choice });
+  if (choice !== 'auto') void ensureTextTable(choice);
 }
 
 // Korean game string -> the same string in a locale the older data files do not carry.
 export const useTextTables = create<{ tables: Partial<Record<GameLang, Record<string, string>>>; version: number }>(
   () => ({ tables: {}, version: 0 }));
 
-const loading = new Set<GameLang>();
+const textTables = createJsonLoader({ urls: (lang) => [`${DATA_BASE}/text/${lang}.json`] });
 
 export async function ensureTextTable(lang: GameLang): Promise<void> {
-  if (lang === 'ko' || lang === 'en' || loading.has(lang)) return;
-  loading.add(lang);
+  if (lang === 'ko' || lang === 'en' || textTables.peek(lang)) return;
   try {
-    const res = await fetch(`${DATA_BASE}/text/${lang}.json`);
-    if (!res.ok) return;
-    const table = await res.json() as Record<string, string>;
+    const table = await textTables.load<Record<string, string>>(lang);
     useTextTables.setState((s) => ({ tables: { ...s.tables, [lang]: table }, version: s.version + 1 }));
   } catch {
-    loading.delete(lang);
+    // the table stays missing and the Korean string shows
   }
 }

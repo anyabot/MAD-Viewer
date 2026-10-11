@@ -1,4 +1,5 @@
 // Finds a unit by what its skills do, rather than by what the roster says it is.
+import { textMatch } from '@altterisk/game-hub/filters';
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
@@ -57,17 +58,15 @@ export default function EffectsPage() {
   }), [kits, npcs, unreleased]);
 
   const results = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = query.trim();
     return scoped.flatMap((kit) => {
       const matched = matchingSkills(kit, picked);
       if (!matched.length) return [];
       if (!q) return [{ kit, skills: matched }];
       const c = kit.entry;
-      const named = c.name.toLowerCase().includes(q)
-        || c.code.toLowerCase().includes(q)
-        || (c.nameEn ?? '').toLowerCase().includes(q);
+      const named = textMatch(q, [c.name, c.code, c.nameEn]);
       if (named) return [{ kit, skills: matched }];
-      const bySkill = matched.filter((s) => (s.skill.name ?? '').toLowerCase().includes(q));
+      const bySkill = matched.filter((s) => textMatch(q, [s.skill.name]));
       return bySkill.length ? [{ kit, skills: bySkill }] : [];
     });
   }, [scoped, picked, query]);

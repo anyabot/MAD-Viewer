@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { textMatch } from '@altterisk/game-hub/filters';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import {
@@ -58,11 +59,10 @@ export default function ItemsPage() {
     );
   }
 
-  const needle = query.trim().toLowerCase();
   const rows = Object.entries(index.items)
     .filter(([ref, e]) => (!category || itemCategory(e) === category)
       && (view === 'all' || (inventory[ref] ?? 0) > 0 || (needs[ref] ?? 0) > 0)
-      && (!needle || Object.values(e.name).some((n) => n?.toLowerCase().includes(needle))))
+      && textMatch(query, Object.values(e.name)))
     .sort(([a, ea], [b, eb]) => CATEGORY_ORDER.indexOf(itemCategory(ea)) - CATEGORY_ORDER.indexOf(itemCategory(eb))
       || (eb.grade ?? 0) - (ea.grade ?? 0) || a.localeCompare(b, undefined, { numeric: true }));
 

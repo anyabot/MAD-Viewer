@@ -1,4 +1,5 @@
 // Filtered by the axes the game itself uses, each drawn with its in-game icon.
+import { textMatch } from '@altterisk/game-hub/filters';
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
@@ -55,7 +56,6 @@ export default function CharactersPage() {
 
   const list = useMemo(() => {
     const all = Object.values(chars?.characters ?? {});
-    const q = query.trim().toLowerCase();
     return all.filter((c) => {
       if (c.unreleased) {
         if (!unreleased) return false;
@@ -73,11 +73,7 @@ export default function CharactersPage() {
         if (want == null) continue;
         if (typeValue(c, table as TypeTable) !== want) return false;
       }
-      if (!q) return true;
-      return c.name.toLowerCase().includes(q)
-        || c.code.toLowerCase().includes(q)
-        || (c.nameEn ?? '').toLowerCase().includes(q)
-        || (c.nameUppercase ?? '').toLowerCase().includes(q);
+      return textMatch(query, [c.name, c.code, c.nameEn, c.nameUppercase]);
     }).sort((a, b) => a.code.localeCompare(b.code));
   }, [chars, query, npcs, unreleased, skinsOnly, wantCollected, wantFavorite, star,
     artist, picked, byCharacter, collected, favorites]);

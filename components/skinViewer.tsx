@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  Box, Center, Flex, Spinner, Text, VStack, Wrap, WrapItem,
+  Box, Center, Spinner, Text, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import {
   loadSkinArchive, loadTexture, readBytes, readText, revokeSkinUrls, urlFor,
@@ -63,6 +63,7 @@ import {
   ActionButton, ControlRow, ControlSection, LayerPanel, OverlaySelect, SegmentedControl,
   StoreStrip, ToggleRow, type LayerItem, type SelectOption,
 } from '@/components/skinViewer/chrome';
+import { ViewerShell } from '@altterisk/game-hub/viewer';
 
 type SkinViewerProps = {
   skin: string;
@@ -1524,7 +1525,7 @@ export default function SkinViewer({
       const manualCameraAllowed = () => !(followGameFlowRef.current
         && (camBone || scriptSceneRef.current));
       // Pointer-down arrives before pan/zoom turns the gesture into a drag, so the jiggle kicks immediately.
-      attachPanZoom(app.canvas as HTMLCanvasElement, root, (cx, cy) => {
+      attachPanZoom(app.canvas as HTMLCanvasElement, root, { claimDrag: (cx, cy) => {
         const local = spine.toLocal({ x: cx, y: cy });
         bounds.update(spine.skeleton, true);
         const boxList = bounds.boundingBoxes ?? [];
@@ -1640,7 +1641,7 @@ export default function SkinViewer({
           },
           end: () => undefined,
         };
-      }, manualCameraAllowed, manualCameraAllowed);
+      }, zoomEnabled: manualCameraAllowed, panEnabled: manualCameraAllowed });
 
       setRigBuilt((built) => built + 1);
     })().catch((e) => !destroyed && setError(String(e)));
@@ -1770,16 +1771,6 @@ export default function SkinViewer({
     };
   }, []);
 
-  // Escape leaves theatre mode; there is no browser chrome to fall back on.
-  useEffect(() => {
-    if (!theater) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setViewer({ theater: false });
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [theater]); // eslint-disable-line react-hooks/exhaustive-deps
-
   // Lobby's Enter row is a real interaction; keyed on `rigBuilt` and declared after the mode effect, which clears the tracks.
   useEffect(() => {
     if (mode !== 'home' || !rigBuilt || !voiceIndex) return;
@@ -1849,7 +1840,7 @@ export default function SkinViewer({
     const root = rootRef.current;
     const PIXI = pixiRef.current;
     if (!app || !root || !PIXI) return;
-    saveStagePng({
+    void saveStagePng({
       PIXI,
       app,
       root,
@@ -2061,27 +2052,13 @@ export default function SkinViewer({
   const hasCameraControl = hasRigCamera || (mode === 'scene' && !!selectedScriptScene);
 
   return (
-    <Box
-      {...(theater
-        ? {
-          position: 'fixed' as const,
-          inset: 0,
-          zIndex: 1400,
-          bg: 'black',
-          p: 2,
-          display: 'flex',
-          flexDirection: 'column' as const,
-        }
-        : {})}>
+    <>
       {error && <Text color="red.400" fontSize="sm" mb={1}>{error}</Text>}
-      <Flex direction={{ base: 'column', lg: 'row' }} align="stretch" gap={2}
-        h={theater ? '100%' : undefined}>
-        {/* `flex: 1` sets flex-basis 0, which replaces the main-axis size — the
-            height in the stacked layout, where growing collapses the panel. */}
-        <Box ref={panelRef} flex={{ base: '0 0 auto', lg: '1' }} minW={0}
-          h={theater ? '100%' : height} bg="gray.900"
-          borderRadius="md" overflow="hidden"
-          position="relative" border="1px solid" borderColor="whiteAlpha.200">
+      <ViewerShell height={height} theater={theater}
+        onTheaterChange={(on) => setViewer({ theater: on })}
+        labels={{ exitTheater: t('btnExitTheatre') }}
+        stage={<>
+          <Box ref={panelRef} position="absolute" inset={0} pointerEvents="none" />
           {/* Centred so a chosen aspect letterboxes rather than stretches. */}
           <Center position="absolute" inset={0}>
             <Box ref={hostRef} style={hostBox}
@@ -2158,20 +2135,8 @@ export default function SkinViewer({
             </Center>
           )}
 
-          {/* Theatre mode hides the sidebar, so its exit lives on the canvas. */}
-          {theater && (
-            <Box position="absolute" top={2} right={2} zIndex={3}>
-              <ActionButton icon="close" label={t('btnExitTheatre')}
-                onClick={() => setViewer({ theater: false })} />
-            </Box>
-          )}
-        </Box>
-
-        {!theater && (
-        <VStack w={{ base: '100%', lg: '260px', xl: '300px' }} flexShrink={0} align="stretch"
-          spacing={3} h={{ base: 'auto', lg: height }} maxH={{ base: '60vh', lg: height }}
-          overflowY="auto" bg="gray.900" borderRadius="md" border="1px solid"
-          borderColor="whiteAlpha.200" p={2}>
+        </>}
+        panel={<>
 
           <ControlSection title={t('viewerPlayback')}>
             {loadState === 'ready' && (
@@ -2386,9 +2351,7 @@ export default function SkinViewer({
                 onSelect={(k) => { setStore(k); onStoreChange?.(k); }} />
             )}
           </ControlSection>
-        </VStack>
-        )}
-      </Flex>
-    </Box>
+        </>} />
+    </>
   );
 }

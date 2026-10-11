@@ -4,7 +4,7 @@ import {
   ModalFooter, ModalHeader, ModalOverlay, Text, VStack,
 } from '@chakra-ui/react';
 import { useEffect } from 'react';
-import { useSeen, useShouldShow } from '@/lib/seenStore';
+import { isFreshVisitor, markSeen, useShouldShow } from '@/lib/seenStore';
 import {
   KIND_LABEL, KIND_ORDER, LATEST, RELEASES, latestKey,
   type ChangeKind, type Release,
@@ -51,14 +51,12 @@ export function ChangelogDialog() {
   const t = useT();
   const key = latestKey();
   const unseen = useShouldShow(key);
-  const fresh = useSeen((s) => s.fresh);
-  const ready = useSeen((s) => s.ready);
-  const markSeen = useSeen((s) => s.markSeen);
+  const fresh = isFreshVisitor();
 
   // a first-ever visitor has nothing to be caught up on, so bank it silently
   useEffect(() => {
-    if (ready && fresh && unseen) markSeen(key);
-  }, [ready, fresh, unseen, markSeen, key]);
+    if (fresh && unseen) markSeen(key);
+  }, [fresh, unseen, key]);
 
   const show = unseen && !fresh;
   return (

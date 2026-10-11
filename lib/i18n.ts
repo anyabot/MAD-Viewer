@@ -1,6 +1,7 @@
 // UI language. The game's own master data ships Korean for names, types and
 // stats, so a label is localised by reading the other column where one exists
 // and from a table here where the game has none.
+import { createPersisted } from '@altterisk/game-hub/persist';
 import { create } from 'zustand';
 import { useGameLangStore, useTextTables, type GameLang } from '@/lib/gameLangStore';
 
@@ -13,7 +14,9 @@ export const LANGS: { value: Lang; label: string }[] = [
   { value: 'ko', label: '한국어' },
 ];
 
-const STORAGE_KEY = 'mad.lang';
+const storedLang = createPersisted<Lang>({
+  key: 'mad.lang', version: 1, empty: () => 'en', sanitize: (raw) => (raw === 'ko' ? 'ko' : 'en'),
+});
 
 type LangStore = { lang: Lang; setLang: (lang: Lang) => void };
 
@@ -22,11 +25,7 @@ type LangStore = { lang: Lang; setLang: (lang: Lang) => void };
 export const useLangStore = create<LangStore>((set) => ({
   lang: 'en',
   setLang: (lang) => {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, lang);
-    } catch {
-      // private mode or a blocked store: the choice just does not persist
-    }
+    storedLang.save(lang);
     set({ lang });
   },
 }));
@@ -44,13 +43,7 @@ function gameLangOf(lang: Lang): GameLang {
 }
 
 export function restoreLang(): void {
-  let saved: string | null = null;
-  try {
-    saved = window.localStorage.getItem(STORAGE_KEY);
-  } catch {
-    return;
-  }
-  if (saved === 'en' || saved === 'ko') useLangStore.setState({ lang: saved });
+  useLangStore.setState({ lang: storedLang.load() });
 }
 
 export function pick(value: Localized | null | undefined, lang: Lang): string {

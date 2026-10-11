@@ -2,6 +2,7 @@
 // runtime, so a build-time path list would need regenerating per character.
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
+import { createPersisted } from '@altterisk/game-hub/persist';
 import NextLink from 'next/link';
 import {
   Badge, Box, Center, Divider, Flex, Grid, HStack, Popover, PopoverArrow, PopoverBody,
@@ -686,24 +687,10 @@ function PresetButtons({ onMax, onMin, max, min }: {
 }
 
 type Preset = 'max' | 'min';
-const PRESET_KEY = 'mad.statPreset';
-
-function savedPreset(): Preset | null {
-  try {
-    const saved = window.localStorage.getItem(PRESET_KEY);
-    return saved === 'max' || saved === 'min' ? saved : null;
-  } catch {
-    return null;
-  }
-}
-
-function savePreset(preset: Preset) {
-  try {
-    window.localStorage.setItem(PRESET_KEY, preset);
-  } catch {
-    // private mode or a blocked store: the choice just does not persist
-  }
-}
+const storedPreset = createPersisted<Preset | null>({
+  key: 'mad.statPreset', version: 1, empty: () => null,
+  sanitize: (raw) => (raw === 'max' || raw === 'min' ? raw : null),
+});
 
 // The terms are shown apart because each has its own source.
 function StatCalculator({ entry, data, icons }: {
@@ -714,7 +701,7 @@ function StatCalculator({ entry, data, icons }: {
   const caps = data.statCaps;
   const grades = statGrades(entry, data);
   const slots = equipmentSlotsOf(entry, data.equipment);
-  const [initial] = useState(savedPreset);
+  const [initial] = useState(storedPreset.load);
   const unitFor = (preset: Preset) => (preset === 'max'
     ? { star: grades[grades.length - 1] ?? null, level: caps.level, love: caps.love }
     : { star: grades[0] ?? null, level: 1, love: 1 });
@@ -744,7 +731,7 @@ function StatCalculator({ entry, data, icons }: {
     applyUnit(preset);
     setGear(gearFor(preset));
     setInfuse(infuseFor(preset));
-    savePreset(preset);
+    storedPreset.save(preset);
   };
 
   const shown = star ?? grades[grades.length - 1] ?? entry.defaultStar ?? 1;

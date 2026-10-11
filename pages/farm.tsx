@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { textMatch } from '@altterisk/game-hub/filters';
 import {
   CheckIcon, ChevronDownIcon, CloseIcon, StarIcon, ViewIcon, ViewOffIcon,
 } from '@chakra-ui/icons';
@@ -21,7 +22,7 @@ import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
 import { itemHref } from '@/lib/items';
 import { useCollection } from '@/lib/collectionStore';
-import { exportPlan, importPlan, planFileName } from '@/lib/planFile';
+import { downloadPlan, importPlan } from '@/lib/planFile';
 import {
   MATERIAL_ICON_GROUPS, billCovered, billIsEmpty, farmPlan, farmStages, isHardStage,
   mergeBills, needLabel, needsOf, planStar, spendBill, unitBill,
@@ -203,15 +204,7 @@ function PlanFile() {
   const [failed, setFailed] = useState(false);
   const picker = useRef<HTMLInputElement>(null);
 
-  const save = () => {
-    const url = URL.createObjectURL(
-      new Blob([exportPlan()], { type: 'application/json' }));
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = planFileName();
-    link.click();
-    URL.revokeObjectURL(url);
-  };
+  const save = downloadPlan;
 
   const load = async (file: File | undefined) => {
     if (!file) return;
@@ -268,13 +261,10 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
 
   const hard = useMemo(() => pool.filter(isHardStage), [pool]);
 
-  const needle = query.trim().toLowerCase();
   const matches = roster.filter((e) => !units[e.code]?.listed
     && (!ownedOnly || collected[e.code])
     && (!favesOnly || favorites[e.code])
-    && (!needle || characterName(e, lang).toLowerCase().includes(needle)
-      || e.code.toLowerCase().includes(needle)
-      || (e.nameEn ?? '').toLowerCase().includes(needle)));
+    && textMatch(query, [characterName(e, lang), e.code, e.nameEn]));
 
   // Costed once per render, then reused by the sort and by every row.
   const tracked = useMemo(() => Object.entries(units)
