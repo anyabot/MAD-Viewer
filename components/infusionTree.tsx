@@ -1,6 +1,6 @@
 import { Badge, Box, Flex, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
-import { Panel } from '@/components/skillKit';
+import { Panel } from '@altterisk/game-hub';
 import { INFUSION_PATHS, infusionNodes, statText } from '@/lib/characters';
 import { dataText, useLang, type Lang } from '@/lib/i18n';
 import type {

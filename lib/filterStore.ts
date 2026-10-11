@@ -67,7 +67,7 @@ type FilterStore = {
   focusType: (table: TypeTable, value: number, npcs?: boolean) => void;
   focusStar: (star: number) => void;
   focusArtist: (artist: string) => void;
-  clearCharacterTypes: () => void;
+  resetCharacters: () => void;
   setSkins: (patch: Partial<SkinFilters>) => void;
   setEffects: (patch: Partial<EffectFilters>) => void;
   /** Chips inside a group are alternatives; the groups themselves all apply. */
@@ -96,9 +96,7 @@ export const useFilters = create<FilterStore>((set) => ({
   focusArtist: (artist) => set((s) => ({
     characters: { ...EMPTY_CHARACTERS, npcs: s.characters.npcs, artist },
   })),
-  clearCharacterTypes: () => set((s) => ({
-    characters: { ...s.characters, picked: {}, star: null, artist: null },
-  })),
+  resetCharacters: () => set((s) => ({ characters: { ...EMPTY_CHARACTERS, query: s.characters.query } })),
   setSkins: (patch) => set((s) => ({ skins: { ...s.skins, ...patch } })),
   effects: EMPTY_EFFECTS,
   setEffects: (patch) => set((s) => ({ effects: { ...s.effects, ...patch } })),

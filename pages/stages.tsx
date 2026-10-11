@@ -1,9 +1,12 @@
 // Three levels over one route, because `output: 'export'` prerenders every path and the stage set is runtime data.
-import { textMatch } from '@altterisk/game-hub/filters';
+import { listState, nextRouterAdapter, textMatch, useUrlText } from '@altterisk/game-hub/filters';
+import {
+  BannerCard, EmptyState, IconPreview, ListToolbar, MetaChip, SearchBox, StageCard,
+} from '@altterisk/game-hub';
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Button, Center, Flex, HStack, Input, SimpleGrid, Spinner, Text, VStack, Wrap,
+  Badge, Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
   WrapItem,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
@@ -15,8 +18,9 @@ import { ItemIcon } from '@/components/itemIcon';
 import { StageCrumbs } from '@/components/stageCrumbs';
 import { ShareButton } from '@/components/shareButton';
 import { hasIcon } from '@/lib/icons';
+import { nextLink } from '@/lib/hubLink';
+import { StageMeta } from '@/components/stageMeta';
 import { FilterChip, FilterRow } from '@/components/filters';
-import { typeLabel } from '@/lib/characters';
 import {
   DIFFICULTY_LABEL, DROP_ICON_GROUPS, GROUP_ICON_GROUPS, dropAmount, dropName, enemyCodes, groupByKey,
   groupIsLive, groupLabel, groupWindow, levelRange, modeSummaries, stageDrops,
@@ -43,7 +47,8 @@ export default function StagesPage() {
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [query, setQuery] = useState('');
+  const list = listState(nextRouterAdapter(router));
+  const [query, setQuery] = useUrlText(list, router.isReady);
 
   useEffect(() => {
     loadStages().then(setData).catch((e) => setError(String(e)));
@@ -52,7 +57,9 @@ export default function StagesPage() {
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
 
-  useEffect(() => { setQuery(''); }, [mode, groupKey]);
+  const urlQuery = list.text('q');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { if (router.isReady) setQuery(urlQuery); }, [mode, groupKey]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!data || !router.isReady) {
@@ -93,29 +100,15 @@ function ModeHub({ data, icons, lang }: {
         {modes.map((m) => {
           const art = m.live?.banner ?? (m.tile ? null : m.banner);
           return (
-            <Flex key={m.key} as={NextLink} href={`/stages?mode=${m.key}`}
-              direction={{ base: 'column', sm: 'row' }} gap={3} p={3} borderRadius="lg" minW={0}
-              borderWidth={m.live ? '2px' : '1px'} borderColor={m.live ? 'pink.400' : 'whiteAlpha.200'}
-              bg="whiteAlpha.50" _hover={{ borderColor: 'yellow.400' }}>
-              <ArtBox manifest={icons} w={{ base: '100%', sm: '184px' }}
+            <BannerCard key={m.key} href={`/stages?mode=${m.key}`} renderLink={nextLink}
+              highlight={!!m.live}
+              art={<ArtBox manifest={icons} w="100%"
                 sources={art ? [['banner', art]]
-                  : [[m.tile ? 'tile' : iconGroup(icons, GROUP_ICON_GROUPS, m.image), m.tile ?? m.image]]} />
-              <VStack align="stretch" spacing={1.5} minW={0} flex="1">
-                <HStack spacing={2} wrap="wrap">
-                  {m.live && <Badge colorScheme="pink" variant="solid">{t('stageLive')}</Badge>}
-                  {m.live && groupWindow(m.live) && (
-                    <Badge colorScheme="blue" textTransform="none" fontWeight="normal">{groupWindow(m.live)}</Badge>
-                  )}
-                </HStack>
-                <Text fontWeight="bold" fontSize="lg">{pick(m.label, lang)} ›</Text>
-                {m.live && (
-                  <Text fontSize="sm" color="gray.300" noOfLines={1}>{groupLabel(data, m.live, lang)}</Text>
-                )}
-                <Text fontSize="sm" color="gray.500">
-                  {t(GROUP_NOUN[m.key] ?? 'stageGroupCount', { n: m.groups })} · {t('stageCount', { n: m.stages })}
-                </Text>
-              </VStack>
-            </Flex>
+                  : [[m.tile ? 'tile' : iconGroup(icons, GROUP_ICON_GROUPS, m.image), m.tile ?? m.image]]} />}
+              badge={m.live ? t('stageLive') : undefined}
+              window={m.live ? groupWindow(m.live) || undefined : undefined}
+              title={<>{pick(m.label, lang)}{m.live && <Text as="span" display="block" fontSize="sm" fontWeight="normal" color="gray.300" noOfLines={1}>{groupLabel(data, m.live, lang)}</Text>}</>}
+              count={<>{t(GROUP_NOUN[m.key] ?? 'stageGroupCount', { n: m.groups })} · {t('stageCount', { n: m.stages })}</>} />
           );
         })}
       </SimpleGrid>
@@ -204,48 +197,37 @@ function GroupCard({ grouping, data, icons, lang }: {
   const levels = stages.map(levelRange).filter((r): r is [number, number] => !!r);
   const low = levels.length ? Math.min(...levels.map((r) => r[0])) : null;
   const high = levels.length ? Math.max(...levels.map((r) => r[1])) : null;
+  const status = live ? t('stageLive') : ended ? t('stageEnded') : upcoming ? t('stageUpcoming') : undefined;
+  const difficulty = group.difficulty ? pick(DIFFICULTY_LABEL[group.difficulty], lang) || group.difficulty : null;
   return (
-    <Flex as={NextLink} href={`/stages?group=${encodeURIComponent(group.key)}`}
-      direction={{ base: 'column', sm: 'row' }} gap={3} p={3} borderRadius="lg" minW={0}
-      borderWidth={live ? '2px' : '1px'} borderColor={live ? 'pink.400' : 'whiteAlpha.200'}
-      bg={ended ? 'blackAlpha.200' : 'whiteAlpha.50'} _hover={{ borderColor: 'yellow.400' }}>
-      <ArtBox manifest={icons} w={{ base: '100%', sm: '184px' }} sources={[
+    <BannerCard href={`/stages?group=${encodeURIComponent(group.key)}`} renderLink={nextLink}
+      highlight={live}
+      art={<ArtBox manifest={icons} w="100%" sources={[
         ['banner', group.banner],
         ['banner', group.mode === 'ascent' ? (group.from ? 'Ascent_Core' : 'Ascent_Basic') : null],
         [iconGroup(icons, GROUP_ICON_GROUPS, group.image), group.image],
         ['tile', data.modes.find((m) => m.key === group.mode)?.tile],
-      ]} />
-      <VStack align="stretch" spacing={1.5} minW={0} flex="1">
-        <Wrap spacing={1.5} align="center">
-          {live && <WrapItem><Badge colorScheme="pink" variant="solid">{t('stageLive')}</Badge></WrapItem>}
-          {ended && <WrapItem><Badge variant="solid">{t('stageEnded')}</Badge></WrapItem>}
-          {upcoming && <WrapItem><Badge colorScheme="blue" variant="solid">{t('stageUpcoming')}</Badge></WrapItem>}
-          {groupWindow(group) && (
-            <WrapItem>
-              <Badge colorScheme="blue" textTransform="none" fontWeight="normal">{groupWindow(group)}</Badge>
-            </WrapItem>
-          )}
-          {group.difficulty && (
-            <WrapItem><Badge textTransform="none">{pick(DIFFICULTY_LABEL[group.difficulty], lang) || group.difficulty}</Badge></WrapItem>
-          )}
-        </Wrap>
-        <Text fontWeight="bold" fontSize="lg" noOfLines={2}>{groupLabel(data, group, lang)} ›</Text>
-        <Text fontSize="sm" color="gray.400">
+      ]} />}
+      badge={status}
+      window={groupWindow(group) || undefined}
+      title={groupLabel(data, group, lang)}
+      count={
+        <>
+          {difficulty && <>{difficulty} · </>}
           {t('stageCount', { n: stages.length })}
           {low != null && high != null && ` · ${t('stageLevelRange', { from: low, to: high })}`}
-        </Text>
-        {shown.length > 0 && (
-          <HStack spacing={-1.5} pt={1}>
-            {shown.map((code) => (
-              <GameIcon key={code} manifest={icons} group="char"
-                names={[data.enemies[code]?.iconPath, `Icon_${code}`]} size={8} borderRadius="full"
-                borderWidth="2px" borderColor={bosses.includes(code) ? 'red.400' : 'gray.800'}
-                title={dataText(lang, data.enemies[code]?.name, data.enemies[code]?.nameEn)} />
-            ))}
-          </HStack>
-        )}
-      </VStack>
-    </Flex>
+          {shown.length > 0 && (
+            <HStack as="span" spacing={-1.5} pt={1.5}>
+              {shown.map((code) => (
+                <GameIcon key={code} manifest={icons} group="char"
+                  names={[data.enemies[code]?.iconPath, `Icon_${code}`]} size={8} borderRadius="full"
+                  borderWidth="2px" borderColor={bosses.includes(code) ? 'red.400' : 'gray.800'}
+                  title={dataText(lang, data.enemies[code]?.name, data.enemies[code]?.nameEn)} />
+              ))}
+            </HStack>
+          )}
+        </>
+      } />
   );
 }
 
@@ -288,20 +270,50 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery }: {
         {groupWindow(group) && (
           <Text fontSize="xs" color="gray.600">{groupWindow(group)}</Text>
         )}
-        <ShareButton query={{ group: group.key }} />
-        <Box flex="1" />
-        <Input size="sm" maxW="260px" placeholder={t('search')} value={query}
-          onChange={(e) => onQuery(e.target.value)} />
-        <Text fontSize="xs" color="gray.500">{t('stageCount', { n: stages.length })}</Text>
       </Flex>
+      <ListToolbar
+        search={<SearchBox value={query} onChange={onQuery} placeholder={t('search')} clearLabel={t('clearSearch')} />}
+        count={t('stageCount', { n: stages.length })}
+        actions={<ShareButton query={{ group: group.key }} />} />
 
-      {stages.length === 0 && <Text color="gray.500" fontSize="sm">{t('noMatch')}</Text>}
+      {stages.length === 0 && <EmptyState title={t('noMatch')} />}
 
       <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={2}>
-        {stages.map((stage) => (
-          <StageCard key={stage.id} stage={stage} data={data} chars={chars}
-            icons={icons} lang={lang} />
-        ))}
+        {stages.map((stage) => {
+          const codes = enemyCodes(stage);
+          const drops = stageDrops(stage);
+          return (
+            <StageCard key={stage.id} href={`/stage?id=${stage.id}`} renderLink={nextLink}
+              title={stageName(data, stage, lang)} id={stage.id}
+              meta={<StageMeta stage={stage} chars={chars} icons={icons} lang={lang} />}
+              previews={
+                <>
+                  <IconPreview label={t('stageRoster')} count={codes.length} max={PREVIEW}>
+                    {codes.map((code) => (
+                      <GameIcon key={code} manifest={icons} group="char"
+                        names={[data.enemies[code]?.iconPath, `Icon_${code}`]}
+                        title={dataText(lang, data.enemies[code]?.name, data.enemies[code]?.nameEn)
+                          || code}
+                        boxSize="26px" borderRadius="sm" objectFit="cover" reserve={false} />
+                    ))}
+                  </IconPreview>
+                  {drops.length > 0 && (
+                    <IconPreview label={t('stageDrops')} count={drops.length} max={PREVIEW}>
+                      {drops.map((drop, i) => {
+                        const entry = drop.ref ? data.drops[drop.ref] : null;
+                        return (
+                          <ItemIcon key={i} manifest={icons}
+                            group={iconGroup(icons, DROP_ICON_GROUPS, entry?.icon)}
+                            names={[entry?.icon]} grade={entry?.grade} count={dropAmount(drop)}
+                            title={`${dropName(data, drop, lang)} ×${dropAmount(drop)}`} size="34px" />
+                        );
+                      })}
+                    </IconPreview>
+                  )}
+                </>
+              } />
+          );
+        })}
       </SimpleGrid>
     </VStack>
   );
@@ -324,110 +336,3 @@ function ModeTabs({ data, mode, lang }: { data: StageData; mode: string; lang: L
 
 // Both previews are capped: a wave can field six and a drop list ten.
 const PREVIEW = 8;
-
-function StageCard({ stage, data, chars, icons, lang }: {
-  stage: StageEntry; data: StageData; chars: CharacterData | null;
-  icons: IconManifest | null; lang: Lang;
-}) {
-  const t = useT();
-  const levels = levelRange(stage);
-  const codes = enemyCodes(stage);
-  const drops = stageDrops(stage);
-  const weak = stage.weakAttribute != null && chars
-    ? chars.types.attribute[String(stage.weakAttribute)] ?? null
-    : null;
-  return (
-    <Box as={NextLink} href={`/stage?id=${stage.id}`} borderWidth="1px"
-      borderColor="whiteAlpha.200" borderRadius="md" p={3} minW={0}
-      _hover={{ borderColor: 'yellow.400', bg: 'whiteAlpha.50' }}>
-      <Flex align="baseline" gap={2} wrap="wrap">
-        <Text fontSize="sm" fontWeight="bold">{stageName(data, stage, lang)}</Text>
-        <Text fontFamily="mono" fontSize="0.6rem" color="gray.600">{stage.id}</Text>
-      </Flex>
-
-      <Wrap spacing={2} mt={1} align="center">
-        {stage.recommendLevel && (
-          <WrapItem>
-            <Text fontSize="xs" color="gray.400">
-              {t('stageRecommend', { level: stage.recommendLevel })}
-            </Text>
-          </WrapItem>
-        )}
-        {weak && (
-          <WrapItem>
-            <Flex align="center" gap={1}>
-              <Text fontSize="0.6rem" color="gray.600">{t('stageWeakTo')}</Text>
-              <GameIcon manifest={icons} group="ui" name={weak.icon} size={4}
-                reserve={false} />
-              <Text fontSize="xs" color={weak.color ?? 'gray.300'}>
-                {typeLabel(weak, lang)}
-              </Text>
-            </Flex>
-          </WrapItem>
-        )}
-        {stage.stamina ? (
-          <WrapItem>
-            <Text fontSize="xs" color="gray.500">
-              {t('stageStamina', { n: stage.stamina })}
-            </Text>
-          </WrapItem>
-        ) : null}
-        <WrapItem>
-          <Text fontSize="xs" color="gray.500">
-            {t('stageWaves', { n: stage.waves.length })}
-          </Text>
-        </WrapItem>
-        {levels && (
-          <WrapItem>
-            <Text fontSize="xs" color="gray.500">
-              {levels[0] === levels[1]
-                ? t('stageLevel', { n: levels[0] })
-                : t('stageLevelRange', { from: levels[0], to: levels[1] })}
-            </Text>
-          </WrapItem>
-        )}
-      </Wrap>
-
-      <Preview label={t('stageRoster')} count={codes.length}>
-        {codes.slice(0, PREVIEW).map((code) => (
-          <GameIcon key={code} manifest={icons} group="char"
-            names={[data.enemies[code]?.iconPath, `Icon_${code}`]}
-            title={dataText(lang, data.enemies[code]?.name, data.enemies[code]?.nameEn)
-              || code}
-            boxSize="26px" borderRadius="sm" objectFit="cover" reserve={false} />
-        ))}
-      </Preview>
-
-      {drops.length > 0 && (
-        <Preview label={t('stageDrops')} count={drops.length}>
-          {drops.slice(0, PREVIEW).map((drop, i) => {
-            const entry = drop.ref ? data.drops[drop.ref] : null;
-            return (
-              <ItemIcon key={i} manifest={icons}
-                group={iconGroup(icons, DROP_ICON_GROUPS, entry?.icon)}
-                names={[entry?.icon]} grade={entry?.grade} count={dropAmount(drop)}
-                title={`${dropName(data, drop, lang)} ×${dropAmount(drop)}`} size="34px" />
-            );
-          })}
-        </Preview>
-      )}
-    </Box>
-  );
-}
-
-function Preview({ label, count, children }: {
-  label: string; count: number; children: React.ReactNode;
-}) {
-  const shown = Array.isArray(children) ? children.length : 1;
-  return (
-    <Flex align="center" gap={2} mt={1.5} minW={0}>
-      <Text fontSize="0.6rem" color="gray.600" minW="52px">{label}</Text>
-      <HStack spacing={1} minW={0} overflow="hidden">
-        {children}
-        {count > shown && (
-          <Text fontSize="0.6rem" color="gray.500">+{count - shown}</Text>
-        )}
-      </HStack>
-    </Flex>
-  );
-}

@@ -11,7 +11,7 @@
     "sync:local-data": "node scripts/sync-local-data.js"
   },
   "dependencies": {
-    "@altterisk/game-hub": "github:Altterisk/game-hub#v0.3.0",
+    "@altterisk/game-hub": "github:Altterisk/game-hub#v0.4.0",
     "@chakra-ui/icons": "^2.2.4",
     "@chakra-ui/react": "^2.10.5",
     "@emotion/react": "^11.14.0",

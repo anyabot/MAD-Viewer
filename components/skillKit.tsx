@@ -1,4 +1,5 @@
 // Skill kits show structure without implying undecoded battle arithmetic.
+import { Panel } from '@altterisk/game-hub';
 import { useState } from 'react';
 import { useSkillTiming } from '@/lib/skillTiming';
 import type { SkillTiming } from '@/lib/data';
@@ -15,24 +16,6 @@ import type {
   BuffEntry, CharacterData, CharacterEntry, IconManifest, SkillBehaviour, SkillEntry,
   SkillOp,
 } from '@/lib/data';
-
-export function Panel({ title, note, actions, children }: {
-  title: string; note?: string; actions?: React.ReactNode; children: React.ReactNode;
-}) {
-  return (
-    <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl"
-      bg="linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018))"
-      boxShadow="0 12px 32px rgba(0,0,0,0.12)" p={{ base: 3, md: 4 }}>
-      <Flex align="baseline" gap={2} mb={3} wrap="wrap">
-        <Text fontSize="0.65rem" color="gray.400" textTransform="uppercase"
-          fontWeight="700" letterSpacing="0.11em">{title}</Text>
-        {note && <Text fontSize="xs" color="gray.600">{note}</Text>}
-        {actions && <Box ml="auto">{actions}</Box>}
-      </Flex>
-      {children}
-    </Box>
-  );
-}
 
 // The game's own `<color=#rrggbb>` and `<br>` markup.
 export function GameText({ text }: { text: string }) {

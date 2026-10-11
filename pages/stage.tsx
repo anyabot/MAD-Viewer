@@ -3,21 +3,27 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,
+  Badge, Box, Flex, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
+import {
+  EmptyState, LoadState, MetaChips, PageHeader, RewardGrid, WaveNav, type RewardItem,
+} from '@altterisk/game-hub';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { StageCrumbs } from '@/components/stageCrumbs';
+import { StageMeta } from '@/components/stageMeta';
+import { nextLink } from '@/lib/hubLink';
 import { ShareButton } from '@/components/shareButton';
 import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
-import { Panel, SkillList } from '@/components/skillKit';
+import { SkillList } from '@/components/skillKit';
+import { Panel } from '@altterisk/game-hub';
 import { typeIcons, typeLabel } from '@/lib/characters';
 import {
   CHANNEL_LABEL, CHANNEL_ORDER, DIFFICULTY_LABEL, DROP_ICON_GROUPS, DROP_LABEL,
   ENCOUNTER_LABEL, EVENT_LABEL,
-  MISSION_ICON, TRIGGER_LABEL, dropAmount, dropChance, dropEntry, dropName, groupByKey,
-  groupSlots, levelRange, missionCheck, modeLabel, stageById, stageName, subMissionText,
+  MISSION_ICON, TRIGGER_LABEL, dropAmount, dropEntry, dropName, groupByKey,
+  groupSlots, missionCheck, modeLabel, stageById, stageName, subMissionText,
   subMissionsOf, zoneOf, type EnemyGroup,
 } from '@/lib/stages';
 import { dataText, pick, useLang, useT, type Lang } from '@/lib/i18n';
@@ -37,6 +43,7 @@ export default function StagePage() {
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [waveAt, setWaveAt] = useState(0);
 
   useEffect(() => {
     loadStages().then(setData).catch((e) => setError(String(e)));
@@ -58,39 +65,46 @@ export default function StagePage() {
     };
   }, [data, stage]);
 
-  if (error) return <Text color="red.400">{error}</Text>;
-  if (!data || !router.isReady) {
-    return (
-      <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-      </Center>
-    );
+  useEffect(() => { setWaveAt(0); }, [id]);
+
+  if (error || !data || !router.isReady) {
+    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 
   if (!stage) {
     return (
-      <VStack align="start" spacing={3} py={10}>
-        <Text color="gray.400">
-          {id != null ? t('stageNotFound', { id }) : t('stageNoneSelected')}
-        </Text>
-        <Text as={NextLink} href="/stages" color="yellow.300" fontSize="sm">
-          {t('stageBack')}
-        </Text>
-      </VStack>
+      <EmptyState title={id != null ? t('stageNotFound', { id }) : t('stageNoneSelected')}
+        action={<Text as={NextLink} href="/stages" color="yellow.300" fontSize="sm">{t('stageBack')}</Text>} />
     );
   }
 
   const zone = zoneOf(data, stage);
   const missions = subMissionsOf(data, stage);
-  const levels = levelRange(stage);
-  const weak = stage.weakAttribute != null && chars
-    ? chars.types.attribute[String(stage.weakAttribute)] ?? null
-    : null;
+  const paged = stage.waves.length > 1;
+  const waves = paged ? stage.waves.slice(waveAt, waveAt + 1) : stage.waves;
 
   return (
     <VStack align="stretch" spacing={4}>
       <StageCrumbs data={data} mode={stage.mode} group={data.groups[stage.group]}
         leaf={stageName(data, stage, lang)} lang={lang} />
+
+      <PageHeader level={2}
+        art={<GameIcon manifest={icons} group="zone" name={zone?.image}
+          boxSize={{ base: '56px', md: '72px' }} borderRadius="md" objectFit="cover"
+          reserve={false} />}
+        title={stageName(data, stage, lang)} id={stage.id}
+        badges={
+          <>
+            <Badge>{modeLabel(data, stage.mode, lang)}</Badge>
+            {zone?.difficulty && (
+              <Badge colorScheme={zone.difficulty === 'normal' ? 'gray' : 'red'}>
+                {pick(DIFFICULTY_LABEL[zone.difficulty], lang)}
+              </Badge>
+            )}
+          </>
+        }
+        meta={<MetaChips><StageMeta stage={stage} chars={chars} icons={icons} lang={lang} /></MetaChips>}
+        actions={<ShareButton query={{ id: stage.id }} />} />
 
       {(siblings.prev || siblings.next) && (
         <Flex align="center" gap={3} wrap="wrap" fontSize="sm">
@@ -110,68 +124,6 @@ export default function StagePage() {
         </Flex>
       )}
 
-      <Flex gap={3} align="start">
-        <GameIcon manifest={icons} group="zone" name={zone?.image}
-          boxSize={{ base: '56px', md: '72px' }} borderRadius="md" objectFit="cover"
-          reserve={false} />
-        <VStack align="stretch" spacing={2} flex="1" minW={0}>
-        <Wrap spacing={2} align="baseline">
-          <WrapItem>
-            <Text fontSize="xl" fontWeight="bold">{stageName(data, stage, lang)}</Text>
-          </WrapItem>
-          <WrapItem><Badge>{modeLabel(data, stage.mode, lang)}</Badge></WrapItem>
-          {zone?.difficulty && (
-            <WrapItem>
-              <Badge colorScheme={zone.difficulty === 'normal' ? 'gray' : 'red'}>
-                {pick(DIFFICULTY_LABEL[zone.difficulty], lang)}
-              </Badge>
-            </WrapItem>
-          )}
-          <WrapItem>
-            <Text fontFamily="mono" fontSize="xs" color="gray.500">{stage.id}</Text>
-          </WrapItem>
-          <WrapItem><ShareButton query={{ id: stage.id }} /></WrapItem>
-        </Wrap>
-        <Wrap spacing={3} align="center">
-          {stage.recommendLevel && (
-            <WrapItem>
-              <Text fontSize="sm" color="gray.400">
-                {t('stageRecommend', { level: stage.recommendLevel })}
-              </Text>
-            </WrapItem>
-          )}
-          {weak && (
-            <WrapItem>
-              <Flex align="center" gap={1}>
-                <Text fontSize="xs" color="gray.600">{t('stageWeakTo')}</Text>
-                <GameIcon manifest={icons} group="ui" name={weak.icon} size={4}
-                  reserve={false} />
-                <Text fontSize="sm" color={weak.color ?? 'gray.300'}>
-                  {typeLabel(weak, lang)}
-                </Text>
-              </Flex>
-            </WrapItem>
-          )}
-          {stage.stamina ? (
-            <WrapItem>
-              <Text fontSize="sm" color="gray.500">
-                {t('stageStamina', { n: stage.stamina })}
-              </Text>
-            </WrapItem>
-          ) : null}
-          {levels && (
-            <WrapItem>
-              <Text fontSize="sm" color="gray.500">
-                {levels[0] === levels[1]
-                  ? t('stageLevel', { n: levels[0] })
-                  : t('stageLevelRange', { from: levels[0], to: levels[1] })}
-              </Text>
-            </WrapItem>
-          )}
-        </Wrap>
-        </VStack>
-      </Flex>
-
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={3} alignItems="start">
         {missions.length > 0 && (
           <Panel title={t('stageMissions')}>
@@ -190,13 +142,8 @@ export default function StagePage() {
                   <Text fontSize="xs" color="gray.500" mb={1}>
                     {pick(CHANNEL_LABEL[channel], lang)}
                   </Text>
-                  <Wrap spacing={2}>
-                    {(stage.rewards?.[channel] ?? []).map((drop, i) => (
-                      <WrapItem key={i}>
-                        <Drop drop={drop} data={data} icons={icons} lang={lang} />
-                      </WrapItem>
-                    ))}
-                  </Wrap>
+                  <RewardGrid renderLink={nextLink}
+                    items={(stage.rewards?.[channel] ?? []).map((drop) => rewardItem(drop, data, icons, lang))} />
                 </Box>
               ))}
             </VStack>
@@ -223,39 +170,34 @@ export default function StagePage() {
       {stage.waves.length === 0 ? (
         <Text fontSize="sm" color="gray.500">{t('stageNoWaves')}</Text>
       ) : (
-        stage.waves.map((wave) => (
+        <>
+        {paged && (
+          <WaveNav count={stage.waves.length} index={waveAt} onChange={setWaveAt}
+            labels={{ prev: t('stageWavePrev'), next: t('stageWaveNext'), wave: (i, n) => t('stageWaveOf', { n: i + 1, total: n }) }} />
+        )}
+        {waves.map((wave) => (
           <Wave key={wave.sequence} wave={wave} data={data} chars={chars}
             icons={icons} lang={lang} />
-        ))
+        ))}
+        </>
       )}
     </VStack>
   );
 }
 
 // Most of a stage's list is guaranteed, so only a chance drop is marked.
-function Drop({ drop, data, icons, lang }: {
-  drop: StageDrop; data: StageData; icons: IconManifest | null; lang: Lang;
-}) {
+function rewardItem(drop: StageDrop, data: StageData, icons: IconManifest | null, lang: Lang): RewardItem {
   const entry = dropEntry(data, drop);
-  const chance = dropChance(drop);
-  const note = DROP_LABEL[drop.drop] ? pick(DROP_LABEL[drop.drop], lang) : null;
   const group = DROP_ICON_GROUPS.find((g) => hasIcon(icons, g, entry?.icon))
     ?? DROP_ICON_GROUPS[0];
-  return (
-    <Flex align="center" gap={2} borderWidth="1px" borderColor="whiteAlpha.200"
-      borderRadius="md" px={2} py={1} minW={0}>
-      <ItemIcon manifest={icons} group={group} names={[entry?.icon]}
-        grade={entry?.grade} size={10} href={drop.ref ? itemHref(drop.ref) : undefined} />
-      <Box minW={0}>
-        <Text fontSize="xs" noOfLines={1}>{dropName(data, drop, lang)}</Text>
-        <HStack spacing={1.5}>
-          <Text fontSize="0.65rem" color="yellow.200">×{dropAmount(drop)}</Text>
-          {chance && <Text fontSize="0.6rem" color="gray.500">{chance}</Text>}
-          {note && <Text fontSize="0.6rem" color="gray.600">{note}</Text>}
-        </HStack>
-      </Box>
-    </Flex>
-  );
+  return {
+    icon: <ItemIcon manifest={icons} group={group} names={[entry?.icon]} grade={entry?.grade} size={10} />,
+    name: dropName(data, drop, lang),
+    amount: dropAmount(drop),
+    chance: drop.chance ?? undefined,
+    note: DROP_LABEL[drop.drop] ? pick(DROP_LABEL[drop.drop], lang) : undefined,
+    href: drop.ref ? itemHref(drop.ref) : undefined,
+  };
 }
 
 // A party check is drawn with the type's own art; the rest carry the game's mark where one exists.

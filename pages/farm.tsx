@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
-import { Panel } from '@/components/skillKit';
+import { Panel } from '@altterisk/game-hub';
 import { FilterChip } from '@/components/filters';
 import { InventoryDialog } from '@/components/inventoryDialog';
 import { UnitPlanDialog } from '@/components/unitPlanDialog';

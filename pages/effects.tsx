@@ -3,8 +3,11 @@ import { textMatch } from '@altterisk/game-hub/filters';
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Center, Flex, HStack, Input, Spinner, Text, VStack, Wrap, WrapItem,
+  Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
+import {
+  EmptyState, FilterChip as CountChip, FilterPanel, ListToolbar, LoadState, SearchBox,
+} from '@altterisk/game-hub';
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import { FilterChip, FilterRow } from '@/components/filters';
 import {
@@ -35,6 +38,7 @@ export default function EffectsPage() {
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [more, setMore] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const { query, npcs, unreleased, picked } = useFilters((s) => s.effects);
   const set = useFilters((s) => s.setEffects);
   const toggle = useFilters((s) => s.toggleEffect);
@@ -71,20 +75,26 @@ export default function EffectsPage() {
     });
   }, [scoped, picked, query]);
 
-  if (error) return <Text color="red.400">{error}</Text>;
-  if (!chars) {
-    return (
-      <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-      </Center>
-    );
+  if (error || !chars) {
+    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 
   const effects = facetOptions(scoped, picked, 'effect', lang);
   const grants = facetOptions(scoped, picked, 'grant', lang);
 
+  const activeFilters = selectionCount(picked);
+
   return (
     <VStack align="stretch" spacing={4}>
+      <ListToolbar
+        search={<SearchBox value={query} onChange={(v) => set({ query: v })}
+          placeholder={t('search')} clearLabel={t('clearSearch')} />}
+        count={t('countOf', { shown: results.length, total: scoped.length })}
+        activeFilters={activeFilters} onClearFilters={clear}
+        labels={{ clearFilters: t('clearFilters') }} />
+      <FilterPanel open={filtersOpen} onToggle={() => setFiltersOpen(!filtersOpen)}
+        activeCount={activeFilters}
+        labels={{ filters: t('filtersTitle'), show: t('filtersShow'), hide: t('filtersHide') }}>
       <VStack align="stretch" spacing={2}>
         {EFFECT_SECTIONS.map((section) => {
           const options = effects.filter((o) => effectSection(o.value) === section);
@@ -125,11 +135,6 @@ export default function EffectsPage() {
 
         <Wrap spacing={2} align="center" pt={1}>
           <WrapItem>
-            <Input size="sm" maxW="220px" placeholder={t('search')}
-              value={query} onChange={(e) => set({ query: e.target.value })}
-              bg="whiteAlpha.100" borderColor="whiteAlpha.300" />
-          </WrapItem>
-          <WrapItem>
             <FilterChip active={more} onClick={() => setMore(!more)}>
               <Text>{t('moreFilters')}</Text>
             </FilterChip>
@@ -144,18 +149,9 @@ export default function EffectsPage() {
               <Text>{t('includeUnreleased')}</Text>
             </FilterChip>
           </WrapItem>
-          {selectionCount(picked) > 0 && (
-            <WrapItem>
-              <FilterChip active={false} onClick={clear}><Text>{t('clear')}</Text></FilterChip>
-            </WrapItem>
-          )}
-          <WrapItem>
-            <Text fontSize="xs" color="gray.500">
-              {t('countOf', { shown: results.length, total: scoped.length })}
-            </Text>
-          </WrapItem>
         </Wrap>
       </VStack>
+      </FilterPanel>
 
       <VStack align="stretch" spacing={2}>
         {results.map(({ kit, skills }) => (
@@ -164,7 +160,7 @@ export default function EffectsPage() {
             selection={picked} lang={lang} />
         ))}
       </VStack>
-      {results.length === 0 && <Text fontSize="sm" color="gray.500">{t('noMatch')}</Text>}
+      {results.length === 0 && <EmptyState title={t('noMatch')} />}
     </VStack>
   );
 }
@@ -172,14 +168,7 @@ export default function EffectsPage() {
 function Chip({ option, active, onClick }: {
   option: FacetOption; active: boolean; onClick: () => void;
 }) {
-  return (
-    <Box opacity={option.count === 0 && !active ? 0.4 : 1}>
-      <FilterChip active={active} onClick={onClick}>
-        <Text>{option.label}</Text>
-        <Text color="gray.500">{option.count}</Text>
-      </FilterChip>
-    </Box>
-  );
+  return <CountChip active={active} onClick={onClick} count={option.count}>{option.label}</CountChip>;
 }
 
 function ResultRow({ kit, skills, data, icons, skins, selection, lang }: {
