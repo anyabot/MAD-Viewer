@@ -1,9 +1,11 @@
 // Filtered by the axes the game itself uses, each drawn with its in-game icon.
+import { textMatch } from '@altterisk/game-hub/filters';
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Center, Flex, Grid, HStack, Input, Spinner, Text, VStack, Wrap, WrapItem,
+  Badge, Box, Flex, Grid, HStack, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
+import { EmptyState, FilterPanel, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import { FilterChip, FilterRow } from '@/components/filters';
 import {
@@ -42,7 +44,8 @@ export default function CharactersPage() {
   const setCollectedMany = useCollection((s) => s.setCollectedMany);
   const set = useFilters((s) => s.setCharacters);
   const toggle = useFilters((s) => s.toggleType);
-  const clearTypes = useFilters((s) => s.clearCharacterTypes);
+  const reset = useFilters((s) => s.resetCharacters);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
     loadCharacters().then(setChars).catch((e) => setError(String(e)));
@@ -55,7 +58,6 @@ export default function CharactersPage() {
 
   const list = useMemo(() => {
     const all = Object.values(chars?.characters ?? {});
-    const q = query.trim().toLowerCase();
     return all.filter((c) => {
       if (c.unreleased) {
         if (!unreleased) return false;
@@ -73,11 +75,7 @@ export default function CharactersPage() {
         if (want == null) continue;
         if (typeValue(c, table as TypeTable) !== want) return false;
       }
-      if (!q) return true;
-      return c.name.toLowerCase().includes(q)
-        || c.code.toLowerCase().includes(q)
-        || (c.nameEn ?? '').toLowerCase().includes(q)
-        || (c.nameUppercase ?? '').toLowerCase().includes(q);
+      return textMatch(query, [c.name, c.code, c.nameEn, c.nameUppercase]);
     }).sort((a, b) => a.code.localeCompare(b.code));
   }, [chars, query, npcs, unreleased, skinsOnly, wantCollected, wantFavorite, star,
     artist, picked, byCharacter, collected, favorites]);
@@ -92,13 +90,8 @@ export default function CharactersPage() {
     return [...count.entries()].sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
   }, [chars]);
 
-  if (error) return <Text color="red.400">{error}</Text>;
-  if (!chars) {
-    return (
-      <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-      </Center>
-    );
+  if (error || !chars) {
+    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 
   const total = Object.values(chars.characters).filter(
@@ -109,9 +102,27 @@ export default function CharactersPage() {
     if (!window.confirm(t('collectionMarkAllConfirm', { n: markable.length }))) return;
     setCollectedMany(markable.map((c) => c.code), true);
   };
+  const activeFilters = [star != null, artist != null, skinsOnly, wantCollected !== 'all',
+    wantFavorite !== 'all', npcs, unreleased].filter(Boolean).length
+    + Object.values(picked).filter((v) => v != null).length;
 
   return (
     <VStack align="stretch" spacing={4}>
+      <ListToolbar
+        search={<SearchBox value={query} onChange={(v) => set({ query: v })}
+          placeholder={t('search')} clearLabel={t('clearSearch')} />}
+        count={t('countOf', { shown: list.length, total })}
+        activeFilters={activeFilters} onClearFilters={reset}
+        labels={{ clearFilters: t('clearFilters') }}
+        actions={markable.length > 0 && (
+          <FilterChip active={false} onClick={markAll}>
+            <Text>{t('collectionMarkAll')}</Text>
+            <Text color="gray.500">{markable.length}</Text>
+          </FilterChip>
+        )} />
+      <FilterPanel open={filtersOpen} onToggle={() => setFiltersOpen(!filtersOpen)}
+        activeCount={activeFilters}
+        labels={{ filters: t('filtersTitle'), show: t('filtersShow'), hide: t('filtersHide') }}>
       <VStack align="stretch" spacing={2}>
         {CHIP_TABLES.map((table) => (
           <FilterRow key={table} label={TYPE_LABEL[table][lang]}>
@@ -159,11 +170,6 @@ export default function CharactersPage() {
 
         <Wrap spacing={2} align="center" pt={1}>
           <WrapItem>
-            <Input size="sm" maxW="220px" placeholder={t('search')}
-              value={query} onChange={(e) => set({ query: e.target.value })}
-              bg="whiteAlpha.100" borderColor="whiteAlpha.300" />
-          </WrapItem>
-          <WrapItem>
             <FilterChip active={skinsOnly} onClick={() => set({ skinsOnly: !skinsOnly })}>
               <Text>{t('hasSkins')}</Text>
             </FilterChip>
@@ -186,14 +192,6 @@ export default function CharactersPage() {
               </Text>
             </FilterChip>
           </WrapItem>
-          {markable.length > 0 && (
-            <WrapItem>
-              <FilterChip active={false} onClick={markAll}>
-                <Text>{t('collectionMarkAll')}</Text>
-                <Text color="gray.500">{markable.length}</Text>
-              </FilterChip>
-            </WrapItem>
-          )}
           <WrapItem>
             <FilterChip active={npcs} onClick={() => set({ npcs: !npcs })}>
               <Text>{t('includeNpcs')}</Text>
@@ -204,20 +202,9 @@ export default function CharactersPage() {
               <Text>{t('includeUnreleased')}</Text>
             </FilterChip>
           </WrapItem>
-          {(star != null || artist != null || Object.values(picked).some((v) => v != null)) && (
-            <WrapItem>
-              <FilterChip active={false} onClick={clearTypes}>
-                <Text>{t('clear')}</Text>
-              </FilterChip>
-            </WrapItem>
-          )}
-          <WrapItem>
-            <Text fontSize="xs" color="gray.500">
-              {t('countOf', { shown: list.length, total })}
-            </Text>
-          </WrapItem>
         </Wrap>
       </VStack>
+      </FilterPanel>
 
       <Grid gap={3} templateColumns={{
         base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)',
@@ -230,7 +217,7 @@ export default function CharactersPage() {
             onCollect={() => setCollected(c.code, !collected[c.code])} />
         ))}
       </Grid>
-      {list.length === 0 && <Text fontSize="sm" color="gray.500">{t('noMatch')}</Text>}
+      {list.length === 0 && <EmptyState title={t('noMatch')} />}
     </VStack>
   );
 }

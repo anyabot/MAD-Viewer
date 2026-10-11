@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
+import { textMatch } from '@altterisk/game-hub/filters';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import {
-  Box, Center, Flex, HStack, Input, SimpleGrid, Spinner, Text, VStack,
+  Box, HStack, SimpleGrid, Text, VStack,
 } from '@chakra-ui/react';
+import { EmptyState, FilterPanel, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
 import { FilterChip, FilterRow } from '@/components/filters';
 import { ItemIcon } from '@/components/itemIcon';
 import { AmountField, Stepper } from '@/components/unitPlan';
@@ -35,6 +37,7 @@ export default function ItemsPage() {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<ItemCategory | null>(null);
   const [view, setView] = useState<View>('all');
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const inventory = useFarm((s) => s.inventory);
   const units = useFarm((s) => s.units);
   const setInventory = useFarm((s) => s.setInventory);
@@ -49,39 +52,36 @@ export default function ItemsPage() {
   const needs = useMemo(
     () => (growth && chars ? planNeeds(growth, chars, units).total : {}), [growth, chars, units]);
 
-  if (error) return <Text color="red.400">{error}</Text>;
-  if (!index) {
-    return (
-      <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-      </Center>
-    );
+  if (error || !index) {
+    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 
-  const needle = query.trim().toLowerCase();
   const rows = Object.entries(index.items)
     .filter(([ref, e]) => (!category || itemCategory(e) === category)
       && (view === 'all' || (inventory[ref] ?? 0) > 0 || (needs[ref] ?? 0) > 0)
-      && (!needle || Object.values(e.name).some((n) => n?.toLowerCase().includes(needle))))
+      && textMatch(query, Object.values(e.name)))
     .sort(([a, ea], [b, eb]) => CATEGORY_ORDER.indexOf(itemCategory(ea)) - CATEGORY_ORDER.indexOf(itemCategory(eb))
       || (eb.grade ?? 0) - (ea.grade ?? 0) || a.localeCompare(b, undefined, { numeric: true }));
 
   return (
     <VStack align="stretch" spacing={4}>
       <Head><title>MAD Viewer — {t('navItems')}</title></Head>
-      <Flex align="center" gap={3} wrap="wrap">
-        <Text fontSize="2xl" fontWeight="bold">{t('navItems')}</Text>
-        <Text fontSize="sm" color="gray.500">{t('countOf', { shown: rows.length, total: Object.keys(index.items).length })}</Text>
-        <Box flex="1" />
-      </Flex>
-      <Flex gap={3} wrap="wrap" align="center">
-        <Input size="sm" maxW="20rem" placeholder={t('search')} value={query}
-          onChange={(e) => setQuery(e.target.value)} />
-        <HStack spacing={1}>
-          <FilterChip active={view === 'all'} onClick={() => setView('all')}>{t('itemsAll')}</FilterChip>
-          <FilterChip active={view === 'planner'} onClick={() => setView('planner')}>{t('itemsPlanner')}</FilterChip>
-        </HStack>
-      </Flex>
+      <Text fontSize="2xl" fontWeight="bold">{t('navItems')}</Text>
+      <ListToolbar
+        search={<SearchBox value={query} onChange={setQuery} placeholder={t('search')} clearLabel={t('clearSearch')} />}
+        count={t('countOf', { shown: rows.length, total: Object.keys(index.items).length })}
+        activeFilters={(category ? 1 : 0) + (view !== 'all' ? 1 : 0)}
+        onClearFilters={() => { setCategory(null); setView('all'); }}
+        labels={{ clearFilters: t('clearFilters') }}
+        actions={
+          <HStack spacing={1}>
+            <FilterChip active={view === 'all'} onClick={() => setView('all')}>{t('itemsAll')}</FilterChip>
+            <FilterChip active={view === 'planner'} onClick={() => setView('planner')}>{t('itemsPlanner')}</FilterChip>
+          </HStack>
+        } />
+      <FilterPanel open={filtersOpen} onToggle={() => setFiltersOpen(!filtersOpen)}
+        activeCount={category ? 1 : 0}
+        labels={{ filters: t('filtersTitle'), show: t('filtersShow'), hide: t('filtersHide') }}>
       <FilterRow label={t('itemsCategory')}>
         {[
           <FilterChip key="all" active={!category} onClick={() => setCategory(null)}>{t('itemsAll')}</FilterChip>,
@@ -92,6 +92,8 @@ export default function ItemsPage() {
           )),
         ]}
       </FilterRow>
+      </FilterPanel>
+      {rows.length === 0 && <EmptyState title={t('noMatch')} />}
       {CATEGORY_ORDER.map((c) => {
         const section = rows.filter(([, e]) => itemCategory(e) === c);
         if (!section.length) return null;

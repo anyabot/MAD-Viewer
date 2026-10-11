@@ -1,11 +1,10 @@
 // Mirrored into `localStorage`, but the store starts empty so the exported HTML and the first client render agree.
+import { createPersisted } from '@altterisk/game-hub/persist';
 import { create } from 'zustand';
 import {
   applyPart, applySide, atLeastCurrent, emptyPlan,
   type GearPlan, type PlanPart, type UnitPlan, type UnitPlanPair,
 } from '@/lib/farm';
-
-const STORAGE_KEY = 'mad.farm';
 
 export type FarmState = {
   /** Material ref -> how many the player holds. */
@@ -56,18 +55,19 @@ const EMPTY: FarmState = {
   inventory: {}, units: {}, clears: {}, sweepOnly: false, hardStages: true,
 };
 
+const stored = createPersisted<FarmState>({
+  key: 'mad.farm', version: 1, empty: () => EMPTY,
+  sanitize: (raw) => parse((raw && typeof raw === 'object' ? raw : {}) as Partial<FarmState>),
+});
+
 function persist(state: FarmState): void {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({
-      inventory: state.inventory,
-      units: state.units,
-      clears: state.clears,
-      sweepOnly: state.sweepOnly,
-      hardStages: state.hardStages,
-    }));
-  } catch {
-    // private mode or a blocked store: the record just does not persist
-  }
+  stored.save({
+    inventory: state.inventory,
+    units: state.units,
+    clears: state.clears,
+    sweepOnly: state.sweepOnly,
+    hardStages: state.hardStages,
+  });
 }
 
 function save<T extends Partial<FarmState>>(state: FarmStore, patch: T): T {
@@ -242,23 +242,5 @@ export function importFarm(doc: unknown): void {
 }
 
 export function restoreFarm(): void {
-  let saved: string | null = null;
-  try {
-    saved = window.localStorage.getItem(STORAGE_KEY);
-  } catch {
-    useFarm.setState({ ready: true });
-    return;
-  }
-  if (!saved) {
-    useFarm.setState({ ready: true });
-    return;
-  }
-  try {
-    useFarm.setState({
-      ...parse(JSON.parse(saved) as Partial<FarmState>),
-      ready: true,
-    });
-  } catch {
-    useFarm.setState({ ready: true });
-  }
+  useFarm.setState({ ...stored.load(), ready: true });
 }

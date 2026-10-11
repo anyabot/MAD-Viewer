@@ -4,7 +4,7 @@ import {
   ModalOverlay, SimpleGrid, Text, VStack,
 } from '@chakra-ui/react';
 import { ItemIcon } from '@/components/itemIcon';
-import { Panel } from '@/components/skillKit';
+import { Panel } from '@altterisk/game-hub';
 import { AmountField, Stepper } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';

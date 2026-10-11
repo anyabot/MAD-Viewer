@@ -7,7 +7,7 @@ import {
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { itemHref } from '@/lib/items';
-import { Panel } from '@/components/skillKit';
+import { Panel } from '@altterisk/game-hub';
 import { MaterialNeeds } from '@/components/materialNeeds';
 import { AmountField, PlanGrid, Stepper, type PlanDraft } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';

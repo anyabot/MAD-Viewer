@@ -2,13 +2,14 @@
 // runtime, so a build-time path list would need regenerating per character.
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
+import { createPersisted } from '@altterisk/game-hub/persist';
 import NextLink from 'next/link';
 import {
   Badge, Box, Center, Divider, Flex, Grid, HStack, Popover, PopoverArrow, PopoverBody,
-  PopoverContent, PopoverTrigger, Portal, SimpleGrid, Slider, SliderFilledTrack,
-  SliderThumb, SliderTrack, Spinner, Tab, TabList, TabPanel, TabPanels, Tabs, Text,
+  PopoverContent, PopoverTrigger, Portal, SimpleGrid, Text,
   VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
+import { nextRouterAdapter } from '@altterisk/game-hub/filters';
 import SkinViewer from '@/components/skinViewer';
 import CollectionEditor from '@/components/collectionEditor';
 import SdViewer from '@/components/sdViewer';
@@ -17,7 +18,10 @@ import { STORE_META } from '@/components/skinViewer/chrome';
 import type { StoreKey } from '@/components/skinViewer/types';
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import { ShareButton } from '@/components/shareButton';
-import { GameText, Panel, Rotation, Skills } from '@/components/skillKit';
+import { GameText, Rotation, Skills } from '@/components/skillKit';
+import {
+  EmptyState, LevelControl, LoadState, PageHeader, Panel, TabPanel, UrlTabs, tabParam,
+} from '@altterisk/game-hub';
 import InfusionTree, { bonusText, infusionLabel } from '@/components/infusionTree';
 import { characterIcon, resolveIcon, skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
@@ -83,26 +87,15 @@ export default function CharacterPage() {
     if (current && !current.stores.includes(store)) setStore(current.stores[0] ?? 'onestore');
   }, [current, store, sharedStore]);
 
-  if (error) return <Text color="red.400">{error}</Text>;
-  if (!chars || !router.isReady) {
-    return (
-      <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-      </Center>
-    );
+  if (error || !chars || !router.isReady) {
+    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 
   const entry: CharacterEntry | null = code ? chars.characters[code] ?? null : null;
   if (!entry) {
     return (
-      <VStack align="start" spacing={3} py={10}>
-        <Text color="gray.400">
-          {code ? t('noCharacterData', { code }) : t('noCharacterSelected')}
-        </Text>
-        <Text as={NextLink} href="/characters" color="yellow.300" fontSize="sm">
-          {t('backToCharacters')}
-        </Text>
-      </VStack>
+      <EmptyState title={code ? t('noCharacterData', { code }) : t('noCharacterSelected')}
+        action={<Text as={NextLink} href="/characters" color="yellow.300" fontSize="sm">{t('backToCharacters')}</Text>} />
     );
   }
 
@@ -169,7 +162,7 @@ export default function CharacterPage() {
     tabs.push({
       key: 'stats',
       label: t('tabStats'),
-      panel: <StatCalculator entry={entry} data={chars} icons={icons} />,
+      panel: <StatCalculator key={entry.code} entry={entry} data={chars} icons={icons} />,
     });
   }
 
@@ -189,8 +182,8 @@ export default function CharacterPage() {
     });
   }
 
-  if (mine.length === 0 && entry.skinsLockedUntil) {
-    tabs.push({
+  if (mine.length === 0) {
+    if (entry.skinsLockedUntil) tabs.push({
       key: 'skins',
       label: t('tabSkins'),
       panel: (
@@ -201,9 +194,7 @@ export default function CharacterPage() {
         </Panel>
       ),
     });
-  }
-
-  if (mine.length > 0) {
+  } else {
     tabs.push({
       key: 'skins',
       label: t('tabSkins'),
@@ -251,27 +242,30 @@ export default function CharacterPage() {
     });
   }
 
+  const tabItems = tabs.map(({ key, label, count }) => ({ id: key, label, count }));
+  const [tab, setTab] = tabParam(nextRouterAdapter(router), tabItems);
+
   return (
     <VStack align="stretch" spacing={4}>
-      <Flex align="baseline" gap={3} wrap="wrap">
-        <Text as={NextLink} href="/characters" fontSize="sm" color="gray.500"
-          _hover={{ color: 'gray.200' }}>{t('backToCharacters')}</Text>
-        <Text fontSize="2xl" fontWeight="bold">{characterName(entry, lang)}</Text>
-        {characterSubName(entry, lang) && (
-          <Text fontSize="md" color="gray.500">{characterSubName(entry, lang)}</Text>
+      <Text as={NextLink} href="/characters" fontSize="sm" color="gray.500" alignSelf="start"
+        _hover={{ color: 'gray.200' }}>{t('backToCharacters')}</Text>
+      <PageHeader title={characterName(entry, lang)} id={entry.code}
+        subtitle={(characterSubName(entry, lang) || altNameEn(entry)) && (
+          <HStack spacing={3} wrap="wrap">
+            {characterSubName(entry, lang) && <Text color="gray.500">{characterSubName(entry, lang)}</Text>}
+            {altNameEn(entry) && <Text fontSize="sm" color="gray.600">{altNameEn(entry)}</Text>}
+          </HStack>
         )}
-        {altNameEn(entry) && (
-          <Text fontSize="sm" color="gray.600">{altNameEn(entry)}</Text>
-        )}
-        <Text fontFamily="mono" fontSize="sm" color="gray.500">{entry.code}</Text>
-        {roster && <Badge colorScheme={roster.scheme}>{roster.label}</Badge>}
-        {/* a story-only character is named by the scripts, through this id */}
-        {entry.actorId && (
-          <Text fontFamily="mono" fontSize="xs" color="gray.500">{entry.actorId}</Text>
-        )}
-        <Box flex="1" />
-        <ShareButton query={{ code: entry.code }} />
-      </Flex>
+        badges={
+          <>
+            {roster && <Badge colorScheme={roster.scheme}>{roster.label}</Badge>}
+            {/* a story-only character is named by the scripts, through this id */}
+            {entry.actorId && (
+              <Text fontFamily="mono" fontSize="xs" color="gray.500">{entry.actorId}</Text>
+            )}
+          </>
+        }
+        actions={<ShareButton query={{ code: entry.code }} />} />
 
       {isPlayable(entry) && growth && (
         <CollectionEditor entry={entry} data={chars} growth={growth} icons={icons} />
@@ -280,26 +274,12 @@ export default function CharacterPage() {
       {tabs.length === 1 ? (
         <Box pt={1}>{tabs[0].panel}</Box>
       ) : (
-        <Tabs variant="line" colorScheme="yellow" isLazy>
-          <TabList borderColor="whiteAlpha.200" overflowX="auto">
-            {tabs.map((tab) => (
-              <Tab key={tab.key} fontSize="sm" whiteSpace="nowrap">
-                <HStack spacing={2}>
-                  <Text>{tab.label}</Text>
-                  {tab.count != null && (
-                    <Badge fontSize="0.6rem" colorScheme="gray">{tab.count}</Badge>
-                  )}
-                </HStack>
-              </Tab>
-            ))}
-          </TabList>
-
-          <TabPanels>
-            {tabs.map((tab) => (
-              <TabPanel key={tab.key} px={0} pt={4}>{tab.panel}</TabPanel>
-            ))}
-          </TabPanels>
-        </Tabs>
+        <>
+          <UrlTabs tabs={tabItems} active={tab} onChange={setTab} label={t('characterSections')} idBase="char" />
+          {tabs.filter((x) => x.key === tab).map((x) => (
+            <TabPanel key={x.key} tab={x.key} idBase="char">{x.panel}</TabPanel>
+          ))}
+        </>
       )}
     </VStack>
   );
@@ -572,25 +552,19 @@ function DateVenues({ entry, data, icons }: {
   );
 }
 
-// The value sits on the label row so the control stays one line high on a phone.
-function Dial({ label, value, min, max, note, onChange }: {
-  label: string; value: number; min: number; max: number;
-  note?: string | null; onChange: (v: number) => void;
-}) {
+// The column is too narrow for label, slider and number on one row.
+const STACKED_LEVELS = {
+  '.hub-level': { gridTemplateColumns: '1fr 72px' },
+  '.hub-level__label': { gridColumn: '1 / -1' },
+};
+
+function DialLabel({ label, note }: { label: string; note?: string | null }) {
   return (
-    <Box>
-      <Flex align="baseline" gap={2} mb={1} wrap="wrap">
-        <Text fontSize="xs" color="gray.500" textTransform="uppercase"
-          letterSpacing="wide">{label}</Text>
-        <Text fontSize="sm" fontWeight="bold" color="yellow.200">{value}</Text>
-        {note && <Text fontSize="xs" color="gray.600">{note}</Text>}
-      </Flex>
-      <Slider value={value} min={min} max={max} step={1} onChange={onChange}
-        focusThumbOnChange={false}>
-        <SliderTrack bg="whiteAlpha.200"><SliderFilledTrack bg="yellow.400" /></SliderTrack>
-        <SliderThumb boxSize={3.5} />
-      </Slider>
-    </Box>
+    <Flex as="span" align="baseline" gap={2} wrap="wrap" whiteSpace="normal">
+      <Text as="span" fontSize="xs" color="gray.500" textTransform="uppercase"
+        letterSpacing="wide">{label}</Text>
+      {note && <Text as="span" fontSize="xs" color="gray.600">{note}</Text>}
+    </Flex>
   );
 }
 
@@ -661,13 +635,35 @@ function GearSlot({ slot, icons, tier, level, onChange }: {
       </Wrap>
       {current && (
         <Box mt={1}>
-          <Dial label={t('dialLevel')} value={Math.min(level, cap)} min={1} max={cap}
-            note={t('dialMax', { n: cap })} onChange={(next) => onChange(tier, next)} />
+          <LevelControl label={<DialLabel label={t('dialLevel')} note={t('dialMax', { n: cap })} />}
+            value={Math.min(level, cap)} min={1} max={cap} onChange={(next) => onChange(tier, next)} />
         </Box>
       )}
     </Box>
   );
 }
+
+function PresetButtons({ onMax, onMin, max, min }: {
+  onMax: () => void; onMin: () => void; max: string; min: string;
+}) {
+  return (
+    <HStack spacing={1}>
+      {[{ text: max, onClick: onMax }, { text: min, onClick: onMin }].map((b) => (
+        <Box key={b.text} as="button" onClick={b.onClick} px={2} py={0.5} fontSize="xs"
+          borderWidth="1px" borderRadius="md" borderColor="whiteAlpha.200" color="gray.400"
+          _hover={{ borderColor: 'yellow.400', color: 'yellow.200' }}>
+          {b.text}
+        </Box>
+      ))}
+    </HStack>
+  );
+}
+
+type Preset = 'max' | 'min';
+const storedPreset = createPersisted<Preset | null>({
+  key: 'mad.statPreset', version: 1, empty: () => null,
+  sanitize: (raw) => (raw === 'max' || raw === 'min' ? raw : null),
+});
 
 // The terms are shown apart because each has its own source.
 function StatCalculator({ entry, data, icons }: {
@@ -678,12 +674,38 @@ function StatCalculator({ entry, data, icons }: {
   const caps = data.statCaps;
   const grades = statGrades(entry, data);
   const slots = equipmentSlotsOf(entry, data.equipment);
-  const [star, setStar] = useState<number | null>(null);
-  const [level, setLevel] = useState(caps.level);
+  const [initial] = useState(storedPreset.load);
+  const unitFor = (preset: Preset) => (preset === 'max'
+    ? { star: grades[grades.length - 1] ?? null, level: caps.level, love: caps.love }
+    : { star: grades[0] ?? null, level: 1, love: 1 });
+  const gearFor = (preset: Preset) => Object.fromEntries(preset === 'max'
+    ? slots.flatMap((slot) => {
+      const top = (slot.tiers ?? []).reduce<NonNullable<typeof slot.tiers>[number] | null>(
+        (best, row) => (!best || row.tier > best.tier ? row : best), null);
+      return top ? [[slot.type, { tier: top.tier, level: top.maxLevel }]] : [];
+    })
+    : []) as Record<number, { tier: number; level: number }>;
+  const infuseFor = (preset: Preset): Record<string, number> => (preset === 'max'
+    ? Object.fromEntries(INFUSION_PATHS.map((path) => [path, infusionNodes(entry, path).length]))
+    : {});
+  const [star, setStar] = useState<number | null>(initial ? unitFor(initial).star : null);
+  const [level, setLevel] = useState(initial ? unitFor(initial).level : caps.level);
   // every character starts at affection rank 1
-  const [love, setLove] = useState(1);
-  const [gear, setGear] = useState<Record<number, { tier: number; level: number }>>({});
-  const [infuse, setInfuse] = useState<Record<string, number>>({});
+  const [love, setLove] = useState(initial ? unitFor(initial).love : 1);
+  const [gear, setGear] = useState(() => (initial ? gearFor(initial) : {}));
+  const [infuse, setInfuse] = useState(() => (initial ? infuseFor(initial) : {}));
+  const applyUnit = (preset: Preset) => {
+    const unit = unitFor(preset);
+    setStar(unit.star);
+    setLevel(unit.level);
+    setLove(unit.love);
+  };
+  const applyAll = (preset: Preset) => {
+    applyUnit(preset);
+    setGear(gearFor(preset));
+    setInfuse(infuseFor(preset));
+    storedPreset.save(preset);
+  };
 
   const shown = star ?? grades[grades.length - 1] ?? entry.defaultStar ?? 1;
   const equipment: EquipInput[] = slots.flatMap((slot) => {
@@ -700,25 +722,35 @@ function StatCalculator({ entry, data, icons }: {
   const infused = activeInfusion(entry, infuse, shown);
 
   return (
-    <Grid templateColumns={{ base: '1fr', lg: 'minmax(0, 320px) minmax(0, 1fr)' }}
+    <Grid templateColumns={{ base: 'minmax(0, 1fr)', lg: 'minmax(0, 320px) minmax(0, 1fr)' }}
       gap={4} alignItems="start">
-      <VStack align="stretch" spacing={3}>
-        <Panel title={t('panelUnit')}>
+      <VStack align="stretch" spacing={3} sx={STACKED_LEVELS}>
+        <Flex justify="flex-end">
+          <PresetButtons max={t('presetMaxAll')} min={t('presetMinAll')}
+            onMax={() => applyAll('max')} onMin={() => applyAll('min')} />
+        </Flex>
+        <Panel title={t('panelUnit')} actions={
+          <PresetButtons max={t('presetMax')} min={t('presetMin')}
+            onMax={() => applyUnit('max')} onMin={() => applyUnit('min')} />
+        }>
           <VStack align="stretch" spacing={3}>
             {grades.length > 1 && (
               <Choices label={t('dialStar')} value={shown} onChange={setStar}
                 options={grades.map((g) => ({ value: g, text: `${g}★` }))} />
             )}
-            <Dial label={t('dialLevel')} value={level} min={1} max={caps.level}
+            <LevelControl label={<DialLabel label={t('dialLevel')} />} value={level} min={1} max={caps.level}
               onChange={setLevel} />
-            <Dial label={t('dialAffection')} value={love} min={1} max={caps.love}
-              note={dataText(lang, data.loveTitles[love - 1]?.name,
-                data.loveTitles[love - 1]?.en)} onChange={setLove} />
+            <LevelControl label={<DialLabel label={t('dialAffection')} note={dataText(lang,
+              data.loveTitles[love - 1]?.name, data.loveTitles[love - 1]?.en)} />}
+              value={love} min={1} max={caps.love} onChange={setLove} />
           </VStack>
         </Panel>
 
         {slots.length > 0 && (
-          <Panel title={t('panelEquipment')}>
+          <Panel title={t('panelEquipment')} actions={
+            <PresetButtons max={t('presetMax')} min={t('presetMin')}
+              onMax={() => setGear(gearFor('max'))} onMin={() => setGear(gearFor('min'))} />
+          }>
             <VStack align="stretch" spacing={3}>
               {slots.map((slot) => {
                 const set = gear[slot.type] ?? { tier: 0, level: 1 };
@@ -735,7 +767,10 @@ function StatCalculator({ entry, data, icons }: {
         )}
 
         {hasInfusion && (
-          <Panel title={infusionLabel(data, 'title', lang)}>
+          <Panel title={infusionLabel(data, 'title', lang)} actions={
+            <PresetButtons max={t('presetMax')} min={t('presetMin')}
+              onMax={() => setInfuse(infuseFor('max'))} onMin={() => setInfuse(infuseFor('min'))} />
+          }>
             <VStack align="stretch" spacing={3}>
               {INFUSION_PATHS.map((path) => {
                 const nodes = infusionNodes(entry, path);
@@ -744,10 +779,10 @@ function StatCalculator({ entry, data, icons }: {
                 const locked = nodes[reach];
                 const name = data.infusion?.paths[path];
                 return (
-                  <Dial key={path} label={dataText(lang, name?.name, name?.nameEn) || path}
-                    value={value} min={0} max={Math.max(reach, 0)}
+                  <LevelControl key={path} label={<DialLabel label={dataText(lang, name?.name, name?.nameEn) || path}
                     note={locked ? infusionLabel(data, 'unlock', lang)
-                      .replace('{0}', String(locked.grade)) : `/ ${nodes.length}`}
+                      .replace('{0}', String(locked.grade)) : `/ ${nodes.length}`} />}
+                    value={value} min={0} max={Math.max(reach, 0)}
                     onChange={(next) => setInfuse((prev) => ({ ...prev, [path]: next }))} />
                 );
               })}

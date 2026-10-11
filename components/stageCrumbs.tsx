@@ -1,52 +1,18 @@
-import NextLink from 'next/link';
-import { Text, Wrap, WrapItem } from '@chakra-ui/react';
+import { Breadcrumbs, type Crumb } from '@altterisk/game-hub';
 import { groupLabel, modeLabel } from '@/lib/stages';
 import { useT, type Lang } from '@/lib/i18n';
+import { nextLink } from '@/lib/hubLink';
 import type { StageData, StageGroup } from '@/lib/data';
 
 export function StageCrumbs({ data, mode, group, leaf, lang }: {
   data: StageData; mode: string; group?: StageGroup;
-  /** The stage's own name; the group becomes a link once it is given. */
   leaf?: string;
   lang: Lang;
 }) {
   const t = useT();
   const groupHref = `/stages?group=${encodeURIComponent(group?.key ?? '')}`;
-  return (
-    <Wrap spacing={2} align="center" fontSize="sm">
-      <WrapItem>
-        <Text as={NextLink} href="/stages" color="yellow.300">{t('stageAllModes')}</Text>
-      </WrapItem>
-      <WrapItem><Text color="gray.600">/</Text></WrapItem>
-      <WrapItem>
-        {group ? (
-          <Text as={NextLink} href={`/stages?mode=${mode}`} color="yellow.300">
-            {modeLabel(data, mode, lang)}
-          </Text>
-        ) : (
-          <Text color="gray.400">{modeLabel(data, mode, lang)}</Text>
-        )}
-      </WrapItem>
-      {group && (
-        <>
-          <WrapItem><Text color="gray.600">/</Text></WrapItem>
-          <WrapItem>
-            {leaf ? (
-              <Text as={NextLink} href={groupHref} color="yellow.300">
-                {groupLabel(data, group, lang)}
-              </Text>
-            ) : (
-              <Text color="gray.400">{groupLabel(data, group, lang)}</Text>
-            )}
-          </WrapItem>
-        </>
-      )}
-      {leaf && (
-        <>
-          <WrapItem><Text color="gray.600">/</Text></WrapItem>
-          <WrapItem><Text color="gray.400">{leaf}</Text></WrapItem>
-        </>
-      )}
-    </Wrap>
-  );
+  const items: Crumb[] = [{ label: t('stageAllModes'), href: '/stages' }, { label: modeLabel(data, mode, lang), href: group ? `/stages?mode=${mode}` : undefined }];
+  if (group) items.push({ label: groupLabel(data, group, lang), href: leaf ? groupHref : undefined });
+  if (leaf) items.push({ label: leaf });
+  return <Breadcrumbs items={items} renderLink={nextLink} label={t('breadcrumb')} />;
 }

@@ -1,30 +1,31 @@
+import { downloadText, fileText, parseFile } from '@altterisk/game-hub/persist';
 import { collectionRecord, importCollection } from '@/lib/collectionStore';
 import { farmRecord, importFarm } from '@/lib/farmStore';
 
 const FORMAT = 'mad.plan';
 const VERSION = 2;
 
-export function planFileName(): string {
+function planFileName(): string {
   return `mad-plan-${new Date().toISOString().slice(0, 10)}.json`;
 }
 
-export function exportPlan(): string {
-  return JSON.stringify({
-    format: FORMAT, version: VERSION,
-    farm: farmRecord(), collection: collectionRecord(),
-  }, null, 2);
+function exportPlan(): string {
+  return fileText(FORMAT, VERSION, { farm: farmRecord(), collection: collectionRecord() });
 }
 
-/** Both halves are sanitised by their own store, so a partial file still loads. */
+export function downloadPlan(): void {
+  downloadText(exportPlan(), planFileName());
+}
+
+// Both halves are sanitised by their own store, so a partial file still loads.
 export function importPlan(text: string): boolean {
-  let doc: { format?: string; farm?: unknown; collection?: unknown };
+  let data: Record<string, unknown>;
   try {
-    doc = JSON.parse(text);
+    ({ data } = parseFile(text, FORMAT, VERSION));
   } catch {
     return false;
   }
-  if (!doc || typeof doc !== 'object' || doc.format !== FORMAT) return false;
-  importFarm(doc.farm);
-  importCollection(doc.collection);
+  importFarm(data.farm);
+  importCollection(data.collection);
   return true;
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   Badge, Box, Center, Flex, IconButton, SimpleGrid, Spinner, Text, VStack,
 } from '@chakra-ui/react';
-import { Panel } from '@/components/skillKit';
+import { Panel } from '@altterisk/game-hub';
 import { loadVoice, loadVoiceLines, type VoiceLine } from '@/lib/data';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { pick, useLang, useT, type Localized } from '@/lib/i18n';

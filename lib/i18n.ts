@@ -1,6 +1,7 @@
 // UI language. The game's own master data ships Korean for names, types and
 // stats, so a label is localised by reading the other column where one exists
 // and from a table here where the game has none.
+import { createPersisted } from '@altterisk/game-hub/persist';
 import { create } from 'zustand';
 import { useGameLangStore, useTextTables, type GameLang } from '@/lib/gameLangStore';
 
@@ -13,7 +14,9 @@ export const LANGS: { value: Lang; label: string }[] = [
   { value: 'ko', label: '한국어' },
 ];
 
-const STORAGE_KEY = 'mad.lang';
+const storedLang = createPersisted<Lang>({
+  key: 'mad.lang', version: 1, empty: () => 'en', sanitize: (raw) => (raw === 'ko' ? 'ko' : 'en'),
+});
 
 type LangStore = { lang: Lang; setLang: (lang: Lang) => void };
 
@@ -22,11 +25,7 @@ type LangStore = { lang: Lang; setLang: (lang: Lang) => void };
 export const useLangStore = create<LangStore>((set) => ({
   lang: 'en',
   setLang: (lang) => {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, lang);
-    } catch {
-      // private mode or a blocked store: the choice just does not persist
-    }
+    storedLang.save(lang);
     set({ lang });
   },
 }));
@@ -44,13 +43,7 @@ function gameLangOf(lang: Lang): GameLang {
 }
 
 export function restoreLang(): void {
-  let saved: string | null = null;
-  try {
-    saved = window.localStorage.getItem(STORAGE_KEY);
-  } catch {
-    return;
-  }
-  if (saved === 'en' || saved === 'ko') useLangStore.setState({ lang: saved });
+  useLangStore.setState({ lang: storedLang.load() });
 }
 
 export function pick(value: Localized | null | undefined, lang: Lang): string {
@@ -179,6 +172,12 @@ export const UI = {
   noMatch: { en: 'no match', ko: '결과 없음' },
   search: { en: 'search…', ko: '검색…' },
   clear: { en: 'Clear', ko: '초기화' },
+  close: { en: 'Close', ko: '닫기' },
+  clearSearch: { en: 'Clear search', ko: '검색어 지우기' },
+  clearFilters: { en: 'Clear filters', ko: '필터 초기화' },
+  filtersTitle: { en: 'Filters', ko: '필터' },
+  filtersShow: { en: 'Show filters', ko: '필터 펼치기' },
+  filtersHide: { en: 'Hide filters', ko: '필터 접기' },
   includeNpcs: { en: 'Include NPCs', ko: 'NPC 포함' },
   includeUnreleased: { en: 'Include unreleased', ko: '미출시 포함' },
   countOf: { en: '{shown} of {total}', ko: '{total}개 중 {shown}개' },
@@ -253,6 +252,10 @@ export const UI = {
   dialStar: { en: 'Star', ko: '성급' },
   dialMax: { en: 'max {n}', ko: '최대 {n}' },
   gearEmpty: { en: 'Empty', ko: '없음' },
+  presetMax: { en: 'Max', ko: '최대' },
+  presetMin: { en: 'Min', ko: '최소' },
+  presetMaxAll: { en: 'Max all', ko: '전체 최대' },
+  presetMinAll: { en: 'Min all', ko: '전체 최소' },
   gearTier: { en: 'Tier {n}', ko: '{n}단계' },
   statsNote: { en: '{star}★ · Lv {level} · ♥ {love}', ko: '{star}★ · 레벨 {level} · ♥ {love}' },
   headStat: { en: 'Stat', ko: '스탯' },
@@ -411,6 +414,9 @@ export const UI = {
   stageMode: { en: 'Mode', ko: '모드' },
   stageZone: { en: 'Zone', ko: '존' },
   stageWave: { en: 'Wave {n}', ko: '웨이브 {n}' },
+  stageWaveOf: { en: 'Wave {n} / {total}', ko: '웨이브 {n} / {total}' },
+  stageWavePrev: { en: 'Previous wave', ko: '이전 웨이브' },
+  stageWaveNext: { en: 'Next wave', ko: '다음 웨이브' },
   stageWaves: { en: '{n} waves', ko: '웨이브 {n}개' },
   stageEnemies: { en: '{n} enemies', ko: '적 {n}명' },
   stageRecommend: { en: 'Recommended Lv {level}', ko: '권장 레벨 {level}' },
@@ -535,6 +541,8 @@ export const UI = {
   stageUpcoming: { en: 'Upcoming', ko: '예정' },
   stageAllModes: { en: 'All modes', ko: '전체 모드' },
   stageGroupCount: { en: '{n} lists', ko: '{n}개 목록' },
+  breadcrumb: { en: 'Breadcrumb', ko: '탐색 경로' },
+  characterSections: { en: 'Character sections', ko: '캐릭터 항목' },
 
   rankUnowned: { en: 'Not owned', ko: '미보유' },
   rankStar: { en: 'Star', ko: '성급' },

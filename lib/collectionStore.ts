@@ -1,6 +1,5 @@
+import { createPersisted } from '@altterisk/game-hub/persist';
 import { create } from 'zustand';
-
-const STORAGE_KEY = 'mad.collection';
 
 type CollectionState = {
   collected: Record<string, true>;
@@ -16,12 +15,18 @@ type CollectionStore = CollectionState & {
 
 const EMPTY: CollectionState = { collected: {}, favorites: {} };
 
+function sanitize(raw: unknown): CollectionState {
+  const doc = (raw && typeof raw === 'object' ? raw : {}) as Partial<CollectionState>;
+  return { collected: flags(doc.collected), favorites: flags(doc.favorites) };
+}
+
+const stored = createPersisted<CollectionState>({
+  key: 'mad.collection', version: 1, empty: () => EMPTY, sanitize,
+});
+
+// A blocked store leaves the collection available for this session.
 function persist(state: CollectionState): void {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch {
-    // A blocked store leaves the collection available for this session.
-  }
+  stored.save(state);
 }
 
 function withFlag(flags: Record<string, true>, code: string, value: boolean): Record<string, true> {
@@ -70,32 +75,11 @@ export function collectionRecord(): CollectionState {
 
 /** Replaces the whole record, as a restore would, and persists it. */
 export function importCollection(doc: unknown): void {
-  const raw = (doc ?? {}) as Partial<CollectionState>;
-  const next = { collected: flags(raw.collected), favorites: flags(raw.favorites) };
+  const next = sanitize(doc);
   persist(next);
   useCollection.setState({ ...next, ready: true });
 }
 
 export function restoreCollection(): void {
-  let saved: string | null = null;
-  try {
-    saved = window.localStorage.getItem(STORAGE_KEY);
-  } catch {
-    useCollection.setState({ ready: true });
-    return;
-  }
-  if (!saved) {
-    useCollection.setState({ ready: true });
-    return;
-  }
-  try {
-    const doc = JSON.parse(saved) as Partial<CollectionState>;
-    useCollection.setState({
-      collected: flags(doc.collected),
-      favorites: flags(doc.favorites),
-      ready: true,
-    });
-  } catch {
-    useCollection.setState({ ready: true });
-  }
+  useCollection.setState({ ...stored.load(), ready: true });
 }

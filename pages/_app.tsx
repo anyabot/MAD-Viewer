@@ -5,6 +5,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { accentScale, getGame } from '@altterisk/game-hub';
 import { hubChakraTheme } from '@altterisk/game-hub/chakra';
 import '@altterisk/game-hub/hub.css';
+import '@altterisk/game-hub/components.css';
 import Layout from '@/components/Layout';
 import { dataText, restoreLang } from '@/lib/i18n';
 import { setTextResolver } from '@/lib/characters';
