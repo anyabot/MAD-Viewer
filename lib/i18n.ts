@@ -161,6 +161,17 @@ export const UI = {
   storyNoText: { en: 'No dialogue in this scene.', ko: '이 장면에는 대사가 없습니다.' },
   storyMissing: { en: 'This chapter has no text in that language.', ko: '이 언어의 텍스트가 없습니다.' },
   storyPlayVoice: { en: 'Play voice', ko: '음성 재생' },
+  storyPlayer: { en: 'Player', ko: '플레이어' },
+
+  bondLevel: { en: 'Affection Lv. {n}', ko: '호감도 Lv.{n}' },
+  bondMessages: { en: '{n} messages', ko: '메시지 {n}개' },
+  bondUnknown: { en: 'Unknown', ko: '알 수 없음' },
+  bondReplies: { en: 'Reply options', ko: '답장 선택지' },
+  bondRead: { en: 'Read', ko: '읽기' },
+  bondHide: { en: 'Hide', ko: '접기' },
+  bondOpenScene: { en: 'Open in viewer', ko: '뷰어에서 보기' },
+  bondNoText: { en: 'This chat has no text in the game files yet.', ko: '게임 파일에 이 대화의 텍스트가 아직 없습니다.' },
+  bondMissing: { en: 'MochiTalk failed to load.', ko: '모찌톡을 불러오지 못했습니다.' },
 
   hubSwitchGame: { en: 'Switch game', ko: '게임 전환' },
   hubAllGames: { en: 'All games', ko: '모든 게임' },

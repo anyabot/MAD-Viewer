@@ -263,7 +263,7 @@ function amountText(amount?: number[]): string {
   return b ? `${a}~${b}` : a;
 }
 
-function RewardSlot({ reward, refs, icons, gameLang }: {
+export function RewardSlot({ reward, refs, icons, gameLang }: {
   reward: EventReward; refs: EventIndex['refs']; icons: IconManifest | null; gameLang: GameLang;
 }) {
   const t = useT();

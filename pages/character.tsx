@@ -14,6 +14,7 @@ import SkinViewer from '@/components/skinViewer';
 import CollectionEditor from '@/components/collectionEditor';
 import SdViewer from '@/components/sdViewer';
 import { VoiceLines } from '@/components/voiceLines';
+import { BondChats } from '@/components/bondChats';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { StoreKey } from '@/components/skinViewer/types';
 import { GameIcon, StarRating } from '@/components/gameIcon';
@@ -39,8 +40,8 @@ import {
 } from '@/lib/characters';
 import { dataText, text, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
-  KIND_COLOR, KIND_LABEL, loadCharacters, loadGrowth, loadIcons, loadSdIndex, loadSkinList,
-  type CharacterData, type CharacterEntry, type IconManifest,
+  KIND_COLOR, KIND_LABEL, loadBondIndex, loadCharacters, loadGrowth, loadIcons, loadSdIndex, loadSkinList,
+  type BondIndex, type CharacterData, type CharacterEntry, type IconManifest,
   type GrowthData, type SdIndex, type SkinListEntry,
 } from '@/lib/data';
 
@@ -60,6 +61,7 @@ export default function CharacterPage() {
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [sd, setSd] = useState<SdIndex | null>(null);
   const [growth, setGrowth] = useState<GrowthData | null>(null);
+  const [bond, setBond] = useState<BondIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
   const [store, setStore] = useState<StoreKey>('onestore');
@@ -70,6 +72,7 @@ export default function CharacterPage() {
     loadIcons().then(setIcons).catch(() => setIcons(null));
     loadSdIndex().then(setSd).catch(() => setSd(null));
     loadGrowth().then(setGrowth).catch(() => setGrowth(null));
+    loadBondIndex().then(setBond).catch(() => setBond(null));
   }, []);
 
   const mine = useMemo(
@@ -171,6 +174,19 @@ export default function CharacterPage() {
       key: 'voice',
       label: t('tabVoice'),
       panel: <VoiceLines code={entry.code} />,
+    });
+  }
+
+  const bondChats = bond?.characters[entry.code];
+  if (bond && bondChats?.length) {
+    tabs.push({
+      key: 'bond',
+      label: dataText(lang, '모찌톡', 'MochiTalk'),
+      count: bondChats.length,
+      panel: (
+        <BondChats code={entry.code} chats={bondChats} refs={bond.refs} chars={chars} icons={icons}
+          skinKeys={new Set(mine.map((s) => s.key))} />
+      ),
     });
   }
 
