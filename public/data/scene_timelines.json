@@ -92,7 +92,8 @@
               "Text": ""
             },
             "text": "후후후... 놀란 표정.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -113,7 +114,8 @@
               "Text": ""
             },
             "text": "그래도 아까 네가 하려던 게 이런 거 아니었니?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -134,7 +136,8 @@
               "Text": ""
             },
             "text": "아니면... 더 한 걸 하고 싶었다든가? 후훗.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -155,7 +158,8 @@
               "Text": ""
             },
             "text": "그렇지만 이번엔 아쉽게 됐구나.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -176,7 +180,8 @@
               "Text": ""
             },
             "text": "지금의 넌 절대 움직이면 안 되고...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -197,7 +202,8 @@
               "Text": ""
             },
             "text": "그저 가만히 보고만 있어야 해.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -218,7 +224,8 @@
               "Text": ""
             },
             "text": "물론 움직이고 싶어도 움직일 수 없겠지만.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -239,7 +246,8 @@
               "Text": ""
             },
             "text": "언제까지? 후후, 그건 비밀.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -260,7 +268,8 @@
               "Text": ""
             },
             "text": "네 얼굴을 이렇게 가까이서 보고 있으니...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -281,7 +290,8 @@
               "Text": ""
             },
             "text": "계속 이대로 있어도 좋을 것 같은데? 후후.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -302,7 +312,8 @@
               "Text": ""
             },
             "text": "너에게도 나쁜 얘기는 아니잖니?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -323,7 +334,8 @@
               "Text": ""
             },
             "text": "이렇게 가까이서, 나와 마주 보고 있으니까.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -344,7 +356,8 @@
               "Text": ""
             },
             "text": "으음... 그럼 우리, 여기서 좀 더 재밌는 걸 할까?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -365,7 +378,8 @@
               "Text": ""
             },
             "text": "후후, 에잇~",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_32"
           },
           {
             "class": "AffectionCommand",
@@ -386,7 +400,8 @@
               "Text": ""
             },
             "text": "어때, 마음에 들어? 아까부터 계속 보고 있었잖니.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_33"
           },
           {
             "class": "AffectionCommand",
@@ -407,7 +422,8 @@
               "Text": ""
             },
             "text": "...어머, 더는 한계인 모양이네. 그럼 시작해볼까? 후훗.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_34"
           },
           {
             "class": "AffectionCommand",
@@ -428,7 +444,8 @@
               "Text": ""
             },
             "text": "응? 그렇게 긴장하지 마~ 난 그냥 너랑 재미있게 놀고 싶을 뿐이니까.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_35"
           },
           {
             "class": "AffectionCommand",
@@ -449,7 +466,8 @@
               "Text": ""
             },
             "text": "이다음은, 어떡할래?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_45"
           },
           {
             "class": "HidePrinter",
@@ -547,7 +565,8 @@
               "Text": ""
             },
             "text": "후후후... 놀란 표정.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -568,7 +587,8 @@
               "Text": ""
             },
             "text": "그래도 아까 네가 하려던 게 이런 거 아니었니?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -589,7 +609,8 @@
               "Text": ""
             },
             "text": "아니면... 더 한 걸 하고 싶었다든가? 후훗.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -610,7 +631,8 @@
               "Text": ""
             },
             "text": "그렇지만 이번엔 아쉽게 됐구나.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -631,7 +653,8 @@
               "Text": ""
             },
             "text": "내 '부탁'이 통하지 않았던 건 이상하긴 하지만...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -652,7 +675,8 @@
               "Text": ""
             },
             "text": "뭐 됐나, 후훗. 옛날 이야긴 중요하지 않잖니?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -673,7 +697,8 @@
               "Text": ""
             },
             "text": "중요한 건 지금의 넌 꼼짝도 못 한다는 거고...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -694,7 +719,8 @@
               "Text": ""
             },
             "text": "후후, 그렇게 나한테 장난을 당하게 된다는 거지.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -715,7 +741,8 @@
               "Text": ""
             },
             "text": "전에 네가 했던 것의 복수야.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -736,7 +763,8 @@
               "Text": ""
             },
             "text": "짓궂었어. 그런 곳에 얼굴을 묻기나 하고.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -757,7 +785,8 @@
               "Text": ""
             },
             "text": "그러니, 이번에는 내가 재미있게 놀 차례지?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -778,7 +807,8 @@
               "Text": ""
             },
             "text": "후후, 싫다고 해도 안 돼.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -799,7 +829,8 @@
               "Text": ""
             },
             "text": "지금의 넌 절대 움직이면 안 되고...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -820,7 +851,8 @@
               "Text": ""
             },
             "text": "그저 가만히 보고만 있어야 해.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -841,7 +873,8 @@
               "Text": ""
             },
             "text": "물론 움직이고 싶어도 움직일 수 없겠지만.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -862,7 +895,8 @@
               "Text": ""
             },
             "text": "언제까지? 후후, 그건 비밀.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -883,7 +917,8 @@
               "Text": ""
             },
             "text": "네 얼굴을 이렇게 가까이서 보고 있으니...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -904,7 +939,8 @@
               "Text": ""
             },
             "text": "계속 이대로 있어도 좋을 것 같은데? 후후.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -925,7 +961,8 @@
               "Text": ""
             },
             "text": "너에게도 나쁜 얘기는 아니잖니?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -946,7 +983,8 @@
               "Text": ""
             },
             "text": "이렇게 가까이서, 나와 마주 보고 있으니까.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -967,7 +1005,8 @@
               "Text": ""
             },
             "text": "후후, 정확히 어딜 보고 있는지는 모르겠지만 말이야.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -988,7 +1027,8 @@
               "Text": ""
             },
             "text": "...응? 덮쳐질까 불안하지 않냐고?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -1009,7 +1049,8 @@
               "Text": ""
             },
             "text": "그러게... 어떡하면 좋지...?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -1030,7 +1071,8 @@
               "Text": ""
             },
             "text": "바로 눈앞에, 네가 그토록 바라던 상황이 펼쳐졌으니까.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -1051,7 +1093,8 @@
               "Text": ""
             },
             "text": "이런 자세라면, 언제든지 네 마음대로 할 수 있을 테고.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -1072,7 +1115,8 @@
               "Text": ""
             },
             "text": "더군다나 이렇게 가까운 거리...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -1093,7 +1137,8 @@
               "Text": ""
             },
             "text": "하지만 지금은 그래도 상관없잖니?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -1114,7 +1159,8 @@
               "Text": ""
             },
             "text": "너는 손가락 하나도 까딱할 수 없고.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -1135,7 +1181,8 @@
               "Text": ""
             },
             "text": "그냥 그렇게 보고만 있을 수밖에 없는 걸.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_29"
           },
           {
             "class": "AffectionCommand",
@@ -1156,7 +1203,8 @@
               "Text": ""
             },
             "text": "후훗... 의도치 않게 네 한계를 시험하게 되겠네.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -1177,7 +1225,8 @@
               "Text": ""
             },
             "text": "으음... 그럼 우리, 여기서 좀 더 재밌는 걸 할까?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -1198,7 +1247,8 @@
               "Text": ""
             },
             "text": "후후, 에잇~",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_32"
           },
           {
             "class": "AffectionCommand",
@@ -1219,7 +1269,8 @@
               "Text": ""
             },
             "text": "어때, 마음에 들어? 아까부터 계속 보고 있었잖니.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_33"
           },
           {
             "class": "AffectionCommand",
@@ -1240,7 +1291,8 @@
               "Text": ""
             },
             "text": "...어머, 더는 한계인 모양이네. 그럼 시작해볼까? 후훗.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_34"
           },
           {
             "class": "AffectionCommand",
@@ -1261,7 +1313,8 @@
               "Text": ""
             },
             "text": "응? 그렇게 긴장하지 마~ 난 그냥 너랑 재미있게 놀고 싶을 뿐이니까.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_35"
           },
           {
             "class": "AffectionCommand",
@@ -1282,7 +1335,8 @@
               "Text": ""
             },
             "text": "그럼... 응~ 이제 움직여도 좋아.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_36"
           },
           {
             "class": "AffectionCommand",
@@ -1303,7 +1357,8 @@
               "Text": ""
             },
             "text": "......후후, 왜~?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_37"
           },
           {
             "class": "AffectionCommand",
@@ -1324,7 +1379,8 @@
               "Text": ""
             },
             "text": "말했잖니, 그냥 장난을 칠 뿐이라고.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_38"
           },
           {
             "class": "AffectionCommand",
@@ -1345,7 +1401,8 @@
               "Text": ""
             },
             "text": "자아, 이제 너는 자유롭게 움직일 수 있고.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_39"
           },
           {
             "class": "AffectionCommand",
@@ -1366,7 +1423,8 @@
               "Text": ""
             },
             "text": "난 여전히 네 밑에 누워 있는 상태...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_40"
           },
           {
             "class": "AffectionCommand",
@@ -1387,7 +1445,8 @@
               "Text": ""
             },
             "text": "영업이 끝난 한밤중의 바에서.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_41"
           },
           {
             "class": "AffectionCommand",
@@ -1408,7 +1467,8 @@
               "Text": ""
             },
             "text": "여기 남은 건 달콤한 와인의 잔향뿐...",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_42"
           },
           {
             "class": "AffectionCommand",
@@ -1429,7 +1489,8 @@
               "Text": ""
             },
             "text": "지금이라면 아무도 보고 있지 않고, 듣고 있지 않아.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_43"
           },
           {
             "class": "AffectionCommand",
@@ -1450,7 +1511,8 @@
               "Text": ""
             },
             "text": "후훗, 그러니까... 네가 정하렴.",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_44"
           },
           {
             "class": "AffectionCommand",
@@ -1471,7 +1533,8 @@
               "Text": ""
             },
             "text": "이다음은, 어떡할래?",
-            "author": "elizabeth"
+            "author": "elizabeth",
+            "voice": "voc_ch0009_affection_view_45"
           },
           {
             "class": "HidePrinter",
@@ -1590,7 +1653,8 @@
               "Text": ""
             },
             "text": "히히, 이렇게... 이렇게 가까이 앉은니까 말이야~ 되게 좋다아~",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -1611,7 +1675,8 @@
               "Text": ""
             },
             "text": "넌 어때애~? 당연히... 기쁘지~?",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -1730,7 +1795,8 @@
               "Text": ""
             },
             "text": "하아... 근데 있잖아... 들어봐...? 부하라는 녀석들이 말이야아...",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -1831,7 +1897,8 @@
               "Text": ""
             },
             "text": "... 아니라고는 못 하겠지만, 헤헤... 히끅.",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -1884,7 +1951,8 @@
               "Text": ""
             },
             "text": "그런 거 안 따지고 전부 받아주니까아~ 고마워. 진짜...",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -1905,7 +1973,8 @@
               "Text": ""
             },
             "text": "왜에~? 내가 고맙다고 말하는 게 이상해..?",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -2100,7 +2169,8 @@
               "Text": ""
             },
             "text": "에, 뭐라고..? 한 번 더... 고맙다고 말해 달라고...?",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -2121,7 +2191,8 @@
               "Text": ""
             },
             "text": "고, 고, 고, 고건 안 되겠는데!!!",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_31"
           },
           {
             "class": "ModifyBackground",
@@ -2240,7 +2311,8 @@
               "Text": ""
             },
             "text": "히히, 이렇게... 이렇게 가까이 앉은니까 말이야~ 되게 좋다아~",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -2261,7 +2333,8 @@
               "Text": ""
             },
             "text": "넌 어때애~? 당연히... 기쁘지~?",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -2380,7 +2453,8 @@
               "Text": ""
             },
             "text": "하아... 근데 있잖아... 들어봐...? 부하라는 녀석들이 말이야아...",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -2481,7 +2555,8 @@
               "Text": ""
             },
             "text": "... 아니라고는 못 하겠지만, 헤헤... 히끅.",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -2534,7 +2609,8 @@
               "Text": ""
             },
             "text": "그런 거 안 따지고 전부 받아주니까아~ 고마워. 진짜...",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -2555,7 +2631,8 @@
               "Text": ""
             },
             "text": "왜에~? 내가 고맙다고 말하는 게 이상해..?",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -2761,7 +2838,8 @@
               "Text": ""
             },
             "text": "있잖아~? 이게 참 묘하게도 말이지이...",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -2862,7 +2940,8 @@
               "Text": ""
             },
             "text": "그러니까아, 뭘 말하고 싶냐면...",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -2883,7 +2962,8 @@
               "Text": ""
             },
             "text": "네가 옆에 있어줘서 다행이야아~",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -2904,7 +2984,8 @@
               "Text": ""
             },
             "text": "와줘서 정말 고마운 건... 진심이니까...",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -2925,7 +3006,8 @@
               "Text": ""
             },
             "text": "헤헤, 그러니까 앞으로도 말이야... 잘 부탁해애~",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -2947,7 +3029,8 @@
               "Text": ""
             },
             "text": "파, 파트너로서 말이야~",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -3020,7 +3103,8 @@
               "Text": ""
             },
             "text": "에, 뭐라고..? 한 번 더... 고맙다고 말해 달라고...?",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -3041,7 +3125,8 @@
               "Text": ""
             },
             "text": "고, 고, 고, 고건 안 되겠는데!!!",
-            "author": "mane_swimsuit"
+            "author": "mane_swimsuit",
+            "voice": "voc_ch0010_affection_view_31"
           },
           {
             "class": "ModifyBackground",
@@ -3185,7 +3270,8 @@
               "Text": ""
             },
             "text": "자아… 소첩을 따라 천천히… 이쪽으로 와주세요….",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -3206,7 +3292,8 @@
               "Text": ""
             },
             "text": "어떠신가요…? 여전히 뜨겁다면 말씀해주세요….",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -3227,7 +3314,8 @@
               "Text": ""
             },
             "text": "조금, 얼굴이 붉어지셨습니다. 아무래도 상처가 아직 덜 나아서 그런가 봅니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -3248,7 +3336,8 @@
               "Text": ""
             },
             "text": "그게 아니라고요…? 그럼 어째서…?",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -3269,7 +3358,8 @@
               "Text": ""
             },
             "text": "후훗… 그렇게까지 고개를 저으시다니. 생각보다 귀여우신 면도 있으십니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_5"
           },
           {
             "class": "Label",
@@ -3298,7 +3388,8 @@
               "Text": ""
             },
             "text": "이 열탕은… 소첩을 위해 만들어진 특별한 곳입니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -3319,7 +3410,8 @@
               "Text": ""
             },
             "text": "물론 다른 분께는 너무 뜨거울 테지만… 이렇게 소첩과 함께라면… 괜찮습니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -3340,7 +3432,8 @@
               "Text": ""
             },
             "text": "지금은 부디 마음과 몸을 편안히 치유하는 데 집중해주세요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -3361,7 +3454,8 @@
               "Text": ""
             },
             "text": "소첩이 이렇게 계속 있어 드릴 테니까요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_9"
           },
           {
             "class": "AffectionWaitCommand",
@@ -3575,7 +3669,8 @@
               "Text": ""
             },
             "text": "자아… 소첩을 따라 천천히… 이쪽으로 와주세요….",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -3596,7 +3691,8 @@
               "Text": ""
             },
             "text": "어떠신가요…? 여전히 뜨겁다면 말씀해주세요….",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -3617,7 +3713,8 @@
               "Text": ""
             },
             "text": "조금, 얼굴이 붉어지셨습니다. 아무래도 상처가 아직 덜 나아서 그런가 봅니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -3638,7 +3735,8 @@
               "Text": ""
             },
             "text": "그게 아니라고요…? 그럼 어째서…?",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -3659,7 +3757,8 @@
               "Text": ""
             },
             "text": "후훗… 그렇게까지 고개를 저으시다니. 생각보다 귀여우신 면도 있으십니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_5"
           },
           {
             "class": "Label",
@@ -3688,7 +3787,8 @@
               "Text": ""
             },
             "text": "이 열탕은… 소첩을 위해 만들어진 특별한 곳입니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -3709,7 +3809,8 @@
               "Text": ""
             },
             "text": "물론 다른 분께는 너무 뜨거울 테지만… 이렇게 소첩과 함께라면… 괜찮습니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -3730,7 +3831,8 @@
               "Text": ""
             },
             "text": "지금은 부디 마음과 몸을 편안히 치유하는 데 집중해주세요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -3751,7 +3853,8 @@
               "Text": ""
             },
             "text": "소첩이 이렇게 계속 있어 드릴 테니까요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_9"
           },
           {
             "class": "Label",
@@ -3780,7 +3883,8 @@
               "Text": ""
             },
             "text": "이제 욕탕에는 좀 익숙해지셨나요?",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -3801,7 +3905,8 @@
               "Text": ""
             },
             "text": "몸이라도 씻겨 드리고 싶은 기분입니다만, 소첩이 또 실수할까 봐 두렵네요….",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -3822,7 +3927,8 @@
               "Text": ""
             },
             "text": "우선은 상처를 치료하는 데 집중하시도록 하죠.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_12"
           },
           {
             "class": "Label",
@@ -3851,7 +3957,8 @@
               "Text": ""
             },
             "text": "이곳은 낮에 와도 좋지만, 오늘 같은 밤이면 훨씬 근사합니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -3872,7 +3979,8 @@
               "Text": ""
             },
             "text": "달빛을 보며 목욕할 수 있다는 건, 참 행복한 일입니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_14"
           },
           {
             "class": "Label",
@@ -3901,7 +4009,8 @@
               "Text": ""
             },
             "text": "그 숲에서 뜨거움을 알게 된 후 생각해봤습니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -3922,7 +4031,8 @@
               "Text": ""
             },
             "text": "진정으로 뜨거운 건, 겉으로 느껴지는 온도감 같은 게 아니라고 말이죠.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -3943,7 +4053,8 @@
               "Text": ""
             },
             "text": "당신과 헤어지고 난 뒤, 당신에 대해 떠올리면 가슴이 아프곤 했습니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -3964,7 +4075,8 @@
               "Text": ""
             },
             "text": "뜨거움이란 바로 이런 감정이지 않을까… 하고, 생각이 들더군요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_18"
           },
           {
             "class": "Label",
@@ -3993,7 +4105,8 @@
               "Text": ""
             },
             "text": "아… 혹시 손을 계속 잡고 계시기 힘드신 건가요?",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -4014,7 +4127,8 @@
               "Text": ""
             },
             "text": "그럼, 소첩과 깍지를 끼면 괜찮을 거예요. 자… 이렇게요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_20"
           },
           {
             "class": "Label",
@@ -4043,7 +4157,8 @@
               "Text": ""
             },
             "text": "어떠신가요? 훨씬 편해졌죠?",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_21"
           },
           {
             "class": "StopBgm",
@@ -4093,7 +4208,8 @@
               "Text": ""
             },
             "text": "이제, 상처는 좀 어떠신가요? 여전히 아직 아프신가요?",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_22"
           },
           {
             "class": "Label",
@@ -4122,7 +4238,8 @@
               "Text": ""
             },
             "text": "사실, 소첩은 너무 겁이 났습니다….",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -4143,7 +4260,8 @@
               "Text": ""
             },
             "text": "당신께서 쓰러지던 그 순간 모든 게 무너지는 기분이었어요….",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -4164,7 +4282,8 @@
               "Text": ""
             },
             "text": "이번 일을 통해 소첩은 확실하게 느꼈습니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -4185,7 +4304,8 @@
               "Text": ""
             },
             "text": "진정한 뜨거움이란 감정에서 온다는 걸요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -4206,7 +4326,8 @@
               "Text": ""
             },
             "text": "당신을 보고, 느끼고, 떠올릴 때 생겨나는 여러 감정.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -4227,7 +4348,8 @@
               "Text": ""
             },
             "text": "두려움, 설렘, 애틋함… 그리고 사랑까지도요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -4248,7 +4370,8 @@
               "Text": ""
             },
             "text": "여러 마음이 소첩에게 뜨거움을 느끼게 해줬습니다.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_29"
           },
           {
             "class": "AffectionCommand",
@@ -4269,7 +4392,8 @@
               "Text": ""
             },
             "text": "소첩에게 처음으로 이런 감정을 알려주셔서… 감사합니다….",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -4290,7 +4414,8 @@
               "Text": ""
             },
             "text": "앞으로도 소첩은 당신을 위한 검이 되어드릴게요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -4311,7 +4436,8 @@
               "Text": ""
             },
             "text": "그러니, 지켜봐 주세요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_32"
           },
           {
             "class": "Label",
@@ -4340,7 +4466,8 @@
               "Text": ""
             },
             "text": "이런… 소첩이 혼자 너무 많이 떠들었네요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_33"
           },
           {
             "class": "AffectionCommand",
@@ -4361,7 +4488,8 @@
               "Text": ""
             },
             "text": "밤은 길고, 여긴 당신과 소첩뿐이니 마음 편히 이 순간을 즐겨주세요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_34"
           },
           {
             "class": "AffectionCommand",
@@ -4382,7 +4510,8 @@
               "Text": ""
             },
             "text": "소첩과 함께요.",
-            "author": "chise"
+            "author": "chise",
+            "voice": "voc_ch0011_affection_view_35"
           },
           {
             "class": "AffectionWaitCommand",
@@ -4552,7 +4681,8 @@
               "Text": ""
             },
             "text": "처음 널 봤을 때부터 알아봤어. 언젠가 이렇게 될 거라는 걸…",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -4573,7 +4703,8 @@
               "Text": ""
             },
             "text": "그동안 어떻게 참았을까? 부정하려 했던 감정이 얼마나 강렬한지…",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -4594,7 +4725,8 @@
               "Text": ""
             },
             "text": "신의 뜻? 가르침? 그런 거 몰라. 내가 원하는 건 오직 너야...!",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -4615,7 +4747,8 @@
               "Text": ""
             },
             "text": "더 이상 숨지 않을게. 너를 원해… 아주 강렬하게, 완전히…",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -4636,7 +4769,8 @@
               "Text": ""
             },
             "text": "그러니까 인정해. 너도 이젠 벗어날 수 없다는 걸.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -4657,7 +4791,8 @@
               "Text": ""
             },
             "text": "후후… 이제 끝까지 함께야. 좀 더 깊이, 더 강하게 끌어당길게.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -4678,7 +4813,8 @@
               "Text": ""
             },
             "text": "…너도 더 이상 참을 필요 없어.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -4699,7 +4835,8 @@
               "Text": ""
             },
             "text": "...뭐야?!",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -4720,7 +4857,8 @@
               "Text": ""
             },
             "text": "...이 정도였어? 내가 아니라… 너가 날 이렇게까지 원했다고?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -4741,7 +4879,8 @@
               "Text": ""
             },
             "text": "…이거, 너… 생각보다 훨씬 더 강하잖아?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -4762,7 +4901,8 @@
               "Text": ""
             },
             "text": "좋아. 나도 쉽게 놔줄 생각 없으니까.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -4783,7 +4923,8 @@
               "Text": ""
             },
             "text": "예상보다 훨씬 거칠구나...",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -4804,7 +4945,8 @@
               "Text": ""
             },
             "text": "하지만… 아니야. 이대로 밀려버릴 순 없어.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_29"
           },
           {
             "class": "AffectionCommand",
@@ -4825,7 +4967,8 @@
               "Text": ""
             },
             "text": "후후, 웃기네. 유혹한 건 난데 정작 감당 못 하는 건 나였나 봐?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_30"
           },
           {
             "class": "HidePrinter",
@@ -4944,7 +5087,8 @@
               "Text": ""
             },
             "text": "어때? 기분 좋아?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -4965,7 +5109,8 @@
               "Text": ""
             },
             "text": "마치... 천국에라도 온 것 같지 않아?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -4986,7 +5131,8 @@
               "Text": ""
             },
             "text": "한 발자국도 못 움직이게 해줄 거니까...",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -5007,7 +5153,8 @@
               "Text": ""
             },
             "text": "안 돼~ 이제는 나에게서 벗어날 수 없어!",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -5028,7 +5175,8 @@
               "Text": ""
             },
             "text": "후후… 심장 소리가 크게 들리네? 그렇게 긴장할 필요 없어.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -5049,7 +5197,8 @@
               "Text": ""
             },
             "text": "이렇게 가까이 있으니까… 너의 숨결이 모두 느껴져.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -5070,7 +5219,8 @@
               "Text": ""
             },
             "text": "어라? 얼굴이 빨개졌네? 설마, 부끄러운 거야?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -5091,7 +5241,8 @@
               "Text": ""
             },
             "text": "너도 동의했잖아~? 이제 와서 도망칠 생각은 아니지?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -5112,7 +5263,8 @@
               "Text": ""
             },
             "text": "좋아… 슬슬 익숙해질 때도 됐잖아?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -5133,7 +5285,8 @@
               "Text": ""
             },
             "text": "이 공간엔 우리 둘뿐이야. 그러니까 나한테만 집중해.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -5154,7 +5307,8 @@
               "Text": ""
             },
             "text": "…응? 꼬리? 후후, 널 완전히 사로잡기 위해 천천히 조여들고 있지.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -5175,7 +5329,8 @@
               "Text": ""
             },
             "text": "부드럽게 감싸지는 것이 느껴져...? 이제… 넌 내 손안에 있어...",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -5196,7 +5351,8 @@
               "Text": ""
             },
             "text": "살짝 스치기만 했는데 이렇게 솔직하게 반응하면… 더 해 보고 싶어지잖아...",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -5217,7 +5373,8 @@
               "Text": ""
             },
             "text": "빠져나가려 해도 소용없어… 더 강하게, 더 단단하게 감아줄 테니까.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -5238,7 +5395,8 @@
               "Text": ""
             },
             "text": "동의한 건 너잖아? 그렇다면 나도 참을 필요 없겠네.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -5259,7 +5417,8 @@
               "Text": ""
             },
             "text": "네 욕망이 더 강해질수록… 내 기분도 좋아지니까...",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -5280,7 +5439,8 @@
               "Text": ""
             },
             "text": "처음 널 봤을 때부터 알아봤어. 언젠가 이렇게 될 거라는 걸…",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -5301,7 +5461,8 @@
               "Text": ""
             },
             "text": "그동안 어떻게 참았을까? 부정하려 했던 감정이 얼마나 강렬한지…",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -5322,7 +5483,8 @@
               "Text": ""
             },
             "text": "신의 뜻? 가르침? 그런 거 몰라. 내가 원하는 건 오직 너야...!",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -5343,7 +5505,8 @@
               "Text": ""
             },
             "text": "더 이상 숨지 않을게. 너를 원해… 아주 강렬하게, 완전히…",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -5364,7 +5527,8 @@
               "Text": ""
             },
             "text": "그러니까 인정해. 너도 이젠 벗어날 수 없다는 걸.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -5385,7 +5549,8 @@
               "Text": ""
             },
             "text": "후후… 이제 끝까지 함께야. 좀 더 깊이, 더 강하게 끌어당길게.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -5406,7 +5571,8 @@
               "Text": ""
             },
             "text": "…너도 더 이상 참을 필요 없어.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -5427,7 +5593,8 @@
               "Text": ""
             },
             "text": "...뭐야?!",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -5448,7 +5615,8 @@
               "Text": ""
             },
             "text": "...이 정도였어? 내가 아니라… 너가 날 이렇게까지 원했다고?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -5469,7 +5637,8 @@
               "Text": ""
             },
             "text": "…이거, 너… 생각보다 훨씬 더 강하잖아?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -5490,7 +5659,8 @@
               "Text": ""
             },
             "text": "좋아. 나도 쉽게 놔줄 생각 없으니까.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -5511,7 +5681,8 @@
               "Text": ""
             },
             "text": "예상보다 훨씬 거칠구나...",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -5532,7 +5703,8 @@
               "Text": ""
             },
             "text": "하지만… 아니야. 이대로 밀려버릴 순 없어.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_29"
           },
           {
             "class": "AffectionCommand",
@@ -5553,7 +5725,8 @@
               "Text": ""
             },
             "text": "후후, 웃기네. 유혹한 건 난데 정작 감당 못 하는 건 나였나 봐?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -5574,7 +5747,8 @@
               "Text": ""
             },
             "text": "그렇다면… 나도 가만히 있을 순 없겠지?",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -5595,7 +5769,8 @@
               "Text": ""
             },
             "text": "이제부터는… 완전히 너를 가질 거야.",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_32"
           },
           {
             "class": "AffectionCommand",
@@ -5616,7 +5791,8 @@
               "Text": ""
             },
             "text": "그 누구도 손댈 수 없도록, 나만의 것으로 만들어 줄게!",
-            "author": "ines"
+            "author": "ines",
+            "voice": "voc_ch0015_affection_view_33"
           },
           {
             "class": "HidePrinter",
@@ -7280,7 +7456,8 @@
               "Text": ""
             },
             "text": "정말, 제멋대로인 사람이네요...",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -7301,7 +7478,8 @@
               "Text": ""
             },
             "text": "면접보러 와서 면접관을 하겠다고 하질 않나.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -7322,7 +7500,8 @@
               "Text": ""
             },
             "text": "고용주보고 직접 싸우라고 하질 않나.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -7343,7 +7522,8 @@
               "Text": ""
             },
             "text": "일하러 와서 피곤하다고 잠들질 않나....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -7364,7 +7544,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -7385,7 +7566,8 @@
               "Text": ""
             },
             "text": "직원으로서는 좋게 봐줘도 0점이에요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -7406,7 +7588,8 @@
               "Text": ""
             },
             "text": "평소의 나라면 절대 고용하지 않을 부류라구요?",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -7427,7 +7610,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -7448,7 +7632,8 @@
               "Text": ""
             },
             "text": "그런데 어째서....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -7469,7 +7654,8 @@
               "Text": ""
             },
             "text": "이렇게나 당신을 곁에 두고 싶은 걸까요?",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -7490,7 +7676,8 @@
               "Text": ""
             },
             "text": "문득 이런 상상이 들어요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -7511,7 +7698,8 @@
               "Text": ""
             },
             "text": "내일 아침 회사에 출근하면, 당신이 아무렇지 않게 로비에 있는 거예요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -7532,7 +7720,8 @@
               "Text": ""
             },
             "text": "그리고 전 이렇게 말하는 거죠.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -7553,7 +7742,8 @@
               "Text": ""
             },
             "text": "'오늘도 좋은 하루' 라고.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -7574,7 +7764,8 @@
               "Text": ""
             },
             "text": "전혀 특별하지 않은, 평범한 하루인 것처럼 말이에요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -7595,7 +7786,8 @@
               "Text": ""
             },
             "text": "너무나도 평범해서, 당연하게 여겨지는 그런 풍경.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -7616,7 +7808,8 @@
               "Text": ""
             },
             "text": "그런 날이 올 수 있다면....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -7637,7 +7830,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -7658,7 +7852,8 @@
               "Text": ""
             },
             "text": "나도 별 소리를 다 하네요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -7679,7 +7874,8 @@
               "Text": ""
             },
             "text": "회사를 운영하면서 어지간한 일은 다 겪어봤다고 생각했는데.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -7700,7 +7896,8 @@
               "Text": ""
             },
             "text": "...이런 감정은 나도 살면서 처음이에요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -7721,7 +7918,8 @@
               "Text": ""
             },
             "text": "아니, 직원으로 두고 싶은 건지도 모르겠어요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -7742,7 +7940,8 @@
               "Text": ""
             },
             "text": "직원이라는 것만으론 성에 차지 않으니....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -7763,7 +7962,8 @@
               "Text": ""
             },
             "text": "직원, 그 이상의 무언가를 바라고 있을지도요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -7784,7 +7984,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -7805,7 +8006,8 @@
               "Text": ""
             },
             "text": "이렇게 글러먹은 사람을 내가 맘에 들어할 리가....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -7826,7 +8028,8 @@
               "Text": ""
             },
             "text": "맘에 들어할 리가 없는데....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -7847,7 +8050,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -7868,7 +8072,8 @@
               "Text": ""
             },
             "text": "그래요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_29"
           },
           {
             "class": "AffectionCommand",
@@ -7889,7 +8094,8 @@
               "Text": ""
             },
             "text": "그럴 리 없어요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -7910,7 +8116,8 @@
               "Text": ""
             },
             "text": "지금 이 감정은 한순간의 치기일 뿐이에요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -7931,7 +8138,8 @@
               "Text": ""
             },
             "text": "만나본 적 없는 부류의 직원을 만나서 맘이 들뜬 거예요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_32"
           },
           {
             "class": "AffectionCommand",
@@ -7952,7 +8160,8 @@
               "Text": ""
             },
             "text": "그러니까.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_33"
           },
           {
             "class": "AffectionCommand",
@@ -7973,7 +8182,8 @@
               "Text": ""
             },
             "text": "치기일 뿐이니까.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_34"
           },
           {
             "class": "AffectionCommand",
@@ -7994,7 +8204,8 @@
               "Text": ""
             },
             "text": "자고 있는 당신에게 조금은 장난을 쳐봐도 괜찮겠죠?",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_35"
           },
           {
             "class": "AffectionCommand",
@@ -8015,7 +8226,8 @@
               "Text": ""
             },
             "text": "지금 우릴 보고 있는 건, 저 소나기 구름뿐일 테니.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_36"
           },
           {
             "class": "HidePrinter",
@@ -8136,7 +8348,8 @@
               "Text": ""
             },
             "text": "정말, 제멋대로인 사람이네요...",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -8157,7 +8370,8 @@
               "Text": ""
             },
             "text": "면접보러 와서 면접관을 하겠다고 하질 않나.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -8178,7 +8392,8 @@
               "Text": ""
             },
             "text": "고용주보고 직접 싸우라고 하질 않나.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -8199,7 +8414,8 @@
               "Text": ""
             },
             "text": "일하러 와서 피곤하다고 잠들질 않나....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -8220,7 +8436,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -8241,7 +8458,8 @@
               "Text": ""
             },
             "text": "직원으로서는 좋게 봐줘도 0점이에요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -8262,7 +8480,8 @@
               "Text": ""
             },
             "text": "평소의 나라면 절대 고용하지 않을 부류라구요?",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -8283,7 +8502,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -8304,7 +8524,8 @@
               "Text": ""
             },
             "text": "그런데 어째서....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -8325,7 +8546,8 @@
               "Text": ""
             },
             "text": "이렇게나 당신을 곁에 두고 싶은 걸까요?",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -8346,7 +8568,8 @@
               "Text": ""
             },
             "text": "문득 이런 상상이 들어요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -8367,7 +8590,8 @@
               "Text": ""
             },
             "text": "내일 아침 회사에 출근하면, 당신이 아무렇지 않게 로비에 있는 거예요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -8388,7 +8612,8 @@
               "Text": ""
             },
             "text": "그리고 전 이렇게 말하는 거죠.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -8409,7 +8634,8 @@
               "Text": ""
             },
             "text": "'오늘도 좋은 하루' 라고.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -8430,7 +8656,8 @@
               "Text": ""
             },
             "text": "전혀 특별하지 않은, 평범한 하루인 것처럼 말이에요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -8451,7 +8678,8 @@
               "Text": ""
             },
             "text": "너무나도 평범해서, 당연하게 여겨지는 그런 풍경.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -8472,7 +8700,8 @@
               "Text": ""
             },
             "text": "그런 날이 올 수 있다면....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -8493,7 +8722,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -8514,7 +8744,8 @@
               "Text": ""
             },
             "text": "나도 별 소리를 다 하네요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -8535,7 +8766,8 @@
               "Text": ""
             },
             "text": "회사를 운영하면서 어지간한 일은 다 겪어봤다고 생각했는데.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -8556,7 +8788,8 @@
               "Text": ""
             },
             "text": "...이런 감정은 나도 살면서 처음이에요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -8577,7 +8810,8 @@
               "Text": ""
             },
             "text": "아니, 직원으로 두고 싶은 건지도 모르겠어요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -8598,7 +8832,8 @@
               "Text": ""
             },
             "text": "직원이라는 것만으론 성에 차지 않으니....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -8619,7 +8854,8 @@
               "Text": ""
             },
             "text": "직원, 그 이상의 무언가를 바라고 있을지도요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -8640,7 +8876,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -8661,7 +8898,8 @@
               "Text": ""
             },
             "text": "이렇게 글러먹은 사람을 내가 맘에 들어할 리가....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -8682,7 +8920,8 @@
               "Text": ""
             },
             "text": "맘에 들어할 리가 없는데....",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -8703,7 +8942,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -8724,7 +8964,8 @@
               "Text": ""
             },
             "text": "그래요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_29"
           },
           {
             "class": "AffectionCommand",
@@ -8745,7 +8986,8 @@
               "Text": ""
             },
             "text": "그럴 리 없어요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -8766,7 +9008,8 @@
               "Text": ""
             },
             "text": "지금 이 감정은 한순간의 치기일 뿐이에요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -8787,7 +9030,8 @@
               "Text": ""
             },
             "text": "만나본 적 없는 부류의 직원을 만나서 맘이 들뜬 거예요.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_32"
           },
           {
             "class": "AffectionCommand",
@@ -8808,7 +9052,8 @@
               "Text": ""
             },
             "text": "그러니까.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_33"
           },
           {
             "class": "AffectionCommand",
@@ -8829,7 +9074,8 @@
               "Text": ""
             },
             "text": "치기일 뿐이니까.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_34"
           },
           {
             "class": "AffectionCommand",
@@ -8850,7 +9096,8 @@
               "Text": ""
             },
             "text": "자고 있는 당신에게 조금은 장난을 쳐봐도 괜찮겠죠?",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_35"
           },
           {
             "class": "AffectionCommand",
@@ -8871,7 +9118,8 @@
               "Text": ""
             },
             "text": "지금 우릴 보고 있는 건, 저 소나기 구름뿐일 테니.",
-            "author": "midwen"
+            "author": "midwen",
+            "voice": "voc_ch0022_affection_view_36"
           },
           {
             "class": "HidePrinter",
@@ -8998,7 +9246,8 @@
               "Text": ""
             },
             "text": "룰렛은 돌렸으니까, 제비를 뽑을게요….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -9019,7 +9268,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -9040,7 +9290,8 @@
               "Text": ""
             },
             "text": "‘당신은 신혼여행 첫날밤을 맞이했습니다.’",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -9061,7 +9312,8 @@
               "Text": ""
             },
             "text": "‘그리고 상대는 거사에 매우 소극적입니다. 상대를 유혹해 주세요’…?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -9082,7 +9334,8 @@
               "Text": ""
             },
             "text": "흐에에-!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -9103,7 +9356,8 @@
               "Text": ""
             },
             "text": "시, 신혼 첫날밤의 신부라니.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -9124,7 +9378,8 @@
               "Text": ""
             },
             "text": "대체 무슨 대사로 유혹해야 하는 거죠?!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -9145,7 +9400,8 @@
               "Text": ""
             },
             "text": "이미 이런 자세로 있는 것부터가 많이 부끄러운데….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -9166,7 +9422,8 @@
               "Text": ""
             },
             "text": "크, 크흠….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -9187,7 +9444,8 @@
               "Text": ""
             },
             "text": "아무것도 하지 않고 지는 건, 보드게이머로서의 제 자존심이 허락하지 않아요.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -9208,7 +9466,8 @@
               "Text": ""
             },
             "text": "그럼 해, 해볼게요!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -9229,7 +9488,8 @@
               "Text": ""
             },
             "text": "목욕부터 하실래요? 식사부터 하실래요? 아니면 저….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -9250,7 +9510,8 @@
               "Text": ""
             },
             "text": "에엣?!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -9271,7 +9532,8 @@
               "Text": ""
             },
             "text": "어, 어째서….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -9292,7 +9554,8 @@
               "Text": ""
             },
             "text": "그치만 신혼 첫날밤의 신부가 유혹하는 대사라니.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -9313,7 +9576,8 @@
               "Text": ""
             },
             "text": "저한테는 상상하기 어려운 대사라구요!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -9334,7 +9598,8 @@
               "Text": ""
             },
             "text": "하란다고 할 수 있었으면, 이미 친구도 많이 생겼을 거예요….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -9355,7 +9620,8 @@
               "Text": ""
             },
             "text": "그래도 일단 다시 해 볼게요.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -9376,7 +9642,8 @@
               "Text": ""
             },
             "text": "제가 신부요…?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -9397,7 +9664,8 @@
               "Text": ""
             },
             "text": "흠, 흠.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -9418,7 +9686,8 @@
               "Text": ""
             },
             "text": "그럼 진짜 제가 신부가 됐다고 생각하고 해볼게요.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -9439,7 +9708,8 @@
               "Text": ""
             },
             "text": "나는 신부다…. 나는 신부다….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_22"
           },
           {
             "class": "ModifyBackground",
@@ -9503,7 +9773,8 @@
               "Text": ""
             },
             "text": "아이, 갖고 싶은데…",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_29"
           },
           {
             "class": "HidePrinter",
@@ -9611,7 +9882,8 @@
               "Text": ""
             },
             "text": "룰렛은 돌렸으니까, 제비를 뽑을게요….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -9632,7 +9904,8 @@
               "Text": ""
             },
             "text": "…….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -9653,7 +9926,8 @@
               "Text": ""
             },
             "text": "‘당신은 신혼여행 첫날밤을 맞이했습니다.’",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -9674,7 +9948,8 @@
               "Text": ""
             },
             "text": "‘그리고 상대는 거사에 매우 소극적입니다. 상대를 유혹해 주세요’…?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -9695,7 +9970,8 @@
               "Text": ""
             },
             "text": "흐에에-!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -9716,7 +9992,8 @@
               "Text": ""
             },
             "text": "시, 신혼 첫날밤의 신부라니.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -9737,7 +10014,8 @@
               "Text": ""
             },
             "text": "대체 무슨 대사로 유혹해야 하는 거죠?!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -9758,7 +10036,8 @@
               "Text": ""
             },
             "text": "이미 이런 자세로 있는 것부터가 많이 부끄러운데….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -9779,7 +10058,8 @@
               "Text": ""
             },
             "text": "크, 크흠….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -9800,7 +10080,8 @@
               "Text": ""
             },
             "text": "아무것도 하지 않고 지는 건, 보드게이머로서의 제 자존심이 허락하지 않아요.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -9821,7 +10102,8 @@
               "Text": ""
             },
             "text": "그럼 해, 해볼게요!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -9842,7 +10124,8 @@
               "Text": ""
             },
             "text": "목욕부터 하실래요? 식사부터 하실래요? 아니면 저….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -9863,7 +10146,8 @@
               "Text": ""
             },
             "text": "에엣?!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -9884,7 +10168,8 @@
               "Text": ""
             },
             "text": "어, 어째서….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -9905,7 +10190,8 @@
               "Text": ""
             },
             "text": "그치만 신혼 첫날밤의 신부가 유혹하는 대사라니.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -9926,7 +10212,8 @@
               "Text": ""
             },
             "text": "저한테는 상상하기 어려운 대사라구요!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -9947,7 +10234,8 @@
               "Text": ""
             },
             "text": "하란다고 할 수 있었으면, 이미 친구도 많이 생겼을 거예요….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -9968,7 +10256,8 @@
               "Text": ""
             },
             "text": "그래도 일단 다시 해 볼게요.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -9989,7 +10278,8 @@
               "Text": ""
             },
             "text": "제가 신부요…?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -10010,7 +10300,8 @@
               "Text": ""
             },
             "text": "흠, 흠.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -10031,7 +10322,8 @@
               "Text": ""
             },
             "text": "그럼 진짜 제가 신부가 됐다고 생각하고 해볼게요.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -10052,7 +10344,8 @@
               "Text": ""
             },
             "text": "나는 신부다…. 나는 신부다….",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -10073,7 +10366,8 @@
               "Text": ""
             },
             "text": "오늘 밤은... 우아아! 너무 어려워요!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -10094,7 +10388,8 @@
               "Text": ""
             },
             "text": "다, 다시...?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -10115,7 +10410,8 @@
               "Text": ""
             },
             "text": "오늘 밤은 자고 싶지 않아.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -10136,7 +10432,8 @@
               "Text": ""
             },
             "text": "이대로 그냥 자버리는 거야?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -10157,7 +10454,8 @@
               "Text": ""
             },
             "text": "돌아갈 때는 세 사람이면 좋겠네.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -10178,7 +10476,8 @@
               "Text": ""
             },
             "text": "내가 뭘 하고 싶은지, 옷 너머로도 느껴지지 않아?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -10199,7 +10498,8 @@
               "Text": ""
             },
             "text": "아이, 갖고 싶은데…",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_29"
           },
           {
             "class": "AffectionCommand",
@@ -10220,7 +10520,8 @@
               "Text": ""
             },
             "text": "이제 성공한 거죠? 와아-!",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -10241,7 +10542,8 @@
               "Text": ""
             },
             "text": "그럼 이제 다음 제비를 뽑을게요.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -10262,7 +10564,8 @@
               "Text": ""
             },
             "text": "당신은 권태기가 찾아온 부부의 한 명입니다.\n하지만 권태기 속에서 달아오른 몸은 주체할 수가 없습니다.\n오랜만에 부부 관계를 위한 행동을 보여주세요.'...?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_32"
           },
           {
             "class": "AffectionCommand",
@@ -10283,7 +10586,8 @@
               "Text": ""
             },
             "text": "잠깐만 기다리고 있어. 금방 씻고 올게. ...예? 이건 아닌가요?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_33"
           },
           {
             "class": "AffectionCommand",
@@ -10304,7 +10608,8 @@
               "Text": ""
             },
             "text": "흐에에, 달아오른 몸이라는 게 대체 뭘까요....",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_34"
           },
           {
             "class": "AffectionCommand",
@@ -10325,7 +10630,8 @@
               "Text": ""
             },
             "text": "마음이 좀 멀어졌다고 몸까지 멀어지면, 이쪽은 거미줄이나 치고 있으란 소리지.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_35"
           },
           {
             "class": "AffectionCommand",
@@ -10346,7 +10652,8 @@
               "Text": ""
             },
             "text": "그러니까, 오늘은 이대로 재우지 않을 거야. 여.보.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_36"
           },
           {
             "class": "AffectionCommand",
@@ -10367,7 +10674,8 @@
               "Text": ""
             },
             "text": "입으론 싫다면서 몸은 그렇지 않네?",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_37"
           },
           {
             "class": "AffectionCommand",
@@ -10388,7 +10696,8 @@
               "Text": ""
             },
             "text": "봐. 이렇게나 뜨겁잖아.",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_38"
           },
           {
             "class": "AffectionCommand",
@@ -10409,7 +10718,8 @@
               "Text": ""
             },
             "text": "어어...",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_39"
           },
           {
             "class": "AffectionCommand",
@@ -10430,7 +10740,8 @@
               "Text": ""
             },
             "text": "아앗...! (읍)",
-            "author": "alone"
+            "author": "alone",
+            "voice": "voc_ch0024_affection_view_40"
           },
           {
             "class": "ModifyBackground",
@@ -10558,7 +10869,8 @@
               "Text": ""
             },
             "text": "에휴, 그냥 청소나 잘할 것이지...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -10579,7 +10891,8 @@
               "Text": ""
             },
             "text": "오늘은 또 무슨 바람이 불어서 이런 쓸데없는 짓이나 하고...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -10600,7 +10913,8 @@
               "Text": ""
             },
             "text": "시킨 거나 잘하란 말이야, 시킨 거나!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -10621,7 +10935,8 @@
               "Text": ""
             },
             "text": "어? 생각해보니 열 받네?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -10642,7 +10957,8 @@
               "Text": ""
             },
             "text": "내가 그렇게 어려운 일을 시킨 것도 아니잖아?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -10663,7 +10979,8 @@
               "Text": ""
             },
             "text": "그냥 청소 좀 하고 환기 좀 하는 게 그렇게 어렵―",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -10684,7 +11001,8 @@
               "Text": ""
             },
             "text": "냐으윽!! 너, 너 뭐하는 거야?!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -10705,7 +11023,8 @@
               "Text": ""
             },
             "text": "흐으, 너어... 큿, 으흡... 느아윽...!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -10726,7 +11045,8 @@
               "Text": ""
             },
             "text": "으으으... 아, 아직 내 말 안 끝났거든?!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -10747,7 +11067,8 @@
               "Text": ""
             },
             "text": "......뭐, 뭔데.",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -10768,7 +11089,8 @@
               "Text": ""
             },
             "text": "히꺅!!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -10789,7 +11111,8 @@
               "Text": ""
             },
             "text": "뭐, 뭐야!! 뭘 뿌린 거야!?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_32"
           },
           {
             "class": "AffectionCommand",
@@ -10810,7 +11133,8 @@
               "Text": ""
             },
             "text": "으으, 이거... 뭔가 느낌이 이상해...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_36"
           },
           {
             "class": "AffectionCommand",
@@ -10831,7 +11155,8 @@
               "Text": ""
             },
             "text": "......으, 됐어. 마음대로 해 봐.",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_37"
           },
           {
             "class": "AffectionCommand",
@@ -10852,7 +11177,8 @@
               "Text": ""
             },
             "text": "네가 한 마사지, 뭐 그럭저럭 나쁘지 않기도 했고...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_38"
           },
           {
             "class": "AffectionCommand",
@@ -10873,7 +11199,8 @@
               "Text": ""
             },
             "text": "흐으, 우으그... 하윽! 잠, 까안만!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_42"
           },
           {
             "class": "AffectionCommand",
@@ -10894,7 +11221,8 @@
               "Text": ""
             },
             "text": "아, 아니... 아픈 건 아니고, 그... 간, 간지러워서...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_43"
           },
           {
             "class": "AffectionCommand",
@@ -10915,7 +11243,8 @@
               "Text": ""
             },
             "text": "그... 그리고... 이, 이상한 소리도... 나올 것 같고...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_44"
           },
           {
             "class": "AffectionCommand",
@@ -10936,7 +11265,8 @@
               "Text": ""
             },
             "text": "아, 아무튼 마사지는 이제 끝! 오늘은 이 정도면 충, 충분해!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_48"
           },
           {
             "class": "HidePrinter",
@@ -11044,7 +11374,8 @@
               "Text": ""
             },
             "text": "에휴, 그냥 청소나 잘할 것이지...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -11065,7 +11396,8 @@
               "Text": ""
             },
             "text": "오늘은 또 무슨 바람이 불어서 이런 쓸데없는 짓이나 하고...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -11086,7 +11418,8 @@
               "Text": ""
             },
             "text": "시킨 거나 잘하란 말이야, 시킨 거나!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -11107,7 +11440,8 @@
               "Text": ""
             },
             "text": "어? 생각해보니 열 받네?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -11128,7 +11462,8 @@
               "Text": ""
             },
             "text": "내가 그렇게 어려운 일을 시킨 것도 아니잖아?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -11149,7 +11484,8 @@
               "Text": ""
             },
             "text": "그냥 청소 좀 하고 환기 좀 하는 게 그렇게 어렵―",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -11170,7 +11506,8 @@
               "Text": ""
             },
             "text": "냐으윽!! 너, 너 뭐하는 거야?!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -11191,7 +11528,8 @@
               "Text": ""
             },
             "text": "흐으, 너어... 큿, 으흡... 느아윽...!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -11212,7 +11550,8 @@
               "Text": ""
             },
             "text": "으으으... 아, 아직 내 말 안 끝났거든?!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -11233,7 +11572,8 @@
               "Text": ""
             },
             "text": "그리고 어딜 머슴이 주인 위에...!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -11254,7 +11594,8 @@
               "Text": ""
             },
             "text": "아무리 마사지 때문이라 해도 까불지 말라―",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -11275,7 +11616,8 @@
               "Text": ""
             },
             "text": "고으극, 읏... 조, 조금만 살살...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -11296,7 +11638,8 @@
               "Text": ""
             },
             "text": "흐읏, 아그으, 마으응흣...!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -11317,7 +11660,8 @@
               "Text": ""
             },
             "text": "아 진짜! 좀 살살 하라고!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -11338,7 +11682,8 @@
               "Text": ""
             },
             "text": "......뭐, 뭔데.",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -11359,7 +11704,8 @@
               "Text": ""
             },
             "text": "...앞을 보고 편하게 있으라고?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -11380,7 +11726,8 @@
               "Text": ""
             },
             "text": "그, 그게 되겠냐, 이 바보 머슴!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -11401,7 +11748,8 @@
               "Text": ""
             },
             "text": "네가 또 뭔 짓 할까 봐 불안해 죽겠다니까!?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -11422,7 +11770,8 @@
               "Text": ""
             },
             "text": "머슴이면 머슴답게 좀 굴라고!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -11443,7 +11792,8 @@
               "Text": ""
             },
             "text": "주인이 좀 안심할 수 있게 알아서, 잘! 응?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -11464,7 +11814,8 @@
               "Text": ""
             },
             "text": "오죽하면 자기 전에도 네 생각하느라, 어?!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -11485,7 +11836,8 @@
               "Text": ""
             },
             "text": "너 때문에 잠도 잘 못 자겠다고!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -11506,7 +11858,8 @@
               "Text": ""
             },
             "text": "......아.",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -11527,7 +11880,8 @@
               "Text": ""
             },
             "text": "아아아니 그, 그런 뜻이 아니야!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -11548,7 +11902,8 @@
               "Text": ""
             },
             "text": "불안하다는 거야, 네가 또 무슨 이상한 짓을 저지를까 봐!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -11569,7 +11924,8 @@
               "Text": ""
             },
             "text": "...크흠, 흠. 아, 알았어. 알았다고.",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -11590,7 +11946,8 @@
               "Text": ""
             },
             "text": "내가 말이 좀 심했어, 인정할게. 미안.",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -11611,7 +11968,8 @@
               "Text": ""
             },
             "text": "너도 나름대로 잘하는 게 있을 테니까...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -11632,7 +11990,8 @@
               "Text": ""
             },
             "text": "적당한 역할을 주지 못한 내 잘못이기도 해.",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_29"
           },
           {
             "class": "AffectionCommand",
@@ -11653,7 +12012,8 @@
               "Text": ""
             },
             "text": "그러니까 앞으로는 좀 더 서로 소통하면서―",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -11674,7 +12034,8 @@
               "Text": ""
             },
             "text": "히꺅!!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_31"
           },
           {
             "class": "AffectionCommand",
@@ -11695,7 +12056,8 @@
               "Text": ""
             },
             "text": "뭐, 뭐야!! 뭘 뿌린 거야!?",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_32"
           },
           {
             "class": "AffectionCommand",
@@ -11716,7 +12078,8 @@
               "Text": ""
             },
             "text": "그것보다 옷 위에 뿌리면 어떡하자는 건데?!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_33"
           },
           {
             "class": "AffectionCommand",
@@ -11737,7 +12100,8 @@
               "Text": ""
             },
             "text": "...그, 그럼 벗을 거냐고? 미, 미쳤어 너?!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_34"
           },
           {
             "class": "AffectionCommand",
@@ -11758,7 +12122,8 @@
               "Text": ""
             },
             "text": "아, 아무리 그래도 말은 하고 뿌리던가!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_35"
           },
           {
             "class": "AffectionCommand",
@@ -11779,7 +12144,8 @@
               "Text": ""
             },
             "text": "으으, 이거... 뭔가 느낌이 이상해...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_36"
           },
           {
             "class": "AffectionCommand",
@@ -11800,7 +12166,8 @@
               "Text": ""
             },
             "text": "......으, 됐어. 마음대로 해 봐.",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_37"
           },
           {
             "class": "AffectionCommand",
@@ -11821,7 +12188,8 @@
               "Text": ""
             },
             "text": "네가 한 마사지, 뭐 그럭저럭 나쁘지 않기도 했고...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_38"
           },
           {
             "class": "AffectionCommand",
@@ -11842,7 +12210,8 @@
               "Text": ""
             },
             "text": "그, 그리고 잘하는 걸 시키겠다고도 했으니까!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_39"
           },
           {
             "class": "AffectionCommand",
@@ -11863,7 +12232,8 @@
               "Text": ""
             },
             "text": "후우... 자! 하고 싶은 대로 해 봐!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_40"
           },
           {
             "class": "AffectionCommand",
@@ -11884,7 +12254,8 @@
               "Text": ""
             },
             "text": "앗... 느읏! 흐그... 그으, 역, 시이... 하읏...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_41"
           },
           {
             "class": "AffectionCommand",
@@ -11905,7 +12276,8 @@
               "Text": ""
             },
             "text": "흐으, 우으그... 하윽! 잠, 까안만!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_42"
           },
           {
             "class": "AffectionCommand",
@@ -11926,7 +12298,8 @@
               "Text": ""
             },
             "text": "아, 아니... 아픈 건 아니고, 그... 간, 간지러워서...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_43"
           },
           {
             "class": "AffectionCommand",
@@ -11947,7 +12320,8 @@
               "Text": ""
             },
             "text": "그... 그리고... 이, 이상한 소리도... 나올 것 같고...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_44"
           },
           {
             "class": "AffectionCommand",
@@ -11968,7 +12342,8 @@
               "Text": ""
             },
             "text": "햐읏! 너, 너어...!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_45"
           },
           {
             "class": "AffectionCommand",
@@ -11989,7 +12364,8 @@
               "Text": ""
             },
             "text": "흐낫, 하으... 흐아응! 흐우으... 아으, 그으... 그...",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_46"
           },
           {
             "class": "AffectionCommand",
@@ -12010,7 +12386,8 @@
               "Text": ""
             },
             "text": "그, 그마아아안! 이제 됐어!! 됐다고!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_47"
           },
           {
             "class": "AffectionCommand",
@@ -12031,7 +12408,8 @@
               "Text": ""
             },
             "text": "아, 아무튼 마사지는 이제 끝! 오늘은 이 정도면 충, 충분해!!",
-            "author": "charlotte"
+            "author": "charlotte",
+            "voice": "voc_ch0028_affection_view_48"
           },
           {
             "class": "HidePrinter",
@@ -12157,7 +12535,8 @@
               "Text": ""
             },
             "text": "내 방에 어, 어서 와.",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -12349,7 +12728,8 @@
               "Text": ""
             },
             "text": "너, 너는 나 어떻게 생각해?",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -12545,7 +12925,8 @@
               "Text": ""
             },
             "text": "그걸로 만족할게.",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_12"
           },
           {
             "class": "ModifyBackground",
@@ -12652,7 +13033,8 @@
               "Text": ""
             },
             "text": "내 방에 어, 어서 와.",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -12844,7 +13226,8 @@
               "Text": ""
             },
             "text": "너, 너는 나 어떻게 생각해?",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -13040,7 +13423,8 @@
               "Text": ""
             },
             "text": "그걸로 만족할게.",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -13061,7 +13445,8 @@
               "Text": ""
             },
             "text": "나한테 조금 더 가까이 와.",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -13221,7 +13606,8 @@
               "Text": ""
             },
             "text": "바보...",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -13376,7 +13762,8 @@
               "Text": ""
             },
             "text": "이, 이상한 뜻은 아니야.",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -13472,7 +13859,8 @@
               "Text": ""
             },
             "text": "그, 그, 그, 그 자세를 말하는 게 아니야!",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -13586,7 +13974,8 @@
               "Text": ""
             },
             "text": "소, 손을 말하는 거야!",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -13714,7 +14103,8 @@
               "Text": ""
             },
             "text": "...진짜 손만 잡고 자는 거다?",
-            "author": "suji"
+            "author": "suji",
+            "voice": "voc_ch0032_affection_view_32"
           },
           {
             "class": "ModifyBackground",
@@ -15771,7 +16161,8 @@
               "Text": ""
             },
             "text": "읏..! 너 뭐 하는 거야!",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -15792,7 +16183,8 @@
               "Text": ""
             },
             "text": "내... 솔직한... 마음을 말하라고...?",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -15870,7 +16262,8 @@
               "Text": ""
             },
             "text": "너한테 그런 말을 한 건…!",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -15998,7 +16391,8 @@
               "Text": ""
             },
             "text": "난 언제나 내 자존심 때문에 나쁜 말을 내뱉고 말아.",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -16149,7 +16543,8 @@
               "Text": ""
             },
             "text": "바보 같이 느껴지겠지만… 나도 내 감정을 이해할 수 없어...!",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -16309,7 +16704,8 @@
               "Text": ""
             },
             "text": "나도 내가 먼저 말해야 했었다는 걸...알아...!",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -16562,7 +16958,8 @@
               "Text": ""
             },
             "text": "읏..! 너 뭐 하는 거야!",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -16583,7 +16980,8 @@
               "Text": ""
             },
             "text": "내... 솔직한... 마음을 말하라고...?",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -16661,7 +17059,8 @@
               "Text": ""
             },
             "text": "너한테 그런 말을 한 건…!",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -16789,7 +17188,8 @@
               "Text": ""
             },
             "text": "난 언제나 내 자존심 때문에 나쁜 말을 내뱉고 말아.",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -16940,7 +17340,8 @@
               "Text": ""
             },
             "text": "바보 같이 느껴지겠지만… 나도 내 감정을 이해할 수 없어...!",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -17100,7 +17501,8 @@
               "Text": ""
             },
             "text": "나도 내가 먼저 말해야 했었다는 걸...알아...!",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -17256,7 +17658,8 @@
               "Text": ""
             },
             "text": "...그래. 이제는 인정할게.",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -17277,7 +17680,8 @@
               "Text": ""
             },
             "text": "... 너와 함께 있고 싶어....",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -17396,7 +17800,8 @@
               "Text": ""
             },
             "text": "또 쓸데없는 자존심을 부릴지도 모르고...",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_30"
           },
           {
             "class": "AffectionCommand",
@@ -17492,7 +17897,8 @@
               "Text": ""
             },
             "text": "내 곁에... 계속 있어줄래...?",
-            "author": "yuria"
+            "author": "yuria",
+            "voice": "voc_ch0035_affection_view_33"
           },
           {
             "class": "HidePrinter",
@@ -17619,7 +18025,8 @@
               "Text": ""
             },
             "text": "이 앙큼한 녀석.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -17752,7 +18159,8 @@
               "Text": ""
             },
             "text": "사실 그때 고통만 느꼈던 건 아니야.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -17880,7 +18288,8 @@
               "Text": ""
             },
             "text": "네가 가진 생각, 네가 하는 행동들이 내겐 신선한 자극이야.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -18008,7 +18417,8 @@
               "Text": ""
             },
             "text": "그건 그렇고, 내 장난감이 된 기분이 어때?",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -18254,7 +18664,8 @@
               "Text": ""
             },
             "text": "이 앙큼한 녀석.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -18387,7 +18798,8 @@
               "Text": ""
             },
             "text": "사실 그때 고통만 느꼈던 건 아니야.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -18515,7 +18927,8 @@
               "Text": ""
             },
             "text": "네가 가진 생각, 네가 하는 행동들이 내겐 신선한 자극이야.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -18643,7 +19056,8 @@
               "Text": ""
             },
             "text": "그건 그렇고, 내 장난감이 된 기분이 어때?",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -18803,7 +19217,8 @@
               "Text": ""
             },
             "text": "이제부턴 주인님이 주는 벌을 달게 받으라구.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -18824,7 +19239,8 @@
               "Text": ""
             },
             "text": "어때, 고통스러워?",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -18969,7 +19385,8 @@
               "Text": ""
             },
             "text": "마침 우리 둘 다 조금 젖었네.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -19097,7 +19514,8 @@
               "Text": ""
             },
             "text": "그럼, 이제 본격적으로 시작해볼까?",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -19118,7 +19536,8 @@
               "Text": ""
             },
             "text": "네가 얼마나 버틸 수 있는지 지켜보겠어.",
-            "author": "valentina"
+            "author": "valentina",
+            "voice": "voc_ch0038_affection_view_29"
           },
           {
             "class": "ModifyBackground",
@@ -19245,7 +19664,8 @@
               "Text": ""
             },
             "text": "잘 왔어. 여기가 나의 땅, 나의 왕국이야.",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -19310,7 +19730,8 @@
               "Text": ""
             },
             "text": "하지만 처음은 누구나 이런 법이잖아?",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -19375,7 +19796,8 @@
               "Text": ""
             },
             "text": "그런데 딱 하나 빠진 게 있어.",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -19449,7 +19871,8 @@
               "Text": ""
             },
             "text": "......읏. 왜, 왜 아무 말도 안 하는 거야...?",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -19523,7 +19946,8 @@
               "Text": ""
             },
             "text": "...뭐든, 정말로 뭐든지 말이야.",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_13"
           },
           {
             "class": "ModifyBackground",
@@ -19630,7 +20054,8 @@
               "Text": ""
             },
             "text": "잘 왔어. 여기가 나의 땅, 나의 왕국이야.",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -19695,7 +20120,8 @@
               "Text": ""
             },
             "text": "하지만 처음은 누구나 이런 법이잖아?",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -19760,7 +20186,8 @@
               "Text": ""
             },
             "text": "그런데 딱 하나 빠진 게 있어.",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -19834,7 +20261,8 @@
               "Text": ""
             },
             "text": "......읏. 왜, 왜 아무 말도 안 하는 거야...?",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -19908,7 +20336,8 @@
               "Text": ""
             },
             "text": "...뭐든, 정말로 뭐든지 말이야.",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -20024,7 +20453,8 @@
               "Text": ""
             },
             "text": "조, 조금만 더 가까이 와... 그, 그럼... 하우웁...",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -20098,7 +20528,8 @@
               "Text": ""
             },
             "text": "댜들 녜가... 하으음, 츕... 뉴규 편인지 알게찌... 츄읍...",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -20178,7 +20609,8 @@
               "Text": ""
             },
             "text": "츄읍, 쯉... 내, 내 쳣 번째는 네게 쥴계에...",
-            "author": "isabel"
+            "author": "isabel",
+            "voice": "voc_ch0040_affection_view_26"
           },
           {
             "class": "ModifyBackground",
@@ -20305,7 +20737,8 @@
               "Text": ""
             },
             "text": "흐읍... 그래 이 향이야.",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -20452,7 +20885,8 @@
               "Text": ""
             },
             "text": "후훗... 그래. 네가 필요해.",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -20603,7 +21037,8 @@
               "Text": ""
             },
             "text": "내 안을 너로 가득 채울 수 있도록 말이야...",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_12"
           },
           {
             "class": "ModifyBackground",
@@ -20710,7 +21145,8 @@
               "Text": ""
             },
             "text": "흐읍... 그래 이 향이야.",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -20857,7 +21293,8 @@
               "Text": ""
             },
             "text": "후훗... 그래. 네가 필요해.",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -21008,7 +21445,8 @@
               "Text": ""
             },
             "text": "내 안을 너로 가득 채울 수 있도록 말이야...",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -21029,7 +21467,8 @@
               "Text": ""
             },
             "text": "콜록콜록, 대체 뭘 뿌린...",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -21050,7 +21489,8 @@
               "Text": ""
             },
             "text": "흐읍읍읍... 향과 향이 합쳐져서...",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -21169,7 +21609,8 @@
               "Text": ""
             },
             "text": "흐윽...! 그치만, 머리에 점점 열이 올라. 조금만 더... 조금만...",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -21190,7 +21631,8 @@
               "Text": ""
             },
             "text": "으헤헤헤... 더는 안 돼...",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -21286,7 +21728,8 @@
               "Text": ""
             },
             "text": "그렇지만... 에헤헤헤헤...",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -21414,7 +21857,8 @@
               "Text": ""
             },
             "text": "흐으읏... 안 돼... 넘쳐버려...!",
-            "author": "oblia"
+            "author": "oblia",
+            "voice": "voc_ch0042_affection_view_26"
           },
           {
             "class": "HidePrinter",
@@ -21548,7 +21992,8 @@
               "Text": ""
             },
             "text": "시원하다. 여기까지 오면서 계속 상상했다니까.",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -21680,7 +22125,8 @@
               "Text": ""
             },
             "text": "후훗, 거짓말 하기는...",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -21826,7 +22272,8 @@
               "Text": ""
             },
             "text": "그런 네가 왜 계속 거기에 앉아 있으려고 할까나?",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -21904,7 +22351,8 @@
               "Text": ""
             },
             "text": "에이 또 내빼기는...",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_10"
           },
           {
             "class": "HidePrinter",
@@ -21984,7 +22432,8 @@
               "Text": ""
             },
             "text": "혹시 물놀이보다도 이 호수를 더 즐겁게 즐길 방법을 알아?",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -22157,7 +22606,8 @@
               "Text": ""
             },
             "text": "그러니 고집 그만 부리고 나랑 같이 물놀이 어때?",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_16"
           },
           {
             "class": "HidePrinter",
@@ -22273,7 +22723,8 @@
               "Text": ""
             },
             "text": "시원하다. 여기까지 오면서 계속 상상했다니까.",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -22405,7 +22856,8 @@
               "Text": ""
             },
             "text": "후훗, 거짓말 하기는...",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -22551,7 +23003,8 @@
               "Text": ""
             },
             "text": "그런 네가 왜 계속 거기에 앉아 있으려고 할까나?",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -22629,7 +23082,8 @@
               "Text": ""
             },
             "text": "에이 또 내빼기는...",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_10"
           },
           {
             "class": "HidePrinter",
@@ -22709,7 +23163,8 @@
               "Text": ""
             },
             "text": "혹시 물놀이보다도 이 호수를 더 즐겁게 즐길 방법을 알아?",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -22882,7 +23337,8 @@
               "Text": ""
             },
             "text": "그러니 고집 그만 부리고 나랑 같이 물놀이 어때?",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_16"
           },
           {
             "class": "HidePrinter",
@@ -22912,7 +23368,8 @@
               "Text": ""
             },
             "text": "너 답지 않게 망설이고 말이야.",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_17"
           },
           {
             "class": "HidePrinter",
@@ -22942,7 +23399,8 @@
               "Text": ""
             },
             "text": "뭔가 바라는 게 있나 보네.",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_18"
           },
           {
             "class": "HidePrinter",
@@ -23022,7 +23480,8 @@
               "Text": ""
             },
             "text": "네가 지금 당장 옷을 벗어던지고 호수로 들어왔으면 좋겠어.",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_20"
           },
           {
             "class": "HidePrinter",
@@ -23380,7 +23839,8 @@
               "Text": ""
             },
             "text": "아마 이 말을 듣고 싶었던 게 아닐까 싶은데...",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_28"
           },
           {
             "class": "HidePrinter",
@@ -23410,7 +23870,8 @@
               "Text": ""
             },
             "text": "후훗, 정답이지?",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_29"
           },
           {
             "class": "HidePrinter",
@@ -23440,7 +23901,8 @@
               "Text": ""
             },
             "text": "그럼 원하는 걸 이뤘으니, 우리 둘의 여행을 화려하게 마무리 해보자.",
-            "author": "lafine"
+            "author": "lafine",
+            "voice": "voc_ch0043_affection_view_30"
           },
           {
             "class": "HidePrinter",
@@ -23605,7 +24067,8 @@
               "Text": ""
             },
             "text": "퓨우... 음, 므믐... 으므므으...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -23626,7 +24089,8 @@
               "Text": ""
             },
             "text": "므힛... 더는 못 머거... 히힛...!",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -23647,7 +24111,8 @@
               "Text": ""
             },
             "text": "퓨우... 믓! ...으므... 므으음...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -23668,7 +24133,8 @@
               "Text": ""
             },
             "text": "...가지 마라아, 권속이여어...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -23689,7 +24155,8 @@
               "Text": ""
             },
             "text": "평생 옆에 있겠다고... 약속 했지 안느냐...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -23710,7 +24177,8 @@
               "Text": ""
             },
             "text": "갈 거며는... 푸딩 천 개를 노코 가라는 거다... 음냐아...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -23731,7 +24199,8 @@
               "Text": ""
             },
             "text": "...으므믑, 브븟... 답답해애... 이제 박스는 시러어...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -23752,7 +24221,8 @@
               "Text": ""
             },
             "text": "......므응?",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -23773,7 +24243,8 @@
               "Text": ""
             },
             "text": "...에헤헤, 나의 권속이구나아.",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -23794,7 +24265,8 @@
               "Text": ""
             },
             "text": "역시이... 꿈이었떤 거다아...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -23815,7 +24287,8 @@
               "Text": ""
             },
             "text": "네가 나를 두고 갈 리 없으니까아... 히힛...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_11"
           },
           {
             "class": "ShowUI",
@@ -23922,7 +24395,8 @@
               "Text": ""
             },
             "text": "퓨우... 음, 므믐... 으므므으...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -23943,7 +24417,8 @@
               "Text": ""
             },
             "text": "므힛... 더는 못 머거... 히힛...!",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -23964,7 +24439,8 @@
               "Text": ""
             },
             "text": "퓨우... 믓! ...으므... 므으음...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -23985,7 +24461,8 @@
               "Text": ""
             },
             "text": "...가지 마라아, 권속이여어...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -24006,7 +24483,8 @@
               "Text": ""
             },
             "text": "평생 옆에 있겠다고... 약속 했지 안느냐...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -24027,7 +24505,8 @@
               "Text": ""
             },
             "text": "갈 거며는... 푸딩 천 개를 노코 가라는 거다... 음냐아...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -24048,7 +24527,8 @@
               "Text": ""
             },
             "text": "...으므믑, 브븟... 답답해애... 이제 박스는 시러어...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -24069,7 +24549,8 @@
               "Text": ""
             },
             "text": "......므응?",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -24090,7 +24571,8 @@
               "Text": ""
             },
             "text": "...에헤헤, 나의 권속이구나아.",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -24111,7 +24593,8 @@
               "Text": ""
             },
             "text": "역시이... 꿈이었떤 거다아...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -24132,7 +24615,8 @@
               "Text": ""
             },
             "text": "네가 나를 두고 갈 리 없으니까아... 히힛...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -24153,7 +24637,8 @@
               "Text": ""
             },
             "text": "천 년 전에도... 너는 항상... 내 곁에 이썼던 거다...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -24174,7 +24659,8 @@
               "Text": ""
             },
             "text": "...므응? 그런 적 업따고오..?",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -24195,7 +24681,8 @@
               "Text": ""
             },
             "text": "상관 업는 거다아...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -24216,7 +24703,8 @@
               "Text": ""
             },
             "text": "네가 잊어써도... 내가 기억하니까...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -24237,7 +24725,8 @@
               "Text": ""
             },
             "text": "그냥... 이 몸 곁에만 잇쓰라는 거다...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -24258,7 +24747,8 @@
               "Text": ""
             },
             "text": "혼자 있는 건 실타앙...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -24279,7 +24769,8 @@
               "Text": ""
             },
             "text": "이제 네 말두 잘 들을 테니까아...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -24300,7 +24791,8 @@
               "Text": ""
             },
             "text": "이 몸을 두고 가지 말라는 거다...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -24321,7 +24813,8 @@
               "Text": ""
             },
             "text": "...므히힛, 이제야 안심이 되는 거당...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -24342,7 +24835,8 @@
               "Text": ""
             },
             "text": "후아아암~ 졸려어...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -24363,7 +24857,8 @@
               "Text": ""
             },
             "text": "잘 자라는 거다... 나의 권속이여...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -24384,7 +24879,8 @@
               "Text": ""
             },
             "text": "이 몸이 깨어나면... 그때도...",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -24405,7 +24901,8 @@
               "Text": ""
             },
             "text": "옆에 잇써.. 줘야하는... 거다아...?",
-            "author": "rana"
+            "author": "rana",
+            "voice": "voc_ch0052_affection_view_24"
           },
           {
             "class": "HidePrinter",
@@ -24522,7 +25019,8 @@
               "Text": ""
             },
             "text": "헤, 헤에... 여긴 정말 대단하군...",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -24543,7 +25041,8 @@
               "Text": ""
             },
             "text": "게다가 이런 옷까지... 대체 언제 준비한 거냐?",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -24666,7 +25165,8 @@
               "Text": ""
             },
             "text": "근데 옷이... 조금 짧은 것 같기도 하고...?",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -24687,7 +25187,8 @@
               "Text": ""
             },
             "text": "그래도 이곳은 정말 마음에 드는군.",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -24933,7 +25434,8 @@
               "Text": ""
             },
             "text": "거, 건방지게 내 몸을 마, 만지작거리기나 하고...!",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -24954,7 +25456,8 @@
               "Text": ""
             },
             "text": "어, 억지로 목마에 태우고... 그그그런 이상한 짓까지 하고...!!",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -25491,7 +25994,8 @@
               "Text": ""
             },
             "text": "헤, 헤에... 여긴 정말 대단하군...",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -25512,7 +26016,8 @@
               "Text": ""
             },
             "text": "게다가 이런 옷까지... 대체 언제 준비한 거냐?",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -25635,7 +26140,8 @@
               "Text": ""
             },
             "text": "근데 옷이... 조금 짧은 것 같기도 하고...?",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -25656,7 +26162,8 @@
               "Text": ""
             },
             "text": "그래도 이곳은 정말 마음에 드는군.",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -25902,7 +26409,8 @@
               "Text": ""
             },
             "text": "거, 건방지게 내 몸을 마, 만지작거리기나 하고...!",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -25923,7 +26431,8 @@
               "Text": ""
             },
             "text": "어, 억지로 목마에 태우고... 그그그런 이상한 짓까지 하고...!!",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -26758,7 +27267,8 @@
               "Text": ""
             },
             "text": "내, 내가 계속 네 곁에 있어주지.",
-            "author": "casey"
+            "author": "casey",
+            "voice": "voc_ch0057_affection_view_28"
           },
           {
             "class": "AffectionCommand",
@@ -29158,7 +29668,8 @@
               "Text": ""
             },
             "text": "너를 기분 좋게 하려면 뭘 해야 할지, 머리를 굉장히 많이 썼단 말이지.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -29179,7 +29690,8 @@
               "Text": ""
             },
             "text": "손도 안 된다, 발도 안 된다... 그래서 내린 결론이, 바로 이거야.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -29200,7 +29712,8 @@
               "Text": ""
             },
             "text": "바로 몸으로 마사지해 주는 거지. 이렇게... 이렇게.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -29221,7 +29734,8 @@
               "Text": ""
             },
             "text": "아, 영감은 메이드들한테 얻었어.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -29242,7 +29756,8 @@
               "Text": ""
             },
             "text": "메이드들은 같이 씻으면서, 서로의 등을 밀어준다고 하더라.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -29263,7 +29778,8 @@
               "Text": ""
             },
             "text": "그리고 좁은 목욕탕에서 밀착해서 서로 밀어주다 보면,",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -29284,7 +29800,8 @@
               "Text": ""
             },
             "text": "몸과 몸이 딱 달라붙은 채로 하는 경우도 흔하다고...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -29305,7 +29822,8 @@
               "Text": ""
             },
             "text": "그래서 생각했지. 이렇게... 몸을 맞대고, 힘 대신 온기로 마사지해 주는 거야.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -29326,7 +29844,8 @@
               "Text": ""
             },
             "text": "이렇게 하면... 너를 망가뜨리지 않고 마사지할 수 있어.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -29347,7 +29866,8 @@
               "Text": ""
             },
             "text": "어때? 기분 좋아?",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -29368,7 +29888,8 @@
               "Text": ""
             },
             "text": "전에 했던 마사지하고는 차원이 다르지?",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -29389,7 +29910,8 @@
               "Text": ""
             },
             "text": "후후... 괜찮아, 대답하지 않아도 돼.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -29410,7 +29932,8 @@
               "Text": ""
             },
             "text": "얼굴에 전부 드러나니까.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -29431,7 +29954,8 @@
               "Text": ""
             },
             "text": "그나저나, 혹시 더워...? 얼굴에 땀이 맺혔네...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -29452,7 +29976,8 @@
               "Text": ""
             },
             "text": "훗... 이런 경우에 뭘 해야 할지도 미리 생각해 뒀다고.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -29473,7 +29998,8 @@
               "Text": ""
             },
             "text": "봉사정신은 상대를 기분 좋게 하기 위해 뭐가 필요한지 미리 생각하는 거잖아?",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -29494,7 +30020,8 @@
               "Text": ""
             },
             "text": "그래서 이런 것도 준비했지... 아앙...~",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_21"
           },
           {
             "class": "ShowUI",
@@ -29600,7 +30127,8 @@
               "Text": ""
             },
             "text": "너를 기분 좋게 하려면 뭘 해야 할지, 머리를 굉장히 많이 썼단 말이지.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_1"
           },
           {
             "class": "AffectionCommand",
@@ -29621,7 +30149,8 @@
               "Text": ""
             },
             "text": "손도 안 된다, 발도 안 된다... 그래서 내린 결론이, 바로 이거야.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_2"
           },
           {
             "class": "AffectionCommand",
@@ -29642,7 +30171,8 @@
               "Text": ""
             },
             "text": "바로 몸으로 마사지해 주는 거지. 이렇게... 이렇게.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_3"
           },
           {
             "class": "AffectionCommand",
@@ -29663,7 +30193,8 @@
               "Text": ""
             },
             "text": "아, 영감은 메이드들한테 얻었어.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_4"
           },
           {
             "class": "AffectionCommand",
@@ -29684,7 +30215,8 @@
               "Text": ""
             },
             "text": "메이드들은 같이 씻으면서, 서로의 등을 밀어준다고 하더라.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_5"
           },
           {
             "class": "AffectionCommand",
@@ -29705,7 +30237,8 @@
               "Text": ""
             },
             "text": "그리고 좁은 목욕탕에서 밀착해서 서로 밀어주다 보면,",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_6"
           },
           {
             "class": "AffectionCommand",
@@ -29726,7 +30259,8 @@
               "Text": ""
             },
             "text": "몸과 몸이 딱 달라붙은 채로 하는 경우도 흔하다고...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_7"
           },
           {
             "class": "AffectionCommand",
@@ -29747,7 +30281,8 @@
               "Text": ""
             },
             "text": "그래서 생각했지. 이렇게... 몸을 맞대고, 힘 대신 온기로 마사지해 주는 거야.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_8"
           },
           {
             "class": "AffectionCommand",
@@ -29768,7 +30303,8 @@
               "Text": ""
             },
             "text": "이렇게 하면... 너를 망가뜨리지 않고 마사지할 수 있어.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_9"
           },
           {
             "class": "AffectionCommand",
@@ -29789,7 +30325,8 @@
               "Text": ""
             },
             "text": "어때? 기분 좋아?",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_10"
           },
           {
             "class": "AffectionCommand",
@@ -29810,7 +30347,8 @@
               "Text": ""
             },
             "text": "전에 했던 마사지하고는 차원이 다르지?",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_11"
           },
           {
             "class": "AffectionCommand",
@@ -29831,7 +30369,8 @@
               "Text": ""
             },
             "text": "후후... 괜찮아, 대답하지 않아도 돼.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_12"
           },
           {
             "class": "AffectionCommand",
@@ -29852,7 +30391,8 @@
               "Text": ""
             },
             "text": "얼굴에 전부 드러나니까.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_13"
           },
           {
             "class": "AffectionCommand",
@@ -29873,7 +30413,8 @@
               "Text": ""
             },
             "text": "이전에 했던 마사지들은 기분 좋기는 커녕, 아프기만 했지...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_14"
           },
           {
             "class": "AffectionCommand",
@@ -29894,7 +30435,8 @@
               "Text": ""
             },
             "text": "아프게 하려고 한 건 아니지만, 힘조절이 쉽진 않아서 말이야.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_15"
           },
           {
             "class": "AffectionCommand",
@@ -29915,7 +30457,8 @@
               "Text": ""
             },
             "text": "그 부분에 대해서는 반성하고 있어.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_16"
           },
           {
             "class": "AffectionCommand",
@@ -29936,7 +30479,8 @@
               "Text": ""
             },
             "text": "그러니까 이건 봉사이자, 나름의 사죄인 셈이야.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_17"
           },
           {
             "class": "AffectionCommand",
@@ -29957,7 +30501,8 @@
               "Text": ""
             },
             "text": "그나저나, 혹시 더워...? 얼굴에 땀이 맺혔네...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_18"
           },
           {
             "class": "AffectionCommand",
@@ -29978,7 +30523,8 @@
               "Text": ""
             },
             "text": "훗... 이런 경우에 뭘 해야 할지도 미리 생각해 뒀다고.",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_19"
           },
           {
             "class": "AffectionCommand",
@@ -29999,7 +30545,8 @@
               "Text": ""
             },
             "text": "봉사정신은 상대를 기분 좋게 하기 위해 뭐가 필요한지 미리 생각하는 거잖아?",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_20"
           },
           {
             "class": "AffectionCommand",
@@ -30020,7 +30567,8 @@
               "Text": ""
             },
             "text": "그래서 이런 것도 준비했지... 아앙...~",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_21"
           },
           {
             "class": "AffectionCommand",
@@ -30041,7 +30589,8 @@
               "Text": ""
             },
             "text": "(하음... 하아아....흐에....)",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_22"
           },
           {
             "class": "AffectionCommand",
@@ -30062,7 +30611,8 @@
               "Text": ""
             },
             "text": "후후후... 깨끄하게 해주테니가... 가지러워도 가마히 이허...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_23"
           },
           {
             "class": "AffectionCommand",
@@ -30083,7 +30633,8 @@
               "Text": ""
             },
             "text": "(후에... 하아... 합... 후으에....)",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_24"
           },
           {
             "class": "AffectionCommand",
@@ -30104,7 +30655,8 @@
               "Text": ""
             },
             "text": "헤헤헤... 마이써...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_25"
           },
           {
             "class": "AffectionCommand",
@@ -30125,7 +30677,8 @@
               "Text": ""
             },
             "text": "으음... 역시, 네 기운은 특별한 것 같아...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_26"
           },
           {
             "class": "AffectionCommand",
@@ -30146,7 +30699,8 @@
               "Text": ""
             },
             "text": "저번에도 맛은 봤지만... 중독될 것 같은 맛이야...",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_27"
           },
           {
             "class": "AffectionCommand",
@@ -30167,7 +30721,8 @@
               "Text": ""
             },
             "text": "흐으응... 조금 더... 맛볼래... 하음...~",
-            "author": "claire_swimsuit"
+            "author": "claire_swimsuit",
+            "voice": "voc_ch0068_affection_view_28"
           },
           {
             "class": "HidePrinter",
