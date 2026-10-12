@@ -10261,7 +10261,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "당신은 권태기가 찾아온 부부의 한 명입니다.<br>하지만 권태기 속에서 달아오른 몸은 주체할 수가 없습니다.<br>오랜만에 부부 관계를 위한 행동을 보여주세요.'...?",
+            "text": "당신은 권태기가 찾아온 부부의 한 명입니다.\n하지만 권태기 속에서 달아오른 몸은 주체할 수가 없습니다.\n오랜만에 부부 관계를 위한 행동을 보여주세요.'...?",
             "author": "alone"
           },
           {
@@ -32333,7 +32333,7 @@
               "WaitForInput": "false",
               "Wait": "false"
             },
-            "text": "<size=30>띵동~♪</size>"
+            "text": "띵동~♪"
           },
           {
             "class": "ModifyTextPrinter",
@@ -39986,7 +39986,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>저는 이번엔 파랑 코인을 두 개 가져오는 걸로….</size>",
+            "text": "저는 이번엔 파랑 코인을 두 개 가져오는 걸로….",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_1"
           },
@@ -40049,7 +40049,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>히이익-!</size>",
+            "text": "히이익-!",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_2"
           },
@@ -40074,7 +40074,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>가, 갑자기 왜 소리를 지르세요….</size>",
+            "text": "가, 갑자기 왜 소리를 지르세요….",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_3"
           },
@@ -40111,7 +40111,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>파랑 코인이 필요하니까 가져가지 말라니….</size>",
+            "text": "파랑 코인이 필요하니까 가져가지 말라니….",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_5"
           },
@@ -40132,7 +40132,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>그치만 상대가 필요한 코인을 뺏는 게임인걸요오….</size>",
+            "text": "그치만 상대가 필요한 코인을 뺏는 게임인걸요오….",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_6"
           },
@@ -40170,7 +40170,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>아, 제 배려가 좀 부족했네요.</size>",
+            "text": "아, 제 배려가 좀 부족했네요.",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_7"
           },
@@ -40191,7 +40191,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>내기를 걸고 보드게임 하는 건 처음이라 신났나봐요.</size>",
+            "text": "내기를 걸고 보드게임 하는 건 처음이라 신났나봐요.",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_8"
           },
@@ -40212,7 +40212,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>그럼 파랑 말고 검정으로….</size>",
+            "text": "그럼 파랑 말고 검정으로….",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_9"
           },
@@ -40268,7 +40268,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>히이익--!</size>",
+            "text": "히이익--!",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_10"
           },
@@ -40300,7 +40300,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>가, 갑자기 보드판은 왜 뒤집는....</size>",
+            "text": "가, 갑자기 보드판은 왜 뒤집는....",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_11"
           },
@@ -40354,7 +40354,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>그렇구나….</size>",
+            "text": "그렇구나….",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_12"
           },
@@ -40376,7 +40376,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>설마 그럴 일은 없겠지만….</size><br><size=40>게임에서 못 이길 것 같아서 엎은 건 줄 알았어요.</size>",
+            "text": "설마 그럴 일은 없겠지만….\n게임에서 못 이길 것 같아서 엎은 건 줄 알았어요.",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_13"
           },
@@ -40397,7 +40397,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>…….</size>",
+            "text": "…….",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_14"
           },
@@ -40440,7 +40440,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>하지만!</size>",
+            "text": "하지만!",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_15"
           },
@@ -40461,7 +40461,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>걱정하지 마세요.</size>",
+            "text": "걱정하지 마세요.",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_16"
           },
@@ -40508,7 +40508,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>카드랑 코인들이 어떻게 배치되어 있었는지 정도는 다 외우고 있거든요.</size>",
+            "text": "카드랑 코인들이 어떻게 배치되어 있었는지 정도는 다 외우고 있거든요.",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_17"
           },
@@ -40529,7 +40529,7 @@
             "fields": {
               "Text": ""
             },
-            "text": "<size=40>자, 원래대로 되돌렸으니까 다시 시작하죠!</size>",
+            "text": "자, 원래대로 되돌렸으니까 다시 시작하죠!",
             "author": "alone",
             "voice": "voc_ch0024_desire_story_18"
           },
@@ -41509,7 +41509,7 @@
               "Text": "",
               "Wait": "false"
             },
-            "text": "<br>핫! 죄, 죄송해요오, 혼자 신나서 큰 소리를…. ",
+            "text": "\n핫! 죄, 죄송해요오, 혼자 신나서 큰 소리를…. ",
             "author": "alone"
           },
           {
@@ -41766,7 +41766,7 @@
               "Text": "",
               "Wait": "false"
             },
-            "text": "<br>그치, 이쁜아? ",
+            "text": "\n그치, 이쁜아? ",
             "author": "alone"
           },
           {
@@ -41902,7 +41902,7 @@
               "Text": "",
               "Wait": "false"
             },
-            "text": "<br>이쁜이도 나, 낯을 많이 가리니까, 심한 장난은 치지 말아주세요오….",
+            "text": "\n이쁜이도 나, 낯을 많이 가리니까, 심한 장난은 치지 말아주세요오….",
             "author": "alone"
           },
           {
@@ -42096,7 +42096,7 @@
               "Text": "",
               "Wait": "false"
             },
-            "text": "<br>지금 다시 배치 할게요.",
+            "text": "\n지금 다시 배치 할게요.",
             "author": "alone"
           },
           {

@@ -6,7 +6,7 @@ import {
 } from '@chakra-ui/react';
 import { RewardSlot } from '@/components/eventsBoard';
 import { GameIcon } from '@/components/gameIcon';
-import { PlayerText, SceneLines } from '@/components/storyLines';
+import { LineText, SceneLines } from '@/components/storyLines';
 import {
   KIND_COLOR, KIND_LABEL, loadBondText,
   type BondChat, type BondIndex, type BondMessage, type BondScene, type BondStoryPart, type BondText,
@@ -110,7 +110,7 @@ function Thread({ chat, body, code, chars, icons, skinKeys }: {
           return (
             <Center key={i} py={1}>
               <Text fontSize="xs" color="gray.400" bg="whiteAlpha.100" px={3} py={1} borderRadius="full"
-                textAlign="center" whiteSpace="pre-wrap"><PlayerText text={m.t} /></Text>
+                textAlign="center" whiteSpace="pre-wrap"><LineText text={m.t} /></Text>
             </Center>
           );
         }
@@ -151,7 +151,7 @@ function Incoming({ message, first, chars, icons }: {
         )}
         <Box bg="whiteAlpha.200" px={3} py={1.5} borderRadius="2xl" borderTopLeftRadius={first ? 'sm' : '2xl'}
           fontSize="sm" whiteSpace="pre-wrap" wordBreak="break-word">
-          <PlayerText text={message.t} />
+          <LineText text={message.t} />
         </Box>
       </VStack>
     </Flex>
@@ -170,7 +170,7 @@ function Reply({ options }: { options: string[] }) {
           {...(several
             ? { borderWidth: '1px', borderStyle: 'dashed', borderColor: 'yellow.400', color: 'yellow.100' }
             : { bg: 'yellow.400', color: 'gray.900' })}>
-          <PlayerText text={option} />
+          <LineText text={option} />
         </Box>
       ))}
     </VStack>
