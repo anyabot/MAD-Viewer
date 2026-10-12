@@ -20,6 +20,15 @@ export type SceneTimelineData = {
 };
 
 /** Prefetched, so a line is audible the moment its animation starts. */
+// A Desire/Affection rig plays the clip an event's audio path names when the event fires.
+export function eventVoiceId(audioPath: string | null | undefined): string | null {
+  return audioPath ? audioPath.replace(/\.[^./]+$/, '') : null;
+}
+
+export function eventVoiceIds(events: { audioPath?: string | null }[] | null | undefined): string[] {
+  return Array.from(new Set((events ?? []).map((e) => eventVoiceId(e.audioPath)).filter((id): id is string => !!id)));
+}
+
 export function sceneVoiceIds(rig: SceneTimelineRig | null | undefined): string[] {
   const out = new Set<string>();
   for (const scene of Object.values(rig ?? {})) {

@@ -35,7 +35,7 @@ import {
 } from '@/components/skinViewer/dragBone';
 import {
   cutsceneOffsetAt, rigCameraTransform,
-  sceneBgmIds, sceneVoiceIds, scriptCameraTransform,
+  eventVoiceId, eventVoiceIds, sceneBgmIds, sceneVoiceIds, scriptCameraTransform,
   type CameraBase, type CameraState, type SceneFadeState, type SceneTimelineRig,
 } from '@/components/skinViewer/scenes';
 import {
@@ -163,6 +163,7 @@ export default function SkinViewer({
     { box: string; effect: string; detail: string } | null>(null);
 
   const [voiceIndex, setVoiceIndex] = useState<VoiceIndex | null>(null);
+  const [eventVoices, setEventVoices] = useState<string[]>([]);
   const setVoiceOn = (value: boolean) => setViewer({ voiceOn: value });
   const setBgmOn = (value: boolean) => setViewer({ bgmOn: value });
   const [sceneAudioIndex, setSceneAudioIndex] = useState<SceneAudioIndex | null>(null);
@@ -482,6 +483,10 @@ export default function SkinViewer({
     if (!voiceOn || !voiceIndex || !timelineRig) return;
     prefetchVoice(voiceIndex, sceneVoiceIds(timelineRig));
   }, [voiceOn, voiceIndex, timelineRig]);
+
+  useEffect(() => {
+    if (voiceOn && voiceIndex && eventVoices.length) prefetchVoice(voiceIndex, eventVoices);
+  }, [voiceOn, voiceIndex, eventVoices]);
 
   // Animation sounds are staged by a clip already playing and BGM by a script beat, so neither can wait on a fetch.
   useEffect(() => {
@@ -1265,9 +1270,16 @@ export default function SkinViewer({
         });
       }
 
+      setEventVoices(eventVoiceIds(spine.skeleton.data.events));
       spine.state.addListener({
         event: (entry: any, event: any) => {
           const name = event?.data?.name;
+          const voice = eventVoiceId(event?.data?.audioPath);
+          if (voice) {
+            dbg('voice event', { name, voice, from: entry?.animation?.name });
+            if (voiceOnRef.current) void playVoice(voiceIndexRef.current, voice);
+            return;
+          }
           if (name !== 'bg_on' && name !== 'bg_off' && name !== 'bg_change') return;
           dbg('bg event', {
             name,
