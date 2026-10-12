@@ -5,19 +5,19 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Center,
-  Flex, HStack, IconButton, SimpleGrid, Spinner, Text, VStack,
+  Flex, HStack, SimpleGrid, Spinner, Text, VStack,
 } from '@chakra-ui/react';
 import { ArtBox } from '@/components/artBox';
-import { GameIcon } from '@/components/gameIcon';
+import { SceneLines } from '@/components/storyLines';
 import {
   loadCharacters, loadEvents, loadIcons, loadStoryChapter, loadStoryIndex, loadVoice,
   type CharacterData, type EventIndex, type IconManifest, type StoryChapter,
-  type StoryChapterText, type StoryIndex, type StoryLine,
+  type StoryChapterText, type StoryIndex,
 } from '@/lib/data';
 import { bannerNames, sceneCount } from '@/lib/events';
-import { gameText, useGameLang, type GameLang } from '@/lib/gameText';
+import { gameText, useGameLang } from '@/lib/gameText';
 import { useT, type UiKey } from '@/lib/i18n';
-import { playVoice, type VoiceIndex } from '@/lib/voice';
+import type { VoiceIndex } from '@/lib/voice';
 
 const KIND_ORDER: StoryChapter['kind'][] = ['main', 'event', 'nemesis'];
 const KIND_LABEL: Record<StoryChapter['kind'], UiKey> = {
@@ -173,60 +173,6 @@ function Reader({ chapter, scene, chars, icons }: {
           </AccordionItem>
         ))}
       </Accordion>
-    </VStack>
-  );
-}
-
-function SceneLines({ lines, chars, icons, voice, lang }: {
-  lines: StoryLine[]; chars: CharacterData | null; icons: IconManifest | null;
-  voice: VoiceIndex | null; lang: GameLang;
-}) {
-  const t = useT();
-  if (!lines.length) return <Text fontSize="sm" color="gray.500">{t('storyNoText')}</Text>;
-  return (
-    <VStack align="stretch" spacing={2} maxW="48rem" mx="auto" lang={lang}>
-      {lines.map((line, i) => {
-        if (line.k === 'place') {
-          return (
-            <Text key={i} fontSize="xs" color="gray.500" textAlign="center" letterSpacing="wide" py={1}>
-              — {line.t} —
-            </Text>
-          );
-        }
-        if (line.k === 'narration') {
-          return <Text key={i} fontSize="sm" color="gray.400" fontStyle="italic" whiteSpace="pre-wrap">{line.t}</Text>;
-        }
-        if (line.k === 'choice') {
-          return (
-            <Box key={i} fontSize="sm" px={3} py={1.5} borderLeftWidth="3px" borderColor="yellow.400"
-              bg="whiteAlpha.50" whiteSpace="pre-wrap">{line.t}</Box>
-          );
-        }
-        const entry = line.c ? chars?.characters[line.c] : undefined;
-        const playable = entry?.characterType === 1;
-        return (
-          <Flex key={i} gap={2} align="start">
-            <GameIcon manifest={icons} group="char"
-              names={line.c ? [entry?.iconPath, `Icon_${line.c}`] : []}
-              size={8} borderRadius="full" mt={0.5} />
-            <Box minW={0} flex="1">
-              {line.n && (
-                <Text fontSize="xs" fontWeight="bold" color={playable ? 'yellow.300' : 'gray.300'}
-                  as={playable ? NextLink : undefined}
-                  {...(playable ? { href: `/character?code=${line.c}` } : {})}>
-                  {line.n}
-                </Text>
-              )}
-              <Text fontSize="sm" whiteSpace="pre-wrap">{line.t}</Text>
-            </Box>
-            {line.v && voice?.clips[line.v] && (
-              <IconButton aria-label={t('storyPlayVoice')} size="xs" variant="ghost"
-                icon={<Box as="span" aria-hidden>▶</Box>}
-                onClick={() => { void playVoice(voice, line.v!); }} />
-            )}
-          </Flex>
-        );
-      })}
     </VStack>
   );
 }

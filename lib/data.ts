@@ -1020,6 +1020,34 @@ export function loadStoryChapter(lang: GameLang, chapter: number): Promise<Story
   return fetchJson<StoryChapterText>(`story/${lang}/${chapter}.json`);
 }
 
+export type BondSceneKind = 'desire' | 'affection';
+export type BondScene = { key?: string; kind: BondSceneKind; name?: GameLocalized; thumb?: string };
+export type BondChat = {
+  id: number;
+  level: number;
+  name?: GameLocalized;
+  rewards?: EventReward[];
+  scene?: BondScene;
+  lines?: number;
+  story?: number;
+};
+export type BondIndex = { refs: Record<string, EventRef>; characters: Record<string, BondChat[]> };
+export type BondMessage =
+  | { k: 'msg'; t: string; n?: string; c?: string; u?: 1; p?: 1 }
+  | { k: 'reply'; o: string[] }
+  | { k: 'system'; t: string }
+  | { k: 'story' };
+export type BondStoryPart = { k: 'text'; lines: StoryLine[] } | { k: 'scene'; kind: BondSceneKind };
+export type BondText = { chats: Record<string, { chat?: BondMessage[]; story?: BondStoryPart[] }> };
+
+export function loadBondIndex(): Promise<BondIndex> {
+  return fetchJson<BondIndex>('bond/index.json');
+}
+
+export function loadBondText(lang: GameLang, code: string): Promise<BondText> {
+  return fetchJson<BondText>(`bond/${lang}/${code}.json`);
+}
+
 export const KIND_LABEL: Record<SkinKind, Localized> = {
   standing: { en: 'Standing', ko: '스탠딩' },
   affection: { en: 'Affection', ko: '어펙션' },
