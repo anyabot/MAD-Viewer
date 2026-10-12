@@ -124,7 +124,7 @@ function OpRow({ op, level, period, data, icons }: {
       {scale && <Text fontSize="0.65rem" color="gray.400">{scale}</Text>}
       {detail.length > 0 && (
         <Text fontSize="0.65rem" color="gray.300" noOfLines={1}
-          title={detail.join(', ')}>
+          title={detail.map((v) => colorRuns(v).map((r) => (r.break ? ' ' : r.text)).join('')).join(', ')}>
           {shown.map((v, i) => (
             <Text as="span" key={i}>
               {i > 0 && ', '}

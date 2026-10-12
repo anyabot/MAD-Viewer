@@ -7,21 +7,29 @@ import type { GameLang } from '@/lib/gameText';
 import { useT } from '@/lib/i18n';
 import { playVoice, type VoiceIndex } from '@/lib/voice';
 
-const PLAYER = '{player}';
+const MARKUP = /\{player\}|<bouten>([\s\S]*?)<\/bouten>|<ruby=(?:"([^"]*)"|([^>]*))>([\s\S]*?)<\/ruby>/g;
+const EMPHASIS = { textEmphasis: 'filled dot', WebkitTextEmphasis: 'filled dot', textEmphasisPosition: 'over right' };
 
-export function PlayerText({ text }: { text: string }) {
+export function LineText({ text }: { text: string }) {
   const t = useT();
-  if (!text.includes(PLAYER)) return <>{text}</>;
-  return (
-    <>
-      {text.split(PLAYER).map((part, i) => (
-        <Fragment key={i}>
-          {i > 0 && <Box as="span" color="yellow.300" fontWeight="semibold">{t('storyPlayer')}</Box>}
-          {part}
-        </Fragment>
-      ))}
-    </>
-  );
+  const out: React.ReactNode[] = [];
+  let at = 0;
+  for (const m of text.matchAll(MARKUP)) {
+    if (m.index > at) out.push(text.slice(at, m.index));
+    const key = m.index;
+    if (m[0] === '{player}') {
+      out.push(<Box key={key} as="span" color="yellow.300" fontWeight="semibold">{t('storyPlayer')}</Box>);
+    } else if (m[1] !== undefined) {
+      out.push(<Box key={key} as="span" sx={EMPHASIS}><LineText text={m[1]} /></Box>);
+    } else {
+      out.push(
+        <ruby key={key}><LineText text={m[4]} /><Box as="rt" fontSize="0.6em" color="gray.400">{m[2] ?? m[3]}</Box></ruby>,
+      );
+    }
+    at = key + m[0].length;
+  }
+  if (at < text.length) out.push(text.slice(at));
+  return <>{out.map((node, i) => <Fragment key={i}>{node}</Fragment>)}</>;
 }
 
 export function SceneLines({ lines, chars, icons, voice, lang }: {
@@ -36,21 +44,21 @@ export function SceneLines({ lines, chars, icons, voice, lang }: {
         if (line.k === 'place') {
           return (
             <Text key={i} fontSize="xs" color="gray.500" textAlign="center" letterSpacing="wide" py={1}>
-              — <PlayerText text={line.t} /> —
+              — <LineText text={line.t} /> —
             </Text>
           );
         }
         if (line.k === 'narration') {
           return (
             <Text key={i} fontSize="sm" color="gray.400" fontStyle="italic" whiteSpace="pre-wrap">
-              <PlayerText text={line.t} />
+              <LineText text={line.t} />
             </Text>
           );
         }
         if (line.k === 'choice') {
           return (
             <Box key={i} fontSize="sm" px={3} py={1.5} borderLeftWidth="3px" borderColor="yellow.400"
-              bg="whiteAlpha.50" whiteSpace="pre-wrap"><PlayerText text={line.t} /></Box>
+              bg="whiteAlpha.50" whiteSpace="pre-wrap"><LineText text={line.t} /></Box>
           );
         }
         const entry = line.c ? chars?.characters[line.c] : undefined;
@@ -68,7 +76,7 @@ export function SceneLines({ lines, chars, icons, voice, lang }: {
                   {line.n}
                 </Text>
               )}
-              <Text fontSize="sm" whiteSpace="pre-wrap"><PlayerText text={line.t} /></Text>
+              <Text fontSize="sm" whiteSpace="pre-wrap"><LineText text={line.t} /></Text>
             </Box>
             {line.v && voice?.clips[line.v] && (
               <IconButton aria-label={t('storyPlayVoice')} size="xs" variant="ghost"
