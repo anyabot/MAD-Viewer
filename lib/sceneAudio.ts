@@ -1,6 +1,6 @@
 // Character dialogue stays independent in `voice.ts`, so muting one channel
 // does not mute the other.
-import { sceneAudioClipUrl } from '@/lib/cdn';
+import { fetchFirst, playFrom, sceneAudioClipUrls } from '@/lib/cdn';
 import { busAudio } from '@/lib/audioBus';
 
 export type BgmTrack = {
@@ -71,8 +71,7 @@ function download(index: SceneAudioIndex | null, clip: string): Promise<string> 
   const started = downloading.get(clip);
   if (started) return started;
   const pending = (async () => {
-    const res = await fetch(await sceneAudioClipUrl(folder, clip));
-    if (!res.ok) throw new Error(`scene audio ${clip}: ${res.status}`);
+    const res = await fetchFirst(await sceneAudioClipUrls(folder, clip));
     const objectUrl = URL.createObjectURL(await res.blob());
     ready.set(clip, objectUrl);
     order.push(clip);
@@ -97,13 +96,13 @@ export function prefetchSceneAudio(
 }
 
 // An uncached clip streams rather than waiting for a full download.
-async function url(index: SceneAudioIndex | null, clip: string): Promise<string | null> {
+async function urls(index: SceneAudioIndex | null, clip: string): Promise<string[] | null> {
   const cached = ready.get(clip);
-  if (cached) return cached;
+  if (cached) return [cached];
   const folder = index?.clips[clip];
   if (!folder) return null;
   download(index, clip)?.catch(() => { /* streamed instead */ });
-  return sceneAudioClipUrl(folder, clip);
+  return sceneAudioClipUrls(folder, clip);
 }
 
 export async function playSceneSound(
@@ -111,13 +110,10 @@ export async function playSceneSound(
 ): Promise<void> {
   const clip = index?.animations[rig]?.[animation];
   if (!clip) return;
-  const source = await url(index, clip);
-  if (!source) return;
+  const sources = await urls(index, clip);
+  if (!sources) return;
   if (!effect) effect = busAudio();
-  effect.src = source;
-  effect.currentTime = 0;
-  effect.playbackRate = effectRate;
-  try { await effect.play(); } catch { /* autoplay refusal or unavailable CDN */ }
+  try { await playFrom(effect, sources, effectRate); } catch { /* autoplay refusal or unavailable CDN */ }
 }
 
 export function stopSceneSound() {
@@ -129,23 +125,22 @@ export async function playBgm(
   index: SceneAudioIndex | null, clip: string, intro?: string, fade = 0,
 ): Promise<void> {
   const mine = ++musicToken;
-  const loopUrl = await url(index, clip);
-  if (!loopUrl || mine !== musicToken) return;
-  const introUrl = intro ? await url(index, intro) : null;
+  const loopUrls = await urls(index, clip);
+  if (!loopUrls || mine !== musicToken) return;
+  const introUrls = intro ? await urls(index, intro) : null;
   if (mine !== musicToken) return;
   if (!music) music = busAudio();
   const player = music;
   player.pause();
   player.volume = fade > 0 ? 0 : 1;
-  player.loop = !introUrl;
-  player.src = introUrl ?? loopUrl;
-  player.onended = introUrl ? () => {
+  player.loop = !introUrls;
+  player.onended = introUrls ? () => {
     if (mine !== musicToken) return;
-    player.src = loopUrl;
+    player.onended = null;
     player.loop = true;
-    void player.play().catch(() => {});
+    void playFrom(player, loopUrls).catch(() => {});
   } : null;
-  try { await player.play(); } catch { return; }
+  try { await playFrom(player, introUrls ?? loopUrls); } catch { return; }
   if (fade > 0) fadeVolume(player, 1, fade, mine);
 }
 

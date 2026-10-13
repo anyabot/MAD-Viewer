@@ -1,7 +1,7 @@
 // Only one line is ever audible: as in game, a new line replaces whatever is
 // playing rather than layering over it.
 
-import { voiceClipUrl } from '@/lib/cdn';
+import { fetchFirst, playFrom, voiceClipUrls } from '@/lib/cdn';
 import { busAudio } from '@/lib/audioBus';
 
 export type VoiceIndex = {
@@ -66,9 +66,7 @@ function download(index: VoiceIndex | null, voiceId: string): Promise<string> | 
   const started = downloading.get(voiceId);
   if (started) return started;
   const pending = (async () => {
-    const url = await voiceClipUrl(folder, voiceId);
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`voice ${voiceId}: ${res.status}`);
+    const res = await fetchFirst(await voiceClipUrls(folder, voiceId));
     const objectUrl = URL.createObjectURL(await res.blob());
     ready.set(voiceId, objectUrl);
     order.push(voiceId);
@@ -115,14 +113,11 @@ export async function playVoice(index: VoiceIndex | null, voiceId: string): Prom
   const mine = ++token;
   const cached = ready.get(voiceId);
   if (!cached) download(index, voiceId)?.catch(() => { /* streamed instead */ });
-  const src = cached ?? await voiceClipUrl(folder, voiceId);
+  const sources = cached ? [cached] : await voiceClipUrls(folder, voiceId);
   if (mine !== token) return;
   if (!audio) audio = busAudio();
-  audio.src = src;
-  audio.currentTime = 0;
-  audio.playbackRate = rate;
   try {
-    await audio.play();
+    await playFrom(audio, sources, rate);
   } catch {
     // Autoplay refusal or a clip that is not on the CDN yet.
   }

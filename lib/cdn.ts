@@ -48,27 +48,66 @@ export function loadCdnManifest(): Promise<CdnManifest | null> {
   return manifestPromise;
 }
 
-function bucketBase(
+// jsDelivr refuses an uncached file from a repository over 50 MB now and then; GitHub raw always serves it.
+function bucketBases(
   manifest: CdnManifest | null, family: 'skins' | 'voice' | 'audio' | 'sd', unit: string,
-): string | null {
+): string[] {
   const entry = manifest?.families?.[family];
   const bucket = entry?.buckets[entry.units[unit] ?? ''];
-  if (!entry || !bucket) return null;
-  return jsdelivrBase({
-    base: manifest!.base, owner: manifest!.owner, repo: bucket.repo, ref: bucket.ref, dir: entry.dir,
-  });
+  if (!entry || !bucket) return [];
+  return [
+    jsdelivrBase({
+      base: manifest!.base, owner: manifest!.owner, repo: bucket.repo, ref: bucket.ref, dir: entry.dir,
+    }),
+    `https://raw.githubusercontent.com/${manifest!.owner}/${bucket.repo}/${bucket.ref}/${entry.dir}`,
+  ];
+}
+
+const MAGIC: [string, number[]][] = [
+  ['.png', [0x89, 0x50, 0x4e, 0x47]],
+  ['.ogg', [0x4f, 0x67, 0x67, 0x53]],
+];
+const RATE_LIMITED = Array.from('429: Too Many Requests', (c) => c.charCodeAt(0));
+
+function startsWith(bytes: Uint8Array, prefix: number[]): boolean {
+  return prefix.every((byte, i) => bytes[i] === byte);
+}
+
+function intact(url: string, bytes: Uint8Array): boolean {
+  const path = url.split(/[?#]/)[0].toLowerCase();
+  const magic = MAGIC.find(([ext]) => path.endsWith(ext));
+  return magic ? startsWith(bytes, magic[1]) : !startsWith(bytes, RATE_LIMITED);
+}
+
+// jsDelivr can cache GitHub's rate-limit page as a 200 for the file it was fetching.
+export async function checkedFetch(url: string): Promise<Response> {
+  const res = await fetch(url);
+  if (!res.ok) return res;
+  const body = await res.arrayBuffer();
+  if (!intact(url, new Uint8Array(body))) return new Response(null, { status: 502 });
+  return new Response(body, { status: res.status, headers: res.headers });
+}
+
+export async function fetchFirst(urls: string[]): Promise<Response> {
+  let failure = 'no source';
+  for (const url of urls) {
+    try {
+      const res = await checkedFetch(url);
+      if (res.ok) return res;
+      failure = `${res.status}`;
+    } catch (error) {
+      failure = String(error);
+    }
+  }
+  throw new Error(failure);
 }
 
 // The site copy remains the final fallback after the CDN candidate.
 export async function skinFileBases(name: string): Promise<string[]> {
   if (SKIN_OVERRIDE) return [`${SKIN_OVERRIDE}/${name}`];
   const local = `${PUBLIC_BASE}/skins/${name}`;
-  if (LOCAL_ASSETS) {
-    const base = bucketBase(await loadCdnManifest(), 'skins', name);
-    return base ? [local, `${base}/${name}`] : [local];
-  }
-  const base = bucketBase(await loadCdnManifest(), 'skins', name);
-  return base ? [`${base}/${name}`, local] : [local];
+  const remote = bucketBases(await loadCdnManifest(), 'skins', name).map((base) => `${base}/${name}`);
+  return LOCAL_ASSETS ? [local, ...remote] : [...remote, local];
 }
 
 /** Not gallery skins, so not in the manifest's `skins` family. */
@@ -80,24 +119,34 @@ export async function sdArchiveUrls(name: string): Promise<string[]> {
   const file = `${name}.tar.br`;
   if (SD_OVERRIDE) return [`${SD_OVERRIDE}/${file}`];
   const local = `${PUBLIC_BASE}/sd/${file}`;
-  if (LOCAL_ASSETS) {
-    const base = bucketBase(await loadCdnManifest(), 'sd', name);
-    return base ? [local, `${base}/${file}`] : [local];
-  }
-  const base = bucketBase(await loadCdnManifest(), 'sd', name);
-  return base ? [`${base}/${file}`, local] : [local];
+  const remote = bucketBases(await loadCdnManifest(), 'sd', name).map((base) => `${base}/${file}`);
+  return LOCAL_ASSETS ? [local, ...remote] : [...remote, local];
 }
 
-/** `folder` is the path the voice index records and the unit assignment works
- *  on. Voice is CDN-only, so there is nothing to fall back to. */
-export async function voiceClipUrl(folder: string, voiceId: string): Promise<string> {
-  if (VOICE_OVERRIDE) return `${VOICE_OVERRIDE}/${folder}/${voiceId}.ogg`;
-  const base = bucketBase(await loadCdnManifest(), 'voice', folder);
-  return `${base ?? `${PUBLIC_BASE}/voice`}/${folder}/${voiceId}.ogg`;
+// `folder` is the voice index's path and the unit the bucket assignment works on.
+export async function voiceClipUrls(folder: string, voiceId: string): Promise<string[]> {
+  if (VOICE_OVERRIDE) return [`${VOICE_OVERRIDE}/${folder}/${voiceId}.ogg`];
+  const bases = bucketBases(await loadCdnManifest(), 'voice', folder);
+  return (bases.length ? bases : [`${PUBLIC_BASE}/voice`]).map((base) => `${base}/${folder}/${voiceId}.ogg`);
 }
 
-export async function sceneAudioClipUrl(folder: string, clipId: string): Promise<string> {
-  if (AUDIO_OVERRIDE) return `${AUDIO_OVERRIDE}/${folder}/${clipId}.ogg`;
-  const base = bucketBase(await loadCdnManifest(), 'audio', folder);
-  return `${base ?? `${PUBLIC_BASE}/audio`}/${folder}/${clipId}.ogg`;
+export async function sceneAudioClipUrls(folder: string, clipId: string): Promise<string[]> {
+  if (AUDIO_OVERRIDE) return [`${AUDIO_OVERRIDE}/${folder}/${clipId}.ogg`];
+  const bases = bucketBases(await loadCdnManifest(), 'audio', folder);
+  return (bases.length ? bases : [`${PUBLIC_BASE}/audio`]).map((base) => `${base}/${folder}/${clipId}.ogg`);
+}
+
+// Plays through the sources in order, moving on when the element reports a load error.
+export function playFrom(player: HTMLAudioElement, urls: string[], rate = 1): Promise<void> {
+  let index = 0;
+  player.onerror = () => {
+    if (!urls[index + 1] || !urls.includes(player.src)) return;
+    index += 1;
+    player.src = urls[index];
+    player.playbackRate = rate;
+    void player.play().catch(() => {});
+  };
+  player.src = urls[0];
+  player.playbackRate = rate;
+  return player.play();
 }

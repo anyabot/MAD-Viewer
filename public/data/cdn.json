@@ -7,11 +7,11 @@
    "buckets": {
     "1": {
      "repo": "MAD-assets-1",
-     "ref": "aa300e7afbe78ce16bd5f64dc4ea4058b2d732e0"
+     "ref": "master"
     },
     "2": {
      "repo": "MAD-assets-2",
-     "ref": "419661ddcfcc6ff6db30d840a40a734803b96bfb"
+     "ref": "master"
     }
    },
    "units": {
@@ -202,7 +202,7 @@
    "buckets": {
     "1": {
      "repo": "MAD-voice-1",
-     "ref": "032c4fc675fbb9258783da500e402805f600629d"
+     "ref": "master"
     }
    },
    "units": {
@@ -399,7 +399,7 @@
    "buckets": {
     "1": {
      "repo": "MAD-audio-1",
-     "ref": "ab9af8474ec7940220463c5ef8f87e801764c23f"
+     "ref": "v10"
     }
    },
    "units": {
@@ -442,7 +442,7 @@
    "buckets": {
     "1": {
      "repo": "MAD-sd-1",
-     "ref": "e94fdb7f3f45fb5fa622acf48b8e0d0cef2d05a9"
+     "ref": "v9"
     }
    },
    "units": {
