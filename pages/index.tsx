@@ -27,6 +27,7 @@ const SECTIONS: { href: string; label: UiKey; desc: UiKey }[] = [
   { href: '/viewer', label: 'navViewer', desc: 'homeViewer' },
   { href: '/characters', label: 'navCharacters', desc: 'homeCharacters' },
   { href: '/story', label: 'navStory', desc: 'homeStory' },
+  { href: '/jukebox', label: 'navJukebox', desc: 'homeJukebox' },
   { href: '/stages', label: 'navStages', desc: 'homeStages' },
   { href: '/items', label: 'navItems', desc: 'homeItems' },
   { href: '/farm', label: 'navFarm', desc: 'homeFarm' },

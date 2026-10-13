@@ -3,9 +3,18 @@
 import { sceneAudioClipUrl } from '@/lib/cdn';
 import { busAudio } from '@/lib/audioBus';
 
+export type BgmTrack = {
+  id: string;
+  group: string;
+  loop: string;
+  intro?: string;
+  seconds: number;
+};
+
 export type SceneAudioIndex = {
   clips: Record<string, string>;
   animations: Record<string, Record<string, string>>;
+  bgm?: BgmTrack[];
 };
 
 let effect: HTMLAudioElement | null = null;
