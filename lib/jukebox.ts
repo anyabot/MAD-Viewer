@@ -1,5 +1,5 @@
 // Web Audio rather than an `Audio` element, so the intro hands over to the loop without a gap.
-import { sceneAudioClipUrl } from '@/lib/cdn';
+import { fetchFirst, sceneAudioClipUrls } from '@/lib/cdn';
 import type { BgmTrack } from '@/lib/sceneAudio';
 
 type Buffers = { intro: AudioBuffer | null; loop: AudioBuffer };
@@ -20,8 +20,7 @@ function audio(): { ctx: AudioContext; gain: GainNode } {
 }
 
 async function decode(clip: string): Promise<AudioBuffer> {
-  const res = await fetch(await sceneAudioClipUrl('bgm', clip));
-  if (!res.ok) throw new Error(`bgm ${clip}: ${res.status}`);
+  const res = await fetchFirst(await sceneAudioClipUrls('bgm', clip));
   return audio().ctx.decodeAudioData(await res.arrayBuffer());
 }
 

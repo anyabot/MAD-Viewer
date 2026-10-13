@@ -2,7 +2,7 @@ import {
   cacheArchive, loadArchive, readBytes, readText, revokeArchiveUrls, urlFor,
   type ArchiveFiles,
 } from '@altterisk/game-hub/archive';
-import { sdArchiveUrls, skinFileBases } from '@/lib/cdn';
+import { checkedFetch, sdArchiveUrls, skinFileBases } from '@/lib/cdn';
 
 export { loadArchive, readBytes, readText, urlFor };
 export { loadTexture } from '@altterisk/game-hub/spine';
@@ -14,7 +14,7 @@ export function loadSkinArchive(skin: string): Promise<ArchiveFiles> {
     let failure = '';
     for (const base of bases) {
       try {
-        const listingResponse = await fetch(`${base}/files.json`);
+        const listingResponse = await checkedFetch(`${base}/files.json`);
         if (!listingResponse.ok) {
           failure = `${listingResponse.status}`;
           continue;
@@ -26,7 +26,7 @@ export function loadSkinArchive(skin: string): Promise<ArchiveFiles> {
         );
         if (!names.includes('spine.json')) throw new Error('missing spine.json');
         const blobs = await Promise.all(names.map(async (name) => {
-          const response = await fetch(`${base}/${encodeURIComponent(name)}`);
+          const response = await checkedFetch(`${base}/${encodeURIComponent(name)}`);
           if (!response.ok) throw new Error(`${name}: ${response.status}`);
           return [name, await response.blob()] as const;
         }));
@@ -41,5 +41,5 @@ export function loadSkinArchive(skin: string): Promise<ArchiveFiles> {
 
 // The cache is shared, so names must stay unique across asset families.
 export function loadSdArchive(archive: string): Promise<ArchiveFiles> {
-  return loadArchive(`sd:${archive}`, () => sdArchiveUrls(archive));
+  return loadArchive(`sd:${archive}`, () => sdArchiveUrls(archive), { fetch: (url) => checkedFetch(String(url)) });
 }
