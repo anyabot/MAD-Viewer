@@ -255,6 +255,12 @@ export function createScenePlayer(
       return armed.some((a) => reaches(a, box));
     },
 
+    boxKind(box: string): 'touch' | 'drag' | null {
+      const hits = armed.filter((a) => reaches(a, box));
+      if (!hits.length) return null;
+      return hits.some((a) => a.kind === 'drag') ? 'drag' : 'touch';
+    },
+
     armed: () => armed,
     park: () => park,
 

@@ -322,6 +322,7 @@ export const UI = {
   rowTouchZones: { en: 'Touch zones', ko: '터치 영역' },
   rowDrag: { en: 'Drag', ko: '드래그' },
   rowLayers: { en: 'Layers', ko: '레이어' },
+  rowDebug: { en: 'Debug info', ko: '디버그 정보' },
   rowBackground: { en: 'Background', ko: '배경' },
   rowVoice: { en: 'Voice', ko: '음성' },
   rowSceneAudio: { en: 'Scene audio', ko: '씬 오디오' },

@@ -10,6 +10,8 @@ export const EFFECT_COLOR: Record<string, number> = {
   generic: 0x4488ff,
 };
 
+export const DRAG_COLOR = 0xdd44ff;
+
 export const EFFECT_LABEL: Record<string, Localized> = {
   reaction: { en: 'reaction clip', ko: '리액션 클립' },
   region: { en: 'region clip', ko: '영역 클립' },

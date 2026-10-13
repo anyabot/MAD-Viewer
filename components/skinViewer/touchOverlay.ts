@@ -2,7 +2,7 @@
 // rectangles, and sits in `scene` beside the actor so pan, zoom and device
 // staging carry it with the figure. The hit test runs against the same
 // `SkeletonBounds`, never against this graphic.
-import { EFFECT_COLOR } from '@/components/skinViewer/constants';
+import { DRAG_COLOR, EFFECT_COLOR } from '@/components/skinViewer/constants';
 import type { TouchRegion } from '@/components/skinViewer/types';
 
 export type TouchOverlay = {
@@ -19,11 +19,10 @@ export function createTouchOverlay(options: {
   bounds: any;
   regionByBox: Map<string, TouchRegion>;
   visible: boolean;
-  /** A box that fails this is skipped, not dimmed: the overlay draws exactly
-   *  what the input path would accept. */
-  isLive: (box: string, region: TouchRegion | undefined, attachment: any) => boolean;
+  // Null skips the box: the overlay draws exactly what the input path would accept.
+  inputKind: (box: string, region: TouchRegion | undefined, attachment: any) => 'touch' | 'drag' | null;
 }): TouchOverlay {
-  const { PIXI, scene, spine, bounds, regionByBox, visible, isLive } = options;
+  const { PIXI, scene, spine, bounds, regionByBox, visible, inputKind } = options;
 
   const graphics = new PIXI.Graphics();
   graphics.zIndex = 20;
@@ -44,7 +43,8 @@ export function createTouchOverlay(options: {
         if (!verts || verts.length < 6) continue;
         const name: string = boxes[i]?.name ?? '';
         const region = regionByBox.get(name);
-        if (!isLive(name, region, boxes[i])) continue;
+        const kind = inputKind(name, region, boxes[i]);
+        if (!kind) continue;
         // The Spine object already applies Pixi's y-down flip, so these
         // vertices are in its own local space; flipping again would mirror the
         // boxes off the figure.
@@ -54,8 +54,7 @@ export function createTouchOverlay(options: {
           const local = scene.toLocal(world);
           pts.push(local.x, local.y);
         }
-        // Colour encodes the resolved effect, not a guess from the name.
-        const color = EFFECT_COLOR[region?.effect ?? 'generic'];
+        const color = kind === 'drag' ? DRAG_COLOR : EFFECT_COLOR[region?.effect ?? 'generic'];
         graphics.poly(pts)
           .fill({ color, alpha: 0.14 })
           .stroke({ color, width: 0.06, alpha: 0.9 });

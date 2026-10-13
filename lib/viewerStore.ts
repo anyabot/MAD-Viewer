@@ -24,6 +24,7 @@ type ViewerStore = {
   canvasAspect: CanvasAspect;
   /** Canvas alone, filling the window, with the sidebar out of the way. */
   theater: boolean;
+  showDebug: boolean;
   set: (patch: Partial<Omit<ViewerStore, 'set'>>) => void;
 };
 
@@ -53,5 +54,6 @@ export const useViewerStore = create<ViewerStore>((set) => ({
   dragJiggle: false,
   canvasAspect: 'fill',
   theater: false,
+  showDebug: true,
   set: (patch) => set(patch),
 }));
