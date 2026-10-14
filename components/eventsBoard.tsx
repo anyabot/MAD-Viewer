@@ -18,10 +18,13 @@ import {
 import { gameText, useGameLang, type GameLang } from '@/lib/gameText';
 import { pick, useLang, useT, type UiKey } from '@/lib/i18n';
 import { hasIcon } from '@/lib/icons';
+import { itemHref } from '@/lib/items';
 import { DROP_ICON_GROUPS } from '@/lib/stages';
 
-const PHASE_ORDER: Record<EventPhase, number> = { running: 0, upcoming: 1, ended: 2 };
-export const PHASE_COLOR: Record<EventPhase, string> = { running: 'pink', upcoming: 'blue', ended: 'gray' };
+const PHASE_ORDER: Record<EventPhase, number> = { running: 0, upcoming: 1, exchange: 2, ended: 3 };
+export const PHASE_COLOR: Record<EventPhase, string> = {
+  running: 'pink', upcoming: 'blue', exchange: 'orange', ended: 'gray',
+};
 const SERVER_TIME_KEY = 'mad.serverTime';
 
 export function useNow(stepMs: number): number {
@@ -85,6 +88,13 @@ export function EventTiming({ event, now, serverTime }: {
           </Text>
         </WrapItem>
       )}
+      {phase === 'exchange' && (
+        <WrapItem>
+          <Text fontSize="xs" color="gray.300">
+            {t('eventsExchangeEndsIn', { time: remaining(Date.parse(event.end) - now, lang) })}
+          </Text>
+        </WrapItem>
+      )}
       {phase === 'upcoming' && (
         <WrapItem>
           <Text fontSize="xs" color="gray.300">
@@ -136,7 +146,7 @@ export function EventsBoard() {
       const pb = eventPhase(b, now);
       if (pa !== pb) return PHASE_ORDER[pa] - PHASE_ORDER[pb];
       if (pa === 'ended') return Date.parse(b.end) - Date.parse(a.end);
-      return Date.parse(pa === 'running' ? a.end : a.start) - Date.parse(pb === 'running' ? b.end : b.start);
+      return Date.parse(pa === 'upcoming' ? a.start : a.end) - Date.parse(pb === 'upcoming' ? b.start : b.end);
     });
   }, [data, now]);
 
@@ -263,8 +273,8 @@ function amountText(amount?: number[]): string {
   return b ? `${a}~${b}` : a;
 }
 
-export function RewardSlot({ reward, refs, icons, gameLang }: {
-  reward: EventReward; refs: EventIndex['refs']; icons: IconManifest | null; gameLang: GameLang;
+export function RewardSlot({ reward, refs, icons, gameLang, link = false }: {
+  reward: EventReward; refs: EventIndex['refs']; icons: IconManifest | null; gameLang: GameLang; link?: boolean;
 }) {
   const t = useT();
   const entry = reward.ref ? refs[reward.ref] : null;
@@ -280,16 +290,17 @@ export function RewardSlot({ reward, refs, icons, gameLang }: {
   }
   return (
     <ItemIcon manifest={icons} group={group} name={entry.icon} grade={entry.grade}
-      count={amountText(reward.amount)} size={10} title={name} />
+      count={amountText(reward.amount)} size={10} title={name}
+      href={link && reward.ref ? itemHref(reward.ref) : undefined} />
   );
 }
 
-function CostTag({ cost, refs, icons, n }: {
-  cost: { ref: string; amount: number }; refs: EventIndex['refs']; icons: IconManifest | null; n?: number;
+export function CostTag({ cost, refs, icons, n }: {
+  cost: { ref?: string; amount: number }; refs: EventIndex['refs']; icons: IconManifest | null; n?: number;
 }) {
   return (
     <HStack spacing={0.5}>
-      <GameIcon manifest={icons} group="item" name={refs[cost.ref]?.icon} size={4} />
+      {cost.ref && <GameIcon manifest={icons} group="item" name={refs[cost.ref]?.icon} size={4} />}
       <Text fontSize="xs">{(cost.amount * (n ?? 1)).toLocaleString()}</Text>
     </HStack>
   );

@@ -842,7 +842,7 @@
    "order": 1001,
    "banner": "Thumbnail_PastStory_Event_Ev1001",
    "from": "2026-06-04",
-   "to": "2026-06-25"
+   "to": "2026-06-18"
   },
   "event:1002": {
    "key": "event:1002",
@@ -856,7 +856,7 @@
    "order": 1002,
    "banner": "Thumbnail_PastStory_Event_Ev1002",
    "from": "2026-06-18",
-   "to": "2026-07-09"
+   "to": "2026-07-02"
   },
   "event:1003": {
    "key": "event:1003",
@@ -870,7 +870,7 @@
    "order": 1003,
    "banner": "Thumbnail_PastStory_Event_Ev1003",
    "from": "2026-07-16",
-   "to": "2026-08-20"
+   "to": "2026-08-13"
   },
   "event:1004": {
    "key": "event:1004",
@@ -884,7 +884,7 @@
    "order": 1004,
    "banner": "Thumbnail_PastStory_Event_Ev1004",
    "from": "2026-07-30",
-   "to": "2026-08-20"
+   "to": "2026-08-13"
   },
   "event:1005": {
    "key": "event:1005",
@@ -898,7 +898,7 @@
    "order": 1005,
    "banner": "Thumbnail_PastStory_Event_Ev1005",
    "from": "2026-08-13",
-   "to": "2026-09-03"
+   "to": "2026-08-27"
   },
   "event:1006": {
    "key": "event:1006",
@@ -912,7 +912,7 @@
    "order": 1006,
    "banner": "Thumbnail_PastStory_Event_Ev1006",
    "from": "2026-08-27",
-   "to": "2026-09-17"
+   "to": "2026-09-10"
   },
   "event:1008": {
    "key": "event:1008",
@@ -926,7 +926,7 @@
    "order": 1008,
    "banner": "Thumbnail_PastStory_Event_Ev1008",
    "from": "2026-09-24",
-   "to": "2026-10-15"
+   "to": "2026-10-08"
   },
   "event:1009": {
    "key": "event:1009",
@@ -940,7 +940,7 @@
    "order": 1009,
    "banner": "Thumbnail_PastStory_Event_Ev1009",
    "from": "2026-10-08",
-   "to": "2026-10-29"
+   "to": "2026-10-22"
   },
   "ascent:40000": {
    "key": "ascent:40000",

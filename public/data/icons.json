@@ -19,6 +19,18 @@
    "BgImg_Daily_Cover_Essence",
    "BgImg_Daily_Cover_Experience"
   ],
+  "tier": [
+   "Arena_Tier_01",
+   "Arena_Tier_02",
+   "Arena_Tier_03",
+   "Arena_Tier_04",
+   "Arena_Tier_05",
+   "Totalwar01_Tier_Bronze",
+   "Totalwar01_Tier_Gold",
+   "Totalwar01_Tier_Master",
+   "Totalwar01_Tier_Platinum",
+   "Totalwar01_Tier_Silver"
+  ],
   "banner": [
    "Ascent_Basic",
    "Ascent_Core",
@@ -250,6 +262,7 @@
    "talk_Icon_Play"
   ],
   "buff": [
+   "Icon_Arena_Buff_HP_Percent_Up",
    "Icon_BattleBuff_Accuracy",
    "Icon_BattleBuff_Arena_001",
    "Icon_BattleBuff_Attack",
@@ -321,6 +334,19 @@
    "Icon_DotDamage_Burning",
    "Icon_DotDamage_Poison",
    "Icon_DotDamage_Stack",
+   "Icon_UI_Nemesis_Absorption_Barcode",
+   "Icon_UI_Nemesis_Curtain_Call",
+   "Icon_UI_Nemesis_Find_Victim",
+   "Icon_UI_Nemesis_Glare",
+   "Icon_UI_Nemesis_Groggy",
+   "Icon_UI_Nemesis_Guest_1",
+   "Icon_UI_Nemesis_Guest_2",
+   "Icon_UI_Nemesis_Guest_3",
+   "Icon_UI_Nemesis_Main_Target",
+   "Icon_UI_Nemesis_Pattern_Upgrade",
+   "Icon_UI_Nemesis_Poison",
+   "Icon_UI_Nemesis_Summon_Guest",
+   "Icon_UI_Nemesis_Unlimited",
    "Icon_cc_Bind",
    "Icon_cc_Confusion",
    "Icon_cc_ElectricShock",
@@ -337,6 +363,30 @@
    "Icon_cc_Provocation",
    "Icon_cc_Silence",
    "Icon_cc_Stun"
+  ],
+  "deco": [
+   "Icon_Arena_Title_Bronze_001",
+   "Icon_Arena_Title_Bronze_002",
+   "Icon_Arena_Title_Bronze_003",
+   "Icon_Arena_Title_Bronze_004",
+   "Icon_Arena_Title_Bronze_005",
+   "Icon_Arena_Title_Gold_001",
+   "Icon_Arena_Title_Gold_002",
+   "Icon_Arena_Title_Gold_003",
+   "Icon_Arena_Title_Gold_004",
+   "Icon_Arena_Title_Gold_005",
+   "Icon_Arena_Title_Silver_001",
+   "Icon_Arena_Title_Silver_002",
+   "Icon_Arena_Title_Silver_003",
+   "Icon_Arena_Title_Silver_004",
+   "Icon_Arena_Title_Silver_005",
+   "Icon_Nemesis_Title_001",
+   "Icon_Nemesis_Title_002",
+   "Icon_Nemesis_Title_003",
+   "Icon_Nemesis_Title_004",
+   "Icon_common_background",
+   "Icon_common_frame",
+   "Icon_common_title"
   ],
   "char": [
    "Icon_Boss_600002_Duck_Leader",
@@ -562,6 +612,7 @@
    "Icon_Character_Piece_CH0062",
    "Icon_Character_Piece_CH0063",
    "Icon_Character_Piece_CH0068",
+   "Icon_Coin_Arena",
    "Icon_Eq_GrowUp_Tier1",
    "Icon_Eq_GrowUp_Tier2",
    "Icon_Eq_GrowUp_Tier3",
@@ -961,9 +1012,6 @@
    "Icon_Ultimate_PC_Dummy",
    "Icon_Ultimate_PC_Violet",
    "Icon_Ultimate_Physics"
-  ],
-  "deco": [
-   "Icon_common_frame"
   ],
   "skin": [
    "Thumbnail_AF_CH0009",

@@ -30,6 +30,103 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-10-14',
+    title: { en: 'Nemesis, Arena, rewards and shops', ko: '네메시스, 아레나, 보상과 상점' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Nemesis lists every season, past and upcoming: best-score, final-tier and mission rewards, and the boss effects of each zone. What repeats between seasons shows once, with the differences behind a chevron.',
+          ko: '네메시스 전 시즌(지난·예정 포함) 표시: 최고 점수·최종 티어·미션 보상과 구역별 보스 효과. 시즌 간 반복되는 내용은 한 번만, 차이는 펼쳐서 확인',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Arena added under Events & Stages: every season on one page, with its season effects, tiers, and in-season and season-end rewards.',
+          ko: '이벤트·스테이지에 아레나 추가: 모든 시즌을 한 페이지에서 시즌 효과, 티어, 시즌 중·시즌 종료 보상과 함께 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Shop page: Normal, Memory, Nemesis, Arena, Exchange, mileage and event shops, with prices, purchase limits and the next reset time.',
+          ko: '상점 페이지 추가: 일반·메모리·네메시스·아레나·교환·마일리지·이벤트 상점의 가격, 구매 제한, 다음 초기화 시간',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Rewards page: daily quests, achievements, event missions and the support passes, with every reward.',
+          ko: '보상 페이지 추가: 일일 퀘스트, 업적, 이벤트 미션, 지원 패스와 각 보상',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'An event in its last week shows as Exchange only: its stages have closed and only the shop still takes the event currency.',
+          ko: '마지막 주의 이벤트는 "교환만 가능"으로 표시: 스테이지는 종료되고 상점에서만 이벤트 재화 사용 가능',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'MochiTalk tab on character pages: bond chats, Bond Stories and their unlock rewards.',
+          ko: '캐릭터 페이지에 모찌톡 탭 추가: 인연 대화, 인연 스토리와 해금 보상',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Jukebox: play every BGM track in the game.',
+          ko: '주크박스 추가: 게임의 모든 BGM 재생',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Affection scenes play their voice lines.',
+          ko: '어펙션 장면에서 보이스 재생',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Max and Min buttons set a character’s levels in one click.',
+          ko: '최대·최소 버튼으로 캐릭터 레벨을 한 번에 설정',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Viewer: drag zones are drawn in a different colour from tap zones, and the info box on the canvas can be turned off.',
+          ko: '뷰어: 드래그 영역을 터치 영역과 다른 색으로 표시, 캔버스 정보 박스 숨기기 가능',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Breadcrumbs on stage pages; the stage search and the character page tab are kept in the link.',
+          ko: '스테이지 페이지에 경로 표시, 스테이지 검색어와 캐릭터 페이지 탭을 링크에 유지',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Story text shows its emphasis and furigana; leftover formatting tags are gone.',
+          ko: '스토리 텍스트의 강조·루비 표시, 남아 있던 서식 태그 제거',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Skins, voice and music fall back to a second source when the first fails to load.',
+          ko: '스킨·보이스·음악이 첫 번째 경로에서 불러오지 못하면 두 번째 경로로 재시도',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-10-09',
     title: { en: 'Home, events, story and items', ko: '홈, 이벤트, 스토리와 아이템' },
     entries: [

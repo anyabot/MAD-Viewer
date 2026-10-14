@@ -133,7 +133,7 @@ export default function SkinViewer({
   const [overlayAnims, setOverlayAnims] = useState<Set<string>>(() => new Set());
   const {
     loop, playing, speed, showBg, mode, sceneVariant, followGameFlow,
-    showBoxes, voiceOn, bgmOn, showLayers, dragJiggle, canvasAspect, theater,
+    showBoxes, voiceOn, bgmOn, showLayers, dragJiggle, canvasAspect, theater, showDebug,
     set: setViewer,
   } = useViewerStore();
   const setLoop = (value: boolean) => setViewer({ loop: value });
@@ -1339,13 +1339,16 @@ export default function SkinViewer({
           regionByBox,
           visible: showBoxesRef.current,
           // Exactly the tests the input paths apply; jiggle is Lobby-only, so its boxes are too.
-          isLive: (name, region, attachment) => {
-            if (!attachmentIsVisible(attachment)) return false;
+          inputKind: (name, region, attachment) => {
+            if (!attachmentIsVisible(attachment)) return null;
             const player = scenePlayerRef.current;
-            if (player) return player.armsBox(name);
-            if (region && !regionLiveInPhase(region, phaseRef.current)) return false;
-            if (jiggle.hasBox(name)) return modeRef.current === 'home';
-            return true;
+            if (player) return player.boxKind(name);
+            if (region && !regionLiveInPhase(region, phaseRef.current)) return null;
+            if (jiggle.hasBox(name)) {
+              if (modeRef.current !== 'home') return null;
+              return dragJiggleRef.current ? 'drag' : 'touch';
+            }
+            return 'touch';
           },
         });
         boxOverlayRef.current = overlay.graphics;
@@ -2090,7 +2093,7 @@ export default function SkinViewer({
             </Center>
           )}
 
-          {autoMode && loadState === 'ready' && (
+          {showDebug && autoMode && loadState === 'ready' && (
             <Box position="absolute" top={2} left={2} bg="blackAlpha.700" borderRadius="md"
               px={2} py={1} pointerEvents="none" maxW="calc(100% - 16px)" zIndex={2}>
               <Text fontSize="xs" color="gray.300" noOfLines={1}>
@@ -2333,6 +2336,10 @@ export default function SkinViewer({
                   ]}
                   onChange={(value) => setDragJiggle(value === 'jiggle')} />
               </ControlRow>
+            )}
+            {autoMode && loadState === 'ready' && (
+              <ToggleRow label={t('rowDebug')} value={showDebug}
+                onChange={(value) => setViewer({ showDebug: value })} />
             )}
             {layerItems.length > 0 && (
               <ToggleRow label={t('rowLayers')} value={showLayers} onChange={setShowLayers} />

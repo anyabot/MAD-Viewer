@@ -631,7 +631,7 @@ export function loadCharacters(): Promise<CharacterData> {
 export type IconManifest = {
   groups: Partial<Record<
     'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip'
-    | 'zone' | 'tile' | 'banner' | 'infusion' | 'archive' | 'story' | 'deco',
+    | 'zone' | 'tile' | 'banner' | 'infusion' | 'archive' | 'story' | 'deco' | 'tier',
     string[]>>;
 };
 
@@ -895,6 +895,108 @@ export type ArchiveIndex = {
 
 export function loadArchive(): Promise<ArchiveIndex> {
   return fetchJson<ArchiveIndex>('archive.json');
+}
+
+export type RewardWindow = { start: string; end: string };
+
+export type RewardQuest = {
+  id: number;
+  name?: GameLocalized;
+  desc?: GameLocalized;
+  complete: number;
+  levels: { count: number; points?: number; rewards?: string }[];
+};
+
+export type RewardMissionSet = {
+  id: number | null;
+  type?: 'daily' | 'weekly' | 'achievement' | 'event_hub' | 'main_event';
+  retired?: boolean;
+  name?: GameLocalized;
+  event?: number;
+  pickup?: string;
+  open?: RewardWindow;
+  reset?: 'daily' | 'weekly' | 'monthly';
+  point?: { name?: GameLocalized; icon?: string; steps: { need: number; rewards?: string }[] };
+  groups: { id: number; name?: GameLocalized; quests: RewardQuest[] }[];
+};
+
+export type RewardIndex = {
+  arena: {
+    tile?: string;
+    banner?: string;
+    tiers: { type: number; name?: GameLocalized; icon?: string; needScore: number }[];
+    seasons: {
+      id: number; order: number; open?: RewardWindow; progress?: RewardWindow; reward?: RewardWindow;
+      stage?: {
+        id: number; name?: GameLocalized; time?: number;
+        effects?: string[];
+      };
+      during?: { condition: string; value: number; rewards?: string }[];
+      end?: { condition: string; value: number; rewards?: string }[];
+    }[];
+  };
+  nemesis: {
+    tile?: string;
+    tiers: { type: number; name?: GameLocalized; icon?: string; topPercent: number }[];
+    seasons: {
+      id: number; name?: GameLocalized; banner?: string; tile?: string;
+      open?: RewardWindow; progress?: RewardWindow; reward?: RewardWindow;
+      zones?: { zone: number; name?: GameLocalized; effects: { key: string; from: number }[] }[];
+      scores?: { score: number; rewards: string }[];
+      tiers?: { tier: number; rewards: string }[];
+      missions?: {
+        order: number; type: string; text?: GameLocalized; values?: number[];
+        zones?: (GameLocalized | null)[]; rewards?: string;
+      }[];
+    }[];
+  };
+  missions: RewardMissionSet[];
+  passes: {
+    id: number; type: string; name?: GameLocalized; open?: RewardWindow; levelExp: number; maxLevel: number;
+    categories?: { name?: GameLocalized; reset?: string; quests: RewardQuest[] }[];
+    levels?: {
+      level: number; free?: string; paid?: string; highlightFree?: boolean; highlightPaid?: boolean; core?: boolean;
+    }[];
+  }[];
+  effects: Record<string, { title?: GameLocalized; desc?: GameLocalized; icon?: string }>;
+  rewardGroups: Record<string, EventReward[]>;
+  refs: Record<string, EventRef>;
+};
+
+export type ShopProduct = {
+  id: number;
+  code?: string;
+  rewards?: (EventReward & { code?: string })[];
+  price?: { ref?: string; amount: number };
+  ladder?: { upTo?: number; price: number }[];
+  limit?: number;
+  requires?: string;
+  open?: RewardWindow;
+};
+
+export type ShopEntry = {
+  id: number;
+  kind: 'common' | 'event' | 'mileage';
+  name?: GameLocalized;
+  open?: RewardWindow;
+  refresh?: 'daily' | 'weekly' | 'monthly';
+  reset?: { days: number[]; time: string };
+  event?: number;
+  eventName?: GameLocalized;
+  stagesEnd?: string;
+  banner?: number;
+  bannerName?: GameLocalized;
+  products: ShopProduct[];
+};
+
+export type ShopIndex = { shops: ShopEntry[]; refs: Record<string, EventRef> };
+
+export function loadShops(): Promise<ShopIndex> {
+  return fetchJson<ShopIndex>('shops.json');
+}
+
+export function loadRewards(): Promise<RewardIndex> {
+  return fetchJson<RewardIndex>('rewards.json');
 }
 
 export type SkillTiming = { clip?: string; seconds?: number; cooldown?: number };
