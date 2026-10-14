@@ -2,7 +2,8 @@ import type { GameEvent } from '@/lib/data';
 import type { GameLang } from '@/lib/gameText';
 import type { Lang, Localized } from '@/lib/i18n';
 
-export type EventPhase = 'upcoming' | 'running' | 'ended';
+// `exchange`: battles are over, only the shop and box draw still take the event currency.
+export type EventPhase = 'upcoming' | 'running' | 'exchange' | 'ended';
 
 export function sceneCount(
   t: (key: 'eventsScene' | 'eventsScenes', vars?: Record<string, number>) => string, n: number,
@@ -15,12 +16,14 @@ export const SERVER_ZONE = 'Asia/Seoul';
 export const PHASE_LABEL: Record<EventPhase, Localized> = {
   upcoming: { en: 'Upcoming', ko: '예정' },
   running: { en: 'Running', ko: '진행 중' },
+  exchange: { en: 'Exchange only', ko: '교환만 가능' },
   ended: { en: 'Ended', ko: '종료' },
 };
 
 export function eventPhase(event: GameEvent, now: number): EventPhase {
   if (now < Date.parse(event.start)) return 'upcoming';
-  return now <= Date.parse(event.end) ? 'running' : 'ended';
+  if (now > Date.parse(event.end)) return 'ended';
+  return event.stagesEnd && now > Date.parse(event.stagesEnd) ? 'exchange' : 'running';
 }
 
 export function remaining(ms: number, lang: Lang): string {

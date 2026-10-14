@@ -63,7 +63,7 @@ export default function Home() {
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
 
-  const live = (events?.events ?? []).filter((e) => eventPhase(e, now) !== 'ended')
+  const live = (events?.events ?? []).filter((e) => ['running', 'upcoming'].includes(eventPhase(e, now)))
     .sort((a, b) => Date.parse(a.end) - Date.parse(b.end));
   const banners = (events?.banners ?? [])
     .filter((b) => now <= Date.parse(b.end))

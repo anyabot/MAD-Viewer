@@ -3,15 +3,21 @@ import { listState, nextRouterAdapter, textMatch, useUrlText } from '@altterisk/
 import {
   BannerCard, EmptyState, IconPreview, ListToolbar, MetaChip, SearchBox, StageCard,
 } from '@altterisk/game-hub';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import NextLink from 'next/link';
 import {
   Badge, Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
-  WrapItem,
+  WrapItem, Collapse,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import { ArtBox } from '@/components/artBox';
-import { EventsBoard } from '@/components/eventsBoard';
+import { EventsBoard, TimeControls, useNow, useServerTime } from '@/components/eventsBoard';
+import {
+  ARENA_LABEL, ArenaCombined, ArenaSeasonDiff, NemesisCombined, NemesisSeasonRewards, SeasonWindows,
+  arenaSeasonName, phase,
+  seasonGroup, type RewardCtx,
+} from '@/components/seasonRewards';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
@@ -24,12 +30,13 @@ import { FilterChip, FilterRow } from '@/components/filters';
 import {
   DIFFICULTY_LABEL, DROP_ICON_GROUPS, GROUP_ICON_GROUPS, dropAmount, dropName, enemyCodes, groupByKey,
   groupIsLive, groupLabel, groupWindow, levelRange, modeSummaries, stageDrops,
-  stageGroups, stageName, type StageGrouping,
+  stageGroups, stageName, type ModeSummary, type StageGrouping,
 } from '@/lib/stages';
 import { dataText, pick, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
-  loadArchive, loadCharacters, loadIcons, loadStages, type ArchiveIndex,
-  type CharacterData, type IconManifest, type StageData, type StageEntry,
+  loadArchive, loadCharacters, loadIcons, loadRewards, loadStages, type ArchiveIndex,
+  type CharacterData, type IconManifest, type RewardIndex, type RewardWindow, type StageData,
+  type StageEntry, type StageGroup,
 } from '@/lib/data';
 
 const iconGroup = (
@@ -46,7 +53,11 @@ export default function StagesPage() {
   const [data, setData] = useState<StageData | null>(null);
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
+  const [rewards, setRewards] = useState<RewardIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [serverTime, setServerTime] = useServerTime();
+  const now = useNow(60_000);
+  const gameLang = useGameLang();
   const list = listState(nextRouterAdapter(router));
   const [query, setQuery] = useUrlText(list, router.isReady);
 
@@ -55,14 +66,21 @@ export default function StagesPage() {
     // both are decoration: a failure must leave the list usable
     loadCharacters().then(setChars).catch(() => setChars(null));
     loadIcons().then(setIcons).catch(() => setIcons(null));
+    loadRewards().then(setRewards).catch(() => setRewards(null));
   }, []);
+  const view = useMemo(() => (data && rewards ? withSeasonModes(data, rewards) : data), [data, rewards]);
 
   const urlQuery = list.text('q');
+  useEffect(() => {
+    if (router.isReady && groupKey?.startsWith('arena:')) {
+      router.replace(`/stages?mode=arena&season=${encodeURIComponent(groupKey.slice('arena:'.length))}`);
+    }
+  }, [router, groupKey]);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { if (router.isReady) setQuery(urlQuery); }, [mode, groupKey]);
 
   if (error) return <Text color="red.400">{error}</Text>;
-  if (!data || !router.isReady) {
+  if (!data || !view || !router.isReady) {
     return (
       <Center py={20}>
         <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
@@ -70,6 +88,15 @@ export default function StagesPage() {
     );
   }
 
+  const ctx: RewardCtx | null = rewards ? { data: rewards, icons, gameLang, now, serverTime } : null;
+  const time = <TimeControls serverTime={serverTime} onChange={setServerTime} />;
+  const season = groupKey && ctx ? seasonOf(ctx.data, groupKey) : null;
+  if (season && ctx) {
+    return (
+      <SeasonPage season={season} data={view} chars={chars} icons={icons} lang={lang} ctx={ctx}
+        query={query} onQuery={setQuery} time={time} />
+    );
+  }
   const grouping = groupKey ? groupByKey(data, groupKey) : null;
   if (grouping) {
     return (
@@ -77,23 +104,268 @@ export default function StagesPage() {
         query={query} onQuery={setQuery} />
     );
   }
-  if (mode && data.modes.some((m) => m.key === mode)) {
-    return <GroupList mode={mode} data={data} icons={icons} lang={lang} />;
+  if ((mode === 'nemesis' || mode === 'arena') && ctx) {
+    const openSeason = typeof router.query.season === 'string' ? router.query.season : null;
+    return (
+      <SeasonList mode={mode} data={view} icons={icons} lang={lang} ctx={ctx} time={time} openSeason={openSeason} />
+    );
   }
-  return <ModeHub data={data} icons={icons} lang={lang} />;
+  if (mode && view.modes.some((m) => m.key === mode)) {
+    return <GroupList mode={mode} data={view} icons={icons} lang={lang} />;
+  }
+  return <ModeHub data={view} icons={icons} lang={lang} ctx={ctx} />;
+}
+
+// --- seasons: Nemesis and Arena list every season the master data schedules ----
+
+type Season = {
+  mode: 'nemesis' | 'arena';
+  group: StageGroup;
+  open?: RewardWindow;
+  tile?: string;
+  nemesis?: RewardIndex['nemesis']['seasons'][number];
+  arena?: RewardIndex['arena']['seasons'][number];
+};
+
+function seasonsOf(rewards: RewardIndex, mode: 'nemesis' | 'arena'): Season[] {
+  if (mode === 'nemesis') {
+    return rewards.nemesis.seasons.map((s) => ({
+      mode, nemesis: s, open: s.open, tile: s.tile ?? rewards.nemesis.tile,
+      group: seasonGroup(mode, s.id, s.name, s.open, s.banner),
+    }));
+  }
+  return rewards.arena.seasons.map((s) => ({
+    mode, arena: s, open: s.open, tile: rewards.arena.tile,
+    group: seasonGroup(mode, s.id, arenaSeasonName(s), s.open, rewards.arena.banner, s.order),
+  }));
+}
+
+// Only Nemesis seasons have a page: an Arena season differs from the next in rewards alone.
+function seasonOf(rewards: RewardIndex, key: string): Season | null {
+  if (!key.startsWith('nemesis:')) return null;
+  return seasonsOf(rewards, 'nemesis').find((s) => s.group.key === key) ?? null;
+}
+
+// Arena has no stage in the pack, so its mode exists only through the reward data.
+function withSeasonModes(data: StageData, rewards: RewardIndex): StageData {
+  const modes = [...data.modes];
+  let at = modes.findIndex((m) => m.key === 'nemesis');
+  if (at < 0) {
+    modes.push({ key: 'nemesis', label: { en: 'Nemesis', ko: '네메시스' }, tile: rewards.nemesis.tile });
+    at = modes.length - 1;
+  }
+  if (!modes.some((m) => m.key === 'arena')) {
+    modes.splice(at + 1, 0, { key: 'arena', label: ARENA_LABEL, tile: rewards.arena.tile });
+  }
+  return { ...data, modes };
+}
+
+function seasonSummary(data: StageData, rewards: RewardIndex, mode: 'nemesis' | 'arena', now: number): ModeSummary {
+  const seasons = seasonsOf(rewards, mode);
+  const found = data.modes.find((m) => m.key === mode);
+  return {
+    key: mode,
+    label: found?.label ?? ARENA_LABEL,
+    groups: seasons.length,
+    stages: data.stages.filter((s) => s.mode === mode).length,
+    tile: found?.tile,
+    live: seasons.find((s) => phase(s.open, now) === 'running')?.group ?? null,
+  };
+}
+
+function seasonBadge(p: ReturnType<typeof phase>, t: ReturnType<typeof useT>): string {
+  return p === 'running' ? t('stageLive') : p === 'upcoming' ? t('stageUpcoming') : t('stageEnded');
+}
+
+// The currency each mode pays out, and the shop tab that takes it.
+const MODE_SHOP: Record<'nemesis' | 'arena', { goods: string; tab: string }> = {
+  nemesis: { goods: 'goods:100', tab: 'nemesis' },
+  arena: { goods: 'goods:110', tab: 'arena' },
+};
+
+function SeasonList({ mode, data, icons, lang, ctx, time, openSeason }: {
+  mode: 'nemesis' | 'arena'; data: StageData; icons: IconManifest | null; lang: Lang; ctx: RewardCtx;
+  time: ReactNode; openSeason: string | null;
+}) {
+  const t = useT();
+  const seasons = seasonsOf(ctx.data, mode);
+  const start = (s: Season) => (s.open ? Date.parse(s.open.start) : 0);
+  const current = seasons.filter((s) => phase(s.open, ctx.now) !== 'ended').sort((a, b) => start(a) - start(b));
+  const past = seasons.filter((s) => phase(s.open, ctx.now) === 'ended').sort((a, b) => start(b) - start(a));
+  const sections: [UiKey, Season[]][] = [['seasonsCurrent', current], ['seasonsPast', past]];
+  // Art every season shares is shown once, and the seasons become compact rows.
+  const shared = new Set(seasons.map((s) => s.group.banner ?? s.tile)).size === 1 ? seasons[0] : null;
+  return (
+    <VStack align="stretch" spacing={4}>
+      <Flex align="center" gap={3} wrap="wrap">
+        <StageCrumbs data={data} mode={mode} lang={lang} />
+        <Box flex="1" />
+        {time}
+        <ShareButton query={{ mode }} />
+      </Flex>
+      <ModeTabs data={data} mode={mode} lang={lang} />
+      <Flex gap={4} align="center" wrap="wrap">
+        {shared && (
+          <ArtBox manifest={icons} w={{ base: '100%', sm: '280px' }}
+            sources={[['banner', shared.group.banner], ['tile', shared.tile]]} />
+        )}
+        <Button as={NextLink} href={`/shop?tab=${MODE_SHOP[mode].tab}`} size="sm" variant="outline"
+          leftIcon={<GameIcon manifest={icons} group="item" name={ctx.data.refs[MODE_SHOP[mode].goods]?.icon} size={5} />}>
+          {gameText(ctx.data.refs[MODE_SHOP[mode].goods]?.name, ctx.gameLang)} · {t('shopLink')}
+        </Button>
+      </Flex>
+      {sections.filter(([, list]) => list.length > 0).map(([key, list]) => (
+        <Box key={key}>
+          <Text fontSize="lg" fontWeight="bold" mb={3}>{t(key)}</Text>
+          {shared ? (
+            <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={2} alignItems="start">
+              {list.map((s) => (
+                <SeasonRow key={s.group.key} season={s} data={data} lang={lang} ctx={ctx}
+                  defaultOpen={openSeason != null && s.group.key === `${mode}:${openSeason}`} />
+              ))}
+            </SimpleGrid>
+          ) : (
+            <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
+              {list.map((s) => <SeasonCard key={s.group.key} season={s} data={data} icons={icons} lang={lang} ctx={ctx} />)}
+            </SimpleGrid>
+          )}
+        </Box>
+      ))}
+      <Box>
+        <Text fontSize="lg" fontWeight="bold" mb={3}>{t('seasonsRewards')}</Text>
+        {mode === 'nemesis' ? <NemesisCombined ctx={ctx} /> : <ArenaCombined ctx={ctx} />}
+      </Box>
+    </VStack>
+  );
+}
+
+function SeasonRow({ season, data, lang, ctx, defaultOpen }: {
+  season: Season; data: StageData; lang: Lang; ctx: RewardCtx; defaultOpen: boolean;
+}) {
+  const t = useT();
+  const [open, setOpen] = useState(defaultOpen);
+  const p = phase(season.open, ctx.now);
+  return (
+    <Box borderRadius="md" borderWidth={p === 'running' ? '2px' : '1px'}
+      borderColor={p === 'running' ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50" minW={0}>
+      <Flex as="button" type="button" w="100%" p={3} gap={2} align="center" textAlign="left"
+        aria-expanded={open} onClick={() => setOpen((v) => !v)} _hover={{ bg: 'whiteAlpha.50' }}>
+        <ChevronRightIcon boxSize={5} color="gray.400" flexShrink={0}
+          transform={open ? 'rotate(90deg)' : undefined} transition="transform 0.15s" />
+        <Box minW={0}>
+          <HStack spacing={2} wrap="wrap">
+            <Badge colorScheme={p === 'running' ? 'pink' : p === 'upcoming' ? 'blue' : 'gray'}>{seasonBadge(p, t)}</Badge>
+            <Text fontSize="xs" color="gray.400">{groupWindow(season.group)}</Text>
+          </HStack>
+          <Text fontWeight="bold" mt={1}>{groupLabel(data, season.group, lang)}</Text>
+        </Box>
+      </Flex>
+      <Collapse in={open} animateOpacity>
+        <Box px={3} pb={3}>
+          {season.arena && <ArenaSeasonDiff season={season.arena} ctx={ctx} />}
+        </Box>
+      </Collapse>
+    </Box>
+  );
+}
+
+function SeasonCard({ season, data, icons, lang, ctx }: {
+  season: Season; data: StageData; icons: IconManifest | null; lang: Lang; ctx: RewardCtx;
+}) {
+  const t = useT();
+  const p = phase(season.open, ctx.now);
+  const stages = data.stages.filter((s) => s.group === season.group.key);
+  const enemies = [...new Set(stages.flatMap((s) => enemyCodes(s)))];
+  const bosses = enemies.filter((c) => stages.some((s) => s.waves.some((w) => w.bossCode === c)));
+  const stage = season.arena?.stage;
+  const effects = (stage?.effects ?? []).map((k) => gameText(ctx.data.effects[k]?.title, ctx.gameLang)).filter(Boolean);
+  return (
+    <BannerCard href={`/stages?group=${encodeURIComponent(season.group.key)}`} renderLink={nextLink}
+      highlight={p === 'running'}
+      art={<ArtBox manifest={icons} w="100%"
+        sources={[['banner', season.group.banner], ['tile', season.tile]]} />}
+      badge={seasonBadge(p, t)}
+      window={groupWindow(season.group) || undefined}
+      title={groupLabel(data, season.group, lang)}
+      count={
+        <>
+          {stages.length > 0 && t('stageCount', { n: stages.length })}
+          {stage && gameText(stage.name, ctx.gameLang)}
+          {effects.length > 0 && ` · ${effects.join(', ')}`}
+          {bosses.length > 0 && (
+            <HStack as="span" spacing={-1.5} pt={1.5}>
+              {bosses.map((code) => (
+                <GameIcon key={code} manifest={icons} group="char"
+                  names={[data.enemies[code]?.iconPath, `Icon_${code}`]} size={8} borderRadius="full"
+                  borderWidth="2px" borderColor="red.400"
+                  title={dataText(lang, data.enemies[code]?.name, data.enemies[code]?.nameEn)} />
+              ))}
+            </HStack>
+          )}
+        </>
+      } />
+  );
+}
+
+function SeasonPage({ season, data, chars, icons, lang, ctx, query, onQuery, time }: {
+  season: Season; data: StageData; chars: CharacterData | null; icons: IconManifest | null; lang: Lang;
+  ctx: RewardCtx; query: string; onQuery: (v: string) => void; time: ReactNode;
+}) {
+  const t = useT();
+  const grouping = groupByKey(data, season.group.key);
+  const detail = season.nemesis ? (
+    <VStack align="stretch" spacing={4}>
+      <SeasonWindows season={season.nemesis} ctx={ctx} />
+      <NemesisSeasonRewards season={season.nemesis} ctx={ctx} />
+    </VStack>
+  ) : null;
+  if (grouping) {
+    return (
+      <StageList grouping={grouping} data={data} chars={chars} icons={icons} lang={lang}
+        query={query} onQuery={onQuery} extra={<>{time}{detail}</>} />
+    );
+  }
+  const p = phase(season.open, ctx.now);
+  return (
+    <VStack align="stretch" spacing={4}>
+      <StageCrumbs data={data} mode={season.mode} group={season.group} lang={lang} />
+      <Flex align="center" gap={3} wrap="wrap">
+        <ArtBox manifest={icons} w={{ base: '100%', sm: '240px' }}
+          sources={[['banner', season.group.banner], ['tile', season.tile]]} />
+        <VStack align="start" spacing={1}>
+          <Text fontSize="xl" fontWeight="bold">{groupLabel(data, season.group, lang)}</Text>
+          <Badge colorScheme={p === 'running' ? 'pink' : p === 'upcoming' ? 'blue' : 'gray'}>{seasonBadge(p, t)}</Badge>
+        </VStack>
+        <Box flex="1" />
+        {time}
+        <ShareButton query={{ group: season.group.key }} />
+      </Flex>
+      {detail}
+    </VStack>
+  );
 }
 
 // --- level 1: the modes ----------------------------------------------------
 
 const GROUP_NOUN: Record<string, UiKey> = {
-  story: 'stageChapters', event: 'stageEventCount', nemesis: 'stageSeasons', archive: 'stageNodes',
+  story: 'stageChapters', event: 'stageEventCount', nemesis: 'stageSeasons', arena: 'stageSeasons',
+  archive: 'stageNodes',
 };
 
-function ModeHub({ data, icons, lang }: {
-  data: StageData; icons: IconManifest | null; lang: Lang;
+function ModeHub({ data, icons, lang, ctx }: {
+  data: StageData; icons: IconManifest | null; lang: Lang; ctx: RewardCtx | null;
 }) {
   const t = useT();
-  const modes = useMemo(() => modeSummaries(data).filter((m) => m.key !== 'archive'), [data]);
+  const now = ctx?.now;
+  const rewards = ctx?.data;
+  const modes = useMemo(() => {
+    const own = modeSummaries(data).filter((m) => m.key !== 'archive');
+    if (!rewards || now == null) return own;
+    const seasons = (['nemesis', 'arena'] as const).map((k) => seasonSummary(data, rewards, k, now));
+    const order = data.modes.map((m) => m.key);
+    return [...own.filter((m) => m.key !== 'nemesis'), ...seasons]
+      .sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
+  }, [data, rewards, now]);
   return (
     <VStack align="stretch" spacing={3}>
       <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
@@ -108,7 +380,7 @@ function ModeHub({ data, icons, lang }: {
               badge={m.live ? t('stageLive') : undefined}
               window={m.live ? groupWindow(m.live) || undefined : undefined}
               title={<>{pick(m.label, lang)}{m.live && <Text as="span" display="block" fontSize="sm" fontWeight="normal" color="gray.300" noOfLines={1}>{groupLabel(data, m.live, lang)}</Text>}</>}
-              count={<>{t(GROUP_NOUN[m.key] ?? 'stageGroupCount', { n: m.groups })} · {t('stageCount', { n: m.stages })}</>} />
+              count={<>{t(GROUP_NOUN[m.key] ?? 'stageGroupCount', { n: m.groups })}{m.stages > 0 && <> · {t('stageCount', { n: m.stages })}</>}</>} />
           );
         })}
       </SimpleGrid>
@@ -233,9 +505,9 @@ function GroupCard({ grouping, data, icons, lang }: {
 
 // --- level 3: the stages, with what they field and what they pay -----------
 
-function StageList({ grouping, data, chars, icons, lang, query, onQuery }: {
+function StageList({ grouping, data, chars, icons, lang, query, onQuery, extra }: {
   grouping: StageGrouping; data: StageData; chars: CharacterData | null;
-  icons: IconManifest | null; lang: Lang; query: string; onQuery: (v: string) => void;
+  icons: IconManifest | null; lang: Lang; query: string; onQuery: (v: string) => void; extra?: ReactNode;
 }) {
   const t = useT();
   const { group } = grouping;
@@ -315,6 +587,7 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery }: {
           );
         })}
       </SimpleGrid>
+      {extra}
     </VStack>
   );
 }
