@@ -4,7 +4,7 @@
 import {
   ScriptMachine, type Armed, type Command, type Effect, type Park,
 } from './interpreter.ts';
-import { evaluateValue, type Vars, type Vec } from './interactions.ts';
+import { evaluateValue, type Calls, type Vars, type Vec } from './interactions.ts';
 
 export type SceneHost = {
   /** Authored seconds on the scene clock — paused and speed-scaled with the rig. */
@@ -32,6 +32,10 @@ export type SceneHost = {
   ending(): void;
   /** Called after every step so the UI can follow the scene. */
   onState(state: SceneState): void;
+  /** Whether a visible bounding box named `box` contains the actor-local, y-up point. */
+  contains?(box: string, x: number, y: number): boolean;
+  /** A command the interpreter skipped because it has no handler. */
+  unsupported?(what: string): void;
 };
 
 export type SceneState = {
@@ -141,6 +145,9 @@ export function createScenePlayer(
       case 'delay':
         runDelayed(effect.at, effect.seconds);
         break;
+      case 'unsupported':
+        host.unsupported?.(effect.command);
+        break;
       default:
         break;
     }
@@ -216,7 +223,15 @@ export function createScenePlayer(
   const settleDrag = (released: boolean): boolean => {
     if (!drag || machine.dragSession === null) return false;
     const vars = dragVars(drag, performance.now() / 1000);
-    if (!machine.resolveDrag(vars, released)) return false;
+    // `DragContext::IsInside` tests the pointer's current point against the named box; an `actor.` prefix is dropped.
+    const at = drag.last;
+    const calls: Calls = {
+      'drag.isinside': ([box]) => (typeof box === 'string' && host.contains
+        ? (host.contains(box.trim().replace(/^[^.]*\./, ''), at[0], at[1]) ? 1 : 0) : null),
+      'drag.isoutside': ([box]) => (typeof box === 'string' && host.contains
+        ? (host.contains(box.trim().replace(/^[^.]*\./, ''), at[0], at[1]) ? 0 : 1) : null),
+    };
+    if (!machine.resolveDrag(vars, released, calls)) return false;
     if (released) drag = null;
     else drag.settled = true;
     step();

@@ -686,6 +686,65 @@ export function spendBill(
   return out;
 }
 
+/** A box the player opens by choosing one of its options; `pick` choices per box. */
+export type SelectBox = { ref: string; pick: number; options: { ref: string; amount: number }[] };
+
+/** What one held box type went to: `picks` is option ref -> boxes spent on it. */
+export type BoxUse = { box: string; held: number; used: number; picks: Record<string, number> };
+
+/** The select boxes whose options are items or goods; a character pick cannot cover a material. */
+export function selectBoxes(
+  items: Record<string, { contents?: { mode: string; pick?: number; rewards: { ref?: string; amount?: number[] }[] } }>,
+): SelectBox[] {
+  const out: SelectBox[] = [];
+  for (const [ref, entry] of Object.entries(items)) {
+    const c = entry.contents;
+    if (c?.mode !== 'select') continue;
+    const options = (c.rewards ?? []).flatMap((r) => (r.ref ? [{ ref: r.ref, amount: r.amount?.[0] ?? 1 }] : []));
+    if (options.length) out.push({ ref, pick: c.pick ?? 1, options });
+  }
+  return out;
+}
+
+// Each box goes to whichever option is furthest short, one box at a time, so several shortfalls fill evenly.
+export function openBoxes(
+  growth: GrowthData, bill: Bill, inventory: Record<string, number>,
+  boxes: SelectBox[], off: Record<string, true>,
+): { inventory: Record<string, number>; uses: BoxUse[] } {
+  const out = { ...inventory };
+  const short: Record<string, number> = {};
+  for (const need of needsOf(growth, bill, inventory)) {
+    if (need.kind === 'material' && need.short > 0) short[need.key] = need.short;
+  }
+  const uses: BoxUse[] = [];
+  // Fewer options first: a narrow box should not be spent where a wide one could go.
+  for (const box of [...boxes].sort((a, b) => a.options.length - b.options.length)) {
+    const held = inventory[box.ref] ?? 0;
+    if (!held) continue;
+    const use: BoxUse = { box: box.ref, held, used: 0, picks: {} };
+    uses.push(use);
+    if (off[box.ref]) continue;
+    for (let n = 0; n < held; n++) {
+      let gained = false;
+      for (let p = 0; p < box.pick; p++) {
+        let best: { ref: string; amount: number } | null = null;
+        for (const option of box.options) {
+          if ((short[option.ref] ?? 0) > 0 && (!best || short[option.ref] > short[best.ref])) best = option;
+        }
+        if (!best) break;
+        short[best.ref] -= best.amount;
+        out[best.ref] = (out[best.ref] ?? 0) + best.amount;
+        use.picks[best.ref] = (use.picks[best.ref] ?? 0) + 1;
+        gained = true;
+      }
+      if (!gained) break;
+      use.used += 1;
+      out[box.ref] = (out[box.ref] ?? 0) - 1;
+    }
+  }
+  return { inventory: out, uses };
+}
+
 const SUFFIX: Record<string, number> = { k: 1e3, m: 1e6, b: 1e9 };
 
 /** `2.5m` / `150k` -> a number; null so a field leaves half-typed text alone. */

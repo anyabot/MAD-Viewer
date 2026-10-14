@@ -5381,7 +5381,33 @@
    "icon": "Icon_Item_select_box_normal_skill_growth_low",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10111",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10121",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10131",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10141",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40002": {
@@ -5409,7 +5435,33 @@
    "icon": "Icon_Item_select_box_normal_skill_growth_middle",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10112",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10122",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10132",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10142",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40003": {
@@ -5437,7 +5489,33 @@
    "icon": "Icon_Item_select_box_normal_skill_growth_upper",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10113",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10123",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10133",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10143",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40004": {
@@ -5465,7 +5543,33 @@
    "icon": "Icon_Item_select_box_normal_skill_growth_high",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10114",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10124",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10134",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10144",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40005": {
@@ -5493,7 +5597,33 @@
    "icon": "Icon_Item_select_box_burst_skill_growth_low",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10115",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10125",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10135",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10145",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40006": {
@@ -5521,7 +5651,33 @@
    "icon": "Icon_Item_select_box_burst_skill_growth_middle",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10116",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10126",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10136",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10146",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40007": {
@@ -5549,7 +5705,33 @@
    "icon": "Icon_Item_select_box_burst_skill_growth_upper",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10117",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10127",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10137",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10147",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40008": {
@@ -5577,7 +5759,33 @@
    "icon": "Icon_Item_select_box_burst_skill_growth_high",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10118",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10128",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10138",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10148",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40009": {
@@ -5605,7 +5813,33 @@
    "icon": "Icon_Item_select_box_all_skill_growth_low",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10151",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10161",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10171",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10181",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40010": {
@@ -5633,7 +5867,33 @@
    "icon": "Icon_Item_select_box_all_skill_growth_middle",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10152",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10162",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10172",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10182",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40011": {
@@ -5661,7 +5921,33 @@
    "icon": "Icon_Item_select_box_all_skill_growth_upper",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10153",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10163",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10173",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10183",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40012": {
@@ -5689,7 +5975,33 @@
    "icon": "Icon_Item_select_box_all_skill_growth_high",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:10154",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10164",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10174",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:10184",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:40013": {
@@ -5717,7 +6029,177 @@
    "icon": "Icon_Item_select_gift_box",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "ref": "item:9100",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9101",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9102",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9103",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9104",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9105",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9106",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9107",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9108",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9109",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9110",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9111",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9112",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9113",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9114",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9115",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9116",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9117",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9200",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9201",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9202",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9203",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9204",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9205",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9206",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9207",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9208",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "ref": "item:9209",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:50001": {
@@ -6061,7 +6543,65 @@
    "icon": "Icon_Item_select_character_box_first_open",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "type": "character",
+      "code": "CH0009",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0011",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0015",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0022",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0024",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0028",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0038",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0057",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:60003": {
@@ -6089,7 +6629,65 @@
    "icon": "Icon_Item_select_character_box_first_open_ev4000",
    "contents": {
     "mode": "select",
-    "pick": 1
+    "pick": 1,
+    "rewards": [
+     {
+      "type": "character",
+      "code": "CH0009",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0011",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0015",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0022",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0024",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0028",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0038",
+      "amount": [
+       1
+      ]
+     },
+     {
+      "type": "character",
+      "code": "CH0057",
+      "amount": [
+       1
+      ]
+     }
+    ]
    }
   },
   "item:80201": {

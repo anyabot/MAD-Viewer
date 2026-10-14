@@ -17,6 +17,8 @@ export type FarmState = {
   sweepOnly: boolean;
   /** Whether hard stages count as a farm route. */
   hardStages: boolean;
+  /** Select-box refs the simulation must not open. */
+  boxOff: Record<string, true>;
 };
 
 type FarmStore = FarmState & {
@@ -49,10 +51,11 @@ type FarmStore = FarmState & {
   setStarsMany: (stageIds: number[], stars: number) => void;
   setSweepOnly: (on: boolean) => void;
   setHardStages: (on: boolean) => void;
+  setBoxOff: (ref: string, off: boolean) => void;
 };
 
 const EMPTY: FarmState = {
-  inventory: {}, units: {}, clears: {}, sweepOnly: false, hardStages: true,
+  inventory: {}, units: {}, clears: {}, sweepOnly: false, hardStages: true, boxOff: {},
 };
 
 const stored = createPersisted<FarmState>({
@@ -67,6 +70,7 @@ function persist(state: FarmState): void {
     clears: state.clears,
     sweepOnly: state.sweepOnly,
     hardStages: state.hardStages,
+    boxOff: state.boxOff,
   });
 }
 
@@ -175,6 +179,11 @@ export const useFarm = create<FarmStore>((set) => ({
   setSweepOnly: (on) => set((s) => save(s, { sweepOnly: on })),
 
   setHardStages: (on) => set((s) => save(s, { hardStages: on })),
+  setBoxOff: (ref, off) => set((s) => {
+    const boxOff = { ...s.boxOff };
+    if (off) boxOff[ref] = true; else delete boxOff[ref];
+    return save(s, { boxOff });
+  }),
 }));
 
 function record(value: unknown): Record<string, number> {
@@ -226,12 +235,14 @@ function parse(doc: Partial<FarmState>): FarmState {
     clears: record(doc.clears),
     sweepOnly: doc.sweepOnly === true,
     hardStages: doc.hardStages !== false,
+    boxOff: Object.fromEntries(Object.entries(doc.boxOff ?? {})
+      .filter(([, v]) => v === true).map(([k]) => [k, true as const])),
   };
 }
 
 export function farmRecord(): FarmState {
-  const { inventory, units, clears, sweepOnly, hardStages } = useFarm.getState();
-  return { inventory, units, clears, sweepOnly, hardStages };
+  const { inventory, units, clears, sweepOnly, hardStages, boxOff } = useFarm.getState();
+  return { inventory, units, clears, sweepOnly, hardStages, boxOff };
 }
 
 /** Replaces the whole record, as a restore would, and persists it. */
