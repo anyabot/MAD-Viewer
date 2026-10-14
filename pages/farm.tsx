@@ -1,12 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { textMatch } from '@altterisk/game-hub/filters';
 import {
-  CheckIcon, ChevronDownIcon, CloseIcon, StarIcon, ViewIcon, ViewOffIcon,
+  CheckIcon, ChevronDownIcon, ChevronRightIcon, CloseIcon, StarIcon, ViewIcon, ViewOffIcon,
 } from '@chakra-ui/icons';
 import NextLink from 'next/link';
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel,
-  Badge, Box, Center, Flex, HStack, Input, SimpleGrid, Spinner, Tab, TabList,
+  Badge, Box, Center, Checkbox, Collapse, Flex, HStack, Input, SimpleGrid, Spinner, Tab, TabList,
   TabPanel, TabPanels, Tabs, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
@@ -20,13 +20,14 @@ import { PlannerTutorial, TutorialReplay } from '@/components/plannerTutorial';
 import { AmountField, Stepper } from '@/components/unitPlan';
 import { hasIcon } from '@/lib/icons';
 import { useFarm } from '@/lib/farmStore';
-import { itemHref } from '@/lib/items';
+import { itemHref, type ItemIndex } from '@/lib/items';
+import { gameText, useGameLang } from '@/lib/gameText';
 import { useCollection } from '@/lib/collectionStore';
 import { downloadPlan, importPlan } from '@/lib/planFile';
 import {
   MATERIAL_ICON_GROUPS, billCovered, billIsEmpty, farmPlan, farmStages, isHardStage,
-  mergeBills, needLabel, needsOf, planStar, spendBill, unitBill,
-  type Bill, type FarmPlan, type FarmRoute, type NeedPlan, type StageSource,
+  mergeBills, needLabel, needsOf, openBoxes, planStar, selectBoxes, spendBill, unitBill,
+  type Bill, type BoxUse, type FarmPlan, type FarmRoute, type NeedPlan, type StageSource,
   type UnitPlanPair,
 } from '@/lib/farm';
 import { memoryPlan, starCap, stepCost, type MemoryPlan } from '@/lib/rank';
@@ -36,7 +37,7 @@ import { characterName, isPlayable } from '@/lib/characters';
 import { groupLabel, stageName } from '@/lib/stages';
 import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
 import {
-  loadCharacters, loadGrowth, loadIcons, loadStages,
+  loadCharacters, loadGrowth, loadIcons, loadItems, loadStages,
   type CharacterData, type CharacterEntry, type GrowthData, type IconManifest,
   type StageData, type StageEntry,
 } from '@/lib/data';
@@ -57,6 +58,14 @@ const materialGroup = (icons: IconManifest | null, name?: string | null) =>
 
 const STARS = [0, 1, 2, 3];
 
+// The inventory the plan is costed against: the held counts plus what the enabled select boxes open into.
+const PlanInventory = createContext<Record<string, number> | null>(null);
+
+function usePlanInventory(): Record<string, number> {
+  const held = useFarm((s) => s.inventory);
+  return useContext(PlanInventory) ?? held;
+}
+
 export default function FarmPage() {
   const t = useT();
   const lang = useLang();
@@ -64,8 +73,10 @@ export default function FarmPage() {
   const [stages, setStages] = useState<StageData | null>(null);
   const [growth, setGrowth] = useState<GrowthData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
+  const [items, setItems] = useState<ItemIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showInventory, setShowInventory] = useState(false);
+  const boxOff = useFarm((s) => s.boxOff);
 
   const units = useFarm((s) => s.units);
   const inventory = useFarm((s) => s.inventory);
@@ -80,7 +91,10 @@ export default function FarmPage() {
     loadCharacters().then(setChars).catch((e) => setError(String(e)));
     loadStages().then(setStages).catch((e) => setError(String(e)));
     loadIcons().then(setIcons).catch(() => setIcons(null));
+    loadItems().then(setItems).catch(() => setItems(null));
   }, []);
+
+  const boxes = useMemo(() => (items ? selectBoxes(items.items) : []), [items]);
 
   const pool = useMemo(
     () => (growth && stages ? farmStages(growth, stages) : []), [growth, stages]);
@@ -100,20 +114,26 @@ export default function FarmPage() {
       }));
     const first = billOf(true);
     const rest = billOf(false);
+    const opened = openBoxes(growth, mergeBills([first, rest]), inventory, boxes, boxOff);
+    const have = opened.inventory;
     if (billIsEmpty(first)) {
       return {
-        main: farmPlan(growth, routePool, rest, inventory, clears, sweepOnly),
+        main: farmPlan(growth, routePool, rest, have, clears, sweepOnly),
         rest: null,
-        leftover: inventory,
+        leftover: have,
+        have,
+        boxUses: opened.uses,
       };
     }
-    const leftover = spendBill(growth, first, inventory);
+    const leftover = spendBill(growth, first, have);
     return {
-      main: farmPlan(growth, routePool, first, inventory, clears, sweepOnly),
+      main: farmPlan(growth, routePool, first, have, clears, sweepOnly),
       rest: farmPlan(growth, routePool, rest, leftover, clears, sweepOnly),
       leftover,
+      have,
+      boxUses: opened.uses,
     };
-  }, [growth, chars, units, inventory, clears, sweepOnly, routePool]);
+  }, [growth, chars, units, inventory, clears, sweepOnly, routePool, boxes, boxOff]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!growth || !chars || !stages || !plans) {
@@ -152,6 +172,7 @@ export default function FarmPage() {
         onClose={() => setShowInventory(false)} />
       <PlannerTutorial />
 
+      <PlanInventory.Provider value={plans.have}>
       <Tabs variant="line" colorScheme="yellow" isLazy>
         <TabList borderColor="whiteAlpha.200" overflowX="auto">
           <Tab fontSize="sm" whiteSpace="nowrap">
@@ -179,6 +200,7 @@ export default function FarmPage() {
           </TabPanel>
           <TabPanel px={0} pt={4}>
             <VStack align="stretch" spacing={5}>
+              <SelectBoxPanel uses={plans.boxUses} items={items} icons={icons} />
               <PlanPanel plan={plans.main} growth={growth} stages={stages} icons={icons}
                 title={plans.rest ? t('farmPriority') : undefined} />
               {plans.rest && (
@@ -192,6 +214,7 @@ export default function FarmPage() {
           </TabPanel>
         </TabPanels>
       </Tabs>
+      </PlanInventory.Provider>
     </VStack>
   );
 }
@@ -239,7 +262,7 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
   const t = useT();
   const lang = useLang();
   const units = useFarm((s) => s.units);
-  const inventory = useFarm((s) => s.inventory);
+  const inventory = usePlanInventory();
   const addUnit = useFarm((s) => s.addUnit);
   const addUnits = useFarm((s) => s.addUnits);
   const collected = useCollection((s) => s.collected);
@@ -488,7 +511,8 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }:
   open: boolean; onExpand: () => void;
 }) {
   const t = useT();
-  const inventory = useFarm((s) => s.inventory);
+  const inventory = usePlanInventory();
+  const held = useFarm((s) => s.inventory);
   const setHidden = useFarm((s) => s.setHidden);
   const setPriority = useFarm((s) => s.setPriority);
   const setListed = useFarm((s) => s.setListed);
@@ -568,7 +592,7 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }:
         <RowAction label={t('farmComplete')} disabled={!owing || !covered}
           hint={!owing ? t('planNothingOwed')
             : covered ? t('farmCompleteHint') : t('farmCompleteShort')}
-          onClick={() => completeUnit(entry.code, spendBill(growth, bill, inventory))}>
+          onClick={() => completeUnit(entry.code, spendBill(growth, bill, held))}>
           <CheckIcon boxSize={3} color={owing && covered ? 'green.300' : undefined} />
         </RowAction>
         <RowAction label={t('farmRemove')} danger
@@ -889,6 +913,7 @@ function NeedRow({ row, growth, stages, icons, lang }: {
   const inventory = useFarm((s) => s.inventory);
   const setInventory = useFarm((s) => s.setInventory);
   const { need } = row;
+  const fromBoxes = need.kind === 'material' ? need.have - (inventory[need.key] ?? 0) : 0;
   const label = needLabel(growth, need, lang);
   const missing = (growth._noItemRow ?? []).includes(need.key);
   // A pool total is a weighted sum over several items, not one slot.
@@ -910,6 +935,9 @@ function NeedRow({ row, growth, stages, icons, lang }: {
               <AmountField value={inventory[held] ?? 0} min={0} max={999_999_999}
                 width="5rem" onChange={(v) => setInventory(held, v)} />
             </Stepper>
+            {fromBoxes > 0 && (
+              <Text fontSize="0.6rem" color="purple.300">{t('farmFromBoxes', { n: fromBoxes.toLocaleString() })}</Text>
+            )}
           </Box>
         ) : (
           <Stat label={t('farmHave')} value={need.have} muted />
@@ -1006,5 +1034,64 @@ function SourceLine({ source, stages, icons, lang, best }: {
         </HStack>
       )}
     </Flex>
+  );
+}
+
+// Held select boxes, each with a toggle; an enabled box opens into what the plan is short of.
+function SelectBoxPanel({ uses, items, icons }: {
+  uses: BoxUse[]; items: ItemIndex | null; icons: IconManifest | null;
+}) {
+  const t = useT();
+  const gameLang = useGameLang();
+  const boxOff = useFarm((s) => s.boxOff);
+  const setBoxOff = useFarm((s) => s.setBoxOff);
+  const [open, setOpen] = useState(false);
+  if (!uses.length || !items) return null;
+  const entry = (ref: string) => items.items[ref];
+  const opened = uses.reduce((n, u) => n + (boxOff[u.box] ? 0 : u.used), 0);
+  const inUse = uses.filter((u) => !boxOff[u.box]).length;
+  return (
+    <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" bg="whiteAlpha.50">
+      <Flex as="button" type="button" w="100%" px={3} py={2} gap={2} align="center" textAlign="left"
+        aria-expanded={open} onClick={() => setOpen((v) => !v)} _hover={{ bg: 'whiteAlpha.50' }}>
+        <ChevronRightIcon boxSize={5} color="gray.400" flexShrink={0}
+          transform={open ? 'rotate(90deg)' : undefined} transition="transform 0.15s" />
+        <Text fontSize="sm" fontWeight="bold">{t('farmBoxes')}</Text>
+        <Text fontSize="xs" color="gray.500">{t('farmBoxesSummary', { on: inUse, total: uses.length, n: opened })}</Text>
+      </Flex>
+      <Collapse in={open} animateOpacity>
+      <VStack align="stretch" spacing={2} px={3} pb={3}>
+        <Text fontSize="xs" color="gray.500">{t('farmBoxesHint')}</Text>
+        {uses.map((use) => {
+          const box = entry(use.box);
+          const on = !boxOff[use.box];
+          return (
+            <Flex key={use.box} gap={3} align="center" wrap="wrap" p={2} borderRadius="md" bg="whiteAlpha.50"
+              opacity={on ? 1 : 0.6}>
+              <Checkbox isChecked={on} onChange={(e) => setBoxOff(use.box, !e.target.checked)}
+                aria-label={t('farmBoxUse')} />
+              <ItemIcon manifest={icons} group={materialGroup(icons, box?.icon)} name={box?.icon}
+                grade={box?.grade} size={9} href={itemHref(use.box)} count={use.held} />
+              <Box minW={0} flex="1">
+                <Text fontSize="sm">{gameText(box?.name, gameLang)}</Text>
+                <Text fontSize="xs" color="gray.500">
+                  {on ? t('farmBoxUsed', { used: use.used, held: use.held }) : t('farmBoxOff')}
+                </Text>
+              </Box>
+              {on && (
+                <HStack spacing={1} wrap="wrap">
+                  {Object.entries(use.picks).map(([ref, n]) => (
+                    <ItemIcon key={ref} manifest={icons} group={materialGroup(icons, entry(ref)?.icon)}
+                      name={entry(ref)?.icon} grade={entry(ref)?.grade} size={8} count={n}
+                      href={itemHref(ref)} title={gameText(entry(ref)?.name, gameLang)} />
+                  ))}
+                </HStack>
+              )}
+            </Flex>
+          );
+        })}
+      </VStack>
+      </Collapse>
+    </Box>
   );
 }

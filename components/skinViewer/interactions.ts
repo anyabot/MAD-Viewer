@@ -4,6 +4,10 @@
 export type Vec = readonly [number, number];
 export type Value = number | Vec;
 export type Vars = Record<string, Value>;
+/** A call argument: a value, or a string literal such as a box name. */
+export type Arg = Value | string;
+/** Functions the host answers, such as `drag.isInside("A1")`; keyed lowercase. */
+export type Calls = Record<string, (args: Arg[]) => Value | null>;
 
 const isVec = (v: Value): v is Vec => typeof v !== 'number';
 const scalar = (v: Value): number => (isVec(v) ? NaN : v);
@@ -11,17 +15,19 @@ const scalar = (v: Value): number => (isVec(v) ? NaN : v);
 const RAD_TO_DEG = 57.29578;
 
 // Case-insensitive: the scripts write `length` for the client's `Length`.
-const FUNCTIONS: Record<string, (args: Value[]) => Value | null> = {
-  length: ([v]) => (v !== undefined && isVec(v) ? Math.hypot(v[0], v[1]) : null),
+const isValue = (v: Arg | undefined): v is Value => v !== undefined && typeof v !== 'string';
+
+const FUNCTIONS: Calls = {
+  length: ([v]) => (isValue(v) && isVec(v) ? Math.hypot(v[0], v[1]) : null),
   // Wrapped into [0, 360) from atan2, then clamped, exactly as the client does.
   angle: ([v]) => {
-    if (v === undefined || !isVec(v)) return null;
+    if (!isValue(v) || !isVec(v)) return null;
     let a = Math.atan2(v[1], v[0]) * RAD_TO_DEG;
     a -= Math.floor(a / 360) * 360;
     return a > 360 ? 360 : a < 0 ? 0 : a;
   },
-  sin: ([v]) => (v !== undefined && !isVec(v) ? Math.sin(v) : null),
-  cos: ([v]) => (v !== undefined && !isVec(v) ? Math.cos(v) : null),
+  sin: ([v]) => (isValue(v) && !isVec(v) ? Math.sin(v) : null),
+  cos: ([v]) => (isValue(v) && !isVec(v) ? Math.cos(v) : null),
 };
 
 // `=` and `==` are both equality, and booleans are carried as 0/1 so `x1=false`
@@ -29,7 +35,7 @@ const FUNCTIONS: Record<string, (args: Value[]) => Value | null> = {
 //
 // Hand-rolled rather than `new Function` so published data never reaches eval.
 
-type Token = { kind: 'num' | 'name' | 'op'; text: string };
+type Token = { kind: 'num' | 'name' | 'op' | 'str'; text: string };
 
 // Longest match wins, so '&&' must precede '&' and '!=' precede '!'. Some
 // scripts write a multi-flag gate with a single '&'.
@@ -55,6 +61,18 @@ function tokenize(src: string): Token[] {
       while (j < src.length && /[A-Za-z0-9_.]/.test(src[j])) j++;
       out.push({ kind: 'name', text: src.slice(i, j) });
       i = j;
+      continue;
+    }
+    if (c === '"') {
+      let j = i + 1;
+      let text = '';
+      while (j < src.length && src[j] !== '"') {
+        if (src[j] === '\\' && j + 1 < src.length) j++;
+        text += src[j++];
+      }
+      if (j >= src.length) return [];   // unterminated string: refuse the expression
+      out.push({ kind: 'str', text });
+      i = j + 1;
       continue;
     }
     const op = OPERATOR_TEXT.find((o) => src.startsWith(o, i));
@@ -105,19 +123,28 @@ function apply(op: string, a: number, b: number): number {
   }
 }
 
-export function evaluateValue(expr: string, vars: Vars): Value | null {
+export function evaluateValue(
+  expr: string, vars: Vars, calls?: Calls, problem?: (reason: string) => void,
+): Value | null {
   const tokens = tokenize(expr);
-  if (!tokens.length) return null;
+  if (!tokens.length) {
+    problem?.('unreadable character or unterminated string');
+    return null;
+  }
   let pos = 0;
 
   const call = (name: string): Value | null => {
-    const fn = FUNCTIONS[name.toLowerCase()];
-    if (!fn) return null;
+    const fn = calls?.[name.toLowerCase()] ?? FUNCTIONS[name.toLowerCase()];
+    if (!fn) {
+      problem?.(`unknown function ${name}`);
+      return null;
+    }
     pos++;
-    const args: Value[] = [];
+    const args: Arg[] = [];
     if (tokens[pos]?.text !== ')') {
       for (;;) {
-        const arg = expression(0);
+        // A string is only ever an argument, never an operand.
+        const arg: Arg | null = tokens[pos]?.kind === 'str' ? tokens[pos++].text : expression(0);
         if (arg === null) return null;
         args.push(arg);
         if (tokens[pos]?.text !== ',') break;
@@ -195,19 +222,46 @@ export function evaluateValue(expr: string, vars: Vars): Value | null {
   };
 
   const value = expression(0);
-  return pos === tokens.length ? value : null;
+  if (value === null || pos !== tokens.length) {
+    problem?.('malformed expression');
+    return null;
+  }
+  return value;
+}
+
+/** Host functions the scene player answers; any other call is unknown. */
+export const HOST_FUNCTIONS = ['drag.isinside', 'drag.isoutside'];
+
+/**
+ * Why the viewer cannot read an expression, or null when it can. Variables read as 0 and every
+ * call answers 0, so only the syntax and the function names are tested.
+ */
+export function expressionProblem(expr: string): string | null {
+  let reason: string | null = null;
+  const stub = (): Value => 0;
+  const calls: Calls = Object.fromEntries(
+    [...Object.keys(FUNCTIONS), ...HOST_FUNCTIONS].map((name) => [name, stub]));
+  evaluateValue(expr, new Proxy({}, { get: () => 0 }) as Vars, calls, (r) => { reason ??= r; });
+  return reason;
+}
+
+// The viewer listens here so an expression it cannot read is shown, not silently false.
+let reporter: ((expr: string, reason: string) => void) | null = null;
+
+export function setExpressionReporter(fn: ((expr: string, reason: string) => void) | null): void {
+  reporter = fn;
 }
 
 /** A scalar result; a vector or a malformed expression is null. */
-export function evaluate(expr: string, vars: Vars): number | null {
-  const value = evaluateValue(expr, vars);
+export function evaluate(expr: string, vars: Vars, calls?: Calls): number | null {
+  const value = evaluateValue(expr, vars, calls, reporter ? (reason) => reporter?.(expr, reason) : undefined);
   if (value === null || isVec(value)) return null;
   return Number.isNaN(value) ? null : value;
 }
 
 /** An unparseable condition never arms. */
-export function holds(when: string | null | undefined, vars: Vars): boolean {
+export function holds(when: string | null | undefined, vars: Vars, calls?: Calls): boolean {
   if (!when) return true;
-  const v = evaluate(when, vars);
+  const v = evaluate(when, vars, calls);
   return v !== null && v !== 0;
 }

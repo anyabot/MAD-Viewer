@@ -28,7 +28,7 @@ import {
 } from '@/components/skinViewer/exportVideo';
 import { createFadeCover, createSceneClock } from '@/components/skinViewer/sceneClock';
 import { JiggleField } from '@/components/skinViewer/jiggle';
-import type { Vars } from '@/components/skinViewer/interactions';
+import { setExpressionReporter, type Vars } from '@/components/skinViewer/interactions';
 import {
   boneSettings, constrainOffset, isSettled, stepMotion,
   type DragBoneMotion, type DragBoneSettings,
@@ -161,6 +161,20 @@ export default function SkinViewer({
   const [reaction, setReaction] = useState<string | null>(null);
   const [touchInfo, setTouchInfo] = useState<
     { box: string; effect: string; detail: string } | null>(null);
+  // Script commands and expressions the viewer cannot play, shown so a gap is never silent.
+  const [unsupported, setUnsupported] = useState<string[]>([]);
+  const unsupportedSeen = useRef(new Set<string>());
+  const noteUnsupported = (what: string) => {
+    if (unsupportedSeen.current.has(what)) return;
+    unsupportedSeen.current.add(what);
+    console.warn('[scene] unsupported:', what);
+    setUnsupported((list) => [...list, what]);
+  };
+  const noteUnsupportedRef = useRef(noteUnsupported); noteUnsupportedRef.current = noteUnsupported;
+  useEffect(() => {
+    setExpressionReporter((expr, reason) => noteUnsupportedRef.current(`${expr} (${reason})`));
+    return () => setExpressionReporter(null);
+  }, []);
 
   const [voiceIndex, setVoiceIndex] = useState<VoiceIndex | null>(null);
   const [eventVoices, setEventVoices] = useState<string[]>([]);
@@ -1003,7 +1017,23 @@ export default function SkinViewer({
       installScenePlayerRef.current = (program) => {
         sceneIdle = null;
         sceneBodyTrack = null;
+        unsupportedSeen.current = new Set();
+        setUnsupported([]);
         return createScenePlayer(program, {
+          unsupported: (what) => noteUnsupportedRef.current(`@${what}`),
+          // The same visible-box polygon test a touch uses; the script's point is y-up.
+          contains: (box, x, y) => {
+            const spine = spineRef.current;
+            const bounds = boundsRef.current;
+            if (!spine || !bounds) return false;
+            bounds.update(spine.skeleton, true);
+            const boxes = bounds.boundingBoxes ?? [];
+            const polys = bounds.polygons ?? [];
+            // `TryGetContainedBoundingBox` matches a box whose name ends with the filter.
+            return boxes.some((attachment: any, i: number) => !!attachment?.name?.endsWith(box)
+              && attachmentIsVisible(attachment) && !!polys[i]
+              && bounds.containsPointPolygon(polys[i], x, -y));
+          },
           now: sceneNow,
           schedule: scheduleScene,
           cancel: cancelScene,
@@ -1616,6 +1646,8 @@ export default function SkinViewer({
               point = spine.toLocal({ x: mx, y: my });
             },
             end: () => {
+              // The release is judged at the last pointer point, not the last ticked one.
+              frame();
               app.ticker.remove(frame);
               sceneDragTapUntil = performance.now() + 1000;
               if (player.dragEnd()) report();
@@ -1862,6 +1894,37 @@ export default function SkinViewer({
       pixelScale: spinePixelScaleRef.current(),
       fileName: `${archive}${faceAnim ? `_${animLabel(faceAnim)}` : ''}.png`,
     });
+  };
+
+  // Exactly the framed view on screen, at the art's own density; the touch-zone overlay is a debug aid and stays out.
+  const handleSaveView = () => {
+    const app = appRef.current;
+    const host = hostRef.current;
+    const PIXI = pixiRef.current;
+    if (!app || !host || !PIXI) return;
+    const overlay = boxOverlayRef.current;
+    const overlayShown = overlay?.visible ?? false;
+    if (overlay) overlay.visible = false;
+    let canvas: HTMLCanvasElement | null = null;
+    try {
+      canvas = app.renderer.extract.canvas({
+        target: app.stage,
+        frame: new PIXI.Rectangle(0, 0, app.screen.width, app.screen.height),
+        resolution: recordScale(host),
+        clearColor: app.renderer.background.color,
+      }) as HTMLCanvasElement;
+    } finally {
+      if (overlay) overlay.visible = overlayShown;
+    }
+    canvas?.toBlob((blob) => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${archive}_view.png`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }, 'image/png');
   };
 
   // Screen px per world unit needed for the art's own resolution, capped by frame size.
@@ -2131,6 +2194,11 @@ export default function SkinViewer({
                     : ''}
                 </Text>
               )}
+              {unsupported.length > 0 && (
+                <Text fontSize="xs" color="orange.300" noOfLines={3} fontFamily="mono">
+                  {t('sceneUnsupported', { list: unsupported.join(', ') })}
+                </Text>
+              )}
             </Box>
           )}
 
@@ -2189,6 +2257,7 @@ export default function SkinViewer({
               )}
               <WrapItem>
                 <ActionButton icon="save" label={t('btnSavePng')} onClick={handleSave} />
+                <ActionButton icon="save" label={t('btnSaveView')} onClick={handleSaveView} />
               </WrapItem>
               <WrapItem>
                 <ActionButton icon="share" label={t('btnShare')} onClick={handleShare} />

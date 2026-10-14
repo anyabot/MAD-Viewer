@@ -1,6 +1,6 @@
 // Holds only the playback index, the variables and the effects a step produced: never Pixi, Spine or the DOM.
 
-import { evaluate, holds, type Vars } from './interactions.ts';
+import { evaluate, holds, type Calls, type Vars } from './interactions.ts';
 import { spineTrack } from './types.ts';
 
 export type Command = {
@@ -263,17 +263,17 @@ export class ScriptMachine {
    * hands the index back to the idle; a release with nothing armed goes straight
    * back.
    */
-  resolveDrag(input: Vars, released: boolean): boolean {
+  resolveDrag(input: Vars, released: boolean, calls?: Calls): boolean {
     const at = this.session;
     if (at === null) return false;
     this.vars = { ...this.vars, ...input };
     const children = this.childrenOf(at);
     const condition = (i: number) => this.program[i].fields?.ConditionalExpression;
     let pick = children.find((i) => this.program[i].class === 'DesireDragResolveCommand'
-      && !!condition(i) && holds(condition(i), this.vars)) ?? null;
+      && !!condition(i) && holds(condition(i), this.vars, calls)) ?? null;
     if (pick === null && released) {
       pick = children.find((i) => this.program[i].class === 'DesireDragReleaseCommand'
-        && (!condition(i) || holds(condition(i), this.vars))) ?? null;
+        && (!condition(i) || holds(condition(i), this.vars, calls))) ?? null;
     }
     if (pick === null && !released) return false;
     this.session = null;
