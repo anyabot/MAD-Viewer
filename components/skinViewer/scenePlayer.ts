@@ -21,7 +21,7 @@ export type SceneHost = {
   clearAnimation(clip: string): void;
   clearTrack(track: number | null): void;
   resetActor(): void;
-  say(text: string, author: string | null, voice: string | null): void;
+  say(text: string, author: string | null, voice: string | null, texts?: Record<string, string> | null): void;
   voice(clip: string): void;
   subtitle(visible: boolean): void;
   background(appearance: string, visible: boolean, duration: number): void;
@@ -97,6 +97,8 @@ export function createScenePlayer(
   const onlookArmedAt = new Map<number, { stamp: number; at: number }>();
   let drag: DragState | null = null;
   const delayed = new Set<number>();
+  // Delayed bodies parked on `wait-animation`, by timer handle, so the clip's completion can resolve them that frame.
+  const animationWaits = new Map<number, { track: number | null; advance: () => void }>();
 
   const apply = (effect: Effect): void => {
     switch (effect.kind) {
@@ -116,7 +118,7 @@ export function createScenePlayer(
         host.resetActor();
         break;
       case 'say':
-        host.say(effect.text, effect.author, effect.voice);
+        host.say(effect.text, effect.author, effect.voice, effect.texts);
         break;
       case 'voice':
         host.voice(effect.clip);
@@ -158,7 +160,7 @@ export function createScenePlayer(
     let handle: number | null = null;
     const sub = new ScriptMachine(program);
     const advance = () => {
-      if (handle !== null) delayed.delete(handle);
+      if (handle !== null) { delayed.delete(handle); animationWaits.delete(handle); }
       handle = null;
       if (stopped) return;
       const before = { ...machine.vars };
@@ -168,18 +170,31 @@ export function createScenePlayer(
         if (before[key] !== value) machine.vars = { ...machine.vars, [key]: value };
       }
       for (const effect of result.effects) apply(effect);
+      if (result.park.kind === 'wait-animation' && host.remaining(result.park.track) <= 0
+        && immediate < 32) {
+        immediate += 1;
+        advance();
+        immediate -= 1;
+        return;
+      }
       const wait = result.park.kind === 'wait' ? result.park.seconds
         : result.park.kind === 'wait-animation' ? host.remaining(result.park.track)
           : result.park.kind === 'wait-reaction' ? host.remainingReaction() : null;
       if (wait !== null) {
         handle = host.schedule(advance, Math.max(0, wait));
         delayed.add(handle);
+        if (result.park.kind === 'wait-animation') {
+          animationWaits.set(handle, { track: result.park.track, advance });
+        }
       }
     };
     sub.startBody(at);
     handle = host.schedule(advance, Math.max(0, seconds));
     delayed.add(handle);
   };
+
+  // Bounds the zero-length waits resolved in one call, so a loop of them still yields to the timer.
+  let immediate = 0;
 
   const clearTimer = () => {
     host.cancel(timer);
@@ -214,7 +229,15 @@ export function createScenePlayer(
     if (park.kind === 'wait') {
       timer = host.schedule(step, Math.max(0, park.seconds));
     } else if (park.kind === 'wait-animation') {
-      timer = host.schedule(step, Math.max(0, host.remaining(park.track)));
+      const left = host.remaining(park.track);
+      // Nothing left to wait for resolves now: a timer would leave a frame between this clip's end and the next command.
+      if (left <= 0 && immediate < 32) {
+        immediate += 1;
+        step();
+        immediate -= 1;
+        return;
+      }
+      timer = host.schedule(step, Math.max(0, left));
     } else if (park.kind === 'wait-reaction') {
       timer = host.schedule(step, Math.max(0, host.remainingReaction()));
     }
@@ -387,6 +410,17 @@ export function createScenePlayer(
       return machine.dragSession !== null ? settleDrag(true) : false;
     },
 
+    /** A one-shot finished on `track`: the client resumes its waiters on that completion, not a frame later. */
+    animationFinished(track: number, bodyTrack: number): void {
+      if (stopped) return;
+      for (const [handle, wait] of Array.from(animationWaits)) {
+        if ((wait.track ?? bodyTrack) !== track) continue;
+        host.cancel(handle);
+        wait.advance();
+      }
+      if (park.kind === 'wait-animation' && (park.track ?? bodyTrack) === track) step();
+    },
+
     advance(): boolean {
       if (stopped || park.kind !== 'wait-input') return false;
       step();
@@ -426,6 +460,7 @@ export function createScenePlayer(
       clearTimer();
       for (const handle of delayed) host.cancel(handle);
       delayed.clear();
+      animationWaits.clear();
       drag = null;
     },
   };

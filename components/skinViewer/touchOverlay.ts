@@ -56,8 +56,8 @@ export function createTouchOverlay(options: {
         }
         const color = kind === 'drag' ? DRAG_COLOR : EFFECT_COLOR[region?.effect ?? 'generic'];
         graphics.poly(pts)
-          .fill({ color, alpha: 0.14 })
-          .stroke({ color, width: 0.06, alpha: 0.9 });
+          .fill({ color, alpha: kind === 'drag' ? 0.18 : 0.14 })
+          .stroke({ color, width: kind === 'drag' ? 0.12 : 0.06, alpha: 0.9 });
       }
     },
   };

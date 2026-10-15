@@ -281,6 +281,7 @@ function SeasonCard({ season, data, icons, lang, ctx }: {
   const effects = (stage?.effects ?? []).map((k) => gameText(ctx.data.effects[k]?.title, ctx.gameLang)).filter(Boolean);
   return (
     <BannerCard href={`/stages?group=${encodeURIComponent(season.group.key)}`} renderLink={nextLink}
+      className="mad-banner-row"
       highlight={p === 'running'}
       art={<ArtBox manifest={icons} w="100%"
         sources={[['banner', season.group.banner], ['tile', season.tile]]} />}
@@ -373,6 +374,7 @@ function ModeHub({ data, icons, lang, ctx }: {
           const art = m.live?.banner ?? (m.tile ? null : m.banner);
           return (
             <BannerCard key={m.key} href={`/stages?mode=${m.key}`} renderLink={nextLink}
+              className="mad-banner-row"
               highlight={!!m.live}
               art={<ArtBox manifest={icons} w="100%"
                 sources={art ? [['banner', art]]
@@ -473,6 +475,7 @@ function GroupCard({ grouping, data, icons, lang }: {
   const difficulty = group.difficulty ? pick(DIFFICULTY_LABEL[group.difficulty], lang) || group.difficulty : null;
   return (
     <BannerCard href={`/stages?group=${encodeURIComponent(group.key)}`} renderLink={nextLink}
+      className="mad-banner-row"
       highlight={live}
       art={<ArtBox manifest={icons} w="100%" sources={[
         ['banner', group.banner],

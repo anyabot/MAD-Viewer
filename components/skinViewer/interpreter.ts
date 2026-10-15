@@ -15,6 +15,8 @@ export type Command = {
   /** Rig bounding box the command's `IdAndBoundingBox` names. */
   box?: string;
   text?: string;
+  /** The line in every other game-text locale, keyed like `GameLang`. */
+  texts?: Record<string, string>;
   voice?: string;
   author?: string;
 };
@@ -25,7 +27,7 @@ export type Effect =
   | { kind: 'clear-animation'; clip: string }
   | { kind: 'clear-track'; track: number | null }
   | { kind: 'reset-actor' }
-  | { kind: 'say'; text: string; author: string | null; voice: string | null }
+  | { kind: 'say'; text: string; texts: Record<string, string> | null; author: string | null; voice: string | null }
   | { kind: 'voice'; clip: string }
   | { kind: 'subtitle'; visible: boolean }
   | { kind: 'background'; appearance: string; visible: boolean; duration: number }
@@ -624,6 +626,7 @@ export class ScriptMachine {
             effects.push({
               kind: 'say',
               text: c.text ?? '',
+              texts: c.texts ?? null,
               author: c.author ?? null,
               voice: c.voice ?? null,
             });
