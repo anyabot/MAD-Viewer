@@ -30,6 +30,9 @@ const theme = extendTheme(hubChakraTheme('mad'), {
         bgImage: 'radial-gradient(circle at 12% -10%, rgba(246, 196, 69, 0.08), transparent 30rem), radial-gradient(circle at 92% 18%, rgba(66, 153, 225, 0.06), transparent 28rem)',
         bgAttachment: 'fixed',
       },
+      '.hub-banner-card.mad-banner-row': { flexDirection: 'row', alignItems: 'center' },
+      '.mad-banner-row .hub-banner-card__art': { flex: '0 0 clamp(120px, 38%, 260px)' },
+      '.mad-banner-row .hub-banner-card__body': { flex: '1 1 auto', justifyContent: 'center' },
     },
   },
 });

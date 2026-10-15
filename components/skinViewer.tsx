@@ -29,6 +29,7 @@ import {
 import { createFadeCover, createSceneClock } from '@/components/skinViewer/sceneClock';
 import { JiggleField } from '@/components/skinViewer/jiggle';
 import { setExpressionReporter, type Vars } from '@/components/skinViewer/interactions';
+import { useGameLang } from '@/lib/gameText';
 import {
   boneSettings, constrainOffset, isSettled, stepMotion,
   type DragBoneMotion, type DragBoneSettings,
@@ -181,7 +182,9 @@ export default function SkinViewer({
   const setVoiceOn = (value: boolean) => setViewer({ voiceOn: value });
   const setBgmOn = (value: boolean) => setViewer({ bgmOn: value });
   const [sceneAudioIndex, setSceneAudioIndex] = useState<SceneAudioIndex | null>(null);
-  const [subtitle, setSubtitle] = useState<{ text: string; author?: string } | null>(null);
+  const [subtitle, setSubtitle] = useState<
+    { text: string; texts?: Record<string, string>; author?: string } | null>(null);
+  const gameLang = useGameLang();
   // Lobby lines are a rotating set per (character, family), as in game.
   const lobbyLineRef = useRef(0);
   // -Infinity so the first touch can never fall inside `TOUCH_INTERRUPT_DELAY`.
@@ -320,10 +323,11 @@ export default function SkinViewer({
   };
 
   // The game does not voice every line, so a line with no clip still shows.
-  const sayRef = useRef<(line: { text: string; author?: string; voice?: string }) => void>(
-    () => {});
+  const sayRef = useRef<(line: {
+    text: string; texts?: Record<string, string>; author?: string; voice?: string;
+  }) => void>(() => {});
   sayRef.current = (line) => {
-    if (line.text) setSubtitle({ text: line.text, author: line.author });
+    if (line.text) setSubtitle({ text: line.text, texts: line.texts, author: line.author });
     if (line.voice && voiceOnRef.current) {
       void playVoice(voiceIndexRef.current, line.voice);
     }
@@ -1086,8 +1090,10 @@ export default function SkinViewer({
             sceneIdle = null;
             setReaction(null);
           },
-          say: (text, author, voice) => {
-            sayRef.current({ text, author: author ?? undefined, voice: voice ?? undefined });
+          say: (text, author, voice, texts) => {
+            sayRef.current({
+              text, texts: texts ?? undefined, author: author ?? undefined, voice: voice ?? undefined,
+            });
           },
           voice: (clip) => {
             if (voiceOnRef.current) void playVoice(voiceIndexRef.current, clip);
@@ -1335,6 +1341,8 @@ export default function SkinViewer({
           if (entry?.next) return;
           if (scenePlayerRef.current) {
             resumeSceneIdle(track);
+            // A timer lands a frame late, and the mix-out resets the clip's attachments for that frame.
+            scenePlayerRef.current.animationFinished(track, bodyTrackRef.current());
             return;
           }
           // A completed clip's track is left alone: its pose stays applied.
@@ -2207,7 +2215,7 @@ export default function SkinViewer({
               pointerEvents="none" bg="blackAlpha.800" borderRadius="md" px={3} py={2}>
               <Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.100"
                 whiteSpace="pre-wrap">
-                {subtitle.text}
+                {subtitle.texts?.[gameLang] ?? subtitle.text}
               </Text>
             </Box>
           )}
