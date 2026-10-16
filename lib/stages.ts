@@ -151,16 +151,24 @@ export function subMissionText(
 }
 
 /** Consecutive identical slots collapse to one row with a count. */
-export type EnemyGroup = { code?: string; id?: number; level?: number | null; count: number };
+export type EnemyGroup = {
+  code?: string; id?: number; level?: number | null;
+  baseStat?: number; levelStat?: number; attribute?: number; count: number;
+};
 
 export function groupSlots(slots: WaveSlot[]): EnemyGroup[] {
   const out: EnemyGroup[] = [];
   for (const slot of slots) {
     const last = out[out.length - 1];
-    if (last && last.code === slot.code && last.id === slot.id && last.level === slot.level) {
+    if (last && last.code === slot.code && last.id === slot.id && last.level === slot.level
+      && last.baseStat === slot.baseStat && last.levelStat === slot.levelStat
+      && last.attribute === slot.attribute) {
       last.count += 1;
     } else {
       out.push({ code: slot.code, id: slot.id, level: slot.level, count: 1 });
+      if (slot.baseStat != null) out[out.length - 1].baseStat = slot.baseStat;
+      if (slot.levelStat != null) out[out.length - 1].levelStat = slot.levelStat;
+      if (slot.attribute != null) out[out.length - 1].attribute = slot.attribute;
     }
   }
   return out;

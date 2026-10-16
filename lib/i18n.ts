@@ -470,6 +470,8 @@ export const UI = {
   stageNoneSelected: { en: 'no stage selected', ko: '선택된 스테이지 없음' },
   stageCount: { en: '{n} stages', ko: '스테이지 {n}개' },
   stageOpenKit: { en: 'Show kit', ko: '스킬 보기' },
+  stageOpenStats: { en: 'Stats', ko: '스탯' },
+  stageHideStats: { en: 'Hide stats', ko: '스탯 접기' },
   farmTabUnits: { en: 'Units', ko: '유닛' },
   farmTabItems: { en: 'Items', ko: '아이템' },
   farmTabClears: { en: 'Clears', ko: '클리어' },

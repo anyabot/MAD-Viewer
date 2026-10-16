@@ -3,10 +3,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Flex, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem,
+  Badge, Box, Flex, HStack, SimpleGrid, Table, Tbody, Td, Text, Tr, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import {
-  EmptyState, LoadState, MetaChips, PageHeader, RewardGrid, WaveNav, type RewardItem,
+  EmptyState, LevelControl, LoadState, MetaChips, PageHeader, RewardGrid, WaveNav,
+  type RewardItem,
 } from '@altterisk/game-hub';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
@@ -18,7 +19,9 @@ import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
 import { SkillList } from '@/components/skillKit';
 import { Panel } from '@altterisk/game-hub';
-import { typeIcons, typeLabel } from '@/lib/characters';
+import {
+  STAT_LABEL, labelOf, roundStat, statText, typeIcons, typeLabel,
+} from '@/lib/characters';
 import {
   CHANNEL_LABEL, CHANNEL_ORDER, DIFFICULTY_LABEL, DROP_ICON_GROUPS, DROP_LABEL,
   ENCOUNTER_LABEL, EVENT_LABEL,
@@ -260,12 +263,16 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
 }) {
   const t = useT();
   const [open, setOpen] = useState(false);
+  const [statsOpen, setStatsOpen] = useState(false);
   const enemy = group.code ? data.enemies[group.code] ?? null : null;
+  const hasStats = !!chars && group.baseStat != null
+    && !!data.enemyStats?.base[String(group.baseStat)];
   const entry = group.code && chars ? chars.characters[group.code] ?? null : null;
   const kitGroup = entry?.skillSetGroup ?? enemy?.skillSetGroup ?? null;
   const hasKit = !!chars && kitGroup != null && !!chars.skillSets[String(kitGroup)];
-  const element = enemy?.attributeType != null && chars
-    ? chars.types.attribute[String(enemy.attributeType)] ?? null
+  const attributeType = group.attribute ?? enemy?.attributeType;
+  const element = attributeType != null && chars
+    ? chars.types.attribute[String(attributeType)] ?? null
     : null;
 
   return (
@@ -318,6 +325,16 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
                 </HStack>
               </WrapItem>
             )}
+            {hasStats && (
+              <WrapItem>
+                <Box as="button" onClick={() => setStatsOpen(!statsOpen)} px={2} py={0.5}
+                  fontSize="0.65rem" borderWidth="1px" borderRadius="md"
+                  borderColor="whiteAlpha.300" color="gray.400"
+                  _hover={{ color: 'gray.100', borderColor: 'whiteAlpha.500' }}>
+                  {statsOpen ? t('stageHideStats') : t('stageOpenStats')}
+                </Box>
+              </WrapItem>
+            )}
             {hasKit && (
               <WrapItem>
                 <Box as="button" onClick={() => setOpen(!open)} px={2} py={0.5}
@@ -329,6 +346,11 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
               </WrapItem>
             )}
           </Wrap>
+          {statsOpen && hasStats && chars && (
+            <Box mt={2} pl={2} borderLeftWidth="2px" borderColor="whiteAlpha.200">
+              <EnemyStats group={group} data={data} chars={chars} lang={lang} />
+            </Box>
+          )}
           {open && chars && (
             <Box mt={2} pl={2} borderLeftWidth="2px" borderColor="whiteAlpha.200">
               <SkillList group={kitGroup} defaultStar={entry?.defaultStar}
@@ -338,6 +360,58 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
         </Box>
       </Flex>
     </Box>
+  );
+}
+
+const levelCap = new WeakMap<StageData, number>();
+
+function highestEnemyLevel(data: StageData): number {
+  let cap = levelCap.get(data);
+  if (cap == null) {
+    cap = Math.max(1, ...data.stages.flatMap((s) => s.waves.flatMap(
+      (w) => w.enemies.map((e) => e.level ?? 1))));
+    levelCap.set(data, cap);
+  }
+  return cap;
+}
+
+// Enemies use the unit formula at grade 1, with no equipment, affection or infusion.
+function EnemyStats({ group, data, chars, lang }: {
+  group: EnemyGroup; data: StageData; chars: CharacterData; lang: Lang;
+}) {
+  const t = useT();
+  const [level, setLevel] = useState(group.level ?? 1);
+  const base = data.enemyStats?.base[String(group.baseStat)] ?? {};
+  const perLevel = group.levelStat != null
+    ? data.enemyStats?.level[String(group.levelStat)] ?? {}
+    : {};
+  const rows = Object.entries(chars.statTypes)
+    .filter(([stat]) => base[stat] != null || perLevel[stat] != null)
+    .sort((a, b) => a[1].order - b[1].order)
+    .map(([stat, type]) => ({
+      stat,
+      label: dataText(lang, type.name, type.en) || labelOf(STAT_LABEL, stat, lang),
+      value: statText(type.display,
+        roundStat(type.display, (base[stat] ?? 0) + (perLevel[stat] ?? 0) * (level - 1))),
+    }));
+  return (
+    <VStack align="stretch" spacing={2} maxW="24rem">
+      <LevelControl label={t('stageLevel', { n: level })} value={level} min={1}
+        max={highestEnemyLevel(data)} onChange={setLevel}
+        marks={group.level != null ? [group.level] : undefined} />
+      <Box overflowX="auto">
+        <Table size="sm" minW="14rem">
+          <Tbody>
+            {rows.map((row) => (
+              <Tr key={row.stat}>
+                <Td fontSize="xs" color="gray.400" py={1}>{row.label}</Td>
+                <Td isNumeric fontFamily="mono" fontSize="xs" py={1}>{row.value}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Box>
+    </VStack>
   );
 }
 

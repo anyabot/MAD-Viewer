@@ -31,8 +31,22 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 export const RELEASES: Release[] = [
   {
     date: '2026-10-16',
-    title: { en: 'Artists and battle formulas', ko: '일러스트레이터와 전투 공식' },
+    title: { en: 'Artists, battle formulas and enemy stats', ko: '일러스트레이터, 전투 공식, 적 스탯' },
     entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Stage enemies show their stats at the wave level, with a level slider.',
+          ko: '스테이지 적의 웨이브 레벨 기준 스탯 표시, 레벨 조절 가능',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Enemies whose attribute a wave overrides now show the overridden attribute.',
+          ko: '웨이브에서 속성이 변경되는 적의 속성 표시 수정',
+        },
+      },
       {
         kind: 'feature',
         text: {
