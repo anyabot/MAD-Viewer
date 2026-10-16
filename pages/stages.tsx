@@ -434,25 +434,13 @@ function InfinityCard({ data, icons }: { data: StageData; icons: IconManifest | 
   const to = season?.open?.end.slice(0, 10);
   const live = !!from && !!to && from <= today && today <= to;
   return (
-    <Flex as={NextLink} href="/archive" direction={{ base: 'column', sm: 'row' }} gap={3} p={3}
-      borderRadius="lg" minW={0} borderWidth={live ? '2px' : '1px'}
-      borderColor={live ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50" _hover={{ borderColor: 'yellow.400' }}>
-      <ArtBox manifest={icons} w={{ base: '100%', sm: '184px' }}
-        sources={[['banner', 'Ascent_Infinity'], ['banner', 'Thumbnail_PastStory_Content_ArchiveAscent']]} />
-      <VStack align="stretch" spacing={1.5} minW={0} flex="1">
-        <Wrap spacing={1.5}>
-          {live && <WrapItem><Badge colorScheme="pink" variant="solid">{t('stageLive')}</Badge></WrapItem>}
-          {from && to && (
-            <WrapItem><Badge colorScheme="blue" textTransform="none" fontWeight="normal">{from} – {to}</Badge></WrapItem>
-          )}
-        </Wrap>
-        <Text fontWeight="bold" fontSize="lg">
-          {gameText(archive?.title, gameLang) || t('archiveTitle')}
-          {season ? ` · ${t('archiveSeason', { n: season.id })}` : ''} ›
-        </Text>
-        <Text fontSize="sm" color="gray.400">{t('stageCount', { n: nodes })} · {t('archivePacks')}</Text>
-      </VStack>
-    </Flex>
+    <BannerCard href="/archive" renderLink={nextLink} className="mad-banner-row" highlight={live}
+      art={<ArtBox manifest={icons} w="100%"
+        sources={[['banner', 'Ascent_Infinity'], ['banner', 'Thumbnail_PastStory_Content_ArchiveAscent']]} />}
+      badge={live ? t('stageLive') : undefined}
+      window={from && to ? `${from} – ${to}` : undefined}
+      title={`${gameText(archive?.title, gameLang) || t('archiveTitle')}${season ? ` · ${t('archiveSeason', { n: season.id })}` : ''}`}
+      count={`${t('stageCount', { n: nodes })} · ${t('archivePacks')}`} />
   );
 }
 

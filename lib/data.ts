@@ -464,6 +464,11 @@ export type WaveSlot = {
   /** The raw id, only when it resolves to no code. */
   id?: number;
   level?: number | null;
+  // keys into `StageData.enemyStats.base` / `.level`
+  baseStat?: number;
+  levelStat?: number;
+  // the wave's attribute override, replacing the character's own
+  attribute?: number;
 };
 
 export type WaveEvent = {
@@ -589,6 +594,10 @@ export type StageData = {
   subMissions: Record<string, StageSubMission[]>;
   /** Keyed by character code. */
   enemies: Record<string, StageEnemy>;
+  enemyStats?: {
+    base: Record<string, Record<string, number>>;
+    level: Record<string, Record<string, number>>;
+  };
   /** Keyed `<type>:<id>` — what a drop's `ref` points at. */
   drops: Record<string, DropEntry>;
   stages: StageEntry[];

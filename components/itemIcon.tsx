@@ -30,6 +30,13 @@ const BAND_HEIGHT = '29%';
 // stretched rather than fitted — the sprite is 256x49 in a 3:1 box.
 const BAND_SPRITE = 'Slot_Item_Grade_Bg';
 
+function compactCount(count: string | number): string {
+  const n = typeof count === 'number' ? count : Number(count);
+  if (!Number.isFinite(n) || Math.abs(n) < 10000) return String(count);
+  const [div, unit] = Math.abs(n) >= 1e6 ? [1e6, 'M'] : [1e3, 'K'];
+  return `${Number((n / div).toFixed(1))}${unit}`;
+}
+
 function bandMask(url: string) {
   return {
     maskImage: `url("${url}")`, maskSize: '100% 100%', maskRepeat: 'no-repeat',
@@ -60,7 +67,9 @@ export function ItemIcon({
     // container — one component covers a 22px preview and a 40px row
     <Box position="relative" boxSize={size} flexShrink={0} overflow="hidden"
       borderRadius="15%" bg={PLATE} borderWidth="1px" borderColor="whiteAlpha.800"
-      sx={{ containerType: 'size' }} title={title}
+      sx={{ containerType: 'size' }}
+      title={count != null && compactCount(count) !== String(count)
+        ? `${title ? `${title} ` : ''}×${Number(count).toLocaleString()}` : title}
       {...(href ? { as: NextLink, href, _hover: { borderColor: 'yellow.300' } } : {})} {...rest}>
       <Box position="absolute" left="-1px" right="-1px" bottom="-1px"
         h={BAND_HEIGHT} bg={color}
@@ -78,8 +87,9 @@ export function ItemIcon({
       ) : null}
       {count ? (
         <Text position="absolute" right="5%" bottom="1%" lineHeight={1} fontWeight="bold"
-          fontSize="30cqh" color="white" textShadow="0 1px 2px rgba(0,0,0,0.6)">
-          {count}
+          fontSize="30cqh" color="white" textShadow="0 1px 2px rgba(0,0,0,0.6)"
+          whiteSpace="nowrap">
+          {compactCount(count)}
         </Text>
       ) : null}
     </Box>
