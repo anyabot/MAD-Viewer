@@ -26,6 +26,7 @@ import {
 import InfusionTree, { bonusText, infusionLabel } from '@/components/infusionTree';
 import { characterIcon, resolveIcon, skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
+import { artistAnchor } from '@/lib/artists';
 import {
   INFUSION_PATHS, KIND_ICON, STAT_LABEL, TYPE_LABEL, activeInfusion, altNameEn, birthdayText,
   characterName, infusionNodes, infusionReach,
@@ -358,7 +359,6 @@ function Infobox({ entry, data, icons, accent, skins }: {
   const lang = useLang();
   const focusType = useFilters((s) => s.focusType);
   const focusStar = useFilters((s) => s.focusStar);
-  const focusArtist = useFilters((s) => s.focusArtist);
   const rows: { label: string; node: React.ReactNode }[] = [];
 
   for (const table of INFO_TABLES) {
@@ -410,9 +410,10 @@ function Infobox({ entry, data, icons, accent, skins }: {
     rows.push({
       label: t('rowArtist'),
       node: (
-        <FilterLink onClick={() => focusArtist(entry.artist!)}>
+        <Box as={NextLink} href={`/artists#${artistAnchor(entry.artist)}`}
+          display="inline-flex" alignItems="center" _hover={{ textDecoration: 'underline' }}>
           <Text>{dataText(lang, entry.artist, entry.artistEn)}</Text>
-        </FilterLink>
+        </Box>
       ),
     });
   }

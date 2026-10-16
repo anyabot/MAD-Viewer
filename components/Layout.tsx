@@ -1,4 +1,6 @@
-import { Box, Container, Flex, HStack } from '@chakra-ui/react';
+import {
+  Box, Container, Flex, HStack, Menu, MenuButton, MenuItem, MenuList, Portal,
+} from '@chakra-ui/react';
 import { HubBar, HubFooter } from '@altterisk/game-hub';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -6,23 +8,55 @@ import type { ReactNode } from 'react';
 import { GameTextPicker } from '@/components/gameTextPicker';
 import { LANGS, useLangStore, useT, type UiKey } from '@/lib/i18n';
 
-const NAV: { href: string; label: UiKey; match: (p: string) => boolean }[] = [
+type NavItem = { href: string; label: UiKey; match: (p: string) => boolean };
+
+const NAV: NavItem[] = [
   { href: '/viewer', label: 'navViewer', match: (p: string) => p === '/viewer' },
   {
     href: '/characters',
     label: 'navCharacters',
     match: (p: string) => p.startsWith('/character'),
   },
-  { href: '/effects', label: 'navEffects', match: (p: string) => p === '/effects' },
   { href: '/story', label: 'navStory', match: (p: string) => p === '/story' },
-  { href: '/jukebox', label: 'navJukebox', match: (p: string) => p === '/jukebox' },
   { href: '/stages', label: 'navStages', match: (p: string) => p.startsWith('/stage') || p === '/events' },
-  { href: '/rewards', label: 'navRewards', match: (p: string) => p === '/rewards' },
-  { href: '/shop', label: 'navShop', match: (p: string) => p === '/shop' },
   { href: '/items', label: 'navItems', match: (p: string) => p === '/items' || p === '/item' },
   { href: '/farm', label: 'navFarm', match: (p: string) => p === '/farm' },
+];
+
+const NAV_ETC: NavItem[] = [
+  { href: '/effects', label: 'navEffects', match: (p: string) => p === '/effects' },
+  { href: '/formula', label: 'navFormula', match: (p: string) => p === '/formula' },
+  { href: '/artists', label: 'navArtists', match: (p: string) => p === '/artists' },
+  { href: '/jukebox', label: 'navJukebox', match: (p: string) => p === '/jukebox' },
+  { href: '/rewards', label: 'navRewards', match: (p: string) => p === '/rewards' },
+  { href: '/shop', label: 'navShop', match: (p: string) => p === '/shop' },
   { href: '/changelog', label: 'navChangelog', match: (p: string) => p === '/changelog' },
 ];
+
+function EtcMenu({ pathname }: { pathname: string }) {
+  const t = useT();
+  const current = NAV_ETC.find((item) => item.match(pathname));
+  return (
+    <Menu isLazy placement="bottom-start">
+      <MenuButton as="button" className="hub-navlink" bg="transparent" border="0"
+        cursor="pointer" fontFamily="inherit" style={{ flexShrink: 0 }}
+        aria-current={current ? 'page' : undefined}>
+        {current ? `${t(current.label)} ▾` : `${t('navEtc')} ▾`}
+      </MenuButton>
+      <Portal>
+        <MenuList zIndex="popover" minW="10rem">
+          {NAV_ETC.map((item) => (
+            <MenuItem key={item.href} as={NextLink} href={item.href}
+              fontWeight={item.match(pathname) ? 'bold' : 'normal'}
+              color={item.match(pathname) ? 'yellow.300' : undefined}>
+              {t(item.label)}
+            </MenuItem>
+          ))}
+        </MenuList>
+      </Portal>
+    </Menu>
+  );
+}
 
 function LanguagePicker() {
   const t = useT();
@@ -63,12 +97,15 @@ export default function Layout({ children }: { children: ReactNode }) {
         renderHomeLink={({ className, children: brand }) => (
           <NextLink href="/" className={className}>{brand}</NextLink>
         )}
-        nav={NAV.map((item) => (
-          <NextLink key={item.href} href={item.href}
-            aria-current={item.match(pathname) ? 'page' : undefined}>
-            {t(item.label)}
-          </NextLink>
-        ))}
+        nav={[
+          ...NAV.map((item) => (
+            <NextLink key={item.href} href={item.href}
+              aria-current={item.match(pathname) ? 'page' : undefined}>
+              {t(item.label)}
+            </NextLink>
+          )),
+          <EtcMenu key="etc" pathname={pathname} />,
+        ]}
         actions={<HStack spacing={2}><GameTextPicker /><LanguagePicker /></HStack>}
       />
       <Box as="main" flex="1">
