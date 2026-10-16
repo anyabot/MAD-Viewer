@@ -10,6 +10,9 @@ two store builds for the skins whose art differs between them.
   Archive, with countdowns.
 - **Viewer** (`/viewer`) — every skin, live. Older `/?skin=…` links forward here.
 - **Characters** — profiles, skill kits, the stat calculator and voice lines.
+- **Battle formulas** — how damage, healing and status chances are worked out.
+- **Artists** — each credited illustrator, their pixiv / X links, and the
+  characters they drew.
 - **Story** — the main, event and Nemesis story as text.
 - **Events & Stages** — each event's page (story, bonus units, exchange), every
   battle mode, and the Infinity Archive season with its Game Packs.

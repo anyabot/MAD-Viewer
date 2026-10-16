@@ -30,6 +30,33 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-10-16',
+    title: { en: 'Artists and battle formulas', ko: '일러스트레이터와 전투 공식' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Battle formulas page: how a hit is resolved — evasion, critical, defence, penetration, attribute, damage reduction, level gap, damage over time, healing and status chances.',
+          ko: '전투 공식 페이지 추가: 회피, 치명, 방어, 관통, 속성, 피해 감소, 레벨 차이, 지속 피해, 치유, 상태 이상 확률 계산 방식',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Less-used pages moved under Etc. in the top bar.',
+          ko: '자주 쓰지 않는 페이지는 상단 메뉴의 기타로 이동',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Artists page: every credited illustrator with their pixiv, X and other links, and the characters they drew. The artist on a character page links to it.',
+          ko: '일러스트레이터 페이지 추가: 참여 일러스트레이터별 pixiv·X 등 링크와 담당 캐릭터. 캐릭터 페이지의 일러스트레이터에서 바로 이동',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-10-14',
     title: { en: 'Nemesis, Arena, rewards and shops', ko: '네메시스, 아레나, 보상과 상점' },
     entries: [
