@@ -110,6 +110,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
       const frame = (bounds: { x: number; y: number; width: number; height: number }) => {
         spine.scale.set(1);
         spine.position.set(0, 0);
+        spine.rotation = 0;
         const transform = frameBounds(app.screen, bounds);
         spine.scale.set(transform.scale);
         spine.position.set(transform.x, transform.y);
@@ -145,8 +146,15 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
             const t = current.trackTime;
             const [x, y, z] = [curveAt(offset.x, t), curveAt(offset.y, t), curveAt(offset.z, t)];
             const scale = app.screen.height * unit / (2 * Math.abs(z) * Math.tan(CAMERA_FOV / 2));
+            // A positive camera roll turns the view clockwise, so the scene turns the other way on screen.
+            const roll = offset.roll ? -(((curveAt(offset.roll, t) % 360) + 540) % 360 - 180) * Math.PI / 180 : 0;
+            const ax = scale * x / unit;
+            const ay = -scale * y / unit;
             spine.scale.set(scale);
-            spine.position.set(app.screen.width / 2 - scale * x / unit, app.screen.height / 2 + scale * y / unit);
+            spine.rotation = roll;
+            spine.position.set(
+              app.screen.width / 2 - (ax * Math.cos(roll) - ay * Math.sin(roll)),
+              app.screen.height / 2 - (ax * Math.sin(roll) + ay * Math.cos(roll)));
           } else {
             frame(framed);
           }

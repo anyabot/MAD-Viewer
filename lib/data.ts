@@ -83,8 +83,8 @@ export type SdCharacter = {
     // the battle unit root's scale: world units per skeleton unit
     unitScale?: number;
     meshes?: Record<string, { verts: number[]; uvs: number[]; tris: number[] }>;
-    // CharacterCamera `m_FollowOffset` per axis: [time, a, b, c, d], value = ((a*dt + b)*dt + c)*dt + d
-    cameraOffset?: Record<'x' | 'y' | 'z', number[][]>;
+    // CharacterCamera `m_FollowOffset` per axis and its euler z (`roll`, degrees): [time, a, b, c, d], value = ((a*dt + b)*dt + c)*dt + d
+    cameraOffset?: Record<'x' | 'y' | 'z', number[][]> & { roll?: number[][] };
     shakes: {
       name: string | null; start: number; duration: number; timeScale: number;
       minAmplitude: number; maxAmplitude: number; frequency: number; useCurve: boolean;
