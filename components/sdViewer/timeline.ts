@@ -32,6 +32,17 @@ function curveValue(shake: Shake, time: number) {
   return keys[keys.length - 1].value;
 }
 
+export function curveAt(keys: number[][], time: number): number {
+  let key = keys[0];
+  for (const candidate of keys) {
+    if (candidate[0] > time) break;
+    key = candidate;
+  }
+  if (!key) return 0;
+  const dt = time - key[0];
+  return ((key[1] * dt + key[2]) * dt + key[3]) * dt + key[4];
+}
+
 export function shakeOffset(shakes: Shake[], time: number) {
   const shake = shakes.find(
     (candidate) => time >= candidate.start

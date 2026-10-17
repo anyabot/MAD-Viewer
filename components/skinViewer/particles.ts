@@ -16,8 +16,12 @@ export type Particle = {
   /** Quad size in particle units. */
   size: number;
   sizeY: number;
+  sizeZ: number;
   /** Radians, counter-clockwise. */
   angle: number;
+  // 3D start rotation; zero unless the emitter authors one
+  angleX: number;
+  angleY: number;
   r: number;
   g: number;
   b: number;
@@ -196,43 +200,121 @@ export function colorAt(gradient: EmoteGradient | undefined, t: number, roll: nu
  * `SingleSidedEdge` is a line of that length along the shape's x axis, emitting
  * along its y. `arcMode` 3 spreads one burst evenly instead of sampling it.
  */
+type Vec3 = [number, number, number];
+
+// `Quaternion.Euler`: Z, then X, then Y.
+function rotateEuler(v: Vec3, degrees: Vec3): Vec3 {
+  let [x, y, z] = v;
+  let c = Math.cos(degrees[2] * DEG);
+  let s = Math.sin(degrees[2] * DEG);
+  [x, y] = [x * c - y * s, x * s + y * c];
+  c = Math.cos(degrees[0] * DEG);
+  s = Math.sin(degrees[0] * DEG);
+  [y, z] = [y * c - z * s, y * s + z * c];
+  c = Math.cos(degrees[1] * DEG);
+  s = Math.sin(degrees[1] * DEG);
+  [x, z] = [x * c + z * s, z * c - x * s];
+  return [x, y, z];
+}
+
+function unitSphere(roll: () => number): Vec3 {
+  const u = roll() * 2 - 1;
+  const phi = roll() * Math.PI * 2;
+  const ring = Math.sqrt(1 - u * u);
+  return [ring * Math.cos(phi), ring * Math.sin(phi), u];
+}
+
+// Spawn point and direction in shape space, then the module's scale, rotation and position; z is dropped.
 function spawnPoint(def: EmoteEmitter, index: number, count: number,
                     roll: () => number): [number, number, number, number] {
   const shape = def.shape;
   if (!shape) return [0, 0, 0, 1];
-  const base = shape.rotation * DEG;
-  const arc = shape.arc * DEG;
   const spread = shape.arcMode === 3 && count > 1 ? index / count : roll();
-  const theta = base + arc * spread;
-  let x: number;
-  let y: number;
-  let dx: number;
-  let dy: number;
-  if (shape.type === 12) {
-    const along = (spread - 0.5) * 2 * shape.radius;
-    x = Math.cos(base) * along;
-    y = Math.sin(base) * along;
-    dx = -Math.sin(base);
-    dy = Math.cos(base);
-  } else {
-    const inner = 1 - clamp01(shape.radiusThickness);
-    const radius = shape.radius
-      * Math.sqrt(lerp(inner * inner, 1, roll()));
-    x = Math.cos(theta) * radius;
-    y = Math.sin(theta) * radius;
-    dx = Math.cos(theta);
-    dy = Math.sin(theta);
+  const theta = shape.arc * DEG * spread;
+  const inner = 1 - clamp01(shape.radiusThickness);
+  const fraction = () => Math.sqrt(lerp(inner * inner, 1, roll()));
+  const cosT = Math.cos(theta);
+  const sinT = Math.sin(theta);
+  let p: Vec3;
+  let d: Vec3;
+  switch (shape.type) {
+    case 12: {
+      const along = (spread - 0.5) * 2 * shape.radius;
+      p = [along, 0, 0];
+      d = [0, 1, 0];
+      break;
+    }
+    case 18:
+      p = [roll() - 0.5, roll() - 0.5, 0];
+      d = [0, 0, 1];
+      break;
+    case 5:
+      p = [roll() - 0.5, roll() - 0.5, roll() - 0.5];
+      d = [0, 0, 1];
+      break;
+    case 15: {
+      p = [roll() - 0.5, roll() - 0.5, roll() - 0.5];
+      p[Math.floor(roll() * 3) % 3] = roll() < 0.5 ? -0.5 : 0.5;
+      d = [0, 0, 1];
+      break;
+    }
+    case 16: {
+      const free = Math.floor(roll() * 3) % 3;
+      p = [roll() < 0.5 ? -0.5 : 0.5, roll() < 0.5 ? -0.5 : 0.5, roll() < 0.5 ? -0.5 : 0.5];
+      p[free] = roll() - 0.5;
+      d = [0, 0, 1];
+      break;
+    }
+    case 0:
+    case 2: {
+      d = unitSphere(roll);
+      if (shape.type === 2) d[2] = Math.abs(d[2]);
+      const r = shape.radius * Math.cbrt(lerp(inner * inner * inner, 1, roll()));
+      p = [d[0] * r, d[1] * r, d[2] * r];
+      break;
+    }
+    case 4:
+    case 7:
+    case 8:
+    case 9: {
+      const f = shape.type === 7 || shape.type === 9 ? 1 : fraction();
+      const tilt = Math.tan((shape.angle ?? 25) * DEG) * f;
+      const toward: Vec3 = [tilt * cosT, tilt * sinT, 1];
+      p = [shape.radius * f * cosT, shape.radius * f * sinT, 0];
+      if (shape.type === 8 || shape.type === 9) {
+        const t = (shape.length ?? 5) * roll();
+        p = [p[0] + toward[0] * t, p[1] + toward[1] * t, toward[2] * t];
+      }
+      const length = Math.hypot(...toward);
+      d = [toward[0] / length, toward[1] / length, toward[2] / length];
+      break;
+    }
+    case 17: {
+      const tube = (shape.donutRadius ?? 0.2) * fraction();
+      const phi = roll() * Math.PI * 2;
+      d = [cosT * Math.cos(phi), sinT * Math.cos(phi), Math.sin(phi)];
+      p = [cosT * shape.radius + d[0] * tube, sinT * shape.radius + d[1] * tube, d[2] * tube];
+      break;
+    }
+    default: {
+      const r = shape.type === 11 ? shape.radius : shape.radius * fraction();
+      p = [cosT * r, sinT * r, 0];
+      d = [cosT, sinT, 0];
+    }
   }
+  const [sx, sy, sz] = shape.scale ?? [1, 1, 1];
+  p = [p[0] * sx, p[1] * sy, p[2] * sz];
+  const rotation: Vec3 = shape.rotation3 ?? [0, 0, shape.rotation];
+  p = rotateEuler(p, rotation);
+  d = rotateEuler(d, rotation);
   const random = clamp01(shape.randomDirection);
   if (random > 0) {
-    const angle = roll() * Math.PI * 2;
-    dx = lerp(dx, Math.cos(angle), random);
-    dy = lerp(dy, Math.sin(angle), random);
-    const length = Math.hypot(dx, dy) || 1;
-    dx /= length;
-    dy /= length;
+    const other = unitSphere(roll);
+    d = [lerp(d[0], other[0], random), lerp(d[1], other[1], random), lerp(d[2], other[2], random)];
+    const length = Math.hypot(...d) || 1;
+    d = [d[0] / length, d[1] / length, d[2] / length];
   }
-  return [x + shape.position[0], y + shape.position[1], dx, dy];
+  return [p[0] + shape.position[0], p[1] + shape.position[1], d[0], d[1]];
 }
 
 function createEmitter(def: EmoteEmitter, seed: number) {
@@ -248,6 +330,8 @@ function createEmitter(def: EmoteEmitter, seed: number) {
   // Emission is per burst cycle; a cycle fires the first time the emitter's
   // clock reaches it, which is what makes a burst schedule frame-rate free.
   const fired = new Set<string>();
+  // Rate emission below one particle per frame accumulates instead of rounding to zero.
+  let carry = 0;
 
   const spawn = (index: number, count: number, at: number) => {
     if (live.length >= def.maxParticles) return;
@@ -276,6 +360,9 @@ function createEmitter(def: EmoteEmitter, seed: number) {
       ay: 0,
       size: size,
       sizeY: sizeY,
+      sizeZ: def.start.sizeZ ? valueAt(def.start.sizeZ, t01, rolls[ROLL_SIZE]) : size,
+      angleX: def.start.rotationX ? valueAt(def.start.rotationX, t01, rolls[ROLL_ROTATION]) : 0,
+      angleY: def.start.rotationY ? valueAt(def.start.rotationY, t01, rolls[ROLL_ROTATION]) : 0,
       size0: size,
       sizeY0: sizeY,
       angle: valueAt(def.start.rotation, t01, rolls[ROLL_ROTATION]) * flip
@@ -295,13 +382,12 @@ function createEmitter(def: EmoteEmitter, seed: number) {
   const emit = (from: number, to: number) => {
     const emission = def.emission;
     if (!emission) return;
-    const span = def.looping ? def.duration : Infinity;
     emission.bursts.forEach((burst, bi) => {
       for (let cycle = 0; cycle < Math.max(1, burst.cycles); cycle += 1) {
         const at = burst.t + cycle * burst.interval;
         if (at > def.duration) break;
         const key = `${bi}:${cycle}`;
-        if (fired.has(key) || at < from || at > to || at > span) continue;
+        if (fired.has(key) || at < from || at > to) continue;
         fired.add(key);
         if (burst.probability < 1 && roll() > burst.probability) continue;
         const t01 = def.duration > 0 ? clamp01(at / def.duration) : 0;
@@ -309,12 +395,12 @@ function createEmitter(def: EmoteEmitter, seed: number) {
         for (let i = 0; i < count; i += 1) spawn(i, count, at);
       }
     });
-    // No emote emitter authors a rate, but a system with no bursts would use
-    // one, so it is emitted rather than silently dropped.
     const rate = valueAt(emission.rate, def.duration > 0
       ? clamp01(to / def.duration) : 0, 0.5);
-    if (rate > 0 && to <= def.duration) {
-      const count = Math.floor(rate * (to - from));
+    if (rate > 0 && (def.looping || from < def.duration)) {
+      carry += rate * Math.max(0, Math.min(to, def.looping ? to : def.duration) - from);
+      const count = Math.floor(carry);
+      carry -= count;
       for (let i = 0; i < count; i += 1) spawn(i, count, to);
     }
   };
@@ -323,7 +409,15 @@ function createEmitter(def: EmoteEmitter, seed: number) {
     const step = dt * def.simulationSpeed;
     const from = time;
     time += step;
-    if (time >= 0) emit(Math.max(0, from), time);
+    // A looping system restarts its clock each cycle, so its bursts fire again.
+    if (def.looping && def.duration > 0 && time > def.duration) {
+      emit(Math.max(0, from), def.duration);
+      time -= def.duration;
+      fired.clear();
+      emit(0, time);
+    } else if (time >= 0) {
+      emit(Math.max(0, from), time);
+    }
 
     out.length = 0;
     for (let i = live.length - 1; i >= 0; i -= 1) {

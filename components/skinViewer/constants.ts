@@ -30,6 +30,8 @@ export const EFFECT_LABEL: Record<string, Localized> = {
 export const TRACK_BODY = 0;
 export const TRACK_FACE = 1;
 export const TRACK_OVERLAY = 2;
+// SkeletonCharacterAnimation.SetMouth's track; its alpha follows the voice envelope.
+export const TRACK_MOUTH = 100;
 
 // This composition uses the widest authored CutsceneOffset key even when the
 // viewer panel itself is narrower than the game's long-screen presentation.
