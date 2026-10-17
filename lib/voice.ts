@@ -3,6 +3,7 @@
 
 import { fetchFirst, playFrom, voiceClipUrls } from '@/lib/cdn';
 import { busAudio } from '@/lib/audioBus';
+import { analyzeLipSync, sampleLipSync, type LipAnalysis } from '@/lib/lipSync';
 
 export type VoiceIndex = {
   /** Voice id -> the `<locale>/<char>/<category>` folder holding its clip. */
@@ -32,6 +33,26 @@ export type VoiceInteraction = {
 
 let audio: HTMLAudioElement | null = null;
 let token = 0;
+let starting = 0;
+let current: string | null = null;
+// Opus decodes at 48 kHz, the clip frequency the game analyses in.
+const CLIP_RATE = 48000;
+const analyses = new Map<string, LipAnalysis | null>();
+
+async function analyze(voiceId: string, blob: Blob): Promise<void> {
+  const buffer = await new OfflineAudioContext(1, 1, CLIP_RATE).decodeAudioData(await blob.arrayBuffer());
+  const channels = Array.from({ length: buffer.numberOfChannels }, (_, c) => buffer.getChannelData(c));
+  analyses.set(voiceId, analyzeLipSync(channels, buffer.length));
+}
+
+// Mouth-track alpha for the last clip played; null before any clip, as the game skips the update then.
+export function voiceLipValue(): number | null {
+  if (!current) return null;
+  const analysis = analyses.get(current);
+  if (!analysis) return 0;
+  const frame = voicePlaying() && audio ? Math.floor(audio.currentTime * CLIP_RATE) : 0;
+  return sampleLipSync(analysis, frame);
+}
 // A line is staged by the animation it rides on, so the two speeds must match.
 let rate = 1;
 
@@ -57,6 +78,7 @@ function evict() {
     if (url) URL.revokeObjectURL(url);
     ready.delete(id);
     downloading.delete(id);
+    analyses.delete(id);
   }
 }
 
@@ -67,7 +89,9 @@ function download(index: VoiceIndex | null, voiceId: string): Promise<string> | 
   if (started) return started;
   const pending = (async () => {
     const res = await fetchFirst(await voiceClipUrls(folder, voiceId));
-    const objectUrl = URL.createObjectURL(await res.blob());
+    const blob = await res.blob();
+    analyze(voiceId, blob).catch(() => { /* the mouth stays shut */ });
+    const objectUrl = URL.createObjectURL(blob);
     ready.set(voiceId, objectUrl);
     order.push(voiceId);
     evict();
@@ -92,6 +116,11 @@ export function voicePlaying(): boolean {
   return !!audio && !audio.paused && !audio.ended;
 }
 
+// Also true while the latest line is still loading, so a wait on it does not pass before it starts.
+export function voiceBusy(): boolean {
+  return (starting !== 0 && starting === token) || voicePlaying();
+}
+
 export function stopVoice() {
   token += 1;
   if (!audio) return;
@@ -111,15 +140,19 @@ export async function playVoice(index: VoiceIndex | null, voiceId: string): Prom
   const folder = index?.clips[voiceId];
   if (!folder) return;
   const mine = ++token;
-  const cached = ready.get(voiceId);
-  if (!cached) download(index, voiceId)?.catch(() => { /* streamed instead */ });
-  const sources = cached ? [cached] : await voiceClipUrls(folder, voiceId);
-  if (mine !== token) return;
-  if (!audio) audio = busAudio();
+  starting = mine;
+  current = voiceId;
   try {
+    const cached = ready.get(voiceId);
+    if (!cached) download(index, voiceId)?.catch(() => { /* streamed instead */ });
+    const sources = cached ? [cached] : await voiceClipUrls(folder, voiceId);
+    if (mine !== token) return;
+    if (!audio) audio = busAudio();
     await playFrom(audio, sources, rate);
   } catch {
     // Autoplay refusal or a clip that is not on the CDN yet.
+  } finally {
+    if (starting === mine) starting = 0;
   }
 }
 

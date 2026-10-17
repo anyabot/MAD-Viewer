@@ -48,6 +48,10 @@ export type Park =
   /** Wait for everything a trigger's body started, on whatever track. */
   | { kind: 'wait-reaction' }
   | { kind: 'wait-input' }
+  // the current cycle of the loop on `track` (`AffectionCommand.WaitForLoopEnd`)
+  | { kind: 'wait-loop-end'; track: number | null }
+  // the line's own voice (`PrintText.WaitAutoVoice`, taken when input is not awaited)
+  | { kind: 'wait-voice' }
   /** A fired drag waits here for `resolveDrag`, called every frame the pointer is held. */
   | { kind: 'drag-session' }
   | { kind: 'armed' }
@@ -128,7 +132,7 @@ export function waitSeconds(mode: string): number {
 
 /** `command` is a barrier on exit, `trigger` returns to the actor's idle, `group` is one `@PickRandom` alternative; `depth` is the `Gosub` stack height it opened at. */
 type Frame =
-  | { kind: 'command'; at: number; end: number; depth: number; track: number | null; wait: boolean }
+  | { kind: 'command'; at: number; end: number; depth: number; track: number | null; wait: boolean; loopEnd: boolean }
   | { kind: 'trigger'; at: number; end: number; depth: number; destination: number | null; session?: boolean }
   | { kind: 'group'; at: number; end: number; depth: number; after: number };
 
@@ -401,6 +405,9 @@ export class ScriptMachine {
         if (frame.wait) {
           return this.park({ kind: 'wait-animation', track: frame.track }, effects);
         }
+        if (frame.loopEnd) {
+          return this.park({ kind: 'wait-loop-end', track: frame.track }, effects);
+        }
         continue;
       }
       // Checked after the frames, so a body ending at the playlist's end still closes.
@@ -538,6 +545,8 @@ export class ScriptMachine {
             // The body runs alongside this command's own playback.
             this.frames.push({
               kind: 'command', at: this.pc, end, depth: this.stack.length, track, wait,
+              // After its body an affection command waits out the current loop cycle.
+              loopEnd: c.class === 'AffectionCommand' && loop && !!c.clip,
             });
             this.pc++;
             break;
@@ -632,6 +641,11 @@ export class ScriptMachine {
             });
           }
           this.pc++;
+          // DesireAffectionSubtitle, the scenes' default printer, has AutoWait off.
+          if (f.WaitForInput === 'true') {
+            return this.park({ kind: 'wait-input' }, effects);
+          }
+          if (c.voice) return this.park({ kind: 'wait-voice' }, effects);
           break;
         }
 

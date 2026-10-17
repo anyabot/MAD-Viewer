@@ -15,6 +15,10 @@ export type SceneHost = {
   remaining(track: number | null): number;
   /** Seconds until every one-shot now playing, on any track, has finished. */
   remainingReaction(): number;
+  // Seconds left in the current cycle of the looping clip on `track`; 0 when none loops there.
+  remainingCycle(track: number | null): number;
+  // True while a voice line is loading or audible.
+  voiceBusy(): boolean;
   playAnimation(clip: string, loop: boolean, track: number | null, hold: boolean): void;
   /** The looping clip the actor returns to when a one-shot ends on its track. */
   setIdle(clip: string, track: number | null): void;
@@ -159,10 +163,16 @@ export function createScenePlayer(
   const runDelayed = (at: number, seconds: number) => {
     let handle: number | null = null;
     const sub = new ScriptMachine(program);
+    let voiceWait = false;
     const advance = () => {
       if (handle !== null) { delayed.delete(handle); animationWaits.delete(handle); }
       handle = null;
       if (stopped) return;
+      if (voiceWait && host.voiceBusy()) {
+        handle = host.schedule(advance, FRAME_SECONDS);
+        delayed.add(handle);
+        return;
+      }
       const before = { ...machine.vars };
       sub.vars = before;
       const result = sub.run();
@@ -179,7 +189,10 @@ export function createScenePlayer(
       }
       const wait = result.park.kind === 'wait' ? result.park.seconds
         : result.park.kind === 'wait-animation' ? host.remaining(result.park.track)
-          : result.park.kind === 'wait-reaction' ? host.remainingReaction() : null;
+          : result.park.kind === 'wait-loop-end' ? host.remainingCycle(result.park.track)
+            : result.park.kind === 'wait-reaction' ? host.remainingReaction()
+              : result.park.kind === 'wait-voice' ? FRAME_SECONDS : null;
+      voiceWait = result.park.kind === 'wait-voice';
       if (wait !== null) {
         handle = host.schedule(advance, Math.max(0, wait));
         delayed.add(handle);
@@ -238,6 +251,15 @@ export function createScenePlayer(
         return;
       }
       timer = host.schedule(step, Math.max(0, left));
+    } else if (park.kind === 'wait-loop-end') {
+      timer = host.schedule(step, Math.max(0, host.remainingCycle(park.track)));
+    } else if (park.kind === 'wait-voice') {
+      const poll = () => {
+        if (stopped) return;
+        if (host.voiceBusy()) timer = host.schedule(poll, FRAME_SECONDS);
+        else step();
+      };
+      timer = host.schedule(poll, FRAME_SECONDS);
     } else if (park.kind === 'wait-reaction') {
       timer = host.schedule(step, Math.max(0, host.remainingReaction()));
     }

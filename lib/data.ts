@@ -63,8 +63,28 @@ export type SdCharacter = {
       duration: number;
       bone: string | null;
       anchor: 'bone' | 'character' | 'camera' | 'ground';
-      emitters: (EmoteEmitter & { order?: number })[];
+      // the bone follower's flags; absent before the 2026-10-16 export
+      followRotation?: boolean;
+      followScale?: boolean;
+      // sequencer-spawned prefabs: bone offset, Unit_Front placement, SortingGroup order
+      offset?: [number, number];
+      layer?: 'front';
+      groupOrder?: number;
+      emitters: (EmoteEmitter & {
+        order?: number;
+        blend?: 'add' | 'normal' | 'multiply' | 'screen';
+        // 4 = draw `cutin.meshes[mesh]` per particle instead of a quad
+        renderMode?: number;
+        mesh?: string;
+      })[];
     }[];
+    // the skeleton renderer's sorting order; a lower emitter order draws behind it
+    skeletonOrder?: number;
+    // the battle unit root's scale: world units per skeleton unit
+    unitScale?: number;
+    meshes?: Record<string, { verts: number[]; uvs: number[]; tris: number[] }>;
+    // CharacterCamera `m_FollowOffset` per axis: [time, a, b, c, d], value = ((a*dt + b)*dt + c)*dt + d
+    cameraOffset?: Record<'x' | 'y' | 'z', number[][]>;
     shakes: {
       name: string | null; start: number; duration: number; timeScale: number;
       minAmplitude: number; maxAmplitude: number; frequency: number; useCurve: boolean;
@@ -787,12 +807,19 @@ export type EmoteEmitter = {
   maxParticles: number;
   /** `ParticleSystemRenderer.renderAlignment`. */
   align: number;
+  // `scalingMode`: 0 hierarchy, 1 local (own transform only), 2 shape (size unscaled)
+  scaling?: number;
+  ownScale?: [number, number];
   pivot: [number, number];
   start: {
     lifetime: EmoteCurve;
     speed: EmoteCurve;
     size: EmoteCurve;
     sizeY?: EmoteCurve;
+    // mesh-mode emitters only
+    sizeZ?: EmoteCurve;
+    rotationX?: EmoteCurve;
+    rotationY?: EmoteCurve;
     rotation: EmoteCurve;
     color: EmoteGradient;
     gravity: EmoteCurve;
@@ -800,7 +827,7 @@ export type EmoteEmitter = {
   };
   emission?: { rate: EmoteCurve; bursts: EmoteBurst[] };
   shape?: {
-    /** `ParticleSystemShapeType`: 10 circle, 12 single-sided edge. */
+    // `ParticleSystemShapeType`, Unity's numbering.
     type: number;
     radius: number;
     radiusThickness: number;
@@ -811,6 +838,11 @@ export type EmoteEmitter = {
     position: [number, number];
     randomDirection: number;
     alignToDirection: boolean;
+    scale?: [number, number, number];
+    rotation3?: [number, number, number];
+    donutRadius?: number;
+    angle?: number;
+    length?: number;
   };
   size?: { curve: EmoteCurve; y: EmoteCurve; separateAxes: boolean };
   color?: { gradient: EmoteGradient };

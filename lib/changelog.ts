@@ -43,6 +43,34 @@ export const RELEASES: Release[] = [
       {
         kind: 'fix',
         text: {
+          en: 'Mini skill cut-ins: the full-screen backdrop (mist, vortex, transitions) now plays; effects follow the bones they are attached to (Isabel’s eye glow now sits on her eyes); glows blend additively; 3D effect meshes draw as meshes.',
+          ko: '미니 스킬 컷인: 전체 화면 배경 이펙트(안개, 소용돌이, 전환) 재생, 이펙트가 연결된 본을 따라감(이사벨의 눈 이펙트 위치 수정), 빛 이펙트 가산 혼합, 3D 이펙트 메시 표시',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Mini skill cut-ins now use the game’s own cut-in camera (zoom and pan), so the character and effects are framed as in game; full-screen effects and particle sizes follow the game’s scaling; glow sprites keep the game’s on-screen angle.',
+          ko: '미니 스킬 컷인이 게임의 컷인 카메라(확대·이동)를 그대로 사용해 캐릭터와 이펙트가 게임과 같은 구도로 표시, 전체 화면 이펙트와 파티클 크기도 게임 기준으로 적용, 발광 스프라이트가 게임과 같은 화면 각도를 유지',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Affection and Desire scenes hold each voiced line until its voice ends, so lines no longer skip and voices are no longer cut off.',
+          ko: '애정·욕망 씬에서 음성이 있는 대사는 음성이 끝날 때까지 유지되어 대사 건너뜀과 음성 끊김 수정',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Affection scenes lip-sync: the mouth opens and closes with the voice, as in game.',
+          ko: '애정 씬 립싱크: 게임과 같이 음성에 맞춰 입이 움직임',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
           en: 'Enemies whose attribute a wave overrides now show the overridden attribute.',
           ko: '웨이브에서 속성이 변경되는 적의 속성 표시 수정',
         },

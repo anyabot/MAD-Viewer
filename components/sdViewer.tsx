@@ -8,9 +8,11 @@ import {
 } from '@/lib/skinArchive';
 import { guardClearedClippingAttachment } from '@/components/sdViewer/clipping';
 import { createCutinEffects } from '@/components/sdViewer/effects';
-import { frameBounds, shakeOffset } from '@/components/sdViewer/timeline';
+import { curveAt, frameBounds, shakeOffset } from '@/components/sdViewer/timeline';
 import { speedOptions } from '@/components/skinViewer/constants';
 
+// The battle scene's CharacterCamera lens, in radians.
+const CAMERA_FOV = 20 * Math.PI / 180;
 
 export default function SdViewer({ character }: { character: SdCharacter }) {
   const t = useT();
@@ -99,6 +101,10 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
         files,
         cacheKey,
         effects: character.cutin?.effects ?? [],
+        skeletonOrder: character.cutin?.skeletonOrder,
+        unitScale: character.cutin?.unitScale,
+        meshes: character.cutin?.meshes,
+        screen: () => app.screen,
       });
 
       const frame = (bounds: { x: number; y: number; width: number; height: number }) => {
@@ -108,16 +114,21 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
         spine.scale.set(transform.scale);
         spine.position.set(transform.x, transform.y);
       };
+      // The cut-in keeps the idle framing: the game does not zoom the unit to its pose.
+      let framed = {
+        x: character.bounds.x * character.dataScale,
+        y: character.bounds.y * character.dataScale,
+        width: character.bounds.width * character.dataScale,
+        height: character.bounds.height * character.dataScale,
+      };
       const fit = () => {
-        spine.update(0);
-        const measured = spine.skeleton.getBoundsRect();
-        const fallback = {
-          x: character.bounds.x * character.dataScale,
-          y: character.bounds.y * character.dataScale,
-          width: character.bounds.width * character.dataScale,
-          height: character.bounds.height * character.dataScale,
-        };
-        frame(measured.width > 0 && measured.height > 0 ? measured : fallback);
+        const current = spine.state.getCurrent(0);
+        if (current?.animation?.name !== character.cutin?.animation) {
+          spine.update(0);
+          const measured = spine.skeleton.getBoundsRect();
+          if (measured.width > 0 && measured.height > 0) framed = measured;
+        }
+        frame(framed);
       };
       fit();
       fitRef.current = fit;
@@ -127,8 +138,18 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
         const current = spine.state.getCurrent(0);
         const isCutin = current?.animation?.name === character.cutin?.animation;
         if (isCutin) {
-          const bounds = spine.skeleton.getBoundsRect();
-          if (bounds.width > 0 && bounds.height > 0) frame(bounds);
+          const offset = character.cutin?.cameraOffset;
+          if (offset) {
+            // CharacterCamera: perspective, vertical FOV 20, looking at its follow anchor (taken as the root) from the animated offset.
+            const unit = character.cutin?.unitScale || 0.35;
+            const t = current.trackTime;
+            const [x, y, z] = [curveAt(offset.x, t), curveAt(offset.y, t), curveAt(offset.z, t)];
+            const scale = app.screen.height * unit / (2 * Math.abs(z) * Math.tan(CAMERA_FOV / 2));
+            spine.scale.set(scale);
+            spine.position.set(app.screen.width / 2 - scale * x / unit, app.screen.height / 2 + scale * y / unit);
+          } else {
+            frame(framed);
+          }
           const shake = shakeOffset(
             character.cutin?.shakes ?? [], current.trackTime);
           spine.position.x += shake.x;

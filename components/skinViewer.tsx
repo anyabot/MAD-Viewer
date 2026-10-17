@@ -13,7 +13,7 @@ import {
 } from '@/components/skinViewer/types';
 import {
   EFFECT_LABEL, MAX_RECORD_DIM, REFERENCE_VIEW_WIDTH, TOUCH_INTERRUPT_DELAY,
-  TRACK_BODY, TRACK_FACE, TRACK_OVERLAY, WIDE_CUTSCENE_STAGING_SKINS,
+  TRACK_BODY, TRACK_FACE, TRACK_MOUTH, TRACK_OVERLAY, WIDE_CUTSCENE_STAGING_SKINS,
   animLabel, groupedOptions, isFaceAnim, pickDefault, polygonArea, speedOptions,
 } from '@/components/skinViewer/constants';
 import { dataText, text, useLang, useT } from '@/lib/i18n';
@@ -45,7 +45,7 @@ import {
 import type { Command } from '@/components/skinViewer/interpreter';
 import { loadSceneAudio, loadSceneTimelines, loadVoice } from '@/lib/data';
 import {
-  interactionsFor, playVoice, prefetchVoice, setVoiceRate, stopVoice, voicePlaying,
+  interactionsFor, playVoice, prefetchVoice, setVoiceRate, stopVoice, voiceBusy, voiceLipValue, voicePlaying,
   type VoiceIndex, type VoiceInteraction,
 } from '@/lib/voice';
 import { lobbyBodyAnimation, lobbyFaceAnimation } from '@/components/skinViewer/lobby';
@@ -1047,6 +1047,15 @@ export default function SkinViewer({
             const end = current.animationEnd ?? current.animation?.duration ?? 0;
             return Math.max(0, end - (current.trackTime ?? 0));
           },
+          voiceBusy: () => voiceBusy(),
+          remainingCycle: (track) => {
+            const current = spine.state.getCurrent(track ?? bodyTrackRef.current());
+            if (!current?.loop) return 0;
+            const start = current.animationStart ?? 0;
+            const length = (current.animationEnd ?? current.animation?.duration ?? 0) - start;
+            if (length <= 0) return 0;
+            return length - ((current.trackTime ?? 0) % length);
+          },
           remainingReaction: () => {
             let longest = 0;
             for (const cur of spine.state.tracks ?? []) {
@@ -1307,6 +1316,11 @@ export default function SkinViewer({
       }
 
       setEventVoices(eventVoiceIds(spine.skeleton.data.events));
+      app.ticker.add(() => {
+        const mouth = spine.state.tracks[TRACK_MOUTH];
+        const value = mouth ? voiceLipValue() : null;
+        if (mouth && value !== null) mouth.alpha = value;
+      });
       spine.state.addListener({
         event: (entry: any, event: any) => {
           const name = event?.data?.name;
@@ -1314,6 +1328,15 @@ export default function SkinViewer({
           if (voice) {
             dbg('voice event', { name, voice, from: entry?.animation?.name });
             if (voiceOnRef.current) void playVoice(voiceIndexRef.current, voice);
+            return;
+          }
+          if (name === 'mouth_on') {
+            const clip = `mouth/${event.stringValue ?? ''}`;
+            if (spine.skeleton.data.findAnimation(clip)) spine.state.setAnimation(TRACK_MOUTH, clip, false);
+            return;
+          }
+          if (name === 'mouth_off') {
+            spine.state.clearTrack(TRACK_MOUTH);
             return;
           }
           if (name !== 'bg_on' && name !== 'bg_off' && name !== 'bg_change') return;
@@ -1333,6 +1356,7 @@ export default function SkinViewer({
           // A looping idle completes every cycle, which would re-arm boredom forever.
           if (!autoModeRef.current || entry?.loop) return;
           const track = entry?.trackIndex;
+          if (track === TRACK_MOUTH) return;
           const done = entry?.animation?.name;
           // A retired track completes like any other entry, and is not a clip.
           if (done === EMPTY_ANIMATION) return;
