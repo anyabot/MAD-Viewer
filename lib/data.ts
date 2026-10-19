@@ -136,6 +136,8 @@ export type CharacterEntry = {
   factionType?: number;
   attributeType?: number;
   positionType?: number;
+  approach?: number;
+  hitRadius?: number;
   tribeType?: number;
   charGrade?: number;
   defaultStar?: number;
@@ -347,11 +349,16 @@ export type SkillOp = {
   icon?: string | null;
   /** 1 buff, 2 debuff, 3 crowd control, 0 uncategorised. */
   categorize?: number;
+  dispellable?: boolean;
   /** How long the state lasts, per skill level. */
   seconds?: SkillMagnitude;
   maxStack?: number;
   /** Seconds between ticks, when the state repeats its operation. */
   interval?: number;
+  // % of the value each landing deals: one number for all, or one per landing; absent = 100
+  weight?: number | number[];
+  // % per detection tick inside one landing
+  tickWeights?: number[];
 };
 
 // `count` is how many times the skill spawns this same hitbox.
@@ -364,6 +371,12 @@ export type SkillHit = {
   cycle: number;
   delay: number;
   count: number;
+  offset?: 'FORWARD' | 'BACKWARD';
+  offsetValue?: number;
+  offsetZ?: number;
+  fieldCenter?: boolean;
+  lifetime?: number;
+  attach?: 'ATTACH_TARGET' | 'ATTACH_DISPATCHER';
   /** What the hitbox anchors on, not who it affects; authored per event. */
   cast?: {
     team: string | null;
@@ -395,18 +408,36 @@ export type SkillTrigger = {
   ops: SkillOp[];
 };
 
+export type SkillMoveTarget = {
+  type: string;
+  cast?: SkillHit['cast'];
+  offset?: number;
+  seconds?: number;
+};
+
 // An active skill has `hits`, a passive `stats` and `triggers`; the battle arithmetic over them is not decoded.
 export type SkillBehaviour = {
   attack?: boolean;
   fever?: number;
   /** Non-hitbox events the cast fires, e.g. `MOVE_TO_TARGET`. */
   moves?: string[];
+  // per move event: whom it goes to and the x offset past (+) or short of (−) the target
+  moveTargets?: SkillMoveTarget[];
   hits?: SkillHit[];
   stats?: SkillStat[];
   triggers?: SkillTrigger[];
 };
 
 // One pre-rendered `desc` per skill level, carrying the game's `<color=#rrggbb>` markup.
+export type SkillVariant = {
+  when: {
+    check: string | null; type: string | null; define: string;
+    name: string | null; nameEn: string | null; value: number; op: string | null;
+  };
+  action: string | null;
+  behaviour: SkillBehaviour | null;
+};
+
 export type SkillEntry = {
   name: string | null;
   nameEn: string | null;
@@ -427,6 +458,7 @@ export type SkillEntry = {
   levelPeriod: number;
   /** What it does, as opposed to what its description says it does. */
   behaviour?: SkillBehaviour;
+  variant?: SkillVariant;
 };
 
 // `icons` is every icon column in preference order.
@@ -807,6 +839,7 @@ export type EmoteEmitter = {
   maxParticles: number;
   /** `ParticleSystemRenderer.renderAlignment`. */
   align: number;
+  flip?: number;
   // `scalingMode`: 0 hierarchy, 1 local (own transform only), 2 shape (size unscaled)
   scaling?: number;
   ownScale?: [number, number];
@@ -1040,7 +1073,10 @@ export function loadRewards(): Promise<RewardIndex> {
   return fetchJson<RewardIndex>('rewards.json');
 }
 
-export type SkillTiming = { clip?: string; seconds?: number; cooldown?: number };
+export type SkillTiming = {
+  clip?: string; seconds?: number; cooldown?: number;
+  hits?: number[]; pause?: { from?: number; to?: number };
+};
 
 export function loadSkillTiming(): Promise<{ characters: Record<string, Record<string, SkillTiming>> }> {
   return fetchJson<{ characters: Record<string, Record<string, SkillTiming>> }>('skilltiming.json');
@@ -1077,6 +1113,7 @@ export type GameEvent = {
   pickups?: string[];
   cast?: string[];
   exchange?: EventExchange[];
+  attendance?: { days: { day: number; rewards: EventReward[] }[] }[];
   bonus?: { code: string; rate: number }[];
 };
 
@@ -1091,6 +1128,7 @@ export type EventExchange =
     kind: 'box';
     cost: { ref: string; amount: number };
     maxDraws?: number;
+    milestones?: { draws: number; rewards: EventReward[] }[];
     rounds: {
       round: number; repeat: boolean;
       items: { rewards: EventReward[]; count: number; grade?: string }[];

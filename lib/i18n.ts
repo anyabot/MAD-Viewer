@@ -263,6 +263,9 @@ export const UI = {
 
   rowBirthday: { en: 'Birthday', ko: '생일' },
   rowArtist: { en: 'Artist', ko: '일러스트' },
+  rowLineOrder: { en: 'Line order', ko: '배치 순서' },
+  rowApproach: { en: 'Approach', ko: '접근 거리' },
+  rowHitRadius: { en: 'Hit radius', ko: '피격 반경' },
   rowCv: { en: 'CV', ko: '성우' },
   rowHobby: { en: 'Hobby', ko: '취미' },
   rowSpecialty: { en: 'Specialty', ko: '특기' },
@@ -387,6 +390,9 @@ export const UI = {
 
   camFree: { en: 'Free move', ko: '자유 이동' },
   camFreeHint: { en: 'Pan and zoom by hand', ko: '직접 이동하고 확대' },
+  camLocked: { en: 'Locked', ko: '고정' },
+  camLockedHint: { en: 'No pan or zoom, so drags reach the rig', ko: '이동·확대 없음 — 드래그가 캐릭터로 전달' },
+  rowPanZoom: { en: 'Pan & zoom', ko: '이동·확대' },
   camGame: { en: 'Follow game', ko: '게임 진행' },
   camGameHint: {
     en: 'Play the script entry and follow the scripted camera',
@@ -640,6 +646,12 @@ export const UI = {
   timingUse: { en: 'Use {s}s', ko: '사용 {s}초' },
   timingUseHint: { en: 'Length of the battle animation; the next action starts after it', ko: '전투 애니메이션 길이 — 끝나야 다음 행동' },
   timingDelay: { en: 'Delay {s}s', ko: '딜레이 {s}초' },
+  eventsAttendance: { en: 'Attendance', ko: '출석' },
+  eventsDay: { en: 'Day {n}', ko: '{n}일차' },
+  eventsMilestones: { en: 'Draw bonuses', ko: '누적 보상' },
+  eventsAtDraws: { en: '{n} draws', ko: '{n}회' },
+  timingHit: { en: 'Hit at {s}s', ko: '{s}초에 발동' },
+  timingHitHint: { en: 'When the effect fires inside the animation (the cut-in pause is not counted)', ko: '애니메이션 중 효과가 발동하는 시점 (컷인 정지 시간 제외)' },
   stageEnded: { en: 'Ended', ko: '종료' },
   stageUpcoming: { en: 'Upcoming', ko: '예정' },
   stageAllModes: { en: 'All modes', ko: '전체 모드' },

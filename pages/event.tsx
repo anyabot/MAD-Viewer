@@ -7,7 +7,7 @@ import {
   Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import {
-  EventArt, EventTiming, ExchangePanel, PartnerChip, TimeControls, useNow, useServerTime,
+  AttendancePanel, EventArt, EventTiming, ExchangePanel, PartnerChip, TimeControls, useNow, useServerTime,
 } from '@/components/eventsBoard';
 import {
   loadCharacters, loadEvents, loadIcons,
@@ -130,6 +130,10 @@ export default function EventPage() {
             ))}
           </Wrap>
         </Box>
+      )}
+
+      {event.attendance && (
+        <AttendancePanel attendance={event.attendance} refs={data.refs} icons={icons} gameLang={gameLang} />
       )}
 
       {event.exchange && (

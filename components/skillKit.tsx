@@ -6,10 +6,10 @@ import type { SkillTiming } from '@/lib/data';
 import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import {
-  BUFF_CATEGORY, MOVE_LABEL, OP_LABEL, OP_SCHEME, SETUP_CONDITION_LABEL, SIDE_LABEL,
-  SKILL_CATEGORY_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, colorRuns,
-  detailSummary, everySecondsText, gateSummary, hitSummary, labelOf, opAmounts, opSeconds,
-  scaleSummary, secondsText, skillDescs, skillGrades, skillsAtGrade, statAmount,
+  BUFF_CATEGORY, DISPEL_LABEL, MOVE_LABEL, OP_LABEL, OP_SCHEME, SETUP_CONDITION_LABEL, SIDE_LABEL,
+  SKILL_CATEGORY_LABEL, SORT_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, colorRuns,
+  detailSummary, everySecondsText, gateSummary, hitSummary, labelOf, moveSummary, opAmounts, opSeconds, weightText,
+  scaleSummary, secondsText, skillDescs, variantCondition, skillGrades, skillsAtGrade, statAmount,
 } from '@/lib/characters';
 import { dataText, useLang, useT, type UiKey } from '@/lib/i18n';
 import type {
@@ -28,6 +28,25 @@ export function GameText({ text }: { text: string }) {
   );
 }
 
+// An uncategorised state is an internal marker, so it gets no dispel badge either.
+export function StateBadges({ categorize, dispellable }: {
+  categorize?: number; dispellable?: boolean;
+}) {
+  const lang = useLang();
+  const cat = BUFF_CATEGORY[categorize ?? 0];
+  if (!cat) return null;
+  return (
+    <HStack spacing={1} display="inline-flex">
+      <Badge fontSize="0.55rem" colorScheme={cat.scheme}>{cat.label[lang]}</Badge>
+      {dispellable !== undefined && (
+        <Badge fontSize="0.55rem" variant="outline" colorScheme={dispellable ? 'yellow' : 'gray'}>
+          {DISPEL_LABEL[dispellable ? 'yes' : 'no'][lang]}
+        </Badge>
+      )}
+    </HStack>
+  );
+}
+
 // Magnitude and duration both scale with the skill level.
 export function BuffList({ buffs, icons }: {
   buffs: BuffEntry[]; icons: IconManifest | null;
@@ -39,7 +58,6 @@ export function BuffList({ buffs, icons }: {
     <VStack align="stretch" spacing={1} mt={1.5} pl={2}
       borderLeftWidth="2px" borderColor="whiteAlpha.200">
       {buffs.map((buff, i) => {
-        const cat = BUFF_CATEGORY[buff.categorize];
         return (
           <Flex key={i} gap={2} align="start">
             <GameIcon manifest={icons} group="buff" name={buff.icon} size={4} mt={0.5} />
@@ -50,11 +68,9 @@ export function BuffList({ buffs, icons }: {
                     <GameText text={dataText(lang, buff.name, buff.nameEn)} />
                   </Text>
                 </WrapItem>
-                {cat && (
-                  <WrapItem>
-                    <Badge fontSize="0.55rem" colorScheme={cat.scheme}>{cat.label[lang]}</Badge>
-                  </WrapItem>
-                )}
+                <WrapItem>
+                  <StateBadges categorize={buff.categorize} dispellable={buff.dispellable} />
+                </WrapItem>
                 {buff.seconds > 0 && buff.seconds < 9999 && (
                   <WrapItem>
                     <Text fontSize="0.6rem" color="gray.600">
@@ -84,8 +100,8 @@ export function BuffList({ buffs, icons }: {
 }
 
 // Operations expose target side, scaling stat and unnamed effects.
-function OpRow({ op, level, period, data, icons }: {
-  op: SkillOp; level: number; period: number;
+function OpRow({ op, level, period, data, icons, landings = 1 }: {
+  op: SkillOp; level: number; period: number; landings?: number;
   data: CharacterData; icons: IconManifest | null;
 }) {
   const t = useT();
@@ -96,12 +112,14 @@ function OpRow({ op, level, period, data, icons }: {
   const where = [
     op.team ? labelOf(TARGET_LABEL, op.team, lang) : '',
     op.pick === 'ALL' ? t('allInRange') : (op.count ? `${op.count}` : ''),
+    op.sort ? labelOf(SORT_LABEL, op.sort, lang) : '',
     op.applyTo && op.applyTo !== 'HOLDER'
       ? t('onSide', { side: labelOf(SIDE_LABEL, op.applyTo, lang) }) : '',
   ].filter(Boolean).join(' · ');
   const scale = scaleSummary(op, lang);
   const amounts = opAmounts(op, level, period);
   const seconds = opSeconds(op, level, period, lang);
+  const weights = op.value ? weightText(op, landings, lang) : null;
   // a boss can name six states at once; the rest go in the tooltip
   const detail = op.detail ? detailSummary(op.detail, lang) : [];
   const shown = detail.slice(0, 3);
@@ -118,10 +136,12 @@ function OpRow({ op, level, period, data, icons }: {
           <GameText text={dataText(lang, op.name, op.nameEn)} />
         </Text>
       )}
+      <StateBadges categorize={op.categorize} dispellable={op.dispellable} />
       {amounts.length > 0 && (
         <Text fontSize="xs" color="yellow.200">{amounts.join(' / ')}</Text>
       )}
       {scale && <Text fontSize="0.65rem" color="gray.400">{scale}</Text>}
+      {weights && <Text fontSize="0.65rem" color="orange.200">{weights}</Text>}
       {detail.length > 0 && (
         <Text fontSize="0.65rem" color="gray.300" noOfLines={1}
           title={detail.map((v) => colorRuns(v).map((r) => (r.break ? ' ' : r.text)).join('')).join(', ')}>
@@ -159,17 +179,20 @@ function Behaviour({ behaviour, level, period, data, icons }: {
 }) {
   const t = useT();
   const lang = useLang();
-  const { hits, moves, stats, triggers } = behaviour;
+  const { hits, moves, moveTargets, stats, triggers } = behaviour;
+  const moveLines = [
+    ...(moveTargets ?? []).map((m) => moveSummary(m, lang)),
+    ...(moves ?? []).filter((m) => !(moveTargets ?? []).some((x) => x.type === m))
+      .map((m) => labelOf(MOVE_LABEL, m, lang)),
+  ];
   const on = (cast: string) => (lang === 'ko' ? ` · 대상: ${cast}` : ` · on ${cast}`);
 
   return (
     <VStack align="stretch" spacing={1.5} mt={2} pt={2}
       borderTopWidth="1px" borderColor="whiteAlpha.100">
-      {(moves ?? []).length > 0 && (
-        <Text fontSize="xs" color="gray.400">
-          {(moves ?? []).map((m) => labelOf(MOVE_LABEL, m, lang)).join(', ')}
-        </Text>
-      )}
+      {moveLines.map((line, i) => (
+        <Text key={i} fontSize="xs" color="gray.400">{line}</Text>
+      ))}
 
       {(hits ?? []).map((hit, i) => (
         <Box key={i}>
@@ -179,7 +202,7 @@ function Behaviour({ behaviour, level, period, data, icons }: {
           </Text>
           <VStack align="stretch" spacing={0.5} mt={0.5}>
             {hit.ops.map((op, j) => (
-              <OpRow key={j} op={op} level={level} period={period} data={data}
+              <OpRow key={j} op={op} level={level} period={period} data={data} landings={hit.count}
                 icons={icons} />
             ))}
           </VStack>
@@ -280,6 +303,13 @@ export function SkillRow({ skill, data, icons, showSlot }: {
               </Badge>
             </WrapItem>
           )}
+          {timing?.hits?.length ? (
+            <WrapItem>
+              <Badge fontSize="0.6rem" colorScheme="teal" textTransform="none" title={t('timingHitHint')}>
+                {t('timingHit', { s: hitText(timing.hits) })}
+              </Badge>
+            </WrapItem>
+          ) : null}
           {timing?.cooldown != null && (
             <WrapItem>
               <Badge fontSize="0.6rem" colorScheme="purple" textTransform="none">
@@ -313,6 +343,16 @@ export function SkillRow({ skill, data, icons, showSlot }: {
         {skill.behaviour && (
           <Behaviour behaviour={skill.behaviour} level={at + 1}
             period={skill.levelPeriod} data={data} icons={icons} />
+        )}
+        {skill.variant?.behaviour && (
+          <Box mt={2} pl={2} borderLeftWidth="2px" borderColor="yellow.700">
+            <Text fontSize="xs" color="yellow.300" title={skill.variant.when.define}>
+              <GameText text={variantCondition(skill.variant, lang)} />
+              {skill.variant.action && <Text as="span" color="gray.500">{` · ${skill.variant.action}`}</Text>}
+            </Text>
+            <Behaviour behaviour={skill.variant.behaviour} level={at + 1}
+              period={skill.levelPeriod} data={data} icons={icons} />
+          </Box>
         )}
       </Box>
     </Flex>
@@ -437,6 +477,19 @@ export function Rotation({ entry, data, icons }: {
       </VStack>
     </Panel>
   );
+}
+
+// Hits closer than BURST_GAP collapse into one "first–last ×n" range.
+const BURST_GAP = 0.2;
+
+function hitText(hits: number[]): string {
+  const groups: number[][] = [];
+  for (const h of hits) {
+    const last = groups[groups.length - 1];
+    if (last && h - last[last.length - 1] <= BURST_GAP) last.push(h);
+    else groups.push([h]);
+  }
+  return groups.map((g) => (g.length > 2 ? `${g[0]}–${g[g.length - 1]} ×${g.length}` : g.join(' / '))).join(' / ');
 }
 
 function TimingText({ timing }: { timing: SkillTiming }) {

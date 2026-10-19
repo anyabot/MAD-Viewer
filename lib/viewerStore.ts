@@ -13,6 +13,7 @@ type ViewerStore = {
   mode: PlayMode;
   sceneVariant: 'view' | 'story';
   followGameFlow: boolean;
+  lockCamera: boolean;
   sceneLoop: boolean;
   showBoxes: boolean;
   voiceOn: boolean;
@@ -46,6 +47,7 @@ export const useViewerStore = create<ViewerStore>((set) => ({
   mode: 'manual',
   sceneVariant: 'view',
   followGameFlow: true,
+  lockCamera: false,
   sceneLoop: true,
   showBoxes: false,
   voiceOn: true,
