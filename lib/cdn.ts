@@ -12,7 +12,7 @@ const DATA_BASE = trimSlash(
     : `${PUBLIC_BASE}/data`,
 );
 
-// Only skins have a complete local copy; voice and scene audio remain manifest-backed.
+// Voice and scene audio try a staged copy beside the local data before the buckets.
 const LOCAL_ASSETS = process.env.NEXT_PUBLIC_ASSET_SOURCE === 'local';
 
 /** Explicit override; set it and the manifest is not consulted at all. */
@@ -127,13 +127,15 @@ export async function sdArchiveUrls(name: string): Promise<string[]> {
 export async function voiceClipUrls(folder: string, voiceId: string): Promise<string[]> {
   if (VOICE_OVERRIDE) return [`${VOICE_OVERRIDE}/${folder}/${voiceId}.ogg`];
   const bases = bucketBases(await loadCdnManifest(), 'voice', folder);
-  return (bases.length ? bases : [`${PUBLIC_BASE}/voice`]).map((base) => `${base}/${folder}/${voiceId}.ogg`);
+  const all = bases.length ? bases : [`${PUBLIC_BASE}/voice`];
+  return (LOCAL_ASSETS ? [`${DATA_BASE}/voice`, ...all] : all).map((base) => `${base}/${folder}/${voiceId}.ogg`);
 }
 
 export async function sceneAudioClipUrls(folder: string, clipId: string): Promise<string[]> {
   if (AUDIO_OVERRIDE) return [`${AUDIO_OVERRIDE}/${folder}/${clipId}.ogg`];
   const bases = bucketBases(await loadCdnManifest(), 'audio', folder);
-  return (bases.length ? bases : [`${PUBLIC_BASE}/audio`]).map((base) => `${base}/${folder}/${clipId}.ogg`);
+  const all = bases.length ? bases : [`${PUBLIC_BASE}/audio`];
+  return (LOCAL_ASSETS ? [`${DATA_BASE}/audio`, ...all] : all).map((base) => `${base}/${folder}/${clipId}.ogg`);
 }
 
 // Plays through the sources in order, moving on when the element reports a load error.

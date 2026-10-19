@@ -119,6 +119,7 @@ export const UI = {
   navArtists: { en: 'Artists', ko: '일러스트레이터' },
   navFormula: { en: 'Battle formulas', ko: '전투 공식' },
   navField: { en: 'Battle field', ko: '전장 배치' },
+  navDps: { en: 'DPS comparison', ko: 'DPS 비교' },
   aoeLink: { en: 'AoE', ko: '범위' },
   aoeLinkHint: { en: 'Show the area on the battle field', ko: '전장에서 이 스킬의 범위 보기' },
   navEtc: { en: 'Etc.', ko: '기타' },

@@ -1631,7 +1631,7 @@
    "code": "CH0003",
    "name": "요미",
    "nameEn": "Yomi",
-   "desc": "####",
+   "desc": "사군자, 아니 전세계에서 유명한(?) 술법사 및 주구 제작가. 주구 제작과 부적 제작으로는 따라올 사람이 없다고 알려져 있다. 가끔은 의복 형태의 봉인구 역시 제작한다고 하는데…",
    "descEn": "####",
    "iconPath": "Icon_CH0003",
    "resourcesId": "ch0003_resources",
@@ -38540,9 +38540,9 @@
   "CH0069": {
    "code": "CH0069",
    "name": "단희(할로윈)",
-   "nameEn": "Dan Xi (Halloween)",
-   "desc": "",
-   "descEn": "Coming Soon",
+   "nameEn": "Dan Xi (HALLOWEEN)",
+   "desc": "<할로윈> 축제에서 한껏 흥을 낸 나머지 축제 거리를 난장판으로 만들어버린 단희.\n체벌이라기엔 뭐하지만 국 가문에서 환락상단에 주문한 새 복장과 함께 돌아왔다.\n부적에는 부정한 힘을 막아주는 효과와 함께 단희의 폭주를 막기 위한 감도 상승의 주술이 걸려 있다.",
+   "descEn": null,
    "iconPath": "Icon_CH0069",
    "resourcesId": "ch0069_resources",
    "voiceGroupId": "voc_ch0069_group",
@@ -38570,17 +38570,780 @@
   "CH0075": {
    "code": "CH0075",
    "name": "홍접(할로윈)",
-   "nameEn": "Kouchou (Halloween)",
+   "nameEn": "Kouchou (HALLOWEEN)",
    "desc": "<할로윈>을 맞아, 그동안 해치운 원령들의 혼을 달래고 그들이 남긴 부정한 힘을 정화하기 위해 무녀의 힘을 사용하는 홍접.\n정화를 위해 부정한 힘을 스스로 받아들인 탓에, 그녀의 몸은 반 쯤 원령화되어 있다.",
    "descEn": "For <Halloween>, Kouchou uses her shrine maiden powers to appease the souls of the Aberrant Spirits she has slain and purify the Corrupting Power they left behind.\nBecause she absorbed the Corrupting Power into herself for the purification, her body has become half Aberrant Spirit.",
    "iconPath": "Icon_CH0075",
    "resourcesId": "ch0075_resources",
    "voiceGroupId": "voc_ch0075_group",
-   "artist": null,
-   "artistEn": null,
-   "cv": null,
-   "cvEn": null,
-   "unreleased": true
+   "id": 75,
+   "characterType": 1,
+   "nameKey": "character_name_ch0075",
+   "roleType": 3,
+   "divisionType": 3,
+   "factionType": 302,
+   "attributeType": 1,
+   "positionType": 3,
+   "approach": 10.03,
+   "hitRadius": 0.5,
+   "tribeType": 1,
+   "charGrade": 1,
+   "defaultStar": 3,
+   "equipmentSlots": [
+    3,
+    7,
+    12
+   ],
+   "skillMaterialGroup": 104,
+   "nameUppercaseKey": "character_uppercase_name_ch0075",
+   "nameUppercase": "HONGJEOP (HALLOWEEN)",
+   "birthday": [
+    5,
+    10
+   ],
+   "giftItems": [
+    9100,
+    9204,
+    9107
+   ],
+   "dateDivisions": [
+    3
+   ],
+   "hobby": "야시장, 축제 구경",
+   "hobbyEn": "Night Markets, Festival Sightseeing",
+   "specialty": "부정한 힘 정화",
+   "specialtyEn": "Purifying Corrupting Power",
+   "likes": "축제 솜사탕",
+   "likesEn": "Festival Cotton Candy",
+   "comment": "가슴 속에서 뜨거운 게 흘러넘쳐…",
+   "commentEn": "Something Hot Is Welling Up Inside My Chest...",
+   "birthdayComment": "생일 만큼은… 마음대로 해도… 되겠지?",
+   "birthdayCommentEn": "On My Birthday... I Can Do Whatever I Want... Right?",
+   "artist": "Cruno",
+   "artistEn": "Cruno",
+   "cv": "카이바라 에레나",
+   "cvEn": "Elena Kaibara",
+   "skillSetGroup": 75,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": "기본 패턴",
+      "nameEn": "Basic Pattern",
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       7520
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": "기본 패턴",
+      "nameEn": "Basic Pattern",
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       7530,
+       7510
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 48.0,
+     "PHYSICS_DEFENSE": 53.0,
+     "MAX_LIFE": 2200.0,
+     "ACCURACY": 11.0,
+     "EVASION": 15.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 125.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 49.0,
+     "PHYSICS_DEFENSE": 54.0,
+     "MAX_LIFE": 2244.0,
+     "ACCURACY": 11.0,
+     "EVASION": 15.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 128.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 51.0,
+     "PHYSICS_DEFENSE": 56.0,
+     "MAX_LIFE": 2332.0,
+     "ACCURACY": 12.0,
+     "EVASION": 16.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 133.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 21.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 54.0,
+     "PHYSICS_DEFENSE": 59.0,
+     "MAX_LIFE": 2464.0,
+     "ACCURACY": 13.0,
+     "EVASION": 17.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 140.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 22.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 58.0,
+     "PHYSICS_DEFENSE": 63.0,
+     "MAX_LIFE": 2640.0,
+     "ACCURACY": 14.0,
+     "EVASION": 18.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 150.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 58.0,
+     "PHYSICS_DEFENSE": 63.0,
+     "MAX_LIFE": 2640.0,
+     "ACCURACY": 14.0,
+     "EVASION": 18.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 150.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 5.38,
+     "MAX_LIFE": 110.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0,
+     "HEAL": 6.25
+    },
+    "2": {
+     "PHYSICS_ATTACK": 5.48,
+     "MAX_LIFE": 112.2,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0,
+     "HEAL": 6.38
+    },
+    "3": {
+     "PHYSICS_ATTACK": 5.7,
+     "MAX_LIFE": 116.6,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0,
+     "HEAL": 6.63
+    },
+    "4": {
+     "PHYSICS_ATTACK": 6.02,
+     "MAX_LIFE": 123.2,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0,
+     "HEAL": 7.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 6.45,
+     "MAX_LIFE": 132.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0,
+     "HEAL": 7.5
+    },
+    "6": {
+     "PHYSICS_ATTACK": 6.45,
+     "MAX_LIFE": 132.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0,
+     "HEAL": 7.5
+    }
+   },
+   "loveStats": [
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    },
+    {
+     "MAX_LIFE": 1.0
+    }
+   ],
+   "infusion": {
+    "piece": {
+     "ref": "item:75",
+     "name": "홍접(할로윈)의 메모리",
+     "nameEn": "Kouchou (Halloween)'s Memory",
+     "icon": "Icon_Character_Piece_CH0075"
+    },
+    "nodes": [
+     {
+      "path": "deep",
+      "step": 1,
+      "grade": 5,
+      "core": true,
+      "cost": 30,
+      "name": "심부 경로(1단계)",
+      "nameEn": "Deep Path (Stage 1)",
+      "icon": "Icon_Injection_Stat_Heal",
+      "bonuses": [
+       {
+        "stat": "HEAL",
+        "calc": "MULTIPLICATION",
+        "value": 0.03
+       },
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.0315
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 2,
+      "grade": 5,
+      "core": false,
+      "cost": 10,
+      "name": "심부 경로(2단계)",
+      "nameEn": "Deep Path (Stage 2)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 3,
+      "grade": 5,
+      "core": false,
+      "cost": 10,
+      "name": "심부 경로(3단계)",
+      "nameEn": "Deep Path (Stage 3)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 4,
+      "grade": 5,
+      "core": true,
+      "cost": 30,
+      "name": "심부 경로(4단계)",
+      "nameEn": "Deep Path (Stage 4)",
+      "icon": "Icon_Injection_Stat_Heal",
+      "bonuses": [
+       {
+        "stat": "HEAL",
+        "calc": "MULTIPLICATION",
+        "value": 0.03
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.033
+       },
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.0315
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 5,
+      "grade": 5,
+      "core": false,
+      "cost": 10,
+      "name": "심부 경로(5단계)",
+      "nameEn": "Deep Path (Stage 5)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 6,
+      "grade": 5,
+      "core": false,
+      "cost": 10,
+      "name": "심부 경로(6단계)",
+      "nameEn": "Deep Path (Stage 6)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 7,
+      "grade": 5,
+      "core": true,
+      "cost": 30,
+      "name": "심부 경로(7단계)",
+      "nameEn": "Deep Path (Stage 7)",
+      "icon": "Icon_Injection_Stat_Heal",
+      "bonuses": [
+       {
+        "stat": "HEAL",
+        "calc": "MULTIPLICATION",
+        "value": 0.03
+       },
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.0315
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 8,
+      "grade": 5,
+      "core": false,
+      "cost": 10,
+      "name": "심부 경로(8단계)",
+      "nameEn": "Deep Path (Stage 8)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 9,
+      "grade": 5,
+      "core": false,
+      "cost": 10,
+      "name": "심부 경로(9단계)",
+      "nameEn": "Deep Path (Stage 9)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.009
+       }
+      ]
+     },
+     {
+      "path": "deep",
+      "step": 10,
+      "grade": 5,
+      "core": true,
+      "cost": 30,
+      "name": "심부 경로(10단계)",
+      "nameEn": "Deep Path (Stage 10)",
+      "icon": "Icon_Injection_Stat_Heal",
+      "bonuses": [
+       {
+        "stat": "HEAL",
+        "calc": "MULTIPLICATION",
+        "value": 0.03
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.033
+       },
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.0315
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 1,
+      "grade": 3,
+      "core": true,
+      "cost": 300,
+      "name": "표층 경로(1단계)",
+      "nameEn": "Surface Path (Stage 1)",
+      "icon": "Icon_Injection_Stat_Heal",
+      "bonuses": [
+       {
+        "stat": "HEAL",
+        "calc": "MULTIPLICATION",
+        "value": 0.02
+       },
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.021
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 2,
+      "grade": 3,
+      "core": false,
+      "cost": 100,
+      "name": "표층 경로(2단계)",
+      "nameEn": "Surface Path (Stage 2)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 3,
+      "grade": 3,
+      "core": false,
+      "cost": 100,
+      "name": "표층 경로(3단계)",
+      "nameEn": "Surface Path (Stage 3)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 4,
+      "grade": 3,
+      "core": true,
+      "cost": 300,
+      "name": "표층 경로(4단계)",
+      "nameEn": "Surface Path (Stage 4)",
+      "icon": "Icon_Injection_Stat_Heal",
+      "bonuses": [
+       {
+        "stat": "HEAL",
+        "calc": "MULTIPLICATION",
+        "value": 0.02
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.022
+       },
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.021
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 5,
+      "grade": 3,
+      "core": false,
+      "cost": 100,
+      "name": "표층 경로(5단계)",
+      "nameEn": "Surface Path (Stage 5)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 6,
+      "grade": 3,
+      "core": false,
+      "cost": 100,
+      "name": "표층 경로(6단계)",
+      "nameEn": "Surface Path (Stage 6)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 7,
+      "grade": 3,
+      "core": true,
+      "cost": 300,
+      "name": "표층 경로(7단계)",
+      "nameEn": "Surface Path (Stage 7)",
+      "icon": "Icon_Injection_Stat_Heal",
+      "bonuses": [
+       {
+        "stat": "HEAL",
+        "calc": "MULTIPLICATION",
+        "value": 0.02
+       },
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.021
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 8,
+      "grade": 3,
+      "core": false,
+      "cost": 100,
+      "name": "표층 경로(8단계)",
+      "nameEn": "Surface Path (Stage 8)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 9,
+      "grade": 3,
+      "core": false,
+      "cost": 100,
+      "name": "표층 경로(9단계)",
+      "nameEn": "Surface Path (Stage 9)",
+      "icon": "Icon_Injection_Stat_MaxLife",
+      "bonuses": [
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.006
+       }
+      ]
+     },
+     {
+      "path": "surface",
+      "step": 10,
+      "grade": 3,
+      "core": true,
+      "cost": 300,
+      "name": "표층 경로(10단계)",
+      "nameEn": "Surface Path (Stage 10)",
+      "icon": "Icon_Injection_Stat_Heal",
+      "bonuses": [
+       {
+        "stat": "HEAL",
+        "calc": "MULTIPLICATION",
+        "value": 0.02
+       },
+       {
+        "stat": "PHYSICS_ATTACK",
+        "calc": "MULTIPLICATION",
+        "value": 0.022
+       },
+       {
+        "stat": "MAX_LIFE",
+        "calc": "MULTIPLICATION",
+        "value": 0.021
+       }
+      ]
+     }
+    ]
+   }
   },
   "NP0101": {
    "code": "NP0101",
@@ -40873,6 +41636,318 @@
      "ATTACK_SPEED_NORMAL": 1.0
     }
    }
+  },
+  "NP0801": {
+   "code": "NP0801",
+   "name": "하급 원령(시저스)",
+   "nameEn": "Lesser Aberrant Spirit (Scissors)",
+   "desc": "거대 가위를 든 메이드(?) 원령. 자르려는 것은 옷감만이 아닌 듯하다.",
+   "descEn": null,
+   "iconPath": "Icon_NP0801",
+   "resourcesId": "np0801_resources",
+   "voiceGroupId": "0",
+   "id": 200801,
+   "characterType": 2,
+   "nameKey": "character_name_np0801",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "approach": 2.0,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200801
+  },
+  "NP0802": {
+   "code": "NP0802",
+   "name": "하급 원령(클린)",
+   "nameEn": "Lesser Aberrant Spirit (Clean)",
+   "desc": "빗자루를 든 메이드(?) 원령. 무엇을 청소하려는 건지 궁금하다.",
+   "descEn": null,
+   "iconPath": "Icon_NP0802",
+   "resourcesId": "np0802_resources",
+   "voiceGroupId": "0",
+   "id": 200802,
+   "characterType": 2,
+   "nameKey": "character_name_np0802",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "approach": 7.05,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200802
+  },
+  "NP0803": {
+   "code": "NP0803",
+   "name": "하급 원령(리퍼)",
+   "nameEn": "Lesser Aberrant Spirit (Reaper)",
+   "desc": "거대 낫을 든 수녀(?) 원령. 사신이라도 따라하는 걸까?",
+   "descEn": null,
+   "iconPath": "Icon_NP0803",
+   "resourcesId": "np0803_resources",
+   "voiceGroupId": "0",
+   "id": 200803,
+   "characterType": 2,
+   "nameKey": "character_name_np0803",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "approach": 1.4,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200803
+  },
+  "NP0804": {
+   "code": "NP0804",
+   "name": "하급 원령(퍼펫)",
+   "nameEn": "Lesser Aberrant Spirit (Puppet)",
+   "desc": "플러리 인형...을 조종하는 수녀(?) 원령. 저주받은 인형 컨셉인가?",
+   "descEn": null,
+   "iconPath": "Icon_NP0804",
+   "resourcesId": "np0804_resources",
+   "voiceGroupId": "0",
+   "id": 200804,
+   "characterType": 2,
+   "nameKey": "character_name_np0804",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "approach": 9.0,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200804
+  },
+  "NP0805": {
+   "code": "NP0805",
+   "name": "하급 원령(복싱)",
+   "nameEn": "Lesser Aberrant Spirit (Boxing)",
+   "desc": "주먹질에 자신 있는 운동선수(?) 원령. 원령계의 복싱 챔피언을 노리고 있나...",
+   "descEn": null,
+   "iconPath": "Icon_NP0805",
+   "resourcesId": "np0805_resources",
+   "voiceGroupId": "0",
+   "id": 200805,
+   "characterType": 2,
+   "nameKey": "character_name_np0805",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "approach": 1.2,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200805
+  },
+  "NP0806": {
+   "code": "NP0806",
+   "name": "하급 원령(디스크)",
+   "nameEn": "Lesser Aberrant Spirit (Disc)",
+   "desc": "거대 디스크를 사용하는 운동선수(?) 원령. 잘 모르겠지만 맞으면 아플 것 같다...",
+   "descEn": null,
+   "iconPath": "Icon_NP0806",
+   "resourcesId": "np0806_resources",
+   "voiceGroupId": "0",
+   "id": 200806,
+   "characterType": 2,
+   "nameKey": "character_name_np0806",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "approach": 7.0,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200806
+  },
+  "NP0807": {
+   "code": "NP0807",
+   "name": "상급 원령(시저스)",
+   "nameEn": "Advanced Aberrant Spirit (Scissors)",
+   "desc": "거대 가위를 든 메이드(?) 원령. 자세한 건 모르겠지만 상당히 예리한 가위를 쓴다.",
+   "descEn": null,
+   "iconPath": "Icon_NP0807",
+   "resourcesId": "np0807_resources",
+   "voiceGroupId": "0",
+   "id": 200807,
+   "characterType": 2,
+   "nameKey": "character_name_np0807",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "approach": 1.5,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200807
+  },
+  "NP0808": {
+   "code": "NP0808",
+   "name": "상급 원령(클린)",
+   "nameEn": "Advanced Aberrant Spirit (Clean)",
+   "desc": "빗자루를 든 메이드(?) 원령. 바닥 말고 다른 것도 쓱싹하려는 의도가 다분히 보인다.",
+   "descEn": null,
+   "iconPath": "Icon_NP0808",
+   "resourcesId": "np0808_resources",
+   "voiceGroupId": "0",
+   "id": 200808,
+   "characterType": 2,
+   "nameKey": "character_name_np0808",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "approach": 7.1,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200808
+  },
+  "NP0809": {
+   "code": "NP0809",
+   "name": "상급 원령(리퍼)",
+   "nameEn": "Advanced Aberrant Spirit (Reaper)",
+   "desc": "거대 낫을 든 수녀(?) 원령. 이쯤되면 무엇을 수확하려는 건지 명확해진다.",
+   "descEn": null,
+   "iconPath": "Icon_NP0809",
+   "resourcesId": "np0809_resources",
+   "voiceGroupId": "0",
+   "id": 200809,
+   "characterType": 2,
+   "nameKey": "character_name_np0809",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "approach": 1.45,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200809
+  },
+  "NP0810": {
+   "code": "NP0810",
+   "name": "상급 원령(퍼펫)",
+   "nameEn": "Advanced Aberrant Spirit (Puppet)",
+   "desc": "플러리 인형...을 조종하는 수녀(?) 원령. 솜이 다 터져서 더욱 불길한 느낌을 풍긴다.",
+   "descEn": null,
+   "iconPath": "Icon_NP0810",
+   "resourcesId": "np0810_resources",
+   "voiceGroupId": "0",
+   "id": 200810,
+   "characterType": 2,
+   "nameKey": "character_name_np0810",
+   "roleType": 3,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "approach": 9.0,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200810
+  },
+  "NP0811": {
+   "code": "NP0811",
+   "name": "상급 원령(복싱)",
+   "nameEn": "Advanced Aberrant Spirit (Boxing)",
+   "desc": "주먹질에 자신 있는 운동선수(?) 원령. 이젠 선수 짓도 끝이라 글러브를 벗어던진 건가?",
+   "descEn": null,
+   "iconPath": "Icon_NP0811",
+   "resourcesId": "np0811_resources",
+   "voiceGroupId": "0",
+   "id": 200811,
+   "characterType": 2,
+   "nameKey": "character_name_np0811",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 1,
+   "approach": 2.0,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200811
+  },
+  "NP0812": {
+   "code": "NP0812",
+   "name": "상급 원령(디스크)",
+   "nameEn": "Advanced Aberrant Spirit (Disc)",
+   "desc": "거대 디스크를 사용하는 운동선수(?) 원령. 어떤 세계의 대위를 따라 하는 걸까나?",
+   "descEn": null,
+   "iconPath": "Icon_NP0812",
+   "resourcesId": "np0812_resources",
+   "voiceGroupId": "0",
+   "id": 200812,
+   "characterType": 2,
+   "nameKey": "character_name_np0812",
+   "roleType": 2,
+   "divisionType": 0,
+   "factionType": 0,
+   "attributeType": 1,
+   "positionType": 3,
+   "approach": 7.1,
+   "hitRadius": 0.5,
+   "tribeType": 0,
+   "artist": null,
+   "artistEn": null,
+   "cv": null,
+   "cvEn": null,
+   "skillSetGroup": 200812
   },
   "NP6010": {
    "code": "NP6010",
@@ -46226,6 +47301,41 @@
     6890
    ]
   },
+  "75": {
+   "1": [
+    7510,
+    7520,
+    7530,
+    7590
+   ],
+   "2": [
+    7510,
+    7520,
+    7530,
+    7590
+   ],
+   "3": [
+    7500,
+    7510,
+    7520,
+    7530,
+    7590
+   ],
+   "4": [
+    7501,
+    7510,
+    7520,
+    7530,
+    7590
+   ],
+   "5": [
+    7502,
+    7510,
+    7520,
+    7530,
+    7590
+   ]
+  },
   "200101": {
    "1": [
     2001011
@@ -46754,6 +47864,75 @@
     2007993,
     2007994,
     2007995
+   ]
+  },
+  "200801": {
+   "1": [
+    2008011
+   ]
+  },
+  "200802": {
+   "1": [
+    2008021
+   ]
+  },
+  "200803": {
+   "1": [
+    2008031
+   ]
+  },
+  "200804": {
+   "1": [
+    2008040,
+    2008041,
+    2008042
+   ]
+  },
+  "200805": {
+   "1": [
+    2008051
+   ]
+  },
+  "200806": {
+   "1": [
+    2008061
+   ]
+  },
+  "200807": {
+   "1": [
+    2008071,
+    2008072
+   ]
+  },
+  "200808": {
+   "1": [
+    2008081,
+    2008082
+   ]
+  },
+  "200809": {
+   "1": [
+    2008091,
+    2008092
+   ]
+  },
+  "200810": {
+   "1": [
+    2008100,
+    2008101,
+    2008102
+   ]
+  },
+  "200811": {
+   "1": [
+    2008111,
+    2008112
+   ]
+  },
+  "200812": {
+   "1": [
+    2008121,
+    2008122
    ]
   },
   "206010": {
@@ -53665,12 +54844,12 @@
     "hits": [
      {
       "shape": "X_AXIS",
-      "range": 3.0,
+      "range": 5.0,
       "ticks": 1,
       "cycle": 0.0,
       "delay": 0.0,
       "offset": "FORWARD",
-      "offsetValue": 1.5,
+      "offsetValue": 2.5,
       "ops": [
        {
         "kind": "onetime",
@@ -53724,12 +54903,12 @@
        }
       ],
       "cast": {
-       "team": "ENEMY",
-       "range": "FRONT",
-       "rangeValue": 3.0,
-       "pick": "N_TARGET_SELECT",
-       "sort": "DISTANCE_LOWEST",
-       "count": 1
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 0
       },
       "count": 1
      }
@@ -67271,24 +68450,6 @@
        "count": 1
       },
       "count": 1
-     },
-     {
-      "shape": null,
-      "range": 5.0,
-      "ticks": 0,
-      "cycle": 0.0,
-      "delay": 0.0,
-      "lifetime": 5.1,
-      "ops": [],
-      "cast": {
-       "team": "ENEMY",
-       "range": "FRONT",
-       "rangeValue": 99.0,
-       "pick": "N_TARGET_SELECT",
-       "sort": "DISTANCE_LOWEST",
-       "count": 1
-      },
-      "count": 1
      }
     ]
    }
@@ -70272,7 +71433,7 @@
       "ticks": 10,
       "cycle": 0.08,
       "delay": 5.0,
-      "lifetime": 2.1,
+      "lifetime": 5.9,
       "attach": "ATTACH_TARGET",
       "ops": [
        {
@@ -99480,6 +100641,1674 @@
     ]
    }
   },
+  "7500": {
+   "name": "부정 흡수 I",
+   "nameEn": "Foul Absorption I",
+   "desc": [
+    "홍접(할로윈)의 치유력이 <color=#0094FF>20%</color> 증가합니다. 아군이 보유한 <color=#FF5179>해로운 효과</color>가 해제될 때마다 <color=#0C9F14>부정 정화</color> 효과를 1 중첩 획득합니다. 최대 중첩에 도달하면 <color=#0C9F14>부정 정화</color> 효과를 모두 제거하고 <color=#0C9F14>원령화</color> 효과를 얻습니다."
+   ],
+   "descEn": [
+    "Increases Kouchou (Halloween)'s Healing Power by <color=#0094FF>20%</color>. Gains 1 stack of ##Passive Buff Name## whenever a <color=#FF5179>debuff</color> on an ally is removed. (Max 5 stacks)"
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>부정 정화</color>",
+      "desc": "중첩 당 치유력 <color=#0094FF>5%</color> 증가 (최대 5 중첩) (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>원령화</color>",
+      "desc": "치유력 <color=#0094FF>25%</color> 증가 (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_01",
+   "openStar": 3,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "stats": [
+     {
+      "stat": "HEAL",
+      "scale": "HEAL_RATE",
+      "multiple": 0.2,
+      "condition": null,
+      "conditionValue": []
+     }
+    ],
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 5,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>부정 정화</color>",
+        "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+        "icon": "Icon_BattleBuff_Ch0075_Passive",
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          0.05,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "BUFF_HEAL_UP",
+        "scale": "HEAL_RATE",
+        "scaleOf": "HOLDER",
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_APPLY",
+      "check": "SELF",
+      "cooldown": 1.0,
+      "limit": 1,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>원령화</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0075_Passive",
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          0.25,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "BUFF_HEAL_UP",
+        "scale": "HEAL_RATE",
+        "scaleOf": "HOLDER",
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          5.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>부정 정화</color>",
+           "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+           "id": "define_trigger_ch0075_passive_stack"
+          }
+         ]
+        },
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "7501": {
+   "name": "부정 흡수 II",
+   "nameEn": "Foul Absorption II",
+   "desc": [
+    "홍접(할로윈)의 치유력이 <color=#0094FF>35%</color> 증가합니다. 아군이 보유한 <color=#FF5179>해로운 효과</color>가 해제될 때마다 <color=#0C9F14>부정 정화</color> 효과를 1 중첩 획득합니다. 최대 중첩에 도달하면 <color=#0C9F14>부정 정화</color> 효과를 모두 제거하고 <color=#0C9F14>원령화</color> 효과를 얻습니다."
+   ],
+   "descEn": [
+    "Increases Kouchou (Halloween)'s Healing Power by <color=#0094FF>35%</color>. Gains 1 stack of ##Passive Buff Name## whenever a <color=#FF5179>debuff</color> on an ally is removed. (Max 5 stacks)"
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>부정 정화</color>",
+      "desc": "중첩 당 치유력 <color=#0094FF>5%</color> 증가 (최대 5 중첩) (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>원령화</color>",
+      "desc": "치유력 <color=#0094FF>25%</color> 증가 (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_02",
+   "openStar": 4,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "stats": [
+     {
+      "stat": "HEAL",
+      "scale": "HEAL_RATE",
+      "multiple": 0.35,
+      "condition": null,
+      "conditionValue": []
+     }
+    ],
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 5,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>부정 정화</color>",
+        "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+        "icon": "Icon_BattleBuff_Ch0075_Passive",
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          0.05,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "BUFF_HEAL_UP",
+        "scale": "HEAL_RATE",
+        "scaleOf": "HOLDER",
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_APPLY",
+      "check": "SELF",
+      "cooldown": 1.0,
+      "limit": 1,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>원령화</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0075_Passive",
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          0.25,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "BUFF_HEAL_UP",
+        "scale": "HEAL_RATE",
+        "scaleOf": "HOLDER",
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          5.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>부정 정화</color>",
+           "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+           "id": "define_trigger_ch0075_passive_stack"
+          }
+         ]
+        },
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "7502": {
+   "name": "부정 흡수 III",
+   "nameEn": "Foul Absorption III",
+   "desc": [
+    "홍접(할로윈)의 치유력이 <color=#0094FF>50%</color> 증가합니다. 아군이 보유한 <color=#FF5179>해로운 효과</color>가 해제될 때마다 <color=#0C9F14>부정 정화</color> 효과를 1 중첩 획득합니다. 최대 중첩에 도달하면 <color=#0C9F14>부정 정화</color> 효과를 모두 제거하고 <color=#0C9F14>원령화</color> 효과를 얻습니다."
+   ],
+   "descEn": [
+    "Increases Kouchou (Halloween)'s Healing Power by <color=#0094FF>50%</color>. Gains 1 stack of ##Passive Buff Name## whenever a <color=#FF5179>debuff</color> on an ally is removed. (Max 5 stacks)"
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>부정 정화</color>",
+      "desc": "중첩 당 치유력 <color=#0094FF>5%</color> 증가 (최대 5 중첩) (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>원령화</color>",
+      "desc": "치유력 <color=#0094FF>25%</color> 증가 (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_Passive_03",
+   "openStar": 5,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "stats": [
+     {
+      "stat": "HEAL",
+      "scale": "HEAL_RATE",
+      "multiple": 0.5,
+      "condition": null,
+      "conditionValue": []
+     }
+    ],
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_DURATION_CATEGORIZE_DISPEL",
+      "check": "FRIENDLY",
+      "cooldown": 0.0,
+      "limit": 5,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>부정 정화</color>",
+        "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+        "icon": "Icon_BattleBuff_Ch0075_Passive",
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          0.05,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "BUFF_HEAL_UP",
+        "scale": "HEAL_RATE",
+        "scaleOf": "HOLDER",
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     },
+     {
+      "on": "TRIGGER_TYPE_DURATION_DEFINE_APPLY",
+      "check": "SELF",
+      "cooldown": 1.0,
+      "limit": 1,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>원령화</color>",
+        "nameEn": null,
+        "icon": "Icon_BattleBuff_Ch0075_Passive",
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          0.25,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "op": "BUFF_HEAL_UP",
+        "scale": "HEAL_RATE",
+        "scaleOf": "HOLDER",
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          5.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": "<color=#0C9F14>부정 정화</color>",
+           "nameEn": "<color=#0C9F14>Drunken Immortal</color>",
+           "id": "define_trigger_ch0075_passive_stack"
+          }
+         ]
+        },
+        "team": "SELF",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "7510": {
+   "name": "나비춤",
+   "nameEn": "Butterfly Dance",
+   "desc": [
+    "전방의 가장 먼 적을 향해 투사체를 발사하여 경로상의 적들에게 매 타격마다 공격력의 <color=#0094FF>30%</color> 만큼 피해를 입힙니다."
+   ],
+   "descEn": [
+    "Fires a projectile toward the furthest enemy, dealing DMG equal to <color=#0094FF>30%</color> of Attack Power to enemies in its path."
+   ],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 1,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "CIRCLE",
+      "range": 1.25,
+      "ticks": 0,
+      "cycle": 0.12,
+      "delay": 0.0,
+      "lifetime": 2.5,
+      "attach": "ATTACH_DISPATCHER",
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          0.3,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_HIGHEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "7520": {
+   "name": "환몽접",
+   "nameEn": "Dream Butterfly",
+   "desc": [
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>200%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>208%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>216%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>232%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>240%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>248%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>264%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>272%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>280%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다.",
+    "전방의 적 중 공격력이 가장 높은 적 1명에게 공격력의 <color=#0094FF>296%</color> 만큼 피해를 입히고, <color=#B147FF>구속</color> 상태로 만듭니다."
+   ],
+   "descEn": [
+    "Deals DMG equal to <color=#0094FF>200%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>208%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>216%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>232%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>240%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>248%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>264%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>272%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>280%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state.",
+    "Deals DMG equal to <color=#0094FF>296%</color> of Attack Power to 1 enemy with the highest Attack Power and inflicts the <color=#B147FF>Shackle</color> state."
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>3.4</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 3.4,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>3.4</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>3.8</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 3.8,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>3.8</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>4.2</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 4.2,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>4.2</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>4.6</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 4.6,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>4.6</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>5</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 5.0,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>5</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>5.4</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 5.4,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>5.4</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>5.8</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 5.8,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>5.8</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>6.2</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 6.2,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>6.2</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>6.6</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 6.6,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>6.6</color>s."
+     }
+    ],
+    [
+     {
+      "name": "<color=#B147FF>구속</color>",
+      "desc": "<color=#0094FF>7</color>초 동안 넉백 시킬 수 없는 행동 불능 상태로 만듭니다.",
+      "icon": "Icon_cc_Bind",
+      "categorize": 3,
+      "seconds": 7.0,
+      "maxStack": 1,
+      "dispellable": true,
+      "nameEn": "<color=#B147FF>Shackle</color>",
+      "descEn": "Inflicts an incapacitated state that cannot be knocked back for <color=#0094FF>7</color>s."
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_01",
+   "openStar": 1,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.08,
+          0.0
+         ],
+         "extra": [
+          0.08,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#B147FF>구속</color>",
+        "nameEn": "<color=#B147FF>Shackle</color>",
+        "icon": "Icon_cc_Bind",
+        "categorize": 3,
+        "dispellable": true,
+        "seconds": {
+         "base": [
+          3.4
+         ],
+         "up": [
+          0.4
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 1,
+        "op": "CC_BIND",
+        "scale": null,
+        "scaleOf": null,
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#B147FF>구속</color>",
+        "nameEn": "<color=#B147FF>Shackle</color>",
+        "icon": "Icon_cc_Bind",
+        "categorize": 3,
+        "dispellable": true,
+        "seconds": {
+         "base": [
+          3.4
+         ],
+         "up": [
+          0.4
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 1,
+        "op": "IMMUNE_ONETIME_CATEGORIZE_TYPE",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "instantCategory",
+         "values": [
+          {
+           "name": "MOVE_CONTROL",
+           "nameEn": null,
+           "id": "3"
+          }
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "PHY_ATK_HIGHEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "7530": {
+   "name": "백화요란",
+   "nameEn": "Blooming Flowers",
+   "desc": [
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>33%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>37%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>41%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>49%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>53%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>57%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>65%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>69%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>73%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다.",
+    "자신 전방 범위 내 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 이후 일정 시간 동안 자신 전방 범위 내 아군의 체력을 1초마다 치유력의 <color=#0094FF>81%</color> 만큼 회복시키고, 대상이 보유한 <color=#FF5179>해로운 효과</color>를 해제합니다.<br>시전자가 <color=#B147FF>군중 제어 효과</color>를 받거나 <color=#0094FF>전투 불능</color>, <color=#0094FF>버스트 사용</color> 시 생성된 영역이 사라집니다."
+   ],
+   "descEn": [
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>33%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>37%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>41%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>49%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>53%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>57%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>65%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>69%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>73%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them.",
+    "Applies the <color=#0C9F14>Attack Power Increase</color> effect to allies within range. Afterwards, for a set period, restores the HP of allies within range in front of self by for <color=#0094FF>81%</color> of Healing Power every second and removes <color=#FF5179>debuffs</color> from them."
+   ],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>8</color>초 동안 버프 시전자 공격력의 <color=#0094FF>31%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 8.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>8.25</color>초 동안 버프 시전자 공격력의 <color=#0094FF>31.6667%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 8.25,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>8.5</color>초 동안 버프 시전자 공격력의 <color=#0094FF>32.3334%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 8.5,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>9</color>초 동안 버프 시전자 공격력의 <color=#0094FF>34.3334%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 9.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>9.25</color>초 동안 버프 시전자 공격력의 <color=#0094FF>35.0001%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 9.25,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>9.5</color>초 동안 버프 시전자 공격력의 <color=#0094FF>35.6668%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 9.5,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>10</color>초 동안 버프 시전자 공격력의 <color=#0094FF>37.6668%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 10.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>10.25</color>초 동안 버프 시전자 공격력의 <color=#0094FF>38.3335%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 10.25,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>10.5</color>초 동안 버프 시전자 공격력의 <color=#0094FF>39.0002%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 10.5,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>11</color>초 동안 버프 시전자 공격력의 <color=#0094FF>41.0002%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 11.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     }
+    ]
+   ],
+   "icon": "Icon_Skill_02",
+   "openStar": 1,
+   "categorize": 2,
+   "skillType": 3,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 10.0,
+      "ticks": 0,
+      "cycle": 1.0,
+      "delay": 0.0,
+      "offset": "FORWARD",
+      "offsetValue": 7.0,
+      "fieldCenter": true,
+      "lifetime": 8.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_HEAL",
+        "applyTo": "HOLDER",
+        "scale": "HEAL_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          0.33,
+          0.0
+         ],
+         "up": [
+          0.04,
+          0.0
+         ],
+         "extra": [
+          0.04,
+          0.0
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_CATEGORIZE_TYPE",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "durationCategory",
+         "values": [
+          {
+           "name": "CATEGORIZE_DEBUFF",
+           "nameEn": null,
+           "id": "2"
+          },
+          {
+           "name": "CATEGORIZE_CC",
+           "nameEn": null,
+           "id": "3"
+          }
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 1
+      },
+      "count": 1
+     },
+     {
+      "shape": "X_AXIS",
+      "range": 10.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "offset": "FORWARD",
+      "offsetValue": 7.0,
+      "fieldCenter": true,
+      "lifetime": 8.0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>공격력 증가</color>",
+        "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+        "icon": "Icon_BattleBuff_Attack",
+        "categorize": 1,
+        "dispellable": true,
+        "value": {
+         "base": [
+          0.31,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.006667,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.013333,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          8.0
+         ],
+         "up": [
+          0.25
+         ],
+         "extra": [
+          0.25
+         ]
+        },
+        "maxStack": 99,
+        "op": "BUFF_PHYSICS_ATTACK_UP",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "7590": {
+   "name": "몽환의 결계",
+   "nameEn": "Dream Barrier",
+   "desc": [
+    "모든 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 자신이 <color=#0C9F14>원령화</color> 상태라면, 추가로 <color=#0094FF>해로운 효과 면역</color>을 부여합니다.",
+    "모든 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 자신이 <color=#0C9F14>원령화</color> 상태라면, 추가로 <color=#0094FF>해로운 효과 면역</color>을 부여합니다.",
+    "모든 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 자신이 <color=#0C9F14>원령화</color> 상태라면, 추가로 <color=#0094FF>해로운 효과 면역</color>을 부여합니다.",
+    "모든 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 자신이 <color=#0C9F14>원령화</color> 상태라면, 추가로 <color=#0094FF>해로운 효과 면역</color>을 부여합니다.",
+    "모든 아군에게 <color=#0C9F14>공격력 증가</color> 효과를 부여합니다. 자신이 <color=#0C9F14>원령화</color> 상태라면, 추가로 <color=#0094FF>해로운 효과 면역</color>을 부여합니다."
+   ],
+   "descEn": [],
+   "buffs": [
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>11</color>초 동안 버프 시전자 공격력의 <color=#0094FF>30%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 11.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>원령화</color>",
+      "desc": "치유력 <color=#0094FF>25%</color> 증가 (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>12</color>초 동안 버프 시전자 공격력의 <color=#0094FF>31%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 12.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>원령화</color>",
+      "desc": "치유력 <color=#0094FF>25%</color> 증가 (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>13</color>초 동안 버프 시전자 공격력의 <color=#0094FF>33%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 13.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>원령화</color>",
+      "desc": "치유력 <color=#0094FF>25%</color> 증가 (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>14</color>초 동안 버프 시전자 공격력의 <color=#0094FF>34%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 14.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>원령화</color>",
+      "desc": "치유력 <color=#0094FF>25%</color> 증가 (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ],
+    [
+     {
+      "name": "<color=#0C9F14>공격력 증가</color>",
+      "desc": "<color=#0094FF>15</color>초 동안 버프 시전자 공격력의 <color=#0094FF>36%</color> 만큼 공격력 증가 (최대 1 중첩)",
+      "icon": "Icon_BattleBuff_Attack",
+      "categorize": 1,
+      "seconds": 15.0,
+      "maxStack": 99,
+      "dispellable": true,
+      "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+      "descEn": null
+     },
+     {
+      "name": "<color=#0C9F14>원령화</color>",
+      "desc": "치유력 <color=#0094FF>25%</color> 증가 (해제 불가)",
+      "icon": "Icon_BattleBuff_Ch0075_Passive",
+      "categorize": 0,
+      "seconds": 99999.0,
+      "maxStack": 0,
+      "dispellable": false,
+      "nameEn": null,
+      "descEn": null
+     }
+    ]
+   ],
+   "icon": "Icon_Ultimate_CH0075",
+   "openStar": 1,
+   "categorize": 3,
+   "skillType": 12,
+   "maxLevel": 5,
+   "levelable": true,
+   "levelPeriod": 2,
+   "behaviour": {
+    "attack": true,
+    "fever": 5,
+    "hits": [
+     {
+      "shape": "GLOBAL",
+      "range": 0.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#0C9F14>공격력 증가</color>",
+        "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+        "icon": "Icon_BattleBuff_Attack",
+        "categorize": 1,
+        "dispellable": true,
+        "value": {
+         "base": [
+          0.3,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.01,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.01,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          11.0
+         ],
+         "up": [
+          1.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 99,
+        "op": "BUFF_PHYSICS_ATTACK_UP",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   },
+   "variant": {
+    "when": {
+     "check": "SELF",
+     "type": "CHECK_DURATION_DEFINE",
+     "define": "define_trigger_ch0075_passive_fullstack",
+     "name": "<color=#0C9F14>원령화</color>",
+     "nameEn": null,
+     "value": 1,
+     "op": "COMPARISON_EQUAL_TO"
+    },
+    "action": "00_ulti_change",
+    "behaviour": {
+     "attack": true,
+     "fever": 5,
+     "hits": [
+      {
+       "shape": "GLOBAL",
+       "range": 0.0,
+       "ticks": 1,
+       "cycle": 0.0,
+       "delay": 0.0,
+       "ops": [
+        {
+         "kind": "duration",
+         "applyTo": "HOLDER",
+         "nameEn": null,
+         "icon": "Icon_BattleBuff_Immune_All",
+         "categorize": 1,
+         "dispellable": false,
+         "seconds": {
+          "base": [
+           11.0
+          ],
+          "up": [
+           1.0
+          ],
+          "extra": [
+           0.0
+          ]
+         },
+         "op": "IMMUNE_DURATION_CATEGORIZE_TYPE",
+         "scale": null,
+         "scaleOf": null,
+         "detail": {
+          "kind": "durationCategory",
+          "values": [
+           {
+            "name": "CATEGORIZE_CC",
+            "nameEn": null,
+            "id": "3"
+           }
+          ]
+         },
+         "team": "FRIENDLY",
+         "pick": "ALL",
+         "sort": null,
+         "count": 0
+        },
+        {
+         "kind": "duration",
+         "applyTo": "HOLDER",
+         "nameEn": null,
+         "icon": "Icon_BattleBuff_Immune_All",
+         "categorize": 1,
+         "dispellable": false,
+         "seconds": {
+          "base": [
+           11.0
+          ],
+          "up": [
+           1.0
+          ],
+          "extra": [
+           0.0
+          ]
+         },
+         "op": "IMMUNE_ONETIME_CATEGORIZE_TYPE",
+         "scale": null,
+         "scaleOf": null,
+         "detail": {
+          "kind": "instantCategory",
+          "values": [
+           {
+            "name": "MOVE_CONTROL",
+            "nameEn": null,
+            "id": "3"
+           }
+          ]
+         },
+         "team": "FRIENDLY",
+         "pick": "ALL",
+         "sort": null,
+         "count": 0
+        },
+        {
+         "kind": "duration",
+         "applyTo": "HOLDER",
+         "nameEn": null,
+         "icon": "Icon_BattleBuff_Immune_All",
+         "categorize": 1,
+         "dispellable": false,
+         "seconds": {
+          "base": [
+           11.0
+          ],
+          "up": [
+           1.0
+          ],
+          "extra": [
+           0.0
+          ]
+         },
+         "op": "IMMUNE_DURATION_CATEGORIZE_TYPE",
+         "scale": null,
+         "scaleOf": null,
+         "detail": {
+          "kind": "durationCategory",
+          "values": [
+           {
+            "name": "CATEGORIZE_DEBUFF",
+            "nameEn": null,
+            "id": "2"
+           }
+          ]
+         },
+         "team": "FRIENDLY",
+         "pick": "ALL",
+         "sort": null,
+         "count": 0
+        }
+       ],
+       "cast": {
+        "team": "SELF",
+        "range": null,
+        "rangeValue": 0.0,
+        "pick": null,
+        "sort": null,
+        "count": 1
+       },
+       "count": 1
+      },
+      {
+       "shape": "GLOBAL",
+       "range": 0.0,
+       "ticks": 1,
+       "cycle": 0.0,
+       "delay": 0.0,
+       "ops": [
+        {
+         "kind": "duration",
+         "applyTo": "HOLDER",
+         "name": "<color=#0C9F14>공격력 증가</color>",
+         "nameEn": "<color=#0C9F14>Attack Power Increase</color>",
+         "icon": "Icon_BattleBuff_Attack",
+         "categorize": 1,
+         "dispellable": true,
+         "value": {
+          "base": [
+           0.3,
+           0.0,
+           0.0
+          ],
+          "up": [
+           0.01,
+           0.0,
+           0.0
+          ],
+          "extra": [
+           0.01,
+           0.0,
+           0.0
+          ]
+         },
+         "seconds": {
+          "base": [
+           11.0
+          ],
+          "up": [
+           1.0
+          ],
+          "extra": [
+           0.0
+          ]
+         },
+         "maxStack": 99,
+         "op": "BUFF_PHYSICS_ATTACK_UP",
+         "scale": "PHYSICAL_ATTACK_RATE",
+         "scaleOf": "CASTER",
+         "team": "FRIENDLY",
+         "pick": "ALL",
+         "sort": null,
+         "count": 0
+        }
+       ],
+       "cast": {
+        "team": "SELF",
+        "range": null,
+        "rangeValue": 0.0,
+        "pick": null,
+        "sort": null,
+        "count": 1
+       },
+       "count": 1
+      }
+     ]
+    }
+   }
+  },
   "210031": {
    "name": "소 환",
    "nameEn": "Summon",
@@ -118933,7 +121762,7 @@
       "range": 1.0,
       "ticks": 1,
       "cycle": 0.0,
-      "delay": 0.0,
+      "delay": 0.25,
       "ops": [
        {
         "kind": "onetime",
@@ -119680,7 +122509,7 @@
       "range": 1.0,
       "ticks": 1,
       "cycle": 0.0,
-      "delay": 0.0,
+      "delay": 0.3,
       "ops": [
        {
         "kind": "onetime",
@@ -119764,8 +122593,8 @@
       "range": 2.0,
       "ticks": 0,
       "cycle": 0.2,
-      "delay": 0.0,
-      "lifetime": 1.2,
+      "delay": 0.4,
+      "lifetime": 1.6,
       "attach": "ATTACH_DISPATCHER",
       "ops": [
        {
@@ -121317,6 +124146,2796 @@
     ]
    }
   },
+  "2008011": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 2.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 3.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   },
+   "variant": {
+    "when": {
+     "check": "SELF",
+     "type": "CHECK_DURATION_DEFINE",
+     "define": "define_np0801_puppet_buff",
+     "name": null,
+     "nameEn": null,
+     "value": 1,
+     "op": "COMPARISON_EQUAL_TO"
+    },
+    "action": "00_common_change",
+    "behaviour": {
+     "attack": true,
+     "hits": [
+      {
+       "shape": "X_AXIS",
+       "range": 2.0,
+       "ticks": 1,
+       "cycle": 0.0,
+       "delay": 0.0,
+       "ops": [
+        {
+         "kind": "onetime",
+         "op": "ADD_FORCE_CRITICAL_DAMAGE",
+         "applyTo": "HOLDER",
+         "scale": "PHYSICAL_ATTACK_RATE",
+         "scaleOf": "CASTER",
+         "value": {
+          "base": [
+           2.5,
+           1.0
+          ],
+          "up": [
+           0.0,
+           0.0
+          ],
+          "extra": [
+           0.0,
+           0.0
+          ]
+         },
+         "team": "ENEMY",
+         "pick": "ALL",
+         "sort": null,
+         "count": 0
+        }
+       ],
+       "cast": {
+        "team": "ENEMY",
+        "range": "FRONT",
+        "rangeValue": 3.0,
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       },
+       "count": 1
+      }
+     ]
+    }
+   }
+  },
+  "2008021": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 1
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008031": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 2.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 3.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008040": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_SUMMON_AFTER",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 1,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200801"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200802"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          1.0,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200803"
+          }
+         ]
+        },
+        "op": "BUFF_PHYSICS_ATTACK_UP",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "HOLDER",
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          0.5,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200804"
+          }
+         ]
+        },
+        "op": "BUFF_PHYSICS_DEFEND_UP",
+        "scale": "PHYSICAL_DEFENSE_RATE",
+        "scaleOf": "HOLDER",
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          100.0,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200805"
+          }
+         ]
+        },
+        "op": "BUFF_EVASION_UP",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200806"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200807"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200808"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200809"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200810"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200811"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200812"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "2008041": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 2.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008042": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "moves": [
+     "SPAWN_SUMMON_REPLACE"
+    ],
+    "moveTargets": [
+     {
+      "type": "SPAWN_SUMMON_REPLACE",
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 0
+      }
+     }
+    ]
+   }
+  },
+  "2008051": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 0,
+      "cycle": 0.45,
+      "delay": 0.0,
+      "lifetime": 0.5,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 3.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008061": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          4.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#B147FF>기절</color>",
+        "nameEn": "<color=#B147FF>Stun</color>",
+        "icon": "Icon_cc_Stun",
+        "categorize": 3,
+        "dispellable": true,
+        "seconds": {
+         "base": [
+          0.5
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 1,
+        "gate": {
+         "condition": "HAS_DURATIONS",
+         "on": "CASTER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0806_puppet_buff"
+          }
+         ]
+        },
+        "op": "CC_STUN",
+        "scale": null,
+        "scaleOf": null,
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008071": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.5,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 5.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008072": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 3.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 5.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 6
+     }
+    ]
+   }
+  },
+  "2008081": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 1
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008082": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "CIRCLE",
+      "range": 3.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "onetime",
+        "op": "CC_KNOCKBACK",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "value": {
+         "base": [
+          1.0,
+          1.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 0
+      },
+      "count": 1
+     },
+     {
+      "shape": "CIRCLE",
+      "range": 3.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 0
+      },
+      "count": 5
+     }
+    ],
+    "moves": [
+     "MOVE_TO_TARGET"
+    ],
+    "moveTargets": [
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_HIGHEST",
+       "count": 1
+      },
+      "offset": 1.9,
+      "seconds": 1.59,
+      "lookAtTarget": true
+     }
+    ]
+   }
+  },
+  "2008091": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 2.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 5.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008092": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "CIRCLE",
+      "range": 4.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "attach": "ATTACH_TARGET",
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 0
+      },
+      "count": 14
+     }
+    ],
+    "moves": [
+     "MOVE_TO_TARGET"
+    ],
+    "moveTargets": [
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": 2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": -2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": 2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": -2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": 2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": -2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": 2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": -2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": 2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": -2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": 2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": -2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": 2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     },
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "offset": 2.0,
+      "seconds": 0.08,
+      "lookAtTarget": true
+     }
+    ]
+   }
+  },
+  "2008100": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_SUMMON_AFTER",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 1,
+      "ops": [
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200801"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200802"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          1.0,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200803"
+          }
+         ]
+        },
+        "op": "BUFF_PHYSICS_ATTACK_UP",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "HOLDER",
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          0.5,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200804"
+          }
+         ]
+        },
+        "op": "BUFF_PHYSICS_DEFEND_UP",
+        "scale": "PHYSICAL_DEFENSE_RATE",
+        "scaleOf": "HOLDER",
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "value": {
+         "base": [
+          100.0,
+          0.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0,
+          0.0
+         ]
+        },
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200805"
+          }
+         ]
+        },
+        "op": "BUFF_EVASION_UP",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200806"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200807"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200808"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200809"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200810"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200811"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "nameEn": null,
+        "categorize": 0,
+        "dispellable": false,
+        "seconds": {
+         "base": [
+          99999.0
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "gate": {
+         "condition": "CONDITION_CHECK_CHARACTER_ID",
+         "on": "HOLDER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "200812"
+          }
+         ]
+        },
+        "op": "MARKER",
+        "scale": null,
+        "scaleOf": null,
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "2008101": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true
+   }
+  },
+  "2008102": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "moves": [
+     "SPAWN_SUMMON_REPLACE"
+    ],
+    "moveTargets": [
+     {
+      "type": "SPAWN_SUMMON_REPLACE",
+      "cast": {
+       "team": "SELF",
+       "range": null,
+       "rangeValue": 0.0,
+       "pick": null,
+       "sort": null,
+       "count": 0
+      }
+     }
+    ]
+   }
+  },
+  "2008111": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 3.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 3
+     }
+    ]
+   }
+  },
+  "2008112": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 0,
+      "cycle": 0.16,
+      "delay": 0.0,
+      "lifetime": 3.3,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 3.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ],
+    "moves": [
+     "MOVE_TO_TARGET"
+    ],
+    "moveTargets": [
+     {
+      "type": "MOVE_TO_TARGET",
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "offset": -2.0,
+      "seconds": 0.05,
+      "lookAtTarget": true
+     }
+    ]
+   }
+  },
+  "2008121": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#B147FF>기절</color>",
+        "nameEn": "<color=#B147FF>Stun</color>",
+        "icon": "Icon_cc_Stun",
+        "categorize": 3,
+        "dispellable": true,
+        "seconds": {
+         "base": [
+          0.5
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 1,
+        "gate": {
+         "condition": "HAS_DURATIONS",
+         "on": "CASTER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0812_puppet_buff"
+          }
+         ]
+        },
+        "op": "CC_STUN",
+        "scale": null,
+        "scaleOf": null,
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "2008122": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       },
+       {
+        "kind": "duration",
+        "applyTo": "HOLDER",
+        "name": "<color=#B147FF>기절</color>",
+        "nameEn": "<color=#B147FF>Stun</color>",
+        "icon": "Icon_cc_Stun",
+        "categorize": 3,
+        "dispellable": true,
+        "seconds": {
+         "base": [
+          0.5
+         ],
+         "up": [
+          0.0
+         ],
+         "extra": [
+          0.0
+         ]
+        },
+        "maxStack": 1,
+        "gate": {
+         "condition": "HAS_DURATIONS",
+         "on": "CASTER",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0812_puppet_buff"
+          }
+         ]
+        },
+        "op": "CC_STUN",
+        "scale": null,
+        "scaleOf": null,
+        "team": "ENEMY",
+        "pick": "N_TARGET_SELECT",
+        "sort": "DISTANCE_LOWEST",
+        "count": 1
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
   "2060100": {
    "name": "일반 공격",
    "nameEn": "Basic Attack",
@@ -121501,7 +127120,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -121619,7 +127238,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.0,
           0.0
          ]
         },
@@ -121703,7 +127322,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -121746,7 +127365,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -121789,7 +127408,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -121875,7 +127494,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -122027,7 +127646,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.8,
           0.0
          ]
         },
@@ -122072,7 +127691,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -122117,7 +127736,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -122162,7 +127781,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -122316,7 +127935,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -122361,7 +127980,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -122406,7 +128025,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -122451,7 +128070,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -122496,7 +128115,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -122580,7 +128199,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.2,
           0.0
          ]
         },
@@ -122661,7 +128280,7 @@
           {
            "name": null,
            "nameEn": null,
-           "id": "define_trigger_skill01_np6012"
+           "id": "define_trigger_skill03_np6012"
           },
           {
            "name": null,
@@ -122694,7 +128313,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.2,
           0.0
          ]
         },
@@ -122825,7 +128444,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          -0.05,
           0.0
          ]
         },
@@ -123134,7 +128753,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -123252,7 +128871,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.0,
           0.0
          ]
         },
@@ -123336,7 +128955,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -123379,7 +128998,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -123422,7 +129041,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -123508,7 +129127,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.4,
           0.0
          ]
         },
@@ -123660,7 +129279,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.8,
           0.0
          ]
         },
@@ -123705,7 +129324,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -123750,7 +129369,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -123795,7 +129414,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -123949,7 +129568,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -123994,7 +129613,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -124039,7 +129658,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -124084,7 +129703,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -124129,7 +129748,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -124213,7 +129832,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.2,
           0.0
          ]
         },
@@ -124294,7 +129913,7 @@
           {
            "name": null,
            "nameEn": null,
-           "id": "define_trigger_skill01_np6012"
+           "id": "define_trigger_skill03_np6012"
           },
           {
            "name": null,
@@ -124327,7 +129946,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.2,
           0.0
          ]
         },
@@ -124458,7 +130077,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          -0.05,
           0.0
          ]
         },
@@ -124767,7 +130386,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.2,
           0.0
          ]
         },
@@ -124887,7 +130506,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.3,
           0.0
          ]
         },
@@ -124933,7 +130552,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.3,
           0.0
          ]
         },
@@ -124979,7 +130598,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.3,
           0.0
          ]
         },
@@ -125065,7 +130684,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.6,
           0.0
          ]
         },
@@ -125110,7 +130729,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.6,
           0.0
          ]
         },
@@ -125155,7 +130774,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.6,
           0.0
          ]
         },
@@ -125200,7 +130819,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.6,
           0.0
          ]
         },
@@ -125370,7 +130989,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.0,
           0.0
          ]
         },
@@ -125511,7 +131130,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.0,
           0.0
          ]
         },
@@ -125693,7 +131312,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.0,
           0.0
          ]
         },
@@ -125834,7 +131453,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.0,
           0.0
          ]
         },
@@ -126014,7 +131633,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.1,
           0.0
          ]
         },
@@ -126254,7 +131873,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.3,
           0.0
          ]
         },
@@ -127642,7 +133261,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          5.7,
           0.0
          ]
         },
@@ -127678,7 +133297,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          9.5,
           0.0
          ]
         },
@@ -127732,7 +133351,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          5.7,
           0.0
          ]
         },
@@ -127768,7 +133387,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          9.5,
           0.0
          ]
         },
@@ -127822,7 +133441,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          5.7,
           0.0
          ]
         },
@@ -127858,7 +133477,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          9.5,
           0.0
          ]
         },
@@ -127953,7 +133572,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.1,
           0.0
          ]
         },
@@ -127995,7 +133614,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.4,
           0.0
          ]
         },
@@ -128149,7 +133768,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.0,
           0.0
          ]
         },
@@ -128185,7 +133804,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.15,
           0.0
          ]
         },
@@ -128563,7 +134182,7 @@
       "ticks": 10,
       "cycle": 0.17,
       "delay": 0.0,
-      "lifetime": 1.4,
+      "lifetime": 1.7,
       "ops": [
        {
         "kind": "onetime",
@@ -128629,7 +134248,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          1.95,
           0.0
          ]
         },
@@ -128679,7 +134298,7 @@
       "cycle": 0.0,
       "delay": 0.0,
       "offset": "FORWARD",
-      "offsetValue": -4.0,
+      "offsetValue": 4.0,
       "offsetZ": 2.0,
       "ops": [
        {
@@ -128698,7 +134317,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -128734,7 +134353,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -128772,7 +134391,7 @@
       "cycle": 0.0,
       "delay": 0.0,
       "offset": "FORWARD",
-      "offsetValue": -2.0,
+      "offsetValue": 2.0,
       "offsetZ": -2.0,
       "ops": [
        {
@@ -128791,7 +134410,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -128827,7 +134446,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -128884,7 +134503,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -128920,7 +134539,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -128977,7 +134596,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -129013,7 +134632,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -129070,7 +134689,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -129106,7 +134725,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -129163,7 +134782,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -129199,7 +134818,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -129256,7 +134875,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -129292,7 +134911,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -129349,7 +134968,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -129385,7 +135004,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -129442,7 +135061,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -129478,7 +135097,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -129535,7 +135154,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -129571,7 +135190,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -129628,7 +135247,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.25,
           0.0
          ]
         },
@@ -129664,7 +135283,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          3.95,
           0.0
          ]
         },
@@ -129850,7 +135469,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.35,
           0.0
          ]
         },
@@ -129886,7 +135505,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          10.0,
           0.0
          ]
         },
@@ -130295,7 +135914,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          8.5,
           0.0
          ]
         },
@@ -130331,7 +135950,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          5.25,
           0.0
          ]
         },
@@ -130404,7 +136023,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -130440,7 +136059,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -130497,7 +136116,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -130533,7 +136152,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -130590,7 +136209,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -130626,7 +136245,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -130683,7 +136302,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -130719,7 +136338,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -130776,7 +136395,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -130812,7 +136431,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -130869,7 +136488,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -130905,7 +136524,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -130962,7 +136581,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -130998,7 +136617,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -131055,7 +136674,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -131091,7 +136710,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -131148,7 +136767,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -131184,7 +136803,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -131241,7 +136860,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           15.0,
            0.0
           ]
          },
@@ -131277,7 +136896,7 @@
            0.0
           ],
           "extra": [
-           0.0,
+           7.5,
            0.0
           ]
          },
@@ -131418,7 +137037,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          2.5,
           0.0
          ]
         },
@@ -131454,7 +137073,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.9475,
           0.0
          ]
         },
@@ -131549,7 +137168,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          11.8,
           0.0
          ]
         },
@@ -131585,7 +137204,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          6.05,
           0.0
          ]
         },
@@ -131707,7 +137326,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          5.8,
           0.0
          ]
         },
@@ -131743,7 +137362,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          2.55,
           0.0
          ]
         },
@@ -131869,7 +137488,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.85,
           0.0
          ]
         },
@@ -131905,7 +137524,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          0.31,
           0.0
          ]
         },
@@ -132094,7 +137713,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132130,7 +137749,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132187,7 +137806,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132223,7 +137842,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132280,7 +137899,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132316,7 +137935,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132373,7 +137992,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132409,7 +138028,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132466,7 +138085,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132502,7 +138121,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132559,7 +138178,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132595,7 +138214,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132652,7 +138271,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132688,7 +138307,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132745,7 +138364,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132781,7 +138400,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132838,7 +138457,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132874,7 +138493,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
@@ -132931,7 +138550,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          15.0,
           0.0
          ]
         },
@@ -132967,7 +138586,7 @@
           0.0
          ],
          "extra": [
-          0.0,
+          7.5,
           0.0
          ]
         },
