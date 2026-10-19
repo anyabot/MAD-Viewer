@@ -306,6 +306,36 @@ export function CostTag({ cost, refs, icons, n }: {
   );
 }
 
+export function AttendancePanel({ attendance, refs, icons, gameLang }: {
+  attendance: NonNullable<GameEvent['attendance']>; refs: EventIndex['refs'];
+  icons: IconManifest | null; gameLang: GameLang;
+}) {
+  const t = useT();
+  return (
+    <VStack align="stretch" spacing={4}>
+      {attendance.map((sheet, i) => (
+        <Box key={i}>
+          <Text fontSize="lg" fontWeight="bold" mb={3}>{t('eventsAttendance')}</Text>
+          <Wrap spacing={2}>
+            {sheet.days.map((d) => (
+              <WrapItem key={d.day}>
+                <VStack spacing={1} minW="64px" p={1.5} borderRadius="md" bg="whiteAlpha.50">
+                  <Text fontSize="2xs" color="gray.400">{t('eventsDay', { n: d.day })}</Text>
+                  <HStack spacing={0.5}>
+                    {d.rewards.map((r, k) => (
+                      <RewardSlot key={k} reward={r} refs={refs} icons={icons} gameLang={gameLang} />
+                    ))}
+                  </HStack>
+                </VStack>
+              </WrapItem>
+            ))}
+          </Wrap>
+        </Box>
+      ))}
+    </VStack>
+  );
+}
+
 export function ExchangePanel({ exchange, refs, icons, gameLang }: {
   exchange: EventExchange[]; refs: EventIndex['refs']; icons: IconManifest | null;
   gameLang: GameLang;
@@ -346,6 +376,25 @@ export function ExchangePanel({ exchange, refs, icons, gameLang }: {
               <Text fontSize="xs" color="gray.500">{t('eventsBoxMax', { n: ex.maxDraws })}</Text>
             )}
           </HStack>
+          {ex.milestones && (
+            <Box mb={4}>
+              <Text fontSize="sm" fontWeight="bold" mb={2}>{t('eventsMilestones')}</Text>
+              <Wrap spacing={2}>
+                {ex.milestones.map((m) => (
+                  <WrapItem key={m.draws}>
+                    <VStack spacing={0.5} p={1.5} borderRadius="md" bg="whiteAlpha.50">
+                      <HStack spacing={0.5}>
+                        {m.rewards.map((r, k) => (
+                          <RewardSlot key={k} reward={r} refs={refs} icons={icons} gameLang={gameLang} />
+                        ))}
+                      </HStack>
+                      <Text fontSize="2xs" color="gray.500">{t('eventsAtDraws', { n: m.draws })}</Text>
+                    </VStack>
+                  </WrapItem>
+                ))}
+              </Wrap>
+            </Box>
+          )}
           <VStack align="stretch" spacing={4}>
             {ex.rounds.map((round) => {
               const draws = round.items.reduce((sum, item) => sum + item.count, 0);

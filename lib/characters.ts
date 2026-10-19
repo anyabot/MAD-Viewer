@@ -4,7 +4,7 @@ import type { Lang, Localized } from '@/lib/i18n';
 import type {
   CharacterData, CharacterEntry, EquipmentEntry, EquipmentTier, InfusionNode, InfusionPath,
   ItemEntry, PlaceEntry,
-  SkillDetail, SkillEntry, SkillGate, SkillHit, SkillMagnitude, SkillOp, SkillStat,
+  SkillDetail, SkillEntry, SkillGate, SkillVariant, SkillHit, SkillMagnitude, SkillMoveTarget, SkillOp, SkillStat,
   SkinListEntry, TypeEntry,
 } from '@/lib/data';
 
@@ -38,6 +38,18 @@ export function membersOfType(
   return Object.values(characters)
     .filter((c) => !c.unreleased && typeValue(c, table) === value)
     .sort((a, b) => a.code.localeCompare(b.code));
+}
+
+// The game places a party's units by approach, then id; the player cannot reorder them.
+export function lineMembers(
+  characters: Record<string, CharacterEntry>, entry: CharacterEntry,
+): CharacterEntry[] {
+  if (entry.approach == null || entry.positionType == null) return [];
+  return Object.values(characters)
+    .filter((c) => c.characterType === 1 && (!c.unreleased || c.code === entry.code)
+      && c.approach != null
+      && c.positionType === entry.positionType)
+    .sort((a, b) => a.approach! - b.approach! || (a.id ?? 0) - (b.id ?? 0));
 }
 
 export function typeOf(
@@ -365,7 +377,13 @@ export function computeStats(
 export const BUFF_CATEGORY: Record<number, { label: Localized; scheme: string }> = {
   1: { label: { en: 'Buff', ko: '버프' }, scheme: 'green' },
   2: { label: { en: 'Debuff', ko: '디버프' }, scheme: 'red' },
-  3: { label: { en: 'Control', ko: '군중 제어' }, scheme: 'purple' },
+  3: { label: { en: 'CC', ko: '군중 제어' }, scheme: 'purple' },
+};
+
+// `is_can_dispel` on the same define row.
+export const DISPEL_LABEL: Record<'yes' | 'no', Localized> = {
+  yes: { en: 'Removable', ko: '해제 가능' },
+  no: { en: 'Unremovable', ko: '해제 불가' },
 };
 
 // `skill_categorize_type`, which is what the game groups slots by.
@@ -573,6 +591,31 @@ export const SORT_LABEL: Record<string, Localized> = {
 };
 
 // `SKILL_RANGE_TYPE` on a hitbox, `SKILL_CAST_TARGET_SELECT_RANGE` on the cast.
+const COMPARE: Record<string, string> = {
+  COMPARISON_GREATER_THAN: '>', COMPARISON_LESS_THAN: '<', COMPARISON_EQUAL_TO: '=',
+  COMPARISON_GREATER_OR_EQUAL: '≥', COMPARISON_LESS_OR_EQUAL: '≤',
+};
+
+// Every shipped variant tests a duration define's stack count on the caster.
+export function variantCondition(variant: SkillVariant, lang: Lang = 'en'): string {
+  const w = variant.when;
+  const state = (lang === 'ko' ? w.name : w.nameEn ?? w.name) ?? (lang === 'ko' ? '내부 상태' : 'internal state');
+  const test = `${COMPARE[w.op ?? ''] ?? '='} ${w.value}`;
+  return lang === 'ko' ? `${state} ${test}일 때` : `while ${state} ${test}`;
+}
+
+export const ATTACH_LABEL: Record<string, Localized> = {
+  ATTACH_TARGET: { en: 'follows target', ko: '대상 추적' },
+  ATTACH_DISPATCHER: { en: 'follows projectile', ko: '투사체 추적' },
+};
+
+// A cast range of 99 is the whole field on that side.
+function castReach(cast: NonNullable<SkillHit['cast']>, lang: Lang): string | null {
+  if (cast.rangeValue >= 99) return lang === 'ko' ? '거리 무관' : 'any distance';
+  if (cast.rangeValue <= 0) return null;
+  return lang === 'ko' ? `${cast.rangeValue} 이내` : `within ${cast.rangeValue}`;
+}
+
 export const SHAPE_LABEL: Record<string, Localized> = {
   X_AXIS: { en: 'Line', ko: '직선' },
   CIRCLE: { en: 'Circle', ko: '원형' },
@@ -691,9 +734,21 @@ export function hitSummary(hit: SkillHit, lang: Lang = 'en'): string {
   if (hit.shape === 'GLOBAL') parts.push(labelOf(SHAPE_LABEL, 'GLOBAL', lang).toLowerCase());
   else if (hit.shape) {
     const shape = labelOf(SHAPE_LABEL, hit.shape, lang);
-    parts.push(`${lang === 'ko' ? shape : shape.toLowerCase()} ${hit.range}`);
+    // an X_AXIS value is the box's full width, centred on its anchor
+    if (hit.shape === 'X_AXIS') parts.push(lang === 'ko' ? `${shape} 폭 ${hit.range}` : `${hit.range} wide`);
+    else parts.push(`${lang === 'ko' ? shape : shape.toLowerCase()} ${hit.range}`);
   }
-  if (hit.ticks > 1 && hit.cycle) parts.push(everySecondsText(hit.cycle, lang));
+  if (hit.offset && hit.offsetValue) {
+    parts.push(lang === 'ko'
+      ? `${hit.offset === 'FORWARD' ? '앞으로' : '뒤로'} ${hit.offsetValue}`
+      : `${hit.offsetValue} ${hit.offset === 'FORWARD' ? 'forward' : 'back'}`);
+  }
+  if (hit.offsetZ) parts.push(lang === 'ko' ? `깊이 ${hit.offsetZ}` : `depth ${hit.offsetZ}`);
+  if (hit.fieldCenter) parts.push(lang === 'ko' ? '필드 중앙' : 'field centre');
+  if (hit.lifetime) parts.push(lang === 'ko' ? `${hit.lifetime}초 유지` : `lasts ${hit.lifetime}s`);
+  if (hit.attach) parts.push(labelOf(ATTACH_LABEL, hit.attach, lang));
+  // ticks 0 repeats until the hitbox's lifetime runs out
+  if ((hit.ticks > 1 || hit.ticks === 0) && hit.cycle) parts.push(everySecondsText(hit.cycle, lang));
   return parts.join(' · ');
 }
 
@@ -712,6 +767,28 @@ const TARGET_ONE: Record<string, string> = {
 const ORDINAL = ['', '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'];
 
 // What the hitbox centres on; who is affected is on the operation.
+export function moveSummary(move: SkillMoveTarget, lang: Lang = 'en'): string {
+  const target = move.cast && move.cast.team !== 'SELF' ? castSummary(move.cast, lang) : '';
+  const n = Math.abs(move.offset ?? 0);
+  let text: string;
+  if (move.type === 'MOVE_TO_TARGET' && target) {
+    text = lang === 'ko' ? `${target}에게 이동` : `dashes to ${target}`;
+    if (move.offset) {
+      text += lang === 'ko'
+        ? (move.offset > 0 ? ` · 대상 뒤 ${n}` : ` · 대상 앞 ${n}`)
+        : (move.offset > 0 ? `, ends ${n} behind it` : `, stops ${n} short`);
+    }
+    return text;
+  }
+  text = labelOf(MOVE_LABEL, move.type, lang);
+  if (move.type === 'MOVE_TO_DIRECTION' && move.offset) {
+    text += lang === 'ko'
+      ? (move.offset > 0 ? ` · 앞으로 ${n}` : ` · 뒤로 ${n}`)
+      : (move.offset > 0 ? ` ${n} forward` : ` ${n} back`);
+  }
+  return target ? `${text}${lang === 'ko' ? ` · 대상: ${target}` : ` · on ${target}`}` : text;
+}
+
 export function castSummary(
   cast: NonNullable<SkillHit['cast']>, lang: Lang = 'en',
 ): string {
@@ -720,8 +797,10 @@ export function castSummary(
   if (cast.team === 'SELF') return 'self';
   const one = TARGET_ONE[cast.team] ?? labelOf(TARGET_LABEL, cast.team);
   const many = labelOf(TARGET_LABEL, cast.team);
+  const reach = castReach(cast, 'en');
   const where = cast.range && cast.range !== 'ALL'
     ? ` in ${cast.range === 'CENTER' ? 'the centre' : labelOf(SHAPE_LABEL, cast.range)}`
+      + (reach ? `, ${reach}` : '')
     : '';
 
   if (cast.pick === 'ALL') return `every ${one}${where}`;
@@ -741,8 +820,9 @@ export function castSummary(
 function castSummaryKo(cast: NonNullable<SkillHit['cast']>): string {
   if (cast.team === 'SELF') return '자신';
   const who = labelOf(TARGET_LABEL, cast.team, 'ko');
+  const reach = castReach(cast, 'ko');
   const where = cast.range && cast.range !== 'ALL'
-    ? `${labelOf(SHAPE_LABEL, cast.range, 'ko')}의 `
+    ? `${labelOf(SHAPE_LABEL, cast.range, 'ko')}${reach ? `(${reach})` : ''}의 `
     : '';
   if (cast.pick === 'ALL') return `${where}모든 ${who}`;
   const how = cast.sort ? `${labelOf(SORT_LABEL, cast.sort, 'ko')} ` : '';
@@ -785,6 +865,33 @@ export function opAmounts(op: SkillOp, level: number, period: number): string[] 
 // The generator renders description numbers with `%g`, so a coefficient must round the same way.
 function sixSigFigs(v: number): number {
   return Number(v.toPrecision(6));
+}
+
+function runs(values: number[]): string {
+  const out: string[] = [];
+  for (let i = 0; i < values.length;) {
+    let j = i;
+    while (j < values.length && values[j] === values[i]) j += 1;
+    out.push(j - i > 1 ? `${values[i]}% ×${j - i}` : `${values[i]}%`);
+    i = j;
+  }
+  return out.join(', ');
+}
+
+// How the value spreads over a hitbox's landings and ticks; null for a single full-value landing.
+export function weightText(op: SkillOp, landings: number, lang: Lang = 'en'): string | null {
+  const parts: string[] = [];
+  if (Array.isArray(op.weight)) {
+    parts.push(lang === 'ko' ? `타격별 ${runs(op.weight)}` : `per hit ${runs(op.weight)}`);
+  } else if (op.weight != null) {
+    parts.push(lang === 'ko' ? `타격마다 ${op.weight}%` : `${op.weight}% per hit`);
+  } else if (landings > 1) {
+    parts.push(lang === 'ko' ? '타격마다' : 'each hit');
+  }
+  if (op.tickWeights?.length) {
+    parts.push(lang === 'ko' ? `틱별 ${runs(op.tickWeights)}` : `per tick ${runs(op.tickWeights)}`);
+  }
+  return parts.length ? parts.join(' · ') : null;
 }
 
 export function opSeconds(

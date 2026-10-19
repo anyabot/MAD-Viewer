@@ -33,6 +33,7 @@ import {
   characterSubName,
   computeStats, datePlacesOf, equipLabel, equipmentGrants, equipmentSlotsOf,
   giftsOf, isPlayable, labelOf, lockedUntilText,
+  lineMembers,
   membersOfType,
   rosterNote, skillGrades, skinIconNames,
   skinsByCharacter,
@@ -315,8 +316,8 @@ function FilterLink({ onClick, children }: {
 }
 
 // Hover only: on a touch screen the row itself links to the same list.
-function MemberPopover({ members, icons, children }: {
-  members: CharacterEntry[]; icons: IconManifest | null; children: React.ReactNode;
+function MemberPopover({ members, icons, current, children }: {
+  members: CharacterEntry[]; icons: IconManifest | null; current?: string; children: React.ReactNode;
 }) {
   const lang = useLang();
   if (!members.length) return <>{children}</>;
@@ -331,6 +332,7 @@ function MemberPopover({ members, icons, children }: {
               {members.map((m) => (
                 <VStack key={m.code} as={NextLink} spacing={0.5} p={1} borderRadius="md"
                   href={{ pathname: '/character', query: { code: m.code } }}
+                  bg={m.code === current ? 'whiteAlpha.300' : undefined}
                   _hover={{ bg: 'whiteAlpha.200' }}>
                   <GameIcon manifest={icons} group="char" name={m.iconPath}
                     names={[m.iconPath, `Icon_${m.code}`]} size="100%" w="100%" h="auto"
@@ -386,6 +388,26 @@ function Infobox({ entry, data, icons, accent, skins }: {
         )
         : link,
     });
+    const line = table === 'position' ? lineMembers(data.characters, entry) : [];
+    const rank = line.findIndex((m) => m.code === entry.code);
+    if (table === 'position' && entry.approach != null) {
+      rows.push({ label: t('rowApproach'), node: <Text>{entry.approach}</Text> });
+    }
+    if (table === 'position' && entry.hitRadius != null) {
+      rows.push({ label: t('rowHitRadius'), node: <Text>{entry.hitRadius}</Text> });
+    }
+    if (rank >= 0) {
+      rows.push({
+        label: t('rowLineOrder'),
+        node: (
+          <MemberPopover members={line} icons={icons} current={entry.code}>
+            <Box as="button" type="button" _hover={{ textDecoration: 'underline' }}>
+              {rank + 1} / {line.length}
+            </Box>
+          </MemberPopover>
+        ),
+      });
+    }
   }
   if (entry.defaultStar) {
     const star = entry.defaultStar;

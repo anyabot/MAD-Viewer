@@ -9,7 +9,10 @@ import {
 import { guardClearedClippingAttachment } from '@/components/sdViewer/clipping';
 import { createCutinEffects } from '@/components/sdViewer/effects';
 import { curveAt, frameBounds, shakeOffset } from '@/components/sdViewer/timeline';
-import { speedOptions } from '@/components/skinViewer/constants';
+import { MAX_RECORD_DIM, speedOptions } from '@/components/skinViewer/constants';
+import {
+  canRecordCanvas, startCanvasVideo, type VideoRecording,
+} from '@/components/skinViewer/exportVideo';
 
 // The battle scene's CharacterCamera lens, in radians.
 const CAMERA_FOV = 20 * Math.PI / 180;
@@ -28,6 +31,10 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
   const [speed, setSpeed] = useState(1);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [recording, setRecording] = useState(false);
+  const [videoStatus, setVideoStatus] = useState<string | null>(null);
+  const appRef = useRef<any>(null);
+  const recordingRef = useRef<VideoRecording | null>(null);
   const playingRef = useRef(playing);
   const speedRef = useRef(speed);
   playingRef.current = playing;
@@ -92,6 +99,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
       });
       if (destroyed) { app.destroy(true); return; }
       surface!.replaceChildren(app.canvas);
+      appRef.current = app;
       app.stage.addChild(spine);
       spineRef.current = spine;
 
@@ -173,6 +181,10 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
 
     return () => {
       destroyed = true;
+      recordingRef.current?.cancel();
+      recordingRef.current = null;
+      setRecording(false);
+      appRef.current = null;
       if (resize) window.removeEventListener('resize', resize);
       if (app && tick) app.ticker.remove(tick);
       cutinEffects?.destroy();
@@ -207,6 +219,45 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
     if (spine) spine.state.timeScale = playing ? speed : 0;
   }, [playing, speed]);
 
+  const handleRecord = () => {
+    if (recordingRef.current) {
+      recordingRef.current.stop();
+      return;
+    }
+    const app = appRef.current;
+    const host = hostRef.current;
+    if (!app || !host || !canRecordCanvas()) {
+      setVideoStatus(t('videoUnsupported'));
+      return;
+    }
+    const restore = app.renderer.resolution;
+    const longEdge = Math.max(host.clientWidth, host.clientHeight);
+    app.renderer.resolution = Math.max(1, Math.min(2, longEdge > 0 ? MAX_RECORD_DIM / longEdge : 1));
+    let video: VideoRecording | null = null;
+    try {
+      video = startCanvasVideo({
+        canvas: app.canvas,
+        fileName: character.archive,
+        onStop: () => {
+          if (appRef.current) appRef.current.renderer.resolution = restore;
+          if (recordingRef.current !== video) return;
+          recordingRef.current = null;
+          setRecording(false);
+        },
+      });
+    } catch {
+      video = null;
+    }
+    if (!video) {
+      app.renderer.resolution = restore;
+      setVideoStatus(t('videoUnsupported'));
+      return;
+    }
+    recordingRef.current = video;
+    setVideoStatus(`${t(video.audio ? 'videoWithAudio' : 'videoVisualOnly')} ${video.width}×${video.height}`);
+    setRecording(true);
+  };
+
   const ordinaryAnimations = character.animations.filter(
     (name) => name !== character.cutin?.animation);
 
@@ -238,6 +289,10 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
           isDisabled={!ready}>
           {playing ? t('btnPause') : t('btnPlay')}
         </Button>
+        <Button size="sm" variant={recording ? 'solid' : 'outline'} colorScheme={recording ? 'red' : undefined}
+          isDisabled={!ready} onClick={handleRecord}>
+          {recording ? t('btnStopRecording') : t('btnRecordVideo')}
+        </Button>
         <Button size="sm" variant="outline" isDisabled={!ready || !animation}
           onClick={() => setPlaybackRun((run) => run + 1)}>
           {t('btnRestart')}
@@ -258,6 +313,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
             <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </Select>
+        {videoStatus && <Text fontSize="xs" color="gray.500">{videoStatus}</Text>}
       </Flex>
       <Box position="relative" h={{ base: '440px', md: 'min(72vh, 720px)' }} minW={0}
         overflow="hidden" borderWidth="1px" borderColor="whiteAlpha.200"

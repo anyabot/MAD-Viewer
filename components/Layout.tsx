@@ -26,6 +26,7 @@ const NAV: NavItem[] = [
 const NAV_ETC: NavItem[] = [
   { href: '/effects', label: 'navEffects', match: (p: string) => p === '/effects' },
   { href: '/formula', label: 'navFormula', match: (p: string) => p === '/formula' },
+  { href: '/field', label: 'navField', match: (p: string) => p === '/field' },
   { href: '/artists', label: 'navArtists', match: (p: string) => p === '/artists' },
   { href: '/jukebox', label: 'navJukebox', match: (p: string) => p === '/jukebox' },
   { href: '/rewards', label: 'navRewards', match: (p: string) => p === '/rewards' },

@@ -78,9 +78,11 @@ export function createEmoteBubble(options: {
     const bone = spine.skeleton.bones.find(
       (b: any) => b.data.name.toLowerCase() === wanted);
     if (!bone) return;
-    // The authored offset and particles are y-up while `bone.worldY` is y-down.
-    const originX = bone.worldX + place.offset[0];
-    const originY = bone.worldY - place.offset[1];
+    // The client turns the y-up offset by the bone's local rotation; `bone.worldY` is y-down.
+    const turn = bone.rotation * Math.PI / 180;
+    const [ox, oy] = place.offset;
+    const originX = bone.worldX + ox * Math.cos(turn) - oy * Math.sin(turn);
+    const originY = bone.worldY - (ox * Math.sin(turn) + oy * Math.cos(turn));
     const unit = EMOTE_UNIT_SCALE;
     const scale = unit * Math.abs(spine.scale.y);
     // A mirrored placement flips positions, quads, pivots, and rotations about the slot.
@@ -91,6 +93,12 @@ export function createEmoteBubble(options: {
       const base = sheets.get(emitter.def.sheet);
       if (!base) continue;
       const [columns, rows] = emitter.def.tiles;
+      // `CharacterEmoticon.SetFlip`: the root mirror, then per system 4 re-mirrors its own transform, 1 toggles the texture flip, 2 flips rotation
+      const flip = mirror < 0 ? emitter.def.flip ?? 0 : 0;
+      const inner = flip & 4 ? 1 : mirror;
+      const quad = inner * (flip & 1 ? -1 : 1);
+      const turn = inner * (flip & 2 ? -1 : 1);
+      const [ex] = emitter.def.position;
       for (const particle of emitter.particles) {
         const { node, view } = sprite(used);
         used += 1;
@@ -99,12 +107,12 @@ export function createEmoteBubble(options: {
         // Pixi's anchor is Unity's renderer pivot with its authored y-up coordinate mirrored.
         view.anchor.set(0.5 - emitter.def.pivot[0], 0.5 + emitter.def.pivot[1]);
         const point = scene.toLocal(spine.toGlobal({
-          x: originX + particle.x * unit * mirror,
+          x: originX + (ex * mirror + (particle.x - ex) * inner) * unit,
           y: originY - particle.y * unit,
         }));
         node.position.set(point.x, point.y);
-        node.scale.set(mirror, 1);
-        node.rotation = -particle.angle * mirror;
+        node.scale.set(quad, 1);
+        node.rotation = -particle.angle * turn;
         view.position.set(0, 0);
         view.width = particle.size * scale;
         view.height = particle.sizeY * scale;

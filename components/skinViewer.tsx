@@ -133,7 +133,7 @@ export default function SkinViewer({
   const [overlayAnim, setOverlayAnim] = useState('');
   const [overlayAnims, setOverlayAnims] = useState<Set<string>>(() => new Set());
   const {
-    loop, playing, speed, showBg, mode, sceneVariant, followGameFlow,
+    loop, playing, speed, showBg, mode, sceneVariant, followGameFlow, lockCamera,
     showBoxes, voiceOn, bgmOn, showLayers, dragJiggle, canvasAspect, theater, showDebug,
     set: setViewer,
   } = useViewerStore();
@@ -145,6 +145,7 @@ export default function SkinViewer({
   const autoMode = mode !== 'manual';
   const setSceneVariant = (value: 'view' | 'story') => setViewer({ sceneVariant: value });
   const setFollowGameFlow = (value: boolean) => setViewer({ followGameFlow: value });
+  const setLockCamera = (value: boolean) => setViewer({ lockCamera: value });
   const [timelineRig, setTimelineRig] = useState<SceneTimelineRig | null>(null);
   const [sceneRunKey, setSceneRunKey] = useState(0);
   // Drawn in Pixi so its alpha runs on the scene clock.
@@ -286,6 +287,8 @@ export default function SkinViewer({
   scriptSceneRef.current = scriptScene;
   const followGameFlowRef = useRef(followGameFlow);
   followGameFlowRef.current = followGameFlow;
+  const lockCameraRef = useRef(lockCamera);
+  lockCameraRef.current = lockCamera;
   const dragJiggleRef = useRef(dragJiggle); dragJiggleRef.current = dragJiggle;
   const voiceIndexRef = useRef(voiceIndex); voiceIndexRef.current = voiceIndex;
   const voiceOnRef = useRef(voiceOn); voiceOnRef.current = voiceOn;
@@ -1599,7 +1602,7 @@ export default function SkinViewer({
 
       app.renderer.on('resize', fit);
       // Following the game's flow hands framing to the game, so it refuses pan and zoom.
-      const manualCameraAllowed = () => !(followGameFlowRef.current
+      const manualCameraAllowed = () => !lockCameraRef.current && !(followGameFlowRef.current
         && (camBone || scriptSceneRef.current));
       // Pointer-down arrives before pan/zoom turns the gesture into a drag, so the jiggle kicks immediately.
       attachPanZoom(app.canvas as HTMLCanvasElement, root, { claimDrag: (cx, cy) => {
@@ -2389,6 +2392,17 @@ export default function SkinViewer({
           </ControlSection>
 
           <ControlSection title={t('viewerCamera')}>
+            {loadState === 'ready' && (
+              <ControlRow label={t('rowPanZoom')}>
+                <SegmentedControl<'free' | 'locked'> ariaLabel={t('rowPanZoom')}
+                  value={lockCamera ? 'locked' : 'free'}
+                  options={[
+                    { value: 'free', label: t('camFree'), title: t('camFreeHint') },
+                    { value: 'locked', label: t('camLocked'), title: t('camLockedHint') },
+                  ]}
+                  onChange={(value) => setLockCamera(value === 'locked')} />
+              </ControlRow>
+            )}
             {loadState === 'ready' && hasCameraControl && (
               <ControlRow label={t('viewerCamera')}>
                 <SegmentedControl<'free' | 'game'> ariaLabel={t('ariaCameraMode')}

@@ -9,10 +9,11 @@ import {
   EmptyState, FilterChip as CountChip, FilterPanel, ListToolbar, LoadState, SearchBox,
 } from '@altterisk/game-hub';
 import { GameIcon, StarRating } from '@/components/gameIcon';
+import { StateBadges } from '@/components/skillKit';
 import { FilterChip, FilterRow } from '@/components/filters';
 import {
   BUFF_CATEGORY, OP_SCHEME, SIDE_LABEL, SKILL_CATEGORY_LABEL, STAT_LABEL,
-  TARGET_LABEL, TRIGGER_LABEL, castSummary, characterName, colorRuns, gateSummary,
+  SORT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, characterName, colorRuns, gateSummary,
   hitSummary, isPlayable, labelOf, rosterNote, scaleSummary, skinsByCharacter,
   statAmount, typeIcons, typeOf, typeTint, typeLabel,
 } from '@/lib/characters';
@@ -318,6 +319,7 @@ function OpChip({ op, ctx, data, icons, lang }: {
   const where = [
     op.team ? labelOf(TARGET_LABEL, op.team, lang) : '',
     op.pick === 'ALL' ? text(lang, 'allInRange') : (op.count ? `${op.count}` : ''),
+    op.sort ? labelOf(SORT_LABEL, op.sort, lang) : '',
     op.applyTo && op.applyTo !== 'HOLDER'
       ? text(lang, 'onSide', { side: labelOf(SIDE_LABEL, op.applyTo, lang) }) : '',
   ].filter(Boolean).join(' · ');
@@ -326,6 +328,7 @@ function OpChip({ op, ctx, data, icons, lang }: {
       {op.icon && <GameIcon manifest={icons} group="buff" name={op.icon} size={4} />}
       <Badge fontSize="0.55rem" colorScheme={scheme}>{opLabel(op, ctx, lang)}</Badge>
       {op.name && <GameText text={op.name} bold />}
+      <StateBadges categorize={op.categorize} dispellable={op.dispellable} />
       {scale && <Text fontSize="0.65rem" color="gray.400">{scale}</Text>}
       {op.gate && (
         <Text fontSize="0.65rem" color="cyan.300">

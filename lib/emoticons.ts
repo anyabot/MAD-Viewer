@@ -61,10 +61,8 @@ export function emotePlacement(
       url: emoteSheetUrl(emitter.sheet), width: size[0], height: size[1],
     };
   }
-  // Emitters are authored to one side of the prefab origin, so a slot placed on
-  // the rig's right has to mirror or the effect reaches back over the head.
-  // Facing decides it only for a slot with no side of its own.
-  const mirror = offset[0] !== 0 ? offset[0] > 0 : actor.look === 'Right';
+  // the client mirrors the whole emote exactly when the rig's baked facing is Right
+  const mirror = actor.look === 'Right';
   return { bone, offset, mirror, emitters, sheets };
 }
 
