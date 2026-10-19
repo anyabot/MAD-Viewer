@@ -1,4 +1,6 @@
-import { ALLY_SLOTS, ENEMY_SLOTS, FIELD, type SlotTable } from '@/lib/battleField';
+import {
+  ALLY_SLOTS, DEFAULT_APPROACH, ENEMY_SLOTS, FIELD, RUN_IN_GAP, settle, type SlotTable,
+} from '@/lib/battleField';
 import type { SkillBehaviour, SkillHit, SkillMoveTarget, SkillOp } from '@/lib/data';
 
 export type Side = 'ally' | 'enemy';
@@ -163,15 +165,21 @@ export function anchorOf(hit: SkillHit): Anchor {
   return cast.team === 'ENEMY' ? 'enemy' : 'ally';
 }
 
-// One caster in its line against a standard 2/2/1 wave, fronts 10.5 apart.
-export function soloField(line: 1 | 2 | 3, code: string, r: number): Unit[] {
-  const gap = FIELD.encounterDistance + FIELD.encounterRange + FIELD.hitRadius;
+// One caster vs a 2/2/1 wave after both sides have walked in; startX is its run-in slot.
+export function soloField(line: 1 | 2 | 3, code: string, r: number, approach = 0): { units: Unit[]; startX: number } {
   const [sx] = ALLY_SLOTS[line][1][0];
   const enemy = slotted(ENEMY_SLOTS, [1, 1, 2, 2, 3]);
   const lead = Math.min(...enemy.map((e) => e.x));
-  return [
-    { key: 'a0', side: 'ally', line, code, x: -gap / 2 + sx, z: 0, r },
-    ...enemy.map((e, i) => ({ key: `e${i}`, side: 'enemy' as const, line: e.line, x: gap / 2 + (e.x - lead), z: e.z, r: FIELD.hitRadius })),
-  ];
+  const startX = -RUN_IN_GAP / 2 + sx;
+  const { units: walked, centre } = settle([
+    { x: startX, z: 0, r, approach, side: 1 },
+    ...enemy.map((e) => ({ x: RUN_IN_GAP / 2 + (e.x - lead), z: e.z, r: FIELD.hitRadius, approach: DEFAULT_APPROACH.enemy[e.line], side: -1 as const })),
+  ]);
+  return {
+    units: [
+      { key: 'a0', side: 'ally', line, code, x: walked[0].x, z: 0, r },
+      ...enemy.map((e, i) => ({ key: `e${i}`, side: 'enemy' as const, line: e.line, x: walked[i + 1].x, z: e.z, r: FIELD.hitRadius })),
+    ],
+    startX: startX - centre,
+  };
 }
-

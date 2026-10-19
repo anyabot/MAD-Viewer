@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { PageHeader, Panel } from '@altterisk/game-hub';
 import {
-  ALLY_SLOTS, ENEMY_SLOTS, FIELD, FIELD_GAME_VERSION, RUN_IN_GAP, type Slot, type SlotTable,
+  ALLY_SLOTS, DEFAULT_APPROACH, ENEMY_SLOTS, FIELD, FIELD_GAME_VERSION, RUN_IN_GAP, settle, type Slot, type SlotTable,
 } from '@/lib/battleField';
 import { loadCharacters, loadIcons, type CharacterData, type IconManifest } from '@/lib/data';
 import { useLang, useT } from '@/lib/i18n';
@@ -31,12 +31,26 @@ function slotsOf(table: SlotTable, counts: Counts): Placed[] {
   });
 }
 
-// Fronts end the run-in RUN_IN_GAP apart, centred on 0.
-function place(table: SlotTable, counts: Counts, side: -1 | 1): Placed[] {
+function lineUp(table: SlotTable, counts: Counts, side: -1 | 1): Placed[] {
   const raw = slotsOf(table, counts);
   if (!raw.length) return raw;
   const lead = side < 0 ? Math.max(...raw.map((u) => u.x)) : Math.min(...raw.map((u) => u.x));
   return raw.map((u) => ({ ...u, x: side * RUN_IN_GAP / 2 + (u.x - lead) }));
+}
+
+// Both lines walk in until every unit has the nearest enemy within its line's typical approach.
+function placeBoth(ally: Counts, enemy: Counts): { allies: Placed[]; enemies: Placed[] } {
+  const a = lineUp(ALLY_SLOTS, ally, -1);
+  const e = lineUp(ENEMY_SLOTS, enemy, 1);
+  if (!a.length || !e.length) return { allies: a, enemies: e };
+  const { units: walked } = settle([
+    ...a.map((u) => ({ x: u.x, z: u.z, r: FIELD.hitRadius, approach: DEFAULT_APPROACH.ally[u.line], side: 1 as const })),
+    ...e.map((u) => ({ x: u.x, z: u.z, r: FIELD.hitRadius, approach: DEFAULT_APPROACH.enemy[u.line], side: -1 as const })),
+  ]);
+  return {
+    allies: a.map((u, i) => ({ ...u, x: walked[i].x })),
+    enemies: e.map((u, i) => ({ ...u, x: walked[a.length + i].x })),
+  };
 }
 
 function Points({ items }: { items: ReactNode[] }) {
@@ -164,8 +178,7 @@ export default function FieldPage() {
   }, [chars, aoeUnit]);
 
   const plan = useMemo(() => {
-    const allies = place(ALLY_SLOTS, ally, -1);
-    const enemies = place(ENEMY_SLOTS, enemy, 1);
+    const { allies, enemies } = placeBoth(ally, enemy);
     const center = 0;
     return {
       allies, enemies, center,
@@ -188,8 +201,10 @@ export default function FieldPage() {
             L('Distances are in field units, along the battle line (x).', '거리는 전장 단위, 전투 라인(x) 기준.'),
             L('Positions reset every wave. 0 is the midpoint between your front unit and the enemy front unit when the wave starts.',
               '웨이브마다 위치가 초기화됨. 0은 웨이브 시작 시 아군 최전방과 적 최전방의 중간.'),
-            L(`Each wave your team runs in until the enemies are within ${FIELD.encounterDistance} (or your lead unit's approach, if larger) + ${FIELD.encounterRange} of your lead unit, edge included: the fronts start ${RUN_IN_GAP} apart (±${RUN_IN_GAP / 2}).`,
-              `웨이브마다 아군이 전진하다가 선두 유닛 기준 ${FIELD.encounterDistance}(선두의 접근 거리가 더 크면 그 값) + ${FIELD.encounterRange} 안에 적(가장자리 포함)이 들어오면 멈춤: 양 최전방은 ${RUN_IN_GAP} 떨어져 시작 (±${RUN_IN_GAP / 2}).`),
+            L(`Each wave both sides walk in at the same speed, and every unit stops once the nearest enemy it can target (to its edge) is within its approach distance. Approach is a per-character stat, not attack range: most attacks reach the whole field. The fronts end up nearly touching, about the smaller front-line approach + ${FIELD.hitRadius} apart.`,
+              `웨이브마다 양측이 같은 속도로 다가가며, 각 유닛은 대상으로 삼을 수 있는 가장 가까운 적(가장자리 기준)이 접근 거리 안에 들어오면 멈춤. 접근 거리는 캐릭터별 수치이며 공격 사거리가 아님(대부분 공격은 전장 전체). 양 최전방은 거의 맞닿음: 전열 접근 거리 중 작은 값 + ${FIELD.hitRadius} 정도.`),
+            L(`Planner: units use their line's typical approach (yours ${DEFAULT_APPROACH.ally[1]} / ${DEFAULT_APPROACH.ally[2]} / ${DEFAULT_APPROACH.ally[3]}, enemies ${DEFAULT_APPROACH.enemy[1]} / ${DEFAULT_APPROACH.enemy[2]} / ${DEFAULT_APPROACH.enemy[3]}).`,
+              `배치 계산: 열별 대표 접근 거리 사용 (아군 ${DEFAULT_APPROACH.ally[1]} / ${DEFAULT_APPROACH.ally[2]} / ${DEFAULT_APPROACH.ally[3]}, 적 ${DEFAULT_APPROACH.enemy[1]} / ${DEFAULT_APPROACH.enemy[2]} / ${DEFAULT_APPROACH.enemy[3]}).`),
             L(`Depth (z) only spreads a line out; ranges ignore it except circle areas.`, '깊이(z)는 열을 펼칠 뿐, 원형 범위 외에는 거리 계산에 쓰이지 않음.'),
             L(`Every unit is ${FIELD.hitRadius * 2} wide (hit radius ${FIELD.hitRadius}) unless noted on its page.`, `모든 유닛의 폭은 ${FIELD.hitRadius * 2} (히트 반경 ${FIELD.hitRadius}), 별도 표기 제외.`),
           ]} />
@@ -265,8 +280,8 @@ export default function FieldPage() {
               `경계는 웨이브 시작 시 고정: 폭 ${FIELD.boundaryHalf * 2}, −${FIELD.boundaryHalf} … +${FIELD.boundaryHalf}.`),
             L('It only limits knockback, dashes, directional moves and confusion/fear movement; walking ignores it.',
               '넉백, 돌진, 방향 이동, 혼란/공포 이동에만 적용. 걷기는 무시.'),
-            L('Example (stage 1004105 wave 1, 2/1/2 vs 2/2/1): the furthest enemy is at +11.25, so Bianca lands at +13.25, behind it and 24.5 from a back-line Kouchou (Halloween) at −11.25.',
-              '예시 (스테이지 1004105 1웨이브, 2/1/2 대 2/2/1): 가장 먼 적이 +11.25에 있어 비앙카는 그 뒤 +13.25에 착지, −11.25의 후열 홍접(할로윈)과 24.5 거리.'),
+            L('Example (stage 1004105 wave 1, 2/1/2 vs 2/2/1): the furthest enemy is at +8.15, so Bianca lands at +10.15, behind it and 18.0 from a back-line Kouchou (Halloween) at −7.85.',
+              '예시 (스테이지 1004105 1웨이브, 2/1/2 대 2/2/1): 가장 먼 적이 +8.15에 있어 비앙카는 그 뒤 +10.15에 착지, −7.85의 후열 홍접(할로윈)과 18.0 거리.'),
           ]} />
         </VStack>
       </Panel>

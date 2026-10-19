@@ -37,8 +37,10 @@ export default function AoeStage({ chars, icons, unit, skill: initialSkill }: {
 
   const entry = chars.characters[code];
   const behaviour = chars.skills[skill]?.behaviour as SkillBehaviour | undefined;
-  const units = useMemo(() => (entry
-    ? soloField((entry.positionType ?? 1) as 1 | 2 | 3, code, entry.hitRadius ?? FIELD.hitRadius) : []), [entry, code]);
+  const solo = useMemo(() => (entry
+    ? soloField((entry.positionType ?? 1) as 1 | 2 | 3, code, entry.hitRadius ?? FIELD.hitRadius, entry.approach ?? 0)
+    : null), [entry, code]);
+  const units = useMemo(() => solo?.units ?? [], [solo]);
   const outcome = behaviour && units.length ? simulate(behaviour, units[0], units, null) : null;
   const placed = outcome ? units.map((u) => (u.key === outcome.caster.key ? outcome.caster : u)) : units;
   const areaHits = new Set((behaviour?.hits ?? []).map((h, i) => (isAreaHit(h) ? i : -1)).filter((i) => i >= 0));
@@ -94,6 +96,14 @@ export default function AoeStage({ chars, icons, unit, skill: initialSkill }: {
               {x % 5 === 0 && <text x={px(x)} y={h + 24} fill="#ccc" fontSize={12} textAnchor="middle">{x}</text>}
             </g>
           ))}
+          {solo && units[0] && solo.startX < units[0].x - 0.01 && (
+            <g>
+              <ellipse cx={px(solo.startX)} cy={pz(0)} rx={units[0].r * scale} ry={units[0].r * scale * 0.9}
+                fill="none" stroke="#78beff" strokeOpacity={0.6} strokeDasharray="3 3" />
+              <line x1={px(solo.startX)} y1={pz(0)} x2={px(units[0].x)} y2={pz(0)}
+                stroke="#78beff" strokeOpacity={0.6} strokeWidth={2} strokeDasharray="3 3" />
+            </g>
+          )}
           {outcome?.path.map((p, i) => (
             <line key={i} x1={px(p.from[0])} y1={pz(p.from[1])} x2={px(p.to[0])} y2={pz(p.to[1])}
               stroke="#fff" strokeWidth={2} strokeDasharray="4 3" />
@@ -102,10 +112,12 @@ export default function AoeStage({ chars, icons, unit, skill: initialSkill }: {
             const me = u.side === 'ally';
             const r = u.r * scale;
             const target = outcome?.targets.has(u.key) && !me;
+            const hit = !me && (outcome?.affected.get(u.key) ?? []).some((h) => areaHits.has(h));
             return (
               <g key={u.key}>
                 <ellipse cx={px(u.x)} cy={pz(u.z)} rx={r} ry={r * 0.9}
-                  fill={me ? '#78beff' : '#9aa0b4'} fillOpacity={me ? 0.8 : 0.35} stroke={me ? '#fff' : '#9aa0b4'} strokeWidth={2} />
+                  fill={me ? '#78beff' : hit ? ZONE : '#9aa0b4'} fillOpacity={me || hit ? 0.8 : 0.35}
+                  stroke={me ? '#fff' : hit ? ZONE : '#9aa0b4'} strokeWidth={2} />
                 {target && <circle cx={px(u.x)} cy={pz(u.z)} r={r + 5} fill="none" stroke="#fff" strokeWidth={2} />}
                 {me && icon && <image href={icon} x={px(u.x) - 13} y={pz(u.z) - r - 30} width={26} height={26} />}
               </g>
@@ -126,8 +138,8 @@ export default function AoeStage({ chars, icons, unit, skill: initialSkill }: {
             </HStack>
           ) : null))}
           <Text color="gray.500">
-            {L('Grey: a standard 2/2/1 wave. 0 is the centre between the fronts; distances count to unit edges.',
-              '회색: 일반 2/2/1 웨이브. 0은 양 최전방의 중심, 거리는 유닛 가장자리 기준.')}
+            {L('Grey: a standard 2/2/1 wave; red: hit. The unit walks from its start slot (dashed) until the nearest enemy is within its approach distance, and casts from there. 0 is the centre between the fronts at wave start; distances count to unit edges.',
+              '회색: 일반 2/2/1 웨이브, 빨강: 피격. 유닛은 시작 위치(점선)에서 가장 가까운 적이 접근 거리 안에 들어올 때까지 걸어가 그 자리에서 시전. 0은 웨이브 시작 시 양 최전방의 중심, 거리는 유닛 가장자리 기준.')}
           </Text>
         </VStack>
       )}
