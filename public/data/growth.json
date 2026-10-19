@@ -705,6 +705,12 @@
    "icon": "Icon_Character_Piece_CH0007",
    "kind": "piece"
   },
+  "item:75": {
+   "name": "홍접(할로윈)의 메모리",
+   "nameEn": "Kouchou (Halloween)'s Memory",
+   "icon": "Icon_Character_Piece_CH0075",
+   "kind": "piece"
+  },
   "item:80201": {
    "name": "T2 귀걸이 바우처",
    "nameEn": "T2 Earrings Voucher",
@@ -5983,7 +5989,8 @@
    "CH0058": "item:58",
    "CH0062": "item:62",
    "CH0063": "item:63",
-   "CH0068": "item:68"
+   "CH0068": "item:68",
+   "CH0075": "item:75"
   },
   "exchange": {
    "ref": "goods:6",
@@ -6060,7 +6067,8 @@
     "CH0058",
     "CH0062",
     "CH0063",
-    "CH0068"
+    "CH0068",
+    "CH0075"
    ],
    "ladders": null
   }

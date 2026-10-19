@@ -413,6 +413,16 @@
    },
    "image": "BgImg_EV1009_Zone_001"
   },
+  "100101": {
+   "id": 100101,
+   "order": 1,
+   "difficulty": "normal",
+   "name": {
+    "ko": "전투",
+    "en": "Battle"
+   },
+   "image": "BgImg_EV1010_Zone_001"
+  },
   "30401": {
    "id": 30401,
    "name": {
@@ -941,6 +951,19 @@
    "banner": "Thumbnail_PastStory_Event_Ev1009",
    "from": "2026-10-08",
    "to": "2026-10-22"
+  },
+  "event:1010": {
+   "key": "event:1010",
+   "mode": "event",
+   "zoneId": 100101,
+   "image": "BgImg_EV1010_Zone_001",
+   "name": {
+    "ko": "Trick or Trouble",
+    "en": "Trick or Trouble"
+   },
+   "order": 1010,
+   "from": "2026-10-22",
+   "to": "2026-11-19"
   },
   "ascent:40000": {
    "key": "ascent:40000",
@@ -1937,6 +1960,162 @@
      "en": "Deploy [1] or fewer [0] Position Partners"
     },
     "checkTable": "position"
+   }
+  ],
+  "20011": [
+   {
+    "id": 200111,
+    "type": 1,
+    "values": [
+     0,
+     0
+    ],
+    "text": {
+     "ko": "스테이지 클리어",
+     "en": "Clear Stage"
+    }
+   },
+   {
+    "id": 200112,
+    "type": 10,
+    "values": [
+     1,
+     0
+    ],
+    "text": {
+     "ko": "파트너 전원 생존",
+     "en": "All Partners survive"
+    }
+   },
+   {
+    "id": 200113,
+    "type": 108,
+    "values": [
+     1,
+     0
+    ],
+    "text": {
+     "ko": "[0] 속성 파트너를 편성하지 않고 클리어",
+     "en": "Clear without deploying [0] Attribute Partners"
+    },
+    "checkTable": "attribute"
+   }
+  ],
+  "20012": [
+   {
+    "id": 200121,
+    "type": 1,
+    "values": [
+     0,
+     0
+    ],
+    "text": {
+     "ko": "스테이지 클리어",
+     "en": "Clear Stage"
+    }
+   },
+   {
+    "id": 200122,
+    "type": 10,
+    "values": [
+     1,
+     0
+    ],
+    "text": {
+     "ko": "파트너 전원 생존",
+     "en": "All Partners survive"
+    }
+   },
+   {
+    "id": 200123,
+    "type": 108,
+    "values": [
+     2,
+     0
+    ],
+    "text": {
+     "ko": "[0] 속성 파트너를 편성하지 않고 클리어",
+     "en": "Clear without deploying [0] Attribute Partners"
+    },
+    "checkTable": "attribute"
+   }
+  ],
+  "20013": [
+   {
+    "id": 200131,
+    "type": 1,
+    "values": [
+     0,
+     0
+    ],
+    "text": {
+     "ko": "스테이지 클리어",
+     "en": "Clear Stage"
+    }
+   },
+   {
+    "id": 200132,
+    "type": 10,
+    "values": [
+     1,
+     0
+    ],
+    "text": {
+     "ko": "파트너 전원 생존",
+     "en": "All Partners survive"
+    }
+   },
+   {
+    "id": 200133,
+    "type": 108,
+    "values": [
+     3,
+     0
+    ],
+    "text": {
+     "ko": "[0] 속성 파트너를 편성하지 않고 클리어",
+     "en": "Clear without deploying [0] Attribute Partners"
+    },
+    "checkTable": "attribute"
+   }
+  ],
+  "20014": [
+   {
+    "id": 200141,
+    "type": 1,
+    "values": [
+     0,
+     0
+    ],
+    "text": {
+     "ko": "스테이지 클리어",
+     "en": "Clear Stage"
+    }
+   },
+   {
+    "id": 200142,
+    "type": 10,
+    "values": [
+     1,
+     0
+    ],
+    "text": {
+     "ko": "파트너 전원 생존",
+     "en": "All Partners survive"
+    }
+   },
+   {
+    "id": 200143,
+    "type": 108,
+    "values": [
+     4,
+     0
+    ],
+    "text": {
+     "ko": "[0] 속성 파트너를 편성하지 않고 클리어",
+     "en": "Clear without deploying [0] Attribute Partners"
+    },
+    "checkTable": "attribute"
    }
   ]
  },
@@ -3240,6 +3419,106 @@
    "attributeType": 1,
    "positionType": 1,
    "skillSetGroup": 200799
+  },
+  "NP0801": {
+   "code": "NP0801",
+   "name": "하급 원령(시저스)",
+   "nameEn": "Lesser Aberrant Spirit (Scissors)",
+   "iconPath": "Icon_NP0801",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 1,
+   "skillSetGroup": 200801
+  },
+  "NP0803": {
+   "code": "NP0803",
+   "name": "하급 원령(리퍼)",
+   "nameEn": "Lesser Aberrant Spirit (Reaper)",
+   "iconPath": "Icon_NP0803",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 1,
+   "skillSetGroup": 200803
+  },
+  "NP0804": {
+   "code": "NP0804",
+   "name": "하급 원령(퍼펫)",
+   "nameEn": "Lesser Aberrant Spirit (Puppet)",
+   "iconPath": "Icon_NP0804",
+   "roleType": 3,
+   "attributeType": 1,
+   "positionType": 3,
+   "skillSetGroup": 200804
+  },
+  "NP0805": {
+   "code": "NP0805",
+   "name": "하급 원령(복싱)",
+   "nameEn": "Lesser Aberrant Spirit (Boxing)",
+   "iconPath": "Icon_NP0805",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 1,
+   "skillSetGroup": 200805
+  },
+  "NP0806": {
+   "code": "NP0806",
+   "name": "하급 원령(디스크)",
+   "nameEn": "Lesser Aberrant Spirit (Disc)",
+   "iconPath": "Icon_NP0806",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 3,
+   "skillSetGroup": 200806
+  },
+  "NP0807": {
+   "code": "NP0807",
+   "name": "상급 원령(시저스)",
+   "nameEn": "Advanced Aberrant Spirit (Scissors)",
+   "iconPath": "Icon_NP0807",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 1,
+   "skillSetGroup": 200807
+  },
+  "NP0808": {
+   "code": "NP0808",
+   "name": "상급 원령(클린)",
+   "nameEn": "Advanced Aberrant Spirit (Clean)",
+   "iconPath": "Icon_NP0808",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 3,
+   "skillSetGroup": 200808
+  },
+  "NP0810": {
+   "code": "NP0810",
+   "name": "상급 원령(퍼펫)",
+   "nameEn": "Advanced Aberrant Spirit (Puppet)",
+   "iconPath": "Icon_NP0810",
+   "roleType": 3,
+   "attributeType": 1,
+   "positionType": 3,
+   "skillSetGroup": 200810
+  },
+  "NP0811": {
+   "code": "NP0811",
+   "name": "상급 원령(복싱)",
+   "nameEn": "Advanced Aberrant Spirit (Boxing)",
+   "iconPath": "Icon_NP0811",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 1,
+   "skillSetGroup": 200811
+  },
+  "NP0812": {
+   "code": "NP0812",
+   "name": "상급 원령(디스크)",
+   "nameEn": "Advanced Aberrant Spirit (Disc)",
+   "iconPath": "Icon_NP0812",
+   "roleType": 2,
+   "attributeType": 1,
+   "positionType": 3,
+   "skillSetGroup": 200812
   },
   "NP6010": {
    "code": "NP6010",
@@ -7594,6 +7873,16 @@
     "HEAL_RECEIVE": 1.0,
     "ATTACK_SPEED_NORMAL": 1.0
    },
+   "30106": {
+    "PHYSICS_ATTACK": 192.0,
+    "PHYSICS_DEFENSE": 375.0,
+    "MAX_LIFE": 314600.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
    "30201": {
     "PHYSICS_ATTACK": 128.0,
     "PHYSICS_DEFENSE": 225.0,
@@ -7644,6 +7933,16 @@
     "HEAL_RECEIVE": 1.0,
     "ATTACK_SPEED_NORMAL": 1.0
    },
+   "30206": {
+    "PHYSICS_ATTACK": 192.0,
+    "PHYSICS_DEFENSE": 375.0,
+    "MAX_LIFE": 314600.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
    "30301": {
     "PHYSICS_ATTACK": 136.0,
     "PHYSICS_DEFENSE": 225.0,
@@ -7688,6 +7987,16 @@
     "PHYSICS_ATTACK": 184.0,
     "PHYSICS_DEFENSE": 225.0,
     "MAX_LIFE": 352000.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30306": {
+    "PHYSICS_ATTACK": 224.0,
+    "PHYSICS_DEFENSE": 375.0,
+    "MAX_LIFE": 748000.0,
     "ACCURACY": 25.0,
     "EVASION": 10.0,
     "WEIGHT": 1.0,
@@ -10585,6 +10894,16 @@
     "HEAL_RECEIVE": 1.0,
     "ATTACK_SPEED_NORMAL": 1.0
    },
+   "60601": {
+    "PHYSICS_ATTACK": 288.0,
+    "PHYSICS_DEFENSE": 112.5,
+    "MAX_LIFE": 70400.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
    "61101": {
     "PHYSICS_ATTACK": 72.0,
     "PHYSICS_DEFENSE": 30.0,
@@ -10980,6 +11299,35 @@
     "HEAL_RECEIVE": 1.0,
     "ATTACK_SPEED_NORMAL": 1.0
    },
+   "70601": {
+    "PHYSICS_ATTACK": 112.0,
+    "PHYSICS_DEFENSE": 75.0,
+    "MAX_LIFE": 8800.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "70602": {
+    "PHYSICS_ATTACK": 152.0,
+    "PHYSICS_DEFENSE": 75.0,
+    "MAX_LIFE": 6380.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "70603": {
+    "PHYSICS_DEFENSE": 112.5,
+    "MAX_LIFE": 35200.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
    "80101": {
     "PHYSICS_ATTACK": 208.0,
     "PHYSICS_DEFENSE": 30.0,
@@ -11024,6 +11372,16 @@
     "PHYSICS_ATTACK": 272.0,
     "PHYSICS_DEFENSE": 45.0,
     "MAX_LIFE": 22000.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "80601": {
+    "PHYSICS_ATTACK": 272.0,
+    "PHYSICS_DEFENSE": 112.5,
+    "MAX_LIFE": 35200.0,
     "ACCURACY": 25.0,
     "EVASION": 10.0,
     "WEIGHT": 1.0,
@@ -12536,6 +12894,106 @@
     "PHYSICS_ATTACK": 96.0,
     "PHYSICS_DEFENSE": 15.0,
     "MAX_LIFE": 1694.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110801": {
+    "PHYSICS_ATTACK": 91.2,
+    "PHYSICS_DEFENSE": 15.0,
+    "MAX_LIFE": 1320.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110803": {
+    "PHYSICS_ATTACK": 91.2,
+    "PHYSICS_DEFENSE": 15.0,
+    "MAX_LIFE": 1320.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110804": {
+    "PHYSICS_ATTACK": 81.6,
+    "PHYSICS_DEFENSE": 15.0,
+    "MAX_LIFE": 1540.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110805": {
+    "PHYSICS_ATTACK": 91.2,
+    "PHYSICS_DEFENSE": 15.0,
+    "MAX_LIFE": 1320.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110806": {
+    "PHYSICS_ATTACK": 91.2,
+    "PHYSICS_DEFENSE": 15.0,
+    "MAX_LIFE": 1320.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110807": {
+    "PHYSICS_ATTACK": 124.8,
+    "PHYSICS_DEFENSE": 22.5,
+    "MAX_LIFE": 1936.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110808": {
+    "PHYSICS_ATTACK": 124.8,
+    "PHYSICS_DEFENSE": 22.5,
+    "MAX_LIFE": 1936.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110810": {
+    "PHYSICS_ATTACK": 124.8,
+    "PHYSICS_DEFENSE": 22.5,
+    "MAX_LIFE": 1936.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110811": {
+    "PHYSICS_ATTACK": 124.8,
+    "PHYSICS_DEFENSE": 22.5,
+    "MAX_LIFE": 1936.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "110812": {
+    "PHYSICS_ATTACK": 124.8,
+    "PHYSICS_DEFENSE": 22.5,
+    "MAX_LIFE": 1936.0,
     "ACCURACY": 25.0,
     "EVASION": 10.0,
     "WEIGHT": 1.0,
@@ -18974,6 +19432,12 @@
     "ACCURACY": 1.0,
     "EVASION": 1.0
    },
+   "30106": {
+    "PHYSICS_ATTACK": 21.5,
+    "MAX_LIFE": 15730.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
    "30301": {
     "PHYSICS_ATTACK": 15.23,
     "MAX_LIFE": 13090.0,
@@ -19001,6 +19465,12 @@
    "30305": {
     "PHYSICS_ATTACK": 20.61,
     "MAX_LIFE": 17600.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30306": {
+    "PHYSICS_ATTACK": 25.09,
+    "MAX_LIFE": 37400.0,
     "ACCURACY": 1.0,
     "EVASION": 1.0
    },
@@ -20723,6 +21193,12 @@
     "ACCURACY": 1.0,
     "EVASION": 1.0
    },
+   "60601": {
+    "PHYSICS_ATTACK": 32.26,
+    "MAX_LIFE": 3520.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
    "61101": {
     "PHYSICS_ATTACK": 8.06,
     "MAX_LIFE": 66.0,
@@ -20958,6 +21434,23 @@
     "ACCURACY": 1.0,
     "EVASION": 1.0
    },
+   "70601": {
+    "PHYSICS_ATTACK": 12.54,
+    "MAX_LIFE": 440.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "70602": {
+    "PHYSICS_ATTACK": 17.02,
+    "MAX_LIFE": 319.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "70603": {
+    "MAX_LIFE": 1760.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
    "80101": {
     "PHYSICS_ATTACK": 23.3,
     "MAX_LIFE": 396.0,
@@ -20985,6 +21478,12 @@
    "80501": {
     "PHYSICS_ATTACK": 30.46,
     "MAX_LIFE": 1100.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "80601": {
+    "PHYSICS_ATTACK": 30.46,
+    "MAX_LIFE": 1760.0,
     "ACCURACY": 1.0,
     "EVASION": 1.0
    },
@@ -24868,6 +25367,16 @@
    "name": "매혹의 기원",
    "nameEn": "Origin of Charm",
    "icon": "Icon_Goods_EV1009_01"
+  },
+  "goods:5010": {
+   "name": "할로윈 축제 초청권",
+   "nameEn": null,
+   "icon": "Icon_Goods_EV1010_Ticket_01"
+  },
+  "goods:1010": {
+   "name": "봉인된 원령",
+   "nameEn": null,
+   "icon": "Icon_Goods_EV1010_Contract_01"
   },
   "item:40013": {
    "name": "선물 선택 상자",
@@ -73449,6 +73958,91 @@
    ]
   },
   {
+   "id": 3040106,
+   "group": "daily:30401",
+   "mode": "daily",
+   "zoneId": 30401,
+   "order": 6,
+   "nameKey": "contents_stage_list_name_data_theft",
+   "nameTemplate": {
+    "ko": "공장 데이터 {0}",
+    "en": "Factory Data {0}"
+   },
+   "recommendLevel": "60",
+   "weakAttribute": 1,
+   "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1010",
+   "background": "Battle_Field_Ruined_Machineshop_01",
+   "bgm": "BGM_Battle_Sam002",
+   "waveGroup": 3040106,
+   "rewards": {
+    "repeat": [
+     {
+      "type": "item",
+      "id": 10014,
+      "amount": [
+       2
+      ],
+      "drop": "each",
+      "ref": "item:10014"
+     },
+     {
+      "type": "item",
+      "id": 10013,
+      "amount": [
+       3
+      ],
+      "drop": "each",
+      "ref": "item:10013"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "place",
+     "bossCode": "NP8199",
+     "bgm": "bgm_battle_002",
+     "enemies": [
+      {
+       "code": "NP8101",
+       "level": 60,
+       "baseStat": 70601,
+       "levelStat": 70601
+      },
+      {
+       "code": "NP8101",
+       "level": 60,
+       "baseStat": 70601,
+       "levelStat": 70601
+      },
+      {
+       "code": "NP8102",
+       "level": 60,
+       "baseStat": 70602,
+       "levelStat": 70602
+      },
+      {
+       "code": "NP8102",
+       "level": 60,
+       "baseStat": 70602,
+       "levelStat": 70602
+      },
+      {
+       "code": "NP8199",
+       "level": 60,
+       "baseStat": 70603,
+       "levelStat": 70603
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 3040201,
    "group": "daily:30402",
    "mode": "daily",
@@ -73703,6 +74297,58 @@
        "level": 50,
        "baseStat": 60501,
        "levelStat": 60501
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3040206,
+   "group": "daily:30402",
+   "mode": "daily",
+   "zoneId": 30402,
+   "order": 6,
+   "nameKey": "contents_stage_list_name_money_extortion",
+   "nameTemplate": {
+    "ko": "은닉 금품 {0}",
+    "en": "Hidden Valuables {0}"
+   },
+   "recommendLevel": "60",
+   "weakAttribute": 2,
+   "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1010",
+   "background": "Battle_Field_Credit_01",
+   "bgm": "BGM_Gigantic",
+   "waveGroup": 3040206,
+   "rewards": {
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1,
+      "amount": [
+       25000
+      ],
+      "drop": "each",
+      "ref": "goods:1"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "place",
+     "bossCode": "NP7999",
+     "bgm": "bgm_battle_006",
+     "enemies": [
+      {
+       "code": "NP7999",
+       "level": 60,
+       "baseStat": 60601,
+       "levelStat": 60601
       }
      ]
     }
@@ -74080,6 +74726,58 @@
        "level": 50,
        "baseStat": 80501,
        "levelStat": 80501
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 3040306,
+   "group": "daily:30403",
+   "mode": "daily",
+   "zoneId": 30403,
+   "order": 6,
+   "nameKey": "contents_stage_list_name_laundry_room",
+   "nameTemplate": {
+    "ko": "세탁소 지점 {0}",
+    "en": "Laundromat Branch {0}"
+   },
+   "recommendLevel": "60",
+   "weakAttribute": 3,
+   "stamina": 10,
+   "entry": {
+    "ref": "reset_goods:1",
+    "amount": 10
+   },
+   "subMissionGroup": "1010",
+   "background": "Battle_Field_Laundry_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 3040306,
+   "rewards": {
+    "repeat": [
+     {
+      "type": "item",
+      "id": 10024,
+      "amount": [
+       13
+      ],
+      "drop": "each",
+      "ref": "item:10024"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "place",
+     "bossCode": "NP8200",
+     "bgm": "bgm_battle_001",
+     "enemies": [
+      {
+       "code": "NP8200",
+       "level": 60,
+       "baseStat": 80601,
+       "levelStat": 80601
       }
      ]
     }
@@ -85732,6 +86430,1008 @@
    ]
   },
   {
+   "id": 10010101,
+   "group": "event:1010",
+   "mode": "event",
+   "zoneId": 100101,
+   "order": 1,
+   "nameKey": "event_story_stage_name_ev1010_normal",
+   "nameTemplate": {
+    "ko": "할로윈 축제 거리 {0}",
+    "en": "Halloween Sky Lantern Street {0}"
+   },
+   "recommendLevel": "10",
+   "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5010",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Festivalstreet_Halloween_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10010101,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1010,
+      "amount": [
+       50
+      ],
+      "drop": "each",
+      "ref": "goods:1010"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0805",
+       "level": 10,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0805",
+       "level": 10,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0806",
+       "level": 10,
+       "baseStat": 110806,
+       "levelStat": 100102
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0805",
+       "level": 10,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0811",
+       "level": 10,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0806",
+       "level": 10,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 10,
+       "baseStat": 110806,
+       "levelStat": 100102
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0807",
+       "level": 10,
+       "baseStat": 110807,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0801",
+       "level": 10,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0801",
+       "level": 10,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 10,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 10,
+       "baseStat": 110806,
+       "levelStat": 100102
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10010102,
+   "group": "event:1010",
+   "mode": "event",
+   "zoneId": 100101,
+   "order": 2,
+   "nameKey": "event_story_stage_name_ev1010_normal",
+   "nameTemplate": {
+    "ko": "할로윈 축제 거리 {0}",
+    "en": "Halloween Sky Lantern Street {0}"
+   },
+   "recommendLevel": "15",
+   "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5010",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Festivalstreet_Halloween_01",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10010102,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1010,
+      "amount": [
+       52
+      ],
+      "drop": "each",
+      "ref": "goods:1010"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0811",
+       "level": 15,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0805",
+       "level": 15,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0803",
+       "level": 15,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 15,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 15,
+       "baseStat": 110806,
+       "levelStat": 100102
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0807",
+       "level": 15,
+       "baseStat": 110807,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0803",
+       "level": 15,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0801",
+       "level": 15,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 15,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 15,
+       "baseStat": 110806,
+       "levelStat": 100102
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0805",
+       "level": 15,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0811",
+       "level": 15,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0812",
+       "level": 15,
+       "baseStat": 110812,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0806",
+       "level": 15,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 15,
+       "baseStat": 110806,
+       "levelStat": 100102
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10010103,
+   "group": "event:1010",
+   "mode": "event",
+   "zoneId": 100101,
+   "order": 3,
+   "nameKey": "event_story_stage_name_ev1010_normal",
+   "nameTemplate": {
+    "ko": "할로윈 축제 거리 {0}",
+    "en": "Halloween Sky Lantern Street {0}"
+   },
+   "recommendLevel": "20",
+   "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5010",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Festivalstreet_Halloween_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10010103,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1010,
+      "amount": [
+       54
+      ],
+      "drop": "each",
+      "ref": "goods:1010"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0803",
+       "level": 20,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0805",
+       "level": 20,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0805",
+       "level": 20,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0806",
+       "level": 20,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0812",
+       "level": 20,
+       "baseStat": 110812,
+       "levelStat": 100109
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0807",
+       "level": 20,
+       "baseStat": 110807,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0801",
+       "level": 20,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0801",
+       "level": 20,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0808",
+       "level": 20,
+       "baseStat": 110808,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0806",
+       "level": 20,
+       "baseStat": 110806,
+       "levelStat": 100102
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0811",
+       "level": 20,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0805",
+       "level": 20,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0805",
+       "level": 20,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0806",
+       "level": 20,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0812",
+       "level": 20,
+       "baseStat": 110812,
+       "levelStat": 100109
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10010104,
+   "group": "event:1010",
+   "mode": "event",
+   "zoneId": 100101,
+   "order": 4,
+   "nameKey": "event_story_stage_name_ev1010_normal",
+   "nameTemplate": {
+    "ko": "할로윈 축제 거리 {0}",
+    "en": "Halloween Sky Lantern Street {0}"
+   },
+   "recommendLevel": "25",
+   "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5010",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Festivalstreet_Halloween_02",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10010104,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1010,
+      "amount": [
+       56
+      ],
+      "drop": "each",
+      "ref": "goods:1010"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0807",
+       "level": 25,
+       "baseStat": 110807,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0803",
+       "level": 25,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0803",
+       "level": 25,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0804",
+       "level": 25,
+       "baseStat": 110804,
+       "levelStat": 100106
+      },
+      {
+       "code": "NP0812",
+       "level": 25,
+       "baseStat": 110812,
+       "levelStat": 100109
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0801",
+       "level": 25,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0807",
+       "level": 25,
+       "baseStat": 110807,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0808",
+       "level": 25,
+       "baseStat": 110808,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0806",
+       "level": 25,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0806",
+       "level": 25,
+       "baseStat": 110806,
+       "levelStat": 100102
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0803",
+       "level": 25,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0811",
+       "level": 25,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0811",
+       "level": 25,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0804",
+       "level": 25,
+       "baseStat": 110804,
+       "levelStat": 100106
+      },
+      {
+       "code": "NP0812",
+       "level": 25,
+       "baseStat": 110812,
+       "levelStat": 100109
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10010105,
+   "group": "event:1010",
+   "mode": "event",
+   "zoneId": 100101,
+   "order": 5,
+   "nameKey": "event_story_stage_name_ev1010_normal",
+   "nameTemplate": {
+    "ko": "할로윈 축제 거리 {0}",
+    "en": "Halloween Sky Lantern Street {0}"
+   },
+   "recommendLevel": "30",
+   "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5010",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Festivalstreet_Halloween_03",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10010105,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1010,
+      "amount": [
+       58
+      ],
+      "drop": "each",
+      "ref": "goods:1010"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0811",
+       "level": 30,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0805",
+       "level": 30,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0805",
+       "level": 30,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0812",
+       "level": 30,
+       "baseStat": 110812,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0804",
+       "level": 30,
+       "baseStat": 110804,
+       "levelStat": 100106
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0807",
+       "level": 30,
+       "baseStat": 110807,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0803",
+       "level": 30,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0803",
+       "level": 30,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0810",
+       "level": 30,
+       "baseStat": 110810,
+       "levelStat": 100112
+      },
+      {
+       "code": "NP0812",
+       "level": 30,
+       "baseStat": 110812,
+       "levelStat": 100109
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0801",
+       "level": 30,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0807",
+       "level": 30,
+       "baseStat": 110807,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0808",
+       "level": 30,
+       "baseStat": 110808,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0804",
+       "level": 30,
+       "baseStat": 110804,
+       "levelStat": 100106
+      },
+      {
+       "code": "NP0812",
+       "level": 30,
+       "baseStat": 110812,
+       "levelStat": 100109
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 10010106,
+   "group": "event:1010",
+   "mode": "event",
+   "zoneId": 100101,
+   "order": 6,
+   "nameKey": "event_story_stage_name_ev1010_normal",
+   "nameTemplate": {
+    "ko": "할로윈 축제 거리 {0}",
+    "en": "Halloween Sky Lantern Street {0}"
+   },
+   "recommendLevel": "35",
+   "weakAttribute": 4,
+   "entry": {
+    "ref": "goods:5010",
+    "amount": 1
+   },
+   "subMissionGroup": "3000",
+   "background": "Battle_Field_Festivalstreet_Halloween_03",
+   "bgm": "BGM_Battle_Sam003",
+   "waveGroup": 10010106,
+   "rewards": {
+    "first": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       10
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "star": [
+     {
+      "type": "goods",
+      "id": 2,
+      "amount": [
+       30
+      ],
+      "drop": "each",
+      "ref": "goods:2"
+     }
+    ],
+    "repeat": [
+     {
+      "type": "goods",
+      "id": 1010,
+      "amount": [
+       60
+      ],
+      "drop": "each",
+      "ref": "goods:1010"
+     }
+    ]
+   },
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0807",
+       "level": 35,
+       "baseStat": 110807,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0801",
+       "level": 35,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0801",
+       "level": 35,
+       "baseStat": 110801,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0808",
+       "level": 35,
+       "baseStat": 110808,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0810",
+       "level": 35,
+       "baseStat": 110810,
+       "levelStat": 100112
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0805",
+       "level": 35,
+       "baseStat": 110805,
+       "levelStat": 100101
+      },
+      {
+       "code": "NP0811",
+       "level": 35,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0806",
+       "level": 35,
+       "baseStat": 110806,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0812",
+       "level": 35,
+       "baseStat": 110812,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0810",
+       "level": 35,
+       "baseStat": 110810,
+       "levelStat": 100112
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bgm": "bgm_battle_018",
+     "enemies": [
+      {
+       "code": "NP0803",
+       "level": 35,
+       "baseStat": 110803,
+       "levelStat": 100102
+      },
+      {
+       "code": "NP0811",
+       "level": 35,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0811",
+       "level": 35,
+       "baseStat": 110811,
+       "levelStat": 100107
+      },
+      {
+       "code": "NP0812",
+       "level": 35,
+       "baseStat": 110812,
+       "levelStat": 100109
+      },
+      {
+       "code": "NP0810",
+       "level": 35,
+       "baseStat": 110810,
+       "levelStat": 100112
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 4000001,
    "group": "ascent:40000",
    "mode": "ascent",
@@ -96811,6 +98511,39 @@
    ]
   },
   {
+   "id": 7013106,
+   "group": "nemesis:7015",
+   "bossName": "시니스트라",
+   "mode": "nemesis",
+   "zoneId": 70131,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6010_zone_01",
+   "nameTemplate": {
+    "ko": "13호 업무센터",
+    "en": "No. 13 Business Center"
+   },
+   "weakAttribute": 1,
+   "background": "Battle_Field_Office_Corridor_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7013106,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6010",
+     "bgm": "bgm_battle_009",
+     "enemies": [
+      {
+       "code": "NP6010",
+       "level": 68,
+       "baseStat": 30106,
+       "levelStat": 30106
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 7013201,
    "group": "nemesis:7015",
    "bossName": "덱스트라",
@@ -96976,6 +98709,39 @@
    ]
   },
   {
+   "id": 7013206,
+   "group": "nemesis:7015",
+   "bossName": "덱스트라",
+   "mode": "nemesis",
+   "zoneId": 70132,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6010_zone_02",
+   "nameTemplate": {
+    "ko": "반파된 종합상황실",
+    "en": "Half-destroyed General Control Room"
+   },
+   "weakAttribute": 1,
+   "background": "Battle_Field_Office_Corridor_Destroyed_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7013206,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6011",
+     "bgm": "bgm_battle_009",
+     "enemies": [
+      {
+       "code": "NP6011",
+       "level": 68,
+       "baseStat": 30206,
+       "levelStat": 30106
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 7013301,
    "group": "nemesis:7015",
    "bossName": "움브라 데이",
@@ -97135,6 +98901,39 @@
        "level": 65,
        "baseStat": 30305,
        "levelStat": 30305
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7013306,
+   "group": "nemesis:7015",
+   "bossName": "움브라 데이",
+   "mode": "nemesis",
+   "zoneId": 70133,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6010_zone_03",
+   "nameTemplate": {
+    "ko": "절체절명의 연결교",
+    "en": "Desperate Connecting Bridge"
+   },
+   "weakAttribute": 1,
+   "background": "Battle_Field_Office_Bridge_Destroyed_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7013306,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6012",
+     "bgm": "bgm_battle_010",
+     "enemies": [
+      {
+       "code": "NP6012",
+       "level": 68,
+       "baseStat": 30306,
+       "levelStat": 30306
       }
      ]
     }
