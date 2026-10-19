@@ -413,6 +413,7 @@ export type SkillMoveTarget = {
   cast?: SkillHit['cast'];
   offset?: number;
   seconds?: number;
+  lookAtTarget?: boolean;
 };
 
 // An active skill has `hits`, a passive `stats` and `triggers`; the battle arithmetic over them is not decoded.

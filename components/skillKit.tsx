@@ -1,6 +1,8 @@
 // Skill kits show structure without implying undecoded battle arithmetic.
 import { Panel } from '@altterisk/game-hub';
 import { useState } from 'react';
+import NextLink from 'next/link';
+import { hasArea } from '@/lib/aoe';
 import { useSkillTiming } from '@/lib/skillTiming';
 import type { SkillTiming } from '@/lib/data';
 import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
@@ -266,9 +268,9 @@ function Behaviour({ behaviour, level, period, data, icons }: {
 }
 
 // Skills level independently; passives use star grade and normal attacks have no level.
-export function SkillRow({ skill, data, icons, showSlot }: {
+export function SkillRow({ skill, data, icons, showSlot, owner }: {
   skill: SkillEntry & { id: number }; data: CharacterData;
-  icons: IconManifest | null; showSlot?: boolean;
+  icons: IconManifest | null; showSlot?: boolean; owner?: string;
 }) {
   const t = useT();
   const lang = useLang();
@@ -317,6 +319,14 @@ export function SkillRow({ skill, data, icons, showSlot }: {
               </Badge>
             </WrapItem>
           )}
+          {owner && hasArea(skill.behaviour) && (
+            <WrapItem>
+              <Badge as={NextLink} href={`/field?unit=${owner}&skill=${skill.id}#aoe`} fontSize="0.6rem"
+                colorScheme="red" textTransform="none" title={t('aoeLinkHint')}>
+                {t('aoeLink')}
+              </Badge>
+            </WrapItem>
+          )}
           {skill.openStar > 1 && (
             <WrapItem>
               <Badge fontSize="0.6rem" colorScheme="yellow">{skill.openStar}★</Badge>
@@ -360,9 +370,9 @@ export function SkillRow({ skill, data, icons, showSlot }: {
 }
 
 // The unframed kit lets stage enemies reuse skill sets without a character entry.
-export function SkillList({ group, defaultStar, data, icons }: {
+export function SkillList({ group, defaultStar, data, icons, owner }: {
   group: number | null | undefined; defaultStar?: number | null;
-  data: CharacterData; icons: IconManifest | null;
+  data: CharacterData; icons: IconManifest | null; owner?: string;
 }) {
   const t = useT();
   const entry = { skillSetGroup: group, defaultStar } as CharacterEntry;
@@ -386,7 +396,7 @@ export function SkillList({ group, defaultStar, data, icons }: {
       )}
       <VStack align="stretch" spacing={3}>
         {skills.map((skill) => (
-          <SkillRow key={skill.id} skill={skill} data={data} icons={icons}
+          <SkillRow key={skill.id} skill={skill} data={data} icons={icons} owner={owner}
             // The slot number distinguishes enemy skills that share a placeholder name.
             showSlot={skills.filter((s) => s.name === skill.name).length > 1} />
         ))}
@@ -404,7 +414,7 @@ export function Skills({ entry, data, icons }: {
   return (
     <Panel title={t('tabSkills')}>
       <SkillList group={entry.skillSetGroup} defaultStar={entry.defaultStar}
-        data={data} icons={icons} />
+        data={data} icons={icons} owner={entry.characterType === 1 ? entry.code : undefined} />
     </Panel>
   );
 }
