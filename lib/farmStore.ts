@@ -2,8 +2,8 @@
 import { createPersisted } from '@altterisk/game-hub/persist';
 import { create } from 'zustand';
 import {
-  applyPart, applySide, atLeastCurrent, emptyPlan,
-  type GearPlan, type PlanPart, type UnitPlan, type UnitPlanPair,
+  ROUTE_MODES, applyPart, applySide, atLeastCurrent, emptyPlan,
+  type GearPlan, type RouteMode, type PlanPart, type UnitPlan, type UnitPlanPair,
 } from '@/lib/farm';
 
 export type FarmState = {
@@ -19,6 +19,9 @@ export type FarmState = {
   hardStages: boolean;
   /** Select-box refs the simulation must not open. */
   boxOff: Record<string, true>;
+  routeMode: RouteMode;
+  useBoxes: boolean;
+  useExchange: boolean;
 };
 
 type FarmStore = FarmState & {
@@ -52,10 +55,14 @@ type FarmStore = FarmState & {
   setSweepOnly: (on: boolean) => void;
   setHardStages: (on: boolean) => void;
   setBoxOff: (ref: string, off: boolean) => void;
+  setRouteMode: (mode: RouteMode) => void;
+  setUseBoxes: (on: boolean) => void;
+  setUseExchange: (on: boolean) => void;
 };
 
 const EMPTY: FarmState = {
-  inventory: {}, units: {}, clears: {}, sweepOnly: false, hardStages: true, boxOff: {},
+  inventory: {}, units: {}, clears: {}, sweepOnly: false, hardStages: true, boxOff: {}, routeMode: 'runs',
+  useBoxes: true, useExchange: true,
 };
 
 const stored = createPersisted<FarmState>({
@@ -71,6 +78,9 @@ function persist(state: FarmState): void {
     sweepOnly: state.sweepOnly,
     hardStages: state.hardStages,
     boxOff: state.boxOff,
+    routeMode: state.routeMode,
+    useBoxes: state.useBoxes,
+    useExchange: state.useExchange,
   });
 }
 
@@ -184,6 +194,9 @@ export const useFarm = create<FarmStore>((set) => ({
     if (off) boxOff[ref] = true; else delete boxOff[ref];
     return save(s, { boxOff });
   }),
+  setRouteMode: (mode) => set((s) => save(s, { routeMode: mode })),
+  setUseBoxes: (on) => set((s) => save(s, { useBoxes: on })),
+  setUseExchange: (on) => set((s) => save(s, { useExchange: on })),
 }));
 
 function record(value: unknown): Record<string, number> {
@@ -237,12 +250,20 @@ function parse(doc: Partial<FarmState>): FarmState {
     hardStages: doc.hardStages !== false,
     boxOff: Object.fromEntries(Object.entries(doc.boxOff ?? {})
       .filter(([, v]) => v === true).map(([k]) => [k, true as const])),
+    routeMode: ROUTE_MODES.includes(doc.routeMode as RouteMode)
+      ? doc.routeMode as RouteMode : EMPTY.routeMode,
+    useBoxes: doc.useBoxes !== false,
+    useExchange: doc.useExchange !== false,
   };
 }
 
 export function farmRecord(): FarmState {
-  const { inventory, units, clears, sweepOnly, hardStages, boxOff } = useFarm.getState();
-  return { inventory, units, clears, sweepOnly, hardStages, boxOff };
+  const {
+    inventory, units, clears, sweepOnly, hardStages, boxOff, routeMode, useBoxes, useExchange,
+  } = useFarm.getState();
+  return {
+    inventory, units, clears, sweepOnly, hardStages, boxOff, routeMode, useBoxes, useExchange,
+  };
 }
 
 /** Replaces the whole record, as a restore would, and persists it. */
