@@ -343,6 +343,8 @@ export type SkillOp = {
   detail?: SkillDetail;
   /** The condition the effect is only given under. */
   gate?: SkillGate;
+  // proc chance 0-1; absent = always
+  chance?: number;
   // duration operations only
   name?: string | null;
   nameEn?: string | null;

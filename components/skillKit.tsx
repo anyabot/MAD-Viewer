@@ -10,7 +10,7 @@ import { GameIcon } from '@/components/gameIcon';
 import {
   BUFF_CATEGORY, DISPEL_LABEL, MOVE_LABEL, OP_LABEL, OP_SCHEME, SETUP_CONDITION_LABEL, SIDE_LABEL,
   SKILL_CATEGORY_LABEL, SORT_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, colorRuns,
-  detailSummary, everySecondsText, gateSummary, hitSummary, labelOf, moveSummary, opAmounts, opSeconds, weightText,
+  detailSummary, everySecondsText, gateSummary, hitSummary, labelOf, moveSummary, opAmounts, opSeconds, weightText, chanceText,
   scaleSummary, secondsText, skillDescs, variantCondition, skillGrades, skillsAtGrade, statAmount,
 } from '@/lib/characters';
 import { dataText, useLang, useT, type UiKey } from '@/lib/i18n';
@@ -122,6 +122,7 @@ function OpRow({ op, level, period, data, icons, landings = 1 }: {
   const amounts = opAmounts(op, level, period);
   const seconds = opSeconds(op, level, period, lang);
   const weights = op.value ? weightText(op, landings, lang) : null;
+  const odds = chanceText(op, lang);
   // a boss can name six states at once; the rest go in the tooltip
   const detail = op.detail ? detailSummary(op.detail, lang) : [];
   const shown = detail.slice(0, 3);
@@ -144,6 +145,7 @@ function OpRow({ op, level, period, data, icons, landings = 1 }: {
       )}
       {scale && <Text fontSize="0.65rem" color="gray.400">{scale}</Text>}
       {weights && <Text fontSize="0.65rem" color="orange.200">{weights}</Text>}
+      {odds && <Text fontSize="0.65rem" color="pink.200">{odds}</Text>}
       {detail.length > 0 && (
         <Text fontSize="0.65rem" color="gray.300" noOfLines={1}
           title={detail.map((v) => colorRuns(v).map((r) => (r.break ? ' ' : r.text)).join('')).join(', ')}>

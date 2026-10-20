@@ -894,6 +894,12 @@ export function weightText(op: SkillOp, landings: number, lang: Lang = 'en'): st
   return parts.length ? parts.join(' · ') : null;
 }
 
+export function chanceText(op: SkillOp, lang: Lang = 'en'): string | null {
+  if (op.chance == null) return null;
+  const pct = sixSigFigs(op.chance * 100);
+  return lang === 'ko' ? `${pct}% 확률` : `${pct}% chance`;
+}
+
 export function opSeconds(
   op: SkillOp, level: number, period: number, lang: Lang = 'en',
 ): string {
