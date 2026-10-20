@@ -25,10 +25,11 @@ import { gameText, useGameLang } from '@/lib/gameText';
 import { useCollection } from '@/lib/collectionStore';
 import { downloadPlan, importPlan } from '@/lib/planFile';
 import {
-  MATERIAL_ICON_GROUPS, billCovered, billIsEmpty, farmPlan, farmStages, isHardStage,
-  mergeBills, needLabel, needsOf, openBoxes, planStar, selectBoxes, spendBill, unitBill,
+  MATERIAL_ICON_GROUPS, ROUTE_MODES, billCovered, billIsEmpty, farmPlan, farmStages, isHardStage,
+  exchangeHeld, materialExchanges, mergeBills, needLabel, needsOf, openBoxes, planStar,
+  selectBoxes, spendBill, unitBill, type ExchangeUse, type SelectBox,
   type Bill, type BoxUse, type FarmPlan, type FarmRoute, type NeedPlan, type StageSource,
-  type UnitPlanPair,
+  type RouteMode, type UnitPlanPair,
 } from '@/lib/farm';
 import { memoryPlan, starCap, stepCost, type MemoryPlan } from '@/lib/rank';
 
@@ -37,8 +38,8 @@ import { characterName, isPlayable } from '@/lib/characters';
 import { groupLabel, stageName } from '@/lib/stages';
 import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
 import {
-  loadCharacters, loadGrowth, loadIcons, loadItems, loadStages,
-  type CharacterData, type CharacterEntry, type GrowthData, type IconManifest,
+  loadCharacters, loadGrowth, loadIcons, loadItems, loadShops, loadStages,
+  type CharacterData, type CharacterEntry, type GrowthData, type IconManifest, type ShopIndex,
   type StageData, type StageEntry,
 } from '@/lib/data';
 
@@ -58,6 +59,10 @@ const materialGroup = (icons: IconManifest | null, name?: string | null) =>
 
 const STARS = [0, 1, 2, 3];
 
+const ROUTE_MODE_LABEL: Record<RouteMode, 'farmRouteGreedy' | 'farmRouteRuns'> = {
+  greedy: 'farmRouteGreedy', runs: 'farmRouteRuns',
+};
+
 // The inventory the plan is costed against: the held counts plus what the enabled select boxes open into.
 const PlanInventory = createContext<Record<string, number> | null>(null);
 
@@ -74,6 +79,7 @@ export default function FarmPage() {
   const [growth, setGrowth] = useState<GrowthData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [items, setItems] = useState<ItemIndex | null>(null);
+  const [shops, setShops] = useState<ShopIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [showInventory, setShowInventory] = useState(false);
   const boxOff = useFarm((s) => s.boxOff);
@@ -85,6 +91,10 @@ export default function FarmPage() {
   const setSweepOnly = useFarm((s) => s.setSweepOnly);
   const hardStages = useFarm((s) => s.hardStages);
   const setHardStages = useFarm((s) => s.setHardStages);
+  const routeMode = useFarm((s) => s.routeMode);
+  const setRouteMode = useFarm((s) => s.setRouteMode);
+  const useBoxes = useFarm((s) => s.useBoxes);
+  const useExchange = useFarm((s) => s.useExchange);
 
   useEffect(() => {
     loadGrowth().then(setGrowth).catch((e) => setError(String(e)));
@@ -92,9 +102,15 @@ export default function FarmPage() {
     loadStages().then(setStages).catch((e) => setError(String(e)));
     loadIcons().then(setIcons).catch(() => setIcons(null));
     loadItems().then(setItems).catch(() => setItems(null));
+    loadShops().then(setShops).catch(() => setShops(null));
   }, []);
 
-  const boxes = useMemo(() => (items ? selectBoxes(items.items) : []), [items]);
+  const boxes = useMemo(() => (items && growth ? selectBoxes(items.items)
+    .filter((box) => box.options.some((o) => growth.materials[o.ref])) : []), [items, growth]);
+
+  const exchanges = useMemo(
+    () => (growth && shops ? materialExchanges(growth, shops) : []), [growth, shops]);
+  const trades = useMemo(() => (useExchange ? exchanges : []), [useExchange, exchanges]);
 
   const pool = useMemo(
     () => (growth && stages ? farmStages(growth, stages) : []), [growth, stages]);
@@ -114,26 +130,33 @@ export default function FarmPage() {
       }));
     const first = billOf(true);
     const rest = billOf(false);
-    const opened = openBoxes(growth, mergeBills([first, rest]), inventory, boxes, boxOff);
-    const have = opened.inventory;
+    const whole = mergeBills([first, rest]);
+    const opened = openBoxes(growth, whole, inventory, useBoxes ? boxes : [], boxOff);
+    const traded = exchangeHeld(whole, opened.inventory, trades);
+    const have = traded.inventory;
+    const plan = (bill: typeof first, inv: Record<string, number>) =>
+      farmPlan(growth, routePool, bill, inv, clears, sweepOnly, routeMode, trades);
     if (billIsEmpty(first)) {
       return {
-        main: farmPlan(growth, routePool, rest, have, clears, sweepOnly),
+        main: plan(rest, have),
         rest: null,
         leftover: have,
         have,
         boxUses: opened.uses,
+        heldTrades: traded.uses,
       };
     }
     const leftover = spendBill(growth, first, have);
     return {
-      main: farmPlan(growth, routePool, first, have, clears, sweepOnly),
-      rest: farmPlan(growth, routePool, rest, leftover, clears, sweepOnly),
+      main: plan(first, have),
+      rest: plan(rest, leftover),
       leftover,
       have,
       boxUses: opened.uses,
+      heldTrades: traded.uses,
     };
-  }, [growth, chars, units, inventory, clears, sweepOnly, routePool, boxes, boxOff]);
+  }, [growth, chars, units, inventory, clears, sweepOnly, routePool, boxes, boxOff, routeMode,
+    useBoxes, trades]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!growth || !chars || !stages || !plans) {
@@ -200,7 +223,19 @@ export default function FarmPage() {
           </TabPanel>
           <TabPanel px={0} pt={4}>
             <VStack align="stretch" spacing={5}>
-              <SelectBoxPanel uses={plans.boxUses} items={items} icons={icons} />
+              <Flex align="center" gap={2} wrap="wrap">
+                <Text fontSize="0.65rem" color="gray.500" textTransform="uppercase"
+                  letterSpacing="0.11em" fontWeight="700">{t('farmRouteMode')}</Text>
+                {ROUTE_MODES.map((mode) => (
+                  <FilterChip key={mode} active={routeMode === mode}
+                    onClick={() => setRouteMode(mode)}>
+                    {t(ROUTE_MODE_LABEL[mode])}
+                  </FilterChip>
+                ))}
+              </Flex>
+              <SelectBoxPanel boxes={boxes} uses={plans.boxUses} items={items} icons={icons} />
+              <ExchangePanel held={plans.heldTrades} available={exchanges.length > 0}
+                growth={growth} icons={icons} />
               <PlanPanel plan={plans.main} growth={growth} stages={stages} icons={icons}
                 title={plans.rest ? t('farmPriority') : undefined} />
               {plans.rest && (
@@ -786,6 +821,18 @@ function PlanPanel({ plan, growth, stages, icons, title }: {
         </Panel>
       )}
 
+      {plan.exchanges.length > 0 && (
+        <Panel title={t('farmExchange')} note={t('farmExchangeFarmed')}>
+          <Wrap spacing={3}>
+            {plan.exchanges.map((use) => (
+              <WrapItem key={use.from + '>' + use.to}>
+                <ExchangeRow use={use} growth={growth} icons={icons} />
+              </WrapItem>
+            ))}
+          </Wrap>
+        </Panel>
+      )}
+
       <VStack align="stretch" spacing={2}>
         {plan.needs.map((row) => (
           <NeedRow key={row.need.key} row={row} growth={growth} stages={stages}
@@ -1037,53 +1084,72 @@ function SourceLine({ source, stages, icons, lang, best }: {
   );
 }
 
-// Held select boxes, each with a toggle; an enabled box opens into what the plan is short of.
-function SelectBoxPanel({ uses, items, icons }: {
-  uses: BoxUse[]; items: ItemIndex | null; icons: IconManifest | null;
+// Every material select box, with its held count and a toggle; an enabled box opens into what the plan is short of.
+function SelectBoxPanel({ boxes, uses, items, icons }: {
+  boxes: SelectBox[]; uses: BoxUse[]; items: ItemIndex | null; icons: IconManifest | null;
 }) {
   const t = useT();
   const gameLang = useGameLang();
   const boxOff = useFarm((s) => s.boxOff);
   const setBoxOff = useFarm((s) => s.setBoxOff);
+  const useBoxes = useFarm((s) => s.useBoxes);
+  const setUseBoxes = useFarm((s) => s.setUseBoxes);
+  const inventory = useFarm((s) => s.inventory);
+  const setInventory = useFarm((s) => s.setInventory);
   const [open, setOpen] = useState(false);
-  if (!uses.length || !items) return null;
+  if (!boxes.length || !items) return null;
   const entry = (ref: string) => items.items[ref];
-  const opened = uses.reduce((n, u) => n + (boxOff[u.box] ? 0 : u.used), 0);
-  const inUse = uses.filter((u) => !boxOff[u.box]).length;
+  const byBox = new Map(uses.map((u) => [u.box, u]));
+  const held = boxes.filter((b) => (inventory[b.ref] ?? 0) > 0);
+  const opened = useBoxes ? uses.reduce((n, u) => n + (boxOff[u.box] ? 0 : u.used), 0) : 0;
+  const inUse = useBoxes ? held.filter((b) => !boxOff[b.ref]).length : 0;
   return (
     <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" bg="whiteAlpha.50">
-      <Flex as="button" type="button" w="100%" px={3} py={2} gap={2} align="center" textAlign="left"
-        aria-expanded={open} onClick={() => setOpen((v) => !v)} _hover={{ bg: 'whiteAlpha.50' }}>
-        <ChevronRightIcon boxSize={5} color="gray.400" flexShrink={0}
-          transform={open ? 'rotate(90deg)' : undefined} transition="transform 0.15s" />
-        <Text fontSize="sm" fontWeight="bold">{t('farmBoxes')}</Text>
-        <Text fontSize="xs" color="gray.500">{t('farmBoxesSummary', { on: inUse, total: uses.length, n: opened })}</Text>
+      <Flex align="center" gap={2} pl={3}>
+        <Checkbox isChecked={useBoxes} onChange={(e) => setUseBoxes(e.target.checked)}
+          aria-label={t('farmBoxesUse')} />
+        <Flex as="button" type="button" flex="1" minW={0} pr={3} py={2} gap={2} align="center"
+          textAlign="left" aria-expanded={open} onClick={() => setOpen((v) => !v)}
+          _hover={{ bg: 'whiteAlpha.50' }}>
+          <ChevronRightIcon boxSize={5} color="gray.400" flexShrink={0}
+            transform={open ? 'rotate(90deg)' : undefined} transition="transform 0.15s" />
+          <Text fontSize="sm" fontWeight="bold">{t('farmBoxes')}</Text>
+          <Text fontSize="xs" color="gray.500">
+            {t('farmBoxesSummary', { on: inUse, total: held.length, n: opened })}
+          </Text>
+        </Flex>
       </Flex>
       <Collapse in={open} animateOpacity>
-      <VStack align="stretch" spacing={2} px={3} pb={3}>
+      <VStack align="stretch" spacing={2} px={3} pb={3} opacity={useBoxes ? 1 : 0.6}>
         <Text fontSize="xs" color="gray.500">{t('farmBoxesHint')}</Text>
-        {uses.map((use) => {
-          const box = entry(use.box);
-          const on = !boxOff[use.box];
+        {boxes.map(({ ref }) => {
+          const box = entry(ref);
+          const count = inventory[ref] ?? 0;
+          const use = byBox.get(ref);
+          const on = useBoxes && !boxOff[ref];
           return (
-            <Flex key={use.box} gap={3} align="center" wrap="wrap" p={2} borderRadius="md" bg="whiteAlpha.50"
-              opacity={on ? 1 : 0.6}>
-              <Checkbox isChecked={on} onChange={(e) => setBoxOff(use.box, !e.target.checked)}
-                aria-label={t('farmBoxUse')} />
+            <Flex key={ref} gap={3} align="center" wrap="wrap" p={2} borderRadius="md" bg="whiteAlpha.50"
+              opacity={on && count ? 1 : 0.6}>
+              <Checkbox isChecked={!boxOff[ref]} isDisabled={!useBoxes}
+                onChange={(e) => setBoxOff(ref, !e.target.checked)} aria-label={t('farmBoxUse')} />
               <ItemIcon manifest={icons} group={materialGroup(icons, box?.icon)} name={box?.icon}
-                grade={box?.grade} size={9} href={itemHref(use.box)} count={use.held} />
+                grade={box?.grade} size={9} href={itemHref(ref)} />
               <Box minW={0} flex="1">
                 <Text fontSize="sm">{gameText(box?.name, gameLang)}</Text>
                 <Text fontSize="xs" color="gray.500">
-                  {on ? t('farmBoxUsed', { used: use.used, held: use.held }) : t('farmBoxOff')}
+                  {!on ? t('farmBoxOff') : t('farmBoxUsed', { used: use?.used ?? 0, held: count })}
                 </Text>
               </Box>
-              {on && (
+              <Stepper value={count} onChange={(v) => setInventory(ref, v)}>
+                <AmountField value={count} min={0} max={999_999_999} width="4rem"
+                  onChange={(v) => setInventory(ref, v)} />
+              </Stepper>
+              {on && use && (
                 <HStack spacing={1} wrap="wrap">
-                  {Object.entries(use.picks).map(([ref, n]) => (
-                    <ItemIcon key={ref} manifest={icons} group={materialGroup(icons, entry(ref)?.icon)}
-                      name={entry(ref)?.icon} grade={entry(ref)?.grade} size={8} count={n}
-                      href={itemHref(ref)} title={gameText(entry(ref)?.name, gameLang)} />
+                  {Object.entries(use.picks).map(([pick, n]) => (
+                    <ItemIcon key={pick} manifest={icons} group={materialGroup(icons, entry(pick)?.icon)}
+                      name={entry(pick)?.icon} grade={entry(pick)?.grade} size={8} count={n}
+                      href={itemHref(pick)} title={gameText(entry(pick)?.name, gameLang)} />
                   ))}
                 </HStack>
               )}
@@ -1092,6 +1158,55 @@ function SelectBoxPanel({ uses, items, icons }: {
         })}
       </VStack>
       </Collapse>
+    </Box>
+  );
+}
+
+function ExchangeRow({ use, growth, icons }: {
+  use: ExchangeUse; growth: GrowthData; icons: IconManifest | null;
+}) {
+  const lang = useLang();
+  const from = growth.materials[use.from];
+  const to = growth.materials[use.to];
+  return (
+    <HStack spacing={2}>
+      <ItemIcon manifest={icons} group={materialGroup(icons, from?.icon)} name={from?.icon}
+        grade={from?.grade} size={7} count={use.count * use.price} href={itemHref(use.from)}
+        title={dataText(lang, from?.name, from?.nameEn) || undefined} />
+      <ChevronRightIcon color="gray.500" />
+      <ItemIcon manifest={icons} group={materialGroup(icons, to?.icon)} name={to?.icon}
+        grade={to?.grade} size={7} count={use.count} href={itemHref(use.to)}
+        title={dataText(lang, to?.name, to?.nameEn) || undefined} />
+    </HStack>
+  );
+}
+
+// The shop's unlimited lower-to-higher material trades; held spare stock is traded before routing.
+function ExchangePanel({ held, available, growth, icons }: {
+  held: ExchangeUse[]; available: boolean; growth: GrowthData; icons: IconManifest | null;
+}) {
+  const t = useT();
+  const useExchange = useFarm((s) => s.useExchange);
+  const setUseExchange = useFarm((s) => s.setUseExchange);
+  if (!available) return null;
+  return (
+    <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" bg="whiteAlpha.50"
+      px={3} py={2}>
+      <Flex align="center" gap={2} wrap="wrap">
+        <Checkbox isChecked={useExchange} onChange={(e) => setUseExchange(e.target.checked)}>
+          <Text fontSize="sm" fontWeight="bold">{t('farmExchange')}</Text>
+        </Checkbox>
+        <Text fontSize="xs" color="gray.500">{t('farmExchangeHint')}</Text>
+      </Flex>
+      {useExchange && held.length > 0 && (
+        <Wrap spacing={3} mt={2}>
+          {held.map((use) => (
+            <WrapItem key={use.from + '>' + use.to}>
+              <ExchangeRow use={use} growth={growth} icons={icons} />
+            </WrapItem>
+          ))}
+        </Wrap>
+      )}
     </Box>
   );
 }

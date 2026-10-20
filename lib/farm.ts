@@ -515,36 +515,108 @@ export type FarmRoute = {
   cost: number | null;
 };
 
-/** Scores shares of what is left, since material units and experience points do not add. */
+export type RouteMode = 'greedy' | 'runs';
+
+export const ROUTE_MODES: RouteMode[] = ['greedy', 'runs'];
+
+export type Exchange = { from: string; to: string; price: number };
+
+export type ExchangeUse = Exchange & { count: number };
+
+type ShopLike = {
+  shops: { kind: string; products: {
+    rewards?: { ref?: string; amount?: number[] }[];
+    price?: { ref?: string; amount: number };
+    limit?: number;
+  }[] }[];
+};
+
+/** Unlimited common-shop trades of one growth material for another. */
+export function materialExchanges(growth: GrowthData, shops: ShopLike): Exchange[] {
+  const out: Exchange[] = [];
+  for (const shop of shops.shops) {
+    if (shop.kind !== 'common') continue;
+    for (const product of shop.products) {
+      const reward = product.rewards?.length === 1 ? product.rewards[0] : null;
+      const from = product.price?.ref;
+      if (product.limit || !reward?.ref || !from || from === reward.ref) continue;
+      const source = growth.materials[from];
+      if (!source || source.kind === 'goods' || !growth.materials[reward.ref]) continue;
+      const price = (product.price?.amount ?? 0) / (reward.amount?.[0] ?? 1);
+      if (price > 0) out.push({ from, to: reward.ref, price });
+    }
+  }
+  return out;
+}
+
+// Spare stock of the source is traded up, dearest trade first.
+export function exchangeHeld(
+  bill: Bill, inventory: Record<string, number>, exchanges: Exchange[],
+): { inventory: Record<string, number>; uses: ExchangeUse[] } {
+  const out = { ...inventory };
+  const uses: ExchangeUse[] = [];
+  for (const ex of [...exchanges].sort((a, b) => b.price - a.price)) {
+    const short = (bill.materials[ex.to] ?? 0) - (out[ex.to] ?? 0);
+    const spare = (out[ex.from] ?? 0) - (bill.materials[ex.from] ?? 0);
+    const count = Math.min(short, Math.floor(spare / ex.price));
+    if (count <= 0) continue;
+    out[ex.from] = (out[ex.from] ?? 0) - count * ex.price;
+    out[ex.to] = (out[ex.to] ?? 0) + count;
+    uses.push({ ...ex, count });
+  }
+  return { inventory: out, uses };
+}
+
+type RouteRow = { stage: StageEntry; per: Map<string, number>; side: number };
+
 export function farmRoutes(
   growth: GrowthData, stages: StageEntry[], needs: Need[],
   inventory: Record<string, number>, clears: Record<string, number>, sweepOnly: boolean,
-): FarmRoute[] {
+  mode: RouteMode = 'greedy', exchanges: Exchange[] = [],
+): { routes: FarmRoute[]; exchanges: ExchangeUse[] } {
   const remaining = new Map<string, number>();
   for (const need of needs) if (need.short > 0) remaining.set(need.key, need.short);
+  const trades = mode === 'runs' ? exchanges.filter((ex) => remaining.has(ex.to)) : [];
+  const spare = new Map<string, number>();
+  for (const ex of trades) {
+    const need = needs.find((n) => n.key === ex.from);
+    spare.set(ex.from, Math.max(0, need ? need.have - need.required : inventory[ex.from] ?? 0));
+  }
+  const keys = [
+    ...needs.map((need) => ({ key: need.key, kind: need.kind })),
+    ...[...spare.keys()].filter((key) => !needs.some((n) => n.key === key))
+      .map((key) => ({ key, kind: 'material' as const })),
+  ];
 
   const own = new Set(needs.flatMap((need) => need.kind === 'material'
     ? [need.key] : Object.keys(poolItems(growth, need.kind))));
-  const open = stages
+  const open: RouteRow[] = stages
     .filter((stage) => isFarmable(starsOf(clears, stage), sweepOnly))
     .map((stage) => ({
       stage,
-      per: new Map(needs.flatMap((need) => {
-        const perRun = yieldPerRun(growth, stage, need);
-        return perRun > 0 ? [[need.key, perRun] as const] : [];
+      per: new Map(keys.flatMap(({ key, kind }) => {
+        const perRun = yieldPerRun(growth, stage, { key, kind, required: 0, have: 0, short: 0 });
+        return perRun > 0 ? [[key, perRun] as const] : [];
       })),
       side: usefulSideValue(growth, stage, own, inventory),
     }))
     .filter((row) => row.per.size > 0);
 
+  return mode === 'runs'
+    ? fewestRuns(open, remaining, trades, spare)
+    : { routes: greedyRoutes(open, remaining), exchanges: [] };
+}
+
+/** Scores shares of what is left, since material units and experience points do not add. */
+function greedyRoutes(open: RouteRow[], remaining: Map<string, number>): FarmRoute[] {
   const order: number[] = [];
   const byStage = new Map<number, FarmRoute>();
   while (remaining.size > 0) {
-    let best: (typeof open)[number] | null = null;
+    let best: RouteRow | null = null;
     let bestScore = 0;
     let bestSide = 0;
     const byEntry = new Map<string, {
-      row: (typeof open)[number]; score: number; efficiency: number; side: number;
+      row: RouteRow; score: number; efficiency: number; side: number;
     }>();
     for (const row of open) {
       let score = 0;
@@ -601,6 +673,135 @@ export function farmRoutes(
   return order.map((id) => byStage.get(id) as FarmRoute);
 }
 
+// Minimises total runs over every need at once (LP); trades are fixed first, then the runs are re-solved, rounded up and trimmed.
+function fewestRuns(
+  open: RouteRow[], remaining: Map<string, number>, trades: Exchange[], spare: Map<string, number>,
+): { routes: FarmRoute[]; exchanges: ExchangeUse[] } {
+  const dropped = (key: string) => open.some((row) => row.per.has(key));
+  const usable = trades.filter((ex) => dropped(ex.from));
+  const exchanges: ExchangeUse[] = [];
+  const demand = new Map(remaining);
+  if (usable.length) {
+    const keys = [...new Set([...remaining.keys(), ...usable.map((ex) => ex.from)])]
+      .filter((key) => dropped(key) || usable.some((ex) => ex.to === key));
+    const rows = open.filter((row) => keys.some((key) => row.per.has(key)));
+    const x = coverLp([
+      ...rows.map((row) => keys.map((key) => row.per.get(key) ?? 0)),
+      ...usable.map((ex) => keys.map((key) => (key === ex.to ? 1 : key === ex.from ? -ex.price : 0))),
+    ], keys.map((key) => remaining.get(key) ?? -(spare.get(key) ?? 0)),
+    [...rows.map(() => 1), ...usable.map(() => 0)]);
+    const held = new Map(spare);
+    usable.forEach((ex, e) => {
+      const count = Math.ceil(x[rows.length + e] - 1e-7);
+      if (count <= 0) return;
+      exchanges.push({ ...ex, count });
+      const to = (demand.get(ex.to) ?? 0) - count;
+      if (to > 1e-9) demand.set(ex.to, to); else demand.delete(ex.to);
+      const fromHeld = Math.min(held.get(ex.from) ?? 0, count * ex.price);
+      held.set(ex.from, (held.get(ex.from) ?? 0) - fromHeld);
+      const from = (demand.get(ex.from) ?? 0) + count * ex.price - fromHeld;
+      if (from > 1e-9) demand.set(ex.from, from);
+    });
+  }
+  return { routes: coverRuns(open, demand), exchanges };
+}
+
+function coverRuns(open: RouteRow[], remaining: Map<string, number>): FarmRoute[] {
+  const keys = [...remaining.keys()].filter((key) => open.some((row) => row.per.has(key)));
+  const rows = open.filter((row) => keys.some((key) => row.per.has(key)));
+  if (!keys.length) return [];
+  const x = coverLp(rows.map((row) => keys.map((key) => row.per.get(key) ?? 0)),
+    keys.map((key) => remaining.get(key) as number), rows.map(() => 1));
+
+  const runs = x.map((v) => (v > 1e-7 ? Math.ceil(v - 1e-7) : 0));
+  const got = new Map(keys.map((key) => [key, 0]));
+  rows.forEach((row, j) => {
+    for (const key of keys) got.set(key, (got.get(key) as number) + (row.per.get(key) ?? 0) * runs[j]);
+  });
+  const byRuns = rows.map((_, j) => j).filter((j) => runs[j] > 0)
+    .sort((a, b) => runs[a] - runs[b]);
+  for (const j of byRuns) {
+    let drop = runs[j];
+    for (const key of keys) {
+      const perRun = rows[j].per.get(key);
+      if (!perRun) continue;
+      const surplus = (got.get(key) as number) - (remaining.get(key) as number);
+      drop = Math.min(drop, Math.max(0, Math.floor(surplus / perRun + 1e-9)));
+    }
+    if (!drop) continue;
+    runs[j] -= drop;
+    for (const [key, perRun] of rows[j].per) {
+      if (got.has(key)) got.set(key, (got.get(key) as number) - perRun * drop);
+    }
+  }
+
+  const picked = rows.map((row, j) => ({ row, runs: runs[j] })).filter((p) => p.runs > 0)
+    .map((p) => ({ ...p, hits: keys.filter((key) => p.row.per.has(key)).length }))
+    .sort((a, b) => b.hits - a.hits || b.runs - a.runs);
+  const left = new Map(remaining);
+  return picked.map(({ row, runs: n }) => {
+    const entry = row.stage.entry ?? null;
+    const covers: Record<string, number> = {};
+    for (const [key, perRun] of row.per) {
+      const need = left.get(key);
+      if (!need) continue;
+      const taken = Math.min(need, perRun * n);
+      covers[key] = taken;
+      if (need - taken > 1e-9) left.set(key, need - taken); else left.delete(key);
+    }
+    return { stage: row.stage, runs: n, covers, entry, cost: entry ? n * entry.amount : null };
+  });
+}
+
+// min c·x s.t. Ax ≥ b, x ≥ 0, c ≥ 0 — solved as its dual by tableau simplex; x is read off the slack reduced costs.
+function coverLp(columns: number[][], b: number[], cost: number[]): number[] {
+  const n = columns.length;
+  const m = b.length;
+  const scale = b.map((v) => Math.max(Math.abs(v), 1));
+  const width = m + n + 1;
+  const t = columns.map((column, j) => {
+    const line = new Float64Array(width);
+    for (let i = 0; i < m; i++) line[i] = column[i] / scale[i];
+    line[m + j] = 1;
+    line[width - 1] = cost[j];
+    return line;
+  });
+  const z = new Float64Array(width);
+  for (let i = 0; i < m; i++) z[i] = -b[i] / scale[i];
+  const eps = 1e-10;
+  for (let iter = 0; iter < 50_000; iter++) {
+    const bland = iter > 5_000;
+    let col = -1;
+    for (let c = 0; c < width - 1; c++) {
+      if (z[c] < -eps && (col < 0 || (!bland && z[c] < z[col]))) {
+        col = c;
+        if (bland) break;
+      }
+    }
+    if (col < 0) break;
+    let pivot = -1;
+    let ratio = Infinity;
+    for (let r = 0; r < n; r++) {
+      if (t[r][col] > eps) {
+        const q = t[r][width - 1] / t[r][col];
+        if (q < ratio - 1e-12) { ratio = q; pivot = r; }
+      }
+    }
+    if (pivot < 0) break;
+    const p = t[pivot];
+    const pv = p[col];
+    for (let c = 0; c < width; c++) p[c] /= pv;
+    for (let r = 0; r < n; r++) {
+      if (r === pivot) continue;
+      const f = t[r][col];
+      if (Math.abs(f) > eps) for (let c = 0; c < width; c++) t[r][c] -= f * p[c];
+    }
+    const f = z[col];
+    for (let c = 0; c < width; c++) z[c] -= f * p[c];
+  }
+  return Array.from({ length: n }, (_, j) => Math.max(0, z[m + j]));
+}
+
 export type NeedPlan = {
   need: Need;
   sources: StageSource[];
@@ -617,11 +818,14 @@ export type FarmPlan = {
   cost: Record<string, number>;
   runs: number;
   blocked: NeedPlan[];
+  /** Trades the run list farms the source for. */
+  exchanges: ExchangeUse[];
 };
 
 export function farmPlan(
   growth: GrowthData, stages: StageEntry[], bill: Bill,
   inventory: Record<string, number>, clears: Record<string, number>, sweepOnly: boolean,
+  mode: RouteMode = 'greedy', exchanges: Exchange[] = [],
 ): FarmPlan {
   const needs = needsOf(growth, bill, inventory).map((need) => {
     const sources = sourcesFor(growth, stages, need, inventory, clears, sweepOnly);
@@ -633,8 +837,8 @@ export function farmPlan(
       locked: sources.length - open.length,
     };
   });
-  const routes = farmRoutes(
-    growth, stages, needs.map((p) => p.need), inventory, clears, sweepOnly);
+  const { routes, exchanges: trades } = farmRoutes(
+    growth, stages, needs.map((p) => p.need), inventory, clears, sweepOnly, mode, exchanges);
   const cost: Record<string, number> = {};
   let runs = 0;
   for (const route of routes) {
@@ -650,6 +854,7 @@ export function farmPlan(
     cost,
     runs,
     blocked: needs.filter((p) => p.need.short > 0 && !p.best),
+    exchanges: trades,
   };
 }
 
