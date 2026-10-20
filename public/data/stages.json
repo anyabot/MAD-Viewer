@@ -25370,12 +25370,12 @@
   },
   "goods:5010": {
    "name": "할로윈 축제 초청권",
-   "nameEn": null,
+   "nameEn": "Halloween Festival Invitation Ticket",
    "icon": "Icon_Goods_EV1010_Ticket_01"
   },
   "goods:1010": {
    "name": "봉인된 원령",
-   "nameEn": null,
+   "nameEn": "Sealed Aberrant Spirit",
    "icon": "Icon_Goods_EV1010_Contract_01"
   },
   "item:40013": {
@@ -86438,7 +86438,7 @@
    "nameKey": "event_story_stage_name_ev1010_normal",
    "nameTemplate": {
     "ko": "할로윈 축제 거리 {0}",
-    "en": "Halloween Sky Lantern Street {0}"
+    "en": "Halloween Festival Street {0}"
    },
    "recommendLevel": "10",
    "weakAttribute": 4,
@@ -86590,7 +86590,7 @@
    "nameKey": "event_story_stage_name_ev1010_normal",
    "nameTemplate": {
     "ko": "할로윈 축제 거리 {0}",
-    "en": "Halloween Sky Lantern Street {0}"
+    "en": "Halloween Festival Street {0}"
    },
    "recommendLevel": "15",
    "weakAttribute": 4,
@@ -86760,7 +86760,7 @@
    "nameKey": "event_story_stage_name_ev1010_normal",
    "nameTemplate": {
     "ko": "할로윈 축제 거리 {0}",
-    "en": "Halloween Sky Lantern Street {0}"
+    "en": "Halloween Festival Street {0}"
    },
    "recommendLevel": "20",
    "weakAttribute": 4,
@@ -86930,7 +86930,7 @@
    "nameKey": "event_story_stage_name_ev1010_normal",
    "nameTemplate": {
     "ko": "할로윈 축제 거리 {0}",
-    "en": "Halloween Sky Lantern Street {0}"
+    "en": "Halloween Festival Street {0}"
    },
    "recommendLevel": "25",
    "weakAttribute": 4,
@@ -87100,7 +87100,7 @@
    "nameKey": "event_story_stage_name_ev1010_normal",
    "nameTemplate": {
     "ko": "할로윈 축제 거리 {0}",
-    "en": "Halloween Sky Lantern Street {0}"
+    "en": "Halloween Festival Street {0}"
    },
    "recommendLevel": "30",
    "weakAttribute": 4,
@@ -87270,7 +87270,7 @@
    "nameKey": "event_story_stage_name_ev1010_normal",
    "nameTemplate": {
     "ko": "할로윈 축제 거리 {0}",
-    "en": "Halloween Sky Lantern Street {0}"
+    "en": "Halloween Festival Street {0}"
    },
    "recommendLevel": "35",
    "weakAttribute": 4,

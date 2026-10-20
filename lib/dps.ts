@@ -134,7 +134,7 @@ function upkeep(sources: Source[], stats: Record<string, number>, target: Target
         const onCaster = op.applyTo === 'CASTER' || castTeam === 'SELF' || op.team === 'SELF'
           || ((castTeam === 'FRIENDLY' || castTeam === 'ALL_UNIT') && op.pick === 'ALL');
         const enemyTeam = op.team === 'ENEMY' || (op.team === 'CAST_TARGET' && castTeam === 'ENEMY');
-        const perCast = hit.count * (op.applyTo === 'CASTER' && op.team === 'CAST_TARGET' ? targets : 1);
+        const perCast = (op.chance ?? 1) * hit.count * (op.applyTo === 'CASTER' && op.team === 'CAST_TARGET' ? targets : 1);
         const stacks = forever ? Math.min(cap, perCast) : Math.min(cap, perSecond * perCast * secs);
         const cover = Math.min(1, stacks);
         const name = plain(op.name);
@@ -258,11 +258,11 @@ export function skillYield(skill: SkillEntry, id: string, states: States, timing
     const ticks = landings(hit);
     for (const op of hit.ops) {
       if (!op.value || !op.scale || !op.op || !DAMAGE_OPS.has(op.op)) continue;
-      let chance = 1;
+      let chance = op.chance ?? 1;
       if (op.gate) {
         const c = gateChance(op.gate, states);
         if (c === null) { skipped += 1; continue; }
-        chance = c;
+        chance *= c;
       }
       if (!chance) continue;
       const coef = growValue(op.value, level, period, 0);
