@@ -38069,11 +38069,12 @@
             },
             "text": "조금씩... 흘러 들어와. 너의 마음, 너의 감정...",
             "texts": {
-              "en": "Little by little... it's flowing in. Your heart, your feelings...",
+              "en": "Little by little... I can feel it flowing into me. Your heart, your feelings...",
               "ja": "少しずつ…流れてくる。あなたの気持ち、あなたの想い…。",
               "zh-Hans": "正在一点点地……流入体内。你的心意、你的感情……",
               "zh-Hant": "一點一滴……流淌進來了。你的心意、你的情感……",
-              "th": "ค่อยๆ... ไหลรินเข้ามาแล้ว จิตใจของเธอ ความรู้สึกของเธอ..."
+              "th": "ค่อยๆ... ไหลรินเข้ามาแล้ว จิตใจของเธอ ความรู้สึกของเธอ...",
+              "es": "Poco a poco... van fluyendo hacia mí. Tu corazón, tus emociones..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_1"
@@ -38108,11 +38109,12 @@
             },
             "text": "지금까지 느껴본 적 없는 기분...",
             "texts": {
-              "en": "A sensation I've never felt before...",
+              "en": "I've never felt anything like this...",
               "ja": "今まで感じたことない気持ち…。",
               "zh-Hans": "至今从未体会过的感觉……",
               "zh-Hant": "從未感受過的心情……",
-              "th": "ความรู้สึกที่ไม่เคยสัมผัสมาก่อน..."
+              "th": "ความรู้สึกที่ไม่เคยสัมผัสมาก่อน...",
+              "es": "Una sensación que nunca antes había experimentado..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_2"
@@ -38140,7 +38142,8 @@
               "ja": "あなたのせい。もう我慢できない…！",
               "zh-Hans": "都是因为你。我已经忍不住了……！",
               "zh-Hant": "都是因為你。我已經忍不住了……！",
-              "th": "เป็นเพราะเธอนั่นแหละ ตอนนี้ทนไม่ไหวแล้ว...!"
+              "th": "เป็นเพราะเธอนั่นแหละ ตอนนี้ทนไม่ไหวแล้ว...!",
+              "es": "Es por tu culpa. ¡Ya no puedo contenerme más...!"
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_3"
@@ -38165,11 +38168,12 @@
             },
             "text": "어서 나를 쓰다듬어. 거칠게, 그리고 상냥하게.",
             "texts": {
-              "en": "Caress me already. Roughly, and yet gently.",
+              "en": "Touch me already. Be firm, but gentle.",
               "ja": "早く私を撫でて。激しく、そして優しく。",
               "zh-Hans": "快来抚摸我。粗暴地，还有温柔地。",
               "zh-Hant": "快點撫摸我。粗暴地，還有溫柔地。",
-              "th": "รีบลูบไล้ฉันสิ ทั้งรุนแรง และอ่อนโยน"
+              "th": "รีบลูบไล้ฉันสิ ทั้งรุนแรง และอ่อนโยน",
+              "es": "Acaríciame de una vez. Con rudeza y, a la vez, con ternura."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_4"
@@ -38204,11 +38208,12 @@
             },
             "text": "놀랐어? 계속, 계속 참아왔는데... 이젠, 무리야.",
             "texts": {
-              "en": "Surprised? I kept holding it back, over and over... but now, it's impossible.",
+              "en": "Surprised? I've held it back for so long... but I can't anymore.",
               "ja": "驚いた？ずっと、ずっと我慢してきたのに…。もう、無理。",
               "zh-Hans": "吓到了吗？我一直、一直在忍耐……但现在，不行了。",
               "zh-Hant": "嚇到了嗎？我一直、一直忍耐著……但現在，已經辦不到了。",
-              "th": "ตกใจเหรอ? ทั้งที่คอยทนมาตลอดแท้ๆ... แต่ตอนนี้ ไม่ไหวแล้วล่ะ"
+              "th": "ตกใจเหรอ? ทั้งที่คอยทนมาตลอดแท้ๆ... แต่ตอนนี้ ไม่ไหวแล้วล่ะ",
+              "es": "¿Te sorprende? Me he estado conteniendo una y otra vez... pero ya no puedo más."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_5"
@@ -38232,11 +38237,12 @@
             },
             "text": "으응... 따뜻하고, 부드러워...",
             "texts": {
-              "en": "Mmm... Warm, and soft...",
+              "en": "Mmm... So warm and soft...",
               "ja": "うぅん…。暖かくて、柔らかい…。",
               "zh-Hans": "嗯……好温暖、好柔软……",
               "zh-Hant": "嗯……好溫暖、好柔軟……",
-              "th": "อื้อ... อบอุ่น และนุ่มนวลจัง..."
+              "th": "อื้อ... อบอุ่น และนุ่มนวลจัง...",
+              "es": "Mmmh... Qué cálido y suave..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_6"
@@ -38260,11 +38266,12 @@
             },
             "text": "아... 네게 만져질 때면, 내가 내가 아니게 되는 것 같아.",
             "texts": {
-              "en": "Ah... Whenever you touch me, it feels like I'm not myself anymore.",
+              "en": "Ah... Every time you touch me, I feel like I'm not myself anymore.",
               "ja": "ああ…。あなたに触られると、私が私じゃなくなる気がする。",
               "zh-Hans": "啊……被你抚摸的时候，我好像变得不再是我了。",
               "zh-Hant": "啊……每當被你觸碰時，我彷彿就變得不再是我自己了。",
-              "th": "อ่า... เวลาที่โดนเธอสัมผัส รู้สึกเหมือนฉันไม่ใช่ตัวเองเลย"
+              "th": "อ่า... เวลาที่โดนเธอสัมผัส รู้สึกเหมือนฉันไม่ใช่ตัวเองเลย",
+              "es": "Ah... Cuando me tocas, siento que dejo de ser yo misma."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_7"
@@ -38288,11 +38295,12 @@
             },
             "text": "이상한 기분... 가슴이 몽글몽글해지는 듯한...",
             "texts": {
-              "en": "Such a strange sensation... My heart feels so warm and fluttery...",
+              "en": "What a strange feeling... My heart's all warm and fluttery...",
               "ja": "変な気持ち…。胸がふわふわするような…。",
               "zh-Hans": "好奇怪的感觉……胸口好像变得轻飘飘软绵绵的……",
               "zh-Hant": "好奇怪的感覺……胸口彷彿變得軟綿綿的……",
-              "th": "ความรู้สึกแปลกๆ... เหมือนหัวใจมันฟูฟ่องไปหมด..."
+              "th": "ความรู้สึกแปลกๆ... เหมือนหัวใจมันฟูฟ่องไปหมด...",
+              "es": "Qué sensación tan extraña... Es como si el pecho se me llenara de cosquillas..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_8"
@@ -38317,11 +38325,12 @@
             },
             "text": "오늘은 어리광 부려도 될까. 오늘만큼은...",
             "texts": {
-              "en": "Can I be spoiled today? Just for today...",
+              "en": "Will you spoil me today? Just for today...",
               "ja": "今日は甘えてもいいかな。今日だけは…。",
               "zh-Hans": "今天可以向你撒娇吗？至少在今天……",
               "zh-Hant": "今天可以向你撒嬌嗎？唯獨今天……",
-              "th": "วันนี้ขออ้อนหน่อยได้ไหมนะ แค่วันนี้เท่านั้น..."
+              "th": "วันนี้ขออ้อนหน่อยได้ไหมนะ แค่วันนี้เท่านั้น...",
+              "es": "¿Puedo ser mimosa hoy? Al menos por hoy..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_9"
@@ -38360,7 +38369,8 @@
               "ja": "うん…。ゆっくり、少しずつ…。私を飼いならして。",
               "zh-Hans": "嗯……慢慢地、一点点地……驯服我吧。",
               "zh-Hant": "嗯……慢慢地、一點一滴地……馴服我吧。",
-              "th": "อื้อ... ช้าๆ ทีละนิดนะ... ช่วยทำให้ฉันเชื่องทีสิ"
+              "th": "อื้อ... ช้าๆ ทีละนิดนะ... ช่วยทำให้ฉันเชื่องทีสิ",
+              "es": "Sí... Despacio, poco a poco... domíname."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_10"
@@ -38384,11 +38394,12 @@
             },
             "text": "네가 했던 생각들 전부 나한테 해봐.",
             "texts": {
-              "en": "Do everything you've been thinking about to me.",
+              "en": "Do all the things you've imagined doing to me.",
               "ja": "あなたが思ってること、全部私にぶつけてみて。",
               "zh-Hans": "把你脑海里的那些想法全都对我付诸行动吧。",
               "zh-Hant": "把你腦海裡想過的一切，全都對我做吧。",
-              "th": "สิ่งที่เธอเคยคิดไว้ทั้งหมด ลองทำกับฉันดูสิ"
+              "th": "สิ่งที่เธอเคยคิดไว้ทั้งหมด ลองทำกับฉันดูสิ",
+              "es": "Haz conmigo todo lo que se te pasaba por la cabeza."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_11"
@@ -38412,11 +38423,12 @@
             },
             "text": "보여줘, 너의 모든 것... 그리고 봐줘, 나의 모든 걸...",
             "texts": {
-              "en": "Show me everything you are... and look at every part of me...",
+              "en": "Show me all of you... and take in every part of me...",
               "ja": "見せて、あなたの全て…。そして見て、私の全てを…。",
               "zh-Hans": "展现给我吧，你的一切……也好好看着我的一切吧……",
               "zh-Hant": "展現給我看吧，你的全部……還有好好看著，我的全部……",
-              "th": "เผยทุกอย่างของเธอให้ฉันเห็นสิ... แล้วก็ช่วยมองดูทุกสิ่งทุกอย่างของฉันด้วย..."
+              "th": "เผยทุกอย่างของเธอให้ฉันเห็นสิ... แล้วก็ช่วยมองดูทุกสิ่งทุกอย่างของฉันด้วย...",
+              "es": "Muéstrame todo lo que eres... y contempla todo lo que soy..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_12"
@@ -38479,11 +38491,12 @@
             },
             "text": "하아. 힘이 점점 커져가... 내 마음도, 내 감정도...",
             "texts": {
-              "en": "Haa. The power is swelling... My heart, my feelings too...",
+              "en": "Haa... The power's growing... And so are my feelings...",
               "ja": "はあ…。力がどんどん大きくなる…。私の気持ちも、私の想いも…。",
               "zh-Hans": "哈啊。力量正在逐渐变强……我的心意也是，我的感情也是……",
               "zh-Hant": "哈啊。力量逐漸膨脹……我的心靈也是、我的情感也是……",
-              "th": "ฮา... พลังค่อยๆ เพิ่มพูนขึ้นเรื่อยๆ... ทั้งจิตใจของฉัน และความรู้สึกของฉัน..."
+              "th": "ฮา... พลังค่อยๆ เพิ่มพูนขึ้นเรื่อยๆ... ทั้งจิตใจของฉัน และความรู้สึกของฉัน...",
+              "es": "Ah... El poder se hace cada vez mayor... y mis sentimientos también..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_13"
@@ -38509,11 +38522,12 @@
             },
             "text": "느껴져? 나비를 통해 마음이 이어져 있어.",
             "texts": {
-              "en": "Can you feel it? Our hearts are connected through the butterfly.",
+              "en": "Can you feel it? Our hearts are connected through the butterflies.",
               "ja": "感じる？蝶を通じて心が繋がってる。",
               "zh-Hans": "感觉得到吗？心灵通过蝴蝶紧紧相连。",
               "zh-Hant": "能感覺到嗎？透過蝴蝶，我們的心意相連著。",
-              "th": "รู้สึกไหม? หัวใจของเราเชื่อมถึงกันผ่านผีเสื้อแล้วนะ"
+              "th": "รู้สึกไหม? หัวใจของเราเชื่อมถึงกันผ่านผีเสื้อแล้วนะ",
+              "es": "¿Lo sientes? Nuestros corazones están conectados a través de la mariposa."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_15"
@@ -38537,11 +38551,12 @@
             },
             "text": "후후... 네 심장 소리... 두근두근하네.",
             "texts": {
-              "en": "Heh... The sound of your heartbeat... It's racing.",
+              "en": "Fufu... Your heart... It's racing.",
               "ja": "ふふ…。あなたの心臓の音…。どくんどくんしてる。",
               "zh-Hans": "呵呵……你的心跳声……扑通扑通的呢。",
               "zh-Hant": "呵呵……你的心跳聲……跳得好快呢。",
-              "th": "ฮุฮุ... เสียงหัวใจของเธอ... เต้นแรงจังเลยนะ"
+              "th": "ฮุฮุ... เสียงหัวใจของเธอ... เต้นแรงจังเลยนะ",
+              "es": "Je, je... El latido de tu corazón... va a toda prisa."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_16"
@@ -38569,7 +38584,8 @@
               "ja": "感情に素直になれって、言ったよね…？",
               "zh-Hans": "你说过要坦诚面对自己的感情，对吧……？",
               "zh-Hant": "是你說要對感情坦率一點的吧……？",
-              "th": "เธอบอกให้ฉันซื่อตรงกับความรู้สึกตัวเองใช่ไหมล่ะ...?"
+              "th": "เธอบอกให้ฉันซื่อตรงกับความรู้สึกตัวเองใช่ไหมล่ะ...?",
+              "es": "Me dijiste que fuera sincera con mis emociones, ¿verdad...?"
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_17"
@@ -38636,7 +38652,8 @@
               "ja": "もう…後戻りはできない。",
               "zh-Hans": "已经……无法回头了。",
               "zh-Hant": "已經……回不去了。",
-              "th": "ตอนนี้... ย้อนกลับไปไม่ได้แล้วนะ"
+              "th": "ตอนนี้... ย้อนกลับไปไม่ได้แล้วนะ",
+              "es": "Ahora... ya no hay vuelta atrás."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_14"
@@ -38671,11 +38688,12 @@
             },
             "text": "무서워? 두려워? 으응... 네 감정, 맛있어...",
             "texts": {
-              "en": "Are you scared? Afraid? Mmm... Your emotions taste so good...",
+              "en": "Scared? Nervous? Mmm... Your emotions taste so good...",
               "ja": "怖い？恐ろしい？うぅん…。あなたの感情、美味しい…。",
               "zh-Hans": "害怕吗？恐惧吗？嗯……你的感情，好美味……",
               "zh-Hant": "害怕嗎？恐懼嗎？嗯……你的情感，好美味……",
-              "th": "กลัวเหรอ? หวาดหวั่นงั้นเหรอ? อื้อ... ความรู้สึกของเธอ อร่อยจัง..."
+              "th": "กลัวเหรอ? หวาดหวั่นงั้นเหรอ? อื้อ... ความรู้สึกของเธอ อร่อยจัง...",
+              "es": "¿Tienes miedo? ¿Te asusta? Mmmh... Tus emociones... son deliciosas..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_18"
@@ -38699,11 +38717,12 @@
             },
             "text": "후훗... 벗어날 수 없어, 놓치지 않을 테니까... 절대로.",
             "texts": {
-              "en": "Heh... You can't escape. I won't let you go... never.",
+              "en": "Heh... You can't escape. I'm never letting you go...",
               "ja": "ふふっ…。逃げられないよ、逃さないから…。絶対に。",
               "zh-Hans": "呵呵……你逃不掉的，我绝不会放开你……绝对。",
               "zh-Hant": "呵呵……你逃不掉的，因為我絕不會放開你……絕對。",
-              "th": "ฮุฮุ... หนีไม่พ้นหรอก เพราะฉันจะไม่ปล่อยเธอไป... เด็ดขาด"
+              "th": "ฮุฮุ... หนีไม่พ้นหรอก เพราะฉันจะไม่ปล่อยเธอไป... เด็ดขาด",
+              "es": "Je, je... No podrás escapar, no pienso soltarte... jamás."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_19"
@@ -38727,11 +38746,12 @@
             },
             "text": "가슴속 깊은 곳까지... 나를 느껴줘.",
             "texts": {
-              "en": "Feel me... deep inside your heart.",
+              "en": "Feel me... deep in your heart.",
               "ja": "心の奥底まで…私を感じて。",
               "zh-Hans": "直至内心深处……感受我吧。",
               "zh-Hant": "直到內心最深處……好好感受我吧。",
-              "th": "สัมผัสถึงฉัน... ให้ลึกเข้าไปถึงก้นบึ้งของหัวใจสิ"
+              "th": "สัมผัสถึงฉัน... ให้ลึกเข้าไปถึงก้นบึ้งของหัวใจสิ",
+              "es": "Siénteme... hasta lo más hondo de tu corazón."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_20"
@@ -38755,11 +38775,12 @@
             },
             "text": "아아~ 도망갈 생각 하지 마. 지금 너는, 내꺼니까...",
             "texts": {
-              "en": "Ah... Don't even think about running away. Because right now, you belong to me...",
+              "en": "Ah... Don't even think about running. Right now, you're mine...",
               "ja": "ああ…！逃げようとしないで。今のあなたは、私のものだから…。",
               "zh-Hans": "啊啊～别想着逃跑哦。现在的你，是属于我的……",
               "zh-Hant": "啊啊～別想逃跑喔。現在的你，是屬於我的……",
-              "th": "อ่า~ อย่าคิดจะหนีเชียวนะ เพราะตอนนี้ เธอเป็นของฉันแล้ว..."
+              "th": "อ่า~ อย่าคิดจะหนีเชียวนะ เพราะตอนนี้ เธอเป็นของฉันแล้ว...",
+              "es": "Ah... Ni se te ocurra intentar huir. Porque ahora mismo... me perteneces..."
             },
             "author": "redbutterfly",
             "voice": "voc_ch0075_affection_view_21"
@@ -38862,11 +38883,12 @@
             },
             "text": "조금씩... 흘러 들어와. 너의 마음, 너의 감정...",
             "texts": {
-              "en": "Little by little... it's flowing in. Your heart, your feelings...",
+              "en": "Little by little... I can feel it flowing into me. Your heart, your feelings...",
               "ja": "少しずつ…流れてくる。あなたの気持ち、あなたの想い…。",
               "zh-Hans": "正在一点点地……流入体内。你的心意、你的感情……",
               "zh-Hant": "一點一滴……流淌進來了。你的心意、你的情感……",
-              "th": "ค่อยๆ... ไหลรินเข้ามาแล้ว จิตใจของเธอ ความรู้สึกของเธอ..."
+              "th": "ค่อยๆ... ไหลรินเข้ามาแล้ว จิตใจของเธอ ความรู้สึกของเธอ...",
+              "es": "Poco a poco... van fluyendo hacia mí. Tu corazón, tus emociones..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_1"
@@ -38901,11 +38923,12 @@
             },
             "text": "지금까지 느껴본 적 없는 기분...",
             "texts": {
-              "en": "A sensation I've never felt before...",
+              "en": "I've never felt anything like this...",
               "ja": "今まで感じたことない気持ち…。",
               "zh-Hans": "至今从未体会过的感觉……",
               "zh-Hant": "從未感受過的心情……",
-              "th": "ความรู้สึกที่ไม่เคยสัมผัสมาก่อน..."
+              "th": "ความรู้สึกที่ไม่เคยสัมผัสมาก่อน...",
+              "es": "Una sensación que nunca antes había experimentado..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_2"
@@ -38933,7 +38956,8 @@
               "ja": "あなたのせい。もう我慢できない…！",
               "zh-Hans": "都是因为你。我已经忍不住了……！",
               "zh-Hant": "都是因為你。我已經忍不住了……！",
-              "th": "เป็นเพราะเธอนั่นแหละ ตอนนี้ทนไม่ไหวแล้ว...!"
+              "th": "เป็นเพราะเธอนั่นแหละ ตอนนี้ทนไม่ไหวแล้ว...!",
+              "es": "Es por tu culpa. ¡Ya no puedo contenerme más...!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_3"
@@ -38958,11 +38982,12 @@
             },
             "text": "어서 나를 쓰다듬어. 거칠게, 그리고 상냥하게.",
             "texts": {
-              "en": "Caress me already. Roughly, and yet gently.",
+              "en": "Touch me already. Be firm, but gentle.",
               "ja": "早く私を撫でて。激しく、そして優しく。",
               "zh-Hans": "快来抚摸我。粗暴地，还有温柔地。",
               "zh-Hant": "快點撫摸我。粗暴地，還有溫柔地。",
-              "th": "รีบลูบไล้ฉันสิ ทั้งรุนแรง และอ่อนโยน"
+              "th": "รีบลูบไล้ฉันสิ ทั้งรุนแรง และอ่อนโยน",
+              "es": "Acaríciame de una vez. Con rudeza y, a la vez, con ternura."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_4"
@@ -38997,11 +39022,12 @@
             },
             "text": "놀랐어? 계속, 계속 참아왔는데... 이젠, 무리야.",
             "texts": {
-              "en": "Surprised? I kept holding it back, over and over... but now, it's impossible.",
+              "en": "Surprised? I've held it back for so long... but I can't anymore.",
               "ja": "驚いた？ずっと、ずっと我慢してきたのに…。もう、無理。",
               "zh-Hans": "吓到了吗？我一直、一直在忍耐……但现在，不行了。",
               "zh-Hant": "嚇到了嗎？我一直、一直忍耐著……但現在，已經辦不到了。",
-              "th": "ตกใจเหรอ? ทั้งที่คอยทนมาตลอดแท้ๆ... แต่ตอนนี้ ไม่ไหวแล้วล่ะ"
+              "th": "ตกใจเหรอ? ทั้งที่คอยทนมาตลอดแท้ๆ... แต่ตอนนี้ ไม่ไหวแล้วล่ะ",
+              "es": "¿Te sorprende? Me he estado conteniendo una y otra vez... pero ya no puedo más."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_5"
@@ -39025,11 +39051,12 @@
             },
             "text": "으응... 따뜻하고, 부드러워...",
             "texts": {
-              "en": "Mmm... Warm, and soft...",
+              "en": "Mmm... So warm and soft...",
               "ja": "うぅん…。暖かくて、柔らかい…。",
               "zh-Hans": "嗯……好温暖、好柔软……",
               "zh-Hant": "嗯……好溫暖、好柔軟……",
-              "th": "อื้อ... อบอุ่น และนุ่มนวลจัง..."
+              "th": "อื้อ... อบอุ่น และนุ่มนวลจัง...",
+              "es": "Mmmh... Qué cálido y suave..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_6"
@@ -39053,11 +39080,12 @@
             },
             "text": "아... 네게 만져질 때면, 내가 내가 아니게 되는 것 같아.",
             "texts": {
-              "en": "Ah... Whenever you touch me, it feels like I'm not myself anymore.",
+              "en": "Ah... Every time you touch me, I feel like I'm not myself anymore.",
               "ja": "ああ…。あなたに触られると、私が私じゃなくなる気がする。",
               "zh-Hans": "啊……被你抚摸的时候，我好像变得不再是我了。",
               "zh-Hant": "啊……每當被你觸碰時，我彷彿就變得不再是我自己了。",
-              "th": "อ่า... เวลาที่โดนเธอสัมผัส รู้สึกเหมือนฉันไม่ใช่ตัวเองเลย"
+              "th": "อ่า... เวลาที่โดนเธอสัมผัส รู้สึกเหมือนฉันไม่ใช่ตัวเองเลย",
+              "es": "Ah... Cuando me tocas, siento que dejo de ser yo misma."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_7"
@@ -39081,11 +39109,12 @@
             },
             "text": "이상한 기분... 가슴이 몽글몽글해지는 듯한...",
             "texts": {
-              "en": "Such a strange sensation... My heart feels so warm and fluttery...",
+              "en": "What a strange feeling... My heart's all warm and fluttery...",
               "ja": "変な気持ち…。胸がふわふわするような…。",
               "zh-Hans": "好奇怪的感觉……胸口好像变得轻飘飘软绵绵的……",
               "zh-Hant": "好奇怪的感覺……胸口彷彿變得軟綿綿的……",
-              "th": "ความรู้สึกแปลกๆ... เหมือนหัวใจมันฟูฟ่องไปหมด..."
+              "th": "ความรู้สึกแปลกๆ... เหมือนหัวใจมันฟูฟ่องไปหมด...",
+              "es": "Qué sensación tan extraña... Es como si el pecho se me llenara de cosquillas..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_8"
@@ -39110,11 +39139,12 @@
             },
             "text": "오늘은 어리광 부려도 될까. 오늘만큼은...",
             "texts": {
-              "en": "Can I be spoiled today? Just for today...",
+              "en": "Will you spoil me today? Just for today...",
               "ja": "今日は甘えてもいいかな。今日だけは…。",
               "zh-Hans": "今天可以向你撒娇吗？至少在今天……",
               "zh-Hant": "今天可以向你撒嬌嗎？唯獨今天……",
-              "th": "วันนี้ขออ้อนหน่อยได้ไหมนะ แค่วันนี้เท่านั้น..."
+              "th": "วันนี้ขออ้อนหน่อยได้ไหมนะ แค่วันนี้เท่านั้น...",
+              "es": "¿Puedo ser mimosa hoy? Al menos por hoy..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_9"
@@ -39153,7 +39183,8 @@
               "ja": "うん…。ゆっくり、少しずつ…。私を飼いならして。",
               "zh-Hans": "嗯……慢慢地、一点点地……驯服我吧。",
               "zh-Hant": "嗯……慢慢地、一點一滴地……馴服我吧。",
-              "th": "อื้อ... ช้าๆ ทีละนิดนะ... ช่วยทำให้ฉันเชื่องทีสิ"
+              "th": "อื้อ... ช้าๆ ทีละนิดนะ... ช่วยทำให้ฉันเชื่องทีสิ",
+              "es": "Sí... Despacio, poco a poco... domíname."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_10"
@@ -39177,11 +39208,12 @@
             },
             "text": "네가 했던 생각들 전부 나한테 해봐.",
             "texts": {
-              "en": "Do everything you've been thinking about to me.",
+              "en": "Do all the things you've imagined doing to me.",
               "ja": "あなたが思ってること、全部私にぶつけてみて。",
               "zh-Hans": "把你脑海里的那些想法全都对我付诸行动吧。",
               "zh-Hant": "把你腦海裡想過的一切，全都對我做吧。",
-              "th": "สิ่งที่เธอเคยคิดไว้ทั้งหมด ลองทำกับฉันดูสิ"
+              "th": "สิ่งที่เธอเคยคิดไว้ทั้งหมด ลองทำกับฉันดูสิ",
+              "es": "Haz conmigo todo lo que se te pasaba por la cabeza."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_11"
@@ -39205,11 +39237,12 @@
             },
             "text": "보여줘, 너의 모든 것... 그리고 봐줘, 나의 모든 걸...",
             "texts": {
-              "en": "Show me everything you are... and look at every part of me...",
+              "en": "Show me all of you... and take in every part of me...",
               "ja": "見せて、あなたの全て…。そして見て、私の全てを…。",
               "zh-Hans": "展现给我吧，你的一切……也好好看着我的一切吧……",
               "zh-Hant": "展現給我看吧，你的全部……還有好好看著，我的全部……",
-              "th": "เผยทุกอย่างของเธอให้ฉันเห็นสิ... แล้วก็ช่วยมองดูทุกสิ่งทุกอย่างของฉันด้วย..."
+              "th": "เผยทุกอย่างของเธอให้ฉันเห็นสิ... แล้วก็ช่วยมองดูทุกสิ่งทุกอย่างของฉันด้วย...",
+              "es": "Muéstrame todo lo que eres... y contempla todo lo que soy..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_12"
@@ -39254,11 +39287,12 @@
             },
             "text": "하아. 힘이 점점 커져가... 내 마음도, 내 감정도...",
             "texts": {
-              "en": "Haa. The power is swelling... My heart, my feelings too...",
+              "en": "Haa... The power's growing... And so are my feelings...",
               "ja": "はあ…。力がどんどん大きくなる…。私の気持ちも、私の想いも…。",
               "zh-Hans": "哈啊。力量正在逐渐变强……我的心意也是，我的感情也是……",
               "zh-Hant": "哈啊。力量逐漸膨脹……我的心靈也是、我的情感也是……",
-              "th": "ฮา... พลังค่อยๆ เพิ่มพูนขึ้นเรื่อยๆ... ทั้งจิตใจของฉัน และความรู้สึกของฉัน..."
+              "th": "ฮา... พลังค่อยๆ เพิ่มพูนขึ้นเรื่อยๆ... ทั้งจิตใจของฉัน และความรู้สึกของฉัน...",
+              "es": "Ah... El poder se hace cada vez mayor... y mis sentimientos también..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_13"
@@ -39284,11 +39318,12 @@
             },
             "text": "느껴져? 나비를 통해 마음이 이어져 있어.",
             "texts": {
-              "en": "Can you feel it? Our hearts are connected through the butterfly.",
+              "en": "Can you feel it? Our hearts are connected through the butterflies.",
               "ja": "感じる？蝶を通じて心が繋がってる。",
               "zh-Hans": "感觉得到吗？心灵通过蝴蝶紧紧相连。",
               "zh-Hant": "能感覺到嗎？透過蝴蝶，我們的心意相連著。",
-              "th": "รู้สึกไหม? หัวใจของเราเชื่อมถึงกันผ่านผีเสื้อแล้วนะ"
+              "th": "รู้สึกไหม? หัวใจของเราเชื่อมถึงกันผ่านผีเสื้อแล้วนะ",
+              "es": "¿Lo sientes? Nuestros corazones están conectados a través de la mariposa."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_15"
@@ -39312,11 +39347,12 @@
             },
             "text": "후후... 네 심장 소리... 두근두근하네.",
             "texts": {
-              "en": "Heh... The sound of your heartbeat... It's racing.",
+              "en": "Heh... Your heart... It's racing.",
               "ja": "ふふ…。あなたの心臓の音…。どくんどくんしてる。",
               "zh-Hans": "呵呵……你的心跳声……扑通扑通的呢。",
               "zh-Hant": "呵呵……你的心跳聲……跳得好快呢。",
-              "th": "ฮุฮุ... เสียงหัวใจของเธอ... เต้นแรงจังเลยนะ"
+              "th": "ฮุฮุ... เสียงหัวใจของเธอ... เต้นแรงจังเลยนะ",
+              "es": "Je, je... El latido de tu corazón... va a toda prisa."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_16"
@@ -39344,7 +39380,8 @@
               "ja": "感情に素直になれって、言ったよね…？",
               "zh-Hans": "你说过要坦诚面对自己的感情，对吧……？",
               "zh-Hant": "是你說要對感情坦率一點的吧……？",
-              "th": "เธอบอกให้ฉันซื่อตรงกับความรู้สึกตัวเองใช่ไหมล่ะ...?"
+              "th": "เธอบอกให้ฉันซื่อตรงกับความรู้สึกตัวเองใช่ไหมล่ะ...?",
+              "es": "Me dijiste que fuera sincera con mis emociones, ¿verdad...?"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_17"
@@ -39393,7 +39430,8 @@
               "ja": "もう…後戻りはできない。",
               "zh-Hans": "已经……无法回头了。",
               "zh-Hant": "已經……回不去了。",
-              "th": "ตอนนี้... ย้อนกลับไปไม่ได้แล้วนะ"
+              "th": "ตอนนี้... ย้อนกลับไปไม่ได้แล้วนะ",
+              "es": "Ahora... ya no hay vuelta atrás."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_14"
@@ -39428,11 +39466,12 @@
             },
             "text": "무서워? 두려워? 으응... 네 감정, 맛있어...",
             "texts": {
-              "en": "Are you scared? Afraid? Mmm... Your emotions taste so good...",
+              "en": "Scared? Nervous? Mmm... Your emotions taste so good...",
               "ja": "怖い？恐ろしい？うぅん…。あなたの感情、美味しい…。",
               "zh-Hans": "害怕吗？恐惧吗？嗯……你的感情，好美味……",
               "zh-Hant": "害怕嗎？恐懼嗎？嗯……你的情感，好美味……",
-              "th": "กลัวเหรอ? หวาดหวั่นงั้นเหรอ? อื้อ... ความรู้สึกของเธอ อร่อยจัง..."
+              "th": "กลัวเหรอ? หวาดหวั่นงั้นเหรอ? อื้อ... ความรู้สึกของเธอ อร่อยจัง...",
+              "es": "¿Tienes miedo? ¿Te asusta? Mmmh... Tus emociones... son deliciosas..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_18"
@@ -39456,11 +39495,12 @@
             },
             "text": "후훗... 벗어날 수 없어, 놓치지 않을 테니까... 절대로.",
             "texts": {
-              "en": "Heh... You can't escape. I won't let you go... never.",
+              "en": "Heh... You can't escape. I'm never letting you go...",
               "ja": "ふふっ…。逃げられないよ、逃さないから…。絶対に。",
               "zh-Hans": "呵呵……你逃不掉的，我绝不会放开你……绝对。",
               "zh-Hant": "呵呵……你逃不掉的，因為我絕不會放開你……絕對。",
-              "th": "ฮุฮุ... หนีไม่พ้นหรอก เพราะฉันจะไม่ปล่อยเธอไป... เด็ดขาด"
+              "th": "ฮุฮุ... หนีไม่พ้นหรอก เพราะฉันจะไม่ปล่อยเธอไป... เด็ดขาด",
+              "es": "Je, je... No podrás escapar, no pienso soltarte... jamás."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_19"
@@ -39484,11 +39524,12 @@
             },
             "text": "가슴속 깊은 곳까지... 나를 느껴줘.",
             "texts": {
-              "en": "Feel me... deep inside your heart.",
+              "en": "Feel me... deep in your heart.",
               "ja": "心の奥底まで…私を感じて。",
               "zh-Hans": "直至内心深处……感受我吧。",
               "zh-Hant": "直到內心最深處……好好感受我吧。",
-              "th": "สัมผัสถึงฉัน... ให้ลึกเข้าไปถึงก้นบึ้งของหัวใจสิ"
+              "th": "สัมผัสถึงฉัน... ให้ลึกเข้าไปถึงก้นบึ้งของหัวใจสิ",
+              "es": "Siénteme... hasta lo más hondo de tu corazón."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_20"
@@ -39512,11 +39553,12 @@
             },
             "text": "아아~ 도망갈 생각 하지 마. 지금 너는, 내꺼니까...",
             "texts": {
-              "en": "Ah... Don't even think about running away. Because right now, you belong to me...",
+              "en": "Ah... Don't even think about running. Right now, you're mine...",
               "ja": "ああ…！逃げようとしないで。今のあなたは、私のものだから…。",
               "zh-Hans": "啊啊～别想着逃跑哦。现在的你，是属于我的……",
               "zh-Hant": "啊啊～別想逃跑喔。現在的你，是屬於我的……",
-              "th": "อ่า~ อย่าคิดจะหนีเชียวนะ เพราะตอนนี้ เธอเป็นของฉันแล้ว..."
+              "th": "อ่า~ อย่าคิดจะหนีเชียวนะ เพราะตอนนี้ เธอเป็นของฉันแล้ว...",
+              "es": "Ah... Ni se te ocurra intentar huir. Porque ahora mismo... me perteneces..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_21"
@@ -39609,11 +39651,12 @@
             },
             "text": "힉...!? 나, 나는... 대체...",
             "texts": {
-              "en": "Eek...!? W-What on earth am I... doing...",
+              "en": "Eek...!? W-What am I... doing...?",
               "ja": "…ひっ！？わ、私…一体…。",
               "zh-Hans": "噫……！？我、我……到底……",
               "zh-Hant": "噫……！？我、我……到底……",
-              "th": "ฮึก...!? ฉัน... ฉัน... นี่มันอะไรกัน..."
+              "th": "ฮึก...!? ฉัน... ฉัน... นี่มันอะไรกัน...",
+              "es": "¡¿Ah...?! Y-Yo... pero qué..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_22"
@@ -39665,11 +39708,12 @@
             },
             "text": "나는, 나쁜 아이가 돼버렸을지도...",
             "texts": {
-              "en": "I might have... become a bad girl...",
+              "en": "Maybe I've... been a bad girl...",
               "ja": "私…悪い子になっちゃった…？",
               "zh-Hans": "我……可能变成坏孩子了……",
               "zh-Hant": "我……可能變成壞孩子了……",
-              "th": "ฉันอาจจะกลายเป็นเด็กไม่ดีไปแล้วก็ได้..."
+              "th": "ฉันอาจจะกลายเป็นเด็กไม่ดีไปแล้วก็ได้...",
+              "es": "Puede que... me haya convertido en una chica mala..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_23"
@@ -39693,11 +39737,12 @@
             },
             "text": "나를 혼내 줘. 이 이상 마음대로 할 수 없게...",
             "texts": {
-              "en": "Punish me. So I can't act so recklessly anymore...",
+              "en": "Punish me. Make sure I don't lose control like this again...",
               "ja": "私を叱って。これ以上好き勝手できないように…。",
               "zh-Hans": "惩罚我吧。让我无法再这样肆意妄为……",
               "zh-Hant": "懲罰我吧。讓我別再這樣隨心所欲下去……",
-              "th": "ช่วยลงโทษฉันทีสิ ไม่ให้ฉันทำตามใจตัวเองไปมากกว่านี้..."
+              "th": "ช่วยลงโทษฉันทีสิ ไม่ให้ฉันทำตามใจตัวเองไปมากกว่านี้...",
+              "es": "Castígame. Para que no pueda seguir haciendo lo que me dé la gana..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_24"
@@ -39732,11 +39777,12 @@
             },
             "text": "흐읏... 가르쳐줘, 이 감정, 이 마음... 어떻게 하면 돼!?",
             "texts": {
-              "en": "Nnngh... Tell me, this feeling, this heart... What should I do with it?!",
+              "en": "Nnngh... My heart, all these feelings... What am I supposed to do with them?!",
               "ja": "っ…。教えて。この想い、この気持ち…。どうしたらいいの！？",
               "zh-Hans": "唔嗯……快告诉我，这种感情、这份心意……我该怎么办才好！？",
               "zh-Hant": "唔嗯……告訴我，這股情感、這份心意……我到底該怎麼辦才好！？",
-              "th": "อึก... สอนฉันทีสิ ทั้งความรู้สึกนี้ ทั้งจิตใจนี้... ต้องทำยังไงกันแน่!?"
+              "th": "อึก... สอนฉันทีสิ ทั้งความรู้สึกนี้ ทั้งจิตใจนี้... ต้องทำยังไงกันแน่!?",
+              "es": "Mmh... Enséñame qué hacer con estas emociones, con este corazón... ¡¿Qué debería hacer?!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_25"
@@ -39764,7 +39810,8 @@
               "ja": "助けて…。この力を制御できるように…！",
               "zh-Hans": "帮帮我……让我能控制这股力量……！",
               "zh-Hant": "幫幫我……好讓我能控制這股力量……！",
-              "th": "ช่วยฉันด้วย... ให้ควบคุมพลังนี้ได้ที...!"
+              "th": "ช่วยฉันด้วย... ให้ควบคุมพลังนี้ได้ที...!",
+              "es": "Ayúdame... ¡para que pueda controlar este poder...!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_26"
@@ -39874,11 +39921,12 @@
             },
             "text": "아...! 느껴져... 네 마음이... 뜨거운 게... 흘러 들어와...!",
             "texts": {
-              "en": "Ah...! I can feel it... Your feelings... Something hot... is flowing in...!",
+              "en": "Ah...! I can feel it... Your feelings... Such warmth... flowing into me...!",
               "ja": "ああ…！感じる…。あなたの想いが…熱いのが…流れ込んでくる…！",
               "zh-Hans": "啊……！感觉得到……你的心意……好热的东西……流入体内了……！",
               "zh-Hant": "啊……！感受到了……你的心意……好滾燙的東西……流淌進來了……！",
-              "th": "อา...! รู้สึกได้เลย... จิตใจของเธอ... ความร้อนรุ่ม... กำลังไหลรินเข้ามา...!"
+              "th": "อา...! รู้สึกได้เลย... จิตใจของเธอ... ความร้อนรุ่ม... กำลังไหลรินเข้ามา...!",
+              "es": "¡Ah...! Lo siento... Tu corazón... algo tan ardiente... ¡está fluyendo dentro de mí...!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_27"
@@ -39913,11 +39961,12 @@
             },
             "text": "너의 몸 구석구석까지 느낄 수 있게... 더 강하게 해줘!",
             "texts": {
-              "en": "So I can feel every inch of your body... Do it harder!",
+              "en": "Let me feel every inch of you... Harder!",
               "ja": "あなたの体の隅々まで感じられるように…。もっと強くして…！",
               "zh-Hans": "为了能感受到你身体的每一个角落……再用力一点！",
               "zh-Hant": "為了能感受到你身體的每一個角落……再更用力一點！",
-              "th": "ทำให้รุนแรงกว่านี้อีกสิ... เพื่อให้ฉันสัมผัสได้ถึงทุกซอกทุกมุมในร่างกายของเธอ!"
+              "th": "ทำให้รุนแรงกว่านี้อีกสิ... เพื่อให้ฉันสัมผัสได้ถึงทุกซอกทุกมุมในร่างกายของเธอ!",
+              "es": "Para que pueda sentir cada rincón de tu cuerpo... ¡hazlo con más fuerza!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_28"
@@ -39941,11 +39990,12 @@
             },
             "text": "네 진심을... 내게 보여줘. 어떤 것이라도... 전부 받아 줄 테니까.",
             "texts": {
-              "en": "Show me... your true feelings. Whatever it is... I'll take it all in.",
+              "en": "Show me... how you really feel. Whatever it is... I'll take it all in.",
               "ja": "あなたの本気…私に見せて。どんなことでも…全部受け止めるから。",
               "zh-Hans": "把你的真心……展现给我吧。无论是什么……我都会全部接纳的。",
               "zh-Hant": "展現你的真心……給我看吧。無論是什麼……我都會全部接納的。",
-              "th": "แสดงความรู้สึกที่แท้จริงของเธอ... ให้ฉันเห็นสิ ไม่ว่าจะเป็นแบบไหน... ฉันจะยอมรับไว้ทั้งหมดเอง"
+              "th": "แสดงความรู้สึกที่แท้จริงของเธอ... ให้ฉันเห็นสิ ไม่ว่าจะเป็นแบบไหน... ฉันจะยอมรับไว้ทั้งหมดเอง",
+              "es": "Muéstrame... lo que sientes de verdad. Sea lo que sea... lo aceptaré todo."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_29"
@@ -40011,7 +40061,8 @@
               "ja": "っ…！痛い…。でも、気持ちいい…。",
               "zh-Hans": "唔……！好痛……但是，好舒服……",
               "zh-Hant": "唔……！好痛……但是，好舒服……",
-              "th": "อึก...! เจ็บจัง... แต่ว่า รู้สึกดีเป็นบ้าเลย..."
+              "th": "อึก...! เจ็บจัง... แต่ว่า รู้สึกดีเป็นบ้าเลย...",
+              "es": "¡Ah...! Duele... pero me hace sentir tan bien..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_30"
@@ -40035,11 +40086,12 @@
             },
             "text": "하아... 하아... 마음이 이어질수록, 너의 것이 되어가...",
             "texts": {
-              "en": "Haa... Haa... The more our hearts connect, the more I become yours...",
+              "en": "Haa... Haa... The closer our hearts grow, the more I become yours...",
               "ja": "はあ…はあ…。心が繋がる度に、あなたのものになっていく…。",
               "zh-Hans": "哈啊……哈啊……心意越是交织，我就越是变成你的所有物……",
               "zh-Hant": "哈啊……哈啊……心意越是相通，我就越是變成你的所有物……",
-              "th": "ฮา... ฮา... ยิ่งหัวใจเชื่อมถึงกัน ฉันก็ยิ่งกลายเป็นของเธอมากขึ้นเรื่อยๆ..."
+              "th": "ฮา... ฮา... ยิ่งหัวใจเชื่อมถึงกัน ฉันก็ยิ่งกลายเป็นของเธอมากขึ้นเรื่อยๆ...",
+              "es": "Ah... ah... Cuanto más se conectan nuestros corazones, más tuya me vuelvo..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_31"
@@ -40090,11 +40142,12 @@
             },
             "text": "고마워, 미안해, 아아... 조금씩, 조금씩... 나를 네게로 스며들게 해줘...",
             "texts": {
-              "en": "Thank you, I'm sorry, ah... Little by little... let me seep into you...",
+              "en": "Thank you... I'm sorry... Ah... Little by little... let me become a part of you...",
               "ja": "ありがとう、ごめんなさい。ああ…。少しずつ、少しずつ…。私をあなたに滲ませて…。",
               "zh-Hans": "谢谢你，对不起，啊啊……一点点、一点点地……让我融入你的体内吧……",
               "zh-Hant": "謝謝你，對不起，啊啊……一點一點地……讓我徹底融入你的懷中吧……",
-              "th": "ขอบคุณนะ ขอโทษด้วยนะ อ่า... ทีละนิดนะ ค่อยๆ... ให้ฉันได้ซึมลึกเข้าไปในตัวเธอที..."
+              "th": "ขอบคุณนะ ขอโทษด้วยนะ อ่า... ทีละนิดนะ ค่อยๆ... ให้ฉันได้ซึมลึกเข้าไปในตัวเธอที...",
+              "es": "Gracias, perdóname... ah... Poco a poco... deja que me funda contigo..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_affection_view_32"
@@ -49876,6 +49929,14 @@
               "Text": ""
             },
             "text": "뭘 할 필요 없어요.",
+            "texts": {
+              "en": "You don't need to do anything.",
+              "ja": "何もする必要はありません。",
+              "zh-Hans": "什么都不需要做。",
+              "zh-Hant": "不需要做什麼。",
+              "th": "ไม่จำเป็นต้องทำอะไรหรอกค่ะ",
+              "es": "No hace falta que haga nada."
+            },
             "author": "midwen"
           },
           {
@@ -51369,6 +51430,14 @@
               "Text": ""
             },
             "text": "필요하니까 가져가지 말라니….",
+            "texts": {
+              "en": "Telling me not to take it just because you need it...",
+              "ja": "必要だから取るなって…。",
+              "zh-Hans": "说什么因为需要就别拿走……",
+              "zh-Hant": "說什麼因為需要所以不要拿走……",
+              "th": "บอกว่าจำเป็นต้องใช้เลยห้ามเอาไปเนี่ยนะ...",
+              "es": "Decirme que no me la lleve porque la necesita..."
+            },
             "author": "alone"
           },
           {
@@ -81293,11 +81362,12 @@
             },
             "text": "하아... 계속... 쌓였던 것들이 흘러나와…",
             "texts": {
-              "en": "Haah... It keeps... everything that built up inside keeps spilling out...",
+              "en": "Haah... It won't stop... Everything that's built up inside me keeps spilling out...",
               "ja": "はあ…止まらない…。溜まってたものが溢れ出してしまう…。",
               "zh-Hans": "哈啊……积压在体内的东西……不断涌出来了……",
               "zh-Hant": "哈啊……不斷地……積累的東西湧了出來……",
-              "th": "ฮา... สิ่งที่สะสมไว้... ไหลออกมาไม่หยุดเลย..."
+              "th": "ฮา... สิ่งที่สะสมไว้... ไหลออกมาไม่หยุดเลย...",
+              "es": "Ah... Sigue... saliendo todo lo que tenía acumulado..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_lobby_1"
@@ -81330,11 +81400,12 @@
             },
             "text": "너 때문이야. 네가 자꾸 내게 가까이 오니까…",
             "texts": {
-              "en": "It's all because of you. Because you keep coming close to me...",
+              "en": "It's all because of you. You keep getting so close...",
               "ja": "あなたのせい。あなたがずっと私に近づくから…。",
               "zh-Hans": "都怪你。全是因为你总是靠得我这么近……",
               "zh-Hant": "都是因為你。因為你總是靠我那麼近……",
-              "th": "เพราะนายนั่นแหละ พอนายคอยเข้ามาใกล้ฉันเรื่อย ๆ..."
+              "th": "เพราะนายนั่นแหละ พอนายคอยเข้ามาใกล้ฉันเรื่อย ๆ...",
+              "es": "Es por tu culpa. Porque no paras de acercarte a mí..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_lobby_2"
@@ -81380,7 +81451,8 @@
               "ja": "こうなると思ったから、距離を置いたのに…！",
               "zh-Hans": "我就是怕变成这样才一直和你保持距离的……！",
               "zh-Hant": "我就是怕變成這樣才保持距離的……！",
-              "th": "อุตส่าห์เว้นระยะห่างเพราะกลัวว่าจะเป็นแบบนี้แท้ ๆ...!"
+              "th": "อุตส่าห์เว้นระยะห่างเพราะกลัวว่าจะเป็นแบบนี้แท้ ๆ...!",
+              "es": "¡Mantuve las distancias justo para evitar que pasara esto...!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_lobby_3"
@@ -81422,11 +81494,12 @@
             },
             "text": "이젠, 돌아갈 수 없어... 그러니까, 네가 책임지고 해결 해...!",
             "texts": {
-              "en": "Now, there's no turning back... So take responsibility and fix this...!",
+              "en": "There's no turning back now... You caused this, so fix it...!",
               "ja": "もう、後戻りはできない…。だから、あなたが責任とって解決して…！",
               "zh-Hans": "已经回不去了……所以，你得负起责任解决掉……！",
               "zh-Hant": "已經回不去了……所以，你得負起責任替我解決……！",
-              "th": "ตอนนี้ ย้อนกลับไปไม่ได้แล้ว... เพราะฉะนั้น นายต้องรับผิดชอบและจัดการเรื่องนี้ซะ...!"
+              "th": "ตอนนี้ ย้อนกลับไปไม่ได้แล้ว... เพราะฉะนั้น นายต้องรับผิดชอบและจัดการเรื่องนี้ซะ...!",
+              "es": "Ya no puedo echarme atrás... ¡Así que asume la responsabilidad y arréglalo...!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_lobby_4"
@@ -81472,7 +81545,8 @@
               "ja": "はあ、はあ…。胸の中から熱いのが込み上げてくる…。",
               "zh-Hans": "哈啊，哈啊……胸口深处不断涌上一股燥热……",
               "zh-Hant": "哈啊、哈啊……胸口不斷湧起熾熱的感覺……",
-              "th": "แฮ่ก แฮ่ก... ความร้อนรุ่มในอกมันพลุ่งพล่านขึ้นมาไม่หยุดเลย..."
+              "th": "แฮ่ก แฮ่ก... ความร้อนรุ่มในอกมันพลุ่งพล่านขึ้นมาไม่หยุดเลย...",
+              "es": "Ah, ah... No para de subir algo abrasador desde mi pecho..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_5"
@@ -81505,11 +81579,12 @@
             },
             "text": "안 돼, 참아야 해... 참아야 해.",
             "texts": {
-              "en": "No, I have to hold back... I must endure it.",
+              "en": "No, I have to hold back... I have to.",
               "ja": "だめ、我慢…我慢しないと…。",
               "zh-Hans": "不行，必须忍耐……一定要忍住。",
               "zh-Hant": "不行，必須忍住……必須忍耐才行。",
-              "th": "ไม่ได้ ต้องทนไว้... ต้องกลั้นเอาไว้"
+              "th": "ไม่ได้ ต้องทนไว้... ต้องกลั้นเอาไว้",
+              "es": "No, tengo que contenerme... Debo aguantar."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_6"
@@ -81531,11 +81606,12 @@
             },
             "text": "참지 마. 가끔은 솔직해져도 괜찮잖아?",
             "texts": {
-              "en": "Don't hold back. It's fine to be honest with yourself once in a while, isn't it?",
+              "en": "Don't hold back. It's okay to be honest with yourself sometimes, isn't it?",
               "ja": "我慢することねぇよ。たまには素直になってもいいだろ？",
               "zh-Hans": "别忍了。偶尔坦率一点也没关系吧？",
               "zh-Hant": "別忍了。偶爾坦率一點也沒什麼不好吧？",
-              "th": "ไม่ต้องทนหรอก ซื่อสัตย์กับตัวเองบ้างเป็นบางครั้งก็ไม่เห็นเป็นไรนี่?"
+              "th": "ไม่ต้องทนหรอก ซื่อสัตย์กับตัวเองบ้างเป็นบางครั้งก็ไม่เห็นเป็นไรนี่?",
+              "es": "No te contengas. ¿Qué tiene de malo ser sincera de vez en cuando?"
             },
             "author": "player"
           },
@@ -81580,7 +81656,8 @@
               "ja": "っ…！一歩間違ったら…あなたを傷つけてしまう。",
               "zh-Hans": "唔……！搞不好的话……会伤到你的。",
               "zh-Hant": "唔……！一不小心……我就會傷到你的。",
-              "th": "อึก...! ถ้าพลาดขึ้นมา... ฉันอาจจะทำร้ายนายก็ได้นะ"
+              "th": "อึก...! ถ้าพลาดขึ้นมา... ฉันอาจจะทำร้ายนายก็ได้นะ",
+              "es": "¡Ah...! Si sale mal... terminaré haciéndote daño."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_7"
@@ -81611,11 +81688,12 @@
             },
             "text": "너한테 받는 상처라면 그것도 좋겠는데.",
             "texts": {
-              "en": "If it's you hurting me, I wouldn't mind that at all.",
+              "en": "I wouldn't mind, as long as it's you.",
               "ja": "お前にならそれもいいかもな。",
               "zh-Hans": "如果是被你弄伤的话，感觉也挺不错的。",
               "zh-Hant": "如果是被妳所傷，那我倒也挺樂意的。",
-              "th": "ถ้าเป็นบาดแผลที่ได้จากเธอ ฉันก็ไม่เกี่ยงหรอกนะ"
+              "th": "ถ้าเป็นบาดแผลที่ได้จากเธอ ฉันก็ไม่เกี่ยงหรอกนะ",
+              "es": "Si el daño viene de ti, tampoco me importaría."
             },
             "author": "player"
           },
@@ -81656,11 +81734,12 @@
             },
             "text": "치사해, 그런 말을 들으면... 더 버틸 수 없어지잖아!",
             "texts": {
-              "en": "Unfair... Saying things like that makes it impossible to hold out any longer!",
+              "en": "That's not fair... How am I supposed to hold back when you say things like that?!",
               "ja": "ずるい。そんなこと言われたら…もう抑えられなくなっちゃう！",
               "zh-Hans": "太狡猾了，听到这种话……叫我还怎么忍得住啊！",
               "zh-Hant": "太奸詐了，聽你這麼說……我就更撐不住了啊！",
-              "th": "ขี้โกงนี่ พอได้ยินคำพูดแบบนั้น... ก็ยิ่งทนไม่ไหวแล้วน่ะสิ!"
+              "th": "ขี้โกงนี่ พอได้ยินคำพูดแบบนั้น... ก็ยิ่งทนไม่ไหวแล้วน่ะสิ!",
+              "es": "Qué injusto... ¡Si me dices esas cosas, no podré resistir más!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_8"
@@ -81706,7 +81785,8 @@
               "ja": "ああ…私のこと、お仕置きして。私が悪さできないように。",
               "zh-Hans": "啊啊……快惩罚我吧，别让我做出什么坏事来。",
               "zh-Hant": "啊啊……教訓我吧，讓我無法做出壞事。",
-              "th": "อา... สั่งสอนฉันที อย่าให้ฉันทำเรื่องไม่ดีลงไปได้นะ"
+              "th": "อา... สั่งสอนฉันที อย่าให้ฉันทำเรื่องไม่ดีลงไปได้นะ",
+              "es": "Ah... Castígame para que no cometa ninguna locura."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_1"
@@ -81743,7 +81823,8 @@
               "ja": "あなたに逆らえないくらいめちゃくちゃにして…！",
               "zh-Hans": "把我弄得一塌糊涂，彻底无法违抗你吧！",
               "zh-Hant": "把我弄得一塌糊塗，徹底無法反抗你吧！",
-              "th": "ช่วยทำให้ฉันยับเยินจนขัดขืนนายไม่ได้ทีเถอะ!"
+              "th": "ช่วยทำให้ฉันยับเยินจนขัดขืนนายไม่ได้ทีเถอะ!",
+              "es": "¡Déjame tan destrozada que no pueda rebelarme contra ti!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_2"
@@ -81769,7 +81850,8 @@
               "ja": "いいのか？こんなことするぞ？",
               "zh-Hans": "真的吗？这样？",
               "zh-Hant": "真的嗎？像這樣？",
-              "th": "เอาจริงเหรอ? แบบนี้เหรอ?"
+              "th": "เอาจริงเหรอ? แบบนี้เหรอ?",
+              "es": "¿De verdad? ¿Así?"
             },
             "author": "player"
           },
@@ -81851,11 +81933,12 @@
             },
             "text": "아앗...! 으응. 괜찮아. 그렇게 하지 않으면…",
             "texts": {
-              "en": "Ahh...! Yeah. It's okay. If you don't do that...",
+              "en": "Ahh...! Yes. It's okay. You have to, or...",
               "ja": "ああっ…！うん。大丈夫。そうしないと…。",
               "zh-Hans": "啊啊……！嗯。没关系。要是不这么做的话……",
               "zh-Hant": "啊啊……！嗯。沒關係。如果不這樣做……",
-              "th": "อ๊า...! อือ ไม่เป็นไร ถ้าไม่ทำแบบนั้น..."
+              "th": "อ๊า...! อือ ไม่เป็นไร ถ้าไม่ทำแบบนั้น...",
+              "es": "¡Ah...! Sí. Está bien. Si no lo haces..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_3"
@@ -81892,7 +81975,8 @@
               "ja": "あなたのこと、どうにかしてしまいそうだから…！",
               "zh-Hans": "我就不知道会对你做出什么事来了……！",
               "zh-Hant": "我不知道會對你做出什麼事來……！",
-              "th": "ฉันอาจจะทำอะไรนายลงไปก็ได้นะ...!"
+              "th": "ฉันอาจจะทำอะไรนายลงไปก็ได้นะ...!",
+              "es": "¡no sé qué podría llegar a hacerte...!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_4"
@@ -81914,11 +81998,12 @@
             },
             "text": "괜찮아, 네 마음에 솔직해져도 내가 받아줄게.",
             "texts": {
-              "en": "It's okay. Even if you're honest with your feelings, I'll take it all.",
+              "en": "It's okay. Be honest with me. I can handle it.",
               "ja": "心配することねぇぞ。俺が受け止めてやる。",
               "zh-Hans": "没关系，就算你坦率袒露心声，我也全都会接纳。",
               "zh-Hant": "沒事，就算妳遵從自己的內心，我也會全盤接受的。",
-              "th": "ไม่เป็นไร ต่อให้เธอจะซื่อสัตย์กับความรู้สึก ฉันก็จะยอมรับไว้เอง"
+              "th": "ไม่เป็นไร ต่อให้เธอจะซื่อสัตย์กับความรู้สึก ฉันก็จะยอมรับไว้เอง",
+              "es": "No pasa nada. Aunque seas sincera con tus deseos, yo lo aceptaré todo."
             },
             "author": "player"
           },
@@ -81959,11 +82044,12 @@
             },
             "text": "진심이야? 그랬다간 돌이킬 수 없게 돼버려.",
             "texts": {
-              "en": "Are you serious? If you do, there'll be no turning back.",
+              "en": "Do you mean that? There'll be no turning back.",
               "ja": "本気？そんなことしたら、取り返しのつかないことになってしまう。",
               "zh-Hans": "你是认真的吗？那样可就彻底无法挽回了。",
               "zh-Hant": "你是認真的嗎？那樣的話可就無法挽回了。",
-              "th": "พูดจริงเหรอ? ขืนทำแบบนั้นมันจะกู่ไม่กลับเอานะ"
+              "th": "พูดจริงเหรอ? ขืนทำแบบนั้นมันจะกู่ไม่กลับเอานะ",
+              "es": "¿Hablas en serio? Si lo hago, no habrá vuelta atrás."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_9"
@@ -81996,11 +82082,12 @@
             },
             "text": "나... 이대로는 너를 부숴버릴지도 몰라.",
             "texts": {
-              "en": "I... might end up breaking you at this rate.",
+              "en": "At this rate... I might break you.",
               "ja": "私…。このままだと、あなたのこと、壊してしまうかも…。",
               "zh-Hans": "我……再这样下去可能会把你毁掉的。",
               "zh-Hant": "我……這樣下去說不定會把你毀掉的。",
-              "th": "ฉัน... ขืนเป็นแบบนี้ต่อไป อาจจะเผลอบดขยี้นายจนแหลกสลายก็ได้"
+              "th": "ฉัน... ขืนเป็นแบบนี้ต่อไป อาจจะเผลอบดขยี้นายจนแหลกสลายก็ได้",
+              "es": "Yo... puede que termine rompiéndote si sigo así."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_10"
@@ -82035,7 +82122,8 @@
               "ja": "へえ、やってみな？",
               "zh-Hans": "那你试试看啊。",
               "zh-Hant": "儘管試試看啊。",
-              "th": "ก็ลองดูสิ"
+              "th": "ก็ลองดูสิ",
+              "es": "Inténtalo si te atreves."
             },
             "author": "player"
           },
@@ -82085,11 +82173,12 @@
             },
             "text": "... 네가 자초한 일이야. 후회하지 마.",
             "texts": {
-              "en": "...You brought this on yourself. Don't regret it.",
+              "en": "...You brought this on yourself. Don't say I didn't warn you.",
               "ja": "ふう…。あなたの責任だからね。後悔しても遅いよ…！",
               "zh-Hans": "……这是你自找的。可别后悔。",
               "zh-Hant": "……這是你自找的。可別後悔。",
-              "th": "...นายรนหาที่เองนะ อย่ามาเสียใจทีหลังล่ะ"
+              "th": "...นายรนหาที่เองนะ อย่ามาเสียใจทีหลังล่ะ",
+              "es": "... Te lo has buscado tú. No te arrepientas luego."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_story_11"
@@ -82348,7 +82437,8 @@
               "ja": "っ…！止めないで。私がなんて言っても、止めないで欲しい！",
               "zh-Hans": "唔……！别停下。就算我哀求你，也千万别停下来！",
               "zh-Hant": "唔……！別停下。就算我哭求你，也千萬別停下來！",
-              "th": "อึก...! อย่าหยุดนะ ต่อให้ฉันจะอ้อนวอน ก็อย่าหยุดนะ!"
+              "th": "อึก...! อย่าหยุดนะ ต่อให้ฉันจะอ้อนวอน ก็อย่าหยุดนะ!",
+              "es": "¡Ah...! No pares. ¡Aunque te lo suplique, no te detengas!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_2"
@@ -82465,7 +82555,8 @@
               "ja": "はあ…その表情…。私をいじめて楽しいの？",
               "zh-Hans": "哈啊……那个表情……欺负我就这么开心吗？",
               "zh-Hant": "哈啊……那個表情……欺負我就這麼開心嗎？",
-              "th": "ฮา... สีหน้าแบบนั้น... การได้รังแกฉันมันสนุกมากเลยเหรอ?"
+              "th": "ฮา... สีหน้าแบบนั้น... การได้รังแกฉันมันสนุกมากเลยเหรอ?",
+              "es": "Ah... Esa expresión... ¿Tanto te divierte atormentarme?"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_1"
@@ -82604,7 +82695,8 @@
               "ja": "はあっ…！大丈夫、私、思ってるより頑丈だから…。",
               "zh-Hans": "哈啊……！没关系，我可比你想的还要耐折腾。",
               "zh-Hant": "哈啊……！沒事，我比你想的還要結實。",
-              "th": "ฮา...! ไม่เป็นไร ฉันน่ะทนทานกว่าที่นายคิดนะ"
+              "th": "ฮา...! ไม่เป็นไร ฉันน่ะทนทานกว่าที่นายคิดนะ",
+              "es": "¡Ah...! No pasa nada, soy más resistente de lo que parece."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_4"
@@ -82763,11 +82855,12 @@
             },
             "text": "아! 더 강하게 해줘. 견딜 수 없을 정도로…",
             "texts": {
-              "en": "Ah! Do it harder. So much that I can't bear it...",
+              "en": "Ah! Harder. Until I can't take it...",
               "ja": "ああ！もっと強くして。耐えられなくなるくらいに…！",
               "zh-Hans": "啊！再用力一点。直到我承受不住为止……",
               "zh-Hant": "啊！再更用力一點。直到我難以忍受為止……",
-              "th": "อ๊า! ช่วยทำแรงกว่านี้ที เอาจนแทบจะทนไม่ไหวเลย..."
+              "th": "อ๊า! ช่วยทำแรงกว่านี้ที เอาจนแทบจะทนไม่ไหวเลย...",
+              "es": "¡Ah! Más fuerte... Hasta que no pueda soportarlo..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_3"
@@ -82873,7 +82966,8 @@
               "ja": "はあ…その表情…。私をいじめて楽しいの？",
               "zh-Hans": "哈啊……那个表情……欺负我就这么开心吗？",
               "zh-Hant": "哈啊……那個表情……欺負我就這麼開心嗎？",
-              "th": "ฮา... สีหน้าแบบนั้น... การได้รังแกฉันมันสนุกมากเลยเหรอ?"
+              "th": "ฮา... สีหน้าแบบนั้น... การได้รังแกฉันมันสนุกมากเลยเหรอ?",
+              "es": "Ah... Esa expresión... ¿Tanto te divierte atormentarme?"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_1"
@@ -82990,7 +83084,8 @@
               "ja": "はあっ…！大丈夫、私、思ってるより頑丈だから…。",
               "zh-Hans": "哈啊……！没关系，我可比你想的还要耐折腾。",
               "zh-Hant": "哈啊……！沒事，我比你想的還要結實。",
-              "th": "ฮา...! ไม่เป็นไร ฉันน่ะทนทานกว่าที่นายคิดนะ"
+              "th": "ฮา...! ไม่เป็นไร ฉันน่ะทนทานกว่าที่นายคิดนะ",
+              "es": "¡Ah...! No pasa nada, soy más resistente de lo que parece."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_4"
@@ -83108,11 +83203,12 @@
             },
             "text": "흩어지고 있어… 내게 쌓여있던 것들이…",
             "texts": {
-              "en": "It's scattering... everything built up inside me...",
+              "en": "It's fading away... everything that's built up inside me...",
               "ja": "흩어지고 있어… 후우... 내게 쌓여있던 것들이…",
               "zh-Hans": "正在消散……积存在我体内的东西……",
               "zh-Hant": "正在消散……累積在我體內的東西……",
-              "th": "กำลังกระจัดกระจายไปแล้ว... สิ่งที่สะสมอยู่ในตัวฉัน..."
+              "th": "กำลังกระจัดกระจายไปแล้ว... สิ่งที่สะสมอยู่ในตัวฉัน...",
+              "es": "Se está disipando... Todo lo que tenía acumulado en mi interior..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_11"
@@ -83284,7 +83380,8 @@
               "ja": "うん…。もっとしていいよ。まだ耐えられる。",
               "zh-Hans": "嗯……再继续也可以。我还承受得住。",
               "zh-Hant": "嗯……再多來一點也沒關係。我還承受得住。",
-              "th": "อือ... ทำต่อได้เลย ยังทนไหวอยู่"
+              "th": "อือ... ทำต่อได้เลย ยังทนไหวอยู่",
+              "es": "Sí... Puedes seguir. Aún puedo aguantar."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_9"
@@ -83299,11 +83396,12 @@
             },
             "text": "읏...! 네 마음대로... 해줘…",
             "texts": {
-              "en": "Ngh...! Do as you... please with me...",
+              "en": "Ngh...! Do whatever you... want with me...",
               "ja": "っ…！あなたの好きに…して…。",
               "zh-Hans": "唔……！随你的便……怎么对我都可以……",
               "zh-Hant": "唔……！隨你高興……對待我吧……",
-              "th": "อึก...! ทำตามใจนาย... ได้เลย..."
+              "th": "อึก...! ทำตามใจนาย... ได้เลย...",
+              "es": "¡Ah...! Haz conmigo... lo que quieras..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_10"
@@ -83365,11 +83463,12 @@
             },
             "text": "아...! 천천히... 나를 네 손으로 길들여줘.",
             "texts": {
-              "en": "Ah...! Slowly... tame me with your own hands.",
+              "en": "Ah...! Slowly... tame me with your hands.",
               "ja": "ああ…！ゆっくり…。私をあなたの手で手懐けて…。",
               "zh-Hans": "啊……！慢慢地……用你的双手将我驯服吧。",
               "zh-Hant": "啊……！慢慢地……用你的雙手將我馴服吧。",
-              "th": "อ่า...! ค่อย ๆ... ฝึกฉันให้เชื่องด้วยมือของนายทีสิ"
+              "th": "อ่า...! ค่อย ๆ... ฝึกฉันให้เชื่องด้วยมือของนายทีสิ",
+              "es": "¡Ah...! Domíname... poco a poco con tus manos..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_6"
@@ -83431,11 +83530,12 @@
             },
             "text": "으응... 뭔가... 내 안에 깨어나는 것 같아…",
             "texts": {
-              "en": "Mmh... Something... feels like it's awakening inside me...",
+              "en": "Mmh... It feels like... something's waking up inside me...",
               "ja": "うぅん…。何かが…。私の中で目覚めてるみたい…。",
               "zh-Hans": "嗯……好像有什么……在我体内苏醒了……",
               "zh-Hant": "嗯……總覺得……有什麼東西在體內覺醒了……",
-              "th": "อื้อ... เหมือนกับว่า... มีบางอย่างกำลังตื่นขึ้นมาในตัวฉันเลย..."
+              "th": "อื้อ... เหมือนกับว่า... มีบางอย่างกำลังตื่นขึ้นมาในตัวฉันเลย...",
+              "es": "Mmm... Siento como si... algo estuviera despertando dentro de mí..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_7"
@@ -83450,11 +83550,12 @@
             },
             "text": "이렇게나 즐거운 걸... 참고 있었다니…",
             "texts": {
-              "en": "To think I was enduring... something this pleasurable...",
+              "en": "To think... I've been denying myself something that feels this good...",
               "ja": "こんなに楽しいのに…我慢してたなんて…。",
               "zh-Hans": "这么舒服的事……我之前居然一直在忍耐……",
               "zh-Hant": "明明這麼舒服……我竟然一直忍耐著……",
-              "th": "เรื่องที่ฟินขนาดนี้... ฉันทนเก็บกดไว้ได้ยังไงกันนะ..."
+              "th": "เรื่องที่ฟินขนาดนี้... ฉันทนเก็บกดไว้ได้ยังไงกันนะ...",
+              "es": "No puedo creer que... me estuviera conteniendo ante algo tan placentero..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_12"
@@ -83603,7 +83704,8 @@
               "ja": "あっ…！もう我慢しない。抑えたりしない！",
               "zh-Hans": "我再也不忍了。我绝不会再忍耐了！",
               "zh-Hant": "我不會再忍了。我絕不再忍耐了！",
-              "th": "จากนี้จะไม่ทนอีกแล้ว จะไม่กลั้นไว้อีกแล้ว!"
+              "th": "จากนี้จะไม่ทนอีกแล้ว จะไม่กลั้นไว้อีกแล้ว!",
+              "es": "¡Ya no me contendré más! ¡No pienso aguantarme!"
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_8"
@@ -83727,11 +83829,12 @@
             },
             "text": "마지막까지… 읏… 지켜봐줘…",
             "texts": {
-              "en": "Watch me... ngh... until the very end...",
+              "en": "Keep watching me... ngh... until the very end...",
               "ja": "最後まで…っ…見守っていて…。",
               "zh-Hans": "一直到最后……唔……都要看着我……",
               "zh-Hant": "直到最後……唔……都好好看著我吧……",
-              "th": "ช่วยเฝ้ามองฉัน... อึก... จนถึงที่สุดด้วยนะ..."
+              "th": "ช่วยเฝ้ามองฉัน... อึก... จนถึงที่สุดด้วยนะ...",
+              "es": "Mírame... ah... hasta el final..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_13"
@@ -83860,7 +83963,8 @@
               "ja": "っん…♡",
               "zh-Hans": "啊嗯……",
               "zh-Hant": "啊嗯……",
-              "th": "อ๊าง..."
+              "th": "อ๊าง...",
+              "es": "Aahn..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_14"
@@ -83893,9 +83997,11 @@
               "ja": "はあ、ぅん…♡",
               "zh-Hans": "哈啊……啊哈……♡",
               "zh-Hant": "哈啊……啊哈……♡",
-              "th": "ฮ้า... อ๊าฮ้า...♡"
+              "th": "ฮ้า... อ๊าฮ้า...♡",
+              "es": "Haa... Ah...♡"
             },
-            "author": "redbutterfly_halloween"
+            "author": "redbutterfly_halloween",
+            "voice": "voc_ch0075_desire_enjoy_15"
           },
           {
             "class": "HidePrinter",
@@ -83925,7 +84031,8 @@
               "ja": "はううっ…♡",
               "zh-Hans": "唔啊……",
               "zh-Hant": "呼唔……",
-              "th": "ฮึก..."
+              "th": "ฮึก...",
+              "es": "Haaah..."
             },
             "author": "redbutterfly_halloween",
             "voice": "voc_ch0075_desire_enjoy_16"
@@ -83958,9 +84065,11 @@
               "ja": "ひゃあっ…！♡",
               "zh-Hans": "啊哈昂！",
               "zh-Hant": "啊哈啊！",
-              "th": "อ๊าฮ้าง!"
+              "th": "อ๊าฮ้าง!",
+              "es": "¡Ahhn!"
             },
-            "author": "redbutterfly_halloween"
+            "author": "redbutterfly_halloween",
+            "voice": "voc_ch0075_desire_enjoy_17"
           },
           {
             "class": "HidePrinter",

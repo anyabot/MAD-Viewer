@@ -38748,7 +38748,7 @@
   "CH0075": {
    "code": "CH0075",
    "name": "홍접(할로윈)",
-   "nameEn": "Kouchou (HALLOWEEN)",
+   "nameEn": "Kouchou (Halloween)",
    "desc": "<할로윈>을 맞아, 그동안 해치운 원령들의 혼을 달래고 그들이 남긴 부정한 힘을 정화하기 위해 무녀의 힘을 사용하는 홍접.\n정화를 위해 부정한 힘을 스스로 받아들인 탓에, 그녀의 몸은 반 쯤 원령화되어 있다.",
    "descEn": "For <Halloween>, Kouchou uses her shrine maiden powers to appease the souls of the Aberrant Spirits she has slain and purify the corrupting power they left behind.\nBecause she absorbed the corrupting power into herself for the purification, her body has become half Aberrant Spirit.",
    "iconPath": "Icon_CH0075",
@@ -134272,7 +134272,52 @@
    "levelable": false,
    "levelPeriod": 0,
    "behaviour": {
-    "attack": true
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 2.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
    }
   },
   "2008102": {
