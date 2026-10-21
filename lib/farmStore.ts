@@ -208,7 +208,7 @@ function record(value: unknown): Record<string, number> {
   return out;
 }
 
-function plan(value: unknown): UnitPlan {
+export function parsePlan(value: unknown): UnitPlan {
   const raw = (value ?? {}) as Partial<UnitPlan>;
   const gear: Record<string, GearPlan> = {};
   for (const [slot, set_] of Object.entries(raw.gear ?? {})) {
@@ -232,8 +232,8 @@ function parse(doc: Partial<FarmState>): FarmState {
   const units: FarmState['units'] = {};
   for (const [code, pair] of Object.entries(doc.units ?? {})) {
     units[code] = {
-      current: plan(pair?.current),
-      target: plan(pair?.target),
+      current: parsePlan(pair?.current),
+      target: parsePlan(pair?.target),
       // a record written before the farm list became opt-in stays on it
       listed: pair?.listed !== false,
       ...(pair?.hidden ? { hidden: true } : {}),

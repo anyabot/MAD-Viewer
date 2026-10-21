@@ -12,6 +12,7 @@ import { setTextResolver } from '@/lib/characters';
 import { restoreGameLang } from '@/lib/gameText';
 import { restoreFarm } from '@/lib/farmStore';
 import { restoreCollection } from '@/lib/collectionStore';
+import { restoreParty } from '@/lib/partyStore';
 import { restoreSeen } from '@/lib/seenStore';
 import { ChangelogDialog } from '@/components/changelog';
 
@@ -42,6 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreGameLang, []);
   useEffect(restoreFarm, []);
   useEffect(restoreCollection, []);
+  useEffect(restoreParty, []);
   useEffect(restoreSeen, []);
   return (
     <ChakraProvider theme={theme}>
