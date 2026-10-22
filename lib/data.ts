@@ -1112,6 +1112,70 @@ export function loadGachaIndex(): Promise<GachaIndex> {
   return fetchJson<GachaIndex>('gacha.json');
 }
 
+export type EventArtRig = {
+  asset: string;
+  skel: string;
+  atlas: string;
+  dataScale: number;
+  animations: string[];
+  role: 'character' | 'box';
+  start: string;
+  idle?: string[];
+  actions?: string[];
+  reactions?: string[];
+};
+
+export type ChibiClip = {
+  duration: number;
+  loop: boolean;
+  rate: number;
+  sprites?: string[];
+  sprite?: number[];
+  rotation?: number[];
+  scaleX?: number[];
+  scaleY?: number[];
+};
+
+export type EventChibi = {
+  name: string;
+  role: 'leader' | 'follower';
+  facesRight: boolean;
+  size: [number, number];
+  x: number;
+  runSpeed: number;
+  run: ChibiClip;
+  idle: ChibiClip;
+};
+
+export type EventSticker = {
+  name: string;
+  sprite: string;
+  size: [number, number];
+  pivot: [number, number];
+  x: number;
+  rotation: number;
+  scale: [number, number];
+  idle?: ChibiClip;
+};
+
+export type EventDraw =
+  | { style: 'bead'; beadFrom: string; beadTo: string }
+  | { style: 'box'; restIdle: number; drawIdle: number; boxRest: string; boxOpen: string; boxDelay?: number };
+
+export type EventArt = {
+  key: string;
+  rigs: EventArtRig[];
+  chibis: EventChibi[];
+  stickers: EventSticker[];
+  draw?: EventDraw;
+};
+
+export type EventArtIndex = { events: Record<string, EventArt> };
+
+export function loadEventArt(): Promise<EventArtIndex> {
+  return fetchJson<EventArtIndex>('event_art.json');
+}
+
 export type GameEvent = {
   id: number;
   kind: 'main' | 'luckyDraw';

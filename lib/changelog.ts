@@ -51,13 +51,6 @@ export const RELEASES: Release[] = [
       {
         kind: 'feature',
         text: {
-          en: 'Skill info for the five unannounced characters in the game data (Yomi, Vesperi, Spica, Dan Xi (Halloween), Gin (Model)). It may change before release; Spica’s numbers are still placeholders.',
-          ko: '게임 데이터에 있는 미공개 캐릭터 5명(요미, 베스페리, 스피카, 단희(할로윈), 진(모델))의 스킬 정보 추가. 출시 전 바뀔 수 있으며 스피카의 수치는 아직 임시값',
-        },
-      },
-      {
-        kind: 'feature',
-        text: {
           en: 'Party page: save teams for Conquest, Arena and Nemesis groups, share them as a code and save them as an image.',
           ko: '파티 페이지 추가: 작전·아레나·네메시스 그룹별 팀 저장, 코드로 공유, 이미지 저장',
         },
