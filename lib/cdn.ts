@@ -115,6 +115,10 @@ export function gachaArchiveUrls(name: string): string[] {
   return [`${PUBLIC_BASE}/gacha/${name}.tar.br`];
 }
 
+export function eventArchiveUrls(name: string): string[] {
+  return [`${PUBLIC_BASE}/event/${name}.tar.br`];
+}
+
 export async function sdArchiveUrls(name: string): Promise<string[]> {
   const file = `${name}.tar.br`;
   if (SD_OVERRIDE) return [`${SD_OVERRIDE}/${file}`];

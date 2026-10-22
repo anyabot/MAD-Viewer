@@ -168,6 +168,9 @@ export const UI = {
   gradeLegend: { en: 'Legend', ko: '레전드' },
   gradeRare: { en: 'Rare', ko: '레어' },
   gradeNormal: { en: 'Normal', ko: '노멀' },
+  eventsDraw: { en: 'Draw', ko: '뽑기' },
+  eventsDrawTimes: { en: 'Draw ×{n}', ko: '{n}회 뽑기' },
+  navChibis: { en: 'Chibis', ko: '꼬마 캐릭터' },
   eventsSide: { en: 'Side events', ko: '사이드 이벤트' },
   eventsLuckyDraw: { en: 'Lucky draw', ko: '럭키 드로우' },
   eventsAccountDays: { en: '{n} days from your first entry', ko: '첫 입장부터 {n}일' },
@@ -264,6 +267,7 @@ export const UI = {
   tabProfile: { en: 'Profile', ko: '프로필' },
   tabSkills: { en: 'Skills', ko: '스킬' },
   tabStats: { en: 'Stats', ko: '스탯' },
+  statsProvisional: { en: 'Unreleased: level-1 stats only, may change before release.', ko: '미출시: 1레벨 스탯만 있으며 출시 전 바뀔 수 있음' },
   lockedUntil: { en: 'Locked until {date}.', ko: '{date}까지 잠김.' },
 
   rowBirthday: { en: 'Birthday', ko: '생일' },

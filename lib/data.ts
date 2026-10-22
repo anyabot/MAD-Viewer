@@ -172,6 +172,8 @@ export type CharacterEntry = {
   battlePatterns?: { start?: BattlePattern[]; repeat?: BattlePattern[] };
   /** Level 1, by star grade then `STAT_TYPE`; grade 6 is a cap row, not reachable. */
   baseStats?: Record<string, Record<string, number>>;
+  // unannounced unit: level-1 stats only, no level growth
+  statsProvisional?: boolean;
   /** What each level after the first adds, keyed the same way as `baseStats`. */
   levelStats?: Record<string, Record<string, number>>;
   /** Per affection rank from index 0; ranks accumulate. */
@@ -1110,6 +1112,70 @@ export function loadItems(): Promise<ItemIndex> {
 
 export function loadGachaIndex(): Promise<GachaIndex> {
   return fetchJson<GachaIndex>('gacha.json');
+}
+
+export type EventArtRig = {
+  asset: string;
+  skel: string;
+  atlas: string;
+  dataScale: number;
+  animations: string[];
+  role: 'character' | 'box';
+  start: string;
+  idle?: string[];
+  actions?: string[];
+  reactions?: string[];
+};
+
+export type ChibiClip = {
+  duration: number;
+  loop: boolean;
+  rate: number;
+  sprites?: string[];
+  sprite?: number[];
+  rotation?: number[];
+  scaleX?: number[];
+  scaleY?: number[];
+};
+
+export type EventChibi = {
+  name: string;
+  role: 'leader' | 'follower';
+  facesRight: boolean;
+  size: [number, number];
+  x: number;
+  runSpeed: number;
+  run: ChibiClip;
+  idle: ChibiClip;
+};
+
+export type EventSticker = {
+  name: string;
+  sprite: string;
+  size: [number, number];
+  pivot: [number, number];
+  x: number;
+  rotation: number;
+  scale: [number, number];
+  idle?: ChibiClip;
+};
+
+export type EventDraw =
+  | { style: 'bead'; beadFrom: string; beadTo: string }
+  | { style: 'box'; restIdle: number; drawIdle: number; boxRest: string; boxOpen: string; boxDelay?: number };
+
+export type EventArt = {
+  key: string;
+  rigs: EventArtRig[];
+  chibis: EventChibi[];
+  stickers: EventSticker[];
+  draw?: EventDraw;
+};
+
+export type EventArtIndex = { events: Record<string, EventArt> };
+
+export function loadEventArt(): Promise<EventArtIndex> {
+  return fetchJson<EventArtIndex>('event_art.json');
 }
 
 export type GameEvent = {

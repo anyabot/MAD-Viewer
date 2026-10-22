@@ -90,7 +90,7 @@ export default function ItemPage() {
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>MAD Viewer — {name}</title></Head>
+      <Head><title>{`MAD Viewer — ${name}`}</title></Head>
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
         <Text as={NextLink} href="/items" color="yellow.300">{t('navItems')}</Text>
         <Text color="gray.600">/</Text>

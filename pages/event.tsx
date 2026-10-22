@@ -3,15 +3,18 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import {
   Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import {
   AttendancePanel, EventArt, EventTiming, ExchangePanel, PartnerChip, TimeControls, useNow, useServerTime,
 } from '@/components/eventsBoard';
+import EventBoxArt from '@/components/eventBoxArt';
+import EventChibis from '@/components/eventChibis';
 import {
-  loadCharacters, loadEvents, loadIcons,
-  type CharacterData, type EventIndex, type IconManifest,
+  loadCharacters, loadEventArt, loadEvents, loadIcons,
+  type CharacterData, type EventArtIndex, type EventIndex, type IconManifest,
 } from '@/lib/data';
 import { remaining, sceneCount } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
@@ -26,6 +29,7 @@ export default function EventPage() {
   const [data, setData] = useState<EventIndex | null>(null);
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
+  const [eventArt, setEventArt] = useState<EventArtIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [serverTime, setServerTime] = useServerTime();
   const now = useNow(30_000);
@@ -34,6 +38,7 @@ export default function EventPage() {
     loadEvents().then(setData).catch((e) => setError(String(e)));
     loadCharacters().then(setChars).catch(() => setChars(null));
     loadIcons().then(setIcons).catch(() => setIcons(null));
+    loadEventArt().then(setEventArt).catch(() => setEventArt(null));
   }, []);
 
   if (error) return <Text color="red.400">{error}</Text>;
@@ -53,17 +58,38 @@ export default function EventPage() {
   const cast = (event.cast ?? [])
     .filter((c) => !bonus.some((b) => b.code === c) && !pickups.includes(c)
       && chars?.characters[c]?.characterType === 1);
+  const art = eventArt?.events[String(event.id)];
+  const ordered = [...data.events].sort((a, b) => Date.parse(a.start) - Date.parse(b.start) || a.id - b.id);
+  const at = ordered.findIndex((e) => e.id === event.id);
+  const prev = ordered[at - 1];
+  const next = ordered[at + 1];
+  const boxDraws = event.exchange?.find((ex) => ex.kind === 'box')?.maxDraws;
   const stagesOpen = event.stagesEnd && now < Date.parse(event.stagesEnd) && now >= Date.parse(event.start);
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>MAD Viewer — {name}</title></Head>
+      <Head><title>{`MAD Viewer — ${name}`}</title></Head>
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
         <Text as={NextLink} href="/stages?mode=event" color="yellow.300">{t('navStages')}</Text>
         <Text color="gray.600">/</Text>
         <Text color="gray.400">{name}</Text>
         <Box flex="1" />
         <TimeControls serverTime={serverTime} onChange={setServerTime} />
+      </Flex>
+
+      <Flex gap={2} wrap="wrap" justify="space-between">
+        {prev ? (
+          <Button as={NextLink} href={`/event?id=${prev.id}`} size="sm" variant="ghost"
+            leftIcon={<ChevronLeftIcon />} maxW="100%" whiteSpace="normal" textAlign="left">
+            {gameText(prev.name, gameLang)}
+          </Button>
+        ) : <Box />}
+        {next && (
+          <Button as={NextLink} href={`/event?id=${next.id}`} size="sm" variant="ghost"
+            rightIcon={<ChevronRightIcon />} maxW="100%" whiteSpace="normal" textAlign="right" ml="auto">
+            {gameText(next.name, gameLang)}
+          </Button>
+        )}
       </Flex>
 
       <Flex direction={{ base: 'column', md: 'row' }} gap={5}>
@@ -99,6 +125,8 @@ export default function EventPage() {
           </HStack>
         </VStack>
       </Flex>
+
+      {art && art.chibis.length > 0 && <EventChibis art={art} />}
 
       {(bonus.length > 0 || pickups.length > 0) && (
         <Box>
@@ -137,7 +165,9 @@ export default function EventPage() {
       )}
 
       {event.exchange && (
-        <ExchangePanel exchange={event.exchange} refs={data.refs} icons={icons} gameLang={gameLang} />
+        <ExchangePanel exchange={event.exchange} refs={data.refs} icons={icons} gameLang={gameLang}
+          boxArt={art && art.rigs.length > 0
+            ? <EventBoxArt art={art} maxDraws={boxDraws} /> : undefined} />
       )}
     </VStack>
   );

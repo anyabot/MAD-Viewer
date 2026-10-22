@@ -167,7 +167,12 @@ export default function CharacterPage() {
     tabs.push({
       key: 'stats',
       label: t('tabStats'),
-      panel: <StatCalculator key={entry.code} entry={entry} data={chars} icons={icons} />,
+      panel: (
+        <VStack align="stretch" spacing={2} minW={0}>
+          {entry.statsProvisional && <Text fontSize="xs" color="orange.200">{t('statsProvisional')}</Text>}
+          <StatCalculator key={entry.code} entry={entry} data={chars} icons={icons} />
+        </VStack>
+      ),
     });
   }
 

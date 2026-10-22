@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import NextLink from 'next/link';
 import {
   Badge, Box, Button, ButtonGroup, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
@@ -336,9 +336,9 @@ export function AttendancePanel({ attendance, refs, icons, gameLang }: {
   );
 }
 
-export function ExchangePanel({ exchange, refs, icons, gameLang }: {
+export function ExchangePanel({ exchange, refs, icons, gameLang, boxArt }: {
   exchange: EventExchange[]; refs: EventIndex['refs']; icons: IconManifest | null;
-  gameLang: GameLang;
+  gameLang: GameLang; boxArt?: ReactNode;
 }) {
   const t = useT();
   return (
@@ -376,6 +376,7 @@ export function ExchangePanel({ exchange, refs, icons, gameLang }: {
               <Text fontSize="xs" color="gray.500">{t('eventsBoxMax', { n: ex.maxDraws })}</Text>
             )}
           </HStack>
+          {boxArt && <Box mb={4}>{boxArt}</Box>}
           {ex.milestones && (
             <Box mb={4}>
               <Text fontSize="sm" fontWeight="bold" mb={2}>{t('eventsMilestones')}</Text>

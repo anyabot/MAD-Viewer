@@ -83,7 +83,7 @@ export default function FormulaPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>MAD Viewer — {t('navFormula')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('navFormula')}`}</title></Head>
       <PageHeader title={t('navFormula')}
         subtitle={`${L('Last updated', '최종 수정')}: ${FORMULA_UPDATED} · ${L('game version', '게임 버전')} ${FORMULA_GAME_VERSION}`} />
 

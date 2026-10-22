@@ -53,7 +53,7 @@ export default function ArtistsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>MAD Viewer — {t('navArtists')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('navArtists')}`}</title></Head>
       <PageHeader title={t('navArtists')} />
       <Grid gap={4} templateColumns={{ base: '1fr', lg: 'repeat(2, minmax(0, 1fr))' }}>
         {artists.map(([name, list]) => (
