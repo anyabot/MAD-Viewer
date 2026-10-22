@@ -190,7 +190,7 @@ export default function FieldPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>MAD Viewer — {t('navField')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('navField')}`}</title></Head>
       <PageHeader title={t('navField')}
         subtitle={`${L('Normal stages', '일반 스테이지')} · ${L('game version', '게임 버전')} ${FIELD_GAME_VERSION}`} />
 

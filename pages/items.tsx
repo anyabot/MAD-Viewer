@@ -65,7 +65,7 @@ export default function ItemsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>MAD Viewer — {t('navItems')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('navItems')}`}</title></Head>
       <Text fontSize="2xl" fontWeight="bold">{t('navItems')}</Text>
       <ListToolbar
         search={<SearchBox value={query} onChange={setQuery} placeholder={t('search')} clearLabel={t('clearSearch')} />}

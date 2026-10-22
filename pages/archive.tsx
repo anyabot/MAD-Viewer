@@ -58,7 +58,7 @@ export default function ArchivePage() {
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>MAD Viewer — {title}</title></Head>
+      <Head><title>{`MAD Viewer — ${title}`}</title></Head>
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
         <Text as={NextLink} href="/stages?mode=ascent" color="yellow.300">{t('navStages')}</Text>
         <Text color="gray.600">/</Text>

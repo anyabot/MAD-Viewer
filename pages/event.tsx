@@ -68,7 +68,7 @@ export default function EventPage() {
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>MAD Viewer — {name}</title></Head>
+      <Head><title>{`MAD Viewer — ${name}`}</title></Head>
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
         <Text as={NextLink} href="/stages?mode=event" color="yellow.300">{t('navStages')}</Text>
         <Text color="gray.600">/</Text>

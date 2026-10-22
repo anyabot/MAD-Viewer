@@ -231,7 +231,7 @@ export default function ShopPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>MAD Viewer — {t('shopTitle')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('shopTitle')}`}</title></Head>
       <PageHeader title={t('shopTitle')} actions={<TimeControls serverTime={serverTime} onChange={setServerTime} />} />
       {!ctx ? (
         <LoadState loading={!error} error={error} retry={load} labels={{ loading: t('loading') }} />

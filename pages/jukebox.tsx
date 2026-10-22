@@ -131,7 +131,7 @@ export default function JukeboxPage() {
 
   return (
     <VStack align="stretch" spacing={5}>
-      <Head><title>MAD Viewer — {t('navJukebox')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('navJukebox')}`}</title></Head>
       <Flex align="baseline" gap={3} wrap="wrap">
         <Text fontSize="2xl" fontWeight="bold">{t('navJukebox')}</Text>
         <Text fontSize="sm" color="gray.500">{t('jukeboxTracks', { n: tracks.length })}</Text>

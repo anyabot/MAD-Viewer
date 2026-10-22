@@ -148,7 +148,7 @@ export default function DpsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>MAD Viewer — {t('navDps')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('navDps')}`}</title></Head>
       <PageHeader title={t('navDps')}
         subtitle={`${L('Expected damage and healing per second on one target', '대상 1명 기준 초당 기대 피해·치유')} · ${L('game version', '게임 버전')} ${FORMULA_GAME_VERSION}`} />
 

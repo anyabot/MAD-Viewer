@@ -168,7 +168,7 @@ export default function PartyPage() {
   return (
     <PageCtx.Provider value={ctx}>
     <VStack align="stretch" spacing={4}>
-      <Head><title>MAD Viewer — {t('navParty')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('navParty')}`}</title></Head>
       <PageHeader title={t('navParty')} />
       <Flex wrap="wrap" gap={2} align="center">
         <Input size="sm" maxW={{ base: '100%', md: '22rem' }} value={code}

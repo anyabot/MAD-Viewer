@@ -74,7 +74,7 @@ export default function ChibisPage() {
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>MAD Viewer — {t('navChibis')}</title></Head>
+      <Head><title>{`MAD Viewer — ${t('navChibis')}`}</title></Head>
       <PageHeader title={t('navChibis')} />
       {error && <Text color="red.400">{error}</Text>}
       {!art && !error && <Center py={20}><Spinner /></Center>}
