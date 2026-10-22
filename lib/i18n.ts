@@ -311,6 +311,51 @@ export const UI = {
   onSide: { en: 'on the {side}', ko: '{side} 기준' },
   rotationOpening: { en: 'Opening', ko: '시작' },
   rotationLoop: { en: 'Loop', ko: '반복' },
+  rotationOnce: { en: 'once, at the start', ko: '시작 시 1회' },
+  rotationOtherwise: { en: 'otherwise', ko: '그 외' },
+  rotationAlways: { en: 'always', ko: '항상' },
+  rotationNever: { en: 'never used', ko: '사용 안 됨' },
+  rotationNeverHint: {
+    en: 'Before every cast the first loop whose condition holds is used, and an earlier loop always matches first.',
+    ko: '매 시전 전 조건을 만족하는 첫 번째 반복이 선택되며, 앞선 반복이 항상 먼저 만족됩니다.',
+  },
+  rotationMissing: { en: 'Not in this kit', ko: '이 스킬 구성에 없음' },
+  skillSlotName: { en: 'Skill {n}', ko: '스킬 {n}' },
+  deliveryProjectile: { en: 'Projectile', ko: '투사체' },
+  deliveryProjectileHint: {
+    en: 'Lands when the projectile reaches its target',
+    ko: '투사체가 대상에 도달하면 적중',
+  },
+  deliveryTravelling: { en: 'Travelling', ko: '이동 판정' },
+  deliveryTravellingHint: {
+    en: 'The hit area moves with the skill effect and hits along the way',
+    ko: '판정 범위가 스킬 이펙트를 따라 이동하며 경로상에서 적중',
+  },
+  deliveryInstant: { en: 'Instant', ko: '즉발' },
+  deliveryInstantHint: {
+    en: 'The hit area opens at once, with no travel time',
+    ko: '이동 시간 없이 즉시 판정',
+  },
+  skillViewBuffs: { en: 'In-game buffs', ko: '게임 버프 정보' },
+  skillViewProse: { en: 'Readable', ko: '쉬운 설명' },
+  skillViewDetails: { en: 'Game details', ko: '상세 데이터' },
+  nemesisRooms: { en: 'Rooms', ko: '구역' },
+  nemesisLevel: { en: 'Difficulty', ko: '난이도' },
+  enemySize: { en: 'Size {n}', ko: '크기 {n}' },
+  enemySizeHint: {
+    en: 'Hit radius {n} (a normal unit is 0.5). Ranges are measured to its edge, so units stand and hit from {n} further out; dashes land relative to its centre.',
+    ko: '판정 반경 {n} (일반 유닛 0.5). 사거리는 가장자리 기준이라 {n}만큼 더 멀리서 서고 공격하며, 돌진은 중심 기준으로 착지합니다.',
+  },
+  enemyStationary: { en: 'Stationary', ko: '이동 안 함' },
+  enemyStationaryHint: {
+    en: 'Approach 99: every target is already in reach, so it never walks',
+    ko: '접근 거리 99: 모든 대상이 이미 사거리 안이라 걸어서 이동하지 않음',
+  },
+  nemesisPatternChanged: { en: 'New pattern', ko: '패턴 변경' },
+  nemesisPatternChangedHint: {
+    en: 'The boss runs a different rotation from this difficulty',
+    ko: '이 난이도부터 보스가 다른 순환을 사용',
+  },
 
   moreFilters: { en: 'More filters', ko: '필터 더보기' },
 

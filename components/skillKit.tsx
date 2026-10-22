@@ -12,10 +12,15 @@ import {
   SKILL_CATEGORY_LABEL, SORT_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, colorRuns,
   detailSummary, everySecondsText, gateSummary, hitSummary, labelOf, moveSummary, opAmounts, opSeconds, weightText, chanceText,
   scaleSummary, secondsText, skillDescs, variantCondition, skillGrades, skillsAtGrade, statAmount,
+  patternConditionText, shadowedPatterns,
 } from '@/lib/characters';
+import {
+  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, type Delivery, type StateNamer,
+} from '@/lib/skillProse';
+import { useSkillView, type SkillView } from '@/lib/skillViewStore';
 import { dataText, useLang, useT, type UiKey } from '@/lib/i18n';
 import type {
-  BuffEntry, CharacterData, CharacterEntry, IconManifest, SkillBehaviour, SkillEntry,
+  BattlePattern, BuffEntry, CharacterData, CharacterEntry, IconManifest, SkillBehaviour, SkillEntry,
   SkillOp,
 } from '@/lib/data';
 
@@ -201,6 +206,7 @@ function Behaviour({ behaviour, level, period, data, icons }: {
       {(hits ?? []).map((hit, i) => (
         <Box key={i}>
           <Text fontSize="0.65rem" color="gray.500">
+            {hit.ops.length > 0 && <DeliveryBadge delivery={hitDelivery(hit)} />}
             {hitSummary(hit, lang)}
             {hit.cast && castSummary(hit.cast, lang) && on(castSummary(hit.cast, lang))}
           </Text>
@@ -269,14 +275,27 @@ function Behaviour({ behaviour, level, period, data, icons }: {
   );
 }
 
+function Sentences({ lines }: { lines: string[] }) {
+  if (!lines.length) return null;
+  return (
+    <VStack align="stretch" spacing={0.5} mt={1.5} pl={2} borderLeftWidth="2px" borderColor="whiteAlpha.200">
+      {lines.map((line, i) => (
+        <Text key={i} fontSize="xs" color="gray.300">{line}</Text>
+      ))}
+    </VStack>
+  );
+}
+
 // Skills level independently; passives use star grade and normal attacks have no level.
-export function SkillRow({ skill, data, icons, showSlot, owner }: {
+export function SkillRow({ skill, data, icons, showSlot, owner, states }: {
   skill: SkillEntry & { id: number }; data: CharacterData;
-  icons: IconManifest | null; showSlot?: boolean; owner?: string;
+  icons: IconManifest | null; showSlot?: boolean; owner?: string; states?: StateNamer;
 }) {
   const t = useT();
   const lang = useLang();
   const [level, setLevel] = useState(1);
+  const view = useSkillView();
+  const namer = states ?? kitStates([skill], lang);
   const descs = skillDescs(skill, 'ko').map((ko, i) => dataText(lang, ko, skill.descEn?.[i]));
   const timing = useSkillTiming()?.[String(skill.id)];
   const at = Math.min(level, descs.length) - 1;
@@ -287,19 +306,20 @@ export function SkillRow({ skill, data, icons, showSlot, owner }: {
         <Wrap spacing={2} align="center">
           <WrapItem>
             <Text fontSize="sm" fontWeight="bold">
-              {dataText(lang, skill.name, skill.nameEn)}
+              {showSlot ? t('skillSlotName', { n: skill.skillType }) : dataText(lang, skill.name, skill.nameEn)}
             </Text>
           </WrapItem>
           {showSlot && (
             <WrapItem>
-              <Text fontFamily="mono" fontSize="0.6rem" color="gray.600">
-                {t('skillSlot', { n: skill.skillType })}
-              </Text>
+              <Text fontSize="0.6rem" color="gray.600">{dataText(lang, skill.name, skill.nameEn)}</Text>
             </WrapItem>
           )}
           <WrapItem>
             <Badge fontSize="0.6rem">{SKILL_CATEGORY_LABEL[skill.categorize]?.[lang]}</Badge>
           </WrapItem>
+          {deliveries(skill).map((d) => (
+            <WrapItem key={d}><DeliveryBadge delivery={d} /></WrapItem>
+          ))}
           {timing?.seconds != null && (
             <WrapItem>
               <Badge fontSize="0.6rem" colorScheme="blue" textTransform="none" title={t('timingUseHint')}>
@@ -335,8 +355,8 @@ export function SkillRow({ skill, data, icons, showSlot, owner }: {
             </WrapItem>
           )}
           {skill.levelable && (
-            <WrapItem>
-              <HStack spacing={1}>
+            <WrapItem maxW="100%">
+              <Flex gap={1} wrap="wrap" align="center">
                 <Text fontSize="0.65rem" color="gray.600">{t('skillLevel')}</Text>
                 {descs.map((_d, i) => (
                   <Box key={i} as="button" onClick={() => setLevel(i + 1)} px={1.5}
@@ -344,30 +364,79 @@ export function SkillRow({ skill, data, icons, showSlot, owner }: {
                     borderColor={i === at ? 'yellow.400' : 'whiteAlpha.200'}
                     color={i === at ? 'yellow.200' : 'gray.500'}>{i + 1}</Box>
                 ))}
-              </HStack>
+              </Flex>
             </WrapItem>
           )}
         </Wrap>
         <Text fontSize="sm" color="gray.300" mt={0.5}>
           <GameText text={descs[at] ?? ''} />
         </Text>
-        <BuffList buffs={skill.buffs[at] ?? []} icons={icons} />
-        {skill.behaviour && (
-          <Behaviour behaviour={skill.behaviour} level={at + 1}
-            period={skill.levelPeriod} data={data} icons={icons} />
+        {view.buffs && <BuffList buffs={skill.buffs[at] ?? []} icons={icons} />}
+        {view.prose && skill.behaviour && (
+          <Sentences lines={behaviourSentences(skill.behaviour, at + 1, skill.levelPeriod, data, lang, namer)} />
         )}
         {skill.variant?.behaviour && (
           <Box mt={2} pl={2} borderLeftWidth="2px" borderColor="yellow.700">
             <Text fontSize="xs" color="yellow.300" title={skill.variant.when.define}>
-              <GameText text={variantCondition(skill.variant, lang)} />
+              <GameText text={variantCondition(skill.variant, lang, namer)} />
               {skill.variant.action && <Text as="span" color="gray.500">{` · ${skill.variant.action}`}</Text>}
             </Text>
-            <Behaviour behaviour={skill.variant.behaviour} level={at + 1}
-              period={skill.levelPeriod} data={data} icons={icons} />
+            {view.prose && (
+              <Sentences lines={behaviourSentences(skill.variant.behaviour, at + 1, skill.levelPeriod, data, lang, namer)} />
+            )}
+            {view.details && (
+              <Behaviour behaviour={skill.variant.behaviour} level={at + 1}
+                period={skill.levelPeriod} data={data} icons={icons} />
+            )}
           </Box>
+        )}
+        {view.details && skill.behaviour && (
+          <Behaviour behaviour={skill.behaviour} level={at + 1}
+            period={skill.levelPeriod} data={data} icons={icons} />
         )}
       </Box>
     </Flex>
+  );
+}
+
+const DELIVERY: Record<Delivery, { label: UiKey; hint: UiKey; scheme: string }> = {
+  projectile: { label: 'deliveryProjectile', hint: 'deliveryProjectileHint', scheme: 'orange' },
+  travelling: { label: 'deliveryTravelling', hint: 'deliveryTravellingHint', scheme: 'cyan' },
+  instant: { label: 'deliveryInstant', hint: 'deliveryInstantHint', scheme: 'purple' },
+};
+
+function DeliveryBadge({ delivery }: { delivery: Delivery }) {
+  const t = useT();
+  const d = DELIVERY[delivery];
+  return (
+    <Badge fontSize="0.55rem" variant="outline" colorScheme={d.scheme} textTransform="none"
+      title={t(d.hint)} mr={1.5} verticalAlign="baseline">
+      {t(d.label)}
+    </Badge>
+  );
+}
+
+const VIEW_LABEL: [keyof SkillView, UiKey][] = [
+  ['buffs', 'skillViewBuffs'], ['prose', 'skillViewProse'], ['details', 'skillViewDetails'],
+];
+
+// One switch per layer, applied to every skill on the page.
+function SkillViewToggles() {
+  const t = useT();
+  const view = useSkillView();
+  return (
+    <Wrap spacing={1}>
+      {VIEW_LABEL.map(([key, label]) => (
+        <WrapItem key={key}>
+          <Box as="button" aria-pressed={view[key]} onClick={() => view.toggle(key)} px={2} py={0.5}
+            fontSize="xs" borderWidth="1px" borderRadius="full"
+            borderColor={view[key] ? 'yellow.400' : 'whiteAlpha.200'}
+            color={view[key] ? 'yellow.200' : 'gray.500'}>
+            {t(label)}
+          </Box>
+        </WrapItem>
+      ))}
+    </Wrap>
   );
 }
 
@@ -377,6 +446,8 @@ export function SkillList({ group, defaultStar, data, icons, owner }: {
   data: CharacterData; icons: IconManifest | null; owner?: string;
 }) {
   const t = useT();
+  const lang = useLang();
+  const states = kitStates(kitSkills(group, data), lang);
   const entry = { skillSetGroup: group, defaultStar } as CharacterEntry;
   const grades = skillGrades(entry, data);
   const [grade, setGrade] = useState<number | null>(null);
@@ -385,20 +456,23 @@ export function SkillList({ group, defaultStar, data, icons, owner }: {
   if (!skills.length) return null;
   return (
     <>
-      {grades.length > 1 && (
-        <HStack spacing={1} mb={3}>
-          <Text fontSize="xs" color="gray.500">{t('dialStar')}</Text>
-          {grades.map((g) => (
-            <Box key={g} as="button" onClick={() => setGrade(g)} px={2} py={0.5}
-              fontSize="xs" borderWidth="1px" borderRadius="md"
-              borderColor={g === shown ? 'yellow.400' : 'whiteAlpha.200'}
-              color={g === shown ? 'yellow.200' : 'gray.400'}>{g}★</Box>
-          ))}
-        </HStack>
-      )}
+      <Flex gap={3} mb={3} wrap="wrap" align="center">
+        {grades.length > 1 && (
+          <HStack spacing={1}>
+            <Text fontSize="xs" color="gray.500">{t('dialStar')}</Text>
+            {grades.map((g) => (
+              <Box key={g} as="button" onClick={() => setGrade(g)} px={2} py={0.5}
+                fontSize="xs" borderWidth="1px" borderRadius="md"
+                borderColor={g === shown ? 'yellow.400' : 'whiteAlpha.200'}
+                color={g === shown ? 'yellow.200' : 'gray.400'}>{g}★</Box>
+            ))}
+          </HStack>
+        )}
+        <SkillViewToggles />
+      </Flex>
       <VStack align="stretch" spacing={3}>
         {skills.map((skill) => (
-          <SkillRow key={skill.id} skill={skill} data={data} icons={icons} owner={owner}
+          <SkillRow key={skill.id} skill={skill} data={data} icons={icons} owner={owner} states={states}
             // The slot number distinguishes enemy skills that share a placeholder name.
             showSlot={skills.filter((s) => s.name === skill.name).length > 1} />
         ))}
@@ -421,71 +495,119 @@ export function Skills({ entry, data, icons }: {
   );
 }
 
-// Rotation lists are alternatives selected by condition with an unconditional fallback.
 const ROTATION_LABEL: Record<string, UiKey> = { start: 'rotationOpening', repeat: 'rotationLoop' };
+
+type Patterns = { start?: BattlePattern[]; repeat?: BattlePattern[] };
+type StepSkill = { id: number; skill: SkillEntry } | null;
 
 export function Rotation({ entry, data, icons }: {
   entry: CharacterEntry; data: CharacterData; icons: IconManifest | null;
 }) {
+  const lang = useLang();
+  if (!entry.battlePatterns) return null;
+  return (
+    <PatternRotation patterns={entry.battlePatterns} data={data} icons={icons}
+      states={kitStates(kitSkills(entry.skillSetGroup, data), lang)}
+      skillOf={(id) => (data.skills[String(id)] ? { id, skill: data.skills[String(id)] } : null)} />
+  );
+}
+
+// A stage enemy's steps are `skill_type`s within its own kit.
+export function skillByType(group: number | null | undefined, data: CharacterData): (type: number) => StepSkill {
+  const grades = data.skillSets[String(group ?? '')] ?? {};
+  const top = grades[String(Math.max(0, ...Object.keys(grades).map(Number)))] ?? [];
+  const byType = new Map<number, number>();
+  for (const id of top) {
+    const skill = data.skills[String(id)];
+    if (skill) byType.set(skill.skillType, id);
+  }
+  return (type) => {
+    const id = byType.get(type);
+    return id != null ? { id, skill: data.skills[String(id)] } : null;
+  };
+}
+
+// The first loop whose condition holds is re-picked before every cast; a switch restarts that loop.
+export function PatternRotation({ patterns, skillOf, data, icons, title, states }: {
+  patterns: Patterns; skillOf: (step: number) => StepSkill;
+  data: CharacterData; icons: IconManifest | null; title?: string; states?: StateNamer;
+}) {
   const t = useT();
   const lang = useLang();
   const timing = useSkillTiming();
-  const patterns = entry.battlePatterns;
-  if (!patterns) return null;
+  const all = [...(patterns.start ?? []), ...(patterns.repeat ?? [])];
   // Names are ambiguous only when different skills carry the same name.
   const idsByName = new Map<string, Set<number>>();
-  for (const rot of [...(patterns.start ?? []), ...(patterns.repeat ?? [])]) {
-    for (const id of rot.steps) {
-      const name = data.skills[String(id)]?.name ?? '';
-      idsByName.set(name, (idsByName.get(name) ?? new Set()).add(id));
+  for (const rot of all) {
+    for (const step of rot.steps) {
+      const hit = skillOf(step);
+      if (hit) idsByName.set(hit.skill.name ?? '', (idsByName.get(hit.skill.name ?? '') ?? new Set()).add(hit.id));
     }
   }
+  const never = shadowedPatterns(patterns.repeat ?? []);
+  const rows = (['start', 'repeat'] as const).flatMap((key) => [...(patterns[key] ?? [])]
+    .sort((a, b) => a.order - b.order).map((rot) => ({ key, rot })));
   return (
-    <Panel title={t('panelRotation')}>
+    <Panel title={title ?? t('panelRotation')}>
       <VStack align="stretch" spacing={2}>
-        {(['start', 'repeat'] as const).flatMap((key) => (patterns[key] ?? []).map((rot, i) => (
-          <Box key={`${key}-${i}`}>
-            <Wrap spacing={2} align="baseline" mb={1}>
-              <WrapItem><Badge fontSize="0.6rem">{t(ROTATION_LABEL[key])}</Badge></WrapItem>
-              {rot.name && (
-                <WrapItem>
-                  <Text fontSize="xs" color="gray.500">
-                    {dataText(lang, rot.name, rot.nameEn)}
-                  </Text>
-                </WrapItem>
-              )}
-            </Wrap>
-            <Box overflowX="auto">
-              <HStack spacing={1} minW="max-content">
-                {rot.steps.map((id, step) => {
-                  const skill = data.skills[String(id)];
-                  const ambiguous = (idsByName.get(skill?.name ?? '')?.size ?? 0) > 1;
-                  return (
-                    <HStack key={step} spacing={1}>
-                      {step > 0 && <Text fontSize="xs" color="gray.600">→</Text>}
-                      <HStack spacing={1} borderWidth="1px" borderColor="whiteAlpha.200"
-                        borderRadius="md" px={1.5} py={0.5}>
-                        <GameIcon manifest={icons} group="skill" name={skill?.icon}
-                          size={4} reserve={false} />
-                        <Text fontSize="xs" whiteSpace="nowrap">
-                          {skill ? dataText(lang, skill.name, skill.nameEn) : id}
-                        </Text>
-                        {ambiguous && skill && (
-                          <Text fontFamily="mono" fontSize="0.6rem" color="gray.600">
-                            {skill.skillType}
+        {rows.map(({ key, rot }, i) => {
+          const dead = key === 'repeat' && never.has(rot.order);
+          const when = patternConditionText(rot.condition, rot.conditionValue, lang, states);
+          return (
+            <Box key={`${key}-${i}`} opacity={dead ? 0.45 : 1}>
+              <Wrap spacing={2} align="baseline" mb={1}>
+                <WrapItem><Badge fontSize="0.6rem">{t(ROTATION_LABEL[key])}</Badge></WrapItem>
+                {key === 'start' && (
+                  <WrapItem><Text fontSize="xs" color="gray.500">{t('rotationOnce')}</Text></WrapItem>
+                )}
+                {key === 'repeat' && (
+                  <WrapItem>
+                    <Text fontSize="xs" color={when ? 'cyan.300' : 'gray.500'}>
+                      {when || ((patterns.repeat?.length ?? 0) > 1 ? t('rotationOtherwise') : t('rotationAlways'))}
+                    </Text>
+                  </WrapItem>
+                )}
+                {dead && (
+                  <WrapItem>
+                    <Badge fontSize="0.55rem" colorScheme="red" title={t('rotationNeverHint')}>
+                      {t('rotationNever')}
+                    </Badge>
+                  </WrapItem>
+                )}
+                {rot.name && (
+                  <WrapItem>
+                    <Text fontSize="xs" color="gray.500">{dataText(lang, rot.name, rot.nameEn)}</Text>
+                  </WrapItem>
+                )}
+              </Wrap>
+              <Box overflowX="auto">
+                <HStack spacing={1} minW="max-content">
+                  {rot.steps.map((step, n) => {
+                    const hit = skillOf(step);
+                    const skill = hit?.skill;
+                    const ambiguous = (idsByName.get(skill?.name ?? '')?.size ?? 0) > 1;
+                    return (
+                      <HStack key={n} spacing={1}>
+                        {n > 0 && <Text fontSize="xs" color="gray.600">→</Text>}
+                        <HStack spacing={1} borderWidth="1px" borderRadius="md" px={1.5} py={0.5}
+                          borderColor={hit ? 'whiteAlpha.200' : 'red.700'} borderStyle={hit ? 'solid' : 'dashed'}
+                          title={hit ? undefined : t('rotationMissing')}>
+                          <GameIcon manifest={icons} group="skill" name={skill?.icon} size={4} reserve={false} />
+                          <Text fontSize="xs" whiteSpace="nowrap">
+                            {!skill ? t('skillSlot', { n: step })
+                              : ambiguous ? t('skillSlotName', { n: skill.skillType })
+                                : dataText(lang, skill.name, skill.nameEn)}
                           </Text>
-                        )}
-                        {timing?.[String(id)] && (
-                          <TimingText timing={timing[String(id)]} />
-                        )}
+                          {hit && timing?.[String(hit.id)] && <TimingText timing={timing[String(hit.id)]} />}
+                        </HStack>
                       </HStack>
-                    </HStack>
-                  );
-                })}
-              </HStack>
+                    );
+                  })}
+                </HStack>
+              </Box>
             </Box>
-          </Box>
-        )))}
+          );
+        })}
       </VStack>
     </Panel>
   );

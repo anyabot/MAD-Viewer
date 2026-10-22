@@ -216,10 +216,10 @@ export type InfusionInfo = {
   labels: Record<string, { ko: string | null; en: string | null }>;
 };
 
-// Alternatives run in `order`; condition 0 is unconditional, 20 and 21 test `conditionValue`.
+// The first row in `order` whose condition holds is the loop, re-checked before every cast.
 export type BattlePattern = {
-  name: string | null;
-  nameEn: string | null;
+  name?: string | null;
+  nameEn?: string | null;
   order: number;
   condition: number;
   conditionValue: string[];
@@ -345,7 +345,10 @@ export type SkillOp = {
   gate?: SkillGate;
   // proc chance 0-1; absent = always
   chance?: number;
+  // a passive work's own check, e.g. a state at N stacks
+  when?: { check: string | null; on: string | null; state: string | null; op: string | null; value: string | null };
   // duration operations only
+  define?: string;
   name?: string | null;
   nameEn?: string | null;
   icon?: string | null;
@@ -379,6 +382,10 @@ export type SkillHit = {
   fieldCenter?: boolean;
   lifetime?: number;
   attach?: 'ATTACH_TARGET' | 'ATTACH_DISPATCHER';
+  // opened when the dispatcher's effect reaches its cast target, not at cast
+  arrive?: boolean;
+  // the dispatcher spawns a visible effect
+  effect?: boolean;
   /** What the hitbox anchors on, not who it affects; authored per event. */
   cast?: {
     team: string | null;
@@ -407,6 +414,8 @@ export type SkillTrigger = {
   check: string | null;
   cooldown: number;
   limit: number;
+  // the define a duration trigger listens to, or the trigger's threshold
+  value?: string[];
   ops: SkillOp[];
 };
 
@@ -653,6 +662,10 @@ export type StageData = {
     base: Record<string, Record<string, number>>;
     level: Record<string, Record<string, number>>;
   };
+  // baseStat -> pattern group ids; a wave enemy runs its wave row's rotation
+  enemyPatterns?: Record<string, { start?: string; repeat?: string }>;
+  // steps are `skill_type`s, unresolved ones kept
+  patternGroups?: Record<string, BattlePattern[]>;
   /** Keyed `<type>:<id>` — what a drop's `ref` points at. */
   drops: Record<string, DropEntry>;
   stages: StageEntry[];
