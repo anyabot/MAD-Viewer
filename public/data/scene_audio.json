@@ -1,1559 +1,1651 @@
 {
- "clips": {
-  "AF_CH0009_basic_enter": "view/af_ch0009",
-  "AF_CH0011_basic_enter": "view/af_ch0011",
-  "AF_CH0015_basic_enter": "view/af_ch0015",
-  "AF_CH0019_basic_enter": "view/af_ch0019",
-  "AF_CH0022_basic_enter": "view/af_ch0022",
-  "AF_CH0024_basic_enter": "view/af_ch0024",
-  "AF_CH0028_basic_enter": "view/af_ch0028",
-  "AF_CH0033_basic_enter": "view/af_ch0033",
-  "AF_CH0035_basic_enter": "view/af_ch0035",
-  "AF_CH0042_asmr_enter": "view/af_ch0042",
-  "AF_CH0043_basic_enter": "view/af_ch0043",
-  "AF_CH0058_basic_enter": "view/af_ch0058",
-  "DS_CH0009_basic_enter": "view/ds_ch0009",
-  "DS_CH0009_reaction_A1": "view/ds_ch0009",
-  "DS_CH0009_reaction_A2": "view/ds_ch0009",
-  "DS_CH0009_reaction_A3": "view/ds_ch0009",
-  "DS_CH0009_reaction_B1": "view/ds_ch0009",
-  "DS_CH0009_reaction_H1": "view/ds_ch0009",
-  "DS_CH0009_reaction_H2": "view/ds_ch0009",
-  "DS_CH0009_reaction_T1": "view/ds_ch0009",
-  "DS_CH0010_basic_enter": "view/ds_ch0010",
-  "DS_CH0010_basic_touch2": "view/ds_ch0010",
-  "DS_CH0010_reaction_B1": "view/ds_ch0010",
-  "DS_CH0010_reaction_B1_1": "view/ds_ch0010",
-  "DS_CH0010_reaction_B1_3": "view/ds_ch0010",
-  "DS_CH0010_reaction_H1": "view/ds_ch0010",
-  "DS_CH0011_basic_enter": "view/ds_ch0011",
-  "DS_CH0011_reaction_A1": "view/ds_ch0011",
-  "DS_CH0011_reaction_A2": "view/ds_ch0011",
-  "DS_CH0011_reaction_A3": "view/ds_ch0011",
-  "DS_CH0011_reaction_A4": "view/ds_ch0011",
-  "DS_CH0011_reaction_A5": "view/ds_ch0011",
-  "DS_CH0011_reaction_A6": "view/ds_ch0011",
-  "DS_CH0011_reaction_B1": "view/ds_ch0011",
-  "DS_CH0011_reaction_B3": "view/ds_ch0011",
-  "DS_CH0015_A1": "view/ds_ch0015",
-  "DS_CH0015_A2": "view/ds_ch0015",
-  "DS_CH0015_A3": "view/ds_ch0015",
-  "DS_CH0015_A4": "view/ds_ch0015",
-  "DS_CH0015_A5": "view/ds_ch0015",
-  "DS_CH0015_T1": "view/ds_ch0015",
-  "DS_CH0015_enter": "view/ds_ch0015",
-  "DS_CH0019_basic_enter": "view/ds_ch0019",
-  "DS_CH0022_basic_enter": "view/ds_ch0022",
-  "DS_CH0024_basic_enter": "view/ds_ch0024",
-  "DS_CH0028_A4": "view/ds_ch0028",
-  "DS_CH0028_B+1": "view/ds_ch0028",
-  "DS_CH0028_B1": "view/ds_ch0028",
-  "DS_CH0028_H1": "view/ds_ch0028",
-  "DS_CH0028_enter": "view/ds_ch0028",
-  "DS_CH0032_a1": "view/ds_ch0032",
-  "DS_CH0032_b2": "view/ds_ch0032",
-  "DS_CH0032_intro": "view/ds_ch0032",
-  "DS_CH0033_basic_enter": "view/ds_ch0033",
-  "DS_CH0035_A1": "view/ds_ch0035",
-  "DS_CH0035_A2": "view/ds_ch0035",
-  "DS_CH0035_A3": "view/ds_ch0035",
-  "DS_CH0035_B1": "view/ds_ch0035",
-  "DS_CH0035_B2": "view/ds_ch0035",
-  "DS_CH0035_B3": "view/ds_ch0035",
-  "DS_CH0035_H1": "view/ds_ch0035",
-  "DS_CH0035_enter": "view/ds_ch0035",
-  "DS_CH0038_basic_enter": "view/ds_ch0038",
-  "DS_CH0038_reaction_A1": "view/ds_ch0038",
-  "DS_CH0038_reaction_A2": "view/ds_ch0038",
-  "DS_CH0038_reaction_A3": "view/ds_ch0038",
-  "DS_CH0038_reaction_A4": "view/ds_ch0038",
-  "DS_CH0038_reaction_H1": "view/ds_ch0038",
-  "DS_CH0040_basic_enter": "view/ds_ch0040",
-  "DS_CH0040_basic_touch": "view/ds_ch0040",
-  "DS_CH0040_reaction_A1_1": "view/ds_ch0040",
-  "DS_CH0040_reaction_A1_2": "view/ds_ch0040",
-  "DS_CH0040_reaction_A2_1": "view/ds_ch0040",
-  "DS_CH0040_reaction_A2_2": "view/ds_ch0040",
-  "DS_CH0040_reaction_A3_1": "view/ds_ch0040",
-  "DS_CH0040_reaction_A3_2": "view/ds_ch0040",
-  "DS_CH0040_reaction_A4_1": "view/ds_ch0040",
-  "DS_CH0040_reaction_A4_2": "view/ds_ch0040",
-  "DS_CH0040_reaction_H1_A": "view/ds_ch0040",
-  "DS_CH0040_reaction_H1_B": "view/ds_ch0040",
-  "DS_CH0042_basic_enter": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_01": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_02": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_03": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_04": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_05": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_06": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_07": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_08": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_09": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_10": "view/ds_ch0042",
-  "DS_CH0042_overlay_A4_11": "view/ds_ch0042",
-  "DS_CH0042_overlay_A5_01": "view/ds_ch0042",
-  "DS_CH0042_overlay_A5_02": "view/ds_ch0042",
-  "DS_CH0042_overlay_A5_03": "view/ds_ch0042",
-  "DS_CH0042_overlay_A5_04": "view/ds_ch0042",
-  "DS_CH0042_overlay_A5_05": "view/ds_ch0042",
-  "DS_CH0042_overlay_A5_06": "view/ds_ch0042",
-  "DS_CH0042_overlay_B1": "view/ds_ch0042",
-  "DS_CH0042_overlay_B2": "view/ds_ch0042",
-  "DS_CH0042_reaction_A1_1": "view/ds_ch0042",
-  "DS_CH0042_reaction_A1_2": "view/ds_ch0042",
-  "DS_CH0042_reaction_A2": "view/ds_ch0042",
-  "DS_CH0042_reaction_A3": "view/ds_ch0042",
-  "DS_CH0042_reaction_H1": "view/ds_ch0042",
-  "DS_CH0043_basic_enter": "view/ds_ch0043",
-  "DS_CH0043_reaction_A1": "view/ds_ch0043",
-  "DS_CH0043_reaction_A2": "view/ds_ch0043",
-  "DS_CH0043_reaction_A3": "view/ds_ch0043",
-  "DS_CH0043_reaction_A4": "view/ds_ch0043",
-  "DS_CH0043_reaction_A5": "view/ds_ch0043",
-  "DS_CH0043_reaction_A7": "view/ds_ch0043",
-  "DS_CH0043_reaction_H1": "view/ds_ch0043",
-  "DS_CH0043_reaction_H1_2": "view/ds_ch0043",
-  "DS_CH0052_basic_after_wait": "view/ds_ch0052",
-  "DS_CH0052_basic_enter": "view/ds_ch0052",
-  "DS_CH0052_reaction_A1": "view/ds_ch0052",
-  "DS_CH0052_reaction_A2": "view/ds_ch0052",
-  "DS_CH0052_reaction_A3": "view/ds_ch0052",
-  "DS_CH0052_reaction_B1_end": "view/ds_ch0052",
-  "DS_CH0052_reaction_B1_start": "view/ds_ch0052",
-  "DS_CH0052_reaction_B2_end": "view/ds_ch0052",
-  "DS_CH0052_reaction_B2_start": "view/ds_ch0052",
-  "DS_CH0052_reaction_B3_1": "view/ds_ch0052",
-  "DS_CH0052_reaction_B3_2": "view/ds_ch0052",
-  "DS_CH0052_reaction_B3_3": "view/ds_ch0052",
-  "DS_CH0052_reaction_B3_4": "view/ds_ch0052",
-  "DS_CH0052_reaction_H1": "view/ds_ch0052",
-  "DS_CH0052_reaction_drag": "view/ds_ch0052",
-  "DS_CH0057_basic_enter": "view/ds_ch0057",
-  "DS_CH0057_reaction_B1": "view/ds_ch0057",
-  "DS_CH0057_reaction_H1": "view/ds_ch0057",
-  "DS_CH0057_reaction_H2": "view/ds_ch0057",
-  "DS_CH0057_reaction_H3": "view/ds_ch0057",
-  "DS_CH0058_basic_enter": "view/ds_ch0058",
-  "DS_CH0058_reaction_A1": "view/ds_ch0058",
-  "DS_CH0058_reaction_A2": "view/ds_ch0058",
-  "DS_CH0058_reaction_A3_1_reaction": "view/ds_ch0058",
-  "DS_CH0058_reaction_A3_2_reaction": "view/ds_ch0058",
-  "DS_CH0058_reaction_A3_3_reaction": "view/ds_ch0058",
-  "DS_CH0058_reaction_A4_1_reaction": "view/ds_ch0058",
-  "DS_CH0058_reaction_A4_2_reaction": "view/ds_ch0058",
-  "DS_CH0058_reaction_A4_3_reaction": "view/ds_ch0058",
-  "DS_CH0058_reaction_B1_reaction": "view/ds_ch0058",
-  "DS_CH0058_reaction_H1": "view/ds_ch0058",
-  "DS_CH0068_basic_enter": "view/ds_ch0068",
-  "bgm_battle_001": "bgm",
-  "bgm_battle_002": "bgm",
-  "bgm_battle_003": "bgm",
-  "bgm_battle_004": "bgm",
-  "bgm_battle_005_in": "bgm",
-  "bgm_battle_005_lp": "bgm",
-  "bgm_battle_006": "bgm",
-  "bgm_battle_007": "bgm",
-  "bgm_battle_008": "bgm",
-  "bgm_battle_009": "bgm",
-  "bgm_battle_009_in": "bgm",
-  "bgm_battle_010_in": "bgm",
-  "bgm_battle_010_lp": "bgm",
-  "bgm_battle_011": "bgm",
-  "bgm_battle_012_in": "bgm",
-  "bgm_battle_012_lp": "bgm",
-  "bgm_battle_012_tr": "bgm",
-  "bgm_battle_013": "bgm",
-  "bgm_battle_014": "bgm",
-  "bgm_battle_015": "bgm",
-  "bgm_battle_016": "bgm",
-  "bgm_battle_017_in": "bgm",
-  "bgm_battle_017_lp": "bgm",
-  "bgm_character_001": "bgm",
-  "bgm_character_002": "bgm",
-  "bgm_character_003": "bgm",
-  "bgm_character_006": "bgm",
-  "bgm_event_001_in": "bgm",
-  "bgm_event_001_lp": "bgm",
-  "bgm_event_002_in": "bgm",
-  "bgm_event_002_lp": "bgm",
-  "bgm_event_003_in": "bgm",
-  "bgm_event_003_lp": "bgm",
-  "bgm_event_004_lp": "bgm",
-  "bgm_event_005_in": "bgm",
-  "bgm_event_005_lp": "bgm",
-  "bgm_event_006_in": "bgm",
-  "bgm_event_006_lp": "bgm",
-  "bgm_event_008_in": "bgm",
-  "bgm_event_008_lp": "bgm",
-  "bgm_event_009_in": "bgm",
-  "bgm_event_009_lp": "bgm",
-  "bgm_faction_001": "bgm",
-  "bgm_faction_002": "bgm",
-  "bgm_faction_003": "bgm",
-  "bgm_faction_004": "bgm",
-  "bgm_faction_005": "bgm",
-  "bgm_faction_006": "bgm",
-  "bgm_faction_008": "bgm",
-  "bgm_faction_010": "bgm",
-  "bgm_faction_015": "bgm",
-  "bgm_faction_016": "bgm",
-  "bgm_outgame_003": "bgm",
-  "bgm_outgame_004": "bgm",
-  "bgm_outgame_005": "bgm",
-  "bgm_outgame_005_in": "bgm",
-  "bgm_outgame_005_lp": "bgm",
-  "bgm_outgame_006": "bgm",
-  "bgm_outgame_007": "bgm",
-  "bgm_outgame_008": "bgm",
-  "bgm_outgame_009": "bgm",
-  "bgm_outgame_010": "bgm",
-  "bgm_outgame_011": "bgm",
-  "bgm_outgame_012_in": "bgm",
-  "bgm_outgame_012_lp": "bgm",
-  "bgm_outgame_014": "bgm",
-  "bgm_outgame_015": "bgm",
-  "bgm_outgame_017": "bgm",
-  "bgm_outgame_017_in": "bgm",
-  "bgm_outgame_017_lp": "bgm",
-  "bgm_outgame_018_in": "bgm",
-  "bgm_outgame_018_lp": "bgm",
-  "bgm_outgame_019_in": "bgm",
-  "bgm_outgame_019_lp": "bgm",
-  "bgm_outgame_020": "bgm",
-  "bgm_outgame_022": "bgm",
-  "bgm_romance_001_in": "bgm",
-  "bgm_romance_001_lp": "bgm",
-  "bgm_romance_002_in": "bgm",
-  "bgm_romance_002_lp": "bgm",
-  "bgm_romance_003_in": "bgm",
-  "bgm_romance_003_lp": "bgm",
-  "bgm_romance_004_in": "bgm",
-  "bgm_romance_004_lp": "bgm",
-  "bgm_romance_005_in": "bgm",
-  "bgm_romance_005_lp": "bgm",
-  "bgm_romance_006_in": "bgm",
-  "bgm_romance_006_lp": "bgm",
-  "bgm_romance_007_in": "bgm",
-  "bgm_romance_007_lp": "bgm",
-  "bgm_romance_008_in": "bgm",
-  "bgm_romance_008_lp": "bgm",
-  "bgm_romance_009_in": "bgm",
-  "bgm_romance_009_lp": "bgm",
-  "bgm_romance_010_in": "bgm",
-  "bgm_romance_010_lp": "bgm",
-  "bgm_romance_011_in": "bgm",
-  "bgm_romance_011_lp": "bgm",
-  "bgm_romance_012_in": "bgm",
-  "bgm_romance_012_lp": "bgm",
-  "bgm_romance_013_in": "bgm",
-  "bgm_romance_013_lp": "bgm",
-  "bgm_romance_014_in": "bgm",
-  "bgm_romance_014_lp": "bgm",
-  "bgm_romance_017_in": "bgm",
-  "bgm_romance_017_lp": "bgm",
-  "bgm_romance_018_in": "bgm",
-  "bgm_romance_018_lp": "bgm",
-  "bgm_romance_019_in": "bgm",
-  "bgm_romance_019_lp": "bgm",
-  "bgm_romance_020_in": "bgm",
-  "bgm_romance_020_lp": "bgm",
-  "bgm_romance_021_in": "bgm",
-  "bgm_romance_021_lp": "bgm",
-  "bgm_romance_022_in": "bgm",
-  "bgm_romance_022_lp": "bgm",
-  "bgm_romance_023_in": "bgm",
-  "bgm_romance_023_lp": "bgm",
-  "bgm_romance_024_in": "bgm",
-  "bgm_romance_024_lp": "bgm",
-  "bgm_romance_025_in": "bgm",
-  "bgm_romance_025_lp": "bgm",
-  "bgm_romance_026_in": "bgm",
-  "bgm_romance_026_lp": "bgm",
-  "bgm_romance_027_in": "bgm",
-  "bgm_romance_027_lp": "bgm",
-  "bgm_romance_028_in": "bgm",
-  "bgm_romance_028_lp": "bgm",
-  "bgm_romance_029": "bgm",
-  "bgm_romance_030_in": "bgm",
-  "bgm_romance_030_lp": "bgm",
-  "bgm_romance_031_lp": "bgm",
-  "bgm_romance_032_lp": "bgm",
-  "bgm_romance_033": "bgm",
-  "bgm_romance_034_in": "bgm",
-  "bgm_romance_034_lp": "bgm",
-  "bgm_romance_035_in": "bgm",
-  "bgm_romance_035_lp": "bgm",
-  "bgm_romance_036_in": "bgm",
-  "bgm_romance_036_lp": "bgm",
-  "bgm_romance_037_in": "bgm",
-  "bgm_romance_037_lp": "bgm",
-  "bgm_romance_038_in": "bgm",
-  "bgm_romance_038_lp": "bgm",
-  "bgm_romance_039_lp": "bgm",
-  "bgm_romance_040_in": "bgm",
-  "bgm_romance_040_lp": "bgm",
-  "bgm_story_001": "bgm",
-  "bgm_story_002": "bgm",
-  "bgm_story_003": "bgm",
-  "bgm_story_004": "bgm",
-  "bgm_story_005": "bgm",
-  "bgm_story_006": "bgm",
-  "bgm_story_007": "bgm",
-  "bgm_story_008": "bgm",
-  "bgm_story_009": "bgm",
-  "bgm_story_009_var": "bgm",
-  "bgm_story_010": "bgm",
-  "bgm_story_011": "bgm",
-  "bgm_story_012": "bgm",
-  "bgm_story_013": "bgm",
-  "bgm_story_014": "bgm",
-  "bgm_story_015": "bgm",
-  "bgm_story_016": "bgm",
-  "bgm_story_018": "bgm",
-  "bgm_story_019": "bgm",
-  "bgm_story_020": "bgm",
-  "bgm_story_021": "bgm",
-  "bgm_story_022": "bgm",
-  "bgm_story_023": "bgm",
-  "bgm_story_024": "bgm",
-  "bgm_story_025": "bgm",
-  "bgm_story_026": "bgm",
-  "bgm_story_027": "bgm",
-  "bgm_story_028": "bgm",
-  "bgm_story_029": "bgm",
-  "bgm_story_030": "bgm",
-  "bgm_story_031": "bgm",
-  "bgm_story_032": "bgm",
-  "bgm_story_033": "bgm",
-  "bgm_story_034": "bgm",
-  "bgm_story_035": "bgm",
-  "bgm_story_036": "bgm",
-  "bgm_story_037": "bgm",
-  "bgm_story_038": "bgm",
-  "bgm_story_039": "bgm",
-  "bgm_story_040": "bgm",
-  "bgm_story_041": "bgm",
-  "bgm_story_042": "bgm",
-  "bgm_story_043": "bgm",
-  "bgm_story_045": "bgm",
-  "bgm_story_046": "bgm",
-  "bgm_story_047": "bgm",
-  "bgm_story_048": "bgm",
-  "bgm_story_049": "bgm",
-  "bgm_story_050": "bgm",
-  "bgm_story_051": "bgm",
-  "bgm_story_052": "bgm",
-  "bgm_story_053": "bgm",
-  "bgm_story_054": "bgm",
-  "bgm_story_075": "bgm",
-  "bgm_story_079": "bgm",
-  "bgm_story_080": "bgm",
-  "bgm_story_081": "bgm",
-  "bgm_story_082": "bgm",
-  "bgm_story_083": "bgm"
- },
- "animations": {
-  "af_ch0009": {
-   "basic/10_enter": "AF_CH0009_basic_enter"
-  },
-  "af_ch0011": {
-   "basic/10_enter": "AF_CH0011_basic_enter"
-  },
-  "af_ch0015": {
-   "basic/10_enter": "AF_CH0015_basic_enter"
-  },
-  "af_ch0019": {
-   "basic/10_enter": "AF_CH0019_basic_enter"
-  },
-  "af_ch0022": {
-   "basic/10_enter": "AF_CH0022_basic_enter"
-  },
-  "af_ch0024": {
-   "basic/10_enter": "AF_CH0024_basic_enter"
-  },
-  "af_ch0028": {
-   "basic/10_enter": "AF_CH0028_basic_enter"
-  },
-  "af_ch0033": {
-   "basic/10_enter": "AF_CH0033_basic_enter"
-  },
-  "af_ch0035": {
-   "basic/enter": "AF_CH0035_basic_enter"
-  },
-  "af_ch0042": {
-   "asmr/enter": "AF_CH0042_asmr_enter"
-  },
-  "af_ch0043": {
-   "basic/enter": "AF_CH0043_basic_enter"
-  },
-  "af_ch0058": {
-   "basic/enter": "AF_CH0058_basic_enter"
-  },
-  "ds_ch0009": {
-   "10_basic/10_enter": "DS_CH0009_basic_enter",
-   "10_reaction/10_A1": "DS_CH0009_reaction_A1",
-   "10_reaction/10_A2": "DS_CH0009_reaction_A2",
-   "10_reaction/10_A3": "DS_CH0009_reaction_A3",
-   "10_reaction/10_B1": "DS_CH0009_reaction_B1",
-   "10_reaction/10_H1": "DS_CH0009_reaction_H1",
-   "10_reaction/10_H2": "DS_CH0009_reaction_H2",
-   "10_reaction/15_T1": "DS_CH0009_reaction_T1"
-  },
-  "ds_ch0010": {
-   "10_basic/10_enter": "DS_CH0010_basic_enter",
-   "10_basic/10_touch2": "DS_CH0010_basic_touch2",
-   "10_reaction/10_B1": "DS_CH0010_reaction_B1",
-   "10_reaction/10_B1_1": "DS_CH0010_reaction_B1_1",
-   "10_reaction/10_B1_3": "DS_CH0010_reaction_B1_3",
-   "10_reaction/10_H1": "DS_CH0010_reaction_H1"
-  },
-  "ds_ch0011": {
-   "10_basic/10_enter": "DS_CH0011_basic_enter",
-   "10_reaction/10_A1": "DS_CH0011_reaction_A1",
-   "10_reaction/10_A2": "DS_CH0011_reaction_A2",
-   "10_reaction/10_A3": "DS_CH0011_reaction_A3",
-   "10_reaction/10_A4": "DS_CH0011_reaction_A4",
-   "10_reaction/10_A5": "DS_CH0011_reaction_A5",
-   "10_reaction/10_A6": "DS_CH0011_reaction_A6",
-   "10_reaction/10_B1": "DS_CH0011_reaction_B1",
-   "10_reaction/10_B3": "DS_CH0011_reaction_B3"
-  },
-  "ds_ch0015": {
-   "10_A1": "DS_CH0015_A1",
-   "10_A2": "DS_CH0015_A2",
-   "10_A3": "DS_CH0015_A3",
-   "10_A4": "DS_CH0015_A4",
-   "10_A5": "DS_CH0015_A5",
-   "10_T1": "DS_CH0015_T1",
-   "10_enter": "DS_CH0015_enter"
-  },
-  "ds_ch0019": {
-   "10_basic/10_enter__": "DS_CH0019_basic_enter"
-  },
-  "ds_ch0022": {
-   "10_basic/10_enter": "DS_CH0022_basic_enter"
-  },
-  "ds_ch0024": {
-   "10_basic/10_enter": "DS_CH0024_basic_enter"
-  },
-  "ds_ch0028": {
-   "10_A4": "DS_CH0028_A4",
-   "10_B+1": "DS_CH0028_B+1",
-   "10_B1": "DS_CH0028_B1",
-   "10_H1": "DS_CH0028_H1",
-   "10_enter": "DS_CH0028_enter"
-  },
-  "ds_ch0032": {
-   "10_a1": "DS_CH0032_a1",
-   "10_b2": "DS_CH0032_b2",
-   "10_intro": "DS_CH0032_intro"
-  },
-  "ds_ch0033": {
-   "10_basic/10_enter": "DS_CH0033_basic_enter"
-  },
-  "ds_ch0035": {
-   "10_A1": "DS_CH0035_A1",
-   "10_A2": "DS_CH0035_A2",
-   "10_A3": "DS_CH0035_A3",
-   "10_B1": "DS_CH0035_B1",
-   "10_B2": "DS_CH0035_B2",
-   "10_B3": "DS_CH0035_B3",
-   "10_H1": "DS_CH0035_H1",
-   "10_enter": "DS_CH0035_enter"
-  },
-  "ds_ch0038": {
-   "10_basic/10_enter": "DS_CH0038_basic_enter",
-   "10_reaction/10_A1": "DS_CH0038_reaction_A1",
-   "10_reaction/10_A2": "DS_CH0038_reaction_A2",
-   "10_reaction/10_A3": "DS_CH0038_reaction_A3",
-   "10_reaction/10_A4": "DS_CH0038_reaction_A4",
-   "10_reaction/10_H1": "DS_CH0038_reaction_H1"
-  },
-  "ds_ch0040": {
-   "10_basic/10_enter": "DS_CH0040_basic_enter",
-   "10_basic/10_touch": "DS_CH0040_basic_touch",
-   "10_reaction/10_A1_1": "DS_CH0040_reaction_A1_1",
-   "10_reaction/10_A1_2": "DS_CH0040_reaction_A1_2",
-   "10_reaction/10_A2_1": "DS_CH0040_reaction_A2_1",
-   "10_reaction/10_A2_2": "DS_CH0040_reaction_A2_2",
-   "10_reaction/10_A3_1": "DS_CH0040_reaction_A3_1",
-   "10_reaction/10_A3_2": "DS_CH0040_reaction_A3_2",
-   "10_reaction/10_A4_1": "DS_CH0040_reaction_A4_1",
-   "10_reaction/10_A4_2": "DS_CH0040_reaction_A4_2",
-   "10_reaction/10_H1_A": "DS_CH0040_reaction_H1_A",
-   "10_reaction/10_H1_B": "DS_CH0040_reaction_H1_B"
-  },
-  "ds_ch0042": {
-   "10_basic/10_enter": "DS_CH0042_basic_enter",
-   "10_reaction/10_A1_1": "DS_CH0042_reaction_A1_1",
-   "10_reaction/10_A1_2": "DS_CH0042_reaction_A1_2",
-   "10_reaction/10_A2": "DS_CH0042_reaction_A2",
-   "10_reaction/10_A3": "DS_CH0042_reaction_A3",
-   "10_reaction/10_H1": "DS_CH0042_reaction_H1",
-   "30_overlay/30_A4_01": "DS_CH0042_overlay_A4_01",
-   "30_overlay/30_A4_02": "DS_CH0042_overlay_A4_02",
-   "30_overlay/30_A4_03": "DS_CH0042_overlay_A4_03",
-   "30_overlay/30_A4_04": "DS_CH0042_overlay_A4_04",
-   "30_overlay/30_A4_05": "DS_CH0042_overlay_A4_05",
-   "30_overlay/30_A4_06": "DS_CH0042_overlay_A4_06",
-   "30_overlay/30_A4_07": "DS_CH0042_overlay_A4_07",
-   "30_overlay/30_A4_08": "DS_CH0042_overlay_A4_08",
-   "30_overlay/30_A4_09": "DS_CH0042_overlay_A4_09",
-   "30_overlay/30_A4_10": "DS_CH0042_overlay_A4_10",
-   "30_overlay/30_A4_11": "DS_CH0042_overlay_A4_11",
-   "30_overlay/30_A5_01": "DS_CH0042_overlay_A5_01",
-   "30_overlay/30_A5_02": "DS_CH0042_overlay_A5_02",
-   "30_overlay/30_A5_03": "DS_CH0042_overlay_A5_03",
-   "30_overlay/30_A5_04": "DS_CH0042_overlay_A5_04",
-   "30_overlay/30_A5_05": "DS_CH0042_overlay_A5_05",
-   "30_overlay/30_A5_06": "DS_CH0042_overlay_A5_06",
-   "30_overlay/30_B1": "DS_CH0042_overlay_B1",
-   "30_overlay/30_B2": "DS_CH0042_overlay_B2"
-  },
-  "ds_ch0043": {
-   "10_basic/10_enter": "DS_CH0043_basic_enter",
-   "10_reaction/10_A1": "DS_CH0043_reaction_A1",
-   "10_reaction/10_A2": "DS_CH0043_reaction_A2",
-   "10_reaction/10_A3": "DS_CH0043_reaction_A3",
-   "10_reaction/10_A4": "DS_CH0043_reaction_A4",
-   "10_reaction/10_A5": "DS_CH0043_reaction_A5",
-   "10_reaction/10_A7": "DS_CH0043_reaction_A7",
-   "10_reaction/10_H1": "DS_CH0043_reaction_H1",
-   "10_reaction/10_H1_2": "DS_CH0043_reaction_H1_2"
-  },
-  "ds_ch0052": {
-   "10_basic/10_after_wait": "DS_CH0052_basic_after_wait",
-   "10_basic/10_enter": "DS_CH0052_basic_enter",
-   "10_reaction/10_A1": "DS_CH0052_reaction_A1",
-   "10_reaction/10_A2": "DS_CH0052_reaction_A2",
-   "10_reaction/10_A3": "DS_CH0052_reaction_A3",
-   "10_reaction/10_B1_end": "DS_CH0052_reaction_B1_end",
-   "10_reaction/10_B1_start": "DS_CH0052_reaction_B1_start",
-   "10_reaction/10_B2_end": "DS_CH0052_reaction_B2_end",
-   "10_reaction/10_B2_start": "DS_CH0052_reaction_B2_start",
-   "10_reaction/10_B3_1": "DS_CH0052_reaction_B3_1",
-   "10_reaction/10_B3_2": "DS_CH0052_reaction_B3_2",
-   "10_reaction/10_B3_3": "DS_CH0052_reaction_B3_3",
-   "10_reaction/10_B3_4": "DS_CH0052_reaction_B3_4",
-   "10_reaction/10_H1": "DS_CH0052_reaction_H1",
-   "10_reaction/10_drag": "DS_CH0052_reaction_drag"
-  },
-  "ds_ch0057": {
-   "10_basic/10_enter": "DS_CH0057_basic_enter",
-   "10_reaction/10_B1": "DS_CH0057_reaction_B1",
-   "10_reaction/10_H1": "DS_CH0057_reaction_H1",
-   "10_reaction/10_H2": "DS_CH0057_reaction_H2",
-   "10_reaction/10_H3": "DS_CH0057_reaction_H3"
-  },
-  "ds_ch0058": {
-   "10_basic/10_enter": "DS_CH0058_basic_enter",
-   "10_reaction/10_A1": "DS_CH0058_reaction_A1",
-   "10_reaction/10_A2": "DS_CH0058_reaction_A2",
-   "10_reaction/10_A3_1_reaction": "DS_CH0058_reaction_A3_1_reaction",
-   "10_reaction/10_A3_2_reaction": "DS_CH0058_reaction_A3_2_reaction",
-   "10_reaction/10_A3_3_reaction": "DS_CH0058_reaction_A3_3_reaction",
-   "10_reaction/10_A4_1_reaction": "DS_CH0058_reaction_A4_1_reaction",
-   "10_reaction/10_A4_2_reaction": "DS_CH0058_reaction_A4_2_reaction",
-   "10_reaction/10_A4_3_reaction": "DS_CH0058_reaction_A4_3_reaction",
-   "10_reaction/10_B1_reaction": "DS_CH0058_reaction_B1_reaction",
-   "10_reaction/10_H1": "DS_CH0058_reaction_H1"
-  },
-  "ds_ch0068": {
-   "basic/enter": "DS_CH0068_basic_enter"
-  }
- },
- "bgm": [
-  {
-   "id": "bgm_outgame_003",
-   "group": "outgame",
-   "loop": "bgm_outgame_003",
-   "seconds": 60.6
-  },
-  {
-   "id": "bgm_outgame_004",
-   "group": "outgame",
-   "loop": "bgm_outgame_004",
-   "seconds": 116.7
-  },
-  {
-   "id": "bgm_outgame_005",
-   "group": "outgame",
-   "loop": "bgm_outgame_005",
-   "seconds": 80.0
-  },
-  {
-   "id": "bgm_outgame_005_lp",
-   "group": "outgame",
-   "loop": "bgm_outgame_005_lp",
-   "intro": "bgm_outgame_005_in",
-   "seconds": 90.1
-  },
-  {
-   "id": "bgm_outgame_006",
-   "group": "outgame",
-   "loop": "bgm_outgame_006",
-   "seconds": 44.9
-  },
-  {
-   "id": "bgm_outgame_007",
-   "group": "outgame",
-   "loop": "bgm_outgame_007",
-   "seconds": 95.9
-  },
-  {
-   "id": "bgm_outgame_008",
-   "group": "outgame",
-   "loop": "bgm_outgame_008",
-   "seconds": 126.3
-  },
-  {
-   "id": "bgm_outgame_009",
-   "group": "outgame",
-   "loop": "bgm_outgame_009",
-   "seconds": 54.6
-  },
-  {
-   "id": "bgm_outgame_010",
-   "group": "outgame",
-   "loop": "bgm_outgame_010",
-   "seconds": 57.6
-  },
-  {
-   "id": "bgm_outgame_011",
-   "group": "outgame",
-   "loop": "bgm_outgame_011",
-   "seconds": 42.7
-  },
-  {
-   "id": "bgm_outgame_012",
-   "group": "outgame",
-   "loop": "bgm_outgame_012_lp",
-   "intro": "bgm_outgame_012_in",
-   "seconds": 35.2
-  },
-  {
-   "id": "bgm_outgame_014",
-   "group": "outgame",
-   "loop": "bgm_outgame_014",
-   "seconds": 81.6
-  },
-  {
-   "id": "bgm_outgame_015",
-   "group": "outgame",
-   "loop": "bgm_outgame_015",
-   "seconds": 167.5
-  },
-  {
-   "id": "bgm_outgame_017",
-   "group": "outgame",
-   "loop": "bgm_outgame_017",
-   "seconds": 91.4
-  },
-  {
-   "id": "bgm_outgame_017_lp",
-   "group": "outgame",
-   "loop": "bgm_outgame_017_lp",
-   "intro": "bgm_outgame_017_in",
-   "seconds": 107.4
-  },
-  {
-   "id": "bgm_outgame_018",
-   "group": "outgame",
-   "loop": "bgm_outgame_018_lp",
-   "intro": "bgm_outgame_018_in",
-   "seconds": 59.6
-  },
-  {
-   "id": "bgm_outgame_019",
-   "group": "outgame",
-   "loop": "bgm_outgame_019_lp",
-   "intro": "bgm_outgame_019_in",
-   "seconds": 91.7
-  },
-  {
-   "id": "bgm_outgame_020",
-   "group": "outgame",
-   "loop": "bgm_outgame_020",
-   "seconds": 64.0
-  },
-  {
-   "id": "bgm_outgame_022",
-   "group": "outgame",
-   "loop": "bgm_outgame_022",
-   "seconds": 57.6
-  },
-  {
-   "id": "bgm_story_001",
-   "group": "story",
-   "loop": "bgm_story_001",
-   "seconds": 29.4
-  },
-  {
-   "id": "bgm_story_002",
-   "group": "story",
-   "loop": "bgm_story_002",
-   "seconds": 34.9
-  },
-  {
-   "id": "bgm_story_003",
-   "group": "story",
-   "loop": "bgm_story_003",
-   "seconds": 32.2
-  },
-  {
-   "id": "bgm_story_004",
-   "group": "story",
-   "loop": "bgm_story_004",
-   "seconds": 26.9
-  },
-  {
-   "id": "bgm_story_005",
-   "group": "story",
-   "loop": "bgm_story_005",
-   "seconds": 28.4
-  },
-  {
-   "id": "bgm_story_006",
-   "group": "story",
-   "loop": "bgm_story_006",
-   "seconds": 29.8
-  },
-  {
-   "id": "bgm_story_007",
-   "group": "story",
-   "loop": "bgm_story_007",
-   "seconds": 24.0
-  },
-  {
-   "id": "bgm_story_008",
-   "group": "story",
-   "loop": "bgm_story_008",
-   "seconds": 33.5
-  },
-  {
-   "id": "bgm_story_009",
-   "group": "story",
-   "loop": "bgm_story_009",
-   "seconds": 19.9
-  },
-  {
-   "id": "bgm_story_009_var",
-   "group": "story",
-   "loop": "bgm_story_009_var",
-   "seconds": 19.9
-  },
-  {
-   "id": "bgm_story_010",
-   "group": "story",
-   "loop": "bgm_story_010",
-   "seconds": 39.5
-  },
-  {
-   "id": "bgm_story_011",
-   "group": "story",
-   "loop": "bgm_story_011",
-   "seconds": 24.0
-  },
-  {
-   "id": "bgm_story_012",
-   "group": "story",
-   "loop": "bgm_story_012",
-   "seconds": 80.2
-  },
-  {
-   "id": "bgm_story_013",
-   "group": "story",
-   "loop": "bgm_story_013",
-   "seconds": 32.0
-  },
-  {
-   "id": "bgm_story_014",
-   "group": "story",
-   "loop": "bgm_story_014",
-   "seconds": 28.8
-  },
-  {
-   "id": "bgm_story_015",
-   "group": "story",
-   "loop": "bgm_story_015",
-   "seconds": 144.9
-  },
-  {
-   "id": "bgm_story_016",
-   "group": "story",
-   "loop": "bgm_story_016",
-   "seconds": 130.5
-  },
-  {
-   "id": "bgm_story_018",
-   "group": "story",
-   "loop": "bgm_story_018",
-   "seconds": 30.5
-  },
-  {
-   "id": "bgm_story_019",
-   "group": "story",
-   "loop": "bgm_story_019",
-   "seconds": 38.8
-  },
-  {
-   "id": "bgm_story_020",
-   "group": "story",
-   "loop": "bgm_story_020",
-   "seconds": 27.8
-  },
-  {
-   "id": "bgm_story_021",
-   "group": "story",
-   "loop": "bgm_story_021",
-   "seconds": 41.0
-  },
-  {
-   "id": "bgm_story_022",
-   "group": "story",
-   "loop": "bgm_story_022",
-   "seconds": 75.9
-  },
-  {
-   "id": "bgm_story_023",
-   "group": "story",
-   "loop": "bgm_story_023",
-   "seconds": 24.0
-  },
-  {
-   "id": "bgm_story_024",
-   "group": "story",
-   "loop": "bgm_story_024",
-   "seconds": 109.1
-  },
-  {
-   "id": "bgm_story_025",
-   "group": "story",
-   "loop": "bgm_story_025",
-   "seconds": 72.0
-  },
-  {
-   "id": "bgm_story_026",
-   "group": "story",
-   "loop": "bgm_story_026",
-   "seconds": 121.1
-  },
-  {
-   "id": "bgm_story_027",
-   "group": "story",
-   "loop": "bgm_story_027",
-   "seconds": 24.0
-  },
-  {
-   "id": "bgm_story_028",
-   "group": "story",
-   "loop": "bgm_story_028",
-   "seconds": 26.2
-  },
-  {
-   "id": "bgm_story_029",
-   "group": "story",
-   "loop": "bgm_story_029",
-   "seconds": 60.7
-  },
-  {
-   "id": "bgm_story_030",
-   "group": "story",
-   "loop": "bgm_story_030",
-   "seconds": 30.6
-  },
-  {
-   "id": "bgm_story_031",
-   "group": "story",
-   "loop": "bgm_story_031",
-   "seconds": 74.0
-  },
-  {
-   "id": "bgm_story_032",
-   "group": "story",
-   "loop": "bgm_story_032",
-   "seconds": 20.0
-  },
-  {
-   "id": "bgm_story_033",
-   "group": "story",
-   "loop": "bgm_story_033",
-   "seconds": 95.2
-  },
-  {
-   "id": "bgm_story_034",
-   "group": "story",
-   "loop": "bgm_story_034",
-   "seconds": 16.0
-  },
-  {
-   "id": "bgm_story_035",
-   "group": "story",
-   "loop": "bgm_story_035",
-   "seconds": 55.1
-  },
-  {
-   "id": "bgm_story_036",
-   "group": "story",
-   "loop": "bgm_story_036",
-   "seconds": 213.3
-  },
-  {
-   "id": "bgm_story_037",
-   "group": "story",
-   "loop": "bgm_story_037",
-   "seconds": 37.5
-  },
-  {
-   "id": "bgm_story_038",
-   "group": "story",
-   "loop": "bgm_story_038",
-   "seconds": 35.9
-  },
-  {
-   "id": "bgm_story_039",
-   "group": "story",
-   "loop": "bgm_story_039",
-   "seconds": 38.2
-  },
-  {
-   "id": "bgm_story_040",
-   "group": "story",
-   "loop": "bgm_story_040",
-   "seconds": 29.3
-  },
-  {
-   "id": "bgm_story_041",
-   "group": "story",
-   "loop": "bgm_story_041",
-   "seconds": 25.7
-  },
-  {
-   "id": "bgm_story_042",
-   "group": "story",
-   "loop": "bgm_story_042",
-   "seconds": 36.0
-  },
-  {
-   "id": "bgm_story_043",
-   "group": "story",
-   "loop": "bgm_story_043",
-   "seconds": 48.0
-  },
-  {
-   "id": "bgm_story_045",
-   "group": "story",
-   "loop": "bgm_story_045",
-   "seconds": 88.9
-  },
-  {
-   "id": "bgm_story_046",
-   "group": "story",
-   "loop": "bgm_story_046",
-   "seconds": 52.5
-  },
-  {
-   "id": "bgm_story_047",
-   "group": "story",
-   "loop": "bgm_story_047",
-   "seconds": 38.0
-  },
-  {
-   "id": "bgm_story_048",
-   "group": "story",
-   "loop": "bgm_story_048",
-   "seconds": 61.0
-  },
-  {
-   "id": "bgm_story_049",
-   "group": "story",
-   "loop": "bgm_story_049",
-   "seconds": 51.7
-  },
-  {
-   "id": "bgm_story_050",
-   "group": "story",
-   "loop": "bgm_story_050",
-   "seconds": 36.7
-  },
-  {
-   "id": "bgm_story_051",
-   "group": "story",
-   "loop": "bgm_story_051",
-   "seconds": 129.9
-  },
-  {
-   "id": "bgm_story_052",
-   "group": "story",
-   "loop": "bgm_story_052",
-   "seconds": 99.8
-  },
-  {
-   "id": "bgm_story_053",
-   "group": "story",
-   "loop": "bgm_story_053",
-   "seconds": 193.1
-  },
-  {
-   "id": "bgm_story_054",
-   "group": "story",
-   "loop": "bgm_story_054",
-   "seconds": 49.0
-  },
-  {
-   "id": "bgm_story_075",
-   "group": "story",
-   "loop": "bgm_story_075",
-   "seconds": 124.3
-  },
-  {
-   "id": "bgm_story_079",
-   "group": "story",
-   "loop": "bgm_story_079",
-   "seconds": 62.4
-  },
-  {
-   "id": "bgm_story_080",
-   "group": "story",
-   "loop": "bgm_story_080",
-   "seconds": 60.0
-  },
-  {
-   "id": "bgm_story_081",
-   "group": "story",
-   "loop": "bgm_story_081",
-   "seconds": 128.8
-  },
-  {
-   "id": "bgm_story_082",
-   "group": "story",
-   "loop": "bgm_story_082",
-   "seconds": 159.4
-  },
-  {
-   "id": "bgm_story_083",
-   "group": "story",
-   "loop": "bgm_story_083",
-   "seconds": 59.2
-  },
-  {
-   "id": "bgm_battle_001",
-   "group": "battle",
-   "loop": "bgm_battle_001",
-   "seconds": 59.9
-  },
-  {
-   "id": "bgm_battle_002",
-   "group": "battle",
-   "loop": "bgm_battle_002",
-   "seconds": 87.6
-  },
-  {
-   "id": "bgm_battle_003",
-   "group": "battle",
-   "loop": "bgm_battle_003",
-   "seconds": 63.8
-  },
-  {
-   "id": "bgm_battle_004",
-   "group": "battle",
-   "loop": "bgm_battle_004",
-   "seconds": 55.3
-  },
-  {
-   "id": "bgm_battle_005",
-   "group": "battle",
-   "loop": "bgm_battle_005_lp",
-   "intro": "bgm_battle_005_in",
-   "seconds": 112.8
-  },
-  {
-   "id": "bgm_battle_006",
-   "group": "battle",
-   "loop": "bgm_battle_006",
-   "seconds": 74.5
-  },
-  {
-   "id": "bgm_battle_007",
-   "group": "battle",
-   "loop": "bgm_battle_007",
-   "seconds": 52.0
-  },
-  {
-   "id": "bgm_battle_008",
-   "group": "battle",
-   "loop": "bgm_battle_008",
-   "seconds": 91.6
-  },
-  {
-   "id": "bgm_battle_009",
-   "group": "battle",
-   "loop": "bgm_battle_009",
-   "seconds": 158.4
-  },
-  {
-   "id": "bgm_battle_009_in",
-   "group": "battle",
-   "loop": "bgm_battle_009_in",
-   "seconds": 15.9
-  },
-  {
-   "id": "bgm_battle_010",
-   "group": "battle",
-   "loop": "bgm_battle_010_lp",
-   "intro": "bgm_battle_010_in",
-   "seconds": 174.3
-  },
-  {
-   "id": "bgm_battle_011",
-   "group": "battle",
-   "loop": "bgm_battle_011",
-   "seconds": 53.3
-  },
-  {
-   "id": "bgm_battle_012",
-   "group": "battle",
-   "loop": "bgm_battle_012_lp",
-   "intro": "bgm_battle_012_in",
-   "seconds": 69.3
-  },
-  {
-   "id": "bgm_battle_012_tr",
-   "group": "battle",
-   "loop": "bgm_battle_012_tr",
-   "seconds": 14.5
-  },
-  {
-   "id": "bgm_battle_013",
-   "group": "battle",
-   "loop": "bgm_battle_013",
-   "seconds": 54.0
-  },
-  {
-   "id": "bgm_battle_014",
-   "group": "battle",
-   "loop": "bgm_battle_014",
-   "seconds": 94.0
-  },
-  {
-   "id": "bgm_battle_015",
-   "group": "battle",
-   "loop": "bgm_battle_015",
-   "seconds": 117.7
-  },
-  {
-   "id": "bgm_battle_016",
-   "group": "battle",
-   "loop": "bgm_battle_016",
-   "seconds": 27.5
-  },
-  {
-   "id": "bgm_battle_017",
-   "group": "battle",
-   "loop": "bgm_battle_017_lp",
-   "intro": "bgm_battle_017_in",
-   "seconds": 87.6
-  },
-  {
-   "id": "bgm_event_001",
-   "group": "event",
-   "loop": "bgm_event_001_lp",
-   "intro": "bgm_event_001_in",
-   "seconds": 114.5
-  },
-  {
-   "id": "bgm_event_002",
-   "group": "event",
-   "loop": "bgm_event_002_lp",
-   "intro": "bgm_event_002_in",
-   "seconds": 106.6
-  },
-  {
-   "id": "bgm_event_003",
-   "group": "event",
-   "loop": "bgm_event_003_lp",
-   "intro": "bgm_event_003_in",
-   "seconds": 161.9
-  },
-  {
-   "id": "bgm_event_004",
-   "group": "event",
-   "loop": "bgm_event_004_lp",
-   "seconds": 51.9
-  },
-  {
-   "id": "bgm_event_005",
-   "group": "event",
-   "loop": "bgm_event_005_lp",
-   "intro": "bgm_event_005_in",
-   "seconds": 85.0
-  },
-  {
-   "id": "bgm_event_006",
-   "group": "event",
-   "loop": "bgm_event_006_lp",
-   "intro": "bgm_event_006_in",
-   "seconds": 128.5
-  },
-  {
-   "id": "bgm_event_008",
-   "group": "event",
-   "loop": "bgm_event_008_lp",
-   "intro": "bgm_event_008_in",
-   "seconds": 109.6
-  },
-  {
-   "id": "bgm_event_009",
-   "group": "event",
-   "loop": "bgm_event_009_lp",
-   "intro": "bgm_event_009_in",
-   "seconds": 91.1
-  },
-  {
-   "id": "bgm_faction_001",
-   "group": "faction",
-   "loop": "bgm_faction_001",
-   "seconds": 239.8
-  },
-  {
-   "id": "bgm_faction_002",
-   "group": "faction",
-   "loop": "bgm_faction_002",
-   "seconds": 192.2
-  },
-  {
-   "id": "bgm_faction_003",
-   "group": "faction",
-   "loop": "bgm_faction_003",
-   "seconds": 163.3
-  },
-  {
-   "id": "bgm_faction_004",
-   "group": "faction",
-   "loop": "bgm_faction_004",
-   "seconds": 120.0
-  },
-  {
-   "id": "bgm_faction_005",
-   "group": "faction",
-   "loop": "bgm_faction_005",
-   "seconds": 119.8
-  },
-  {
-   "id": "bgm_faction_006",
-   "group": "faction",
-   "loop": "bgm_faction_006",
-   "seconds": 187.1
-  },
-  {
-   "id": "bgm_faction_008",
-   "group": "faction",
-   "loop": "bgm_faction_008",
-   "seconds": 120.0
-  },
-  {
-   "id": "bgm_faction_010",
-   "group": "faction",
-   "loop": "bgm_faction_010",
-   "seconds": 184.3
-  },
-  {
-   "id": "bgm_faction_015",
-   "group": "faction",
-   "loop": "bgm_faction_015",
-   "seconds": 235.5
-  },
-  {
-   "id": "bgm_faction_016",
-   "group": "faction",
-   "loop": "bgm_faction_016",
-   "seconds": 258.6
-  },
-  {
-   "id": "bgm_character_001",
-   "group": "character",
-   "loop": "bgm_character_001",
-   "seconds": 102.4
-  },
-  {
-   "id": "bgm_character_002",
-   "group": "character",
-   "loop": "bgm_character_002",
-   "seconds": 56.3
-  },
-  {
-   "id": "bgm_character_003",
-   "group": "character",
-   "loop": "bgm_character_003",
-   "seconds": 140.5
-  },
-  {
-   "id": "bgm_character_006",
-   "group": "character",
-   "loop": "bgm_character_006",
-   "seconds": 93.7
-  },
-  {
-   "id": "bgm_romance_001",
-   "group": "romance",
-   "loop": "bgm_romance_001_lp",
-   "intro": "bgm_romance_001_in",
-   "seconds": 57.1
-  },
-  {
-   "id": "bgm_romance_002",
-   "group": "romance",
-   "loop": "bgm_romance_002_lp",
-   "intro": "bgm_romance_002_in",
-   "seconds": 97.0
-  },
-  {
-   "id": "bgm_romance_003",
-   "group": "romance",
-   "loop": "bgm_romance_003_lp",
-   "intro": "bgm_romance_003_in",
-   "seconds": 35.2
-  },
-  {
-   "id": "bgm_romance_004",
-   "group": "romance",
-   "loop": "bgm_romance_004_lp",
-   "intro": "bgm_romance_004_in",
-   "seconds": 59.3
-  },
-  {
-   "id": "bgm_romance_005",
-   "group": "romance",
-   "loop": "bgm_romance_005_lp",
-   "intro": "bgm_romance_005_in",
-   "seconds": 69.4
-  },
-  {
-   "id": "bgm_romance_006",
-   "group": "romance",
-   "loop": "bgm_romance_006_lp",
-   "intro": "bgm_romance_006_in",
-   "seconds": 71.3
-  },
-  {
-   "id": "bgm_romance_007",
-   "group": "romance",
-   "loop": "bgm_romance_007_lp",
-   "intro": "bgm_romance_007_in",
-   "seconds": 55.8
-  },
-  {
-   "id": "bgm_romance_008",
-   "group": "romance",
-   "loop": "bgm_romance_008_lp",
-   "intro": "bgm_romance_008_in",
-   "seconds": 44.0
-  },
-  {
-   "id": "bgm_romance_009",
-   "group": "romance",
-   "loop": "bgm_romance_009_lp",
-   "intro": "bgm_romance_009_in",
-   "seconds": 44.8
-  },
-  {
-   "id": "bgm_romance_010",
-   "group": "romance",
-   "loop": "bgm_romance_010_lp",
-   "intro": "bgm_romance_010_in",
-   "seconds": 42.7
-  },
-  {
-   "id": "bgm_romance_011",
-   "group": "romance",
-   "loop": "bgm_romance_011_lp",
-   "intro": "bgm_romance_011_in",
-   "seconds": 64.7
-  },
-  {
-   "id": "bgm_romance_012",
-   "group": "romance",
-   "loop": "bgm_romance_012_lp",
-   "intro": "bgm_romance_012_in",
-   "seconds": 57.5
-  },
-  {
-   "id": "bgm_romance_013",
-   "group": "romance",
-   "loop": "bgm_romance_013_lp",
-   "intro": "bgm_romance_013_in",
-   "seconds": 53.4
-  },
-  {
-   "id": "bgm_romance_014",
-   "group": "romance",
-   "loop": "bgm_romance_014_lp",
-   "intro": "bgm_romance_014_in",
-   "seconds": 66.0
-  },
-  {
-   "id": "bgm_romance_017",
-   "group": "romance",
-   "loop": "bgm_romance_017_lp",
-   "intro": "bgm_romance_017_in",
-   "seconds": 54.8
-  },
-  {
-   "id": "bgm_romance_018",
-   "group": "romance",
-   "loop": "bgm_romance_018_lp",
-   "intro": "bgm_romance_018_in",
-   "seconds": 48.5
-  },
-  {
-   "id": "bgm_romance_019",
-   "group": "romance",
-   "loop": "bgm_romance_019_lp",
-   "intro": "bgm_romance_019_in",
-   "seconds": 67.3
-  },
-  {
-   "id": "bgm_romance_020",
-   "group": "romance",
-   "loop": "bgm_romance_020_lp",
-   "intro": "bgm_romance_020_in",
-   "seconds": 127.2
-  },
-  {
-   "id": "bgm_romance_021",
-   "group": "romance",
-   "loop": "bgm_romance_021_lp",
-   "intro": "bgm_romance_021_in",
-   "seconds": 89.0
-  },
-  {
-   "id": "bgm_romance_022",
-   "group": "romance",
-   "loop": "bgm_romance_022_lp",
-   "intro": "bgm_romance_022_in",
-   "seconds": 146.8
-  },
-  {
-   "id": "bgm_romance_023",
-   "group": "romance",
-   "loop": "bgm_romance_023_lp",
-   "intro": "bgm_romance_023_in",
-   "seconds": 288.0
-  },
-  {
-   "id": "bgm_romance_024",
-   "group": "romance",
-   "loop": "bgm_romance_024_lp",
-   "intro": "bgm_romance_024_in",
-   "seconds": 77.4
-  },
-  {
-   "id": "bgm_romance_025",
-   "group": "romance",
-   "loop": "bgm_romance_025_lp",
-   "intro": "bgm_romance_025_in",
-   "seconds": 116.9
-  },
-  {
-   "id": "bgm_romance_026",
-   "group": "romance",
-   "loop": "bgm_romance_026_lp",
-   "intro": "bgm_romance_026_in",
-   "seconds": 134.2
-  },
-  {
-   "id": "bgm_romance_027",
-   "group": "romance",
-   "loop": "bgm_romance_027_lp",
-   "intro": "bgm_romance_027_in",
-   "seconds": 95.0
-  },
-  {
-   "id": "bgm_romance_028",
-   "group": "romance",
-   "loop": "bgm_romance_028_lp",
-   "intro": "bgm_romance_028_in",
-   "seconds": 105.5
-  },
-  {
-   "id": "bgm_romance_029",
-   "group": "romance",
-   "loop": "bgm_romance_029",
-   "seconds": 46.1
-  },
-  {
-   "id": "bgm_romance_030",
-   "group": "romance",
-   "loop": "bgm_romance_030_lp",
-   "intro": "bgm_romance_030_in",
-   "seconds": 117.3
-  },
-  {
-   "id": "bgm_romance_031",
-   "group": "romance",
-   "loop": "bgm_romance_031_lp",
-   "seconds": 93.8
-  },
-  {
-   "id": "bgm_romance_032",
-   "group": "romance",
-   "loop": "bgm_romance_032_lp",
-   "seconds": 208.3
-  },
-  {
-   "id": "bgm_romance_033",
-   "group": "romance",
-   "loop": "bgm_romance_033",
-   "seconds": 111.8
-  },
-  {
-   "id": "bgm_romance_034",
-   "group": "romance",
-   "loop": "bgm_romance_034_lp",
-   "intro": "bgm_romance_034_in",
-   "seconds": 95.0
-  },
-  {
-   "id": "bgm_romance_035",
-   "group": "romance",
-   "loop": "bgm_romance_035_lp",
-   "intro": "bgm_romance_035_in",
-   "seconds": 129.9
-  },
-  {
-   "id": "bgm_romance_036",
-   "group": "romance",
-   "loop": "bgm_romance_036_lp",
-   "intro": "bgm_romance_036_in",
-   "seconds": 121.8
-  },
-  {
-   "id": "bgm_romance_037",
-   "group": "romance",
-   "loop": "bgm_romance_037_lp",
-   "intro": "bgm_romance_037_in",
-   "seconds": 57.8
-  },
-  {
-   "id": "bgm_romance_038",
-   "group": "romance",
-   "loop": "bgm_romance_038_lp",
-   "intro": "bgm_romance_038_in",
-   "seconds": 117.4
-  },
-  {
-   "id": "bgm_romance_039",
-   "group": "romance",
-   "loop": "bgm_romance_039_lp",
-   "seconds": 119.2
-  },
-  {
-   "id": "bgm_romance_040",
-   "group": "romance",
-   "loop": "bgm_romance_040_lp",
-   "intro": "bgm_romance_040_in",
-   "seconds": 114.5
-  }
- ]
+  "clips": {
+    "AF_CH0009_basic_enter": "view/af_ch0009",
+    "AF_CH0011_basic_enter": "view/af_ch0011",
+    "AF_CH0015_basic_enter": "view/af_ch0015",
+    "AF_CH0019_basic_enter": "view/af_ch0019",
+    "AF_CH0022_basic_enter": "view/af_ch0022",
+    "AF_CH0024_basic_enter": "view/af_ch0024",
+    "AF_CH0028_basic_enter": "view/af_ch0028",
+    "AF_CH0033_basic_enter": "view/af_ch0033",
+    "AF_CH0035_basic_enter": "view/af_ch0035",
+    "AF_CH0042_asmr_enter": "view/af_ch0042",
+    "AF_CH0043_basic_enter": "view/af_ch0043",
+    "AF_CH0058_basic_enter": "view/af_ch0058",
+    "AF_CH0075_basic_enter": "view/af_ch0075",
+    "DS_CH0009_basic_enter": "view/ds_ch0009",
+    "DS_CH0009_reaction_A1": "view/ds_ch0009",
+    "DS_CH0009_reaction_A2": "view/ds_ch0009",
+    "DS_CH0009_reaction_A3": "view/ds_ch0009",
+    "DS_CH0009_reaction_B1": "view/ds_ch0009",
+    "DS_CH0009_reaction_H1": "view/ds_ch0009",
+    "DS_CH0009_reaction_H2": "view/ds_ch0009",
+    "DS_CH0009_reaction_T1": "view/ds_ch0009",
+    "DS_CH0010_basic_enter": "view/ds_ch0010",
+    "DS_CH0010_basic_touch2": "view/ds_ch0010",
+    "DS_CH0010_reaction_B1": "view/ds_ch0010",
+    "DS_CH0010_reaction_B1_1": "view/ds_ch0010",
+    "DS_CH0010_reaction_B1_3": "view/ds_ch0010",
+    "DS_CH0010_reaction_H1": "view/ds_ch0010",
+    "DS_CH0011_basic_enter": "view/ds_ch0011",
+    "DS_CH0011_reaction_A1": "view/ds_ch0011",
+    "DS_CH0011_reaction_A2": "view/ds_ch0011",
+    "DS_CH0011_reaction_A3": "view/ds_ch0011",
+    "DS_CH0011_reaction_A4": "view/ds_ch0011",
+    "DS_CH0011_reaction_A5": "view/ds_ch0011",
+    "DS_CH0011_reaction_A6": "view/ds_ch0011",
+    "DS_CH0011_reaction_B1": "view/ds_ch0011",
+    "DS_CH0011_reaction_B3": "view/ds_ch0011",
+    "DS_CH0015_A1": "view/ds_ch0015",
+    "DS_CH0015_A2": "view/ds_ch0015",
+    "DS_CH0015_A3": "view/ds_ch0015",
+    "DS_CH0015_A4": "view/ds_ch0015",
+    "DS_CH0015_A5": "view/ds_ch0015",
+    "DS_CH0015_T1": "view/ds_ch0015",
+    "DS_CH0015_enter": "view/ds_ch0015",
+    "DS_CH0019_basic_enter": "view/ds_ch0019",
+    "DS_CH0022_basic_enter": "view/ds_ch0022",
+    "DS_CH0024_basic_enter": "view/ds_ch0024",
+    "DS_CH0028_A4": "view/ds_ch0028",
+    "DS_CH0028_B+1": "view/ds_ch0028",
+    "DS_CH0028_B1": "view/ds_ch0028",
+    "DS_CH0028_H1": "view/ds_ch0028",
+    "DS_CH0028_enter": "view/ds_ch0028",
+    "DS_CH0032_a1": "view/ds_ch0032",
+    "DS_CH0032_b2": "view/ds_ch0032",
+    "DS_CH0032_intro": "view/ds_ch0032",
+    "DS_CH0033_basic_enter": "view/ds_ch0033",
+    "DS_CH0035_A1": "view/ds_ch0035",
+    "DS_CH0035_A2": "view/ds_ch0035",
+    "DS_CH0035_A3": "view/ds_ch0035",
+    "DS_CH0035_B1": "view/ds_ch0035",
+    "DS_CH0035_B2": "view/ds_ch0035",
+    "DS_CH0035_B3": "view/ds_ch0035",
+    "DS_CH0035_H1": "view/ds_ch0035",
+    "DS_CH0035_enter": "view/ds_ch0035",
+    "DS_CH0038_basic_enter": "view/ds_ch0038",
+    "DS_CH0038_reaction_A1": "view/ds_ch0038",
+    "DS_CH0038_reaction_A2": "view/ds_ch0038",
+    "DS_CH0038_reaction_A3": "view/ds_ch0038",
+    "DS_CH0038_reaction_A4": "view/ds_ch0038",
+    "DS_CH0038_reaction_H1": "view/ds_ch0038",
+    "DS_CH0040_basic_enter": "view/ds_ch0040",
+    "DS_CH0040_basic_touch": "view/ds_ch0040",
+    "DS_CH0040_reaction_A1_1": "view/ds_ch0040",
+    "DS_CH0040_reaction_A1_2": "view/ds_ch0040",
+    "DS_CH0040_reaction_A2_1": "view/ds_ch0040",
+    "DS_CH0040_reaction_A2_2": "view/ds_ch0040",
+    "DS_CH0040_reaction_A3_1": "view/ds_ch0040",
+    "DS_CH0040_reaction_A3_2": "view/ds_ch0040",
+    "DS_CH0040_reaction_A4_1": "view/ds_ch0040",
+    "DS_CH0040_reaction_A4_2": "view/ds_ch0040",
+    "DS_CH0040_reaction_H1_A": "view/ds_ch0040",
+    "DS_CH0040_reaction_H1_B": "view/ds_ch0040",
+    "DS_CH0042_basic_enter": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_01": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_02": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_03": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_04": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_05": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_06": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_07": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_08": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_09": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_10": "view/ds_ch0042",
+    "DS_CH0042_overlay_A4_11": "view/ds_ch0042",
+    "DS_CH0042_overlay_A5_01": "view/ds_ch0042",
+    "DS_CH0042_overlay_A5_02": "view/ds_ch0042",
+    "DS_CH0042_overlay_A5_03": "view/ds_ch0042",
+    "DS_CH0042_overlay_A5_04": "view/ds_ch0042",
+    "DS_CH0042_overlay_A5_05": "view/ds_ch0042",
+    "DS_CH0042_overlay_A5_06": "view/ds_ch0042",
+    "DS_CH0042_overlay_B1": "view/ds_ch0042",
+    "DS_CH0042_overlay_B2": "view/ds_ch0042",
+    "DS_CH0042_reaction_A1_1": "view/ds_ch0042",
+    "DS_CH0042_reaction_A1_2": "view/ds_ch0042",
+    "DS_CH0042_reaction_A2": "view/ds_ch0042",
+    "DS_CH0042_reaction_A3": "view/ds_ch0042",
+    "DS_CH0042_reaction_H1": "view/ds_ch0042",
+    "DS_CH0043_basic_enter": "view/ds_ch0043",
+    "DS_CH0043_reaction_A1": "view/ds_ch0043",
+    "DS_CH0043_reaction_A2": "view/ds_ch0043",
+    "DS_CH0043_reaction_A3": "view/ds_ch0043",
+    "DS_CH0043_reaction_A4": "view/ds_ch0043",
+    "DS_CH0043_reaction_A5": "view/ds_ch0043",
+    "DS_CH0043_reaction_A7": "view/ds_ch0043",
+    "DS_CH0043_reaction_H1": "view/ds_ch0043",
+    "DS_CH0043_reaction_H1_2": "view/ds_ch0043",
+    "DS_CH0052_basic_after_wait": "view/ds_ch0052",
+    "DS_CH0052_basic_enter": "view/ds_ch0052",
+    "DS_CH0052_reaction_A1": "view/ds_ch0052",
+    "DS_CH0052_reaction_A2": "view/ds_ch0052",
+    "DS_CH0052_reaction_A3": "view/ds_ch0052",
+    "DS_CH0052_reaction_B1_end": "view/ds_ch0052",
+    "DS_CH0052_reaction_B1_start": "view/ds_ch0052",
+    "DS_CH0052_reaction_B2_end": "view/ds_ch0052",
+    "DS_CH0052_reaction_B2_start": "view/ds_ch0052",
+    "DS_CH0052_reaction_B3_1": "view/ds_ch0052",
+    "DS_CH0052_reaction_B3_2": "view/ds_ch0052",
+    "DS_CH0052_reaction_B3_3": "view/ds_ch0052",
+    "DS_CH0052_reaction_B3_4": "view/ds_ch0052",
+    "DS_CH0052_reaction_H1": "view/ds_ch0052",
+    "DS_CH0052_reaction_drag": "view/ds_ch0052",
+    "DS_CH0057_basic_enter": "view/ds_ch0057",
+    "DS_CH0057_reaction_B1": "view/ds_ch0057",
+    "DS_CH0057_reaction_H1": "view/ds_ch0057",
+    "DS_CH0057_reaction_H2": "view/ds_ch0057",
+    "DS_CH0057_reaction_H3": "view/ds_ch0057",
+    "DS_CH0058_basic_enter": "view/ds_ch0058",
+    "DS_CH0058_reaction_A1": "view/ds_ch0058",
+    "DS_CH0058_reaction_A2": "view/ds_ch0058",
+    "DS_CH0058_reaction_A3_1_reaction": "view/ds_ch0058",
+    "DS_CH0058_reaction_A3_2_reaction": "view/ds_ch0058",
+    "DS_CH0058_reaction_A3_3_reaction": "view/ds_ch0058",
+    "DS_CH0058_reaction_A4_1_reaction": "view/ds_ch0058",
+    "DS_CH0058_reaction_A4_2_reaction": "view/ds_ch0058",
+    "DS_CH0058_reaction_A4_3_reaction": "view/ds_ch0058",
+    "DS_CH0058_reaction_B1_reaction": "view/ds_ch0058",
+    "DS_CH0058_reaction_H1": "view/ds_ch0058",
+    "DS_CH0068_basic_enter": "view/ds_ch0068",
+    "DS_CH0075_basic_enter": "view/ds_ch0075",
+    "DS_CH0075_reaction_A1": "view/ds_ch0075",
+    "DS_CH0075_reaction_A1_2": "view/ds_ch0075",
+    "DS_CH0075_reaction_A2": "view/ds_ch0075",
+    "DS_CH0075_reaction_A2_2": "view/ds_ch0075",
+    "DS_CH0075_reaction_A3": "view/ds_ch0075",
+    "DS_CH0075_reaction_A3_2": "view/ds_ch0075",
+    "DS_CH0075_reaction_B1": "view/ds_ch0075",
+    "DS_CH0075_reaction_B2": "view/ds_ch0075",
+    "DS_CH0075_reaction_H1": "view/ds_ch0075",
+    "bgm_battle_001": "bgm",
+    "bgm_battle_002": "bgm",
+    "bgm_battle_003": "bgm",
+    "bgm_battle_004": "bgm",
+    "bgm_battle_005_in": "bgm",
+    "bgm_battle_005_lp": "bgm",
+    "bgm_battle_006": "bgm",
+    "bgm_battle_007": "bgm",
+    "bgm_battle_008": "bgm",
+    "bgm_battle_009": "bgm",
+    "bgm_battle_009_in": "bgm",
+    "bgm_battle_010_in": "bgm",
+    "bgm_battle_010_lp": "bgm",
+    "bgm_battle_011": "bgm",
+    "bgm_battle_012_in": "bgm",
+    "bgm_battle_012_lp": "bgm",
+    "bgm_battle_012_tr": "bgm",
+    "bgm_battle_013": "bgm",
+    "bgm_battle_014": "bgm",
+    "bgm_battle_015": "bgm",
+    "bgm_battle_016": "bgm",
+    "bgm_battle_017_in": "bgm",
+    "bgm_battle_017_lp": "bgm",
+    "bgm_battle_018_in": "bgm",
+    "bgm_battle_018_lp": "bgm",
+    "bgm_character_001": "bgm",
+    "bgm_character_002": "bgm",
+    "bgm_character_003": "bgm",
+    "bgm_character_006": "bgm",
+    "bgm_event_001_in": "bgm",
+    "bgm_event_001_lp": "bgm",
+    "bgm_event_002_in": "bgm",
+    "bgm_event_002_lp": "bgm",
+    "bgm_event_003_in": "bgm",
+    "bgm_event_003_lp": "bgm",
+    "bgm_event_004_lp": "bgm",
+    "bgm_event_005_in": "bgm",
+    "bgm_event_005_lp": "bgm",
+    "bgm_event_006_in": "bgm",
+    "bgm_event_006_lp": "bgm",
+    "bgm_event_008_in": "bgm",
+    "bgm_event_008_lp": "bgm",
+    "bgm_event_009_in": "bgm",
+    "bgm_event_009_lp": "bgm",
+    "bgm_event_010_in": "bgm",
+    "bgm_event_010_lp": "bgm",
+    "bgm_event_011_in": "bgm",
+    "bgm_event_011_lp": "bgm",
+    "bgm_faction_001": "bgm",
+    "bgm_faction_002": "bgm",
+    "bgm_faction_003": "bgm",
+    "bgm_faction_004": "bgm",
+    "bgm_faction_005": "bgm",
+    "bgm_faction_006": "bgm",
+    "bgm_faction_008": "bgm",
+    "bgm_faction_010": "bgm",
+    "bgm_faction_015": "bgm",
+    "bgm_faction_016": "bgm",
+    "bgm_minigame_001": "bgm",
+    "bgm_minigame_002": "bgm",
+    "bgm_minigame_003": "bgm",
+    "bgm_outgame_003": "bgm",
+    "bgm_outgame_004": "bgm",
+    "bgm_outgame_005": "bgm",
+    "bgm_outgame_005_in": "bgm",
+    "bgm_outgame_005_lp": "bgm",
+    "bgm_outgame_006": "bgm",
+    "bgm_outgame_007": "bgm",
+    "bgm_outgame_008": "bgm",
+    "bgm_outgame_009": "bgm",
+    "bgm_outgame_010": "bgm",
+    "bgm_outgame_011": "bgm",
+    "bgm_outgame_012_in": "bgm",
+    "bgm_outgame_012_lp": "bgm",
+    "bgm_outgame_014": "bgm",
+    "bgm_outgame_015": "bgm",
+    "bgm_outgame_017": "bgm",
+    "bgm_outgame_017_in": "bgm",
+    "bgm_outgame_017_lp": "bgm",
+    "bgm_outgame_018_in": "bgm",
+    "bgm_outgame_018_lp": "bgm",
+    "bgm_outgame_019_in": "bgm",
+    "bgm_outgame_019_lp": "bgm",
+    "bgm_outgame_020": "bgm",
+    "bgm_outgame_022": "bgm",
+    "bgm_romance_001_in": "bgm",
+    "bgm_romance_001_lp": "bgm",
+    "bgm_romance_002_in": "bgm",
+    "bgm_romance_002_lp": "bgm",
+    "bgm_romance_003_in": "bgm",
+    "bgm_romance_003_lp": "bgm",
+    "bgm_romance_004_in": "bgm",
+    "bgm_romance_004_lp": "bgm",
+    "bgm_romance_005_in": "bgm",
+    "bgm_romance_005_lp": "bgm",
+    "bgm_romance_006_in": "bgm",
+    "bgm_romance_006_lp": "bgm",
+    "bgm_romance_007_in": "bgm",
+    "bgm_romance_007_lp": "bgm",
+    "bgm_romance_008_in": "bgm",
+    "bgm_romance_008_lp": "bgm",
+    "bgm_romance_009_in": "bgm",
+    "bgm_romance_009_lp": "bgm",
+    "bgm_romance_010_in": "bgm",
+    "bgm_romance_010_lp": "bgm",
+    "bgm_romance_011_in": "bgm",
+    "bgm_romance_011_lp": "bgm",
+    "bgm_romance_012_in": "bgm",
+    "bgm_romance_012_lp": "bgm",
+    "bgm_romance_013_in": "bgm",
+    "bgm_romance_013_lp": "bgm",
+    "bgm_romance_014_in": "bgm",
+    "bgm_romance_014_lp": "bgm",
+    "bgm_romance_017_in": "bgm",
+    "bgm_romance_017_lp": "bgm",
+    "bgm_romance_018_in": "bgm",
+    "bgm_romance_018_lp": "bgm",
+    "bgm_romance_019_in": "bgm",
+    "bgm_romance_019_lp": "bgm",
+    "bgm_romance_020_in": "bgm",
+    "bgm_romance_020_lp": "bgm",
+    "bgm_romance_021_in": "bgm",
+    "bgm_romance_021_lp": "bgm",
+    "bgm_romance_022_in": "bgm",
+    "bgm_romance_022_lp": "bgm",
+    "bgm_romance_023_in": "bgm",
+    "bgm_romance_023_lp": "bgm",
+    "bgm_romance_024_in": "bgm",
+    "bgm_romance_024_lp": "bgm",
+    "bgm_romance_025_in": "bgm",
+    "bgm_romance_025_lp": "bgm",
+    "bgm_romance_026_in": "bgm",
+    "bgm_romance_026_lp": "bgm",
+    "bgm_romance_027_in": "bgm",
+    "bgm_romance_027_lp": "bgm",
+    "bgm_romance_028_in": "bgm",
+    "bgm_romance_028_lp": "bgm",
+    "bgm_romance_029": "bgm",
+    "bgm_romance_030_in": "bgm",
+    "bgm_romance_030_lp": "bgm",
+    "bgm_romance_031_lp": "bgm",
+    "bgm_romance_032_lp": "bgm",
+    "bgm_romance_033": "bgm",
+    "bgm_romance_034_in": "bgm",
+    "bgm_romance_034_lp": "bgm",
+    "bgm_romance_035_in": "bgm",
+    "bgm_romance_035_lp": "bgm",
+    "bgm_romance_036_in": "bgm",
+    "bgm_romance_036_lp": "bgm",
+    "bgm_romance_037_in": "bgm",
+    "bgm_romance_037_lp": "bgm",
+    "bgm_romance_038_in": "bgm",
+    "bgm_romance_038_lp": "bgm",
+    "bgm_romance_039_lp": "bgm",
+    "bgm_romance_040_in": "bgm",
+    "bgm_romance_040_lp": "bgm",
+    "bgm_romance_041_in": "bgm",
+    "bgm_romance_041_lp": "bgm",
+    "bgm_romance_042_in": "bgm",
+    "bgm_romance_042_lp": "bgm",
+    "bgm_story_001": "bgm",
+    "bgm_story_002": "bgm",
+    "bgm_story_003": "bgm",
+    "bgm_story_004": "bgm",
+    "bgm_story_005": "bgm",
+    "bgm_story_006": "bgm",
+    "bgm_story_007": "bgm",
+    "bgm_story_008": "bgm",
+    "bgm_story_009": "bgm",
+    "bgm_story_009_var": "bgm",
+    "bgm_story_010": "bgm",
+    "bgm_story_011": "bgm",
+    "bgm_story_012": "bgm",
+    "bgm_story_013": "bgm",
+    "bgm_story_014": "bgm",
+    "bgm_story_015": "bgm",
+    "bgm_story_016": "bgm",
+    "bgm_story_018": "bgm",
+    "bgm_story_019": "bgm",
+    "bgm_story_020": "bgm",
+    "bgm_story_021": "bgm",
+    "bgm_story_022": "bgm",
+    "bgm_story_023": "bgm",
+    "bgm_story_024": "bgm",
+    "bgm_story_025": "bgm",
+    "bgm_story_026": "bgm",
+    "bgm_story_027": "bgm",
+    "bgm_story_028": "bgm",
+    "bgm_story_029": "bgm",
+    "bgm_story_030": "bgm",
+    "bgm_story_031": "bgm",
+    "bgm_story_032": "bgm",
+    "bgm_story_033": "bgm",
+    "bgm_story_034": "bgm",
+    "bgm_story_035": "bgm",
+    "bgm_story_036": "bgm",
+    "bgm_story_037": "bgm",
+    "bgm_story_038": "bgm",
+    "bgm_story_039": "bgm",
+    "bgm_story_040": "bgm",
+    "bgm_story_041": "bgm",
+    "bgm_story_042": "bgm",
+    "bgm_story_043": "bgm",
+    "bgm_story_045": "bgm",
+    "bgm_story_046": "bgm",
+    "bgm_story_047": "bgm",
+    "bgm_story_048": "bgm",
+    "bgm_story_049": "bgm",
+    "bgm_story_050": "bgm",
+    "bgm_story_051": "bgm",
+    "bgm_story_052": "bgm",
+    "bgm_story_053": "bgm",
+    "bgm_story_054": "bgm",
+    "bgm_story_075": "bgm",
+    "bgm_story_079": "bgm",
+    "bgm_story_080": "bgm",
+    "bgm_story_081": "bgm",
+    "bgm_story_082": "bgm",
+    "bgm_story_083": "bgm"
+  },
+  "animations": {
+    "af_ch0009": {
+      "basic/10_enter": "AF_CH0009_basic_enter"
+    },
+    "af_ch0011": {
+      "basic/10_enter": "AF_CH0011_basic_enter"
+    },
+    "af_ch0015": {
+      "basic/10_enter": "AF_CH0015_basic_enter"
+    },
+    "af_ch0019": {
+      "basic/10_enter": "AF_CH0019_basic_enter"
+    },
+    "af_ch0022": {
+      "basic/10_enter": "AF_CH0022_basic_enter"
+    },
+    "af_ch0024": {
+      "basic/10_enter": "AF_CH0024_basic_enter"
+    },
+    "af_ch0028": {
+      "basic/10_enter": "AF_CH0028_basic_enter"
+    },
+    "af_ch0033": {
+      "basic/10_enter": "AF_CH0033_basic_enter"
+    },
+    "af_ch0035": {
+      "basic/enter": "AF_CH0035_basic_enter"
+    },
+    "af_ch0042": {
+      "asmr/enter": "AF_CH0042_asmr_enter"
+    },
+    "af_ch0043": {
+      "basic/enter": "AF_CH0043_basic_enter"
+    },
+    "af_ch0058": {
+      "basic/enter": "AF_CH0058_basic_enter"
+    },
+    "af_ch0075": {
+      "basic/enter": "AF_CH0075_basic_enter"
+    },
+    "ds_ch0009": {
+      "10_basic/10_enter": "DS_CH0009_basic_enter",
+      "10_reaction/10_A1": "DS_CH0009_reaction_A1",
+      "10_reaction/10_A2": "DS_CH0009_reaction_A2",
+      "10_reaction/10_A3": "DS_CH0009_reaction_A3",
+      "10_reaction/10_B1": "DS_CH0009_reaction_B1",
+      "10_reaction/10_H1": "DS_CH0009_reaction_H1",
+      "10_reaction/10_H2": "DS_CH0009_reaction_H2",
+      "10_reaction/15_T1": "DS_CH0009_reaction_T1"
+    },
+    "ds_ch0010": {
+      "10_basic/10_enter": "DS_CH0010_basic_enter",
+      "10_basic/10_touch2": "DS_CH0010_basic_touch2",
+      "10_reaction/10_B1": "DS_CH0010_reaction_B1",
+      "10_reaction/10_B1_1": "DS_CH0010_reaction_B1_1",
+      "10_reaction/10_B1_3": "DS_CH0010_reaction_B1_3",
+      "10_reaction/10_H1": "DS_CH0010_reaction_H1"
+    },
+    "ds_ch0011": {
+      "10_basic/10_enter": "DS_CH0011_basic_enter",
+      "10_reaction/10_A1": "DS_CH0011_reaction_A1",
+      "10_reaction/10_A2": "DS_CH0011_reaction_A2",
+      "10_reaction/10_A3": "DS_CH0011_reaction_A3",
+      "10_reaction/10_A4": "DS_CH0011_reaction_A4",
+      "10_reaction/10_A5": "DS_CH0011_reaction_A5",
+      "10_reaction/10_A6": "DS_CH0011_reaction_A6",
+      "10_reaction/10_B1": "DS_CH0011_reaction_B1",
+      "10_reaction/10_B3": "DS_CH0011_reaction_B3"
+    },
+    "ds_ch0015": {
+      "10_A1": "DS_CH0015_A1",
+      "10_A2": "DS_CH0015_A2",
+      "10_A3": "DS_CH0015_A3",
+      "10_A4": "DS_CH0015_A4",
+      "10_A5": "DS_CH0015_A5",
+      "10_T1": "DS_CH0015_T1",
+      "10_enter": "DS_CH0015_enter"
+    },
+    "ds_ch0019": {
+      "10_basic/10_enter__": "DS_CH0019_basic_enter"
+    },
+    "ds_ch0022": {
+      "10_basic/10_enter": "DS_CH0022_basic_enter"
+    },
+    "ds_ch0024": {
+      "10_basic/10_enter": "DS_CH0024_basic_enter"
+    },
+    "ds_ch0028": {
+      "10_A4": "DS_CH0028_A4",
+      "10_B+1": "DS_CH0028_B+1",
+      "10_B1": "DS_CH0028_B1",
+      "10_H1": "DS_CH0028_H1",
+      "10_enter": "DS_CH0028_enter"
+    },
+    "ds_ch0032": {
+      "10_a1": "DS_CH0032_a1",
+      "10_b2": "DS_CH0032_b2",
+      "10_intro": "DS_CH0032_intro"
+    },
+    "ds_ch0033": {
+      "10_basic/10_enter": "DS_CH0033_basic_enter"
+    },
+    "ds_ch0035": {
+      "10_A1": "DS_CH0035_A1",
+      "10_A2": "DS_CH0035_A2",
+      "10_A3": "DS_CH0035_A3",
+      "10_B1": "DS_CH0035_B1",
+      "10_B2": "DS_CH0035_B2",
+      "10_B3": "DS_CH0035_B3",
+      "10_H1": "DS_CH0035_H1",
+      "10_enter": "DS_CH0035_enter"
+    },
+    "ds_ch0038": {
+      "10_basic/10_enter": "DS_CH0038_basic_enter",
+      "10_reaction/10_A1": "DS_CH0038_reaction_A1",
+      "10_reaction/10_A2": "DS_CH0038_reaction_A2",
+      "10_reaction/10_A3": "DS_CH0038_reaction_A3",
+      "10_reaction/10_A4": "DS_CH0038_reaction_A4",
+      "10_reaction/10_H1": "DS_CH0038_reaction_H1"
+    },
+    "ds_ch0040": {
+      "10_basic/10_enter": "DS_CH0040_basic_enter",
+      "10_basic/10_touch": "DS_CH0040_basic_touch",
+      "10_reaction/10_A1_1": "DS_CH0040_reaction_A1_1",
+      "10_reaction/10_A1_2": "DS_CH0040_reaction_A1_2",
+      "10_reaction/10_A2_1": "DS_CH0040_reaction_A2_1",
+      "10_reaction/10_A2_2": "DS_CH0040_reaction_A2_2",
+      "10_reaction/10_A3_1": "DS_CH0040_reaction_A3_1",
+      "10_reaction/10_A3_2": "DS_CH0040_reaction_A3_2",
+      "10_reaction/10_A4_1": "DS_CH0040_reaction_A4_1",
+      "10_reaction/10_A4_2": "DS_CH0040_reaction_A4_2",
+      "10_reaction/10_H1_A": "DS_CH0040_reaction_H1_A",
+      "10_reaction/10_H1_B": "DS_CH0040_reaction_H1_B"
+    },
+    "ds_ch0042": {
+      "10_basic/10_enter": "DS_CH0042_basic_enter",
+      "10_reaction/10_A1_1": "DS_CH0042_reaction_A1_1",
+      "10_reaction/10_A1_2": "DS_CH0042_reaction_A1_2",
+      "10_reaction/10_A2": "DS_CH0042_reaction_A2",
+      "10_reaction/10_A3": "DS_CH0042_reaction_A3",
+      "10_reaction/10_H1": "DS_CH0042_reaction_H1",
+      "30_overlay/30_A4_01": "DS_CH0042_overlay_A4_01",
+      "30_overlay/30_A4_02": "DS_CH0042_overlay_A4_02",
+      "30_overlay/30_A4_03": "DS_CH0042_overlay_A4_03",
+      "30_overlay/30_A4_04": "DS_CH0042_overlay_A4_04",
+      "30_overlay/30_A4_05": "DS_CH0042_overlay_A4_05",
+      "30_overlay/30_A4_06": "DS_CH0042_overlay_A4_06",
+      "30_overlay/30_A4_07": "DS_CH0042_overlay_A4_07",
+      "30_overlay/30_A4_08": "DS_CH0042_overlay_A4_08",
+      "30_overlay/30_A4_09": "DS_CH0042_overlay_A4_09",
+      "30_overlay/30_A4_10": "DS_CH0042_overlay_A4_10",
+      "30_overlay/30_A4_11": "DS_CH0042_overlay_A4_11",
+      "30_overlay/30_A5_01": "DS_CH0042_overlay_A5_01",
+      "30_overlay/30_A5_02": "DS_CH0042_overlay_A5_02",
+      "30_overlay/30_A5_03": "DS_CH0042_overlay_A5_03",
+      "30_overlay/30_A5_04": "DS_CH0042_overlay_A5_04",
+      "30_overlay/30_A5_05": "DS_CH0042_overlay_A5_05",
+      "30_overlay/30_A5_06": "DS_CH0042_overlay_A5_06",
+      "30_overlay/30_B1": "DS_CH0042_overlay_B1",
+      "30_overlay/30_B2": "DS_CH0042_overlay_B2"
+    },
+    "ds_ch0043": {
+      "10_basic/10_enter": "DS_CH0043_basic_enter",
+      "10_reaction/10_A1": "DS_CH0043_reaction_A1",
+      "10_reaction/10_A2": "DS_CH0043_reaction_A2",
+      "10_reaction/10_A3": "DS_CH0043_reaction_A3",
+      "10_reaction/10_A4": "DS_CH0043_reaction_A4",
+      "10_reaction/10_A5": "DS_CH0043_reaction_A5",
+      "10_reaction/10_A7": "DS_CH0043_reaction_A7",
+      "10_reaction/10_H1": "DS_CH0043_reaction_H1",
+      "10_reaction/10_H1_2": "DS_CH0043_reaction_H1_2"
+    },
+    "ds_ch0052": {
+      "10_basic/10_after_wait": "DS_CH0052_basic_after_wait",
+      "10_basic/10_enter": "DS_CH0052_basic_enter",
+      "10_reaction/10_A1": "DS_CH0052_reaction_A1",
+      "10_reaction/10_A2": "DS_CH0052_reaction_A2",
+      "10_reaction/10_A3": "DS_CH0052_reaction_A3",
+      "10_reaction/10_B1_end": "DS_CH0052_reaction_B1_end",
+      "10_reaction/10_B1_start": "DS_CH0052_reaction_B1_start",
+      "10_reaction/10_B2_end": "DS_CH0052_reaction_B2_end",
+      "10_reaction/10_B2_start": "DS_CH0052_reaction_B2_start",
+      "10_reaction/10_B3_1": "DS_CH0052_reaction_B3_1",
+      "10_reaction/10_B3_2": "DS_CH0052_reaction_B3_2",
+      "10_reaction/10_B3_3": "DS_CH0052_reaction_B3_3",
+      "10_reaction/10_B3_4": "DS_CH0052_reaction_B3_4",
+      "10_reaction/10_H1": "DS_CH0052_reaction_H1",
+      "10_reaction/10_drag": "DS_CH0052_reaction_drag"
+    },
+    "ds_ch0057": {
+      "10_basic/10_enter": "DS_CH0057_basic_enter",
+      "10_reaction/10_B1": "DS_CH0057_reaction_B1",
+      "10_reaction/10_H1": "DS_CH0057_reaction_H1",
+      "10_reaction/10_H2": "DS_CH0057_reaction_H2",
+      "10_reaction/10_H3": "DS_CH0057_reaction_H3"
+    },
+    "ds_ch0058": {
+      "10_basic/10_enter": "DS_CH0058_basic_enter",
+      "10_reaction/10_A1": "DS_CH0058_reaction_A1",
+      "10_reaction/10_A2": "DS_CH0058_reaction_A2",
+      "10_reaction/10_A3_1_reaction": "DS_CH0058_reaction_A3_1_reaction",
+      "10_reaction/10_A3_2_reaction": "DS_CH0058_reaction_A3_2_reaction",
+      "10_reaction/10_A3_3_reaction": "DS_CH0058_reaction_A3_3_reaction",
+      "10_reaction/10_A4_1_reaction": "DS_CH0058_reaction_A4_1_reaction",
+      "10_reaction/10_A4_2_reaction": "DS_CH0058_reaction_A4_2_reaction",
+      "10_reaction/10_A4_3_reaction": "DS_CH0058_reaction_A4_3_reaction",
+      "10_reaction/10_B1_reaction": "DS_CH0058_reaction_B1_reaction",
+      "10_reaction/10_H1": "DS_CH0058_reaction_H1"
+    },
+    "ds_ch0068": {
+      "basic/enter": "DS_CH0068_basic_enter"
+    },
+    "ds_ch0075": {
+      "10_basic/10_enter": "DS_CH0075_basic_enter",
+      "10_reaction/A1": "DS_CH0075_reaction_A1",
+      "10_reaction/A1_2": "DS_CH0075_reaction_A1_2",
+      "10_reaction/A2": "DS_CH0075_reaction_A2",
+      "10_reaction/A2_2": "DS_CH0075_reaction_A2_2",
+      "10_reaction/A3": "DS_CH0075_reaction_A3",
+      "10_reaction/A3_2": "DS_CH0075_reaction_A3_2",
+      "10_reaction/B1": "DS_CH0075_reaction_B1",
+      "10_reaction/B2": "DS_CH0075_reaction_B2",
+      "10_reaction/H1": "DS_CH0075_reaction_H1"
+    }
+  },
+  "bgm": [
+    {
+      "id": "bgm_outgame_003",
+      "group": "outgame",
+      "loop": "bgm_outgame_003",
+      "seconds": 60.6
+    },
+    {
+      "id": "bgm_outgame_004",
+      "group": "outgame",
+      "loop": "bgm_outgame_004",
+      "seconds": 116.7
+    },
+    {
+      "id": "bgm_outgame_005",
+      "group": "outgame",
+      "loop": "bgm_outgame_005",
+      "seconds": 80.0
+    },
+    {
+      "id": "bgm_outgame_005_lp",
+      "group": "outgame",
+      "loop": "bgm_outgame_005_lp",
+      "intro": "bgm_outgame_005_in",
+      "seconds": 90.1
+    },
+    {
+      "id": "bgm_outgame_006",
+      "group": "outgame",
+      "loop": "bgm_outgame_006",
+      "seconds": 44.9
+    },
+    {
+      "id": "bgm_outgame_007",
+      "group": "outgame",
+      "loop": "bgm_outgame_007",
+      "seconds": 95.9
+    },
+    {
+      "id": "bgm_outgame_008",
+      "group": "outgame",
+      "loop": "bgm_outgame_008",
+      "seconds": 126.3
+    },
+    {
+      "id": "bgm_outgame_009",
+      "group": "outgame",
+      "loop": "bgm_outgame_009",
+      "seconds": 54.6
+    },
+    {
+      "id": "bgm_outgame_010",
+      "group": "outgame",
+      "loop": "bgm_outgame_010",
+      "seconds": 57.6
+    },
+    {
+      "id": "bgm_outgame_011",
+      "group": "outgame",
+      "loop": "bgm_outgame_011",
+      "seconds": 42.7
+    },
+    {
+      "id": "bgm_outgame_012",
+      "group": "outgame",
+      "loop": "bgm_outgame_012_lp",
+      "intro": "bgm_outgame_012_in",
+      "seconds": 35.2
+    },
+    {
+      "id": "bgm_outgame_014",
+      "group": "outgame",
+      "loop": "bgm_outgame_014",
+      "seconds": 81.6
+    },
+    {
+      "id": "bgm_outgame_015",
+      "group": "outgame",
+      "loop": "bgm_outgame_015",
+      "seconds": 167.5
+    },
+    {
+      "id": "bgm_outgame_017",
+      "group": "outgame",
+      "loop": "bgm_outgame_017",
+      "seconds": 91.4
+    },
+    {
+      "id": "bgm_outgame_017_lp",
+      "group": "outgame",
+      "loop": "bgm_outgame_017_lp",
+      "intro": "bgm_outgame_017_in",
+      "seconds": 107.4
+    },
+    {
+      "id": "bgm_outgame_018",
+      "group": "outgame",
+      "loop": "bgm_outgame_018_lp",
+      "intro": "bgm_outgame_018_in",
+      "seconds": 59.6
+    },
+    {
+      "id": "bgm_outgame_019",
+      "group": "outgame",
+      "loop": "bgm_outgame_019_lp",
+      "intro": "bgm_outgame_019_in",
+      "seconds": 91.7
+    },
+    {
+      "id": "bgm_outgame_020",
+      "group": "outgame",
+      "loop": "bgm_outgame_020",
+      "seconds": 64.0
+    },
+    {
+      "id": "bgm_outgame_022",
+      "group": "outgame",
+      "loop": "bgm_outgame_022",
+      "seconds": 57.6
+    },
+    {
+      "id": "bgm_story_001",
+      "group": "story",
+      "loop": "bgm_story_001",
+      "seconds": 29.4
+    },
+    {
+      "id": "bgm_story_002",
+      "group": "story",
+      "loop": "bgm_story_002",
+      "seconds": 34.9
+    },
+    {
+      "id": "bgm_story_003",
+      "group": "story",
+      "loop": "bgm_story_003",
+      "seconds": 32.2
+    },
+    {
+      "id": "bgm_story_004",
+      "group": "story",
+      "loop": "bgm_story_004",
+      "seconds": 26.9
+    },
+    {
+      "id": "bgm_story_005",
+      "group": "story",
+      "loop": "bgm_story_005",
+      "seconds": 28.4
+    },
+    {
+      "id": "bgm_story_006",
+      "group": "story",
+      "loop": "bgm_story_006",
+      "seconds": 29.8
+    },
+    {
+      "id": "bgm_story_007",
+      "group": "story",
+      "loop": "bgm_story_007",
+      "seconds": 24.0
+    },
+    {
+      "id": "bgm_story_008",
+      "group": "story",
+      "loop": "bgm_story_008",
+      "seconds": 33.5
+    },
+    {
+      "id": "bgm_story_009",
+      "group": "story",
+      "loop": "bgm_story_009",
+      "seconds": 19.9
+    },
+    {
+      "id": "bgm_story_009_var",
+      "group": "story",
+      "loop": "bgm_story_009_var",
+      "seconds": 19.9
+    },
+    {
+      "id": "bgm_story_010",
+      "group": "story",
+      "loop": "bgm_story_010",
+      "seconds": 39.5
+    },
+    {
+      "id": "bgm_story_011",
+      "group": "story",
+      "loop": "bgm_story_011",
+      "seconds": 24.0
+    },
+    {
+      "id": "bgm_story_012",
+      "group": "story",
+      "loop": "bgm_story_012",
+      "seconds": 80.2
+    },
+    {
+      "id": "bgm_story_013",
+      "group": "story",
+      "loop": "bgm_story_013",
+      "seconds": 32.0
+    },
+    {
+      "id": "bgm_story_014",
+      "group": "story",
+      "loop": "bgm_story_014",
+      "seconds": 28.8
+    },
+    {
+      "id": "bgm_story_015",
+      "group": "story",
+      "loop": "bgm_story_015",
+      "seconds": 144.9
+    },
+    {
+      "id": "bgm_story_016",
+      "group": "story",
+      "loop": "bgm_story_016",
+      "seconds": 130.5
+    },
+    {
+      "id": "bgm_story_018",
+      "group": "story",
+      "loop": "bgm_story_018",
+      "seconds": 30.5
+    },
+    {
+      "id": "bgm_story_019",
+      "group": "story",
+      "loop": "bgm_story_019",
+      "seconds": 38.8
+    },
+    {
+      "id": "bgm_story_020",
+      "group": "story",
+      "loop": "bgm_story_020",
+      "seconds": 27.8
+    },
+    {
+      "id": "bgm_story_021",
+      "group": "story",
+      "loop": "bgm_story_021",
+      "seconds": 41.0
+    },
+    {
+      "id": "bgm_story_022",
+      "group": "story",
+      "loop": "bgm_story_022",
+      "seconds": 75.9
+    },
+    {
+      "id": "bgm_story_023",
+      "group": "story",
+      "loop": "bgm_story_023",
+      "seconds": 24.0
+    },
+    {
+      "id": "bgm_story_024",
+      "group": "story",
+      "loop": "bgm_story_024",
+      "seconds": 109.1
+    },
+    {
+      "id": "bgm_story_025",
+      "group": "story",
+      "loop": "bgm_story_025",
+      "seconds": 72.0
+    },
+    {
+      "id": "bgm_story_026",
+      "group": "story",
+      "loop": "bgm_story_026",
+      "seconds": 121.1
+    },
+    {
+      "id": "bgm_story_027",
+      "group": "story",
+      "loop": "bgm_story_027",
+      "seconds": 24.0
+    },
+    {
+      "id": "bgm_story_028",
+      "group": "story",
+      "loop": "bgm_story_028",
+      "seconds": 26.2
+    },
+    {
+      "id": "bgm_story_029",
+      "group": "story",
+      "loop": "bgm_story_029",
+      "seconds": 60.7
+    },
+    {
+      "id": "bgm_story_030",
+      "group": "story",
+      "loop": "bgm_story_030",
+      "seconds": 30.6
+    },
+    {
+      "id": "bgm_story_031",
+      "group": "story",
+      "loop": "bgm_story_031",
+      "seconds": 74.0
+    },
+    {
+      "id": "bgm_story_032",
+      "group": "story",
+      "loop": "bgm_story_032",
+      "seconds": 20.0
+    },
+    {
+      "id": "bgm_story_033",
+      "group": "story",
+      "loop": "bgm_story_033",
+      "seconds": 95.2
+    },
+    {
+      "id": "bgm_story_034",
+      "group": "story",
+      "loop": "bgm_story_034",
+      "seconds": 16.0
+    },
+    {
+      "id": "bgm_story_035",
+      "group": "story",
+      "loop": "bgm_story_035",
+      "seconds": 55.1
+    },
+    {
+      "id": "bgm_story_036",
+      "group": "story",
+      "loop": "bgm_story_036",
+      "seconds": 213.3
+    },
+    {
+      "id": "bgm_story_037",
+      "group": "story",
+      "loop": "bgm_story_037",
+      "seconds": 37.5
+    },
+    {
+      "id": "bgm_story_038",
+      "group": "story",
+      "loop": "bgm_story_038",
+      "seconds": 35.9
+    },
+    {
+      "id": "bgm_story_039",
+      "group": "story",
+      "loop": "bgm_story_039",
+      "seconds": 38.2
+    },
+    {
+      "id": "bgm_story_040",
+      "group": "story",
+      "loop": "bgm_story_040",
+      "seconds": 29.3
+    },
+    {
+      "id": "bgm_story_041",
+      "group": "story",
+      "loop": "bgm_story_041",
+      "seconds": 25.7
+    },
+    {
+      "id": "bgm_story_042",
+      "group": "story",
+      "loop": "bgm_story_042",
+      "seconds": 36.0
+    },
+    {
+      "id": "bgm_story_043",
+      "group": "story",
+      "loop": "bgm_story_043",
+      "seconds": 48.0
+    },
+    {
+      "id": "bgm_story_045",
+      "group": "story",
+      "loop": "bgm_story_045",
+      "seconds": 88.9
+    },
+    {
+      "id": "bgm_story_046",
+      "group": "story",
+      "loop": "bgm_story_046",
+      "seconds": 52.5
+    },
+    {
+      "id": "bgm_story_047",
+      "group": "story",
+      "loop": "bgm_story_047",
+      "seconds": 38.0
+    },
+    {
+      "id": "bgm_story_048",
+      "group": "story",
+      "loop": "bgm_story_048",
+      "seconds": 61.0
+    },
+    {
+      "id": "bgm_story_049",
+      "group": "story",
+      "loop": "bgm_story_049",
+      "seconds": 51.7
+    },
+    {
+      "id": "bgm_story_050",
+      "group": "story",
+      "loop": "bgm_story_050",
+      "seconds": 36.7
+    },
+    {
+      "id": "bgm_story_051",
+      "group": "story",
+      "loop": "bgm_story_051",
+      "seconds": 129.9
+    },
+    {
+      "id": "bgm_story_052",
+      "group": "story",
+      "loop": "bgm_story_052",
+      "seconds": 99.8
+    },
+    {
+      "id": "bgm_story_053",
+      "group": "story",
+      "loop": "bgm_story_053",
+      "seconds": 193.1
+    },
+    {
+      "id": "bgm_story_054",
+      "group": "story",
+      "loop": "bgm_story_054",
+      "seconds": 49.0
+    },
+    {
+      "id": "bgm_story_075",
+      "group": "story",
+      "loop": "bgm_story_075",
+      "seconds": 124.3
+    },
+    {
+      "id": "bgm_story_079",
+      "group": "story",
+      "loop": "bgm_story_079",
+      "seconds": 62.4
+    },
+    {
+      "id": "bgm_story_080",
+      "group": "story",
+      "loop": "bgm_story_080",
+      "seconds": 60.0
+    },
+    {
+      "id": "bgm_story_081",
+      "group": "story",
+      "loop": "bgm_story_081",
+      "seconds": 128.8
+    },
+    {
+      "id": "bgm_story_082",
+      "group": "story",
+      "loop": "bgm_story_082",
+      "seconds": 159.4
+    },
+    {
+      "id": "bgm_story_083",
+      "group": "story",
+      "loop": "bgm_story_083",
+      "seconds": 59.2
+    },
+    {
+      "id": "bgm_battle_001",
+      "group": "battle",
+      "loop": "bgm_battle_001",
+      "seconds": 59.9
+    },
+    {
+      "id": "bgm_battle_002",
+      "group": "battle",
+      "loop": "bgm_battle_002",
+      "seconds": 87.6
+    },
+    {
+      "id": "bgm_battle_003",
+      "group": "battle",
+      "loop": "bgm_battle_003",
+      "seconds": 63.8
+    },
+    {
+      "id": "bgm_battle_004",
+      "group": "battle",
+      "loop": "bgm_battle_004",
+      "seconds": 55.3
+    },
+    {
+      "id": "bgm_battle_005",
+      "group": "battle",
+      "loop": "bgm_battle_005_lp",
+      "intro": "bgm_battle_005_in",
+      "seconds": 112.8
+    },
+    {
+      "id": "bgm_battle_006",
+      "group": "battle",
+      "loop": "bgm_battle_006",
+      "seconds": 74.5
+    },
+    {
+      "id": "bgm_battle_007",
+      "group": "battle",
+      "loop": "bgm_battle_007",
+      "seconds": 52.0
+    },
+    {
+      "id": "bgm_battle_008",
+      "group": "battle",
+      "loop": "bgm_battle_008",
+      "seconds": 91.6
+    },
+    {
+      "id": "bgm_battle_009",
+      "group": "battle",
+      "loop": "bgm_battle_009",
+      "seconds": 158.4
+    },
+    {
+      "id": "bgm_battle_009_in",
+      "group": "battle",
+      "loop": "bgm_battle_009_in",
+      "seconds": 15.9
+    },
+    {
+      "id": "bgm_battle_010",
+      "group": "battle",
+      "loop": "bgm_battle_010_lp",
+      "intro": "bgm_battle_010_in",
+      "seconds": 174.3
+    },
+    {
+      "id": "bgm_battle_011",
+      "group": "battle",
+      "loop": "bgm_battle_011",
+      "seconds": 53.3
+    },
+    {
+      "id": "bgm_battle_012",
+      "group": "battle",
+      "loop": "bgm_battle_012_lp",
+      "intro": "bgm_battle_012_in",
+      "seconds": 69.3
+    },
+    {
+      "id": "bgm_battle_012_tr",
+      "group": "battle",
+      "loop": "bgm_battle_012_tr",
+      "seconds": 14.5
+    },
+    {
+      "id": "bgm_battle_013",
+      "group": "battle",
+      "loop": "bgm_battle_013",
+      "seconds": 54.0
+    },
+    {
+      "id": "bgm_battle_014",
+      "group": "battle",
+      "loop": "bgm_battle_014",
+      "seconds": 94.0
+    },
+    {
+      "id": "bgm_battle_015",
+      "group": "battle",
+      "loop": "bgm_battle_015",
+      "seconds": 117.7
+    },
+    {
+      "id": "bgm_battle_016",
+      "group": "battle",
+      "loop": "bgm_battle_016",
+      "seconds": 27.5
+    },
+    {
+      "id": "bgm_battle_017",
+      "group": "battle",
+      "loop": "bgm_battle_017_lp",
+      "intro": "bgm_battle_017_in",
+      "seconds": 87.6
+    },
+    {
+      "id": "bgm_battle_018",
+      "group": "battle",
+      "loop": "bgm_battle_018_lp",
+      "intro": "bgm_battle_018_in",
+      "seconds": 118.5
+    },
+    {
+      "id": "bgm_event_001",
+      "group": "event",
+      "loop": "bgm_event_001_lp",
+      "intro": "bgm_event_001_in",
+      "seconds": 114.5
+    },
+    {
+      "id": "bgm_event_002",
+      "group": "event",
+      "loop": "bgm_event_002_lp",
+      "intro": "bgm_event_002_in",
+      "seconds": 106.6
+    },
+    {
+      "id": "bgm_event_003",
+      "group": "event",
+      "loop": "bgm_event_003_lp",
+      "intro": "bgm_event_003_in",
+      "seconds": 161.9
+    },
+    {
+      "id": "bgm_event_004",
+      "group": "event",
+      "loop": "bgm_event_004_lp",
+      "seconds": 51.9
+    },
+    {
+      "id": "bgm_event_005",
+      "group": "event",
+      "loop": "bgm_event_005_lp",
+      "intro": "bgm_event_005_in",
+      "seconds": 85.0
+    },
+    {
+      "id": "bgm_event_006",
+      "group": "event",
+      "loop": "bgm_event_006_lp",
+      "intro": "bgm_event_006_in",
+      "seconds": 128.5
+    },
+    {
+      "id": "bgm_event_008",
+      "group": "event",
+      "loop": "bgm_event_008_lp",
+      "intro": "bgm_event_008_in",
+      "seconds": 109.6
+    },
+    {
+      "id": "bgm_event_009",
+      "group": "event",
+      "loop": "bgm_event_009_lp",
+      "intro": "bgm_event_009_in",
+      "seconds": 91.1
+    },
+    {
+      "id": "bgm_event_010",
+      "group": "event",
+      "loop": "bgm_event_010_lp",
+      "intro": "bgm_event_010_in",
+      "seconds": 89.9
+    },
+    {
+      "id": "bgm_event_011",
+      "group": "event",
+      "loop": "bgm_event_011_lp",
+      "intro": "bgm_event_011_in",
+      "seconds": 61.2
+    },
+    {
+      "id": "bgm_faction_001",
+      "group": "faction",
+      "loop": "bgm_faction_001",
+      "seconds": 239.8
+    },
+    {
+      "id": "bgm_faction_002",
+      "group": "faction",
+      "loop": "bgm_faction_002",
+      "seconds": 192.2
+    },
+    {
+      "id": "bgm_faction_003",
+      "group": "faction",
+      "loop": "bgm_faction_003",
+      "seconds": 163.3
+    },
+    {
+      "id": "bgm_faction_004",
+      "group": "faction",
+      "loop": "bgm_faction_004",
+      "seconds": 120.0
+    },
+    {
+      "id": "bgm_faction_005",
+      "group": "faction",
+      "loop": "bgm_faction_005",
+      "seconds": 119.8
+    },
+    {
+      "id": "bgm_faction_006",
+      "group": "faction",
+      "loop": "bgm_faction_006",
+      "seconds": 187.1
+    },
+    {
+      "id": "bgm_faction_008",
+      "group": "faction",
+      "loop": "bgm_faction_008",
+      "seconds": 120.0
+    },
+    {
+      "id": "bgm_faction_010",
+      "group": "faction",
+      "loop": "bgm_faction_010",
+      "seconds": 184.3
+    },
+    {
+      "id": "bgm_faction_015",
+      "group": "faction",
+      "loop": "bgm_faction_015",
+      "seconds": 235.5
+    },
+    {
+      "id": "bgm_faction_016",
+      "group": "faction",
+      "loop": "bgm_faction_016",
+      "seconds": 258.6
+    },
+    {
+      "id": "bgm_character_001",
+      "group": "character",
+      "loop": "bgm_character_001",
+      "seconds": 102.4
+    },
+    {
+      "id": "bgm_character_002",
+      "group": "character",
+      "loop": "bgm_character_002",
+      "seconds": 56.3
+    },
+    {
+      "id": "bgm_character_003",
+      "group": "character",
+      "loop": "bgm_character_003",
+      "seconds": 140.5
+    },
+    {
+      "id": "bgm_character_006",
+      "group": "character",
+      "loop": "bgm_character_006",
+      "seconds": 93.7
+    },
+    {
+      "id": "bgm_romance_001",
+      "group": "romance",
+      "loop": "bgm_romance_001_lp",
+      "intro": "bgm_romance_001_in",
+      "seconds": 57.1
+    },
+    {
+      "id": "bgm_romance_002",
+      "group": "romance",
+      "loop": "bgm_romance_002_lp",
+      "intro": "bgm_romance_002_in",
+      "seconds": 97.0
+    },
+    {
+      "id": "bgm_romance_003",
+      "group": "romance",
+      "loop": "bgm_romance_003_lp",
+      "intro": "bgm_romance_003_in",
+      "seconds": 35.2
+    },
+    {
+      "id": "bgm_romance_004",
+      "group": "romance",
+      "loop": "bgm_romance_004_lp",
+      "intro": "bgm_romance_004_in",
+      "seconds": 59.3
+    },
+    {
+      "id": "bgm_romance_005",
+      "group": "romance",
+      "loop": "bgm_romance_005_lp",
+      "intro": "bgm_romance_005_in",
+      "seconds": 69.4
+    },
+    {
+      "id": "bgm_romance_006",
+      "group": "romance",
+      "loop": "bgm_romance_006_lp",
+      "intro": "bgm_romance_006_in",
+      "seconds": 71.3
+    },
+    {
+      "id": "bgm_romance_007",
+      "group": "romance",
+      "loop": "bgm_romance_007_lp",
+      "intro": "bgm_romance_007_in",
+      "seconds": 55.8
+    },
+    {
+      "id": "bgm_romance_008",
+      "group": "romance",
+      "loop": "bgm_romance_008_lp",
+      "intro": "bgm_romance_008_in",
+      "seconds": 44.0
+    },
+    {
+      "id": "bgm_romance_009",
+      "group": "romance",
+      "loop": "bgm_romance_009_lp",
+      "intro": "bgm_romance_009_in",
+      "seconds": 44.8
+    },
+    {
+      "id": "bgm_romance_010",
+      "group": "romance",
+      "loop": "bgm_romance_010_lp",
+      "intro": "bgm_romance_010_in",
+      "seconds": 42.7
+    },
+    {
+      "id": "bgm_romance_011",
+      "group": "romance",
+      "loop": "bgm_romance_011_lp",
+      "intro": "bgm_romance_011_in",
+      "seconds": 64.7
+    },
+    {
+      "id": "bgm_romance_012",
+      "group": "romance",
+      "loop": "bgm_romance_012_lp",
+      "intro": "bgm_romance_012_in",
+      "seconds": 57.5
+    },
+    {
+      "id": "bgm_romance_013",
+      "group": "romance",
+      "loop": "bgm_romance_013_lp",
+      "intro": "bgm_romance_013_in",
+      "seconds": 53.4
+    },
+    {
+      "id": "bgm_romance_014",
+      "group": "romance",
+      "loop": "bgm_romance_014_lp",
+      "intro": "bgm_romance_014_in",
+      "seconds": 66.0
+    },
+    {
+      "id": "bgm_romance_017",
+      "group": "romance",
+      "loop": "bgm_romance_017_lp",
+      "intro": "bgm_romance_017_in",
+      "seconds": 54.8
+    },
+    {
+      "id": "bgm_romance_018",
+      "group": "romance",
+      "loop": "bgm_romance_018_lp",
+      "intro": "bgm_romance_018_in",
+      "seconds": 48.5
+    },
+    {
+      "id": "bgm_romance_019",
+      "group": "romance",
+      "loop": "bgm_romance_019_lp",
+      "intro": "bgm_romance_019_in",
+      "seconds": 67.3
+    },
+    {
+      "id": "bgm_romance_020",
+      "group": "romance",
+      "loop": "bgm_romance_020_lp",
+      "intro": "bgm_romance_020_in",
+      "seconds": 127.2
+    },
+    {
+      "id": "bgm_romance_021",
+      "group": "romance",
+      "loop": "bgm_romance_021_lp",
+      "intro": "bgm_romance_021_in",
+      "seconds": 89.0
+    },
+    {
+      "id": "bgm_romance_022",
+      "group": "romance",
+      "loop": "bgm_romance_022_lp",
+      "intro": "bgm_romance_022_in",
+      "seconds": 146.8
+    },
+    {
+      "id": "bgm_romance_023",
+      "group": "romance",
+      "loop": "bgm_romance_023_lp",
+      "intro": "bgm_romance_023_in",
+      "seconds": 288.0
+    },
+    {
+      "id": "bgm_romance_024",
+      "group": "romance",
+      "loop": "bgm_romance_024_lp",
+      "intro": "bgm_romance_024_in",
+      "seconds": 77.4
+    },
+    {
+      "id": "bgm_romance_025",
+      "group": "romance",
+      "loop": "bgm_romance_025_lp",
+      "intro": "bgm_romance_025_in",
+      "seconds": 116.9
+    },
+    {
+      "id": "bgm_romance_026",
+      "group": "romance",
+      "loop": "bgm_romance_026_lp",
+      "intro": "bgm_romance_026_in",
+      "seconds": 134.2
+    },
+    {
+      "id": "bgm_romance_027",
+      "group": "romance",
+      "loop": "bgm_romance_027_lp",
+      "intro": "bgm_romance_027_in",
+      "seconds": 95.0
+    },
+    {
+      "id": "bgm_romance_028",
+      "group": "romance",
+      "loop": "bgm_romance_028_lp",
+      "intro": "bgm_romance_028_in",
+      "seconds": 105.5
+    },
+    {
+      "id": "bgm_romance_029",
+      "group": "romance",
+      "loop": "bgm_romance_029",
+      "seconds": 46.1
+    },
+    {
+      "id": "bgm_romance_030",
+      "group": "romance",
+      "loop": "bgm_romance_030_lp",
+      "intro": "bgm_romance_030_in",
+      "seconds": 117.3
+    },
+    {
+      "id": "bgm_romance_031",
+      "group": "romance",
+      "loop": "bgm_romance_031_lp",
+      "seconds": 93.8
+    },
+    {
+      "id": "bgm_romance_032",
+      "group": "romance",
+      "loop": "bgm_romance_032_lp",
+      "seconds": 208.3
+    },
+    {
+      "id": "bgm_romance_033",
+      "group": "romance",
+      "loop": "bgm_romance_033",
+      "seconds": 111.8
+    },
+    {
+      "id": "bgm_romance_034",
+      "group": "romance",
+      "loop": "bgm_romance_034_lp",
+      "intro": "bgm_romance_034_in",
+      "seconds": 95.0
+    },
+    {
+      "id": "bgm_romance_035",
+      "group": "romance",
+      "loop": "bgm_romance_035_lp",
+      "intro": "bgm_romance_035_in",
+      "seconds": 129.9
+    },
+    {
+      "id": "bgm_romance_036",
+      "group": "romance",
+      "loop": "bgm_romance_036_lp",
+      "intro": "bgm_romance_036_in",
+      "seconds": 121.8
+    },
+    {
+      "id": "bgm_romance_037",
+      "group": "romance",
+      "loop": "bgm_romance_037_lp",
+      "intro": "bgm_romance_037_in",
+      "seconds": 57.8
+    },
+    {
+      "id": "bgm_romance_038",
+      "group": "romance",
+      "loop": "bgm_romance_038_lp",
+      "intro": "bgm_romance_038_in",
+      "seconds": 117.4
+    },
+    {
+      "id": "bgm_romance_039",
+      "group": "romance",
+      "loop": "bgm_romance_039_lp",
+      "seconds": 119.2
+    },
+    {
+      "id": "bgm_romance_040",
+      "group": "romance",
+      "loop": "bgm_romance_040_lp",
+      "intro": "bgm_romance_040_in",
+      "seconds": 114.5
+    },
+    {
+      "id": "bgm_romance_041",
+      "group": "romance",
+      "loop": "bgm_romance_041_lp",
+      "intro": "bgm_romance_041_in",
+      "seconds": 189.0
+    },
+    {
+      "id": "bgm_romance_042",
+      "group": "romance",
+      "loop": "bgm_romance_042_lp",
+      "intro": "bgm_romance_042_in",
+      "seconds": 103.8
+    },
+    {
+      "id": "bgm_minigame_001",
+      "group": "minigame",
+      "loop": "bgm_minigame_001",
+      "seconds": 90.0
+    },
+    {
+      "id": "bgm_minigame_002",
+      "group": "minigame",
+      "loop": "bgm_minigame_002",
+      "seconds": 90.0
+    },
+    {
+      "id": "bgm_minigame_003",
+      "group": "minigame",
+      "loop": "bgm_minigame_003",
+      "seconds": 89.6
+    }
+  ]
 }
