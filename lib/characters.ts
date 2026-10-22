@@ -597,9 +597,13 @@ const COMPARE: Record<string, string> = {
 };
 
 // Every shipped variant tests a duration define's stack count on the caster.
-export function variantCondition(variant: SkillVariant, lang: Lang = 'en'): string {
+export function variantCondition(
+  variant: SkillVariant, lang: Lang = 'en', stateName?: (id: string) => string,
+): string {
   const w = variant.when;
-  const state = (lang === 'ko' ? w.name : w.nameEn ?? w.name) ?? (lang === 'ko' ? '내부 상태' : 'internal state');
+  const state = (lang === 'ko' ? w.name : w.nameEn ?? w.name)
+    ?? (stateName && w.define ? stateName(w.define) : null)
+    ?? (lang === 'ko' ? '내부 상태' : 'internal state');
   const test = `${COMPARE[w.op ?? ''] ?? '='} ${w.value}`;
   return lang === 'ko' ? `${state} ${test}일 때` : `while ${state} ${test}`;
 }
@@ -703,6 +707,50 @@ export const SETUP_CONDITION_LABEL: Record<string, Localized> = {
     en: 'with few enough of one faction in the party', ko: '파티의 같은 소속이 일정 수 이하일 때',
   },
 };
+
+// `PATTERN_PLAY_CONDITION`; HP values are 0–1 fractions of max HP.
+export function patternConditionText(
+  condition: number, values: string[], lang: Lang = 'en', stateName?: (id: string) => string,
+): string {
+  const v = values[0] ?? '';
+  const pct = `${Math.round(Number(v) * 100)}%`;
+  const ko = lang === 'ko';
+  const state = stateName ? stateName(v) : v;
+  const n = values[1] ?? '';
+  switch (condition) {
+    case 0: return '';
+    case 1: return ko ? '보스 페이즈 전환 시' : 'on a boss phase shift';
+    case 10: return ko ? `HP ${pct} 이상` : `HP ${pct} or more`;
+    case 11: return ko ? `HP ${pct} 이하` : `HP ${pct} or less`;
+    case 12: return ko ? `HP ${pct} 초과` : `HP above ${pct}`;
+    case 13: return ko ? `HP ${pct} 미만` : `HP below ${pct}`;
+    case 20: return ko ? `${state} ${n}중첩 이상` : `${state} at ${n}+ stacks`;
+    case 21: return ko ? `${state} ${n}중첩 이하` : `${state} at ${n} stacks or fewer`;
+    case 22: return ko ? `${state} 보유 시` : `while holding ${state}`;
+    case 23: return ko ? `${state} 없을 때` : `while lacking ${state}`;
+    default: return `${condition} ${values.join(', ')}`;
+  }
+}
+
+// Rows are tried in `order` and the first match wins, so a row an earlier one always covers never runs.
+export function shadowedPatterns(rows: { order: number; condition: number; conditionValue: string[] }[]): Set<number> {
+  const out = new Set<number>();
+  const sorted = [...rows].sort((a, b) => a.order - b.order);
+  const below = (c: number) => c === 13 || c === 11;
+  sorted.forEach((row, i) => {
+    const later = Number(row.conditionValue[0]);
+    for (const prev of sorted.slice(0, i)) {
+      const earlier = Number(prev.conditionValue[0]);
+      if (prev.condition === 0
+        || (below(prev.condition) && below(row.condition)
+          && (earlier > later || (earlier === later && (prev.condition === 11 || row.condition === 13))))) {
+        out.add(row.order);
+        return;
+      }
+    }
+  });
+  return out;
+}
 
 // `SCREAMING_SNAKE` -> `Screaming snake`, so a constant the tables miss never renders blank.
 export function prettyConst(name: string): string {
@@ -808,8 +856,10 @@ export function castSummary(
     return cast.count > 1 ? `${cast.count} random ${many}${where}` : `a random ${one}${where}`;
   }
   const how = cast.sort ? ` ${labelOf(SORT_LABEL, cast.sort)}` : '';
+  // `count` is a 0-based index into the sorted list, clamped to its last entry
   if (cast.pick === 'NTH_TARGET_SELECT') {
-    return `the ${ORDINAL[cast.count] ?? `${cast.count}th`}${how} ${one}${where}`;
+    if (!cast.count) return `the${how} ${one}${where}`;
+    return `the ${ORDINAL[cast.count + 1] ?? `${cast.count + 1}th`}${how} ${one}${where}`;
   }
   return cast.count > 1
     ? `the ${cast.count}${how} ${many}${where}`
@@ -826,7 +876,7 @@ function castSummaryKo(cast: NonNullable<SkillHit['cast']>): string {
     : '';
   if (cast.pick === 'ALL') return `${where}모든 ${who}`;
   const how = cast.sort ? `${labelOf(SORT_LABEL, cast.sort, 'ko')} ` : '';
-  if (cast.pick === 'NTH_TARGET_SELECT') return `${where}${how}${who} 중 ${cast.count}번째`;
+  if (cast.pick === 'NTH_TARGET_SELECT') return cast.count ? `${where}${how}${who} 중 ${cast.count + 1}번째` : `${where}${how}${who}`;
   return cast.count > 1 ? `${where}${how}${who} ${cast.count}명` : `${where}${how}${who}`;
 }
 
@@ -944,11 +994,11 @@ export function detailSummary(detail: SkillDetail, lang: Lang = 'en'): string[] 
 
 // The condition constant decides what its values mean; `SAME_ATTRIBUTE_TYPE` / `SAME_POSITION_TYPE` carry an undecoded value.
 export function gateSummary(
-  gate: SkillGate, data: CharacterData, lang: Lang = 'en',
+  gate: SkillGate, data: CharacterData, lang: Lang = 'en', stateName?: (id: string) => string,
 ): string {
   const [first, second] = gate.values;
   const id = first?.id ?? '';
-  const state = first?.name ?? INTERNAL_STATE[lang];
+  const state = first?.name ?? (stateName && id ? stateName(id) : INTERNAL_STATE[lang]);
   const n = second?.id ?? '';
   const pct = `${Number((Number(id) * 100).toPrecision(6))}%`;
   const typed = (table: TypeTable) => typeLabel(data.types[table][id] ?? null, lang) || id;

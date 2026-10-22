@@ -21,6 +21,7 @@ const NAV: NavItem[] = [
   { href: '/stages', label: 'navStages', match: (p: string) => p.startsWith('/stage') || p === '/events' },
   { href: '/items', label: 'navItems', match: (p: string) => p === '/items' || p === '/item' },
   { href: '/farm', label: 'navFarm', match: (p: string) => p === '/farm' },
+  { href: '/party', label: 'navParty', match: (p: string) => p === '/party' },
 ];
 
 const NAV_ETC: NavItem[] = [

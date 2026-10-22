@@ -95,8 +95,8 @@
     ]
    },
    "bytes": {
-    "google": 10574884,
-    "onestore": 10551888
+    "google": 18496129,
+    "onestore": 18388345
    }
   },
   {
@@ -320,8 +320,8 @@
     "added": []
    },
    "bytes": {
-    "google": 6031126,
-    "onestore": 6160192
+    "google": 9767591,
+    "onestore": 10040602
    }
   },
   {
@@ -776,6 +776,49 @@
    "bytes": {
     "google": 6145231,
     "onestore": 6149631
+   }
+  },
+  {
+   "key": "af_ch0075",
+   "kind": "affection",
+   "character": "CH0075",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 42,
+   "faces": 5,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "overlay"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0075.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN"
+    ],
+    "added": [
+     "nipplepatch_L_CEN",
+     "nipplepatch_R_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 13921980,
+    "onestore": 13934484
    }
   },
   {
@@ -1345,8 +1388,8 @@
     ]
    },
    "bytes": {
-    "google": 18877747,
-    "onestore": 18795123
+    "google": 18437051,
+    "onestore": 18355571
    }
   },
   {
@@ -1642,6 +1685,55 @@
    }
   },
   {
+   "key": "ds_ch0075",
+   "kind": "desire",
+   "character": "CH0075",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 45,
+   "faces": 0,
+   "bodyGroups": [
+    "00_loop",
+    "10_basic",
+    "10_reaction",
+    "30_overlay"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0075.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "nipple_L_1_UNCEN",
+     "nipple_L_2_UNCEN",
+     "nipple_L_2_light_1_UNCEN",
+     "nipple_L_2_light_2_UNCEN",
+     "nipple_R_1_UNCEN",
+     "nipple_R_2_UNCEN",
+     "nipple_R_2_light_1_UNCEN"
+    ],
+    "added": [
+     "nipplepatch_L_CEN",
+     "nipplepatch_R_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 13811456,
+    "onestore": 13828415
+   }
+  },
+  {
    "key": "pl_cutin_0001",
    "kind": "pleasure",
    "character": "cutin_0001",
@@ -1853,6 +1945,26 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 3967134
+   }
+  },
+  {
+   "key": "st_ch0003",
+   "kind": "standing",
+   "character": "CH0003",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 13,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4492818
    }
   },
   {
@@ -2603,12 +2715,11 @@
     "google",
     "onestore"
    ],
-   "animations": 30,
+   "animations": 19,
    "faces": 13,
    "bodyGroups": [
     "",
-    "00",
-    "emotion_pose"
+    "00"
    ],
    "hasBg": false,
    "uncensored": true,
@@ -2637,8 +2748,8 @@
     ]
    },
    "bytes": {
-    "google": 4812385,
-    "onestore": 4798218
+    "google": 4571880,
+    "onestore": 4557763
    }
   },
   {
@@ -2883,6 +2994,26 @@
    }
   },
   {
+   "key": "st_ch0060",
+   "kind": "standing",
+   "character": "CH0060",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 17,
+   "faces": 16,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 4603186
+   }
+  },
+  {
    "key": "st_ch0062",
    "kind": "standing",
    "character": "CH0062",
@@ -2972,6 +3103,47 @@
    "bytes": {
     "google": 3382789,
     "onestore": 3440645
+   }
+  },
+  {
+   "key": "st_ch0075",
+   "kind": "standing",
+   "character": "CH0075",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0075.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped",
+     "added"
+    ],
+    "renamed": [],
+    "dropped": [
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN"
+    ],
+    "added": [
+     "nipplepatch_L_CEN",
+     "nipplepatch_R_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 10852687,
+    "onestore": 10861493
    }
   },
   {
@@ -3381,6 +3553,27 @@
    }
   },
   {
+   "key": "st_np0802",
+   "kind": "standing",
+   "character": "NP0802",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 7,
+   "faces": 4,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2643710
+   }
+  },
+  {
    "key": "st_np6023",
    "kind": "standing",
    "character": "NP6023",
@@ -3399,6 +3592,27 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 6303132
+   }
+  },
+  {
+   "key": "st_np6028",
+   "kind": "standing",
+   "character": "NP6028",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 13,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3423297
    }
   },
   {
@@ -3458,7 +3672,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 3947919
+    "onestore": 3947922
    }
   },
   {
@@ -3620,6 +3834,26 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 4252964
+   }
+  },
+  {
+   "key": "st_sc0214",
+   "kind": "standing",
+   "character": "SC0214",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 7,
+   "faces": 4,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 3562819
    }
   },
   {

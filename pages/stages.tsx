@@ -26,6 +26,7 @@ import { ShareButton } from '@/components/shareButton';
 import { hasIcon } from '@/lib/icons';
 import { nextLink } from '@/lib/hubLink';
 import { StageMeta } from '@/components/stageMeta';
+import { NemesisRooms } from '@/components/nemesisRooms';
 import { FilterChip, FilterRow } from '@/components/filters';
 import {
   DIFFICULTY_LABEL, DROP_ICON_GROUPS, GROUP_ICON_GROUPS, dropAmount, dropName, enemyCodes, groupByKey,
@@ -320,6 +321,17 @@ function SeasonPage({ season, data, chars, icons, lang, ctx, query, onQuery, tim
       <NemesisSeasonRewards season={season.nemesis} ctx={ctx} />
     </VStack>
   ) : null;
+  if (grouping && season.nemesis) {
+    return (
+      <VStack align="stretch" spacing={4}>
+        <StageCrumbs data={data} mode={grouping.group.mode} group={grouping.group} lang={lang} />
+        <GroupHeader grouping={grouping} data={data} icons={icons} lang={lang} />
+        <NemesisRooms grouping={grouping} data={data} chars={chars} icons={icons} lang={lang} />
+        {time}
+        {detail}
+      </VStack>
+    );
+  }
   if (grouping) {
     return (
       <StageList grouping={grouping} data={data} chars={chars} icons={icons} lang={lang}
@@ -514,26 +526,7 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery, extra }
   return (
     <VStack align="stretch" spacing={4}>
       <StageCrumbs data={data} mode={group.mode} group={group} lang={lang} />
-      <Flex align="center" gap={3} wrap="wrap">
-        {group.banner ? (
-          <GameIcon manifest={icons} group="banner" name={group.banner}
-            h={{ base: '68px', md: '108px' }} w="auto" objectFit="contain" reserve={false}
-            title={groupLabel(data, group, lang)} />
-        ) : (
-          <>
-            <GameIcon manifest={icons}
-              group={iconGroup(icons, GROUP_ICON_GROUPS, group.image)} name={group.image}
-              boxSize="48px" borderRadius="md" objectFit="cover" reserve={false} />
-            <Text fontSize="lg" fontWeight="bold">{groupLabel(data, group, lang)}</Text>
-          </>
-        )}
-        {groupIsLive(group) && (
-          <Badge fontSize="0.6rem" colorScheme="green">{t('stageLive')}</Badge>
-        )}
-        {groupWindow(group) && (
-          <Text fontSize="xs" color="gray.600">{groupWindow(group)}</Text>
-        )}
-      </Flex>
+      <GroupHeader grouping={grouping} data={data} icons={icons} lang={lang} />
       <ListToolbar
         search={<SearchBox value={query} onChange={onQuery} placeholder={t('search')} clearLabel={t('clearSearch')} />}
         count={t('stageCount', { n: stages.length })}
@@ -580,6 +573,35 @@ function StageList({ grouping, data, chars, icons, lang, query, onQuery, extra }
       </SimpleGrid>
       {extra}
     </VStack>
+  );
+}
+
+function GroupHeader({ grouping, data, icons, lang }: {
+  grouping: StageGrouping; data: StageData; icons: IconManifest | null; lang: Lang;
+}) {
+  const t = useT();
+  const { group } = grouping;
+  return (
+    <Flex align="center" gap={3} wrap="wrap">
+      {group.banner ? (
+        <GameIcon manifest={icons} group="banner" name={group.banner}
+          h={{ base: '68px', md: '108px' }} w="auto" objectFit="contain" reserve={false}
+          title={groupLabel(data, group, lang)} />
+      ) : (
+        <>
+          <GameIcon manifest={icons}
+            group={iconGroup(icons, GROUP_ICON_GROUPS, group.image)} name={group.image}
+            boxSize="48px" borderRadius="md" objectFit="cover" reserve={false} />
+          <Text fontSize="lg" fontWeight="bold">{groupLabel(data, group, lang)}</Text>
+        </>
+      )}
+      {groupIsLive(group) && (
+        <Badge fontSize="0.6rem" colorScheme="green">{t('stageLive')}</Badge>
+      )}
+      {groupWindow(group) && (
+        <Text fontSize="xs" color="gray.600">{groupWindow(group)}</Text>
+      )}
+    </Flex>
   );
 }
 
