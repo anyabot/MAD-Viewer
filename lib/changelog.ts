@@ -30,6 +30,118 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-10-22',
+    title: { en: 'Kouchou (Halloween), Party, readable skills and battle tools', ko: '홍접(할로윈), 파티, 쉬운 스킬 설명과 전투 도구' },
+    entries: [
+      {
+        kind: 'unit',
+        code: 'CH0075',
+        text: {
+          en: 'Kouchou (Halloween) added, with her Affection and Desire scenes, mini rig and voice.',
+          ko: '홍접(할로윈) 추가, 어펙션·데자이어 장면과 미니 캐릭터, 보이스 포함',
+        },
+      },
+      {
+        kind: 'scene',
+        text: {
+          en: '1.10.3 data: new standing rigs (including Yomi and the Halloween aberrant spirits), event stages, story and enemies.',
+          ko: '1.10.3 데이터: 신규 스탠딩(요미, 할로윈 원령 등), 이벤트 스테이지, 스토리, 적 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Skill info for the five unannounced characters in the game data (Yomi, Vesperi, Spica, Dan Xi (Halloween), Gin (Model)). It may change before release; Spica’s numbers are still placeholders.',
+          ko: '게임 데이터에 있는 미공개 캐릭터 5명(요미, 베스페리, 스피카, 단희(할로윈), 진(모델))의 스킬 정보 추가. 출시 전 바뀔 수 있으며 스피카의 수치는 아직 임시값',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Party page: save teams for Conquest, Arena and Nemesis groups, share them as a code and save them as an image.',
+          ko: '파티 페이지 추가: 작전·아레나·네메시스 그룹별 팀 저장, 코드로 공유, 이미지 저장',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Skills read in plain language, with a switch between Readable, In-game buffs and Game details.',
+          ko: '스킬을 쉬운 설명으로 표시, 쉬운 설명·게임 버프 정보·상세 데이터 전환 가능',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Skill details: when each hit fires, how damage splits across hits, proc chances, where dashes land, and each part of a multi-effect buff with its own value.',
+          ko: '스킬 상세: 타격 발동 시점, 타격별 피해 비율, 발동 확률, 돌진 착지 위치, 복합 버프의 효과별 수치 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'DPS comparison: expected damage and healing per second of each unit against a target’s defence, evasion and other stats, including skill conditions.',
+          ko: 'DPS 비교 페이지 추가: 대상의 방어·회피 등 스탯에 따른 유닛별 초당 피해·치유 기대값, 스킬 조건 반영',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Battle field guide: field size, start positions, where units stop to attack and hit radius, with an AoE checker linked from every area skill.',
+          ko: '전장 가이드 추가: 전장 크기, 시작 위치, 공격 정지 위치와 피격 반경, 범위 스킬에서 바로 여는 범위 확인 도구',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Stages and Nemesis: boss skill rotations with their conditions, room summaries, and enemy size and stationary badges.',
+          ko: '스테이지·네메시스: 보스 스킬 순서와 조건, 구역 요약, 적 크기·이동 안 함 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Character pages show line order, approach distance and hit radius.',
+          ko: '캐릭터 페이지에 배치 순서, 접근 거리, 피격 반경 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Planner: choose the route (Greedy or Fewest runs), use selection boxes, and trade lower skill materials up.',
+          ko: '플래너: 경로 선택(탐욕·최소 주행), 선택 상자 사용, 하위 스킬 재료 상위 교환',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Mini viewer records video; the skin viewer camera can be locked so drags reach the character.',
+          ko: '미니 뷰어 영상 녹화 추가, 스킨 뷰어 카메라 고정으로 드래그가 캐릭터에 전달',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Event pages show attendance rewards and draw bonuses.',
+          ko: '이벤트 페이지에 출석 보상과 누적 뽑기 보상 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Story-only characters are named in Korean and English, including Hiyori, Dorothea and the Academy Cadets.',
+          ko: '스토리 전용 캐릭터 이름을 한국어·영어로 표시 (히요리, 도로테아, 아카데미 생도 등)',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Yomi shows her own portrait; emotes sit in the right place; Claire’s mini cut-in camera fixed.',
+          ko: '요미 초상화 수정, 이모트 위치 수정, 클레어 미니 컷인 카메라 수정',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-10-16',
     title: { en: 'Artists, battle formulas and enemy stats', ko: '일러스트레이터, 전투 공식, 적 스탯' },
     entries: [
