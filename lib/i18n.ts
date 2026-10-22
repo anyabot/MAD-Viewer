@@ -267,6 +267,7 @@ export const UI = {
   tabProfile: { en: 'Profile', ko: '프로필' },
   tabSkills: { en: 'Skills', ko: '스킬' },
   tabStats: { en: 'Stats', ko: '스탯' },
+  statsProvisional: { en: 'Unreleased: level-1 stats only, may change before release.', ko: '미출시: 1레벨 스탯만 있으며 출시 전 바뀔 수 있음' },
   lockedUntil: { en: 'Locked until {date}.', ko: '{date}까지 잠김.' },
 
   rowBirthday: { en: 'Birthday', ko: '생일' },

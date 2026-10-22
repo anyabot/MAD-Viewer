@@ -1675,7 +1675,100 @@
       ]
      }
     ]
-   }
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 112.0,
+     "PHYSICS_DEFENSE": 68.0,
+     "MAX_LIFE": 2420.0,
+     "ACCURACY": 20.0,
+     "EVASION": 10.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 40.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 114.0,
+     "PHYSICS_DEFENSE": 69.0,
+     "MAX_LIFE": 2468.0,
+     "ACCURACY": 20.0,
+     "EVASION": 10.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 41.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 119.0,
+     "PHYSICS_DEFENSE": 72.0,
+     "MAX_LIFE": 2565.0,
+     "ACCURACY": 21.0,
+     "EVASION": 10.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 21.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 42.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 125.0,
+     "PHYSICS_DEFENSE": 76.0,
+     "MAX_LIFE": 2710.0,
+     "ACCURACY": 22.0,
+     "EVASION": 10.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 22.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 45.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 134.0,
+     "PHYSICS_DEFENSE": 81.0,
+     "MAX_LIFE": 2904.0,
+     "ACCURACY": 24.0,
+     "EVASION": 10.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 48.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 134.0,
+     "PHYSICS_DEFENSE": 81.0,
+     "MAX_LIFE": 2904.0,
+     "ACCURACY": 24.0,
+     "EVASION": 10.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 48.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "statsProvisional": true
   },
   "CH0004": {
    "code": "CH0004",
@@ -8183,7 +8276,88 @@
       ]
      }
     ]
-   }
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 90.0,
+     "PHYSICS_DEFENSE": 13.0,
+     "MAX_LIFE": 3080.0,
+     "ACCURACY": 10.0,
+     "EVASION": 10.0,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 198.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 95.0,
+     "PHYSICS_DEFENSE": 14.0,
+     "MAX_LIFE": 3141.0,
+     "ACCURACY": 10.2,
+     "EVASION": 10.2,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 209.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 100.0,
+     "PHYSICS_DEFENSE": 15.0,
+     "MAX_LIFE": 3203.0,
+     "ACCURACY": 10.600000000000001,
+     "EVASION": 10.600000000000001,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 220.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 110.00000000000001,
+     "PHYSICS_DEFENSE": 16.5,
+     "MAX_LIFE": 3264.0,
+     "ACCURACY": 11.200000000000001,
+     "EVASION": 11.200000000000001,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 242.00000000000003,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 115.0,
+     "PHYSICS_DEFENSE": 17.0,
+     "MAX_LIFE": 3326.0,
+     "ACCURACY": 12.0,
+     "EVASION": 12.0,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 253.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 120.0,
+     "PHYSICS_DEFENSE": 18.0,
+     "MAX_LIFE": 3326.0,
+     "ACCURACY": 12.0,
+     "EVASION": 12.0,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 264.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "statsProvisional": true
   },
   "CH0015": {
    "code": "CH0015",
@@ -36169,7 +36343,88 @@
       ]
      }
     ]
-   }
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 144.0,
+     "PHYSICS_DEFENSE": 11.0,
+     "MAX_LIFE": 2520.0,
+     "ACCURACY": 10.0,
+     "EVASION": 10.0,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 162.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 152.0,
+     "PHYSICS_DEFENSE": 12.0,
+     "MAX_LIFE": 2590.0,
+     "ACCURACY": 10.2,
+     "EVASION": 10.2,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 171.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 160.0,
+     "PHYSICS_DEFENSE": 12.5,
+     "MAX_LIFE": 2620.0,
+     "ACCURACY": 10.600000000000001,
+     "EVASION": 10.600000000000001,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 180.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 176.0,
+     "PHYSICS_DEFENSE": 13.750000000000002,
+     "MAX_LIFE": 2671.0,
+     "ACCURACY": 11.200000000000001,
+     "EVASION": 11.200000000000001,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 198.00000000000003,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 184.0,
+     "PHYSICS_DEFENSE": 14.0,
+     "MAX_LIFE": 2721.0,
+     "ACCURACY": 12.0,
+     "EVASION": 12.0,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 207.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 192.0,
+     "PHYSICS_DEFENSE": 15.0,
+     "MAX_LIFE": 2721.0,
+     "ACCURACY": 12.0,
+     "EVASION": 12.0,
+     "PHYSICS_CRITICAL_CHANCE": 40.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 216.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "statsProvisional": true
   },
   "CH0062": {
    "code": "CH0062",
@@ -38694,7 +38949,100 @@
       ]
      }
     ]
-   }
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 104.0,
+     "PHYSICS_DEFENSE": 50.0,
+     "MAX_LIFE": 2200.0,
+     "ACCURACY": 20.0,
+     "EVASION": 20.0,
+     "PHYSICS_CRITICAL_CHANCE": 130.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 5.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 106.0,
+     "PHYSICS_DEFENSE": 50.0,
+     "MAX_LIFE": 2244.0,
+     "ACCURACY": 20.0,
+     "EVASION": 20.0,
+     "PHYSICS_CRITICAL_CHANCE": 133.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 5.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 110.0,
+     "PHYSICS_DEFENSE": 52.0,
+     "MAX_LIFE": 2332.0,
+     "ACCURACY": 21.0,
+     "EVASION": 21.0,
+     "PHYSICS_CRITICAL_CHANCE": 138.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 21.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 5.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 116.0,
+     "PHYSICS_DEFENSE": 55.0,
+     "MAX_LIFE": 2464.0,
+     "ACCURACY": 22.0,
+     "EVASION": 22.0,
+     "PHYSICS_CRITICAL_CHANCE": 146.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 22.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 6.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 125.0,
+     "PHYSICS_DEFENSE": 59.0,
+     "MAX_LIFE": 2640.0,
+     "ACCURACY": 24.0,
+     "EVASION": 24.0,
+     "PHYSICS_CRITICAL_CHANCE": 156.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 6.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 125.0,
+     "PHYSICS_DEFENSE": 59.0,
+     "MAX_LIFE": 2640.0,
+     "ACCURACY": 24.0,
+     "EVASION": 24.0,
+     "PHYSICS_CRITICAL_CHANCE": 156.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 6.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "statsProvisional": true
   },
   "CH0071": {
    "code": "CH0071",
@@ -38743,7 +39091,106 @@
       ]
      }
     ]
-   }
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 48.0,
+     "PHYSICS_DEFENSE": 53.0,
+     "MAX_LIFE": 2200.0,
+     "ACCURACY": 11.0,
+     "EVASION": 15.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 125.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 49.0,
+     "PHYSICS_DEFENSE": 54.0,
+     "MAX_LIFE": 2244.0,
+     "ACCURACY": 11.0,
+     "EVASION": 15.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 128.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 20.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 51.0,
+     "PHYSICS_DEFENSE": 56.0,
+     "MAX_LIFE": 2332.0,
+     "ACCURACY": 12.0,
+     "EVASION": 16.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 133.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 21.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 5.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 54.0,
+     "PHYSICS_DEFENSE": 59.0,
+     "MAX_LIFE": 2464.0,
+     "ACCURACY": 13.0,
+     "EVASION": 17.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 140.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 22.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 58.0,
+     "PHYSICS_DEFENSE": 63.0,
+     "MAX_LIFE": 2640.0,
+     "ACCURACY": 14.0,
+     "EVASION": 18.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 150.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 58.0,
+     "PHYSICS_DEFENSE": 63.0,
+     "MAX_LIFE": 2640.0,
+     "ACCURACY": 14.0,
+     "EVASION": 18.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "HEAL": 150.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 24.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 3.0,
+     "PENETRATION_DEFEND": 6.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "statsProvisional": true
   },
   "CH0075": {
    "code": "CH0075",

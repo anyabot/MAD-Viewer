@@ -172,6 +172,8 @@ export type CharacterEntry = {
   battlePatterns?: { start?: BattlePattern[]; repeat?: BattlePattern[] };
   /** Level 1, by star grade then `STAT_TYPE`; grade 6 is a cap row, not reachable. */
   baseStats?: Record<string, Record<string, number>>;
+  // unannounced unit: level-1 stats only, no level growth
+  statsProvisional?: boolean;
   /** What each level after the first adds, keyed the same way as `baseStats`. */
   levelStats?: Record<string, Record<string, number>>;
   /** Per affection rank from index 0; ranks accumulate. */
