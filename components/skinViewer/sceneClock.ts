@@ -110,3 +110,48 @@ export function createFadeCover(PIXI: any, app: any, clock: SceneClock): FadeCov
     },
   };
 }
+
+export type BlinkCover = {
+  apply: (open: number, from: number | null, position: number, color: string, duration: number) => void;
+  reset: () => void;
+  tick: () => void;
+};
+
+// `@blink`: a cover with an elliptical opening, `open` 0 shut to 1 fully open, centred `position` of the way down.
+export function createBlinkCover(PIXI: any, app: any, clock: SceneClock): BlinkCover {
+  const cover = new PIXI.Graphics();
+  cover.eventMode = 'none';
+  cover.visible = false;
+  app.stage.addChild(cover);
+  let open = 1;
+  let position = 0.5;
+  let color = 'black';
+  let tween: { from: number; to: number; at: number; duration: number } | null = null;
+  const draw = () => {
+    cover.clear();
+    if (open >= 1) { cover.visible = false; return; }
+    const w = app.screen.width;
+    const h = app.screen.height;
+    cover.rect(0, 0, w, h).fill(color);
+    if (open > 0) cover.ellipse(w / 2, h * position, w * 0.75, h * open * 1.2).cut();
+    cover.visible = true;
+  };
+  return {
+    apply: (to, from, at, tint, duration) => {
+      position = at;
+      color = tint;
+      if (from !== null) open = from;
+      if (duration > 0) tween = { from: open, to, at: clock.now(), duration };
+      else { tween = null; open = to; }
+      draw();
+    },
+    reset: () => { tween = null; open = 1; draw(); },
+    tick: () => {
+      if (!tween) return;
+      const t = Math.min(1, (clock.now() - tween.at) / tween.duration);
+      open = tween.from + (tween.to - tween.from) * t;
+      if (t >= 1) tween = null;
+      draw();
+    },
+  };
+}

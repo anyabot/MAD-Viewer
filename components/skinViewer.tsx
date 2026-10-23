@@ -26,7 +26,7 @@ import {
 import {
   canRecordCanvas, startCanvasVideo, type VideoRecording,
 } from '@/components/skinViewer/exportVideo';
-import { createFadeCover, createSceneClock } from '@/components/skinViewer/sceneClock';
+import { createBlinkCover, createFadeCover, createSceneClock } from '@/components/skinViewer/sceneClock';
 import { JiggleField } from '@/components/skinViewer/jiggle';
 import { setExpressionReporter, type Vars } from '@/components/skinViewer/interactions';
 import { useGameLang } from '@/lib/gameText';
@@ -35,7 +35,7 @@ import {
   type DragBoneMotion, type DragBoneSettings,
 } from '@/components/skinViewer/dragBone';
 import {
-  cutsceneOffsetAt, rigCameraTransform,
+  cutsceneOffsetAt, gameViewFit, rigCameraTransform,
   eventVoiceId, eventVoiceIds, sceneBgmIds, sceneVoiceIds, scriptCameraTransform,
   type CameraBase, type CameraState, type SceneFadeState, type SceneTimelineRig,
 } from '@/components/skinViewer/scenes';
@@ -57,7 +57,7 @@ import {
   buildViewerShareUrl, parseViewerShare, type ViewerShareState,
 } from '@/lib/viewerShare';
 import {
-  playBgm, playSceneSound, prefetchSceneAudio, setSceneSoundRate, stopBgm, stopSceneSound,
+  holdSceneSound, pauseBgm, playBgm, playSceneSound, playSfx, prefetchSceneAudio, setSceneSoundRate, stopBgm, stopSceneSound, stopSfx,
   type SceneAudioIndex,
 } from '@/lib/sceneAudio';
 import {
@@ -147,6 +147,8 @@ export default function SkinViewer({
   const setFollowGameFlow = (value: boolean) => setViewer({ followGameFlow: value });
   const setLockCamera = (value: boolean) => setViewer({ lockCamera: value });
   const [timelineRig, setTimelineRig] = useState<SceneTimelineRig | null>(null);
+  const rigMixRef = useRef<SceneTimelineRig['mix']>(undefined);
+  rigMixRef.current = timelineRig?.mix;
   const [sceneRunKey, setSceneRunKey] = useState(0);
   // Drawn in Pixi so its alpha runs on the scene clock.
   const fadeRef = useRef<SceneFadeState>({ color: 'black', opacity: 0, duration: 0 });
@@ -183,6 +185,8 @@ export default function SkinViewer({
   const setVoiceOn = (value: boolean) => setViewer({ voiceOn: value });
   const setBgmOn = (value: boolean) => setViewer({ bgmOn: value });
   const [sceneAudioIndex, setSceneAudioIndex] = useState<SceneAudioIndex | null>(null);
+  // `@popupImage`: the script's picture card, shown over the scene.
+  const [popup, setPopup] = useState<{ image: string; visible: boolean; duration: number } | null>(null);
   const [subtitle, setSubtitle] = useState<
     { text: string; texts?: Record<string, string>; author?: string } | null>(null);
   const gameLang = useGameLang();
@@ -329,10 +333,21 @@ export default function SkinViewer({
 
   // The game does not voice every line, so a line with no clip still shows.
   const sayRef = useRef<(line: {
-    text: string; texts?: Record<string, string>; author?: string; voice?: string;
+    text: string; texts?: Record<string, string>; author?: string; voice?: string; join?: boolean;
   }) => void>(() => {});
   sayRef.current = (line) => {
-    if (line.text) setSubtitle({ text: line.text, texts: line.texts, author: line.author });
+    // `Join`: the line appends to what the printer already shows.
+    if (line.text) {
+      setSubtitle((prev) => (line.join && prev
+        ? {
+          ...prev,
+          text: prev.text + line.text,
+          texts: prev.texts && line.texts
+            ? Object.fromEntries(Object.entries(line.texts).map(([k, v]) => [k, (prev.texts?.[k] ?? prev.text) + v]))
+            : undefined,
+        }
+        : { text: line.text, texts: line.texts, author: line.author }));
+    }
     if (line.voice && voiceOnRef.current) {
       void playVoice(voiceIndexRef.current, line.voice);
     }
@@ -702,11 +717,38 @@ export default function SkinViewer({
       sceneTimerRef.current = { set: clock.schedule, clear: clock.cancel, now: clock.now };
       const fadeCover = createFadeCover(PIXI, app, clock);
       applyFadeRef.current = fadeCover.apply;
+      const blinkCover = createBlinkCover(PIXI, app, clock);
+      app.ticker.add(blinkCover.tick);
+      // `@spawn ShakeCamera` and `@hideAllActors` run on the scene clock like the fade.
+      let shake: { at: number } | null = null;
+      let actorFade: { from: number; to: number; at: number; duration: number } | null = null;
+      app.ticker.add(() => {
+        if (shake) {
+          // Stock `ShakeCamera`: 3 vertical shakes of 0.15 s, 0.25 s apart, 0.5 of a 5.4-unit half-height view.
+          const t = clock.now() - shake.at;
+          const cycle = 0.15 + 0.25;
+          const k = Math.floor(t / cycle);
+          const local = t - k * cycle;
+          const amp = app.screen.height * (0.5 / 10.8);
+          app.stage.position.y = k < 3 && local < 0.15 ? Math.sin((local / 0.15) * Math.PI * 2) * amp : 0;
+          if (k >= 3) { shake = null; app.stage.position.y = 0; }
+        }
+        if (actorFade) {
+          const t = actorFade.duration > 0 ? Math.min(1, (clock.now() - actorFade.at) / actorFade.duration) : 1;
+          spine.alpha = actorFade.from + (actorFade.to - actorFade.from) * t;
+          if (t >= 1) actorFade = null;
+        }
+      });
+      // A modified character shows again (`CharactersConfiguration.AutoShowOnModify`).
+      const showActor = () => { actorFade = null; spine.alpha = 1; };
       // A rebuild inherits whatever cover is up, but never re-runs its fade.
       applyFadeRef.current({ ...fadeRef.current, duration: 0 });
       // Ordered so the cover advances against the scene time this frame carries.
+      let soundHeld = false;
       app.ticker.add(() => {
-        spine.state.timeScale = playingRef.current && !sceneHeld() ? speedRef.current : 0;
+        const holding = sceneHeld();
+        if (holding !== soundHeld) { soundHeld = holding; holdSceneSound(holding); }
+        spine.state.timeScale = playingRef.current && !holding ? speedRef.current : 0;
         clock.tick(app.ticker.deltaMS);
       });
       app.ticker.add(fadeCover.tick);
@@ -763,9 +805,9 @@ export default function SkinViewer({
         track: number, clip: string, loop: boolean, reserve?: boolean,
       ) => consumeHold(track, spine.state.addAnimation(track, clip, loop, 0), reserve);
       // An empty animation mixes the track out; clearing it drops the pose outright.
-      const retireTrack = (track: number) => {
+      const retireTrack = (track: number, mix = 0) => {
         holdReservedTracks.delete(track);
-        spine.state.setEmptyAnimation(track, 0);
+        spine.state.setEmptyAnimation(track, mix);
       };
       // The fetch effect picks the default body clip before this is known.
       if (bodyAnimRef.current && overlaySet.has(bodyAnimRef.current)) {
@@ -1030,7 +1072,35 @@ export default function SkinViewer({
       let sceneBodyTrack: number | null = null;
       const sceneTrack = (clip: string, track: number | null) => (
         track ?? spineTrack(clip));
-      const sceneMix = (track: number) => (track === sceneBodyTrack ? 0.15 : 0);
+      // `ApplyMixDuration`: an assigned `Mix` wins, else the rig's from/to pair, else its `defaultMix`.
+      const sceneMix = (track: number, clip: string, assigned: number | null) => {
+        if (assigned !== null) return assigned;
+        const rig = rigMixRef.current;
+        const from = spine.state.getCurrent(track)?.animation?.name;
+        const pair = rig?.pairs.find(([a, b]) => a === from && b === clip);
+        return pair ? pair[2] : rig?.default ?? 0.2;
+      };
+      // `FadeIn`: a clip with an assigned mix starting on a track that held nothing fades in over it.
+      const fadeIns = new Map<any, { from: number; seconds: number }>();
+      app.ticker.add(() => {
+        for (const [entry, fade] of Array.from(fadeIns)) {
+          const t = Math.min(1, (sceneNow() - fade.from) / fade.seconds);
+          entry.alpha = t;
+          if (t >= 1) fadeIns.delete(entry);
+        }
+      });
+      const sceneDrive = (track: number, clip: string, loop: boolean, hold: boolean, assigned: number | null) => {
+        const before = spine.state.getCurrent(track);
+        const mix = sceneMix(track, clip, assigned);
+        const entry = driveAnimation(track, clip, loop, hold);
+        if (entry === before) return entry;
+        entry.mixDuration = mix;
+        if (!before && assigned !== null && assigned > 0) {
+          entry.alpha = 0;
+          fadeIns.set(entry, { from: sceneNow(), seconds: assigned });
+        }
+        return entry;
+      };
 
       installScenePlayerRef.current = (program) => {
         sceneBodyTrack = null;
@@ -1078,13 +1148,13 @@ export default function SkinViewer({
             }
             return Math.max(0, longest);
           },
-          playAnimation: (clip, loop, track, hold) => {
+          playAnimation: (clip, loop, track, hold, mix) => {
             if (!animSet.has(clip)) return;
+            showActor();
             const index = sceneTrack(clip, track);
             sceneBodyTrack ??= index;
-            dbg('play', { clip, track: index, loop, hold });
-            const entry = driveAnimation(index, clip, loop, hold);
-            entry.mixDuration = sceneMix(index);
+            dbg('play', { clip, track: index, loop, hold, mix });
+            sceneDrive(index, clip, loop, hold, mix);
             requestSceneSoundRef.current(baseSkinKey(skin), clip);
             if (!loop) setReaction(clip);
           },
@@ -1093,16 +1163,16 @@ export default function SkinViewer({
             const index = sceneTrack(clip, track);
             sceneBodyTrack = index;
             dbg('idle', { clip, track: index });
-            driveAnimation(index, clip, true).mixDuration = sceneMix(index);
+            sceneDrive(index, clip, true, false, null);
             setReaction(null);
           },
-          clearAnimation: (clip) => {
+          clearAnimation: (clip, mix) => {
             // Its final frame still poses the figure until something takes that track.
             const current = (spine.state.tracks ?? []).find(
               (t: any) => t?.animation?.name === clip);
-            if (current) retireTrack(current.trackIndex);
+            if (current) retireTrack(current.trackIndex, mix);
           },
-          clearTrack: (track) => retireTrack(track ?? bodyTrackRef.current()),
+          clearTrack: (track, mix) => retireTrack(track ?? bodyTrackRef.current(), mix),
           resetActor: () => {
             // Clearing tracks alone leaves every slot colour and attachment where the last clip left it.
             spine.state.clearTracks();
@@ -1110,20 +1180,22 @@ export default function SkinViewer({
             clearHoldReservationsRef.current();
             setReaction(null);
           },
-          say: (text, author, voice, texts) => {
+          say: (text, author, voice, texts, join) => {
             sayRef.current({
-              text, texts: texts ?? undefined, author: author ?? undefined, voice: voice ?? undefined,
+              text, texts: texts ?? undefined, author: author ?? undefined, voice: voice ?? undefined, join,
             });
           },
-          voice: (clip) => {
-            if (voiceOnRef.current) void playVoice(voiceIndexRef.current, clip);
+          voice: (clip, loop) => {
+            if (voiceOnRef.current) void playVoice(voiceIndexRef.current, clip, loop);
           },
           subtitle: (visible) => { if (!visible) setSubtitle(null); },
           background: (appearance, visible) => {
             dbg('background', { appearance, visible });
           },
-          fade: (color, opacity, duration) => {
-            dbg('fade', { color, opacity, duration });
+          fade: (color, opacity, duration, from) => {
+            dbg('fade', { color, opacity, duration, from });
+            // An authored `From` starts the cover there before it tweens.
+            if (from !== null && from !== undefined) setFade({ color, opacity: from, duration: 0 });
             // A fade to transparent keeps the current colour: repainting it would flash the authored colour at full opacity.
             setFade((current) => ({
               color: opacity <= 0 ? current.color : color,
@@ -1135,11 +1207,27 @@ export default function SkinViewer({
           bgm: (clip, intro, fade) => {
             requestBgmRef.current(clip, intro ?? undefined, fade);
           },
-          stopBgm: (fade) => {
+          stopBgm: (fade, clip) => {
+            if (clip && desiredBgmRef.current && desiredBgmRef.current.clip !== clip) return;
             pendingBgmRef.current = null;
             desiredBgmRef.current = null;
             stopBgm(fade);
           },
+          pauseBgm: (clip, fade) => {
+            if (clip && desiredBgmRef.current && desiredBgmRef.current.clip !== clip) return;
+            pendingBgmRef.current = null;
+            pauseBgm(fade);
+          },
+          blink: (open, from, position, _softness, color, duration) => blinkCover.apply(open, from, position, color, duration),
+          hideActors: (duration) => {
+            actorFade = { from: spine.alpha, to: 0, at: clock.now(), duration };
+          },
+          popup: (image, visible, duration) => setPopup({ image, visible, duration }),
+          shake: () => { shake = { at: clock.now() }; },
+          sfx: (clip, loop, fade) => {
+            if (bgmOnRef.current) void playSfx(sceneAudioIndexRef.current, clip, loop, fade);
+          },
+          stopSfx: (clip, fade) => stopSfx(clip, fade),
           ending: () => setReaction(null),
           onState: (state) => {
             dbg(`park ${state.label ?? 'start'} ${JSON.stringify(state.park)}`, {
@@ -1502,8 +1590,10 @@ export default function SkinViewer({
         const gameCamera = !!(camBone && camSetup && followGameFlowRef.current);
         const stagingScale = staging?.scale ?? 1;
         const viewScale = dataScale * prefabScale * (camSetup?.scale ?? 1);
-        const viewW = REFERENCE_VIEW_WIDTH * viewScale * stagingScale;
-        const viewH = viewW * app.screen.height / Math.max(app.screen.width, 1);
+        const landscape = app.screen.width >= app.screen.height;
+        const fitView = gameViewFit(viewportAspect);
+        const viewW = REFERENCE_VIEW_WIDTH * viewScale * stagingScale * (landscape ? fitView.scale : 1);
+        const viewH = landscape ? viewW / fitView.aspect : viewW * app.screen.height / Math.max(app.screen.width, 1);
         const frame = gameCamera
           ? {
             width: viewW,
@@ -1587,6 +1677,11 @@ export default function SkinViewer({
       });
 
       resetSceneVisualsRef.current = () => {
+        blinkCover.reset();
+        showActor();
+        shake = null;
+        app.stage.position.y = 0;
+        setPopup(null);
         cameraState.offsetX = 0;
         cameraState.offsetY = 0;
         cameraState.zoom = 0;
@@ -1751,6 +1846,7 @@ export default function SkinViewer({
       desiredBgmRef.current = null;
       stopSceneSound();
       stopBgm();
+      stopSfx();
       spinePixelScaleRef.current = () => 1;
       appRef.current = null;
       rootRef.current = null;
@@ -1873,6 +1969,7 @@ export default function SkinViewer({
       pendingBgmRef.current = null;
       stopSceneSound();
       stopBgm();
+      stopSfx();
     }
   }, [bgmOn]);
   useEffect(() => stopVoice, []);
@@ -2100,6 +2197,7 @@ export default function SkinViewer({
       desiredBgmRef.current = null;
       stopSceneSound();
       stopBgm();
+      stopSfx();
     }
     setStoryIdx(0);
     if (context === 'free_play') {
@@ -2235,6 +2333,13 @@ export default function SkinViewer({
                 </Text>
               )}
             </Box>
+          )}
+
+          {popup && (
+            <Center position="absolute" inset={0} zIndex={2} pointerEvents="none"
+              opacity={popup.visible ? 1 : 0} transition={`opacity ${popup.duration}s`}>
+              <Box as="img" src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/icons/popup/${popup.image}.webp`} alt="" maxW="60%" maxH="70%" objectFit="contain" />
+            </Center>
           )}
 
           {subtitle && (

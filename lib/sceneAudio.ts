@@ -20,6 +20,9 @@ export type SceneAudioIndex = {
 let effect: HTMLAudioElement | null = null;
 let music: HTMLAudioElement | null = null;
 let musicToken = 0;
+// The clip a paused track holds, so playing it again resumes rather than restarts.
+let pausedClip: string | null = null;
+let musicClip: string | null = null;
 // An animation sound is staged by its clip, so it follows the speed control.
 // Music keeps its own tempo; only the authored cross-fade is scaled.
 let effectRate = 1;
@@ -28,6 +31,7 @@ let effectRate = 1;
 export function setSceneSoundRate(value: number) {
   effectRate = Math.max(value, 0.01);
   if (effect) effect.playbackRate = effectRate;
+  for (const player of Array.from(sfx.values())) player.playbackRate = effectRate;
 }
 
 // Held as object URLs so a sound starts on the tick the animation staging it
@@ -42,7 +46,8 @@ const MAX_CACHED = 64;
 function inUse(): Set<string> {
   const live = new Set<string>();
   for (const [clip, objectUrl] of Array.from(ready)) {
-    if (effect?.src === objectUrl || music?.src === objectUrl) live.add(clip);
+    if (effect?.src === objectUrl || music?.src === objectUrl
+      || Array.from(sfx.values()).some((p) => p.src === objectUrl)) live.add(clip);
   }
   return live;
 }
@@ -116,17 +121,79 @@ export async function playSceneSound(
   try { await playFrom(effect, sources, effectRate); } catch { /* autoplay refusal or unavailable CDN */ }
 }
 
+// While the scene clock is held (a voice still starting), the animation sound and SFX hold with it, so they stay on the clip's time.
+let held: HTMLAudioElement[] = [];
+export function holdSceneSound(hold: boolean): void {
+  if (hold) {
+    held = [effect, ...Array.from(sfx.values())].filter((p): p is HTMLAudioElement => !!p && !p.paused);
+    for (const player of held) player.pause();
+    return;
+  }
+  for (const player of held) void player.play().catch(() => {});
+  held = [];
+}
+
 export function stopSceneSound() {
   if (!effect) return;
   detach(effect);
+}
+
+// Script sound effects, one player per clip so a loop and a one-shot overlap.
+const sfx = new Map<string, HTMLAudioElement>();
+let sfxToken = 0;
+
+export async function playSfx(
+  index: SceneAudioIndex | null, clip: string, loop: boolean, fade = 0,
+): Promise<void> {
+  const mine = sfxToken;
+  const sources = await urls(index, clip);
+  if (!sources || mine !== sfxToken) return;
+  const player = sfx.get(clip) ?? busAudio();
+  sfx.set(clip, player);
+  player.pause();
+  player.loop = loop;
+  player.volume = fade > 0 ? 0 : 1;
+  try { await playFrom(player, sources, effectRate); } catch { return; }
+  if (fade > 0) rampVolume(player, 1, fade);
+}
+
+export function stopSfx(clip: string | null = null, fade = 0): void {
+  if (clip === null) sfxToken += 1;
+  for (const [name, player] of Array.from(sfx)) {
+    if (clip !== null && name !== clip) continue;
+    if (fade > 0) rampVolume(player, 0, fade, () => detach(player));
+    else detach(player);
+  }
+}
+
+function rampVolume(player: HTMLAudioElement, target: number, seconds: number, done?: () => void) {
+  const from = player.volume;
+  const started = performance.now();
+  const span = (seconds * 1000) / effectRate;
+  const tick = () => {
+    const t = Math.min(1, (performance.now() - started) / span);
+    player.volume = from + (target - from) * t;
+    if (t < 1) requestAnimationFrame(tick);
+    else done?.();
+  };
+  requestAnimationFrame(tick);
 }
 
 export async function playBgm(
   index: SceneAudioIndex | null, clip: string, intro?: string, fade = 0,
 ): Promise<void> {
   const mine = ++musicToken;
+  if (music && pausedClip === clip && musicClip === clip) {
+    pausedClip = null;
+    music.volume = fade > 0 ? 0 : 1;
+    try { await music.play(); } catch { return; }
+    if (fade > 0) fadeVolume(music, 1, fade, mine);
+    return;
+  }
+  pausedClip = null;
   const loopUrls = await urls(index, clip);
   if (!loopUrls || mine !== musicToken) return;
+  musicClip = clip;
   const introUrls = intro ? await urls(index, intro) : null;
   if (mine !== musicToken) return;
   if (!music) music = busAudio();
@@ -152,7 +219,18 @@ function detach(player: HTMLAudioElement) {
   player.load();
 }
 
+// `PlayBgm Pause:true`: the track fades out and holds its position.
+export function pauseBgm(fade = 0) {
+  const mine = ++musicToken;
+  if (!music || music.paused) return;
+  pausedClip = musicClip;
+  const player = music;
+  if (fade <= 0) { player.pause(); return; }
+  fadeVolume(player, 0, fade, mine, () => player.pause());
+}
+
 export function stopBgm(fade = 0) {
+  pausedClip = null;
   const mine = ++musicToken;
   if (!music) return;
   if (fade <= 0) {

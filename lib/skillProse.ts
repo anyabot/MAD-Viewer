@@ -1,14 +1,16 @@
 import {
-  CATEGORY_LABEL, OP_LABEL, SORT_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, chanceText,
+  CATEGORY_LABEL, OP_LABEL, SKILL_CATEGORY_LABEL, SORT_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, chanceText,
   colorRuns, gateSummary, growValue, labelOf, moveSummary, opAmounts, statAmount,
 } from '@/lib/characters';
-import { dataText, type Lang } from '@/lib/i18n';
+import { dataText, pick, type Lang } from '@/lib/i18n';
 import type {
   CharacterData, SkillBehaviour, SkillEntry, SkillHit, SkillOp, SkillTrigger,
 } from '@/lib/data';
 
 // Names states per kit; `skill` labels a skill type the way the kit lists it, `trigger` is the kit's trigger skill.
-export type StateNamer = ((id: string) => string) & { skill?: (type: number) => string; trigger?: string };
+export type StateNamer = ((id: string) => string) & {
+  skill?: (type: number) => string; trigger?: string; stacks?: Set<string>; signal?: (id: string) => string[] | undefined;
+};
 
 export type Delivery = 'projectile' | 'travelling' | 'instant';
 
@@ -38,6 +40,15 @@ const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 function plain(text: string): string {
   return colorRuns(text).map((r) => (r.break ? ' ' : r.text)).join('').trim();
+}
+
+// Skills sharing a name are told apart by category, or by slot when that is shared too.
+export function skillLabel(s: SkillEntry, skills: SkillEntry[], lang: Lang): string {
+  const name = plain(dataText(lang, s.name, s.nameEn));
+  const twins = skills.filter((x) => x.name === s.name && x.skillType !== s.skillType);
+  if (!twins.length) return name;
+  if (twins.every((x) => x.categorize !== s.categorize)) return `${name} (${pick(SKILL_CATEGORY_LABEL[s.categorize], lang)})`;
+  return lang === 'ko' ? `스킬 ${s.skillType}` : `Skill ${s.skillType}`;
 }
 
 function behavioursOf(skill: SkillEntry): SkillBehaviour[] {
@@ -71,15 +82,41 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
       }
     }
   }
+  const label = (s: SkillEntry) => skillLabel(s, skills, lang);
+  // an unnamed state set at battle start by one passive grade stands for that grade being equipped
+  const markers = new Map<string, { self: boolean; long: boolean; short: boolean; skill: SkillEntry; start: boolean }[]>();
+  const stacks = new Set<string>();
+  for (const skill of skills) {
+    for (const b of behavioursOf(skill)) {
+      const add = (op: SkillOp, start: boolean) => {
+        if (op.op === 'MARKER' && op.define) {
+          const s = op.seconds?.base?.[0] ?? 0;
+          const row = { self: op.applyTo === 'CASTER' || op.team === 'SELF', long: s >= 9999, short: s > 0 && s <= 1, skill, start };
+          markers.set(op.define, [...(markers.get(op.define) ?? []), row]);
+        }
+        if (op.when?.state && Number(op.when.value) > 1) stacks.add(op.when.state);
+      };
+      for (const hit of b.hits ?? []) for (const op of hit.ops) add(op, false);
+      for (const tr of b.triggers ?? []) for (const op of tr.ops) add(op, tr.on === 'TRIGGER_TYPE_BATTLE_START');
+    }
+  }
+  const signals = new Map<string, string[]>();
+  for (const [id, rows] of markers) {
+    if (named.has(id)) continue;
+    if (rows.every((r) => r.start && r.self && r.long && r.skill.categorize === 4) && new Set(rows.map((r) => r.skill)).size === 1) {
+      named.set(id, plain(dataText(lang, rows[0].skill.name, rows[0].skill.nameEn)));
+    } else if (rows.every((r) => !r.start && r.self && r.short && (r.skill.behaviour?.hits ?? []).length)) {
+      signals.set(id, [...new Set(rows.map((r) => label(r.skill)))]);
+      named.set(id, lang === 'ko' ? '스킬 사용 표식' : 'a skill-use mark');
+    }
+  }
   const letters = new Map<string, string>();
   for (const id of order) {
     if (!named.has(id)) letters.set(id, `${lang === 'ko' ? '표식' : 'Mark'} ${LETTERS[letters.size] ?? letters.size + 1}`);
   }
   const namer: StateNamer = (id) => named.get(id) ?? letters.get(id) ?? (lang === 'ko' ? '내부 상태' : 'an internal state');
-  // the kit titles skills sharing a name by slot, so references must too
-  const label = (s: SkillEntry) => (skills.filter((x) => x.name === s.name && x.skillType !== s.skillType).length
-    ? (lang === 'ko' ? `스킬 ${s.skillType}` : `Skill ${s.skillType}`)
-    : plain(dataText(lang, s.name, s.nameEn)));
+  namer.stacks = stacks;
+  namer.signal = (id) => signals.get(id);
   namer.skill = (type) => {
     const s = skills.find((x) => x.skillType === type);
     return s ? label(s) : (lang === 'ko' ? `스킬 ${type}` : `Skill ${type}`);
@@ -194,6 +231,12 @@ export function opClause(
     }
     case 'MARKER': {
       const state = op.define ? states(op.define) : (ko ? '내부 상태' : 'an internal state');
+      const self = op.applyTo === 'CASTER' || op.team === 'SELF';
+      if (op.define && self && states.stacks?.has(op.define)) {
+        const timed = time && !time.includes('battle') && !time.includes('전투') ? ` ${time}` : '';
+        text = ko ? `${state} 1중첩 획득${timed}` : `gains a stack of ${state}${timed}`;
+        break;
+      }
       text = ko ? `${target}에게 ${state} 부여${time ? ` (${time})` : ''}` : `marks ${target} with ${state}${time ? ` ${time}` : ''}`;
       break;
     }
@@ -330,9 +373,12 @@ function whenText(t: SkillTrigger, lang: Lang, states: StateNamer): string {
   const state = t.value?.[0]?.startsWith('define_') ? states(t.value[0]) : '';
   const on = t.check ? labelOf(TARGET_LABEL, t.check, lang) : '';
   switch (t.on) {
-    case 'TRIGGER_TYPE_DURATION_DEFINE_APPLY':
+    case 'TRIGGER_TYPE_DURATION_DEFINE_APPLY': {
+      const from = t.value?.[0] ? states.signal?.(t.value[0]) : undefined;
+      if (from?.length) return ko ? `${list(from, lang)} 사용 시` : `After using ${list(from, lang, true)}`;
       if (state) return ko ? `${on ? `${on}에게 ` : ''}${state}이(가) 부여될 때` : `When ${state} is applied${on ? ` to ${on}` : ''}`;
       break;
+    }
     case 'TRIGGER_TYPE_DURATION_DEFINE_EXPIRED':
       if (state) return ko ? `${on ? `${on}의 ` : ''}${state}이(가) 끝날 때` : `When ${state}${on ? ` on ${on}` : ''} runs out`;
       break;
@@ -361,9 +407,15 @@ function triggerSentences(
       t.cooldown > 0 ? (ko ? `재사용 ${t.cooldown}초` : `${t.cooldown}s cooldown`) : '',
     ].filter(Boolean);
     const head = `${whenText(t, lang, states)}${limits.length ? ` (${limits.join(', ')})` : ''}`;
-    const ops = t.ops.length
-      ? t.ops.map((op) => opClause(op, level, period, data, lang, states)).join('; ')
-      : (ko ? '효과 없음' : 'nothing');
+    // the same cast behind several conditions reads as one cast with alternatives
+    const casts = t.ops.length > 1 && t.ops.every((op) => op.op === 'USE_TRIGGER_SKILL' && op.when);
+    const ops = casts
+      ? `${opClause({ ...t.ops[0], when: undefined }, level, period, data, lang, states)} — ${t.ops
+        .map((op) => workCheck(op.when!, lang, states).replace(/^only with /, 'while it has ').replace(/^only without /, 'while it lacks '))
+        .join(ko ? ' 또는 ' : ', or ')}`
+      : t.ops.length
+        ? t.ops.map((op) => opClause(op, level, period, data, lang, states)).join('; ')
+        : (ko ? '효과 없음' : 'nothing');
     return `${head}: ${ops}.`;
   });
 }

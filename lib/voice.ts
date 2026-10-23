@@ -141,7 +141,7 @@ export function stopVoice() {
  * swallowed so a silent failure never breaks the scene it belongs to, and an
  * uncached clip streams rather than waiting for a full download.
  */
-export async function playVoice(index: VoiceIndex | null, voiceId: string): Promise<void> {
+export async function playVoice(index: VoiceIndex | null, voiceId: string, loop = false): Promise<void> {
   const folder = index?.clips[voiceId];
   if (!folder) return;
   const mine = ++token;
@@ -153,6 +153,7 @@ export async function playVoice(index: VoiceIndex | null, voiceId: string): Prom
     const sources = cached ? [cached] : await voiceClipUrls(folder, voiceId);
     if (mine !== token) return;
     if (!audio) audio = busAudio();
+    audio.loop = loop;
     await playFrom(audio, sources, rate);
   } catch {
     // Autoplay refusal or a clip that is not on the CDN yet.
