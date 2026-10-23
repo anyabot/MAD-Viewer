@@ -2,6 +2,8 @@
 // runtime, so a build-time path list would need regenerating per character.
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
+import { useSpoilerGate } from '@/components/spoilers';
+import { useHideSpoilers, useSpoilerFacts } from '@/lib/spoilers';
 import { createPersisted } from '@altterisk/game-hub/persist';
 import NextLink from 'next/link';
 import {
@@ -79,6 +81,12 @@ export default function CharacterPage() {
 
   const mine = useMemo(
     () => (code ? skinsByCharacter(skins).get(code) ?? [] : []), [skins, code]);
+  const facts = useSpoilerFacts();
+  const unitSpoiler = !code || !chars || !facts ? null
+    : !!chars.characters[code]?.unreleased || facts.units.has(code);
+  const hideSpoilers = useHideSpoilers();
+  const gated = useSpoilerGate(unitSpoiler, '/characters');
+  const blocked = gated || (hideSpoilers && unitSpoiler !== false);
 
   useEffect(() => { setSelected(sharedSkin); }, [code, sharedSkin]);
   const current = useMemo(
@@ -92,7 +100,7 @@ export default function CharacterPage() {
     if (current && !current.stores.includes(store)) setStore(current.stores[0] ?? 'onestore');
   }, [current, store, sharedStore]);
 
-  if (error || !chars || !router.isReady) {
+  if (error || !chars || !router.isReady || blocked) {
     return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 

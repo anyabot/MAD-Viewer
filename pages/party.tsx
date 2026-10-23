@@ -1,3 +1,4 @@
+import { useSpoilerUnit } from '@/lib/spoilers';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -619,9 +620,10 @@ function UnitPicker({ ctx, taken, onPick, onClear, onClose }: {
   const t = useT();
   const [query, setQuery] = useState('');
   const [attribute, setAttribute] = useState<number | null>(null);
+  const spoilerUnit = useSpoilerUnit();
   const roster = useMemo(() => Object.values(ctx.chars.characters)
-    .filter((e) => isPlayable(e) && !e.unreleased)
-    .sort((a, b) => characterName(a, ctx.lang).localeCompare(characterName(b, ctx.lang))), [ctx]);
+    .filter((e) => isPlayable(e) && !e.unreleased && !spoilerUnit(e.code))
+    .sort((a, b) => characterName(a, ctx.lang).localeCompare(characterName(b, ctx.lang))), [ctx, spoilerUnit]);
   const q = query.trim().toLowerCase();
   const shown = roster.filter((e) => (attribute == null || e.attributeType === attribute)
     && (!q || [e.name, e.nameEn, characterName(e, ctx.lang), e.code]

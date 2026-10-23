@@ -1,3 +1,4 @@
+import { useSpoilerUnit } from '@/lib/spoilers';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { textMatch } from '@altterisk/game-hub/filters';
 import {
@@ -310,12 +311,13 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
   const [shown, setShown] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<Record<string, true>>({});
   const [totalsOpen, setTotalsOpen] = useState(false);
+  const spoilerUnit = useSpoilerUnit();
 
   // Only the playable roster carries a material group, so only it can be costed.
   const roster = useMemo(() => Object.values(data.characters)
-    .filter((e) => isPlayable(e) && e.skillMaterialGroup)
+    .filter((e) => isPlayable(e) && e.skillMaterialGroup && !spoilerUnit(e.code))
     .sort((a, b) => characterName(a, lang).localeCompare(characterName(b, lang))),
-  [data, lang]);
+  [data, lang, spoilerUnit]);
 
   const hard = useMemo(() => pool.filter(isHardStage), [pool]);
 

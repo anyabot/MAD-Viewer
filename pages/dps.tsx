@@ -1,3 +1,4 @@
+import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -86,6 +87,7 @@ function DefenseCurve({ units, chars, target, build, timing, burst, lang, patter
 }
 
 export default function DpsPage() {
+  const spoilerUnit = useSpoilerUnit();
   const t = useT();
   const lang = useLang();
   const L = (en: string, ko: string) => (lang === 'ko' ? ko : en);
@@ -113,9 +115,9 @@ export default function DpsPage() {
   }, []);
 
   const roster = useMemo(() => (chars ? Object.entries(chars.characters)
-    .filter(([, e]) => e.characterType === 1 && !e.unreleased && e.battlePatterns?.repeat?.length)
+    .filter(([code, e]) => e.characterType === 1 && !e.unreleased && !spoilerUnit(code) && e.battlePatterns?.repeat?.length)
     .map(([code, e]) => ({ code, name: dataText(lang, e.name, e.nameEn) }))
-    .sort((a, b) => a.name.localeCompare(b.name)) : []), [chars, lang]);
+    .sort((a, b) => a.name.localeCompare(b.name)) : []), [chars, lang, spoilerUnit]);
 
   const rows = useMemo(() => {
     if (!chars || !timing || !build.level) return [];

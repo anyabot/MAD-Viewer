@@ -45,7 +45,7 @@ import {
 import type { Command } from '@/components/skinViewer/interpreter';
 import { loadSceneAudio, loadSceneTimelines, loadVoice } from '@/lib/data';
 import {
-  interactionsFor, playVoice, prefetchVoice, setVoiceRate, stopVoice, voiceBusy, voiceLipValue, voicePlaying,
+  interactionsFor, playVoice, prefetchVoice, setVoiceRate, stopVoice, voiceBusy, voiceLipValue, voicePlaying, voiceStarting,
   type VoiceIndex, type VoiceInteraction,
 } from '@/lib/voice';
 import { lobbyBodyAnimation, lobbyFaceAnimation } from '@/components/skinViewer/lobby';
@@ -228,6 +228,8 @@ export default function SkinViewer({
     ((program: Command[]) => ScenePlayer) | null>(null);
   const [sceneState, setSceneState] = useState<SceneState | null>(null);
   const canReset = !!sceneState?.armed.some((a) => a.kind === 'reset');
+  const canAdvance = sceneState?.park.kind === 'wait-input' || sceneState?.park.kind === 'drag-session'
+    || (sceneState?.park.kind === 'armed' && sceneState.armed.some((a) => a.kind === 'touch' || a.kind === 'drag'));
   const sceneLabels = useMemo(
     () => scriptScene?.modelCommands
       .filter((c) => c.class === 'Label' && c.label)
@@ -690,8 +692,10 @@ export default function SkinViewer({
       bgSpritesRef.current = backgrounds.sprites;
       syncBackgroundVisibilityRef.current = backgrounds.applyVisibility;
 
+      // A scene line's audio start-up is not scene time; at high speed it would push lines past their loop cycle.
+      const sceneHeld = () => !!scenePlayerRef.current && voiceStarting();
       const clock = createSceneClock(
-        () => (playingRef.current ? Math.max(speedRef.current, 0.01) : 0));
+        () => (playingRef.current && !sceneHeld() ? Math.max(speedRef.current, 0.01) : 0));
       const sceneNow = clock.now;
       const scheduleScene = clock.schedule;
       const cancelScene = clock.cancel;
@@ -701,7 +705,10 @@ export default function SkinViewer({
       // A rebuild inherits whatever cover is up, but never re-runs its fade.
       applyFadeRef.current({ ...fadeRef.current, duration: 0 });
       // Ordered so the cover advances against the scene time this frame carries.
-      app.ticker.add(() => clock.tick(app.ticker.deltaMS));
+      app.ticker.add(() => {
+        spine.state.timeScale = playingRef.current && !sceneHeld() ? speedRef.current : 0;
+        clock.tick(app.ticker.deltaMS);
+      });
       app.ticker.add(fadeCover.tick);
       app.ticker.add(() => scenePlayerRef.current?.tick());
 
@@ -727,12 +734,15 @@ export default function SkinViewer({
       const overlaySet = overlayAnimations(skeletonData.animations, isFaceAnim);
       setOverlayAnims(overlaySet);
 
-      // `Hold` reserves a track: the next animation on it takes `holdPrevious` and keeps the previous pose. Consumed once.
+      // `Hold` reserves a track: the next animation on it takes `holdPrevious`, and the held entry's attachments survive its mix-out (infinite MixAttachmentThreshold).
       const holdReservedTracks = new Set<number>();
       clearHoldReservationsRef.current = () => holdReservedTracks.clear();
       const consumeHold = (track: number, entry: any, reserve?: boolean) => {
         entry.holdPrevious = holdReservedTracks.delete(track);
-        if (reserve) holdReservedTracks.add(track);
+        if (reserve) {
+          holdReservedTracks.add(track);
+          entry.mixAttachmentThreshold = Infinity;
+        }
         return entry;
       };
       // Re-setting a loop already current on its track restarts it from frame 0.
@@ -741,7 +751,10 @@ export default function SkinViewer({
       ) => {
         const current = spine.state.getCurrent(track);
         if (loop && current?.animation?.name === clip) {
-          if (reserve) holdReservedTracks.add(track);
+          if (reserve) {
+            holdReservedTracks.add(track);
+            current.mixAttachmentThreshold = Infinity;
+          }
           return current;
         }
         return consumeHold(track, spine.state.setAnimation(track, clip, loop), reserve);
@@ -1013,8 +1026,6 @@ export default function SkinViewer({
       };
 
       // --- script playback ------------------------------------------------
-      // The actor's return target: a non-looping clip finishing here sets the idle on this track again.
-      let sceneIdle: { clip: string; track: number } | null = null;
       // Not the Lobby phase's track — a desire scene drives 10, the lobby widget 0. The first clip played names it until an idle does.
       let sceneBodyTrack: number | null = null;
       const sceneTrack = (clip: string, track: number | null) => (
@@ -1022,7 +1033,6 @@ export default function SkinViewer({
       const sceneMix = (track: number) => (track === sceneBodyTrack ? 0.15 : 0);
 
       installScenePlayerRef.current = (program) => {
-        sceneIdle = null;
         sceneBodyTrack = null;
         unsupportedSeen.current = new Set();
         setUnsupported([]);
@@ -1081,7 +1091,6 @@ export default function SkinViewer({
           setIdle: (clip, track) => {
             if (!animSet.has(clip)) return;
             const index = sceneTrack(clip, track);
-            sceneIdle = { clip, track: index };
             sceneBodyTrack = index;
             dbg('idle', { clip, track: index });
             driveAnimation(index, clip, true).mixDuration = sceneMix(index);
@@ -1099,7 +1108,6 @@ export default function SkinViewer({
             spine.state.clearTracks();
             spine.skeleton.setToSetupPose();
             clearHoldReservationsRef.current();
-            sceneIdle = null;
             setReaction(null);
           },
           say: (text, author, voice, texts) => {
@@ -1144,14 +1152,6 @@ export default function SkinViewer({
             setSceneState(state);
           },
         });
-      };
-
-      const resumeSceneIdle = (track: number) => {
-        if (!sceneIdle || track !== sceneIdle.track) return;
-        dbg('resume idle', { clip: sceneIdle.clip, track });
-        driveAnimation(sceneIdle.track, sceneIdle.clip, true)
-          .mixDuration = sceneMix(sceneIdle.track);
-        setReaction(null);
       };
 
       // Bounding-box attachments are the touch regions; what a region does comes from the exporter's table, never its name.
@@ -1366,9 +1366,9 @@ export default function SkinViewer({
           dbg('complete', { clip: done, track });
           // The return to idle belongs to the entry that ends the chain.
           if (entry?.next) return;
+          // Only the script returns to the idle (a fired trigger walks back to its DesireIdleCommand); a finished clip holds its last frame.
           if (scenePlayerRef.current) {
-            resumeSceneIdle(track);
-            // A timer lands a frame late, and the mix-out resets the clip's attachments for that frame.
+            setReaction((r) => (r === done ? null : r));
             scenePlayerRef.current.animationFinished(track, bodyTrackRef.current());
             return;
           }
@@ -2283,6 +2283,12 @@ export default function SkinViewer({
               <WrapItem>
                 <ActionButton icon="reload" label={t('btnRestart')} onClick={reloadPlayback} />
               </WrapItem>
+              {sceneState && (
+                <WrapItem>
+                  <ActionButton icon="touch" label={t('btnAdvance')} disabled={!canAdvance}
+                    onClick={() => scenePlayerRef.current?.autoAdvance()} />
+                </WrapItem>
+              )}
               {/* A parked `reset` waits on the view menu's own button. */}
               {canReset && (
                 <WrapItem>

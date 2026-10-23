@@ -1,3 +1,4 @@
+import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -14,6 +15,7 @@ import {
 } from '@/lib/data';
 
 export default function ArtistsPage() {
+  const spoilerUnit = useSpoilerUnit();
   const t = useT();
   const lang = useLang();
   const [chars, setChars] = useState<CharacterData | null>(null);
@@ -33,13 +35,13 @@ export default function ArtistsPage() {
   const artists = useMemo(() => {
     const groups = new Map<string, CharacterEntry[]>();
     for (const c of Object.values(chars?.characters ?? {})) {
-      if (!c.artist || !isPlayable(c)) continue;
+      if (!c.artist || !isPlayable(c) || spoilerUnit(c.code)) continue;
       groups.set(c.artist, [...(groups.get(c.artist) ?? []), c]);
     }
     return [...groups.entries()]
       .map(([name, list]) => [name, list.sort((a, b) => a.code.localeCompare(b.code))] as const)
       .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
-  }, [chars]);
+  }, [chars, spoilerUnit]);
 
   // The browser's own hash scroll fires before the list has loaded.
   useEffect(() => {

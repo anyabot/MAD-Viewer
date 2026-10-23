@@ -1,3 +1,4 @@
+import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState } from 'react';
 import { Box, HStack, Select, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import { FIELD } from '@/lib/battleField';
@@ -18,12 +19,13 @@ function areaSkills(chars: CharacterData, code: string): string[] {
 export default function AoeStage({ chars, icons, unit, skill: initialSkill }: {
   chars: CharacterData; icons: IconManifest | null; unit?: string; skill?: string;
 }) {
+  const spoilerUnit = useSpoilerUnit();
   const lang = useLang();
   const L = (en: string, ko: string) => (lang === 'ko' ? ko : en);
   const roster = useMemo(() => Object.entries(chars.characters)
-    .filter(([code, e]) => e.characterType === 1 && e.positionType && !e.unreleased && areaSkills(chars, code).length)
+    .filter(([code, e]) => e.characterType === 1 && e.positionType && !e.unreleased && !spoilerUnit(code) && areaSkills(chars, code).length)
     .map(([code, e]) => ({ code, name: dataText(lang, e.name, e.nameEn) }))
-    .sort((a, b) => a.name.localeCompare(b.name)), [chars, lang]);
+    .sort((a, b) => a.name.localeCompare(b.name)), [chars, lang, spoilerUnit]);
   const [code, setCode] = useState(unit && chars.characters[unit] ? unit : roster[0]?.code ?? '');
   const skills = useMemo(() => areaSkills(chars, code), [chars, code]);
   const [skill, setSkill] = useState(initialSkill ?? '');

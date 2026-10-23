@@ -18,6 +18,8 @@ import { bannerNames, sceneCount } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { useT, type UiKey } from '@/lib/i18n';
 import type { VoiceIndex } from '@/lib/voice';
+import { chapterIsSpoiler, useSpoilerFilter } from '@/lib/spoilers';
+import { useSpoilerGate } from '@/components/spoilers';
 
 const KIND_ORDER: StoryChapter['kind'][] = ['main', 'event', 'nemesis'];
 const KIND_LABEL: Record<StoryChapter['kind'], UiKey> = {
@@ -41,20 +43,28 @@ export default function StoryPage() {
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
 
+  const { hide, facts } = useSpoilerFilter();
+  const asked = chapterId && index ? index.chapters[chapterId] : null;
+  const gated = useSpoilerGate(index && facts && router.isReady ? !!asked && chapterIsSpoiler(asked, facts) : null, '/story');
+  const shown = useMemo(() => (index && facts && hide ? {
+    ...index,
+    chapters: Object.fromEntries(Object.entries(index.chapters).filter(([, c]) => !chapterIsSpoiler(c, facts))),
+  } : index), [index, facts, hide]);
+
   if (error) return <Text color="red.400">{error}</Text>;
-  if (!index || !router.isReady) {
+  if (!index || !shown || !router.isReady || gated || (hide && !facts)) {
     return (
       <Center py={20}>
         <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
       </Center>
     );
   }
-  const chapter = chapterId ? index.chapters[chapterId] : null;
+  const chapter = chapterId ? shown.chapters[chapterId] : null;
   if (chapter) {
     const scene = typeof router.query.scene === 'string' ? Number(router.query.scene) : null;
     return <Reader chapter={chapter} scene={scene} chars={chars} icons={icons} />;
   }
-  return <StoryList index={index} events={events} icons={icons} />;
+  return <StoryList index={shown} events={events} icons={icons} />;
 }
 
 function StoryList({ index, events, icons }: {

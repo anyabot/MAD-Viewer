@@ -100,6 +100,8 @@ export function createScenePlayer(
   // re-runs it — restarts the deadline.
   const onlookArmedAt = new Map<number, { stamp: number; at: number }>();
   let drag: DragState | null = null;
+  // Advance-button presses per trigger, so it reaches the ones not yet fired first.
+  const advanced = new Map<number, number>();
   const delayed = new Set<number>();
   // Delayed bodies parked on `wait-animation`, by timer handle, so the clip's completion can resolve them that frame.
   const animationWaits = new Map<number, { track: number | null; advance: () => void }>();
@@ -283,6 +285,24 @@ export function createScenePlayer(
     return true;
   };
 
+  const idealGesture = (angle: number): Vars => {
+    const v: Vec = [Math.cos(angle) * 10, Math.sin(angle) * 10];
+    return { 'drag.position': v, 'drag.delta': v, 'drag.distance': 10, 'drag.direction': [v[0] / 10, v[1] / 10], 'drag.time': 0.1 };
+  };
+
+  // The first branch the session's own condition accepts for an ideal gesture, else its release.
+  const resolveIdealDrag = (): boolean => {
+    if (machine.dragSession === null) return false;
+    const inside: Calls = { 'drag.isinside': () => 1, 'drag.isoutside': () => 0 };
+    drag = null;
+    for (let k = 0; k < 8; k++) {
+      if (machine.resolveDrag(idealGesture((k * Math.PI) / 4 + Math.PI / 8), false, inside)) { step(); return true; }
+    }
+    machine.resolveDrag(idealGesture(0), true, inside);
+    step();
+    return true;
+  };
+
   /** Boredom is "nothing happened for a while", so any input restarts it. */
   const restampOnlooks = () => {
     const at = host.now();
@@ -447,6 +467,34 @@ export function createScenePlayer(
       if (stopped || park.kind !== 'wait-input') return false;
       step();
       return true;
+    },
+
+    /** Whether `autoAdvance` has anything to do. */
+    canAutoAdvance(): boolean {
+      if (stopped) return false;
+      return park.kind === 'wait-input' || park.kind === 'drag-session'
+        || (park.kind === 'armed' && armed.some((a) => a.kind === 'touch' || a.kind === 'drag'));
+    },
+
+    // A drag takes the first branch its own condition accepts for a long, quick gesture in one of eight directions, released inside any box.
+    autoAdvance(): boolean {
+      if (stopped) return false;
+      if (park.kind === 'wait-input') { step(); return true; }
+      if (park.kind === 'drag-session') return resolveIdealDrag();
+      if (park.kind !== 'armed') return false;
+      const pool = armed.filter((a) => a.kind === 'touch' || a.kind === 'drag');
+      if (!pool.length) return false;
+      const pick = pool.reduce((best, a) => ((advanced.get(a.at) ?? 0) < (advanced.get(best.at) ?? 0) ? a : best));
+      advanced.set(pick.at, (advanced.get(pick.at) ?? 0) + 1);
+      restampOnlooks();
+      if (pick.kind === 'touch') {
+        machine.fire(pick.at);
+        step();
+        return true;
+      }
+      machine.fire(pick.at, { ...idealGesture(0), 'drag.position': [0, 0], 'drag.distance': 0 });
+      step();
+      return machine.dragSession === null || resolveIdealDrag();
     },
 
     /** The index parks on an armed reset until this fires. */

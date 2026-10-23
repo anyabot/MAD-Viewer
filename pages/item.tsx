@@ -22,6 +22,8 @@ import {
   stageSources, type ItemIndex, type ItemReward,
 } from '@/lib/items';
 import { CHANNEL_LABEL, DROP_ICON_GROUPS, groupLabel, stageName } from '@/lib/stages';
+import { groupIsSpoiler, isFuture, itemIsSpoiler, useSpoilerFilter } from '@/lib/spoilers';
+import { useSpoilerGate } from '@/components/spoilers';
 
 const BOX_MODE_LABEL: Record<string, UiKey> = {
   random: 'itemBoxRandom', select: 'itemBoxSelect', all: 'itemBoxAll',
@@ -61,8 +63,12 @@ export default function ItemPage() {
   const needs = useMemo(
     () => (growth && chars ? planNeeds(growth, chars, units) : null), [growth, chars, units]);
 
+  const { hide, facts } = useSpoilerFilter();
+  const asked = ref && index ? index.items[ref] : null;
+  const gated = useSpoilerGate(index && facts && router.isReady ? !!asked && itemIsSpoiler(asked, facts) : null, '/items');
+
   if (error) return <Text color="red.400">{error}</Text>;
-  if (!index || !router.isReady) {
+  if (!index || !router.isReady || gated || (hide && !facts)) {
     return (
       <Center py={20}>
         <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
@@ -77,12 +83,15 @@ export default function ItemPage() {
   const ownerName = owner ? (gameLang === 'ko' ? owner.name : owner.nameEn || owner.name) : '';
   const fill = (text: string) => text.replace('{0}', ownerName);
   const group = DROP_ICON_GROUPS.find((g) => hasIcon(icons, g, entry.icon)) ?? 'item';
-  const fromStages = stages ? stageSources(stages, ref) : [];
-  const fromEvents = events ? eventSources(events, ref) : [];
-  const inBoxes = boxesContaining(index, ref);
-  const gifts = chars ? giftedTo(chars, ref) : [];
+  const spoilerUnit = (code: string) => hide && !!facts?.units.has(code);
+  const fromStages = (stages ? stageSources(stages, ref) : [])
+    .filter((row) => !hide || !facts || !stages?.groups[row.stage.group]
+      || !groupIsSpoiler(stages.groups[row.stage.group], facts));
+  const fromEvents = (events ? eventSources(events, ref) : []).filter((row) => !hide || !isFuture(row.event.start));
+  const inBoxes = boxesContaining(index, ref).filter((box) => !hide || !facts || !itemIsSpoiler(index.items[box] ?? {}, facts));
+  const gifts = (chars ? giftedTo(chars, ref) : []).filter((code) => !spoilerUnit(code));
   const need = needs?.total[ref] ?? 0;
-  const needBy = Object.entries(needs?.byUnit[ref] ?? {}).sort((a, b) => b[1] - a[1]);
+  const needBy = Object.entries(needs?.byUnit[ref] ?? {}).filter(([code]) => !spoilerUnit(code)).sort((a, b) => b[1] - a[1]);
   const charName = (code: string) => {
     const c = chars?.characters[code];
     return (gameLang === 'ko' ? c?.name : c?.nameEn || c?.name) || code;

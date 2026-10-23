@@ -16,6 +16,8 @@ import {
 import { formatMoment, remaining, zoneLabel } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { useLang, useT } from '@/lib/i18n';
+import { isFuture } from '@/lib/spoilers';
+import { useSpoilerGate } from '@/components/spoilers';
 import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
 import { DROP_ICON_GROUPS, enemyCodes, levelRange } from '@/lib/stages';
@@ -44,8 +46,10 @@ export default function ArchivePage() {
   const path = season?.difficulties.find((d) => d.difficulty === difficulty) ?? season?.difficulties[0];
   const poolOrder = useMemo(() => Object.keys(data?.pools ?? {}).sort((a, b) => Number(a) - Number(b)), [data]);
 
+  const gated = useSpoilerGate(data ? isFuture(season?.open?.start, now) : null, '/stages');
+
   if (error) return <Text color="red.400">{error}</Text>;
-  if (!data || !season) {
+  if (!data || !season || gated) {
     return (
       <Center py={20}>
         <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>

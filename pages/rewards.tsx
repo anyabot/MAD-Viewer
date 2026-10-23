@@ -17,6 +17,7 @@ import {
 import { formatMoment } from '@/lib/events';
 import { gameText, useGameLang, type GameLang } from '@/lib/gameText';
 import { useLang, useT, type UiKey } from '@/lib/i18n';
+import { useSpoilerFilter, withoutRewardSpoilers } from '@/lib/spoilers';
 
 type Ctx = RewardCtx;
 
@@ -256,7 +257,9 @@ export default function RewardsPage() {
     { id: 'pass', label: t('rewardsPass') },
   ];
   const [tab, setTab] = tabParam(nextRouterAdapter(router), tabItems);
-  const ctx: Ctx | null = data ? { data, icons, gameLang, now, serverTime } : null;
+  const { hide, facts } = useSpoilerFilter();
+  const shown = useMemo(() => (data && hide ? (facts ? withoutRewardSpoilers(data, facts) : null) : data), [data, facts, hide]);
+  const ctx: Ctx | null = shown ? { data: shown, icons, gameLang, now, serverTime } : null;
 
   return (
     <VStack align="stretch" spacing={4}>

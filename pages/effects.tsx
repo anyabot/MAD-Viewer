@@ -24,6 +24,7 @@ import {
   type KitSkill, type MatchedGroup,
 } from '@/lib/effects';
 import { characterIcon } from '@/lib/icons';
+import { useSpoilerFilter } from '@/lib/spoilers';
 import { useFilters } from '@/lib/filterStore';
 import { dataText, text, useLang, useT, type Lang } from '@/lib/i18n';
 import {
@@ -44,6 +45,7 @@ export default function EffectsPage() {
   const set = useFilters((s) => s.setEffects);
   const toggle = useFilters((s) => s.toggleEffect);
   const clear = useFilters((s) => s.clearEffects);
+  const { hide, facts } = useSpoilerFilter();
 
   useEffect(() => {
     loadCharacters().then(setChars).catch((e) => setError(String(e)));
@@ -58,9 +60,10 @@ export default function EffectsPage() {
   // computed against it rather than against the whole index.
   const scoped = useMemo(() => kits.filter((kit) => {
     const c = kit.entry;
+    if (hide && (c.unreleased || facts?.units.has(c.code))) return false;
     if (c.unreleased) return unreleased;
     return npcs || isPlayable(c);
-  }), [kits, npcs, unreleased]);
+  }), [kits, npcs, unreleased, hide, facts]);
 
   const results = useMemo(() => {
     const q = query.trim();
@@ -145,11 +148,13 @@ export default function EffectsPage() {
               <Text>{t('includeNpcs')}</Text>
             </FilterChip>
           </WrapItem>
-          <WrapItem>
-            <FilterChip active={unreleased} onClick={() => set({ unreleased: !unreleased })}>
-              <Text>{t('includeUnreleased')}</Text>
-            </FilterChip>
-          </WrapItem>
+          {!hide && (
+            <WrapItem>
+              <FilterChip active={unreleased} onClick={() => set({ unreleased: !unreleased })}>
+                <Text>{t('includeUnreleased')}</Text>
+              </FilterChip>
+            </WrapItem>
+          )}
         </Wrap>
       </VStack>
       </FilterPanel>

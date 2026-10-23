@@ -35,6 +35,10 @@ import {
 } from '@/lib/stages';
 import { dataText, pick, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
+  groupIsSpoiler, isFuture, useSpoilerFilter, withoutRewardSpoilers, withoutStageSpoilers,
+} from '@/lib/spoilers';
+import { useSpoilerGate } from '@/components/spoilers';
+import {
   loadArchive, loadCharacters, loadIcons, loadRewards, loadStages, type ArchiveIndex,
   type CharacterData, type IconManifest, type RewardIndex, type RewardWindow, type StageData,
   type StageEntry, type StageGroup,
@@ -69,7 +73,18 @@ export default function StagesPage() {
     loadIcons().then(setIcons).catch(() => setIcons(null));
     loadRewards().then(setRewards).catch(() => setRewards(null));
   }, []);
-  const view = useMemo(() => (data && rewards ? withSeasonModes(data, rewards) : data), [data, rewards]);
+  const { hide, facts } = useSpoilerFilter();
+  const shownData = useMemo(() => (data && facts && hide ? withoutStageSpoilers(data, facts) : data), [data, facts, hide]);
+  const shownRewards = useMemo(
+    () => (rewards && facts && hide ? withoutRewardSpoilers(rewards, facts) : rewards), [rewards, facts, hide]);
+  const view = useMemo(
+    () => (shownData && shownRewards ? withSeasonModes(shownData, shownRewards) : shownData), [shownData, shownRewards]);
+  const nemesisKey = groupKey?.startsWith('nemesis:') ? groupKey : null;
+  const askedSeason = typeof router.query.season === 'string' && (mode === 'nemesis' || mode === 'arena')
+    ? `${mode}:${router.query.season}` : null;
+  const gated = useSpoilerGate(!data || !rewards || !facts || !router.isReady ? null
+    : (!!groupKey && !!data.groups[groupKey] && groupIsSpoiler(data.groups[groupKey], facts))
+      || [nemesisKey, askedSeason].some((key) => !!key && seasonIsFuture(rewards, key, now)), '/stages');
 
   const urlQuery = list.text('q');
   useEffect(() => {
@@ -81,7 +96,7 @@ export default function StagesPage() {
   useEffect(() => { if (router.isReady) setQuery(urlQuery); }, [mode, groupKey]);
 
   if (error) return <Text color="red.400">{error}</Text>;
-  if (!data || !view || !router.isReady) {
+  if (!data || !view || !router.isReady || gated || (hide && !facts)) {
     return (
       <Center py={20}>
         <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
@@ -89,7 +104,7 @@ export default function StagesPage() {
     );
   }
 
-  const ctx: RewardCtx | null = rewards ? { data: rewards, icons, gameLang, now, serverTime } : null;
+  const ctx: RewardCtx | null = shownRewards ? { data: shownRewards, icons, gameLang, now, serverTime } : null;
   const time = <TimeControls serverTime={serverTime} onChange={setServerTime} />;
   const season = groupKey && ctx ? seasonOf(ctx.data, groupKey) : null;
   if (season && ctx) {
@@ -98,10 +113,10 @@ export default function StagesPage() {
         query={query} onQuery={setQuery} time={time} />
     );
   }
-  const grouping = groupKey ? groupByKey(data, groupKey) : null;
-  if (grouping) {
+  const grouping = groupKey && shownData ? groupByKey(shownData, groupKey) : null;
+  if (grouping && shownData) {
     return (
-      <StageList grouping={grouping} data={data} chars={chars} icons={icons} lang={lang}
+      <StageList grouping={grouping} data={shownData} chars={chars} icons={icons} lang={lang}
         query={query} onQuery={setQuery} />
     );
   }
@@ -139,6 +154,12 @@ function seasonsOf(rewards: RewardIndex, mode: 'nemesis' | 'arena'): Season[] {
     mode, arena: s, open: s.open, tile: rewards.arena.tile,
     group: seasonGroup(mode, s.id, arenaSeasonName(s), s.open, rewards.arena.banner, s.order),
   }));
+}
+
+function seasonIsFuture(rewards: RewardIndex, key: string, now: number): boolean {
+  const [mode, id] = key.split(':');
+  const list: { id: number; open?: RewardWindow }[] = mode === 'arena' ? rewards.arena.seasons : rewards.nemesis.seasons;
+  return isFuture(list.find((s) => String(s.id) === id)?.open?.start, now);
 }
 
 // Only Nemesis seasons have a page: an Arena season differs from the next in rewards alone.

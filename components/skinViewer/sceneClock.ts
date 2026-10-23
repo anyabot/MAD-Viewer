@@ -17,6 +17,8 @@ export type SceneClock = {
 export function createSceneClock(rate: () => number): SceneClock {
   let now = 0;
   let seq = 0;
+  // A task scheduled from a firing task counts from that task's due time, so a frame's lateness does not add up along a chain of waits.
+  let firingAt: number | null = null;
   let tasks: { id: number; at: number; run: () => void }[] = [];
   // Cancelling holds for the frame the task was already due on: several tasks
   // can come due together, and one clearing the sequence must stop the rest.
@@ -26,7 +28,7 @@ export function createSceneClock(rate: () => number): SceneClock {
     now: () => now,
     schedule: (task, seconds) => {
       const id = ++seq;
-      tasks.push({ id, at: now + Math.max(0, seconds), run: task });
+      tasks.push({ id, at: (firingAt ?? now) + Math.max(0, seconds), run: task });
       return id;
     },
     cancel: (handle) => {
@@ -44,7 +46,9 @@ export function createSceneClock(rate: () => number): SceneClock {
           const taken = new Set(due.map((task) => task.id));
           tasks = tasks.filter((task) => !taken.has(task.id));
           for (const task of due) {
-            if (!cancelled.has(task.id)) task.run();
+            if (cancelled.has(task.id)) continue;
+            firingAt = task.at;
+            try { task.run(); } finally { firingAt = null; }
           }
         }
       }

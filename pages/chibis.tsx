@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useSpoilerFilter } from '@/lib/spoilers';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { Box, Center, Spinner, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
@@ -68,7 +69,9 @@ export default function ChibisPage() {
     loadEvents().then(setEvents).catch(() => setEvents(null));
   }, []);
 
+  const { hide, facts } = useSpoilerFilter();
   const groups = Object.entries(art?.events ?? {})
+    .filter(([id]) => !hide || (!!facts && !facts.events.has(Number(id))))
     .filter(([, entry]) => entry.stickers.length > 0 || entry.chibis.length > 0)
     .sort(([a], [b]) => Number(b) - Number(a));
 

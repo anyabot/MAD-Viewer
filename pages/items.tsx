@@ -22,6 +22,7 @@ import {
   type ItemCategory, type ItemEntry, type ItemIndex,
 } from '@/lib/items';
 import { DROP_ICON_GROUPS } from '@/lib/stages';
+import { itemIsSpoiler, useSpoilerFilter } from '@/lib/spoilers';
 
 type View = 'all' | 'planner';
 
@@ -52,11 +53,16 @@ export default function ItemsPage() {
   const needs = useMemo(
     () => (growth && chars ? planNeeds(growth, chars, units).total : {}), [growth, chars, units]);
 
-  if (error || !index) {
+  const { hide, facts } = useSpoilerFilter();
+  const listed = useMemo(() => (index && facts && hide
+    ? Object.entries(index.items).filter(([, e]) => !itemIsSpoiler(e, facts))
+    : Object.entries(index?.items ?? {})), [index, facts, hide]);
+
+  if (error || !index || (hide && !facts)) {
     return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 
-  const rows = Object.entries(index.items)
+  const rows = listed
     .filter(([ref, e]) => (!category || itemCategory(e) === category)
       && (view === 'all' || (inventory[ref] ?? 0) > 0 || (needs[ref] ?? 0) > 0)
       && textMatch(query, Object.values(e.name)))
@@ -69,7 +75,7 @@ export default function ItemsPage() {
       <Text fontSize="2xl" fontWeight="bold">{t('navItems')}</Text>
       <ListToolbar
         search={<SearchBox value={query} onChange={setQuery} placeholder={t('search')} clearLabel={t('clearSearch')} />}
-        count={t('countOf', { shown: rows.length, total: Object.keys(index.items).length })}
+        count={t('countOf', { shown: rows.length, total: listed.length })}
         activeFilters={(category ? 1 : 0) + (view !== 'all' ? 1 : 0)}
         onClearFilters={() => { setCategory(null); setView('all'); }}
         labels={{ clearFilters: t('clearFilters') }}
