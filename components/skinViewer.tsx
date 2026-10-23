@@ -1080,11 +1080,11 @@ export default function SkinViewer({
         const pair = rig?.pairs.find(([a, b]) => a === from && b === clip);
         return pair ? pair[2] : rig?.default ?? 0.2;
       };
-      // `FadeIn`: a clip with an assigned mix starting on a track that held nothing fades in over it.
-      const fadeIns = new Map<any, { from: number; seconds: number }>();
+      // `FadeIn`/`ApplyFadeIns`: a clip with an assigned mix starting on an empty track has alpha = trackTime / mix until 1.
+      const fadeIns = new Map<any, number>();
       app.ticker.add(() => {
-        for (const [entry, fade] of Array.from(fadeIns)) {
-          const t = Math.min(1, (sceneNow() - fade.from) / fade.seconds);
+        for (const [entry, seconds] of Array.from(fadeIns)) {
+          const t = Math.max(0, Math.min(1, (entry.trackTime ?? 0) / seconds));
           entry.alpha = t;
           if (t >= 1) fadeIns.delete(entry);
         }
@@ -1097,7 +1097,7 @@ export default function SkinViewer({
         entry.mixDuration = mix;
         if (!before && assigned !== null && assigned > 0) {
           entry.alpha = 0;
-          fadeIns.set(entry, { from: sceneNow(), seconds: assigned });
+          fadeIns.set(entry, assigned);
         }
         return entry;
       };
@@ -1415,7 +1415,8 @@ export default function SkinViewer({
       spine.state.addListener({
         event: (entry: any, event: any) => {
           const name = event?.data?.name;
-          const voice = eventVoiceId(event?.data?.audioPath);
+          // `DesireAndAffectionActor::OnSpineEvent` voices only events named `voc…`; a `sound/voc…` cue is the script's line, which `PrintText` already plays.
+          const voice = typeof name === 'string' && name.startsWith('voc') ? eventVoiceId(event?.data?.audioPath) : null;
           if (voice) {
             dbg('voice event', { name, voice, from: entry?.animation?.name });
             if (voiceOnRef.current) void playVoice(voiceIndexRef.current, voice);
