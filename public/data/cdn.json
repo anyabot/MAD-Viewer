@@ -415,11 +415,12 @@
       "buckets": {
         "1": {
           "repo": "MAD-audio-1",
-          "ref": "v11"
+          "ref": "v12"
         }
       },
       "units": {
         "bgm": "1",
+        "sfx": "1",
         "view/af_ch0009": "1",
         "view/af_ch0011": "1",
         "view/af_ch0015": "1",

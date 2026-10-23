@@ -12,6 +12,8 @@ export type SceneScript = {
 export type SceneTimelineRig = {
   view?: SceneScript;
   story?: SceneScript;
+  // the rig's `SkeletonDataAsset` mixes: `defaultMix` and its [from, to, seconds] pairs
+  mix?: { default: number; pairs: [string, string, number][] };
 };
 
 export type SceneTimelineData = {
@@ -31,7 +33,7 @@ export function eventVoiceIds(events: { audioPath?: string | null }[] | null | u
 
 export function sceneVoiceIds(rig: SceneTimelineRig | null | undefined): string[] {
   const out = new Set<string>();
-  for (const scene of Object.values(rig ?? {})) {
+  for (const scene of [rig?.view, rig?.story]) {
     for (const command of scene?.modelCommands ?? []) {
       if (command.voice) out.add(command.voice);
     }
@@ -43,7 +45,7 @@ export function sceneVoiceIds(rig: SceneTimelineRig | null | undefined): string[
  *  for as long as the fetch takes. */
 export function sceneBgmIds(rig: SceneTimelineRig | null | undefined): string[] {
   const out = new Set<string>();
-  for (const scene of Object.values(rig ?? {})) {
+  for (const scene of [rig?.view, rig?.story]) {
     for (const command of scene?.modelCommands ?? []) {
       if (command.class !== 'PlayBgm') continue;
       const { BgmPath, IntroBgmPath } = command.fields;
@@ -89,6 +91,13 @@ export function cutsceneOffsetAt(
     rotation: a.rotation + (b.rotation - a.rotation) * t,
     scale: a.scale + (b.scale - a.scale) * t,
   };
+}
+
+// The drawn aspect is clamped to 4:3–19.5:9 and narrower screens zoom in up to 1/1.2; past 16:9 the reference height holds, so a wider screen shows less width.
+export function gameViewFit(aspect: number): { aspect: number; scale: number } {
+  const drawn = Math.min(Math.max(aspect, 4 / 3), 13 / 6);
+  const narrow = Math.min(1, Math.max(0, (13 / 6 - drawn) / (5 / 6)));
+  return { aspect: drawn, scale: Math.min(1, (16 / 9) / drawn) / (1 + 0.2 * narrow) };
 }
 
 export function scriptCameraTransform(base: CameraBase, state: CameraState): {

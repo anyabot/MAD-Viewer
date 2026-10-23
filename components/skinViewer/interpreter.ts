@@ -22,22 +22,35 @@ export type Command = {
 };
 
 export type Effect =
-  | { kind: 'animation'; clip: string; loop: boolean; track: number | null; hold: boolean }
+  | { kind: 'animation'; clip: string; loop: boolean; track: number | null; hold: boolean; mix: number | null }
   | { kind: 'idle'; clip: string; track: number | null }
-  | { kind: 'clear-animation'; clip: string }
-  | { kind: 'clear-track'; track: number | null }
+  | { kind: 'clear-animation'; clip: string; mix: number }
+  | { kind: 'clear-track'; track: number | null; mix: number }
   | { kind: 'reset-actor' }
-  | { kind: 'say'; text: string; texts: Record<string, string> | null; author: string | null; voice: string | null }
-  | { kind: 'voice'; clip: string }
+  | { kind: 'say'; text: string; texts: Record<string, string> | null; author: string | null; voice: string | null; join: boolean }
+  | { kind: 'voice'; clip: string; loop: boolean }
   | { kind: 'subtitle'; visible: boolean }
   | { kind: 'background'; appearance: string; visible: boolean; duration: number }
-  | { kind: 'fade'; color: string; opacity: number; duration: number }
+  // `from` is the cover's starting opacity when the command sets one
+  | { kind: 'fade'; color: string; opacity: number; duration: number; from?: number | null }
+  // `@blink`: an eye-shaped cover, open to `open` (0 shut, 1 open) around `position` (0–1 down the screen)
+  | { kind: 'blink'; open: number; from: number | null; position: number; softness: number; color: string; duration: number }
   | { kind: 'camera'; offset: (number | null)[] | null; zoom: number | null; duration: number }
   | { kind: 'bgm'; clip: string; intro: string | null; fade: number }
-  | { kind: 'stop-bgm'; fade: number }
+  | { kind: 'pause-bgm'; clip: string | null; fade: number }
+  | { kind: 'stop-bgm'; clip: string | null; fade: number }
+  | { kind: 'hide-actors'; duration: number }
+  | { kind: 'popup'; image: string; visible: boolean; duration: number }
+  | { kind: 'shake'; scale: number }
+  // `@loop` in the background: run the body at `at` `count` times (null: until stopped) on its own cursor
+  | { kind: 'loop'; at: number; count: number | null; id: string | null }
+  | { kind: 'stop-loop'; id: string | null }
+  | { kind: 'sfx'; clip: string; loop: boolean; fade: number }
+  | { kind: 'stop-sfx'; clip: string | null; fade: number }
   | { kind: 'ending' }
   /** `@Delay`: run the body at `at` after `seconds`, without blocking. */
   | { kind: 'delay'; at: number; seconds: number }
+  | { kind: 'fork'; at: number }
   | { kind: 'unsupported'; command: string };
 
 /** Why the machine stopped. The host resolves it and calls `run` again. */
@@ -54,6 +67,8 @@ export type Park =
   | { kind: 'wait-voice' }
   /** A fired drag waits here for `resolveDrag`, called every frame the pointer is held. */
   | { kind: 'drag-session' }
+  // every `fork` an `Await` started has finished
+  | { kind: 'join' }
   | { kind: 'armed' }
   | { kind: 'end' };
 
@@ -77,6 +92,13 @@ export type ArmedDrag = Registration & {
 export type Armed = ArmedTouch | ArmedOnlook | ArmedReset | ArmedDrag;
 
 export type StepResult = { effects: Effect[]; park: Park; armed: Armed[] };
+
+// `ScriptPlayerConfiguration.WaitByDefault` is on: a command without `Wait:false` holds the index until it completes.
+const waits = (f: Record<string, string>): boolean => f.Wait !== 'false';
+// `ActorManagerConfiguration.DefaultDuration` of the background, character and printer managers.
+const ACTOR_DURATION = 0.35;
+// `DesireAffectionSubtitle`'s `ChangeVisibilityDuration`.
+const PRINTER_FADE = 0.3;
 
 /** Naninovel's fade layers are background actors, addressed by appearance. */
 const FADE_APPEARANCE = /BG_Fade_(White|Black)/i;
@@ -153,6 +175,12 @@ export class ScriptMachine {
 
   /** An empty `@desire.wait` waits for this, not for an assumed body track. */
   lastTrack: number | null = null;
+
+  // The subtitle printer starts hidden; `PrintText` shows it first and, with `WaitVisibilityBeforePrint`, waits out the fade.
+  printerVisible = false;
+
+  // `ParametrizeGeneric Join`: the next printed line appends to the one on screen.
+  private joinNext = false;
 
   /** The actor's idle spot survives a jump and is replaced only by another idle. */
   private idleAt: number | null = null;
@@ -244,6 +272,13 @@ export class ScriptMachine {
   /** Runs only the body of the command at `at`, for a body that plays on its own cursor. */
   startBody(at: number): void {
     this.pc = at + 1;
+    this.bound = this.endOfBody(at);
+    this.halted = false;
+  }
+
+  /** Runs the command at `at` and its nested lines on their own cursor. */
+  startCommand(at: number): void {
+    this.pc = at;
     this.bound = this.endOfBody(at);
     this.halted = false;
   }
@@ -358,6 +393,8 @@ export class ScriptMachine {
       loop: bool(c.fields.Loop),
       track,
       hold: bool(c.fields.Hold),
+      // An unassigned `Mix` leaves the rig's own mix; an assigned one is clamped at 0.
+      mix: c.fields.Mix === undefined ? null : Math.max(0, num(c.fields.Mix, 0)),
     });
     this.lastTrack = track;
     return track;
@@ -421,10 +458,27 @@ export class ScriptMachine {
           this.pc++;
           break;
 
+        case 'Await': {
+          // `CV.Naninovel.Commands.Await`: each direct child runs with its nested lines as its own transient, all at once, and the index waits for every one.
+          const children = this.childrenOf(this.pc);
+          this.pc = this.endOfBody(this.pc);
+          if (!children.length) break;
+          for (const child of children) effects.push({ kind: 'fork', at: child });
+          return this.park({ kind: 'join' }, effects);
+        }
+
+        case 'HidePrinter': {
+          // `HidePrinter::Hide`: the printer fades out over `Duration`, else its `ChangeVisibilityDuration` (0.3 s).
+          this.printerVisible = false;
+          effects.push({ kind: 'subtitle', visible: false });
+          this.pc++;
+          const seconds = num(f.Duration, PRINTER_FADE);
+          if (waits(f) && seconds > 0) return this.park({ kind: 'wait', seconds }, effects);
+          break;
+        }
+
         case 'UsingScopeCommand':
-        case 'Await':
         case 'ShowUI':
-        case 'HidePrinter':
         case 'Group':
         case 'NaniSummary':
         case 'Skip':
@@ -434,6 +488,7 @@ export class ScriptMachine {
 
         case 'ParametrizeGeneric':
           this.pc++;
+          if (f.Join === 'true') this.joinNext = true;
           // Desire views author the skip, affection views do not, so an affection view advances one line per tap.
           if (f.SkipWaitingInput !== 'true' && f.Wait === 'true') {
             return this.park({ kind: 'wait-input' }, effects);
@@ -529,9 +584,11 @@ export class ScriptMachine {
           }
           if (bool(f.Reset)) {
             // `Reset:true` clears a track, or the whole actor when none is named; it never plays the clip.
-            if (c.clip) effects.push({ kind: 'clear-animation', clip: c.clip });
+            // The clear mixes the track out over the command's `Mix`.
+            const mix = num(f.Mix, 0);
+            if (c.clip) effects.push({ kind: 'clear-animation', clip: c.clip, mix });
             else if (f.Track !== undefined) {
-              effects.push({ kind: 'clear-track', track: this.track(f.Track, undefined) });
+              effects.push({ kind: 'clear-track', track: this.track(f.Track, undefined), mix });
             } else effects.push({ kind: 'reset-actor' });
             this.pc++;
             break;
@@ -631,6 +688,14 @@ export class ScriptMachine {
         }
 
         case 'PrintText': {
+          if (!this.printerVisible) {
+            this.printerVisible = true;
+            // `WaitVisibilityBeforePrint`: the line prints once the printer has faded in; only a waited command holds for it.
+            if (waits(f)) {
+              effects.push({ kind: 'subtitle', visible: true });
+              return this.park({ kind: 'wait', seconds: PRINTER_FADE }, effects);
+            }
+          }
           if (c.text || c.voice) {
             effects.push({
               kind: 'say',
@@ -638,9 +703,12 @@ export class ScriptMachine {
               texts: c.texts ?? null,
               author: c.author ?? null,
               voice: c.voice ?? null,
+              join: this.joinNext,
             });
           }
+          this.joinNext = false;
           this.pc++;
+          if (!waits(f)) break;
           // DesireAffectionSubtitle, the scenes' default printer, has AutoWait off.
           if (f.WaitForInput === 'true') {
             return this.park({ kind: 'wait-input' }, effects);
@@ -650,13 +718,14 @@ export class ScriptMachine {
         }
 
         case 'PlayVoice':
-          if (c.voice) effects.push({ kind: 'voice', clip: c.voice });
+          // `AudioManager.PlayVoice` returns once the clip starts, so nothing waits for it to end.
+          if (c.voice) effects.push({ kind: 'voice', clip: c.voice, loop: bool(f.Loop) });
           this.pc++;
           break;
 
         case 'ModifyBackground': {
           const appearance = f.AppearanceAndTransition ?? '';
-          const duration = num(f.Duration, 0);
+          const duration = num(f.Duration, ACTOR_DURATION);
           const visible = f.Visible !== 'false';
           const fadeLayer = FADE_APPEARANCE.exec(appearance);
           if (fadeLayer) {
@@ -670,7 +739,7 @@ export class ScriptMachine {
             effects.push({ kind: 'background', appearance, visible, duration });
           }
           this.pc++;
-          if (f.Wait === 'true' && duration > 0) {
+          if (waits(f) && duration > 0) {
             return this.park({ kind: 'wait', seconds: duration }, effects);
           }
           break;
@@ -678,53 +747,142 @@ export class ScriptMachine {
 
         case 'ScreenFadeCommand': {
           const duration = num(f.Duration, 0);
+          // `Direction` In fades the screen 0→1 visible, Out 1→0; an assigned `From`/`To` wins.
+          const inward = f.Direction === 'In' ? true : f.Direction === 'Out' ? false : null;
+          const to = f.To !== undefined ? num(f.To, 1) : inward === false ? 0 : 1;
+          const from = f.From !== undefined ? num(f.From, 0) : inward === null ? null : inward ? 0 : 1;
+          const cover = (v: number) => Math.max(0, Math.min(1, 1 - v));
           effects.push({
             kind: 'fade',
             color: (f.Color ?? 'black').toLowerCase(),
             // `To` is the screen's target visibility, so the cover's opacity is its complement.
-            opacity: Math.max(0, Math.min(1, 1 - num(f.To, 1))),
+            opacity: cover(to),
+            from: from === null ? null : cover(from),
             duration,
           });
           this.pc++;
-          if (f.Wait === 'true' && duration > 0) {
+          if (waits(f) && duration > 0) {
             return this.park({ kind: 'wait', seconds: duration }, effects);
           }
           break;
         }
 
-        case 'PlayBgm':
-          if (f.BgmPath) {
-            effects.push({
-              kind: 'bgm',
-              clip: f.BgmPath,
-              intro: f.IntroBgmPath ?? null,
-              fade: num(f.FadeInDuration, 0),
-            });
+        case 'BlinkCommand': {
+          const duration = num(f.Duration, 0);
+          effects.push({
+            kind: 'blink',
+            open: Math.max(0, Math.min(1, num(f.To, 0))),
+            from: f.From !== undefined ? num(f.From, 0) : null,
+            position: num(f.Position, 50) / 100,
+            softness: num(f.Softness, 0.5),
+            color: (f.Color ?? 'black').toLowerCase(),
+            duration,
+          });
+          this.pc++;
+          if (waits(f) && duration > 0) return this.park({ kind: 'wait', seconds: duration }, effects);
+          break;
+        }
+
+        case 'HideAllActors': {
+          const duration = num(f.Duration, ACTOR_DURATION);
+          effects.push({ kind: 'hide-actors', duration });
+          this.pc++;
+          if (waits(f) && duration > 0) return this.park({ kind: 'wait', seconds: duration }, effects);
+          break;
+        }
+
+        case 'PopupImage': {
+          const duration = num(f.Duration, ACTOR_DURATION);
+          if (f.ImageId) effects.push({ kind: 'popup', image: f.ImageId, visible: f.Visible !== 'false', duration });
+          this.pc++;
+          if (waits(f) && duration > 0) return this.park({ kind: 'wait', seconds: duration }, effects);
+          break;
+        }
+
+        case 'Spawn':
+          if ((f.Path ?? '').toLowerCase() === 'shakecamera') effects.push({ kind: 'shake', scale: num(f.Scale, 1) });
+          this.pc++;
+          break;
+
+        case 'LoopCommand': {
+          // `Active:false` stops the background loop named `Id`; `Wait:true` runs the body in the foreground, else it loops on its own cursor.
+          if (f.Active === 'false') {
+            effects.push({ kind: 'stop-loop', id: f.Id ?? null });
+            this.pc = this.endOfBody(this.pc);
+            break;
+          }
+          if (f.Wait === 'true') {
+            this.pc++;
+            break;
+          }
+          effects.push({ kind: 'loop', at: this.pc, count: f.Count ? num(f.Count, 1) : null, id: f.Id ?? null });
+          this.pc = this.endOfBody(this.pc);
+          break;
+        }
+
+        case 'PlayBgm': {
+          const fade = num(f.FadeInDuration, 0);
+          // `PlayBgm::Play`: `Pause:true` pauses the named track (all of them when unnamed) instead of playing it.
+          if (f.Pause === 'true') effects.push({ kind: 'pause-bgm', clip: f.BgmPath ?? null, fade });
+          else if (f.BgmPath) {
+            effects.push({ kind: 'bgm', clip: f.BgmPath, intro: f.IntroBgmPath ?? null, fade });
           }
           this.pc++;
+          if (waits(f) && fade > 0) return this.park({ kind: 'wait', seconds: fade }, effects);
           break;
+        }
 
-        case 'StopBgm':
-          effects.push({ kind: 'stop-bgm', fade: num(f.FadeOutDuration, 0) });
+        case 'StopBgm': {
+          const fade = num(f.FadeOutDuration, 0);
+          effects.push({ kind: 'stop-bgm', clip: f.BgmPath ?? null, fade });
           this.pc++;
+          if (waits(f) && fade > 0) return this.park({ kind: 'wait', seconds: fade }, effects);
           break;
+        }
 
-        case 'ModifyCamera':
+        case 'PlaySfx': {
+          const fade = num(f.FadeInDuration, 0);
+          if (f.SfxPath) {
+            effects.push({ kind: 'sfx', clip: f.SfxPath, loop: f.Loop === 'true', fade });
+          }
+          this.pc++;
+          if (waits(f) && fade > 0) return this.park({ kind: 'wait', seconds: fade }, effects);
+          break;
+        }
+
+        case 'StopSfx': {
+          const fade = num(f.FadeOutDuration, 0);
+          effects.push({ kind: 'stop-sfx', clip: f.SfxPath ?? null, fade });
+          this.pc++;
+          if (waits(f) && fade > 0) return this.park({ kind: 'wait', seconds: fade }, effects);
+          break;
+        }
+
+        case 'ModifyCamera': {
+          const duration = num(f.Duration, ACTOR_DURATION);
           effects.push({
             kind: 'camera',
             offset: vector(f.Offset),
             zoom: f.Zoom === undefined ? null : num(f.Zoom, 0),
-            duration: num(f.Duration, 0),
+            duration,
           });
           this.pc++;
+          if (waits(f) && duration > 0) return this.park({ kind: 'wait', seconds: duration }, effects);
           break;
+        }
 
-        case 'ModifyTextPrinter':
+        case 'ModifyTextPrinter': {
           if (f.Visible !== undefined) {
-            effects.push({ kind: 'subtitle', visible: f.Visible !== 'false' });
+            this.printerVisible = f.Visible !== 'false';
+            effects.push({ kind: 'subtitle', visible: this.printerVisible });
           }
           this.pc++;
+          // Only an assigned change tweens; a bare printer switch completes at once.
+          const timed = ['Visible', 'ScenePosition', 'Position', 'Rotation', 'Scale', 'Tint'].some((k) => f[k] !== undefined);
+          const duration = num(f.Duration, ACTOR_DURATION);
+          if (timed && waits(f) && duration > 0) return this.park({ kind: 'wait', seconds: duration }, effects);
           break;
+        }
 
         case 'DesireEndingCommand':
         case 'AffectionEndingCommand':

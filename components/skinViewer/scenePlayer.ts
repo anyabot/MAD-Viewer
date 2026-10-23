@@ -19,20 +19,30 @@ export type SceneHost = {
   remainingCycle(track: number | null): number;
   // True while a voice line is loading or audible.
   voiceBusy(): boolean;
-  playAnimation(clip: string, loop: boolean, track: number | null, hold: boolean): void;
+  playAnimation(clip: string, loop: boolean, track: number | null, hold: boolean, mix: number | null): void;
   /** The looping clip the actor returns to when a one-shot ends on its track. */
   setIdle(clip: string, track: number | null): void;
-  clearAnimation(clip: string): void;
-  clearTrack(track: number | null): void;
+  clearAnimation(clip: string, mix: number): void;
+  clearTrack(track: number | null, mix: number): void;
   resetActor(): void;
-  say(text: string, author: string | null, voice: string | null, texts?: Record<string, string> | null): void;
-  voice(clip: string): void;
+  say(text: string, author: string | null, voice: string | null, texts?: Record<string, string> | null, join?: boolean): void;
+  voice(clip: string, loop?: boolean): void;
   subtitle(visible: boolean): void;
   background(appearance: string, visible: boolean, duration: number): void;
-  fade(color: string, opacity: number, duration: number): void;
+  fade(color: string, opacity: number, duration: number, from?: number | null): void;
+  // `@blink`: an eye-shaped cover opening to `open` (0 shut, 1 open) around `position` down the screen.
+  blink?(open: number, from: number | null, position: number, softness: number, color: string, duration: number): void;
   camera(offset: (number | null)[] | null, zoom: number | null, duration: number): void;
   bgm(clip: string, intro: string | null, fade: number): void;
-  stopBgm(fade: number): void;
+  // `clip` set stops only that track.
+  stopBgm(fade: number, clip?: string | null): void;
+  pauseBgm?(clip: string | null, fade: number): void;
+  hideActors?(duration: number): void;
+  popup?(image: string, visible: boolean, duration: number): void;
+  shake?(scale: number): void;
+  sfx?(clip: string, loop: boolean, fade: number): void;
+  /** `null` stops every sound effect. */
+  stopSfx?(clip: string | null, fade: number): void;
   ending(): void;
   /** Called after every step so the UI can follow the scene. */
   onState(state: SceneState): void;
@@ -103,31 +113,33 @@ export function createScenePlayer(
   // Advance-button presses per trigger, so it reaches the ones not yet fired first.
   const advanced = new Map<number, number>();
   const delayed = new Set<number>();
+  // `Await` children still running; the main cursor parks on `join` until this is 0.
+  let forks = 0;
   // Delayed bodies parked on `wait-animation`, by timer handle, so the clip's completion can resolve them that frame.
   const animationWaits = new Map<number, { track: number | null; advance: () => void }>();
 
   const apply = (effect: Effect): void => {
     switch (effect.kind) {
       case 'animation':
-        host.playAnimation(effect.clip, effect.loop, effect.track, effect.hold);
+        host.playAnimation(effect.clip, effect.loop, effect.track, effect.hold, effect.mix);
         break;
       case 'idle':
         host.setIdle(effect.clip, effect.track);
         break;
       case 'clear-animation':
-        host.clearAnimation(effect.clip);
+        host.clearAnimation(effect.clip, effect.mix);
         break;
       case 'clear-track':
-        host.clearTrack(effect.track);
+        host.clearTrack(effect.track, effect.mix);
         break;
       case 'reset-actor':
         host.resetActor();
         break;
       case 'say':
-        host.say(effect.text, effect.author, effect.voice, effect.texts);
+        host.say(effect.text, effect.author, effect.voice, effect.texts, effect.join);
         break;
       case 'voice':
-        host.voice(effect.clip);
+        host.voice(effect.clip, effect.loop);
         break;
       case 'subtitle':
         host.subtitle(effect.visible);
@@ -136,7 +148,7 @@ export function createScenePlayer(
         host.background(effect.appearance, effect.visible, effect.duration);
         break;
       case 'fade':
-        host.fade(effect.color, effect.opacity, effect.duration);
+        host.fade(effect.color, effect.opacity, effect.duration, effect.from ?? null);
         break;
       case 'camera':
         host.camera(effect.offset, effect.zoom, effect.duration);
@@ -145,13 +157,46 @@ export function createScenePlayer(
         host.bgm(effect.clip, effect.intro, effect.fade);
         break;
       case 'stop-bgm':
-        host.stopBgm(effect.fade);
+        host.stopBgm(effect.fade, effect.clip);
+        break;
+      case 'sfx':
+        host.sfx?.(effect.clip, effect.loop, effect.fade);
+        break;
+      case 'stop-sfx':
+        host.stopSfx?.(effect.clip, effect.fade);
         break;
       case 'ending':
         host.ending();
         break;
       case 'delay':
         runDelayed(effect.at, effect.seconds);
+        break;
+      case 'fork':
+        runDelayed(effect.at, 0, { forked: true });
+        break;
+      case 'loop':
+        runLoop(effect.at, effect.count, effect.id);
+        break;
+      case 'stop-loop': {
+        const token = loops.get(effect.id ?? '');
+        if (token) token.cancelled = true;
+        loops.delete(effect.id ?? '');
+        break;
+      }
+      case 'blink':
+        host.blink?.(effect.open, effect.from, effect.position, effect.softness, effect.color, effect.duration);
+        break;
+      case 'pause-bgm':
+        host.pauseBgm?.(effect.clip, effect.fade);
+        break;
+      case 'hide-actors':
+        host.hideActors?.(effect.duration);
+        break;
+      case 'popup':
+        host.popup?.(effect.image, effect.visible, effect.duration);
+        break;
+      case 'shake':
+        host.shake?.(effect.scale);
         break;
       case 'unsupported':
         host.unsupported?.(effect.command);
@@ -162,14 +207,25 @@ export function createScenePlayer(
   };
 
   // A delayed body plays on its own cursor; only its variable changes reach the scene.
-  const runDelayed = (at: number, seconds: number) => {
+  const runDelayed = (at: number, seconds: number, opts: {
+    forked?: boolean; onDone?: () => void; token?: { cancelled: boolean };
+  } = {}) => {
     let handle: number | null = null;
     const sub = new ScriptMachine(program);
+    let forked = !!opts.forked;
+    if (forked) forks += 1;
+    const finish = () => {
+      opts.onDone?.();
+      if (!forked) return;
+      forked = false;
+      forks -= 1;
+      if (forks === 0 && park.kind === 'join' && !stopped) step();
+    };
     let voiceWait = false;
     const advance = () => {
       if (handle !== null) { delayed.delete(handle); animationWaits.delete(handle); }
       handle = null;
-      if (stopped) return;
+      if (stopped || opts.token?.cancelled) return;
       if (voiceWait && host.voiceBusy()) {
         handle = host.schedule(advance, FRAME_SECONDS);
         delayed.add(handle);
@@ -177,7 +233,10 @@ export function createScenePlayer(
       }
       const before = { ...machine.vars };
       sub.vars = before;
+      // One printer serves every cursor.
+      sub.printerVisible = machine.printerVisible;
       const result = sub.run();
+      machine.printerVisible = sub.printerVisible;
       for (const [key, value] of Object.entries(sub.vars)) {
         if (before[key] !== value) machine.vars = { ...machine.vars, [key]: value };
       }
@@ -201,11 +260,31 @@ export function createScenePlayer(
         if (result.park.kind === 'wait-animation') {
           animationWaits.set(handle, { track: result.park.track, advance });
         }
-      }
+      } else if (result.park.kind !== 'join') finish();
     };
-    sub.startBody(at);
+    if (forked) sub.startCommand(at);
+    else sub.startBody(at);
+    if (opts.token?.cancelled) return;
     handle = host.schedule(advance, Math.max(0, seconds));
     delayed.add(handle);
+  };
+
+  // `LoopCommand::RunBackgroundLoop`: each cycle runs the body to its end; a newer loop with the same `Id` replaces the running one.
+  const loops = new Map<string, { cancelled: boolean }>();
+  const runLoop = (at: number, count: number | null, id: string | null) => {
+    const key = id ?? `@${at}`;
+    const running = loops.get(key);
+    if (running) running.cancelled = true;
+    const token = { cancelled: false };
+    loops.set(key, token);
+    let done = 0;
+    const cycle = () => {
+      if (stopped || token.cancelled) return;
+      if (count !== null && done >= count) { loops.delete(key); return; }
+      done += 1;
+      runDelayed(at, 0, { token, onDone: cycle });
+    };
+    cycle();
   };
 
   // Bounds the zero-length waits resolved in one call, so a loop of them still yields to the timer.
@@ -264,6 +343,8 @@ export function createScenePlayer(
       timer = host.schedule(poll, FRAME_SECONDS);
     } else if (park.kind === 'wait-reaction') {
       timer = host.schedule(step, Math.max(0, host.remainingReaction()));
+    } else if (park.kind === 'join' && forks === 0) {
+      timer = host.schedule(step, 0);
     }
   };
 
@@ -531,6 +612,9 @@ export function createScenePlayer(
       for (const handle of delayed) host.cancel(handle);
       delayed.clear();
       animationWaits.clear();
+      forks = 0;
+      for (const token of Array.from(loops.values())) token.cancelled = true;
+      loops.clear();
       drag = null;
     },
   };

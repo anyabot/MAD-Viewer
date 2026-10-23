@@ -15,7 +15,7 @@ import {
   patternConditionText, shadowedPatterns,
 } from '@/lib/characters';
 import {
-  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, type Delivery, type StateNamer,
+  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, skillLabel, type Delivery, type StateNamer,
 } from '@/lib/skillProse';
 import { useSkillView, type SkillView } from '@/lib/skillViewStore';
 import { dataText, useLang, useT, type UiKey } from '@/lib/i18n';
@@ -287,9 +287,9 @@ function Sentences({ lines }: { lines: string[] }) {
 }
 
 // Skills level independently; passives use star grade and normal attacks have no level.
-export function SkillRow({ skill, data, icons, showSlot, owner, states }: {
+export function SkillRow({ skill, data, icons, label, owner, states }: {
   skill: SkillEntry & { id: number }; data: CharacterData;
-  icons: IconManifest | null; showSlot?: boolean; owner?: string; states?: StateNamer;
+  icons: IconManifest | null; label?: string; owner?: string; states?: StateNamer;
 }) {
   const t = useT();
   const lang = useLang();
@@ -306,10 +306,10 @@ export function SkillRow({ skill, data, icons, showSlot, owner, states }: {
         <Wrap spacing={2} align="center">
           <WrapItem>
             <Text fontSize="sm" fontWeight="bold">
-              {showSlot ? t('skillSlotName', { n: skill.skillType }) : dataText(lang, skill.name, skill.nameEn)}
+              {label ?? dataText(lang, skill.name, skill.nameEn)}
             </Text>
           </WrapItem>
-          {showSlot && (
+          {label && !label.startsWith(dataText(lang, skill.name, skill.nameEn)) && (
             <WrapItem>
               <Text fontSize="0.6rem" color="gray.600">{dataText(lang, skill.name, skill.nameEn)}</Text>
             </WrapItem>
@@ -473,8 +473,7 @@ export function SkillList({ group, defaultStar, data, icons, owner }: {
       <VStack align="stretch" spacing={3}>
         {skills.map((skill) => (
           <SkillRow key={skill.id} skill={skill} data={data} icons={icons} owner={owner} states={states}
-            // The slot number distinguishes enemy skills that share a placeholder name.
-            showSlot={skills.filter((s) => s.name === skill.name).length > 1} />
+            label={skillLabel(skill, skills, lang)} />
         ))}
       </VStack>
     </>

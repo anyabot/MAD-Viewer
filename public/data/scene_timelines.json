@@ -2008,6 +2008,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0010": {
@@ -3979,6 +3983,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0011": {
@@ -5738,6 +5746,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0015": {
@@ -7326,6 +7338,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0019": {
@@ -9275,6 +9291,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0022": {
@@ -11592,6 +11612,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0024": {
@@ -13656,6 +13680,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0028": {
@@ -15792,6 +15820,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0032": {
@@ -17828,6 +17860,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0033": {
@@ -20158,6 +20194,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0035": {
@@ -22462,6 +22502,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0038": {
@@ -24464,6 +24508,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0040": {
@@ -25836,6 +25884,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.0,
+        "pairs": []
       }
     },
     "af_ch0042": {
@@ -27383,6 +27435,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0043": {
@@ -29816,6 +29872,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0052": {
@@ -31013,6 +31073,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.0,
+        "pairs": []
       }
     },
     "af_ch0057": {
@@ -33908,6 +33972,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0058": {
@@ -36490,6 +36558,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0068": {
@@ -37975,6 +38047,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "af_ch0075": {
@@ -40174,6 +40250,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0009": {
@@ -41960,6 +42040,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0010": {
@@ -43928,6 +44012,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0011": {
@@ -46884,6 +46972,10 @@
             }
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0015": {
@@ -48444,6 +48536,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0019": {
@@ -49532,6 +49628,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0022": {
@@ -51168,6 +51268,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0024": {
@@ -53904,6 +54008,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0028": {
@@ -55004,6 +55112,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0032": {
@@ -56131,6 +56243,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0033": {
@@ -58709,6 +58825,46 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": [
+          [
+            "10_basic/10_idle",
+            "10_reaction/face_A/10_A1_A",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/face_B/10_A1_B",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/face_C/10_A1_C",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/face_A/10_A4_A",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/face_B/10_A4_B",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/face_C/10_A4_C",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "20_emotion/20_T1_D",
+            0.0
+          ]
+        ]
       }
     },
     "ds_ch0035": {
@@ -60045,6 +60201,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0038": {
@@ -61401,6 +61561,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0040": {
@@ -64825,6 +64989,46 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": [
+          [
+            "10_reaction/10_H1_A",
+            "10_reaction/10_H1_A-B",
+            0.1
+          ],
+          [
+            "10_reaction/10_H1_A-B",
+            "10_reaction/10_H1_B",
+            0.1
+          ],
+          [
+            "lobby/10_idle",
+            "lobby/10_touch",
+            0.1
+          ],
+          [
+            "lobby/10_touch",
+            "lobby/10_idle",
+            0.1
+          ],
+          [
+            "10_reaction/10_H1_A",
+            "10_reaction/10_H1_A-B",
+            0.6
+          ],
+          [
+            "10_reaction/10_H1_compete_in",
+            "10_reaction/10_H1_compete_loop",
+            0.0
+          ],
+          [
+            "10_reaction/10_H1_compete_loop",
+            "10_reaction/10_H1_tail_failure",
+            0.1
+          ]
+        ]
       }
     },
     "ds_ch0042": {
@@ -66573,6 +66777,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0043": {
@@ -68877,6 +69085,36 @@
             "indent": 0,
             "fields": {}
           }
+        ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": [
+          [
+            "10_basic/10_idle",
+            "10_reaction/10_H1_2",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/10_A3",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/10_A4",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/10_A5",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "30_overlay/30_arrow",
+            0.0
+          ]
         ]
       }
     },
@@ -73113,6 +73351,31 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": [
+          [
+            "10_basic/10_idle",
+            "10_reaction/10_B3_1",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/10_B3_2",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/10_B3_3",
+            0.0
+          ],
+          [
+            "10_basic/10_idle",
+            "10_reaction/10_B3_4",
+            0.0
+          ]
+        ]
       }
     },
     "ds_ch0057": {
@@ -74869,6 +75132,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0058": {
@@ -78885,6 +79152,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0068": {
@@ -81237,6 +81508,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     },
     "ds_ch0075": {
@@ -84151,6 +84426,10 @@
             "fields": {}
           }
         ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
       }
     }
   }
