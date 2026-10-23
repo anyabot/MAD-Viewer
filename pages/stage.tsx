@@ -13,6 +13,8 @@ import {
   DIFFICULTY_LABEL, groupByKey, modeLabel, stageById, stageName, zoneOf,
 } from '@/lib/stages';
 import { pick, useLang, useT } from '@/lib/i18n';
+import { groupIsSpoiler, useSpoilerFacts } from '@/lib/spoilers';
+import { useSpoilerGate } from '@/components/spoilers';
 import {
   loadCharacters, loadIcons, loadStages,
   type CharacterData, type IconManifest, type StageData,
@@ -49,7 +51,11 @@ export default function StagePage() {
     };
   }, [data, stage]);
 
-  if (error || !data || !router.isReady) {
+  const facts = useSpoilerFacts();
+  const group = data && stage ? data.groups[stage.group] : null;
+  const gated = useSpoilerGate(data && facts && router.isReady ? !!group && groupIsSpoiler(group, facts) : null, '/stages');
+
+  if (error || !data || !router.isReady || gated) {
     return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 

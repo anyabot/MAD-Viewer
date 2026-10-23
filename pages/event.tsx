@@ -19,6 +19,8 @@ import {
 import { remaining, sceneCount } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { useLang, useT } from '@/lib/i18n';
+import { isFuture, useHideSpoilers } from '@/lib/spoilers';
+import { useSpoilerGate } from '@/components/spoilers';
 
 export default function EventPage() {
   const t = useT();
@@ -41,15 +43,19 @@ export default function EventPage() {
     loadEventArt().then(setEventArt).catch(() => setEventArt(null));
   }, []);
 
+  const hideSpoilers = useHideSpoilers();
+  const found = data?.events.find((e) => e.id === id);
+  const gated = useSpoilerGate(data && router.isReady ? !!found && isFuture(found.start, now) : null, '/events');
+
   if (error) return <Text color="red.400">{error}</Text>;
-  if (!data || !router.isReady) {
+  if (!data || !router.isReady || gated) {
     return (
       <Center py={20}>
         <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
       </Center>
     );
   }
-  const event = data.events.find((e) => e.id === id);
+  const event = found;
   if (!event) return <Text color="gray.500">{t('noMatch')}</Text>;
 
   const name = gameText(event.name, gameLang);
@@ -59,7 +65,7 @@ export default function EventPage() {
     .filter((c) => !bonus.some((b) => b.code === c) && !pickups.includes(c)
       && chars?.characters[c]?.characterType === 1);
   const art = eventArt?.events[String(event.id)];
-  const ordered = [...data.events].sort((a, b) => Date.parse(a.start) - Date.parse(b.start) || a.id - b.id);
+  const ordered = data.events.filter((e) => !hideSpoilers || !isFuture(e.start, now)).sort((a, b) => Date.parse(a.start) - Date.parse(b.start) || a.id - b.id);
   const at = ordered.findIndex((e) => e.id === event.id);
   const prev = ordered[at - 1];
   const next = ordered[at + 1];

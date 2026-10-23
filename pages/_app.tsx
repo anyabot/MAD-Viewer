@@ -15,6 +15,7 @@ import { restoreCollection } from '@/lib/collectionStore';
 import { restoreParty } from '@/lib/partyStore';
 import { restoreSkillView } from '@/lib/skillViewStore';
 import { restoreSeen } from '@/lib/seenStore';
+import { restoreSpoilers } from '@/lib/spoilers';
 import { ChangelogDialog } from '@/components/changelog';
 
 setTextResolver(dataText);
@@ -47,6 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreParty, []);
   useEffect(restoreSkillView, []);
   useEffect(restoreSeen, []);
+  useEffect(restoreSpoilers, []);
   return (
     <ChakraProvider theme={theme}>
       <Head>

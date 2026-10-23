@@ -1,6 +1,6 @@
 // Filtered by the axes the game itself uses, each drawn with its in-game icon.
 import { textMatch } from '@altterisk/game-hub/filters';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
   Badge, Box, Flex, Grid, HStack, Text, VStack, Wrap, WrapItem,
@@ -14,6 +14,7 @@ import {
   typeValue, type TypeTable,
 } from '@/lib/characters';
 import { characterIcon } from '@/lib/icons';
+import { useSpoilerFilter } from '@/lib/spoilers';
 import { useFilters, type Tri } from '@/lib/filterStore';
 import { useCollection } from '@/lib/collectionStore';
 import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
@@ -46,6 +47,9 @@ export default function CharactersPage() {
   const toggle = useFilters((s) => s.toggleType);
   const reset = useFilters((s) => s.resetCharacters);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const { hide, facts } = useSpoilerFilter();
+  const isSpoiler = useCallback(
+    (c: CharacterEntry) => hide && (!!c.unreleased || !!facts?.units.has(c.code)), [hide, facts]);
 
   useEffect(() => {
     loadCharacters().then(setChars).catch((e) => setError(String(e)));
@@ -59,6 +63,7 @@ export default function CharactersPage() {
   const list = useMemo(() => {
     const all = Object.values(chars?.characters ?? {});
     return all.filter((c) => {
+      if (isSpoiler(c)) return false;
       if (c.unreleased) {
         if (!unreleased) return false;
       } else if (!npcs && !isPlayable(c)) return false;
@@ -78,7 +83,7 @@ export default function CharactersPage() {
       return textMatch(query, [c.name, c.code, c.nameEn, c.nameUppercase]);
     }).sort((a, b) => a.code.localeCompare(b.code));
   }, [chars, query, npcs, unreleased, skinsOnly, wantCollected, wantFavorite, star,
-    artist, picked, byCharacter, collected, favorites]);
+    artist, picked, byCharacter, collected, favorites, isSpoiler]);
 
   const artists = useMemo(() => {
     const count = new Map<string, { n: number; en?: string | null }>();
@@ -95,7 +100,7 @@ export default function CharactersPage() {
   }
 
   const total = Object.values(chars.characters).filter(
-    (c) => (c.unreleased ? unreleased : npcs || isPlayable(c))).length;
+    (c) => !isSpoiler(c) && (c.unreleased ? unreleased : npcs || isPlayable(c))).length;
 
   const markable = list.filter((c) => isPlayable(c) && !collected[c.code]);
   const markAll = () => {
@@ -197,11 +202,13 @@ export default function CharactersPage() {
               <Text>{t('includeNpcs')}</Text>
             </FilterChip>
           </WrapItem>
-          <WrapItem>
-            <FilterChip active={unreleased} onClick={() => set({ unreleased: !unreleased })}>
-              <Text>{t('includeUnreleased')}</Text>
-            </FilterChip>
-          </WrapItem>
+          {!hide && (
+            <WrapItem>
+              <FilterChip active={unreleased} onClick={() => set({ unreleased: !unreleased })}>
+                <Text>{t('includeUnreleased')}</Text>
+              </FilterChip>
+            </WrapItem>
+          )}
         </Wrap>
       </VStack>
       </FilterPanel>

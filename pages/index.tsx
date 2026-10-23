@@ -19,6 +19,7 @@ import { gameText, useGameLang } from '@/lib/gameText';
 import { characterName } from '@/lib/characters';
 import type { IconGroup } from '@/lib/icons';
 import { useLang, useT, type UiKey } from '@/lib/i18n';
+import { isFuture, useHideSpoilers } from '@/lib/spoilers';
 import { groupIsLive, groupLabel, groupWindow } from '@/lib/stages';
 
 const VIEWER_KEYS = ['skin', 'store', 'view', 'speed', 'bg', 'camera', 'aspect', 'body', 'face', 'overlay', 'stage', 'tab'];
@@ -47,6 +48,7 @@ export default function Home() {
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [serverTime, setServerTime] = useServerTime();
   const now = useNow(30_000);
+  const hideSpoilers = useHideSpoilers();
 
   // Share links from before the viewer had its own route.
   useEffect(() => {
@@ -63,15 +65,17 @@ export default function Home() {
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
 
-  const live = (events?.events ?? []).filter((e) => ['running', 'upcoming'].includes(eventPhase(e, now)))
+  const live = (events?.events ?? [])
+    .filter((e) => (hideSpoilers ? ['running'] : ['running', 'upcoming']).includes(eventPhase(e, now)))
     .sort((a, b) => Date.parse(a.end) - Date.parse(b.end));
   const banners = (events?.banners ?? [])
-    .filter((b) => now <= Date.parse(b.end))
+    .filter((b) => now <= Date.parse(b.end) && !(hideSpoilers && isFuture(b.start, now)))
     .sort((a, b) => Date.parse(a.start) - Date.parse(b.start));
   const nemesis = stages ? Object.values(stages.groups).filter((g) => g.mode === 'nemesis'
-    && (groupIsLive(g) || (g.from && g.from > new Date(now).toISOString().slice(0, 10))))
+    && (groupIsLive(g) || (!hideSpoilers && g.from && g.from > new Date(now).toISOString().slice(0, 10))))
     .sort((a, b) => (a.from ?? '').localeCompare(b.from ?? '')) : [];
-  const season = archive?.seasons.find((s) => s.open && now <= Date.parse(s.open.end));
+  const season = archive?.seasons.find((s) => s.open && now <= Date.parse(s.open.end)
+    && !(hideSpoilers && isFuture(s.open.start, now)));
   const core = stages ? Object.values(stages.groups).filter((g) => g.mode === 'ascent' && groupIsLive(g)) : [];
 
   return (

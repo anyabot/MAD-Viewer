@@ -121,6 +121,11 @@ export function voiceBusy(): boolean {
   return (starting !== 0 && starting === token) || voicePlaying();
 }
 
+// Requested but not yet audible: the load and audio start-up before `playing`.
+export function voiceStarting(): boolean {
+  return starting !== 0 && starting === token;
+}
+
 export function stopVoice() {
   token += 1;
   if (!audio) return;

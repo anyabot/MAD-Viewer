@@ -6,6 +6,8 @@ import {
 } from '@chakra-ui/react';
 import GachaScene from '@/components/gachaScene';
 import SkinViewer from '@/components/skinViewer';
+import { useSpoilerGate } from '@/components/spoilers';
+import { useHideSpoilers, useSpoilerUnit } from '@/lib/spoilers';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
 import { GameIcon } from '@/components/gameIcon';
@@ -83,19 +85,33 @@ function SkinGallery() {
   const subNameOf = useMemo(
     () => (s: SkinListEntry) => characterSubName(charOf(s), lang), [charOf, lang]);
 
+  const hideSpoilers = useHideSpoilers();
+  const spoilerUnit = useSpoilerUnit();
+  const skinSpoiler = useMemo(
+    () => (s: SkinListEntry) => spoilerUnit(s.character) || (hideSpoilers && !!charOf(s)?.unreleased),
+    [spoilerUnit, hideSpoilers, charOf]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return (skins ?? []).filter((s) =>
-      (kind === 'all' || s.kind === kind)
+    return (skins ?? []).filter((s) => !skinSpoiler(s)
+      && (kind === 'all' || s.kind === kind)
       && (!divergedOnly || s.stores.length > 1)
       && (!q || s.key.toLowerCase().includes(q)
         || s.character.toLowerCase().includes(q)
         || (charOf(s)?.name ?? '').toLowerCase().includes(q)
         || (charOf(s)?.nameEn ?? '').toLowerCase().includes(q)));
-  }, [skins, kind, query, divergedOnly, charOf]);
+  }, [skins, kind, query, divergedOnly, charOf, skinSpoiler]);
 
-  const current = useMemo(
+  const found = useMemo(
     () => (skins ?? []).find((s) => s.key === selected) ?? null, [skins, selected]);
+  const foundSpoiler = !!found && skinSpoiler(found);
+  // A shared link to a spoiler warns and leaves; a remembered selection just moves on.
+  const sharedKey = typeof window === 'undefined' ? null : parseViewerShare(window.location.search)?.skin ?? null;
+  useSpoilerGate(found && found.key === sharedKey ? foundSpoiler : null, '/viewer');
+  useEffect(() => {
+    if (foundSpoiler) set({ selected: filtered[0]?.key ?? null });
+  }, [foundSpoiler, filtered, set]);
+  const current = foundSpoiler ? null : found;
 
   // Keep the store selection valid when switching to a skin that has only one.
   useEffect(() => {

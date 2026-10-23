@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -20,6 +20,7 @@ import {
 import { PHASE_LABEL, formatMoment, remaining, zoneLabel } from '@/lib/events';
 import { gameText, useGameLang, type GameLang } from '@/lib/gameText';
 import { pick, useLang, useT, type UiKey } from '@/lib/i18n';
+import { isFuture, useSpoilerFilter, type SpoilerFacts } from '@/lib/spoilers';
 
 // `Shop_Data.shop_id` of each common shop, in the game's own order.
 const COMMON_TABS: [number, string][] = [
@@ -195,6 +196,18 @@ function TimedShops({ shops, ctx, title }: { shops: ShopEntry[]; ctx: Ctx; title
   );
 }
 
+function withoutShopSpoilers(data: ShopIndex, facts: SpoilerFacts, now: number): ShopIndex {
+  const unit = (code?: string) => !!code && facts.units.has(code);
+  const shops = data.shops
+    .filter((s) => !isFuture(s.open?.start, now) && !(s.event != null && facts.events.has(s.event)))
+    .map((s) => ({
+      ...s,
+      products: s.products.filter((p) => !isFuture(p.open?.start, now) && !unit(p.code) && !unit(p.requires)
+        && !(p.rewards ?? []).some((r) => unit(r.code))),
+    }));
+  return { ...data, shops };
+}
+
 export default function ShopPage() {
   const t = useT();
   const router = useRouter();
@@ -216,17 +229,20 @@ export default function ShopPage() {
     loadCharacters().then(setChars).catch(() => setChars(null));
   }, []);
 
-  const byId = new Map((data?.shops ?? []).map((s) => [s.id, s]));
+  const { hide, facts } = useSpoilerFilter();
+  const shown = useMemo(
+    () => (data && hide ? (facts ? withoutShopSpoilers(data, facts, now) : null) : data), [data, facts, hide, now]);
+  const byId = new Map((shown?.shops ?? []).map((s) => [s.id, s]));
   const common = COMMON_TABS.filter(([id]) => byId.has(id));
-  const mileage = (data?.shops ?? []).filter((s) => s.kind === 'mileage');
-  const events = (data?.shops ?? []).filter((s) => s.kind === 'event');
+  const mileage = (shown?.shops ?? []).filter((s) => s.kind === 'mileage');
+  const events = (shown?.shops ?? []).filter((s) => s.kind === 'event');
   const tabItems = [
     ...common.map(([id, key]) => ({ id: key, label: gameText(byId.get(id)?.name, gameLang) || key })),
     ...(mileage.length ? [{ id: 'mileage', label: t('shopMileage') }] : []),
     ...(events.length ? [{ id: 'event', label: t('shopEvent') }] : []),
   ];
   const [tab, setTab] = tabParam(nextRouterAdapter(router), tabItems);
-  const ctx: Ctx | null = data ? { data, icons, chars, gameLang, now, serverTime } : null;
+  const ctx: Ctx | null = shown ? { data: shown, icons, chars, gameLang, now, serverTime } : null;
   const commonShop = common.find(([, key]) => key === tab);
 
   return (

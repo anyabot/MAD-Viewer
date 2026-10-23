@@ -20,6 +20,7 @@ import { pick, useLang, useT, type UiKey } from '@/lib/i18n';
 import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
 import { DROP_ICON_GROUPS } from '@/lib/stages';
+import { useHideSpoilers } from '@/lib/spoilers';
 
 const PHASE_ORDER: Record<EventPhase, number> = { running: 0, upcoming: 1, exchange: 2, ended: 3 };
 export const PHASE_COLOR: Record<EventPhase, string> = {
@@ -132,6 +133,7 @@ export function EventsBoard() {
   const [error, setError] = useState<string | null>(null);
   const [serverTime, setServerTime] = useServerTime();
   const now = useNow(30_000);
+  const hideSpoilers = useHideSpoilers();
 
   useEffect(() => {
     loadEvents().then(setData).catch((e) => setError(String(e)));
@@ -141,14 +143,14 @@ export function EventsBoard() {
 
   const events = useMemo(() => {
     if (!data) return [];
-    return [...data.events].sort((a, b) => {
+    return data.events.filter((e) => !hideSpoilers || eventPhase(e, now) !== 'upcoming').sort((a, b) => {
       const pa = eventPhase(a, now);
       const pb = eventPhase(b, now);
       if (pa !== pb) return PHASE_ORDER[pa] - PHASE_ORDER[pb];
       if (pa === 'ended') return Date.parse(b.end) - Date.parse(a.end);
       return Date.parse(pa === 'upcoming' ? a.start : a.end) - Date.parse(pb === 'upcoming' ? b.start : b.end);
     });
-  }, [data, now]);
+  }, [data, now, hideSpoilers]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!data) {

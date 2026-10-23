@@ -11,6 +11,8 @@ import {
   ALLY_SLOTS, DEFAULT_APPROACH, ENEMY_SLOTS, FIELD, FIELD_GAME_VERSION, RUN_IN_GAP, settle, type Slot, type SlotTable,
 } from '@/lib/battleField';
 import { loadCharacters, loadIcons, type CharacterData, type IconManifest } from '@/lib/data';
+import { useSpoilerFacts } from '@/lib/spoilers';
+import { useSpoilerGate } from '@/components/spoilers';
 import { useLang, useT } from '@/lib/i18n';
 
 const AoeStage = dynamic(() => import('@/components/aoeStage'), { ssr: false });
@@ -173,6 +175,8 @@ export default function FieldPage() {
     loadCharacters().then(setChars).catch(() => setChars(null));
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
+  const facts = useSpoilerFacts();
+  const gated = useSpoilerGate(facts && router.isReady ? !!aoeUnit && facts.units.has(aoeUnit) : null, '/field');
   useEffect(() => {
     if (chars && aoeUnit) document.getElementById('aoe')?.scrollIntoView();
   }, [chars, aoeUnit]);
@@ -234,7 +238,7 @@ export default function FieldPage() {
       <Box id="aoe" scrollMarginTop="4rem">
         <Panel title={L('AoE checker', '범위 확인')}>
           {chars
-            ? <AoeStage chars={chars} icons={icons} unit={aoeUnit} skill={aoeSkill} />
+            ? <AoeStage chars={chars} icons={icons} unit={gated ? undefined : aoeUnit} skill={aoeSkill} />
             : <Text fontSize="sm" color="gray.500">{t('loading')}</Text>}
         </Panel>
       </Box>
