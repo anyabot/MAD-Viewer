@@ -24,7 +24,10 @@ type Loaded = {
   rig: GachaRig;
 };
 
-export default function GachaViewer({ index }: { index: GachaIndex }) {
+// `grade`/`play`/`onDone` let a page drive the scene: `play` restarts it at `grade`, `onDone` fires when it ends.
+export default function GachaViewer({ index, grade: forced, play = 0, onDone, controls = true }: {
+  index: GachaIndex; grade?: Grade; play?: number; onDone?: () => void; controls?: boolean;
+}) {
   const t = useT();
   const lang = useLang();
   const hostRef = useRef<HTMLDivElement>(null);
@@ -37,7 +40,9 @@ export default function GachaViewer({ index }: { index: GachaIndex }) {
   const [runId, setRunId] = useState(0);
 
   const gradeRef = useRef<Grade>(grade);
-  gradeRef.current = grade;
+  gradeRef.current = forced ?? grade;
+  const onDoneRef = useRef(onDone);
+  onDoneRef.current = onDone;
 
   // Whatever the machine is parked on, waiting for the next tap.
   const tapParkRef = useRef<(() => void) | null>(null);
@@ -224,7 +229,10 @@ export default function GachaViewer({ index }: { index: GachaIndex }) {
         setState(next);
         next = await runState(next, host);
       }
-      if (!destroyed) setState('done');
+      if (!destroyed) {
+        setState('done');
+        onDoneRef.current?.();
+      }
     })().catch((e) => {
       if (!destroyed) setError(String(e?.message ?? e));
     });
@@ -238,11 +246,11 @@ export default function GachaViewer({ index }: { index: GachaIndex }) {
       surface?.replaceChildren();
     };
     // A grade change restarts the scene, which is what `runId` bumps.
-  }, [index, runId]);
+  }, [index, runId, play]);
 
   return (
     <Flex direction="column" gap={3}>
-      <Flex wrap="wrap" align="center" gap={3}>
+      {controls && <Flex wrap="wrap" align="center" gap={3}>
         <HStack gap={2}>
           <Text fontSize="sm" color="gray.400">{t('gachaGrade')}</Text>
           <Select size="sm" w="24" value={grade}
@@ -258,7 +266,7 @@ export default function GachaViewer({ index }: { index: GachaIndex }) {
         {sfx.length > 0 && (
           <Text fontSize="sm" color="gray.600" noOfLines={1}>sfx {sfx.join(' · ')}</Text>
         )}
-      </Flex>
+      </Flex>}
       <Box position="relative" bg="black" borderRadius="md" overflow="hidden"
         h={{ base: '60vh', lg: '70vh' }} minH="320px" onPointerDown={onTap}
         style={{ touchAction: 'none', cursor: 'pointer' }}>

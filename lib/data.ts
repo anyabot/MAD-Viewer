@@ -1334,3 +1334,35 @@ export const KIND_COLOR: Record<SkinKind, string> = {
   pleasure: 'orange',
   drama: 'cyan',
 };
+
+export type GachaKind = 'pickup' | 'premium' | 'selector' | 'startdash';
+
+export type GachaBanner = {
+  id: number;
+  kind: GachaKind;
+  name?: GameLocalized;
+  pickups?: string[];
+  open?: RewardWindow;
+  price: number;
+  goods: number;
+  base: string;
+  every?: number;
+  special?: string;
+  pity?: number;
+  pityGroup?: string;
+  limit?: number;
+  mileage?: number;
+  info?: GameLocalized;
+};
+
+export type GachaBannerIndex = {
+  banners: GachaBanner[];
+  /** Group id -> its grade split; `pool` keys `pools`. */
+  groups: Record<string, { grade: number; weight: number; pool: string }[]>;
+  /** Pool id -> [character code, weight]. */
+  pools: Record<string, [string, number][]>;
+};
+
+export function loadGachaBanners(): Promise<GachaBannerIndex> {
+  return fetchJson<GachaBannerIndex>('gacha_banners.json');
+}
