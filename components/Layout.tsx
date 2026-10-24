@@ -35,6 +35,7 @@ const NAV_ETC: NavItem[] = [
   { href: '/chibis', label: 'navChibis', match: (p: string) => p === '/chibis' },
   { href: '/rewards', label: 'navRewards', match: (p: string) => p === '/rewards' },
   { href: '/shop', label: 'navShop', match: (p: string) => p === '/shop' },
+  { href: '/gacha', label: 'navGacha', match: (p: string) => p === '/gacha' },
   { href: '/changelog', label: 'navChangelog', match: (p: string) => p === '/changelog' },
 ];
 

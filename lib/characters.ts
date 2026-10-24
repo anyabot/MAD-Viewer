@@ -998,7 +998,12 @@ export function gateSummary(
 ): string {
   const [first, second] = gate.values;
   const id = first?.id ?? '';
-  const state = first?.name ?? (stateName && id ? stateName(id) : INTERNAL_STATE[lang]);
+  // The kit's own name for the state, else the gate's name in the site language with its colour tags stripped.
+  const own = first?.name
+    ? colorRuns((resolveText ? resolveText(lang, first.name, first.nameEn) : lang === 'ko' ? first.name : first.nameEn || first.name) ?? '')
+      .map((r) => (r.break ? ' ' : r.text)).join('').trim()
+    : '';
+  const state = (stateName && id ? stateName(id) : '') || own || INTERNAL_STATE[lang];
   const n = second?.id ?? '';
   const pct = `${Number((Number(id) * 100).toPrecision(6))}%`;
   const typed = (table: TypeTable) => typeLabel(data.types[table][id] ?? null, lang) || id;
