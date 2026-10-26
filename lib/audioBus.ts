@@ -29,7 +29,14 @@ export function captureAudioTracks(): MediaStreamTrack[] {
   if (typeof AudioContext === 'undefined') return [];
   try {
     if (!context) context = new AudioContext();
-    if (!capture) capture = context.createMediaStreamDestination();
+    if (!capture) {
+      capture = context.createMediaStreamDestination();
+      // Chrome's muxer writes nothing until the audio track carries samples.
+      const silence = context.createConstantSource();
+      silence.offset.value = 0;
+      silence.connect(capture);
+      silence.start();
+    }
     for (const player of players) route(player);
     void context.resume().catch(() => { /* resumes on the next gesture */ });
     return capture.stream.getAudioTracks();
