@@ -7,7 +7,8 @@ import { hubChakraTheme } from '@altterisk/game-hub/chakra';
 import '@altterisk/game-hub/hub.css';
 import '@altterisk/game-hub/components.css';
 import Layout from '@/components/Layout';
-import { dataText, restoreLang } from '@/lib/i18n';
+import { Seo } from '@/components/seo';
+import { dataText, restoreLang, useLangStore } from '@/lib/i18n';
 import { setTextResolver } from '@/lib/characters';
 import { restoreGameLang } from '@/lib/gameText';
 import { restoreFarm } from '@/lib/farmStore';
@@ -49,12 +50,14 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreSkillView, []);
   useEffect(restoreSeen, []);
   useEffect(restoreSpoilers, []);
+  const lang = useLangStore((s) => s.lang);
+  useEffect(() => { document.documentElement.lang = lang; }, [lang]);
   return (
     <ChakraProvider theme={theme}>
       <Head>
-        <title>MAD Viewer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <Seo />
       <Layout>
         <ChangelogDialog />
         <Component {...pageProps} />

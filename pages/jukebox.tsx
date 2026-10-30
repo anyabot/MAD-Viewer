@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import {
   Badge, Box, Center, Flex, HStack, IconButton, SimpleGrid, Slider, SliderFilledTrack,
   SliderThumb, SliderTrack, Spinner, Text, VStack,
@@ -131,7 +131,7 @@ export default function JukeboxPage() {
 
   return (
     <VStack align="stretch" spacing={5}>
-      <Head><title>{`MAD Viewer — ${t('navJukebox')}`}</title></Head>
+      <Seo title={t('navJukebox')} description={t('seoDescJukebox')} />
       <Flex align="baseline" gap={3} wrap="wrap">
         <Text fontSize="2xl" fontWeight="bold">{t('navJukebox')}</Text>
         <Text fontSize="sm" color="gray.500">{t('jukeboxTracks', { n: tracks.length })}</Text>

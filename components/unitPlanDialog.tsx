@@ -25,6 +25,7 @@ import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
 import type {
   CharacterData, CharacterEntry, GrowthData, IconManifest, StageData, StageEntry,
 } from '@/lib/data';
+import { characterHref } from '@/lib/routes';
 
 const materialGroup = (icons: IconManifest | null, name?: string | null) =>
   (MATERIAL_ICON_GROUPS.find((g) => hasIcon(icons, g, name))
@@ -254,7 +255,7 @@ export function UnitPlanDialog({
             <GameIcon manifest={icons} group="char" size={8}
               names={[entry.iconPath, `Icon_${entry.code}`]} />
             <Text as={NextLink} fontSize="lg" _hover={{ color: 'yellow.300' }}
-              href={{ pathname: '/character', query: { code: entry.code } }}>
+              href={characterHref(entry.code)}>
               {characterName(entry, lang)}
             </Text>
             <Badge fontSize="0.55rem" colorScheme={collected ? 'green' : 'gray'}>

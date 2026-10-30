@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import { useRouter } from 'next/router';
 import {
   Box, HStack, Image, ListItem, Select, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr,
@@ -194,7 +194,7 @@ export default function FieldPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('navField')}`}</title></Head>
+      <Seo title={t('navField')} description={t('seoDescField')} />
       <PageHeader title={t('navField')}
         subtitle={`${L('Normal stages', '일반 스테이지')} · ${L('game version', '게임 버전')} ${FIELD_GAME_VERSION}`} />
 

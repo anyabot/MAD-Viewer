@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import { useRouter } from 'next/router';
 import {
   Badge, Box, Button, Flex, HStack, Select, Text, VStack,
@@ -263,7 +263,7 @@ export default function RewardsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('rewardsTitle')}`}</title></Head>
+      <Seo title={t('rewardsTitle')} description={t('seoDescRewards')} />
       <PageHeader title={t('rewardsTitle')} actions={<TimeControls serverTime={serverTime} onChange={setServerTime} />} />
       {!ctx ? (
         <LoadState loading={!error} error={error} retry={load}

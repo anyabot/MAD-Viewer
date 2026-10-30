@@ -1,6 +1,6 @@
 import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import {
   Box, Button, Checkbox, HStack, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack,
@@ -13,6 +13,7 @@ import {
 } from '@/lib/data';
 import { FORMULA_GAME_VERSION } from '@/lib/formula';
 import { dataText, useLang, useT } from '@/lib/i18n';
+import { characterHref } from '@/lib/routes';
 
 const COLORS = ['#ff7a5a', '#ffd25a', '#78beff', '#78ffaa', '#c58bff', '#ff8ad8'];
 const DEFAULT_UNITS = ['CH0058', 'CH0007', 'CH0068', 'CH0021'];
@@ -150,7 +151,7 @@ export default function DpsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('navDps')}`}</title></Head>
+      <Seo title={t('navDps')} description={t('seoDescDps')} />
       <PageHeader title={t('navDps')}
         subtitle={`${L('Expected damage and healing per second on one target', '대상 1명 기준 초당 기대 피해·치유')} · ${L('game version', '게임 버전')} ${FORMULA_GAME_VERSION}`} />
 
@@ -251,7 +252,7 @@ export default function DpsPage() {
                   <Td>
                     <HStack spacing={2}>
                       {iconUrl(y.code) && <Box as="img" src={iconUrl(y.code)!} w={7} h={7} borderRadius="full" alt="" />}
-                      <Text as={NextLink} href={`/character?code=${y.code}`} fontSize="sm" color={color(y.code)}>{name(y.code)}</Text>
+                      <Text as={NextLink} href={characterHref(y.code)} fontSize="sm" color={color(y.code)}>{name(y.code)}</Text>
                       {(y.skipped > 0 || y.missingTiming) && (
                         <Text fontSize="xs" color="gray.500" title={L('Some effects or timings are not counted', '일부 효과 또는 시간 미반영')}>*</Text>
                       )}

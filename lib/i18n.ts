@@ -856,6 +856,97 @@ export const UI = {
   partyEmpty: { en: 'No teams yet', ko: '팀 없음' },
   partyInvestment: { en: 'Investment', ko: '육성' },
   partyRemove: { en: 'Remove', ko: '제거' },
+
+  seoGameTitle: { en: 'Make Drama', ko: '메이크 드라마' },
+  seoHomeTitle: { en: 'MAD Viewer — Make Drama skin viewer and database', ko: 'MAD Viewer — 메이크 드라마 스킨 뷰어·데이터베이스' },
+  seoDescHome: {
+    en: 'Make Drama fan database: live Spine skin viewer, characters, skills and stats, events, stages, items, story and a growth planner.',
+    ko: '메이크 드라마 팬 데이터베이스: Spine 스킨 뷰어, 캐릭터·스킬·스탯, 이벤트, 스테이지, 아이템, 스토리, 육성 플래너.',
+  },
+  seoDescViewer: {
+    en: 'Every Make Drama skin as a live Spine rig: standing portraits, desire and affection scenes, animations and both store builds.',
+    ko: '메이크 드라마의 모든 스킨을 Spine 리그로 재생: 스탠딩, 욕망·호감도 장면, 애니메이션, 두 스토어 빌드.',
+  },
+  seoDescCharacters: {
+    en: 'Every Make Drama character, filtered by attribute, role, position, division and faction.',
+    ko: '메이크 드라마의 모든 캐릭터를 속성, 역할, 포지션, 소속, 세력으로 필터링.',
+  },
+  seoDescCharacter: {
+    en: '{name} in Make Drama: profile, skills, stat calculator, voice lines and skins.',
+    ko: '메이크 드라마 {name}: 프로필, 스킬, 스탯 계산기, 보이스, 스킨.',
+  },
+  seoDescEffects: {
+    en: 'Find which Make Drama units have a skill that does a given thing.',
+    ko: '원하는 효과를 가진 스킬의 메이크 드라마 유닛 찾기.',
+  },
+  seoDescStages: {
+    en: 'Make Drama events and stages: every battle mode, enemies, drops and the Infinity Archive.',
+    ko: '메이크 드라마 이벤트와 스테이지: 모든 전투 모드, 적, 드롭, 인피니티 아카이브.',
+  },
+  seoDescEvent: {
+    en: '{name}, a Make Drama event: schedule, story, bonus units and exchange.',
+    ko: '메이크 드라마 이벤트 {name}: 일정, 스토리, 보너스 유닛, 교환소.',
+  },
+  seoDescFarm: {
+    en: 'Plan Make Drama character growth and find the stages to farm for it.',
+    ko: '메이크 드라마 캐릭터 육성 계획과 파밍할 스테이지.',
+  },
+  seoDescParty: {
+    en: 'Build and save Make Drama teams for General, Arena and Nemesis.',
+    ko: '일반, 아레나, 네메시스용 메이크 드라마 팀 편성과 저장.',
+  },
+  seoDescRewards: {
+    en: 'Make Drama mission and pass rewards, level by level.',
+    ko: '메이크 드라마 미션과 패스 보상, 레벨별.',
+  },
+  seoDescShop: {
+    en: 'Every Make Drama shop: products, costs and purchase limits.',
+    ko: '메이크 드라마의 모든 상점: 상품, 가격, 구매 제한.',
+  },
+  seoDescGacha: {
+    en: 'Make Drama summon simulator with the game\'s rates, guarantees and pull statistics.',
+    ko: '게임 확률과 보장을 적용한 메이크 드라마 호출 시뮬레이터와 통계.',
+  },
+  seoDescItems: {
+    en: 'Every Make Drama item and currency: where it comes from and what uses it.',
+    ko: '메이크 드라마의 모든 아이템과 재화: 획득처와 사용처.',
+  },
+  seoDescStory: {
+    en: 'Read the Make Drama main, event and Nemesis story as text.',
+    ko: '메이크 드라마 메인, 이벤트, 네메시스 스토리를 텍스트로 읽기.',
+  },
+  seoDescArchive: {
+    en: 'Make Drama Infinity Archive season: support partners, score rewards, node paths and Game Packs.',
+    ko: '메이크 드라마 인피니티 아카이브 시즌: 지원 파트너, 점수 보상, 노드 경로, 게임 팩.',
+  },
+  seoDescField: {
+    en: 'How the Make Drama battle field works: start slots, range, movement and a formation planner.',
+    ko: '메이크 드라마 전장 규칙: 시작 위치, 사거리, 이동, 배치 플래너.',
+  },
+  seoDescFormula: {
+    en: 'How Make Drama works out damage, healing and status chances.',
+    ko: '메이크 드라마의 피해량, 회복량, 상태이상 확률 계산 방식.',
+  },
+  seoDescDps: {
+    en: 'Compare expected DPS and HPS of Make Drama units on one target.',
+    ko: '메이크 드라마 유닛의 단일 대상 기대 DPS·HPS 비교.',
+  },
+  seoDescArtists: {
+    en: 'Every credited Make Drama illustrator, their links and the characters they drew.',
+    ko: '메이크 드라마의 모든 일러스트레이터, 링크, 담당 캐릭터.',
+  },
+  seoDescChibis: {
+    en: 'Make Drama event lobby chibi sprites and stickers, downloadable.',
+    ko: '메이크 드라마 이벤트 로비 SD 스프라이트와 스티커 다운로드.',
+  },
+  seoDescJukebox: {
+    en: 'Listen to every Make Drama BGM track.',
+    ko: '메이크 드라마의 모든 BGM 듣기.',
+  },
+  seoDescChangelog: {
+    en: 'What changed on MAD Viewer.',
+    ko: 'MAD Viewer 변경 내역.',
+  },
 } satisfies Record<string, Localized>;
 
 export type UiKey = keyof typeof UI;

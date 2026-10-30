@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Head from 'next/head';
+import { SITE_URL, Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import {
@@ -21,8 +21,17 @@ import type { IconGroup } from '@/lib/icons';
 import { useLang, useT, type UiKey } from '@/lib/i18n';
 import { isFuture, useHideSpoilers } from '@/lib/spoilers';
 import { groupIsLive, groupLabel, groupWindow } from '@/lib/stages';
+import { characterHref } from '@/lib/routes';
 
 const VIEWER_KEYS = ['skin', 'store', 'view', 'speed', 'bg', 'camera', 'aspect', 'body', 'face', 'overlay', 'stage', 'tab'];
+
+const WEBSITE_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'MAD Viewer',
+  alternateName: 'Make Drama Viewer',
+  url: `${SITE_URL}/`,
+};
 
 const SECTIONS: { href: string; label: UiKey; desc: UiKey }[] = [
   { href: '/viewer', label: 'navViewer', desc: 'homeViewer' },
@@ -80,7 +89,7 @@ export default function Home() {
 
   return (
     <VStack align="stretch" spacing={8}>
-      <Head><title>MAD Viewer</title></Head>
+      <Seo jsonLd={WEBSITE_LD} />
       <VStack spacing={2} textAlign="center" pt={2}>
         <Text fontSize={{ base: '3xl', md: '4xl' }} fontWeight="bold">MAD Viewer</Text>
         <Text color="gray.400">{t('homeTagline')}</Text>
@@ -201,7 +210,7 @@ function BannerTile({ banner, now, serverTime, chars, icons }: {
     <VStack align="stretch" spacing={2} p={2} borderRadius="lg" minW={0}
       borderWidth={running ? '2px' : '1px'} borderColor={running ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50">
       {revealed ? (
-        <Box as={NextLink} href={`/character?code=${code}`} position="relative">
+        <Box as={NextLink} href={characterHref(code)} position="relative">
           <ArtBox manifest={icons} w="100%"
             sources={[['char', entry?.iconPath], ['char', `Icon_${code}`]]} />
         </Box>

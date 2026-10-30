@@ -1,6 +1,9 @@
-// A query parameter, not a route segment, because `output: 'export'` prerenders every path and events are runtime data.
 import { useEffect, useState } from 'react';
-import Head from 'next/head';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import { Seo, breadcrumbs, plainText } from '@/components/seo';
+import { eventHref } from '@/lib/routes';
+import { readData } from '@/lib/staticData';
+import { resolveIcon } from '@/lib/icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
@@ -16,13 +19,37 @@ import {
   loadCharacters, loadEventArt, loadEvents, loadIcons,
   type CharacterData, type EventArtIndex, type EventIndex, type IconManifest,
 } from '@/lib/data';
-import { remaining, sceneCount } from '@/lib/events';
+import { bannerNames, remaining, sceneCount } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { useLang, useT } from '@/lib/i18n';
 import { isFuture, useHideSpoilers } from '@/lib/spoilers';
 import { useSpoilerGate } from '@/components/spoilers';
 
-export default function EventPage() {
+type EventSeo = { name: string; desc: string; image: string | null };
+
+export const getStaticPaths: GetStaticPaths = () => ({
+  paths: readData<EventIndex>('events.json').events.map((e) => ({ params: { id: String(e.id) } })),
+  fallback: false,
+});
+
+// An event not yet started at build time ships no text, so the prerendered page cannot leak it.
+export const getStaticProps: GetStaticProps<{ seo: EventSeo | null }, { id: string }> = ({ params }) => {
+  const event = readData<EventIndex>('events.json').events.find((e) => String(e.id) === params!.id);
+  if (!event || isFuture(event.start)) return { props: { seo: null } };
+  const icons = readData<IconManifest>('icons.json');
+  return {
+    props: {
+      seo: {
+        name: gameText(event.name, 'en'),
+        desc: plainText(gameText(event.desc, 'en'), 300),
+        image: resolveIcon(icons, 'banner', bannerNames(event, 'en'))
+          ?? resolveIcon(icons, 'item', [event.goodsIcon]),
+      },
+    },
+  };
+};
+
+export default function EventPage({ seo }: { seo: EventSeo | null }) {
   const t = useT();
   const lang = useLang();
   const gameLang = useGameLang();
@@ -47,12 +74,32 @@ export default function EventPage() {
   const found = data?.events.find((e) => e.id === id);
   const gated = useSpoilerGate(data && router.isReady ? !!found && isFuture(found.start, now) : null, '/events');
 
-  if (error) return <Text color="red.400">{error}</Text>;
+  const seoName = found ? gameText(found.name, gameLang) : seo?.name;
+  const head = (
+    <Seo title={seoName} noindex={!seo} image={seo?.image}
+      description={seoName ? plainText(`${t('seoDescEvent', { name: seoName })} ${seo?.desc ?? ''}`) : undefined}
+      jsonLd={seo && id != null ? breadcrumbs([
+        { name: 'MAD Viewer', path: '/' },
+        { name: t('navStages'), path: '/stages/' },
+        { name: seo.name, path: eventHref(id) },
+      ]) : undefined} />
+  );
+
+  if (error) return <>{head}<Text color="red.400">{error}</Text></>;
   if (!data || !router.isReady || gated) {
     return (
-      <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-      </Center>
+      <>
+        {head}
+        {seo && !gated && (
+          <VStack align="stretch" spacing={2}>
+            <Text as="h1" fontSize="2xl" fontWeight="bold">{seo.name}</Text>
+            {seo.desc && <Text fontSize="sm" color="gray.400">{seo.desc}</Text>}
+          </VStack>
+        )}
+        <Center py={20}>
+          <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
+        </Center>
+      </>
     );
   }
   const event = found;
@@ -74,7 +121,7 @@ export default function EventPage() {
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>{`MAD Viewer — ${name}`}</title></Head>
+      {head}
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
         <Text as={NextLink} href="/stages?mode=event" color="yellow.300">{t('navStages')}</Text>
         <Text color="gray.600">/</Text>
@@ -85,13 +132,13 @@ export default function EventPage() {
 
       <Flex gap={2} wrap="wrap" justify="space-between">
         {prev ? (
-          <Button as={NextLink} href={`/event?id=${prev.id}`} size="sm" variant="ghost"
+          <Button as={NextLink} href={eventHref(prev.id)} size="sm" variant="ghost"
             leftIcon={<ChevronLeftIcon />} maxW="100%" whiteSpace="normal" textAlign="left">
             {gameText(prev.name, gameLang)}
           </Button>
         ) : <Box />}
         {next && (
-          <Button as={NextLink} href={`/event?id=${next.id}`} size="sm" variant="ghost"
+          <Button as={NextLink} href={eventHref(next.id)} size="sm" variant="ghost"
             rightIcon={<ChevronRightIcon />} maxW="100%" whiteSpace="normal" textAlign="right" ml="auto">
             {gameText(next.name, gameLang)}
           </Button>

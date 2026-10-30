@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import {
   Box, HStack, ListItem, OrderedList, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr,
   UnorderedList, VStack, Wrap,
@@ -83,7 +83,7 @@ export default function FormulaPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('navFormula')}`}</title></Head>
+      <Seo title={t('navFormula')} description={t('seoDescFormula')} />
       <PageHeader title={t('navFormula')}
         subtitle={`${L('Last updated', '최종 수정')}: ${FORMULA_UPDATED} · ${L('game version', '게임 버전')} ${FORMULA_GAME_VERSION}`} />
 

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { ChevronRightIcon } from '@chakra-ui/icons';
@@ -21,6 +21,7 @@ import { PHASE_LABEL, formatMoment, remaining, zoneLabel } from '@/lib/events';
 import { gameText, useGameLang, type GameLang } from '@/lib/gameText';
 import { pick, useLang, useT, type UiKey } from '@/lib/i18n';
 import { isFuture, useSpoilerFilter, type SpoilerFacts } from '@/lib/spoilers';
+import { eventHref } from '@/lib/routes';
 
 // `Shop_Data.shop_id` of each common shop, in the game's own order.
 const COMMON_TABS: [number, string][] = [
@@ -247,7 +248,7 @@ export default function ShopPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('shopTitle')}`}</title></Head>
+      <Seo title={t('shopTitle')} description={t('seoDescShop')} />
       <PageHeader title={t('shopTitle')} actions={<TimeControls serverTime={serverTime} onChange={setServerTime} />} />
       {!ctx ? (
         <LoadState loading={!error} error={error} retry={load} labels={{ loading: t('loading') }} />
@@ -262,7 +263,7 @@ export default function ShopPage() {
             )}
             {tab === 'event' && (
               <TimedShops shops={events} ctx={ctx} title={(s) => (s.event ? (
-                <Text as={NextLink} href={`/event?id=${s.event}`} _hover={{ color: 'yellow.300' }}>
+                <Text as={NextLink} href={eventHref(s.event)} _hover={{ color: 'yellow.300' }}>
                   {gameText(s.eventName, gameLang) || gameText(s.name, gameLang)} ›
                 </Text>
               ) : gameText(s.name, gameLang))} />

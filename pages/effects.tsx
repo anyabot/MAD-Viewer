@@ -31,8 +31,15 @@ import {
   loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type IconManifest, type SkillOp, type SkinListEntry,
 } from '@/lib/data';
+import { Seo } from '@/components/seo';
+import { characterHref } from '@/lib/routes';
 
 export default function EffectsPage() {
+  const t = useT();
+  return <><Seo title={t('navEffects')} description={t('seoDescEffects')} /><EffectsContent /></>;
+}
+
+function EffectsContent() {
   const t = useT();
   const lang = useLang();
   const [chars, setChars] = useState<CharacterData | null>(null);
@@ -191,7 +198,7 @@ function ResultRow({ kit, skills, data, icons, skins, selection, lang }: {
   return (
     <Flex borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md"
       bg="whiteAlpha.50" overflow="hidden" direction={{ base: 'column', sm: 'row' }}>
-      <Flex as={NextLink} href={{ pathname: '/character', query: { code: entry.code } }}
+      <Flex as={NextLink} href={characterHref(entry.code)}
         direction={{ base: 'row', sm: 'column' }} align="center" gap={2} p={2}
         minW={{ sm: '132px' }} bg="blackAlpha.300"
         _hover={{ bg: 'blackAlpha.500' }}>

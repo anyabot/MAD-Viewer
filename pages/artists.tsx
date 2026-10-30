@@ -1,6 +1,6 @@
 import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { Box, Button, Grid, HStack, Text, VStack, Wrap } from '@chakra-ui/react';
 import { LoadState, PageHeader, Panel } from '@altterisk/game-hub';
@@ -13,6 +13,7 @@ import {
   loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
+import { characterHref } from '@/lib/routes';
 
 export default function ArtistsPage() {
   const spoilerUnit = useSpoilerUnit();
@@ -55,7 +56,7 @@ export default function ArtistsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('navArtists')}`}</title></Head>
+      <Seo title={t('navArtists')} description={t('seoDescArtists')} />
       <PageHeader title={t('navArtists')} />
       <Grid gap={4} templateColumns={{ base: '1fr', lg: 'repeat(2, minmax(0, 1fr))' }}>
         {artists.map(([name, list]) => (
@@ -83,7 +84,7 @@ export default function ArtistsPage() {
                   const art = characterIcon(icons, c, byCharacter.get(c.code) ?? []);
                   return (
                     <Box key={c.code} as={NextLink}
-                      href={{ pathname: '/character', query: { code: c.code } }}
+                      href={characterHref(c.code)}
                       borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="lg"
                       overflow="hidden" _hover={{ borderColor: 'whiteAlpha.500' }}>
                       <Box bg="blackAlpha.400" sx={{ aspectRatio: '1 / 1' }}>
