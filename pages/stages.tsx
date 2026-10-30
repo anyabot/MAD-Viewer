@@ -43,12 +43,18 @@ import {
   type CharacterData, type IconManifest, type RewardIndex, type RewardWindow, type StageData,
   type StageEntry, type StageGroup,
 } from '@/lib/data';
+import { Seo } from '@/components/seo';
 
 const iconGroup = (
   icons: IconManifest | null, groups: readonly string[], name?: string | null,
 ) => (groups.find((g) => hasIcon(icons, g as never, name)) ?? groups[0]) as never;
 
 export default function StagesPage() {
+  const t = useT();
+  return <><Seo title={t('navStages')} description={t('seoDescStages')} /><StagesContent /></>;
+}
+
+function StagesContent() {
   const t = useT();
   const lang = useLang();
   const router = useRouter();

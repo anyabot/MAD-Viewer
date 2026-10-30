@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { textMatch } from '@altterisk/game-hub/filters';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import {
   Box, HStack, SimpleGrid, Text, VStack,
@@ -71,7 +71,7 @@ export default function ItemsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('navItems')}`}</title></Head>
+      <Seo title={t('navItems')} description={t('seoDescItems')} />
       <Text fontSize="2xl" fontWeight="bold">{t('navItems')}</Text>
       <ListToolbar
         search={<SearchBox value={query} onChange={setQuery} placeholder={t('search')} clearLabel={t('clearSearch')} />}

@@ -28,6 +28,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /MAD-Viewer
+          NEXT_PUBLIC_NOINDEX: "1"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

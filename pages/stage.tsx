@@ -19,8 +19,14 @@ import {
   loadCharacters, loadIcons, loadStages,
   type CharacterData, type IconManifest, type StageData,
 } from '@/lib/data';
+import { Seo } from '@/components/seo';
 
 export default function StagePage() {
+  const t = useT();
+  return <><Seo title={t('navStages')} noindex /><StageContent /></>;
+}
+
+function StageContent() {
   const t = useT();
   const lang = useLang();
   const router = useRouter();

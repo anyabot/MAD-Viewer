@@ -20,6 +20,8 @@ import {
   KIND_COLOR, KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
+import { Seo } from '@/components/seo';
+import { characterHref } from '@/lib/routes';
 
 const KINDS: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure', 'drama'];
 
@@ -29,6 +31,11 @@ function skinTitle(skin: SkinListEntry, name: string): string {
 
 // Lazy tabs keep the separate gacha archives unfetched until opened.
 export default function ViewerPage() {
+  const t = useT();
+  return <><Seo title={t('navViewer')} description={t('seoDescViewer')} /><ViewerContent /></>;
+}
+
+function ViewerContent() {
   const t = useT();
   return (
     <Tabs variant="line" colorScheme="yellow" isLazy>
@@ -270,7 +277,7 @@ function SkinGallery() {
                 {charOf(current) && (
                   <WrapItem>
                     <Text as={NextLink} fontSize="xs" color="yellow.300"
-                      href={{ pathname: '/character', query: { code: current.character } }}
+                      href={characterHref(current.character)}
                       _hover={{ color: 'yellow.200' }}>
                       {t('toCharacter')}
                     </Text>

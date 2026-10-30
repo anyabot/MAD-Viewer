@@ -21,6 +21,7 @@ import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
 import { DROP_ICON_GROUPS } from '@/lib/stages';
 import { useHideSpoilers } from '@/lib/spoilers';
+import { characterHref, eventHref } from '@/lib/routes';
 
 const PHASE_ORDER: Record<EventPhase, number> = { running: 0, upcoming: 1, exchange: 2, ended: 3 };
 export const PHASE_COLOR: Record<EventPhase, string> = {
@@ -200,7 +201,7 @@ export function EventCard({ event, now, serverTime, chars, icons }: {
   const pickups = event.pickups ?? [];
   const bonus = (event.bonus ?? []).filter((b) => !pickups.includes(b.code));
   return (
-    <Flex as={NextLink} href={`/event?id=${event.id}`} direction={{ base: 'column', sm: 'row' }} gap={3}
+    <Flex as={NextLink} href={eventHref(event.id)} direction={{ base: 'column', sm: 'row' }} gap={3}
       p={3} borderRadius="lg" minW={0}
       borderWidth={phase === 'running' ? '2px' : '1px'}
       borderColor={phase === 'running' ? 'pink.400' : 'whiteAlpha.200'}
@@ -247,7 +248,7 @@ export function PartnerChip({ code, chars, icons, gameLang, pickup = false, rate
   const entry = chars?.characters[code];
   const name = (gameLang === 'ko' ? entry?.name : entry?.nameEn || entry?.name) || code;
   return (
-    <HStack {...(link ? { as: NextLink, href: `/character?code=${code}` } : {})} spacing={1.5}
+    <HStack {...(link ? { as: NextLink, href: characterHref(code) } : {})} spacing={1.5}
       pl={1} pr={2} py={1} borderRadius="md" bg={pickup ? 'whiteAlpha.200' : 'whiteAlpha.100'}
       _hover={link ? { bg: 'whiteAlpha.300' } : undefined}>
       <GameIcon manifest={icons} group="char" names={[entry?.iconPath, `Icon_${code}`]}

@@ -1,6 +1,6 @@
 // A query parameter, not a route segment, because `output: 'export'` prerenders every path and items are runtime data.
 import { useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import {
@@ -24,6 +24,7 @@ import {
 import { CHANNEL_LABEL, DROP_ICON_GROUPS, groupLabel, stageName } from '@/lib/stages';
 import { groupIsSpoiler, isFuture, itemIsSpoiler, useSpoilerFilter } from '@/lib/spoilers';
 import { useSpoilerGate } from '@/components/spoilers';
+import { characterHref, eventHref } from '@/lib/routes';
 
 const BOX_MODE_LABEL: Record<string, UiKey> = {
   random: 'itemBoxRandom', select: 'itemBoxSelect', all: 'itemBoxAll',
@@ -35,6 +36,10 @@ function amountText(amount?: number[]): string {
 }
 
 export default function ItemPage() {
+  return <><Seo noindex /><ItemContent /></>;
+}
+
+function ItemContent() {
   const t = useT();
   const lang = useLang();
   const gameLang = useGameLang();
@@ -99,7 +104,7 @@ export default function ItemPage() {
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>{`MAD Viewer — ${name}`}</title></Head>
+      <Seo title={name} noindex />
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
         <Text as={NextLink} href="/items" color="yellow.300">{t('navItems')}</Text>
         <Text color="gray.600">/</Text>
@@ -113,7 +118,7 @@ export default function ItemPage() {
           <HStack spacing={2} wrap="wrap">
             <Badge>{pick(CATEGORY_LABEL[itemCategory(entry)], lang)}</Badge>
             {entry.code && owner && (
-              <Badge as={NextLink} href={`/character?code=${entry.code}`} colorScheme="yellow"
+              <Badge as={NextLink} href={characterHref(entry.code)} colorScheme="yellow"
                 textTransform="none">{ownerName}</Badge>
             )}
           </HStack>
@@ -147,7 +152,7 @@ export default function ItemPage() {
               </Text>
               <VStack align="stretch" spacing={1}>
                 {needBy.map(([code, n]) => (
-                  <HStack key={code} as={NextLink} href={`/character?code=${code}`} spacing={2} fontSize="xs">
+                  <HStack key={code} as={NextLink} href={characterHref(code)} spacing={2} fontSize="xs">
                     <GameIcon manifest={icons} group="char"
                       names={[chars?.characters[code]?.iconPath, `Icon_${code}`]} size={5} borderRadius="full" />
                     <Text flex="1" noOfLines={1}>{charName(code)}</Text>
@@ -176,7 +181,7 @@ export default function ItemPage() {
           <Wrap spacing={2}>
             {gifts.map((code) => (
               <WrapItem key={code}>
-                <HStack as={NextLink} href={`/character?code=${code}`} spacing={1.5} pl={1} pr={2} py={1}
+                <HStack as={NextLink} href={characterHref(code)} spacing={1.5} pl={1} pr={2} py={1}
                   borderRadius="md" bg="whiteAlpha.100" _hover={{ bg: 'whiteAlpha.200' }}>
                   <GameIcon manifest={icons} group="char"
                     names={[chars?.characters[code]?.iconPath, `Icon_${code}`]} size={6} borderRadius="full" />
@@ -195,7 +200,7 @@ export default function ItemPage() {
               <Wrap spacing={2}>
                 {fromEvents.map((row, i) => (
                   <WrapItem key={i}>
-                    <HStack as={NextLink} href={`/event?id=${row.event.id}`} spacing={2} px={2} py={1}
+                    <HStack as={NextLink} href={eventHref(row.event.id)} spacing={2} px={2} py={1}
                       borderRadius="md" bg="whiteAlpha.100" fontSize="xs" _hover={{ bg: 'whiteAlpha.200' }}>
                       <Text fontWeight="bold">{gameText(row.event.name, gameLang)}</Text>
                       <Text color="gray.400">
@@ -265,7 +270,7 @@ function RewardTile({ reward, index, icons, chars, gameLang }: {
   if (reward.code) {
     const c = chars?.characters[reward.code];
     return (
-      <HStack as={NextLink} href={`/character?code=${reward.code}`} spacing={1.5} pl={1} pr={2} py={1}
+      <HStack as={NextLink} href={characterHref(reward.code)} spacing={1.5} pl={1} pr={2} py={1}
         borderRadius="md" bg="whiteAlpha.100">
         <GameIcon manifest={icons} group="char" names={[c?.iconPath, `Icon_${reward.code}`]} size={7} borderRadius="full" />
         <Text fontSize="xs">{(gameLang === 'ko' ? c?.name : c?.nameEn || c?.name) || reward.code}</Text>

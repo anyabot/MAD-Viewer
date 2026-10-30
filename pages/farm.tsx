@@ -43,6 +43,7 @@ import {
   type CharacterData, type CharacterEntry, type GrowthData, type IconManifest, type ShopIndex,
   type StageData, type StageEntry,
 } from '@/lib/data';
+import { Seo } from '@/components/seo';
 
 type UnitSort = 'name' | 'memories' | 'materials' | 'star';
 
@@ -73,6 +74,11 @@ function usePlanInventory(): Record<string, number> {
 }
 
 export default function FarmPage() {
+  const t = useT();
+  return <><Seo title={t('navFarm')} description={t('seoDescFarm')} /><FarmContent /></>;
+}
+
+function FarmContent() {
   const t = useT();
   const lang = useLang();
   const [chars, setChars] = useState<CharacterData | null>(null);

@@ -1,6 +1,6 @@
 // One route for the index and the reader, because `output: 'export'` prerenders every path and chapters are runtime data.
 import { useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import {
@@ -75,7 +75,7 @@ function StoryList({ index, events, icons }: {
   const chapters = Object.values(index.chapters);
   return (
     <VStack align="stretch" spacing={5}>
-      <Head><title>{`MAD Viewer — ${t('navStory')}`}</title></Head>
+      <Seo title={t('navStory')} description={t('seoDescStory')} />
       <Flex align="center" gap={3} wrap="wrap">
         <Text fontSize="2xl" fontWeight="bold">{t('navStory')}</Text>
         <Box flex="1" />
@@ -147,7 +147,7 @@ function Reader({ chapter, scene, chars, icons }: {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${gameText(chapter.name, lang)}`}</title></Head>
+      <Seo title={gameText(chapter.name, lang)} description={t('seoDescStory')} />
       <Flex align="center" gap={3} wrap="wrap">
         <Text as={NextLink} href="/story" color="yellow.300" fontSize="sm">{t('navStory')}</Text>
         <Text color="gray.600">/</Text>

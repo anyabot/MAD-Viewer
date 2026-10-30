@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
 import {
@@ -19,6 +19,7 @@ import { useLang, useT } from '@/lib/i18n';
 import { baseRates, emptyTally, pullMany, type BannerTally, type Pull } from '@/lib/gacha';
 import { isFuture, useSpoilerFilter } from '@/lib/spoilers';
 import type { Grade } from '@/components/gachaViewer/machine';
+import { characterHref } from '@/lib/routes';
 
 const GachaViewer = dynamic(() => import('@/components/gachaViewer'), { ssr: false });
 
@@ -151,7 +152,7 @@ export default function GachaPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('gachaTitle')}`}</title></Head>
+      <Seo title={t('gachaTitle')} description={t('seoDescGacha')} />
       <PageHeader title={t('gachaTitle')}
         actions={<Button size="sm" variant="outline" onClick={resetAll}>{t('gachaResetAll')}</Button>} />
 
@@ -311,7 +312,7 @@ export default function GachaPage() {
           {results.map((p, i) => {
             const entry = unit(p.code);
             return (
-              <VStack key={i} as={NextLink} href={`/character?code=${p.code}`} spacing={1} p={2}
+              <VStack key={i} as={NextLink} href={characterHref(p.code)} spacing={1} p={2}
                 borderRadius="md" borderWidth={p.grade >= 3 ? '2px' : '1px'}
                 borderColor={p.pickup ? 'pink.400' : p.grade >= 3 ? 'yellow.400' : 'whiteAlpha.200'}
                 bg="whiteAlpha.50" position="relative">

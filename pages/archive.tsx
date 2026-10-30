@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import {
   Badge, Box, Button, ButtonGroup, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
@@ -21,6 +21,7 @@ import { useSpoilerGate } from '@/components/spoilers';
 import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
 import { DROP_ICON_GROUPS, enemyCodes, levelRange } from '@/lib/stages';
+import { characterHref } from '@/lib/routes';
 
 export default function ArchivePage() {
   const t = useT();
@@ -62,7 +63,7 @@ export default function ArchivePage() {
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>{`MAD Viewer — ${title}`}</title></Head>
+      <Seo title={title} description={t('seoDescArchive')} />
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
         <Text as={NextLink} href="/stages?mode=ascent" color="yellow.300">{t('navStages')}</Text>
         <Text color="gray.600">/</Text>
@@ -218,7 +219,7 @@ export default function ArchivePage() {
                           <Text fontSize="sm" fontWeight="bold">{gameText(a.name, gameLang)}</Text>
                           {a.rarity === 'rare' && <Badge colorScheme="yellow" fontSize="0.55rem">{t('gradeRare')}</Badge>}
                           {a.joinCode && (
-                            <Badge as={NextLink} href={`/character?code=${a.joinCode}`} textTransform="none" fontSize="0.6rem">
+                            <Badge as={NextLink} href={characterHref(a.joinCode)} textTransform="none" fontSize="0.6rem">
                               {(gameLang === 'ko' ? chars?.characters[a.joinCode]?.name
                                 : chars?.characters[a.joinCode]?.nameEn) || a.joinCode}
                             </Badge>

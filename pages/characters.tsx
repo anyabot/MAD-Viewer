@@ -22,6 +22,8 @@ import {
   KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
+import { Seo } from '@/components/seo';
+import { characterHref } from '@/lib/routes';
 
 // Faction is the only axis rendered as a scrolling icon strip.
 const CHIP_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division'];
@@ -30,6 +32,11 @@ const nextTri = (tri: Tri): Tri => (tri === 'all' ? 'yes' : tri === 'yes' ? 'no'
 const STARS = [1, 2, 3];
 
 export default function CharactersPage() {
+  const t = useT();
+  return <><Seo title={t('navCharacters')} description={t('seoDescCharacters')} /><CharactersContent /></>;
+}
+
+function CharactersContent() {
   const t = useT();
   const lang = useLang();
   const [chars, setChars] = useState<CharacterData | null>(null);
@@ -246,7 +253,7 @@ function CharacterCard({
   const art = characterIcon(icons, entry, skins);
 
   return (
-    <Box as={NextLink} href={{ pathname: '/character', query: { code: entry.code } }}
+    <Box as={NextLink} href={characterHref(entry.code)}
       borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl" overflow="hidden"
       bg="linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02))"
       boxShadow="0 12px 28px rgba(0,0,0,0.14)" display="block"

@@ -1,6 +1,6 @@
 import { useSpoilerUnit } from '@/lib/spoilers';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { LinkIcon } from '@chakra-ui/icons';
@@ -30,6 +30,7 @@ import {
   loadCharacters, loadGrowth, loadIcons, loadStages,
   type CharacterData, type CharacterEntry, type GrowthData, type IconManifest, type StageData,
 } from '@/lib/data';
+import { characterHref } from '@/lib/routes';
 
 type Ctx = { chars: CharacterData; growth: GrowthData; icons: IconManifest | null; lang: Lang };
 
@@ -169,7 +170,7 @@ export default function PartyPage() {
   return (
     <PageCtx.Provider value={ctx}>
     <VStack align="stretch" spacing={4}>
-      <Head><title>{`MAD Viewer — ${t('navParty')}`}</title></Head>
+      <Seo title={t('navParty')} description={t('seoDescParty')} />
       <PageHeader title={t('navParty')} />
       <Flex wrap="wrap" gap={2} align="center">
         <Input size="sm" maxW={{ base: '100%', md: '22rem' }} value={code}
@@ -701,7 +702,7 @@ function InvestmentDialog({ ctx, member, onSave, onClose }: {
         <ModalHeader fontSize="md">
           <HStack spacing={2}>
             <GameIcon manifest={ctx.icons} group="char" names={charIcon(entry)} size={8} borderRadius="md" />
-            <Text as={NextLink} href={`/character?code=${member.code}`} _hover={{ color: 'yellow.300' }}>
+            <Text as={NextLink} href={characterHref(member.code)} _hover={{ color: 'yellow.300' }}>
               {characterName(entry ?? null, ctx.lang) || member.code}
             </Text>
             <Text fontSize="sm" color="gray.400" fontWeight="normal">

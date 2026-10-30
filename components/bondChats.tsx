@@ -14,6 +14,7 @@ import {
 } from '@/lib/data';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { dataText, useLang, useT } from '@/lib/i18n';
+import { characterHref } from '@/lib/routes';
 
 export function BondChats({ code, chats, refs, chars, icons, skinKeys }: {
   code: string; chats: BondChat[]; refs: BondIndex['refs']; chars: CharacterData;
@@ -230,7 +231,7 @@ function SceneCard({ code, scene, icons, skinKeys }: {
       borderColor={`${KIND_COLOR[scene.kind]}.400`}
       {...(playable ? {
         as: NextLink,
-        href: { pathname: '/character', query: { code, skin: scene.key, tab: 'skins' } },
+        href: characterHref(code, { skin: scene.key, tab: 'skins' }),
         _hover: { bg: 'whiteAlpha.200' },
       } : {})}>
       <GameIcon manifest={icons} group="skin" name={scene.thumb} size={12} borderRadius="sm" />

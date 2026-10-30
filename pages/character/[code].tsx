@@ -1,7 +1,11 @@
-// A query route rather than a `[code]` segment: all game data is fetched at
-// runtime, so a build-time path list would need regenerating per character.
 import { useEffect, useMemo, useState } from 'react';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+import { Seo, breadcrumbs, plainText } from '@/components/seo';
+import { characterHref } from '@/lib/routes';
+import { readData } from '@/lib/staticData';
+import { spoilerFacts } from '@/lib/spoilers';
+import type { EventIndex, SkinList } from '@/lib/data';
 import { useSpoilerGate } from '@/components/spoilers';
 import { useHideSpoilers, useSpoilerFacts } from '@/lib/spoilers';
 import { createPersisted } from '@altterisk/game-hub/persist';
@@ -51,7 +55,33 @@ import {
 
 const INFO_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division', 'faction'];
 
-export default function CharacterPage() {
+type CharacterSeo = { name: string; desc: string; image: string | null };
+
+export const getStaticPaths: GetStaticPaths = () => ({
+  paths: Object.keys(readData<CharacterData>('characters.json').characters).map((code) => ({ params: { code } })),
+  fallback: false,
+});
+
+// A spoiler at build time ships no text, so the prerendered page cannot leak it.
+export const getStaticProps: GetStaticProps<{ seo: CharacterSeo | null }, { code: string }> = ({ params }) => {
+  const chars = readData<CharacterData>('characters.json');
+  const entry = chars.characters[params!.code];
+  if (!entry || spoilerFacts(chars, readData<EventIndex>('events.json')).units.has(entry.code)) {
+    return { props: { seo: null } };
+  }
+  const skins = skinsByCharacter(readData<SkinList>('skin_list.json').skins).get(entry.code) ?? [];
+  return {
+    props: {
+      seo: {
+        name: characterName(entry, 'en'),
+        desc: plainText(entry.descEn || entry.desc, 300),
+        image: characterIcon(readData<IconManifest>('icons.json'), entry, skins),
+      },
+    },
+  };
+};
+
+export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
   const t = useT();
   const lang = useLang();
   const router = useRouter();
@@ -100,8 +130,31 @@ export default function CharacterPage() {
     if (current && !current.stores.includes(store)) setStore(current.stores[0] ?? 'onestore');
   }, [current, store, sharedStore]);
 
+  const live = code && chars ? chars.characters[code] ?? null : null;
+  const seoName = live ? characterName(live, lang) : seo?.name;
+  const head = (
+    <Seo title={seoName} noindex={!seo} image={seo?.image}
+      description={seoName ? plainText(`${t('seoDescCharacter', { name: seoName })} ${seo?.desc ?? ''}`) : undefined}
+      jsonLd={seo && code ? breadcrumbs([
+        { name: 'MAD Viewer', path: '/' },
+        { name: t('navCharacters'), path: '/characters/' },
+        { name: seo.name, path: characterHref(code) },
+      ]) : undefined} />
+  );
+
   if (error || !chars || !router.isReady || blocked) {
-    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
+    return (
+      <>
+        {head}
+        {seo && !gated && (
+          <VStack align="stretch" spacing={2} mb={4}>
+            <Text as="h1" fontSize="2xl" fontWeight="bold">{seo.name}</Text>
+            {seo.desc && <Text fontSize="sm" color="gray.400">{seo.desc}</Text>}
+          </VStack>
+        )}
+        <LoadState loading error={error} labels={{ loading: t('loading'), error }} />
+      </>
+    );
   }
 
   const entry: CharacterEntry | null = code ? chars.characters[code] ?? null : null;
@@ -278,6 +331,7 @@ export default function CharacterPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
+      {head}
       <Text as={NextLink} href="/characters" fontSize="sm" color="gray.500" alignSelf="start"
         _hover={{ color: 'gray.200' }}>{t('backToCharacters')}</Text>
       <PageHeader title={characterName(entry, lang)} id={entry.code}
@@ -296,7 +350,7 @@ export default function CharacterPage() {
             )}
           </>
         }
-        actions={<ShareButton query={{ code: entry.code }} />} />
+        actions={<ShareButton query={{}} />} />
 
       {isPlayable(entry) && growth && (
         <CollectionEditor entry={entry} data={chars} growth={growth} icons={icons} />
@@ -344,7 +398,7 @@ function MemberPopover({ members, icons, current, children }: {
             <SimpleGrid columns={3} spacing={1}>
               {members.map((m) => (
                 <VStack key={m.code} as={NextLink} spacing={0.5} p={1} borderRadius="md"
-                  href={{ pathname: '/character', query: { code: m.code } }}
+                  href={characterHref(m.code)}
                   bg={m.code === current ? 'whiteAlpha.300' : undefined}
                   _hover={{ bg: 'whiteAlpha.200' }}>
                   <GameIcon manifest={icons} group="char" name={m.iconPath}

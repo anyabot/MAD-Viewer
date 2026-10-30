@@ -26,6 +26,7 @@ import type {
   BattlePattern, CharacterData, CharacterEntry, IconManifest, StageData, StageDrop, StageEntry,
   StageSubMission, StageWave, WaveEvent,
 } from '@/lib/data';
+import { characterHref } from '@/lib/routes';
 
 const DEFAULT_RADIUS = 0.5;
 // Approach 99 is within reach of anything on the field, so the unit never walks.
@@ -242,7 +243,7 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
           <Wrap spacing={2} align="center">
             <WrapItem>
               {group.code && entry ? (
-                <Text as={NextLink} href={`/character?code=${group.code}`}
+                <Text as={NextLink} href={characterHref(group.code)}
                   fontSize="sm" fontWeight="bold" color="yellow.200">
                   {dataText(lang, enemy?.name, enemy?.nameEn) || group.code}
                 </Text>

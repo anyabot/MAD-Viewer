@@ -6,6 +6,7 @@ import type { CharacterData, IconManifest, StoryLine } from '@/lib/data';
 import type { GameLang } from '@/lib/gameText';
 import { useT } from '@/lib/i18n';
 import { playVoice, type VoiceIndex } from '@/lib/voice';
+import { characterHref } from '@/lib/routes';
 
 const MARKUP = /\{player\}|<bouten>([\s\S]*?)<\/bouten>|<ruby=(?:"([^"]*)"|([^>]*))>([\s\S]*?)<\/ruby>/g;
 const EMPHASIS = { textEmphasis: 'filled dot', WebkitTextEmphasis: 'filled dot', textEmphasisPosition: 'over right' };
@@ -72,7 +73,7 @@ export function SceneLines({ lines, chars, icons, voice, lang }: {
               {line.n && (
                 <Text fontSize="xs" fontWeight="bold" color={playable ? 'yellow.300' : 'gray.300'}
                   as={playable ? NextLink : undefined}
-                  {...(playable ? { href: `/character?code=${line.c}` } : {})}>
+                  {...(playable && line.c ? { href: characterHref(line.c) } : {})}>
                   {line.n}
                 </Text>
               )}

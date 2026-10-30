@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSpoilerFilter } from '@/lib/spoilers';
-import Head from 'next/head';
+import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { Box, Center, Spinner, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import { PageHeader } from '@altterisk/game-hub';
@@ -12,6 +12,7 @@ import {
 import { gameText, useGameLang } from '@/lib/gameText';
 import { useT } from '@/lib/i18n';
 import { loadArchive, urlFor } from '@/lib/skinArchive';
+import { eventHref } from '@/lib/routes';
 
 const TILE = 112;
 
@@ -77,7 +78,7 @@ export default function ChibisPage() {
 
   return (
     <VStack align="stretch" spacing={6}>
-      <Head><title>{`MAD Viewer — ${t('navChibis')}`}</title></Head>
+      <Seo title={t('navChibis')} description={t('seoDescChibis')} />
       <PageHeader title={t('navChibis')} />
       {error && <Text color="red.400">{error}</Text>}
       {!art && !error && <Center py={20}><Spinner /></Center>}
@@ -85,7 +86,7 @@ export default function ChibisPage() {
         const event = events?.events.find((e) => e.id === Number(id));
         return (
           <Box key={id}>
-            <Text as={NextLink} href={`/event?id=${id}`} fontSize="lg" fontWeight="bold" mb={3} display="block">
+            <Text as={NextLink} href={eventHref(id)} fontSize="lg" fontWeight="bold" mb={3} display="block">
               {event ? gameText(event.name, gameLang) : id}
             </Text>
             <EventStickers art={entry} />
