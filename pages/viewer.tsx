@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Center, Flex, Grid, HStack, Input, Spinner, Tab, TabList, TabPanel,
-  TabPanels, Tabs, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  Badge, Box, Center, Flex, Grid, HStack, Input, Spinner, Tab, TabList, TabPanel, TabPanels, Tabs,
+  Text, VStack, Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import GachaScene from '@/components/gachaScene';
 import SkinViewer from '@/components/skinViewer';
 import { useSpoilerGate } from '@/components/spoilers';
@@ -38,7 +38,7 @@ export default function ViewerPage() {
 function ViewerContent() {
   const t = useT();
   return (
-    <Tabs variant="line" colorScheme="yellow" isLazy>
+    <Tabs variant="line" colorScheme="accent" isLazy>
       <TabList borderColor="whiteAlpha.200" overflowX="auto">
         <Tab fontSize="sm" whiteSpace="nowrap">{t('tabSkins')}</Tab>
         <Tab fontSize="sm" whiteSpace="nowrap">{t('tabGacha')}</Tab>
@@ -185,7 +185,7 @@ function SkinGallery() {
               return (
                 <Box key={s.key} as="button" w="100%" textAlign="left" px={2.5} py={2}
                   borderRadius="lg" borderWidth="1px"
-                  borderColor={s.key === selected ? 'yellow.400' : 'transparent'}
+                  borderColor={s.key === selected ? 'accent.400' : 'transparent'}
                   bg={s.key === selected ? 'whiteAlpha.200' : 'transparent'}
                   boxShadow={s.key === selected ? 'inset 3px 0 0 #f6c445' : 'none'}
                   _hover={{ bg: s.key === selected ? 'whiteAlpha.200' : 'whiteAlpha.100' }}
@@ -217,7 +217,7 @@ function SkinGallery() {
                           </Badge>
                         )}
                         {s.stores.length > 1 && (
-                          <Badge colorScheme="yellow" fontSize="0.55rem">{t('badgeDiff')}</Badge>
+                          <Badge colorScheme="accent" fontSize="0.55rem">{t('badgeDiff')}</Badge>
                         )}
                       </Flex>
                       <Text fontSize="xs" color="gray.500" noOfLines={1}>
@@ -266,7 +266,7 @@ function SkinGallery() {
                 </WrapItem>
                 {current.stores.length > 1 && (
                   <WrapItem>
-                    <Badge colorScheme="yellow" title={t('storeDiffTitle')}>
+                    <Badge colorScheme="accent" title={t('storeDiffTitle')}>
                       {t('badgeDiff')} · {STORE_META[store].short}
                     </Badge>
                   </WrapItem>
@@ -276,9 +276,9 @@ function SkinGallery() {
                 )}
                 {charOf(current) && (
                   <WrapItem>
-                    <Text as={NextLink} fontSize="xs" color="yellow.300"
+                    <Text as={NextLink} fontSize="xs" color="accent.300"
                       href={characterHref(current.character)}
-                      _hover={{ color: 'yellow.200' }}>
+                      _hover={{ color: 'accent.200' }}>
                       {t('toCharacter')}
                     </Text>
                   </WrapItem>
@@ -302,11 +302,11 @@ function Chip({ active, onClick, children }: {
   return (
     <Box as="button" onClick={onClick} px={3} py={1.5} minH="34px"
       borderRadius="full" fontSize="sm" display="flex" alignItems="center" gap={1.5}
-      borderWidth="1px" borderColor={active ? 'yellow.400' : 'whiteAlpha.200'}
-      bg={active ? 'yellow.400' : 'whiteAlpha.50'} color={active ? 'gray.900' : 'gray.200'}
+      borderWidth="1px" borderColor={active ? 'accent.400' : 'whiteAlpha.200'}
+      bg={active ? 'accent.400' : 'whiteAlpha.50'} color={active ? 'gray.900' : 'gray.200'}
       fontWeight={active ? '700' : '500'}
       boxShadow={active ? '0 6px 18px rgba(246, 196, 69, 0.16)' : 'none'}
-      _hover={{ bg: active ? 'yellow.300' : 'whiteAlpha.200' }}
+      _hover={{ bg: active ? 'accent.300' : 'whiteAlpha.200' }}
       transition="background 0.15s, border-color 0.15s, box-shadow 0.15s">
       {children}
     </Box>

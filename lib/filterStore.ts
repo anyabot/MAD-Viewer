@@ -2,20 +2,18 @@
 // change, so component state cannot survive a trip to a character and back.
 // In-memory only: a stale filter must not outlive the session.
 import { create } from 'zustand';
+import type { FilterMode } from '@altterisk/game-hub';
 import type { SkinKind } from '@/components/skinViewer/types';
 import type { TypeTable } from '@/lib/characters';
 import type { EffectGroup, EffectSelection } from '@/lib/effects';
-
-/** `no` is as much a filter as `yes`: the list can show what is missing. */
-export type Tri = 'all' | 'yes' | 'no';
 
 export type CharacterFilters = {
   query: string;
   npcs: boolean;
   unreleased: boolean;
   skinsOnly: boolean;
-  collected: Tri;
-  favorite: Tri;
+  collected: FilterMode;
+  favorite: FilterMode;
   star: number | null;
   artist: string | null;
   picked: Partial<Record<TypeTable, number>>;
@@ -37,7 +35,7 @@ type EffectFilters = {
 
 const EMPTY_CHARACTERS: CharacterFilters = {
   query: '', npcs: false, unreleased: false, skinsOnly: false,
-  collected: 'all', favorite: 'all', star: null, artist: null, picked: {},
+  collected: 0, favorite: 0, star: null, artist: null, picked: {},
 };
 
 const EMPTY_SKINS: SkinFilters = {

@@ -1,0 +1,25 @@
+body {
+  background-image: radial-gradient(circle at 12% -10%, rgba(246, 196, 69, 0.08), transparent 30rem), radial-gradient(circle at 92% 18%, rgba(66, 153, 225, 0.06), transparent 28rem);
+  background-attachment: fixed;
+}
+
+.hub-shell__content { padding: 16px 12px 32px; }
+@media (min-width: 48em) {
+  .hub-shell__content { padding: 24px 24px 48px; }
+}
+
+.hub-banner-card.mad-banner-row { flex-direction: row; align-items: center; }
+.mad-banner-row .hub-banner-card__art { flex: 0 0 clamp(120px, 38%, 260px); }
+.mad-banner-row .hub-banner-card__body { flex: 1 1 auto; justify-content: center; }
+
+.mad-stacked-levels .hub-level { grid-template-columns: 1fr 72px; }
+.mad-stacked-levels .hub-level__label { grid-column: 1 / -1; }
+
+.mad-stat-table th, .mad-stat-table td { padding: 0.25rem 0.5rem; text-align: right; }
+
+.mad-canvas-host canvas { display: block; }
+.mad-stat-table th:first-of-type, .mad-stat-table td:first-of-type { text-align: left; padding-left: 0; }
+
+.mad-rule-last:last-child { border-bottom-width: 0; }
+.mad-rule-first:first-child { border-top-width: 0; padding-top: 0; }
+.mad-hide-empty:empty { display: none; }

@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Seo } from '@/components/seo';
 import {
-  Badge, Box, Center, Flex, HStack, IconButton, SimpleGrid, Slider, SliderFilledTrack,
-  SliderThumb, SliderTrack, Spinner, Text, VStack,
-} from '@chakra-ui/react';
+  Badge, Box, Center, Flex, HStack, IconButton, SimpleGrid, Slider, SliderFilledTrack, SliderThumb,
+  SliderTrack, Spinner, Text, VStack,
+} from '@altterisk/game-hub/ui';
 import { Panel } from '@altterisk/game-hub';
 import { loadSceneAudio } from '@/lib/data';
 import { Jukebox } from '@/lib/jukebox';
@@ -144,9 +144,9 @@ export default function JukeboxPage() {
               return (
                 <Flex key={track.id} as="button" type="button" onClick={() => { void play(track); }}
                   gap={2} align="center" p={2} borderRadius="md" textAlign="left" minW={0}
-                  borderWidth="1px" borderColor={active ? 'yellow.400' : 'transparent'}
+                  borderWidth="1px" borderColor={active ? 'accent.400' : 'transparent'}
                   bg={active ? 'whiteAlpha.100' : 'whiteAlpha.50'} _hover={{ bg: 'whiteAlpha.100' }}>
-                  <Box as="span" aria-hidden w={4} flexShrink={0} color={active ? 'yellow.300' : 'gray.400'}>
+                  <Box as="span" aria-hidden w={4} flexShrink={0} color={active ? 'accent.300' : 'gray.400'}>
                     {active && loading ? <Spinner size="xs" /> : '▶'}
                   </Box>
                   <Text fontSize="sm" fontFamily="mono" noOfLines={1} flex="1" minW={0}>
@@ -171,7 +171,7 @@ export default function JukeboxPage() {
               <IconButton aria-label={t('jukeboxPrev')} size="sm" variant="ghost"
                 icon={<Box as="span" aria-hidden>⏮</Box>} onClick={() => step(-1)} />
               <IconButton aria-label={paused ? t('jukeboxPlay') : t('jukeboxPause')} size="sm"
-                colorScheme="yellow" isDisabled={loading || failed === playing.id}
+                colorScheme="accent" isDisabled={loading || failed === playing.id}
                 icon={<Box as="span" aria-hidden>{paused ? '▶' : '❚❚'}</Box>}
                 onClick={() => { void toggle(); }} />
               <IconButton aria-label={t('jukeboxNext')} size="sm" variant="ghost"
@@ -202,7 +202,7 @@ export default function JukeboxPage() {
                     player.current?.seek(value);
                     setPosition(value);
                   }}>
-                  <SliderTrack bg="whiteAlpha.200"><SliderFilledTrack bg="yellow.400" /></SliderTrack>
+                  <SliderTrack bg="whiteAlpha.200"><SliderFilledTrack bg="accent.400" /></SliderTrack>
                   <SliderThumb boxSize={3} />
                 </Slider>
               )}

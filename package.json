@@ -2,6 +2,7 @@
   "name": "madviewer",
   "version": "0.1.0",
   "private": true,
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "dev": "next dev",
     "dev:local": "cross-env NEXT_PUBLIC_DATA_SOURCE=bucket NEXT_PUBLIC_DATA_BASE=/data-full NEXT_PUBLIC_ASSET_SOURCE=local next dev",
@@ -12,14 +13,9 @@
     "sync:local-data": "node scripts/sync-local-data.js"
   },
   "dependencies": {
-    "@altterisk/game-hub": "github:Altterisk/game-hub#v0.4.3",
-    "@chakra-ui/icons": "^2.2.4",
-    "@chakra-ui/react": "^2.10.5",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@altterisk/game-hub": "github:Altterisk/game-hub#v0.6.0",
     "@esotericsoftware/spine-pixi-v8": "4.2.72",
     "brotli-dec-wasm": "^2.3.2",
-    "framer-motion": "^11.15.0",
     "next": "^15.5.18",
     "pixi.js": "~8.4.0",
     "react": "18.3.1",

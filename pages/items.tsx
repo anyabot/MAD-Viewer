@@ -2,11 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { textMatch } from '@altterisk/game-hub/filters';
 import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
-import {
-  Box, HStack, SimpleGrid, Text, VStack,
-} from '@chakra-ui/react';
-import { EmptyState, FilterPanel, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
-import { FilterChip, FilterRow } from '@/components/filters';
+import { Box, HStack, SimpleGrid, Text, VStack } from '@altterisk/game-hub/ui';
+import { EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
 import { ItemIcon } from '@/components/itemIcon';
 import { AmountField, Stepper } from '@/components/unitPlan';
 import {
@@ -138,7 +135,7 @@ function ItemTile({ itemRef, entry, icons, gameLang, held, need, onHeld }: {
         href={itemHref(itemRef)} />
       <VStack align="stretch" spacing={1} minW={0} flex="1">
         <Text as={NextLink} href={itemHref(itemRef)} fontSize="sm" fontWeight="bold" noOfLines={1}
-          _hover={{ color: 'yellow.300' }}>
+          _hover={{ color: 'accent.300' }}>
           {gameText(entry.name, gameLang)}
         </Text>
         <HStack spacing={2} wrap="wrap">

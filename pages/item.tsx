@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import {
   Badge, Box, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+} from '@altterisk/game-hub/ui';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { AmountField, Stepper } from '@/components/unitPlan';
@@ -106,7 +106,7 @@ function ItemContent() {
     <VStack align="stretch" spacing={6}>
       <Seo title={name} noindex />
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
-        <Text as={NextLink} href="/items" color="yellow.300">{t('navItems')}</Text>
+        <Text as={NextLink} href="/items" color="accent.300">{t('navItems')}</Text>
         <Text color="gray.600">/</Text>
         <Text color="gray.400">{name}</Text>
         <Box flex="1" />
@@ -118,7 +118,7 @@ function ItemContent() {
           <HStack spacing={2} wrap="wrap">
             <Badge>{pick(CATEGORY_LABEL[itemCategory(entry)], lang)}</Badge>
             {entry.code && owner && (
-              <Badge as={NextLink} href={characterHref(entry.code)} colorScheme="yellow"
+              <Badge as={NextLink} href={characterHref(entry.code)} colorScheme="accent"
                 textTransform="none">{ownerName}</Badge>
             )}
           </HStack>
@@ -162,7 +162,7 @@ function ItemContent() {
               </VStack>
             </>
           )}
-          <Text as={NextLink} href="/farm" fontSize="xs" color="yellow.300">{t('itemOpenPlanner')} ›</Text>
+          <Text as={NextLink} href="/farm" fontSize="xs" color="accent.300">{t('itemOpenPlanner')} ›</Text>
         </VStack>
       </Flex>
 

@@ -1,6 +1,6 @@
 import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState } from 'react';
-import { Box, HStack, Select, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, HStack, Select, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { FIELD } from '@/lib/battleField';
 import { anchorOf, hasArea, isAreaHit, simulate, soloField, type Anchor } from '@/lib/aoe';
 import { castSummary, hitSummary } from '@/lib/characters';

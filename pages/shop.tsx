@@ -2,10 +2,9 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { ChevronRightIcon } from '@chakra-ui/icons';
 import {
-  Badge, Box, Button, Collapse, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  ChevronRightIcon, Badge, Box, Button, Collapse, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel, TabPanel, UrlTabs, tabParam } from '@altterisk/game-hub';
 import { nextRouterAdapter } from '@altterisk/game-hub/filters';
 import {
@@ -263,7 +262,7 @@ export default function ShopPage() {
             )}
             {tab === 'event' && (
               <TimedShops shops={events} ctx={ctx} title={(s) => (s.event ? (
-                <Text as={NextLink} href={eventHref(s.event)} _hover={{ color: 'yellow.300' }}>
+                <Text as={NextLink} href={eventHref(s.event)} _hover={{ color: 'accent.300' }}>
                   {gameText(s.eventName, gameLang) || gameText(s.name, gameLang)} ›
                 </Text>
               ) : gameText(s.name, gameLang))} />

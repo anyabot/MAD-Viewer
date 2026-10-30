@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import {
-  Box, Center, Spinner, Text, Wrap, WrapItem,
-} from '@chakra-ui/react';
+import { Box, Center, Spinner, Text, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import {
   loadSkinArchive, loadTexture, readBytes, readText, revokeSkinUrls, urlFor,
 } from '@/lib/skinArchive';
@@ -64,7 +62,10 @@ import {
   ActionButton, ControlRow, ControlSection, LayerPanel, OverlaySelect, SegmentedControl,
   StoreStrip, ToggleRow, type LayerItem, type SelectOption,
 } from '@/components/skinViewer/chrome';
+import { copyText } from '@altterisk/game-hub';
+import { saveBlob } from '@altterisk/game-hub/persist';
 import { ViewerShell } from '@altterisk/game-hub/viewer';
+import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
 
 type SkinViewerProps = {
   skin: string;
@@ -576,7 +577,7 @@ export default function SkinViewer({
     if (!layout || baseSkinKey(layout.skin) !== baseSkinKey(skin)) return;
     let destroyed = false;
     let app: any = null;
-    let appReady = false;
+    let pixi: PixiAppHandle | null = null;
     let detachLayerHover = () => {};
     spineRef.current = null;
     bgSpritesRef.current = [];
@@ -591,17 +592,13 @@ export default function SkinViewer({
       if (!files) return;
 
       if (layout.kind === 'drama' && layout.static?.image) {
-        app = new PIXI.Application();
-        await app.init({
-          backgroundAlpha: 0, antialias: true, autoDensity: true, resizeTo: hostRef.current!,
-        });
-        appReady = true;
-        if (destroyed) { app.destroy(true); return; }
+        pixi = await createPixiApp({ PIXI, host: hostRef.current!, cancelled: () => destroyed });
+        if (!pixi) return;
+        app = pixi.app;
         appRef.current = app;
-        hostRef.current!.replaceChildren(app.canvas);
         const root = new PIXI.Container();
         const texture = await loadTexture(PIXI, archive, files, layout.static.image);
-        if (destroyed) { app.destroy(true); return; }
+        if (destroyed) { pixi.dispose(); return; }
         const sprite = new PIXI.Sprite(texture);
         sprite.anchor.set(0.5);
         root.addChild(sprite);
@@ -646,15 +643,11 @@ export default function SkinViewer({
       const skeletonData = binary.readSkeletonData(await readBytes(files, layout.skel));
       if (destroyed) return;
 
-      app = new PIXI.Application();
       // `autoDensity` pins the CSS size, so recording can raise the backing store alone.
-      await app.init({
-        backgroundAlpha: 0, antialias: true, autoDensity: true, resizeTo: hostRef.current!,
-      });
-      appReady = true;
-      if (destroyed) { app.destroy(true); return; }
+      pixi = await createPixiApp({ PIXI, host: hostRef.current!, cancelled: () => destroyed });
+      if (!pixi) return;
+      app = pixi.app;
       appRef.current = app;
-      hostRef.current!.replaceChildren(app.canvas);
 
       const W = layout.world ?? {};
       const sk = W.skeleton ?? { x: 0, y: 0, scale: 1, dataScale: 1 };
@@ -699,7 +692,7 @@ export default function SkinViewer({
         showBg: () => showBgRef.current,
         isDestroyed: () => destroyed,
       });
-      if (!backgrounds) { if (appReady) app?.destroy(true); return; }
+      if (!backgrounds) { pixi?.dispose(); return; }
       const {
         switchBackground, changeBackground,
         applyTransforms: applyBackgroundTransforms,
@@ -1854,8 +1847,7 @@ export default function SkinViewer({
       fitCameraRef.current = () => {};
       resetSceneVisualsRef.current = () => {};
       detachLayerHover();
-      // Destroying before init() resolves throws.
-      if (app && appReady) app.destroy(true);
+      pixi?.dispose();
     };
   }, [layout, skin, archive]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -2050,13 +2042,7 @@ export default function SkinViewer({
       if (overlay) overlay.visible = overlayShown;
     }
     canvas?.toBlob((blob) => {
-      if (!blob) return;
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${archive}_view.png`;
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      if (blob) saveBlob(blob, `${archive}_view.png`);
     }, 'image/png');
   };
 
@@ -2236,12 +2222,7 @@ export default function SkinViewer({
       stage: sceneState?.label ?? undefined,
     });
     window.history.replaceState(null, '', url);
-    try {
-      await navigator.clipboard.writeText(url);
-      setShareStatus(t('shareCopied'));
-    } catch {
-      setShareStatus(t('shareCopyFailed'));
-    }
+    setShareStatus(t(await copyText(url) ? 'shareCopied' : 'shareCopyFailed'));
   };
 
   // CSS `aspect-ratio` cannot letterbox this: clamping the second axis distorts the box instead of shrinking the first.

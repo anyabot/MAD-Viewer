@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSpoilerFilter } from '@/lib/spoilers';
 import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
-import { Box, Center, Spinner, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, Center, Spinner, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { PageHeader } from '@altterisk/game-hub';
 import ChibiSticker from '@/components/chibiSticker';
 import { eventArchiveUrls } from '@/lib/cdn';

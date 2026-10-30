@@ -3,7 +3,7 @@
 //
 // A tap anywhere on the surface advances the phase the machine is parked on.
 
-import { Badge, Box, Button, Flex, HStack, Select, Spinner, Text } from '@chakra-ui/react';
+import { Badge, Box, Button, Flex, HStack, Select, Spinner, Text } from '@altterisk/game-hub/ui';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
@@ -16,6 +16,7 @@ import { gachaArchiveUrls } from '@/lib/cdn';
 import { useLang, useT } from '@/lib/i18n';
 import type { GachaIndex, GachaRig } from '@/lib/data';
 import { loadArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
+import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
 
 type Loaded = {
   spine: any;
@@ -55,6 +56,7 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
   useEffect(() => {
     let destroyed = false;
     let app: any = null;
+    let pixi: PixiAppHandle | null = null;
     const timers: number[] = [];
     const teardown: (() => void)[] = [];
     const surface = hostRef.current;
@@ -111,10 +113,12 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
       ]);
       if (destroyed) return;
 
-      app = new PIXI.Application();
-      await app.init({ background: 0x000000, antialias: true, resizeTo: surface! });
-      if (destroyed) { app.destroy(true); return; }
-      surface!.replaceChildren(app.canvas);
+      pixi = await createPixiApp({
+        PIXI, host: surface!, cancelled: () => destroyed,
+        init: { background: 0x000000, backgroundAlpha: 1, autoDensity: false },
+      });
+      if (!pixi) return;
+      app = pixi.app;
 
       const root = new PIXI.Container();
       const view = new PIXI.Container();
@@ -242,7 +246,7 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
       for (const t of timers) window.clearTimeout(t);
       for (const off of teardown) off();
       tapParkRef.current = null;
-      if (app) { try { app.destroy(true); } catch { /* already gone */ } }
+      pixi?.dispose();
       surface?.replaceChildren();
     };
     // A grade change restarts the scene, which is what `runId` bumps.

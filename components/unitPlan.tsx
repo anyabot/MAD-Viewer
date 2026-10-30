@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CheckIcon } from '@chakra-ui/icons';
-import { Badge, Box, HStack, Input, Text } from '@chakra-ui/react';
+import { CheckIcon, Badge, Box, HStack, Input, Text } from '@altterisk/game-hub/ui';
 import { GameIcon } from '@/components/gameIcon';
 import { useFarm } from '@/lib/farmStore';
 import {
@@ -59,7 +58,7 @@ export function Stepper({
   const button = {
     px: 1.5, borderWidth: '1px', borderRadius: 'md', borderColor: 'whiteAlpha.200',
     color: 'gray.400', lineHeight: 1.4, fontSize: 'sm', flexShrink: 0,
-    _hover: { borderColor: 'yellow.400', color: 'yellow.200' },
+    _hover: { borderColor: 'accent.400', color: 'accent.200' },
   } as const;
   const spent = { opacity: 0.35, pointerEvents: 'none' } as const;
   return (

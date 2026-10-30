@@ -1,7 +1,5 @@
-import {
-  Box, Container, Flex, HStack, Menu, MenuButton, MenuItem, MenuList, Portal,
-} from '@chakra-ui/react';
-import { HubBar, HubFooter } from '@altterisk/game-hub';
+import { Box, HStack } from '@altterisk/game-hub/ui';
+import { NavMenu, SiteShell, homeLink, routerLinks } from '@altterisk/game-hub';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
@@ -39,28 +37,14 @@ const NAV_ETC: NavItem[] = [
   { href: '/changelog', label: 'navChangelog', match: (p: string) => p === '/changelog' },
 ];
 
+const nextHome = homeLink(NextLink);
+const nextLinks = routerLinks(NextLink);
+
 function EtcMenu({ pathname }: { pathname: string }) {
   const t = useT();
-  const current = NAV_ETC.find((item) => item.match(pathname));
   return (
-    <Menu isLazy placement="bottom-start">
-      <MenuButton as="button" className="hub-navlink" bg="transparent" border="0"
-        cursor="pointer" fontFamily="inherit" style={{ flexShrink: 0 }}
-        aria-current={current ? 'page' : undefined}>
-        {current ? `${t(current.label)} ▾` : `${t('navEtc')} ▾`}
-      </MenuButton>
-      <Portal>
-        <MenuList zIndex="popover" minW="10rem">
-          {NAV_ETC.map((item) => (
-            <MenuItem key={item.href} as={NextLink} href={item.href}
-              fontWeight={item.match(pathname) ? 'bold' : 'normal'}
-              color={item.match(pathname) ? 'yellow.300' : undefined}>
-              {t(item.label)}
-            </MenuItem>
-          ))}
-        </MenuList>
-      </Portal>
-    </Menu>
+    <NavMenu label={t('navEtc')} showActiveLabel renderLink={nextLinks}
+      items={NAV_ETC.map((item) => ({ href: item.href, label: t(item.label), active: item.match(pathname) }))} />
   );
 }
 
@@ -79,7 +63,7 @@ function LanguagePicker() {
             minW="2.5rem" fontSize="xs"
             aria-pressed={active} onClick={() => setLang(option.value)}
             bg={active ? 'whiteAlpha.200' : 'transparent'}
-            color={active ? 'yellow.300' : 'gray.400'}
+            color={active ? 'accent.300' : 'gray.400'}
             fontWeight={active ? 'bold' : 'normal'}
             _hover={{ bg: 'whiteAlpha.100', color: 'gray.100' }}
             transition="background 0.15s, color 0.15s">
@@ -95,33 +79,34 @@ export default function Layout({ children }: { children: ReactNode }) {
   const { pathname, basePath } = useRouter();
   const t = useT();
   return (
-    <Flex direction="column" minH="100vh">
-      <HubBar
-        game="mad"
-        homeHref={`${basePath}/`}
-        labels={{ switchGame: t('hubSwitchGame'), allGames: t('hubAllGames'), here: t('hubHere') }}
-        renderHomeLink={({ className, children: brand }) => (
-          <NextLink href="/" className={className}>{brand}</NextLink>
-        )}
-        nav={[
-          ...NAV.map((item) => (
-            <NextLink key={item.href} href={item.href}
-              aria-current={item.match(pathname) ? 'page' : undefined}>
-              {t(item.label)}
-            </NextLink>
-          )),
-          <EtcMenu key="etc" pathname={pathname} />,
-        ]}
-        actions={<HStack spacing={2}><SpoilerToggle /><GameTextPicker /><LanguagePicker /></HStack>}
-      />
-      <Box as="main" flex="1">
-        <Container maxW="90rem" px={{ base: 3, md: 6 }} py={{ base: 4, md: 6 }}
-          pb={{ base: 8, md: 12 }}>
-          {children}
-        </Container>
-      </Box>
-      <HubFooter game="mad"
-        labels={{ source: t('hubSource'), portfolio: t('hubPortfolio'), allGames: t('hubAllGames') }} />
-    </Flex>
+    <SiteShell
+      game="mad"
+      homeHref={`${basePath}/`}
+      barLabels={{ switchGame: t('hubSwitchGame'), allGames: t('hubAllGames'), here: t('hubHere') }}
+      renderHomeLink={nextHome}
+      nav={[
+        ...NAV.map((item) => (
+          <NextLink key={item.href} href={item.href}
+            aria-current={item.match(pathname) ? 'page' : undefined}>
+            {t(item.label)}
+          </NextLink>
+        )),
+        <EtcMenu key="etc" pathname={pathname} />,
+      ]}
+      actions={<HStack spacing={2}><SpoilerToggle /><GameTextPicker /><LanguagePicker /></HStack>}
+      footer={{
+        labels: {
+          source: t('hubSource'), portfolio: t('hubPortfolio'), allGames: t('hubAllGames'),
+          rights: (owner, title) => t('hubRights', { owner, title }),
+          unowned: t('hubUnowned'), license: t('hubLicense'),
+        },
+      }}
+      resetKey={pathname}
+      errorLabels={{ title: t('hubErrorTitle'), hint: t('hubErrorHint'), retry: t('hubErrorRetry') }}
+      skipLabel={t('hubSkip')}
+      contentWidth="90rem"
+      contained>
+      {children}
+    </SiteShell>
   );
 }

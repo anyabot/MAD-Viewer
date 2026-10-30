@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import {
-  Box, Flex, HStack, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader,
-  ModalOverlay, SimpleGrid, Text, VStack,
-} from '@chakra-ui/react';
+  Box, Flex, HStack, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay,
+  SimpleGrid, Text, VStack,
+} from '@altterisk/game-hub/ui';
 import { ItemIcon } from '@/components/itemIcon';
 import { Panel } from '@altterisk/game-hub';
 import { AmountField, Stepper } from '@/components/unitPlan';

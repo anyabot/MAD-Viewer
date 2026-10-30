@@ -3,15 +3,13 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState } from 
 import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { LinkIcon } from '@chakra-ui/icons';
 import {
-  Box, Button, Flex, HStack, Input, Modal, ModalBody, ModalCloseButton, ModalContent,
+  LinkIcon, Box, Button, Flex, HStack, Input, Modal, ModalBody, ModalCloseButton, ModalContent,
   ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
-import { LoadState, PageHeader, Panel, TabPanel, UrlTabs, tabParam } from '@altterisk/game-hub';
+} from '@altterisk/game-hub/ui';
+import { copyText, FilterChip, LoadState, PageHeader, Panel, TabPanel, tabParam, UrlTabs } from '@altterisk/game-hub';
 import { nextRouterAdapter } from '@altterisk/game-hub/filters';
 import { GameIcon } from '@/components/gameIcon';
-import { FilterChip } from '@/components/filters';
 import { PlanGrid, type PlanDraft } from '@/components/unitPlan';
 import { useFarm } from '@/lib/farmStore';
 import { emptyPlan, planStar, type UnitPlan } from '@/lib/farm';
@@ -22,7 +20,8 @@ import {
 import {
   INFUSION_PATHS, characterName, equipmentSlotsOf, infusionNodes, infusionReach, isPlayable, typeLabel,
 } from '@/lib/characters';
-import { partyImage, saveBlob, type ImageRow } from '@/lib/partyImage';
+import { partyImage, type ImageRow } from '@/lib/partyImage';
+import { saveBlob } from '@altterisk/game-hub/persist';
 import { GROUP_ICON_GROUPS, groupLabel } from '@/lib/stages';
 import { hasIcon, resolveIcon, type IconGroup } from '@/lib/icons';
 import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
@@ -101,13 +100,7 @@ function useCopy(): [string, (text: string) => void] {
   const timer = useRef<number>();
   useEffect(() => () => window.clearTimeout(timer.current), []);
   return [status, async (text: string) => {
-    let message = t('partyCodeCopied');
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      message = t('partyCodeFailed');
-    }
-    setStatus(message);
+    setStatus(t(await copyText(text) ? 'partyCodeCopied' : 'partyCodeFailed'));
     window.clearTimeout(timer.current);
     timer.current = window.setTimeout(() => setStatus(''), 2500);
   }];
@@ -443,7 +436,7 @@ function MemberRow({ ctx, units, onChange, taken, friend }: {
           <WrapItem>
             <Box as="button" {...TILE} borderStyle="dashed"
               borderColor="whiteAlpha.300" color="gray.400" fontSize="xs"
-              _hover={{ borderColor: 'yellow.400', color: 'yellow.200' }}
+              _hover={{ borderColor: 'accent.400', color: 'accent.200' }}
               onClick={() => setPicking('unit')}>
               + {t('partyAddUnit')}
             </Box>
@@ -574,7 +567,7 @@ function MemberTile({ ctx, member, onSync, onEdit, onRemove }: {
     <VStack {...TILE} spacing={1} p={1} position="relative" borderColor="whiteAlpha.200">
       <Box as="button" position="absolute" top={0.5} left={1} lineHeight={1}
         aria-pressed={!!member.sync} title={member.sync ? t('partySyncOn') : t('partySyncOff')}
-        color={member.sync ? 'yellow.300' : 'whiteAlpha.400'} _hover={{ color: 'yellow.200' }}
+        color={member.sync ? 'accent.300' : 'whiteAlpha.400'} _hover={{ color: 'accent.200' }}
         onClick={() => onSync(!member.sync)}>
         <LinkIcon boxSize={2.5} />
       </Box>
@@ -702,7 +695,7 @@ function InvestmentDialog({ ctx, member, onSave, onClose }: {
         <ModalHeader fontSize="md">
           <HStack spacing={2}>
             <GameIcon manifest={ctx.icons} group="char" names={charIcon(entry)} size={8} borderRadius="md" />
-            <Text as={NextLink} href={characterHref(member.code)} _hover={{ color: 'yellow.300' }}>
+            <Text as={NextLink} href={characterHref(member.code)} _hover={{ color: 'accent.300' }}>
               {characterName(entry ?? null, ctx.lang) || member.code}
             </Text>
             <Text fontSize="sm" color="gray.400" fontWeight="normal">
@@ -719,11 +712,11 @@ function InvestmentDialog({ ctx, member, onSave, onClose }: {
         </ModalBody>
         <ModalFooter gap={2}>
           {member.sync ? (
-            <Button size="sm" colorScheme="yellow" onClick={onClose}>{t('close')}</Button>
+            <Button size="sm" colorScheme="accent" onClick={onClose}>{t('close')}</Button>
           ) : (
             <>
               <Button size="sm" variant="ghost" onClick={onClose}>{t('planCancel')}</Button>
-              <Button size="sm" colorScheme="yellow" onClick={() => onSave(plan)}>{t('planSave')}</Button>
+              <Button size="sm" colorScheme="accent" onClick={() => onSave(plan)}>{t('planSave')}</Button>
             </>
           )}
         </ModalFooter>

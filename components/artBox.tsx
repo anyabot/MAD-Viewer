@@ -1,5 +1,8 @@
 // Stage and event art ranges from 0.7:1 covers to 2.5:1 strips; the whole image sits over a blurred fill of itself.
-import { Box, type BoxProps } from '@chakra-ui/react';
+import type { ComponentProps } from 'react';
+import { Box } from '@altterisk/game-hub/ui';
+
+type BoxProps = Omit<ComponentProps<typeof Box>, 'manifest' | 'name'>;
 import { resolveIcon, type IconGroup, type IconManifest } from '@/lib/icons';
 
 // The game's own event-history card is 430x280.

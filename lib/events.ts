@@ -1,9 +1,9 @@
+import { formatRemaining, phaseOf, type Phase } from '@altterisk/game-hub/time';
 import type { GameEvent } from '@/lib/data';
 import type { GameLang } from '@/lib/gameText';
-import type { Lang, Localized } from '@/lib/i18n';
+import { text, type Lang, type Localized } from '@/lib/i18n';
 
-// `exchange`: battles are over, only the shop and box draw still take the event currency.
-export type EventPhase = 'upcoming' | 'running' | 'exchange' | 'ended';
+export type EventPhase = Phase;
 
 export function sceneCount(
   t: (key: 'eventsScene' | 'eventsScenes', vars?: Record<string, number>) => string, n: number,
@@ -21,20 +21,11 @@ export const PHASE_LABEL: Record<EventPhase, Localized> = {
 };
 
 export function eventPhase(event: GameEvent, now: number): EventPhase {
-  if (now < Date.parse(event.start)) return 'upcoming';
-  if (now > Date.parse(event.end)) return 'ended';
-  return event.stagesEnd && now > Date.parse(event.stagesEnd) ? 'exchange' : 'running';
+  return phaseOf(event, now);
 }
 
 export function remaining(ms: number, lang: Lang): string {
-  const minutes = Math.max(0, Math.floor(ms / 60000));
-  const d = Math.floor(minutes / 1440);
-  const h = Math.floor((minutes % 1440) / 60);
-  const m = minutes % 60;
-  const unit = lang === 'ko' ? { d: '일', h: '시간', m: '분' } : { d: 'd', h: 'h', m: 'm' };
-  if (d) return `${d}${unit.d} ${h}${unit.h}`;
-  if (h) return `${h}${unit.h} ${m}${unit.m}`;
-  return `${m}${unit.m}`;
+  return formatRemaining(ms, { d: text(lang, 'unitDay'), h: text(lang, 'unitHour'), m: text(lang, 'unitMinute') });
 }
 
 export function formatMoment(iso: string, lang: Lang, serverTime: boolean): string {

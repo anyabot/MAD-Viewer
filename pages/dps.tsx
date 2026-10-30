@@ -3,9 +3,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import {
-  Box, Button, Checkbox, HStack, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack,
-  Table, Tbody, Td, Text, Th, Thead, Tr, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  Box, Button, Checkbox, HStack, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb,
+  SliderTrack, Table, Tbody, Td, Text, Th, Thead, Tr, VStack, Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel } from '@altterisk/game-hub';
 import { defaultPattern, loopPatterns, unitYield, type Build, type Target, type UnitYield } from '@/lib/dps';
 import {
@@ -39,7 +39,7 @@ function Dial({ label, value, min, max, step = 1, onChange }: {
         <Text fontSize="xs" fontFamily="mono">{value}</Text>
       </HStack>
       <Slider aria-label={label} min={min} max={max} step={step} value={value} onChange={onChange}>
-        <SliderTrack bg="whiteAlpha.200"><SliderFilledTrack bg="yellow.400" /></SliderTrack>
+        <SliderTrack bg="whiteAlpha.200"><SliderFilledTrack bg="accent.400" /></SliderTrack>
         <SliderThumb boxSize={3} />
       </Slider>
     </VStack>

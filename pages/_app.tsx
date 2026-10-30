@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { accentScale, getGame } from '@altterisk/game-hub';
-import { hubChakraTheme } from '@altterisk/game-hub/chakra';
+import { Toaster } from '@altterisk/game-hub/ui';
+import '@altterisk/game-hub/ui-reset.css';
+import '@altterisk/game-hub/ui.css';
 import '@altterisk/game-hub/hub.css';
 import '@altterisk/game-hub/components.css';
+import '@/styles/site.css';
 import Layout from '@/components/Layout';
 import { Seo } from '@/components/seo';
 import { dataText, restoreLang, useLangStore } from '@/lib/i18n';
@@ -21,26 +22,6 @@ import { ChangelogDialog } from '@/components/changelog';
 
 setTextResolver(dataText);
 
-const theme = extendTheme(hubChakraTheme('mad'), {
-  colors: {
-    yellow: accentScale(getGame('mad').accent),
-  },
-  components: {
-    Badge: { defaultProps: { colorScheme: 'gray' } },
-  },
-  styles: {
-    global: {
-      body: {
-        bgImage: 'radial-gradient(circle at 12% -10%, rgba(246, 196, 69, 0.08), transparent 30rem), radial-gradient(circle at 92% 18%, rgba(66, 153, 225, 0.06), transparent 28rem)',
-        bgAttachment: 'fixed',
-      },
-      '.hub-banner-card.mad-banner-row': { flexDirection: 'row', alignItems: 'center' },
-      '.mad-banner-row .hub-banner-card__art': { flex: '0 0 clamp(120px, 38%, 260px)' },
-      '.mad-banner-row .hub-banner-card__body': { flex: '1 1 auto', justifyContent: 'center' },
-    },
-  },
-});
-
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreLang, []);
   useEffect(restoreGameLang, []);
@@ -53,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const lang = useLangStore((s) => s.lang);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
   return (
-    <ChakraProvider theme={theme}>
+    <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -62,6 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <ChangelogDialog />
         <Component {...pageProps} />
       </Layout>
-    </ChakraProvider>
+      <Toaster />
+    </>
   );
 }

@@ -1,10 +1,13 @@
-import { Box, Button, ButtonGroup, Center, HStack, Spinner, Text, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Box, Button, ButtonGroup, Center, HStack, Spinner, Text, Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import { useEffect, useRef, useState } from 'react';
 
 import { eventArchiveUrls } from '@/lib/cdn';
 import type { EventArt, EventArtRig } from '@/lib/data';
 import { useT, type UiKey } from '@/lib/i18n';
 import { loadArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
+import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
 
 type Player = { rig: EventArtRig; spine: any };
 type Grade = 1 | 2 | 3;
@@ -41,6 +44,7 @@ export default function EventBoxArt({ art, maxDraws }: { art: EventArt; maxDraws
   useEffect(() => {
     let destroyed = false;
     let app: any = null;
+    let pixi: PixiAppHandle | null = null;
     const surface = hostRef.current;
     setReady(false);
     setError(null);
@@ -76,10 +80,9 @@ export default function EventBoxArt({ art, maxDraws }: { art: EventArt; maxDraws
 
       const players = await Promise.all(art.rigs.map(build));
       if (destroyed) return;
-      app = new PIXI.Application();
-      await app.init({ backgroundAlpha: 0, antialias: true, resizeTo: surface! });
-      if (destroyed) { app.destroy(true); return; }
-      surface!.replaceChildren(app.canvas);
+      pixi = await createPixiApp({ PIXI, host: surface!, cancelled: () => destroyed, init: { autoDensity: false } });
+      if (!pixi) return;
+      app = pixi.app;
 
       const bounds = players.map(({ spine }) => spine.getBounds());
       players.forEach(({ spine }) => app.stage.addChild(spine));
@@ -104,7 +107,8 @@ export default function EventBoxArt({ art, maxDraws }: { art: EventArt; maxDraws
     return () => {
       destroyed = true;
       playersRef.current = [];
-      app?.destroy(true, { children: true });
+      if (pixi) for (const child of [...pixi.app.stage.children]) child.destroy({ children: true });
+      pixi?.dispose();
     };
   }, [art]);
 
@@ -181,9 +185,9 @@ export default function EventBoxArt({ art, maxDraws }: { art: EventArt; maxDraws
               ))}
             </ButtonGroup>
           )}
-          <Button size="sm" colorScheme="yellow" isLoading={busy === 1} isDisabled={busy !== null} onClick={() => run(1)}>{t('eventsDraw')}</Button>
+          <Button size="sm" colorScheme="accent" isLoading={busy === 1} isDisabled={busy !== null} onClick={() => run(1)}>{t('eventsDraw')}</Button>
           {draw.style === 'box' && maxDraws && maxDraws > 1 && (
-            <Button size="sm" colorScheme="yellow" variant="outline" isLoading={busy === maxDraws} isDisabled={busy !== null} onClick={() => run(maxDraws)}>
+            <Button size="sm" colorScheme="accent" variant="outline" isLoading={busy === maxDraws} isDisabled={busy !== null} onClick={() => run(maxDraws)}>
               {t('eventsDrawTimes', { n: maxDraws })}
             </Button>
           )}

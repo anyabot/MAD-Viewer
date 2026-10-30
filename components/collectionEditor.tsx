@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import NextLink from 'next/link';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Text } from '@altterisk/game-hub/ui';
 import { PlanGrid } from '@/components/unitPlan';
 import { emptyPlan } from '@/lib/farm';
 import { useFarm } from '@/lib/farmStore';
@@ -31,10 +31,10 @@ export default function CollectionEditor({ entry, data, growth, icons }: {
       bg="whiteAlpha.50" px={3} py={2}>
       <Flex align="center" gap={2} wrap="wrap">
         <Box as="button" fontSize="xs" color="gray.500" w={3} flexShrink={0}
-          aria-expanded={open} _hover={{ color: 'yellow.200' }}
+          aria-expanded={open} _hover={{ color: 'accent.200' }}
           onClick={() => setOpen(!open)}>{open ? '▾' : '▸'}</Box>
         <Text fontSize="sm" fontWeight="bold" mr={1}>{t('collectionCurrent')}</Text>
-        <Button size="xs" variant={collected ? 'solid' : 'outline'} colorScheme="yellow"
+        <Button size="xs" variant={collected ? 'solid' : 'outline'} colorScheme="accent"
           onClick={() => setCollected(entry.code, !collected)}>
           {collected ? t('collectionCollected') : t('collectionMarkCollected')}
         </Button>
@@ -48,14 +48,14 @@ export default function CollectionEditor({ entry, data, growth, icons }: {
           </Text>
         )}
         <Box flex="1" />
-        <Box as="button" fontSize="xs" color={listed ? 'yellow.300' : 'gray.400'}
-          _hover={{ color: 'yellow.200' }}
+        <Box as="button" fontSize="xs" color={listed ? 'accent.300' : 'gray.400'}
+          _hover={{ color: 'accent.200' }}
           onClick={() => (listed ? setListed(entry.code, false) : addUnit(entry.code))}>
           {listed ? t('collectionInFarm') : t('collectionAddFarm')}
         </Box>
         {listed && (
-          <Text as={NextLink} href="/farm" fontSize="xs" color="yellow.300"
-            _hover={{ color: 'yellow.200' }}>
+          <Text as={NextLink} href="/farm" fontSize="xs" color="accent.300"
+            _hover={{ color: 'accent.200' }}>
             {t('collectionOpenFarm')}
           </Text>
         )}

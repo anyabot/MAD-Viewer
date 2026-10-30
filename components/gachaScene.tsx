@@ -1,7 +1,7 @@
 // Fetches the cutscene index, then mounts the Pixi/Spine host. Kept apart from
 // the viewer itself so the gallery page can drop it into a tab.
 
-import { Spinner, Text } from '@chakra-ui/react';
+import { Spinner, Text } from '@altterisk/game-hub/ui';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 

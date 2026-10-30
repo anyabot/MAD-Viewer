@@ -2,7 +2,7 @@ import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState } from 'react';
 import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
-import { Box, Button, Grid, HStack, Text, VStack, Wrap } from '@chakra-ui/react';
+import { Box, Button, Grid, HStack, Text, VStack, Wrap } from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel } from '@altterisk/game-hub';
 import { ARTIST_LINKS, artistAnchor } from '@/lib/artists';
 import { characterName, isPlayable, skinsByCharacter } from '@/lib/characters';
@@ -60,7 +60,7 @@ export default function ArtistsPage() {
       <PageHeader title={t('navArtists')} />
       <Grid gap={4} templateColumns={{ base: '1fr', lg: 'repeat(2, minmax(0, 1fr))' }}>
         {artists.map(([name, list]) => (
-          <Box key={name} id={artistAnchor(name)} scrollMarginTop="5rem">
+          <Box key={name} id={artistAnchor(name)} style={{ scrollMarginTop: '5rem' }}>
           <Panel title={dataText(lang, name, list[0].artistEn)}
             actions={
               <Button as={NextLink} href="/characters" size="xs" variant="ghost"

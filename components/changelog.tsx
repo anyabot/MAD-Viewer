@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@altterisk/game-hub/ui';
 import { useEffect } from 'react';
 import {
   ChangelogDialog as HubChangelogDialog, ReleaseList, type Release,
@@ -37,10 +37,10 @@ export function ChangelogDialog() {
       footer={
         <Flex align="center" gap={2} wrap="wrap">
           <Text as={NextLink} href="/changelog" fontSize="xs" color="gray.400" mr="auto"
-            _hover={{ color: 'yellow.200' }}
+            _hover={{ color: 'accent.200' }}
             onClick={() => markSeen(key)}>{t('changeSeeAll')}</Text>
           <Box as="button" px={4} py={1.5} fontSize="sm" borderRadius="md" fontWeight="700"
-            bg="yellow.400" color="gray.900" _hover={{ bg: 'yellow.300' }}
+            bg="accent.400" color="gray.900" _hover={{ bg: 'accent.300' }}
             onClick={() => markSeen(key)}>{t('tutDone')}</Box>
         </Flex>
       } />
@@ -56,7 +56,7 @@ export function ChangelogLink() {
   const t = useT();
   return (
     <Text as={NextLink} href="/changelog" fontSize="xs" color="gray.400"
-      whiteSpace="nowrap" _hover={{ color: 'yellow.200' }}>
+      whiteSpace="nowrap" _hover={{ color: 'accent.200' }}>
       {t('changeWhatsNew')}
     </Text>
   );
