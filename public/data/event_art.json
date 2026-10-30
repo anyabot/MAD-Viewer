@@ -2782,11 +2782,47 @@
      ]
     },
     {
+     "name": "NP0802_DIE_1",
+     "sprite": "EV1010_NP0802_DIE_1",
+     "size": [
+      120.0,
+      165.0
+     ],
+     "pivot": [
+      0.5,
+      0.0
+     ],
+     "x": 0.0,
+     "rotation": 0.0,
+     "scale": [
+      1.0,
+      1.0
+     ]
+    },
+    {
      "name": "NP0802_MASK",
      "sprite": "EV1010_NP0802_MASK_IDLE_1",
      "size": [
       124.0,
       215.0
+     ],
+     "pivot": [
+      0.5,
+      0.0
+     ],
+     "x": 0.0,
+     "rotation": 0.0,
+     "scale": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "NP0802_MASK_DIE_1",
+     "sprite": "EV1010_NP0802_MASK_DIE_1",
+     "size": [
+      123.0,
+      196.0
      ],
      "pivot": [
       0.5,
@@ -2836,6 +2872,24 @@
      ]
     },
     {
+     "name": "NP0802_PUMPKIN_DIE_1",
+     "sprite": "EV1010_NP0802_PUMPKIN_DIE_1",
+     "size": [
+      139.0,
+      211.0
+     ],
+     "pivot": [
+      0.5,
+      0.0
+     ],
+     "x": 0.0,
+     "rotation": 0.0,
+     "scale": [
+      1.0,
+      1.0
+     ]
+    },
+    {
      "name": "NP0802_PUMPKIN_IDLE_2",
      "sprite": "EV1010_NP0802_PUMPKIN_IDLE_2",
      "size": [
@@ -2859,6 +2913,24 @@
      "size": [
       183.0,
       224.0
+     ],
+     "pivot": [
+      0.5,
+      0.0
+     ],
+     "x": 0.0,
+     "rotation": 0.0,
+     "scale": [
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "name": "NP0802_WITCH_DIE_1",
+     "sprite": "EV1010_NP0802_WITCH_DIE_1",
+     "size": [
+      187.0,
+      205.0
      ],
      "pivot": [
       0.5,

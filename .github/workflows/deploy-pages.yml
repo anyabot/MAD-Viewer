@@ -18,17 +18,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm install --no-save @altterisk/game-hub@github:Altterisk/game-hub
-      - run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /MAD-Viewer
-          NEXT_PUBLIC_NOINDEX: "1"
+      - name: Write redirect site
+        run: |
+          mkdir out
+          cat > out/index.html <<'EOF'
+          <!DOCTYPE html>
+          <meta charset="utf-8">
+          <title>MAD Viewer has moved</title>
+          <meta name="robots" content="noindex">
+          <link rel="canonical" href="https://mad.altterisk.cc/">
+          <meta http-equiv="refresh" content="0; url=https://mad.altterisk.cc/">
+          <script>
+            var p = location.pathname.replace(/^\/MAD-Viewer/, '') || '/';
+            location.replace('https://mad.altterisk.cc' + p + location.search + location.hash);
+          </script>
+          <p>Moved to <a href="https://mad.altterisk.cc/">mad.altterisk.cc</a>.</p>
+          EOF
+          cp out/index.html out/404.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
