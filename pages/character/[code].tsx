@@ -12,7 +12,7 @@ import { createPersisted } from '@altterisk/game-hub/persist';
 import NextLink from 'next/link';
 import {
   Badge, Box, Center, Divider, Flex, Grid, HStack, Popover, PopoverArrow, PopoverBody,
-  PopoverContent, PopoverTrigger, Portal, SimpleGrid, Text,
+  PopoverContent, PopoverTrigger, Portal, SimpleGrid, Text, useBreakpointValue,
   VStack, Wrap, WrapItem,
 } from '@chakra-ui/react';
 import { nextRouterAdapter } from '@altterisk/game-hub/filters';
@@ -387,12 +387,14 @@ function MemberPopover({ members, icons, current, children }: {
   members: CharacterEntry[]; icons: IconManifest | null; current?: string; children: React.ReactNode;
 }) {
   const lang = useLang();
+  const placement = useBreakpointValue<'bottom' | 'right'>({ base: 'bottom', md: 'right' }) ?? 'right';
   if (!members.length) return <>{children}</>;
   return (
-    <Popover trigger="hover" placement="right" isLazy openDelay={120} closeDelay={80}>
+    <Popover trigger="hover" placement={placement} isLazy openDelay={120} closeDelay={80}
+      modifiers={[{ name: 'preventOverflow', options: { padding: 8 } }]}>
       <PopoverTrigger><Box>{children}</Box></PopoverTrigger>
       <Portal>
-        <PopoverContent bg="gray.800" borderColor="whiteAlpha.300" w="280px">
+        <PopoverContent bg="gray.800" borderColor="whiteAlpha.300" w="280px" maxW="calc(100vw - 16px)">
           <PopoverArrow bg="gray.800" />
           <PopoverBody maxH="320px" overflowY="auto" px={2} py={2}>
             <SimpleGrid columns={3} spacing={1}>
