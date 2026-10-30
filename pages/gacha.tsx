@@ -3,8 +3,8 @@ import { Seo } from '@/components/seo';
 import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Button, Collapse, Flex, HStack, SimpleGrid, Switch, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  Badge, Box, Button, Collapse, Flex, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem, Checkbox,
+} from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel } from '@altterisk/game-hub';
 import { GameIcon } from '@/components/gameIcon';
 import {
@@ -24,10 +24,10 @@ import { characterHref } from '@/lib/routes';
 const GachaViewer = dynamic(() => import('@/components/gachaViewer'), { ssr: false });
 
 const STARS = (n: number) => '★'.repeat(n);
-const GRADE_COLOR: Record<number, string> = { 3: 'yellow.300', 2: 'purple.300', 1: 'gray.400' };
+const GRADE_COLOR: Record<number, string> = { 3: 'accent.300', 2: 'purple.300', 1: 'gray.400' };
 const pct = (v: number) => `${(v * 100).toFixed(v < 0.01 ? 3 : 2)}%`;
 // Pulls a ★3 took: well under the ~33 a 3% rate averages is lucky, around 50 is ordinary, far past it is not.
-const gapColor = (gap: number) => (gap <= 30 ? 'green' : gap <= 70 ? 'yellow' : 'red');
+const gapColor = (gap: number) => (gap <= 30 ? 'green' : gap <= 70 ? 'accent' : 'red');
 
 export default function GachaPage() {
   const t = useT();
@@ -160,7 +160,7 @@ export default function GachaPage() {
         {shown.map((b) => (
           <WrapItem key={b.id}>
             <Button size="sm" variant={banner?.id === b.id ? 'solid' : 'outline'}
-              colorScheme={banner?.id === b.id ? 'yellow' : 'gray'} whiteSpace="normal" h="auto" minH={8} py={1}
+              colorScheme={banner?.id === b.id ? 'accent' : 'gray'} whiteSpace="normal" h="auto" minH={8} py={1}
               maxW="100%" textAlign="left"
               leftIcon={b.pickups?.length
                 ? <GameIcon manifest={icons} group="char" name={unit(b.pickups[0])?.iconPath} size={5} /> : undefined}
@@ -244,11 +244,11 @@ export default function GachaPage() {
 
             <Flex gap={2} wrap="wrap" align="center">
               {banner.kind !== 'startdash' && (
-                <Button size="sm" colorScheme="yellow" isDisabled={atLimit} onClick={() => summon(1)}>
+                <Button size="sm" colorScheme="accent" isDisabled={atLimit} onClick={() => summon(1)}>
                   {t('gachaPull', { n: 1 })}
                 </Button>
               )}
-              <Button size="sm" colorScheme="yellow" isDisabled={atLimit} onClick={() => summon(10)}
+              <Button size="sm" colorScheme="accent" isDisabled={atLimit} onClick={() => summon(10)}
                 rightIcon={seed ? <HStack spacing={0.5}>
                   <GameIcon manifest={icons} group="item" name={seed.icon} size={4} />
                   <Text fontSize="xs">{(banner.price * 10).toLocaleString()}</Text>
@@ -256,7 +256,7 @@ export default function GachaPage() {
                 {atLimit ? t('gachaUsed') : t('gachaPull', { n: 10 })}
               </Button>
               <HStack spacing={2}>
-                <Switch size="sm" isChecked={playScene} onChange={(e) => setPlayScene(e.target.checked)} />
+                <Checkbox size="sm" isChecked={playScene} onChange={(e) => setPlayScene(e.target.checked)} />
                 <Text fontSize="sm">{t('gachaScene')}</Text>
               </HStack>
               <Box flex="1" />
@@ -314,7 +314,7 @@ export default function GachaPage() {
             return (
               <VStack key={i} as={NextLink} href={characterHref(p.code)} spacing={1} p={2}
                 borderRadius="md" borderWidth={p.grade >= 3 ? '2px' : '1px'}
-                borderColor={p.pickup ? 'pink.400' : p.grade >= 3 ? 'yellow.400' : 'whiteAlpha.200'}
+                borderColor={p.pickup ? 'pink.400' : p.grade >= 3 ? 'accent.400' : 'whiteAlpha.200'}
                 bg="whiteAlpha.50" position="relative">
                 {fresh.has(i) && (
                   <Badge position="absolute" top={1} left={1} colorScheme="green" fontSize="0.6rem">{t('gachaNew')}</Badge>

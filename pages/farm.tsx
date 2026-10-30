@@ -3,17 +3,14 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState } from 
 import { textMatch } from '@altterisk/game-hub/filters';
 import {
   CheckIcon, ChevronDownIcon, ChevronRightIcon, CloseIcon, StarIcon, ViewIcon, ViewOffIcon,
-} from '@chakra-ui/icons';
+  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Center,
+  Checkbox, Collapse, Flex, HStack, Input, SimpleGrid, Spinner, Tab, TabList, TabPanel, TabPanels,
+  Tabs, Text, VStack, Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import NextLink from 'next/link';
-import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel,
-  Badge, Box, Center, Checkbox, Collapse, Flex, HStack, Input, SimpleGrid, Spinner, Tab, TabList,
-  TabPanel, TabPanels, Tabs, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
-import { Panel } from '@altterisk/game-hub';
-import { FilterChip } from '@/components/filters';
+import { FilterChip, Panel } from '@altterisk/game-hub';
 import { InventoryDialog } from '@/components/inventoryDialog';
 import { UnitPlanDialog } from '@/components/unitPlanDialog';
 import { MaterialNeeds } from '@/components/materialNeeds';
@@ -203,7 +200,7 @@ function FarmContent() {
       <PlannerTutorial />
 
       <PlanInventory.Provider value={plans.have}>
-      <Tabs variant="line" colorScheme="yellow" isLazy>
+      <Tabs variant="line" colorScheme="accent" isLazy>
         <TabList borderColor="whiteAlpha.200" overflowX="auto">
           <Tab fontSize="sm" whiteSpace="nowrap">
             <HStack spacing={2}>
@@ -282,9 +279,9 @@ function PlanFile() {
   return (
     <HStack spacing={2}>
       {failed && <Text fontSize="xs" color="red.300">{t('farmImportFailed')}</Text>}
-      <Box as="button" fontSize="xs" color="gray.400" _hover={{ color: 'yellow.200' }}
+      <Box as="button" fontSize="xs" color="gray.400" _hover={{ color: 'accent.200' }}
         onClick={save}>{t('farmExport')}</Box>
-      <Box as="button" fontSize="xs" color="gray.400" _hover={{ color: 'yellow.200' }}
+      <Box as="button" fontSize="xs" color="gray.400" _hover={{ color: 'accent.200' }}
         onClick={() => picker.current?.click()}>{t('farmImport')}</Box>
       <Input ref={picker} type="file" accept="application/json,.json" display="none"
         onChange={(e) => {
@@ -391,10 +388,10 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
           maxW={{ base: 'none', md: tracked.length ? '26rem' : 'none' }} zIndex={2}>
           <Input size="lg" value={query} placeholder={t('farmSearchUnit')}
             fontSize="md" fontWeight="600" pl={12} h="3.25rem"
-            borderWidth="2px" borderColor={open ? 'yellow.400' : 'yellow.500'}
-            bg="whiteAlpha.100" _hover={{ borderColor: 'yellow.400' }}
+            borderWidth="2px" borderColor={open ? 'accent.400' : 'accent.500'}
+            bg="whiteAlpha.100" _hover={{ borderColor: 'accent.400' }}
             _placeholder={{ color: 'gray.300', fontWeight: '600' }}
-            _focusVisible={{ borderColor: 'yellow.300', boxShadow: '0 0 0 1px var(--chakra-colors-yellow-300)' }}
+            _focusVisible={{ borderColor: 'accent.300', boxShadow: '0 0 0 1px var(--ui-c-accent-300)' }}
             onFocus={() => setOpen(true)}
             onClick={() => setOpen(true)}
             onBlur={() => setOpen(false)}
@@ -404,7 +401,7 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
               if (e.key === 'Enter' && matches[0]) choose(matches[0].code);
             }} />
           <Text position="absolute" left={5} top="50%" transform="translateY(-50%)"
-            fontSize="2xl" lineHeight={1} fontWeight="800" color="yellow.400"
+            fontSize="2xl" lineHeight={1} fontWeight="800" color="accent.400"
             pointerEvents="none" aria-hidden>+</Text>
           {open && matches.length > 0 && (
             // Without this the blur closes the list before the click lands.
@@ -467,7 +464,7 @@ function Units({ data, growth, stages, pool, icons, leftover }: {
             _hover={{ bg: 'whiteAlpha.100' }} borderRadius="lg">
             <Text fontSize="0.65rem" color="gray.400" textTransform="uppercase"
               fontWeight="700" letterSpacing="0.11em">{t('planTotalNeeds')}</Text>
-            <Text fontSize="xs" color={totalShort ? 'yellow.200' : 'green.300'}
+            <Text fontSize="xs" color={totalShort ? 'accent.200' : 'green.300'}
               fontFamily="mono">
               {totalShort ? t('planShortCount', { n: totalShort }) : t('planAllCovered')}
             </Text>
@@ -529,7 +526,7 @@ function RowAction({ label, hint, active, disabled, danger, onClick, children }:
   label: string; hint?: string; active?: boolean; disabled?: boolean;
   danger?: boolean; onClick: () => void; children: React.ReactNode;
 }) {
-  const idle = active ? 'yellow.300' : 'gray.500';
+  const idle = active ? 'accent.300' : 'gray.500';
   return (
     <Box as="button" aria-label={label} title={hint ?? label} aria-pressed={active}
       aria-disabled={disabled || undefined}
@@ -537,7 +534,7 @@ function RowAction({ label, hint, active, disabled, danger, onClick, children }:
       color={disabled ? 'whiteAlpha.300' : idle}
       cursor={disabled ? 'not-allowed' : 'pointer'}
       _hover={disabled ? undefined
-        : { bg: 'whiteAlpha.200', color: danger ? 'red.300' : 'yellow.200' }}
+        : { bg: 'whiteAlpha.200', color: danger ? 'red.300' : 'accent.200' }}
       onClick={(e: React.MouseEvent) => {
         e.stopPropagation();
         if (!disabled) onClick();
@@ -574,7 +571,7 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }:
   return (
     <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md"
       bg="whiteAlpha.50" opacity={hidden ? 0.45 : 1}
-      _hover={{ borderColor: 'yellow.400' }}>
+      _hover={{ borderColor: 'accent.400' }}>
     <Flex align="center" gap={2} px={3} py={2} w="100%">
       <Flex as="button" onClick={onOpen} align="center" gap={2.5} flex="1" minW={0}
         textAlign="left" title={t('planOpenPlan')}>
@@ -586,11 +583,11 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }:
               {characterName(entry, lang)}
             </Text>
             {priority && (
-              <Badge fontSize="0.5rem" colorScheme="yellow">{t('farmPriority')}</Badge>
+              <Badge fontSize="0.5rem" colorScheme="accent">{t('farmPriority')}</Badge>
             )}
           </HStack>
           <HStack spacing={2} fontSize="0.65rem" color="gray.500">
-            <Text fontFamily="mono" color={to > from ? 'yellow.300' : 'gray.600'}>
+            <Text fontFamily="mono" color={to > from ? 'accent.300' : 'gray.600'}>
               {from === to ? `${from}★` : `${from}★→${to}★`}
             </Text>
             <Text fontFamily="mono">
@@ -606,7 +603,7 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }:
             <ItemIcon manifest={icons} group={materialGroup(icons, material?.icon)}
               name={material?.icon} grade={material?.grade} size={6}
               title={dataText(lang, material?.name, material?.nameEn) || undefined} />
-            <Text fontSize="sm" fontFamily="mono" color="yellow.200">
+            <Text fontSize="sm" fontFamily="mono" color="accent.200">
               {memories.short.toLocaleString()}
             </Text>
           </HStack>
@@ -705,7 +702,7 @@ function Clears({ data, pool }: { data: StageData; pool: StageEntry[] }) {
                       </Text>
                       <Text fontSize="xs" fontFamily="mono"
                         color={done === stages.length ? 'green.300'
-                          : done ? 'yellow.200' : 'gray.600'}>
+                          : done ? 'accent.200' : 'gray.600'}>
                         {done}/{stages.length}
                       </Text>
                     </Flex>
@@ -717,7 +714,7 @@ function Clears({ data, pool }: { data: StageData; pool: StageEntry[] }) {
                         <WrapItem key={star}>
                           <Box as="button" px={2} py={0.5} fontSize="xs" borderWidth="1px"
                             borderRadius="md" borderColor="whiteAlpha.200" color="gray.400"
-                            _hover={{ borderColor: 'yellow.400', color: 'yellow.200' }}
+                            _hover={{ borderColor: 'accent.400', color: 'accent.200' }}
                             onClick={() => setStarsMany(stages.map((s) => s.id), star)}>
                             {t('farmSetAll')} {star ? `${star}★` : t('farmUncleared')}
                           </Box>
@@ -732,8 +729,8 @@ function Clears({ data, pool }: { data: StageData; pool: StageEntry[] }) {
                             <Flex key={stage.id} align="center" gap={2} py={0.5}
                               borderTopWidth="1px" borderColor="whiteAlpha.100">
                               <Text as={NextLink} fontSize="sm" flex="1" minW={0} noOfLines={1}
-                                href={{ pathname: '/stage', query: { id: stage.id } }}
-                                _hover={{ color: 'yellow.300' }}>
+                                href={`/stage?id=${stage.id}`}
+                                _hover={{ color: 'accent.300' }}>
                                 {stageName(data, stage, lang)}
                               </Text>
                               {stage.stamina != null && (
@@ -745,8 +742,8 @@ function Clears({ data, pool }: { data: StageData; pool: StageEntry[] }) {
                                 {STARS.map((star) => (
                                   <Box key={star} as="button" px={1.5} py={0.5} fontSize="xs"
                                     borderWidth="1px" borderRadius="md" lineHeight={1.2}
-                                    borderColor={star === stars ? 'yellow.400' : 'whiteAlpha.200'}
-                                    color={star === stars ? 'yellow.200' : 'gray.500'}
+                                    borderColor={star === stars ? 'accent.400' : 'whiteAlpha.200'}
+                                    color={star === stars ? 'accent.200' : 'gray.500'}
                                     onClick={() => setStars(stage.id, star)}
                                     aria-label={`${stageName(data, stage, lang)} ${star}`}>
                                     {star ? `${star}★` : '—'}
@@ -863,8 +860,8 @@ function RouteLine({ route, labels, growth, stages, icons, lang }: {
   return (
     <Box borderTopWidth="1px" borderColor="whiteAlpha.100" py={0.5}>
       <Flex align="center" gap={2} wrap="wrap">
-        <Text as={NextLink} fontSize="sm" _hover={{ color: 'yellow.300' }}
-          href={{ pathname: '/stage', query: { id: route.stage.id } }}>
+        <Text as={NextLink} fontSize="sm" _hover={{ color: 'accent.300' }}
+          href={`/stage?id=${route.stage.id}`}>
           {stageName(stages, route.stage, lang)}
         </Text>
         <Text fontSize="0.65rem" color="gray.300" fontFamily="mono">
@@ -952,7 +949,7 @@ function Total({ label, value, icon }: {
         <Text fontSize="xs" color="gray.500" textTransform="uppercase"
           letterSpacing="wide">{label}</Text>
       </HStack>
-      <Text fontSize="xl" fontWeight="bold" fontFamily="mono" color="yellow.200">
+      <Text fontSize="xl" fontWeight="bold" fontFamily="mono" color="accent.200">
         {value}
       </Text>
     </Box>
@@ -1063,9 +1060,9 @@ function SourceLine({ source, stages, icons, lang, best }: {
   const spend = source.entry ? stages.drops[source.entry.ref] : null;
   return (
     <Flex align="center" gap={2} wrap="wrap" opacity={source.open ? 1 : 0.45}>
-      {best && <Badge fontSize="0.55rem" colorScheme="yellow">{t('farmBestRoute')}</Badge>}
-      <Text as={NextLink} fontSize="xs" _hover={{ color: 'yellow.300' }}
-        href={{ pathname: '/stage', query: { id: source.stage.id } }}>
+      {best && <Badge fontSize="0.55rem" colorScheme="accent">{t('farmBestRoute')}</Badge>}
+      <Text as={NextLink} fontSize="xs" _hover={{ color: 'accent.300' }}
+        href={`/stage?id=${source.stage.id}`}>
         {stageName(stages, source.stage, lang)}
       </Text>
       <Text fontSize="0.65rem" color="gray.500">

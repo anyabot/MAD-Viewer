@@ -1,8 +1,11 @@
 // The game's own item slot: a plate, the art, the grade-coloured band and the
 // tier in the corner. Material art repeats across tiers, so the slot is the only
 // thing separating them.
+import type { ComponentProps } from 'react';
 import NextLink from 'next/link';
-import { Box, Text, type BoxProps } from '@chakra-ui/react';
+import { Box, Text } from '@altterisk/game-hub/ui';
+
+type BoxProps = Omit<ComponentProps<typeof Box>, 'manifest' | 'name'>;
 import { GameIcon } from '@/components/gameIcon';
 import { resolveIcon, type IconGroup, type IconManifest } from '@/lib/icons';
 
@@ -67,13 +70,13 @@ export function ItemIcon({
     // container — one component covers a 22px preview and a 40px row
     <Box position="relative" boxSize={size} flexShrink={0} overflow="hidden"
       borderRadius="15%" bg={PLATE} borderWidth="1px" borderColor="whiteAlpha.800"
-      sx={{ containerType: 'size' }}
+      style={{ containerType: 'size' }}
       title={count != null && compactCount(count) !== String(count)
         ? `${title ? `${title} ` : ''}×${Number(count).toLocaleString()}` : title}
-      {...(href ? { as: NextLink, href, tabIndex: -1, _hover: { borderColor: 'yellow.300' } } : {})} {...rest}>
+      {...(href ? { as: NextLink, href, tabIndex: -1, _hover: { borderColor: 'accent.300' } } : {})} {...rest}>
       <Box position="absolute" left="-1px" right="-1px" bottom="-1px"
         h={BAND_HEIGHT} bg={color}
-        sx={band ? bandMask(band) : undefined} borderRadius={band ? undefined : '1px'} />
+        style={band ? bandMask(band) : undefined} borderRadius={band ? undefined : '1px'} />
       <Box position="absolute" inset="0">
         <GameIcon manifest={manifest} group={group} name={name} names={names}
           size="100%" reserve={false} />
@@ -81,7 +84,7 @@ export function ItemIcon({
       {grade ? (
         <Text position="absolute" top="3%" left="5%" lineHeight={1} fontWeight="extrabold"
           fontSize="40cqh" bgGradient={TIER_GRADIENT} bgClip="text" color="transparent"
-          sx={{ WebkitTextStroke: '0.025em rgba(8, 18, 32, 0.85)' }}>
+          style={{ WebkitTextStroke: '0.025em rgba(8, 18, 32, 0.85)' }}>
           {grade}
         </Text>
       ) : null}

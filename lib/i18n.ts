@@ -206,6 +206,25 @@ export const UI = {
   hubHere: { en: 'here', ko: '현재' },
   hubSource: { en: 'Source', ko: '소스' },
   hubPortfolio: { en: 'Portfolio', ko: '포트폴리오' },
+  hubRights: {
+    en: 'Fan-made and unofficial. {title} images, data and other game assets are the property of {owner}. All rights belong to {owner}.',
+    ko: '비공식 팬 사이트입니다. {title}의 이미지, 데이터 및 기타 게임 에셋은 {owner}의 소유이며 모든 권리는 {owner}에게 있습니다.',
+  },
+  hubUnowned: {
+    en: 'Fan-made and unofficial. Game art, audio and text belong to their respective owners.',
+    ko: '비공식 팬 사이트입니다. 게임 아트, 오디오, 텍스트의 권리는 각 소유자에게 있습니다.',
+  },
+  hubLicense: { en: 'Site code: AGPL-3.0', ko: '사이트 코드: AGPL-3.0' },
+  hubSkip: { en: 'Skip to content', ko: '본문으로 건너뛰기' },
+  hubErrorTitle: { en: 'Something went wrong on this page.', ko: '이 페이지에서 문제가 발생했습니다.' },
+  hubErrorHint: {
+    en: 'Try again, or reload the page. If it keeps happening, please report it.',
+    ko: '다시 시도하거나 페이지를 새로고침하세요. 계속되면 알려주세요.',
+  },
+  hubErrorRetry: { en: 'Try again', ko: '다시 시도' },
+  unitDay: { en: 'd', ko: '일' },
+  unitHour: { en: 'h', ko: '시간' },
+  unitMinute: { en: 'm', ko: '분' },
 
   loading: { en: 'loading…', ko: '불러오는 중…' },
   noMatch: { en: 'no match', ko: '결과 없음' },
@@ -242,8 +261,6 @@ export const UI = {
   collectionAll: { en: 'All units', ko: '전체 유닛' },
   collectionCollected: { en: 'Collected', ko: '보유 중' },
   collectionFavorites: { en: 'Favorites', ko: '즐겨찾기' },
-  collectionNotCollected: { en: 'Not collected', ko: '미보유' },
-  collectionNotFavorite: { en: 'Not favorite', ko: '즐겨찾기 아님' },
   collectionMarkAll: { en: 'Mark all collected', ko: '전체 보유로 표시' },
   collectionMarkAllConfirm: {
     en: 'Mark {n} shown units collected?',

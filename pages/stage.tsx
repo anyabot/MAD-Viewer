@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-import { Badge, Box, Flex, Text, VStack } from '@chakra-ui/react';
+import { Badge, Box, Flex, Text, VStack } from '@altterisk/game-hub/ui';
 import { EmptyState, LoadState, MetaChips, PageHeader } from '@altterisk/game-hub';
 import { GameIcon } from '@/components/gameIcon';
 import { StageCrumbs } from '@/components/stageCrumbs';
@@ -68,7 +68,7 @@ function StageContent() {
   if (!stage) {
     return (
       <EmptyState title={id != null ? t('stageNotFound', { id }) : t('stageNoneSelected')}
-        action={<Text as={NextLink} href="/stages" color="yellow.300" fontSize="sm">{t('stageBack')}</Text>} />
+        action={<Text as={NextLink} href="/stages" color="accent.300" fontSize="sm">{t('stageBack')}</Text>} />
     );
   }
 
@@ -100,14 +100,14 @@ function StageContent() {
       {(siblings.prev || siblings.next) && (
         <Flex align="center" gap={3} wrap="wrap" fontSize="sm">
           {siblings.prev && (
-            <Text as={NextLink} href={`/stage?id=${siblings.prev.id}`} color="yellow.300"
+            <Text as={NextLink} href={`/stage?id=${siblings.prev.id}`} color="accent.300"
               noOfLines={1}>
               ← {stageName(data, siblings.prev, lang)}
             </Text>
           )}
           <Box flex="1" />
           {siblings.next && (
-            <Text as={NextLink} href={`/stage?id=${siblings.next.id}`} color="yellow.300"
+            <Text as={NextLink} href={`/stage?id=${siblings.next.id}`} color="accent.300"
               noOfLines={1}>
               {stageName(data, siblings.next, lang)} →
             </Text>

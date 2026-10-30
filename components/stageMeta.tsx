@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react';
+import { Text } from '@altterisk/game-hub/ui';
 import { MetaChip } from '@altterisk/game-hub';
 import { GameIcon } from '@/components/gameIcon';
 import { typeLabel } from '@/lib/characters';

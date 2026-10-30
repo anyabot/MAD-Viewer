@@ -1,5 +1,8 @@
 // The manifest decides whether an icon exists; nothing here probes for a 404.
-import { Box, type BoxProps } from '@chakra-ui/react';
+import type { ComponentProps } from 'react';
+import { Box } from '@altterisk/game-hub/ui';
+
+type BoxProps = Omit<ComponentProps<typeof Box>, 'manifest' | 'name'>;
 import { iconUrl, resolveIcon, type IconGroup, type IconManifest } from '@/lib/icons';
 
 export function GameIcon({
@@ -35,7 +38,7 @@ export function GameIcon({
     };
     return (
       <Box boxSize={size} flexShrink={0} bg={tint} title={title} role="img"
-        aria-label={title ?? ''} sx={mask} {...rest} />
+        aria-label={title ?? ''} style={mask} {...rest} />
     );
   }
   return (
@@ -51,7 +54,7 @@ export function StarRating({ manifest, star, size = 4 }: {
   if (!star) return null;
   const src = resolveIcon(manifest, 'ui', ['Slot_Icon_Star']);
   if (!src) {
-    return <Box as="span" color="yellow.300" letterSpacing="1px">{'★'.repeat(star)}</Box>;
+    return <Box as="span" color="accent.300" letterSpacing="1px">{'★'.repeat(star)}</Box>;
   }
   return (
     <Box display="inline-flex" gap={0.5} title={`${star}★`}>

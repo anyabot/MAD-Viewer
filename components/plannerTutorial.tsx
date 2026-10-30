@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
-  Box, Flex, HStack, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader,
-  ModalOverlay, Text,
-} from '@chakra-ui/react';
+  Box, Flex, HStack, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text,
+} from '@altterisk/game-hub/ui';
 import { markSeen, resetSeen, useShouldShow } from '@/lib/seenStore';
 import { useT, type UiKey } from '@/lib/i18n';
 
@@ -30,10 +29,10 @@ export function PlannerTutorial() {
   return (
     <Modal isOpen={show} onClose={close} size="lg" isCentered>
       <ModalOverlay bg="blackAlpha.800" backdropFilter="blur(6px)" />
-      <ModalContent bg="gray.900" borderWidth="1px" borderColor="yellow.500"
+      <ModalContent bg="gray.900" borderWidth="1px" borderColor="accent.500"
         mx={{ base: 3, md: 6 }}>
         <ModalHeader pb={1}>
-          <Text fontSize="0.6rem" color="yellow.400" textTransform="uppercase"
+          <Text fontSize="0.6rem" color="accent.400" textTransform="uppercase"
             letterSpacing="0.14em" fontWeight="800">
             {t('tutStep', { n: step + 1, total: STEPS.length })}
           </Text>
@@ -47,8 +46,8 @@ export function PlannerTutorial() {
             {STEPS.map((s, i) => (
               <Box key={s.title} as="button" aria-label={t('tutStep', { n: i + 1, total: STEPS.length })}
                 boxSize="9px" borderRadius="full" onClick={() => setStep(i)}
-                bg={i === step ? 'yellow.400' : 'whiteAlpha.300'}
-                _hover={{ bg: i === step ? 'yellow.300' : 'whiteAlpha.500' }} />
+                bg={i === step ? 'accent.400' : 'whiteAlpha.300'}
+                _hover={{ bg: i === step ? 'accent.300' : 'whiteAlpha.500' }} />
             ))}
           </HStack>
           <Box as="button" px={3} py={1.5} fontSize="sm" borderRadius="md"
@@ -62,8 +61,8 @@ export function PlannerTutorial() {
             _hover={{ color: 'gray.100', borderColor: 'whiteAlpha.400' }}
             onClick={close}>{t('tutSkip')}</Box>
           <Box as="button" px={4} py={1.5} fontSize="sm" borderRadius="md"
-            fontWeight="700" bg="yellow.400" color="gray.900"
-            _hover={{ bg: 'yellow.300' }}
+            fontWeight="700" bg="accent.400" color="gray.900"
+            _hover={{ bg: 'accent.300' }}
             onClick={() => (last ? close() : setStep(step + 1))}>
             {last ? t('tutDone') : t('tutNext')}
           </Box>
@@ -80,7 +79,7 @@ export function TutorialReplay() {
   if (show) return null;
   return (
     <Flex as="button" align="center" fontSize="xs" color="gray.500"
-      _hover={{ color: 'yellow.200' }}
+      _hover={{ color: 'accent.200' }}
       onClick={() => resetSeen(PLANNER_TUTORIAL)}>{t('tutReplay')}</Flex>
   );
 }

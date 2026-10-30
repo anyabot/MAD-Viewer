@@ -217,12 +217,3 @@ export async function partyImage(spec: ImageSpec): Promise<Blob | null> {
   });
   return new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
 }
-
-export function saveBlob(blob: Blob, name: string): void {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = name;
-  a.click();
-  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-}

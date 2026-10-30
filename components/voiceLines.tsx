@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import {
-  Badge, Box, Center, Flex, IconButton, SimpleGrid, Spinner, Text, VStack,
-} from '@chakra-ui/react';
-import { Panel } from '@altterisk/game-hub';
+import { Center, Spinner, Text, VStack } from '@altterisk/game-hub/ui';
+import { Panel, VoiceLineList } from '@altterisk/game-hub';
 import { loadVoice, loadVoiceLines, type VoiceLine } from '@/lib/data';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { pick, useLang, useT, type Localized } from '@/lib/i18n';
@@ -62,21 +60,15 @@ export function VoiceLines({ code }: { code: string }) {
         if (!rows.length) return null;
         return (
           <Panel key={section.key} title={pick(section.label, lang)} note={String(rows.length)}>
-            <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={2}>
-              {rows.map((line) => (
-                <Flex key={line.id} gap={2} align="start" p={2} borderRadius="md" bg="whiteAlpha.50">
-                  <IconButton aria-label={t('storyPlayVoice')} size="xs" variant="outline"
-                    icon={<Box as="span" aria-hidden>▶</Box>} isDisabled={!voice?.clips[line.id]}
-                    onClick={() => { void playVoice(voice, line.id); }} />
-                  <Box minW={0} flex="1">
-                    <Badge fontSize="0.55rem" textTransform="none" mb={0.5}>{catLabel(line.cat, lang)}</Badge>
-                    {line.text && (
-                      <Text fontSize="sm" whiteSpace="pre-wrap" lang={gameLang}>{gameText(line.text, gameLang)}</Text>
-                    )}
-                  </Box>
-                </Flex>
-              ))}
-            </SimpleGrid>
+            <VoiceLineList playing={null} lang={gameLang}
+              labels={{ play: () => t('storyPlayVoice') }}
+              onPlay={(id) => { void playVoice(voice, id); }}
+              items={rows.map((line) => ({
+                id: line.id,
+                tag: catLabel(line.cat, lang),
+                text: line.text ? gameText(line.text, gameLang) : undefined,
+                available: !!voice?.clips[line.id],
+              }))} />
           </Panel>
         );
       })}

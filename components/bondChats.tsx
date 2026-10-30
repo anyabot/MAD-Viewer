@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Button,
   Center, Flex, HStack, Spinner, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+} from '@altterisk/game-hub/ui';
 import { RewardSlot } from '@/components/eventsBoard';
 import { GameIcon } from '@/components/gameIcon';
 import { LineText, SceneLines } from '@/components/storyLines';
@@ -169,8 +169,8 @@ function Reply({ options }: { options: string[] }) {
         <Box key={i} maxW="80%" px={3} py={1.5} borderRadius="2xl" borderTopRightRadius="sm" fontSize="sm"
           whiteSpace="pre-wrap" wordBreak="break-word"
           {...(several
-            ? { borderWidth: '1px', borderStyle: 'dashed', borderColor: 'yellow.400', color: 'yellow.100' }
-            : { bg: 'yellow.400', color: 'gray.900' })}>
+            ? { borderWidth: '1px', borderStyle: 'dashed', borderColor: 'accent.400', color: 'accent.100' }
+            : { bg: 'accent.400', color: 'gray.900' })}>
           <LineText text={option} />
         </Box>
       ))}
@@ -238,7 +238,7 @@ function SceneCard({ code, scene, icons, skinKeys }: {
       <Box minW={0}>
         <Badge colorScheme={KIND_COLOR[scene.kind]} fontSize="0.55rem">{KIND_LABEL[scene.kind][lang]}</Badge>
         <Text fontSize="sm" fontWeight="semibold" noOfLines={1}>{gameText(scene.name, gameLang)}</Text>
-        {playable && <Text fontSize="2xs" color="yellow.300">{t('bondOpenScene')} →</Text>}
+        {playable && <Text fontSize="2xs" color="accent.300">{t('bondOpenScene')} →</Text>}
       </Box>
     </HStack>
   );

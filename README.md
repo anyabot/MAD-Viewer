@@ -24,7 +24,7 @@ game's seven languages, separately from the site's own English/Korean labels.
 
 ## Stack
 
-Next.js (pages router, static export) · Chakra UI · PixiJS v8 ·
+Next.js (pages router, static export) · `@altterisk/game-hub` UI kit · PixiJS v8 ·
 `@esotericsoftware/spine-pixi-v8`
 
 No game data is bundled into the build. The app fetches a JSON index and one
@@ -80,3 +80,12 @@ source in the repository settings. The included workflow builds and deploys
 A second tab on the viewer page, holding the gacha result cutscene. Tap the
 scene to move it on a stage; the grade picker chooses which ending plays. The
 scene's particle effects and audio are not included.
+
+## License
+
+The code is licensed under the [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0-or-later):
+copy, change and reuse it, as long as anything built from it, including a site that only runs
+a modified copy, is released as open source under the same license.
+
+The license covers the code only. Make Drama names, art, audio, text and data shown on the site
+belong to their rights holders and are not covered.

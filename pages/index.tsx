@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react';
 import { SITE_URL, Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import {
-  Badge, Box, Center, Flex, HStack, SimpleGrid, Text, VStack,
-} from '@chakra-ui/react';
+import { Badge, Box, Center, Flex, HStack, SimpleGrid, Text, VStack } from '@altterisk/game-hub/ui';
 import {
   EventCard, TimeControls, useNow, useServerTime,
 } from '@/components/eventsBoard';
@@ -148,7 +146,7 @@ export default function Home() {
       <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={3}>
         {SECTIONS.map((s) => (
           <Box key={s.href} as={NextLink} href={s.href} p={4} borderRadius="lg" borderWidth="1px"
-            borderColor="whiteAlpha.200" bg="whiteAlpha.50" _hover={{ borderColor: 'yellow.400' }}>
+            borderColor="whiteAlpha.200" bg="whiteAlpha.50" _hover={{ borderColor: 'accent.400' }}>
             <Text fontWeight="bold" mb={1}>{t(s.label)}</Text>
             <Text fontSize="sm" color="gray.400">{t(s.desc)}</Text>
           </Box>
@@ -165,7 +163,7 @@ function Section({ title, href, children }: { title: string; href?: string; chil
         <Text fontSize="sm" fontWeight="bold" color="gray.400" textTransform="uppercase" letterSpacing="wide">
           {title}
         </Text>
-        {href && <Text as={NextLink} href={href} fontSize="xs" color="yellow.300">›</Text>}
+        {href && <Text as={NextLink} href={href} fontSize="xs" color="accent.300">›</Text>}
       </HStack>
       {children}
     </VStack>
@@ -180,7 +178,7 @@ function Tile({ href, live, art, icons, title, note }: {
   return (
     <VStack as={NextLink} href={href} align="stretch" spacing={2} p={2} borderRadius="lg" minW={0}
       borderWidth={live ? '2px' : '1px'} borderColor={live ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50"
-      _hover={{ borderColor: 'yellow.400' }}>
+      _hover={{ borderColor: 'accent.400' }}>
       <ArtBox manifest={icons} w="100%" sources={art} />
       <HStack spacing={1.5} wrap="wrap">
         <Badge colorScheme={live ? 'pink' : 'blue'} variant="solid">{live ? t('stageLive') : t('stageUpcoming')}</Badge>
@@ -217,7 +215,7 @@ function BannerTile({ banner, now, serverTime, chars, icons }: {
       ) : (
         <Center as="button" onClick={() => setRevealed(true)} w="100%" sx={{ aspectRatio: '430 / 280' }}
           borderRadius="md" bg="blackAlpha.500" borderWidth="1px" borderStyle="dashed" borderColor="whiteAlpha.300"
-          flexDirection="column" gap={1} _hover={{ borderColor: 'yellow.400' }}>
+          flexDirection="column" gap={1} _hover={{ borderColor: 'accent.400' }}>
           <Text fontSize="2xl" color="gray.500">?</Text>
           <Text fontSize="xs" color="gray.400">{t('homeReveal')}</Text>
         </Center>

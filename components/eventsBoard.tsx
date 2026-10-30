@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import {
   Badge, Box, Button, ButtonGroup, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
   WrapItem,
-} from '@chakra-ui/react';
+} from '@altterisk/game-hub/ui';
 import { ArtBox } from '@/components/artBox';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
@@ -206,7 +206,7 @@ export function EventCard({ event, now, serverTime, chars, icons }: {
       borderWidth={phase === 'running' ? '2px' : '1px'}
       borderColor={phase === 'running' ? 'pink.400' : 'whiteAlpha.200'}
       bg={phase === 'ended' ? 'blackAlpha.200' : 'whiteAlpha.50'}
-      _hover={{ borderColor: 'yellow.400' }}>
+      _hover={{ borderColor: 'accent.400' }}>
       <Box w={{ base: '100%', sm: '184px' }} flexShrink={0}>
         <EventArt event={event} icons={icons} />
       </Box>
@@ -254,7 +254,7 @@ export function PartnerChip({ code, chars, icons, gameLang, pickup = false, rate
       <GameIcon manifest={icons} group="char" names={[entry?.iconPath, `Icon_${code}`]}
         size={pickup ? 7 : 6} borderRadius="full" />
       <Text fontSize="xs" fontWeight={pickup ? 'bold' : 'normal'}>{name}</Text>
-      {pickup && <Badge fontSize="0.55rem" colorScheme="yellow">{t('eventsPickup')}</Badge>}
+      {pickup && <Badge fontSize="0.55rem" colorScheme="accent">{t('eventsPickup')}</Badge>}
       {rate != null && <Badge fontSize="0.6rem" colorScheme="green">+{rate}%</Badge>}
     </HStack>
   );
@@ -264,7 +264,7 @@ const REWARD_LABEL: Record<string, UiKey> = {
   profile_icon: 'rewardProfileIcon', lobby_background: 'rewardLobbyBackground',
   profile_title: 'rewardProfileTitle', profile_border: 'rewardProfileBorder',
 };
-const BOX_GRADE_COLOR: Record<string, string> = { legend: 'yellow', rare: 'purple', normal: 'gray' };
+const BOX_GRADE_COLOR: Record<string, string> = { legend: 'accent', rare: 'purple', normal: 'gray' };
 const BOX_GRADE_LABEL: Record<string, UiKey> = {
   legend: 'gradeLegend', rare: 'gradeRare', normal: 'gradeNormal',
 };
@@ -403,7 +403,7 @@ export function ExchangePanel({ exchange, refs, icons, gameLang, boxArt }: {
             {ex.rounds.map((round) => {
               const draws = round.items.reduce((sum, item) => sum + item.count, 0);
               return (
-                <Box key={round.round} borderLeftWidth="3px" borderColor="yellow.400" pl={3}>
+                <Box key={round.round} borderLeftWidth="3px" borderColor="accent.400" pl={3}>
                   <HStack spacing={3} mb={2} wrap="wrap">
                     <Text fontSize="sm" fontWeight="bold">
                       {round.repeat ? t('eventsStepRepeat', { n: round.round }) : t('eventsStep', { n: round.round })}

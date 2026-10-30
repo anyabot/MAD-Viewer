@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Seo } from '@/components/seo';
 import { useRouter } from 'next/router';
-import {
-  Badge, Box, Button, Flex, HStack, Select, Text, VStack,
-} from '@chakra-ui/react';
+import { Badge, Box, Button, Flex, HStack, Select, Text, VStack } from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel, TabPanel, UrlTabs, tabParam } from '@altterisk/game-hub';
 import { nextRouterAdapter } from '@altterisk/game-hub/filters';
 import { TimeControls, useNow, useServerTime } from '@/components/eventsBoard';
@@ -208,13 +206,13 @@ function PassTab({ ctx }: { ctx: Ctx }) {
               <Flex gap={4} wrap="wrap">
                 <HStack spacing={2} align="center">
                   <Text fontSize="xs" color="gray.500" w="2.5rem">{t('rewardsFree')}</Text>
-                  <Box borderRadius="md" outline={l.highlightFree ? '1px solid' : undefined} outlineColor="yellow.400">
+                  <Box borderRadius="md" outline={l.highlightFree ? '1px solid' : undefined} outlineColor="accent.400">
                     <Rewards group={l.free} ctx={ctx} />
                   </Box>
                 </HStack>
                 <HStack spacing={2} align="center">
                   <Text fontSize="xs" color="gray.500" w="2.5rem">{t('rewardsPaid')}</Text>
-                  <Box borderRadius="md" outline={l.highlightPaid ? '1px solid' : undefined} outlineColor="yellow.400">
+                  <Box borderRadius="md" outline={l.highlightPaid ? '1px solid' : undefined} outlineColor="accent.400">
                     <Rewards group={l.paid} ctx={ctx} />
                   </Box>
                 </HStack>

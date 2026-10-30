@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box, HStack, Text } from '@chakra-ui/react';
+import { Box, HStack, Text } from '@altterisk/game-hub/ui';
 import { useT } from '@/lib/i18n';
+import { copyText } from '@altterisk/game-hub';
 
 const SHARE_PATH = 'M18 16a3 3 0 0 0-2.4 1.2L8.9 13.8a3.2 3.2 0 0 0 0-3.6l6.7-3.4A3 3 0 1 0 15 4.2L8.3 7.6a3 3 0 1 0 0 8.8l6.7 3.4A3 3 0 1 0 18 16z';
 
@@ -19,13 +20,7 @@ export function ShareButton({ query }: { query: ShareQuery }) {
     for (const [key, value] of Object.entries(query)) {
       if (value != null && value !== '') url.searchParams.set(key, String(value));
     }
-    let message = t('shareCopied');
-    try {
-      await navigator.clipboard.writeText(url.toString());
-    } catch {
-      message = t('shareCopyFailed');
-    }
-    setStatus(message);
+    setStatus(t(await copyText(url.toString()) ? 'shareCopied' : 'shareCopyFailed'));
     window.clearTimeout(timer.current);
     timer.current = window.setTimeout(() => setStatus(''), 2500);
   };

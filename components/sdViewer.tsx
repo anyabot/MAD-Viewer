@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Select, Spinner, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Select, Spinner, Text } from '@altterisk/game-hub/ui';
 import { useEffect, useRef, useState } from 'react';
 
 import { useLang, useT } from '@/lib/i18n';
@@ -13,6 +13,7 @@ import { MAX_RECORD_DIM, speedOptions } from '@/components/skinViewer/constants'
 import {
   canRecordCanvas, startCanvasVideo, type VideoRecording,
 } from '@/components/skinViewer/exportVideo';
+import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
 
 // The battle scene's CharacterCamera lens, in radians.
 const CAMERA_FOV = 20 * Math.PI / 180;
@@ -49,6 +50,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
   useEffect(() => {
     let destroyed = false;
     let app: any = null;
+    let pixi: PixiAppHandle | null = null;
     let cutinEffects: Awaited<ReturnType<typeof createCutinEffects>> | null = null;
     let tick: (() => void) | null = null;
     let resize: (() => void) | null = null;
@@ -90,15 +92,12 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
       spine.update(0);
       if (destroyed) return;
 
-      app = new PIXI.Application();
-      await app.init({
-        antialias: true,
-        background: 0x111827,
-        backgroundAlpha: 0,
-        resizeTo: surface!,
+      pixi = await createPixiApp({
+        PIXI, host: surface!, cancelled: () => destroyed,
+        init: { background: 0x111827, autoDensity: false },
       });
-      if (destroyed) { app.destroy(true); return; }
-      surface!.replaceChildren(app.canvas);
+      if (!pixi) return;
+      app = pixi.app;
       appRef.current = app;
       app.stage.addChild(spine);
       spineRef.current = spine;
@@ -190,7 +189,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
       cutinEffects?.destroy();
       spineRef.current = null;
       fitRef.current = null;
-      if (app) { try { app.destroy(true); } catch { /* already destroyed */ } }
+      pixi?.dispose();
       surface?.replaceChildren();
     };
   }, [character]);
@@ -272,7 +271,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
           ))}
         </Select>
         {character.cutin && (
-          <Button size="sm" colorScheme="yellow" variant="outline"
+          <Button size="sm" colorScheme="accent" variant="outline"
             onClick={() => {
               setAnimation(character.cutin!.animation);
               setPlaybackRun((run) => run + 1);
@@ -318,8 +317,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
       <Box position="relative" h={{ base: '440px', md: 'min(72vh, 720px)' }} minW={0}
         overflow="hidden" borderWidth="1px" borderColor="whiteAlpha.200"
         borderRadius="xl" bg="blackAlpha.300">
-        <Box ref={hostRef} position="absolute" inset={0}
-          sx={{ '& canvas': { display: 'block' } }} />
+        <Box ref={hostRef} position="absolute" inset={0} className="mad-canvas-host" />
         {!ready && !error && (
           <Flex position="absolute" inset={0} align="center" justify="center">
             <Spinner />

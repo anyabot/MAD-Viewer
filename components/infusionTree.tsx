@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import { Badge, Box, Flex, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { GameIcon } from '@/components/gameIcon';
 import { Panel } from '@altterisk/game-hub';
 import { INFUSION_PATHS, infusionNodes, statText } from '@/lib/characters';
@@ -52,7 +52,7 @@ export default function InfusionTree({ entry, data, icons, active }: {
                 return (
                   <Flex key={node.step} gap={3} align="center" wrap="wrap" p={2}
                     borderWidth="1px" borderRadius="md" opacity={on ? 1 : 0.45}
-                    borderColor={node.core ? 'yellow.600' : 'whiteAlpha.200'}
+                    borderColor={node.core ? 'accent.600' : 'whiteAlpha.200'}
                     bg={node.core ? 'rgba(236, 201, 75, 0.06)' : 'whiteAlpha.50'}>
                     <GameIcon manifest={icons} group="infusion" name={node.icon} size={8} />
                     <Box flex="1" minW="160px">
@@ -61,7 +61,7 @@ export default function InfusionTree({ entry, data, icons, active }: {
                           {dataText(lang, node.name, node.nameEn)}
                         </Text>
                         {node.core && (
-                          <Badge colorScheme="yellow" fontSize="0.6rem">
+                          <Badge colorScheme="accent" fontSize="0.6rem">
                             {infusionLabel(data, 'core', lang)}
                           </Badge>
                         )}

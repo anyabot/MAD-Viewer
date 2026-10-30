@@ -1,13 +1,10 @@
 // Filtered by the axes the game itself uses, each drawn with its in-game icon.
-import { textMatch } from '@altterisk/game-hub/filters';
+import { nextFilterMode, textMatch } from '@altterisk/game-hub/filters';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
-import {
-  Badge, Box, Flex, Grid, HStack, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
-import { EmptyState, FilterPanel, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
+import { Badge, Box, Flex, Grid, HStack, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
+import { EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
 import { GameIcon, StarRating } from '@/components/gameIcon';
-import { FilterChip, FilterRow } from '@/components/filters';
 import {
   KIND_ICON, KIND_ORDER, TYPE_LABEL, characterName, characterSubName, filterRows,
   isPlayable, rosterNote, skinsByCharacter, typeIcons, typeLabel, typeOf, typeTint,
@@ -15,7 +12,7 @@ import {
 } from '@/lib/characters';
 import { characterIcon } from '@/lib/icons';
 import { useSpoilerFilter } from '@/lib/spoilers';
-import { useFilters, type Tri } from '@/lib/filterStore';
+import { useFilters } from '@/lib/filterStore';
 import { useCollection } from '@/lib/collectionStore';
 import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
 import {
@@ -28,7 +25,6 @@ import { characterHref } from '@/lib/routes';
 // Faction is the only axis rendered as a scrolling icon strip.
 const CHIP_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division'];
 
-const nextTri = (tri: Tri): Tri => (tri === 'all' ? 'yes' : tri === 'yes' ? 'no' : 'all');
 const STARS = [1, 2, 3];
 
 export default function CharactersPage() {
@@ -75,10 +71,10 @@ function CharactersContent() {
         if (!unreleased) return false;
       } else if (!npcs && !isPlayable(c)) return false;
       if (skinsOnly && !byCharacter.has(c.code)) return false;
-      if (wantCollected !== 'all' && !!collected[c.code] !== (wantCollected === 'yes')) {
+      if (wantCollected !== 0 && !!collected[c.code] !== (wantCollected === 1)) {
         return false;
       }
-      if (wantFavorite !== 'all' && !!favorites[c.code] !== (wantFavorite === 'yes')) {
+      if (wantFavorite !== 0 && !!favorites[c.code] !== (wantFavorite === 1)) {
         return false;
       }
       if (star != null && c.defaultStar !== star) return false;
@@ -114,8 +110,8 @@ function CharactersContent() {
     if (!window.confirm(t('collectionMarkAllConfirm', { n: markable.length }))) return;
     setCollectedMany(markable.map((c) => c.code), true);
   };
-  const activeFilters = [star != null, artist != null, skinsOnly, wantCollected !== 'all',
-    wantFavorite !== 'all', npcs, unreleased].filter(Boolean).length
+  const activeFilters = [star != null, artist != null, skinsOnly, wantCollected !== 0,
+    wantFavorite !== 0, npcs, unreleased].filter(Boolean).length
     + Object.values(picked).filter((v) => v != null).length;
 
   return (
@@ -187,21 +183,15 @@ function CharactersContent() {
             </FilterChip>
           </WrapItem>
           <WrapItem>
-            <FilterChip active={wantCollected !== 'all'}
-              onClick={() => set({ collected: nextTri(wantCollected) })}>
-              <Text>
-                {wantCollected === 'no'
-                  ? t('collectionNotCollected') : t('collectionCollected')}
-              </Text>
+            <FilterChip mode={wantCollected}
+              onClick={() => set({ collected: nextFilterMode(wantCollected) })}>
+              <Text>{t('collectionCollected')}</Text>
             </FilterChip>
           </WrapItem>
           <WrapItem>
-            <FilterChip active={wantFavorite !== 'all'}
-              onClick={() => set({ favorite: nextTri(wantFavorite) })}>
-              <Text>
-                {wantFavorite === 'no'
-                  ? t('collectionNotFavorite') : t('collectionFavorites')}
-              </Text>
+            <FilterChip mode={wantFavorite}
+              onClick={() => set({ favorite: nextFilterMode(wantFavorite) })}>
+              <Text>{t('collectionFavorites')}</Text>
             </FilterChip>
           </WrapItem>
           <WrapItem>
@@ -266,7 +256,7 @@ function CharacterCard({
         )}
         <HStack position="absolute" top={1} left={1} spacing={1}
           bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
-          backdropFilter="blur(2px)" _empty={{ display: 'none' }}>
+          backdropFilter="blur(2px)" className="mad-hide-empty">
           <GameIcon manifest={icons} group="ui" names={typeIcons(element)} size={5}
             tint={typeTint(element)} title={typeLabel(element, lang)} reserve={false} />
           <GameIcon manifest={icons} group="ui" names={typeIcons(role)} size={5}
@@ -274,15 +264,15 @@ function CharacterCard({
         </HStack>
         <HStack position="absolute" top={1} right={1} spacing={1}
           bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
-          backdropFilter="blur(2px)" _empty={{ display: 'none' }}>
+          backdropFilter="blur(2px)" className="mad-hide-empty">
           {favorite && <Badge colorScheme="pink" fontSize="0.55rem">♥</Badge>}
           {isPlayable(entry) && (
             // The card is a link, so the toggle has to keep the click.
             <Box as="button" fontSize="0.55rem" lineHeight={1.4} px={1} borderRadius="sm"
               fontWeight="700" title={t('collectionCollected')}
-              bg={collected ? 'yellow.400' : 'whiteAlpha.300'}
+              bg={collected ? 'accent.400' : 'whiteAlpha.300'}
               color={collected ? 'gray.900' : 'gray.500'}
-              _hover={{ bg: collected ? 'yellow.300' : 'whiteAlpha.600', color: collected ? 'gray.900' : 'gray.100' }}
+              _hover={{ bg: collected ? 'accent.300' : 'whiteAlpha.600', color: collected ? 'gray.900' : 'gray.100' }}
               onClick={(e: React.MouseEvent) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -297,7 +287,7 @@ function CharacterCard({
         {kinds.length > 0 && (
           <HStack position="absolute" bottom={1} right={1} spacing={0.5}
             bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
-            backdropFilter="blur(2px)" _empty={{ display: 'none' }}>
+            backdropFilter="blur(2px)" className="mad-hide-empty">
             {kinds.map((k) => (
               <GameIcon key={k} manifest={icons} group="ui" name={KIND_ICON[k]}
                 size={4} title={KIND_LABEL[k][lang]} opacity={0.9} reserve={false} />

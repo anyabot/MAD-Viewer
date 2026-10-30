@@ -3,9 +3,8 @@ import dynamic from 'next/dynamic';
 import { Seo } from '@/components/seo';
 import { useRouter } from 'next/router';
 import {
-  Box, HStack, Image, ListItem, Select, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr,
-  UnorderedList, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  Box, HStack, Image, Select, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr, VStack, Wrap, WrapItem, Stack,
+} from '@altterisk/game-hub/ui';
 import { PageHeader, Panel } from '@altterisk/game-hub';
 import {
   ALLY_SLOTS, DEFAULT_APPROACH, ENEMY_SLOTS, FIELD, FIELD_GAME_VERSION, RUN_IN_GAP, settle, type Slot, type SlotTable,
@@ -57,9 +56,9 @@ function placeBoth(ally: Counts, enemy: Counts): { allies: Placed[]; enemies: Pl
 
 function Points({ items }: { items: ReactNode[] }) {
   return (
-    <UnorderedList spacing={1} fontSize="sm" color="gray.300" pl={1}>
-      {items.map((item, i) => <ListItem key={i}>{item}</ListItem>)}
-    </UnorderedList>
+    <Stack as="ul" spacing={1} fontSize="sm" color="gray.300" ml="1em" pl={1} listStyleType="disc">
+      {items.map((item, i) => <Box as="li" key={i}>{item}</Box>)}
+    </Stack>
   );
 }
 
@@ -235,7 +234,7 @@ export default function FieldPage() {
         </VStack>
       </Panel>
 
-      <Box id="aoe" scrollMarginTop="4rem">
+      <Box id="aoe" style={{ scrollMarginTop: '4rem' }}>
         <Panel title={L('AoE checker', '범위 확인')}>
           {chars
             ? <AoeStage chars={chars} icons={icons} unit={gated ? undefined : aoeUnit} skill={aoeSkill} />

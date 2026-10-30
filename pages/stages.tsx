@@ -1,16 +1,13 @@
 // Three levels over one route, because `output: 'export'` prerenders every path and the stage set is runtime data.
 import { listState, nextRouterAdapter, textMatch, useUrlText } from '@altterisk/game-hub/filters';
-import {
-  BannerCard, EmptyState, IconPreview, ListToolbar, MetaChip, SearchBox, StageCard,
-} from '@altterisk/game-hub';
+import { BannerCard, EmptyState, FilterChip, FilterRow, IconPreview, ListToolbar, MetaChip, SearchBox, StageCard } from '@altterisk/game-hub';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
-  WrapItem, Collapse,
-} from '@chakra-ui/react';
+  Badge, Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,
+  Collapse, ChevronRightIcon,
+} from '@altterisk/game-hub/ui';
 import { useRouter } from 'next/router';
-import { ChevronRightIcon } from '@chakra-ui/icons';
 import { ArtBox } from '@/components/artBox';
 import { EventsBoard, TimeControls, useNow, useServerTime } from '@/components/eventsBoard';
 import {
@@ -27,7 +24,6 @@ import { hasIcon } from '@/lib/icons';
 import { nextLink } from '@/lib/hubLink';
 import { StageMeta } from '@/components/stageMeta';
 import { NemesisRooms } from '@/components/nemesisRooms';
-import { FilterChip, FilterRow } from '@/components/filters';
 import {
   DIFFICULTY_LABEL, DROP_ICON_GROUPS, GROUP_ICON_GROUPS, dropAmount, dropName, enemyCodes, groupByKey,
   groupIsLive, groupLabel, groupWindow, levelRange, modeSummaries, stageDrops,
@@ -445,7 +441,7 @@ function GroupList({ mode, data, icons, lang }: {
       </Flex>
       <ModeTabs data={data} mode={mode} lang={lang} />
       {mode === 'archive' && (
-        <Button as={NextLink} href="/archive" size="sm" colorScheme="yellow" alignSelf="start">
+        <Button as={NextLink} href="/archive" size="sm" colorScheme="accent" alignSelf="start">
           {t('archiveOverview')}
         </Button>
       )}

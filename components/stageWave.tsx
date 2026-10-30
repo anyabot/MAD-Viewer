@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import {
   Badge, Box, Flex, HStack, SimpleGrid, Table, Tbody, Td, Text, Tr, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+} from '@altterisk/game-hub/ui';
 import {
   LevelControl, Panel, RewardGrid, WaveNav, type RewardItem,
 } from '@altterisk/game-hub';
@@ -244,7 +244,7 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
             <WrapItem>
               {group.code && entry ? (
                 <Text as={NextLink} href={characterHref(group.code)}
-                  fontSize="sm" fontWeight="bold" color="yellow.200">
+                  fontSize="sm" fontWeight="bold" color="accent.200">
                   {dataText(lang, enemy?.name, enemy?.nameEn) || group.code}
                 </Text>
               ) : (

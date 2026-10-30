@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Center,
   Flex, HStack, SimpleGrid, Spinner, Text, VStack,
-} from '@chakra-ui/react';
+} from '@altterisk/game-hub/ui';
 import { ArtBox } from '@/components/artBox';
 import { SceneLines } from '@/components/storyLines';
 import {
@@ -95,7 +95,7 @@ function StoryList({ index, events, icons }: {
                 return (
                   <Flex key={chapter.id} as={NextLink} href={`/story?chapter=${chapter.id}`} gap={3}
                     p={3} borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" minW={0}
-                    align="center" _hover={{ borderColor: 'yellow.400', bg: 'whiteAlpha.50' }}>
+                    align="center" _hover={{ borderColor: 'accent.400', bg: 'whiteAlpha.50' }}>
                     <ArtBox manifest={icons} w="104px" sources={[
                       ...(event ? bannerNames(event, lang).map((n) => ['banner', n] as ['banner', string]) : []),
                       ['banner', nemesis], ['story', chapter.background],
@@ -149,7 +149,7 @@ function Reader({ chapter, scene, chars, icons }: {
     <VStack align="stretch" spacing={4}>
       <Seo title={gameText(chapter.name, lang)} description={t('seoDescStory')} />
       <Flex align="center" gap={3} wrap="wrap">
-        <Text as={NextLink} href="/story" color="yellow.300" fontSize="sm">{t('navStory')}</Text>
+        <Text as={NextLink} href="/story" color="accent.300" fontSize="sm">{t('navStory')}</Text>
         <Text color="gray.600">/</Text>
         <Text fontSize="xl" fontWeight="bold">{gameText(chapter.name, lang)}</Text>
         <Box flex="1" />

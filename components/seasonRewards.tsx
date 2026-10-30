@@ -1,8 +1,7 @@
 import { useState, type ReactNode } from 'react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
 import {
-  Badge, Box, Button, Collapse, Flex, HStack, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  ChevronRightIcon, Badge, Box, Button, Collapse, Flex, HStack, Text, VStack, Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import { Panel } from '@altterisk/game-hub';
 import { RewardSlot } from '@/components/eventsBoard';
 import { GameIcon } from '@/components/gameIcon';
@@ -75,7 +74,7 @@ export function Rewards({ group, ctx }: { group?: string; ctx: RewardCtx }) {
 export function Row({ label, children, removed }: { label: ReactNode; children: ReactNode; removed?: boolean }) {
   return (
     <Flex gap={3} py={1.5} align="center" borderBottomWidth="1px" borderColor="whiteAlpha.100"
-      _last={{ borderBottomWidth: 0 }}>
+      className="mad-rule-last">
       <Box w={{ base: '40%', sm: '14rem' }} flexShrink={0} fontSize="sm" minW={0}
         textDecoration={removed ? 'line-through' : undefined} opacity={removed ? 0.5 : 1}>{label}</Box>
       <Box minW={0} flex="1">{removed ? <Text color="gray.600">—</Text> : children}</Box>

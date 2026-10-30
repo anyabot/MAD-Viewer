@@ -1,4 +1,4 @@
-import { HStack, Select, Text } from '@chakra-ui/react';
+import { Flex, Select, Text } from '@altterisk/game-hub/ui';
 import { GAME_LANGS, useGameLangStore, type GameLangChoice } from '@/lib/gameText';
 import { useT } from '@/lib/i18n';
 
@@ -7,7 +7,7 @@ export function GameTextPicker() {
   const choice = useGameLangStore((s) => s.choice);
   const setChoice = useGameLangStore((s) => s.setChoice);
   return (
-    <HStack spacing={1.5}>
+    <Flex align="center" gap={1.5}>
       <Text fontSize="xs" color="gray.500" whiteSpace="nowrap" display={{ base: 'none', md: 'block' }}>
         {t('gameText')}
       </Text>
@@ -16,6 +16,6 @@ export function GameTextPicker() {
         <option value="auto">{t('gameTextAuto')}</option>
         {GAME_LANGS.map((l) => <option key={l.value} value={l.value}>{l.label}</option>)}
       </Select>
-    </HStack>
+    </Flex>
   );
 }

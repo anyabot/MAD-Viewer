@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 import { hasArea } from '@/lib/aoe';
 import { useSkillTiming } from '@/lib/skillTiming';
 import type { SkillTiming } from '@/lib/data';
-import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { GameIcon } from '@/components/gameIcon';
 import {
   BUFF_CATEGORY, DISPEL_LABEL, MOVE_LABEL, OP_LABEL, OP_SCHEME, SETUP_CONDITION_LABEL, SIDE_LABEL,
@@ -46,7 +46,7 @@ export function StateBadges({ categorize, dispellable }: {
     <HStack spacing={1} display="inline-flex">
       <Badge fontSize="0.55rem" colorScheme={cat.scheme}>{cat.label[lang]}</Badge>
       {dispellable !== undefined && (
-        <Badge fontSize="0.55rem" variant="outline" colorScheme={dispellable ? 'yellow' : 'gray'}>
+        <Badge fontSize="0.55rem" variant="outline" colorScheme={dispellable ? 'accent' : 'gray'}>
           {DISPEL_LABEL[dispellable ? 'yes' : 'no'][lang]}
         </Badge>
       )}
@@ -146,7 +146,7 @@ function OpRow({ op, level, period, data, icons, landings = 1 }: {
       )}
       <StateBadges categorize={op.categorize} dispellable={op.dispellable} />
       {amounts.length > 0 && (
-        <Text fontSize="xs" color="yellow.200">{amounts.join(' / ')}</Text>
+        <Text fontSize="xs" color="accent.200">{amounts.join(' / ')}</Text>
       )}
       {scale && <Text fontSize="0.65rem" color="gray.400">{scale}</Text>}
       {weights && <Text fontSize="0.65rem" color="orange.200">{weights}</Text>}
@@ -351,7 +351,7 @@ export function SkillRow({ skill, data, icons, label, owner, states }: {
           )}
           {skill.openStar > 1 && (
             <WrapItem>
-              <Badge fontSize="0.6rem" colorScheme="yellow">{skill.openStar}★</Badge>
+              <Badge fontSize="0.6rem" colorScheme="accent">{skill.openStar}★</Badge>
             </WrapItem>
           )}
           {skill.levelable && (
@@ -361,8 +361,8 @@ export function SkillRow({ skill, data, icons, label, owner, states }: {
                 {descs.map((_d, i) => (
                   <Box key={i} as="button" onClick={() => setLevel(i + 1)} px={1.5}
                     fontSize="0.65rem" borderWidth="1px" borderRadius="sm"
-                    borderColor={i === at ? 'yellow.400' : 'whiteAlpha.200'}
-                    color={i === at ? 'yellow.200' : 'gray.500'}>{i + 1}</Box>
+                    borderColor={i === at ? 'accent.400' : 'whiteAlpha.200'}
+                    color={i === at ? 'accent.200' : 'gray.500'}>{i + 1}</Box>
                 ))}
               </Flex>
             </WrapItem>
@@ -376,8 +376,8 @@ export function SkillRow({ skill, data, icons, label, owner, states }: {
           <Sentences lines={behaviourSentences(skill.behaviour, at + 1, skill.levelPeriod, data, lang, namer)} />
         )}
         {skill.variant?.behaviour && (
-          <Box mt={2} pl={2} borderLeftWidth="2px" borderColor="yellow.700">
-            <Text fontSize="xs" color="yellow.300" title={skill.variant.when.define}>
+          <Box mt={2} pl={2} borderLeftWidth="2px" borderColor="accent.700">
+            <Text fontSize="xs" color="accent.300" title={skill.variant.when.define}>
               <GameText text={variantCondition(skill.variant, lang, namer)} />
               {skill.variant.action && <Text as="span" color="gray.500">{` · ${skill.variant.action}`}</Text>}
             </Text>
@@ -430,8 +430,8 @@ function SkillViewToggles() {
         <WrapItem key={key}>
           <Box as="button" aria-pressed={view[key]} onClick={() => view.toggle(key)} px={2} py={0.5}
             fontSize="xs" borderWidth="1px" borderRadius="full"
-            borderColor={view[key] ? 'yellow.400' : 'whiteAlpha.200'}
-            color={view[key] ? 'yellow.200' : 'gray.500'}>
+            borderColor={view[key] ? 'accent.400' : 'whiteAlpha.200'}
+            color={view[key] ? 'accent.200' : 'gray.500'}>
             {t(label)}
           </Box>
         </WrapItem>
@@ -463,8 +463,8 @@ export function SkillList({ group, defaultStar, data, icons, owner }: {
             {grades.map((g) => (
               <Box key={g} as="button" onClick={() => setGrade(g)} px={2} py={0.5}
                 fontSize="xs" borderWidth="1px" borderRadius="md"
-                borderColor={g === shown ? 'yellow.400' : 'whiteAlpha.200'}
-                color={g === shown ? 'yellow.200' : 'gray.400'}>{g}★</Box>
+                borderColor={g === shown ? 'accent.400' : 'whiteAlpha.200'}
+                color={g === shown ? 'accent.200' : 'gray.400'}>{g}★</Box>
             ))}
           </HStack>
         )}

@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from '@altterisk/game-hub/ui';
 import { useEffect, useRef, useState } from 'react';
 
 import { eventArchiveUrls } from '@/lib/cdn';

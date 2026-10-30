@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import {
   Badge, Box, Flex, HStack, Table, Tbody, Td, Text, Th, Thead, Tr, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+} from '@altterisk/game-hub/ui';
 import { nextRouterAdapter } from '@altterisk/game-hub/filters';
 import { GameIcon } from '@/components/gameIcon';
 import { ShareButton } from '@/components/shareButton';
@@ -63,13 +63,13 @@ export function NemesisRooms({ grouping, data, chars, icons, lang }: {
             return (
               <HStack key={id} as="button" role="tab" aria-selected={active} spacing={2} px={3} py={2}
                 borderWidth="1px" borderRadius="md" onClick={() => params.set({ zone: String(id) })}
-                borderColor={active ? 'yellow.400' : 'whiteAlpha.200'}
+                borderColor={active ? 'accent.400' : 'whiteAlpha.200'}
                 bg={active ? 'whiteAlpha.100' : 'transparent'}
-                _hover={{ borderColor: active ? 'yellow.400' : 'whiteAlpha.400' }}>
+                _hover={{ borderColor: active ? 'accent.400' : 'whiteAlpha.400' }}>
                 <GameIcon manifest={icons} group={artGroup(icons, zone?.image)} name={zone?.image}
                   size={8} reserve={false} />
                 <Text fontSize="sm" fontWeight={active ? 'bold' : 'normal'}
-                  color={active ? 'yellow.200' : 'gray.300'} whiteSpace="nowrap">
+                  color={active ? 'accent.200' : 'gray.300'} whiteSpace="nowrap">
                   {dataText(lang, zone?.name?.ko, zone?.name?.en) || zone?.devName || id}
                 </Text>
               </HStack>
@@ -110,8 +110,8 @@ export function NemesisRooms({ grouping, data, chars, icons, lang }: {
               return (
                 <Tr key={stage.id}>
                   <Td>
-                    <Text as={NextLink} href={`/stage?id=${stage.id}`} fontWeight="bold" color="yellow.200"
-                      whiteSpace="nowrap" _hover={{ color: 'yellow.300' }}>
+                    <Text as={NextLink} href={`/stage?id=${stage.id}`} fontWeight="bold" color="accent.200"
+                      whiteSpace="nowrap" _hover={{ color: 'accent.300' }}>
                       {range ? t('stageLevel', { n: range[1] }) : stage.id} ›
                     </Text>
                   </Td>

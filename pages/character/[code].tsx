@@ -11,10 +11,10 @@ import { useHideSpoilers, useSpoilerFacts } from '@/lib/spoilers';
 import { createPersisted } from '@altterisk/game-hub/persist';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Center, Divider, Flex, Grid, HStack, Popover, PopoverArrow, PopoverBody,
-  PopoverContent, PopoverTrigger, Portal, SimpleGrid, Text, useBreakpointValue,
-  VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  Badge, Box, Center, Divider, Flex, Grid, HStack, Popover, PopoverBody,
+  PopoverContent, PopoverTrigger, Portal, SimpleGrid, Text, VStack, Wrap,
+  WrapItem,
+} from '@altterisk/game-hub/ui';
 import { nextRouterAdapter } from '@altterisk/game-hub/filters';
 import SkinViewer from '@/components/skinViewer';
 import CollectionEditor from '@/components/collectionEditor';
@@ -161,7 +161,7 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
   if (!entry) {
     return (
       <EmptyState title={code ? t('noCharacterData', { code }) : t('noCharacterSelected')}
-        action={<Text as={NextLink} href="/characters" color="yellow.300" fontSize="sm">{t('backToCharacters')}</Text>} />
+        action={<Text as={NextLink} href="/characters" color="accent.300" fontSize="sm">{t('backToCharacters')}</Text>} />
     );
   }
 
@@ -308,7 +308,7 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
                 </WrapItem>
                 {current.stores.length > 1 && (
                   <WrapItem>
-                    <Badge colorScheme="yellow" title={t('storeDiffTitle')}>
+                    <Badge colorScheme="accent" title={t('storeDiffTitle')}>
                       {t('badgeDiff')} · {STORE_META[store].short}
                     </Badge>
                   </WrapItem>
@@ -387,15 +387,12 @@ function MemberPopover({ members, icons, current, children }: {
   members: CharacterEntry[]; icons: IconManifest | null; current?: string; children: React.ReactNode;
 }) {
   const lang = useLang();
-  const placement = useBreakpointValue<'bottom' | 'right'>({ base: 'bottom', md: 'right' }) ?? 'right';
   if (!members.length) return <>{children}</>;
   return (
-    <Popover trigger="hover" placement={placement} isLazy openDelay={120} closeDelay={80}
-      modifiers={[{ name: 'preventOverflow', options: { padding: 8 } }]}>
+    <Popover trigger="hover" isLazy openDelay={120} closeDelay={80}>
       <PopoverTrigger><Box>{children}</Box></PopoverTrigger>
       <Portal>
-        <PopoverContent bg="gray.800" borderColor="whiteAlpha.300" w="280px" maxW="calc(100vw - 16px)">
-          <PopoverArrow bg="gray.800" />
+        <PopoverContent bg="gray.800" borderColor="whiteAlpha.300" w="280px">
           <PopoverBody maxH="320px" overflowY="auto" px={2} py={2}>
             <SimpleGrid columns={3} spacing={1}>
               {members.map((m) => (
@@ -661,11 +658,6 @@ function DateVenues({ entry, data, icons }: {
 }
 
 // The column is too narrow for label, slider and number on one row.
-const STACKED_LEVELS = {
-  '.hub-level': { gridTemplateColumns: '1fr 72px' },
-  '.hub-level__label': { gridColumn: '1 / -1' },
-};
-
 function DialLabel({ label, note }: { label: string; note?: string | null }) {
   return (
     <Flex as="span" align="baseline" gap={2} wrap="wrap" whiteSpace="normal">
@@ -686,8 +678,8 @@ function Choices({ label, options, value, onChange }: {
       {options.map((option) => (
         <Box key={option.value} as="button" onClick={() => onChange(option.value)}
           px={2} py={0.5} fontSize="xs" borderWidth="1px" borderRadius="md"
-          borderColor={option.value === value ? 'yellow.400' : 'whiteAlpha.200'}
-          color={option.value === value ? 'yellow.200' : 'gray.400'}>
+          borderColor={option.value === value ? 'accent.400' : 'whiteAlpha.200'}
+          color={option.value === value ? 'accent.200' : 'gray.400'}>
           {option.text}
         </Box>
       ))}
@@ -731,10 +723,10 @@ function GearSlot({ slot, icons, tier, level, onChange }: {
                 onClick={() => onChange(option.value, Math.min(level,
                   tiers.find((row) => row.tier === option.value)?.maxLevel ?? 1))}
                 p={0.5} borderWidth="1px" borderRadius="md" lineHeight={0}
-                borderColor={active ? 'yellow.400' : 'whiteAlpha.200'}
+                borderColor={active ? 'accent.400' : 'whiteAlpha.200'}
                 bg={active ? 'whiteAlpha.200' : 'transparent'}
                 opacity={active ? 1 : 0.55}
-                _hover={{ opacity: 1, borderColor: active ? 'yellow.400' : 'whiteAlpha.500' }}>
+                _hover={{ opacity: 1, borderColor: active ? 'accent.400' : 'whiteAlpha.500' }}>
                 <GameIcon manifest={icons} group="equip" name={option.icon} size={8} />
               </Box>
             </WrapItem>
@@ -759,7 +751,7 @@ function PresetButtons({ onMax, onMin, max, min }: {
       {[{ text: max, onClick: onMax }, { text: min, onClick: onMin }].map((b) => (
         <Box key={b.text} as="button" onClick={b.onClick} px={2} py={0.5} fontSize="xs"
           borderWidth="1px" borderRadius="md" borderColor="whiteAlpha.200" color="gray.400"
-          _hover={{ borderColor: 'yellow.400', color: 'yellow.200' }}>
+          _hover={{ borderColor: 'accent.400', color: 'accent.200' }}>
           {b.text}
         </Box>
       ))}
@@ -832,7 +824,7 @@ function StatCalculator({ entry, data, icons }: {
   return (
     <Grid templateColumns={{ base: 'minmax(0, 1fr)', lg: 'minmax(0, 320px) minmax(0, 1fr)' }}
       gap={4} alignItems="start">
-      <VStack align="stretch" spacing={3} sx={STACKED_LEVELS}>
+      <VStack align="stretch" spacing={3} className="mad-stacked-levels">
         <Flex justify="flex-end">
           <PresetButtons max={t('presetMaxAll')} min={t('presetMinAll')}
             onMax={() => applyAll('max')} onMin={() => applyAll('min')} />
@@ -901,9 +893,7 @@ function StatCalculator({ entry, data, icons }: {
 
       <Panel title={t('tabStats')} note={t('statsNote', { star: shown, level, love })}>
         <Box overflowX="auto">
-          <Box as="table" w="100%" minW="360px" fontSize="sm"
-            sx={{ 'th, td': { py: 1, px: 2, textAlign: 'right' },
-              'th:first-of-type, td:first-of-type': { textAlign: 'left', pl: 0 } }}>
+          <Box as="table" w="100%" minW="360px" fontSize="sm" className="mad-stat-table">
             <Box as="thead">
               <Box as="tr" color="gray.500" fontSize="xs">
                 <Box as="th" fontWeight="normal">{t('headStat')}</Box>
@@ -1007,9 +997,9 @@ function SkinStrip({ skins, entry, icons, selected, onSelect }: {
           return (
             <Box key={s.key} as="button" onClick={() => onSelect(s.key)}
               borderWidth="1px" borderRadius="md" overflow="hidden" w="92px"
-              borderColor={active ? 'yellow.400' : 'whiteAlpha.200'}
+              borderColor={active ? 'accent.400' : 'whiteAlpha.200'}
               bg={active ? 'whiteAlpha.200' : 'whiteAlpha.50'}
-              _hover={{ borderColor: active ? 'yellow.400' : 'whiteAlpha.500' }}>
+              _hover={{ borderColor: active ? 'accent.400' : 'whiteAlpha.500' }}>
               <Box position="relative" bg="blackAlpha.400" sx={{ aspectRatio: '1 / 1' }}>
                 {src && (
                   <Box as="img" src={src} alt="" w="100%" h="100%" objectFit="contain" />
@@ -1019,7 +1009,7 @@ function SkinStrip({ skins, entry, icons, selected, onSelect }: {
                   <GameIcon manifest={icons} group="ui" name={KIND_ICON[s.kind]} size={4} />
                 </Box>
                 {s.stores.length > 1 && (
-                  <Badge position="absolute" top={0.5} right={0.5} colorScheme="yellow"
+                  <Badge position="absolute" top={0.5} right={0.5} colorScheme="accent"
                     fontSize="0.55rem">{t('badgeDiff')}</Badge>
                 )}
               </Box>

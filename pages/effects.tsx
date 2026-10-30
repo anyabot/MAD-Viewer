@@ -2,15 +2,10 @@
 import { textMatch } from '@altterisk/game-hub/filters';
 import { useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
-import {
-  Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
-import {
-  EmptyState, FilterChip as CountChip, FilterPanel, ListToolbar, LoadState, SearchBox,
-} from '@altterisk/game-hub';
+import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
+import { EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import { StateBadges } from '@/components/skillKit';
-import { FilterChip, FilterRow } from '@/components/filters';
 import {
   BUFF_CATEGORY, OP_SCHEME, SIDE_LABEL, SKILL_CATEGORY_LABEL, STAT_LABEL,
   SORT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, characterName, colorRuns, gateSummary,
@@ -181,7 +176,7 @@ function EffectsContent() {
 function Chip({ option, active, onClick }: {
   option: FacetOption; active: boolean; onClick: () => void;
 }) {
-  return <CountChip active={active} onClick={onClick} count={option.count}>{option.label}</CountChip>;
+  return <FilterChip active={active} onClick={onClick} count={option.count}>{option.label}</FilterChip>;
 }
 
 function ResultRow({ kit, skills, data, icons, skins, selection, lang }: {
@@ -243,8 +238,7 @@ function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot, lang }: 
   const groups = matchedGroups(skill, selection, ctx);
   const grants = (skill.behaviour?.stats ?? []).filter((s) => s.stat);
   return (
-    <Box borderTopWidth="1px" borderColor="whiteAlpha.100" pt={1.5}
-      _first={{ borderTopWidth: 0, pt: 0 }}>
+    <Box borderTopWidth="1px" borderColor="whiteAlpha.100" pt={1.5} className="mad-rule-first">
       <Wrap spacing={2} align="center">
         <WrapItem>
           <GameIcon manifest={icons} group="skill" name={skill.icon} size={5}
@@ -267,7 +261,7 @@ function SkillResult({ kitSkill, ctx, data, icons, selection, showSlot, lang }: 
         </WrapItem>
         {skill.openStar > 1 && (
           <WrapItem>
-            <Badge fontSize="0.55rem" colorScheme="yellow">{skill.openStar}★</Badge>
+            <Badge fontSize="0.55rem" colorScheme="accent">{skill.openStar}★</Badge>
           </WrapItem>
         )}
       </Wrap>

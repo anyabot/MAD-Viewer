@@ -6,10 +6,10 @@ import { readData } from '@/lib/staticData';
 import { resolveIcon } from '@/lib/icons';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import {
-  Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  ChevronLeftIcon, ChevronRightIcon, Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text,
+  VStack, Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import {
   AttendancePanel, EventArt, EventTiming, ExchangePanel, PartnerChip, TimeControls, useNow, useServerTime,
 } from '@/components/eventsBoard';
@@ -123,7 +123,7 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
     <VStack align="stretch" spacing={6}>
       {head}
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
-        <Text as={NextLink} href="/stages?mode=event" color="yellow.300">{t('navStages')}</Text>
+        <Text as={NextLink} href="/stages?mode=event" color="accent.300">{t('navStages')}</Text>
         <Text color="gray.600">/</Text>
         <Text color="gray.400">{name}</Text>
         <Box flex="1" />
@@ -165,7 +165,7 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
           )}
           <HStack spacing={2} pt={2} wrap="wrap">
             {event.chapter && (
-              <Button as={NextLink} href={`/story?chapter=${event.chapter}`} size="sm" colorScheme="yellow">
+              <Button as={NextLink} href={`/story?chapter=${event.chapter}`} size="sm" colorScheme="accent">
                 {t('eventsReadStory')} · {sceneCount(t, event.scenes ?? 0)}
               </Button>
             )}

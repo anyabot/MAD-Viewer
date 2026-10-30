@@ -1,5 +1,5 @@
 import { Seo } from '@/components/seo';
-import { Flex, Text, VStack } from '@chakra-ui/react';
+import { Flex, Text, VStack } from '@altterisk/game-hub/ui';
 import { ChangelogList } from '@/components/changelog';
 import { RELEASES } from '@/lib/changelog';
 import { useT } from '@/lib/i18n';

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Flex, HStack, Modal, ModalBody, ModalCloseButton, ModalContent,
-  ModalFooter, ModalHeader, ModalOverlay, Text, VStack, Wrap, WrapItem,
-} from '@chakra-ui/react';
+  Badge, Box, Flex, HStack, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter,
+  ModalHeader, ModalOverlay, Text, VStack, Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { itemHref } from '@/lib/items';
@@ -66,7 +66,7 @@ function MemoryPanel({
                 <Text fontSize="0.6rem" color="gray.500" textTransform="uppercase"
                   letterSpacing="0.08em">{t('rankToTarget')}</Text>
                 <Text fontSize="sm" fontFamily="mono" fontWeight="700"
-                  color={plan.short ? 'yellow.200' : 'green.300'}>
+                  color={plan.short ? 'accent.200' : 'green.300'}>
                   {plan.short.toLocaleString()}
                   {plan.held > 0 && (
                     <Text as="span" color="gray.600" fontSize="0.7rem">
@@ -140,8 +140,8 @@ function MemoryPanel({
             borderColor="whiteAlpha.100">
             {plan.sources.map(({ stage, perRun }) => (
               <HStack key={stage.id} spacing={2} fontSize="xs">
-                <Text as={NextLink} color="gray.300" _hover={{ color: 'yellow.300' }}
-                  href={{ pathname: '/stage', query: { id: stage.id } }}>
+                <Text as={NextLink} color="gray.300" _hover={{ color: 'accent.300' }}
+                  href={`/stage?id=${stage.id}`}>
                   {stageName(stages, stage, lang)}
                 </Text>
                 <Text color="gray.600">{t('rankPerRun', { n: perRun.toFixed(2) })}</Text>
@@ -254,7 +254,7 @@ export function UnitPlanDialog({
           <Flex align="center" gap={2.5} wrap="wrap" pr={8}>
             <GameIcon manifest={icons} group="char" size={8}
               names={[entry.iconPath, `Icon_${entry.code}`]} />
-            <Text as={NextLink} fontSize="lg" _hover={{ color: 'yellow.300' }}
+            <Text as={NextLink} fontSize="lg" _hover={{ color: 'accent.300' }}
               href={characterHref(entry.code)}>
               {characterName(entry, lang)}
             </Text>
@@ -289,7 +289,7 @@ export function UnitPlanDialog({
 
             {/* the flags act on the record, so they are not part of the draft */}
             <Flex gap={2} wrap="wrap">
-              <Box as="button" {...action} color={priority ? 'yellow.300' : 'gray.400'}
+              <Box as="button" {...action} color={priority ? 'accent.300' : 'gray.400'}
                 title={t('farmPriorityHint')}
                 onClick={() => setPriority(entry.code, !priority)}>{t('farmPriority')}</Box>
               <Box as="button" {...action} color={hidden ? 'gray.600' : 'gray.400'}
@@ -320,7 +320,7 @@ export function UnitPlanDialog({
         </ModalBody>
         <ModalFooter borderTopWidth="1px" borderColor="whiteAlpha.100" gap={2}>
           {dirty && (
-            <Text fontSize="xs" color="yellow.300" mr="auto">{t('planUnsaved')}</Text>
+            <Text fontSize="xs" color="accent.300" mr="auto">{t('planUnsaved')}</Text>
           )}
           <Box as="button" px={3} py={1.5} fontSize="sm" borderRadius="md"
             borderWidth="1px" borderColor="whiteAlpha.200" color="gray.400"
@@ -328,11 +328,11 @@ export function UnitPlanDialog({
             onClick={leave}>{t('planCancel')}</Box>
           <Box as="button" px={4} py={1.5} fontSize="sm" borderRadius="md" fontWeight="700"
             borderWidth="1px" disabled={!dirty}
-            borderColor={dirty ? 'yellow.400' : 'whiteAlpha.200'}
-            bg={dirty ? 'yellow.400' : 'transparent'}
+            borderColor={dirty ? 'accent.400' : 'whiteAlpha.200'}
+            bg={dirty ? 'accent.400' : 'transparent'}
             color={dirty ? 'gray.900' : 'gray.600'}
             cursor={dirty ? 'pointer' : 'not-allowed'}
-            _hover={dirty ? { bg: 'yellow.300' } : undefined}
+            _hover={dirty ? { bg: 'accent.300' } : undefined}
             onClick={() => dirty && save()}>{t('planSave')}</Box>
         </ModalFooter>
       </ModalContent>

@@ -1,4 +1,4 @@
-import { Box, HStack, Text, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, HStack, Text, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { ItemIcon } from '@/components/itemIcon';
 import { itemHref } from '@/lib/items';
 import { hasIcon } from '@/lib/icons';
@@ -38,7 +38,7 @@ export function MaterialNeeds({ bill, growth, icons, lang, inventory, size = 7, 
                   maxW="9rem">{label.name}</Text>
                 <HStack spacing={1} align="baseline" fontFamily="mono">
                   <Text fontSize="sm" fontWeight="bold"
-                    color={need.short ? 'yellow.200' : 'green.300'}>
+                    color={need.short ? 'accent.200' : 'green.300'}>
                     {need.required.toLocaleString()}
                   </Text>
                   <Text fontSize="0.6rem" color="gray.600">

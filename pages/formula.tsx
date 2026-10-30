@@ -1,9 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Seo } from '@/components/seo';
-import {
-  Box, HStack, ListItem, OrderedList, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr,
-  UnorderedList, VStack, Wrap,
-} from '@chakra-ui/react';
+import { Box, HStack, SimpleGrid, Table, Tbody, Td, Text, Th, Thead, Tr, VStack, Wrap, Stack } from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel } from '@altterisk/game-hub';
 import { GameIcon } from '@/components/gameIcon';
 import { typeIcons, typeLabel, typeTint } from '@/lib/characters';
@@ -20,7 +17,7 @@ function Formula({ children }: { children: ReactNode }) {
   return (
     <Box as="pre" fontFamily="mono" fontSize={{ base: 'xs', md: 'sm' }} whiteSpace="pre"
       overflowX="auto" bg="blackAlpha.400" borderWidth="1px" borderColor="whiteAlpha.200"
-      borderRadius="md" px={3} py={2} color="yellow.200">
+      borderRadius="md" px={3} py={2} color="accent.200">
       {children}
     </Box>
   );
@@ -28,9 +25,9 @@ function Formula({ children }: { children: ReactNode }) {
 
 function Points({ items }: { items: string[] }) {
   return (
-    <UnorderedList spacing={1} fontSize="sm" color="gray.300" pl={1}>
-      {items.map((item) => <ListItem key={item}>{item}</ListItem>)}
-    </UnorderedList>
+    <Stack as="ul" spacing={1} fontSize="sm" color="gray.300" ml="1em" pl={1} listStyleType="disc">
+      {items.map((item) => <Box as="li" key={item}>{item}</Box>)}
+    </Stack>
   );
 }
 
@@ -88,13 +85,13 @@ export default function FormulaPage() {
         subtitle={`${L('Last updated', '최종 수정')}: ${FORMULA_UPDATED} · ${L('game version', '게임 버전')} ${FORMULA_GAME_VERSION}`} />
 
       <Panel title={L('Order', '처리 순서')}>
-        <OrderedList spacing={1} fontSize="sm" color="gray.300" pl={1}>
-          <ListItem>{L('Physical damage immunity → no damage', '물리 피해 면역 → 피해 없음')}</ListItem>
-          <ListItem>{L('Hit / miss', '명중 / 빗나감')}</ListItem>
-          <ListItem>{L('Critical', '치명')}</ListItem>
-          <ListItem>{L('Damage (rounded down)', '피해 계산 (소수점 버림)')}</ListItem>
-          <ListItem>{L('Shield, then HP', '보호막, 이후 체력')}</ListItem>
-        </OrderedList>
+        <Stack as="ol" spacing={1} fontSize="sm" color="gray.300" ml="1em" pl={1} listStyleType="decimal">
+          <Box as="li">{L('Physical damage immunity → no damage', '물리 피해 면역 → 피해 없음')}</Box>
+          <Box as="li">{L('Hit / miss', '명중 / 빗나감')}</Box>
+          <Box as="li">{L('Critical', '치명')}</Box>
+          <Box as="li">{L('Damage (rounded down)', '피해 계산 (소수점 버림)')}</Box>
+          <Box as="li">{L('Shield, then HP', '보호막, 이후 체력')}</Box>
+        </Stack>
       </Panel>
 
       <Panel title={L('Damage', '피해')}>
@@ -113,7 +110,7 @@ export default function FormulaPage() {
                   ['L', L('Level gap', '레벨 차이')],
                   ['S', L('Skill damage stat', '스킬 피해 스탯')],
                 ] as [string, string][]).map(([k, v]) => (
-                  <Tr key={k}><Td fontFamily="mono" color="yellow.200" w="3rem">{k}</Td><Td>{v}</Td></Tr>
+                  <Tr key={k}><Td fontFamily="mono" color="accent.200" w="3rem">{k}</Td><Td>{v}</Td></Tr>
                 ))}
               </Tbody>
             </Table>
@@ -185,7 +182,7 @@ export default function FormulaPage() {
                 {attribute(from)}
                 <Text as="span" color="gray.500">→</Text>
                 {attribute(to)}
-                <Text as="span" fontFamily="mono" color="yellow.200">
+                <Text as="span" fontFamily="mono" color="accent.200">
                   ×{(1 + BATTLE.attributeBonus).toFixed(1)}
                 </Text>
               </Wrap>

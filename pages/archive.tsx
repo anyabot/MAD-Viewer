@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import {
   Badge, Box, Button, ButtonGroup, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
   WrapItem,
-} from '@chakra-ui/react';
+} from '@altterisk/game-hub/ui';
 import { PartnerChip, TimeControls, useNow, useServerTime } from '@/components/eventsBoard';
 import { ArtBox } from '@/components/artBox';
 import { GameIcon } from '@/components/gameIcon';
@@ -65,7 +65,7 @@ export default function ArchivePage() {
     <VStack align="stretch" spacing={6}>
       <Seo title={title} description={t('seoDescArchive')} />
       <Flex align="center" gap={2} wrap="wrap" fontSize="sm">
-        <Text as={NextLink} href="/stages?mode=ascent" color="yellow.300">{t('navStages')}</Text>
+        <Text as={NextLink} href="/stages?mode=ascent" color="accent.300">{t('navStages')}</Text>
         <Text color="gray.600">/</Text>
         <Text color="gray.400">{title}</Text>
         <Box flex="1" />
@@ -171,7 +171,7 @@ export default function ArchivePage() {
             return (
               <HStack key={node.order} as={NextLink} href={`/stages?group=${encodeURIComponent(key ?? '')}`}
                 p={2} borderRadius="md" borderWidth="1px" borderColor="whiteAlpha.200" spacing={2}
-                _hover={{ borderColor: 'yellow.400' }} minW={0}>
+                _hover={{ borderColor: 'accent.400' }} minW={0}>
                 <Text fontSize="xs" color="gray.500" w="1.5rem">{node.order}</Text>
                 <Box minW={0} flex="1">
                   <Text fontSize="sm" fontWeight="bold">
@@ -217,7 +217,7 @@ export default function ArchivePage() {
                       <Box minW={0}>
                         <HStack spacing={1.5} wrap="wrap">
                           <Text fontSize="sm" fontWeight="bold">{gameText(a.name, gameLang)}</Text>
-                          {a.rarity === 'rare' && <Badge colorScheme="yellow" fontSize="0.55rem">{t('gradeRare')}</Badge>}
+                          {a.rarity === 'rare' && <Badge colorScheme="accent" fontSize="0.55rem">{t('gradeRare')}</Badge>}
                           {a.joinCode && (
                             <Badge as={NextLink} href={characterHref(a.joinCode)} textTransform="none" fontSize="0.6rem">
                               {(gameLang === 'ko' ? chars?.characters[a.joinCode]?.name
