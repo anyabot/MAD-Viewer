@@ -38,9 +38,8 @@ import {
   type CameraBase, type CameraState, type SceneFadeState, type SceneTimelineRig,
 } from '@/components/skinViewer/scenes';
 import {
-  createScenePlayer, type ScenePlayer, type SceneState,
-} from '@/components/skinViewer/scenePlayer';
-import type { Command } from '@/components/skinViewer/interpreter';
+  createScenePlayer, type Command, type ScenePlayer, type SceneRig, type SceneState,
+} from '@/components/skinViewer/sceneRuntime';
 import { loadSceneAudio, loadSceneTimelines, loadVoice } from '@/lib/data';
 import {
   interactionsFor, playVoice, prefetchVoice, setVoiceRate, stopVoice, voiceBusy, voiceLipValue, voicePlaying, voiceStarting,
@@ -1061,47 +1060,33 @@ export default function SkinViewer({
       };
 
       // --- script playback ------------------------------------------------
-      // Not the Lobby phase's track — a desire scene drives 10, the lobby widget 0. The first clip played names it until an idle does.
-      let sceneBodyTrack: number | null = null;
-      const sceneTrack = (clip: string, track: number | null) => (
-        track ?? spineTrack(clip));
-      // `ApplyMixDuration`: an assigned `Mix` wins, else the rig's from/to pair, else its `defaultMix`.
-      const sceneMix = (track: number, clip: string, assigned: number | null) => {
-        if (assigned !== null) return assigned;
-        const rig = rigMixRef.current;
-        const from = spine.state.getCurrent(track)?.animation?.name;
-        const pair = rig?.pairs.find(([a, b]) => a === from && b === clip);
-        return pair ? pair[2] : rig?.default ?? 0.2;
-      };
-      // `FadeIn`/`ApplyFadeIns`: a clip with an assigned mix starting on an empty track has alpha = trackTime / mix until 1.
-      const fadeIns = new Map<any, number>();
-      app.ticker.add(() => {
-        for (const [entry, seconds] of Array.from(fadeIns)) {
-          const t = Math.max(0, Math.min(1, (entry.trackTime ?? 0) / seconds));
-          entry.alpha = t;
-          if (t >= 1) fadeIns.delete(entry);
-        }
-      });
-      const sceneDrive = (track: number, clip: string, loop: boolean, hold: boolean, assigned: number | null) => {
-        const before = spine.state.getCurrent(track);
-        const mix = sceneMix(track, clip, assigned);
-        const entry = driveAnimation(track, clip, loop, hold);
-        if (entry === before) return entry;
-        entry.mixDuration = mix;
-        if (!before && assigned !== null && assigned > 0) {
-          entry.alpha = 0;
-          fadeIns.set(entry, assigned);
-        }
-        return entry;
+      // The client runtime (`sceneRuntime.ts`) drives Spine directly; this is its rig and its UI.
+      const sceneRig: SceneRig = {
+        state: spine.state,
+        skeleton: spine.skeleton,
+        has: (clip) => animSet.has(clip),
+        mix: (from, to) => {
+          const rig = rigMixRef.current;
+          const pair = rig?.pairs.find(([a, b]) => a === from && b === to);
+          return pair ? pair[2] : rig?.default ?? 0.2;
+        },
+        refresh: () => spine.update(0),
+        sfx: (clip, loop) => {
+          dbg('play', { clip, loop });
+          requestSceneSoundRef.current(baseSkinKey(skin), clip);
+          if (!loop) setReaction(clip);
+        },
+        show: () => showActor(),
       };
 
       installScenePlayerRef.current = (program) => {
-        sceneBodyTrack = null;
         unsupportedSeen.current = new Set();
         setUnsupported([]);
         return createScenePlayer(program, {
+          clock: { now: sceneNow, schedule: scheduleScene, cancel: cancelScene },
+          rig: sceneRig,
           unsupported: (what) => noteUnsupportedRef.current(`@${what}`),
-          // The same visible-box polygon test a touch uses; the script's point is y-up.
+          // `TryGetContainedBoundingBox`: a visible box whose name ends with the filter contains the y-up point.
           contains: (box, x, y) => {
             const spine = spineRef.current;
             const bounds = boundsRef.current;
@@ -1109,70 +1094,11 @@ export default function SkinViewer({
             bounds.update(spine.skeleton, true);
             const boxes = bounds.boundingBoxes ?? [];
             const polys = bounds.polygons ?? [];
-            // `TryGetContainedBoundingBox` matches a box whose name ends with the filter.
             return boxes.some((attachment: any, i: number) => !!attachment?.name?.endsWith(box)
               && attachmentIsVisible(attachment) && !!polys[i]
               && bounds.containsPointPolygon(polys[i], x, -y));
           },
-          now: sceneNow,
-          schedule: scheduleScene,
-          cancel: cancelScene,
-          remaining: (track) => {
-            const current = spine.state.getCurrent(track ?? bodyTrackRef.current());
-            if (!current || current.loop) return 0;
-            const end = current.animationEnd ?? current.animation?.duration ?? 0;
-            return Math.max(0, end - (current.trackTime ?? 0));
-          },
           voiceBusy: () => voiceBusy(),
-          remainingCycle: (track) => {
-            const current = spine.state.getCurrent(track ?? bodyTrackRef.current());
-            if (!current?.loop) return 0;
-            const start = current.animationStart ?? 0;
-            const length = (current.animationEnd ?? current.animation?.duration ?? 0) - start;
-            if (length <= 0) return 0;
-            return length - ((current.trackTime ?? 0) % length);
-          },
-          remainingReaction: () => {
-            let longest = 0;
-            for (const cur of spine.state.tracks ?? []) {
-              if (!cur || cur.loop || cur.animation?.name === EMPTY_ANIMATION) continue;
-              const end = cur.animationEnd ?? cur.animation?.duration ?? 0;
-              longest = Math.max(longest, end - (cur.trackTime ?? 0));
-            }
-            return Math.max(0, longest);
-          },
-          playAnimation: (clip, loop, track, hold, mix) => {
-            if (!animSet.has(clip)) return;
-            showActor();
-            const index = sceneTrack(clip, track);
-            sceneBodyTrack ??= index;
-            dbg('play', { clip, track: index, loop, hold, mix });
-            sceneDrive(index, clip, loop, hold, mix);
-            requestSceneSoundRef.current(baseSkinKey(skin), clip);
-            if (!loop) setReaction(clip);
-          },
-          setIdle: (clip, track) => {
-            if (!animSet.has(clip)) return;
-            const index = sceneTrack(clip, track);
-            sceneBodyTrack = index;
-            dbg('idle', { clip, track: index });
-            sceneDrive(index, clip, true, false, null);
-            setReaction(null);
-          },
-          clearAnimation: (clip, mix) => {
-            // Its final frame still poses the figure until something takes that track.
-            const current = (spine.state.tracks ?? []).find(
-              (t: any) => t?.animation?.name === clip);
-            if (current) retireTrack(current.trackIndex, mix);
-          },
-          clearTrack: (track, mix) => retireTrack(track ?? bodyTrackRef.current(), mix),
-          resetActor: () => {
-            // Clearing tracks alone leaves every slot colour and attachment where the last clip left it.
-            spine.state.clearTracks();
-            spine.skeleton.setToSetupPose();
-            clearHoldReservationsRef.current();
-            setReaction(null);
-          },
           say: (text, author, voice, texts, join) => {
             sayRef.current({
               text, texts: texts ?? undefined, author: author ?? undefined, voice: voice ?? undefined, join,
@@ -1187,7 +1113,6 @@ export default function SkinViewer({
           },
           fade: (color, opacity, duration, from) => {
             dbg('fade', { color, opacity, duration, from });
-            // An authored `From` starts the cover there before it tweens.
             if (from !== null && from !== undefined) setFade({ color, opacity: from, duration: 0 });
             // A fade to transparent keeps the current colour: repainting it would flash the authored colour at full opacity.
             setFade((current) => ({
@@ -1223,11 +1148,8 @@ export default function SkinViewer({
           stopSfx: (clip, fade) => stopSfx(clip, fade),
           ending: () => setReaction(null),
           onState: (state) => {
-            dbg(`park ${state.label ?? 'start'} ${JSON.stringify(state.park)}`, {
-              label: state.label,
-              park: state.park,
-              armed: state.armed.map(
-                (a) => (a.kind === 'touch' || a.kind === 'drag' ? a.box : a.kind)),
+            dbg(`park ${state.label ?? 'start'} ${state.park.kind}`, {
+              armed: state.armed.map((a) => a.box ?? a.kind),
               vars: { ...state.vars },
             });
             setSceneState(state);
@@ -1297,9 +1219,9 @@ export default function SkinViewer({
           // Under a script an unbound box is inert and must not fall through to the phase's `active` clip.
           if (player) {
             if (player.advance()) return;
-            dbg('touch', { box: hitBox, vars: { ...(player.machine.vars) } });
-            // An onlook is bound to no box, so a tap that reached none still goes to the player.
-            if (!player.touch(hitBox)) {
+            dbg('touch', { box: hitBox, vars: { ...player.scene.vars } });
+            // An onlook is bound to no box, so a tap that reached none still goes to the player; its point is y-up.
+            if (!player.touch(hitBox, [local.x, -local.y])) {
               if (hitBox) {
                 setTouchInfo({ box: hitBox, effect: 'inert', detail: 'no armed trigger here' });
               } else {
@@ -1319,8 +1241,8 @@ export default function SkinViewer({
               box: hitBox ?? '(no region)',
               effect: 'reaction',
               detail: [
-                player.machine.label ?? 'start',
-                Object.entries(player.machine.vars).map(([k, v]) => `${k}=${v}`).join(' '),
+                player.scene.label ?? 'start',
+                Object.entries(player.scene.vars).map(([k, v]) => `${k}=${v}`).join(' '),
               ].filter(Boolean).join('  '),
             });
             return;
@@ -1448,10 +1370,8 @@ export default function SkinViewer({
           dbg('complete', { clip: done, track });
           // The return to idle belongs to the entry that ends the chain.
           if (entry?.next) return;
-          // Only the script returns to the idle (a fired trigger walks back to its DesireIdleCommand); a finished clip holds its last frame.
           if (scenePlayerRef.current) {
             setReaction((r) => (r === done ? null : r));
-            scenePlayerRef.current.animationFinished(track, bodyTrackRef.current());
             return;
           }
           // A completed clip's track is left alone: its pose stays applied.
@@ -1737,13 +1657,13 @@ export default function SkinViewer({
           let point = local;
           let frameAt = performance.now();
           const report = () => {
-            dbg('drag step', { label: player.machine.label, park: player.park().kind });
+            dbg('drag step', { label: player.scene.label, park: player.park().kind });
             reportTouch();
           };
           const reportTouch = () => setTouchInfo({
             box: held,
             effect: 'reaction',
-            detail: `${player.machine.label ?? 'start'}  drag`,
+            detail: `${player.scene.label ?? 'start'}  drag`,
           });
           const frame = () => {
             const now = performance.now();
