@@ -1,6 +1,6 @@
 // Scene data shapes and camera math. Nothing here schedules playback.
 
-import type { Command } from './interpreter';
+import type { Command } from './sceneRuntime';
 
 export type SceneScript = {
   /** Script asset stem, e.g. `ch0011_03_desire_view`. */

@@ -684,83 +684,82 @@ function Clears({ data, pool }: { data: StageData; pool: StageEntry[] }) {
         {t('farmClearsHint', { n: recorded, total: pool.length })}
       </Text>
       {/* every zone collapsed: 259 stages over 21 lists is not a page you scroll */}
-      <Accordion allowMultiple reduceMotion>
-        <VStack align="stretch" spacing={2}>
-          {groups.map(({ group, stages }) => {
-            const done = stages.filter((s) => (clears[String(s.id)] ?? 0) > 0).length;
-            return (
-              <AccordionItem key={group.key} border="none">
-                <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl"
-                  bg="linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018))"
-                  boxShadow="0 12px 32px rgba(0,0,0,0.12)" overflow="hidden">
-                  <AccordionButton px={{ base: 3, md: 4 }} py={3}
-                    _hover={{ bg: 'whiteAlpha.100' }}>
-                    <Flex flex="1" align="baseline" gap={2} wrap="wrap" textAlign="left">
-                      <Text fontSize="0.65rem" color="gray.400" textTransform="uppercase"
-                        fontWeight="700" letterSpacing="0.11em">
-                        {groupLabel(data, group, lang)}
-                      </Text>
-                      <Text fontSize="xs" fontFamily="mono"
-                        color={done === stages.length ? 'green.300'
-                          : done ? 'accent.200' : 'gray.600'}>
-                        {done}/{stages.length}
-                      </Text>
-                    </Flex>
-                    <AccordionIcon color="gray.500" />
-                  </AccordionButton>
-                  <AccordionPanel px={{ base: 3, md: 4 }} pb={4} pt={0}>
-                    <Wrap spacing={1} mb={2}>
-                      {STARS.map((star) => (
-                        <WrapItem key={star}>
-                          <Box as="button" px={2} py={0.5} fontSize="xs" borderWidth="1px"
-                            borderRadius="md" borderColor="whiteAlpha.200" color="gray.400"
-                            _hover={{ borderColor: 'accent.400', color: 'accent.200' }}
-                            onClick={() => setStarsMany(stages.map((s) => s.id), star)}>
-                            {t('farmSetAll')} {star ? `${star}★` : t('farmUncleared')}
-                          </Box>
-                        </WrapItem>
-                      ))}
-                    </Wrap>
-                    <Box overflowX="auto">
-                      <VStack align="stretch" spacing={0.5} minW="300px">
-                        {stages.map((stage) => {
-                          const stars = clears[String(stage.id)] ?? 0;
-                          return (
-                            <Flex key={stage.id} align="center" gap={2} py={0.5}
-                              borderTopWidth="1px" borderColor="whiteAlpha.100">
-                              <Text as={NextLink} fontSize="sm" flex="1" minW={0} noOfLines={1}
-                                href={`/stage?id=${stage.id}`}
-                                _hover={{ color: 'accent.300' }}>
-                                {stageName(data, stage, lang)}
+      {/* items must be the Accordion's direct children: the kit indexes them by position */}
+      <Accordion allowMultiple reduceMotion display="flex" flexDirection="column" gap={2}>
+        {groups.map(({ group, stages }) => {
+          const done = stages.filter((s) => (clears[String(s.id)] ?? 0) > 0).length;
+          return (
+            <AccordionItem key={group.key} border="none">
+              <Box borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl"
+                bg="linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018))"
+                boxShadow="0 12px 32px rgba(0,0,0,0.12)" overflow="hidden">
+                <AccordionButton px={{ base: 3, md: 4 }} py={3}
+                  _hover={{ bg: 'whiteAlpha.100' }}>
+                  <Flex flex="1" align="baseline" gap={2} wrap="wrap" textAlign="left">
+                    <Text fontSize="0.65rem" color="gray.400" textTransform="uppercase"
+                      fontWeight="700" letterSpacing="0.11em">
+                      {groupLabel(data, group, lang)}
+                    </Text>
+                    <Text fontSize="xs" fontFamily="mono"
+                      color={done === stages.length ? 'green.300'
+                        : done ? 'accent.200' : 'gray.600'}>
+                      {done}/{stages.length}
+                    </Text>
+                  </Flex>
+                  <AccordionIcon color="gray.500" />
+                </AccordionButton>
+                <AccordionPanel px={{ base: 3, md: 4 }} pb={4} pt={0}>
+                  <Wrap spacing={1} mb={2}>
+                    {STARS.map((star) => (
+                      <WrapItem key={star}>
+                        <Box as="button" px={2} py={0.5} fontSize="xs" borderWidth="1px"
+                          borderRadius="md" borderColor="whiteAlpha.200" color="gray.400"
+                          _hover={{ borderColor: 'accent.400', color: 'accent.200' }}
+                          onClick={() => setStarsMany(stages.map((s) => s.id), star)}>
+                          {t('farmSetAll')} {star ? `${star}★` : t('farmUncleared')}
+                        </Box>
+                      </WrapItem>
+                    ))}
+                  </Wrap>
+                  <Box overflowX="auto">
+                    <VStack align="stretch" spacing={0.5} minW="300px">
+                      {stages.map((stage) => {
+                        const stars = clears[String(stage.id)] ?? 0;
+                        return (
+                          <Flex key={stage.id} align="center" gap={2} py={0.5}
+                            borderTopWidth="1px" borderColor="whiteAlpha.100">
+                            <Text as={NextLink} fontSize="sm" flex="1" minW={0} noOfLines={1}
+                              href={`/stage?id=${stage.id}`}
+                              _hover={{ color: 'accent.300' }}>
+                              {stageName(data, stage, lang)}
+                            </Text>
+                            {stage.stamina != null && (
+                              <Text fontSize="0.6rem" color="gray.600" whiteSpace="nowrap">
+                                {t('farmStamina', { n: stage.stamina })}
                               </Text>
-                              {stage.stamina != null && (
-                                <Text fontSize="0.6rem" color="gray.600" whiteSpace="nowrap">
-                                  {t('farmStamina', { n: stage.stamina })}
-                                </Text>
-                              )}
-                              <HStack spacing={0.5}>
-                                {STARS.map((star) => (
-                                  <Box key={star} as="button" px={1.5} py={0.5} fontSize="xs"
-                                    borderWidth="1px" borderRadius="md" lineHeight={1.2}
-                                    borderColor={star === stars ? 'accent.400' : 'whiteAlpha.200'}
-                                    color={star === stars ? 'accent.200' : 'gray.500'}
-                                    onClick={() => setStars(stage.id, star)}
-                                    aria-label={`${stageName(data, stage, lang)} ${star}`}>
-                                    {star ? `${star}★` : '—'}
-                                  </Box>
-                                ))}
-                              </HStack>
-                            </Flex>
-                          );
-                        })}
-                      </VStack>
-                    </Box>
-                  </AccordionPanel>
-                </Box>
-              </AccordionItem>
-            );
-          })}
-        </VStack>
+                            )}
+                            <HStack spacing={0.5}>
+                              {STARS.map((star) => (
+                                <Box key={star} as="button" px={1.5} py={0.5} fontSize="xs"
+                                  borderWidth="1px" borderRadius="md" lineHeight={1.2}
+                                  borderColor={star === stars ? 'accent.400' : 'whiteAlpha.200'}
+                                  color={star === stars ? 'accent.200' : 'gray.500'}
+                                  onClick={() => setStars(stage.id, star)}
+                                  aria-label={`${stageName(data, stage, lang)} ${star}`}>
+                                  {star ? `${star}★` : '—'}
+                                </Box>
+                              ))}
+                            </HStack>
+                          </Flex>
+                        );
+                      })}
+                    </VStack>
+                  </Box>
+                </AccordionPanel>
+              </Box>
+            </AccordionItem>
+          );
+        })}
       </Accordion>
     </VStack>
   );
