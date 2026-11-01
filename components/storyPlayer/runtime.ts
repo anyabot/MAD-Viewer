@@ -9,7 +9,7 @@ import type { FilterKind, FilterStack } from './filters';
 export type PrinterId = 'ExDialogue' | 'ExWide' | 'ExCenterSubtitle' | 'ExFullScreen' | string;
 
 export type StoryUi = {
-  print: (line: { author: string; text: string; append: boolean; printer: PrinterId }) => void;
+  print: (line: { author: string; actor: string | null; text: string; append: boolean; printer: PrinterId }) => void;
   hidePrinter: () => void;
   waitInput: () => Promise<void>;
   choose: (options: string[]) => Promise<number>;
@@ -503,7 +503,8 @@ export class StoryRuntime {
     const author = this.authorName(f.AuthorId, c, at);
     if (this.highlight === 'auto') this.applyHighlight(f.AuthorId ?? null);
     const append = flag(f.Append, false) && !flag(f.ResetPrinter, true);
-    this.ui.print({ author, text, append, printer: f.PrinterId || this.printer });
+    const actor = f.AuthorId ? this.clones.get(f.AuthorId) ?? f.AuthorId : null;
+    this.ui.print({ author, actor, text, append, printer: f.PrinterId || this.printer });
     if (flag(f.WaitForInput, true)) await this.ui.waitInput();
   }
 

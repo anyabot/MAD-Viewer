@@ -1,17 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Box, Button, Center, Flex, Spinner, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
-import { LineText } from '@/components/storyLines';
 import { loadSceneAudio, loadSkinList, loadStoryFx, loadStoryScript, loadStoryScriptIndex } from '@/lib/data';
 import type { FxIndex } from './fx';
 import { stopBgm, stopSfx } from '@/lib/sceneAudio';
 import { loadEmoticons } from '@/lib/emoticons';
 import { useGameLang } from '@/lib/gameText';
 import { useT } from '@/lib/i18n';
+import { GameUi } from './gameUi';
 import { StoryRuntime, type PrinterId } from './runtime';
 import { SCENE_H, SCENE_W, StoryStage } from './stage';
 
-type Printed = { author: string; text: string; printer: PrinterId };
+type Printed = { author: string; actor: string | null; text: string; printer: PrinterId };
 const REVEAL_MS = 22;
 
 export default function StoryPlayer({ script }: { script: string }) {
@@ -31,6 +31,7 @@ export default function StoryPlayer({ script }: { script: string }) {
   const [error, setError] = useState<string | null>(null);
   const [run, setRun] = useState(0);
   const [sound, setSound] = useState(true);
+  const [fxIndex, setFxIndex] = useState<FxIndex | null>(null);
   const soundRef = useRef(sound);
   soundRef.current = sound;
 
@@ -61,17 +62,18 @@ export default function StoryPlayer({ script }: { script: string }) {
       stage = new StoryStage(PIXI, SPINE, app, index, (message) => console.warn('[story]', message));
       stage.emoticons = emoticons;
       stage.fx = fx;
+      setFxIndex(fx);
       stage.skinStores = new Map((skins?.skins ?? []).map((s) => [s.key, s.stores]));
       const layout = () => stage?.resize(app.screen.width, app.screen.height);
       layout();
       app.renderer.on('resize', layout);
       runtime = new StoryRuntime(data, stage, index, lang, {
-        print: ({ author, text, append, printer }) => {
+        print: ({ author, actor, text, append, printer }) => {
           setLine((prev) => {
             const body = append && prev ? `${prev.text}${text}` : text;
             revealRef.current = { full: body.length, shown: append && prev ? prev.text.length : 0 };
             setShown(revealRef.current.shown);
-            return { author: author || (append && prev ? prev.author : ''), text: body, printer };
+            return { author: author || (append && prev ? prev.author : ''), actor: actor ?? (append && prev ? prev.actor : null), text: body, printer };
           });
         },
         hidePrinter: () => setLine(null),
@@ -128,52 +130,14 @@ export default function StoryPlayer({ script }: { script: string }) {
   }, [choices, line]);
 
   const printed = line ? line.text.slice(0, shown) : '';
-  const centered = line?.printer === 'ExCenterSubtitle' || line?.printer === 'ExFullScreen';
 
   return (
     <VStack align="stretch" spacing={2}>
       <Box position="relative" w="100%" bg="black" borderRadius="md" overflow="hidden"
         style={{ aspectRatio: `${SCENE_W} / ${SCENE_H}` }} onClick={advance} cursor="pointer" userSelect="none">
         <Box ref={hostRef} position="absolute" inset={0} />
-        {place && (
-          <Box position="absolute" top="6%" left="4%" px={3} py={1} bg="blackAlpha.700" borderRadius="md">
-            <Text fontSize={{ base: 'xs', md: 'sm' }} color="gray.100">{place}</Text>
-          </Box>
-        )}
-        {line && (centered ? (
-          <Center position="absolute" inset={0} px="10%"
-            bg={line.printer === 'ExFullScreen' ? 'blackAlpha.700' : undefined} pointerEvents="none">
-            <Text fontSize={{ base: 'sm', md: 'xl' }} color="white" textAlign="center" whiteSpace="pre-wrap"
-              style={{ textShadow: '0 0 6px #000' }}>
-              <LineText text={printed} />
-            </Text>
-          </Center>
-        ) : (
-          <Box position="absolute" left="5%" right="5%" bottom="4%" minH="24%" px={{ base: 3, md: 6 }}
-            py={{ base: 2, md: 4 }} bg="blackAlpha.700" borderWidth="1px" borderColor="whiteAlpha.300"
-            borderRadius="lg" pointerEvents="none" ref={printerRef}>
-            {line.author && (
-              <Text fontWeight="bold" fontSize={{ base: 'xs', md: 'md' }} color="accent.200" mb={1}>
-                {line.author}
-              </Text>
-            )}
-            <Text fontSize={{ base: 'xs', md: 'lg' }} color="white" whiteSpace="pre-wrap">
-              <LineText text={printed} />
-            </Text>
-          </Box>
-        ))}
-        {choices && (
-          <Center position="absolute" inset={0} bg="blackAlpha.500">
-            <VStack spacing={2} w={{ base: '80%', md: '50%' }}>
-              {choices.options.map((option, i) => (
-                <Button key={i} w="100%" size="sm" whiteSpace="normal" h="auto" py={2}
-                  onClick={(e) => { e.stopPropagation(); choices.pick(i); }}>
-                  {option}
-                </Button>
-              ))}
-            </VStack>
-          </Center>
-        )}
+        <GameUi line={line && { ...line, text: printed, waiting: shown >= line.text.length }} choices={choices} place={place}
+          fx={fxIndex} printerRef={printerRef} />
         {state === 'loading' && <Center position="absolute" inset={0}><Spinner /></Center>}
         {state === 'done' && (
           <Center position="absolute" inset={0} bg="blackAlpha.600">

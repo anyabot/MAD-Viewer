@@ -8,6 +8,10 @@ export type FxIndex = {
   prefabs: Record<string, EmoteEmitter[]>;
   sheets: Record<string, [number, number]>;
   cutscenes?: Record<string, string>;
+  // printer art: size and 9-slice border (top, right, bottom, left) in pixels
+  ui?: Record<string, { size: [number, number]; border: [number, number, number, number] }>;
+  avatars?: Record<string, string>;
+  colors?: Record<string, string>;
 };
 
 const MAX_STEP = 0.333;
