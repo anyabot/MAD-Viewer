@@ -26,7 +26,7 @@ import {
   MATERIAL_ICON_GROUPS, ROUTE_MODES, billCovered, billIsEmpty, farmPlan, farmStages, isHardStage,
   exchangeHeld, materialExchanges, mergeBills, needLabel, needsOf, openBoxes, planStar,
   selectBoxes, spendBill, unitBill, type ExchangeUse, type SelectBox,
-  type Bill, type BoxUse, type FarmPlan, type FarmRoute, type NeedPlan, type StageSource,
+  type Bill, type BoxUse, type FarmPlan, type FarmRoute, type NeedPlan, type RouteAlternative, type StageSource,
   type RouteMode, type UnitPlanPair,
 } from '@/lib/farm';
 import { memoryPlan, starCap, stepCost, type MemoryPlan } from '@/lib/rank';
@@ -75,6 +75,17 @@ export default function FarmPage() {
   return <><Seo title={t('navFarm')} description={t('seoDescFarm')} /><FarmContent /></>;
 }
 
+// Until the store has loaded there is nothing to settle, so the restored record lands at once.
+function useSettled<T>(value: T, live: boolean, ms = 600): T {
+  const [settled, setSettled] = useState(value);
+  useEffect(() => {
+    if (live) { setSettled(value); return undefined; }
+    const id = setTimeout(() => setSettled(value), ms);
+    return () => clearTimeout(id);
+  }, [value, live, ms]);
+  return live ? value : settled;
+}
+
 function FarmContent() {
   const t = useT();
   const lang = useLang();
@@ -99,6 +110,11 @@ function FarmContent() {
   const setRouteMode = useFarm((s) => s.setRouteMode);
   const useBoxes = useFarm((s) => s.useBoxes);
   const useExchange = useFarm((s) => s.useExchange);
+  const swaps = useFarm((s) => s.swaps);
+  const ready = useFarm((s) => s.ready);
+  const planUnits = useSettled(units, !ready);
+  const planInventory = useSettled(inventory, !ready);
+  const planClears = useSettled(clears, !ready);
 
   useEffect(() => {
     loadGrowth().then(setGrowth).catch((e) => setError(String(e)));
@@ -127,7 +143,7 @@ function FarmContent() {
   const plans = useMemo(() => {
     if (!growth || !chars) return null;
     const billOf = (wanted: boolean) => mergeBills(
-      Object.entries(units).flatMap(([code, pair]) => {
+      Object.entries(planUnits).flatMap(([code, pair]) => {
         const entry = chars.characters[code];
         return entry && pair.listed && !pair.hidden && !!pair.priority === wanted
           ? [unitBill(growth, entry, chars, pair)] : [];
@@ -135,11 +151,11 @@ function FarmContent() {
     const first = billOf(true);
     const rest = billOf(false);
     const whole = mergeBills([first, rest]);
-    const opened = openBoxes(growth, whole, inventory, useBoxes ? boxes : [], boxOff);
+    const opened = openBoxes(growth, whole, planInventory, useBoxes ? boxes : [], boxOff);
     const traded = exchangeHeld(whole, opened.inventory, trades);
     const have = traded.inventory;
     const plan = (bill: typeof first, inv: Record<string, number>) =>
-      farmPlan(growth, routePool, bill, inv, clears, sweepOnly, routeMode, trades);
+      farmPlan(growth, routePool, bill, inv, planClears, sweepOnly, routeMode, trades, swaps);
     if (billIsEmpty(first)) {
       return {
         main: plan(rest, have),
@@ -159,8 +175,8 @@ function FarmContent() {
       boxUses: opened.uses,
       heldTrades: traded.uses,
     };
-  }, [growth, chars, units, inventory, clears, sweepOnly, routePool, boxes, boxOff, routeMode,
-    useBoxes, trades]);
+  }, [growth, chars, planUnits, planInventory, planClears, sweepOnly, routePool, boxes, boxOff, routeMode,
+    useBoxes, trades, swaps]);
 
   if (error) return <Text color="red.400">{error}</Text>;
   if (!growth || !chars || !stages || !plans) {
@@ -819,6 +835,7 @@ function PlanPanel({ plan, growth, stages, icons, title }: {
           <VStack align="stretch" spacing={1}>
             {plan.routes.map((route) => (
               <RouteLine key={route.stage.id} route={route} labels={labels}
+                alternatives={plan.alternatives[route.stage.id] ?? []}
                 growth={growth} stages={stages} icons={icons} lang={lang} />
             ))}
           </VStack>
@@ -848,14 +865,17 @@ function PlanPanel({ plan, growth, stages, icons, title }: {
 }
 
 // The same clear covering two needs is why the run list is not one stage per material.
-function RouteLine({ route, labels, growth, stages, icons, lang }: {
-  route: FarmRoute; labels: Map<string, NeedLabel>; growth: GrowthData;
-  stages: StageData; icons: IconManifest | null; lang: Lang;
+function RouteLine({ route, labels, alternatives, growth, stages, icons, lang }: {
+  route: FarmRoute; labels: Map<string, NeedLabel>; alternatives: RouteAlternative[];
+  growth: GrowthData; stages: StageData; icons: IconManifest | null; lang: Lang;
 }) {
   const t = useT();
   const [open, setOpen] = useState(false);
+  const [altOpen, setAltOpen] = useState(false);
+  const setSwap = useFarm((s) => s.setSwap);
   const spend = route.entry ? stages.drops[route.entry.ref] : null;
   const drops = repeatDrops(route.stage);
+  const home = route.swappedFrom ?? route.stage;
   return (
     <Box borderTopWidth="1px" borderColor="whiteAlpha.100" py={0.5}>
       <Flex align="center" gap={2} wrap="wrap">
@@ -866,10 +886,27 @@ function RouteLine({ route, labels, growth, stages, icons, lang }: {
         <Text fontSize="0.65rem" color="gray.300" fontFamily="mono">
           {t('farmRuns', { n: route.runs.toLocaleString() })}
         </Text>
+        {route.swappedFrom && (
+          <HStack spacing={1}>
+            <Text fontSize="0.65rem" color="purple.300">
+              {t('farmSwappedFrom', { name: stageName(stages, route.swappedFrom, lang) })}
+            </Text>
+            <Box as="button" fontSize="0.65rem" color="gray.500" _hover={{ color: 'gray.200' }}
+              onClick={() => setSwap(home.id, null)}>
+              {t('farmSwapUndo')}
+            </Box>
+          </HStack>
+        )}
         {drops.length > 0 && (
           <Box as="button" fontSize="0.65rem" color={open ? 'gray.200' : 'gray.500'}
             _hover={{ color: 'gray.200' }} onClick={() => setOpen(!open)}>
             {t('farmDrops')} ({drops.length})
+          </Box>
+        )}
+        {alternatives.length > 0 && (
+          <Box as="button" fontSize="0.65rem" color={altOpen ? 'gray.200' : 'gray.500'}
+            _hover={{ color: 'gray.200' }} onClick={() => setAltOpen(!altOpen)}>
+            {t('farmEquivalent')} ({alternatives.length})
           </Box>
         )}
         <Box flex="1" />
@@ -904,7 +941,61 @@ function RouteLine({ route, labels, growth, stages, icons, lang }: {
           ))}
         </Wrap>
       )}
+      {altOpen && (
+        <VStack align="stretch" spacing={0.5} mt={1} pl={2} borderLeftWidth="2px" borderColor="whiteAlpha.200">
+          {alternatives.map((alt) => (
+            <AlternativeLine key={alt.stage.id} alt={alt} drops={drops} stages={stages} icons={icons}
+              lang={lang} onUse={() => { setSwap(home.id, alt.stage.id); setAltOpen(false); }} />
+          ))}
+        </VStack>
+      )}
     </Box>
+  );
+}
+
+// Only the drops the current stage lacks are drawn: they are what the swap trades for.
+function AlternativeLine({ alt, drops, stages, icons, lang, onUse }: {
+  alt: RouteAlternative; drops: string[]; stages: StageData; icons: IconManifest | null;
+  lang: Lang; onUse: () => void;
+}) {
+  const t = useT();
+  const spend = alt.entry ? stages.drops[alt.entry.ref] : null;
+  const extra = repeatDrops(alt.stage).filter((ref) => !drops.includes(ref));
+  return (
+    <Flex align="center" gap={2} wrap="wrap" opacity={alt.open ? 1 : 0.45}>
+      <Text as={NextLink} fontSize="xs" _hover={{ color: 'accent.300' }}
+        href={`/stage?id=${alt.stage.id}`}>
+        {stageName(stages, alt.stage, lang)}
+      </Text>
+      <Text fontSize="0.65rem" color="gray.500">
+        {alt.stars ? `${alt.stars}★` : t('farmUncleared')}
+      </Text>
+      <HStack spacing={1}>
+        {extra.map((ref) => (
+          <ItemIcon key={ref} manifest={icons} group={materialGroup(icons, stages.drops[ref]?.icon)}
+            name={stages.drops[ref]?.icon} grade={stages.drops[ref]?.grade} size={5}
+            title={stages.drops[ref]?.name || ref} href={itemHref(ref)} />
+        ))}
+      </HStack>
+      <Box flex="1" />
+      <Text fontSize="0.65rem" color="gray.300" fontFamily="mono">
+        {t('farmRuns', { n: alt.runs.toLocaleString() })}
+      </Text>
+      {alt.cost != null && (
+        <HStack spacing={1}>
+          <GameIcon manifest={icons} group={materialGroup(icons, spend?.icon)}
+            name={spend?.icon} size={3.5} reserve={false} title={spend?.name ?? undefined} />
+          <Text fontSize="0.65rem" color="cyan.300" fontFamily="mono">{alt.cost.toLocaleString()}</Text>
+        </HStack>
+      )}
+      {alt.open && (
+        <Box as="button" px={2} py={0.5} fontSize="0.65rem" borderWidth="1px" borderRadius="md"
+          borderColor="whiteAlpha.300" color="gray.300"
+          _hover={{ color: 'gray.100', borderColor: 'accent.400' }} onClick={onUse}>
+          {t('farmUseStage')}
+        </Box>
+      )}
+    </Flex>
   );
 }
 

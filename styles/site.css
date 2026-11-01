@@ -23,3 +23,6 @@ body {
 .mad-rule-last:last-child { border-bottom-width: 0; }
 .mad-rule-first:first-child { border-top-width: 0; padding-top: 0; }
 .mad-hide-empty:empty { display: none; }
+
+/* the kit theme drops popovers to 10, under the 1300 modal layer */
+.ui-popover__popper { z-index: 1500; }

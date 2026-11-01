@@ -5,7 +5,10 @@ import NextLink from 'next/link';
 import { hasArea } from '@/lib/aoe';
 import { useSkillTiming } from '@/lib/skillTiming';
 import type { SkillTiming } from '@/lib/data';
-import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
+import {
+  Badge, Box, Flex, HStack, Popover, PopoverBody, PopoverContent, PopoverTrigger, Portal, Text, VStack,
+  Wrap, WrapItem,
+} from '@altterisk/game-hub/ui';
 import { GameIcon } from '@/components/gameIcon';
 import {
   BUFF_CATEGORY, DISPEL_LABEL, MOVE_LABEL, OP_LABEL, OP_SCHEME, SETUP_CONDITION_LABEL, SIDE_LABEL,
@@ -585,20 +588,37 @@ export function PatternRotation({ patterns, skillOf, data, icons, title, states 
                     const hit = skillOf(step);
                     const skill = hit?.skill;
                     const ambiguous = (idsByName.get(skill?.name ?? '')?.size ?? 0) > 1;
+                    const label = !skill ? t('skillSlot', { n: step })
+                      : ambiguous ? t('skillSlotName', { n: skill.skillType })
+                        : dataText(lang, skill.name, skill.nameEn);
+                    const chip = (
+                      <HStack as={hit ? 'button' : undefined} type={hit ? 'button' : undefined} spacing={1}
+                        borderWidth="1px" borderRadius="md" px={1.5} py={0.5}
+                        borderColor={hit ? 'whiteAlpha.200' : 'red.700'} borderStyle={hit ? 'solid' : 'dashed'}
+                        _hover={hit ? { borderColor: 'accent.400' } : undefined}
+                        title={hit ? undefined : t('rotationMissing')}>
+                        <GameIcon manifest={icons} group="skill" name={skill?.icon} size={4} reserve={false} />
+                        <Text fontSize="xs" whiteSpace="nowrap">{label}</Text>
+                        {hit && timing?.[String(hit.id)] && <TimingText timing={timing[String(hit.id)]} />}
+                      </HStack>
+                    );
                     return (
                       <HStack key={n} spacing={1}>
                         {n > 0 && <Text fontSize="xs" color="gray.600">→</Text>}
-                        <HStack spacing={1} borderWidth="1px" borderRadius="md" px={1.5} py={0.5}
-                          borderColor={hit ? 'whiteAlpha.200' : 'red.700'} borderStyle={hit ? 'solid' : 'dashed'}
-                          title={hit ? undefined : t('rotationMissing')}>
-                          <GameIcon manifest={icons} group="skill" name={skill?.icon} size={4} reserve={false} />
-                          <Text fontSize="xs" whiteSpace="nowrap">
-                            {!skill ? t('skillSlot', { n: step })
-                              : ambiguous ? t('skillSlotName', { n: skill.skillType })
-                                : dataText(lang, skill.name, skill.nameEn)}
-                          </Text>
-                          {hit && timing?.[String(hit.id)] && <TimingText timing={timing[String(hit.id)]} />}
-                        </HStack>
+                        {hit ? (
+                          <Popover trigger="click" isLazy placement="bottom-start">
+                            <PopoverTrigger>{chip}</PopoverTrigger>
+                            <Portal>
+                              <PopoverContent bg="gray.800" borderColor="whiteAlpha.300"
+                                w="min(32rem, calc(100vw - 1rem))">
+                                <PopoverBody maxH="60vh" overflowY="auto" p={3}>
+                                  <SkillRow skill={{ ...hit.skill, id: hit.id }} data={data} icons={icons}
+                                    label={label} states={states} />
+                                </PopoverBody>
+                              </PopoverContent>
+                            </Portal>
+                          </Popover>
+                        ) : chip}
                       </HStack>
                     );
                   })}
