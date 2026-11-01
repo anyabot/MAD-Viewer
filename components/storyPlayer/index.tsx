@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Box, Button, Center, Flex, Spinner, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
 import { LineText } from '@/components/storyLines';
-import { loadStoryScript, loadStoryScriptIndex } from '@/lib/data';
+import { loadSceneAudio, loadStoryScript, loadStoryScriptIndex } from '@/lib/data';
+import { stopBgm, stopSfx } from '@/lib/sceneAudio';
 import { useGameLang } from '@/lib/gameText';
 import { useT } from '@/lib/i18n';
 import { StoryRuntime, type PrinterId } from './runtime';
@@ -16,6 +17,7 @@ export default function StoryPlayer({ script }: { script: string }) {
   const lang = useGameLang();
   const hostRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<(() => void) | null>(null);
+  const runtimeRef = useRef<StoryRuntime | null>(null);
   const revealRef = useRef<{ full: number; shown: number }>({ full: 0, shown: 0 });
   const [line, setLine] = useState<Printed | null>(null);
   const [shown, setShown] = useState(0);
@@ -25,6 +27,9 @@ export default function StoryPlayer({ script }: { script: string }) {
   const [state, setState] = useState<'loading' | 'playing' | 'done' | 'error'>('loading');
   const [error, setError] = useState<string | null>(null);
   const [run, setRun] = useState(0);
+  const [sound, setSound] = useState(true);
+  const soundRef = useRef(sound);
+  soundRef.current = sound;
 
   useEffect(() => {
     let destroyed = false;
@@ -41,7 +46,9 @@ export default function StoryPlayer({ script }: { script: string }) {
     (async () => {
       const PIXI = await import('pixi.js');
       const SPINE = await import('@esotericsoftware/spine-pixi-v8') as any;
-      const [index, data] = await Promise.all([loadStoryScriptIndex(), loadStoryScript(script)]);
+      const [index, data, audio] = await Promise.all([
+        loadStoryScriptIndex(), loadStoryScript(script), loadSceneAudio().catch(() => null),
+      ]);
       if (destroyed) return;
       pixi = await createPixiApp({ PIXI, host, cancelled: () => destroyed, init: { background: 0x000000 } });
       if (!pixi) return;
@@ -66,7 +73,9 @@ export default function StoryPlayer({ script }: { script: string }) {
         }),
         place: (text) => setPlace(text),
         report: (unsupported) => setMissing([...unsupported.entries()].sort((a, b) => b[1] - a[1])),
-      });
+        sound: () => soundRef.current,
+      }, audio);
+      runtimeRef.current = runtime;
       setState('playing');
       await runtime.run();
       if (!destroyed) setState('done');
@@ -161,6 +170,14 @@ export default function StoryPlayer({ script }: { script: string }) {
       </Box>
       <Flex gap={2} wrap="wrap" align="center">
         <Button size="xs" variant="outline" onClick={() => setRun((n) => n + 1)}>{t('storyReplay')}</Button>
+        <Button size="xs" variant={sound ? 'solid' : 'outline'}
+          onClick={() => {
+            soundRef.current = !sound;
+            if (sound) { stopBgm(0.3); stopSfx(null); } else runtimeRef.current?.resumeMusic();
+            setSound(!sound);
+          }}>
+          {t(sound ? 'storySoundOn' : 'storySoundOff')}
+        </Button>
         {error && <Text fontSize="xs" color="red.400">{error}</Text>}
       </Flex>
       {missing.length > 0 && (

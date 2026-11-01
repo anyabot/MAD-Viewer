@@ -1,5 +1,6 @@
 import type { StoryCommand, StoryScript, StoryScriptIndex } from '@/lib/data';
 import { gameText, type GameLang } from '@/lib/gameText';
+import { pauseBgm, playBgm, playSfx, stopBgm, stopSfx, type SceneAudioIndex } from '@/lib/sceneAudio';
 import { sceneToWorld, worldToScene, type StoryActor, type StoryStage } from './stage';
 
 export type PrinterId = 'ExDialogue' | 'ExWide' | 'ExCenterSubtitle' | 'ExFullScreen' | string;
@@ -11,6 +12,7 @@ export type StoryUi = {
   choose: (options: string[]) => Promise<number>;
   place: (text: string | null) => void;
   report: (unsupported: Map<string, number>) => void;
+  sound: () => boolean;
 };
 
 // CustomVariablesConfiguration predefined variables, used by named move destinations.
@@ -56,11 +58,20 @@ export class StoryRuntime {
   readonly unsupported = new Map<string, number>();
   private stopped = false;
   private lastText = '';
+  private track: string | null = null;
 
   constructor(readonly script: StoryScript, readonly stage: StoryStage, readonly index: StoryScriptIndex,
-    readonly lang: GameLang, readonly ui: StoryUi) {}
+    readonly lang: GameLang, readonly ui: StoryUi, readonly audio: SceneAudioIndex | null) {}
 
-  stop(): void { this.stopped = true; }
+  resumeMusic(): void {
+    if (this.track && !this.stopped) this.music(this.track, 0.5);
+  }
+
+  stop(): void {
+    this.stopped = true;
+    stopBgm(0);
+    stopSfx(null);
+  }
 
   async run(): Promise<void> {
     const { commands } = this.script;
@@ -82,6 +93,8 @@ export class StoryRuntime {
     }
     await Promise.all(this.pending);
     this.ui.hidePrinter();
+    stopBgm(1);
+    stopSfx(null, 1);
   }
 
   private bodyEnd(at: number): number {
@@ -258,10 +271,60 @@ export class StoryRuntime {
       case 'ModifyCamera':
         await this.hold(this.camera(c), wait);
         return null;
+      case 'PlayBgm': {
+        const fade = num(f.FadeInDuration, 0);
+        if (this.ui.sound()) {
+          if (flag(f.Pause, false)) pauseBgm(fade);
+          else if (f.BgmPath) this.music(f.BgmPath, fade);
+        } else if (f.BgmPath && !flag(f.Pause, false)) this.track = f.BgmPath;
+        await this.hold(this.stage.tween(fade, undefined, () => {}), wait);
+        return null;
+      }
+      case 'StopBgm': {
+        const fade = num(f.FadeOutDuration, 0);
+        this.track = null;
+        stopBgm(fade);
+        await this.hold(this.stage.tween(fade, undefined, () => {}), wait);
+        return null;
+      }
+      case 'PlaySfx': {
+        const fade = num(f.FadeInDuration, 0);
+        if (f.SfxPath && this.ui.sound()) {
+          const clip = this.clip(f.SfxPath);
+          if (clip) void playSfx(this.audio, clip, flag(f.Loop, false), fade);
+          else this.miss(`sound ${f.SfxPath}`);
+        }
+        await this.hold(this.stage.tween(fade, undefined, () => {}), wait);
+        return null;
+      }
+      case 'StopSfx': {
+        const fade = num(f.FadeOutDuration, 0);
+        stopSfx(f.SfxPath ? this.clip(f.SfxPath) ?? f.SfxPath : null, fade);
+        await this.hold(this.stage.tween(fade, undefined, () => {}), wait);
+        return null;
+      }
       default:
         if (!SILENT.has(c.class)) this.miss(c.class);
         return null;
     }
+  }
+
+  private clipNames: Map<string, string> | null = null;
+
+  // Resource names resolve without case: a script's `SE_Tofu_hit_01` is the asset `SE_Tofu_Hit_01`.
+  private clip(name: string): string | null {
+    if (!this.audio) return null;
+    if (this.audio.clips[name]) return name;
+    this.clipNames ??= new Map(Object.keys(this.audio.clips).map((k) => [k.toLowerCase(), k]));
+    return this.clipNames.get(name.toLowerCase()) ?? null;
+  }
+
+  // A music cue names its loop; the intro is paired by name in the scene audio index.
+  private music(path: string, fade: number): void {
+    this.track = path;
+    const track = this.audio?.bgm?.find((t) => t.id === path || t.loop === path);
+    if (!track) { this.miss(`music ${path}`); return; }
+    void playBgm(this.audio, track.loop, track.intro, fade);
   }
 
   private actor(id: string): StoryActor {
