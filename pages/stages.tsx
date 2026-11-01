@@ -40,17 +40,29 @@ import {
   type StageEntry, type StageGroup,
 } from '@/lib/data';
 import { Seo } from '@/components/seo';
+import { StaticLinks, type StaticLink } from '@/components/staticLinks';
+import { readData } from '@/lib/staticData';
+import { eventHref } from '@/lib/routes';
+import type { EventIndex } from '@/lib/data';
+import type { GetStaticProps } from 'next';
 
 const iconGroup = (
   icons: IconManifest | null, groups: readonly string[], name?: string | null,
 ) => (groups.find((g) => hasIcon(icons, g as never, name)) ?? groups[0]) as never;
 
-export default function StagesPage() {
+export const getStaticProps: GetStaticProps<{ links: StaticLink[] }> = () => {
+  const links = readData<EventIndex>('events.json').events
+    .filter((e) => !isFuture(e.start))
+    .map((e) => ({ href: eventHref(e.id), name: gameText(e.name, 'en') }));
+  return { props: { links } };
+};
+
+export default function StagesPage({ links }: { links: StaticLink[] }) {
   const t = useT();
-  return <><Seo title={t('navStages')} description={t('seoDescStages')} /><StagesContent /></>;
+  return <><Seo title={t('navStages')} description={t('seoDescStages')} /><StagesContent links={links} /></>;
 }
 
-function StagesContent() {
+function StagesContent({ links }: { links: StaticLink[] }) {
   const t = useT();
   const lang = useLang();
   const router = useRouter();
@@ -100,9 +112,12 @@ function StagesContent() {
   if (error) return <Text color="red.400">{error}</Text>;
   if (!data || !view || !router.isReady || gated || (hide && !facts)) {
     return (
-      <Center py={20}>
-        <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-      </Center>
+      <>
+        <StaticLinks links={links} />
+        <Center py={20}>
+          <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
+        </Center>
+      </>
     );
   }
 

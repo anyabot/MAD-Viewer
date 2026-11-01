@@ -25,6 +25,11 @@ type View = 'all' | 'planner';
 
 export default function ItemsPage() {
   const t = useT();
+  return <><Seo title={t('navItems')} description={t('seoDescItems')} /><ItemsContent /></>;
+}
+
+function ItemsContent() {
+  const t = useT();
   const lang = useLang();
   const gameLang = useGameLang();
   const [index, setIndex] = useState<ItemIndex | null>(null);
@@ -68,7 +73,6 @@ export default function ItemsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Seo title={t('navItems')} description={t('seoDescItems')} />
       <Text fontSize="2xl" fontWeight="bold">{t('navItems')}</Text>
       <ListToolbar
         search={<SearchBox value={query} onChange={setQuery} placeholder={t('search')} clearLabel={t('clearSearch')} />}

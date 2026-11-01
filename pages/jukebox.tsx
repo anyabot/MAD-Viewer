@@ -35,6 +35,11 @@ function clock(seconds: number): string {
 
 export default function JukeboxPage() {
   const t = useT();
+  return <><Seo title={t('navJukebox')} description={t('seoDescJukebox')} /><JukeboxContent /></>;
+}
+
+function JukeboxContent() {
+  const t = useT();
   const lang = useLang();
   const [tracks, setTracks] = useState<BgmTrack[] | null>(null);
   const [error, setError] = useState(false);
@@ -131,7 +136,6 @@ export default function JukeboxPage() {
 
   return (
     <VStack align="stretch" spacing={5}>
-      <Seo title={t('navJukebox')} description={t('seoDescJukebox')} />
       <Flex align="baseline" gap={3} wrap="wrap">
         <Text fontSize="2xl" fontWeight="bold">{t('navJukebox')}</Text>
         <Text fontSize="sm" color="gray.500">{t('jukeboxTracks', { n: tracks.length })}</Text>

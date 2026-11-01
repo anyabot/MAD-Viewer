@@ -48,6 +48,11 @@ function ValueTable({ head, rows }: { head: [string, string]; rows: [string, str
 
 export default function FormulaPage() {
   const t = useT();
+  return <><Seo title={t('navFormula')} description={t('seoDescFormula')} /><FormulaContent /></>;
+}
+
+function FormulaContent() {
+  const t = useT();
   const lang = useLang();
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
@@ -80,7 +85,6 @@ export default function FormulaPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Seo title={t('navFormula')} description={t('seoDescFormula')} />
       <PageHeader title={t('navFormula')}
         subtitle={`${L('Last updated', '최종 수정')}: ${FORMULA_UPDATED} · ${L('game version', '게임 버전')} ${FORMULA_GAME_VERSION}`} />
 

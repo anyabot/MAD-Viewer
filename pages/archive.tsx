@@ -25,6 +25,11 @@ import { characterHref } from '@/lib/routes';
 
 export default function ArchivePage() {
   const t = useT();
+  return <><Seo title={t('archiveTitle')} description={t('seoDescArchive')} /><ArchiveContent /></>;
+}
+
+function ArchiveContent() {
+  const t = useT();
   const lang = useLang();
   const gameLang = useGameLang();
   const [data, setData] = useState<ArchiveIndex | null>(null);

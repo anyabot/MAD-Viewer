@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { Seo, breadcrumbs, plainText } from '@/components/seo';
-import { eventHref } from '@/lib/routes';
+import { characterHref, eventHref } from '@/lib/routes';
 import { readData } from '@/lib/staticData';
 import { resolveIcon } from '@/lib/icons';
 import NextLink from 'next/link';
@@ -22,10 +22,15 @@ import {
 import { bannerNames, remaining, sceneCount } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { useLang, useT } from '@/lib/i18n';
-import { isFuture, useHideSpoilers } from '@/lib/spoilers';
+import { isFuture, spoilerFacts, useHideSpoilers } from '@/lib/spoilers';
+import { characterName, hasProfile } from '@/lib/characters';
+import { StaticLinks, type StaticLink } from '@/components/staticLinks';
 import { useSpoilerGate } from '@/components/spoilers';
 
-type EventSeo = { name: string; desc: string; image: string | null };
+type EventSeo = {
+  name: string; desc: string; image: string | null; period: string;
+  featured: StaticLink[]; cast: StaticLink[];
+};
 
 export const getStaticPaths: GetStaticPaths = () => ({
   paths: readData<EventIndex>('events.json').events.map((e) => ({ params: { id: String(e.id) } })),
@@ -37,6 +42,14 @@ export const getStaticProps: GetStaticProps<{ seo: EventSeo | null }, { id: stri
   const event = readData<EventIndex>('events.json').events.find((e) => String(e.id) === params!.id);
   if (!event || isFuture(event.start)) return { props: { seo: null } };
   const icons = readData<IconManifest>('icons.json');
+  const chars = readData<CharacterData>('characters.json');
+  const hidden = spoilerFacts(chars, readData<EventIndex>('events.json')).units;
+  const units = (codes: string[]) => codes.flatMap((code) => {
+    const entry = chars.characters[code];
+    return entry && !hidden.has(code) && hasProfile(entry)
+      ? [{ href: characterHref(code), name: characterName(entry, 'en') }] : [];
+  });
+  const featured = [...new Set([...(event.pickups ?? []), ...(event.bonus ?? []).map((b) => b.code)])];
   return {
     props: {
       seo: {
@@ -44,6 +57,9 @@ export const getStaticProps: GetStaticProps<{ seo: EventSeo | null }, { id: stri
         desc: plainText(gameText(event.desc, 'en'), 300),
         image: resolveIcon(icons, 'banner', bannerNames(event, 'en'))
           ?? resolveIcon(icons, 'item', [event.goodsIcon]),
+        period: [event.start, event.end].filter(Boolean).map((d) => d!.slice(0, 10)).join(' – '),
+        featured: units(featured),
+        cast: units((event.cast ?? []).filter((c) => !featured.includes(c))),
       },
     },
   };
@@ -94,6 +110,9 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
           <VStack align="stretch" spacing={2}>
             <Text as="h1" fontSize="2xl" fontWeight="bold">{seo.name}</Text>
             {seo.desc && <Text fontSize="sm" color="gray.400">{seo.desc}</Text>}
+            {seo.period && <Text fontSize="sm">{seo.period}</Text>}
+            <StaticLinks links={seo.featured} />
+            <StaticLinks links={seo.cast} />
           </VStack>
         )}
         <Center py={20}>

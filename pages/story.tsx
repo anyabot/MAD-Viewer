@@ -31,6 +31,11 @@ const KIND_LABEL: Record<StoryChapter['kind'], UiKey> = {
 
 export default function StoryPage() {
   const t = useT();
+  return <><Seo title={t('navStory')} description={t('seoDescStory')} /><StoryContent /></>;
+}
+
+function StoryContent() {
+  const t = useT();
   const router = useRouter();
   const chapterId = typeof router.query.chapter === 'string' ? router.query.chapter : null;
   const [index, setIndex] = useState<StoryIndex | null>(null);
@@ -78,7 +83,6 @@ function StoryList({ index, events, icons }: {
   const chapters = Object.values(index.chapters);
   return (
     <VStack align="stretch" spacing={5}>
-      <Seo title={t('navStory')} description={t('seoDescStory')} />
       <Flex align="center" gap={3} wrap="wrap">
         <Text fontSize="2xl" fontWeight="bold">{t('navStory')}</Text>
         <Box flex="1" />

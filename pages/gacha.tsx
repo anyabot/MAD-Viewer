@@ -31,6 +31,11 @@ const gapColor = (gap: number) => (gap <= 30 ? 'green' : gap <= 70 ? 'accent' : 
 
 export default function GachaPage() {
   const t = useT();
+  return <><Seo title={t('gachaTitle')} description={t('seoDescGacha')} /><GachaContent /></>;
+}
+
+function GachaContent() {
+  const t = useT();
   const lang = useLang();
   const gameLang = useGameLang();
   const [data, setData] = useState<GachaBannerIndex | null>(null);
@@ -152,7 +157,6 @@ export default function GachaPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Seo title={t('gachaTitle')} description={t('seoDescGacha')} />
       <PageHeader title={t('gachaTitle')}
         actions={<Button size="sm" variant="outline" onClick={resetAll}>{t('gachaResetAll')}</Button>} />
 
