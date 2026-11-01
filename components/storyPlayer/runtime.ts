@@ -28,6 +28,8 @@ const DEFAULT_DURATION = 0.35;
 // CharactersConfiguration / BackgroundsConfiguration DefaultEasing (1 SmoothStep, 3 EaseInQuad).
 const ACTOR_EASE = 'SmoothStep';
 const BACKGROUND_EASE = 'EaseInQuad';
+// Naninovel's default background actor id; `Layer` names another one.
+const MAIN_BACKGROUND = 'MainBackground';
 // CharacterPingPongMoveCommand subclasses' DefaultPower / DefaultCount / DefaultDuration.
 const PING_PONG: Record<string, { power: number; count: number; duration: number }> = {
   CharacterHopHopCommand: { power: 3, count: 2, duration: 0.3 },
@@ -55,6 +57,17 @@ function color(value: string | undefined): number | null {
   if (lower in COLORS) return COLORS[lower];
   const hex = lower.replace('#', '');
   return /^[0-9a-f]{6}/.test(hex) ? parseInt(hex.slice(0, 6), 16) : null;
+}
+
+function mixColor(a: number, b: number, t: number): number {
+  const ch = (shift: number) => Math.round(((a >> shift) & 255) + (((b >> shift) & 255) - ((a >> shift) & 255)) * t);
+  return (ch(16) << 16) | (ch(8) << 8) | ch(0);
+}
+
+// The alpha byte of `#RRGGBBAA`; a colour without one is opaque.
+function colorAlpha(value: string | undefined): number {
+  const hex = (value ?? '').toLowerCase().replace('#', '');
+  return /^[0-9a-f]{8}$/.test(hex) ? parseInt(hex.slice(6), 16) / 255 : 1;
 }
 
 function actorId(value: string | undefined): [string, string | null] {
@@ -362,6 +375,8 @@ export class StoryRuntime {
         const ids = (f.ActorIds ?? '').split(',').map((s) => s.trim()).filter(Boolean);
         const tasks = ids.map((id) => {
           if (PRINTERS.has(id)) { this.ui.hidePrinter(); return Promise.resolve(); }
+          const layer = this.stage.backLayers.get(id);
+          if (layer) return this.stage.hideBack(layer, num(f.Duration, DEFAULT_DURATION));
           const actor = this.stage.actorMap.get(id);
           return actor ? this.fadeOut(actor, num(f.Duration, DEFAULT_DURATION)) : Promise.resolve();
         });
@@ -372,7 +387,10 @@ export class StoryRuntime {
       case 'HideAllCharacters': {
         const duration = num(f.Duration, DEFAULT_DURATION);
         const tasks = [...this.stage.actorMap.values()].filter((a) => a.visible).map((a) => this.fadeOut(a, duration));
-        if (c.class === 'HideAllActors') { this.ui.hidePrinter(); tasks.push(this.stage.hideBackground(duration)); }
+        if (c.class === 'HideAllActors') {
+          this.ui.hidePrinter();
+          for (const layer of this.stage.backLayers.values()) tasks.push(this.stage.hideBack(layer, duration));
+        }
         await this.hold(Promise.all(tasks).then(() => {}), wait);
         return null;
       }
@@ -487,11 +505,55 @@ export class StoryRuntime {
 
   private async modifyBackground(c: StoryCommand): Promise<void> {
     const f = c.fields;
-    const [name] = actorId(f.AppearanceAndTransition);
+    const [name, transition] = actorId(f.AppearanceAndTransition);
+    const stage = this.stage;
+    const layer = stage.backLayer(f.Layer || MAIN_BACKGROUND);
     const duration = num(f.Duration, DEFAULT_DURATION);
-    if (f.Layer && f.Layer !== name) this.miss('ModifyBackground Layer');
-    if (!flag(f.Visible, true)) { await this.stage.hideBackground(duration); return; }
-    if (name) await this.stage.background(name, duration, f.EasingTypeName ?? BACKGROUND_EASE);
+    const ease = f.EasingTypeName ?? BACKGROUND_EASE;
+    if (!flag(f.Visible, true)) { await stage.hideBack(layer, duration, ease); return; }
+    const tasks: Promise<void>[] = [];
+    if (name) tasks.push(stage.setBackAppearance(layer, name, duration, ease, f.Transition || transition || undefined));
+    const to = { x: layer.x, y: layer.y, z: layer.z, rotation: layer.rotation, scaleX: layer.scaleX, scaleY: layer.scaleY };
+    if (f.ScenePosition) {
+      const [x, y, z] = parts(f.ScenePosition);
+      const now = worldToScene(layer.x, layer.y);
+      const world = sceneToWorld(x ?? now.x, y ?? now.y);
+      Object.assign(to, { x: world.x, y: world.y });
+      if (z != null) to.z = z;
+    }
+    if (f.Position) {
+      const [x, y, z] = parts(f.Position);
+      if (x != null) to.x = x;
+      if (y != null) to.y = y;
+      if (z != null) to.z = z;
+    }
+    const rz = f.Rotation ? parts(f.Rotation)[2] : null;
+    if (rz != null) to.rotation = rz;
+    if (f.Scale) {
+      const [sx, sy] = parts(f.Scale);
+      to.scaleX = sx ?? to.scaleX;
+      to.scaleY = sy ?? sx ?? to.scaleY;
+    }
+    const tint = color(f.TintColor);
+    const tintAlpha = f.TintColor ? colorAlpha(f.TintColor) : layer.tintAlpha;
+    const fresh = !layer.visible;
+    layer.visible = true;
+    const from = { ...layer, tint: layer.tint };
+    // Unlike the other fields, the layer's z (draw order) switches at once.
+    layer.z = to.z;
+    tasks.push(stage.tween(duration, ease, (t) => {
+      const mix = (a: number, b: number) => a + (b - a) * t;
+      layer.x = mix(from.x, to.x);
+      layer.y = mix(from.y, to.y);
+      layer.rotation = mix(from.rotation, to.rotation);
+      layer.scaleX = mix(from.scaleX, to.scaleX);
+      layer.scaleY = mix(from.scaleY, to.scaleY);
+      layer.alpha = fresh ? mix(from.alpha, 1) : 1;
+      layer.tintAlpha = mix(from.tintAlpha, tintAlpha);
+      if (tint != null) layer.tint = mixColor(from.tint, tint, t);
+      stage.renderBack(layer);
+    }));
+    await Promise.all(tasks);
   }
 
   private target(actor: StoryActor, scenePosition: string | undefined, position: string | undefined) {
@@ -947,10 +1009,15 @@ export class StoryRuntime {
     const stage = this.stage;
     const from = { ...stage.camera };
     const [ox, oy] = parts(f.Offset);
-    const to = { x: f.Offset ? ox ?? from.x : from.x, y: f.Offset ? oy ?? from.y : from.y, zoom: num(f.Zoom, from.zoom) };
-    if (f.Rotation || f.Roll) this.miss('ModifyCamera Rotation');
+    // `Roll` is the camera's z angle in degrees, as is `Rotation`'s z; an orthographic 2D scene has no x/y turn to show.
+    const rz = f.Rotation ? parts(f.Rotation)[2] : null;
+    const roll = f.Roll ? num(f.Roll, from.roll) : rz ?? from.roll;
+    const to = { x: f.Offset ? ox ?? from.x : from.x, y: f.Offset ? oy ?? from.y : from.y, zoom: num(f.Zoom, from.zoom), roll };
     await stage.tween(num(f.Duration, DEFAULT_DURATION), f.EasingTypeName, (t) => {
-      stage.camera = { x: from.x + (to.x - from.x) * t, y: from.y + (to.y - from.y) * t, zoom: from.zoom + (to.zoom - from.zoom) * t };
+      stage.camera = {
+        x: from.x + (to.x - from.x) * t, y: from.y + (to.y - from.y) * t,
+        zoom: from.zoom + (to.zoom - from.zoom) * t, roll: from.roll + (to.roll - from.roll) * t,
+      };
       stage.applyCamera();
     });
   }

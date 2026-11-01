@@ -12,6 +12,7 @@ export const SCENE_W = 23.4;
 export const SCENE_H = 10.8;
 const ORTHO = SCENE_H / 2;
 const MAX_ZOOM = 0.99;
+const BACK_Z = 100;
 // SpineCharacter::UpdateRenderTransform constants and the height-type factor table (index heightType + 1).
 const DEPTH_A = -0.298492968082428;
 const DEPTH_B = 0.4382548928260803;
@@ -29,6 +30,15 @@ type Layout = {
 type Tween = { elapsed: number; duration: number; ease: (t: number) => number; apply: (t: number) => void; done: () => void };
 
 export type Vec3 = { x: number; y: number; z: number };
+
+export type BackLayer = {
+  id: string;
+  name: string | null;
+  node: any;
+  sprite: any;
+  x: number; y: number; z: number; rotation: number; scaleX: number; scaleY: number;
+  tint: number; tintAlpha: number; alpha: number; visible: boolean; order: number;
+};
 
 export type DrawShape = {
   id: string;
@@ -206,9 +216,9 @@ export class StoryStage {
   readonly actors: any;
   readonly cover: any;
   private tweens = new Set<Tween>();
-  private bg: { name: string; sprite: any } | null = null;
+  readonly backLayers = new Map<string, BackLayer>();
   readonly actorMap = new Map<string, StoryActor>();
-  camera = { x: 0, y: 0, zoom: 0 };
+  camera = { x: 0, y: 0, zoom: 0, roll: 0 };
   shake = { x: 0, y: 0 };
   transition: Transition = { type: 'fade', amount: 0, color: 0x000000, x: 0.5, y: 0.5, softness: 0, roundness: 0, side: 'Left' };
   speed = 1;
@@ -406,6 +416,8 @@ export class StoryStage {
     this.cam.position.set(this.width / 2, this.height / 2);
     this.cam.scale.set(k);
     this.cam.pivot.set(this.camera.x + this.shake.x, -(this.camera.y + this.shake.y));
+    // A camera turned counter-clockwise shows the scene turned clockwise.
+    this.cam.rotation = (this.camera.roll * Math.PI) / 180;
   }
 
   // The fade panel: `amount` is how much of the screen is covered, drawn as the command's mask shape.
@@ -465,34 +477,72 @@ export class StoryStage {
     return actor;
   }
 
+  // Each background id is its own actor; inferred stock Naninovel layout: all start at z 100, nearer z draws on top, ties by creation.
+  backLayer(id: string): BackLayer {
+    let layer = this.backLayers.get(id);
+    if (!layer) {
+      const node = new this.PIXI.Container();
+      this.backdrop.addChild(node);
+      layer = { id, name: null, node, sprite: null, x: 0, y: 0, z: BACK_Z, rotation: 0, scaleX: 1, scaleY: 1, tint: 0xffffff,
+        tintAlpha: 1, alpha: 0, visible: false, order: this.backLayers.size };
+      this.backLayers.set(id, layer);
+    }
+    return layer;
+  }
+
+  renderBack(layer: BackLayer): void {
+    layer.node.position.set(layer.x, -layer.y);
+    layer.node.rotation = (-layer.rotation * Math.PI) / 180;
+    layer.node.scale.set(layer.scaleX, layer.scaleY);
+    layer.node.alpha = layer.alpha * layer.tintAlpha;
+    layer.node.visible = layer.node.alpha > 0.001;
+    layer.node.zIndex = -layer.z * 1000 + layer.order;
+    for (const child of layer.node.children) child.tint = layer.tint;
+    this.backdrop.sortableChildren = true;
+  }
+
   // Background sprites are crop-matched to the scene; the authored world size is the sprite rect over its PPU.
-  async background(name: string, duration: number, ease?: string): Promise<void> {
-    if (this.bg?.name === name) return;
+  async backSprite(name: string): Promise<any | null> {
     const size = this.index.backgrounds[name];
     const texture = await this.PIXI.Assets.load(storyBackgroundUrl(name)).catch(() => null);
-    if (!texture || !size) { this.report(`background ${name}`); return; }
+    if (!texture || !size) { this.report(`background ${name}`); return null; }
     const sprite = new this.PIXI.Sprite(texture);
     const scale = Math.max(SCENE_W / size[0], SCENE_H / size[1]);
     sprite.anchor.set(0.5);
     sprite.width = size[0] * scale;
     sprite.height = size[1] * scale;
-    sprite.alpha = 0;
-    this.backdrop.addChild(sprite);
-    const previous = this.bg;
-    this.bg = { name, sprite };
-    await this.tween(duration, ease, (t) => { sprite.alpha = t; });
-    previous?.sprite.destroy();
+    return sprite;
+  }
+
+  // A new appearance on a shown layer cross-fades, or slides in from the right for `SlideIn` (inferred direction).
+  async setBackAppearance(layer: BackLayer, name: string, duration: number, ease: string | undefined, transition: string | undefined): Promise<void> {
+    if (layer.name === name) return;
+    layer.name = name;
+    const sprite = await this.backSprite(name);
+    if (!sprite || layer.name !== name) { sprite?.destroy(); return; }
+    const previous = layer.sprite;
+    layer.sprite = sprite;
+    sprite.tint = layer.tint;
+    layer.node.addChild(sprite);
+    if (!previous || !layer.visible) { previous?.destroy(); return; }
+    const slide = transition?.toLowerCase() === 'slidein';
+    sprite.alpha = slide ? 1 : 0;
+    await this.tween(duration, ease, (t) => {
+      if (slide) sprite.x = SCENE_W * (1 - t); else sprite.alpha = t;
+    });
+    sprite.x = 0;
+    sprite.alpha = 1;
+    if (layer.sprite === sprite) previous.destroy();
   }
 
   shakeBackground(x: number, y: number): void {
     this.backdrop.position.set(x, -y);
   }
 
-  async hideBackground(duration: number): Promise<void> {
-    const previous = this.bg;
-    if (!previous) return;
-    this.bg = null;
-    await this.tween(duration, undefined, (t) => { previous.sprite.alpha = 1 - t; });
-    previous.sprite.destroy();
+  async hideBack(layer: BackLayer, duration: number, ease?: string): Promise<void> {
+    if (!layer.visible) return;
+    layer.visible = false;
+    const from = layer.alpha;
+    await this.tween(duration, ease, (t) => { layer.alpha = from * (1 - t); this.renderBack(layer); });
   }
 }
