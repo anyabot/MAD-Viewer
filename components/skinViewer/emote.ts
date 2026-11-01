@@ -94,7 +94,7 @@ export function createEmoteBubble(options: {
     let used = 0;
     for (const emitter of run.emitters) {
       const base = sheets.get(emitter.def.sheet);
-      if (!base) continue;
+      if (!base || emitter.def.renderNone) continue;
       const [columns, rows] = emitter.def.tiles;
       // `CharacterEmoticon.SetFlip`: the root mirror, then per system 4 re-mirrors its own transform, 1 toggles the texture flip, 2 flips rotation
       const flip = mirror < 0 ? emitter.def.flip ?? 0 : 0;

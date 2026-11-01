@@ -1,4 +1,4 @@
-import { createEmoteRun, type EmoteRun } from '@/components/skinViewer/particles';
+import { colorAt, createEmoteRun, valueAt, type EmoteRun, type Particle } from '@/components/skinViewer/particles';
 import type { EmoteEmitter } from '@/lib/emoticons';
 
 export type FxIndex = {
@@ -16,6 +16,7 @@ const MAX_STEP = 0.333;
 export class FxRun {
   readonly container: any;
   private readonly pool: { node: any; view: any }[] = [];
+  private readonly ribbons: any[] = [];
   private readonly run: EmoteRun;
   private last: number;
   done = false;
@@ -55,10 +56,60 @@ export class FxRun {
     this.draw();
   }
 
+  // A trail is a ribbon along the particle's recorded path: Stretch maps the texture once from the particle back to the tail.
+  private ribbon(index: number, particle: Particle, def: NonNullable<EmoteRun['emitters'][number]['def']['trail']>, sheet: string): void {
+    const points = particle.trail!;
+    const count = points.length / 2;
+    let mesh = this.ribbons[index];
+    if (!mesh) {
+      mesh = new this.PIXI.MeshSimple({ texture: this.sheets.get(sheet), vertices: new Float32Array(4), uvs: new Float32Array(4) });
+      this.container.addChildAt(mesh, 0);
+      this.ribbons[index] = mesh;
+    }
+    mesh.texture = this.sheets.get(sheet);
+    const vertices = new Float32Array(count * 4);
+    const uvs = new Float32Array(count * 4);
+    const indices = new Uint32Array((count - 1) * 6);
+    const width = def.sizeAffectsWidth ? particle.size : 1;
+    for (let i = 0; i < count; i += 1) {
+      const a = Math.max(0, i - 1);
+      const b = Math.min(count - 1, i + 1);
+      let tx = points[b * 2] - points[a * 2];
+      let ty = points[b * 2 + 1] - points[a * 2 + 1];
+      const length = Math.hypot(tx, ty) || 1;
+      tx /= length; ty /= length;
+      const u = 1 - i / (count - 1);
+      const half = (width * valueAt(def.width, u, 0.5)) / 2;
+      const x = points[i * 2];
+      const y = points[i * 2 + 1];
+      vertices.set([x - ty * half, -(y + tx * half), x + ty * half, -(y - tx * half)], i * 4);
+      uvs.set([u, 0, u, 1], i * 4);
+      if (i < count - 1) indices.set([i * 2, i * 2 + 1, i * 2 + 2, i * 2 + 1, i * 2 + 3, i * 2 + 2], i * 6);
+    }
+    mesh.geometry.positions = vertices;
+    mesh.geometry.uvs = uvs;
+    mesh.geometry.indices = indices;
+    // The trail gradients only scale the inherited colour; every published trail authors them white, so one tint per ribbon is exact.
+    const base = def.inheritParticleColor ? [particle.r, particle.g, particle.b, particle.a] : [1, 1, 1, 1];
+    const over = colorAt(def.color, particle.life, 0.5);
+    const c = (k: number) => Math.round(Math.min(1, Math.max(0, base[k] * over[k])) * 255);
+    mesh.tint = (c(0) << 16) | (c(1) << 8) | c(2);
+    mesh.alpha = Math.min(1, Math.max(0, base[3] * over[3]));
+    mesh.visible = true;
+  }
+
   private draw(): void {
     let used = 0;
+    let trails = 0;
     for (const emitter of this.run.emitters) {
       if (!this.sheets.has(emitter.def.sheet)) continue;
+      const trail = emitter.def.trail;
+      if (trail) {
+        for (const particle of emitter.particles) {
+          if (particle.trail && particle.trail.length >= 4) this.ribbon(trails++, particle, trail, emitter.def.sheet);
+        }
+      }
+      if (emitter.def.renderNone) continue;
       const [columns, rows] = emitter.def.tiles;
       for (const particle of emitter.particles) {
         let item = this.pool[used];
@@ -86,6 +137,7 @@ export class FxRun {
       }
     }
     for (let i = used; i < this.pool.length; i += 1) this.pool[i].node.visible = false;
+    for (let i = trails; i < this.ribbons.length; i += 1) this.ribbons[i].visible = false;
   }
 
   stop(): void {

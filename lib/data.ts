@@ -923,6 +923,23 @@ export type EmoteEmitter = {
     rowMode: number;
     rowIndex: number;
   };
+  // render mode None: the particles draw nothing, only their trail
+  renderNone?: boolean;
+  trail?: {
+    mode: number;
+    ratio: number;
+    lifetime: EmoteCurve;
+    minVertexDistance: number;
+    textureMode: number;
+    worldSpace: boolean;
+    dieWithParticles: boolean;
+    sizeAffectsWidth: boolean;
+    sizeAffectsLifetime: boolean;
+    inheritParticleColor: boolean;
+    color: EmoteGradient;
+    width: EmoteCurve;
+    colorOverTrail: EmoteGradient;
+  };
 };
 
 export type EmoticonManifest = {

@@ -130,7 +130,7 @@ export async function createCutinEffects(options: {
       live.meshes.set(emitterIndex, pool);
       let pooled = 0;
       const base = sheets.get(emitter.def.sheet);
-      if (!base) return;
+      if (!base || emitter.def.renderNone) return;
       const [columns, rows] = emitter.def.tiles;
       const def = emitter.def as Effect['emitters'][number];
       const order = def.order ?? 0;
