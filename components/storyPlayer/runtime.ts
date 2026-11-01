@@ -704,7 +704,7 @@ export class StoryRuntime {
   private async spawnEffect(c: StoryCommand): Promise<void> {
     const f = c.fields;
     const path = f.Path ?? '';
-    const prefab = this.stage.fx?.spawn[path];
+    const prefab = byName(this.stage.fx?.spawn, path);
     if (!prefab) { this.miss(`effect ${path}`); return; }
     const at = this.target({ pos: { x: 0, y: 0, z: 0 } } as StoryActor, f.ScenePosition, f.Position);
     const [, ry, rz] = parts(f.Rotation);
@@ -719,7 +719,7 @@ export class StoryRuntime {
     const [id, name] = actorId(f.IdAndFx);
     const key = `character:${f.Id || `${id}.${name}`}`;
     if (!flag(f.Visible, true)) { this.stage.stopFx(key); return; }
-    const prefab = name ? this.stage.fx?.characterFx[name] : undefined;
+    const prefab = name ? byName(this.stage.fx?.characterFx, name) : undefined;
     if (!prefab) { this.miss(`character effect ${name}`); return; }
     const actor = this.actor(id);
     await actor.ready;
@@ -954,6 +954,15 @@ export class StoryRuntime {
       stage.applyCamera();
     });
   }
+}
+
+// Resource names resolve without case (`shock` is the `Shock` effect).
+function byName<T>(table: Record<string, T> | undefined, name: string): T | undefined {
+  if (!table) return undefined;
+  if (name in table) return table[name];
+  const lower = name.toLowerCase();
+  const key = Object.keys(table).find((k) => k.toLowerCase() === lower);
+  return key ? table[key] : undefined;
 }
 
 function lookOf(value: string): number {

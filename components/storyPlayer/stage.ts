@@ -1,6 +1,7 @@
 import { loadSkinArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
 import { storyAssetUrl, storyBackgroundUrl, type StoryScriptIndex } from '@/lib/data';
 import { FxRun, type FxIndex } from './fx';
+import { archiveName, type StoreKey } from '@/components/skinViewer/types';
 import { easeOf } from './ease';
 import { FilterStack } from './filters';
 import { createEmoteBubble, type EmoteBubble } from '@/components/skinViewer/emote';
@@ -98,12 +99,15 @@ export class StoryActor {
 
   private async load(rig: string): Promise<void> {
     const { PIXI, SPINE } = this.stage;
-    const files = await loadSkinArchive(rig);
+    // A rig whose art differs by store ships one archive per store; the first listed store plays, as in the skin viewer.
+    const stores = this.stage.skinStores.get(rig) ?? [];
+    const archive = archiveName(rig, stores[0] ?? 'onestore', stores.length > 1);
+    const files = await loadSkinArchive(archive);
     const layout = JSON.parse(await readText(files, 'spine.json')) as Layout;
     const atlas = new SPINE.TextureAtlas(await readText(files, layout.atlas));
     await Promise.all(atlas.pages.map(async (page: any) => {
       const texture = await PIXI.Assets.load({
-        src: urlFor(rig, files, page.name),
+        src: urlFor(archive, files, page.name),
         loadParser: 'loadTextures',
         data: { alphaMode: page.pma ? 'premultiplied-alpha' : 'premultiply-alpha-on-upload' },
       });
@@ -211,6 +215,7 @@ export class StoryStage {
   time = 0;
   emoticons: EmoticonManifest | null = null;
   fx: FxIndex | null = null;
+  skinStores = new Map<string, StoreKey[]>();
   readonly fxLayer: any;
   private readonly fxRuns = new Map<string, Set<FxRun>>();
   private readonly fxSheets = new Map<string, any>();
