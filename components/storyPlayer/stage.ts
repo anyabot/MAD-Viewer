@@ -1,5 +1,6 @@
 import { loadSkinArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
-import { storyBackgroundUrl, type StoryScriptIndex } from '@/lib/data';
+import { storyAssetUrl, storyBackgroundUrl, type StoryScriptIndex } from '@/lib/data';
+import { FxRun, type FxIndex } from './fx';
 import { easeOf } from './ease';
 import { FilterStack } from './filters';
 import { createEmoteBubble, type EmoteBubble } from '@/components/skinViewer/emote';
@@ -27,6 +28,17 @@ type Layout = {
 type Tween = { elapsed: number; duration: number; ease: (t: number) => number; apply: (t: number) => void; done: () => void };
 
 export type Vec3 = { x: number; y: number; z: number };
+
+export type DrawShape = {
+  id: string;
+  kind: 'box' | 'circle' | 'line' | 'fill' | 'image';
+  node: any;
+  graphics: any;
+  sprite: any;
+  x: number; y: number; z: number; w: number; h: number; rotation: number;
+  color: number; border: number | null; alpha: number; pivotX: number; pivotY: number;
+  fromX: number; fromY: number; toX: number; toY: number; length: number | null; thickness: number;
+};
 
 export type Transition = {
   type: 'fade' | 'slide' | 'blink' | 'iris' | 'circle';
@@ -112,8 +124,10 @@ export class StoryActor {
     this.layout = layout;
     this.spine = spine;
     this.holder.addChild(spine);
+    // SetFlip gives the emote the actor's world scale and UIParticle draws 100 px per particle unit, so a particle unit is a world unit.
     this.bubble = createEmoteBubble({
       PIXI: this.stage.PIXI, scene: this.holder, spine, now: () => this.stage.time, isDestroyed: () => this.holder.destroyed,
+      unit: 1 / render,
     });
     this.stage.app.ticker.add(this.bubble.tick);
     if (this.face) this.setFace(this.face);
@@ -196,6 +210,10 @@ export class StoryStage {
   speed = 1;
   time = 0;
   emoticons: EmoticonManifest | null = null;
+  fx: FxIndex | null = null;
+  readonly fxLayer: any;
+  private readonly fxRuns = new Map<string, Set<FxRun>>();
+  private readonly fxSheets = new Map<string, any>();
   readonly backgroundFilters: FilterStack;
   readonly screenFilters: FilterStack;
   private width = 1;
@@ -210,7 +228,8 @@ export class StoryStage {
     this.actors = new PIXI.Container();
     this.actors.sortableChildren = true;
     this.cover = new PIXI.Graphics();
-    this.cam.addChild(this.backdrop, this.actors);
+    this.fxLayer = new PIXI.Container();
+    this.cam.addChild(this.backdrop, this.actors, this.fxLayer);
     this.root.addChild(this.cam, this.cover);
     app.stage.addChild(this.root);
     app.ticker.add(this.tick);
@@ -220,6 +239,7 @@ export class StoryStage {
 
   dispose(): void {
     this.app.ticker.remove(this.tick);
+    this.stopFx(null);
     for (const actor of this.actorMap.values()) actor.dispose();
     this.root.destroy({ children: true });
   }
@@ -235,8 +255,122 @@ export class StoryStage {
     return this.height / SCENE_H / 100;
   }
 
+  // Starts a spawned prefab at a world point (or inside `parent`); `key` groups runs for DestroySpawned.
+  async spawnFx(prefab: string, key: string, place: { x: number; y: number; scale: number; rotation: number; mirror?: boolean },
+    parent?: any): Promise<FxRun | null> {
+    const emitters = this.fx?.prefabs[prefab];
+    if (!emitters) return null;
+    await Promise.all([...new Set(emitters.map((e) => e.sheet))].filter((s) => !this.fxSheets.has(s)).map(async (sheet) => {
+      const texture = await this.PIXI.Assets.load({ src: storyAssetUrl('fx', sheet), loadParser: 'loadTextures' }).catch(() => null);
+      if (texture?.source) this.fxSheets.set(sheet, texture);
+    }));
+    const group = this.fxRuns.get(key) ?? new Set<FxRun>();
+    this.fxRuns.set(key, group);
+    const run: FxRun = new FxRun(this.PIXI, parent ?? this.fxLayer, emitters, this.fxSheets, () => this.time, () => group.delete(run));
+    run.container.position.set(place.x, -place.y);
+    run.container.scale.set(place.scale * (place.mirror ? -1 : 1), place.scale);
+    run.container.rotation = -place.rotation * (Math.PI / 180);
+    group.add(run);
+    return run;
+  }
+
+  private readonly popups = new Map<string, any>();
+  readonly draws = new Map<string, DrawShape>();
+  holes: { id: string; x: number; y: number; size: number; soft: number }[] = [];
+
+  // Inferred: draw shapes live in scene percent (x of the width, y of the height, y up) and sort by z among the actors.
+  drawShape(id: string): DrawShape {
+    let shape = this.draws.get(id);
+    if (!shape) {
+      const node = new this.PIXI.Container();
+      const graphics = new this.PIXI.Graphics();
+      node.addChild(graphics);
+      this.actors.addChild(node);
+      shape = { id, kind: 'box', node, graphics, sprite: null, x: 50, y: 50, z: 0, w: 0, h: 0, rotation: 0, color: 0x000000,
+        border: null, alpha: 0, pivotX: 50, pivotY: 50, fromX: 0, fromY: 0, toX: 0, toY: 0, length: null, thickness: 1 };
+      this.draws.set(id, shape);
+    }
+    return shape;
+  }
+
+  renderShape(shape: DrawShape): void {
+    const W = SCENE_W / 100;
+    const H = SCENE_H / 100;
+    const g = shape.graphics;
+    g.clear();
+    shape.node.zIndex = -shape.z;
+    shape.node.alpha = shape.alpha;
+    shape.node.visible = shape.alpha > 0.001;
+    const world = sceneToWorld(shape.x, shape.y);
+    shape.node.position.set(world.x, -world.y);
+    shape.node.rotation = (shape.rotation * Math.PI) / 180;
+    const stroke = shape.border != null ? { width: 0.03, color: shape.border } : null;
+    if (shape.kind === 'box' || shape.kind === 'circle') {
+      const w = shape.w * W;
+      const h = shape.h * H;
+      const ox = -w * (shape.pivotX / 100);
+      const oy = -h * (1 - shape.pivotY / 100);
+      if (shape.kind === 'box') g.rect(ox, oy, w, h); else g.ellipse(ox + w / 2, oy + h / 2, w / 2, h / 2);
+      g.fill({ color: shape.color });
+      if (stroke) g.stroke(stroke);
+    } else if (shape.kind === 'fill') {
+      shape.node.position.set(0, 0);
+      shape.node.rotation = 0;
+      const a = sceneToWorld(shape.fromX, shape.fromY);
+      const b = sceneToWorld(shape.toX, shape.toY);
+      g.rect(Math.min(a.x, b.x), -Math.max(a.y, b.y), Math.abs(b.x - a.x), Math.abs(b.y - a.y)).fill({ color: shape.color });
+      for (const hole of this.holes) {
+        const c = sceneToWorld(hole.x, hole.y);
+        if (hole.size > 0) g.circle(c.x, -c.y, (hole.size * H) / 2).cut();
+      }
+    } else if (shape.kind === 'line') {
+      shape.node.position.set(0, 0);
+      shape.node.rotation = 0;
+      const end = sceneToWorld(shape.toX, shape.toY);
+      let start = sceneToWorld(shape.fromX, shape.fromY);
+      if (shape.length != null) {
+        const turn = (shape.rotation * Math.PI) / 180;
+        start = { x: end.x - Math.cos(turn) * shape.length * W, y: end.y - Math.sin(turn) * shape.length * W };
+      }
+      g.moveTo(start.x, -start.y).lineTo(end.x, -end.y).stroke({ width: shape.thickness * 0.05, color: shape.color });
+    }
+    if (shape.sprite) {
+      const h = shape.h * H;
+      shape.sprite.height = h;
+      shape.sprite.width = h * (shape.sprite.texture.width / shape.sprite.texture.height);
+    }
+  }
+
+  async popupSprite(id: string, image: string, size: [number, number]): Promise<any | null> {
+    const existing = this.popups.get(id);
+    if (existing) return existing;
+    const texture = await this.PIXI.Assets.load({ src: storyAssetUrl('popup', image), loadParser: 'loadTextures' }).catch(() => null);
+    if (!texture?.source) { this.report(`popup ${image}`); return null; }
+    const sprite = new this.PIXI.Sprite(texture);
+    sprite.anchor.set(0.5);
+    sprite.width = size[0] / 100;
+    sprite.height = size[1] / 100;
+    const base = sprite.scale.x;
+    const holder = new this.PIXI.Container();
+    holder.addChild(sprite);
+    sprite.scale.set(base);
+    holder.visible = false;
+    holder.scale.set(1);
+    this.fxLayer.addChild(holder);
+    this.popups.set(id, holder);
+    return holder;
+  }
+
+  stopFx(key: string | null): void {
+    for (const [k, group] of this.fxRuns) {
+      if (key !== null && k !== key) continue;
+      for (const run of [...group]) run.stop();
+    }
+  }
+
   private update(dt: number): void {
     this.time += dt;
+    for (const group of this.fxRuns.values()) for (const run of [...group]) run.tick();
     for (const stack of [this.backgroundFilters, this.screenFilters, ...[...this.actorMap.values()].map((a) => a.filters)]) {
       stack.apply(this.time);
     }

@@ -21,6 +21,8 @@ export function createEmoteBubble(options: {
   // Scene time keeps the emote synchronized with pause and playback speed.
   now: () => number;
   isDestroyed: () => boolean;
+  // Particle units per skeleton unit; the lobby's calibrated constant unless the caller knows its space.
+  unit?: number;
 }): EmoteBubble {
   const { PIXI, scene, spine, now, isDestroyed } = options;
 
@@ -84,7 +86,7 @@ export function createEmoteBubble(options: {
     const [ox, oy] = place.offset;
     const originX = bone.worldX + ox * Math.cos(turn) - oy * Math.sin(turn);
     const originY = bone.worldY - (ox * Math.sin(turn) + oy * Math.cos(turn));
-    const unit = EMOTE_UNIT_SCALE;
+    const unit = options.unit ?? EMOTE_UNIT_SCALE;
     const scale = unit * Math.abs(spine.scale.y);
     // A mirrored placement flips positions, quads, pivots, and rotations about the slot.
     const mirror = place.mirror ? -1 : 1;
