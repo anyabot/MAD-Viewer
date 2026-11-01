@@ -88,6 +88,7 @@ export class StoryRuntime {
   private track: string | null = null;
   private vars: Vars = {};
   private loops = new Map<string, { active: boolean }>();
+  private readonly owners = new WeakMap<StoryActor, { pos: number; alpha: number; rotation: number }>();
   // an in-battle script plays over the battle music, so it leaves the track running when it ends
   keepMusic = false;
 
@@ -610,15 +611,24 @@ export class StoryRuntime {
     return next;
   }
 
-  private async tweenActor(actor: StoryActor, to: { x: number; y: number; z: number }, alpha: number,
-    rotation: number, duration: number, ease?: string): Promise<void> {
-    const from = { ...actor.pos };
-    const fromAlpha = actor.alpha;
-    const fromRotation = actor.rotation;
+  // Per-property tweens, a newer one taking its property over (Naninovel's actor tweens), so a face change mid-move cannot freeze the move.
+  private async tweenActor(actor: StoryActor, change: { pos?: { x: number; y: number; z: number }; alpha?: number; rotation?: number },
+    duration: number, ease?: string): Promise<void> {
+    const from = { pos: { ...actor.pos }, alpha: actor.alpha, rotation: actor.rotation };
+    const owners = this.owners.get(actor) ?? { pos: 0, alpha: 0, rotation: 0 };
+    this.owners.set(actor, owners);
+    const mine = {
+      pos: change.pos ? ++owners.pos : -1,
+      alpha: change.alpha != null ? ++owners.alpha : -1,
+      rotation: change.rotation != null ? ++owners.rotation : -1,
+    };
     await this.stage.tween(duration, ease ?? ACTOR_EASE, (t) => {
-      actor.pos = { x: from.x + (to.x - from.x) * t, y: from.y + (to.y - from.y) * t, z: from.z + (to.z - from.z) * t };
-      actor.alpha = fromAlpha + (alpha - fromAlpha) * t;
-      actor.rotation = fromRotation + (rotation - fromRotation) * t;
+      const to = change.pos;
+      if (to && owners.pos === mine.pos) {
+        actor.pos = { x: from.pos.x + (to.x - from.pos.x) * t, y: from.pos.y + (to.y - from.pos.y) * t, z: from.pos.z + (to.z - from.pos.z) * t };
+      }
+      if (change.alpha != null && owners.alpha === mine.alpha) actor.alpha = from.alpha + (change.alpha - from.alpha) * t;
+      if (change.rotation != null && owners.rotation === mine.rotation) actor.rotation = from.rotation + (change.rotation - from.rotation) * t;
       actor.apply();
     });
   }
@@ -633,13 +643,17 @@ export class StoryRuntime {
     const tint = color(f.TintColor);
     if (tint != null) actor.tint = tint;
     const show = flag(f.Visible, true);
-    if (show && !actor.visible) { actor.visible = true; actor.alpha = 0; }
-    const to = this.target(actor, f.ScenePosition, f.Position);
+    const appearing = show && !actor.visible;
+    if (appearing) { actor.visible = true; actor.alpha = 0; }
+    const moves = !!(f.ScenePosition || f.Position);
     // Unity z turns counter-clockwise; the actor keeps a clockwise angle, as `CharacterRollCommand` does.
     const z = f.Rotation ? parts(f.Rotation)[2] : null;
-    const rotation = z != null ? -z : actor.rotation;
     const duration = num(f.Duration, DEFAULT_DURATION);
-    await this.tweenActor(actor, to, show ? 1 : 0, rotation, duration, f.EasingTypeName);
+    await this.tweenActor(actor, {
+      pos: moves ? this.target(actor, f.ScenePosition, f.Position) : undefined,
+      alpha: !show ? 0 : appearing || actor.alpha < 1 ? 1 : undefined,
+      rotation: z != null ? -z : undefined,
+    }, duration, f.EasingTypeName);
     if (!show) { actor.visible = false; actor.apply(); }
   }
 
@@ -671,9 +685,10 @@ export class StoryRuntime {
     if (appearance) actor.setFace(appearance);
     if (f.LookDirection) actor.look = lookOf(f.LookDirection);
     const show = flag(f.Visible, true);
-    if (show && !actor.visible) { actor.visible = true; actor.alpha = 0; }
+    const appearing = show && !actor.visible;
+    if (appearing) { actor.visible = true; actor.alpha = 0; }
     const to = this.destination(actor, f.Destination, f.Offset);
-    await this.tweenActor(actor, to, show ? 1 : 0, actor.rotation, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+    await this.tweenActor(actor, { pos: to, alpha: !show ? 0 : appearing ? 1 : undefined }, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
     if (!show) { actor.visible = false; actor.apply(); }
   }
 
@@ -682,7 +697,7 @@ export class StoryRuntime {
     for (const step of steps) {
       const now = worldToScene(actor.pos.x, actor.pos.y);
       const world = sceneToWorld(step.x ?? now.x, step.y ?? now.y);
-      await this.tweenActor(actor, { ...actor.pos, x: world.x, y: world.y }, actor.alpha, actor.rotation, step.duration, ease);
+      await this.tweenActor(actor, { pos: { ...actor.pos, x: world.x, y: world.y } }, step.duration, ease);
     }
   }
 
@@ -972,7 +987,7 @@ export class StoryRuntime {
     await actor.ready;
     if (f.Pivot) actor.setRollPivot(num(f.Pivot, 0));
     const target = f.To ? num(f.To, actor.rotation) : actor.rotation + num(f.By, 0);
-    await this.tweenActor(actor, actor.pos, actor.alpha, target, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+    await this.tweenActor(actor, { rotation: target }, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
   }
 
   private async appear(c: StoryCommand, side: number): Promise<void> {
@@ -987,7 +1002,7 @@ export class StoryRuntime {
     actor.visible = true;
     actor.alpha = 1;
     actor.apply();
-    await this.tweenActor(actor, to, 1, actor.rotation, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+    await this.tweenActor(actor, { pos: to }, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
   }
 
   private async disappear(c: StoryCommand, side: number): Promise<void> {
@@ -996,13 +1011,13 @@ export class StoryRuntime {
     const actor = this.actor(id);
     await actor.ready;
     const to = { ...actor.pos, x: sceneToWorld(side > 0 ? 150 : -50, 0).x };
-    await this.tweenActor(actor, to, 1, actor.rotation, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+    await this.tweenActor(actor, { pos: to }, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
     actor.visible = false;
     actor.apply();
   }
 
   private async fadeOut(actor: StoryActor, duration: number): Promise<void> {
-    await this.tweenActor(actor, actor.pos, 0, actor.rotation, duration);
+    await this.tweenActor(actor, { alpha: 0 }, duration);
     actor.visible = false;
     actor.alpha = 1;
     actor.apply();
