@@ -57,7 +57,6 @@ export class StoryRuntime {
   private choices: { text: string; goto?: string; body?: [number, number] }[] = [];
   readonly unsupported = new Map<string, number>();
   private stopped = false;
-  private lastText = '';
   private track: string | null = null;
 
   constructor(readonly script: StoryScript, readonly stage: StoryStage, readonly index: StoryScriptIndex,
@@ -350,9 +349,7 @@ export class StoryRuntime {
     const author = this.authorName(f.AuthorId, c, at);
     if (this.highlight === 'auto') this.applyHighlight(f.AuthorId ?? null);
     const append = flag(f.Append, false) && !flag(f.ResetPrinter, true);
-    // A translation keys the whole split line, so every appended part repeats it; the first part already shows it.
-    if (!(append && text === this.lastText)) this.ui.print({ author, text, append, printer: f.PrinterId || this.printer });
-    this.lastText = text;
+    this.ui.print({ author, text, append, printer: f.PrinterId || this.printer });
     if (flag(f.WaitForInput, true)) await this.ui.waitInput();
   }
 
