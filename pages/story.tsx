@@ -1,10 +1,11 @@
 // One route for the index and the reader, because `output: 'export'` prerenders every path and chapters are runtime data.
 import { useEffect, useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import {
-  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Center,
+  Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Button, Center,
   Flex, HStack, SimpleGrid, Spinner, Text, VStack,
 } from '@altterisk/game-hub/ui';
 import { ArtBox } from '@/components/artBox';
@@ -20,6 +21,8 @@ import { useT, type UiKey } from '@/lib/i18n';
 import type { VoiceIndex } from '@/lib/voice';
 import { chapterIsSpoiler, useSpoilerFilter } from '@/lib/spoilers';
 import { useSpoilerGate } from '@/components/spoilers';
+
+const StoryPlayer = dynamic(() => import('@/components/storyPlayer'), { ssr: false });
 
 const KIND_ORDER: StoryChapter['kind'][] = ['main', 'event', 'nemesis'];
 const KIND_LABEL: Record<StoryChapter['kind'], UiKey> = {
@@ -128,6 +131,7 @@ function Reader({ chapter, scene, chars, icons }: {
   const [text, setText] = useState<StoryChapterText | null>(null);
   const [voice, setVoice] = useState<VoiceIndex | null>(null);
   const [failed, setFailed] = useState(false);
+  const [playing, setPlaying] = useState<number | null>(null);
   const voiced = chapter.scenes.some((s) => s.voiced);
 
   useEffect(() => {
@@ -176,9 +180,15 @@ function Reader({ chapter, scene, chars, icons }: {
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel px={{ base: 1, md: 4 }} pb={4}>
-              {!text && !failed ? <Spinner size="sm" />
-                : <SceneLines lines={text?.scenes[String(s.id)] ?? []} chars={chars} icons={icons}
-                    voice={voice} lang={lang} />}
+              {s.script && (
+                <Button size="xs" variant="outline" mb={3} onClick={() => setPlaying(playing === s.id ? null : s.id)}>
+                  {playing === s.id ? t('storyRead') : t('storyPlay')}
+                </Button>
+              )}
+              {playing === s.id && s.script ? <StoryPlayer script={s.script} />
+                : !text && !failed ? <Spinner size="sm" />
+                  : <SceneLines lines={text?.scenes[String(s.id)] ?? []} chars={chars} icons={icons}
+                      voice={voice} lang={lang} />}
             </AccordionPanel>
           </AccordionItem>
         ))}

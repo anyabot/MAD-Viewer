@@ -1292,6 +1292,41 @@ export function loadStoryChapter(lang: GameLang, chapter: number): Promise<Story
   return fetchJson<StoryChapterText>(`story/${lang}/${chapter}.json`);
 }
 
+export type StoryCommand = {
+  class: string;
+  line?: number;
+  inline?: number;
+  indent?: number;
+  label?: string | null;
+  fields: Record<string, string>;
+  text?: string;
+  texts?: GameLocalized;
+  author?: string;
+  loc?: Record<string, GameLocalized>;
+};
+
+export type StoryScript = { path: string; commands: StoryCommand[] };
+
+export type StoryScriptIndex = {
+  actors: Record<string, string>;
+  facing: Record<string, number>;
+  names: Record<string, GameLocalized>;
+  backgrounds: Record<string, [number, number]>;
+  scripts: Record<string, string[]>;
+};
+
+export function loadStoryScriptIndex(): Promise<StoryScriptIndex> {
+  return fetchJson<StoryScriptIndex>('story_scripts/index.json');
+}
+
+export function loadStoryScript(path: string): Promise<StoryScript> {
+  return fetchJson<StoryScript>(`story_scripts/${path}.json`);
+}
+
+export function storyBackgroundUrl(name: string): string {
+  return `${DATA_BASE}/story_scripts/bg/${encodeURIComponent(name)}.webp`;
+}
+
 export type BondSceneKind = 'desire' | 'affection';
 export type BondScene = { key?: string; kind: BondSceneKind; name?: GameLocalized; thumb?: string };
 export type BondChat = {

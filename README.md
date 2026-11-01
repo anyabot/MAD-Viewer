@@ -13,7 +13,7 @@ two store builds for the skins whose art differs between them.
 - **Battle formulas** — how damage, healing and status chances are worked out.
 - **Artists** — each credited illustrator, their pixiv / X links, and the
   characters they drew.
-- **Story** — the main, event and Nemesis story as text.
+- **Story** — the main, event and Nemesis story as text, or played as a scene with backgrounds and characters.
 - **Events & Stages** — each event's page (story, bonus units, exchange), every
   battle mode, and the Infinity Archive season with its Game Packs.
 - **Items** — every item: where it comes from, what uses it, and your Planner count.
