@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import {
-  Badge, Box, Flex, HStack, SimpleGrid, Table, Tbody, Td, Text, Tr, VStack, Wrap, WrapItem,
+  Badge, Box, Flex, HStack, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter,
+  ModalHeader, ModalOverlay, SimpleGrid, Table, Tbody, Td, Text, Tr, VStack, Wrap, WrapItem,
 } from '@altterisk/game-hub/ui';
 import {
   LevelControl, Panel, RewardGrid, WaveNav, type RewardItem,
@@ -14,7 +15,8 @@ import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
 import { kitSkills, kitStates } from '@/lib/skillProse';
 import {
-  STAT_LABEL, labelOf, roundStat, statText, typeIcons, typeLabel,
+  STAT_LABEL, TYPE_LABEL, labelOf, roundStat, statText, typeIcons, typeLabel, typeOf, typeTint,
+  type TypeTable,
 } from '@/lib/characters';
 import {
   CHANNEL_LABEL, CHANNEL_ORDER, DROP_ICON_GROUPS, DROP_LABEL, ENCOUNTER_LABEL, EVENT_LABEL,
@@ -221,6 +223,7 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
   const t = useT();
   const [open, setOpen] = useState(false);
   const [statsOpen, setStatsOpen] = useState(false);
+  const [dialog, setDialog] = useState(false);
   const patterns = enemyPatterns(data, group.baseStat);
   const enemy = group.code ? data.enemies[group.code] ?? null : null;
   const hasStats = !!chars && group.baseStat != null
@@ -232,27 +235,28 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
   const element = attributeType != null && chars
     ? chars.types.attribute[String(attributeType)] ?? null
     : null;
+  const name = dataText(lang, enemy?.name, enemy?.nameEn) || group.code
+    || t('stageUnnamedEnemy', { id: group.id ?? 0 });
+  const icon = (
+    <GameIcon manifest={icons} group="char"
+      names={[enemy?.iconPath, group.code ? `Icon_${group.code}` : null]}
+      size={10} borderRadius="md" />
+  );
 
   return (
     <Box borderTopWidth="1px" borderColor="whiteAlpha.100" pt={2}>
       <Flex gap={3} align="start" wrap="wrap">
-        <GameIcon manifest={icons} group="char"
-          names={[enemy?.iconPath, group.code ? `Icon_${group.code}` : null]}
-          size={10} borderRadius="md" />
+        <Box as="button" type="button" onClick={() => setDialog(true)} aria-label={name}
+          borderRadius="md" _hover={{ opacity: 0.8 }}>
+          {icon}
+        </Box>
         <Box minW={0} flex="1">
           <Wrap spacing={2} align="center">
             <WrapItem>
-              {group.code && entry ? (
-                <Text as={NextLink} href={characterHref(group.code)}
-                  fontSize="sm" fontWeight="bold" color="accent.200">
-                  {dataText(lang, enemy?.name, enemy?.nameEn) || group.code}
-                </Text>
-              ) : (
-                <Text fontSize="sm" fontWeight="bold">
-                  {dataText(lang, enemy?.name, enemy?.nameEn) || group.code
-                    || t('stageUnnamedEnemy', { id: group.id ?? 0 })}
-                </Text>
-              )}
+              <Text as="button" type="button" onClick={() => setDialog(true)} textAlign="left"
+                fontSize="sm" fontWeight="bold" color="accent.200" _hover={{ color: 'accent.300' }}>
+                {name}
+              </Text>
             </WrapItem>
             {group.code && (
               <WrapItem>
@@ -323,7 +327,89 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
           )}
         </Box>
       </Flex>
+      <Modal isOpen={dialog} onClose={() => setDialog(false)} size="3xl" scrollBehavior="inside" isCentered>
+        <ModalOverlay bg="blackAlpha.700" backdropFilter="blur(4px)" />
+        <ModalContent bg="gray.900" borderWidth="1px" borderColor="whiteAlpha.200"
+          mx={{ base: 2, md: 6 }} my={{ base: 2, md: 8 }}>
+          <ModalHeader>
+            <Flex align="center" gap={2.5} wrap="wrap" pr={8}>
+              {icon}
+              <Text fontSize="lg">{name}</Text>
+              {group.code && (
+                <Text fontFamily="mono" fontSize="xs" color="gray.500">{group.code}</Text>
+              )}
+              {isBoss && <Badge colorScheme="red" fontSize="0.6rem">{t('stageBoss')}</Badge>}
+            </Flex>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <VStack align="stretch" spacing={3}>
+              <EnemyFacts entry={entry} element={element} chars={chars} icons={icons} lang={lang} />
+              {entry?.desc && (
+                <Text fontSize="sm" color="gray.300" whiteSpace="pre-wrap">
+                  {dataText(lang, entry.desc, entry.descEn)}
+                </Text>
+              )}
+              {hasStats && chars && (
+                <Panel title={t('tabStats')}>
+                  <EnemyStats group={group} data={data} chars={chars} lang={lang} />
+                </Panel>
+              )}
+              {hasKit && chars && (
+                <Panel title={t('tabSkills')}>
+                  <VStack align="stretch" spacing={3}>
+                    {patterns && (
+                      <PatternRotation patterns={patterns} data={chars} icons={icons}
+                        skillOf={skillByType(kitGroup, chars)}
+                        states={kitStates(kitSkills(kitGroup, chars), lang)} />
+                    )}
+                    <SkillList group={kitGroup} defaultStar={entry?.defaultStar}
+                      data={chars} icons={icons} />
+                  </VStack>
+                </Panel>
+              )}
+            </VStack>
+          </ModalBody>
+          {group.code && entry && (
+            <ModalFooter borderTopWidth="1px" borderColor="whiteAlpha.100">
+              <Text as={NextLink} href={characterHref(group.code)} fontSize="sm"
+                color="accent.200" _hover={{ color: 'accent.300' }}>
+                {t('enemyFullPage')}
+              </Text>
+            </ModalFooter>
+          )}
+        </ModalContent>
+      </Modal>
     </Box>
+  );
+}
+
+const FACT_TABLES: TypeTable[] = ['role', 'position', 'faction'];
+
+// The wave's own element overrides the character's, so it is passed in rather than read from the entry.
+function EnemyFacts({ entry, element, chars, icons, lang }: {
+  entry: CharacterEntry | null; element: ReturnType<typeof typeOf>; chars: CharacterData | null;
+  icons: IconManifest | null; lang: Lang;
+}) {
+  const rows = [
+    { table: 'attribute' as TypeTable, row: element },
+    ...FACT_TABLES.map((table) => ({ table, row: typeOf(entry, chars?.types ?? null, table) })),
+  ].filter((r) => r.row);
+  if (!rows.length && !entry) return null;
+  return (
+    <Wrap spacing={3} align="center">
+      {rows.map(({ table, row }) => row && (
+        <WrapItem key={table}>
+          <HStack spacing={1.5}>
+            <Text fontSize="xs" color="gray.500">{pick(TYPE_LABEL[table], lang)}</Text>
+            <GameIcon manifest={icons} group="ui" names={typeIcons(row)} size={4}
+              tint={typeTint(row)} reserve={false} />
+            <Text fontSize="sm" color={row.color ?? 'gray.300'}>{typeLabel(row, lang)}</Text>
+          </HStack>
+        </WrapItem>
+      ))}
+      <BodyChips entry={entry} />
+    </Wrap>
   );
 }
 

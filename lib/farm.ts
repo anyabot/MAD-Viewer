@@ -513,7 +513,10 @@ export type FarmRoute = {
   covers: Record<string, number>;
   entry: { ref: string; amount: number } | null;
   cost: number | null;
+  swappedFrom?: StageEntry;
 };
+
+export type RouteAlternative = FarmRoute & { stars: number; open: boolean };
 
 export type RouteMode = 'greedy' | 'runs';
 
@@ -820,12 +823,128 @@ export type FarmPlan = {
   blocked: NeedPlan[];
   /** Trades the run list farms the source for. */
   exchanges: ExchangeUse[];
+  /** Route stage id -> same-chapter stages that drop everything the route covers. */
+  alternatives: Record<number, RouteAlternative[]>;
 };
+
+function perRunOf(growth: GrowthData, stage: StageEntry, key: string, kinds: Map<string, Need['kind']>): number {
+  return yieldPerRun(growth, stage, { key, kind: kinds.get(key) ?? 'material', required: 0, have: 0, short: 0 });
+}
+
+function madeBy(
+  growth: GrowthData, routes: FarmRoute[], needs: Need[], kinds: Map<string, Need['kind']>,
+): Map<string, number> {
+  const made = new Map<string, number>();
+  for (const need of needs) {
+    made.set(need.key, routes.reduce((sum, r) => sum + perRunOf(growth, r.stage, need.key, kinds) * r.runs, 0));
+  }
+  return made;
+}
+
+// Expected per run by ref; a tiered drop is one whose material carries a grade.
+function dropProfile(growth: GrowthData, stage: StageEntry): { top: number; high: Map<string, number>; plain: Map<string, number> } {
+  const all = new Map<string, number>();
+  for (const drop of stage.rewards?.repeat ?? []) {
+    if (!drop.ref) continue;
+    const [min, max] = drop.amount;
+    all.set(drop.ref, (all.get(drop.ref) ?? 0) + (max ? (min + max) / 2 : min) * (drop.chance ?? 1));
+  }
+  const grade = (ref: string) => growth.materials[ref]?.grade;
+  const top = Math.max(0, ...[...all.keys()].map((ref) => grade(ref) ?? 0));
+  const high = new Map<string, number>();
+  const plain = new Map<string, number>();
+  for (const [ref, amount] of all) {
+    const g = grade(ref);
+    if (g == null) plain.set(ref, amount);
+    else if (g === top) high.set(ref, amount);
+  }
+  return { top, high, plain };
+}
+
+function sameDrops(a: Map<string, number>, b: Map<string, number>): boolean {
+  return a.size === b.size && [...a].every(([ref, amount]) => Math.abs((b.get(ref) ?? -1) - amount) < 1e-6);
+}
+
+// Same top-tier drops at the same rates, same entry and untiered drops; only lower tiers differ.
+function equivalentStage(growth: GrowthData, a: StageEntry, b: StageEntry): boolean {
+  if (a.entry?.ref !== b.entry?.ref || a.entry?.amount !== b.entry?.amount) return false;
+  const pa = dropProfile(growth, a);
+  const pb = dropProfile(growth, b);
+  return pa.top > 0 && pa.top === pb.top && sameDrops(pa.high, pb.high) && sameDrops(pa.plain, pb.plain);
+}
+
+// The route's own run count on `stage`; null when a lower tier only the route supplies has no overflow to absorb its loss.
+function swapOn(
+  growth: GrowthData, stage: StageEntry, route: FarmRoute, made: Map<string, number>,
+  needs: Need[], kinds: Map<string, Need['kind']>,
+): FarmRoute | null {
+  if (!equivalentStage(growth, route.stage, stage)) return null;
+  const { runs } = route;
+  for (const need of needs) {
+    if (need.short <= 0) continue;
+    const had = made.get(need.key) ?? 0;
+    const after = had + (perRunOf(growth, stage, need.key, kinds)
+      - perRunOf(growth, route.stage, need.key, kinds)) * runs;
+    if (after < Math.min(need.short, had) - 1e-6) return null;
+  }
+  const traded = Object.entries(route.covers).filter(([key, amount]) => amount > 0 && !kinds.has(key));
+  if (traded.some(([key]) => perRunOf(growth, stage, key, kinds) < perRunOf(growth, route.stage, key, kinds))) {
+    return null;
+  }
+  const covers: Record<string, number> = Object.fromEntries(traded);
+  for (const need of needs) {
+    const perRun = need.short > 0 ? perRunOf(growth, stage, need.key, kinds) : 0;
+    if (perRun) covers[need.key] = Math.min(need.short, perRun * runs);
+  }
+  const entry = stage.entry ?? null;
+  return { stage, runs, covers, entry, cost: entry ? runs * entry.amount : null };
+}
+
+// A story chapter's normal and hard stages share one group.
+function sameChapter(a: StageEntry, b: StageEntry): boolean {
+  return !!a.group && a.group === b.group && a.id !== b.id;
+}
+
+function routeAlternatives(
+  growth: GrowthData, stages: StageEntry[], routes: FarmRoute[], route: FarmRoute, needs: Need[],
+  kinds: Map<string, Need['kind']>, clears: Record<string, number>, sweepOnly: boolean,
+): RouteAlternative[] {
+  const home = route.swappedFrom ?? route.stage;
+  const made = madeBy(growth, routes, needs, kinds);
+  const out: RouteAlternative[] = [];
+  for (const stage of stages) {
+    if (routes.some((r) => r.stage.id === stage.id)
+      || (stage.id !== home.id && !sameChapter(stage, home))) continue;
+    const alt = swapOn(growth, stage, route, made, needs, kinds);
+    if (!alt) continue;
+    const stars = starsOf(clears, stage);
+    out.push({ ...alt, stars, open: isFarmable(stars, sweepOnly) });
+  }
+  return out.sort((a, b) => Number(b.open) - Number(a.open) || (a.stage.order ?? 0) - (b.stage.order ?? 0));
+}
+
+// A swap that would leave a need short, or no longer fits (stage closed), is skipped.
+function applySwaps(
+  growth: GrowthData, stages: StageEntry[], needs: Need[], planned: FarmRoute[],
+  kinds: Map<string, Need['kind']>, swaps: Record<string, number>,
+  clears: Record<string, number>, sweepOnly: boolean,
+): FarmRoute[] {
+  const routes = [...planned];
+  routes.forEach((route, i) => {
+    const to = swaps[String(route.stage.id)];
+    const stage = to != null ? stages.find((s) => s.id === to) : undefined;
+    if (!stage || !sameChapter(stage, route.stage) || !isFarmable(starsOf(clears, stage), sweepOnly)
+      || routes.some((r) => r.stage.id === stage.id)) return;
+    const alt = swapOn(growth, stage, route, madeBy(growth, routes, needs, kinds), needs, kinds);
+    if (alt) routes[i] = { ...alt, swappedFrom: route.stage };
+  });
+  return routes;
+}
 
 export function farmPlan(
   growth: GrowthData, stages: StageEntry[], bill: Bill,
   inventory: Record<string, number>, clears: Record<string, number>, sweepOnly: boolean,
-  mode: RouteMode = 'greedy', exchanges: Exchange[] = [],
+  mode: RouteMode = 'greedy', exchanges: Exchange[] = [], swaps: Record<string, number> = {},
 ): FarmPlan {
   const needs = needsOf(growth, bill, inventory).map((need) => {
     const sources = sourcesFor(growth, stages, need, inventory, clears, sweepOnly);
@@ -837,8 +956,16 @@ export function farmPlan(
       locked: sources.length - open.length,
     };
   });
-  const { routes, exchanges: trades } = farmRoutes(
+  const planned = farmRoutes(
     growth, stages, needs.map((p) => p.need), inventory, clears, sweepOnly, mode, exchanges);
+  const kinds = new Map(needs.map((p) => [p.need.key, p.need.kind] as const));
+  const all = needs.map((p) => p.need);
+  const routes = applySwaps(growth, stages, all, planned.routes, kinds, swaps, clears, sweepOnly);
+  const alternatives: Record<number, RouteAlternative[]> = {};
+  for (const route of routes) {
+    alternatives[route.stage.id] = routeAlternatives(growth, stages, routes, route, all, kinds,
+      clears, sweepOnly);
+  }
   const cost: Record<string, number> = {};
   let runs = 0;
   for (const route of routes) {
@@ -854,7 +981,8 @@ export function farmPlan(
     cost,
     runs,
     blocked: needs.filter((p) => p.need.short > 0 && !p.best),
-    exchanges: trades,
+    exchanges: planned.exchanges,
+    alternatives,
   };
 }
 

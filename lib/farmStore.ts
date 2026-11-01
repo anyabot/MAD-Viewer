@@ -22,6 +22,8 @@ export type FarmState = {
   routeMode: RouteMode;
   useBoxes: boolean;
   useExchange: boolean;
+  /** Planned route stage id -> the same-chapter stage farmed instead. */
+  swaps: Record<string, number>;
 };
 
 type FarmStore = FarmState & {
@@ -58,11 +60,12 @@ type FarmStore = FarmState & {
   setRouteMode: (mode: RouteMode) => void;
   setUseBoxes: (on: boolean) => void;
   setUseExchange: (on: boolean) => void;
+  setSwap: (from: number, to: number | null) => void;
 };
 
 const EMPTY: FarmState = {
   inventory: {}, units: {}, clears: {}, sweepOnly: false, hardStages: true, boxOff: {}, routeMode: 'runs',
-  useBoxes: true, useExchange: true,
+  useBoxes: true, useExchange: true, swaps: {},
 };
 
 const stored = createPersisted<FarmState>({
@@ -81,6 +84,7 @@ function persist(state: FarmState): void {
     routeMode: state.routeMode,
     useBoxes: state.useBoxes,
     useExchange: state.useExchange,
+    swaps: state.swaps,
   });
 }
 
@@ -197,6 +201,11 @@ export const useFarm = create<FarmStore>((set) => ({
   setRouteMode: (mode) => set((s) => save(s, { routeMode: mode })),
   setUseBoxes: (on) => set((s) => save(s, { useBoxes: on })),
   setUseExchange: (on) => set((s) => save(s, { useExchange: on })),
+  setSwap: (from, to) => set((s) => {
+    const swaps = { ...s.swaps };
+    if (to == null || to === from) delete swaps[from]; else swaps[from] = to;
+    return save(s, { swaps });
+  }),
 }));
 
 function record(value: unknown): Record<string, number> {
@@ -254,15 +263,16 @@ function parse(doc: Partial<FarmState>): FarmState {
       ? doc.routeMode as RouteMode : EMPTY.routeMode,
     useBoxes: doc.useBoxes !== false,
     useExchange: doc.useExchange !== false,
+    swaps: record(doc.swaps),
   };
 }
 
 export function farmRecord(): FarmState {
   const {
-    inventory, units, clears, sweepOnly, hardStages, boxOff, routeMode, useBoxes, useExchange,
+    inventory, units, clears, sweepOnly, hardStages, boxOff, routeMode, useBoxes, useExchange, swaps,
   } = useFarm.getState();
   return {
-    inventory, units, clears, sweepOnly, hardStages, boxOff, routeMode, useBoxes, useExchange,
+    inventory, units, clears, sweepOnly, hardStages, boxOff, routeMode, useBoxes, useExchange, swaps,
   };
 }
 

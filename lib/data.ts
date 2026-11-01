@@ -703,7 +703,16 @@ export function loadSceneAudio(): Promise<SceneAudioIndex> {
 
 // Event, screen and cut-in codes have no entry, so callers fall back to the code.
 export function loadCharacters(): Promise<CharacterData> {
-  return fetchJson<CharacterData>('characters.json');
+  return fetchJson<CharacterData>('characters.json').then(dropPlaceholderTiers);
+}
+
+// A tier whose options repeat the tier below is an unreleased placeholder (T6 in 1.11.6).
+function dropPlaceholderTiers(data: CharacterData): CharacterData {
+  for (const slot of Object.values(data.equipment ?? {})) {
+    if (!slot.tiers) continue;
+    slot.tiers = slot.tiers.filter((row, i, all) => !i || JSON.stringify(row.options) !== JSON.stringify(all[i - 1].options));
+  }
+  return data;
 }
 
 // What the icon pipeline published, so an unpublished icon is never rendered.
