@@ -88,6 +88,11 @@ function DefenseCurve({ units, chars, target, build, timing, burst, lang, patter
 }
 
 export default function DpsPage() {
+  const t = useT();
+  return <><Seo title={t('navDps')} description={t('seoDescDps')} /><DpsContent /></>;
+}
+
+function DpsContent() {
   const spoilerUnit = useSpoilerUnit();
   const t = useT();
   const lang = useLang();
@@ -151,7 +156,6 @@ export default function DpsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Seo title={t('navDps')} description={t('seoDescDps')} />
       <PageHeader title={t('navDps')}
         subtitle={`${L('Expected damage and healing per second on one target', '대상 1명 기준 초당 기대 피해·치유')} · ${L('game version', '게임 버전')} ${FORMULA_GAME_VERSION}`} />
 

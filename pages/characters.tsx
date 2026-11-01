@@ -7,17 +7,20 @@ import { EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState,
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import {
   KIND_ICON, KIND_ORDER, TYPE_LABEL, characterName, characterSubName, filterRows,
-  isPlayable, rosterNote, skinsByCharacter, typeIcons, typeLabel, typeOf, typeTint,
+  hasProfile, isPlayable, rosterNote, skinsByCharacter, typeIcons, typeLabel, typeOf, typeTint,
   typeValue, type TypeTable,
 } from '@/lib/characters';
 import { characterIcon } from '@/lib/icons';
-import { useSpoilerFilter } from '@/lib/spoilers';
+import { spoilerFacts, useSpoilerFilter } from '@/lib/spoilers';
+import { readData } from '@/lib/staticData';
+import { StaticLinks, type StaticLink } from '@/components/staticLinks';
+import type { GetStaticProps } from 'next';
 import { useFilters } from '@/lib/filterStore';
 import { useCollection } from '@/lib/collectionStore';
 import { dataText, useLang, useT, type Lang } from '@/lib/i18n';
 import {
   KIND_LABEL, loadCharacters, loadIcons, loadSkinList,
-  type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
+  type CharacterData, type CharacterEntry, type EventIndex, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
 import { Seo } from '@/components/seo';
 import { characterHref } from '@/lib/routes';
@@ -27,12 +30,21 @@ const CHIP_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division'];
 
 const STARS = [1, 2, 3];
 
-export default function CharactersPage() {
+export const getStaticProps: GetStaticProps<{ links: StaticLink[] }> = () => {
+  const chars = readData<CharacterData>('characters.json');
+  const hidden = spoilerFacts(chars, readData<EventIndex>('events.json')).units;
+  const links = Object.values(chars.characters)
+    .filter((c) => !hidden.has(c.code) && hasProfile(c))
+    .map((c) => ({ href: characterHref(c.code), name: characterName(c, 'en') }));
+  return { props: { links } };
+};
+
+export default function CharactersPage({ links }: { links: StaticLink[] }) {
   const t = useT();
-  return <><Seo title={t('navCharacters')} description={t('seoDescCharacters')} /><CharactersContent /></>;
+  return <><Seo title={t('navCharacters')} description={t('seoDescCharacters')} /><CharactersContent links={links} /></>;
 }
 
-function CharactersContent() {
+function CharactersContent({ links }: { links: StaticLink[] }) {
   const t = useT();
   const lang = useLang();
   const [chars, setChars] = useState<CharacterData | null>(null);
@@ -99,7 +111,12 @@ function CharactersContent() {
   }, [chars]);
 
   if (error || !chars) {
-    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
+    return (
+      <>
+        <StaticLinks links={links} />
+        <LoadState loading error={error} labels={{ loading: t('loading'), error }} />
+      </>
+    );
   }
 
   const total = Object.values(chars.characters).filter(

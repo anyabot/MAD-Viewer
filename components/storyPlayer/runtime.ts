@@ -9,7 +9,8 @@ import type { FilterKind, FilterStack } from './filters';
 export type PrinterId = 'ExDialogue' | 'ExWide' | 'ExCenterSubtitle' | 'ExFullScreen' | string;
 
 export type StoryUi = {
-  print: (line: { author: string; actor: string | null; text: string; append: boolean; printer: PrinterId }) => void;
+  // resolves once the line has finished revealing
+  print: (line: { author: string; actor: string | null; text: string; append: boolean; printer: PrinterId; speed: number }) => Promise<void>;
   hidePrinter: () => void;
   waitInput: () => Promise<void>;
   choose: (options: string[]) => Promise<number>;
@@ -86,13 +87,18 @@ export class StoryRuntime {
   readonly unsupported = new Map<string, number>();
   private stopped = false;
   private track: string | null = null;
+  private trackVolume = 1;
   private vars: Vars = {};
   private loops = new Map<string, { active: boolean }>();
+  private readonly owners = new WeakMap<StoryActor, { pos: number; alpha: number; rotation: number }>();
   // an in-battle script plays over the battle music, so it leaves the track running when it ends
   keepMusic = false;
 
   constructor(readonly script: StoryScript, readonly stage: StoryStage, readonly index: StoryScriptIndex,
-    readonly lang: GameLang, readonly ui: StoryUi, readonly audio: SceneAudioIndex | null) {}
+    readonly lang: GameLang, readonly ui: StoryUi, readonly audio: SceneAudioIndex | null) {
+    // a bare `Label` is published without a fields object
+    for (const command of script.commands) command.fields ??= {};
+  }
 
   resumeMusic(): void {
     if (this.track && !this.stopped) this.music(this.track, 0.5);
@@ -107,12 +113,14 @@ export class StoryRuntime {
   async run(): Promise<void> {
     await this.walk(0, this.script.commands.length);
     await Promise.all(this.pending);
+    for (const loop of this.loops.values()) loop.active = false;
     this.ui.hidePrinter();
     if (!this.keepMusic) stopBgm(1);
     stopSfx(null, 1);
   }
 
   playTrack(path: string): void {
+    this.trackVolume = 1;
     this.music(path, 0.5);
   }
 
@@ -189,9 +197,14 @@ export class StoryRuntime {
     const state = { active: true };
     this.loops.set(id, state);
     const limit = num(c.fields.Count, Infinity);
-    this.pending.push((async () => {
-      for (let n = 0; n < limit && state.active && !this.stopped; n += 1) await this.walk(at + 1, end);
-    })());
+    // A background loop is not async work `Await` waits on (it ends only on `Active:false`), and a pass that took no time yields a frame.
+    void (async () => {
+      for (let n = 0; n < limit && state.active && !this.stopped; n += 1) {
+        const start = this.stage.time;
+        await this.walk(at + 1, end);
+        if (this.stage.time === start) await this.stage.tween(1 / 60, undefined, () => {});
+      }
+    })();
     return null;
   }
 
@@ -364,6 +377,12 @@ export class StoryRuntime {
       case 'CharacterAppearToRightCommand':
         await this.hold(this.appear(c, c.class.includes('Left') ? 1 : -1), wait);
         return null;
+      case 'CharacterDisappearCommand': {
+        const [id] = actorId(f.IdAndAppearance);
+        const actor = this.stage.actorMap.get(id);
+        if (actor) await this.hold(this.fadeOut(actor, num(f.Duration, DEFAULT_DURATION)), wait);
+        return null;
+      }
       case 'CharacterDisappearToLeftCommand':
       case 'CharacterDisappearToRightCommand':
         await this.hold(this.disappear(c, c.class.includes('Left') ? -1 : 1), wait);
@@ -433,8 +452,8 @@ export class StoryRuntime {
         const fade = num(f.FadeInDuration, 0);
         if (this.ui.sound()) {
           if (flag(f.Pause, false)) pauseBgm(fade);
-          else if (f.BgmPath) this.music(f.BgmPath, fade);
-        } else if (f.BgmPath && !flag(f.Pause, false)) this.track = f.BgmPath;
+          else if (f.BgmPath) { this.trackVolume = num(f.Volume, 1); this.music(f.BgmPath, fade); }
+        } else if (f.BgmPath && !flag(f.Pause, false)) { this.track = f.BgmPath; this.trackVolume = num(f.Volume, 1); }
         await this.hold(this.stage.tween(fade, undefined, () => {}), wait);
         return null;
       }
@@ -449,7 +468,7 @@ export class StoryRuntime {
         const fade = num(f.FadeInDuration, 0);
         if (f.SfxPath && this.ui.sound()) {
           const clip = this.clip(f.SfxPath);
-          if (clip) void playSfx(this.audio, clip, flag(f.Loop, false), fade);
+          if (clip) void playSfx(this.audio, clip, flag(f.Loop, false), fade, num(f.Volume, 1));
           else this.miss(`sound ${f.SfxPath}`);
         }
         await this.hold(this.stage.tween(fade, undefined, () => {}), wait);
@@ -482,7 +501,7 @@ export class StoryRuntime {
     this.track = path;
     const track = this.audio?.bgm?.find((t) => t.id === path || t.loop === path);
     if (!track) { this.miss(`music ${path}`); return; }
-    void playBgm(this.audio, track.loop, track.intro, fade);
+    void playBgm(this.audio, track.loop, track.intro, fade, this.trackVolume);
   }
 
   private actor(id: string): StoryActor {
@@ -506,12 +525,17 @@ export class StoryRuntime {
   private async print(c: StoryCommand, at: number): Promise<void> {
     const f = c.fields;
     const text = (c.texts && (c.texts as Record<string, string>)[this.lang]) || c.text || '';
-    const author = this.authorName(f.AuthorId, c, at);
+    const generic = this.script.commands.slice(at + 1, at + 3).find((x) => x.class === 'ParametrizeGeneric' && x.line === c.line);
+    // `Unknown` hides the speaker behind the label `CharacterManager.IsUnknownAuthorLabel` tests for.
+    const unknown = flag(f.Unknown ?? generic?.fields.Unknown, false);
+    const author = unknown && f.AuthorId ? '???' : this.authorName(f.AuthorId, c, at);
     if (this.highlight === 'auto') this.applyHighlight(f.AuthorId ?? null);
     const append = flag(f.Append, false) && !flag(f.ResetPrinter, true);
     const actor = f.AuthorId ? this.clones.get(f.AuthorId) ?? f.AuthorId : null;
-    this.ui.print({ author, actor, text, append, printer: f.PrinterId || this.printer });
-    if (flag(f.WaitForInput, true)) await this.ui.waitInput();
+    const revealed = this.ui.print({ author, actor, text, append, printer: f.PrinterId || this.printer, speed: num(f.RevealSpeed, 1) });
+    const skip = flag(generic?.fields.SkipWaitingInput, false);
+    if (flag(f.WaitForInput, true) && !skip) await this.ui.waitInput();
+    else await revealed;
   }
 
   private applyHighlight(speaker: string | null): void {
@@ -610,15 +634,24 @@ export class StoryRuntime {
     return next;
   }
 
-  private async tweenActor(actor: StoryActor, to: { x: number; y: number; z: number }, alpha: number,
-    rotation: number, duration: number, ease?: string): Promise<void> {
-    const from = { ...actor.pos };
-    const fromAlpha = actor.alpha;
-    const fromRotation = actor.rotation;
+  // Per-property tweens, a newer one taking its property over (Naninovel's actor tweens), so a face change mid-move cannot freeze the move.
+  private async tweenActor(actor: StoryActor, change: { pos?: { x: number; y: number; z: number }; alpha?: number; rotation?: number },
+    duration: number, ease?: string): Promise<void> {
+    const from = { pos: { ...actor.pos }, alpha: actor.alpha, rotation: actor.rotation };
+    const owners = this.owners.get(actor) ?? { pos: 0, alpha: 0, rotation: 0 };
+    this.owners.set(actor, owners);
+    const mine = {
+      pos: change.pos ? ++owners.pos : -1,
+      alpha: change.alpha != null ? ++owners.alpha : -1,
+      rotation: change.rotation != null ? ++owners.rotation : -1,
+    };
     await this.stage.tween(duration, ease ?? ACTOR_EASE, (t) => {
-      actor.pos = { x: from.x + (to.x - from.x) * t, y: from.y + (to.y - from.y) * t, z: from.z + (to.z - from.z) * t };
-      actor.alpha = fromAlpha + (alpha - fromAlpha) * t;
-      actor.rotation = fromRotation + (rotation - fromRotation) * t;
+      const to = change.pos;
+      if (to && owners.pos === mine.pos) {
+        actor.pos = { x: from.pos.x + (to.x - from.pos.x) * t, y: from.pos.y + (to.y - from.pos.y) * t, z: from.pos.z + (to.z - from.pos.z) * t };
+      }
+      if (change.alpha != null && owners.alpha === mine.alpha) actor.alpha = from.alpha + (change.alpha - from.alpha) * t;
+      if (change.rotation != null && owners.rotation === mine.rotation) actor.rotation = from.rotation + (change.rotation - from.rotation) * t;
       actor.apply();
     });
   }
@@ -632,14 +665,19 @@ export class StoryRuntime {
     if (f.LookDirection) actor.look = lookOf(f.LookDirection);
     const tint = color(f.TintColor);
     if (tint != null) actor.tint = tint;
+    if (f.TimeScale) actor.setTimeScale(num(f.TimeScale, 1));
     const show = flag(f.Visible, true);
-    if (show && !actor.visible) { actor.visible = true; actor.alpha = 0; }
-    const to = this.target(actor, f.ScenePosition, f.Position);
+    const appearing = show && !actor.visible;
+    if (appearing) { actor.visible = true; actor.alpha = 0; }
+    const moves = !!(f.ScenePosition || f.Position);
     // Unity z turns counter-clockwise; the actor keeps a clockwise angle, as `CharacterRollCommand` does.
     const z = f.Rotation ? parts(f.Rotation)[2] : null;
-    const rotation = z != null ? -z : actor.rotation;
     const duration = num(f.Duration, DEFAULT_DURATION);
-    await this.tweenActor(actor, to, show ? 1 : 0, rotation, duration, f.EasingTypeName);
+    await this.tweenActor(actor, {
+      pos: moves ? this.target(actor, f.ScenePosition, f.Position) : undefined,
+      alpha: !show ? 0 : appearing || actor.alpha < 1 ? 1 : undefined,
+      rotation: z != null ? -z : undefined,
+    }, duration, f.EasingTypeName);
     if (!show) { actor.visible = false; actor.apply(); }
   }
 
@@ -649,8 +687,8 @@ export class StoryRuntime {
     let scene = { x: now.x, y: now.y };
     let z = actor.pos.z;
     if (value) {
+      // An undefined name (`Center.Near`) fails `ParseFloats` in the client, which skips the move; so does this.
       const resolved = /^[\d\s,.+-]*$/.test(value) ? value : VARIABLES[value] ?? '';
-      if (!resolved && value) this.miss(`Destination ${value}`);
       const [x, y, dz] = parts(resolved);
       scene = { x: x ?? scene.x, y: y ?? scene.y };
       if (dz != null) z = dz;
@@ -671,9 +709,10 @@ export class StoryRuntime {
     if (appearance) actor.setFace(appearance);
     if (f.LookDirection) actor.look = lookOf(f.LookDirection);
     const show = flag(f.Visible, true);
-    if (show && !actor.visible) { actor.visible = true; actor.alpha = 0; }
+    const appearing = show && !actor.visible;
+    if (appearing) { actor.visible = true; actor.alpha = 0; }
     const to = this.destination(actor, f.Destination, f.Offset);
-    await this.tweenActor(actor, to, show ? 1 : 0, actor.rotation, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+    await this.tweenActor(actor, { pos: to, alpha: !show ? 0 : appearing ? 1 : undefined }, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
     if (!show) { actor.visible = false; actor.apply(); }
   }
 
@@ -682,7 +721,7 @@ export class StoryRuntime {
     for (const step of steps) {
       const now = worldToScene(actor.pos.x, actor.pos.y);
       const world = sceneToWorld(step.x ?? now.x, step.y ?? now.y);
-      await this.tweenActor(actor, { ...actor.pos, x: world.x, y: world.y }, actor.alpha, actor.rotation, step.duration, ease);
+      await this.tweenActor(actor, { pos: { ...actor.pos, x: world.x, y: world.y } }, step.duration, ease);
     }
   }
 
@@ -692,9 +731,10 @@ export class StoryRuntime {
     if (!name) return;
     const actor = this.actor(id);
     await actor.ready;
-    if (this.ui.sound()) {
+    const volume = num(c.fields.Volume, 1);
+    if (this.ui.sound() && volume > 0) {
       const clip = this.emoteClip(name);
-      if (clip) void playSfx(this.audio, clip, false, 0);
+      if (clip) void playSfx(this.audio, clip, false, 0, volume);
     }
     if (!(await actor.emote(name))) this.miss(`emote ${name}`);
   }
@@ -831,6 +871,14 @@ export class StoryRuntime {
   // A popup image is a world sprite at 100 pixels per unit, centred unless placed, faded by Duration.
   private async popup(c: StoryCommand): Promise<void> {
     const f = c.fields;
+    // Inferred: `Visible:false` naming no image hides every popup on screen.
+    if (!f.ImageId && !flag(f.Visible, true)) {
+      const shown = this.stage.popupSprites().filter((s) => s.visible);
+      const from = shown.map((s) => s.alpha);
+      await this.stage.tween(num(f.Duration, DEFAULT_DURATION), f.EasingTypeName, (t) => { shown.forEach((s, i) => { s.alpha = from[i] * (1 - t); }); });
+      shown.forEach((s) => { s.visible = false; });
+      return;
+    }
     const entry = this.stage.fx?.popups[f.ImageId ?? ''];
     if (!entry) { this.miss(`popup ${f.ImageId}`); return; }
     const sprite = await this.stage.popupSprite(f.ImageId!, entry.image, entry.size);
@@ -972,7 +1020,7 @@ export class StoryRuntime {
     await actor.ready;
     if (f.Pivot) actor.setRollPivot(num(f.Pivot, 0));
     const target = f.To ? num(f.To, actor.rotation) : actor.rotation + num(f.By, 0);
-    await this.tweenActor(actor, actor.pos, actor.alpha, target, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+    await this.tweenActor(actor, { rotation: target }, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
   }
 
   private async appear(c: StoryCommand, side: number): Promise<void> {
@@ -987,7 +1035,7 @@ export class StoryRuntime {
     actor.visible = true;
     actor.alpha = 1;
     actor.apply();
-    await this.tweenActor(actor, to, 1, actor.rotation, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+    await this.tweenActor(actor, { pos: to }, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
   }
 
   private async disappear(c: StoryCommand, side: number): Promise<void> {
@@ -996,13 +1044,13 @@ export class StoryRuntime {
     const actor = this.actor(id);
     await actor.ready;
     const to = { ...actor.pos, x: sceneToWorld(side > 0 ? 150 : -50, 0).x };
-    await this.tweenActor(actor, to, 1, actor.rotation, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+    await this.tweenActor(actor, { pos: to }, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
     actor.visible = false;
     actor.apply();
   }
 
   private async fadeOut(actor: StoryActor, duration: number): Promise<void> {
-    await this.tweenActor(actor, actor.pos, 0, actor.rotation, duration);
+    await this.tweenActor(actor, { alpha: 0 }, duration);
     actor.visible = false;
     actor.alpha = 1;
     actor.apply();

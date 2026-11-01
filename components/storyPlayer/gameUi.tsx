@@ -206,17 +206,32 @@ function Choices({ options, pick, fx }: { options: string[]; pick: (i: number) =
   );
 }
 
+// The `Dialogue_Place` clip (2.833 s), as keyframe percentages: the box opens, the text bounces in, holds, and it all retracts.
+const PLACE_KEYFRAMES = `
+@keyframes storyPlaceBox { 0%, 5.9% { width: 0 } 17.6%, 88.2% { width: 500px } 94.1%, 100% { width: 0 } }
+@keyframes storyPlaceBar { 0% { height: 0 } 5.9%, 94.1% { height: 120px } 100% { height: 0 } }
+@keyframes storyPlaceTitle { 0%, 17.6% { opacity: 0 } 23.5%, 82.4% { opacity: 1 } 88.2%, 100% { opacity: 0 } }
+@keyframes storyPlaceTitleY { 0% { transform: translateY(-50%) } 20.6% { transform: translateY(calc(-50% + 10px)) } 26.5%, 79.4% { transform: translateY(-50%) } 85.3% { transform: translateY(calc(-50% + 10px)) } 100% { transform: translateY(-50%) } }
+@keyframes storyPlaceTag { 0%, 17.6% { opacity: 0; transform: translateY(0) } 19.4% { transform: translateY(7px) } 23.5% { opacity: 1 } 26.5% { transform: translateY(0) } 79.4% { transform: translateY(0) } 82.4% { opacity: 1 } 86.5% { transform: translateY(7px) } 88.2%, 100% { opacity: 0; transform: translateY(0) } }
+`;
+
 function Place({ text, fx }: { text: string; fx: FxIndex | null }) {
   // EcPlace Info: 500 x 120 at (140, 200) from the top left, black 0.6 fading right, a cyan bar, a faint slash pattern, the title and a PLACE rule.
+  const clip = (name: string) => `${name} 2.833s linear forwards`;
   return (
-    <div style={{ position: 'absolute', left: 140, top: 200, width: 500, height: 120 }}>
-      <Sliced name="Bg_gradation128" art={fx?.ui} tint="rgba(0, 0, 0, 0.6)" width={500} height={120} style={{ left: 0, top: 0 }} />
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: ui('M4_Inven_SlashLine'), backgroundSize: '32px 32px', opacity: 0.05 }} />
-      <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 10, background: 'rgb(0, 245, 255)' }} />
-      <div style={{ position: 'absolute', left: 40, top: 60 - 15, transform: 'translateY(-50%)', fontSize: 40, color: '#fff', whiteSpace: 'nowrap' }}>{text}</div>
-      <div style={{ position: 'absolute', left: 40, width: 400, bottom: 24, height: 2, background: 'rgba(0, 245, 255, 0.2)' }}>
-        <div style={{ position: 'absolute', left: 0, bottom: 8, fontSize: 15, color: 'rgba(255, 255, 255, 0.2)' }}>PLACE</div>
+    <div style={{ position: 'absolute', left: 140, top: 200, height: 120 }}>
+      <style>{PLACE_KEYFRAMES}</style>
+      <div style={{ position: 'absolute', left: 0, top: 0, height: 120, overflow: 'hidden', animation: clip('storyPlaceBox') }}>
+        <Sliced name="Bg_gradation128" art={fx?.ui} tint="rgba(0, 0, 0, 0.6)" width={500} height={120} style={{ left: 0, top: 0 }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, width: 500, height: 120, backgroundImage: ui('M4_Inven_SlashLine'), backgroundSize: '32px 32px', opacity: 0.05 }} />
       </div>
+      <div style={{ position: 'absolute', left: 0, top: 0, width: 500, height: 120 }}>
+        <div style={{ position: 'absolute', left: 40, top: 60 - 15, fontSize: 40, color: '#fff', whiteSpace: 'nowrap', animation: `${clip('storyPlaceTitle')}, ${clip('storyPlaceTitleY')}` }}>{text}</div>
+        <div style={{ position: 'absolute', left: 40, width: 400, bottom: 24, height: 2, background: 'rgba(0, 245, 255, 0.2)' }}>
+          <div style={{ position: 'absolute', left: 0, bottom: 8, fontSize: 15, color: 'rgba(255, 255, 255, 0.2)', animation: clip('storyPlaceTag') }}>PLACE</div>
+        </div>
+      </div>
+      <div style={{ position: 'absolute', left: 0, top: 0, width: 10, background: 'rgb(0, 245, 255)', animation: clip('storyPlaceBar') }} />
     </div>
   );
 }
@@ -272,7 +287,7 @@ export function GameUi({ line, choices, place, fx, printerRef, bark }: {
     <div ref={hostRef} style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: choices ? 'auto' : 'none' }}>
       <style>{'@keyframes storyIndicator { from { opacity: 0 } to { opacity: 1 } }'}</style>
       <div style={{ position: 'absolute', left: 0, top: 0, width: CANVAS_W, height: CANVAS_H, transform: `scale(${scale})`, transformOrigin: '0 0' }}>
-        {place && <Place text={place} fx={fx} />}
+        {place && <Place key={place} text={place} fx={fx} />}
         {line && (centered ? <Centered line={line} printerRef={printerRef} /> : <Dialogue line={line} fx={fx} printerRef={printerRef} />)}
         {choices && <Choices options={choices.options} pick={choices.pick} fx={fx} />}
         {bark && <Bark bark={bark} fx={fx} />}

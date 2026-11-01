@@ -16,6 +16,11 @@ import {
 import { characterHref } from '@/lib/routes';
 
 export default function ArtistsPage() {
+  const t = useT();
+  return <><Seo title={t('navArtists')} description={t('seoDescArtists')} /><ArtistsContent /></>;
+}
+
+function ArtistsContent() {
   const spoilerUnit = useSpoilerUnit();
   const t = useT();
   const lang = useLang();
@@ -56,7 +61,6 @@ export default function ArtistsPage() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Seo title={t('navArtists')} description={t('seoDescArtists')} />
       <PageHeader title={t('navArtists')} />
       <Grid gap={4} templateColumns={{ base: '1fr', lg: 'repeat(2, minmax(0, 1fr))' }}>
         {artists.map(([name, list]) => (

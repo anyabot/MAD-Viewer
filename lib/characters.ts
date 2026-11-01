@@ -96,6 +96,11 @@ export function isPlayable(entry: CharacterEntry): boolean {
   return entry.characterType === 1;
 }
 
+// A page with nothing past a name stays out of search.
+export function hasProfile(entry: CharacterEntry): boolean {
+  return isPlayable(entry) || !!(entry.descEn || entry.desc);
+}
+
 // A playable character and a non-character asset both go unbadged.
 const ROSTER_NOTE: Record<string, Localized> = {
   unreleased: { en: 'UNRELEASED', ko: '미출시' },

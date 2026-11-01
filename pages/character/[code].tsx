@@ -41,7 +41,7 @@ import {
   giftsOf, isPlayable, labelOf, lockedUntilText,
   lineMembers,
   membersOfType,
-  rosterNote, skillGrades, skinIconNames,
+  hasProfile, rosterNote, skillDescs, skillGrades, skinIconNames,
   skinsByCharacter,
   statGrades, statText, typeIcons, typeLabel, typeOf, typeTint, typeValue,
   type EquipInput, type TypeTable,
@@ -55,7 +55,40 @@ import {
 
 const INFO_TABLES: TypeTable[] = ['attribute', 'role', 'position', 'division', 'faction'];
 
-type CharacterSeo = { name: string; desc: string; image: string | null };
+type CharacterSeo = {
+  name: string; desc: string; image: string | null; index: boolean;
+  facts: [string, string][]; skills: { name: string; desc: string }[];
+};
+
+function staticFacts(entry: CharacterEntry, data: CharacterData): [string, string][] {
+  const rows: [string, string][] = [];
+  if (entry.defaultStar) rows.push([text('en', 'rarity'), '★'.repeat(entry.defaultStar)]);
+  for (const table of INFO_TABLES) {
+    const label = typeLabel(typeOf(entry, data.types, table), 'en');
+    if (label) rows.push([TYPE_LABEL[table].en, label]);
+  }
+  const facts: [UiKey, string | null | undefined][] = [
+    ['rowArtist', entry.artistEn || entry.artist],
+    ['rowBirthday', birthdayText(entry, 'en')],
+    ['rowCv', entry.cvEn || entry.cv],
+    ['rowHobby', entry.hobbyEn || entry.hobby],
+    ['rowSpecialty', entry.specialtyEn || entry.specialty],
+    ['rowLikes', entry.likesEn || entry.likes],
+  ];
+  for (const [key, value] of facts) if (value) rows.push([text('en', key), value]);
+  return rows;
+}
+
+function staticSkills(entry: CharacterEntry, data: CharacterData): { name: string; desc: string }[] {
+  const set = data.skillSets[String(entry.skillSetGroup ?? '')];
+  const grades = skillGrades(entry, data);
+  const ids = set && grades.length ? set[String(grades[grades.length - 1])] ?? [] : [];
+  return ids.flatMap((id) => {
+    const skill = data.skills[String(id)];
+    const desc = skill ? plainText(skillDescs(skill, 'en').at(-1), 400) : '';
+    return skill && desc ? [{ name: skill.nameEn || skill.name || '', desc }] : [];
+  });
+}
 
 export const getStaticPaths: GetStaticPaths = () => ({
   paths: Object.keys(readData<CharacterData>('characters.json').characters).map((code) => ({ params: { code } })),
@@ -76,6 +109,9 @@ export const getStaticProps: GetStaticProps<{ seo: CharacterSeo | null }, { code
         name: characterName(entry, 'en'),
         desc: plainText(entry.descEn || entry.desc, 300),
         image: characterIcon(readData<IconManifest>('icons.json'), entry, skins),
+        index: hasProfile(entry),
+        facts: staticFacts(entry, chars),
+        skills: staticSkills(entry, chars),
       },
     },
   };
@@ -133,7 +169,7 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
   const live = code && chars ? chars.characters[code] ?? null : null;
   const seoName = live ? characterName(live, lang) : seo?.name;
   const head = (
-    <Seo title={seoName} noindex={!seo} image={seo?.image}
+    <Seo title={seoName} noindex={!seo?.index} image={seo?.image}
       description={seoName ? plainText(`${t('seoDescCharacter', { name: seoName })} ${seo?.desc ?? ''}`) : undefined}
       jsonLd={seo && code ? breadcrumbs([
         { name: 'MAD Viewer', path: '/' },
@@ -150,6 +186,13 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
           <VStack align="stretch" spacing={2} mb={4}>
             <Text as="h1" fontSize="2xl" fontWeight="bold">{seo.name}</Text>
             {seo.desc && <Text fontSize="sm" color="gray.400">{seo.desc}</Text>}
+            {seo.facts.map(([label, value]) => (
+              <Text key={label} fontSize="sm"><Text as="span" color="gray.500">{label}: </Text>{value}</Text>
+            ))}
+            {seo.skills.length > 0 && <Text as="h2" fontSize="lg" fontWeight="bold">{t('tabSkills')}</Text>}
+            {seo.skills.map((s, i) => (
+              <Text key={i} fontSize="sm"><Text as="strong">{s.name}</Text> — {s.desc}</Text>
+            ))}
           </VStack>
         )}
         <LoadState loading error={error} labels={{ loading: t('loading'), error }} />

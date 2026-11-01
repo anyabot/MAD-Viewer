@@ -108,6 +108,11 @@ function useCopy(): [string, (text: string) => void] {
 
 export default function PartyPage() {
   const t = useT();
+  return <><Seo title={t('navParty')} description={t('seoDescParty')} /><PartyContent /></>;
+}
+
+function PartyContent() {
+  const t = useT();
   const lang = useLang();
   const router = useRouter();
   const [chars, setChars] = useState<CharacterData | null>(null);
@@ -163,7 +168,6 @@ export default function PartyPage() {
   return (
     <PageCtx.Provider value={ctx}>
     <VStack align="stretch" spacing={4}>
-      <Seo title={t('navParty')} description={t('seoDescParty')} />
       <PageHeader title={t('navParty')} />
       <Flex wrap="wrap" gap={2} align="center">
         <Input size="sm" maxW={{ base: '100%', md: '22rem' }} value={code}
