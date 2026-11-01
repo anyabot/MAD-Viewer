@@ -59,6 +59,16 @@ function opsOf(b: SkillBehaviour): SkillOp[] {
   return [...(b.hits ?? []).flatMap((h) => h.ops), ...(b.triggers ?? []).flatMap((t) => t.ops)];
 }
 
+// The grades of one passive share their leading words (Entertainment I / II / III).
+function readerName(readers: SkillEntry[], lang: Lang): string {
+  const names = [...new Set(readers.map((s) => plain(dataText(lang, s.name, s.nameEn))).filter(Boolean))];
+  if (!names.length) return '';
+  const words = names.map((n) => n.split(' '));
+  let n = 0;
+  while (n < words[0].length && words.every((ws) => ws[n] === words[0][n])) n++;
+  return words[0].slice(0, n).join(' ');
+}
+
 // Unnamed internal states get a letter per kit, so an apply and its expire read as the same state.
 export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
   const named = new Map<string, string>();
@@ -107,7 +117,10 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
       named.set(id, plain(dataText(lang, rows[0].skill.name, rows[0].skill.nameEn)));
     } else if (rows.every((r) => !r.start && r.self && r.short && (r.skill.behaviour?.hits ?? []).length)) {
       signals.set(id, [...new Set(rows.map((r) => label(r.skill)))]);
-      named.set(id, lang === 'ko' ? '스킬 사용 표식' : 'a skill-use mark');
+      const reader = readerName(skills.filter((s) => behavioursOf(s).some((b) => (b.triggers ?? []).some((t) => t.value?.includes(id)))), lang);
+      named.set(id, reader
+        ? (lang === 'ko' ? `${reader} 발동 표식` : `${/^[aeiou]/i.test(reader) ? 'an' : 'a'} ${reader} trigger mark`)
+        : (lang === 'ko' ? '스킬 사용 표식' : 'a skill-use mark'));
     }
   }
   const letters = new Map<string, string>();
