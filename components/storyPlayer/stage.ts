@@ -1,6 +1,9 @@
 import { loadSkinArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
 import { storyBackgroundUrl, type StoryScriptIndex } from '@/lib/data';
 import { easeOf } from './ease';
+import { FilterStack } from './filters';
+import { createEmoteBubble, type EmoteBubble } from '@/components/skinViewer/emote';
+import { emotePlacement, type EmoticonManifest } from '@/lib/emoticons';
 
 // CameraConfiguration: 2340x1080 reference at 100 PPU, orthographic size 5.4, camera at the origin.
 export const SCENE_W = 23.4;
@@ -24,6 +27,17 @@ type Layout = {
 type Tween = { elapsed: number; duration: number; ease: (t: number) => number; apply: (t: number) => void; done: () => void };
 
 export type Vec3 = { x: number; y: number; z: number };
+
+export type Transition = {
+  type: 'fade' | 'slide' | 'blink' | 'iris' | 'circle';
+  amount: number;
+  color: number;
+  x: number;
+  y: number;
+  softness: number;
+  roundness: number;
+  side: string;
+};
 
 export function sceneToWorld(x: number, y: number): { x: number; y: number } {
   return { x: -SCENE_W / 2 + (x / 100) * SCENE_W, y: -SCENE_H / 2 + (y / 100) * SCENE_H };
@@ -50,16 +64,21 @@ export class StoryActor {
   visible = false;
   alpha = 1;
   rotation = 0;
+  shake = { x: 0, y: 0 };
+  private rollPivot: number | null = null;
   tint = 0xffffff;
   dimmed = false;
   face = '';
   holder: any;
+  private bubble: EmoteBubble | null = null;
+  readonly filters: FilterStack;
   spine: any = null;
   layout: Layout | null = null;
   ready: Promise<void>;
 
   constructor(readonly stage: StoryStage, readonly id: string, readonly rig: string | null, readonly facing: number) {
     this.holder = new stage.PIXI.Container();
+    this.filters = new FilterStack(stage.PIXI, () => this.spine, () => stage.pixelScale);
     this.holder.visible = false;
     stage.actors.addChild(this.holder);
     this.ready = rig ? this.load(rig).catch((e) => stage.report(`rig ${rig}: ${String(e)}`)) : Promise.resolve();
@@ -93,6 +112,10 @@ export class StoryActor {
     this.layout = layout;
     this.spine = spine;
     this.holder.addChild(spine);
+    this.bubble = createEmoteBubble({
+      PIXI: this.stage.PIXI, scene: this.holder, spine, now: () => this.stage.time, isDestroyed: () => this.holder.destroyed,
+    });
+    this.stage.app.ticker.add(this.bubble.tick);
     if (this.face) this.setFace(this.face);
     this.apply();
   }
@@ -102,13 +125,43 @@ export class StoryActor {
     const scale = depthScale(this.pos.z);
     const heightType = this.layout?.actor?.heightType ?? 1;
     const flip = this.look && this.facing && this.look !== this.facing ? -1 : 1;
-    this.holder.position.set(this.pos.x, -(this.pos.y + heightOffset(scale, heightType)));
+    this.holder.position.set(this.pos.x + this.shake.x, -(this.pos.y + this.shake.y + heightOffset(scale, heightType)));
     this.holder.scale.set(scale * flip, scale);
-    this.holder.rotation = -this.rotation * (Math.PI / 180);
+    this.holder.rotation = this.rotation * (Math.PI / 180);
+    this.applyRollPivot();
     this.holder.zIndex = -this.pos.z;
     this.holder.alpha = this.alpha;
     this.holder.visible = this.visible && this.alpha > 0;
     this.holder.tint = this.dimmed ? multiply(this.tint, 0x8c8c8c) : this.tint;
+  }
+
+  // Inferred: a roll pivot is a height percent of the setup bounds, 0 at the feet; rotation turns about it instead of the actor pivot.
+  setRollPivot(percent: number): void {
+    this.rollPivot = percent;
+    this.apply();
+  }
+
+  private applyRollPivot(): void {
+    const bounds = (this.layout as { bounds?: { y: number; height: number } } | null)?.bounds;
+    if (this.rollPivot == null || !bounds || !this.spine) { this.holder.pivot.set(0, 0); return; }
+    const data = this.layout?.world?.skeleton?.dataScale ?? 1;
+    const render = (this.layout?.world?.ppu ?? 100) / 100;
+    const pivotY = this.layout?.actor?.pivot?.y ?? 0;
+    const y = (bounds.y + (bounds.height * this.rollPivot) / 100) * data;
+    const local = (pivotY - y) * render;
+    this.holder.pivot.set(0, local);
+    this.holder.position.y += local * this.holder.scale.y;
+  }
+
+  // CharacterEmoticon on the rig's slot, mirrored when the actor faces right; resolves when the particles have died.
+  emote(name: string): Promise<boolean> {
+    const placement = emotePlacement(this.stage.emoticons, name, this.rig?.replace(/^st_/, '').toUpperCase());
+    if (!placement || !this.bubble) return Promise.resolve(false);
+    return new Promise((done) => this.bubble!.show(placement, () => done(true)));
+  }
+
+  dispose(): void {
+    if (this.bubble) { this.stage.app.ticker.remove(this.bubble.tick); this.bubble.hide(); }
   }
 
   // An appearance is a face clip on track 1, as on the lobby; `default` returns the face to the body's keys.
@@ -138,9 +191,13 @@ export class StoryStage {
   private bg: { name: string; sprite: any } | null = null;
   readonly actorMap = new Map<string, StoryActor>();
   camera = { x: 0, y: 0, zoom: 0 };
-  coverColor = 0x000000;
-  coverAlpha = 0;
+  shake = { x: 0, y: 0 };
+  transition: Transition = { type: 'fade', amount: 0, color: 0x000000, x: 0.5, y: 0.5, softness: 0, roundness: 0, side: 'Left' };
   speed = 1;
+  time = 0;
+  emoticons: EmoticonManifest | null = null;
+  readonly backgroundFilters: FilterStack;
+  readonly screenFilters: FilterStack;
   private width = 1;
   private height = 1;
   private readonly tick = (ticker: any) => this.update((ticker.deltaMS / 1000) * this.speed);
@@ -157,10 +214,13 @@ export class StoryStage {
     this.root.addChild(this.cam, this.cover);
     app.stage.addChild(this.root);
     app.ticker.add(this.tick);
+    this.backgroundFilters = new FilterStack(PIXI, () => this.backdrop, () => this.pixelScale);
+    this.screenFilters = new FilterStack(PIXI, () => this.cam, () => this.pixelScale);
   }
 
   dispose(): void {
     this.app.ticker.remove(this.tick);
+    for (const actor of this.actorMap.values()) actor.dispose();
     this.root.destroy({ children: true });
   }
 
@@ -171,7 +231,15 @@ export class StoryStage {
     this.drawCover();
   }
 
+  get pixelScale(): number {
+    return this.height / SCENE_H / 100;
+  }
+
   private update(dt: number): void {
+    this.time += dt;
+    for (const stack of [this.backgroundFilters, this.screenFilters, ...[...this.actorMap.values()].map((a) => a.filters)]) {
+      stack.apply(this.time);
+    }
     for (const tween of [...this.tweens]) {
       tween.elapsed += dt;
       const t = tween.duration > 0 ? Math.min(1, tween.elapsed / tween.duration) : 1;
@@ -198,14 +266,54 @@ export class StoryStage {
     const k = this.height / 2 / size;
     this.cam.position.set(this.width / 2, this.height / 2);
     this.cam.scale.set(k);
-    this.cam.pivot.set(this.camera.x, -this.camera.y);
+    this.cam.pivot.set(this.camera.x + this.shake.x, -(this.camera.y + this.shake.y));
   }
 
+  // The fade panel: `amount` is how much of the screen is covered, drawn as the command's mask shape.
   drawCover(): void {
-    this.cover.clear();
-    this.cover.rect(0, 0, this.width, this.height).fill({ color: this.coverColor, alpha: 1 });
-    this.cover.alpha = this.coverAlpha;
-    this.cover.visible = this.coverAlpha > 0;
+    const { type, amount, color, x, y, softness, roundness, side } = this.transition;
+    const w = this.width;
+    const h = this.height;
+    const g = this.cover;
+    g.clear();
+    g.alpha = 1;
+    g.visible = amount > 0.001;
+    if (!g.visible) return;
+    const fill = { color, alpha: 1 };
+    if (type === 'fade') {
+      g.rect(0, 0, w, h).fill(fill);
+      g.alpha = Math.min(1, amount);
+    } else if (type === 'slide') {
+      const horizontal = side === 'Left' || side === 'Right';
+      const span = (horizontal ? w : h) * amount;
+      const soft = (horizontal ? w : h) * 0.2 * softness;
+      const steps = soft > 0 ? 8 : 0;
+      const band = (from: number, size: number, alpha: number) => {
+        const start = side === 'Left' || side === 'Up' ? from : (horizontal ? w : h) - from - size;
+        if (horizontal) g.rect(start, 0, size, h).fill({ color, alpha }); else g.rect(0, start, w, size).fill({ color, alpha });
+      };
+      band(0, Math.max(0, span - soft), 1);
+      for (let i = 0; i < steps; i += 1) band(span - soft + (soft * i) / steps, soft / steps, 1 - (i + 0.5) / steps);
+    } else if (type === 'blink') {
+      const line = (1 - y) * h;
+      const top = line * amount;
+      const bottom = (h - line) * amount;
+      const curve = h * 0.25 * roundness * amount;
+      g.moveTo(0, 0).lineTo(w, 0).lineTo(w, top).quadraticCurveTo(w / 2, top + curve, 0, top).closePath().fill(fill);
+      g.moveTo(0, h).lineTo(w, h).lineTo(w, h - bottom).quadraticCurveTo(w / 2, h - bottom - curve, 0, h - bottom).closePath().fill(fill);
+    } else {
+      const cx = x * w;
+      const cy = (1 - y) * h;
+      const reach = Math.hypot(Math.max(cx, w - cx), Math.max(cy, h - cy));
+      const radius = reach * Math.max(0, 1 - amount);
+      const soft = reach * 0.15 * softness;
+      g.rect(0, 0, w, h).fill(fill);
+      if (radius > 0) g.circle(cx, cy, radius).cut();
+      for (let i = 0; soft > 0 && radius > 0 && i < 6; i += 1) {
+        const r = radius - (soft * (i + 1)) / 6;
+        if (r > 0) g.circle(cx, cy, radius - (soft * i) / 6).fill({ color, alpha: 0.12 }), g.circle(cx, cy, r).cut();
+      }
+    }
   }
 
   actor(id: string, origin?: string): StoryActor {
@@ -235,6 +343,10 @@ export class StoryStage {
     this.bg = { name, sprite };
     await this.tween(duration, ease, (t) => { sprite.alpha = t; });
     previous?.sprite.destroy();
+  }
+
+  shakeBackground(x: number, y: number): void {
+    this.backdrop.position.set(x, -y);
   }
 
   async hideBackground(duration: number): Promise<void> {

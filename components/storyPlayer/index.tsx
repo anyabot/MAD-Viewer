@@ -4,6 +4,7 @@ import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
 import { LineText } from '@/components/storyLines';
 import { loadSceneAudio, loadStoryScript, loadStoryScriptIndex } from '@/lib/data';
 import { stopBgm, stopSfx } from '@/lib/sceneAudio';
+import { loadEmoticons } from '@/lib/emoticons';
 import { useGameLang } from '@/lib/gameText';
 import { useT } from '@/lib/i18n';
 import { StoryRuntime, type PrinterId } from './runtime';
@@ -18,6 +19,7 @@ export default function StoryPlayer({ script }: { script: string }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<(() => void) | null>(null);
   const runtimeRef = useRef<StoryRuntime | null>(null);
+  const printerRef = useRef<HTMLDivElement>(null);
   const revealRef = useRef<{ full: number; shown: number }>({ full: 0, shown: 0 });
   const [line, setLine] = useState<Printed | null>(null);
   const [shown, setShown] = useState(0);
@@ -46,14 +48,16 @@ export default function StoryPlayer({ script }: { script: string }) {
     (async () => {
       const PIXI = await import('pixi.js');
       const SPINE = await import('@esotericsoftware/spine-pixi-v8') as any;
-      const [index, data, audio] = await Promise.all([
+      const [index, data, audio, emoticons] = await Promise.all([
         loadStoryScriptIndex(), loadStoryScript(script), loadSceneAudio().catch(() => null),
+        loadEmoticons().catch(() => null),
       ]);
       if (destroyed) return;
       pixi = await createPixiApp({ PIXI, host, cancelled: () => destroyed, init: { background: 0x000000 } });
       if (!pixi) return;
       const app = pixi.app;
       stage = new StoryStage(PIXI, SPINE, app, index, (message) => console.warn('[story]', message));
+      stage.emoticons = emoticons;
       const layout = () => stage?.resize(app.screen.width, app.screen.height);
       layout();
       app.renderer.on('resize', layout);
@@ -74,6 +78,11 @@ export default function StoryPlayer({ script }: { script: string }) {
         place: (text) => setPlace(text),
         report: (unsupported) => setMissing([...unsupported.entries()].sort((a, b) => b[1] - a[1])),
         sound: () => soundRef.current,
+        shakePrinter: (x, y) => {
+          const node = printerRef.current;
+          const unit = host.clientHeight / SCENE_H;
+          if (node) node.style.transform = x || y ? `translate(${x * unit}px, ${-y * unit}px)` : '';
+        },
       }, audio);
       runtimeRef.current = runtime;
       setState('playing');
@@ -138,7 +147,7 @@ export default function StoryPlayer({ script }: { script: string }) {
         ) : (
           <Box position="absolute" left="5%" right="5%" bottom="4%" minH="24%" px={{ base: 3, md: 6 }}
             py={{ base: 2, md: 4 }} bg="blackAlpha.700" borderWidth="1px" borderColor="whiteAlpha.300"
-            borderRadius="lg" pointerEvents="none">
+            borderRadius="lg" pointerEvents="none" ref={printerRef}>
             {line.author && (
               <Text fontWeight="bold" fontSize={{ base: 'xs', md: 'md' }} color="accent.200" mb={1}>
                 {line.author}

@@ -1,7 +1,10 @@
 import type { StoryCommand, StoryScript, StoryScriptIndex } from '@/lib/data';
 import { gameText, type GameLang } from '@/lib/gameText';
 import { pauseBgm, playBgm, playSfx, stopBgm, stopSfx, type SceneAudioIndex } from '@/lib/sceneAudio';
-import { sceneToWorld, worldToScene, type StoryActor, type StoryStage } from './stage';
+import { holds, type Vars } from '@/components/skinViewer/interactions';
+import { applyExpression } from '@/components/skinViewer/sceneRuntime';
+import { depthScale, sceneToWorld, worldToScene, type StoryActor, type StoryStage, type Transition } from './stage';
+import type { FilterKind, FilterStack } from './filters';
 
 export type PrinterId = 'ExDialogue' | 'ExWide' | 'ExCenterSubtitle' | 'ExFullScreen' | string;
 
@@ -13,6 +16,7 @@ export type StoryUi = {
   place: (text: string | null) => void;
   report: (unsupported: Map<string, number>) => void;
   sound: () => boolean;
+  shakePrinter: (x: number, y: number) => void;
 };
 
 // CustomVariablesConfiguration predefined variables, used by named move destinations.
@@ -21,8 +25,19 @@ const VARIABLES: Record<string, string> = {
 };
 const PRINTERS = new Set(['ExDialogue', 'ExWide', 'ExCenterSubtitle', 'ExFullScreen']);
 const DEFAULT_DURATION = 0.35;
+// CharactersConfiguration / BackgroundsConfiguration DefaultEasing (1 SmoothStep, 3 EaseInQuad).
+const ACTOR_EASE = 'SmoothStep';
+const BACKGROUND_EASE = 'EaseInQuad';
+// CharacterPingPongMoveCommand subclasses' DefaultPower / DefaultCount / DefaultDuration.
+const PING_PONG: Record<string, { power: number; count: number; duration: number }> = {
+  CharacterHopHopCommand: { power: 3, count: 2, duration: 0.3 },
+  CharacterJumpCommand: { power: 5, count: 1, duration: 0.3 },
+  CharacterGreetingCommand: { power: -6, count: 1, duration: 0.7 },
+};
+// Game UI and flow switches with nothing to draw: the skip button, input lock, chapter-end prompt, UI panels.
 const SILENT = new Set(['Label', 'NaniSummary', 'TitleCommand', 'Skip', 'ProcessInput', 'Group',
-  'ParametrizeGeneric', 'DesireWaitCommand', 'CharacterStyleOnCommand', 'CharacterStyleOffCommand']);
+  'ParametrizeGeneric', 'DesireWaitCommand', 'CharacterStyleOnCommand', 'CharacterStyleOffCommand',
+  'ContinueCommand', 'HideUI', 'ShowUI', 'UsingScopeCommand']);
 const COLORS: Record<string, number> = { white: 0xffffff, black: 0x000000, red: 0xff0000, gray: 0x808080, grey: 0x808080 };
 
 const flag = (value: string | undefined, fallback: boolean): boolean =>
@@ -58,6 +73,8 @@ export class StoryRuntime {
   readonly unsupported = new Map<string, number>();
   private stopped = false;
   private track: string | null = null;
+  private vars: Vars = {};
+  private loops = new Map<string, { active: boolean }>();
 
   constructor(readonly script: StoryScript, readonly stage: StoryStage, readonly index: StoryScriptIndex,
     readonly lang: GameLang, readonly ui: StoryUi, readonly audio: SceneAudioIndex | null) {}
@@ -73,23 +90,7 @@ export class StoryRuntime {
   }
 
   async run(): Promise<void> {
-    const { commands } = this.script;
-    let i = 0;
-    while (i < commands.length && !this.stopped) {
-      const command = commands[i];
-      if (command.class === 'AddChoice') {
-        const end = this.bodyEnd(i);
-        this.choices.push({
-          text: gameText(command.loc?.ChoiceSummary, this.lang),
-          goto: command.fields.GotoPath || undefined,
-          body: end > i + 1 ? [i + 1, end] : undefined,
-        });
-        i = end;
-        continue;
-      }
-      const next = await this.step(command, i);
-      i = next ?? i + 1;
-    }
+    await this.walk(0, this.script.commands.length);
     await Promise.all(this.pending);
     this.ui.hidePrinter();
     stopBgm(1);
@@ -110,13 +111,68 @@ export class StoryRuntime {
     return at >= 0 ? at : null;
   }
 
-  private async runRange(from: number, to: number): Promise<number | null> {
+  private test(expr: string | undefined): boolean {
+    return holds(expr, this.vars);
+  }
+
+  // Blocks are indentation: a command's body is the deeper-indented run below it. Returns a jump target outside [from, to).
+  private async walk(from: number, to: number): Promise<number | null> {
+    const { commands } = this.script;
     let i = from;
     while (i < to && !this.stopped) {
-      const next = await this.step(this.script.commands[i], i);
-      if (next != null && (next < from || next >= to)) return next;
-      i = next ?? i + 1;
+      const c = commands[i];
+      const end = this.bodyEnd(i);
+      let next: number;
+      if (c.fields.ConditionalExpression && c.class !== 'BeginIf' && !this.test(c.fields.ConditionalExpression)) {
+        next = end;
+      } else if (c.class === 'AddChoice') {
+        this.choices.push({
+          text: gameText(c.loc?.ChoiceSummary, this.lang),
+          goto: c.fields.GotoPath || undefined,
+          body: end > i + 1 ? [i + 1, end] : undefined,
+        });
+        next = end;
+      } else if (c.class === 'BeginIf') {
+        const otherwise = commands[end]?.class === 'Else' && (commands[end].indent ?? 0) === (c.indent ?? 0) ? end : -1;
+        const after = otherwise >= 0 ? this.bodyEnd(otherwise) : end;
+        const jump = this.test(c.fields.Expression) ? await this.walk(i + 1, end)
+          : otherwise >= 0 ? await this.walk(otherwise + 1, after) : null;
+        next = jump ?? after;
+      } else if (c.class === 'Else') {
+        next = end;
+      } else if (c.class === 'LoopCommand') {
+        next = (await this.loop(c, i, end)) ?? end;
+      } else {
+        next = (await this.step(c, i)) ?? end;
+      }
+      if (next < from || next > to) return next;
+      i = next;
     }
+    return null;
+  }
+
+  // LoopCommand: `Wait` runs the body Count times in place; otherwise it repeats in the background until `Active:false` with its Id.
+  private async loop(c: StoryCommand, at: number, end: number): Promise<number | null> {
+    const id = c.fields.Id ?? '';
+    if (!flag(c.fields.Active, true)) {
+      const running = this.loops.get(id);
+      if (running) running.active = false;
+      return null;
+    }
+    if (end <= at + 1) return null;
+    if (flag(c.fields.Wait, true)) {
+      for (let n = 0; n < num(c.fields.Count, 1) && !this.stopped; n += 1) {
+        const jump = await this.walk(at + 1, end);
+        if (jump != null) return jump;
+      }
+      return null;
+    }
+    const state = { active: true };
+    this.loops.set(id, state);
+    const limit = num(c.fields.Count, Infinity);
+    this.pending.push((async () => {
+      for (let n = 0; n < limit && state.active && !this.stopped; n += 1) await this.walk(at + 1, end);
+    })());
     return null;
   }
 
@@ -148,13 +204,22 @@ export class StoryRuntime {
         const pick = options[await this.ui.choose(options.map((o) => o.text))];
         if (pick?.goto) return this.labelIndex(pick.goto) ?? this.script.commands.length;
         if (pick?.body) {
-          const jump = await this.runRange(pick.body[0], pick.body[1]);
+          const jump = await this.walk(pick.body[0], pick.body[1]);
           if (jump != null) return jump;
         }
         return at + 1;
       }
       case 'End':
         return this.script.commands.length;
+      case 'SetCustomVariable':
+        this.vars = applyExpression(f.Expression, this.vars);
+        return null;
+      case 'WaitForInput':
+        await this.ui.waitInput();
+        return null;
+      case 'ResetText':
+        this.ui.hidePrinter();
+        return null;
       case 'Wait':
         await this.stage.tween(num(f.WaitMode, 0), undefined, () => {});
         return null;
@@ -209,6 +274,34 @@ export class StoryRuntime {
         if (f.LookDirection) { actor.look = lookOf(f.LookDirection); actor.apply(); }
         return null;
       }
+      case 'CharacterHopHopCommand':
+      case 'CharacterJumpCommand':
+      case 'CharacterGreetingCommand':
+        await this.hold(this.pingPong(c, PING_PONG[c.class]), wait);
+        return null;
+      case 'CharacterEmoticonCommand':
+        await this.hold(this.emoticon(c), wait);
+        return null;
+      case 'Spawn':
+        await this.hold(this.spawn(c), wait);
+        return null;
+      case 'SpawnShake':
+        await this.hold(this.spawnShake(c), wait);
+        return null;
+      case 'CharacterFilterCommand':
+      case 'BackgroundFilterCommand':
+      case 'ScreenFilterCommand':
+        await this.hold(this.filter(c), wait);
+        return null;
+      case 'SpawnBlur':
+        await this.hold(this.blur(c), wait);
+        return null;
+      case 'CharacterStiffCommand':
+        await this.hold(this.stiff(c), wait);
+        return null;
+      case 'CharacterRollCommand':
+        await this.hold(this.roll(c), wait);
+        return null;
       case 'CharacterMoveCommand':
       case 'CharacterAppearDestinationCommand':
         await this.hold(this.move(c), wait);
@@ -264,6 +357,10 @@ export class StoryRuntime {
           if (actor) { actor.visible = false; actor.apply(); }
         }
         return null;
+      case 'SlideCommand':
+      case 'BlinkCommand':
+      case 'IrisCommand':
+      case 'CircleCommand':
       case 'ScreenFadeCommand':
         await this.hold(this.fade(c), wait);
         return null;
@@ -369,7 +466,7 @@ export class StoryRuntime {
     const duration = num(f.Duration, DEFAULT_DURATION);
     if (f.Layer && f.Layer !== name) this.miss('ModifyBackground Layer');
     if (!flag(f.Visible, true)) { await this.stage.hideBackground(duration); return; }
-    if (name) await this.stage.background(name, duration, f.EasingTypeName);
+    if (name) await this.stage.background(name, duration, f.EasingTypeName ?? BACKGROUND_EASE);
   }
 
   private target(actor: StoryActor, scenePosition: string | undefined, position: string | undefined) {
@@ -395,7 +492,7 @@ export class StoryRuntime {
     const from = { ...actor.pos };
     const fromAlpha = actor.alpha;
     const fromRotation = actor.rotation;
-    await this.stage.tween(duration, ease, (t) => {
+    await this.stage.tween(duration, ease ?? ACTOR_EASE, (t) => {
       actor.pos = { x: from.x + (to.x - from.x) * t, y: from.y + (to.y - from.y) * t, z: from.z + (to.z - from.z) * t };
       actor.alpha = fromAlpha + (alpha - fromAlpha) * t;
       actor.rotation = fromRotation + (rotation - fromRotation) * t;
@@ -415,7 +512,9 @@ export class StoryRuntime {
     const show = flag(f.Visible, true);
     if (show && !actor.visible) { actor.visible = true; actor.alpha = 0; }
     const to = this.target(actor, f.ScenePosition, f.Position);
-    const rotation = f.Rotation ? parts(f.Rotation)[2] ?? actor.rotation : actor.rotation;
+    // Unity z turns counter-clockwise; the actor keeps a clockwise angle, as `CharacterRollCommand` does.
+    const z = f.Rotation ? parts(f.Rotation)[2] : null;
+    const rotation = z != null ? -z : actor.rotation;
     const duration = num(f.Duration, DEFAULT_DURATION);
     await this.tweenActor(actor, to, show ? 1 : 0, rotation, duration, f.EasingTypeName);
     if (!show) { actor.visible = false; actor.apply(); }
@@ -455,6 +554,166 @@ export class StoryRuntime {
     if (!show) { actor.visible = false; actor.apply(); }
   }
 
+  // CharacterMoveSequenceCommand: each step tweens the named scene-percent components from the base position, in order.
+  private async sequence(actor: StoryActor, steps: { duration: number; x?: number; y?: number }[], ease: string): Promise<void> {
+    for (const step of steps) {
+      const now = worldToScene(actor.pos.x, actor.pos.y);
+      const world = sceneToWorld(step.x ?? now.x, step.y ?? now.y);
+      await this.tweenActor(actor, { ...actor.pos, x: world.x, y: world.y }, actor.alpha, actor.rotation, step.duration, ease);
+    }
+  }
+
+  // CharacterEmoticonCommand spawns the prefab and plays its `SFX_Char_Emo_<NN>_<Name>` clip (paired by name — inference).
+  private async emoticon(c: StoryCommand): Promise<void> {
+    const [id, name] = actorId(c.fields.IdAndEmoticon);
+    if (!name) return;
+    const actor = this.actor(id);
+    await actor.ready;
+    if (this.ui.sound()) {
+      const clip = this.emoteClip(name);
+      if (clip) void playSfx(this.audio, clip, false, 0);
+    }
+    if (!(await actor.emote(name))) this.miss(`emote ${name}`);
+  }
+
+  private emoteClip(name: string): string | null {
+    if (!this.audio) return null;
+    const pattern = new RegExp(`^SFX_Char_Emo_[0-9]+_${name}$`, 'i');
+    return Object.keys(this.audio.clips).find((k) => pattern.test(k)) ?? null;
+  }
+
+  private spawnShake(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    return this.shake(f.ActorId && f.ActorId !== 'Camera' ? 'character' : 'camera', f.ActorId ?? '', {
+      count: f.ShakeCount, duration: f.ShakeDuration, durationVariation: f.DurationVariation,
+      amplitude: f.ShakeAmplitude, amplitudeVariation: f.AmplitudeVariation,
+      horizontal: f.ShakeHorizontally, vertical: f.ShakeVertically, damping: f.Damping, ease: f.EasingTypeName,
+    });
+  }
+
+  // Naninovel ShakeTransform: per iteration -half, +full, back over 1/4, 1/2, 1/4 of a varied duration; damping thins later iterations.
+  private async shake(kind: 'camera' | 'character' | 'background' | 'printer', id: string, p: Record<string, string | undefined>): Promise<void> {
+    const actor = kind === 'character' ? this.stage.actorMap.get(id) ?? null : null;
+    if (kind === 'character' && !actor) return;
+    const count = num(p.count, 3);
+    const duration = num(p.duration, 0.15);
+    const amplitude = num(p.amplitude, 0.5);
+    const horizontal = flag(p.horizontal, false);
+    const vertical = flag(p.vertical, true);
+    const damping = Math.min(1, Math.max(0, num(p.damping, 0)));
+    const vary = (base: number, by: number) => base + base * (Math.random() * 2 - 1) * by;
+    const set = (x: number, y: number) => {
+      if (actor) { actor.shake = { x, y }; actor.apply(); } else if (kind === 'background') this.stage.shakeBackground(x, y);
+      else if (kind === 'printer') this.ui.shakePrinter(x, y);
+      else { this.stage.shake = { x, y }; this.stage.applyCamera(); }
+    };
+    const move = (from: { x: number; y: number }, to: { x: number; y: number }, seconds: number) =>
+      this.stage.tween(seconds, p.ease, (t) => set(from.x + (to.x - from.x) * t, from.y + (to.y - from.y) * t));
+    for (let i = 0; i < count && !this.stopped; i += 1) {
+      const scale = 1 - damping * (count > 1 ? i / (count - 1) : 0);
+      const a = vary(amplitude, num(p.amplitudeVariation, 0.5)) * scale;
+      const d = { x: horizontal ? a : 0, y: vertical ? a : 0 };
+      const span = vary(duration, num(p.durationVariation, 0.25));
+      const low = { x: -d.x / 2, y: -d.y / 2 };
+      await move({ x: 0, y: 0 }, low, span / 4);
+      await move(low, d, span / 2);
+      await move(d, { x: 0, y: 0 }, span / 4);
+    }
+    set(0, 0);
+  }
+
+  // `@spawn Shake<Target>` positional params: object id, count, duration, duration variation, amplitude, amplitude variation, horizontal, vertical.
+  private spawn(c: StoryCommand): Promise<void> {
+    const path = c.fields.Path ?? '';
+    const kind = ({ ShakeCamera: 'camera', ShakeCharacter: 'character', ShakeBackground: 'background', ShakePrinter: 'printer' } as const)[path as 'ShakeCamera'];
+    if (!kind) { this.miss(`effect ${path}`); return Promise.resolve(); }
+    const [id, count, duration, durationVariation, amplitude, amplitudeVariation, horizontal, vertical] =
+      (c.fields.Params ?? '').split(',').map((v) => v.trim() || undefined);
+    return this.shake(kind, id ?? '', { count, duration, durationVariation, amplitude, amplitudeVariation, horizontal, vertical });
+  }
+
+  private stackFor(id: string): FilterStack | null {
+    if (this.stage.actorMap.has(id)) return this.stage.actorMap.get(id)!.filters;
+    if (/^BG_/i.test(id)) return this.stage.backgroundFilters;
+    return null;
+  }
+
+  // CharacterFilterType Off / Scanline / Grayscale / Glitch / Silhouette; Off clears every filter on the target.
+  private async filter(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    let stack: FilterStack | null;
+    let type: string;
+    let level = 1;
+    if (c.class === 'ScreenFilterCommand') {
+      stack = this.stage.screenFilters;
+      type = f.FilterTypeName ?? '';
+      level = num(f.Intensity, 1);
+    } else {
+      const [id, name] = actorId(f.IdAndFilterType);
+      stack = this.stackFor(id);
+      type = name ?? '';
+    }
+    if (!stack) return;
+    const kind = type.toLowerCase();
+    const on = flag(f.Enable, true);
+    const kinds: FilterKind[] = kind === 'off' ? ['grayscale', 'sepia', 'silhouette', 'scanline', 'glitch']
+      : (['grayscale', 'sepia', 'silhouette', 'scanline', 'glitch'] as FilterKind[]).filter((k) => k === kind);
+    if (!kinds.length) { this.miss(`filter ${type}`); return; }
+    const from = kinds.map((k) => stack!.amounts[k]);
+    const to = kind === 'off' || !on ? 0 : level;
+    await this.stage.tween(num(f.Duration, 0), undefined, (t) => {
+      kinds.forEach((k, i) => { stack!.amounts[k] = from[i] + (to - from[i]) * t; });
+    });
+  }
+
+  private async blur(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const stack = f.ActorId === 'Camera' ? this.stage.screenFilters : this.stackFor(f.ActorId ?? '');
+    if (!stack) return;
+    const from = stack.amounts.blur;
+    const to = num(f.Intensity, 0);
+    await this.stage.tween(num(f.FadeDuration, 0), undefined, (t) => { stack.amounts.blur = from + (to - from) * t; });
+  }
+
+  // <GetMoveSequence>d__11: per count, up by power x depth scale over half the duration, then back.
+  private async pingPong(c: StoryCommand, defaults: { power: number; count: number; duration: number }): Promise<void> {
+    const f = c.fields;
+    const [id] = actorId(f.IdAndAppearance);
+    const actor = this.actor(id);
+    await actor.ready;
+    const base = worldToScene(actor.pos.x, actor.pos.y);
+    const lift = num(f.Power, defaults.power) * depthScale(actor.pos.z);
+    const half = num(f.Duration, defaults.duration) / 2;
+    const steps = [];
+    for (let i = 0; i < num(f.Count, defaults.count); i += 1) steps.push({ duration: half, y: base.y + lift }, { duration: half, y: base.y });
+    await this.sequence(actor, steps, f.EasingTypeName || 'EaseOutQuad');
+  }
+
+  // <GetMoveSequence>d__5: 2 x count sideways steps alternating -/+ power x depth scale, each back to centre.
+  private async stiff(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const [id] = actorId(f.IdAndAppearance);
+    const actor = this.actor(id);
+    await actor.ready;
+    const base = worldToScene(actor.pos.x, actor.pos.y);
+    const swing = num(f.Power, 1) * depthScale(actor.pos.z);
+    const step = f.Duration ? num(f.Duration, 0.1) * 0.25 : 0.025;
+    const steps = [];
+    for (let i = 0; i < 2 * num(f.Count, 2); i += 1) steps.push({ duration: step, x: base.x + (i % 2 ? 1 : -1) * swing }, { duration: step, x: base.x });
+    await this.sequence(actor, steps, f.EasingTypeName || 'EaseOutQuad');
+  }
+
+  // `To` is an absolute clockwise angle, `By` relative; the default duration is the actor configuration's.
+  private async roll(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const [id] = actorId(f.IdAndAppearance);
+    const actor = this.actor(id);
+    await actor.ready;
+    if (f.Pivot) actor.setRollPivot(num(f.Pivot, 0));
+    const target = f.To ? num(f.To, actor.rotation) : actor.rotation + num(f.By, 0);
+    await this.tweenActor(actor, actor.pos, actor.alpha, target, num(f.Duration, DEFAULT_DURATION), f.EasingTypeName);
+  }
+
   private async appear(c: StoryCommand, side: number): Promise<void> {
     const f = c.fields;
     const [id, appearance] = actorId(f.IdAndAppearance);
@@ -488,16 +747,34 @@ export class StoryRuntime {
     actor.apply();
   }
 
+  // CV FadeCommand family on one fade panel: From/To are coverage (defaults 0 -> 1; Blink keeps the current value;
+  // ScreenFade's direction picks the end), Position is screen percent, softness defaults Slide 1, Blink 0.5, else 0.
   private async fade(c: StoryCommand): Promise<void> {
     const f = c.fields;
     const stage = this.stage;
+    const kinds: Record<string, Transition['type']> = { SlideCommand: 'slide', BlinkCommand: 'blink', IrisCommand: 'iris', CircleCommand: 'circle' };
+    const type: Transition['type'] = kinds[c.class] ?? 'fade';
+    const current = stage.transition;
+    const same = current.type === type;
+    const now = same ? current.amount : 0;
     const out = (f.Direction ?? 'Out') === 'Out';
+    const from = f.From ? num(f.From, now) : type === 'fade' || type === 'blink' ? now : 0;
+    const to = f.To ? num(f.To, 1) : type === 'fade' ? (out ? 1 : 0) : type === 'blink' ? now : 1;
+    const [px, py] = parts(f.Position);
     const tint = color(f.TintColor) ?? color(f.Color);
-    if (tint != null && out) stage.coverColor = tint;
-    const from = f.From ? num(f.From, stage.coverAlpha) : stage.coverAlpha;
-    const to = f.To ? num(f.To, out ? 1 : 0) : out ? 1 : 0;
+    const next = {
+      type,
+      amount: from,
+      color: tint ?? (same ? current.color : 0x000000),
+      x: px != null ? px / 100 : same ? current.x : 0.5,
+      y: py != null ? py / 100 : px != null && type === 'blink' ? px / 100 : same ? current.y : 0.5,
+      softness: num(f.Softness, type === 'slide' ? 1 : type === 'blink' ? 0.5 : 0),
+      roundness: num(f.Roundness, 0),
+      side: type === 'slide' ? f.Direction || 'Left' : current.side,
+    };
+    stage.transition = next;
     await stage.tween(num(f.Duration, DEFAULT_DURATION), f.EasingTypeName, (t) => {
-      stage.coverAlpha = from + (to - from) * t;
+      stage.transition = { ...next, amount: from + (to - from) * t };
       stage.drawCover();
     });
   }

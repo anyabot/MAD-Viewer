@@ -6,7 +6,7 @@ import type { EmotePlacement } from '@/lib/emoticons';
 export type EmoteBubble = {
   // The caller hides the container while measuring the scene.
   sprite: any;
-  show: (placement: EmotePlacement) => void;
+  show: (placement: EmotePlacement, onEnd?: () => void) => void;
   hide: () => void;
   tick: () => void;
 };
@@ -38,6 +38,7 @@ export function createEmoteBubble(options: {
   let run: EmoteRun | null = null;
   let place: EmotePlacement | null = null;
   let last = 0;
+  let ended: (() => void) | null = null;
 
   const tileTexture = (
     base: any, sheet: string, columns: number, rows: number, index: number,
@@ -130,6 +131,9 @@ export function createEmoteBubble(options: {
 
   const stop = () => {
     token += 1;
+    const done = ended;
+    ended = null;
+    done?.();
     run = null;
     place = null;
     container.visible = false;
@@ -138,8 +142,12 @@ export function createEmoteBubble(options: {
 
   return {
     sprite: container,
-    show: (placement) => {
+    show: (placement, onEnd) => {
+      const previous = ended;
+      ended = null;
+      previous?.();
       const mine = ++token;
+      ended = onEnd ?? null;
       // The parser is explicit because Pixi's bare-string form produces no texture here.
       void Promise.all(Object.entries(placement.sheets).map(([name, sheet]) =>
         PIXI.Assets.load({ src: sheet.url, loadParser: 'loadTextures' })
@@ -160,7 +168,10 @@ export function createEmoteBubble(options: {
           draw();
         })
         // A decorative asset must not break its reaction or fail silently.
-        .catch((err: unknown) => console.warn('emote', err));
+        .catch((err: unknown) => {
+          console.warn('emote', err);
+          if (mine === token) stop();
+        });
     },
     hide: stop,
     tick: () => {
