@@ -923,6 +923,23 @@ export type EmoteEmitter = {
     rowMode: number;
     rowIndex: number;
   };
+  // render mode None: the particles draw nothing, only their trail
+  renderNone?: boolean;
+  trail?: {
+    mode: number;
+    ratio: number;
+    lifetime: EmoteCurve;
+    minVertexDistance: number;
+    textureMode: number;
+    worldSpace: boolean;
+    dieWithParticles: boolean;
+    sizeAffectsWidth: boolean;
+    sizeAffectsLifetime: boolean;
+    inheritParticleColor: boolean;
+    color: EmoteGradient;
+    width: EmoteCurve;
+    colorOverTrail: EmoteGradient;
+  };
 };
 
 export type EmoticonManifest = {
@@ -1245,8 +1262,19 @@ export type StoryScene = {
   desc?: GameLocalized;
   script?: string;
   battle?: number;
+  // dialogue, battle, dialogue, in play order; absent when the scene is one script
+  parts?: StoryPart[];
   lines?: number;
   voiced?: number;
+};
+
+export type StoryPart = { script: string } | { battle: number };
+
+export type StoryBark = { icon: string | null; text: GameLocalized | null; side: 'left' | 'right'; delay: number; hold: number };
+
+export type StoryBattle = {
+  bgm: string | null;
+  steps: { wait: number; barks?: StoryBark[]; script?: string; end?: boolean }[];
 };
 
 export type StoryChapter = {
@@ -1290,6 +1318,53 @@ export function loadStoryIndex(): Promise<StoryIndex> {
 
 export function loadStoryChapter(lang: GameLang, chapter: number): Promise<StoryChapterText> {
   return fetchJson<StoryChapterText>(`story/${lang}/${chapter}.json`);
+}
+
+export type StoryCommand = {
+  class: string;
+  line?: number;
+  inline?: number;
+  indent?: number;
+  label?: string | null;
+  fields: Record<string, string>;
+  text?: string;
+  texts?: GameLocalized;
+  author?: string;
+  loc?: Record<string, GameLocalized>;
+};
+
+export type StoryScript = { path: string; commands: StoryCommand[] };
+
+export type StoryScriptIndex = {
+  actors: Record<string, string>;
+  facing: Record<string, number>;
+  names: Record<string, GameLocalized>;
+  backgrounds: Record<string, [number, number]>;
+  scripts: Record<string, string[]>;
+};
+
+export function loadStoryScriptIndex(): Promise<StoryScriptIndex> {
+  return fetchJson<StoryScriptIndex>('story_scripts/index.json');
+}
+
+export function loadStoryScript(path: string): Promise<StoryScript> {
+  return fetchJson<StoryScript>(`story_scripts/${path}.json`);
+}
+
+export function storyBackgroundUrl(name: string): string {
+  return `${DATA_BASE}/story_scripts/bg/${encodeURIComponent(name)}.webp`;
+}
+
+export function storyAssetUrl(folder: string, name: string): string {
+  return `${DATA_BASE}/story_scripts/${folder}/${encodeURIComponent(name)}.webp`;
+}
+
+export function loadStoryFx<T>(): Promise<T> {
+  return fetchJson<T>('story_scripts/fx.json');
+}
+
+export function loadStoryBattles(): Promise<Record<string, StoryBattle>> {
+  return fetchJson<Record<string, StoryBattle>>('story_scripts/battles.json');
 }
 
 export type BondSceneKind = 'desire' | 'affection';

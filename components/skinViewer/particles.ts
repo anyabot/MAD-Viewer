@@ -2,9 +2,8 @@
 // and sizes come out in the emitter's own particle units for the caller to
 // convert. The modules covered are the ones the emote prefabs enable.
 //
-// Not modelled: trail emitters, whose renderer draws no billboard and which are
-// therefore not exported, and velocity-aligned billboards, which every emitter
-// asking for one starts at zero speed.
+// Not modelled: velocity-aligned billboards, which every emitter asking for one
+// starts at zero speed.
 import type {
   EmoteCurve, EmoteEmitter, EmoteGradient, EmoteGradientStops,
 } from '@/lib/data';
@@ -28,6 +27,10 @@ export type Particle = {
   a: number;
   /** Index into the emitter's tile grid, row-major from the top left. */
   frame: number;
+  // trail polyline, oldest point first and ending at the particle: x0, y0, x1, y1, ...
+  trail: number[] | null;
+  // age over lifetime, 0..1
+  life: number;
 };
 
 export type EmitterRun = {
@@ -59,6 +62,8 @@ type Live = Particle & {
   color0: [number, number, number, number];
   /** One roll per random-valued property, drawn at birth and kept for life. */
   rolls: number[];
+  points: { x: number; y: number; at: number }[] | null;
+  trailLife: number;
 };
 
 // Property slots in `Live.rolls`. A Unity particle keeps the same lerp factor
@@ -349,11 +354,14 @@ function createEmitter(def: EmoteEmitter, seed: number) {
     const py = def.position[1] + (x * sin + y * cos) * def.scale[1];
     const flip = def.start.flipRotation > 0 && roll() < def.start.flipRotation
       ? -1 : 1;
+    const lifetime = Math.max(0.0001, valueAt(def.start.lifetime, t01, rolls[ROLL_LIFETIME]));
+    // PerParticle trails: `ratio` of particles carry one, living a fraction of the particle's lifetime.
+    const trailed = !!def.trail && roll() < def.trail.ratio;
     live.push({
       x: px,
       y: py,
       age: 0,
-      lifetime: Math.max(0.0001, valueAt(def.start.lifetime, t01, rolls[ROLL_LIFETIME])),
+      lifetime,
       vx: (dx * cos - dy * sin) * speed,
       vy: (dx * sin + dy * cos) * speed,
       ax: 0,
@@ -376,6 +384,10 @@ function createEmitter(def: EmoteEmitter, seed: number) {
       frame: 0,
       frame0: def.uv ? valueAt(def.uv.startFrame, t01, rolls[ROLL_FRAME]) : 0,
       rolls,
+      trail: null,
+      life: 0,
+      points: trailed ? [{ x: px, y: py, at: 0 }] : null,
+      trailLife: trailed ? valueAt(def.trail!.lifetime, t01, roll()) * lifetime : 0,
     });
   };
 
@@ -428,6 +440,7 @@ function createEmitter(def: EmoteEmitter, seed: number) {
         continue;
       }
       const t = clamp01(p.age / p.lifetime);
+      p.life = t;
 
       // Velocity over lifetime adds to the spawn velocity; forces and gravity
       // integrate into their own accumulator, as they stack in Unity.
@@ -483,6 +496,15 @@ function createEmitter(def: EmoteEmitter, seed: number) {
         const value = valueAt(def.uv.frame, t, p.rolls[ROLL_FRAME]) * def.uv.cycles;
         const index = Math.floor((p.frame0 + value) * tiles);
         p.frame = ((index % tiles) + tiles) % tiles;
+      }
+      if (p.points && def.trail) {
+        const last = p.points[p.points.length - 1];
+        if (Math.hypot(p.x - last.x, p.y - last.y) >= def.trail.minVertexDistance) p.points.push({ x: p.x, y: p.y, at: p.age });
+        while (p.points.length > 1 && p.points[0].at < p.age - p.trailLife) p.points.shift();
+        const flat: number[] = [];
+        for (const point of p.points) flat.push(point.x, point.y);
+        flat.push(p.x, p.y);
+        p.trail = flat;
       }
       out.push(p);
     }

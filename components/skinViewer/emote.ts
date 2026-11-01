@@ -6,7 +6,7 @@ import type { EmotePlacement } from '@/lib/emoticons';
 export type EmoteBubble = {
   // The caller hides the container while measuring the scene.
   sprite: any;
-  show: (placement: EmotePlacement) => void;
+  show: (placement: EmotePlacement, onEnd?: () => void) => void;
   hide: () => void;
   tick: () => void;
 };
@@ -21,6 +21,8 @@ export function createEmoteBubble(options: {
   // Scene time keeps the emote synchronized with pause and playback speed.
   now: () => number;
   isDestroyed: () => boolean;
+  // Particle units per skeleton unit; the lobby's calibrated constant unless the caller knows its space.
+  unit?: number;
 }): EmoteBubble {
   const { PIXI, scene, spine, now, isDestroyed } = options;
 
@@ -38,6 +40,7 @@ export function createEmoteBubble(options: {
   let run: EmoteRun | null = null;
   let place: EmotePlacement | null = null;
   let last = 0;
+  let ended: (() => void) | null = null;
 
   const tileTexture = (
     base: any, sheet: string, columns: number, rows: number, index: number,
@@ -83,7 +86,7 @@ export function createEmoteBubble(options: {
     const [ox, oy] = place.offset;
     const originX = bone.worldX + ox * Math.cos(turn) - oy * Math.sin(turn);
     const originY = bone.worldY - (ox * Math.sin(turn) + oy * Math.cos(turn));
-    const unit = EMOTE_UNIT_SCALE;
+    const unit = options.unit ?? EMOTE_UNIT_SCALE;
     const scale = unit * Math.abs(spine.scale.y);
     // A mirrored placement flips positions, quads, pivots, and rotations about the slot.
     const mirror = place.mirror ? -1 : 1;
@@ -91,7 +94,7 @@ export function createEmoteBubble(options: {
     let used = 0;
     for (const emitter of run.emitters) {
       const base = sheets.get(emitter.def.sheet);
-      if (!base) continue;
+      if (!base || emitter.def.renderNone) continue;
       const [columns, rows] = emitter.def.tiles;
       // `CharacterEmoticon.SetFlip`: the root mirror, then per system 4 re-mirrors its own transform, 1 toggles the texture flip, 2 flips rotation
       const flip = mirror < 0 ? emitter.def.flip ?? 0 : 0;
@@ -130,6 +133,9 @@ export function createEmoteBubble(options: {
 
   const stop = () => {
     token += 1;
+    const done = ended;
+    ended = null;
+    done?.();
     run = null;
     place = null;
     container.visible = false;
@@ -138,8 +144,12 @@ export function createEmoteBubble(options: {
 
   return {
     sprite: container,
-    show: (placement) => {
+    show: (placement, onEnd) => {
+      const previous = ended;
+      ended = null;
+      previous?.();
       const mine = ++token;
+      ended = onEnd ?? null;
       // The parser is explicit because Pixi's bare-string form produces no texture here.
       void Promise.all(Object.entries(placement.sheets).map(([name, sheet]) =>
         PIXI.Assets.load({ src: sheet.url, loadParser: 'loadTextures' })
@@ -160,7 +170,10 @@ export function createEmoteBubble(options: {
           draw();
         })
         // A decorative asset must not break its reaction or fail silently.
-        .catch((err: unknown) => console.warn('emote', err));
+        .catch((err: unknown) => {
+          console.warn('emote', err);
+          if (mine === token) stop();
+        });
     },
     hide: stop,
     tick: () => {

@@ -188,6 +188,13 @@ export const UI = {
   storyVoiced: { en: '{n} voiced', ko: '음성 {n}' },
   storyNoText: { en: 'No dialogue in this scene.', ko: '이 장면에는 대사가 없습니다.' },
   storyMissing: { en: 'This chapter has no text in that language.', ko: '이 언어의 텍스트가 없습니다.' },
+  storyPlay: { en: 'Play', ko: '재생' },
+  storyRead: { en: 'Read', ko: '읽기' },
+  storyReplay: { en: 'Replay', ko: '다시 보기' },
+  storyEnd: { en: 'End', ko: '끝' },
+  storySoundOn: { en: 'Sound on', ko: '소리 켜짐' },
+  storySoundOff: { en: 'Sound off', ko: '소리 꺼짐' },
+  storyNotPlayed: { en: 'Not played yet', ko: '아직 재생하지 않는 명령' },
   storyPlayVoice: { en: 'Play voice', ko: '음성 재생' },
   storyPlayer: { en: 'Player', ko: '플레이어' },
 
