@@ -221,8 +221,35 @@ function Place({ text, fx }: { text: string; fx: FxIndex | null }) {
   );
 }
 
+// A battle bark: the speaker's cut-in and line on the side the bark names; this layout is the site's, the battle UI prefab is not decoded.
+function Bark({ bark, fx }: { bark: GameBark; fx: FxIndex | null }) {
+  const right = bark.side === 'right';
+  return (
+    <div style={{ position: 'absolute', bottom: 120, [right ? 'right' : 'left']: 0, width: 1100, height: 220 }}>
+      <Sliced name="Bg_gradation128" art={fx?.ui} tint="rgba(0, 0, 0, 0.6)" width={1100} height={220}
+        style={{ left: 0, top: 0, transform: right ? 'scaleX(-1)' : undefined }} />
+      {bark.icon && (
+        <div style={{
+          position: 'absolute', bottom: 0, [right ? 'right' : 'left']: 20, width: 340, height: 560,
+          backgroundImage: `url(${PUBLIC_BASE}/icons/cutin/${bark.icon}.webp)`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center bottom',
+        }} />
+      )}
+      <div style={{
+        position: 'absolute', top: 0, bottom: 0, [right ? 'right' : 'left']: 360, width: 700, display: 'flex', alignItems: 'center',
+        justifyContent: right ? 'flex-end' : 'flex-start', textAlign: right ? 'right' : 'left', fontSize: 46, color: '#fff', letterSpacing: LETTER,
+        whiteSpace: 'pre-wrap',
+      }}>
+        <LineText text={bark.text} />
+      </div>
+    </div>
+  );
+}
+
+export type GameBark = { icon: string | null; side: 'left' | 'right'; text: string };
+
 // The game's printers, choice list and place caption on their 2340 x 1080 canvas, scaled to the player.
-export function GameUi({ line, choices, place, fx, printerRef }: {
+export function GameUi({ line, choices, place, fx, printerRef, bark }: {
+  bark: GameBark | null;
   line: GameLine | null;
   choices: { options: string[]; pick: (i: number) => void } | null;
   place: string | null;
@@ -248,6 +275,7 @@ export function GameUi({ line, choices, place, fx, printerRef }: {
         {place && <Place text={place} fx={fx} />}
         {line && (centered ? <Centered line={line} printerRef={printerRef} /> : <Dialogue line={line} fx={fx} printerRef={printerRef} />)}
         {choices && <Choices options={choices.options} pick={choices.pick} fx={fx} />}
+        {bark && <Bark bark={bark} fx={fx} />}
       </div>
     </div>
   );

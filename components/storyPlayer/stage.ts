@@ -219,6 +219,7 @@ export class StoryStage {
   private tweens = new Set<Tween>();
   readonly backLayers = new Map<string, BackLayer>();
   readonly cutscenes = new Map<string, StoryCutscene>();
+  private lastBack: BackLayer | null = null;
   readonly actorMap = new Map<string, StoryActor>();
   camera = { x: 0, y: 0, zoom: 0, roll: 0 };
   shake = { x: 0, y: 0 };
@@ -538,6 +539,7 @@ export class StoryStage {
 
   // A new appearance on a shown layer cross-fades, or slides in from the right for `SlideIn` (inferred direction).
   async setBackAppearance(layer: BackLayer, name: string, duration: number, ease: string | undefined, transition: string | undefined): Promise<void> {
+    if (!/^BG_Fade/i.test(name)) this.lastBack = layer;
     if (layer.name === name) return;
     layer.name = name;
     const sprite = await this.backSprite(name);
@@ -559,6 +561,26 @@ export class StoryStage {
 
   shakeBackground(x: number, y: number): void {
     this.backdrop.position.set(x, -y);
+  }
+
+  // A battle is not staged on its field here, so it plays over the last background the story showed.
+  async reviveBackground(duration: number): Promise<void> {
+    const layer = this.lastBack;
+    const shown = [...this.backLayers.values()].some((l) => l.visible && l.alpha > 0.5);
+    const revive = !!layer && !shown;
+    if (revive) {
+      layer.visible = true;
+      layer.tint = 0xffffff;
+      layer.tintAlpha = 1;
+    }
+    // the story's closing fade-out would otherwise keep the battle dark
+    const from = layer?.alpha ?? 1;
+    const cover = this.transition.amount;
+    await this.tween(duration, undefined, (t) => {
+      if (revive) { layer.alpha = from + (1 - from) * t; this.renderBack(layer); }
+      this.transition = { ...this.transition, amount: cover * (1 - t) };
+      this.drawCover();
+    });
   }
 
   async hideBack(layer: BackLayer, duration: number, ease?: string): Promise<void> {

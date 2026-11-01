@@ -185,7 +185,7 @@ function Reader({ chapter, scene, chars, icons }: {
                   {playing === s.id ? t('storyRead') : t('storyPlay')}
                 </Button>
               )}
-              {playing === s.id && s.script ? <StoryPlayer script={s.script} />
+              {playing === s.id && s.script ? <StoryPlayer parts={s.parts ?? [{ script: s.script }]} />
                 : !text && !failed ? <Spinner size="sm" />
                   : <SceneLines lines={text?.scenes[String(s.id)] ?? []} chars={chars} icons={icons}
                       voice={voice} lang={lang} />}

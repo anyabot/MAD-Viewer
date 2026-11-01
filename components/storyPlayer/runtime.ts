@@ -88,6 +88,8 @@ export class StoryRuntime {
   private track: string | null = null;
   private vars: Vars = {};
   private loops = new Map<string, { active: boolean }>();
+  // an in-battle script plays over the battle music, so it leaves the track running when it ends
+  keepMusic = false;
 
   constructor(readonly script: StoryScript, readonly stage: StoryStage, readonly index: StoryScriptIndex,
     readonly lang: GameLang, readonly ui: StoryUi, readonly audio: SceneAudioIndex | null) {}
@@ -106,8 +108,12 @@ export class StoryRuntime {
     await this.walk(0, this.script.commands.length);
     await Promise.all(this.pending);
     this.ui.hidePrinter();
-    stopBgm(1);
+    if (!this.keepMusic) stopBgm(1);
     stopSfx(null, 1);
+  }
+
+  playTrack(path: string): void {
+    this.music(path, 0.5);
   }
 
   private bodyEnd(at: number): number {

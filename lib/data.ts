@@ -1262,8 +1262,19 @@ export type StoryScene = {
   desc?: GameLocalized;
   script?: string;
   battle?: number;
+  // dialogue, battle, dialogue, in play order; absent when the scene is one script
+  parts?: StoryPart[];
   lines?: number;
   voiced?: number;
+};
+
+export type StoryPart = { script: string } | { battle: number };
+
+export type StoryBark = { icon: string | null; text: GameLocalized | null; side: 'left' | 'right'; delay: number; hold: number };
+
+export type StoryBattle = {
+  bgm: string | null;
+  steps: { wait: number; barks?: StoryBark[]; script?: string; end?: boolean }[];
 };
 
 export type StoryChapter = {
@@ -1350,6 +1361,10 @@ export function storyAssetUrl(folder: string, name: string): string {
 
 export function loadStoryFx<T>(): Promise<T> {
   return fetchJson<T>('story_scripts/fx.json');
+}
+
+export function loadStoryBattles(): Promise<Record<string, StoryBattle>> {
+  return fetchJson<Record<string, StoryBattle>>('story_scripts/battles.json');
 }
 
 export type BondSceneKind = 'desire' | 'affection';
