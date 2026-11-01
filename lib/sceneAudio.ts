@@ -142,9 +142,11 @@ export function stopSceneSound() {
 const sfx = new Map<string, HTMLAudioElement>();
 let sfxToken = 0;
 
+// An element cannot amplify, so a volume above 1 plays at full.
 export async function playSfx(
-  index: SceneAudioIndex | null, clip: string, loop: boolean, fade = 0,
+  index: SceneAudioIndex | null, clip: string, loop: boolean, fade = 0, volume = 1,
 ): Promise<void> {
+  const level = Math.min(1, Math.max(0, volume));
   const mine = sfxToken;
   const sources = await urls(index, clip);
   if (!sources || mine !== sfxToken) return;
@@ -152,9 +154,9 @@ export async function playSfx(
   sfx.set(clip, player);
   player.pause();
   player.loop = loop;
-  player.volume = fade > 0 ? 0 : 1;
+  player.volume = fade > 0 ? 0 : level;
   try { await playFrom(player, sources, effectRate); } catch { return; }
-  if (fade > 0) rampVolume(player, 1, fade);
+  if (fade > 0) rampVolume(player, level, fade);
 }
 
 export function stopSfx(clip: string | null = null, fade = 0): void {
@@ -180,14 +182,15 @@ function rampVolume(player: HTMLAudioElement, target: number, seconds: number, d
 }
 
 export async function playBgm(
-  index: SceneAudioIndex | null, clip: string, intro?: string, fade = 0,
+  index: SceneAudioIndex | null, clip: string, intro?: string, fade = 0, volume = 1,
 ): Promise<void> {
   const mine = ++musicToken;
+  const level = Math.min(1, Math.max(0, volume));
   if (music && pausedClip === clip && musicClip === clip) {
     pausedClip = null;
-    music.volume = fade > 0 ? 0 : 1;
+    music.volume = fade > 0 ? 0 : level;
     try { await music.play(); } catch { return; }
-    if (fade > 0) fadeVolume(music, 1, fade, mine);
+    if (fade > 0) fadeVolume(music, level, fade, mine);
     return;
   }
   pausedClip = null;
@@ -199,7 +202,7 @@ export async function playBgm(
   if (!music) music = busAudio();
   const player = music;
   player.pause();
-  player.volume = fade > 0 ? 0 : 1;
+  player.volume = fade > 0 ? 0 : level;
   player.loop = !introUrls;
   player.onended = introUrls ? () => {
     if (mine !== musicToken) return;
@@ -208,7 +211,7 @@ export async function playBgm(
     void playFrom(player, loopUrls).catch(() => {});
   } : null;
   try { await playFrom(player, introUrls ?? loopUrls); } catch { return; }
-  if (fade > 0) fadeVolume(player, 1, fade, mine);
+  if (fade > 0) fadeVolume(player, level, fade, mine);
 }
 
 // An empty `src` string resolves against the document, so the browser would try

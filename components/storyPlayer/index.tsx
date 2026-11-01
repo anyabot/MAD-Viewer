@@ -24,7 +24,8 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
   const inputRef = useRef<(() => void) | null>(null);
   const runtimeRef = useRef<StoryRuntime | null>(null);
   const printerRef = useRef<HTMLDivElement>(null);
-  const revealRef = useRef<{ full: number; shown: number }>({ full: 0, shown: 0 });
+  const revealRef = useRef<{ full: number; shown: number; speed: number }>({ full: 0, shown: 0, speed: 1 });
+  const revealedRef = useRef<(() => void) | null>(null);
   const [line, setLine] = useState<Printed | null>(null);
   const [shown, setShown] = useState(0);
   const [choices, setChoices] = useState<{ options: string[]; pick: (i: number) => void } | null>(null);
@@ -76,15 +77,18 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
       app.renderer.on('resize', layout);
       const reports: Map<string, number>[] = [];
       const ui: StoryUi = {
-        print: ({ author, actor, text, append, printer }) => {
+        print: ({ author, actor, text, append, printer, speed }) => {
+          revealedRef.current?.();
+          const revealed = new Promise<void>((resolve) => { revealedRef.current = resolve; });
           setLine((prev) => {
             const body = append && prev ? `${prev.text}${text}` : text;
-            revealRef.current = { full: body.length, shown: append && prev ? prev.text.length : 0 };
+            revealRef.current = { full: body.length, shown: append && prev ? prev.text.length : 0, speed };
             setShown(revealRef.current.shown);
             return { author: author || (append && prev ? prev.author : ''), actor: actor ?? (append && prev ? prev.actor : null), text: body, printer };
           });
+          return revealed;
         },
-        hidePrinter: () => setLine(null),
+        hidePrinter: () => { revealedRef.current?.(); revealedRef.current = null; setLine(null); },
         waitInput: () => new Promise((resolve) => { inputRef.current = resolve; }),
         choose: (options) => new Promise((resolve) => {
           setChoices({ options, pick: (i) => { setChoices(null); resolve(i); } });
@@ -151,6 +155,7 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
       destroyed = true;
       runtime?.stop();
       inputRef.current?.();
+      revealedRef.current?.();
       stage?.dispose();
       pixi?.dispose();
     };
@@ -158,11 +163,18 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
 
   useEffect(() => {
     if (!line) return undefined;
+    // `RevealSpeed` multiplies the reveal rate; 100 shows the line at once.
     const timer = setInterval(() => {
       const reveal = revealRef.current;
-      if (reveal.shown >= reveal.full) { clearInterval(timer); return; }
-      reveal.shown += 1;
-      setShown(reveal.shown);
+      if (reveal.shown >= reveal.full) {
+        clearInterval(timer);
+        const done = revealedRef.current;
+        revealedRef.current = null;
+        done?.();
+        return;
+      }
+      reveal.shown = Math.min(reveal.full, reveal.shown + Math.max(0.01, reveal.speed));
+      setShown(Math.floor(reveal.shown));
     }, REVEAL_MS);
     return () => clearInterval(timer);
   }, [line]);
@@ -173,6 +185,9 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
     if (line && reveal.shown < reveal.full) {
       reveal.shown = reveal.full;
       setShown(reveal.full);
+      const done = revealedRef.current;
+      revealedRef.current = null;
+      done?.();
       return;
     }
     const resolve = inputRef.current;

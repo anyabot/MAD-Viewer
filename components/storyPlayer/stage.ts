@@ -93,6 +93,7 @@ export class StoryActor {
   tint = 0xffffff;
   dimmed = false;
   face = '';
+  private timeScale = 1;
   holder: any;
   private bubble: EmoteBubble | null = null;
   readonly filters: FilterStack;
@@ -146,6 +147,7 @@ export class StoryActor {
     });
     this.stage.app.ticker.add(this.bubble.tick);
     if (this.face) this.setFace(this.face);
+    spine.state.timeScale = this.timeScale;
     this.apply();
   }
 
@@ -191,6 +193,12 @@ export class StoryActor {
 
   dispose(): void {
     if (this.bubble) { this.stage.app.ticker.remove(this.bubble.tick); this.bubble.hide(); }
+  }
+
+  // `ModifyCharacter TimeScale`: the rig's animation speed (0 holds the pose).
+  setTimeScale(value: number): void {
+    this.timeScale = value;
+    if (this.spine) this.spine.state.timeScale = value;
   }
 
   // An appearance is a face clip on track 1, as on the lobby; `default` returns the face to the body's keys.
@@ -294,6 +302,10 @@ export class StoryStage {
   }
 
   private readonly popups = new Map<string, any>();
+
+  popupSprites(): any[] {
+    return [...this.popups.values()];
+  }
   readonly draws = new Map<string, DrawShape>();
   holes: { id: string; x: number; y: number; size: number; soft: number }[] = [];
 
