@@ -7,6 +7,7 @@ export type FxIndex = {
   popups: Record<string, { image: string; size: [number, number] }>;
   prefabs: Record<string, EmoteEmitter[]>;
   sheets: Record<string, [number, number]>;
+  cutscenes?: Record<string, string>;
 };
 
 const MAX_STEP = 0.333;

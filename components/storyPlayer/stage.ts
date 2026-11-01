@@ -1,6 +1,7 @@
 import { loadSkinArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
 import { storyAssetUrl, storyBackgroundUrl, type StoryScriptIndex } from '@/lib/data';
 import { FxRun, type FxIndex } from './fx';
+import { StoryCutscene } from './cutscene';
 import { archiveName, type StoreKey } from '@/components/skinViewer/types';
 import { easeOf } from './ease';
 import { FilterStack } from './filters';
@@ -217,6 +218,7 @@ export class StoryStage {
   readonly cover: any;
   private tweens = new Set<Tween>();
   readonly backLayers = new Map<string, BackLayer>();
+  readonly cutscenes = new Map<string, StoryCutscene>();
   readonly actorMap = new Map<string, StoryActor>();
   camera = { x: 0, y: 0, zoom: 0, roll: 0 };
   shake = { x: 0, y: 0 };
@@ -256,6 +258,7 @@ export class StoryStage {
     this.app.ticker.remove(this.tick);
     this.stopFx(null);
     for (const actor of this.actorMap.values()) actor.dispose();
+    for (const cutscene of this.cutscenes.values()) cutscene.dispose();
     this.root.destroy({ children: true });
   }
 
@@ -465,6 +468,25 @@ export class StoryStage {
         if (r > 0) g.circle(cx, cy, radius - (soft * i) / 6).fill({ color, alpha: 0.12 }), g.circle(cx, cy, r).cut();
       }
     }
+  }
+
+  // `key` is the resource mapper path (`Pleasures/pl0001`); null when the published data names no rig for it.
+  cutscene(id: string, key: string): StoryCutscene | null {
+    let cutscene = this.cutscenes.get(id);
+    if (!cutscene) {
+      const rig = this.fx?.cutscenes?.[key];
+      if (!rig) return null;
+      cutscene = new StoryCutscene(this, id, rig);
+      this.cutscenes.set(id, cutscene);
+    }
+    return cutscene;
+  }
+
+  async fadeCutscene(cutscene: StoryCutscene, to: number, duration: number): Promise<void> {
+    if (to > 0) cutscene.visible = true;
+    const from = cutscene.alpha;
+    await this.tween(duration, undefined, (t) => { cutscene.alpha = from + (to - from) * t; cutscene.apply(); });
+    if (to <= 0) { cutscene.visible = false; cutscene.apply(); }
   }
 
   actor(id: string, origin?: string): StoryActor {

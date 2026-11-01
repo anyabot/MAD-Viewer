@@ -38,7 +38,7 @@ const PING_PONG: Record<string, { power: number; count: number; duration: number
 };
 // Game UI and flow switches with nothing to draw: the skip button, input lock, chapter-end prompt, UI panels.
 const SILENT = new Set(['Label', 'NaniSummary', 'TitleCommand', 'Skip', 'ProcessInput', 'Group',
-  'ParametrizeGeneric', 'DesireWaitCommand', 'CharacterStyleOnCommand', 'CharacterStyleOffCommand',
+  'ParametrizeGeneric', 'CharacterStyleOnCommand', 'CharacterStyleOffCommand',
   'ContinueCommand', 'HideUI', 'ShowUI', 'UsingScopeCommand']);
 const COLORS: Record<string, number> = { white: 0xffffff, black: 0x000000, red: 0xff0000, gray: 0x808080, grey: 0x808080 };
 
@@ -236,6 +236,11 @@ export class StoryRuntime {
       case 'Wait':
         await this.stage.tween(num(f.WaitMode, 0), undefined, () => {});
         return null;
+      // `DesireAffectionWaitCommandBase::Execute`: a WaitMode alone runs a stock Wait sharing that parameter.
+      case 'DesireWaitCommand':
+        if (f.Animation || f.Track || !f.WaitMode) this.miss('DesireWaitCommand animation cycle');
+        await this.stage.tween(num(f.WaitMode, 0), undefined, () => {});
+        return null;
       case 'Await':
         await Promise.all(this.pending);
         this.pending = [];
@@ -276,6 +281,11 @@ export class StoryRuntime {
         return null;
       case 'ModifyBackground':
         await this.hold(this.modifyBackground(c), wait);
+        return null;
+      case 'DesireCommand':
+      case 'PleasureCommand':
+      case 'DramaCommand':
+        await this.hold(this.cutscene(c), wait);
         return null;
       case 'ModifyCharacter':
         await this.hold(this.modifyCharacter(c), wait);
@@ -377,6 +387,8 @@ export class StoryRuntime {
           if (PRINTERS.has(id)) { this.ui.hidePrinter(); return Promise.resolve(); }
           const layer = this.stage.backLayers.get(id);
           if (layer) return this.stage.hideBack(layer, num(f.Duration, DEFAULT_DURATION));
+          const cutscene = this.stage.cutscenes.get(id);
+          if (cutscene) return this.stage.fadeCutscene(cutscene, 0, num(f.Duration, DEFAULT_DURATION));
           const actor = this.stage.actorMap.get(id);
           return actor ? this.fadeOut(actor, num(f.Duration, DEFAULT_DURATION)) : Promise.resolve();
         });
@@ -390,6 +402,7 @@ export class StoryRuntime {
         if (c.class === 'HideAllActors') {
           this.ui.hidePrinter();
           for (const layer of this.stage.backLayers.values()) tasks.push(this.stage.hideBack(layer, duration));
+          for (const cutscene of this.stage.cutscenes.values()) if (cutscene.visible) tasks.push(this.stage.fadeCutscene(cutscene, 0, duration));
         }
         await this.hold(Promise.all(tasks).then(() => {}), wait);
         return null;
@@ -480,7 +493,8 @@ export class StoryRuntime {
     if (label) return label;
     const origin = this.clones.get(id) ?? id;
     if (origin === 'player') return this.lang === 'ko' ? '나' : gameText(this.index.names.player, this.lang) || 'Me';
-    return gameText(this.index.names[origin], this.lang) || gameText(this.index.names[id], this.lang) || '';
+    // Naninovel prints the actor id when it has no display name, as for `???`.
+    return gameText(this.index.names[origin], this.lang) || gameText(this.index.names[id], this.lang) || (/^\?+$/.test(id) ? id : '');
   }
 
   private async print(c: StoryCommand, at: number): Promise<void> {
@@ -554,6 +568,21 @@ export class StoryRuntime {
       stage.renderBack(layer);
     }));
     await Promise.all(tasks);
+  }
+
+  // `DesireCommand` names the `<id>/desire` actor; Pleasure and Drama actors are their mapper names.
+  private async cutscene(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const [id, appearance] = actorId(f.IdAndAppearance);
+    const prefix = { DesireCommand: 'DesireAndAffections', PleasureCommand: 'Pleasures', DramaCommand: 'Dramas' }[c.class as 'DramaCommand'];
+    const actorKey = c.class === 'DesireCommand' ? `${id}/desire` : id;
+    const cutscene = this.stage.cutscene(actorKey, `${prefix}/${actorKey}`);
+    if (!cutscene) { this.miss(`${c.class} ${actorKey}`); return; }
+    for (const name of ['Offset', 'Zoom', 'Track', 'Mix'] as const) if (f[name]) this.miss(`${c.class} ${name}`);
+    for (const name of ['Reset', 'Hold', 'Jiggler'] as const) if (flag(f[name], false)) this.miss(`${c.class} ${name}`);
+    await cutscene.ready;
+    const show = cutscene.visible ? Promise.resolve() : this.stage.fadeCutscene(cutscene, 1, num(f.Duration, DEFAULT_DURATION));
+    await Promise.all([show, cutscene.play(appearance, flag(f.Loop, false))]);
   }
 
   private target(actor: StoryActor, scenePosition: string | undefined, position: string | undefined) {
