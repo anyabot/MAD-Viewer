@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Box, Button, Center, Flex, Spinner, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
 import { LineText } from '@/components/storyLines';
-import { loadSceneAudio, loadStoryScript, loadStoryScriptIndex } from '@/lib/data';
+import { loadSceneAudio, loadStoryFx, loadStoryScript, loadStoryScriptIndex } from '@/lib/data';
+import type { FxIndex } from './fx';
 import { stopBgm, stopSfx } from '@/lib/sceneAudio';
 import { loadEmoticons } from '@/lib/emoticons';
 import { useGameLang } from '@/lib/gameText';
@@ -52,12 +53,14 @@ export default function StoryPlayer({ script }: { script: string }) {
         loadStoryScriptIndex(), loadStoryScript(script), loadSceneAudio().catch(() => null),
         loadEmoticons().catch(() => null),
       ]);
+      const fx = await loadStoryFx<FxIndex>().catch(() => null);
       if (destroyed) return;
       pixi = await createPixiApp({ PIXI, host, cancelled: () => destroyed, init: { background: 0x000000 } });
       if (!pixi) return;
       const app = pixi.app;
       stage = new StoryStage(PIXI, SPINE, app, index, (message) => console.warn('[story]', message));
       stage.emoticons = emoticons;
+      stage.fx = fx;
       const layout = () => stage?.resize(app.screen.width, app.screen.height);
       layout();
       app.renderer.on('resize', layout);

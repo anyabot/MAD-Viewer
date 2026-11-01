@@ -3,7 +3,7 @@ import { gameText, type GameLang } from '@/lib/gameText';
 import { pauseBgm, playBgm, playSfx, stopBgm, stopSfx, type SceneAudioIndex } from '@/lib/sceneAudio';
 import { holds, type Vars } from '@/components/skinViewer/interactions';
 import { applyExpression } from '@/components/skinViewer/sceneRuntime';
-import { depthScale, sceneToWorld, worldToScene, type StoryActor, type StoryStage, type Transition } from './stage';
+import { depthScale, sceneToWorld, worldToScene, type DrawShape, type StoryActor, type StoryStage, type Transition } from './stage';
 import type { FilterKind, FilterStack } from './filters';
 
 export type PrinterId = 'ExDialogue' | 'ExWide' | 'ExCenterSubtitle' | 'ExFullScreen' | string;
@@ -284,6 +284,31 @@ export class StoryRuntime {
         return null;
       case 'Spawn':
         await this.hold(this.spawn(c), wait);
+        return null;
+      case 'DestroySpawned':
+        this.stage.stopFx(`spawn:${f.Path ?? ''}`);
+        return null;
+      case 'DestroyAllSpawned':
+        this.stage.stopFx(null);
+        return null;
+      case 'CharacterEffectSpawnCommand':
+        await this.hold(this.characterEffect(c), wait);
+        return null;
+      case 'PopupImage':
+        await this.hold(this.popup(c), wait);
+        return null;
+      case 'DrawBoxCommand':
+      case 'DrawCircleCommand':
+      case 'DrawLineCommand':
+      case 'DrawFillCommand':
+      case 'DrawImageCommand':
+        await this.hold(this.draw(c), wait);
+        return null;
+      case 'DrawHoleCommand':
+        await this.hold(this.hole(c), wait);
+        return null;
+      case 'ClearDrawCommand':
+        await this.hold(this.clearDraw(c), wait);
         return null;
       case 'SpawnShake':
         await this.hold(this.spawnShake(c), wait);
@@ -626,7 +651,7 @@ export class StoryRuntime {
   private spawn(c: StoryCommand): Promise<void> {
     const path = c.fields.Path ?? '';
     const kind = ({ ShakeCamera: 'camera', ShakeCharacter: 'character', ShakeBackground: 'background', ShakePrinter: 'printer' } as const)[path as 'ShakeCamera'];
-    if (!kind) { this.miss(`effect ${path}`); return Promise.resolve(); }
+    if (!kind) return this.spawnEffect(c);
     const [id, count, duration, durationVariation, amplitude, amplitudeVariation, horizontal, vertical] =
       (c.fields.Params ?? '').split(',').map((v) => v.trim() || undefined);
     return this.shake(kind, id ?? '', { count, duration, durationVariation, amplitude, amplitudeVariation, horizontal, vertical });
@@ -673,6 +698,144 @@ export class StoryRuntime {
     const from = stack.amounts.blur;
     const to = num(f.Intensity, 0);
     await this.stage.tween(num(f.FadeDuration, 0), undefined, (t) => { stack.amounts.blur = from + (to - from) * t; });
+  }
+
+  // A spawned prefab sits at its scene position (centre when none); Rotation y 180 mirrors it.
+  private async spawnEffect(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const path = f.Path ?? '';
+    const prefab = this.stage.fx?.spawn[path];
+    if (!prefab) { this.miss(`effect ${path}`); return; }
+    const at = this.target({ pos: { x: 0, y: 0, z: 0 } } as StoryActor, f.ScenePosition, f.Position);
+    const [, ry, rz] = parts(f.Rotation);
+    await this.stage.spawnFx(prefab, `spawn:${path}`, {
+      x: at.x, y: at.y, scale: num(f.Scale, 1), rotation: rz ?? 0, mirror: Math.abs(ry ?? 0) === 180,
+    });
+  }
+
+  // CharacterEffectSpawnCommand: the effect rides the actor (Follow) at an offset from its pivot; Visible:false removes it by Id.
+  private async characterEffect(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const [id, name] = actorId(f.IdAndFx);
+    const key = `character:${f.Id || `${id}.${name}`}`;
+    if (!flag(f.Visible, true)) { this.stage.stopFx(key); return; }
+    const prefab = name ? this.stage.fx?.characterFx[name] : undefined;
+    if (!prefab) { this.miss(`character effect ${name}`); return; }
+    const actor = this.actor(id);
+    await actor.ready;
+    const [ox, oy] = parts(f.Position);
+    const follow = flag(f.Follow, true);
+    await this.stage.spawnFx(prefab, key, {
+      x: (ox ?? 0) + (follow ? 0 : actor.pos.x), y: -(oy ?? 0) + (follow ? 0 : actor.pos.y), scale: num(f.Scale, 1), rotation: 0,
+    }, follow ? actor.holder : undefined);
+  }
+
+  // A popup image is a world sprite at 100 pixels per unit, centred unless placed, faded by Duration.
+  private async popup(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const entry = this.stage.fx?.popups[f.ImageId ?? ''];
+    if (!entry) { this.miss(`popup ${f.ImageId}`); return; }
+    const sprite = await this.stage.popupSprite(f.ImageId!, entry.image, entry.size);
+    if (!sprite) return;
+    const at = this.target({ pos: { x: sprite.x, y: -sprite.y, z: 0 } } as StoryActor, f.ScenePosition, f.Position);
+    const show = flag(f.Visible, true);
+    const from = { x: sprite.x, y: sprite.y, s: sprite.scale.y, a: sprite.alpha, r: sprite.rotation };
+    const scale = num(f.Scale, from.s || 1);
+    const [, , rz] = parts(f.Rotation);
+    const rotation = rz != null ? (-rz * Math.PI) / 180 : from.r;
+    if (show && !sprite.visible) { sprite.visible = true; sprite.alpha = 0; from.a = 0; }
+    await this.stage.tween(num(f.Duration, DEFAULT_DURATION), f.EasingTypeName, (t) => {
+      sprite.position.set(from.x + (at.x - from.x) * t, from.y + (-at.y - from.y) * t);
+      sprite.scale.set(from.s + (scale - from.s) * t);
+      sprite.rotation = from.r + (rotation - from.r) * t;
+      sprite.alpha = from.a + ((show ? 1 : 0) - from.a) * t;
+    });
+    if (!show) sprite.visible = false;
+  }
+
+  private async draw(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const stage = this.stage;
+    const kinds: Record<string, DrawShape['kind']> = {
+      DrawBoxCommand: 'box', DrawCircleCommand: 'circle', DrawLineCommand: 'line', DrawFillCommand: 'fill', DrawImageCommand: 'image',
+    };
+    const kind = kinds[c.class];
+    const shape = stage.drawShape(f.Id || f.ImageId || kind);
+    const fresh = shape.alpha <= 0.001;
+    shape.kind = kind;
+    if (kind === 'image' && !shape.sprite) {
+      const entry = stage.fx?.popups[f.ImageId ?? ''];
+      if (!entry) { this.miss(`draw image ${f.ImageId}`); return; }
+      const holder = await stage.popupSprite(`draw:${shape.id}`, entry.image, entry.size);
+      if (!holder) return;
+      shape.sprite = holder.children[0];
+      holder.removeChild(shape.sprite);
+      shape.sprite.anchor.set(0.5);
+      shape.node.addChild(shape.sprite);
+    }
+    const [px, py, pz] = parts(f.Position);
+    const [sw, sh] = parts(f.Size);
+    const [fx, fy] = parts(f.From);
+    const [tx, ty] = parts(f.To);
+    const [vx, vy] = parts(f.Pivot);
+    const to = {
+      x: px ?? shape.x, y: py ?? shape.y, z: num(f.Z, pz ?? shape.z),
+      w: sw ?? shape.w, h: sh ?? (sw != null && kind !== 'box' ? sw : shape.h),
+      rotation: f.Rotation ? num(f.Rotation, 0) : shape.rotation,
+      alpha: flag(f.Visible, true) ? 1 : 0,
+      fromX: fx ?? shape.fromX, fromY: fy ?? shape.fromY, toX: tx ?? shape.toX, toY: ty ?? shape.toY,
+      length: f.Length ? num(f.Length, 0) : shape.length,
+    };
+    shape.color = color(f.TintColor) ?? (kind === 'image' ? 0xffffff : shape.color);
+    if (shape.sprite) shape.sprite.tint = shape.color;
+    shape.border = color(f.BorderColor);
+    shape.thickness = num(f.Thickness, shape.thickness);
+    shape.pivotX = vx ?? shape.pivotX;
+    shape.pivotY = vy ?? shape.pivotY;
+    if (fresh) Object.assign(shape, { ...to, alpha: 0, length: to.length != null ? 0 : null });
+    const start = { ...shape };
+    await stage.tween(num(f.Duration, DEFAULT_DURATION), f.EasingTypeName, (t) => {
+      const mix = (a: number, b: number) => a + (b - a) * t;
+      Object.assign(shape, {
+        x: mix(start.x, to.x), y: mix(start.y, to.y), z: to.z, w: mix(start.w, to.w), h: mix(start.h, to.h),
+        rotation: mix(start.rotation, to.rotation), alpha: mix(start.alpha, to.alpha),
+        fromX: mix(start.fromX, to.fromX), fromY: mix(start.fromY, to.fromY), toX: mix(start.toX, to.toX), toY: mix(start.toY, to.toY),
+        length: to.length != null ? mix(start.length ?? 0, to.length) : null,
+      });
+      stage.renderShape(shape);
+    });
+  }
+
+  private async hole(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const stage = this.stage;
+    const [x, y] = parts(f.Position);
+    const id = f.Id ?? '';
+    const existing = stage.holes.find((h) => h.id === id);
+    const target = {
+      id, x: x ?? existing?.x ?? 50, y: y ?? existing?.y ?? 50,
+      size: flag(f.Visible, true) ? num(f.Size, existing?.size ?? 10) : 0, soft: num(f.Soft, 0),
+    };
+    const live = existing ? { ...existing } : { ...target, size: 0 };
+    const from = { ...live };
+    stage.holes = [...stage.holes.filter((h) => h.id !== id), live];
+    await stage.tween(num(f.Duration, DEFAULT_DURATION), f.EasingTypeName, (t) => {
+      live.x = from.x + (target.x - from.x) * t;
+      live.y = from.y + (target.y - from.y) * t;
+      live.size = from.size + (target.size - from.size) * t;
+      for (const shape of stage.draws.values()) if (shape.kind === 'fill') stage.renderShape(shape);
+    });
+  }
+
+  private async clearDraw(c: StoryCommand): Promise<void> {
+    const f = c.fields;
+    const ids = f.Ids ? f.Ids.split(',').map((s) => s.trim()) : null;
+    const shapes = [...this.stage.draws.values()].filter((s) => !ids || ids.includes(s.id));
+    const from = shapes.map((s) => s.alpha);
+    await this.stage.tween(num(f.Duration, DEFAULT_DURATION), f.EasingTypeName, (t) => {
+      shapes.forEach((s, i) => { s.alpha = from[i] * (1 - t); this.stage.renderShape(s); });
+    });
+    if (!ids) this.stage.holes = [];
   }
 
   // <GetMoveSequence>d__11: per count, up by power x depth scale over half the duration, then back.

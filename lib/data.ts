@@ -1327,6 +1327,14 @@ export function storyBackgroundUrl(name: string): string {
   return `${DATA_BASE}/story_scripts/bg/${encodeURIComponent(name)}.webp`;
 }
 
+export function storyAssetUrl(folder: string, name: string): string {
+  return `${DATA_BASE}/story_scripts/${folder}/${encodeURIComponent(name)}.webp`;
+}
+
+export function loadStoryFx<T>(): Promise<T> {
+  return fetchJson<T>('story_scripts/fx.json');
+}
+
 export type BondSceneKind = 'desire' | 'affection';
 export type BondScene = { key?: string; kind: BondSceneKind; name?: GameLocalized; thumb?: string };
 export type BondChat = {
