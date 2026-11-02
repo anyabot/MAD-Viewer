@@ -310,6 +310,8 @@ export type SkillDetailValue = {
   name: string | null;
   nameEn: string | null;
   id: string;
+  // further ids merged under the same display name; a clear removes them too
+  more?: string[];
 };
 
 // Individual states, not categories; the category fields hold `DURATION_CATEGORIZE_TYPE` / `ONETIME_CATEGORIZE_TYPE`.
@@ -360,6 +362,10 @@ export type SkillOp = {
   /** How long the state lasts, per skill level. */
   seconds?: SkillMagnitude;
   maxStack?: number;
+  // the duration row; a STACK define stacks per row up to rowMaxStack (0 = no cap)
+  row?: string;
+  rowMaxStack?: number;
+  stacking?: string | null;
   /** Seconds between ticks, when the state repeats its operation. */
   interval?: number;
   // % of the value each landing deals: one number for all, or one per landing; absent = 100

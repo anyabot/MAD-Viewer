@@ -1,5 +1,5 @@
 import { useSpoilerUnit } from '@/lib/spoilers';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { Seo } from '@/components/seo';
 import NextLink from 'next/link';
 import {
@@ -7,7 +7,9 @@ import {
   SliderTrack, Table, Tbody, Td, Text, Th, Thead, Tr, VStack, Wrap, WrapItem,
 } from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel } from '@altterisk/game-hub';
-import { defaultPattern, loopPatterns, unitYield, type Build, type Target, type UnitYield } from '@/lib/dps';
+import {
+  loopPatterns, skillLevelCaps, stackInputs, unitYield, type Build, type Target, type UnitYield,
+} from '@/lib/dps';
 import {
   loadCharacters, loadIcons, loadSkillTiming, type CharacterData, type IconManifest, type SkillTiming,
 } from '@/lib/data';
@@ -38,7 +40,8 @@ function Dial({ label, value, min, max, step = 1, onChange }: {
         <Text fontSize="xs" color="gray.400">{label}</Text>
         <Text fontSize="xs" fontFamily="mono">{value}</Text>
       </HStack>
-      <Slider aria-label={label} min={min} max={max} step={step} value={value} onChange={onChange}>
+      <Slider aria-label={label} min={min} max={max} step={step} value={value} onChange={onChange} py={2}
+        style={{ '--slider-thumb-size': '12px', '--slider-track-size': '4px' } as CSSProperties}>
         <SliderTrack bg="whiteAlpha.200"><SliderFilledTrack bg="accent.400" /></SliderTrack>
         <SliderThumb boxSize={3} />
       </Slider>
@@ -46,14 +49,15 @@ function Dial({ label, value, min, max, step = 1, onChange }: {
   );
 }
 
-function DefenseCurve({ units, chars, target, build, timing, burst, lang, patterns }: {
+function DefenseCurve({ units, chars, target, build, timing, burst, lang, patterns, stacks }: {
   units: string[]; chars: CharacterData; target: Target; build: Build;
   timing: Record<string, SkillTiming>; burst: boolean; lang: 'en' | 'ko'; patterns: Record<string, number>;
+  stacks: Record<string, Record<string, number>>;
 }) {
   const steps = 16;
   const series = units.map((code) => Array.from({ length: steps + 1 }, (_, i) => {
-    const y = unitYield(code, chars, build, { ...target, defense: (DEFENSE_MAX * i) / steps }, timing, patterns[code], burst);
-    return y ? (burst ? y.dpsBurst : y.dps) : 0;
+    const y = unitYield(code, chars, build, { ...target, defense: (DEFENSE_MAX * i) / steps }, timing, patterns[code], burst, stacks[code]);
+    return y ? y.dps : 0;
   }));
   const top = Math.max(1, ...series.flat());
   const w = 640;
@@ -102,18 +106,25 @@ function DpsContent() {
   const [timing, setTiming] = useState<Record<string, SkillTiming> | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [units, setUnits] = useState<string[]>(DEFAULT_UNITS);
-  const [build, setBuild] = useState<Build>({ level: 0, star: 'max', gear: true, infusion: true, love: true });
+  const [build, setBuild] = useState<Build>({
+    level: 0, star: 0, skillLevel: 0, burstLevel: 0, gear: true, infusion: true, love: true,
+  });
   const [target, setTarget] = useState<Target>({
     defense: 300, evasion: 50, critResist: 0, critDamageResist: 0, penetrationResist: 0,
-    levelGap: 0, advantage: false, maxLife: 10000, hpRate: 1, marked: false,
+    levelGap: 0, advantage: false, maxLife: 10000, hpRate: 1, marked: false, seconds: 120,
   });
   const [patterns, setPatterns] = useState<Record<string, number>>({});
+  const [stacks, setStacks] = useState<Record<string, Record<string, number>>>({});
   const [burst, setBurst] = useState(true);
 
   useEffect(() => {
     loadCharacters().then((c) => {
       setChars(c);
-      setBuild((b) => ({ ...b, level: b.level || c.statCaps.level }));
+      const levels = skillLevelCaps(c);
+      setBuild((b) => ({
+        ...b, level: b.level || c.statCaps.level, star: b.star || c.statCaps.star,
+        skillLevel: b.skillLevel || levels.skill, burstLevel: b.burstLevel || levels.burst,
+      }));
     }).catch((e) => setError(String(e)));
     loadIcons().then(setIcons).catch(() => setIcons(null));
     loadSkillTiming().then((d) => setTiming(Object.assign({}, ...Object.values(d.characters))))
@@ -127,15 +138,16 @@ function DpsContent() {
 
   const rows = useMemo(() => {
     if (!chars || !timing || !build.level) return [];
-    return units.map((code) => unitYield(code, chars, build, target, timing, patterns[code], burst))
+    return units.map((code) => unitYield(code, chars, build, target, timing, patterns[code], burst, stacks[code]))
       .filter((y): y is UnitYield => !!y);
-  }, [chars, timing, units, build, target, patterns, burst]);
+  }, [chars, timing, units, build, target, patterns, burst, stacks]);
 
   if (error || !chars || !timing) {
     return <LoadState loading={!error} error={error} labels={{ loading: t('loading'), error }} />;
   }
-  const value = (y: UnitYield) => (burst ? y.dpsBurst : y.dps);
-  const healValue = (y: UnitYield) => (burst ? y.hpsBurst : y.hps);
+  const value = (y: UnitYield) => y.dps;
+  const healValue = (y: UnitYield) => y.hps;
+  const levels = skillLevelCaps(chars);
   const ranked = [...rows].sort((a, b) => value(b) - value(a));
   const best = Math.max(1, ...rows.map(value));
   const bestHeal = Math.max(1, ...rows.map(healValue));
@@ -143,6 +155,8 @@ function DpsContent() {
   const statName = (k: string) => dataText(lang, chars.statTypes[k]?.name, chars.statTypes[k]?.en) || k;
   const amount = (k: string, v: number) => (chars.statTypes[k]?.display === 2 ? `${(v * 100).toFixed(0)}%` : v.toFixed(0));
   const breakdown = (y: UnitYield) => [
+    `${y.star}★`,
+    ...y.triggers.map((g) => `${lang === 'ko' ? g.label : g.labelEn} ${g.perMinute.toFixed(1)}${L('/min', '회/분')}`),
     ...y.passive.map((g) => `${L('Passive', '패시브')} ${statName(g.stat)} +${amount(g.stat, g.amount)}`),
     ...y.buffs.map((g) => `${g.label} ${statName(g.stat)} +${amount(g.stat, g.amount)} ${L('avg', '평균')}`),
     ...y.debuffs.map((g) => `${g.label} ${L('target', '대상')} ${statName(g.stat)} −${amount(g.stat, g.amount)} ${L('avg', '평균')}`),
@@ -172,13 +186,24 @@ function DpsContent() {
                 <Button size="xs" variant="ghost" onClick={() => setUnits(units.filter((_, j) => j !== i))}>×</Button>
               </HStack>
               {loopPatterns(chars.characters[code]).length > 1 && (
-                <Select size="xs" ml={5} w="auto" value={patterns[code] ?? defaultPattern(chars.characters[code])}
-                  onChange={(e) => setPatterns({ ...patterns, [code]: Number(e.target.value) })}>
+                <Select size="xs" ml={5} w="auto" value={patterns[code] ?? ''}
+                  onChange={(e) => {
+                    const rest = Object.fromEntries(Object.entries(patterns).filter(([c]) => c !== code));
+                    setPatterns(e.target.value === '' ? rest : { ...rest, [code]: Number(e.target.value) });
+                  }}>
+                  <option value="">{L('Auto (game rule)', '자동 (게임 규칙)')}</option>
                   {loopPatterns(chars.characters[code]).map((p, k) => (
                     <option key={k} value={k}>{dataText(lang, p.name, p.nameEn) || `${k + 1}`}</option>
                   ))}
                 </Select>
               )}
+              {stackInputs(code, chars, build).map((s) => (
+                <Box key={s.key} ml={5}>
+                  <Dial label={`${lang === 'ko' ? s.label : s.labelEn} (${L('times triggered', '발동 횟수')})`}
+                    value={stacks[code]?.[s.key] ?? 0} min={0} max={s.max}
+                    onChange={(v) => setStacks({ ...stacks, [code]: { ...stacks[code], [s.key]: v } })} />
+                </Box>
+              ))}
               </VStack>
             ))}
             {units.length < 6 && (
@@ -193,11 +218,16 @@ function DpsContent() {
           <VStack align="stretch" spacing={2}>
             <Dial label={L('Level', '레벨')} value={build.level} min={1} max={chars.statCaps.level}
               onChange={(v) => setBuild({ ...build, level: v })} />
+            <Dial label={L('Skill level', '스킬 레벨')} value={build.skillLevel} min={1} max={levels.skill}
+              onChange={(v) => setBuild({ ...build, skillLevel: v })} />
+            <Dial label={L('Burst level', '버스트 레벨')} value={build.burstLevel} min={1} max={levels.burst}
+              onChange={(v) => setBuild({ ...build, burstLevel: v })} />
             <Wrap spacing={3}>
               <WrapItem>
-                <Select size="xs" w="7rem" value={build.star} onChange={(e) => setBuild({ ...build, star: e.target.value as Build['star'] })}>
-                  <option value="max">{L('Max ★', '최대 ★')}</option>
-                  <option value="min">{L('Base ★', '기본 ★')}</option>
+                <Select size="xs" w="7rem" value={build.star} onChange={(e) => setBuild({ ...build, star: Number(e.target.value) })}>
+                  {Array.from({ length: chars.statCaps.star }, (_, k) => k + 1).map((n) => (
+                    <option key={n} value={n}>{`${n}★`}</option>
+                  ))}
                 </Select>
               </WrapItem>
               <WrapItem><Checkbox size="sm" isChecked={build.gear} onChange={(e) => setBuild({ ...build, gear: e.target.checked })}>{L('Max gear', '최대 장비')}</Checkbox></WrapItem>
@@ -225,6 +255,8 @@ function DpsContent() {
               onChange={(v) => setTarget({ ...target, critResist: v })} />
             <Dial label={L('Level above yours', '레벨 차이')} value={target.levelGap} min={0} max={10}
               onChange={(v) => setTarget({ ...target, levelGap: v })} />
+            <Dial label={L('Fight length (s)', '전투 시간 (초)')} value={target.seconds} min={30} max={600} step={10}
+              onChange={(v) => setTarget({ ...target, seconds: v })} />
             <Dial label={L('Target HP %', '대상 HP %')} value={Math.round(target.hpRate * 100)} min={1} max={100}
               onChange={(v) => setTarget({ ...target, hpRate: v / 100 })} />
             <Checkbox size="sm" isChecked={target.advantage} onChange={(e) => setTarget({ ...target, advantage: e.target.checked })}>
@@ -270,7 +302,7 @@ function DpsContent() {
                   <Td isNumeric fontFamily="mono">{healValue(y) ? fmt(healValue(y)) : '—'}</Td>
                   <Td isNumeric fontFamily="mono">{y.loopSeconds ? `${y.loopSeconds.toFixed(1)}s` : '—'}</Td>
                   <Td isNumeric fontFamily="mono">
-                    {y.burst ? `${fmt(y.burst.damage)}${y.burstCooldown ? ` / ${y.burstCooldown}s` : ''}` : '—'}
+                    {y.burst ? `${fmt(y.burst.damage)}${y.burstCooldown ? ` / ${y.burstCooldown.toFixed(1)}s` : ''}` : '—'}
                   </Td>
                 </Tr>,
                 breakdown(y).length ? (
@@ -288,12 +320,12 @@ function DpsContent() {
 
       <Panel title={L('Against defense', '방어력별')}>
         <DefenseCurve units={units} chars={chars} target={target} build={build} timing={timing} burst={burst} lang={lang}
-          patterns={patterns} />
+          patterns={patterns} stacks={stacks} />
       </Panel>
 
       <Text fontSize="xs" color="gray.500">
-        {L('Expected values on one target: the chosen rotation loop (default: the unconditional pattern) at max skill level, misses and crits as probabilities, damage-over-time included. Each unit’s own passive stats, the buffs and debuffs its own skills keep up (average stacks), and conditions its own skills set up (by cast order) are applied; the line under each unit lists them. Not modelled: allies’ buffs, party-composition passives, ultimate charge, extra targets hit by area skills; * marks a unit with effects or timings left out.',
-          '대상 1명 기준 기대값: 선택한 로테이션(기본: 무조건 패턴), 최대 스킬 레벨, 빗나감·치명은 확률로 반영, 지속 피해 포함. 유닛 자신의 패시브 스탯, 자기 스킬로 유지하는 버프·디버프(평균 중첩), 자기 스킬로 만드는 조건(시전 순서 기준)을 반영하며 각 유닛 아래 줄에 표시. 미반영: 아군 버프, 파티 구성 패시브, 버스트 충전, 범위 스킬의 추가 대상. *는 일부 효과·시간 미반영.')}
+        {L('Averages over the fight, cast by cast on one target: opening, then the loop the game picks before every cast (or the one you choose), burst whenever its cooldown is up (first one after one cooldown), misses and crits as probabilities, damage-over-time included. Passive stats, passive triggers fired by its own skills (stacks, follow-up skills, burst cooldown cuts), skill variants and the unit’s own buffs and debuffs follow the timeline; the line under each unit lists them. Passives fired by kills, dispels, deaths or summons take the count you set under the unit. Not modelled: allies’ buffs, party-composition passives, ultimate charge, crit- or hit-fired passives, extra targets hit by area skills; * marks a unit with effects or timings left out.',
+          '대상 1명 기준, 전투 시간 동안 시전마다 계산한 평균: 시작 패턴 후 매 시전 전 게임이 고르는 로테이션(또는 선택한 패턴), 쿨마다 버스트(첫 사용은 쿨 1회 후), 빗나감·치명은 확률로 반영, 지속 피해 포함. 패시브 스탯, 자기 스킬로 발동하는 패시브(중첩, 추가 스킬, 버스트 쿨 감소), 스킬 변형, 자기 버프·디버프를 시간순으로 반영하며 각 유닛 아래 줄에 표시. 처치·해제·사망·소환으로 발동하는 패시브는 유닛 아래에서 정한 횟수 적용. 미반영: 아군 버프, 파티 구성 패시브, 버스트 충전, 치명·피격 발동 패시브, 범위 스킬의 추가 대상. *는 일부 효과·시간 미반영.')}
       </Text>
     </VStack>
   );
