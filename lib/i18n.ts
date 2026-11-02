@@ -125,6 +125,8 @@ export const UI = {
   aoeLink: { en: 'AoE', ko: '범위' },
   aoeLinkHint: { en: 'Show the area on the battle field', ko: '전장에서 이 스킬의 범위 보기' },
   navEtc: { en: 'Etc.', ko: '기타' },
+  navMenu: { en: 'Menu', ko: '메뉴' },
+  navClose: { en: 'Close menu', ko: '메뉴 닫기' },
   artistUnits: { en: '{n} characters', ko: '캐릭터 {n}명' },
   homeJukebox: { en: 'Every background track in the game', ko: '게임의 모든 배경 음악' },
   jukeboxTracks: { en: '{n} tracks', ko: '{n}곡' },
