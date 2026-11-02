@@ -351,6 +351,8 @@ export type SkillOp = {
   chance?: number;
   // a passive work's own check, e.g. a state at N stacks
   when?: { check: string | null; on: string | null; state: string | null; op: string | null; value: string | null };
+  // a passive work's target: HOLDER, TRIGGER_TARGET or TRIGGER_INSTIGATOR
+  via?: string | null;
   // duration operations only
   define?: string;
   name?: string | null;
@@ -446,6 +448,17 @@ export type SkillBehaviour = {
   hits?: SkillHit[];
   stats?: SkillStat[];
   triggers?: SkillTrigger[];
+  summons?: SkillSummon[];
+};
+
+// `unit` keys `CharacterData.summons`; a row spawns only while its check holds
+export type SkillSummon = {
+  unit: number; replace?: boolean; delay?: number; seconds: number;
+  when?: { on: string | null; check: string | null; state: string; op: string | null; value: string };
+};
+
+export type SummonEntry = Pick<CharacterEntry, 'battlePatterns' | 'baseStats' | 'levelStats'> & {
+  code: string; id: number; skillSetGroup: number;
 };
 
 // One pre-rendered `desc` per skill level, carrying the game's `<color=#rrggbb>` markup.
@@ -515,6 +528,7 @@ export type CharacterData = {
   skillSets: Record<string, Record<string, number[]>>;
   skills: Record<string, SkillEntry>;
   infusion?: InfusionInfo;
+  summons?: Record<string, SummonEntry>;
 };
 
 // An enemy is a `Character_Base` row: same code, kit already in `skillSets` / `skills`.
@@ -1128,8 +1142,11 @@ export type SkillTiming = {
   hits?: number[]; pause?: { from?: number; to?: number };
 };
 
-export function loadSkillTiming(): Promise<{ characters: Record<string, Record<string, SkillTiming>> }> {
-  return fetchJson<{ characters: Record<string, Record<string, SkillTiming>> }>('skilltiming.json');
+// `appear`: a summon's `00_summon` clip, played before it first acts
+export type SkillTimingDoc = { characters: Record<string, Record<string, SkillTiming>>; appear?: Record<string, number> };
+
+export function loadSkillTiming(): Promise<SkillTimingDoc> {
+  return fetchJson<SkillTimingDoc>('skilltiming.json');
 }
 
 export type VoiceLine = { id: string; cat: string; text?: GameLocalized };

@@ -3,14 +3,15 @@ import {
   type EquipInput,
 } from '@/lib/characters';
 import type {
-  CharacterData, CharacterEntry, SkillBehaviour, SkillEntry, SkillGate, SkillHit, SkillOp, SkillTiming, SkillTrigger,
+  CharacterData, CharacterEntry, SkillBehaviour, SkillEntry, SkillGate, SkillHit, SkillOp, SkillSummon, SkillTiming,
+  SkillTrigger, SummonEntry,
 } from '@/lib/data';
 import {
   BATTLE, criticalChance, defenseFactor, levelGapFactor, missChance, penetrationFactor,
 } from '@/lib/formula';
 
 export type Build = {
-  level: number; star: number; skillLevel: number; burstLevel: number; gear: boolean; infusion: boolean; love: boolean;
+  level: number; star: number; skillLevel: number; burstLevel: number; gearTier: number; gearLevel: number; infusion: boolean; love: boolean;
 };
 export type Target = {
   defense: number; evasion: number; critResist: number; critDamageResist: number;
@@ -28,6 +29,8 @@ export type UnitYield = {
   burst: SkillYield | null; burstCooldown: number | null; dps: number; hps: number;
   missingTiming: boolean; skipped: number; passive: Upkeep[]; buffs: Upkeep[]; debuffs: Upkeep[];
   conditions: (Labelled & { chance: number })[]; triggers: (Labelled & { perMinute: number })[];
+  // damage dealt outside the unit's own casts: passive procs by passive name, and its summons
+  sources: (Labelled & { dps: number })[];
 };
 
 const SKILL_DAMAGE_STAT: Record<number, string> = {
@@ -51,12 +54,17 @@ const TARGET_STAT: Record<'defense' | 'critResist', string> = {
   defense: 'PHYSICS_DEFENSE', critResist: 'CRITICAL_CHANCE_RESIST',
 };
 const DAMAGE_OPS = new Set(['ADD_DAMAGE', 'ADD_HEAL', 'ADD_FORCE_CRITICAL_DAMAGE', 'ADD_FORCE_PENETRATION_DAMAGE']);
-const SIMULATED = new Set(['TRIGGER_TYPE_USE_SKILL', 'TRIGGER_TYPE_DURATION_DEFINE_APPLY', 'TRIGGER_TYPE_BATTLE_START', 'TRIGGER_TYPE_WAVE_START']);
+const SIMULATED = new Set([
+  'TRIGGER_TYPE_USE_SKILL', 'TRIGGER_TYPE_DURATION_DEFINE_APPLY', 'TRIGGER_TYPE_DURATION_DEFINE_EXPIRED',
+  'TRIGGER_TYPE_BATTLE_START', 'TRIGGER_TYPE_WAVE_START', 'TRIGGER_TYPE_ATTACK', 'TRIGGER_TYPE_ATTACK_CRI',
+  'TRIGGER_TYPE_HIT', 'TRIGGER_TYPE_HIT_CRI', 'TRIGGER_TYPE_SUMMON', 'TRIGGER_TYPE_SUMMON_AFTER', 'TRIGGER_TYPE_UNSUMMON',
+]);
+const STATE_EVENTS = new Set(['TRIGGER_TYPE_DURATION_DEFINE_APPLY', 'TRIGGER_TYPE_DURATION_DEFINE_EXPIRED']);
 const FOREVER = 9999;
 
 const plain = (s?: string | null) => (s ?? '').replace(/<[^>]+>/g, '');
 
-type Side = 'self' | 'target';
+type Side = 'self' | 'target' | 'summon';
 type Effect = { op: string; value: number; scale: string | null; scaleOf: string | null };
 type State = { name: string; nameEn: string; list: { row: string; until: number; n: number }[]; effects: Effect[] };
 type Ctx = { stats: Record<string, number>; target: Target; gate: (gate: SkillGate, holder: Side) => number | null };
@@ -96,13 +104,10 @@ function levelOf(skill: SkillEntry, build: Build): number {
 }
 
 export function unitStats(entry: CharacterEntry, data: CharacterData, build: Build): Record<string, number> {
-  const equipment: EquipInput[] = build.gear
-    ? equipmentSlotsOf(entry, data.equipment).flatMap((slot) => {
-      const top = (slot.tiers ?? []).reduce<NonNullable<typeof slot.tiers>[number] | null>(
-        (best, row) => (!best || row.tier > best.tier ? row : best), null);
-      return top ? [{ type: slot.type, tier: top.tier, level: top.maxLevel }] : [];
-    })
-    : [];
+  const equipment: EquipInput[] = equipmentSlotsOf(entry, data.equipment).flatMap((slot) => {
+    const row = (slot.tiers ?? []).find((r) => r.tier === build.gearTier);
+    return row ? [{ type: slot.type, tier: row.tier, level: Math.min(build.gearLevel, row.maxLevel) }] : [];
+  });
   const infusion = build.infusion
     ? Object.fromEntries(INFUSION_PATHS.map((path) => [path, infusionNodes(entry, path).length])) : {};
   const rows = computeStats(entry, data, {
@@ -153,10 +158,11 @@ function compare(n: number, op: string | null, v: number): boolean {
   }
 }
 
+// an ENEMY op on a self-cast hitbox (CH0020's Scout) still lands on the enemy
 function sideOf(op: SkillOp, castTeam: string): Side | null {
-  if (op.applyTo === 'CASTER' || castTeam === 'SELF' || op.team === 'SELF'
-    || ((castTeam === 'FRIENDLY' || castTeam === 'ALL_UNIT') && op.pick === 'ALL')) return 'self';
+  if (op.applyTo === 'CASTER' || op.team === 'SELF') return 'self';
   if (op.team === 'ENEMY' || (op.team === 'CAST_TARGET' && castTeam === 'ENEMY')) return 'target';
+  if (castTeam === 'SELF' || ((castTeam === 'FRIENDLY' || castTeam === 'ALL_UNIT') && op.pick === 'ALL')) return 'self';
   return null;
 }
 
@@ -268,8 +274,8 @@ function externalTriggers(kit: SkillEntry[], defines: Set<string>): { key: strin
   for (const skill of kit) {
     if (skill.categorize !== 4) continue;
     (skill.behaviour?.triggers ?? []).forEach((trig, k) => {
-      const fromKit = trig.on === 'TRIGGER_TYPE_DURATION_DEFINE_APPLY' && (trig.value ?? []).some((v) => defines.has(v));
-      if (trig.on && SIMULATED.has(trig.on) && (trig.on !== 'TRIGGER_TYPE_DURATION_DEFINE_APPLY' || fromKit)) return;
+      const fromKit = STATE_EVENTS.has(trig.on ?? '') && (trig.value ?? []).some((v) => defines.has(v));
+      if (trig.on && SIMULATED.has(trig.on) && (!STATE_EVENTS.has(trig.on) || fromKit)) return;
       if (!trig.ops.some(stackEffect)) return;
       out.push({ key: `${skill.skillType}:${k}`, skill, trig });
     });
@@ -292,11 +298,42 @@ export function stackInputs(code: string, data: CharacterData, build: Build): St
   });
 }
 
-type Armed = { trig: SkillTrigger; last: number; fired: number };
+type Armed = { trig: SkillTrigger; skill: SkillEntry; last: number; fired: number };
+type Group = { side: Side; ops: SkillOp[]; n: number };
+
+// Ops on one state apply together, but a repeat of the same op and row is a separate application: CH0042's 3 Ready Drone works.
+function groupKey(grouped: Map<string, Group>, side: Side, op: SkillOp): string {
+  for (let i = 0; ; i += 1) {
+    const k = `${side}:${op.define}:${i}`;
+    if (!grouped.get(k)?.ops.some((o) => o.op === op.op && o.row === op.row)) return k;
+  }
+}
+// who the event's TRIGGER_TARGET and TRIGGER_INSTIGATOR are, per trigger type
+type Roles = { target: Side; instigator: Side };
+type Summoned = {
+  unit: SummonEntry; stats: Record<string, number>; until: number; next: number;
+  ready: Record<string, number>; opening: string[] | null; current: number; k: number;
+};
+
+export type Rotation = 'full' | 'noBurst' | 'opening' | 'loop' | 'burst';
+
+// A fractional stack count is a mix of the whole counts around it, so a check on it is a probability.
+function chanceOf(n: number, op: string | null, v: number): number {
+  const lo = Math.floor(n + 1e-9);
+  const p = n - lo;
+  const at = (x: number) => (compare(x, op, v) ? 1 : 0);
+  return p < 1e-9 ? at(lo) : (1 - p) * at(lo) + p * at(lo + 1);
+}
+
+function attackerMatches(check: string | null | undefined, attacker: Side): boolean {
+  if (check === 'SELF') return attacker === 'self';
+  if (check === 'FRIENDLY_NOT_SELF') return attacker === 'summon';
+  return check === 'FRIENDLY' || check === 'ALL_UNIT';
+}
 
 export function unitYield(
   code: string, data: CharacterData, build: Build, target: Target, timing: Record<string, SkillTiming>,
-  pattern?: number, withBurst = true, stacks: Record<string, number> = {},
+  pattern?: number, rotation: Rotation = 'full', stacks: Record<string, number> = {}, appear: Record<string, number> = {},
 ): UnitYield | null {
   const entry = data.characters[code];
   if (!entry) return null;
@@ -320,10 +357,12 @@ export function unitYield(
     .some((id) => timing[id]?.seconds == null);
   const empty: UnitYield = {
     code, star, stats: base, loopSeconds: 0, burst: null, burstCooldown: cd, dps: 0, hps: 0, missingTiming,
-    skipped: passiveSkipped, passive, buffs: [], debuffs: [], conditions: [], triggers: [],
+    skipped: passiveSkipped, passive, buffs: [], debuffs: [], conditions: [], triggers: [], sources: [],
   };
   if (!usable.some((p) => secondsOf(p.ids) > 0)) return empty;
-  const window = Math.max(1, target.seconds);
+  // opening and burst run once and average over their own length
+  const once = rotation === 'opening' || rotation === 'burst';
+  let window = once ? Infinity : Math.max(1, target.seconds);
 
   const defines = kitDefines(kitOf(entry, data));
   const states = new Map<string, State>();
@@ -333,14 +372,19 @@ export function unitYield(
     for (const trig of skill.behaviour?.triggers ?? []) {
       if (!trig.on || !SIMULATED.has(trig.on)) continue;
       const list = armed.get(trig.on) ?? [];
-      list.push({ trig, last: -Infinity, fired: 0 });
+      list.push({ trig, skill, last: -Infinity, fired: 0 });
       armed.set(trig.on, list);
     }
   }
+  const expiring = new Set((armed.get('TRIGGER_TYPE_DURATION_DEFINE_EXPIRED') ?? []).flatMap((a) => a.trig.value ?? []));
   const queue: string[] = [];
-  let nextBurst = withBurst && burstId && cd ? cd : Infinity;
+  let queued = 0;
+  let nextBurst = rotation === 'full' && burstId && cd ? cd : Infinity;
   const skipped = new Set<string>();
+  const summoned: Summoned[] = [];
 
+  const sideOfKey = (key: string) => key.slice(0, key.indexOf(':')) as Side;
+  const defineOfKey = (key: string) => key.slice(key.indexOf(':') + 1);
   const count = (side: Side, define: string, at: number) => {
     const s = states.get(`${side}:${define}`);
     if (!s) return 0;
@@ -348,15 +392,17 @@ export function unitYield(
     for (const i of s.list) if (i.until > at) n += i.n;
     return n;
   };
-  const statsAt = (at: number) => {
-    const out = { ...base };
+  // a summon's buffs scale off its caster's stats when the state says so, else off its own
+  const statsAt = (at: number, side: Side = 'self', own: Record<string, number> = base) => {
+    const out = { ...own };
     for (const [k, s] of states) {
-      if (!k.startsWith('self:') || !s.effects.length) continue;
-      const n = count('self', k.slice(5), at);
+      if (sideOfKey(k) !== side || !s.effects.length) continue;
+      const n = count(side, defineOfKey(k), at);
       for (const e of s.effects) {
         const stat = SELF_BUFF[e.op];
         const from = SCALE_STAT[e.scale ?? ''];
-        if (stat && from && n) out[stat] = (out[stat] ?? 0) + n * e.value * (base[from] ?? 0);
+        const of = side === 'self' || e.scaleOf === 'CASTER' ? base : own;
+        if (stat && from && n) out[stat] = (out[stat] ?? 0) + n * e.value * (of[from] ?? 0);
       }
     }
     return out;
@@ -364,8 +410,8 @@ export function unitYield(
   const targetAt = (at: number): Target => {
     const lower = { defense: 0, critResist: 0 };
     for (const [k, s] of states) {
-      if (!k.startsWith('target:') || !s.effects.length) continue;
-      const n = count('target', k.slice(7), at);
+      if (sideOfKey(k) !== 'target' || !s.effects.length) continue;
+      const n = count('target', defineOfKey(k), at);
       for (const e of s.effects) {
         const field = TARGET_DEBUFF[e.op];
         const from = SCALE_STAT[e.scale ?? ''];
@@ -402,20 +448,38 @@ export function unitYield(
       default: return null;
     }
   };
-  const ctxAt = (at: number): Ctx => ({ stats: statsAt(at), target: targetAt(at), gate: gateAt(at) });
+  const ctxAt = (at: number, side: Side = 'self', own: Record<string, number> = base): Ctx => (
+    { stats: statsAt(at, side, own), target: targetAt(at), gate: gateAt(at) });
 
   const totals = { damage: 0, heal: 0 };
   const casts = new Map<string, number>();
   const burstSum = { damage: 0, heal: 0, healPct: 0 };
-  const credit = (y: Yield, at: number) => {
+  const sourceSum = new Map<string, Labelled & { damage: number }>();
+  const credit = (y: Yield, at: number, source?: Labelled) => {
     if (at < 0 || at > window) return;
     totals.damage += y.damage;
     totals.heal += y.heal + y.healPct * target.maxLife;
+    if (source && y.damage) {
+      const u = sourceSum.get(source.labelEn) ?? { ...source, damage: 0 };
+      u.damage += y.damage;
+      sourceSum.set(source.labelEn, u);
+    }
   };
+  const SUMMONS: Labelled = { label: '소환수', labelEn: 'Summons' };
+  const scaled = (y: Yield, e: number): Yield => ({ damage: y.damage * e, heal: y.heal * e, healPct: y.healPct * e });
 
-  const clear = (side: Side, op: SkillOp) => {
+  // removes the named states with probability e: a certain removal deletes them, a partial one thins every stack
+  const clear = (side: Side, op: SkillOp, at: number, e = 1) => {
     for (const v of op.detail?.kind === 'state' ? op.detail.values : []) {
-      for (const id of [v.id, ...(v.more ?? [])]) states.delete(`${side}:${id}`);
+      for (const id of [v.id, ...(v.more ?? [])]) {
+        const key = `${side}:${id}`;
+        const s = states.get(key);
+        if (!s) continue;
+        const have = Math.min(1, count(side, id, at));
+        if (e >= 1 - 1e-9 || have <= 0) { states.delete(key); continue; }
+        const keep = Math.max(0, 1 - e / have);
+        for (const i of s.list) i.n *= keep;
+      }
     }
   };
   const apply = (side: Side, ops: SkillOp[], level: number, period: number, n: number, at: number, depth: number) => {
@@ -429,15 +493,17 @@ export function unitYield(
     };
     s.effects = ops.filter((op) => op.op && op.value && (SELF_BUFF[op.op] || TARGET_DEBUFF[op.op]))
       .map((op) => ({ op: op.op!, value: growValue(op.value!, level, period), scale: op.scale, scaleOf: op.scaleOf }));
-    s.list = s.list.filter((i) => i.until > at);
+    // a lapsed stack an expiry trigger watches stays until `expire` fires for it
+    s.list = s.list.filter((i) => i.until > at || expiring.has(define));
+    const live = s.list.filter((i) => i.until > at);
     const until = secs >= FOREVER ? Infinity : at + secs;
     const row = first.row ?? define;
     // STACK adds to its own row without a timer reset until the row cap; TIME_REPLACE keeps the longer
-    if (first.stacking === 'TIME_REPLACE' && s.list.length) {
-      const old = s.list[0];
+    if (first.stacking === 'TIME_REPLACE' && live.length) {
+      const old = live[0];
       if (until > old.until) s.list = [{ row, until, n: 1 - (1 - Math.min(1, old.n)) * (1 - Math.min(1, n)) }];
     } else {
-      const same = first.stacking === 'STACK' ? s.list.find((i) => i.row === row) : undefined;
+      const same = first.stacking === 'STACK' ? live.find((i) => i.row === row) : undefined;
       const cap = first.rowMaxStack && first.rowMaxStack > 0 ? first.rowMaxStack : Infinity;
       if (!same) s.list.push({ row, until, n: first.stacking === 'TIME_REPLACE' ? Math.min(1, n) : Math.min(cap, n) });
       else if (same.n < cap) same.n = Math.min(cap, same.n + n);
@@ -448,60 +514,133 @@ export function unitYield(
       if (!(a.trig.value ?? []).includes(define)) continue;
       const check = a.trig.check;
       if (check === 'ENEMY' ? side !== 'target' : (check === 'SELF' || check === 'FRIENDLY') && side !== 'self') continue;
-      fire(a, at, depth + 1);
+      fire(a, at, { target: side, instigator: 'self' }, 1, depth + 1);
     }
   };
-  // A fire whose works all fail its checks spends neither the cooldown nor the limit.
-  function fire(a: Armed, at: number, depth = 0) {
+
+  const roleSide = (on: string | null | undefined, roles: Roles): Side => (
+    on === 'TRIGGER_TARGET' ? roles.target : on === 'TRIGGER_INSTIGATOR' ? roles.instigator : 'self');
+  const opSides = (op: SkillOp, trig: SkillTrigger, roles: Roles): Side[] => {
+    if (op.applyTo === 'CASTER' || op.team === 'SELF') return ['self'];
+    if (op.team === 'ENEMY') return ['target'];
+    if (op.team === 'FRIENDLY' || op.team === 'ALL_UNIT') return summoned.length ? ['self', 'summon'] : ['self'];
+    if (op.team === 'CAST_TARGET' && op.via && op.via !== 'NONE') return [roleSide(op.via, roles)];
+    return [passiveSide(op, trig)];
+  };
+  // A fire whose works all fail their checks spends neither the cooldown nor the limit; `w` is the chance the event happened.
+  function fire(a: Armed, at: number, roles: Roles, w = 1, depth = 0) {
     const { trig } = a;
-    if (depth > 8 || (trig.limit > 0 && a.fired >= trig.limit) || at - a.last < trig.cooldown) return;
-    const pass = trig.ops.filter((op) => {
-      const w = op.when;
-      if (!w) return true;
-      if (w.check !== 'CHECK_DURATION_DEFINE' || !w.state) return false;
-      return compare(count(w.on === 'TRIGGER_TARGET' ? 'target' : 'self', w.state, at), w.op, Number(w.value));
+    if (w <= 1e-4 || depth > 8 || (trig.limit > 0 && a.fired >= trig.limit) || at - a.last < trig.cooldown) return;
+    const odds = trig.ops.map((op) => {
+      const c = op.when;
+      if (!c) return w;
+      if (c.check !== 'CHECK_DURATION_DEFINE' || !c.state) return 0;
+      return w * chanceOf(count(roleSide(c.on, roles), c.state, at), c.op, Number(c.value));
     });
-    if (!pass.length) return;
+    if (!odds.some((e) => e > 0)) return;
     a.fired += 1;
     a.last = at;
-    const grouped = new Map<string, { side: Side; ops: SkillOp[] }>();
-    for (const op of pass) {
-      const side = passiveSide(op, trig);
-      if (op.kind === 'duration' && op.define) {
-        const k = `${side}:${op.define}`;
-        const g = grouped.get(k) ?? { side, ops: [] };
-        g.ops.push(op);
-        grouped.set(k, g);
-      } else if (op.op === 'CLEAR_DURATION_DEFINE_ID') clear(side, op);
-      else if (op.op === 'REDUCE_BURST_COOLDOWN' && op.value) nextBurst -= growValue(op.value, 1, 0);
-      else if (op.op === 'USE_TRIGGER_SKILL' && triggerId) queue.push(triggerId);
-      else if (op.op && DAMAGE_OPS.has(op.op)) {
-        const hit: SkillHit = { shape: null, range: 0, ticks: 1, cycle: 0, delay: 0, count: 1, ops: [op] };
-        credit(hitYield(hit, 1, 0, 0, ctxAt(at), () => skipped.add(`${trig.on}:${op.op}`)), at);
+    const gate = gateAt(at);
+    const source: Labelled = { label: plain(a.skill.name), labelEn: plain(a.skill.nameEn ?? a.skill.name) };
+    const grouped = new Map<string, Group>();
+    trig.ops.forEach((op, i) => {
+      for (const side of opSides(op, trig, roles)) {
+        let e = odds[i];
+        if (op.gate && op.kind === 'duration') e *= gate(op.gate, side) ?? 1;
+        if (e <= 0) continue;
+        if (op.kind === 'duration' && op.define) {
+          const k = groupKey(grouped, side, op);
+          const g = grouped.get(k) ?? { side, ops: [], n: e * (op.chance ?? 1) };
+          g.ops.push(op);
+          grouped.set(k, g);
+        } else if (op.op === 'CLEAR_DURATION_DEFINE_ID') clear(side, op, at, e);
+        else if (op.op === 'REDUCE_BURST_COOLDOWN' && op.value) nextBurst -= e * growValue(op.value, 1, 0);
+        else if (op.op === 'USE_TRIGGER_SKILL' && triggerId) {
+          queued += e;
+          for (; queued >= 1 - 1e-9; queued -= 1) queue.push(triggerId);
+        } else if (op.op && DAMAGE_OPS.has(op.op)) {
+          const hit: SkillHit = { shape: null, range: 0, ticks: 1, cycle: 0, delay: 0, count: 1, ops: [op] };
+          credit(scaled(hitYield(hit, 1, 0, 0, ctxAt(at), () => skipped.add(`${trig.on}:${op.op}`)), e), at, source);
+          landed('self', 0, hit, 1, 0, at, depth + 1, e);
+        }
+      }
+    });
+    for (const g of grouped.values()) apply(g.side, g.ops, 1, 0, g.n, at, depth);
+  }
+
+  // Every damage landing is an attack by its dealer and a hit on the target; the crit events weigh by the crit chance.
+  function landed(
+    attacker: Side, skillType: number, hit: SkillHit, level: number, period: number, at: number, depth: number,
+    w = 1, own: Record<string, number> = base,
+  ) {
+    if (depth > 8) return;
+    const ctx = ctxAt(at, attacker, own);
+    const hitChance = 1 - missChance(ctx.target.evasion - (ctx.stats.ACCURACY ?? 0));
+    const baseCrit = criticalChance((ctx.stats.PHYSICS_CRITICAL_CHANCE ?? 0) - ctx.target.critResist);
+    const byType = (a: Armed) => !a.trig.value?.length || a.trig.value.includes(String(skillType));
+    const attack: Roles = { target: attacker, instigator: 'target' };
+    const struck: Roles = { target: 'target', instigator: attacker };
+    for (const op of hit.ops) {
+      if (op.kind === 'duration' || !op.value || !op.op || op.op === 'ADD_HEAL' || !DAMAGE_OPS.has(op.op)) continue;
+      let g = w * (op.chance ?? 1);
+      if (op.gate) g *= ctx.gate(op.gate, 'target') ?? 0;
+      if (g <= 0) continue;
+      const h = g * hitChance;
+      const crit = op.op === 'ADD_FORCE_CRITICAL_DAMAGE'
+        ? Math.min(1, Math.max(0, growValue(op.value, level, period, 1))) : baseCrit;
+      for (let i = 0; i < hit.count * landings(hit); i += 1) {
+        for (const a of armed.get('TRIGGER_TYPE_ATTACK') ?? []) if (attackerMatches(a.trig.check, attacker) && byType(a)) fire(a, at, attack, h, depth);
+        for (const a of armed.get('TRIGGER_TYPE_ATTACK_CRI') ?? []) if (attackerMatches(a.trig.check, attacker) && byType(a)) fire(a, at, attack, h * crit, depth);
+        for (const a of armed.get('TRIGGER_TYPE_HIT') ?? []) if (a.trig.check === 'ENEMY' && byType(a)) fire(a, at, struck, h, depth);
+        for (const a of armed.get('TRIGGER_TYPE_HIT_CRI') ?? []) if (a.trig.check === 'ENEMY' && byType(a)) fire(a, at, struck, h * crit, depth);
       }
     }
-    for (const g of grouped.values()) apply(g.side, g.ops, 1, 0, g.ops[0].chance ?? 1, at, depth);
   }
+
+  // Each lapsed stack of a watched state fires its expiry trigger at the moment it ran out, earliest first.
+  const expire = (upTo: number) => {
+    for (let guard = 0; guard < 10000; guard += 1) {
+      let best: { key: string; item: State['list'][number] } | null = null;
+      for (const [key, s] of states) {
+        if (!expiring.has(defineOfKey(key))) continue;
+        for (const item of s.list) if (item.until <= upTo && (!best || item.until < best.item.until)) best = { key, item };
+      }
+      if (!best) return;
+      const { key, item } = best;
+      const s = states.get(key)!;
+      s.list = s.list.filter((i) => i !== item);
+      const side = sideOfKey(key);
+      for (const a of armed.get('TRIGGER_TYPE_DURATION_DEFINE_EXPIRED') ?? []) {
+        if (!(a.trig.value ?? []).includes(defineOfKey(key))) continue;
+        const check = a.trig.check;
+        if (check === 'ENEMY' ? side !== 'target' : (check === 'SELF' || check === 'FRIENDLY') && side !== 'self') continue;
+        fire(a, item.until, { target: side, instigator: 'self' }, Math.min(1, item.n));
+      }
+    }
+  };
 
   const applyHit = (hit: SkillHit, level: number, period: number, at: number) => {
     const castTeam = hit.cast?.team ?? 'SELF';
     const targets = castTeam === 'SELF' || hit.cast?.pick === 'ALL' ? 1 : Math.max(1, hit.cast?.count ?? 1);
-    const grouped = new Map<string, { side: Side; ops: SkillOp[]; n: number }>();
+    const grouped = new Map<string, Group>();
     const gate = gateAt(at);
     for (const op of hit.ops) {
-      const side = sideOf(op, castTeam);
-      if (!side) continue;
-      let n = (op.chance ?? 1) * hit.count;
-      if (op.gate) n *= gate(op.gate, side) ?? 0;
-      if (n <= 0) continue;
-      if (op.kind === 'duration' && op.define && op.seconds) {
-        if (op.applyTo === 'CASTER' && op.team === 'CAST_TARGET') n *= targets;
-        const k = `${side}:${op.define}`;
-        const g = grouped.get(k) ?? { side, ops: [], n };
-        g.ops.push(op);
-        grouped.set(k, g);
-      } else if (op.op === 'CLEAR_DURATION_DEFINE_ID' && n >= 0.5) clear(side, op);
-      else if (op.op === 'REDUCE_BURST_COOLDOWN' && side === 'self' && op.value) nextBurst -= n * growValue(op.value, level, period);
+      const first = sideOf(op, castTeam);
+      const sides: Side[] = first ? [first] : [];
+      if (summoned.length && (op.team === 'FRIENDLY' || op.team === 'ALL_UNIT')) sides.push('summon');
+      for (const side of sides) {
+        let n = (op.chance ?? 1) * hit.count;
+        if (op.gate) n *= gate(op.gate, side) ?? 0;
+        if (n <= 0) continue;
+        if (op.kind === 'duration' && op.define && op.seconds) {
+          if (op.applyTo === 'CASTER' && op.team === 'CAST_TARGET') n *= targets;
+          const k = groupKey(grouped, side, op);
+          const g = grouped.get(k) ?? { side, ops: [], n };
+          g.ops.push(op);
+          grouped.set(k, g);
+        } else if (op.op === 'CLEAR_DURATION_DEFINE_ID' && n >= 0.5) clear(side, op, at);
+        else if (op.op === 'REDUCE_BURST_COOLDOWN' && side === 'self' && op.value) nextBurst -= n * growValue(op.value, level, period);
+      }
     }
     for (const g of grouped.values()) apply(g.side, g.ops, level, period, g.n, at, 0);
   };
@@ -513,8 +652,9 @@ export function unitYield(
   const sample = (at: number) => {
     samples += 1;
     for (const [k, s] of states) {
-      const side: Side = k.startsWith('self:') ? 'self' : 'target';
-      const n = count(side, k.slice(side === 'self' ? 5 : 7), at);
+      const side = sideOfKey(k);
+      if (side === 'summon') continue;
+      const n = count(side, defineOfKey(k), at);
       if (s.name) {
         const u = uptime.get(k) ?? { label: s.name, labelEn: s.nameEn, sum: 0 };
         u.sum += Math.min(1, n);
@@ -539,10 +679,82 @@ export function unitYield(
     }
   };
 
+  // A summon takes its summoner's level and star (`TeamManager_V2::AddSummonUnit`) and plays `00_summon` before it acts.
+  const summonStats = (unit: SummonEntry) => Object.fromEntries(computeStats(unit as unknown as CharacterEntry, data, {
+    level: build.level, star, love: 0, equipment: [],
+  }).map((r) => [r.stat, r.total]));
+  const unsummonAll = (at: number) => {
+    if (!summoned.length) return;
+    summoned.length = 0;
+    for (const k of [...states.keys()]) if (sideOfKey(k) === 'summon') states.delete(k);
+    for (const a of armed.get('TRIGGER_TYPE_UNSUMMON') ?? []) fire(a, at, { target: 'self', instigator: 'summon' });
+  };
+  const spawn = (rows: SkillSummon[], at: number) => {
+    if (rows.some((r) => r.replace)) unsummonAll(at);
+    for (const row of rows) {
+      const w = row.when;
+      if (w && !(w.check === 'CHECK_DURATION_DEFINE' && compare(count('self', w.state, at), w.op, Number(w.value)))) continue;
+      const unit = data.summons?.[String(row.unit)];
+      if (!unit) { skipped.add(`summon:${row.unit}`); continue; }
+      const start = at + (row.delay ?? 0) + (appear[unit.code] ?? 0);
+      summoned.push({
+        unit, stats: summonStats(unit), until: at + (row.delay ?? 0) + row.seconds, next: start,
+        ready: {}, opening: null, current: -1, k: 0,
+      });
+      for (const on of ['TRIGGER_TYPE_SUMMON', 'TRIGGER_TYPE_SUMMON_AFTER']) {
+        for (const a of armed.get(on) ?? []) fire(a, at, { target: 'self', instigator: 'summon' });
+      }
+    }
+  };
+  // One action of one summon: its opening steps, then the first loop that holds, each skill on its own cooldown.
+  const act = (s: Summoned) => {
+    const t0 = s.next;
+    expire(t0);
+    const holds = (define: string) => count('summon', define, t0);
+    const order = (list?: Pattern[]) => [...(list ?? [])].sort((x, y) => x.order - y.order);
+    if (!s.opening) s.opening = order(s.unit.battlePatterns?.start).find((p) => patternHolds(p, holds))?.steps.map(String) ?? [];
+    let id = s.opening[0];
+    let fromLoop = false;
+    if (id) s.opening = s.opening.slice(1);
+    else {
+      const loops = order(s.unit.battlePatterns?.repeat);
+      const pick = loops.findIndex((p) => patternHolds(p, holds));
+      if (pick !== s.current) { s.current = pick; s.k = 0; }
+      const steps = loops[pick]?.steps.map(String) ?? [];
+      id = steps[s.k % Math.max(1, steps.length)];
+      fromLoop = true;
+    }
+    const skill = id ? data.skills[id] : undefined;
+    if (!skill) { s.next = t0 + 0.1; return; }
+    if ((s.ready[id] ?? 0) > t0) {
+      if (!fromLoop) s.opening = [id, ...s.opening];
+      s.next = s.ready[id];
+      return;
+    }
+    if (fromLoop) s.k += 1;
+    s.ready[id] = t0 + (timing[id]?.cooldown ?? 0);
+    s.next = t0 + Math.max(0.1, timing[id]?.seconds ?? 1);
+    const at = t0 + (timing[id]?.hits?.[0] ?? 0);
+    for (const hit of skill.behaviour?.hits ?? []) {
+      credit(hitYield(hit, 1, 0, skill.skillType, ctxAt(at, 'summon', s.stats), (k) => skipped.add(`${id}:${k}`)), at, SUMMONS);
+      landed('summon', skill.skillType, hit, 1, 0, at, 0, 1, s.stats);
+    }
+  };
+  // Summon actions and state expiries up to `upTo`, earliest first.
+  const advance = (upTo: number) => {
+    for (let guard = 0; guard < 20000; guard += 1) {
+      let next: Summoned | null = null;
+      for (const s of summoned) if (s.next < s.until && s.next <= upTo && (!next || s.next < next.next)) next = s;
+      if (!next) break;
+      act(next);
+    }
+    expire(upTo);
+  };
+
   const cast = (id: string, t0: number) => {
     const skill = data.skills[id];
     for (const a of armed.get('TRIGGER_TYPE_USE_SKILL') ?? []) {
-      if ((a.trig.value ?? []).includes(String(skill.skillType))) fire(a, t0);
+      if ((a.trig.value ?? []).includes(String(skill.skillType))) fire(a, t0, { target: 'self', instigator: 'self' });
     }
     const v = skill.variant;
     const useVariant = !!v?.behaviour && v.when.type === 'CHECK_DURATION_DEFINE'
@@ -562,16 +774,19 @@ export function unitYield(
       if (id === burstId && counted) {
         burstSum.damage += y.damage; burstSum.heal += y.heal; burstSum.healPct += y.healPct;
       }
+      landed('self', skill.skillType, hit, level, period, at, 0);
       applyHit(hit, level, period, at);
     });
+    if (behaviour?.summons?.length) spawn(behaviour.summons, at);
   };
 
-  for (const on of ['TRIGGER_TYPE_BATTLE_START', 'TRIGGER_TYPE_WAVE_START']) for (const a of armed.get(on) ?? []) fire(a, 0);
+  const self0 = { target: 'self', instigator: 'self' } as Roles;
+  for (const on of ['TRIGGER_TYPE_BATTLE_START', 'TRIGGER_TYPE_WAVE_START']) for (const a of armed.get(on) ?? []) fire(a, 0, self0);
   let early = -1e4;
-  for (const { key, trig } of externalTriggers(kit, defines)) {
-    const a: Armed = { trig, last: -Infinity, fired: 0 };
+  for (const { key, skill, trig } of externalTriggers(kit, defines)) {
+    const a: Armed = { trig, skill, last: -Infinity, fired: 0 };
     for (let i = 0; i < (stacks[key] ?? 0); i += 1) {
-      fire(a, early);
+      fire(a, early, self0);
       early += Math.max(1, trig.cooldown) + 0.01;
     }
   }
@@ -580,17 +795,20 @@ export function unitYield(
   const self = (define: string) => count('self', define, t);
   const pick = (list: typeof patterns) => list.findIndex((p) => p.ids.length && patternHolds(p, self));
   let t = 0;
-  const opening = openings[pick(openings)]?.ids.filter((id) => data.skills[id]) ?? [];
+  const opening = rotation === 'loop' || rotation === 'burst' ? [] : openings[pick(openings)]?.ids.filter((id) => data.skills[id]) ?? [];
+  if (rotation === 'burst' && burstId) queue.push(burstId);
   const first = forced ?? pick(patterns);
   const loopSeconds = first >= 0 ? secondsOf(patterns[first].ids) : 0;
   let current = -1;
   let k = 0;
   const burstTimes: number[] = [];
   for (let guard = 0; t < window && guard < 20000; guard += 1) {
+    advance(t);
     let id: string | undefined;
     if (queue.length) id = queue.shift()!;
     else if (burstId && t >= nextBurst) { id = burstId; nextBurst = t + cd!; burstTimes.push(t); }
     else if (opening.length) id = opening.shift()!;
+    else if (once) break;
     else {
       const next = forced ?? pick(patterns);
       if (next !== current) { current = next; k = 0; }
@@ -601,6 +819,8 @@ export function unitYield(
     cast(id, t);
     t += timing[id]?.seconds ?? 0;
   }
+  if (once) window = Math.max(t, 0.1);
+  advance(window);
 
   const burstCasts = burstId ? casts.get(burstId) ?? 0 : 0;
   const gaps = burstTimes.slice(1).map((x, i) => x - burstTimes[i]);
@@ -623,5 +843,6 @@ export function unitYield(
     passive, buffs, debuffs: mean(debuffSum),
     conditions: [...uptime.values()].map((u) => ({ label: u.label, labelEn: u.labelEn, chance: samples ? u.sum / samples : 0 })),
     triggers,
+    sources: [...sourceSum.values()].map((u) => ({ label: u.label, labelEn: u.labelEn, dps: u.damage / window })),
   };
 }

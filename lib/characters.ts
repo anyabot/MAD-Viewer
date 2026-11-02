@@ -907,10 +907,16 @@ export function growValue(
     + (period ? at(m.extra) * Math.floor(steps / period) : 0);
 }
 
+// An unscaled stat op carries the stat itself; percent or flat follows that stat's `display` in the stat table.
+const RAW_STAT_PCT: Record<string, boolean> = {
+  BUFF_EVASION_UP: false, DAMAGE_REDUCE: true, DEBUFF_HEAL_RECEIVE: true, BUFF_TOUGHNESS_UP: true,
+};
+
 // The magnitude the operation carries, not a damage or heal; a coefficient with no stat returns nothing.
 export function opAmounts(op: SkillOp, level: number, period: number): string[] {
-  if (!op.value || !op.scale) return [];
-  const pct = op.scale.endsWith('_RATE');
+  const raw = op.op ? RAW_STAT_PCT[op.op] : undefined;
+  if (!op.value || (!op.scale && raw === undefined)) return [];
+  const pct = op.scale ? op.scale.endsWith('_RATE') : raw;
   return op.value.base
     .map((_v, slot) => growValue(op.value as SkillMagnitude, level, period, slot))
     .filter((v) => v !== 0)
