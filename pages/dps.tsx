@@ -8,7 +8,7 @@ import {
 } from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel } from '@altterisk/game-hub';
 import {
-  loopPatterns, skillLevelCaps, stackInputs, unitYield, type Build, type Target, type UnitYield,
+  loopPatterns, skillLevelCaps, stackInputs, unitYield, type Build, type Rotation, type Target, type UnitYield,
 } from '@/lib/dps';
 import {
   loadCharacters, loadIcons, loadSkillTiming, type CharacterData, type IconManifest, type SkillTiming,
@@ -20,12 +20,27 @@ import { characterHref } from '@/lib/routes';
 const COLORS = ['#ff7a5a', '#ffd25a', '#78beff', '#78ffaa', '#c58bff', '#ff8ad8'];
 const DEFAULT_UNITS = ['CH0058', 'CH0007', 'CH0068', 'CH0021'];
 const DEFENSE_MAX = 3000;
+const ROTATIONS: { value: Rotation; en: string; ko: string }[] = [
+  { value: 'full', en: 'Opening, loop and burst on cooldown', ko: '오프닝, 루프, 쿨마다 버스트' },
+  { value: 'noBurst', en: 'Opening then loop, no burst', ko: '오프닝 후 루프, 버스트 없음' },
+  { value: 'opening', en: 'Opening only', ko: '오프닝만' },
+  { value: 'loop', en: 'Loop only', ko: '루프만' },
+  { value: 'burst', en: 'Burst only', ko: '버스트만' },
+];
 const PRESETS: { en: string; ko: string; target: Partial<Target> }[] = [
   { en: 'No defense', ko: '방어 없음', target: { defense: 0, evasion: 0 } },
   { en: 'Light', ko: '낮음', target: { defense: 300, evasion: 50 } },
   { en: 'Heavy', ko: '높음', target: { defense: 1200, evasion: 150 } },
   { en: 'Evasive', ko: '회피형', target: { defense: 300, evasion: 400 } },
 ];
+
+function gearTiers(data: CharacterData): { tier: number; maxLevel: number }[] {
+  const caps = new Map<number, number>();
+  for (const slot of Object.values(data.equipment)) {
+    for (const row of slot.tiers ?? []) caps.set(row.tier, Math.max(caps.get(row.tier) ?? 0, row.maxLevel));
+  }
+  return [...caps].sort((a, b) => a[0] - b[0]).map(([tier, maxLevel]) => ({ tier, maxLevel }));
+}
 
 function fmt(v: number): string {
   return v >= 1000 ? `${(v / 1000).toFixed(v >= 10000 ? 0 : 1)}k` : v.toFixed(0);
@@ -49,14 +64,14 @@ function Dial({ label, value, min, max, step = 1, onChange }: {
   );
 }
 
-function DefenseCurve({ units, chars, target, build, timing, burst, lang, patterns, stacks }: {
+function DefenseCurve({ units, chars, target, build, timing, appear, rotation, lang, patterns, stacks }: {
   units: string[]; chars: CharacterData; target: Target; build: Build;
-  timing: Record<string, SkillTiming>; burst: boolean; lang: 'en' | 'ko'; patterns: Record<string, number>;
+  timing: Record<string, SkillTiming>; appear: Record<string, number>; rotation: Rotation; lang: 'en' | 'ko'; patterns: Record<string, number>;
   stacks: Record<string, Record<string, number>>;
 }) {
   const steps = 16;
   const series = units.map((code) => Array.from({ length: steps + 1 }, (_, i) => {
-    const y = unitYield(code, chars, build, { ...target, defense: (DEFENSE_MAX * i) / steps }, timing, patterns[code], burst, stacks[code]);
+    const y = unitYield(code, chars, build, { ...target, defense: (DEFENSE_MAX * i) / steps }, timing, patterns[code], rotation, stacks[code], appear);
     return y ? y.dps : 0;
   }));
   const top = Math.max(1, ...series.flat());
@@ -104,10 +119,11 @@ function DpsContent() {
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [timing, setTiming] = useState<Record<string, SkillTiming> | null>(null);
+  const [appear, setAppear] = useState<Record<string, number>>({});
   const [error, setError] = useState<string | null>(null);
   const [units, setUnits] = useState<string[]>(DEFAULT_UNITS);
   const [build, setBuild] = useState<Build>({
-    level: 0, star: 0, skillLevel: 0, burstLevel: 0, gear: true, infusion: true, love: true,
+    level: 0, star: 0, skillLevel: 0, burstLevel: 0, gearTier: -1, gearLevel: 0, infusion: true, love: true,
   });
   const [target, setTarget] = useState<Target>({
     defense: 300, evasion: 50, critResist: 0, critDamageResist: 0, penetrationResist: 0,
@@ -115,7 +131,7 @@ function DpsContent() {
   });
   const [patterns, setPatterns] = useState<Record<string, number>>({});
   const [stacks, setStacks] = useState<Record<string, Record<string, number>>>({});
-  const [burst, setBurst] = useState(true);
+  const [rotation, setRotation] = useState<Rotation>('full');
 
   useEffect(() => {
     loadCharacters().then((c) => {
@@ -124,10 +140,11 @@ function DpsContent() {
       setBuild((b) => ({
         ...b, level: b.level || c.statCaps.level, star: b.star || c.statCaps.star,
         skillLevel: b.skillLevel || levels.skill, burstLevel: b.burstLevel || levels.burst,
+        ...(b.gearTier < 0 ? { gearTier: gearTiers(c).at(-1)?.tier ?? 0, gearLevel: gearTiers(c).at(-1)?.maxLevel ?? 1 } : {}),
       }));
     }).catch((e) => setError(String(e)));
     loadIcons().then(setIcons).catch(() => setIcons(null));
-    loadSkillTiming().then((d) => setTiming(Object.assign({}, ...Object.values(d.characters))))
+    loadSkillTiming().then((d) => { setTiming(Object.assign({}, ...Object.values(d.characters))); setAppear(d.appear ?? {}); })
       .catch((e) => setError(String(e)));
   }, []);
 
@@ -138,9 +155,9 @@ function DpsContent() {
 
   const rows = useMemo(() => {
     if (!chars || !timing || !build.level) return [];
-    return units.map((code) => unitYield(code, chars, build, target, timing, patterns[code], burst, stacks[code]))
+    return units.map((code) => unitYield(code, chars, build, target, timing, patterns[code], rotation, stacks[code], appear))
       .filter((y): y is UnitYield => !!y);
-  }, [chars, timing, units, build, target, patterns, burst, stacks]);
+  }, [chars, timing, appear, units, build, target, patterns, rotation, stacks]);
 
   if (error || !chars || !timing) {
     return <LoadState loading={!error} error={error} labels={{ loading: t('loading'), error }} />;
@@ -148,6 +165,7 @@ function DpsContent() {
   const value = (y: UnitYield) => y.dps;
   const healValue = (y: UnitYield) => y.hps;
   const levels = skillLevelCaps(chars);
+  const gearCap = gearTiers(chars).find((row) => row.tier === build.gearTier)?.maxLevel ?? 0;
   const ranked = [...rows].sort((a, b) => value(b) - value(a));
   const best = Math.max(1, ...rows.map(value));
   const bestHeal = Math.max(1, ...rows.map(healValue));
@@ -157,9 +175,10 @@ function DpsContent() {
   const breakdown = (y: UnitYield) => [
     `${y.star}★`,
     ...y.triggers.map((g) => `${lang === 'ko' ? g.label : g.labelEn} ${g.perMinute.toFixed(1)}${L('/min', '회/분')}`),
+    ...y.sources.map((g) => `${lang === 'ko' ? g.label : g.labelEn} ${fmt(g.dps)} DPS`),
     ...y.passive.map((g) => `${L('Passive', '패시브')} ${statName(g.stat)} +${amount(g.stat, g.amount)}`),
-    ...y.buffs.map((g) => `${g.label} ${statName(g.stat)} +${amount(g.stat, g.amount)} ${L('avg', '평균')}`),
-    ...y.debuffs.map((g) => `${g.label} ${L('target', '대상')} ${statName(g.stat)} −${amount(g.stat, g.amount)} ${L('avg', '평균')}`),
+    ...y.buffs.filter((g) => g.amount > 1e-9).map((g) => `${g.label} ${statName(g.stat)} +${amount(g.stat, g.amount)} ${L('avg', '평균')}`),
+    ...y.debuffs.filter((g) => g.amount > 1e-9).map((g) => `${g.label} ${L('target', '대상')} ${statName(g.stat)} −${amount(g.stat, g.amount)} ${L('avg', '평균')}`),
     ...y.conditions.filter((c) => c.label).map((c) => `${lang === 'ko' ? c.label : c.labelEn} ${(c.chance * 100).toFixed(0)}% ${L('uptime', '유지')}`),
   ];
   const name = (code: string) => dataText(lang, chars.characters[code]?.name, chars.characters[code]?.nameEn);
@@ -222,7 +241,24 @@ function DpsContent() {
               onChange={(v) => setBuild({ ...build, skillLevel: v })} />
             <Dial label={L('Burst level', '버스트 레벨')} value={build.burstLevel} min={1} max={levels.burst}
               onChange={(v) => setBuild({ ...build, burstLevel: v })} />
+            {gearCap > 0 && (
+              <Dial label={L('Equipment level', '장비 레벨')} value={Math.min(build.gearLevel, gearCap)} min={1} max={gearCap}
+                onChange={(v) => setBuild({ ...build, gearLevel: v })} />
+            )}
+            <Select size="xs" aria-label={L('Rotation', '사이클')} value={rotation}
+              onChange={(e) => setRotation(e.target.value as Rotation)}>
+              {ROTATIONS.map((r) => <option key={r.value} value={r.value}>{L(r.en, r.ko)}</option>)}
+            </Select>
             <Wrap spacing={3}>
+              <WrapItem>
+                <Select size="xs" w="7rem" aria-label={L('Equipment tier', '장비 등급')} value={build.gearTier}
+                  onChange={(e) => setBuild({ ...build, gearTier: Number(e.target.value) })}>
+                  <option value={0}>{t('gearEmpty')}</option>
+                  {gearTiers(chars).map((row) => (
+                    <option key={row.tier} value={row.tier}>{t('gearTier', { n: row.tier })}</option>
+                  ))}
+                </Select>
+              </WrapItem>
               <WrapItem>
                 <Select size="xs" w="7rem" value={build.star} onChange={(e) => setBuild({ ...build, star: Number(e.target.value) })}>
                   {Array.from({ length: chars.statCaps.star }, (_, k) => k + 1).map((n) => (
@@ -230,10 +266,8 @@ function DpsContent() {
                   ))}
                 </Select>
               </WrapItem>
-              <WrapItem><Checkbox size="sm" isChecked={build.gear} onChange={(e) => setBuild({ ...build, gear: e.target.checked })}>{L('Max gear', '최대 장비')}</Checkbox></WrapItem>
               <WrapItem><Checkbox size="sm" isChecked={build.infusion} onChange={(e) => setBuild({ ...build, infusion: e.target.checked })}>{L('Infusion', '인퓨전')}</Checkbox></WrapItem>
               <WrapItem><Checkbox size="sm" isChecked={build.love} onChange={(e) => setBuild({ ...build, love: e.target.checked })}>{L('Max affection', '최대 호감도')}</Checkbox></WrapItem>
-              <WrapItem><Checkbox size="sm" isChecked={burst} onChange={(e) => setBurst(e.target.checked)}>{L('Burst on cooldown', '버스트 쿨마다 사용')}</Checkbox></WrapItem>
             </Wrap>
           </VStack>
         </Panel>
@@ -319,13 +353,13 @@ function DpsContent() {
       </Panel>
 
       <Panel title={L('Against defense', '방어력별')}>
-        <DefenseCurve units={units} chars={chars} target={target} build={build} timing={timing} burst={burst} lang={lang}
+        <DefenseCurve units={units} chars={chars} target={target} build={build} timing={timing} appear={appear} rotation={rotation} lang={lang}
           patterns={patterns} stacks={stacks} />
       </Panel>
 
       <Text fontSize="xs" color="gray.500">
-        {L('Averages over the fight, cast by cast on one target: opening, then the loop the game picks before every cast (or the one you choose), burst whenever its cooldown is up (first one after one cooldown), misses and crits as probabilities, damage-over-time included. Passive stats, passive triggers fired by its own skills (stacks, follow-up skills, burst cooldown cuts), skill variants and the unit’s own buffs and debuffs follow the timeline; the line under each unit lists them. Passives fired by kills, dispels, deaths or summons take the count you set under the unit. Not modelled: allies’ buffs, party-composition passives, ultimate charge, crit- or hit-fired passives, extra targets hit by area skills; * marks a unit with effects or timings left out.',
-          '대상 1명 기준, 전투 시간 동안 시전마다 계산한 평균: 시작 패턴 후 매 시전 전 게임이 고르는 로테이션(또는 선택한 패턴), 쿨마다 버스트(첫 사용은 쿨 1회 후), 빗나감·치명은 확률로 반영, 지속 피해 포함. 패시브 스탯, 자기 스킬로 발동하는 패시브(중첩, 추가 스킬, 버스트 쿨 감소), 스킬 변형, 자기 버프·디버프를 시간순으로 반영하며 각 유닛 아래 줄에 표시. 처치·해제·사망·소환으로 발동하는 패시브는 유닛 아래에서 정한 횟수 적용. 미반영: 아군 버프, 파티 구성 패시브, 버스트 충전, 치명·피격 발동 패시브, 범위 스킬의 추가 대상. *는 일부 효과·시간 미반영.')}
+        {L('Averages over the fight, cast by cast on one target (opening only and burst only average over their own cast time): opening, then the loop the game picks before every cast (or the one you choose), burst whenever its cooldown is up (first one after one cooldown), misses and crits as probabilities, damage-over-time included. Passive stats, passive triggers fired by its own skills, hits, crits and expiring states (stacks, follow-up skills, extra damage, burst cooldown cuts), skill variants, summons acting on their own loop, and the unit’s own buffs and debuffs follow the timeline; the line under each unit lists them, with passive and summon damage per second. Passives fired by kills, dispels or deaths take the count you set under the unit. Not modelled: allies’ buffs, party-composition passives, ultimate charge, extra targets hit by area skills; * marks a unit with effects or timings left out.',
+          '대상 1명 기준, 전투 시간 동안 시전마다 계산한 평균(오프닝만·버스트만은 해당 시전 시간 기준): 시작 패턴 후 매 시전 전 게임이 고르는 로테이션(또는 선택한 패턴), 쿨마다 버스트(첫 사용은 쿨 1회 후), 빗나감·치명은 확률로 반영, 지속 피해 포함. 패시브 스탯, 자기 스킬·타격·치명·상태 만료로 발동하는 패시브(중첩, 추가 스킬, 추가 피해, 버스트 쿨 감소), 스킬 변형, 자체 루프로 행동하는 소환수, 자기 버프·디버프를 시간순으로 반영하며 각 유닛 아래 줄에 패시브·소환수 초당 피해와 함께 표시. 처치·해제·사망으로 발동하는 패시브는 유닛 아래에서 정한 횟수 적용. 미반영: 아군 버프, 파티 구성 패시브, 버스트 충전, 범위 스킬의 추가 대상. *는 일부 효과·시간 미반영.')}
       </Text>
     </VStack>
   );

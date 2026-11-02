@@ -48885,6 +48885,133 @@
     809930,
     809940
    ]
+  },
+  "500001": {
+   "1": [
+    100000000
+   ],
+   "2": [
+    100000000
+   ],
+   "3": [
+    100000000
+   ],
+   "4": [
+    100000000
+   ],
+   "5": [
+    100000000
+   ]
+  },
+  "500002": {
+   "1": [
+    5000021,
+    5000022
+   ],
+   "2": [
+    5000021,
+    5000022
+   ],
+   "3": [
+    5000021,
+    5000022
+   ],
+   "4": [
+    5000021,
+    5000022
+   ],
+   "5": [
+    5000021,
+    5000022
+   ]
+  },
+  "500003": {
+   "1": [
+    5000031,
+    5000032
+   ],
+   "2": [
+    5000031,
+    5000032
+   ],
+   "3": [
+    5000031,
+    5000032
+   ],
+   "4": [
+    5000031,
+    5000032
+   ],
+   "5": [
+    5000031,
+    5000032
+   ]
+  },
+  "500004": {
+   "1": [
+    5000041,
+    5000042
+   ],
+   "2": [
+    5000041,
+    5000042
+   ],
+   "3": [
+    5000041,
+    5000042
+   ],
+   "4": [
+    5000041,
+    5000042
+   ],
+   "5": [
+    5000041,
+    5000042
+   ]
+  },
+  "500005": {
+   "1": [
+    5000050,
+    5000051
+   ],
+   "2": [
+    5000050,
+    5000051
+   ],
+   "3": [
+    5000050,
+    5000051
+   ],
+   "4": [
+    5000050,
+    5000051
+   ],
+   "5": [
+    5000050,
+    5000051
+   ]
+  },
+  "500006": {
+   "1": [
+    5000060,
+    5000061
+   ],
+   "2": [
+    5000060,
+    5000061
+   ],
+   "3": [
+    5000060,
+    5000061
+   ],
+   "4": [
+    5000060,
+    5000061
+   ],
+   "5": [
+    5000060,
+    5000061
+   ]
   }
  },
  "skills": {
@@ -49941,7 +50068,8 @@
         "count": 1,
         "row": "ch0003_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -50018,7 +50146,8 @@
         "count": 1,
         "row": "ch0003_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -50095,7 +50224,8 @@
         "count": 1,
         "row": "ch0003_passive_duration_03",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -53790,7 +53920,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -53856,7 +53987,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -53922,7 +54054,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -54921,7 +55054,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0007_passive_common_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -54980,7 +55114,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0007_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -55065,7 +55200,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0007_passive_common_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -55124,7 +55260,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0007_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -55209,7 +55346,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0007_passive_common_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -55268,7 +55406,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0007_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -55949,7 +56088,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -55998,7 +56138,8 @@
         "count": 0,
         "row": "ch0009_passive_duration_01",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -56057,7 +56198,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -56106,7 +56248,8 @@
         "count": 0,
         "row": "ch0009_passive_duration_02",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -56165,7 +56308,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -56214,7 +56358,8 @@
         "count": 0,
         "row": "ch0009_passive_duration_03",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -56977,7 +57122,8 @@
         "count": 0,
         "row": "ch0010_passive_duration_01",
         "rowMaxStack": 6,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -57009,7 +57155,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -57096,7 +57243,8 @@
         "count": 0,
         "row": "ch0010_passive_duration_01",
         "rowMaxStack": 6,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -57128,7 +57276,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -57215,7 +57364,8 @@
         "count": 0,
         "row": "ch0010_passive_duration_01",
         "rowMaxStack": 6,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -57247,7 +57397,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -58067,7 +58218,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -58110,7 +58262,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -58153,7 +58306,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -60003,7 +60157,8 @@
         "count": 0,
         "row": "ch0014_passive_01_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -60049,7 +60204,8 @@
          "state": "define_buff_ch0014_shield_per_atk_caster",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -60095,7 +60251,8 @@
          "state": "define_buff_ch0014_shield_per_atk_caster",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      }
@@ -60190,7 +60347,8 @@
         "count": 0,
         "row": "ch0014_passive_02_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -60236,7 +60394,8 @@
          "state": "define_buff_ch0014_shield_per_atk_caster",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -60282,7 +60441,8 @@
          "state": "define_buff_ch0014_shield_per_atk_caster",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      }
@@ -60377,7 +60537,8 @@
         "count": 0,
         "row": "ch0014_passive_03_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -60423,7 +60584,8 @@
          "state": "define_buff_ch0014_shield_per_atk_caster",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -60469,7 +60631,8 @@
          "state": "define_buff_ch0014_shield_per_atk_caster",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      }
@@ -61215,7 +61378,8 @@
         "count": 0,
         "row": "ch0015_passive_duration_01",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -61320,7 +61484,8 @@
         "count": 0,
         "row": "ch0015_passive_duration_02",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -61425,7 +61590,8 @@
         "count": 0,
         "row": "ch0015_passive_duration_03",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -62135,7 +62301,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0016_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -62227,7 +62394,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0016_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -62319,7 +62487,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0016_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -64710,7 +64879,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0019_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -64814,7 +64984,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0019_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -64918,7 +65089,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0019_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -65783,7 +65955,8 @@
          "state": "define_trigger_ch0020",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -65815,7 +65988,8 @@
          "state": "define_trigger_ch0020",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -65887,7 +66061,8 @@
          "state": "define_trigger_ch0020",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -65919,7 +66094,8 @@
          "state": "define_trigger_ch0020",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -65991,7 +66167,8 @@
          "state": "define_trigger_ch0020",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -66023,7 +66200,8 @@
          "state": "define_trigger_ch0020",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -66927,7 +67105,8 @@
          "value": "1"
         },
         "row": "ch0021_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "onetime",
@@ -66955,7 +67134,8 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -67002,7 +67182,8 @@
          "value": "1"
         },
         "row": "ch0021_common_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -67045,7 +67226,8 @@
          "state": "define_trigger_ch0021_buff",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "5"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      }
@@ -67152,7 +67334,8 @@
          "value": "1"
         },
         "row": "ch0021_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "onetime",
@@ -67180,7 +67363,8 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -67227,7 +67411,8 @@
          "value": "1"
         },
         "row": "ch0021_common_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -67270,7 +67455,8 @@
          "state": "define_trigger_ch0021_buff",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "5"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      }
@@ -67377,7 +67563,8 @@
          "value": "1"
         },
         "row": "ch0021_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "onetime",
@@ -67405,7 +67592,8 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -67452,7 +67640,8 @@
          "value": "1"
         },
         "row": "ch0021_common_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -67495,7 +67684,8 @@
          "state": "define_trigger_ch0021_buff",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "5"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      }
@@ -68676,7 +68866,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0022_passive_duration_01_trigger",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -68741,7 +68932,8 @@
         "count": 0,
         "row": "ch0022_passive_duration_01_work",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -68795,7 +68987,8 @@
         "count": 0,
         "row": "ch0022_passive_duration_01_work",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -68889,7 +69082,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0022_passive_duration_02_trigger",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -68954,7 +69148,8 @@
         "count": 0,
         "row": "ch0022_passive_duration_02_work",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -69008,7 +69203,8 @@
         "count": 0,
         "row": "ch0022_passive_duration_02_work",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -69102,7 +69298,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0022_passive_duration_03_trigger",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -69167,7 +69364,8 @@
         "count": 0,
         "row": "ch0022_passive_duration_03_work",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -69221,7 +69419,8 @@
         "count": 0,
         "row": "ch0022_passive_duration_03_work",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -70085,7 +70284,8 @@
         "count": 0,
         "row": "ch0023_passive_duration_01",
         "rowMaxStack": 3,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -70193,7 +70393,8 @@
         "count": 0,
         "row": "ch0023_passive_duration_02",
         "rowMaxStack": 4,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -70301,7 +70502,8 @@
         "count": 0,
         "row": "ch0023_passive_duration_03",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -71104,7 +71306,8 @@
         "count": 0,
         "row": "ch0024_passive_trigger",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -71165,7 +71368,8 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -71237,7 +71441,8 @@
         },
         "row": "ch0024_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -71310,7 +71515,8 @@
         },
         "row": "ch0024_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -71393,7 +71599,8 @@
         "count": 0,
         "row": "ch0024_passive_trigger",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -71454,7 +71661,8 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -71526,7 +71734,8 @@
         },
         "row": "ch0024_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -71599,7 +71808,8 @@
         },
         "row": "ch0024_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -71682,7 +71892,8 @@
         "count": 0,
         "row": "ch0024_passive_trigger",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -71743,7 +71954,8 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -71815,7 +72027,8 @@
         },
         "row": "ch0024_passive_duration_03",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "duration",
@@ -71888,7 +72101,8 @@
         },
         "row": "ch0024_passive_duration_03",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -72494,6 +72708,23 @@
        "count": 0
       }
      }
+    ],
+    "summons": [
+     {
+      "unit": 500001,
+      "replace": true,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500001,
+      "replace": true,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500001,
+      "replace": true,
+      "seconds": 9999.0
+     }
     ]
    }
   },
@@ -72576,7 +72807,8 @@
          "state": "define_trigger_ch0025_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -72630,7 +72862,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_01",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -72673,7 +72906,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_01",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -72723,7 +72957,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_01",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -72778,7 +73013,8 @@
          "state": "2",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -72822,7 +73058,8 @@
          "state": "3",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -72872,7 +73109,8 @@
          "state": "define_trigger_ch0025_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -72958,7 +73196,8 @@
          "state": "define_trigger_ch0025_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -73012,7 +73251,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_02",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -73055,7 +73295,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_02",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -73105,7 +73346,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_02",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -73160,7 +73402,8 @@
          "state": "2",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -73204,7 +73447,8 @@
          "state": "3",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -73254,7 +73498,8 @@
          "state": "define_trigger_ch0025_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -73340,7 +73585,8 @@
          "state": "define_trigger_ch0025_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -73394,7 +73640,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_03",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -73437,7 +73684,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_03",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -73487,7 +73735,8 @@
         "count": 0,
         "row": "ch0025_passive_duration_03",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -73542,7 +73791,8 @@
          "state": "2",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -73586,7 +73836,8 @@
          "state": "3",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -73636,7 +73887,8 @@
          "state": "define_trigger_ch0025_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -76034,7 +76286,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0028_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -76146,7 +76399,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0028_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -76258,7 +76512,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0028_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -77051,7 +77306,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -77121,7 +77377,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -77191,7 +77448,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -77802,7 +78060,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -77858,7 +78117,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -77914,7 +78174,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -78946,7 +79207,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0031_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -79037,7 +79299,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0031_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -79128,7 +79391,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0031_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -80707,7 +80971,8 @@
         "count": 0,
         "row": "ch0033_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -80739,7 +81004,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -80822,7 +81088,8 @@
         "count": 0,
         "row": "ch0033_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -80854,7 +81121,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -80937,7 +81205,8 @@
         "count": 0,
         "row": "ch0033_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -80969,7 +81238,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -82008,7 +82278,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -82064,7 +82335,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -82119,7 +82391,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -82229,7 +82502,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -82285,7 +82559,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -82340,7 +82615,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_04",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -82450,7 +82726,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_05",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -82506,7 +82783,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_05",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -82561,7 +82839,8 @@
          "value": "0"
         },
         "row": "ch0034_passive_duration_06",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -83372,7 +83651,8 @@
         "count": 0,
         "row": "ch0035_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -83401,7 +83681,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -83460,7 +83741,8 @@
         },
         "row": "ch0035_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -83492,7 +83774,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -83524,7 +83807,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -83621,7 +83905,8 @@
         "count": 0,
         "row": "ch0035_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -83650,7 +83935,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -83709,7 +83995,8 @@
         },
         "row": "ch0035_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -83741,7 +84028,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -83773,7 +84061,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -83805,7 +84094,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -83902,7 +84192,8 @@
         "count": 0,
         "row": "ch0035_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -83931,7 +84222,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -83990,7 +84282,8 @@
         },
         "row": "ch0035_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -84022,7 +84315,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -84054,7 +84348,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -84086,7 +84381,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        },
        {
         "kind": "onetime",
@@ -84118,7 +84414,8 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -86153,7 +86450,8 @@
         "team": "SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -86223,7 +86521,8 @@
         "team": "SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -86293,7 +86592,8 @@
         "team": "SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -88554,7 +88854,8 @@
         "sort": null,
         "count": 0,
         "row": "common_passive_atk_up_10",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -88646,7 +88947,8 @@
         "sort": null,
         "count": 0,
         "row": "common_passive_atk_up_15",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -88738,7 +89040,8 @@
         "sort": null,
         "count": 0,
         "row": "common_passive_atk_up_20",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -89563,7 +89866,8 @@
          "state": "define_trigger_ch0040_skill02_debuff",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -89610,7 +89914,8 @@
         "count": 0,
         "row": "ch0040_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -89706,7 +90011,8 @@
          "state": "define_trigger_ch0040_skill02_debuff",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -89753,7 +90059,8 @@
         "count": 0,
         "row": "ch0040_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -89849,7 +90156,8 @@
          "state": "define_trigger_ch0040_skill02_debuff",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -89896,7 +90204,8 @@
         "count": 0,
         "row": "ch0040_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -91871,7 +92180,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -91900,7 +92210,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -91928,7 +92239,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -91977,7 +92289,8 @@
         "count": 0,
         "row": "ch0042_passive_drone_atk_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -92006,7 +92319,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -92045,7 +92359,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -92076,7 +92391,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -92118,7 +92434,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -92167,7 +92484,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -92251,7 +92569,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -92280,7 +92599,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -92308,7 +92628,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -92357,7 +92678,8 @@
         "count": 0,
         "row": "ch0042_passive_drone_atk_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -92386,7 +92708,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -92425,7 +92748,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -92456,7 +92780,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -92498,7 +92823,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -92547,7 +92873,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -92631,7 +92958,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -92660,7 +92988,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -92688,7 +93017,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0042_passive_common_drone_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -92737,7 +93067,8 @@
         "count": 0,
         "row": "ch0042_passive_drone_atk_duration_03",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -92766,7 +93097,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -92805,7 +93137,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -92836,7 +93169,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -92867,7 +93201,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -92909,7 +93244,8 @@
         "count": 0,
         "row": "ch0042_common_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -92958,7 +93294,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -93394,6 +93731,199 @@
        "sort": null,
        "count": 0
       }
+     }
+    ],
+    "summons": [
+     {
+      "unit": 500003,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "1"
+      },
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "2"
+      },
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "2"
+      },
+      "delay": 0.2,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500003,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "3"
+      },
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "3"
+      },
+      "delay": 0.1,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "3"
+      },
+      "delay": 0.2,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "4"
+      },
+      "delay": 0.05,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "4"
+      },
+      "delay": 0.15,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500004,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "4"
+      },
+      "delay": 0.1,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500004,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "4"
+      },
+      "delay": 0.2,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500003,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "delay": 0.05,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "delay": 0.1,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500004,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "delay": 0.15,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500004,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "delay": 0.2,
+      "seconds": 9999.0
      }
     ]
    }
@@ -93867,6 +94397,199 @@
        "count": 0
       }
      }
+    ],
+    "summons": [
+     {
+      "unit": 500003,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "1"
+      },
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "2"
+      },
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "2"
+      },
+      "delay": 0.2,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500003,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "3"
+      },
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "3"
+      },
+      "delay": 0.1,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "3"
+      },
+      "delay": 0.2,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "4"
+      },
+      "delay": 0.05,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "4"
+      },
+      "delay": 0.15,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500004,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "4"
+      },
+      "delay": 0.1,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500004,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "4"
+      },
+      "delay": 0.2,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500003,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "delay": 0.05,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500002,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "delay": 0.1,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500004,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "delay": 0.15,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 500004,
+      "replace": true,
+      "when": {
+       "on": "SELF",
+       "check": "CHECK_DURATION_DEFINE",
+       "state": "define_duration_ch0042_drone_summon_count",
+       "op": "COMPARISON_EQUAL_TO",
+       "value": "5"
+      },
+      "delay": 0.2,
+      "seconds": 9999.0
+     }
     ]
    },
    "variant": {
@@ -94048,7 +94771,8 @@
          "state": "define_buff_ch0043_eva",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -94098,7 +94822,8 @@
         },
         "row": "ch0043_passive_duration_01",
         "rowMaxStack": 12,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -94151,7 +94876,8 @@
          "state": "define_trigger_ch0043",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "6"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -94180,7 +94906,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -94226,7 +94953,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -94272,7 +95000,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -94369,7 +95098,8 @@
          "state": "define_buff_ch0043_eva",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -94419,7 +95149,8 @@
         },
         "row": "ch0043_passive_duration_01",
         "rowMaxStack": 12,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -94466,7 +95197,8 @@
         },
         "row": "ch0043_passive_duration_01",
         "rowMaxStack": 12,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -94519,7 +95251,8 @@
          "state": "define_trigger_ch0043",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "6"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -94548,7 +95281,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -94594,7 +95328,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -94640,7 +95375,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -94746,7 +95482,8 @@
          "state": "define_buff_ch0043_eva",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -94796,7 +95533,8 @@
         },
         "row": "ch0043_passive_duration_01",
         "rowMaxStack": 12,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -94843,7 +95581,8 @@
         },
         "row": "ch0043_passive_duration_01",
         "rowMaxStack": 12,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -94896,7 +95635,8 @@
          "state": "define_trigger_ch0043",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "6"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -94925,7 +95665,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -94971,7 +95712,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -95017,7 +95759,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -100014,7 +100757,8 @@
         "sort": null,
         "count": 0,
         "row": "common_passive_atk_up_10",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -100106,7 +100850,8 @@
         "sort": null,
         "count": 0,
         "row": "common_passive_atk_up_15",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -100198,7 +100943,8 @@
         "sort": null,
         "count": 0,
         "row": "common_passive_atk_up_20",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -101033,7 +101779,8 @@
         "count": 0,
         "row": "ch0056_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -101135,7 +101882,8 @@
         "count": 0,
         "row": "ch0056_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -101237,7 +101985,8 @@
         "count": 0,
         "row": "ch0056_passive_duration_03",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -103305,7 +104054,8 @@
         "count": 0,
         "row": "ch0058_passive_duration_common",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -103344,7 +104094,8 @@
         "count": 0,
         "row": "ch0058_passive_duration_common",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -103369,7 +104120,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -103415,7 +104167,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -103510,7 +104263,8 @@
         "count": 0,
         "row": "ch0058_passive_duration_common",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -103566,7 +104320,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0058_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -103605,7 +104360,8 @@
         "count": 0,
         "row": "ch0058_passive_duration_common",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -103630,7 +104386,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -103676,7 +104433,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -103771,7 +104529,8 @@
         "count": 0,
         "row": "ch0058_passive_duration_common",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -103827,7 +104586,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0058_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -103866,7 +104626,8 @@
         "count": 0,
         "row": "ch0058_passive_duration_common",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -103891,7 +104652,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -103937,7 +104699,8 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -104596,7 +105359,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0059_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -104681,7 +105445,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0059_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -104758,7 +105523,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0059_passive_duration_03",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -107176,7 +107942,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0068_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -107205,7 +107972,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0068_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -107255,7 +108023,8 @@
          "state": "define_trigger_ch0068_friend",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      }
@@ -107341,7 +108110,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0068_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -107370,7 +108140,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0068_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -107420,7 +108191,8 @@
          "state": "define_trigger_ch0068_friend",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -107476,7 +108248,8 @@
         "count": 0,
         "row": "ch0068_passive_duration_03",
         "rowMaxStack": 3,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -107562,7 +108335,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0068_passive_duration_01",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -107591,7 +108365,8 @@
         "sort": null,
         "count": 0,
         "row": "ch0068_passive_duration_02",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -107641,7 +108416,8 @@
          "state": "define_trigger_ch0068_friend",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -107697,7 +108473,8 @@
         "count": 0,
         "row": "ch0068_passive_duration_04",
         "rowMaxStack": 3,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -108501,7 +109278,8 @@
         },
         "row": "ch0069_passive_trigger_02",
         "rowMaxStack": 4,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -108548,7 +109326,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -108577,7 +109356,8 @@
          "state": "define_trigger_ch0069_passive_stack_01",
          "op": "COMPARISON_EQUAL_TO",
          "value": "4"
-        }
+        },
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -108595,7 +109375,8 @@
          "state": "define_trigger_ch0069_ulti_skill_enhanced",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -108632,7 +109413,8 @@
         "count": 0,
         "row": "ch0069_passive_trigger_damage_check_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -108703,7 +109485,8 @@
         },
         "row": "ch0069_passive_trigger_02",
         "rowMaxStack": 4,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -108750,7 +109533,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -108779,7 +109563,8 @@
          "state": "define_trigger_ch0069_passive_stack_01",
          "op": "COMPARISON_EQUAL_TO",
          "value": "4"
-        }
+        },
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -108797,7 +109582,8 @@
          "state": "define_trigger_ch0069_ulti_skill_enhanced",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -108834,7 +109620,8 @@
         "count": 0,
         "row": "ch0069_passive_trigger_damage_check_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -108905,7 +109692,8 @@
         },
         "row": "ch0069_passive_trigger_02",
         "rowMaxStack": 4,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -108952,7 +109740,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -108981,7 +109770,8 @@
          "state": "define_trigger_ch0069_passive_stack_01",
          "op": "COMPARISON_EQUAL_TO",
          "value": "4"
-        }
+        },
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -108999,7 +109789,8 @@
          "state": "define_trigger_ch0069_ulti_skill_enhanced",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      },
@@ -109036,7 +109827,8 @@
         "count": 0,
         "row": "ch0069_passive_trigger_damage_check_03",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -110089,7 +110881,8 @@
         "count": 0,
         "row": "ch0071_passive_01_marker_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -110150,7 +110943,8 @@
         "count": 0,
         "row": "ch0071_passive_01_debuff_duration_01",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -110195,7 +110989,8 @@
         "count": 0,
         "row": "ch0071_passive_freezing_duration_01",
         "rowMaxStack": 1,
-        "stacking": "TIME_REPLACE"
+        "stacking": "TIME_REPLACE",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      }
@@ -110255,7 +111050,8 @@
         "count": 0,
         "row": "ch0071_passive_02_marker_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -110316,7 +111112,8 @@
         "count": 0,
         "row": "ch0071_passive_02_debuff_duration_01",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -110361,7 +111158,8 @@
         "count": 0,
         "row": "ch0071_passive_freezing_duration_01",
         "rowMaxStack": 1,
-        "stacking": "TIME_REPLACE"
+        "stacking": "TIME_REPLACE",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      }
@@ -110421,7 +111219,8 @@
         "count": 0,
         "row": "ch0071_passive_03_marker_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -110482,7 +111281,8 @@
         "count": 0,
         "row": "ch0071_passive_03_debuff_duration_01",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      },
@@ -110527,7 +111327,8 @@
         "count": 0,
         "row": "ch0071_passive_freezing_duration_01",
         "rowMaxStack": 1,
-        "stacking": "TIME_REPLACE"
+        "stacking": "TIME_REPLACE",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      }
@@ -111762,7 +112563,8 @@
         "count": 0,
         "row": "ch0075_passive_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -111828,7 +112630,8 @@
         },
         "row": "ch0075_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -111870,7 +112673,8 @@
          "state": "define_trigger_ch0075_passive_stack",
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      }
@@ -111986,7 +112790,8 @@
         "count": 0,
         "row": "ch0075_passive_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -112052,7 +112857,8 @@
         },
         "row": "ch0075_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -112094,7 +112900,8 @@
          "state": "define_trigger_ch0075_passive_stack",
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      }
@@ -112210,7 +113017,8 @@
         "count": 0,
         "row": "ch0075_passive_duration_01",
         "rowMaxStack": 5,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -112276,7 +113084,8 @@
         },
         "row": "ch0075_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "onetime",
@@ -112318,7 +113127,8 @@
          "state": "define_trigger_ch0075_passive_stack",
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
-        }
+        },
+        "via": "HOLDER"
        }
       ]
      }
@@ -113500,6 +114310,28 @@
        "sort": null,
        "count": 0
       }
+     }
+    ],
+    "summons": [
+     {
+      "unit": 408101,
+      "replace": true,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 408101,
+      "replace": true,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 408102,
+      "replace": true,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 408102,
+      "replace": true,
+      "seconds": 9999.0
      }
     ]
    }
@@ -128772,6 +129604,18 @@
        "count": 0
       }
      }
+    ],
+    "summons": [
+     {
+      "unit": 400402,
+      "replace": true,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 400402,
+      "replace": true,
+      "seconds": 9999.0
+     }
     ]
    }
   },
@@ -128826,6 +129670,18 @@
        "sort": null,
        "count": 0
       }
+     }
+    ],
+    "summons": [
+     {
+      "unit": 400404,
+      "replace": true,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 400404,
+      "replace": true,
+      "seconds": 9999.0
      }
     ]
    }
@@ -131834,7 +132690,8 @@
         "count": 0,
         "row": "np0607_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -131893,7 +132750,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -132118,7 +132976,8 @@
         "count": 0,
         "row": "np0608_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -132177,7 +133036,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -132601,7 +133461,8 @@
         "count": 0,
         "row": "np0610_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -132660,7 +133521,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -132937,7 +133799,8 @@
         "count": 0,
         "row": "np0611_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -132996,7 +133859,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -134922,7 +135786,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -134962,7 +135827,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -134999,7 +135865,8 @@
         "count": 0,
         "row": "np0799_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -135039,7 +135906,8 @@
         "count": 0,
         "row": "np0799_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -135085,7 +135953,8 @@
         "count": 0,
         "row": "np0799_passive_duration_02",
         "rowMaxStack": 8,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -135426,6 +136295,18 @@
        "sort": null,
        "count": 0
       }
+     }
+    ],
+    "summons": [
+     {
+      "unit": 400702,
+      "replace": true,
+      "seconds": 9999.0
+     },
+     {
+      "unit": 400704,
+      "replace": true,
+      "seconds": 9999.0
      }
     ]
    }
@@ -136045,7 +136926,8 @@
         "count": 0,
         "row": "np0801_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136085,7 +136967,8 @@
         "count": 0,
         "row": "np0802_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136142,7 +137025,8 @@
         "count": 0,
         "row": "np0803_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136199,7 +137083,8 @@
         "count": 0,
         "row": "np0804_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136256,7 +137141,8 @@
         "count": 0,
         "row": "np0805_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136296,7 +137182,8 @@
         "count": 0,
         "row": "np0806_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136336,7 +137223,8 @@
         "count": 0,
         "row": "np0807_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136376,7 +137264,8 @@
         "count": 0,
         "row": "np0808_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136416,7 +137305,8 @@
         "count": 0,
         "row": "np0809_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136456,7 +137346,8 @@
         "count": 0,
         "row": "np0810_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136496,7 +137387,8 @@
         "count": 0,
         "row": "np0811_puppet_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -136536,7 +137428,8 @@
         "count": 0,
         "row": "np0812_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -136661,6 +137554,13 @@
        "sort": null,
        "count": 0
       }
+     }
+    ],
+    "summons": [
+     {
+      "unit": 500005,
+      "replace": true,
+      "seconds": 9999.0
      }
     ]
    }
@@ -137644,7 +138544,8 @@
         "count": 0,
         "row": "np0801_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -137684,7 +138585,8 @@
         "count": 0,
         "row": "np0802_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -137741,7 +138643,8 @@
         "count": 0,
         "row": "np0803_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -137798,7 +138701,8 @@
         "count": 0,
         "row": "np0804_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -137855,7 +138759,8 @@
         "count": 0,
         "row": "np0805_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -137895,7 +138800,8 @@
         "count": 0,
         "row": "np0806_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -137935,7 +138841,8 @@
         "count": 0,
         "row": "np0807_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -137975,7 +138882,8 @@
         "count": 0,
         "row": "np0808_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -138015,7 +138923,8 @@
         "count": 0,
         "row": "np0809_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -138055,7 +138964,8 @@
         "count": 0,
         "row": "np0810_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -138095,7 +139005,8 @@
         "count": 0,
         "row": "np0811_puppet_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -138135,7 +139046,8 @@
         "count": 0,
         "row": "np0812_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -138260,6 +139172,13 @@
        "sort": null,
        "count": 0
       }
+     }
+    ],
+    "summons": [
+     {
+      "unit": 500006,
+      "replace": true,
+      "seconds": 9999.0
      }
     ]
    }
@@ -138733,7 +139652,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -138773,7 +139693,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -138841,7 +139762,8 @@
         "count": 0,
         "row": "np6010_skill01_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -138884,7 +139806,8 @@
          "state": "define_trigger_skill01_np6010",
          "op": null,
          "value": "0"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -138952,7 +139875,8 @@
         "count": 0,
         "row": "np6010_skill01_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -140416,7 +141340,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -140456,7 +141381,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -140524,7 +141450,8 @@
         "count": 0,
         "row": "np6011_skill01_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -140567,7 +141494,8 @@
          "state": "define_trigger_skill01_np6011",
          "op": null,
          "value": "0"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -140635,7 +141563,8 @@
         "count": 0,
         "row": "np6011_skill01_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -142099,7 +143028,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -142139,7 +143069,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -142207,7 +143138,8 @@
         "count": 0,
         "row": "np6012_skill03_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -142250,7 +143182,8 @@
          "state": "define_trigger_skill03_np6012",
          "op": null,
          "value": "0"
-        }
+        },
+        "via": "TRIGGER_TARGET"
        }
       ]
      },
@@ -142318,7 +143251,8 @@
         "count": 0,
         "row": "np6012_skill03_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_TARGET"
        }
       ]
      }
@@ -143973,7 +144907,8 @@
         "count": 0,
         "row": "np6020_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -144027,7 +144962,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -144294,7 +145230,8 @@
         "count": 0,
         "row": "np6021_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -144348,7 +145285,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -144669,7 +145607,8 @@
         "count": 0,
         "row": "np6022_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -144709,7 +145648,8 @@
         "count": 0,
         "row": "np6022_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -144763,7 +145703,8 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      }
@@ -145010,7 +145951,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -145050,7 +145992,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -145104,7 +146047,8 @@
         "count": 0,
         "row": "np6023_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -145150,7 +146094,8 @@
         "count": 0,
         "row": "np6023_passive_duration_02",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      }
@@ -145882,6 +146827,13 @@
        "count": 0
       }
      }
+    ],
+    "summons": [
+     {
+      "unit": 406022,
+      "replace": true,
+      "seconds": 8.8
+     }
     ]
    }
   },
@@ -145982,6 +146934,13 @@
        "count": 0
       }
      }
+    ],
+    "summons": [
+     {
+      "unit": 406022,
+      "replace": true,
+      "seconds": 8.8
+     }
     ]
    }
   },
@@ -146081,6 +147040,13 @@
        "sort": null,
        "count": 0
       }
+     }
+    ],
+    "summons": [
+     {
+      "unit": 406021,
+      "replace": true,
+      "seconds": 8.8
      }
     ]
    }
@@ -147560,7 +148526,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -147600,7 +148567,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -147643,7 +148611,8 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "via": "HOLDER"
        }
       ]
      },
@@ -147697,7 +148666,8 @@
         "count": 0,
         "row": "np6024_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -147743,7 +148713,8 @@
         "count": 0,
         "row": "np6024_passive_duration_02",
         "rowMaxStack": 10,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      }
@@ -153288,7 +154259,8 @@
         "count": 0,
         "row": "np8202_passive_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -153336,7 +154308,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -153376,7 +154349,8 @@
         "sort": null,
         "count": 0,
         "row": "passive_common_cc_immune",
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -153446,7 +154420,8 @@
         },
         "row": "np8202_skill01_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        },
        {
         "kind": "duration",
@@ -153508,7 +154483,8 @@
         },
         "row": "np8202_skill01_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "HOLDER"
        }
       ]
      },
@@ -153556,7 +154532,8 @@
         "count": 0,
         "row": "np8202_status_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        },
        {
         "kind": "duration",
@@ -153596,7 +154573,8 @@
         "count": 0,
         "row": "np8202_status_duration_01",
         "rowMaxStack": 1,
-        "stacking": "STACK"
+        "stacking": "STACK",
+        "via": "TRIGGER_INSTIGATOR"
        }
       ]
      }
@@ -153976,6 +154954,13 @@
        "count": 0
       }
      }
+    ],
+    "summons": [
+     {
+      "unit": 400607,
+      "replace": true,
+      "seconds": 9999.0
+     }
     ]
    }
   },
@@ -154145,6 +155130,13 @@
        "sort": null,
        "count": 0
       }
+     }
+    ],
+    "summons": [
+     {
+      "unit": 400610,
+      "replace": true,
+      "seconds": 9999.0
      }
     ]
    }
@@ -154316,6 +155308,13 @@
        "count": 0
       }
      }
+    ],
+    "summons": [
+     {
+      "unit": 400611,
+      "replace": true,
+      "seconds": 9999.0
+     }
     ]
    }
   },
@@ -154486,7 +155485,2420 @@
        "count": 0
       }
      }
+    ],
+    "summons": [
+     {
+      "unit": 400608,
+      "replace": true,
+      "seconds": 9999.0
+     }
     ]
+   }
+  },
+  "100000000": {
+   "name": "일반 공격",
+   "nameEn": "Basic Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0
+       }
+      ],
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 3.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "DISTANCE_LOWEST",
+       "count": 1
+      },
+      "count": 1
+     }
+    ]
+   }
+  },
+  "5000021": {
+   "name": null,
+   "nameEn": "Normal Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0,
+        "weight": 25.0
+       }
+      ],
+      "arrive": true,
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "count": 4
+     }
+    ]
+   }
+  },
+  "5000022": {
+   "name": null,
+   "nameEn": "Skill 1",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.5,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0,
+        "weight": 50.0
+       }
+      ],
+      "arrive": true,
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "count": 2
+     }
+    ]
+   }
+  },
+  "5000032": {
+   "name": null,
+   "nameEn": "Skill 1",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.5,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0,
+        "weight": 50.0
+       }
+      ],
+      "arrive": true,
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "count": 2
+     }
+    ]
+   }
+  },
+  "5000031": {
+   "name": null,
+   "nameEn": "Normal Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0,
+        "weight": 25.0
+       }
+      ],
+      "arrive": true,
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "count": 4
+     }
+    ]
+   }
+  },
+  "5000041": {
+   "name": null,
+   "nameEn": "Normal Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          1.0,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0,
+        "weight": 25.0
+       }
+      ],
+      "arrive": true,
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "count": 4
+     }
+    ]
+   }
+  },
+  "5000042": {
+   "name": null,
+   "nameEn": "Skill 1",
+   "desc": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 2,
+   "skillType": 2,
+   "maxLevel": 10,
+   "levelable": true,
+   "levelPeriod": 3,
+   "behaviour": {
+    "attack": true,
+    "hits": [
+     {
+      "shape": "X_AXIS",
+      "range": 1.0,
+      "ticks": 1,
+      "cycle": 0.0,
+      "delay": 0.0,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "ADD_DAMAGE",
+        "applyTo": "HOLDER",
+        "scale": "PHYSICAL_ATTACK_RATE",
+        "scaleOf": "CASTER",
+        "value": {
+         "base": [
+          2.5,
+          0.0
+         ],
+         "up": [
+          0.0,
+          0.0
+         ],
+         "extra": [
+          0.0,
+          0.0
+         ]
+        },
+        "team": "CAST_TARGET",
+        "pick": null,
+        "sort": null,
+        "count": 0,
+        "weight": 50.0
+       }
+      ],
+      "arrive": true,
+      "cast": {
+       "team": "ENEMY",
+       "range": "FRONT",
+       "rangeValue": 99.0,
+       "pick": "N_TARGET_SELECT",
+       "sort": "RANDOM",
+       "count": 1
+      },
+      "count": 2
+     }
+    ]
+   }
+  },
+  "5000050": {
+   "name": null,
+   "nameEn": "Passive",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_ACTOR_DEAD",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 1,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0801_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0802_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0803_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0804_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0805_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0806_puppet_buff"
+          }
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0,
+        "via": "HOLDER"
+       },
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0807_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0808_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0809_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0810_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0811_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0812_puppet_buff"
+          }
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0,
+        "via": "HOLDER"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "5000051": {
+   "name": null,
+   "nameEn": "Normal Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0
+  },
+  "5000060": {
+   "name": null,
+   "nameEn": "Passive",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 4,
+   "skillType": 13,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0,
+   "behaviour": {
+    "triggers": [
+     {
+      "on": "TRIGGER_TYPE_ACTOR_DEAD",
+      "check": "SELF",
+      "cooldown": 0.0,
+      "limit": 1,
+      "ops": [
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0801_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0802_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0803_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0804_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0805_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0806_puppet_buff"
+          }
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0,
+        "via": "HOLDER"
+       },
+       {
+        "kind": "onetime",
+        "op": "CLEAR_DURATION_DEFINE_ID",
+        "applyTo": "HOLDER",
+        "scale": null,
+        "scaleOf": null,
+        "detail": {
+         "kind": "state",
+         "values": [
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0807_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0808_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0809_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0810_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0811_puppet_buff"
+          },
+          {
+           "name": null,
+           "nameEn": null,
+           "id": "define_np0812_puppet_buff"
+          }
+         ]
+        },
+        "team": "FRIENDLY",
+        "pick": "ALL",
+        "sort": null,
+        "count": 0,
+        "via": "HOLDER"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "5000061": {
+   "name": null,
+   "nameEn": "Normal Attack",
+   "desc": [
+    ""
+   ],
+   "descEn": [],
+   "buffs": [
+    []
+   ],
+   "icon": "Icon_NormalAttack",
+   "openStar": 0,
+   "categorize": 1,
+   "skillType": 1,
+   "maxLevel": 1,
+   "levelable": false,
+   "levelPeriod": 0
+  }
+ },
+ "summons": {
+  "400402": {
+   "code": "NP0402",
+   "id": 400402,
+   "skillSetGroup": 200402,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2004021
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2004021
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 118.4,
+     "PHYSICS_DEFENSE": 22.5,
+     "MAX_LIFE": 3608.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 200.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION_DEFEND": 65.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 7.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 2.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 7.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 3.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 8.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 4.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 8.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 5.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 10.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 6.0,
+     "PHYSICS_DEFENSE": 4.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 11.0
+    }
+   }
+  },
+  "400404": {
+   "code": "NP0404",
+   "id": 400404,
+   "skillSetGroup": 200404,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2004041
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2004041
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 136.0,
+     "PHYSICS_DEFENSE": 22.5,
+     "MAX_LIFE": 2948.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 200.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION_DEFEND": 65.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 7.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 2.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 7.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 3.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 8.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 4.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 8.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 5.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 10.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 6.0,
+     "PHYSICS_DEFENSE": 4.0,
+     "MAX_LIFE": 10.0,
+     "ACCURACY": 1.53,
+     "PHYSICS_CRITICAL_CHANCE": 11.0
+    }
+   }
+  },
+  "400607": {
+   "code": "NP0607",
+   "id": 400607,
+   "skillSetGroup": 200607,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2006072
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2006071,
+       2006071,
+       2006072
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "MAX_LIFE": 600.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "MAX_LIFE": 80.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "400608": {
+   "code": "NP0608",
+   "id": 400608,
+   "skillSetGroup": 200608,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2006082,
+       2006083
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2006081
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "MAX_LIFE": 600.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "MAX_LIFE": 80.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "400610": {
+   "code": "NP0610",
+   "id": 400610,
+   "skillSetGroup": 200610,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2006101
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2006101,
+       2006102,
+       2006101,
+       2006101,
+       2006101
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "MAX_LIFE": 600.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "MAX_LIFE": 80.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "400611": {
+   "code": "NP0611",
+   "id": 400611,
+   "skillSetGroup": 200611,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2006111
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2006112,
+       2006111,
+       2006111
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "MAX_LIFE": 600.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "MAX_LIFE": 80.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "400702": {
+   "code": "NP0702",
+   "id": 400702,
+   "skillSetGroup": 200702,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2007021
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2007021
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 76.8,
+     "PHYSICS_DEFENSE": 15.0,
+     "MAX_LIFE": 1760.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 10.21,
+     "MAX_LIFE": 66.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "400704": {
+   "code": "NP0704",
+   "id": 400704,
+   "skillSetGroup": 200704,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2007041
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2007041
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 91.2,
+     "PHYSICS_DEFENSE": 15.0,
+     "MAX_LIFE": 1320.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 10.21,
+     "MAX_LIFE": 66.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "408101": {
+   "code": "NP8101",
+   "id": 408101,
+   "skillSetGroup": 208101,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2081011
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2081011
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 64.0,
+     "PHYSICS_DEFENSE": 30.0,
+     "MAX_LIFE": 1100.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 2.5,
+     "PHYSICS_DEFENSE": 0.73,
+     "MAX_LIFE": 130.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.45
+    },
+    "2": {
+     "PHYSICS_ATTACK": 2.5,
+     "PHYSICS_DEFENSE": 0.73,
+     "MAX_LIFE": 130.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.45
+    },
+    "3": {
+     "PHYSICS_ATTACK": 2.5,
+     "PHYSICS_DEFENSE": 0.73,
+     "MAX_LIFE": 130.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.45
+    },
+    "4": {
+     "PHYSICS_ATTACK": 2.5,
+     "PHYSICS_DEFENSE": 0.73,
+     "MAX_LIFE": 130.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.45
+    },
+    "5": {
+     "PHYSICS_ATTACK": 2.5,
+     "PHYSICS_DEFENSE": 0.73,
+     "MAX_LIFE": 130.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.45
+    },
+    "6": {
+     "PHYSICS_ATTACK": 2.5,
+     "PHYSICS_DEFENSE": 0.73,
+     "MAX_LIFE": 130.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.45
+    }
+   }
+  },
+  "408102": {
+   "code": "NP8102",
+   "id": 408102,
+   "skillSetGroup": 208102,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2081021
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2081021
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 88.0,
+     "PHYSICS_DEFENSE": 30.0,
+     "MAX_LIFE": 660.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 7.5,
+     "PHYSICS_DEFENSE": 0.3,
+     "MAX_LIFE": 50.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.44
+    },
+    "2": {
+     "PHYSICS_ATTACK": 7.5,
+     "PHYSICS_DEFENSE": 0.3,
+     "MAX_LIFE": 50.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.44
+    },
+    "3": {
+     "PHYSICS_ATTACK": 7.5,
+     "PHYSICS_DEFENSE": 0.3,
+     "MAX_LIFE": 50.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.44
+    },
+    "4": {
+     "PHYSICS_ATTACK": 7.5,
+     "PHYSICS_DEFENSE": 0.3,
+     "MAX_LIFE": 50.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.44
+    },
+    "5": {
+     "PHYSICS_ATTACK": 7.5,
+     "PHYSICS_DEFENSE": 0.3,
+     "MAX_LIFE": 50.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.44
+    },
+    "6": {
+     "PHYSICS_ATTACK": 7.5,
+     "PHYSICS_DEFENSE": 0.3,
+     "MAX_LIFE": 50.0,
+     "ACCURACY": 1.53,
+     "HEAL": 1.44
+    }
+   }
+  },
+  "406020": {
+   "code": "NP6020",
+   "id": 406020,
+   "skillSetGroup": 206020,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2060202
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2060201
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "MAX_LIFE": 25300.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 17.92,
+     "MAX_LIFE": 1265.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "406021": {
+   "code": "NP6021",
+   "id": 406021,
+   "skillSetGroup": 206021,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2060212
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2060211
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "MAX_LIFE": 25300.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 17.92,
+     "MAX_LIFE": 1265.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "406022": {
+   "code": "NP6022",
+   "id": 406022,
+   "skillSetGroup": 206022,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2060222
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       2060221
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "MAX_LIFE": 25300.0,
+     "ACCURACY": 25.0,
+     "EVASION": 10.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 17.92,
+     "MAX_LIFE": 1265.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "500001": {
+   "code": "SM0001",
+   "id": 500001,
+   "skillSetGroup": 500001,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       100000000
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       100000000
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 64.0,
+     "MAX_LIFE": 858.0,
+     "ACCURACY": 11.0,
+     "EVASION": 11.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 46.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 10.0,
+     "PENETRATION_DEFEND": 12.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 65.0,
+     "MAX_LIFE": 875.0,
+     "ACCURACY": 11.0,
+     "EVASION": 11.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 47.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 10.0,
+     "PENETRATION_DEFEND": 12.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 68.0,
+     "MAX_LIFE": 909.0,
+     "ACCURACY": 12.0,
+     "EVASION": 12.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 49.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 11.0,
+     "PENETRATION_DEFEND": 12.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 72.0,
+     "MAX_LIFE": 960.0,
+     "ACCURACY": 13.0,
+     "EVASION": 13.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 52.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 11.0,
+     "PENETRATION_DEFEND": 13.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 77.0,
+     "MAX_LIFE": 1029.0,
+     "ACCURACY": 14.0,
+     "EVASION": 14.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 55.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 12.0,
+     "PENETRATION_DEFEND": 14.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 77.0,
+     "MAX_LIFE": 1029.0,
+     "ACCURACY": 14.0,
+     "EVASION": 14.0,
+     "PHYSICS_CRITICAL_CHANCE": 100.0,
+     "PHYSICS_CRITICAL_DAMAGE": 1.5,
+     "WEIGHT": 1.0,
+     "CRITICAL_CHANCE_RESIST": 55.0,
+     "HEAL_RECEIVE": 1.0,
+     "PENETRATION": 12.0,
+     "PENETRATION_DEFEND": 14.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 7.17,
+     "MAX_LIFE": 30.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 7.31,
+     "MAX_LIFE": 30.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 7.6,
+     "MAX_LIFE": 32.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 8.03,
+     "MAX_LIFE": 34.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 8.6,
+     "MAX_LIFE": 36.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 8.6,
+     "MAX_LIFE": 36.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "500002": {
+   "code": "SM0002",
+   "id": 500002,
+   "skillSetGroup": 500002,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 20,
+      "conditionValue": [
+       "define_duration_ch0042_drone_trigger",
+       "1"
+      ],
+      "steps": [
+       5000022
+      ]
+     },
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       5000021
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 20,
+      "conditionValue": [
+       "define_duration_ch0042_drone_trigger",
+       "1"
+      ],
+      "steps": [
+       5000022
+      ]
+     },
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       5000021
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 4.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "ACCURACY": 1.53
+    },
+    "2": {
+     "ACCURACY": 1.53
+    },
+    "3": {
+     "ACCURACY": 1.53
+    },
+    "4": {
+     "ACCURACY": 1.53
+    },
+    "5": {
+     "ACCURACY": 1.53
+    },
+    "6": {
+     "ACCURACY": 1.53
+    }
+   }
+  },
+  "500003": {
+   "code": "SM0003",
+   "id": 500003,
+   "skillSetGroup": 500003,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 20,
+      "conditionValue": [
+       "define_duration_ch0042_drone_trigger",
+       "1"
+      ],
+      "steps": [
+       5000032
+      ]
+     },
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       5000031
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 20,
+      "conditionValue": [
+       "define_duration_ch0042_drone_trigger",
+       "1"
+      ],
+      "steps": [
+       5000032
+      ]
+     },
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       5000031
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 4.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "ACCURACY": 1.53
+    },
+    "2": {
+     "ACCURACY": 1.53
+    },
+    "3": {
+     "ACCURACY": 1.53
+    },
+    "4": {
+     "ACCURACY": 1.53
+    },
+    "5": {
+     "ACCURACY": 1.53
+    },
+    "6": {
+     "ACCURACY": 1.53
+    }
+   }
+  },
+  "500004": {
+   "code": "SM0004",
+   "id": 500004,
+   "skillSetGroup": 500004,
+   "battlePatterns": {
+    "start": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 20,
+      "conditionValue": [
+       "define_duration_ch0042_drone_trigger",
+       "1"
+      ],
+      "steps": [
+       5000042
+      ]
+     },
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       5000041
+      ]
+     }
+    ],
+    "repeat": [
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 0,
+      "condition": 20,
+      "conditionValue": [
+       "define_duration_ch0042_drone_trigger",
+       "1"
+      ],
+      "steps": [
+       5000042
+      ]
+     },
+     {
+      "name": null,
+      "nameEn": null,
+      "order": 1,
+      "condition": 0,
+      "conditionValue": [
+       "0"
+      ],
+      "steps": [
+       5000041
+      ]
+     }
+    ]
+   },
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 4.0,
+     "MAX_LIFE": 1.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "ACCURACY": 1.53
+    },
+    "2": {
+     "ACCURACY": 1.53
+    },
+    "3": {
+     "ACCURACY": 1.53
+    },
+    "4": {
+     "ACCURACY": 1.53
+    },
+    "5": {
+     "ACCURACY": 1.53
+    },
+    "6": {
+     "ACCURACY": 1.53
+    }
+   }
+  },
+  "500005": {
+   "code": "SM0005",
+   "id": 500005,
+   "skillSetGroup": 500005,
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 858.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 875.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 909.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 960.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1029.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 4.0,
+     "MAX_LIFE": 1029.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 7.17,
+     "MAX_LIFE": 30.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 7.31,
+     "MAX_LIFE": 30.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 7.6,
+     "MAX_LIFE": 32.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 8.03,
+     "MAX_LIFE": 34.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 8.6,
+     "MAX_LIFE": 36.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 8.6,
+     "MAX_LIFE": 36.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
+   }
+  },
+  "500006": {
+   "code": "SM0006",
+   "id": 500006,
+   "skillSetGroup": 500006,
+   "baseStats": {
+    "1": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 858.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 875.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 909.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 960.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 3.0,
+     "MAX_LIFE": 1029.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 1.0,
+     "PHYSICS_DEFENSE": 4.0,
+     "MAX_LIFE": 1029.0,
+     "WEIGHT": 1.0,
+     "HEAL_RECEIVE": 1.0,
+     "ATTACK_SPEED_NORMAL": 1.0
+    }
+   },
+   "levelStats": {
+    "1": {
+     "PHYSICS_ATTACK": 7.17,
+     "MAX_LIFE": 30.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "2": {
+     "PHYSICS_ATTACK": 7.31,
+     "MAX_LIFE": 30.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "3": {
+     "PHYSICS_ATTACK": 7.6,
+     "MAX_LIFE": 32.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "4": {
+     "PHYSICS_ATTACK": 8.03,
+     "MAX_LIFE": 34.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "5": {
+     "PHYSICS_ATTACK": 8.6,
+     "MAX_LIFE": 36.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    },
+    "6": {
+     "PHYSICS_ATTACK": 8.6,
+     "MAX_LIFE": 36.0,
+     "ACCURACY": 1.0,
+     "EVASION": 1.0
+    }
    }
   }
  }
