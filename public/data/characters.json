@@ -49261,7 +49261,10 @@
           {
            "name": "<color=#0C9F14>지속 회복</color>",
            "nameEn": "<color=#0C9F14>Continuous Recovery</color>",
-           "id": "define_buff_heal_over_time"
+           "id": "define_buff_heal_over_time",
+           "more": [
+            "define_buff_heal_over_time_per_hp"
+           ]
           }
          ]
         },
@@ -49935,7 +49938,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "N_TARGET_SELECT",
         "sort": "PHY_DEF_HIGHEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0003_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -50009,7 +50015,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "N_TARGET_SELECT",
         "sort": "PHY_DEF_HIGHEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0003_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -50083,7 +50092,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "N_TARGET_SELECT",
         "sort": "PHY_DEF_HIGHEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0003_passive_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -50265,7 +50277,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 1
+        "count": 1,
+        "row": "ch0003_skill01_damage_branch_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -50307,7 +50322,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 1
+        "count": 1,
+        "row": "ch0003_skill01_damage_branch_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -50349,7 +50367,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 1
+        "count": 1,
+        "row": "ch0003_skill01_damage_branch_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -50386,7 +50407,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 1
+        "count": 1,
+        "row": "ch0003_skill01_damage_branch_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -50423,7 +50447,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 1
+        "count": 1,
+        "row": "ch0003_skill01_damage_branch_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -50460,7 +50487,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 1
+        "count": 1,
+        "row": "ch0003_skill01_damage_branch_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -50602,7 +50632,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 1
+        "count": 1,
+        "row": "ch0003_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -50701,7 +50734,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -50743,7 +50779,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -50785,7 +50824,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -50822,7 +50864,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -50859,7 +50904,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -50896,7 +50944,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "onetime",
@@ -51201,7 +51252,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_duration_02",
+         "rowMaxStack": 2,
+         "stacking": "STACK"
         }
        ],
        "arrive": true,
@@ -51283,7 +51337,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -51325,7 +51382,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -51367,7 +51427,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -51404,7 +51467,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -51441,7 +51507,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -51478,7 +51547,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "onetime",
@@ -51783,7 +51855,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_duration_02",
+         "rowMaxStack": 2,
+         "stacking": "STACK"
         }
        ],
        "arrive": true,
@@ -51865,7 +51940,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -51907,7 +51985,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -51949,7 +52030,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -51986,7 +52070,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -52023,7 +52110,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -52060,7 +52150,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_damage_branch_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "onetime",
@@ -52386,7 +52479,10 @@
          "team": "CAST_TARGET",
          "pick": "ALL",
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill01_duration_02",
+         "rowMaxStack": 2,
+         "stacking": "STACK"
         }
        ],
        "arrive": true,
@@ -52522,7 +52618,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 1
+        "count": 1,
+        "row": "ch0003_skill02_critical_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -52620,7 +52719,10 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": null,
-        "count": 2
+        "count": 2,
+        "row": "ch0003_ulti_target_count_duration_01",
+        "rowMaxStack": 2,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -52806,7 +52908,10 @@
          "team": "ENEMY",
          "pick": "N_TARGET_SELECT",
          "sort": null,
-         "count": 2
+         "count": 2,
+         "row": "ch0003_ulti_target_count_duration_01",
+         "rowMaxStack": 2,
+         "stacking": "STACK"
         },
         {
          "kind": "onetime",
@@ -52953,7 +53058,10 @@
          "team": "SELF",
          "pick": null,
          "sort": null,
-         "count": 1
+         "count": 1,
+         "row": "ch0003_skill02_critical_duration_01",
+         "rowMaxStack": 1,
+         "stacking": "STACK"
         }
        ],
        "cast": {
@@ -53401,7 +53509,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0005_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -54141,7 +54251,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0006_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -54379,7 +54491,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0006_skill02_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -54426,7 +54541,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0006_skill02_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -54582,7 +54700,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0006_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -54621,7 +54741,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0006_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -54660,7 +54782,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0006_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -54795,7 +54919,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0007_passive_common_duration_01",
+        "stacking": "STACK"
        }
       ]
      },
@@ -54852,7 +54978,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0007_passive_duration_01",
+        "stacking": "STACK"
        }
       ]
      }
@@ -54935,7 +55063,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0007_passive_common_duration_01",
+        "stacking": "STACK"
        }
       ]
      },
@@ -54992,7 +55122,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0007_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      }
@@ -55075,7 +55207,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0007_passive_common_duration_01",
+        "stacking": "STACK"
        }
       ]
      },
@@ -55132,7 +55266,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0007_passive_duration_03",
+        "stacking": "STACK"
        }
       ]
      }
@@ -55859,7 +55995,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0009_passive_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      }
@@ -55964,7 +56103,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0009_passive_duration_02",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      }
@@ -56069,7 +56211,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0009_passive_duration_03",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      }
@@ -56534,7 +56679,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0009_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -56731,7 +56878,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0009_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -56825,7 +56974,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0010_passive_duration_01",
+        "rowMaxStack": 6,
+        "stacking": "STACK"
        }
       ]
      },
@@ -56941,7 +57093,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0010_passive_duration_01",
+        "rowMaxStack": 6,
+        "stacking": "STACK"
        }
       ]
      },
@@ -57057,7 +57212,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0010_passive_duration_01",
+        "rowMaxStack": 6,
+        "stacking": "STACK"
        }
       ]
      },
@@ -57680,7 +57838,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0010_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -57853,7 +58013,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0010_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -58411,7 +58573,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0011_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -59116,7 +59280,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0012_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -59649,7 +59815,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0013_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -59832,7 +60000,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0014_passive_01_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -60016,7 +60187,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0014_passive_02_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -60200,7 +60374,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0014_passive_03_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -60686,7 +60863,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0014_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -60918,7 +61098,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0014_ulti_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -61029,7 +61212,10 @@
         "team": "SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0015_passive_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      }
@@ -61131,7 +61317,10 @@
         "team": "SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0015_passive_duration_02",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      }
@@ -61233,7 +61422,10 @@
         "team": "SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0015_passive_duration_03",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      }
@@ -61514,7 +61706,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0015_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -61554,7 +61748,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0015_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -61937,7 +62133,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0016_passive_duration_01",
+        "stacking": "STACK"
        }
       ]
      }
@@ -62027,7 +62225,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0016_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      }
@@ -62117,7 +62317,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0016_passive_duration_03",
+        "stacking": "STACK"
        }
       ]
      }
@@ -62415,7 +62617,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0016_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -62652,7 +62856,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0016_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -62869,7 +63075,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0016_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -62915,7 +63123,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0016_ulti_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -63341,7 +63551,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -63388,7 +63600,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -63652,7 +63866,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -63699,7 +63915,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -63923,7 +64141,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -63970,7 +64190,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -64016,7 +64238,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -64063,7 +64287,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -64109,7 +64335,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -64156,7 +64384,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -64202,7 +64432,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -64249,7 +64481,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -64295,7 +64529,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -64342,7 +64578,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0017_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -64470,7 +64708,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0019_passive_duration_01",
+        "stacking": "STACK"
        }
       ]
      }
@@ -64572,7 +64812,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0019_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      }
@@ -64674,7 +64916,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0019_passive_duration_03",
+        "stacking": "STACK"
        }
       ]
      }
@@ -65233,7 +65477,12 @@
           {
            "name": "<color=#0C9F14>천상의 맛</color>",
            "nameEn": "<color=#0C9F14>Heavenly Taste</color>",
-           "id": "define_trigger_ch0019"
+           "id": "define_trigger_ch0019",
+           "more": [
+            "define_passive_ch0019_atk_up_01",
+            "define_passive_ch0019_atk_up_02",
+            "define_passive_ch0019_atk_up_03"
+           ]
           }
          ]
         },
@@ -65402,7 +65651,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0019_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -65449,7 +65700,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0019_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -66315,7 +66568,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0020_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -66362,7 +66618,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0020_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -66550,7 +66808,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0020_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -66664,7 +66925,9 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0021_passive_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -66737,7 +67000,9 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0021_common_duration_01",
+        "stacking": "STACK"
        }
       ]
      },
@@ -66885,7 +67150,9 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0021_passive_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -66958,7 +67225,9 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0021_common_duration_01",
+        "stacking": "STACK"
        }
       ]
      },
@@ -67106,7 +67375,9 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0021_passive_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -67179,7 +67450,9 @@
          "state": "define_trigger_ch0021",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0021_common_duration_01",
+        "stacking": "STACK"
        }
       ]
      },
@@ -67550,7 +67823,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0021_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -67647,7 +67922,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0021_common_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -68019,7 +68296,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0021_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -68395,7 +68674,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_01_trigger",
+        "stacking": "STACK"
        }
       ]
      },
@@ -68457,7 +68738,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_01_work",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -68508,7 +68792,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_01_work",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      }
@@ -68600,7 +68887,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_02_trigger",
+        "stacking": "STACK"
        }
       ]
      },
@@ -68662,7 +68951,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_02_work",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -68713,7 +69005,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_02_work",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      }
@@ -68805,7 +69100,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_03_trigger",
+        "stacking": "STACK"
        }
       ]
      },
@@ -68867,7 +69164,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_03_work",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -68918,7 +69218,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_passive_duration_03_work",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      }
@@ -69198,7 +69501,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -69238,7 +69543,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -69459,7 +69766,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "onetime",
@@ -69657,7 +69966,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0022_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -69771,7 +70082,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0023_passive_duration_01",
+        "rowMaxStack": 3,
+        "stacking": "STACK"
        }
       ]
      }
@@ -69876,7 +70190,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0023_passive_duration_02",
+        "rowMaxStack": 4,
+        "stacking": "STACK"
        }
       ]
      }
@@ -69981,7 +70298,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0023_passive_duration_03",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      }
@@ -70278,7 +70598,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0023_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -70524,7 +70846,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0023_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -70686,7 +71010,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0023_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -70775,7 +71101,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0024_passive_trigger",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -70905,7 +71234,10 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "row": "ch0024_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -70975,7 +71307,10 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "row": "ch0024_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -71055,7 +71390,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0024_passive_trigger",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -71185,7 +71523,10 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "row": "ch0024_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -71255,7 +71596,10 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "row": "ch0024_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -71335,7 +71679,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0024_passive_trigger",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -71465,7 +71812,10 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "row": "ch0024_passive_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -71535,7 +71885,10 @@
          "state": "define_trigger_ch0024",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "row": "ch0024_passive_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -71833,7 +72186,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0024_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -72107,7 +72462,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0024_ulti_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -72269,7 +72627,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -72309,7 +72670,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -72356,7 +72720,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      },
@@ -72642,7 +73009,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_02",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -72682,7 +73052,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_02",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -72729,7 +73102,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_02",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      },
@@ -73015,7 +73391,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_03",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -73055,7 +73434,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_03",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -73102,7 +73484,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_passive_duration_03",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      },
@@ -73549,7 +73934,9 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -73832,7 +74219,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -73879,7 +74269,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0025_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -74434,7 +74827,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0026_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -74481,7 +74876,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0026_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -74739,7 +75136,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0026_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -74786,7 +75185,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0026_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -75381,7 +75782,9 @@
         "team": "SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0027_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -75629,7 +76032,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0028_passive_duration_01",
+        "stacking": "STACK"
        }
       ]
      }
@@ -75739,7 +76144,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0028_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      }
@@ -75849,7 +76256,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0028_passive_duration_03",
+        "stacking": "STACK"
        }
       ]
      }
@@ -76155,7 +76564,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0028_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -76395,7 +76806,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0028_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -76557,7 +76970,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0028_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -76909,7 +77324,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0029_attack_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -77825,7 +78242,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0030_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -77872,7 +78291,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0030_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -78137,7 +78558,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0030_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -78184,7 +78607,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0030_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -78355,7 +78780,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0030_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -78385,7 +78812,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0030_ulti_duration_02",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -78415,7 +78844,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0030_ulti_duration_03",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -78513,7 +78944,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0031_passive_duration_01",
+        "stacking": "STACK"
        }
       ]
      }
@@ -78602,7 +79035,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0031_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      }
@@ -78691,7 +79126,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0031_passive_duration_03",
+        "stacking": "STACK"
        }
       ]
      }
@@ -78837,7 +79274,11 @@
           {
            "name": "<color=#0C9F14>보호막</color>",
            "nameEn": "<color=#0C9F14>Shield</color>",
-           "id": "define_buff_shield_per_healpower_caster"
+           "id": "define_buff_shield_per_healpower_caster",
+           "more": [
+            "define_buff_shield_per_hp_rate_caster",
+            "define_buff_ch0014_shield_per_atk_caster"
+           ]
           }
          ]
         },
@@ -79100,7 +79541,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0031_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -79139,7 +79582,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0031_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -79337,7 +79782,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0031_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -79395,7 +79842,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0031_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -79918,7 +80367,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0032_skill02_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -80252,7 +80704,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0033_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -80364,7 +80819,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0033_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -80476,7 +80934,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0033_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -81180,7 +81641,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0033_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -81542,7 +82006,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -81596,7 +82062,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -81649,7 +82117,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      }
@@ -81757,7 +82227,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -81811,7 +82283,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -81864,7 +82338,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_04",
+        "stacking": "STACK"
        }
       ]
      }
@@ -81972,7 +82448,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_05",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -82026,7 +82504,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_05",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -82079,7 +82559,9 @@
          "state": "30",
          "op": "COMPARISON_LESS_OR_EQUAL",
          "value": "0"
-        }
+        },
+        "row": "ch0034_passive_duration_06",
+        "stacking": "STACK"
        }
       ]
      }
@@ -82384,7 +82866,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0034_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -82646,7 +83130,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0034_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -82883,7 +83369,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0035_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -82968,7 +83457,10 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "row": "ch0035_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -83126,7 +83618,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0035_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -83211,7 +83706,10 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "row": "ch0035_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -83401,7 +83899,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0035_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -83486,7 +83987,10 @@
          "state": "define_trigger_ch0035_skill02",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "row": "ch0035_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -83938,7 +84442,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0035_skill01_duration_01",
+        "rowMaxStack": 2,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -84404,7 +84911,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0035_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -84585,7 +85095,9 @@
         "tickWeights": [
          100,
          0
-        ]
+        ],
+        "row": "ch0035_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -84629,7 +85141,9 @@
         "tickWeights": [
          100,
          0
-        ]
+        ],
+        "row": "ch0035_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -85308,7 +85822,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0036_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -85355,7 +85871,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0036_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -85529,7 +86047,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0036_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -86223,7 +86743,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0037_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -86596,7 +87118,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0037_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -86760,7 +87284,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0037_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -87235,7 +87761,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0038_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -87498,7 +88026,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0038_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -87896,7 +88426,9 @@
          "team": "ENEMY",
          "pick": "ALL",
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0038_ulti_change_duration_01",
+         "stacking": "TIME_REPLACE"
         }
        ],
        "cast": {
@@ -88020,7 +88552,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "common_passive_atk_up_10",
+        "stacking": "STACK"
        }
       ]
      }
@@ -88110,7 +88644,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "common_passive_atk_up_15",
+        "stacking": "STACK"
        }
       ]
      }
@@ -88200,7 +88736,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "common_passive_atk_up_20",
+        "stacking": "STACK"
        }
       ]
      }
@@ -88497,7 +89035,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0039_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -88743,7 +89283,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0039_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -88914,7 +89456,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0039_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -89063,7 +89607,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0040_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -89203,7 +89750,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0040_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -89343,7 +89893,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0040_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -89857,7 +90410,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0040_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -89908,7 +90463,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0040_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -90275,7 +90832,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0040_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -90326,7 +90885,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0040_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -90372,7 +90933,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0040_skill02_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -90607,7 +91171,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -90658,7 +91224,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -90741,7 +91309,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -90792,7 +91362,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -90875,7 +91447,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -90926,7 +91500,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -91009,7 +91585,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -91060,7 +91638,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -91143,7 +91723,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -91194,7 +91776,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "ch0040_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -91285,7 +91869,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -91312,7 +91898,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -91338,7 +91926,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -91384,7 +91974,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_drone_atk_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -91449,7 +92042,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -91477,7 +92073,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -91516,7 +92115,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -91647,7 +92249,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -91674,7 +92278,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -91700,7 +92306,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -91746,7 +92354,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_drone_atk_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -91811,7 +92422,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -91839,7 +92453,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -91878,7 +92495,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -92009,7 +92629,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -92036,7 +92658,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -92062,7 +92686,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_common_drone_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -92108,7 +92734,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_passive_drone_atk_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -92173,7 +92802,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -92201,7 +92833,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -92229,7 +92864,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -92268,7 +92906,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -92722,7 +93363,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -92990,7 +93634,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_skill02_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -93188,7 +93835,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0042_common_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -93300,7 +93950,9 @@
          "team": "FRIENDLY",
          "pick": "ALL",
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0042_ulti_change_duration_01",
+         "stacking": "STACK"
         }
        ],
        "cast": {
@@ -93443,7 +94095,10 @@
          "state": "define_buff_ch0043_eva",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "row": "ch0043_passive_duration_01",
+        "rowMaxStack": 12,
+        "stacking": "STACK"
        }
       ]
      },
@@ -93761,7 +94416,10 @@
          "state": "define_buff_ch0043_eva",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "row": "ch0043_passive_duration_01",
+        "rowMaxStack": 12,
+        "stacking": "STACK"
        }
       ]
      },
@@ -93805,7 +94463,10 @@
          "state": "define_buff_ch0043_cridmg",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "row": "ch0043_passive_duration_01",
+        "rowMaxStack": 12,
+        "stacking": "STACK"
        }
       ]
      },
@@ -94132,7 +94793,10 @@
          "state": "define_buff_ch0043_eva",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "row": "ch0043_passive_duration_01",
+        "rowMaxStack": 12,
+        "stacking": "STACK"
        }
       ]
      },
@@ -94176,7 +94840,10 @@
          "state": "define_buff_ch0043_cridmg",
          "op": "COMPARISON_GREATER_OR_EQUAL",
          "value": "1"
-        }
+        },
+        "row": "ch0043_passive_duration_01",
+        "rowMaxStack": 12,
+        "stacking": "STACK"
        }
       ]
      },
@@ -94929,7 +95596,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0043_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -94955,7 +95625,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0043_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -95119,7 +95791,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0043_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -95518,7 +96192,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0046_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -95765,7 +96441,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0046_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -95935,7 +96613,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0046_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -96543,7 +97223,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0050_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -96593,7 +97275,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0050_skill02_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -96632,7 +97316,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0050_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -96853,7 +97539,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0050_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -96892,7 +97580,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0050_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -96938,7 +97628,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0050_ulti_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -97801,7 +98493,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0052_skill02_change_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -97849,7 +98544,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0052_skill02_change_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -97958,7 +98656,10 @@
          "team": "CAST_TARGET",
          "pick": null,
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0052_skill02_change_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -98006,7 +98707,10 @@
          "team": "CAST_TARGET",
          "pick": null,
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0052_skill02_change_duration_01",
+         "rowMaxStack": 5,
+         "stacking": "STACK"
         }
        ],
        "arrive": true,
@@ -98153,7 +98857,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0052_ulti_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -98580,7 +99287,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0053_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -98628,7 +99337,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0053_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -99139,7 +99850,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0053_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -99197,7 +99910,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0053_ulti_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -99297,7 +100012,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "common_passive_atk_up_10",
+        "stacking": "STACK"
        }
       ]
      }
@@ -99387,7 +100104,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "common_passive_atk_up_15",
+        "stacking": "STACK"
        }
       ]
      }
@@ -99477,7 +100196,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "common_passive_atk_up_20",
+        "stacking": "STACK"
        }
       ]
      }
@@ -99784,7 +100505,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0054_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -100022,7 +100745,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0054_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -100194,7 +100919,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0054_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -100303,7 +101030,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0056_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -100402,7 +101132,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0056_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -100501,7 +101234,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0056_passive_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -101388,7 +102124,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0056_ulti_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -101434,7 +102172,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0056_ulti_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -102231,7 +102971,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0057_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -102277,7 +103019,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0057_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -102558,7 +103302,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0058_passive_duration_common",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -102594,7 +103341,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0058_passive_duration_common",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -102757,7 +103507,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0058_passive_duration_common",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -102811,7 +103564,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0058_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      },
@@ -102847,7 +103602,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0058_passive_duration_common",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -103010,7 +103768,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0058_passive_duration_common",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -103064,7 +103825,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0058_passive_duration_03",
+        "stacking": "STACK"
        }
       ]
      },
@@ -103100,7 +103863,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0058_passive_duration_common",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -103828,7 +104594,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0059_passive_duration_01",
+        "stacking": "STACK"
        }
       ]
      }
@@ -103911,7 +104679,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0059_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      }
@@ -103986,7 +104756,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0059_passive_duration_03",
+        "stacking": "STACK"
        }
       ]
      }
@@ -105467,7 +106239,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0062_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -106060,7 +106834,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0063_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -106398,7 +107174,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_passive_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -106425,7 +107203,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      },
@@ -106559,7 +107339,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_passive_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -106586,7 +107368,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      },
@@ -106689,7 +107473,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_passive_duration_03",
+        "rowMaxStack": 3,
+        "stacking": "STACK"
        }
       ]
      }
@@ -106773,7 +107560,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_passive_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -106800,7 +107589,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_passive_duration_02",
+        "stacking": "STACK"
        }
       ]
      },
@@ -106903,7 +107694,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_passive_duration_04",
+        "rowMaxStack": 3,
+        "stacking": "STACK"
        }
       ]
      }
@@ -107315,7 +108109,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -107385,7 +108181,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0068_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -107466,7 +108264,9 @@
          "team": "CAST_TARGET",
          "pick": null,
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0068_skill02_duration_01",
+         "stacking": "STACK"
         },
         {
          "kind": "onetime",
@@ -107536,7 +108336,9 @@
          "team": "CAST_TARGET",
          "pick": null,
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0068_skill02_duration_02",
+         "stacking": "STACK"
         }
        ],
        "cast": {
@@ -107696,7 +108498,10 @@
          "state": "define_trigger_ch0069_ulti_skill_enhanced",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0069_passive_trigger_02",
+        "rowMaxStack": 4,
+        "stacking": "STACK"
        }
       ]
      },
@@ -107824,7 +108629,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_passive_trigger_damage_check_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -107892,7 +108700,10 @@
          "state": "define_trigger_ch0069_ulti_skill_enhanced",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0069_passive_trigger_02",
+        "rowMaxStack": 4,
+        "stacking": "STACK"
        }
       ]
      },
@@ -108020,7 +108831,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_passive_trigger_damage_check_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -108088,7 +108902,10 @@
          "state": "define_trigger_ch0069_ulti_skill_enhanced",
          "op": "COMPARISON_LESS_THAN",
          "value": "1"
-        }
+        },
+        "row": "ch0069_passive_trigger_02",
+        "rowMaxStack": 4,
+        "stacking": "STACK"
        }
       ]
      },
@@ -108216,7 +109033,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_passive_trigger_damage_check_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -108434,7 +109254,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_passive_trigger_useskill",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -108596,7 +109419,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_passive_trigger_useskill",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -109040,7 +109866,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_ulti_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -109067,7 +109896,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_ulti_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -109094,7 +109926,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_ulti_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -109182,7 +110017,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0069_passive_trigger_useskill",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -109248,7 +110086,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_01_marker_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -109306,7 +110147,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_01_debuff_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      },
@@ -109348,7 +110192,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_freezing_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "TIME_REPLACE"
        }
       ]
      }
@@ -109405,7 +110252,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_02_marker_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -109463,7 +110313,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_02_debuff_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      },
@@ -109505,7 +110358,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_freezing_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "TIME_REPLACE"
        }
       ]
      }
@@ -109562,7 +110418,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_03_marker_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -109620,7 +110479,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_03_debuff_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      },
@@ -109662,7 +110524,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_freezing_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "TIME_REPLACE"
        }
       ]
      }
@@ -109839,7 +110704,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_skill01_shield_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -109925,7 +110793,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_01_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -109975,7 +110846,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_01_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110025,7 +110899,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_02_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110075,7 +110952,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_02_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110125,7 +111005,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_03_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110175,7 +111058,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_03_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -110358,7 +111244,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_01_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110408,7 +111297,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_01_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110458,7 +111350,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_02_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110508,7 +111403,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_02_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110558,7 +111456,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_03_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -110608,7 +111509,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_passive_03_buff_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -110730,7 +111634,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0071_ulti_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -110852,7 +111759,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0075_passive_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -110915,7 +111825,10 @@
          "state": "define_trigger_ch0075_passive_stack",
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
-        }
+        },
+        "row": "ch0075_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -111070,7 +111983,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0075_passive_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -111133,7 +112049,10 @@
          "state": "define_trigger_ch0075_passive_stack",
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
-        }
+        },
+        "row": "ch0075_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -111288,7 +112207,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0075_passive_duration_01",
+        "rowMaxStack": 5,
+        "stacking": "STACK"
        }
       ]
      },
@@ -111351,7 +112273,10 @@
          "state": "define_trigger_ch0075_passive_stack",
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
-        }
+        },
+        "row": "ch0075_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -111701,7 +112626,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0075_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -111740,7 +112668,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0075_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -112056,7 +112987,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0075_skill02_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -112273,7 +113207,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "ch0075_ulti_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -112345,7 +113282,10 @@
          "team": "FRIENDLY",
          "pick": "ALL",
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0075_ulti_change_duration_01",
+         "rowMaxStack": 1,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -112382,7 +113322,10 @@
          "team": "FRIENDLY",
          "pick": "ALL",
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0075_ulti_change_duration_01",
+         "rowMaxStack": 1,
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -112419,7 +113362,10 @@
          "team": "FRIENDLY",
          "pick": "ALL",
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0075_ulti_change_duration_01",
+         "rowMaxStack": 1,
+         "stacking": "STACK"
         }
        ],
        "cast": {
@@ -112483,7 +113429,10 @@
          "team": "FRIENDLY",
          "pick": "ALL",
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "ch0075_ulti_duration_01",
+         "rowMaxStack": 1,
+         "stacking": "STACK"
         }
        ],
        "cast": {
@@ -112644,7 +113593,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8199_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -112808,7 +113759,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8199_passive_trigger_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -112933,7 +113886,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8199_skill04_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -113848,7 +114803,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "20010711",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -114019,7 +114976,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0107_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -114132,7 +115091,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0107_skill02_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -114304,7 +115265,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "30010411",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -114885,7 +115848,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "30011511",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -115142,7 +116107,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "30011811",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -115314,7 +116281,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "30012111",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -115419,7 +116388,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "30012211",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -115782,7 +116753,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0199_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -116014,7 +116987,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0199_skill04_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -116188,7 +117163,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0199_skill05_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -116732,7 +117709,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0206_attack_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -116885,7 +117864,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0207_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -117204,7 +118185,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "30020411",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -117603,7 +118586,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0209_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -118017,7 +119002,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0210_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -118276,7 +119263,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np2011_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -118448,7 +119437,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0212_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -118804,7 +119795,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0299_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -119031,7 +120024,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0299_skill03_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -119562,7 +120557,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0303_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -119742,7 +120739,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0305_attack_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -119790,7 +120789,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0305_attack_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -120075,7 +121076,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0306_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -120418,7 +121421,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0307_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -120456,7 +121461,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0307_skill02_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -120494,7 +121501,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0307_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -120764,7 +121773,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0308_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -120794,7 +121805,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0308_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -120832,7 +121845,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0308_skill02_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -120870,7 +121885,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0308_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -120966,7 +121983,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0309_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -121218,7 +122237,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0309_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -121248,7 +122269,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0309_skill02_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -121279,7 +122302,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0309_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -121562,7 +122587,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0310_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -121609,7 +122636,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0310_skill02_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -121722,7 +122751,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0311_attack_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -121770,7 +122801,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0311_attack_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -121876,7 +122909,9 @@
          "team": "CAST_TARGET",
          "pick": null,
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "np0311_attack_enhanced_duration_01",
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -121923,7 +122958,9 @@
          "team": "CAST_TARGET",
          "pick": null,
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "np0311_attack_enhanced_duration_01",
+         "stacking": "STACK"
         },
         {
          "kind": "onetime",
@@ -122078,7 +123115,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0311_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -122126,7 +123165,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0311_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -122232,7 +123273,9 @@
          "team": "ENEMY",
          "pick": "ALL",
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "np0311_skill01_enhanced_duration_01",
+         "stacking": "STACK"
         },
         {
          "kind": "duration",
@@ -122279,7 +123322,9 @@
          "team": "ENEMY",
          "pick": "ALL",
          "sort": null,
-         "count": 0
+         "count": 0,
+         "row": "np0311_skill01_enhanced_duration_01",
+         "stacking": "STACK"
         },
         {
          "kind": "onetime",
@@ -122387,7 +123432,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0311_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -122494,7 +123541,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -122535,7 +123584,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -122582,7 +123633,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -122630,7 +123683,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -122677,7 +123732,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -122725,7 +123782,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_03",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -122831,7 +123890,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -122878,7 +123939,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_skill01_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -122908,7 +123971,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_skill01_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -122939,7 +124004,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_skill01_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -123090,7 +124157,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -123131,7 +124200,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -123178,7 +124249,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123226,7 +124299,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123273,7 +124348,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123321,7 +124398,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0312_attack_duration_03",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -123448,7 +124527,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -123489,7 +124570,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -123536,7 +124619,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_attack_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123584,7 +124669,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_attack_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123631,7 +124718,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_attack_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123679,7 +124768,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_attack_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123726,7 +124817,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_skill01_duration_02",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123756,7 +124849,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_skill01_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -123787,7 +124882,9 @@
         "team": "ALL_UNIT",
         "pick": "ALL",
         "sort": "RANDOM",
-        "count": 4
+        "count": 4,
+        "row": "np0312_skill01_duration_03",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -124091,7 +125188,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0399_common_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -124132,7 +125231,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0399_common_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -124258,7 +125359,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0399_common_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -124299,7 +125402,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0399_common_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -124424,7 +125529,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0399_common_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "duration",
@@ -124465,7 +125572,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0399_common_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -124578,7 +125687,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0399_ulti_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -125018,7 +126129,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0405_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -125347,7 +126460,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0407_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -125376,7 +126491,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0407_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -125406,7 +126523,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0407_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -125511,7 +126630,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0407_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -125767,7 +126888,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0408_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -126026,7 +127149,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0409_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -126208,7 +127333,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0410_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -126237,7 +127364,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0410_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -126267,7 +127396,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0410_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -126548,7 +127679,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0411_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -126662,7 +127795,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0411_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -126691,7 +127826,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0411_skill02_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -126721,7 +127858,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0411_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -126820,7 +127959,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0411_skill03_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -127144,7 +128285,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0412_skill03_duration_01",
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -127316,7 +128459,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0499_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -127826,7 +128971,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0499_ulti_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -128510,7 +129658,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0507_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -128574,7 +129724,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0507_skill01_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -128790,7 +129942,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0508_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -129254,7 +130408,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0510_skill01_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -129301,7 +130457,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0510_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -129476,7 +130634,11 @@
           {
            "name": "<color=#0C9F14>보호막</color>",
            "nameEn": "<color=#0C9F14>Shield</color>",
-           "id": "define_buff_shield_per_healpower_caster"
+           "id": "define_buff_shield_per_healpower_caster",
+           "more": [
+            "define_buff_shield_per_hp_rate_caster",
+            "define_buff_ch0014_shield_per_atk_caster"
+           ]
           }
          ]
         },
@@ -129588,7 +130750,9 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0511_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -130284,7 +131448,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0599_skill03_duration_01",
+        "stacking": "TIME_REPLACE"
        },
        {
         "kind": "onetime",
@@ -130498,7 +131664,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0599_skill04_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -130663,7 +131831,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0607_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -130944,7 +132115,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0608_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -131341,7 +132515,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0608_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -131422,7 +132598,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0610_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -131755,7 +132934,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0611_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -132473,7 +133655,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0706_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -132839,7 +134023,9 @@
         "team": "CAST_TARGET",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np0708_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -133544,7 +134730,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0712_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -133732,7 +134920,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -133770,7 +134960,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        }
       ]
      },
@@ -133804,7 +134996,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0799_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -133841,7 +135036,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0799_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -133884,7 +135082,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0799_passive_duration_02",
+        "rowMaxStack": 8,
+        "stacking": "STACK"
        }
       ]
      }
@@ -134056,7 +135257,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0799_skill01_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -134452,7 +135655,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0799_skill04_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -134489,7 +135694,9 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0799_skill04_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -134835,7 +136042,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0801_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -134872,7 +136082,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0802_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -134926,7 +136139,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0803_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -134980,7 +136196,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0804_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -135034,7 +136253,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0805_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -135071,7 +136293,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0806_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -135108,7 +136333,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0807_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -135145,7 +136373,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0808_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -135182,7 +136413,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0809_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -135219,7 +136453,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0810_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -135256,7 +136493,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0811_puppet_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -135293,7 +136533,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0812_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -135579,7 +136822,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np0806_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -136396,7 +137641,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0801_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136433,7 +137681,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0802_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136487,7 +137738,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0803_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136541,7 +137795,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0804_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136595,7 +137852,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0805_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136632,7 +137892,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0806_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136669,7 +137932,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0807_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136706,7 +137972,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0808_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136743,7 +138012,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0809_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136780,7 +138052,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0810_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136817,7 +138092,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0811_puppet_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -136854,7 +138132,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0812_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -137243,7 +138524,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np0812_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -137368,7 +138651,9 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np0812_attack_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "arrive": true,
@@ -137446,7 +138731,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -137484,7 +138771,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        }
       ]
      },
@@ -137549,7 +138838,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6010_skill01_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -137657,7 +138949,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6010_skill01_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -137932,7 +139227,10 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np6010_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -138020,7 +139318,10 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np6010_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -138780,7 +140081,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6010_skill04_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -138991,7 +140294,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_groggy",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -139028,7 +140334,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_groggy",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -139105,7 +140414,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -139143,7 +140454,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        }
       ]
      },
@@ -139208,7 +140521,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6011_skill01_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -139316,7 +140632,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6011_skill01_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -139591,7 +140910,10 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np6011_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -139679,7 +141001,10 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np6011_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -140439,7 +141764,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6011_skill04_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -140650,7 +141977,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_groggy",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -140687,7 +142017,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_groggy",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -140764,7 +142097,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -140802,7 +142137,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        }
       ]
      },
@@ -140867,7 +142204,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -140975,7 +142315,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -141580,7 +142923,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -141623,7 +142969,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -141724,7 +143073,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -141767,7 +143119,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -141909,7 +143264,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -141952,7 +143310,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -142053,7 +143414,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -142096,7 +143460,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_skill03_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -142264,7 +143631,9 @@
          0,
          0,
          100
-        ]
+        ],
+        "row": "np6012_skill05_duration_01",
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -142476,7 +143845,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_groggy",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -142513,7 +143885,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6012_groggy",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -142595,7 +143970,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6020_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -142913,7 +144291,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6021_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -143155,7 +144536,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6021_skill01_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -143202,7 +144586,10 @@
         "team": "CAST_TARGET",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6021_skill01_duration_01",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ],
       "arrive": true,
@@ -143279,7 +144666,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6022_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -143316,7 +144706,10 @@
         "team": "FRIENDLY_NOT_SELF",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6022_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -143535,7 +144928,10 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6022_skill01_duration_01",
+        "rowMaxStack": 15,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -143612,7 +145008,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -143650,7 +145048,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        }
       ]
      },
@@ -143701,7 +145101,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6023_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -143744,7 +145147,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6023_passive_duration_02",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -144226,7 +145632,10 @@
          0,
          0,
          0
-        ]
+        ],
+        "row": "np6023_common_stare",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -146149,7 +147558,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -146187,7 +147598,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        }
       ]
      },
@@ -146281,7 +147694,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6024_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -146324,7 +147740,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6024_passive_duration_02",
+        "rowMaxStack": 10,
+        "stacking": "STACK"
        }
       ]
      }
@@ -146405,7 +147824,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6024_common_poison",
+        "rowMaxStack": 99,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -146452,7 +147874,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6024_common_poison",
+        "rowMaxStack": 99,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -147587,7 +149012,10 @@
         "team": "ENEMY",
         "pick": "N_TARGET_SELECT",
         "sort": "DISTANCE_LOWEST",
-        "count": 1
+        "count": 1,
+        "row": "np6024_common_stare",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "onetime",
@@ -147978,7 +149406,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6024_skill03_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -148159,7 +149590,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6024_skill04_duration_01",
+        "rowMaxStack": 99,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -148207,7 +149641,10 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np6024_skill04_duration_01",
+        "rowMaxStack": 99,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -149932,7 +151369,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8094_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -150037,7 +151476,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8094_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -150244,7 +151685,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8095_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -150349,7 +151792,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8095_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -150603,7 +152048,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8096_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -150708,7 +152155,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8096_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -150963,7 +152412,9 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8097_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -151068,7 +152519,9 @@
         "team": "FRIENDLY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8097_skill02_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -151307,7 +152760,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8200_skill01_duration_01",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -151371,7 +152826,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8200_skill01_duration_02",
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -151578,7 +153035,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8200_skill09_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -151692,7 +153151,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8200_skill09_duration_01",
+        "stacking": "TIME_REPLACE"
        }
       ],
       "cast": {
@@ -151824,7 +153285,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8202_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -151870,7 +153334,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -151908,7 +153374,9 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "passive_common_cc_immune",
+        "stacking": "STACK"
        }
       ]
      },
@@ -151975,7 +153443,10 @@
          "state": "define_np8202_groggy_timer",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "row": "np8202_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -152034,7 +153505,10 @@
          "state": "define_np8202_groggy_timer",
          "op": "COMPARISON_EQUAL_TO",
          "value": "1"
-        }
+        },
+        "row": "np8202_skill01_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      },
@@ -152079,7 +153553,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8202_status_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        },
        {
         "kind": "duration",
@@ -152116,7 +153593,10 @@
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8202_status_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ]
      }
@@ -152192,7 +153672,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np8202_skill01_duration_03",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -152461,7 +153944,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0607_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -152628,7 +154114,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0610_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -152795,7 +154284,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0611_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
@@ -152962,7 +154454,10 @@
         "team": "SELF",
         "pick": null,
         "sort": null,
-        "count": 0
+        "count": 0,
+        "row": "np0608_passive_duration_01",
+        "rowMaxStack": 1,
+        "stacking": "STACK"
        }
       ],
       "cast": {
