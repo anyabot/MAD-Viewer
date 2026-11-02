@@ -13,10 +13,13 @@ export function SyncButton() {
   return driveSync ? <SyncControl sync={driveSync} /> : null;
 }
 
+export function SyncConflict() {
+  return driveSync ? <ConflictModal sync={driveSync} /> : null;
+}
+
 function SyncControl({ sync }: { sync: DriveSync }) {
   const t = useT();
   const state = sync.use();
-  const keepRef = useRef<HTMLButtonElement>(null);
   const on = state.status !== 'off' && state.status !== 'connecting';
   const warn = state.status === 'expired' || state.status === 'error';
   const statusText = state.status === 'syncing' ? t('syncSyncing')
@@ -60,6 +63,16 @@ function SyncControl({ sync }: { sync: DriveSync }) {
           </PopoverBody>
         </PopoverContent>
       </Popover>
+    </>
+  );
+}
+
+function ConflictModal({ sync }: { sync: DriveSync }) {
+  const t = useT();
+  const state = sync.use();
+  const keepRef = useRef<HTMLButtonElement>(null);
+  return (
+    <>
       <Modal isOpen={state.status === 'conflict'} initialFocusRef={keepRef} closeOnOverlayClick={false}
         onClose={() => undefined} isCentered>
         <ModalOverlay />

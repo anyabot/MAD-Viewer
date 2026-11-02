@@ -24,5 +24,15 @@ body {
 .mad-rule-first:first-child { border-top-width: 0; padding-top: 0; }
 .mad-hide-empty:empty { display: none; }
 
+@media (min-width: 768px) and (max-width: 1439px) {
+  .hub-bar__inner { flex-wrap: wrap; row-gap: 0; }
+  .hub-bar__nav {
+    order: 3;
+    flex: 0 0 calc(100% + 2 * var(--hub-gutter));
+    margin: 0 calc(-1 * var(--hub-gutter));
+    padding: 0 var(--hub-gutter) 8px;
+  }
+}
+
 /* the kit theme drops popovers to 10, under the 1300 modal layer */
 .ui-popover__popper { z-index: 1500; }

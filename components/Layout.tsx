@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
 import { GameTextPicker } from '@/components/gameTextPicker';
 import { SpoilerToggle } from '@/components/spoilers';
-import { SyncButton } from '@/components/syncButton';
+import { SyncButton, SyncConflict } from '@/components/syncButton';
 import { LANGS, useLangStore, useT, type UiKey } from '@/lib/i18n';
 
 type NavItem = { href: string; label: UiKey; match: (p: string) => boolean };
@@ -79,11 +79,15 @@ function LanguagePicker() {
 export default function Layout({ children }: { children: ReactNode }) {
   const { pathname, basePath } = useRouter();
   const t = useT();
+  const links = (items: NavItem[]) => items.map((item) => ({ href: item.href, label: t(item.label), active: item.match(pathname) }));
   return (
     <SiteShell
       game="mad"
       homeHref={`${basePath}/`}
-      barLabels={{ switchGame: t('hubSwitchGame'), allGames: t('hubAllGames'), here: t('hubHere') }}
+      barLabels={{
+        switchGame: t('hubSwitchGame'), allGames: t('hubAllGames'), here: t('hubHere'),
+        menu: t('navMenu'), closeMenu: t('navClose'),
+      }}
       renderHomeLink={nextHome}
       nav={[
         ...NAV.map((item) => (
@@ -94,7 +98,9 @@ export default function Layout({ children }: { children: ReactNode }) {
         )),
         <EtcMenu key="etc" pathname={pathname} />,
       ]}
-      actions={<HStack spacing={2}><SyncButton /><SpoilerToggle /><GameTextPicker /><LanguagePicker /></HStack>}
+      actions={<><SyncButton /><SpoilerToggle /><GameTextPicker /><LanguagePicker /></>}
+      menu={[{ items: links(NAV) }, { title: t('navEtc'), items: links(NAV_ETC) }]}
+      renderLink={nextLinks}
       footer={{
         labels: {
           source: t('hubSource'), portfolio: t('hubPortfolio'), allGames: t('hubAllGames'),
@@ -107,6 +113,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       skipLabel={t('hubSkip')}
       contentWidth="90rem"
       contained>
+      <SyncConflict />
       {children}
     </SiteShell>
   );
