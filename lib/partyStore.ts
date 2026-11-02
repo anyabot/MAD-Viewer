@@ -1,4 +1,5 @@
 import { createPersisted } from '@altterisk/game-hub/persist';
+import type { SyncEntry } from '@altterisk/game-hub/sync';
 import { create } from 'zustand';
 import { parsePlan, useFarm } from '@/lib/farmStore';
 import { emptyPlan, type UnitPlan } from '@/lib/farm';
@@ -113,6 +114,17 @@ export const useParty = create<PartyStore>((set) => ({
 export function restoreParty(): void {
   useParty.setState({ ...stored.load(), ready: true });
 }
+
+export function importParty(doc: unknown): void {
+  const next = sanitize(doc);
+  stored.save(next);
+  useParty.setState({ ...next, ready: true });
+}
+
+export const partySync: SyncEntry = {
+  key: stored.key, read: stored.load, write: importParty, subscribe: (l) => useParty.subscribe(l),
+  isEmpty: (d) => JSON.stringify(d) === JSON.stringify(EMPTY),
+};
 
 const CODE_PREFIX = 'MADP1.';
 

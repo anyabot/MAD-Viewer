@@ -1,4 +1,5 @@
 import { createPersisted } from '@altterisk/game-hub/persist';
+import type { SyncEntry } from '@altterisk/game-hub/sync';
 import { create } from 'zustand';
 
 type CollectionState = {
@@ -83,3 +84,8 @@ export function importCollection(doc: unknown): void {
 export function restoreCollection(): void {
   useCollection.setState({ ...stored.load(), ready: true });
 }
+
+export const collectionSync: SyncEntry = {
+  key: stored.key, read: stored.load, write: importCollection, subscribe: (l) => useCollection.subscribe(l),
+  isEmpty: (d) => JSON.stringify(d) === JSON.stringify(EMPTY),
+};
