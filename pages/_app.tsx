@@ -18,6 +18,7 @@ import { restoreParty } from '@/lib/partyStore';
 import { restoreSkillView } from '@/lib/skillViewStore';
 import { restoreSeen } from '@/lib/seenStore';
 import { restoreSpoilers } from '@/lib/spoilers';
+import { startSync } from '@/lib/sync';
 import { ChangelogDialog } from '@/components/changelog';
 
 setTextResolver(dataText);
@@ -31,6 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreSkillView, []);
   useEffect(restoreSeen, []);
   useEffect(restoreSpoilers, []);
+  useEffect(startSync, []);
   const lang = useLangStore((s) => s.lang);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
   return (

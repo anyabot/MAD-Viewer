@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
 import { GameTextPicker } from '@/components/gameTextPicker';
 import { SpoilerToggle } from '@/components/spoilers';
+import { SyncButton } from '@/components/syncButton';
 import { LANGS, useLangStore, useT, type UiKey } from '@/lib/i18n';
 
 type NavItem = { href: string; label: UiKey; match: (p: string) => boolean };
@@ -93,7 +94,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         )),
         <EtcMenu key="etc" pathname={pathname} />,
       ]}
-      actions={<HStack spacing={2}><SpoilerToggle /><GameTextPicker /><LanguagePicker /></HStack>}
+      actions={<HStack spacing={2}><SyncButton /><SpoilerToggle /><GameTextPicker /><LanguagePicker /></HStack>}
       footer={{
         labels: {
           source: t('hubSource'), portfolio: t('hubPortfolio'), allGames: t('hubAllGames'),

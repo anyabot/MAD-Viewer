@@ -1,5 +1,6 @@
 // Mirrored into `localStorage`, but the store starts empty so the exported HTML and the first client render agree.
 import { createPersisted } from '@altterisk/game-hub/persist';
+import type { SyncEntry } from '@altterisk/game-hub/sync';
 import { create } from 'zustand';
 import {
   ROUTE_MODES, applyPart, applySide, atLeastCurrent, emptyPlan,
@@ -286,3 +287,8 @@ export function importFarm(doc: unknown): void {
 export function restoreFarm(): void {
   useFarm.setState({ ...stored.load(), ready: true });
 }
+
+export const farmSync: SyncEntry = {
+  key: stored.key, read: stored.load, write: importFarm, subscribe: (l) => useFarm.subscribe(l),
+  isEmpty: (d) => JSON.stringify(d) === JSON.stringify(EMPTY),
+};
