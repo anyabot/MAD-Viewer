@@ -70,7 +70,7 @@ type State = { name: string; nameEn: string; list: { row: string; until: number;
 type Ctx = { stats: Record<string, number>; target: Target; gate: (gate: SkillGate, holder: Side) => number | null };
 type Yield = { damage: number; heal: number; healPct: number };
 
-export function unitStar(entry: CharacterEntry, data: CharacterData, build: Build): number {
+export function unitStar(entry: CharacterEntry, data: CharacterData, build: Pick<Build, 'star'>): number {
   const grades = statGrades(entry, data);
   const fit = grades.filter((g) => g <= build.star);
   return (fit.length ? fit[fit.length - 1] : grades[0]) ?? entry.defaultStar ?? 1;
@@ -130,6 +130,14 @@ function passiveGrants(kit: SkillEntry[], own: Record<string, number>) {
     }
   }
   return { grants: out, skipped };
+}
+
+export function passiveStats(
+  entry: CharacterEntry, data: CharacterData, star: number, own: Record<string, number>,
+): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const g of passiveGrants(kitOf(entry, data, star), own).grants) out[g.stat] = (out[g.stat] ?? 0) + g.amount;
+  return out;
 }
 
 function landings(hit: SkillHit): number {
