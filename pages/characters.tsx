@@ -1,9 +1,14 @@
 // Filtered by the axes the game itself uses, each drawn with its in-game icon.
-import { nextFilterMode, textMatch } from '@altterisk/game-hub/filters';
+import { nextFilterMode, nextRouterAdapter, textMatch } from '@altterisk/game-hub/filters';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { Badge, Box, Flex, Grid, HStack, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
-import { EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
+import {
+  EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox, TabPanel, UrlTabs, tabParam,
+} from '@altterisk/game-hub';
+import CharacterEquipmentTab from '@/components/characterEquipmentTab';
+import CharacterStatsTab from '@/components/characterStatsTab';
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import {
   KIND_ICON, KIND_ORDER, TYPE_LABEL, characterName, characterSubName, filterRows,
@@ -47,6 +52,7 @@ export default function CharactersPage({ links }: { links: StaticLink[] }) {
 function CharactersContent({ links }: { links: StaticLink[] }) {
   const t = useT();
   const lang = useLang();
+  const router = useRouter();
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [skins, setSkins] = useState<SkinListEntry[]>([]);
   const [icons, setIcons] = useState<IconManifest | null>(null);
@@ -119,6 +125,15 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
     );
   }
 
+  const tabItems = [
+    { id: 'list', label: t('charactersTabList') },
+    { id: 'stats', label: t('charactersTabStats') },
+    { id: 'equipment', label: t('charactersTabEquipment') },
+  ];
+  const [tab, setTab] = tabParam(nextRouterAdapter(router), tabItems);
+  // only playable units have stats to compare and equipment slots
+  const units = list.filter((c) => isPlayable(c) && !c.unreleased);
+
   const total = Object.values(chars.characters).filter(
     (c) => !isSpoiler(c) && (c.unreleased ? unreleased : npcs || isPlayable(c))).length;
 
@@ -133,13 +148,14 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
 
   return (
     <VStack align="stretch" spacing={4}>
+      <UrlTabs tabs={tabItems} active={tab} onChange={setTab} label={t('navCharacters')} idBase="chars" />
       <ListToolbar
         search={<SearchBox value={query} onChange={(v) => set({ query: v })}
           placeholder={t('search')} clearLabel={t('clearSearch')} />}
         count={t('countOf', { shown: list.length, total })}
         activeFilters={activeFilters} onClearFilters={reset}
         labels={{ clearFilters: t('clearFilters') }}
-        actions={markable.length > 0 && (
+        actions={tab === 'list' && markable.length > 0 && (
           <FilterChip active={false} onClick={markAll}>
             <Text>{t('collectionMarkAll')}</Text>
             <Text color="gray.500">{markable.length}</Text>
@@ -227,18 +243,26 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
       </VStack>
       </FilterPanel>
 
-      <Grid gap={3} templateColumns={{
-        base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)',
-        md: 'repeat(4, 1fr)', xl: 'repeat(6, 1fr)',
-      }}>
-        {list.map((c) => (
-          <CharacterCard key={c.code} entry={c} types={chars.types} icons={icons}
-            skins={byCharacter.get(c.code) ?? []} lang={lang}
-            collected={!!collected[c.code]} favorite={!!favorites[c.code]}
-            onCollect={() => setCollected(c.code, !collected[c.code])} />
-        ))}
-      </Grid>
-      {list.length === 0 && <EmptyState title={t('noMatch')} />}
+      <TabPanel tab={tab} idBase="chars">
+        {tab === 'stats' && <CharacterStatsTab list={units} chars={chars} icons={icons} />}
+        {tab === 'equipment' && <CharacterEquipmentTab list={units} chars={chars} icons={icons} />}
+        {tab === 'list' && (
+          <>
+            <Grid gap={3} templateColumns={{
+              base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)',
+              md: 'repeat(4, 1fr)', xl: 'repeat(6, 1fr)',
+            }}>
+              {list.map((c) => (
+                <CharacterCard key={c.code} entry={c} types={chars.types} icons={icons}
+                  skins={byCharacter.get(c.code) ?? []} lang={lang}
+                  collected={!!collected[c.code]} favorite={!!favorites[c.code]}
+                  onCollect={() => setCollected(c.code, !collected[c.code])} />
+              ))}
+            </Grid>
+            {list.length === 0 && <EmptyState title={t('noMatch')} />}
+          </>
+        )}
+      </TabPanel>
     </VStack>
   );
 }
