@@ -4,7 +4,7 @@ import { Seo, breadcrumbs, plainText } from '@/components/seo';
 import { characterHref, eventHref } from '@/lib/routes';
 import { readData } from '@/lib/staticData';
 import { resolveIcon } from '@/lib/icons';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import {
   ChevronLeftIcon, ChevronRightIcon, Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text,

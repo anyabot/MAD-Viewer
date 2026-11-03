@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Badge, Box, Flex, HStack, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter,
   ModalHeader, ModalOverlay, SimpleGrid, Table, Tbody, Td, Text, Tr, VStack, Wrap, WrapItem,

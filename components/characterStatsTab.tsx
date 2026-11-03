@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import { nextRouterAdapter } from '@altterisk/game-hub/filters';
 import { Box, Button, Flex, HStack, Select, SimpleGrid, Text, VStack } from '@altterisk/game-hub/ui';

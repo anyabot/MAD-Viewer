@@ -1,7 +1,7 @@
 // Filtered by the axes the game itself uses, each drawn with its in-game icon.
 import { nextFilterMode, nextRouterAdapter, textMatch } from '@altterisk/game-hub/filters';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import NextLink from 'next/link';
+import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import { Badge, Box, Flex, Grid, HStack, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import {
@@ -254,9 +254,9 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
             }}>
               {list.map((c) => (
                 <CharacterCard key={c.code} entry={c} types={chars.types} icons={icons}
-                  skins={byCharacter.get(c.code) ?? []} lang={lang}
+                  skins={byCharacter.get(c.code) ?? NO_SKINS} lang={lang}
                   collected={!!collected[c.code]} favorite={!!favorites[c.code]}
-                  onCollect={() => setCollected(c.code, !collected[c.code])} />
+                  setCollected={setCollected} />
               ))}
             </Grid>
             {list.length === 0 && <EmptyState title={t('noMatch')} />}
@@ -267,12 +267,14 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
   );
 }
 
-function CharacterCard({
-  entry, types, icons, skins, lang, collected, favorite, onCollect,
+const NO_SKINS: SkinListEntry[] = [];
+
+const CharacterCard = memo(function CharacterCard({
+  entry, types, icons, skins, lang, collected, favorite, setCollected,
 }: {
   entry: CharacterEntry; types: CharacterData['types'];
   icons: IconManifest | null; skins: SkinListEntry[]; lang: Lang;
-  collected: boolean; favorite: boolean; onCollect: () => void;
+  collected: boolean; favorite: boolean; setCollected: (code: string, value: boolean) => void;
 }) {
   const t = useT();
   const element = typeOf(entry, types, 'attribute');
@@ -293,7 +295,7 @@ function CharacterCard({
       transition="border-color 0.16s, transform 0.16s, box-shadow 0.16s">
       <Box position="relative" bg="blackAlpha.400" sx={{ aspectRatio: '1 / 1' }}>
         {art && (
-          <Box as="img" src={art} alt="" w="100%" h="100%" objectFit="contain" />
+          <Box as="img" src={art} alt="" w="100%" h="100%" objectFit="contain" loading="lazy" />
         )}
         <HStack position="absolute" top={1} left={1} spacing={1}
           bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
@@ -317,7 +319,7 @@ function CharacterCard({
               onClick={(e: React.MouseEvent) => {
                 e.preventDefault();
                 e.stopPropagation();
-                onCollect();
+                setCollected(entry.code, !collected);
               }}>
               ✓
             </Box>
@@ -352,4 +354,4 @@ function CharacterCard({
       </VStack>
     </Box>
   );
-}
+});

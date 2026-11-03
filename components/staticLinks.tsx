@@ -1,4 +1,4 @@
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { VisuallyHidden } from '@altterisk/game-hub/ui';
 
 export type StaticLink = { href: string; name: string };

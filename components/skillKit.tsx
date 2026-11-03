@@ -1,7 +1,7 @@
 // Skill kits show structure without implying undecoded battle arithmetic.
 import { Panel } from '@altterisk/game-hub';
 import { useState } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { hasArea } from '@/lib/aoe';
 import { useSkillTiming } from '@/lib/skillTiming';
 import type { SkillTiming } from '@/lib/data';

@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Button, Center,

@@ -7,7 +7,7 @@ import {
   Checkbox, Collapse, Flex, HStack, Input, SimpleGrid, Spinner, Tab, TabList, TabPanel, TabPanels,
   Tabs, Text, VStack, Wrap, WrapItem,
 } from '@altterisk/game-hub/ui';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { FilterChip, Panel } from '@altterisk/game-hub';

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import {
   ChevronRightIcon, Badge, Box, Button, Collapse, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem,

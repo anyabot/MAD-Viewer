@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Box, Button, Flex, Text } from '@altterisk/game-hub/ui';
 import { PlanGrid } from '@/components/unitPlan';
 import { emptyPlan } from '@/lib/farm';

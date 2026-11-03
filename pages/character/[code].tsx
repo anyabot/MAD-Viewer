@@ -9,7 +9,7 @@ import type { EventIndex, SkinList } from '@/lib/data';
 import { useSpoilerGate } from '@/components/spoilers';
 import { useHideSpoilers, useSpoilerFacts } from '@/lib/spoilers';
 import { createPersisted } from '@altterisk/game-hub/persist';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Badge, Box, Center, Divider, Flex, Grid, HStack, Popover, PopoverBody,
   PopoverContent, PopoverTrigger, Portal, SimpleGrid, Text, VStack, Wrap,
@@ -137,11 +137,12 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
   const [store, setStore] = useState<StoreKey>('onestore');
 
   useEffect(() => {
-    loadCharacters().then(setChars).catch((e) => setError(String(e)));
+    // Together: the collection editor and the portrait size the page, so neither may arrive after it.
+    Promise.all([loadCharacters(), loadGrowth().catch(() => null), loadIcons().catch(() => null)])
+      .then(([c, g, i]) => { setGrowth(g); setIcons(i); setChars(c); })
+      .catch((e) => setError(String(e)));
     loadSkinList().then((l) => setSkins(l.skins)).catch(() => setSkins([]));
-    loadIcons().then(setIcons).catch(() => setIcons(null));
     loadSdIndex().then(setSd).catch(() => setSd(null));
-    loadGrowth().then(setGrowth).catch(() => setGrowth(null));
     loadBondIndex().then(setBond).catch(() => setBond(null));
   }, []);
 
@@ -561,7 +562,7 @@ function Infobox({ entry, data, icons, accent, skins }: {
       borderTopWidth="3px" borderTopColor={accent ?? 'whiteAlpha.400'}
       bg="whiteAlpha.50" overflow="hidden">
       {art && (
-        <Center bg="blackAlpha.400" py={2}>
+        <Center bg="blackAlpha.400" py={2} h={cutin ? '276px' : '136px'}>
           {/* a rig icon is a small square and must not be blown up to the
               height a tall cut-in takes */}
           <Box as="img" src={art} alt="" w="auto" objectFit="contain"

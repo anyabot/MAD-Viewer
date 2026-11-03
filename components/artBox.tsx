@@ -8,21 +8,30 @@ import { resolveIcon, type IconGroup, type IconManifest } from '@/lib/icons';
 // The game's own event-history card is 430x280.
 export const ART_RATIO = 430 / 280;
 
-export function ArtBox({ manifest, sources, title, ...rest }: {
+export type ArtSources = [IconGroup, string | null | undefined][];
+
+export function artSrc(manifest: IconManifest | null, sources: ArtSources): string | null {
+  return sources.map(([group, name]) => resolveIcon(manifest, group, [name])).find(Boolean) ?? null;
+}
+
+export function ArtBox({ manifest, sources, title, priority, ...rest }: {
   manifest: IconManifest | null;
-  sources: [IconGroup, string | null | undefined][];
+  sources: ArtSources;
   title?: string;
+  priority?: boolean;
 } & Omit<BoxProps, 'children'>) {
-  const src = sources.map(([group, name]) => resolveIcon(manifest, group, [name])).find(Boolean) ?? null;
+  const src = artSrc(manifest, sources);
+  const load = priority ? { fetchpriority: 'high' } : { loading: 'lazy' as const };
   return (
     <Box position="relative" overflow="hidden" borderRadius="md" bg="blackAlpha.400" flexShrink={0}
       sx={{ aspectRatio: String(ART_RATIO) }} title={title} {...rest}>
       {src && (
         <>
-          <Box position="absolute" inset="-12px" bgImage={`url("${src}")`} bgSize="cover" bgPosition="center"
-            filter="blur(14px) brightness(0.55)" aria-hidden />
+          <Box as="img" src={src} alt="" position="absolute" top="-12px" left="-12px" w="calc(100% + 24px)"
+            h="calc(100% + 24px)" maxW="none" objectFit="cover" filter="blur(14px) brightness(0.55)" aria-hidden
+            {...load} />
           <Box as="img" src={src} alt={title ?? ''} position="absolute" inset={0} w="100%" h="100%"
-            objectFit="contain" />
+            objectFit="contain" {...load} />
         </>
       )}
     </Box>

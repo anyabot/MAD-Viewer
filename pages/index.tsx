@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { SITE_URL, Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import type { GetStaticProps } from 'next';
+import Head from 'next/head';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import { Badge, Box, Center, Flex, HStack, SimpleGrid, Text, VStack } from '@altterisk/game-hub/ui';
 import {
-  EventCard, TimeControls, useNow, useServerTime,
+  EventCard, TimeControls, eventArtSources, useNow, useServerTime,
 } from '@/components/eventsBoard';
-import { ArtBox } from '@/components/artBox';
+import { ArtBox, artSrc } from '@/components/artBox';
 import { GameIcon } from '@/components/gameIcon';
 import {
-  loadArchive, loadCharacters, loadEvents, loadIcons, loadStages,
+  dataUrl, loadArchive, loadCharacters, loadEvents, loadIcons, loadStages,
   type ArchiveIndex, type CharacterData, type EventIndex, type IconManifest, type StageData,
 } from '@/lib/data';
 import { eventPhase, formatMoment, remaining, zoneLabel } from '@/lib/events';
@@ -20,6 +22,7 @@ import { useLang, useT, type UiKey } from '@/lib/i18n';
 import { isFuture, useHideSpoilers } from '@/lib/spoilers';
 import { groupIsLive, groupLabel, groupWindow } from '@/lib/stages';
 import { characterHref } from '@/lib/routes';
+import { readData } from '@/lib/staticData';
 
 const VIEWER_KEYS = ['skin', 'store', 'view', 'speed', 'bg', 'camera', 'aspect', 'body', 'face', 'overlay', 'stage', 'tab'];
 
@@ -43,7 +46,16 @@ const SECTIONS: { href: string; label: UiKey; desc: UiKey }[] = [
   { href: '/changelog', label: 'navChangelog', desc: 'homeChangelog' },
 ];
 
-export default function Home() {
+// The first card's art is the page's largest paint, so name it in the HTML instead of after the fetches.
+export const getStaticProps: GetStaticProps<{ leadArt: string | null }> = () => {
+  const now = Date.now();
+  const lead = readData<EventIndex>('events.json').events
+    .filter((e) => eventPhase(e, now) === 'running')
+    .sort((a, b) => Date.parse(a.end) - Date.parse(b.end))[0];
+  return { props: { leadArt: lead ? artSrc(readData<IconManifest>('icons.json'), eventArtSources(lead, 'en')) : null } };
+};
+
+export default function Home({ leadArt }: { leadArt: string | null }) {
   const t = useT();
   const lang = useLang();
   const gameLang = useGameLang();
@@ -88,6 +100,11 @@ export default function Home() {
   return (
     <VStack align="stretch" spacing={8}>
       <Seo jsonLd={WEBSITE_LD} />
+      <Head>
+        <link rel="preload" href={dataUrl('events.json')} as="fetch" crossOrigin="anonymous" />
+        <link rel="preload" href={dataUrl('icons.json')} as="fetch" crossOrigin="anonymous" />
+        {leadArt && <link rel="preload" href={leadArt} as="image" fetchPriority="high" />}
+      </Head>
       <VStack spacing={2} textAlign="center" pt={2}>
         <Text fontSize={{ base: '3xl', md: '4xl' }} fontWeight="bold">MAD Viewer</Text>
         <Text color="gray.400">{t('homeTagline')}</Text>
@@ -99,12 +116,14 @@ export default function Home() {
         <TimeControls serverTime={serverTime} onChange={setServerTime} />
       </Flex>
 
+      {/* holds the links below the fold until the sections above them have loaded */}
+      <VStack align="stretch" spacing={8} style={{ minHeight: 'calc(100svh - 13rem)' }}>
       {live.length > 0 && (
         <Section title={t('homeEvents')} href="/stages?mode=event">
           <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
-            {live.map((event) => (
+            {live.map((event, i) => (
               <EventCard key={`${event.kind}:${event.id}`} event={event} now={now} serverTime={serverTime}
-                chars={chars} icons={icons} />
+                chars={chars} icons={icons} priority={i === 0} />
             ))}
           </SimpleGrid>
         </Section>
@@ -142,6 +161,7 @@ export default function Home() {
           </SimpleGrid>
         </Section>
       )}
+      </VStack>
 
       <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={3}>
         {SECTIONS.map((s) => (
@@ -208,7 +228,7 @@ function BannerTile({ banner, now, serverTime, chars, icons }: {
     <VStack align="stretch" spacing={2} p={2} borderRadius="lg" minW={0}
       borderWidth={running ? '2px' : '1px'} borderColor={running ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50">
       {revealed ? (
-        <Box as={NextLink} href={characterHref(code)} position="relative">
+        <Box as={NextLink} href={characterHref(code)} position="relative" aria-label={name}>
           <ArtBox manifest={icons} w="100%"
             sources={[['char', entry?.iconPath], ['char', `Icon_${code}`]]} />
         </Box>
