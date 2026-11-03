@@ -27,11 +27,12 @@ import {
   type CharacterData, type IconManifest, type SkillOp, type SkinListEntry,
 } from '@/lib/data';
 import { Seo } from '@/components/seo';
+import { PageTitle } from '@/components/pageTitle';
 import { characterHref } from '@/lib/routes';
 
 export default function EffectsPage() {
   const t = useT();
-  return <><Seo title={t('navEffects')} description={t('seoDescEffects')} /><EffectsContent /></>;
+  return <><Seo title={t('navEffects')} description={t('seoDescEffects')} /><PageTitle>{t('navEffects')}</PageTitle><EffectsContent /></>;
 }
 
 function EffectsContent() {
@@ -81,7 +82,7 @@ function EffectsContent() {
     });
   }, [scoped, picked, query]);
 
-  if (error || !chars) {
+  if (error || !chars || (hide && !facts)) {
     return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
 

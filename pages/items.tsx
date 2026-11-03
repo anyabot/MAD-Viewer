@@ -74,7 +74,7 @@ function ItemsContent() {
 
   return (
     <VStack align="stretch" spacing={4}>
-      <Text fontSize="2xl" fontWeight="bold">{t('navItems')}</Text>
+      <Text as="h1" fontSize="2xl" fontWeight="bold">{t('navItems')}</Text>
       <ListToolbar
         search={<SearchBox value={query} onChange={setQuery} placeholder={t('search')} clearLabel={t('clearSearch')} />}
         count={t('countOf', { shown: rows.length, total: listed.length })}

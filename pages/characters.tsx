@@ -28,6 +28,7 @@ import {
   type CharacterData, type CharacterEntry, type EventIndex, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
 import { Seo } from '@/components/seo';
+import { PageTitle } from '@/components/pageTitle';
 import { characterHref } from '@/lib/routes';
 
 // Faction is the only axis rendered as a scrolling icon strip.
@@ -46,7 +47,7 @@ export const getStaticProps: GetStaticProps<{ links: StaticLink[] }> = () => {
 
 export default function CharactersPage({ links }: { links: StaticLink[] }) {
   const t = useT();
-  return <><Seo title={t('navCharacters')} description={t('seoDescCharacters')} /><CharactersContent links={links} /></>;
+  return <><Seo title={t('navCharacters')} description={t('seoDescCharacters')} /><PageTitle>{t('navCharacters')}</PageTitle><CharactersContent links={links} /></>;
 }
 
 function CharactersContent({ links }: { links: StaticLink[] }) {
@@ -116,7 +117,7 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
     return [...count.entries()].sort((a, b) => b[1].n - a[1].n || a[0].localeCompare(b[0]));
   }, [chars]);
 
-  if (error || !chars) {
+  if (error || !chars || (hide && !facts)) {
     return (
       <>
         <StaticLinks links={links} />

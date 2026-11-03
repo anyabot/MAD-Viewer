@@ -1,6 +1,7 @@
 // A query parameter, not a route segment, because `output: 'export'` prerenders every path and items are runtime data.
 import { useEffect, useMemo, useState } from 'react';
 import { Seo } from '@/components/seo';
+import { PageTitle } from '@/components/pageTitle';
 import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import {
@@ -81,7 +82,7 @@ function ItemContent() {
     );
   }
   const entry = ref ? index.items[ref] : null;
-  if (!ref || !entry) return <Text color="gray.500">{t('noMatch')}</Text>;
+  if (!ref || !entry) return <><PageTitle>{t('navItems')}</PageTitle><Text color="gray.500">{t('noMatch')}</Text></>;
 
   const name = gameText(entry.name, gameLang);
   const owner = entry.code ? chars?.characters[entry.code] : undefined;
@@ -122,7 +123,7 @@ function ItemContent() {
                 textTransform="none">{ownerName}</Badge>
             )}
           </HStack>
-          <Text fontSize="2xl" fontWeight="bold">{name}</Text>
+          <Text as="h1" fontSize="2xl" fontWeight="bold">{name}</Text>
           {entry.desc && (
             <Text fontSize="sm" color="gray.300" whiteSpace="pre-wrap">{fill(gameText(entry.desc, gameLang))}</Text>
           )}

@@ -84,7 +84,7 @@ function StoryList({ index, events, icons }: {
   return (
     <VStack align="stretch" spacing={5}>
       <Flex align="center" gap={3} wrap="wrap">
-        <Text fontSize="2xl" fontWeight="bold">{t('navStory')}</Text>
+        <Text as="h1" fontSize="2xl" fontWeight="bold">{t('navStory')}</Text>
         <Box flex="1" />
       </Flex>
       {KIND_ORDER.map((kind) => {
@@ -159,7 +159,7 @@ function Reader({ chapter, scene, chars, icons }: {
       <Flex align="center" gap={3} wrap="wrap">
         <Text as={NextLink} href="/story" color="accent.300" fontSize="sm">{t('navStory')}</Text>
         <Text color="gray.600">/</Text>
-        <Text fontSize="xl" fontWeight="bold">{gameText(chapter.name, lang)}</Text>
+        <Text as="h1" fontSize="xl" fontWeight="bold">{gameText(chapter.name, lang)}</Text>
         <Box flex="1" />
       </Flex>
       {failed && <Text color="red.400" fontSize="sm">{t('storyMissing')}</Text>}

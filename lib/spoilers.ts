@@ -123,8 +123,8 @@ export function useSpoilerFilter() {
   return useMemo(() => ({ hide, facts }), [hide, facts]);
 }
 
-// Whether lists must leave a unit out: only while spoilers are hidden.
+// Whether lists must leave a unit out: only while spoilers are hidden, and every unit until the facts load.
 export function useSpoilerUnit(): (code: string) => boolean {
   const { hide, facts } = useSpoilerFilter();
-  return useCallback((code: string) => hide && !!facts?.units.has(code), [hide, facts]);
+  return useCallback((code: string) => hide && (!facts || facts.units.has(code)), [hide, facts]);
 }

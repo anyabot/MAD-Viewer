@@ -106,7 +106,7 @@ export default function Home({ leadArt }: { leadArt: string | null }) {
         {leadArt && <link rel="preload" href={leadArt} as="image" fetchPriority="high" />}
       </Head>
       <VStack spacing={2} textAlign="center" pt={2}>
-        <Text fontSize={{ base: '3xl', md: '4xl' }} fontWeight="bold">MAD Viewer</Text>
+        <Text as="h1" fontSize={{ base: '3xl', md: '4xl' }} fontWeight="bold">MAD Viewer</Text>
         <Text color="gray.400">{t('homeTagline')}</Text>
       </VStack>
 

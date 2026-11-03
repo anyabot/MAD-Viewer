@@ -170,7 +170,7 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
         </Box>
         <VStack align="stretch" spacing={2} minW={0} flex="1">
           <EventTiming event={event} now={now} serverTime={serverTime} />
-          <Text fontSize="2xl" fontWeight="bold">{name}</Text>
+          <Text as="h1" fontSize="2xl" fontWeight="bold">{name}</Text>
           {event.desc && (
             <Text fontSize="sm" color="gray.300" whiteSpace="pre-wrap">{gameText(event.desc, gameLang)}</Text>
           )}

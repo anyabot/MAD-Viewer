@@ -193,7 +193,7 @@ function FarmContent() {
   return (
     <VStack align="stretch" spacing={4}>
       <Flex align="center" gap={3} wrap="wrap">
-        <Text fontSize="2xl" fontWeight="bold">{t('planTitle')}</Text>
+        <Text as="h1" fontSize="2xl" fontWeight="bold">{t('planTitle')}</Text>
         <Box flex="1" />
         <TutorialReplay />
         <PlanFile />
