@@ -30,6 +30,229 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-11-03',
+    title: { en: 'Stat comparison and equipment use', ko: '스탯 비교와 장비 사용 현황' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Character list tabs, each with its own link: the list, Stat comparison and Equipment use, all sharing the same filters.',
+          ko: '캐릭터 목록에 탭 추가, 탭별 링크 제공: 목록, 스탯 비교, 장비 사용 현황. 필터는 모든 탭에 공통 적용',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Stat comparison: set one level, star, equipment, affection and infusion for every unit, then sort any stat. Share a link to your exact setup, such as the lowest Defense among tanks.',
+          ko: '스탯 비교: 모든 유닛에 같은 레벨·성급·장비·호감도·인퓨전을 적용하고 스탯별로 정렬. 탱커 중 방어력 최저처럼 현재 설정을 링크로 공유 가능',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Equipment use: which characters use each of the 12 equipment types, and the three types each character uses.',
+          ko: '장비 사용 현황: 12종 장비별 사용 캐릭터와 캐릭터별 장비 3종 표시',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-02',
+    title: { en: 'Google Drive sync and a rebuilt DPS comparison', ko: 'Google 드라이브 동기화와 DPS 비교 개편' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Sync your planner, collection and parties between devices through your own Google Drive.',
+          ko: '플래너, 컬렉션, 파티를 내 Google 드라이브로 기기 간 동기화',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'DPS comparison now simulates the fight cast by cast, with star, skill, burst and equipment tier and level, plus fight length.',
+          ko: 'DPS 비교를 시전 단위 시뮬레이션으로 개편, 성급·스킬·버스트·장비 등급과 레벨, 전투 시간 선택 가능',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'DPS comparison counts passive triggers, follow-up skills, skill variants, stacking buffs, on-hit and on-crit procs, repeating effects and summons, listing passive and summon damage per unit.',
+          ko: 'DPS 비교에 패시브 발동, 추가 스킬, 스킬 변형, 버프 중첩, 타격·치명 발동, 반복 효과, 소환수 반영, 유닛별 패시브·소환수 피해 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'DPS comparison rotation modes: full fight, opening then loop without burst, opening only, loop only or burst only.',
+          ko: 'DPS 비교 사이클 선택: 전체, 버스트 없이 시작 후 루프, 시작만, 루프만, 버스트만',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Skill details show flat buff amounts that were missing, such as Evasion and damage reduction.',
+          ko: '스킬 상세에서 누락되었던 회피, 받는 피해 감소 등의 수치 표시',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-01',
+    title: { en: 'Story player', ko: '스토리 플레이어' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Story scene player: play released main and event stories with backgrounds, characters, music, sound effects, motion, emotes, screen effects, choices and the game\'s text layout.',
+          ko: '스토리 플레이어 추가: 공개된 메인·이벤트 스토리를 배경, 캐릭터, 음악, 효과음, 동작, 이모트, 화면 효과, 선택지, 게임 텍스트 배치로 재생',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Story battles play as their full sequence, with battle lines, in-battle scripts and battle music.',
+          ko: '스토리 전투를 전체 진행 순서대로 재생, 전투 대사와 전투 중 스크립트, 전투 음악 포함',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Stage enemies open in a popup, with their rotation skills clickable.',
+          ko: '스테이지 적 정보를 팝업으로 표시, 스킬 순서의 스킬을 눌러 확인 가능',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Planner routes can swap a stage for an equivalent one in the same chapter.',
+          ko: '플래너 경로에서 같은 챕터의 동등한 스테이지로 교체 가능',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Skill text names trigger marks after the passive that reads them, and placeholder equipment tiers are gone.',
+          ko: '스킬 설명의 발동 표식을 해당 패시브 이름으로 표시, 임시 장비 단계 제거',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-10-31',
+    title: { en: 'Scene playback rebuilt', ko: '장면 재생 개편' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Desire and Affection scenes now follow the game\'s own playback, including returning to idle after each reaction.',
+          ko: '데자이어·어펙션 장면을 게임과 같은 방식으로 재생, 반응 후 대기 동작 복귀 포함',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Chibis gallery adds the ascended sprites of the Halloween ghosts.',
+          ko: '치비 갤러리에 할로윈 유령의 승천 스프라이트 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'The old GitHub Pages address now redirects to mad.altterisk.cc.',
+          ko: '기존 GitHub Pages 주소를 mad.altterisk.cc로 자동 연결',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Planner clear list opens one chapter at a time.',
+          ko: '플래너 클리어 목록에서 챕터를 하나씩 열도록 변경',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-10-30',
+    title: { en: 'Cleaner links', ko: '간결한 링크' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Character and event pages have their own short links.',
+          ko: '캐릭터·이벤트 페이지에 전용 짧은 링크 제공',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Character member popups open below their button on phones, so they stay on screen.',
+          ko: '휴대폰에서 캐릭터 소속 팝업이 버튼 아래에 열려 화면을 벗어나지 않도록 수정',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-10-26',
+    title: { en: 'Video capture fix', ko: '영상 녹화 수정' },
+    entries: [
+      {
+        kind: 'fix',
+        text: {
+          en: 'Video capture in Chrome records takes that have no sound playing.',
+          ko: 'Chrome에서 소리가 재생되지 않는 장면도 영상 녹화 가능',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-10-24',
+    title: { en: 'Summon simulator', ko: '호출 시뮬레이터' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Summon simulator with the game\'s rates, the summon cutscene and pull statistics.',
+          ko: '호출 시뮬레이터 추가: 게임 확률, 호출 연출, 호출 통계',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Skill conditions name their states in the site language, without stray colour tags.',
+          ko: '스킬 조건의 상태 이름을 사이트 언어로 표시, 색상 태그 노출 수정',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-10-23',
+    title: { en: 'Spoiler setting and scene improvements', ko: '스포일러 설정과 장면 개선' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Spoiler setting: unreleased units and content that has not started stay hidden until you choose to show them.',
+          ko: '스포일러 설정 추가: 미출시 유닛과 시작 전 콘텐츠를 직접 표시하기 전까지 숨김',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Scenes gain an Advance button, and play their commands, voices and reaction fades as the game does.',
+          ko: '장면에 진행 버튼 추가, 명령·보이스·반응 페이드를 게임과 같이 재생',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Readable skill text is more natural.',
+          ko: '쉬운 스킬 설명을 더 자연스럽게 개선',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-10-22',
     title: { en: 'Kouchou (Halloween), Party, readable skills and battle tools', ko: '홍접(할로윈), 파티, 쉬운 스킬 설명과 전투 도구' },
     entries: [
@@ -130,6 +353,13 @@ export const RELEASES: Release[] = [
         text: {
           en: 'Yomi shows her own portrait; emotes sit in the right place; Claire’s mini cut-in camera fixed.',
           ko: '요미 초상화 수정, 이모트 위치 수정, 클레어 미니 컷인 카메라 수정',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Unreleased units show their level-1 stats, marked as subject to change.',
+          ko: '미출시 유닛의 1레벨 스탯 표시, 변경될 수 있음을 안내',
         },
       },
     ],
