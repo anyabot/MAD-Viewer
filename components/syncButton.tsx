@@ -13,6 +13,10 @@ export function SyncButton() {
   return driveSync ? <SyncControl sync={driveSync} /> : null;
 }
 
+export function SyncExpiredNotice() {
+  return driveSync ? <ExpiredNotice sync={driveSync} /> : null;
+}
+
 export function SyncConflict() {
   return driveSync ? <ConflictModal sync={driveSync} /> : null;
 }
@@ -30,13 +34,13 @@ function SyncControl({ sync }: { sync: DriveSync }) {
     <>
       <Popover trigger="click" isLazy placement="bottom-end">
         <PopoverTrigger>
-          <Box as="button" px={2.5} py={1.5} borderRadius="lg" fontSize="xs" borderWidth="1px"
+          <Box as="button" data-hub-sync="" px={2.5} py={1.5} borderRadius="lg" fontSize="xs" borderWidth="1px"
             borderColor={warn ? 'orange.400' : on ? 'accent.400' : 'whiteAlpha.200'} bg="blackAlpha.300"
             color={warn ? 'orange.200' : on ? 'accent.300' : 'gray.400'} title={t('syncHint')}>
             {t('syncLabel')}
           </Box>
         </PopoverTrigger>
-        <PopoverContent bg="gray.800" borderColor="whiteAlpha.300" w="16rem" maxW="calc(100vw - 2rem)">
+        <PopoverContent data-hub-sync="" bg="gray.800" borderColor="whiteAlpha.300" w="16rem" maxW="calc(100vw - 2rem)">
           <PopoverBody p={3}>
             {!on ? (
               <VStack align="stretch" spacing={2}>
@@ -64,6 +68,19 @@ function SyncControl({ sync }: { sync: DriveSync }) {
         </PopoverContent>
       </Popover>
     </>
+  );
+}
+
+function ExpiredNotice({ sync }: { sync: DriveSync }) {
+  const t = useT();
+  const state = sync.use();
+  if (state.status !== 'expired') return null;
+  return (
+    <Box as="button" type="button" data-hub-sync="" onClick={() => void sync.connect()} w="100%" textAlign="left"
+      px={3} py={2} borderRadius="md" borderWidth="1px" borderColor="orange.400" bg="blackAlpha.300"
+      color="orange.200" fontSize="sm" _hover={{ bg: 'whiteAlpha.100' }}>
+      {t('syncExpiredNotice')}
+    </Box>
   );
 }
 

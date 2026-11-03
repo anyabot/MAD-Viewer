@@ -29,12 +29,14 @@ export const PHASE_COLOR: Record<EventPhase, string> = {
 };
 const SERVER_TIME_KEY = 'mad.serverTime';
 
-export function useNow(stepMs: number): number {
-  const [now, setNow] = useState(() => Date.now());
+// `initial` is for a prerendered time: hydration has to render the same text the HTML has.
+export function useNow(stepMs: number, initial?: number): number {
+  const [now, setNow] = useState(() => initial ?? Date.now());
   useEffect(() => {
+    if (initial != null) setNow(Date.now());
     const id = window.setInterval(() => setNow(Date.now()), stepMs);
     return () => window.clearInterval(id);
-  }, [stepMs]);
+  }, [stepMs, initial]);
   return now;
 }
 

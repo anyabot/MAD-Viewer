@@ -11,6 +11,7 @@ import NextLink from '@/components/appLink';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import { FilterChip, Panel } from '@altterisk/game-hub';
+import { SyncExpiredNotice } from '@/components/syncButton';
 import { InventoryDialog } from '@/components/inventoryDialog';
 import { UnitPlanDialog } from '@/components/unitPlanDialog';
 import { MaterialNeeds } from '@/components/materialNeeds';
@@ -192,6 +193,7 @@ function FarmContent() {
 
   return (
     <VStack align="stretch" spacing={4}>
+      <SyncExpiredNotice />
       <Flex align="center" gap={3} wrap="wrap">
         <Text as="h1" fontSize="2xl" fontWeight="bold">{t('planTitle')}</Text>
         <Box flex="1" />
