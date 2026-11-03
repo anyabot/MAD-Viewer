@@ -8,6 +8,9 @@ const INTER_FACES = [
   ['inter-latin-ext', 'U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF'],
 ].map(([file, range]) => `@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:optional;src:url(${BASE}/fonts/${file}.woff2) format("woff2");unicode-range:${range}}`).join('');
 
+// A saved language or spoiler choice applies after hydration; hide the content until then instead of re-wrapping it.
+const RESTORE_GATE = `(function(){try{var r=function(k){var v=localStorage.getItem(k);if(v==null)return null;try{v=JSON.parse(v)}catch(e){return v}return v&&typeof v==='object'&&'data' in v?v.data:v};var l=r('mad.lang'),g=r('mad.gameLang'),s=r('mad.spoilers');if(l==='ko'||(g&&g!=='auto'&&g!=='en')||s===true){var h=document.documentElement;h.setAttribute('data-restoring','');addEventListener('load',function(){setTimeout(function(){h.removeAttribute('data-restoring')},3000)})}}catch(e){}})()`;
+
 export default function Document() {
   return (
     <Html lang="en" data-game="mad">
@@ -16,7 +19,8 @@ export default function Document() {
         <link rel="apple-touch-icon" href={`${BASE}/icon.png`} />
         <link rel="preconnect" href="https://hub.altterisk.cc" />
         <link rel="preload" href={`${BASE}/fonts/inter-latin.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />
-        <style dangerouslySetInnerHTML={{ __html: INTER_FACES }} />
+        <style dangerouslySetInnerHTML={{ __html: `${INTER_FACES}html[data-restoring] .hub-shell__main{visibility:hidden}` }} />
+        <script dangerouslySetInnerHTML={{ __html: RESTORE_GATE }} />
       </Head>
       <body>
         <Main />
