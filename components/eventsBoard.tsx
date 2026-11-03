@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Badge, Box, Button, ButtonGroup, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
   WrapItem,
 } from '@altterisk/game-hub/ui';
-import { ArtBox } from '@/components/artBox';
+import { ArtBox, type ArtSources } from '@/components/artBox';
 import { GameIcon } from '@/components/gameIcon';
 import { ItemIcon } from '@/components/itemIcon';
 import {
@@ -117,12 +117,15 @@ export function EventTiming({ event, now, serverTime }: {
   );
 }
 
-export function EventArt({ event, icons }: { event: GameEvent; icons: IconManifest | null }) {
+export function eventArtSources(event: GameEvent, lang: GameLang): ArtSources {
+  return [...bannerNames(event, lang).map((n) => ['banner', n] as ['banner', string]), ['item', event.goodsIcon]];
+}
+
+export function EventArt({ event, icons, priority }: { event: GameEvent; icons: IconManifest | null; priority?: boolean }) {
   const gameLang = useGameLang();
   return (
-    <ArtBox manifest={icons} w="100%" title={gameText(event.name, gameLang)}
-      sources={[...bannerNames(event, gameLang).map((n) => ['banner', n] as ['banner', string]),
-        ['item', event.goodsIcon]]} />
+    <ArtBox manifest={icons} w="100%" title={gameText(event.name, gameLang)} priority={priority}
+      sources={eventArtSources(event, gameLang)} />
   );
 }
 
@@ -191,9 +194,9 @@ export function EventsBoard() {
   );
 }
 
-export function EventCard({ event, now, serverTime, chars, icons }: {
+export function EventCard({ event, now, serverTime, chars, icons, priority }: {
   event: GameEvent; now: number; serverTime: boolean;
-  chars: CharacterData | null; icons: IconManifest | null;
+  chars: CharacterData | null; icons: IconManifest | null; priority?: boolean;
 }) {
   const t = useT();
   const gameLang = useGameLang();
@@ -208,7 +211,7 @@ export function EventCard({ event, now, serverTime, chars, icons }: {
       bg={phase === 'ended' ? 'blackAlpha.200' : 'whiteAlpha.50'}
       _hover={{ borderColor: 'accent.400' }}>
       <Box w={{ base: '100%', sm: '184px' }} flexShrink={0}>
-        <EventArt event={event} icons={icons} />
+        <EventArt event={event} icons={icons} priority={priority} />
       </Box>
       <VStack align="stretch" spacing={1.5} minW={0} flex="1">
         <EventTiming event={event} now={now} serverTime={serverTime} />

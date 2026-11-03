@@ -1,4 +1,4 @@
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Box, Flex, Text } from '@altterisk/game-hub/ui';
 import { useEffect } from 'react';
 import {

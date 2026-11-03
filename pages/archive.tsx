@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Badge, Box, Button, ButtonGroup, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap,
   WrapItem,

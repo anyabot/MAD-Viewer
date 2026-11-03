@@ -1,7 +1,7 @@
 import { useSpoilerUnit } from '@/lib/spoilers';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import {
   LinkIcon, Box, Button, Flex, HStack, Input, Modal, ModalBody, ModalCloseButton, ModalContent,

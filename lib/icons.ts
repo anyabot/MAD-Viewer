@@ -14,6 +14,10 @@ export function iconUrl(group: IconGroup, name: string): string {
   return `${PUBLIC_BASE}/icons/${group}/${name}.webp`;
 }
 
+export function thumbUrl(src: string): string {
+  return src.replace('/icons/char/', '/icon-thumbs/char/');
+}
+
 export function hasIcon(
   manifest: IconManifest | null, group: IconGroup, name: string | null | undefined,
 ): boolean {

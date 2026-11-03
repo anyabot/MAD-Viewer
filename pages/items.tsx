@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { memo, useEffect, useMemo, useState } from 'react';
 import { textMatch } from '@altterisk/game-hub/filters';
 import { Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Box, HStack, SimpleGrid, Text, VStack } from '@altterisk/game-hub/ui';
 import { EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
 import { ItemIcon } from '@/components/itemIcon';
@@ -60,16 +60,17 @@ function ItemsContent() {
     ? Object.entries(index.items).filter(([, e]) => !itemIsSpoiler(e, facts))
     : Object.entries(index?.items ?? {})), [index, facts, hide]);
 
-  if (error || !index || (hide && !facts)) {
-    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
-  }
-
-  const rows = listed
+  const rows = useMemo(() => listed
     .filter(([ref, e]) => (!category || itemCategory(e) === category)
       && (view === 'all' || (inventory[ref] ?? 0) > 0 || (needs[ref] ?? 0) > 0)
       && textMatch(query, Object.values(e.name)))
     .sort(([a, ea], [b, eb]) => CATEGORY_ORDER.indexOf(itemCategory(ea)) - CATEGORY_ORDER.indexOf(itemCategory(eb))
-      || (eb.grade ?? 0) - (ea.grade ?? 0) || a.localeCompare(b, undefined, { numeric: true }));
+      || (eb.grade ?? 0) - (ea.grade ?? 0) || a.localeCompare(b, undefined, { numeric: true })),
+  [listed, category, view, inventory, needs, query]);
+
+  if (error || !index || (hide && !facts)) {
+    return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
+  }
 
   return (
     <VStack align="stretch" spacing={4}>
@@ -115,7 +116,7 @@ function ItemsContent() {
             <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={2}>
               {section.map(([ref, entry]) => (
                 <ItemTile key={ref} itemRef={ref} entry={entry} icons={icons} gameLang={gameLang}
-                  held={inventory[ref] ?? 0} need={needs[ref] ?? 0} onHeld={(n) => setInventory(ref, n)} />
+                  held={inventory[ref] ?? 0} need={needs[ref] ?? 0} setHeld={setInventory} />
               ))}
             </SimpleGrid>
           </Box>
@@ -125,11 +126,12 @@ function ItemsContent() {
   );
 }
 
-function ItemTile({ itemRef, entry, icons, gameLang, held, need, onHeld }: {
+const ItemTile = memo(function ItemTile({ itemRef, entry, icons, gameLang, held, need, setHeld }: {
   itemRef: string; entry: ItemEntry; icons: IconManifest | null; gameLang: GameLang;
-  held: number; need: number; onHeld: (n: number) => void;
+  held: number; need: number; setHeld: (ref: string, n: number) => void;
 }) {
   const t = useT();
+  const onHeld = (n: number) => setHeld(itemRef, n);
   const group = DROP_ICON_GROUPS.find((g) => hasIcon(icons, g, entry.icon)) ?? 'item';
   const short = Math.max(0, need - held);
   return (
@@ -156,4 +158,4 @@ function ItemTile({ itemRef, entry, icons, gameLang, held, need, onHeld }: {
       </VStack>
     </HStack>
   );
-}
+});

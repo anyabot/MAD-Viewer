@@ -695,7 +695,11 @@ export type StageData = {
   _skipped?: Record<string, number>;
 };
 
-const json = createJsonLoader({ urls: (name) => [`${DATA_BASE}/${name}`] });
+const json = createJsonLoader({ urls: (name) => [dataUrl(name)] });
+
+export function dataUrl(name: string): string {
+  return `${DATA_BASE}/${name}`;
+}
 
 function fetchJson<T>(name: string): Promise<T> {
   return json.load<T>(name);

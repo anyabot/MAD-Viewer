@@ -1,7 +1,7 @@
 // A query route rather than a `[id]` segment: the stage list is runtime data, so a build-time path list would need regenerating.
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Badge, Box, Flex, Text, VStack } from '@altterisk/game-hub/ui';
 import { EmptyState, LoadState, MetaChips, PageHeader } from '@altterisk/game-hub';
 import { GameIcon } from '@/components/gameIcon';

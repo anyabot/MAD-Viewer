@@ -1,6 +1,6 @@
 import { Box, HStack } from '@altterisk/game-hub/ui';
 import { NavMenu, SiteShell, homeLink, routerLinks } from '@altterisk/game-hub';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
 import { GameTextPicker } from '@/components/gameTextPicker';

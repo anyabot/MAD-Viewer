@@ -2,7 +2,7 @@
 import { listState, nextRouterAdapter, textMatch, useUrlText } from '@altterisk/game-hub/filters';
 import { BannerCard, EmptyState, FilterChip, FilterRow, IconPreview, ListToolbar, MetaChip, SearchBox, StageCard } from '@altterisk/game-hub';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Badge, Box, Button, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,
   Collapse, ChevronRightIcon,

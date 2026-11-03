@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Badge, Box, Flex, HStack, Table, Tbody, Td, Text, Th, Thead, Tr, VStack, Wrap, WrapItem,
 } from '@altterisk/game-hub/ui';

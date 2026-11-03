@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Seo } from '@/components/seo';
 import dynamic from 'next/dynamic';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Badge, Box, Button, Collapse, Flex, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem, Checkbox,
 } from '@altterisk/game-hub/ui';

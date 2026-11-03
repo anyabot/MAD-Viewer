@@ -1,7 +1,7 @@
 // Finds a unit by what its skills do, rather than by what the roster says it is.
 import { textMatch } from '@altterisk/game-hub/filters';
 import { useEffect, useMemo, useState } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Badge, Box, Flex, HStack, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox } from '@altterisk/game-hub';
 import { GameIcon, StarRating } from '@/components/gameIcon';

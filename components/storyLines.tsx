@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Box, IconButton } from '@altterisk/game-hub/ui';
 import { StoryLines, routerLinks, type StoryLineView } from '@altterisk/game-hub';
 import { RichText, replaceTag, type MarkupRule } from '@altterisk/game-hub/text';

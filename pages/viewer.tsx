@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Badge, Box, Center, Flex, Grid, HStack, Input, Spinner, Tab, TabList, TabPanel, TabPanels, Tabs,
   Text, VStack, Wrap, WrapItem,

@@ -3,7 +3,8 @@ body {
   background-attachment: fixed;
 }
 
-.hub-shell__content { padding: 16px 12px 32px; }
+/* pages prerender without their data: the footer must start below the fold or arriving content shoves it */
+.hub-shell__content { padding: 16px 12px 32px; min-height: 100vh; min-height: 100svh; }
 @media (min-width: 48em) {
   .hub-shell__content { padding: 24px 24px 48px; }
 }
@@ -33,6 +34,8 @@ body {
     padding: 0 var(--hub-gutter) 8px;
   }
 }
+
+.hub-footer__games a, .hub-footer__legal, .hub-footer__legal a { color: var(--hub-text-muted); }
 
 /* the kit theme drops popovers to 10, under the 1300 modal layer */
 .ui-popover__popper { z-index: 1500; }

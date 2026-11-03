@@ -1,4 +1,4 @@
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Badge, Box, HStack, SimpleGrid, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import { EmptyState, Panel } from '@altterisk/game-hub';
 import { GameIcon } from '@/components/gameIcon';

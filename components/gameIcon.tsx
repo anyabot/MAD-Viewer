@@ -3,7 +3,10 @@ import type { ComponentProps } from 'react';
 import { Box } from '@altterisk/game-hub/ui';
 
 type BoxProps = Omit<ComponentProps<typeof Box>, 'manifest' | 'name'>;
-import { iconUrl, resolveIcon, type IconGroup, type IconManifest } from '@/lib/icons';
+import { iconUrl, resolveIcon, thumbUrl, type IconGroup, type IconManifest } from '@/lib/icons';
+
+// In rem/4: the largest box the 96px portrait thumbnail stays sharp in at 2x.
+const THUMB_MAX_SIZE = 12;
 
 export function GameIcon({
   manifest, group, name, names, size = 5, title, reserve = true, tint, ...rest
@@ -42,8 +45,8 @@ export function GameIcon({
     );
   }
   return (
-    <Box as="img" src={src} alt={title ?? ''} title={title} boxSize={size}
-      objectFit="contain" flexShrink={0} {...rest} />
+    <Box as="img" src={group === 'char' && typeof size === 'number' && size <= THUMB_MAX_SIZE ? thumbUrl(src) : src}
+      alt={title ?? ''} title={title} boxSize={size} objectFit="contain" flexShrink={0} loading="lazy" {...rest} />
   );
 }
 

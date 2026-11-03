@@ -1,7 +1,7 @@
 // A query parameter, not a route segment, because `output: 'export'` prerenders every path and items are runtime data.
 import { useEffect, useMemo, useState } from 'react';
 import { Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import {
   Badge, Box, Center, Flex, HStack, SimpleGrid, Spinner, Text, VStack, Wrap, WrapItem,

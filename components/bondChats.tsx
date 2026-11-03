@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Badge, Box, Button,
   Center, Flex, HStack, Spinner, Text, VStack, Wrap, WrapItem,

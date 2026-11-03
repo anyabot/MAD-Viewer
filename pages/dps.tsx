@@ -1,7 +1,7 @@
 import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import {
   Box, Button, Checkbox, HStack, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb,
   SliderTrack, Table, Tbody, Td, Text, Th, Thead, Tr, VStack, Wrap, WrapItem,

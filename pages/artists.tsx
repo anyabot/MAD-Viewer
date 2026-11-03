@@ -1,7 +1,7 @@
 import { useSpoilerUnit } from '@/lib/spoilers';
 import { useEffect, useMemo, useState } from 'react';
 import { Seo } from '@/components/seo';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Box, Button, Grid, HStack, Text, VStack, Wrap } from '@altterisk/game-hub/ui';
 import { LoadState, PageHeader, Panel } from '@altterisk/game-hub';
 import { ARTIST_LINKS, artistAnchor } from '@/lib/artists';

@@ -2,7 +2,7 @@
 // tier in the corner. Material art repeats across tiers, so the slot is the only
 // thing separating them.
 import type { ComponentProps } from 'react';
-import NextLink from 'next/link';
+import NextLink from '@/components/appLink';
 import { Box, Text } from '@altterisk/game-hub/ui';
 
 type BoxProps = Omit<ComponentProps<typeof Box>, 'manifest' | 'name'>;
