@@ -10,6 +10,8 @@
     "postbuild": "node scripts/seo-files.js",
     "start": "next start",
     "lint": "next lint",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "sync:local-data": "node scripts/sync-local-data.js"
   },
   "dependencies": {

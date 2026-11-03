@@ -444,6 +444,10 @@ export const UI = {
   syncSyncing: { en: 'Syncing…', ko: '동기화 중…' },
   syncSynced: { en: 'Synced {time}', ko: '{time} 동기화됨' },
   syncExpired: { en: 'Sign-in expired', ko: '로그인 만료' },
+  syncExpiredNotice: {
+    en: 'Google sign-in expired (it lasts about 1 hour). Changes stay on this device. Click to sync again.',
+    ko: 'Google 로그인이 만료되었습니다(약 1시간 유지). 변경 내용은 이 기기에 남아 있습니다. 눌러서 다시 동기화하세요.',
+  },
   syncError: { en: 'Sync failed', ko: '동기화 실패' },
   syncConflictTitle: { en: 'Both have saved data', ko: '양쪽에 저장된 데이터가 있습니다' },
   syncConflictBody: { en: 'This device and Google Drive hold different data. Keep which?', ko: '이 기기와 Google 드라이브의 데이터가 다릅니다. 어느 쪽을 유지할까요?' },

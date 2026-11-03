@@ -6,15 +6,15 @@ import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
 import { Badge, Box, Center, Flex, HStack, SimpleGrid, Text, VStack } from '@altterisk/game-hub/ui';
 import {
-  EventCard, TimeControls, eventArtSources, useNow, useServerTime,
+  EventCard, TimeControls, useNow, useServerTime,
 } from '@/components/eventsBoard';
-import { ArtBox, artSrc } from '@/components/artBox';
+import { ArtBox } from '@/components/artBox';
 import { GameIcon } from '@/components/gameIcon';
 import {
   dataUrl, loadArchive, loadCharacters, loadEvents, loadIcons, loadStages,
-  type ArchiveIndex, type CharacterData, type EventIndex, type IconManifest, type StageData,
+  type ArchiveIndex, type CharacterData, type EventIndex, type GameEvent, type IconManifest, type StageData,
 } from '@/lib/data';
-import { eventPhase, formatMoment, remaining, zoneLabel } from '@/lib/events';
+import { bannerNames, eventPhase, formatMoment, remaining, zoneLabel } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { characterName } from '@/lib/characters';
 import type { IconGroup } from '@/lib/icons';
@@ -46,16 +46,44 @@ const SECTIONS: { href: string; label: UiKey; desc: UiKey }[] = [
   { href: '/changelog', label: 'navChangelog', desc: 'homeChangelog' },
 ];
 
-// The first card's art is the page's largest paint, so name it in the HTML instead of after the fetches.
-export const getStaticProps: GetStaticProps<{ leadArt: string | null }> = () => {
-  const now = Date.now();
-  const lead = readData<EventIndex>('events.json').events
-    .filter((e) => eventPhase(e, now) === 'running')
+type HomeLead = { builtAt: number; event: GameEvent; banners: EventIndex['banners']; chars: CharacterData; icons: IconManifest };
+
+// The first event and banner are the page's largest paints, so the HTML carries them instead of waiting on the fetches.
+export const getStaticProps: GetStaticProps<{ lead: HomeLead | null }> = () => {
+  const builtAt = Date.now();
+  const index = readData<EventIndex>('events.json');
+  const event = index.events
+    .filter((e) => eventPhase(e, builtAt) === 'running')
     .sort((a, b) => Date.parse(a.end) - Date.parse(b.end))[0];
-  return { props: { leadArt: lead ? artSrc(readData<IconManifest>('icons.json'), eventArtSources(lead, 'en')) : null } };
+  if (!event) return { props: { lead: null } };
+  const { characters } = readData<CharacterData>('characters.json');
+  const { groups } = readData<IconManifest>('icons.json');
+  const banners = (index.banners ?? []).filter((b) => Date.parse(b.start) <= builtAt && builtAt <= Date.parse(b.end));
+  const codes = [...(event.pickups ?? []), ...(event.bonus ?? []).map((b) => b.code), ...banners.flatMap((b) => b.codes)];
+  const people = codes.map((c) => characters[c]).filter(Boolean);
+  const { id, kind, name, desc, start, end, banner, goodsIcon, pickups, bonus } = event;
+  return {
+    props: JSON.parse(JSON.stringify({
+      lead: {
+        builtAt,
+        event: { id, kind, name, desc, start, end, banner, goodsIcon, pickups, bonus },
+        banners,
+        chars: {
+          characters: Object.fromEntries(people.map(({ code, name: ko, nameEn, iconPath }) => [code, { code, name: ko, nameEn, iconPath }])),
+        },
+        icons: {
+          groups: {
+            banner: groups.banner?.filter((n) => bannerNames(event, 'en').includes(n)) ?? [],
+            item: groups.item?.filter((n) => n === goodsIcon) ?? [],
+            char: groups.char?.filter((n) => people.some((p) => p.iconPath === n) || codes.some((c) => n === `Icon_${c}`)) ?? [],
+          },
+        },
+      },
+    })),
+  };
 };
 
-export default function Home({ leadArt }: { leadArt: string | null }) {
+export default function Home({ lead }: { lead: HomeLead | null }) {
   const t = useT();
   const lang = useLang();
   const gameLang = useGameLang();
@@ -66,7 +94,7 @@ export default function Home({ leadArt }: { leadArt: string | null }) {
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [serverTime, setServerTime] = useServerTime();
-  const now = useNow(30_000);
+  const now = useNow(30_000, lead?.builtAt);
   const hideSpoilers = useHideSpoilers();
 
   // Share links from before the viewer had its own route.
@@ -84,10 +112,10 @@ export default function Home({ leadArt }: { leadArt: string | null }) {
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
 
-  const live = (events?.events ?? [])
+  const live = (events?.events ?? (lead ? [lead.event] : []))
     .filter((e) => (hideSpoilers ? ['running'] : ['running', 'upcoming']).includes(eventPhase(e, now)))
     .sort((a, b) => Date.parse(a.end) - Date.parse(b.end));
-  const banners = (events?.banners ?? [])
+  const banners = (events?.banners ?? lead?.banners ?? [])
     .filter((b) => now <= Date.parse(b.end) && !(hideSpoilers && isFuture(b.start, now)))
     .sort((a, b) => Date.parse(a.start) - Date.parse(b.start));
   const nemesis = stages ? Object.values(stages.groups).filter((g) => g.mode === 'nemesis'
@@ -103,10 +131,9 @@ export default function Home({ leadArt }: { leadArt: string | null }) {
       <Head>
         <link rel="preload" href={dataUrl('events.json')} as="fetch" crossOrigin="anonymous" />
         <link rel="preload" href={dataUrl('icons.json')} as="fetch" crossOrigin="anonymous" />
-        {leadArt && <link rel="preload" href={leadArt} as="image" fetchPriority="high" />}
       </Head>
       <VStack spacing={2} textAlign="center" pt={2}>
-        <Text fontSize={{ base: '3xl', md: '4xl' }} fontWeight="bold">MAD Viewer</Text>
+        <Text as="h1" fontSize={{ base: '3xl', md: '4xl' }} fontWeight="bold">MAD Viewer</Text>
         <Text color="gray.400">{t('homeTagline')}</Text>
       </VStack>
 
@@ -123,7 +150,7 @@ export default function Home({ leadArt }: { leadArt: string | null }) {
           <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
             {live.map((event, i) => (
               <EventCard key={`${event.kind}:${event.id}`} event={event} now={now} serverTime={serverTime}
-                chars={chars} icons={icons} priority={i === 0} />
+                chars={chars ?? lead?.chars ?? null} icons={icons ?? lead?.icons ?? null} priority={i === 0} />
             ))}
           </SimpleGrid>
         </Section>
@@ -132,8 +159,9 @@ export default function Home({ leadArt }: { leadArt: string | null }) {
       {banners.length > 0 && (
         <Section title={t('homeBanners')}>
           <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={3}>
-            {banners.map((b) => (
-              <BannerTile key={b.start} banner={b} now={now} serverTime={serverTime} chars={chars} icons={icons} />
+            {banners.map((b, i) => (
+              <BannerTile key={b.start} banner={b} now={now} serverTime={serverTime} priority={i === 0}
+                chars={chars ?? lead?.chars ?? null} icons={icons ?? lead?.icons ?? null} />
             ))}
           </SimpleGrid>
         </Section>
@@ -210,9 +238,9 @@ function Tile({ href, live, art, icons, title, note }: {
 }
 
 // A banner not yet open names a partner the game has not announced in-client, so it stays covered until asked.
-function BannerTile({ banner, now, serverTime, chars, icons }: {
+function BannerTile({ banner, now, serverTime, chars, icons, priority }: {
   banner: { start: string; end: string; codes: string[] }; now: number; serverTime: boolean;
-  chars: CharacterData | null; icons: IconManifest | null;
+  chars: CharacterData | null; icons: IconManifest | null; priority?: boolean;
 }) {
   const t = useT();
   const lang = useLang();
@@ -229,7 +257,7 @@ function BannerTile({ banner, now, serverTime, chars, icons }: {
       borderWidth={running ? '2px' : '1px'} borderColor={running ? 'pink.400' : 'whiteAlpha.200'} bg="whiteAlpha.50">
       {revealed ? (
         <Box as={NextLink} href={characterHref(code)} position="relative" aria-label={name}>
-          <ArtBox manifest={icons} w="100%"
+          <ArtBox manifest={icons} w="100%" priority={priority}
             sources={[['char', entry?.iconPath], ['char', `Icon_${code}`]]} />
         </Box>
       ) : (

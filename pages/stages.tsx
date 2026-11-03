@@ -40,6 +40,7 @@ import {
   type StageEntry, type StageGroup,
 } from '@/lib/data';
 import { Seo } from '@/components/seo';
+import { PageTitle } from '@/components/pageTitle';
 import { StaticLinks, type StaticLink } from '@/components/staticLinks';
 import { readData } from '@/lib/staticData';
 import { eventHref } from '@/lib/routes';
@@ -59,7 +60,7 @@ export const getStaticProps: GetStaticProps<{ links: StaticLink[] }> = () => {
 
 export default function StagesPage({ links }: { links: StaticLink[] }) {
   const t = useT();
-  return <><Seo title={t('navStages')} description={t('seoDescStages')} /><StagesContent links={links} /></>;
+  return <><Seo title={t('navStages')} description={t('seoDescStages')} /><PageTitle>{t('navStages')}</PageTitle><StagesContent links={links} /></>;
 }
 
 function StagesContent({ links }: { links: StaticLink[] }) {

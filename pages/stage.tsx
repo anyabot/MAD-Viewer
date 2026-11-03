@@ -20,6 +20,7 @@ import {
   type CharacterData, type IconManifest, type StageData,
 } from '@/lib/data';
 import { Seo } from '@/components/seo';
+import { PageTitle } from '@/components/pageTitle';
 
 export default function StagePage() {
   const t = useT();
@@ -67,8 +68,11 @@ function StageContent() {
 
   if (!stage) {
     return (
-      <EmptyState title={id != null ? t('stageNotFound', { id }) : t('stageNoneSelected')}
-        action={<Text as={NextLink} href="/stages" color="accent.300" fontSize="sm">{t('stageBack')}</Text>} />
+      <>
+        <PageTitle>{t('navStages')}</PageTitle>
+        <EmptyState title={id != null ? t('stageNotFound', { id }) : t('stageNoneSelected')}
+          action={<Text as={NextLink} href="/stages" color="accent.300" fontSize="sm">{t('stageBack')}</Text>} />
+      </>
     );
   }
 
@@ -79,7 +83,7 @@ function StageContent() {
       <StageCrumbs data={data} mode={stage.mode} group={data.groups[stage.group]}
         leaf={stageName(data, stage, lang)} lang={lang} />
 
-      <PageHeader level={2}
+      <PageHeader
         art={<GameIcon manifest={icons} group="zone" name={zone?.image}
           boxSize={{ base: '56px', md: '72px' }} borderRadius="md" objectFit="cover"
           reserve={false} />}

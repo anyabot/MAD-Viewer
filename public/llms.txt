@@ -1,0 +1,28 @@
+# MAD Viewer
+
+> Fan-made, unofficial reference and viewer for the game Make Drama (MAD): live skin viewer, character profiles, story, events, stages, items and planning tools.
+
+The game's images, text and other assets belong to their owners. The site's own code is AGPL-3.0.
+
+## Main pages
+
+- [Home](https://mad.altterisk.cc/): events, pickup banners and seasonal content running now
+- [Viewer](https://mad.altterisk.cc/viewer/): play character skins and animations
+- [Characters](https://mad.altterisk.cc/characters/): every character, with the game's filters
+- [Story](https://mad.altterisk.cc/story/): story chapters and event scripts
+- [Events and stages](https://mad.altterisk.cc/stages/): stages, enemies and drops
+- [Items](https://mad.altterisk.cc/items/): items and materials
+
+## Tools and references
+
+- [Planner](https://mad.altterisk.cc/farm/): material needs for unit upgrades
+- [Party](https://mad.altterisk.cc/party/): team building
+- [Effects](https://mad.altterisk.cc/effects/): search skill effects
+- [Formula](https://mad.altterisk.cc/formula/): how damage, healing and status chance are calculated
+- [DPS comparison](https://mad.altterisk.cc/dps/): expected DPS and HPS on one target
+- [Changelog](https://mad.altterisk.cc/changelog/): site updates
+
+## Optional
+
+- [Sitemap](https://mad.altterisk.cc/sitemap.xml)
+- [Source code](https://github.com/anyabot/MAD-Viewer)

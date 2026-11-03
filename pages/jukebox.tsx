@@ -137,7 +137,7 @@ function JukeboxContent() {
   return (
     <VStack align="stretch" spacing={5}>
       <Flex align="baseline" gap={3} wrap="wrap">
-        <Text fontSize="2xl" fontWeight="bold">{t('navJukebox')}</Text>
+        <Text as="h1" fontSize="2xl" fontWeight="bold">{t('navJukebox')}</Text>
         <Text fontSize="sm" color="gray.500">{t('jukeboxTracks', { n: tracks.length })}</Text>
       </Flex>
       {groups.map(([group, list]) => (

@@ -98,7 +98,7 @@ function ArchiveContent() {
               </WrapItem>
             )}
           </Wrap>
-          <Text fontSize="2xl" fontWeight="bold">{title} · {t('archiveSeason', { n: season.id })}</Text>
+          <Text as="h1" fontSize="2xl" fontWeight="bold">{title} · {t('archiveSeason', { n: season.id })}</Text>
           <Text fontSize="sm" color="gray.400">{t('archiveStartCount', { n: season.startCount })}</Text>
           <Wrap spacing={2} pt={1}>
             {([

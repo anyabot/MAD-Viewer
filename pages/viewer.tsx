@@ -7,7 +7,7 @@ import {
 import GachaScene from '@/components/gachaScene';
 import SkinViewer from '@/components/skinViewer';
 import { useSpoilerGate } from '@/components/spoilers';
-import { useHideSpoilers, useSpoilerUnit } from '@/lib/spoilers';
+import { useSpoilerFilter } from '@/lib/spoilers';
 import { STORE_META } from '@/components/skinViewer/chrome';
 import type { SkinKind, StoreKey } from '@/components/skinViewer/types';
 import { GameIcon } from '@/components/gameIcon';
@@ -21,6 +21,7 @@ import {
   type CharacterData, type CharacterEntry, type IconManifest, type SkinListEntry,
 } from '@/lib/data';
 import { Seo } from '@/components/seo';
+import { PageTitle } from '@/components/pageTitle';
 import { characterHref } from '@/lib/routes';
 
 const KINDS: SkinKind[] = ['standing', 'affection', 'desire', 'pleasure', 'drama'];
@@ -32,7 +33,7 @@ function skinTitle(skin: SkinListEntry, name: string): string {
 // Lazy tabs keep the separate gacha archives unfetched until opened.
 export default function ViewerPage() {
   const t = useT();
-  return <><Seo title={t('navViewer')} description={t('seoDescViewer')} /><ViewerContent /></>;
+  return <><Seo title={t('navViewer')} description={t('seoDescViewer')} /><PageTitle>{t('navViewer')}</PageTitle><ViewerContent /></>;
 }
 
 function ViewerContent() {
@@ -92,22 +93,23 @@ function SkinGallery() {
   const subNameOf = useMemo(
     () => (s: SkinListEntry) => characterSubName(charOf(s), lang), [charOf, lang]);
 
-  const hideSpoilers = useHideSpoilers();
-  const spoilerUnit = useSpoilerUnit();
+  const { hide, facts } = useSpoilerFilter();
+  const pending = hide && !facts;
   const skinSpoiler = useMemo(
-    () => (s: SkinListEntry) => spoilerUnit(s.character) || (hideSpoilers && !!charOf(s)?.unreleased),
-    [spoilerUnit, hideSpoilers, charOf]);
+    () => (s: SkinListEntry) => hide && (!!facts?.units.has(s.character) || !!charOf(s)?.unreleased),
+    [hide, facts, charOf]);
+  const visible = useMemo(
+    () => (pending ? [] : (skins ?? []).filter((s) => !skinSpoiler(s))), [pending, skins, skinSpoiler]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return (skins ?? []).filter((s) => !skinSpoiler(s)
-      && (kind === 'all' || s.kind === kind)
+    return visible.filter((s) => (kind === 'all' || s.kind === kind)
       && (!divergedOnly || s.stores.length > 1)
       && (!q || s.key.toLowerCase().includes(q)
         || s.character.toLowerCase().includes(q)
         || (charOf(s)?.name ?? '').toLowerCase().includes(q)
         || (charOf(s)?.nameEn ?? '').toLowerCase().includes(q)));
-  }, [skins, kind, query, divergedOnly, charOf, skinSpoiler]);
+  }, [visible, kind, query, divergedOnly, charOf]);
 
   const found = useMemo(
     () => (skins ?? []).find((s) => s.key === selected) ?? null, [skins, selected]);
@@ -116,8 +118,8 @@ function SkinGallery() {
   const sharedKey = typeof window === 'undefined' ? null : parseViewerShare(window.location.search)?.skin ?? null;
   useSpoilerGate(found && found.key === sharedKey ? foundSpoiler : null, '/viewer');
   useEffect(() => {
-    if (foundSpoiler) set({ selected: filtered[0]?.key ?? null });
-  }, [foundSpoiler, filtered, set]);
+    if (foundSpoiler && !pending) set({ selected: filtered[0]?.key ?? null });
+  }, [foundSpoiler, pending, filtered, set]);
   const current = foundSpoiler ? null : found;
 
   // Keep the store selection valid when switching to a skin that has only one.
@@ -168,7 +170,7 @@ function SkinGallery() {
         </WrapItem>
         <WrapItem>
           <Text fontSize="xs" color="gray.500">
-            {t('countOf', { shown: filtered.length, total: skins.length })}
+            {!pending && t('countOf', { shown: filtered.length, total: visible.length })}
           </Text>
         </WrapItem>
       </Wrap>
@@ -231,7 +233,7 @@ function SkinGallery() {
                 </Box>
               );
             })}
-            {filtered.length === 0 && (
+            {filtered.length === 0 && !pending && (
               <Text fontSize="sm" color="gray.500" p={2}>{t('noMatch')}</Text>
             )}
           </VStack>
