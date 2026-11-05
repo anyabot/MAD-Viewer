@@ -15,7 +15,7 @@
     "sync:local-data": "node scripts/sync-local-data.js"
   },
   "dependencies": {
-    "@altterisk/game-hub": "github:Altterisk/game-hub#v0.8.1",
+    "@altterisk/game-hub": "github:Altterisk/game-hub#v0.8.2",
     "@esotericsoftware/spine-pixi-v8": "4.2.72",
     "brotli-dec-wasm": "^2.3.2",
     "next": "^15.5.18",

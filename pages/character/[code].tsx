@@ -183,8 +183,9 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
     return (
       <>
         {head}
+        <LoadState loading error={error} labels={{ loading: t('loading'), error }} />
         {seo && !gated && (
-          <VStack align="stretch" spacing={2} mb={4}>
+          <VStack align="stretch" spacing={2} mb={4} className="prerender-summary">
             <Text as="h1" fontSize="2xl" fontWeight="bold">{seo.name}</Text>
             {seo.desc && <Text fontSize="sm" color="gray.400">{seo.desc}</Text>}
             {seo.facts.map(([label, value]) => (
@@ -196,7 +197,6 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
             ))}
           </VStack>
         )}
-        <LoadState loading error={error} labels={{ loading: t('loading'), error }} />
       </>
     );
   }
