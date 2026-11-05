@@ -84828,7 +84828,8 @@
             "indent": 2,
             "fields": {
               "IdAndAppearance": "danhee_halloween.reaction/A2_copy"
-            }
+            },
+            "clip": "10_reaction/10_A2_copy"
           },
           {
             "class": "SetCustomVariable",
@@ -84908,7 +84909,8 @@
             "indent": 2,
             "fields": {
               "IdAndAppearance": "danhee_halloween.reaction/A3_copy"
-            }
+            },
+            "clip": "10_reaction/10_A3_copy"
           },
           {
             "class": "SetCustomVariable",
