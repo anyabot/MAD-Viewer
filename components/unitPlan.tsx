@@ -112,8 +112,6 @@ export type PlanDraft = {
 export type PartCheck = {
   /** What coverage is judged against, which is not always the whole inventory. */
   inventory: Record<string, number>;
-  disabled?: boolean;
-  reason?: string;
   onComplete: (part: PlanPart) => void;
 };
 
@@ -124,14 +122,12 @@ function PartCheckCell({ part, entry, data, growth, pair, check }: {
   const t = useT();
   const bill = partBill(growth, entry, data, pair, part);
   const owing = !billIsEmpty(bill);
-  const ready = owing && !check.disabled && billCovered(growth, bill, check.inventory);
+  const ready = owing && billCovered(growth, bill, check.inventory);
   return (
     <Box as="button" aria-label={t('farmCompletePart')} aria-disabled={!ready || undefined}
       px={1} py={0.5} borderRadius="md" lineHeight={1} justifySelf="center"
       title={ready ? t('farmCompletePartHint')
-        : !owing ? t('planNothingOwed')
-          : check.disabled ? check.reason ?? t('farmCompletePart')
-            : t('farmCompleteShort')}
+        : !owing ? t('planNothingOwed') : t('farmCompleteShort')}
       color={ready ? 'green.300' : 'whiteAlpha.300'}
       cursor={ready ? 'pointer' : 'not-allowed'}
       _hover={ready ? { bg: 'whiteAlpha.200', color: 'green.200' } : undefined}

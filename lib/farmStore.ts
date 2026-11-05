@@ -3,7 +3,7 @@ import { createPersisted } from '@altterisk/game-hub/persist';
 import type { SyncEntry } from '@altterisk/game-hub/sync';
 import { create } from 'zustand';
 import {
-  ROUTE_MODES, applyPart, applySide, atLeastCurrent, emptyPlan,
+  ROUTE_MODES, applyPart, applySide, atLeastCurrent, emptyPlan, withPart,
   type GearPlan, type RouteMode, type PlanPart, type UnitPlan, type UnitPlanPair,
 } from '@/lib/farm';
 
@@ -50,8 +50,8 @@ type FarmStore = FarmState & {
   setGear: (code: string, side: 'current' | 'target', slot: number, gear: GearPlan) => void;
   /** The inventory the target cost comes in already spent, so both land in one write. */
   completeUnit: (code: string, inventory: Record<string, number>) => void;
-  /** The same for one row of the plan: only that part's current state moves up. */
-  completePart: (code: string, part: PlanPart,
+  /** The same for one row, with that row's values from `from`; every other row keeps its record. */
+  completePart: (code: string, part: PlanPart, from: UnitPlanPair,
                  inventory: Record<string, number>) => void;
   setStars: (stageId: number, stars: number) => void;
   setStarsMany: (stageIds: number[], stars: number) => void;
@@ -162,10 +162,9 @@ export const useFarm = create<FarmStore>((set) => ({
     });
   }),
 
-  completePart: (code, part, inventory) => set((s) => {
-    const pair = s.units[code];
-    if (!pair) return {};
-    return save(s, { inventory, units: { ...s.units, [code]: applyPart(pair, part) } });
+  completePart: (code, part, from, inventory) => set((s) => {
+    const pair = s.units[code] ?? { current: emptyPlan(), target: emptyPlan() };
+    return save(s, { inventory, units: { ...s.units, [code]: applyPart(withPart(pair, from, part), part) } });
   }),
 
   setPlan: (code, side, patch) => set((s) => save(s, {
