@@ -31,7 +31,7 @@ import {
 } from '@/lib/stages';
 import { dataText, pick, useLang, useT, type Lang, type UiKey } from '@/lib/i18n';
 import {
-  groupIsSpoiler, isFuture, useSpoilerFilter, withoutRewardSpoilers, withoutStageSpoilers,
+  groupIsSpoiler, isFuture, useHideSpoilers, useSpoilerFilter, withoutRewardSpoilers, withoutStageSpoilers,
 } from '@/lib/spoilers';
 import { useSpoilerGate } from '@/components/spoilers';
 import {
@@ -461,48 +461,102 @@ function GroupList({ mode, data, icons, lang }: {
           {t('archiveOverview')}
         </Button>
       )}
-      {mode === 'event' ? <EventsBoard /> : (
+      {mode === 'event' ? <EventsBoard /> : mode === 'ascent' ? (
+        <AscentList groups={groups} data={data} icons={icons} lang={lang} />
+      ) : (
       <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
         {groups.map((grouping) => (
           <GroupCard key={grouping.group.key} grouping={grouping} data={data} icons={icons} lang={lang} />
         ))}
-        {mode === 'ascent' && <InfinityCard data={data} icons={icons} />}
       </SimpleGrid>
       )}
     </VStack>
   );
 }
 
-function InfinityCard({ data, icons }: { data: StageData; icons: IconManifest | null }) {
+type ArchiveSeason = ArchiveIndex['seasons'][number];
+
+// Basic always, then the live Core and Infinity seasons, then upcoming ones; ended seasons sit below.
+function AscentList({ groups, data, icons, lang }: {
+  groups: StageGrouping[]; data: StageData; icons: IconManifest | null; lang: Lang;
+}) {
   const t = useT();
+  const now = useNow(60_000);
+  const hideSpoilers = useHideSpoilers();
   const [archive, setArchive] = useState<ArchiveIndex | null>(null);
   useEffect(() => { loadArchive().then(setArchive).catch(() => setArchive(null)); }, []);
-  const gameLang = useGameLang();
-  const season = archive?.seasons[0];
-  const nodes = data.stages.filter((s) => s.mode === 'archive').length;
-  const today = new Date().toISOString().slice(0, 10);
-  const from = season?.open?.start.slice(0, 10);
-  const to = season?.open?.end.slice(0, 10);
-  const live = !!from && !!to && from <= today && today <= to;
+  const today = new Date(now).toISOString().slice(0, 10);
+  const basic = groups.filter((g) => !g.group.from);
+  const core = groups.filter((g) => g.group.from)
+    .sort((a, b) => (b.group.from ?? '').localeCompare(a.group.from ?? ''));
+  // Windows are dates only, so on a handover day the newer season is the live one.
+  const liveCore = core.find((g) => groupIsLive(g.group, new Date(now)));
+  const upcomingCore = core.filter((g) => g !== liveCore && (g.group.from ?? '') > today).reverse();
+  const pastCore = core.filter((g) => g !== liveCore && !upcomingCore.includes(g));
+  const seasons = [...(archive?.seasons ?? [])]
+    .sort((a, b) => Date.parse(b.open?.start ?? '') - Date.parse(a.open?.start ?? ''));
+  const liveInf = seasons.find((s) => s.open && Date.parse(s.open.start) <= now && now <= Date.parse(s.open.end));
+  const futureInf = seasons.filter((s) => s.open && isFuture(s.open.start, now));
+  const upcomingInf = hideSpoilers ? [] : [...futureInf].reverse();
+  const pastInf = seasons.filter((s) => s !== liveInf && !futureInf.includes(s));
+  const past: { start: string; card: ReactNode }[] = [
+    ...pastCore.map((g) => ({ start: g.group.from ?? '', card: (
+      <GroupCard key={g.group.key} grouping={g} data={data} icons={icons} lang={lang} ended />) })),
+    ...pastInf.map((s) => ({ start: s.open?.start.slice(0, 10) ?? '', card: (
+      <InfinityCard key={`ia${s.id}`} season={s} archive={archive} data={data} icons={icons} now={now} />) })),
+  ].sort((a, b) => b.start.localeCompare(a.start));
   return (
-    <BannerCard href="/archive" renderLink={nextLink} className="mad-banner-row" highlight={live}
+    <VStack align="stretch" spacing={6}>
+      <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>
+        {basic.map((g) => <GroupCard key={g.group.key} grouping={g} data={data} icons={icons} lang={lang} />)}
+        {liveCore && <GroupCard grouping={liveCore} data={data} icons={icons} lang={lang} />}
+        {liveInf && <InfinityCard season={liveInf} archive={archive} data={data} icons={icons} now={now} />}
+        {upcomingCore.map((g) => <GroupCard key={g.group.key} grouping={g} data={data} icons={icons} lang={lang} />)}
+        {upcomingInf.map((s) => (
+          <InfinityCard key={`ia${s.id}`} season={s} archive={archive} data={data} icons={icons} now={now} />
+        ))}
+      </SimpleGrid>
+      {past.length > 0 && (
+        <Box>
+          <Text fontSize="lg" fontWeight="bold" mb={3}>{t('seasonsPast')}</Text>
+          <SimpleGrid columns={{ base: 1, xl: 2 }} spacing={3}>{past.map((x) => x.card)}</SimpleGrid>
+        </Box>
+      )}
+    </VStack>
+  );
+}
+
+function InfinityCard({ season, archive, data, icons, now }: {
+  season: ArchiveSeason; archive: ArchiveIndex | null; data: StageData; icons: IconManifest | null; now: number;
+}) {
+  const t = useT();
+  const gameLang = useGameLang();
+  const own = new Set(season.difficulties.flatMap((d) => d.nodes.flatMap((n) => n.groups ?? [])));
+  const nodes = data.stages.filter((s) => s.mode === 'archive' && own.has(s.group)).length;
+  const open = season.open;
+  const live = !!open && Date.parse(open.start) <= now && now <= Date.parse(open.end);
+  const ended = !!open && now > Date.parse(open.end);
+  const upcoming = !!open && isFuture(open.start, now);
+  return (
+    <BannerCard href={`/archive?season=${season.id}`} renderLink={nextLink} className="mad-banner-row"
+      highlight={live}
       art={<ArtBox manifest={icons} w="100%"
         sources={[['banner', 'Ascent_Infinity'], ['banner', 'Thumbnail_PastStory_Content_ArchiveAscent']]} />}
-      badge={live ? t('stageLive') : undefined}
-      window={from && to ? `${from} – ${to}` : undefined}
-      title={`${gameText(archive?.title, gameLang) || t('archiveTitle')}${season ? ` · ${t('archiveSeason', { n: season.id })}` : ''}`}
+      badge={live ? t('stageLive') : ended ? t('stageEnded') : upcoming ? t('stageUpcoming') : undefined}
+      window={open ? `${open.start.slice(0, 10)} – ${open.end.slice(0, 10)}` : undefined}
+      title={`${gameText(archive?.title, gameLang) || t('archiveTitle')} · ${t('archiveSeason', { n: season.id })}`}
       count={`${t('stageCount', { n: nodes })} · ${t('archivePacks')}`} />
   );
 }
 
-function GroupCard({ grouping, data, icons, lang }: {
-  grouping: StageGrouping; data: StageData; icons: IconManifest | null; lang: Lang;
+function GroupCard({ grouping, data, icons, lang, ended: superseded = false }: {
+  grouping: StageGrouping; data: StageData; icons: IconManifest | null; lang: Lang; ended?: boolean;
 }) {
   const t = useT();
   const { group, stages } = grouping;
-  const live = groupIsLive(group);
+  const live = !superseded && groupIsLive(group);
   const today = new Date().toISOString().slice(0, 10);
-  const ended = !!group.to && !live && group.to < today;
+  const ended = superseded || (!!group.to && !live && group.to < today);
   const upcoming = !!group.from && group.from > today;
   const enemies = [...new Set(stages.flatMap((s) => enemyCodes(s)))];
   const bosses = enemies.filter((c) => stages.some((s) => s.waves.some((w) => w.bossCode === c)));
