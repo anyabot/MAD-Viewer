@@ -1735,7 +1735,7 @@
     "google",
     "onestore"
    ],
-   "animations": 23,
+   "animations": 25,
    "faces": 0,
    "bodyGroups": [
     "10_basic",
@@ -1775,8 +1775,8 @@
     ]
    },
    "bytes": {
-    "google": 9987535,
-    "onestore": 10064193
+    "google": 10035585,
+    "onestore": 10112243
    }
   },
   {

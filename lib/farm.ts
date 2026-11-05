@@ -323,6 +323,20 @@ export function unitBill(
 }
 
 /** Banks one part of the target: only that row's current state moves up. */
+/** `base` with one row's values, on both sides, taken from `from`. */
+export function withPart(base: UnitPlanPair, from: UnitPlanPair, part: PlanPart): UnitPlanPair {
+  const row = (to: UnitPlan, source: UnitPlan): UnitPlan => {
+    switch (part.kind) {
+      case 'level': return { ...to, level: source.level };
+      case 'star': return { ...to, star: source.star };
+      case 'infusion': return { ...to, infusion: { ...to.infusion, [part.path]: source.infusion?.[part.path] ?? 0 } };
+      case 'skill': return { ...to, skills: { ...to.skills, [part.id]: source.skills[String(part.id)] ?? 1 } };
+      default: return { ...to, gear: { ...to.gear, [part.slot]: source.gear[String(part.slot)] ?? { tier: 0, level: 1 } } };
+    }
+  };
+  return { ...base, current: row(base.current, from.current), target: row(base.target, from.target) };
+}
+
 export function applyPart(pair: UnitPlanPair, part: PlanPart): UnitPlanPair {
   const { target } = pair;
   switch (part.kind) {

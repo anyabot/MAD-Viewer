@@ -209,10 +209,11 @@ export function UnitPlanDialog({
 
   const base = stored ?? { current: emptyPlan(), target: emptyPlan() };
   const storedHeld = memoryRef ? inventory[memoryRef] ?? 0 : 0;
-  const dirty = held !== storedHeld
-    || JSON.stringify({ ...base, listed: undefined, hidden: undefined,
-      priority: undefined }) !== JSON.stringify({ ...draft, listed: undefined,
-      hidden: undefined, priority: undefined });
+  // Keys sorted: banking rows in a different order than they were edited must not read as a change.
+  const canonical = (pair: UnitPlanPair) => JSON.stringify({ ...pair, listed: undefined, hidden: undefined,
+    priority: undefined }, (_k, v) => (v && typeof v === 'object' && !Array.isArray(v)
+    ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b))) : v));
+  const dirty = held !== storedHeld || canonical(base) !== canonical(draft);
 
   const hidden = stored?.hidden ?? false;
   const priority = stored?.priority ?? false;
@@ -222,12 +223,13 @@ export function UnitPlanDialog({
   const owing = !!(bill.unitExp || bill.equipExp || Object.keys(bill.materials).length > 0);
   const covered = billCovered(growth, bill, priority ? spendable : previewed);
 
-  // Banking one row writes the record, so the draft and the held count follow it.
+  // Banking writes this row alone; other pending edits stay in the draft, and only a star row spends the edited held count.
   const bankPart = (part: PlanPart) => {
-    const spent = spendBill(growth, partBill(growth, entry, data, draft, part), inventory);
-    completePart(entry.code, part, spent);
+    const spent = spendBill(growth, partBill(growth, entry, data, draft, part),
+      part.kind === 'star' ? spendable : inventory);
+    completePart(entry.code, part, draft, spent);
     setDraft((kept) => (kept ? applyPart(kept, part) : kept));
-    if (memoryRef) setHeld(spent[memoryRef] ?? 0);
+    if (memoryRef && part.kind === 'star') setHeld(spent[memoryRef] ?? 0);
   };
 
   const leave = () => {
@@ -269,8 +271,7 @@ export function UnitPlanDialog({
             <Panel title={t('planTargets')}>
               <PlanGrid entry={entry} data={data} growth={growth} icons={icons}
                 sides={['current', 'target']} draft={planDraft}
-                check={{ inventory: priority ? spendable : previewed, disabled: dirty,
-                  reason: t('planSaveFirst'), onComplete: bankPart }} />
+                check={{ inventory: priority ? spendable : previewed, onComplete: bankPart }} />
             </Panel>
 
             <MemoryPanel entry={entry} growth={growth} stages={stages} hard={hard}
