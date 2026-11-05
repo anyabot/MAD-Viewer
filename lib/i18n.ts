@@ -182,6 +182,7 @@ export const UI = {
   eventsPickup: { en: 'Pickup', ko: '픽업' },
   eventsCast: { en: 'In the story', ko: '스토리 등장' },
   eventsUnits: { en: 'Event units', ko: '이벤트 유닛' },
+  eventsSongs: { en: 'Minigame songs', ko: '미니게임 곡' },
 
   storyMain: { en: 'Main story', ko: '메인 스토리' },
   storyEvent: { en: 'Event stories', ko: '이벤트 스토리' },

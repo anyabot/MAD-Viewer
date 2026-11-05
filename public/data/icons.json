@@ -1160,6 +1160,12 @@
    "Thumbnail_Flirting_Quartet_Park",
    "Thumbnail_Flirting_River_Ferry",
    "Thumbnail_Flirting_Spa_House"
+  ],
+  "song": [
+   "bgm_minigame_001",
+   "bgm_minigame_002",
+   "bgm_minigame_003",
+   "bgm_minigame_004"
   ]
  }
 }

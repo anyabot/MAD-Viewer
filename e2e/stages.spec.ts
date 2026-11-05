@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 import { SAMPLE } from './fixtures';
 
 test.describe('/stages', () => {
@@ -63,6 +64,16 @@ test.describe('/event', () => {
     await expect(page.getByText('Bonus units')).toBeVisible();
     await page.locator('a[href^="/character/"]').first().click();
     await expect(page).toHaveURL(/\/character\/CH\d+\/$/);
+  });
+
+  test('shows an event minigame songs with their art', async ({ page }) => {
+    const { events } = JSON.parse(readFileSync('public/data/events.json', 'utf8'));
+    const event = events.find((e: { songs?: unknown[] }) => e.songs?.length);
+    await page.goto(`/event/${event.id}/`);
+    await expect(page.getByText('Minigame songs')).toBeVisible();
+    const song = page.getByRole('img', { name: event.songs[0].name.en });
+    await expect(song).toBeVisible();
+    await expect.poll(() => song.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
   });
 
   test('read story opens the event chapter', async ({ page }) => {

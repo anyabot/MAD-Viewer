@@ -743,7 +743,7 @@ export function dropPlaceholderTiers(data: CharacterData): CharacterData {
 export type IconManifest = {
   groups: Partial<Record<
     'ui' | 'char' | 'cutin' | 'skin' | 'item' | 'skill' | 'place' | 'buff' | 'equip'
-    | 'zone' | 'tile' | 'banner' | 'infusion' | 'archive' | 'story' | 'deco' | 'tier',
+    | 'zone' | 'tile' | 'banner' | 'infusion' | 'archive' | 'story' | 'deco' | 'tier' | 'song',
     string[]>>;
 };
 
@@ -1252,6 +1252,7 @@ export type GameEvent = {
   cast?: string[];
   exchange?: EventExchange[];
   attendance?: { days: { day: number; rewards: EventReward[] }[] }[];
+  songs?: { id: string; name: GameLocalized }[];
   bonus?: { code: string; rate: number }[];
 };
 
