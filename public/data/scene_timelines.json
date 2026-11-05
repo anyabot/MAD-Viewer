@@ -38053,6 +38053,1486 @@
         "pairs": []
       }
     },
+    "af_ch0069": {
+      "story": {
+        "script": "ch0069_05_affection_story",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "affection"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Unskippable"
+            }
+          },
+          {
+            "class": "NaniSummary",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 3,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_044_lp",
+              "IntroBgmPath": "bgm_romance_044_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "true",
+              "Duration": "0",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 6,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/enter"
+            },
+            "clip": "basic/enter"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 7,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/basic",
+              "Track": "9",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "basic/basic"
+          },
+          {
+            "class": "ShowUI",
+            "line": 8,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 10,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_01"
+            },
+            "clip": "asmr/ani_01"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 11,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "8f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 13,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "자아, 시작하자꾸나. 너와 나의 승부를.",
+            "texts": {
+              "en": "Now then, let us begin our match.",
+              "ja": "さあ、始めようぞ。お前さんと我の勝負を。",
+              "zh-Hans": "来吧，开始你我之间的较量吧。",
+              "zh-Hant": "來，開始吧，你我之間的勝負。",
+              "th": "เอาล่ะ มาเริ่มกันเถอะ การดวลระหว่างเจ้ากับข้าน่ะ",
+              "es": "Adelante, demos comienzo a nuestro duelo."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_1"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 16,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_01"
+            },
+            "clip": "asmr/loop_01"
+          },
+          {
+            "class": "PrintText",
+            "line": 18,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "어떠냐, 전신의 감각이 곤두서는 느낌은...? 후훗.",
+            "texts": {
+              "en": "How does it feel, having every nerve in your body on edge...? Hehe.",
+              "ja": "どうじゃ？全身が鋭くなる感覚は…？ふふっ。",
+              "zh-Hans": "如何，全身感官都紧绷起来的感觉……？呵呵。",
+              "zh-Hant": "如何，全身感官緊繃起來的滋味……？呵呵。",
+              "th": "เป็นอย่างไรบ้าง ความรู้สึกที่ประสาทสัมผัสทั่วร่างตื่นตัวขึ้นมาแบบนี้น่ะ...? หึหึ",
+              "es": "¿Qué te parece esta sensación de tener todos los sentidos a flor de piel...? Juju."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_2"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 19,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 21,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "끝에서부터 차근차근... 너의 감각을 일깨워주마.",
+            "texts": {
+              "en": "From the very tip, step by step... I shall awaken your senses.",
+              "ja": "端から端まで少しずつ…。お前さんの感覚を研ぎ澄ませてやろう。",
+              "zh-Hans": "就从末端开始一步步……唤醒你的感官吧。",
+              "zh-Hant": "就從最前端一步步……喚醒你的感官吧。",
+              "th": "ข้าจะค่อยๆ ปลุกประสาทสัมผัสของเจ้า... ทีละนิดตั้งแต่ปลายสุดเลยนะ",
+              "es": "Desde la punta y poco a poco... iré despertando tus sentidos."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_3"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 22,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 24,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그렇게 조급해하지 말거라. 금방 끝나버리면 재미없지 않느냐?",
+            "texts": {
+              "en": "Do not be so impatient. What fun would it be if it ended right away?",
+              "ja": "そんなに焦るでない。すぐ終わるとつまらないじゃろう？",
+              "zh-Hans": "别那么心急嘛。太快结束的话，岂不是就无趣了？",
+              "zh-Hant": "別那麼心急，要是太快結束豈不是無趣？",
+              "th": "อย่ารีบร้อนไปเลยน่า ถ้าจบลงเร็วนักมันจะไม่สนุกเอาได้มิใช่รึ?",
+              "es": "No te impacientes tanto. Si termina enseguida, no tendrá gracia, ¿no crees?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_4"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 26,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_02"
+            },
+            "clip": "asmr/ani_02"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 27,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "11f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 29,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "감도를 조금씩... 올려주마. 네가 즐길 수 있게끔...",
+            "texts": {
+              "en": "I shall raise your sensitivity... little by little. So that you may savor it...",
+              "ja": "感度を少しずつ…上げてやろう。お前さんが楽しめるように…。",
+              "zh-Hans": "我会一点点……提高你的敏感度，好让你能尽情享受……",
+              "zh-Hant": "我會一點一點……提高你的敏感度，好讓你盡情享受……",
+              "th": "ข้าจะค่อยๆ เพิ่ม... ความไวต่อสัมผัสให้ทีละนิด เพื่อให้เจ้าได้รื่นรมย์อย่างเต็มที่อย่างไรเล่า...",
+              "es": "Iré subiendo la sensibilidad... poco a poco. Para que puedas disfrutarlo..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_5"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 32,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_02",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_02"
+          },
+          {
+            "class": "PrintText",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "내 손길이... 마음에 좀 드느냐?",
+            "texts": {
+              "en": "Is my touch... to your liking?",
+              "ja": "我の手つきは…気に入ったか？",
+              "zh-Hans": "我的手法……还合你心意吗？",
+              "zh-Hant": "我的手法……還合你的意嗎？",
+              "th": "สัมผัสจากมือข้า... ถูกใจเจ้าบ้างหรือไม่?",
+              "es": "¿Te agradan... mis caricias?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_6"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 35,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "31f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "버티거라, 벗아. 이 몸은 아직 시작도 안했으니...",
+            "texts": {
+              "en": "Hold on tight, my friend. For I have not even begun yet...",
+              "ja": "耐えよ、友よ。我はまだ始めてもいないからのう…。",
+              "zh-Hans": "撑住啊，挚友。本姑娘可还没正式开始呢……",
+              "zh-Hant": "撐住啊，吾友。本姑娘可還沒開始呢……",
+              "th": "อดทนไว้สิ สหาย ตัวข้ายังไม่ได้เริ่มเอาจริงเลยนะ...",
+              "es": "Resiste, camarada. Que yo aún ni siquiera he empezado..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_7"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 38,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 40,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "쿡 쿡, 숨기려 해도... 몸은 솔직하단다...♡",
+            "texts": {
+              "en": "Chuckle, even if you try to hide it... your body is honest...♡",
+              "ja": "くっ、くっ。隠そうとしても…体は正直じゃ…♡",
+              "zh-Hans": "呵呵，就算想掩饰……身体也是很诚实的哦……♡",
+              "zh-Hant": "呵呵，就算想隱瞞……身體倒是很誠實呢……♡",
+              "th": "หึหึ ต่อให้พยายามปิดบัง... แต่ร่างกายของเจ้าก็ซื่อตรงนักนะ...♡",
+              "es": "Juju, por mucho que intentes ocultarlo..., el cuerpo es sincero...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_8"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 43,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_03"
+            },
+            "clip": "asmr/ani_03"
+          },
+          {
+            "class": "PrintText",
+            "line": 45,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗, 나만 즐겨서는 재미 없겠지. 함께...♡ 즐겨보자꾸나.",
+            "texts": {
+              "en": "Hehe, it would be no fun if I were the only one enjoying myself. Let us...♡ enjoy this together.",
+              "ja": "ふふ、我ばかり楽しんではつまらん。共に…楽しもうぞ…。",
+              "zh-Hans": "呵呵，光我一个人享受就太无趣了。我们一起……♡好好享受吧。",
+              "zh-Hant": "呵呵，只有我一個人樂在其中就太無趣了。我們一起……♡好好享受吧。",
+              "th": "หึหึ ข้าสนุกอยู่ฝ่ายเดียวคงไม่น่าภิรมย์เท่าไหร่ เรามา...♡ รื่นรมย์ไปด้วยกันเถิดนะ",
+              "es": "Juju, no tendría gracia si solo disfrutara yo. Disfrutemos...♡ juntos."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_9"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 48,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_03",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_03"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 49,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "12f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 51,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "눈을 떼지 못하는구나. 이게 그렇게나 좋더냐?",
+            "texts": {
+              "en": "You cannot take your eyes off me. Do you like this that much?",
+              "ja": "目が離せぬのか。これがそんなに良いのか？",
+              "zh-Hans": "眼睛都挪不开了呢。就这么喜欢这个吗？",
+              "zh-Hant": "目不轉睛呢，你就這麼喜歡這個嗎？",
+              "th": "ละสายตาไม่ได้เลยสินะ เจ้าชอบสิ่งนี้ถึงเพียงนั้นเชียวรึ?",
+              "es": "No puedes apartar la vista. ¿Tanto te gusta esto?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_10"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 52,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "24f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 54,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이게 네 약점이로구나? 자아, 자아~♡",
+            "texts": {
+              "en": "So this is your weak spot, is it? There, there♡",
+              "ja": "これがお前さんの弱点か。さあ、さあ～♡",
+              "zh-Hans": "原来这就是你的弱点啊？来吧，来吧～♡",
+              "zh-Hant": "原來這就是你的弱點啊？來吧、來吧～♡",
+              "th": "นี่คือจุดอ่อนของเจ้าสินะ? เอาล่ะ มาสิ~♡",
+              "es": "Así que este es tu punto débil, ¿eh? Vamos, vamos...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_11"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 55,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "21f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 57,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후우...♡ 네 시선... 실로 뜨겁구나♡",
+            "texts": {
+              "en": "Phew...♡ Your gaze... is truly burning hot♡",
+              "ja": "ふう…。お前さんの視線…実に熱いのう…。",
+              "zh-Hans": "呼……♡你的视线……真是灼热啊♡",
+              "zh-Hant": "呼……♡你的視線……真是熾熱啊♡",
+              "th": "ฟู่...♡ สายตาของเจ้า... ช่างร้อนแรงเสียจริง♡",
+              "es": "Fuuu...♡ Tu mirada... es verdaderamente ardiente♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_12"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 59,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 61,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Wait": "true",
+              "Color": "white",
+              "Direction": "Out"
+            }
+          },
+          {
+            "class": "HideAllActors",
+            "line": 63,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "AffectionEndingCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 67,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "view": {
+        "script": "ch0069_05_affection_view",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "affection"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_044_lp",
+              "IntroBgmPath": "bgm_romance_044_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "true",
+              "Duration": "0",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/enter"
+            },
+            "clip": "basic/enter"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 5,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/basic",
+              "Track": "9",
+              "Wait": "false",
+              "Loop": "true"
+            },
+            "clip": "basic/basic"
+          },
+          {
+            "class": "ShowUI",
+            "line": 6,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "DesireAffectionViewMenuPanel",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 8,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_01"
+            },
+            "clip": "asmr/ani_01"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 9,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "8f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 11,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "자아, 시작하자꾸나. 너와 나의 승부를.",
+            "texts": {
+              "en": "Now then, let us begin our match.",
+              "ja": "さあ、始めようぞ。お前さんと我の勝負を。",
+              "zh-Hans": "来吧，开始你我之间的较量吧。",
+              "zh-Hant": "來，開始吧，你我之間的勝負。",
+              "th": "เอาล่ะ มาเริ่มกันเถอะ การดวลระหว่างเจ้ากับข้าน่ะ",
+              "es": "Adelante, demos comienzo a nuestro duelo."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_1"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 14,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_01"
+            },
+            "clip": "asmr/loop_01"
+          },
+          {
+            "class": "PrintText",
+            "line": 16,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "어떠냐, 전신의 감각이 곤두서는 느낌은...? 후훗.",
+            "texts": {
+              "en": "How does it feel, having every nerve in your body on edge...? Hehe.",
+              "ja": "どうじゃ？全身が鋭くなる感覚は…？ふふっ。",
+              "zh-Hans": "如何，全身感官都紧绷起来的感觉……？呵呵。",
+              "zh-Hant": "如何，全身感官緊繃起來的滋味……？呵呵。",
+              "th": "เป็นอย่างไรบ้าง ความรู้สึกที่ประสาทสัมผัสทั่วร่างตื่นตัวขึ้นมาแบบนี้น่ะ...? หึหึ",
+              "es": "¿Qué te parece esta sensación de tener todos los sentidos a flor de piel...? Juju."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_2"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 17,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 19,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "끝에서부터 차근차근... 너의 감각을 일깨워주마.",
+            "texts": {
+              "en": "From the very tip, step by step... I shall awaken your senses.",
+              "ja": "端から端まで少しずつ…。お前さんの感覚を研ぎ澄ませてやろう。",
+              "zh-Hans": "就从末端开始一步步……唤醒你的感官吧。",
+              "zh-Hant": "就從最前端一步步……喚醒你的感官吧。",
+              "th": "ข้าจะค่อยๆ ปลุกประสาทสัมผัสของเจ้า... ทีละนิดตั้งแต่ปลายสุดเลยนะ",
+              "es": "Desde la punta y poco a poco... iré despertando tus sentidos."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_3"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 20,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 22,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그렇게 조급해하지 말거라. 금방 끝나버리면 재미없지 않느냐?",
+            "texts": {
+              "en": "Do not be so impatient. What fun would it be if it ended right away?",
+              "ja": "そんなに焦るでない。すぐ終わるとつまらないじゃろう？",
+              "zh-Hans": "别那么心急嘛。太快结束的话，岂不是就无趣了？",
+              "zh-Hant": "別那麼心急，要是太快結束豈不是無趣？",
+              "th": "อย่ารีบร้อนไปเลยน่า ถ้าจบลงเร็วนักมันจะไม่สนุกเอาได้มิใช่รึ?",
+              "es": "No te impacientes tanto. Si termina enseguida, no tendrá gracia, ¿no crees?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_4"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 24,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_02"
+            },
+            "clip": "asmr/ani_02"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 25,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "11f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 27,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "감도를 조금씩... 올려주마. 네가 즐길 수 있게끔...",
+            "texts": {
+              "en": "I shall raise your sensitivity... little by little. So that you may savor it...",
+              "ja": "感度を少しずつ…上げてやろう。お前さんが楽しめるように…。",
+              "zh-Hans": "我会一点点……提高你的敏感度，好让你能尽情享受……",
+              "zh-Hant": "我會一點一點……提高你的敏感度，好讓你盡情享受……",
+              "th": "ข้าจะค่อยๆ เพิ่ม... ความไวต่อสัมผัสให้ทีละนิด เพื่อให้เจ้าได้รื่นรมย์อย่างเต็มที่อย่างไรเล่า...",
+              "es": "Iré subiendo la sensibilidad... poco a poco. Para que puedas disfrutarlo..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_5"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_02",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_02"
+          },
+          {
+            "class": "PrintText",
+            "line": 32,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "내 손길이... 마음에 좀 드느냐?",
+            "texts": {
+              "en": "Is my touch... to your liking?",
+              "ja": "我の手つきは…気に入ったか？",
+              "zh-Hans": "我的手法……还合你心意吗？",
+              "zh-Hant": "我的手法……還合你的意嗎？",
+              "th": "สัมผัสจากมือข้า... ถูกใจเจ้าบ้างหรือไม่?",
+              "es": "¿Te agradan... mis caricias?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_6"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 33,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "31f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 35,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "버티거라, 벗아. 이 몸은 아직 시작도 안했으니...",
+            "texts": {
+              "en": "Hold on tight, my friend. For I have not even begun yet...",
+              "ja": "耐えよ、友よ。我はまだ始めてもいないからのう…。",
+              "zh-Hans": "撑住啊，挚友。本姑娘可还没正式开始呢……",
+              "zh-Hant": "撐住啊，吾友。本姑娘可還沒開始呢……",
+              "th": "อดทนไว้สิ สหาย ตัวข้ายังไม่ได้เริ่มเอาจริงเลยนะ...",
+              "es": "Resiste, camarada. Que yo aún ni siquiera he empezado..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_7"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 36,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 38,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "쿡 쿡, 숨기려 해도... 몸은 솔직하단다...♡",
+            "texts": {
+              "en": "Chuckle, even if you try to hide it... your body is honest...♡",
+              "ja": "くっ、くっ。隠そうとしても…体は正直じゃ…♡",
+              "zh-Hans": "呵呵，就算想掩饰……身体也是很诚实的哦……♡",
+              "zh-Hant": "呵呵，就算想隱瞞……身體倒是很誠實呢……♡",
+              "th": "หึหึ ต่อให้พยายามปิดบัง... แต่ร่างกายของเจ้าก็ซื่อตรงนักนะ...♡",
+              "es": "Juju, por mucho que intentes ocultarlo..., el cuerpo es sincero...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_8"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 41,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_03"
+            },
+            "clip": "asmr/ani_03"
+          },
+          {
+            "class": "PrintText",
+            "line": 43,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗, 나만 즐겨서는 재미 없겠지. 함께...♡ 즐겨보자꾸나.",
+            "texts": {
+              "en": "Hehe, it would be no fun if I were the only one enjoying myself. Let us...♡ enjoy this together.",
+              "ja": "ふふ、我ばかり楽しんではつまらん。共に…楽しもうぞ…。",
+              "zh-Hans": "呵呵，光我一个人享受就太无趣了。我们一起……♡好好享受吧。",
+              "zh-Hant": "呵呵，只有我一個人樂在其中就太無趣了。我們一起……♡好好享受吧。",
+              "th": "หึหึ ข้าสนุกอยู่ฝ่ายเดียวคงไม่น่าภิรมย์เท่าไหร่ เรามา...♡ รื่นรมย์ไปด้วยกันเถิดนะ",
+              "es": "Juju, no tendría gracia si solo disfrutara yo. Disfrutemos...♡ juntos."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_9"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 46,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_03",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_03"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 47,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "12f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 49,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "눈을 떼지 못하는구나. 이게 그렇게나 좋더냐?",
+            "texts": {
+              "en": "You cannot take your eyes off me. Do you like this that much?",
+              "ja": "目が離せぬのか。これがそんなに良いのか？",
+              "zh-Hans": "眼睛都挪不开了呢。就这么喜欢这个吗？",
+              "zh-Hant": "目不轉睛呢，你就這麼喜歡這個嗎？",
+              "th": "ละสายตาไม่ได้เลยสินะ เจ้าชอบสิ่งนี้ถึงเพียงนั้นเชียวรึ?",
+              "es": "No puedes apartar la vista. ¿Tanto te gusta esto?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_10"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 50,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "24f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 52,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이게 네 약점이로구나? 자아, 자아~♡",
+            "texts": {
+              "en": "So this is your weak spot, is it? There, there♡",
+              "ja": "これがお前さんの弱点か。さあ、さあ～♡",
+              "zh-Hans": "原来这就是你的弱点啊？来吧，来吧～♡",
+              "zh-Hant": "原來這就是你的弱點啊？來吧、來吧～♡",
+              "th": "นี่คือจุดอ่อนของเจ้าสินะ? เอาล่ะ มาสิ~♡",
+              "es": "Así que este es tu punto débil, ¿eh? Vamos, vamos...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_11"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 53,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "21f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 55,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후우...♡ 네 시선... 실로 뜨겁구나♡",
+            "texts": {
+              "en": "Phew...♡ Your gaze... is truly burning hot♡",
+              "ja": "ふう…。お前さんの視線…実に熱いのう…。",
+              "zh-Hans": "呼……♡你的视线……真是灼热啊♡",
+              "zh-Hant": "呼……♡你的視線……真是熾熱啊♡",
+              "th": "ฟู่...♡ สายตาของเจ้า... ช่างร้อนแรงเสียจริง♡",
+              "es": "Fuuu...♡ Tu mirada... es verdaderamente ardiente♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_12"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 58,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_04"
+            },
+            "clip": "asmr/ani_04"
+          },
+          {
+            "class": "PrintText",
+            "line": 60,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "으응♡? 뭐냐, 그 표정은. 그런 주제에 나보고 허접이니 놀렸단 말이냐?",
+            "texts": {
+              "en": "Mmm♡? What is that look on your face? You look like that, and yet you had the nerve to tease me for being a pushover?",
+              "ja": "ううん？なんじゃ、その表情は。これも耐えられないやつが、我に向かって雑魚とか言っておったのか？",
+              "zh-Hans": "唔嗯♡？你那是什么表情。自己都成这样了，之前竟还敢取笑我是个菜鸟吗？",
+              "zh-Hant": "唔嗯♡？你那是什麼表情，都那副模樣了，還敢嘲笑我是遜咖嗎？",
+              "th": "อื้อ♡? สีหน้าแบบนั้นมันอะไรกัน ทั้งที่เป็นเสียเองแท้ๆ แต่กลับกล้ามาล้อว่าข้าอ่อนหัดอย่างนั้นรึ?",
+              "es": "¿Mmm♡? ¿A qué viene esa cara? ¿Estando así te atrevías a burlarte de mí llamándome floja?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_13"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 63,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_04",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_04"
+          },
+          {
+            "class": "PrintText",
+            "line": 65,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하아~♡ 이런 재미있는걸, 너 혼자만 즐겼단 말이지...",
+            "texts": {
+              "en": "Haaah♡ To think you were keeping something this fun all to yourself...",
+              "ja": "はあ…。こんな面白いこと、お前さん一人で楽しみおって…。",
+              "zh-Hans": "哈啊～♡这么有趣的事，你之前居然一个人独享啊……",
+              "zh-Hant": "哈啊～♡這麼有趣的事，之前居然只有你一個人獨享……",
+              "th": "ฮ๊า~♡ เรื่องน่าสนุกเช่นนี้ เจ้าแอบรื่นรมย์อยู่คนเดียวมาตลอดเลยสินะ...",
+              "es": "Aaah...♡ Con lo divertido que es esto, y tú disfrutándolo a solas..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_14"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 66,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 68,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "멈추지 않을거다. 마지막까지 괴롭혀주마. 후후훗...♡",
+            "texts": {
+              "en": "I am not going to stop. I shall tease you until the very end. Hehehe...♡",
+              "ja": "止まらんぞ。最後までいじめてやろう。ふふふっ…♡",
+              "zh-Hans": "我可不会停手。我要一直折磨你到最后。呵呵呵……♡",
+              "zh-Hant": "我是不會停下的，就這麼折磨你到最後一刻吧。呵呵呵……♡",
+              "th": "ข้าไม่หยุดหรอกนะ จะกลั่นแกล้งเจ้าไปจนถึงที่สุดเลยล่ะ หึหึหึ...♡",
+              "es": "No pienso detenerme. Te atormentaré hasta el final. Jujuju...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_15"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 69,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 71,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "느껴지느냐...? 너와 나의 살이 맞닿는 것이...",
+            "texts": {
+              "en": "Can you feel it...? Our skin pressing together...",
+              "ja": "感じるか…？お前さんと我の肌が触れ合っておる…。",
+              "zh-Hans": "感受到了吗……？你我的肌肤正紧紧贴在一起……",
+              "zh-Hant": "感受到了嗎……？你我肌膚相親的觸感……",
+              "th": "รู้สึกหรือไม่...? ถึงผิวกายของเจ้าและข้าที่แนบชิดกันอยู่น่ะ...",
+              "es": "¿Lo sientes...? El roce de tu piel contra la mía..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_16"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 72,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "22f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 74,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "감각을 집중하거라... 손 끝에서 발 끝까지 모두.",
+            "texts": {
+              "en": "Focus your senses... from the tips of your fingers to the tips of your toes.",
+              "ja": "感覚を研ぎ澄ませるのじゃ…。頭のてっぺんから足の指先まで全部…。",
+              "zh-Hans": "集中你的感官吧……从指尖到脚尖，每一处都不要放过。",
+              "zh-Hant": "集中感官吧……從指尖到腳尖，每一寸都別放過。",
+              "th": "จงรวบรวมสมาธิไปที่ประสาทสัมผัสเสีย... ตั้งแต่ปลายนิ้วมือจรดปลายเท้าทั้งหมดเลย",
+              "es": "Concentra tus sentidos... desde la punta de las manos hasta la de los pies."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_17"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 77,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_05"
+            },
+            "clip": "asmr/ani_05"
+          },
+          {
+            "class": "PrintText",
+            "line": 79,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아앙♡! 그 상태에서 반격이라니... 제법이구나.",
+            "texts": {
+              "en": "Aaah♡! Counterattacking in a state like that... You are quite something.",
+              "ja": "ああん♡！そこから反撃するとは…なかなかやるのう。",
+              "zh-Hans": "啊昂♡！在这种状态下还能反击……真有两下子呢。",
+              "zh-Hant": "啊啊♡！居然在這種狀態下反擊……挺有一套的嘛。",
+              "th": "อ๊าง♡! ทั้งที่อยู่ในสภาพนั้นแต่กลับโต้กลับได้เนี่ย... ไม่เบาเลยนี่นา",
+              "es": "¡Aaah♡! Contraatacar en ese estado... No está nada mal."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_18"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 82,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_05",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_05"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 83,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 85,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후후, 그래야 내 벗이지. 으음♡ 나쁘지 않구나.",
+            "texts": {
+              "en": "Hehe, that is my friend for you. Mmm♡ Not bad at all.",
+              "ja": "ふふ、それでこそ我の友よ。うむ～悪くないのう。",
+              "zh-Hans": "呵呵，不愧是我的挚友。唔嗯♡还不赖嘛。",
+              "zh-Hant": "呵呵，這才像我的摯友。唔嗯♡真不錯呢。",
+              "th": "หึหึ ต้องแบบนี้สิถึงจะสมเป็นสหายของข้า อื้อ♡ ไม่เลวเลยทีเดียว",
+              "es": "Juju, así se hace, camarada. Mmm♡ No está nada mal."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_19"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 86,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "19f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 88,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "네가 느끼는 것을, 나도 느낄 수 있단다...♡",
+            "texts": {
+              "en": "What you feel, I can feel as well...♡",
+              "ja": "お前さんが感じている感覚は、我も感じられるのじゃ…。",
+              "zh-Hans": "你所感受到的，我也能感受得到哦……♡",
+              "zh-Hant": "你感受到的，我也能感受得到喔……♡",
+              "th": "สิ่งที่เจ้ารู้สึก ข้าเองก็สัมผัสได้เช่นกันนะ...♡",
+              "es": "Lo que tú sientes, también puedo sentirlo yo...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_20"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 89,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "25f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 91,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "어디... 네가 좋을 대로 한 번 해보거라. 나도 즐겨봐야 하지 않겠느냐...?",
+            "texts": {
+              "en": "Go on... try doing as you please. Should I not get to enjoy myself too...?",
+              "ja": "どれ…お前さんの好きにするが良い。我も一度は楽しまねばのう…？",
+              "zh-Hans": "来……只管按你喜欢的来试试吧。我也得好好享受一下才行吧……？",
+              "zh-Hant": "來……隨你喜歡試試看吧，總得讓我也享受一下吧……？",
+              "th": "ไหน... ลองทำตามใจเจ้าดูสักตั้งสิ ข้าเองก็ควรจะได้รื่นรมย์ดูบ้างมิใช่รึ...?",
+              "es": "Veamos... Haz lo que te plazca. ¿Acaso no debería disfrutar yo también...?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_21"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 94,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_06"
+            },
+            "clip": "asmr/ani_06"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 95,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "10f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 97,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "승부는 이제부터 시작이란다... 벌써 항복하는건 아니겠지?",
+            "texts": {
+              "en": "Our match is only just beginning... Surely you are not surrendering already?",
+              "ja": "勝負はこれからじゃ…。もう降参するつもりじゃあるまいのう？",
+              "zh-Hans": "胜负现在才要开始呢……你该不会已经要投降了吧？",
+              "zh-Hant": "勝負現在才要開始呢……你該不會已經要投降了吧？",
+              "th": "การดวลน่ะเพิ่งจะเริ่มต้นต่อจากนี้ต่างหากเล่า... คงไม่ได้จะยอมแพ้เสียตั้งแต่ตอนนี้หรอกนะ?",
+              "es": "El duelo no ha hecho más que empezar... No irás a rendirte ya, ¿verdad?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_22"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 100,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/loop_06",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_06"
+          },
+          {
+            "class": "PrintText",
+            "line": 102,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아아...♡ 네 뜨거운 숨결이... 느껴지는구나...",
+            "texts": {
+              "en": "Aaah...♡ I can feel... your hot breath...",
+              "ja": "ああ…♡お前さんの熱い吐息を…感じるのじゃ…。",
+              "zh-Hans": "啊啊……♡能感受到……你灼热的鼻息呢……",
+              "zh-Hant": "啊啊……♡感受到……你滾燙的鼻息了……",
+              "th": "อ๊า...♡ สัมผัสได้ถึง... ลมหายใจอันร้อนผ่าวของเจ้าเลย...",
+              "es": "Aaah...♡ Puedo sentir... tu cálido aliento..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_23"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 103,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "30f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 105,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "다른 이들은 모르겠지... 나도... 너도... 이런 모습으로 서로 얽혀 있을 거라고는...♡",
+            "texts": {
+              "en": "No one else could possibly know... that you and I... would be entwined like this...♡",
+              "ja": "他の者は知らぬだろうな…。我らがこんな姿で絡み合っておるとは…。",
+              "zh-Hans": "其他人肯定想不到吧……无论是你……还是我……会以这副模样彼此交缠在一起……♡",
+              "zh-Hant": "其他人肯定想不到吧……我也好……你也好……會像這樣交纏在一起……♡",
+              "th": "คนอื่นคงไม่รู้สินะ... ว่าทั้งข้า... และเจ้า... จะกำลังพัวพันกันอยู่ในสภาพเช่นนี้น่ะ...♡",
+              "es": "Los demás jamás imaginarían... que tú y yo... estaríamos entrelazados de esta guisa...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_24"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 106,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "18f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 108,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아직도 이렇게나 딱딱하다니, 내 손길이 부족한게냐? 아니면... 후후...♡",
+            "texts": {
+              "en": "Still this hard? Is my touch not enough for you? Or perhaps... Hehe...♡",
+              "ja": "まだこんなに固くしおって、我の手では不足だったか？それとも…ふふ…。",
+              "zh-Hans": "居然还这么硬邦邦的，是我的抚摸还不够吗？还是说……呵呵……♡",
+              "zh-Hant": "居然還這麼硬挺，是我的手法還不夠嗎？還是說……呵呵……♡",
+              "th": "ยังแข็งขืนอยู่ถึงเพียงนี้เชียวรึ สัมผัสจากมือข้ายังไม่พออีกรึไง? หรือว่า... หึหึ...♡",
+              "es": "¿Sigues así de duro? ¿Acaso no te basta con mis manos? ¿O es que...? Juju...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_25"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 109,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "20f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 111,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "천천히... 충분히 느끼도록 하자꾸나...♡ 이 감각을...",
+            "texts": {
+              "en": "Slowly... let us savor it to the fullest...♡ This sensation...",
+              "ja": "ゆっくり…存分に感じようではないか…。この感覚を…。",
+              "zh-Hans": "慢慢地……充分去感受吧……♡这种感觉……",
+              "zh-Hant": "慢慢地……充分感受吧……♡這份觸感……",
+              "th": "ค่อยๆ... ดื่มด่ำให้เต็มที่กันเถิดนะ...♡ กับความรู้สึกนี้น่ะ...",
+              "es": "Despacio... Sintamos a fondo...♡ esta sensación..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_26"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 114,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.asmr/ani_07"
+            },
+            "clip": "asmr/ani_07"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 115,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "11f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 117,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "벗아, 밤도... 축제도... 아직 길단다. 그러니... 충분히 즐겨보자꾸나.",
+            "texts": {
+              "en": "My friend, the night... and the festival... are still young. So... let us enjoy ourselves to the fullest.",
+              "ja": "友よ、夜も…祭りも…まだ続いておる。じゃから…ゆっくりと楽しもうぞ…♡",
+              "zh-Hans": "挚友啊，夜色……还有庆典……都还很漫长呢。所以……尽情享受吧。",
+              "zh-Hant": "吾友，夜晚……還有祭典……都還很漫長呢。所以……我們就盡情享受吧。",
+              "th": "สหายเอ๋ย ทั้งค่ำคืนนี้... และงานเทศกาล... ยังอีกยาวไกลนัก เพราะฉะนั้น... เรามารื่นรมย์กันให้เต็มอิ่มเถิดนะ",
+              "es": "Camarada, tanto la noche... como el festival... aún son largos. Así que... disfrutemos hasta saciarnos."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_affection_view_27"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 119,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 121,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Wait": "true",
+              "Color": "white",
+              "Direction": "Out"
+            }
+          },
+          {
+            "class": "HideAllActors",
+            "line": 123,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "AffectionEndingCommand",
+            "line": 125,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 127,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
+      }
+    },
     "af_ch0075": {
       "story": {
         "script": "ch0075_03_affection_story",
@@ -81503,6 +82983,2511 @@
           {
             "class": "Stop",
             "line": 156,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
+      }
+    },
+    "ds_ch0069": {
+      "story": {
+        "script": "ch0069_03_desire_story",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "desire"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_043_lp",
+              "IntroBgmPath": "bgm_romance_043_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Unskippable"
+            }
+          },
+          {
+            "class": "NaniSummary",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/enter"
+            },
+            "clip": "10_basic/10_enter"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 6,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 8,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 10,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 12,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 14,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A2"
+            },
+            "clip": "10_reaction/10_A2"
+          },
+          {
+            "class": "PrintText",
+            "line": 15,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "모, 몸이... 점점 뜨거워져...",
+            "texts": {
+              "en": "M-My body... is getting hotter and hotter...",
+              "ja": "か、体が…だんだん熱くなっていく…。",
+              "zh-Hans": "身、身体……越来越热了……",
+              "zh-Hant": "身、身體……越來越熱了……",
+              "th": "ระ ร่างกาย... มันค่อยๆ ร้อนขึ้นเรื่อยๆ...",
+              "es": "M-mi cuerpo... se calienta cada vez más..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_1"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 16,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 20,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "어디보자... '부작용으로 감각이 향상될 수 있습니다.'",
+            "texts": {
+              "en": "Let's see here... \"As a side effect, sensitivity may be heightened.\"",
+              "ja": "どれどれ…。「副作用により感覚が鋭くなる可能性があります」か。",
+              "zh-Hans": "我看看……“副作用可能会导致感官敏锐度提升。”",
+              "zh-Hant": "我看看……「副作用可能會導致感官敏銳度提升。」",
+              "th": "ไหนดูซิ... 'ผลข้างเคียงอาจทำให้ประสาทสัมผัสไวขึ้นได้'",
+              "es": "A ver... «Como efecto secundario, la sensibilidad puede aumentar»."
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 21,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 22,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 24,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A1"
+            },
+            "clip": "10_reaction/10_A1"
+          },
+          {
+            "class": "PrintText",
+            "line": 25,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아앙...! 이, 이 감각은 대체...?",
+            "texts": {
+              "en": "Ahn...! W-What on earth is this sensation...?",
+              "ja": "ああん…！こ、この感覚は一体…？",
+              "zh-Hans": "啊昂……！这、这种感觉到底是……？",
+              "zh-Hant": "啊嗯……！這、這種感覺到底是……？",
+              "th": "อ๊าง...! คะ ความรู้สึกแบบนี้มันอะไรกัน...?",
+              "es": "¡Aah...! ¿Q-qué es esta sensación...?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_2"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 26,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 28,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "사용법... '부적을 활성화 하고 원하는 부위를 만져주세요'...",
+            "texts": {
+              "en": "Instructions... \"Activate the talisman and touch the desired area\"...",
+              "ja": "使用方法は…。「札を貼り、好きな部位に触れてください」…。",
+              "zh-Hans": "使用方法……“请激活符咒，并触碰想要调节的部位”……",
+              "zh-Hant": "使用方法……「請啟動符咒並觸摸想要的部位」……",
+              "th": "วิธีใช้... 'กรุณาเปิดใช้งานยันต์แล้วสัมผัสบริเวณที่ต้องการ'...",
+              "es": "Modo de empleo... «Active el talismán y toque la zona deseada»..."
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 31,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 32,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 34,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 36,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A1"
+            },
+            "clip": "10_reaction/10_A1"
+          },
+          {
+            "class": "PrintText",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흣!? 나, 난데없이 뿔이라니...",
+            "texts": {
+              "en": "Hngh!? M-My horns, out of nowhere...",
+              "ja": "くっ！？い、いきなり角に触れるとは…。",
+              "zh-Hans": "唔！？怎、怎么突然摸角……",
+              "zh-Hant": "唔！？怎、怎麼突然摸角……",
+              "th": "ฮึ่ก!? จะ จู่ๆ มาจับเขาแบบนี้...",
+              "es": "¡¿Ngh?! ¿L-los cuernos así de repente...?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_3"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 38,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 40,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 42,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "거, 거긴… 예민한 곳이란다, 벗아.",
+            "texts": {
+              "en": "Th-That's... a sensitive spot, my friend.",
+              "ja": "そ、そこは…敏感なところなんじゃ、友よ！",
+              "zh-Hans": "那、那里……可是很敏感的地方啊，挚友。",
+              "zh-Hant": "那、那裡……很敏感的啊，摯友。",
+              "th": "ตะ ตรงนั้นมัน... เป็นจุดที่ไวต่อความรู้สึกนะ สหายข้า",
+              "es": "A-ahí... es una zona sensible, amigo mío."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_4"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 43,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 45,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 47,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이렇게 된 이상 전신의 감각을 개발해 보자고. 그럼 네 주체 못할 힘도 좀 절제가 될 것 아냐?",
+            "texts": {
+              "en": "Since it's come to this, let's develop the sensitivity across your whole body. That should help you keep that unruly strength of yours in check, right?",
+              "ja": "こうなったからには全身の感覚を開発してみようぜ。ならお前のその馬鹿力もなんとか抑えられるんじゃねぇか？",
+              "zh-Hans": "既然如此，干脆把全身的感官都开发一遍吧。这样一来，你那失控的力量应该也能收敛一点吧？",
+              "zh-Hant": "既然都這樣了，乾脆來開發全身的感官吧。這樣一來，妳那無法控制的力量應該也能收斂一點吧？",
+              "th": "ไหนๆ ก็มาถึงขั้นนี้แล้ว เรามาปลุกเร้าประสาทสัมผัสทั่วทั้งตัวกันเลยดีกว่า แบบนั้นพลังที่ควบคุมไม่ได้ของเธอก็จะได้เพลาๆ ลงบ้างไม่ใช่เหรอ?",
+              "es": "Llegados a este punto, desarrollemos la sensibilidad de todo tu cuerpo. Así también podrás controlar un poco esa fuerza desbocada, ¿no crees?"
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 48,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 49,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 51,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A2"
+            },
+            "clip": "10_reaction/10_A2"
+          },
+          {
+            "class": "PrintText",
+            "line": 52,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아앙♡! 벗아… 혹시 즐기고 있는 것이냐?",
+            "texts": {
+              "en": "Ahn♡! My friend... Are you perhaps enjoying this?",
+              "ja": "ああん♡友よ…。もしかして、楽しんでおるのか？",
+              "zh-Hans": "啊昂♡！挚友……你该不会是在乐在其中吧？",
+              "zh-Hant": "啊嗯♡！摯友啊……你該不會是在樂在其中吧？",
+              "th": "อ๊าง♡! สหายเอ๋ย... นี่เจ้ากำลังสนุกอยู่ใช่ไหมเนี่ย?",
+              "es": "¡Aah!♡ Amigo mío... ¿Acaso te estás divirtiendo con esto?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_5"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 53,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 55,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "당연하지!",
+            "texts": {
+              "en": "Obviously!",
+              "ja": "そりゃあな。",
+              "zh-Hans": "那当然！",
+              "zh-Hant": "那還用說！",
+              "th": "ก็แน่อยู่แล้วสิ!",
+              "es": "¡Pues claro!"
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 56,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 57,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 59,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A2"
+            },
+            "clip": "10_reaction/10_A2"
+          },
+          {
+            "class": "PrintText",
+            "line": 60,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "으응... 조금만... 조금만 더...",
+            "texts": {
+              "en": "Mmm... A little... just a little more...",
+              "ja": "うぅん…。もっと…もっとじゃ…。",
+              "zh-Hans": "唔嗯……再多……再多来一点……",
+              "zh-Hant": "唔嗯……再……再多摸一點……",
+              "th": "อื้ม... อีกนิด... ขออีกนิดนะ...",
+              "es": "Mmm... Un poco... solo un poco más..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_6"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 61,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 63,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A4"
+            },
+            "clip": "10_reaction/10_A4"
+          },
+          {
+            "class": "PrintText",
+            "line": 66,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하아...♡ 뜨거운게... 올라오는구나.",
+            "texts": {
+              "en": "Haa...♡ Something hot... is welling up inside me.",
+              "ja": "はあ…♡熱いのが…込み上げてくる…。",
+              "zh-Hans": "哈啊……♡有一股热流……涌上来了呢。",
+              "zh-Hant": "哈啊……♡有一股熱流……湧上來了。",
+              "th": "ฮา...♡ ความร้อนมัน... พุ่งพล่านขึ้นมาแล้ว",
+              "es": "Aah...♡ Noto cómo me sube... un calor abrasador."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_7"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 67,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 69,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 71,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A3"
+            },
+            "clip": "10_reaction/10_A3"
+          },
+          {
+            "class": "PrintText",
+            "line": 72,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "네 손길이 이토록 음탕할 줄은 몰랐구나.",
+            "texts": {
+              "en": "I never knew your touch could be so lewd.",
+              "ja": "お前さんの触り方、こんなにすけべだとは…。",
+              "zh-Hans": "没想到你的手法竟如此淫靡。",
+              "zh-Hant": "沒想到你的手法竟如此下流呢。",
+              "th": "ไม่นึกเลยว่าสัมผัสจากมือเจ้าจะลามกได้ถึงเพียงนี้",
+              "es": "No sabía que tus caricias fueran tan lascivas."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_8"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 73,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 75,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 77,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/touch"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "PrintText",
+            "line": 78,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "얼마나 더 나를 희롱할 셈이냐?",
+            "texts": {
+              "en": "Just how much longer do you intend to toy with me?",
+              "ja": "一体、どれほど我を弄ぶつもりじゃ？",
+              "zh-Hans": "你到底还要戏弄我到什么时候？",
+              "zh-Hant": "你到底還想戲弄我到什麼地步？",
+              "th": "คิดจะหยอกเย้าข้าไปถึงเมื่อไหร่กัน?",
+              "es": "¿Hasta cuándo piensas seguir provocándome?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_9"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 79,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 81,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 83,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "뭐, 하루종일 끌려다닌 복수라고 생각해.",
+            "texts": {
+              "en": "Well, just think of it as payback for dragging me around all day.",
+              "ja": "ま、一日中連れ回された仕返しだとでも思ってくれ。",
+              "zh-Hans": "你就当是被你折腾了一整天的报复吧。",
+              "zh-Hant": "這你就當作是我被妳折騰了一整天的報復吧。",
+              "th": "ก็นะ คิดซะว่าเป็นการแก้แค้นที่ลากฉันไปไหนมาไหนด้วยทั้งวันก็แล้วกัน",
+              "es": "Bueno, tómatelo como mi venganza por haberme traído de allá para acá todo el día."
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 84,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 85,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 87,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A2"
+            },
+            "clip": "10_reaction/10_A2"
+          },
+          {
+            "class": "PrintText",
+            "line": 88,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "어차피 처음부터 이럴 생각이었겠지?",
+            "texts": {
+              "en": "You intended to do this from the very beginning anyway, didn't you?",
+              "ja": "どうせ、最初からそのつもりだったんじゃろう？",
+              "zh-Hans": "反正你从一开始就是这么打算的吧？",
+              "zh-Hant": "反正你從一開始就是打這個主意吧？",
+              "th": "ยังไงเจ้าก็ตั้งใจจะทำแบบนี้ตั้งแต่แรกอยู่แล้วไม่ใช่รึ?",
+              "es": "Seguro que tenías pensado hacer esto desde el principio, ¿verdad?"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_10"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 89,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 91,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 93,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A4"
+            },
+            "clip": "10_reaction/10_A4"
+          },
+          {
+            "class": "PrintText",
+            "line": 94,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하읏♡… 정말, 가문의 아이들이 이 모습을 보면 뭐라 말할지…",
+            "texts": {
+              "en": "Haa♡... Truly, what would the children of the clan say if they saw me like this...",
+              "ja": "はうっ…♡まったく、家の子たちがこのざまを見たらなんと申すか…。",
+              "zh-Hans": "哈唔♡……真是的，要是让家族里的孩子们看到我这副模样，还不知道会说什么呢……",
+              "zh-Hant": "哈啊♡……真是的，要是讓家族裡的孩子們看到我這副模樣，真不知她們會說什麼……",
+              "th": "ฮ๊า♡... ให้ตายสิ ถ้าพวกเด็กๆ ในตระกูลมาเห็นสภาพนี้เข้าจะพากันพูดว่าอย่างไรบ้างนะ...",
+              "es": "¡Aah!♡... De verdad, qué dirían las chicas del clan si me vieran así..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_11"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 95,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 97,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 99,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "뭐긴 뭐야, 허접이 그럼 그렇지 라고 하겠지.",
+            "texts": {
+              "en": "What else? They'd say, \"Classic clumsy Dan Xi.\"",
+              "ja": "そりゃあ、雑魚だしそうなると言うんじゃないか？",
+              "zh-Hans": "还能说什么，肯定会说废柴果然就是废柴喽。",
+              "zh-Hant": "還能說什麼，當然是說「遜咖果然就是遜咖」囉。",
+              "th": "จะพูดว่าอะไรล่ะ ก็คงบอกว่ายัยไม่ได้เรื่องก็เป็นซะอย่างนี้แหละมั้ง",
+              "es": "¿Qué van a decir? Pues que no se podía esperar otra cosa de una paquete como tú."
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 100,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "2.5"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 101,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 103,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/touch"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "PrintText",
+            "line": 104,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이, 이정도로 우쭐대다니…",
+            "texts": {
+              "en": "G-Getting so full of yourself over this much...",
+              "ja": "こ、このくらいで勝ち誇りおって…。",
+              "zh-Hans": "才、才这种程度就得意忘形了……",
+              "zh-Hant": "才、才這種程度就得意忘形……",
+              "th": "กะ กะอีแค่นี้ทำเป็นได้ใจไปได้นะ...",
+              "es": "Q-que te crezcas tanto por esto..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_12"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 105,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 107,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A4"
+            },
+            "clip": "10_reaction/10_A4"
+          },
+          {
+            "class": "PrintText",
+            "line": 108,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "거, 거긴…! 더는… 아앙…!",
+            "texts": {
+              "en": "N-Not there...! No more... Ahn...!",
+              "ja": "そ、そこは…！もう…はあん…！",
+              "zh-Hans": "那、那里……！不要再……啊昂……！",
+              "zh-Hant": "那、那裡……！別再……啊嗯……！",
+              "th": "ตะ ตรงนั้น...! ไม่ไหวแล้ว... อ๊าง...!",
+              "es": "¡A-ahí...! Ya no... ¡Aah...!"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_story_13"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 109,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireEndingCommand",
+            "line": 111,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Skip",
+            "line": 113,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Enable": "false"
+            }
+          },
+          {
+            "class": "End",
+            "line": 115,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "view": {
+        "script": "ch0069_03_desire_view",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "desire"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_043_lp",
+              "IntroBgmPath": "bgm_romance_043_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/enter"
+            },
+            "clip": "10_basic/10_enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "DesireAffectionViewMenuPanel",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0",
+              "IdAndAppearance": "DesireAffectionSubtitle",
+              "MakeDefault": "true"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "phase1",
+            "line": 8,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 9,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "x=0"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 11,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 13,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireOnlookTriggerCommand",
+            "line": 15,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/wait",
+              "Id": "danhee_halloween",
+              "Threshold": "10"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.head"
+            },
+            "box": "bd_head"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 19,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A1"
+            },
+            "clip": "10_reaction/10_A1"
+          },
+          {
+            "class": "PrintText",
+            "line": 20,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "부, 부드럽게 해 다오...",
+            "texts": {
+              "en": "B-Be gentle with me...",
+              "ja": "や、優しくしてくれ…。",
+              "zh-Hans": "温、温柔一点……",
+              "zh-Hant": "溫、溫柔一點……",
+              "th": "อะ อ่อนโยนกับข้าหน่อยสิ...",
+              "es": "S-sé suave conmigo..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_1"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 21,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 22,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+15"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 23,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "x=60",
+              "Path": ".phase2"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 26,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.breast_L"
+            },
+            "box": "bd_breast_L"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 27,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A2"
+            },
+            "clip": "10_reaction/10_A2"
+          },
+          {
+            "class": "PrintText",
+            "line": 28,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "으응~♡! 네, 네 손길이...",
+            "texts": {
+              "en": "Mmm♡! Y-Your touch is...",
+              "ja": "ううぅん♡お、お前さんの手が…。",
+              "zh-Hans": "唔嗯～♡！你、你的手……",
+              "zh-Hant": "唔嗯～♡！你、你的手……",
+              "th": "อื้ม~♡! สะ สัมผัสมือของเจ้ามัน...",
+              "es": "¡Mmm!♡ T-tus manos..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_3"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 29,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 30,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+15"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 31,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "x=60",
+              "Path": ".phase2"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 34,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.breast_R"
+            },
+            "box": "bd_breast_R"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 35,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A3"
+            },
+            "clip": "10_reaction/10_A3"
+          },
+          {
+            "class": "PrintText",
+            "line": 36,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "난처하구나, 나를 요구하는 너도. 그걸 즐기는 나도…",
+            "texts": {
+              "en": "What a dilemma—both you demanding me so, and me enjoying it...",
+              "ja": "困ったものじゃ…。我を求めるお前さんも、それを楽しむ我も…。",
+              "zh-Hans": "真叫人难为情啊，无论是索求着我的你，还是沉溺其中的我……",
+              "zh-Hant": "真是傷腦筋啊，不論是索求著我的你，還是沉溺其中的我……",
+              "th": "ลำบากใจเสียจริง ทั้งเจ้าที่เรียกร้องจากข้า และตัวข้าที่ดันเคลิบเคลิ้มไปกับมัน...",
+              "es": "En menuda situación estamos, tanto tú por desearme así como yo por disfrutarlo..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_5"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 38,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+15"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 39,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "x=60",
+              "Path": ".phase2"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 42,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.crotch"
+            },
+            "box": "bd_crotch"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 43,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A4"
+            },
+            "clip": "10_reaction/10_A4"
+          },
+          {
+            "class": "PrintText",
+            "line": 44,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "가, 간지럽구나…",
+            "texts": {
+              "en": "Th-That tickles...",
+              "ja": "く、くすぐったいのじゃ…。",
+              "zh-Hans": "好、好痒啊……",
+              "zh-Hant": "好、好癢啊……",
+              "th": "จะ จั๊กจี้นะ...",
+              "es": "M-me hace cosquillas..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_7"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 45,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 46,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+15"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 47,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "x=60",
+              "Path": ".phase2"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 49,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase2",
+            "line": 52,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 53,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B2_1",
+              "Track": "30",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_B2_1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 54,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B2_2",
+              "Track": "31",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_B2_2"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 55,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y2=false"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 56,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y3=false"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 58,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireOnlookTriggerCommand",
+            "line": 60,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/wait",
+              "Id": "danhee_halloween",
+              "Threshold": "10"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 63,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y2=false",
+              "IdAndBoundingBox": "danhee_halloween.breast_L"
+            },
+            "box": "bd_breast_L"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 64,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B2_2",
+              "Wait": "false",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_B2_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A2_2",
+              "Hold": "true"
+            },
+            "clip": "10_reaction/10_A2_2"
+          },
+          {
+            "class": "PrintText",
+            "line": 66,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아앙♡ 더... 더 해도 괜찮단다.",
+            "texts": {
+              "en": "Ahn♡ More... You may do more.",
+              "ja": "ああん♡も…もっとやっても良いぞ…。",
+              "zh-Hans": "啊昂♡再……再多摸一会儿也无妨哦。",
+              "zh-Hant": "啊嗯♡再……再多摸一點也無妨喔。",
+              "th": "อ๊าง♡ มะ... มากกว่านี้อีกก็ได้นะ",
+              "es": "¡Aah!♡ Más... Puedes seguir un poco más."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_4"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 67,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 68,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y2=true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 69,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y2==true&&y3==true",
+              "Path": ".phase3"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 72,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y3=false",
+              "IdAndBoundingBox": "danhee_halloween.breast_R"
+            },
+            "box": "bd_breast_R"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 73,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B2_1",
+              "Wait": "false",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_B2_1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 74,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A3_2",
+              "Hold": "true"
+            },
+            "clip": "10_reaction/10_A3_2"
+          },
+          {
+            "class": "PrintText",
+            "line": 75,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이게 그렇게 마음에 드느냐? 마음껏 보거라.",
+            "texts": {
+              "en": "Does this please you so much? Feast your eyes to your heart's content.",
+              "ja": "これがそんなに気に入ったのか？好きなだけ見ると良い。",
+              "zh-Hans": "就那么喜欢这里吗？那就尽情看个够吧。",
+              "zh-Hant": "就這麼喜歡這個嗎？盡情看吧。",
+              "th": "ถูกใจสิ่งนี้ขนาดนั้นเลยรึ? งั้นก็จงดูให้เต็มตาเสียสิ",
+              "es": "¿Tanto te gusta esto? Míralo todo lo que quieras."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_6"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 76,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 77,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y3=true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 78,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y2==true&&y3==true",
+              "Path": ".phase3"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 81,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.crotch"
+            },
+            "box": "bd_crotch"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 82,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A4"
+            },
+            "clip": "10_reaction/10_A4"
+          },
+          {
+            "class": "PrintText",
+            "line": 83,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이, 이렇게나 민감할 줄은…",
+            "texts": {
+              "en": "T-To think I would be this sensitive...",
+              "ja": "こ、こんなに敏感になってしまうとは…。",
+              "zh-Hans": "没、没想到会变得这么敏感……",
+              "zh-Hant": "沒、沒想到會這麼敏感……",
+              "th": "มะ ไม่นึกว่าจะไวต่อสัมผัสถึงเพียงนี้...",
+              "es": "N-no imaginaba que fuera tan sensible..."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_8"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 84,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Stop",
+            "line": 86,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase3",
+            "line": 89,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 90,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B1",
+              "Track": "32",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_B1"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 92,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 95,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.head"
+            },
+            "box": "bd_head"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 96,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A1_2",
+              "Hold": "true"
+            },
+            "clip": "10_reaction/10_A1_2"
+          },
+          {
+            "class": "PrintText",
+            "line": 97,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "참을 수가... 하읏...!",
+            "texts": {
+              "en": "I cannot hold back... Haa...!",
+              "ja": "さすがにもう耐えられ…はうっ…！",
+              "zh-Hans": "快忍不住了……哈唔……！",
+              "zh-Hant": "快忍不住了……哈啊……！",
+              "th": "ทนไม่ไหวแล้ว... ฮ๊า...!",
+              "es": "No puedo aguantarlo... ¡Aah...!"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_2"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 98,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Goto",
+            "line": 99,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase4"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 101,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase4",
+            "line": 103,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 104,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B6_1",
+              "Track": "33",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_B6_1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 105,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B6_2",
+              "Track": "34",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_B6_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 106,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B6_3",
+              "Track": "35",
+              "Loop": "true"
+            },
+            "clip": "30_overlay/30_B6_3"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 107,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 108,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "amulet1=false"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 109,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "amulet2=false"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 110,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "amulet3=false"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 112,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Wait": "false",
+              "IdAndAppearance": "danhee_halloween.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireOnlookTriggerCommand",
+            "line": 114,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/wait",
+              "Id": "danhee_halloween",
+              "Threshold": "10"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "PrintText",
+            "line": 115,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐, 흥... 어디, 마음대로 한번 해보거라.",
+            "texts": {
+              "en": "H-Hmph... Go on, then, do as you please.",
+              "ja": "ふ、ふん…。どれ、好きなだけやってみると良い。",
+              "zh-Hans": "哼、哼……来吧，随你的便尽管放马过来吧。",
+              "zh-Hant": "哼、哼……來啊，你就隨心所欲地試試看吧。",
+              "th": "หะ หึ... ไหน ลองทำตามใจเจ้าดูสักตั้งสิ",
+              "es": "J-jum... Vamos, haz lo que te plazca."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_10"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 116,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 119,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "amulet1=false",
+              "IdAndBoundingBox": "danhee_halloween.B4"
+            },
+            "box": "bd_B4"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 120,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B6_1",
+              "Wait": "false",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_B6_1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 121,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B4",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B4"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 122,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 123,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A2_copy"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 124,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=y+1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 125,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "amulet1=true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 126,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y=3",
+              "Path": ".phase5"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 129,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "amulet2=false",
+              "IdAndBoundingBox": "danhee_halloween.B5"
+            },
+            "box": "bd_B5"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 130,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B6_2",
+              "Wait": "false",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_B6_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 131,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B5",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B5"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 132,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.4"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 133,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A3_copy"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 134,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=y+1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 135,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "amulet2=true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 136,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y=3",
+              "Path": ".phase5"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 139,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "amulet3=false",
+              "IdAndBoundingBox": "danhee_halloween.B3"
+            },
+            "box": "bd_B3"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 140,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B6_3",
+              "Wait": "false",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_B6_3"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 141,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.overlay/B3",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 142,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.3"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 143,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A4"
+            },
+            "clip": "10_reaction/10_A4"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 144,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=y+1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 145,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "amulet3=true"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 146,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y=3",
+              "Path": ".phase5"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 149,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.breast_L"
+            },
+            "box": "bd_breast_L"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 150,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A2",
+              "Hold": "true"
+            },
+            "clip": "10_reaction/10_A2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 151,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween."
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 152,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아앙♡ 더... 더 해도 괜찮단다.",
+            "texts": {
+              "en": "Ahn♡ More... You may do more.",
+              "ja": "ああん♡も…もっとやっても良いぞ…。",
+              "zh-Hans": "啊昂♡再……再多摸一会儿也无妨哦。",
+              "zh-Hant": "啊嗯♡再……再多摸一點也無妨喔。",
+              "th": "อ๊าง♡ มะ... มากกว่านี้อีกก็ได้นะ",
+              "es": "¡Aah!♡ Más... Puedes seguir un poco más."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_4"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 153,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 156,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.breast_R"
+            },
+            "box": "bd_breast_R"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 157,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A3",
+              "Hold": "true"
+            },
+            "clip": "10_reaction/10_A3"
+          },
+          {
+            "class": "PrintText",
+            "line": 158,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이게 그렇게 마음에 드느냐? 마음껏 보거라.",
+            "texts": {
+              "en": "Does this please you so much? Feast your eyes to your heart's content.",
+              "ja": "これがそんなに気に入ったのか？好きなだけ見ると良い。",
+              "zh-Hans": "就那么喜欢这里吗？那就尽情看个够吧。",
+              "zh-Hant": "就這麼喜歡這個嗎？盡情看吧。",
+              "th": "ถูกใจสิ่งนี้ขนาดนั้นเลยรึ? งั้นก็จงดูให้เต็มตาเสียสิ",
+              "es": "¿Tanto te gusta esto? Míralo todo lo que quieras."
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_6"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 159,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 162,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "danhee_halloween.crotch"
+            },
+            "box": "bd_crotch"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 163,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/A4"
+            },
+            "clip": "10_reaction/10_A4"
+          },
+          {
+            "class": "PrintText",
+            "line": 164,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하앙...♡! 거, 거기... 조금만... 더...!",
+            "texts": {
+              "en": "Haahn...♡! Th-There... just a little... more...!",
+              "ja": "はあん…！♡そ、そこ…も、もっと…。",
+              "zh-Hans": "哈昂……♡！那、那里……再多……摸一下……！",
+              "zh-Hant": "哈啊……♡！那、那裡……再多……一點……！",
+              "th": "ฮ๊าง...♡! ตะ ตรงนั้น... ขออีก... นิดเดียว...!",
+              "es": "¡Jaah...!♡ A-ahí... un poco... ¡más...!"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_9"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 165,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Stop",
+            "line": 167,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase5",
+            "line": 170,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 171,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 172,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.reaction/H1"
+            },
+            "clip": "10_reaction/10_H1"
+          },
+          {
+            "class": "Await",
+            "line": 173,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 174,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "감도가...! 너무… 강해...! 하아앙~~~!!",
+            "texts": {
+              "en": "The sensitivity is...! Too... intense...! Haaahn!!",
+              "ja": "刺激が…！つよ…すぎるのじゃ…！はあああんーーー！",
+              "zh-Hans": "敏感度……！太……太强了……！哈啊昂～～～！！",
+              "zh-Hant": "敏感度……！太……強烈了……！哈啊啊～～～！！",
+              "th": "ความรู้สึกมัน...! รุนแรง... เกินไปแล้ว...! ฮ๊าาาง~~~!!",
+              "es": "¡La sensibilidad...! ¡Es demasiado... fuerte...! ¡¡Aaaah!!"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_11"
+          },
+          {
+            "class": "Group",
+            "line": 175,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 176,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 177,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Duration": "7",
+              "Color": "white",
+              "Direction": "Out"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 178,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Goto",
+            "line": 179,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase_after"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 181,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_after",
+            "line": 184,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Await",
+            "line": 185,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 186,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Duration": "3",
+              "Color": "white",
+              "Direction": "In"
+            }
+          },
+          {
+            "class": "Group",
+            "line": 187,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 188,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween.basic/after_idle"
+            },
+            "clip": "10_basic/10_after_idle"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 191,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/after_touch",
+              "IdAndBoundingBox": "danhee_halloween"
+            },
+            "clip": "10_basic/10_after_touch"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 192,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PickRandom",
+            "line": 193,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 194,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 195,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "응...♡",
+            "texts": {
+              "en": "Mmm...♡",
+              "ja": "はううっ…♡",
+              "zh-Hans": "嗯……♡",
+              "zh-Hant": "嗯……♡",
+              "th": "อื้อ...♡",
+              "es": "Mmm...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_12"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 196,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 197,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 198,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아앙...♡",
+            "texts": {
+              "en": "Ahn...♡",
+              "ja": "ううぅん…♡",
+              "zh-Hans": "啊昂……♡",
+              "zh-Hant": "啊嗯……♡",
+              "th": "อ๊าง...♡",
+              "es": "Aah...♡"
+            },
+            "author": "danhee_halloween",
+            "voice": "voc_ch0069_desire_enjoy_13"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 199,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "DesireResetCommand",
+            "line": 201,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Destination": ".phase1"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 202,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 203,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Transition": "Crossfade",
+              "Duration": "0.5",
+              "Wait": "false",
+              "ScenePosition": ",,-50",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 204,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "2"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 205,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "danhee_halloween",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 206,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Visible": "false",
+              "Duration": "3",
+              "Wait": "false",
+              "AppearanceAndTransition": "BG_Fade_Black"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 208,
             "inline": 0,
             "indent": 0,
             "fields": {}

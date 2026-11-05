@@ -908,7 +908,7 @@ export function growValue(
 }
 
 // An unscaled stat op carries the stat itself; percent or flat follows that stat's `display` in the stat table.
-const RAW_STAT_PCT: Record<string, boolean> = {
+export const RAW_STAT_PCT: Record<string, boolean> = {
   BUFF_EVASION_UP: false, DAMAGE_REDUCE: true, DEBUFF_HEAL_RECEIVE: true, BUFF_TOUGHNESS_UP: true,
 };
 

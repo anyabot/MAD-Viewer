@@ -699,6 +699,12 @@
    "icon": "Icon_Character_Piece_CH0068",
    "kind": "piece"
   },
+  "item:69": {
+   "name": "단희(할로윈)의 메모리",
+   "nameEn": "Dan Xi (Halloween)'s Memory",
+   "icon": "Icon_Character_Piece_CH0069",
+   "kind": "piece"
+  },
   "item:7": {
    "name": "마네의 메모리",
    "nameEn": "Mane's Memory",
@@ -1047,6 +1053,18 @@
    "kind": "equipPiece",
    "grade": 5
   },
+  "item:80601": {},
+  "item:80602": {},
+  "item:80603": {},
+  "item:80604": {},
+  "item:80605": {},
+  "item:80606": {},
+  "item:80607": {},
+  "item:80608": {},
+  "item:80609": {},
+  "item:80610": {},
+  "item:80611": {},
+  "item:80612": {},
   "item:9": {
    "name": "엘리시아의 메모리",
    "nameEn": "Elisia's Memory",
@@ -1138,7 +1156,20 @@
    "grade": 1
   }
  },
- "_noItemRow": [],
+ "_noItemRow": [
+  "item:80601",
+  "item:80602",
+  "item:80603",
+  "item:80604",
+  "item:80605",
+  "item:80606",
+  "item:80607",
+  "item:80608",
+  "item:80609",
+  "item:80610",
+  "item:80611",
+  "item:80612"
+ ],
  "skill": {
   "maxLevel": {
    "2": 10,
@@ -5234,6 +5265,10 @@
    {
     "tier": 5,
     "maxLevel": 45
+   },
+   {
+    "tier": 6,
+    "maxLevel": 50
    }
   ],
   "accumExp": {
@@ -5831,6 +5866,176 @@
       "amount": 5
      }
     ]
+   },
+   "6": {
+    "1": [
+     {
+      "ref": "item:80601",
+      "amount": 35
+     },
+     {
+      "ref": "item:80201",
+      "amount": 10
+     },
+     {
+      "ref": "item:80301",
+      "amount": 5
+     }
+    ],
+    "2": [
+     {
+      "ref": "item:80602",
+      "amount": 35
+     },
+     {
+      "ref": "item:80202",
+      "amount": 10
+     },
+     {
+      "ref": "item:80302",
+      "amount": 5
+     }
+    ],
+    "3": [
+     {
+      "ref": "item:80603",
+      "amount": 35
+     },
+     {
+      "ref": "item:80203",
+      "amount": 10
+     },
+     {
+      "ref": "item:80303",
+      "amount": 5
+     }
+    ],
+    "4": [
+     {
+      "ref": "item:80604",
+      "amount": 35
+     },
+     {
+      "ref": "item:80204",
+      "amount": 10
+     },
+     {
+      "ref": "item:80304",
+      "amount": 5
+     }
+    ],
+    "5": [
+     {
+      "ref": "item:80605",
+      "amount": 35
+     },
+     {
+      "ref": "item:80205",
+      "amount": 10
+     },
+     {
+      "ref": "item:80305",
+      "amount": 5
+     }
+    ],
+    "6": [
+     {
+      "ref": "item:80606",
+      "amount": 35
+     },
+     {
+      "ref": "item:80206",
+      "amount": 10
+     },
+     {
+      "ref": "item:80306",
+      "amount": 5
+     }
+    ],
+    "7": [
+     {
+      "ref": "item:80607",
+      "amount": 35
+     },
+     {
+      "ref": "item:80207",
+      "amount": 10
+     },
+     {
+      "ref": "item:80307",
+      "amount": 5
+     }
+    ],
+    "8": [
+     {
+      "ref": "item:80608",
+      "amount": 35
+     },
+     {
+      "ref": "item:80208",
+      "amount": 10
+     },
+     {
+      "ref": "item:80308",
+      "amount": 5
+     }
+    ],
+    "9": [
+     {
+      "ref": "item:80609",
+      "amount": 35
+     },
+     {
+      "ref": "item:80209",
+      "amount": 10
+     },
+     {
+      "ref": "item:80309",
+      "amount": 5
+     }
+    ],
+    "10": [
+     {
+      "ref": "item:80610",
+      "amount": 35
+     },
+     {
+      "ref": "item:80210",
+      "amount": 10
+     },
+     {
+      "ref": "item:80310",
+      "amount": 5
+     }
+    ],
+    "11": [
+     {
+      "ref": "item:80611",
+      "amount": 35
+     },
+     {
+      "ref": "item:80211",
+      "amount": 10
+     },
+     {
+      "ref": "item:80311",
+      "amount": 5
+     }
+    ],
+    "12": [
+     {
+      "ref": "item:80612",
+      "amount": 35
+     },
+     {
+      "ref": "item:80212",
+      "amount": 10
+     },
+     {
+      "ref": "item:80312",
+      "amount": 5
+     }
+    ]
    }
   }
  },
@@ -5990,6 +6195,7 @@
    "CH0062": "item:62",
    "CH0063": "item:63",
    "CH0068": "item:68",
+   "CH0069": "item:69",
    "CH0075": "item:75"
   },
   "exchange": {
@@ -6068,6 +6274,7 @@
     "CH0062",
     "CH0063",
     "CH0068",
+    "CH0069",
     "CH0075"
    ],
    "ladders": null

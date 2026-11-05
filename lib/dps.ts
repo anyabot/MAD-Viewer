@@ -42,6 +42,7 @@ const SCALE_STAT: Record<string, string> = {
   PHYSICAL_DEFENSE_RATE: 'PHYSICS_DEFENSE', PHYSICAL_CRITICAL_CHANCE_RATE: 'PHYSICS_CRITICAL_CHANCE',
   PHYSICAL_CRITICAL_POWER_ADD_RATE: 'PHYSICS_CRITICAL_DAMAGE', HEAL_RECEIVE_RATE: 'HEAL_RECEIVE',
   EVASION_RATE: 'EVASION', ACCURACY_RATE: 'ACCURACY', CRITICAL_CHANCE_RESIST_RATE: 'CRITICAL_CHANCE_RESIST',
+  TOTAL_ATTACK_RATE: 'PHYSICS_ATTACK', TOTAL_HEAL_RATE: 'HEAL',
 };
 const SELF_BUFF: Record<string, string> = {
   BUFF_PHYSICS_ATTACK_UP: 'PHYSICS_ATTACK', BUFF_PHYSICS_CRITICAL_POWER_ADD_UP: 'PHYSICS_CRITICAL_DAMAGE',
@@ -53,7 +54,8 @@ const TARGET_DEBUFF: Record<string, 'defense' | 'critResist'> = {
 const TARGET_STAT: Record<'defense' | 'critResist', string> = {
   defense: 'PHYSICS_DEFENSE', critResist: 'CRITICAL_CHANCE_RESIST',
 };
-const DAMAGE_OPS = new Set(['ADD_DAMAGE', 'ADD_HEAL', 'ADD_FORCE_CRITICAL_DAMAGE', 'ADD_FORCE_PENETRATION_DAMAGE']);
+const DAMAGE_OPS = new Set(['ADD_DAMAGE', 'ADD_HEAL', 'ADD_FORCE_CRITICAL_DAMAGE', 'ADD_FORCE_PENETRATION_DAMAGE',
+  'OVERTIME_DAMAGE', 'OVERTIME_HEAL']);
 const SIMULATED = new Set([
   'TRIGGER_TYPE_USE_SKILL', 'TRIGGER_TYPE_DURATION_DEFINE_APPLY', 'TRIGGER_TYPE_DURATION_DEFINE_EXPIRED',
   'TRIGGER_TYPE_BATTLE_START', 'TRIGGER_TYPE_WAVE_START', 'TRIGGER_TYPE_ATTACK', 'TRIGGER_TYPE_ATTACK_CRI',
@@ -198,7 +200,7 @@ function hitYield(hit: SkillHit, level: number, period: number, skillType: numbe
     if (!op.value || !op.scale || !op.op || !DAMAGE_OPS.has(op.op)) return;
     let chance = op.chance ?? 1;
     if (op.gate) {
-      const c = ctx.gate(op.gate, op.op === 'ADD_HEAL' ? 'self' : 'target');
+      const c = ctx.gate(op.gate, op.op === 'ADD_HEAL' || op.op === 'OVERTIME_HEAL' ? 'self' : 'target');
       if (c === null) { skip(k); return; }
       chance *= c;
     }
@@ -215,7 +217,7 @@ function hitYield(hit: SkillHit, level: number, period: number, skillType: numbe
           const secs = op.seconds ? growValue(op.seconds, level, period) : 0;
           const n = every > 0 && secs > 0 && secs < FOREVER ? Math.floor(secs / every) : 0;
           if (!n) continue;
-          if (op.op === 'ADD_DAMAGE') out.damage += chance * n * Math.max(1, coef * base * w) * f * a * l;
+          if (op.op === 'ADD_DAMAGE' || op.op === 'OVERTIME_DAMAGE') out.damage += chance * n * Math.max(1, coef * base * w) * f * a * l;
           else if (onHolder) out.healPct += chance * n * coef * w;
           else out.heal += chance * n * Math.max(1, coef * base * w);
           continue;

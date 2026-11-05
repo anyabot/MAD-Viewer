@@ -15,11 +15,12 @@ export default function Document() {
   return (
     <Html lang="en" data-game="mad">
       <Head>
+        <meta name="color-scheme" content="dark" />
         <link rel="icon" type="image/png" href={`${BASE}/icon.png`} />
         <link rel="apple-touch-icon" href={`${BASE}/icon.png`} />
         <link rel="preconnect" href="https://hub.altterisk.cc" />
         <link rel="preload" href={`${BASE}/fonts/inter-latin.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />
-        <style dangerouslySetInnerHTML={{ __html: `${INTER_FACES}html[data-restoring] .hub-shell__main{visibility:hidden}` }} />
+        <style dangerouslySetInnerHTML={{ __html: `html{background:#0b0f17;color-scheme:dark}${INTER_FACES}html[data-restoring] .hub-shell__main{visibility:hidden}` }} />
         <script dangerouslySetInnerHTML={{ __html: RESTORE_GATE }} />
       </Head>
       <body>

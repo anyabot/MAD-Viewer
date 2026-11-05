@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
 import { Seo } from '@/components/seo';
 import NextLink from '@/components/appLink';
 import {
@@ -16,7 +17,7 @@ import {
 import { formatMoment, remaining, zoneLabel } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { useLang, useT } from '@/lib/i18n';
-import { isFuture } from '@/lib/spoilers';
+import { isFuture, useHideSpoilers } from '@/lib/spoilers';
 import { useSpoilerGate } from '@/components/spoilers';
 import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
@@ -40,6 +41,8 @@ function ArchiveContent() {
   const [difficulty, setDifficulty] = useState(1);
   const [serverTime, setServerTime] = useServerTime();
   const now = useNow(30_000);
+  const hideSpoilers = useHideSpoilers();
+  const router = useRouter();
 
   useEffect(() => {
     loadArchive().then(setData).catch((e) => setError(String(e)));
@@ -48,9 +51,14 @@ function ArchiveContent() {
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
 
-  const season = data?.seasons[0];
+  const season = data?.seasons.find((s) => String(s.id) === router.query.season)
+    ?? data?.seasons.find((s) => s.open && now <= Date.parse(s.open.end)
+      && !(hideSpoilers && isFuture(s.open.start, now)))
+    ?? data?.seasons[data.seasons.length - 1];
   const path = season?.difficulties.find((d) => d.difficulty === difficulty) ?? season?.difficulties[0];
-  const poolOrder = useMemo(() => Object.keys(data?.pools ?? {}).sort((a, b) => Number(a) - Number(b)), [data]);
+  const poolOrder = useMemo(() => [...new Set((season?.difficulties ?? [])
+    .flatMap((d) => d.nodes.flatMap((n) => n.pools ?? [])))]
+    .sort((a, b) => Number(a) - Number(b)), [season]);
 
   const gated = useSpoilerGate(data ? isFuture(season?.open?.start, now) : null, '/stages');
 
@@ -160,7 +168,7 @@ function ArchiveContent() {
             if (node.type === 'augment') {
               return (
                 <HStack key={node.order} p={2} borderRadius="md" borderWidth="1px" borderColor="purple.400"
-                  borderStyle="dashed" spacing={2}>
+                  borderStyle="dashed" spacing={2} wrap="wrap" minW={0}>
                   <Text fontSize="xs" color="gray.500" w="1.5rem">{node.order}</Text>
                   <Text fontSize="sm" fontWeight="bold">{t('archivePick')}</Text>
                   {(node.pools ?? []).map((p) => (

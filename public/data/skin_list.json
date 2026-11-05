@@ -779,6 +779,49 @@
    }
   },
   {
+   "key": "af_ch0069",
+   "kind": "affection",
+   "character": "CH0069",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 21,
+   "faces": 1,
+   "bodyGroups": [
+    "[Backup]",
+    "asmr",
+    "basic"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0069.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "talisman_L",
+     "talisman_R"
+    ],
+    "dropped": [
+     "breast_nipple_L_UNCEN",
+     "breast_nipple_R_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 15388097,
+    "onestore": 15528590
+   }
+  },
+  {
    "key": "af_ch0075",
    "kind": "affection",
    "character": "CH0075",
@@ -1173,8 +1216,8 @@
     ]
    },
    "bytes": {
-    "google": 6957723,
-    "onestore": 6957032
+    "google": 6954626,
+    "onestore": 6953344
    }
   },
   {
@@ -1685,6 +1728,58 @@
    }
   },
   {
+   "key": "ds_ch0069",
+   "kind": "desire",
+   "character": "CH0069",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 23,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0069.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "crotch_talisman_1",
+     "crotch_talisman_2",
+     "crotch_talisman_3"
+    ],
+    "dropped": [
+     "breast_areola_back_L_UNCEN",
+     "breast_areola_back_R_UNCEN",
+     "breast_areola_front_L_UNCEN",
+     "breast_areola_front_R_UNCEN",
+     "breast_nipple_L_UNCEN",
+     "breast_nipple_R_UNCEN"
+    ],
+    "added": [
+     "breasts_bandage_L_CEN",
+     "breasts_bandage_R_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 9987535,
+    "onestore": 10064193
+   }
+  },
+  {
    "key": "ds_ch0075",
    "kind": "desire",
    "character": "CH0075",
@@ -1843,6 +1938,75 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 8993172
+   }
+  },
+  {
+   "key": "pl_ev0002",
+   "kind": "pleasure",
+   "character": "EV0002",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 9,
+   "faces": 0,
+   "bodyGroups": [
+    "10",
+    "20",
+    "lobby"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:PL_EV0002.png",
+    "texture:PL_EV0002_2.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "1/D_oppai_press_1_R",
+     "H_nipple_press_1_L",
+     "H_nipple_press_1_R",
+     "H_oppai_press_1_L",
+     "H_oppai_press_1_R"
+    ],
+    "dropped": [
+     "1/D_areola_L",
+     "1/D_areola_R",
+     "1/D_nipple_L",
+     "1/D_nipple_R",
+     "1/D_nipple_press_1_L",
+     "1/D_nipple_press_1_R",
+     "1/D_nipple_press_2_L",
+     "1/D_nipple_press_2_R",
+     "1/D_oppai_press_1_R",
+     "H_areola_L",
+     "H_areola_R_UNCEN",
+     "H_nipple_L",
+     "H_nipple_R_UNCEN",
+     "H_nipple_press_1_L",
+     "H_nipple_press_1_R",
+     "H_nipple_press_2_L",
+     "H_nipple_press_2_R",
+     "H_oppai_press_1_L",
+     "H_oppai_press_1_R"
+    ],
+    "added": [
+     "1/D_oppai_L_nipple_CEN",
+     "1/D_oppai_R_nipple_CEN",
+     "1/D_oppai_press_1_L_CEN"
+    ]
+   },
+   "bytes": {
+    "google": 8614781,
+    "onestore": 8631371
    }
   },
   {
@@ -2438,7 +2602,7 @@
    "divergeReasons": [],
    "divergeEdit": null,
    "bytes": {
-    "onestore": 4630001
+    "onestore": 4625253
    }
   },
   {
@@ -3103,6 +3267,47 @@
    "bytes": {
     "google": 3382789,
     "onestore": 3440645
+   }
+  },
+  {
+   "key": "st_ch0069",
+   "kind": "standing",
+   "character": "CH0069",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 12,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0069.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped"
+    ],
+    "renamed": [
+     "talisman_L",
+     "talisman_R"
+    ],
+    "dropped": [
+     "breast_nipple_L_UNCEN",
+     "breast_nipple_R_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 4134911,
+    "onestore": 4184077
    }
   },
   {

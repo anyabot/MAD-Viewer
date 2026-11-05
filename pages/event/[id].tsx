@@ -15,6 +15,7 @@ import {
 } from '@/components/eventsBoard';
 import EventBoxArt from '@/components/eventBoxArt';
 import EventChibis from '@/components/eventChibis';
+import EventUnits from '@/components/eventUnits';
 import {
   loadCharacters, loadEventArt, loadEvents, loadIcons,
   type CharacterData, type EventArtIndex, type EventIndex, type IconManifest,
@@ -106,8 +107,11 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
     return (
       <>
         {head}
+        <Center py={20}>
+          <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
+        </Center>
         {seo && !gated && (
-          <VStack align="stretch" spacing={2}>
+          <VStack align="stretch" spacing={2} className="prerender-summary">
             <Text as="h1" fontSize="2xl" fontWeight="bold">{seo.name}</Text>
             {seo.desc && <Text fontSize="sm" color="gray.400">{seo.desc}</Text>}
             {seo.period && <Text fontSize="sm">{seo.period}</Text>}
@@ -115,9 +119,6 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
             <StaticLinks links={seo.cast} />
           </VStack>
         )}
-        <Center py={20}>
-          <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
-        </Center>
       </>
     );
   }
@@ -231,6 +232,13 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
           </Wrap>
         </Box>
       )}
+
+      {art?.units?.length ? (
+        <Box>
+          <Text fontSize="lg" fontWeight="bold" mb={3}>{t('eventsUnits')}</Text>
+          <EventUnits art={art} chars={chars} />
+        </Box>
+      ) : null}
 
       {event.attendance && (
         <AttendancePanel attendance={event.attendance} refs={data.refs} icons={icons} gameLang={gameLang} />

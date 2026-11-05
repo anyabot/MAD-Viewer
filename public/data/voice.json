@@ -5753,6 +5753,174 @@
     "voc_ch0068_outgame_skilllv_2": "jp/ch0068/outgame",
     "voc_ch0068_outgame_starup_1": "jp/ch0068/outgame",
     "voc_ch0068_outgame_starup_2": "jp/ch0068/outgame",
+    "voc_ch0069_affection_lobby_1": "jp/ch0069/affection",
+    "voc_ch0069_affection_lobby_2": "jp/ch0069/affection",
+    "voc_ch0069_affection_lobby_3": "jp/ch0069/affection",
+    "voc_ch0069_affection_lobby_4": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_1": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_10": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_11": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_12": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_13": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_14": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_15": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_16": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_17": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_18": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_19": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_2": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_20": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_21": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_22": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_23": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_24": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_25": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_26": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_27": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_3": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_4": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_5": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_6": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_7": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_8": "jp/ch0069/affection",
+    "voc_ch0069_affection_view_9": "jp/ch0069/affection",
+    "voc_ch0069_desire_enjoy_1": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_10": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_11": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_12": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_13": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_2": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_3": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_4": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_5": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_6": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_7": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_8": "jp/ch0069/desire",
+    "voc_ch0069_desire_enjoy_9": "jp/ch0069/desire",
+    "voc_ch0069_desire_lobby_1": "jp/ch0069/desire",
+    "voc_ch0069_desire_lobby_2": "jp/ch0069/desire",
+    "voc_ch0069_desire_lobby_3": "jp/ch0069/desire",
+    "voc_ch0069_desire_lobby_4": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_1": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_10": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_11": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_12": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_13": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_2": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_3": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_4": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_5": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_6": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_7": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_8": "jp/ch0069/desire",
+    "voc_ch0069_desire_story_9": "jp/ch0069/desire",
+    "voc_ch0069_event_lobby_enter_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_lobby_enter_2": "jp/ch0069/outgame",
+    "voc_ch0069_event_lobby_enter_3": "jp/ch0069/outgame",
+    "voc_ch0069_event_lobby_enter_4": "jp/ch0069/outgame",
+    "voc_ch0069_event_lobby_enter_end_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_lobby_touch_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_lobby_touch_2": "jp/ch0069/outgame",
+    "voc_ch0069_event_lobby_touch_end_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_mission_cleared_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_mission_cleared_2": "jp/ch0069/outgame",
+    "voc_ch0069_event_mission_enter_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_mission_enter_2": "jp/ch0069/outgame",
+    "voc_ch0069_event_mission_enter_end_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_mission_touch_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_mission_touch_2": "jp/ch0069/outgame",
+    "voc_ch0069_event_mission_touch_end_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_shop_buy_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_shop_buy_2": "jp/ch0069/outgame",
+    "voc_ch0069_event_shop_enter_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_shop_enter_2": "jp/ch0069/outgame",
+    "voc_ch0069_event_shop_enter_end_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_shop_touch_1": "jp/ch0069/outgame",
+    "voc_ch0069_event_shop_touch_2": "jp/ch0069/outgame",
+    "voc_ch0069_event_shop_touch_end_1": "jp/ch0069/outgame",
+    "voc_ch0069_ingame_burst_1_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_burst_1_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_burst_2_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_burst_2_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_burst_3_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_burst_3_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_die_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_die_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_enter_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_enter_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_lose_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_lose_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_move_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_move_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_skill_1_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_skill_1_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_skill_2_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_skill_2_2": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_win_1": "jp/ch0069/ingame",
+    "voc_ch0069_ingame_win_2": "jp/ch0069/ingame",
+    "voc_ch0069_lobby_enter_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_birthday_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_birthday_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_christmas_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_christmas_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_halloween_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_halloween_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_newyear_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_newyear_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_summer_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_summer_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_valentine_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_enter_valentine_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_3": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_4": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_5": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_6": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_7": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_8": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_birthday_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_birthday_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_christmas_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_christmas_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_halloween_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_halloween_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_newyear_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_newyear_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_summer_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_summer_2": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_valentine_1": "jp/ch0069/lobby",
+    "voc_ch0069_lobby_touch_valentine_2": "jp/ch0069/lobby",
+    "voc_ch0069_outgame_charget_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_charlv_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_charlv_2": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_gift_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_gift_2": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_gift_3": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_gift_4": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_gift_5": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_gift_6": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_intro_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_intro_2": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_list_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_list_2": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_profile_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_profile_2": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_profile_3": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_profile_4": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_rankup_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_rankup_2": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_rankup_3": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_rankup_4": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_rankup_5": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_rankup_6": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_select_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_select_2": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_skilllv_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_skilllv_2": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_starup_1": "jp/ch0069/outgame",
+    "voc_ch0069_outgame_starup_2": "jp/ch0069/outgame",
     "voc_ch0075_affection_lobby_1": "jp/ch0075/affection",
     "voc_ch0075_affection_lobby_2": "jp/ch0075/affection",
     "voc_ch0075_affection_lobby_3": "jp/ch0075/affection",
@@ -6989,6 +7157,79 @@
       "~b73ffa9": "voc_ch0068_desire_enjoy_12",
       "~eb3077d": "voc_ch0068_desire_enjoy_11",
       "~f6ea7662": "voc_ch0068_desire_enjoy_7"
+    },
+    "relationshipstory/ch0069/ch0069_03_desire_story": {
+      "~13758808": "voc_ch0069_desire_story_8",
+      "~42c66815": "voc_ch0069_desire_story_7",
+      "~58a26215": "voc_ch0069_desire_story_4",
+      "~663e4f65": "voc_ch0069_desire_story_6",
+      "~66d0442": "voc_ch0069_desire_story_13",
+      "~803ef5d9": "voc_ch0069_desire_story_3",
+      "~93299111": "voc_ch0069_desire_story_5",
+      "~aff6fec4": "voc_ch0069_desire_story_2",
+      "~b35cbfd4": "voc_ch0069_desire_story_9",
+      "~c071d46b": "voc_ch0069_desire_story_12",
+      "~c1407a31": "voc_ch0069_desire_story_11",
+      "~c2cc19a4": "voc_ch0069_desire_story_10",
+      "~ea2f59f2": "voc_ch0069_desire_story_1"
+    },
+    "relationshipstory/ch0069/ch0069_03_desire_view": {
+      "~1bac5ba3": "voc_ch0069_desire_enjoy_9",
+      "~3f767d90": "voc_ch0069_desire_enjoy_10",
+      "~444d08e": "voc_ch0069_desire_enjoy_11",
+      "~563642a5": "voc_ch0069_desire_enjoy_13",
+      "~975fc415": "voc_ch0069_desire_enjoy_1",
+      "~9a09a4d2": "voc_ch0069_desire_enjoy_2",
+      "~9d728594": "voc_ch0069_desire_enjoy_5",
+      "~9e053411": "voc_ch0069_desire_enjoy_8",
+      "~a32675ba": "voc_ch0069_desire_enjoy_12",
+      "~ab9340cc": "voc_ch0069_desire_enjoy_7",
+      "~b84f90c7": "voc_ch0069_desire_enjoy_4",
+      "~c270ee88": "voc_ch0069_desire_enjoy_6",
+      "~c42c242e": "voc_ch0069_desire_enjoy_3"
+    },
+    "relationshipstory/ch0069/ch0069_05_affection_story": {
+      "~2038778d": "voc_ch0069_affection_view_12",
+      "~4ca9571": "voc_ch0069_affection_view_3",
+      "~565d0cd5": "voc_ch0069_affection_view_7",
+      "~6f2ab5da": "voc_ch0069_affection_view_5",
+      "~7c73cfb9": "voc_ch0069_affection_view_1",
+      "~7dfcf991": "voc_ch0069_affection_view_4",
+      "~80717aa4": "voc_ch0069_affection_view_10",
+      "~9555622": "voc_ch0069_affection_view_2",
+      "~a10f1744": "voc_ch0069_affection_view_6",
+      "~aa14feca": "voc_ch0069_affection_view_8",
+      "~b6a71939": "voc_ch0069_affection_view_11",
+      "~e4605633": "voc_ch0069_affection_view_9"
+    },
+    "relationshipstory/ch0069/ch0069_05_affection_view": {
+      "~13ecc4": "voc_ch0069_affection_view_26",
+      "~1736cd52": "voc_ch0069_affection_view_19",
+      "~2038778d": "voc_ch0069_affection_view_12",
+      "~393438a8": "voc_ch0069_affection_view_21",
+      "~3edd2a56": "voc_ch0069_affection_view_24",
+      "~4ca9571": "voc_ch0069_affection_view_3",
+      "~5317ee5d": "voc_ch0069_affection_view_22",
+      "~565d0cd5": "voc_ch0069_affection_view_7",
+      "~5d3512bd": "voc_ch0069_affection_view_14",
+      "~6f2ab5da": "voc_ch0069_affection_view_5",
+      "~7c73cfb9": "voc_ch0069_affection_view_1",
+      "~7dfcf991": "voc_ch0069_affection_view_4",
+      "~80717aa4": "voc_ch0069_affection_view_10",
+      "~843242ef": "voc_ch0069_affection_view_15",
+      "~9555622": "voc_ch0069_affection_view_2",
+      "~a10f1744": "voc_ch0069_affection_view_6",
+      "~a5edfe58": "voc_ch0069_affection_view_18",
+      "~a63798ad": "voc_ch0069_affection_view_27",
+      "~a6a96307": "voc_ch0069_affection_view_20",
+      "~aa14feca": "voc_ch0069_affection_view_8",
+      "~b6a71939": "voc_ch0069_affection_view_11",
+      "~c5b9b146": "voc_ch0069_affection_view_23",
+      "~d869aad6": "voc_ch0069_affection_view_25",
+      "~db3f6bd4": "voc_ch0069_affection_view_13",
+      "~e4605633": "voc_ch0069_affection_view_9",
+      "~f7766138": "voc_ch0069_affection_view_17",
+      "~fb253608": "voc_ch0069_affection_view_16"
     },
     "relationshipstory/ch0075/ch0075_03_affection_story": {
       "~182e81cc": "voc_ch0075_affection_view_16",
@@ -19480,8 +19721,10 @@
           "Progress"
         ],
         "text": "노력의 흔적이 제법 쌓였구나.\n어디 한 번 확인해 보거라.",
+        "voice": "voc_ch0069_event_mission_enter_1",
         "face": "smile",
-        "emo": "respond"
+        "emo": "respond",
+        "textEn": "You've accomplished quite a lot.\nCome, see for yourself."
       },
       {
         "id": "CH0069_ST_EV1010_QUEST_ENTER_02",
@@ -19493,8 +19736,10 @@
           "Progress"
         ],
         "text": "빠진게 없는지 확인하거라.\n축제를 온전히 즐겨야 하지 않겠느냐?",
+        "voice": "voc_ch0069_event_mission_enter_2",
         "ani": "active",
-        "emo": "question"
+        "emo": "question",
+        "textEn": "Make sure you haven't missed anything.\nLet's make the most of the festival, shall we?"
       },
       {
         "id": "CH0069_ST_EV1010_QUEST_ENTER_END_01",
@@ -19506,7 +19751,9 @@
           "Reward"
         ],
         "text": "축제가 끝나도 함께한 추억은 남는  법이지.\n수고했다, 벗아.",
-        "emo": "shy"
+        "voice": "voc_ch0069_event_mission_enter_end_1",
+        "emo": "shy",
+        "textEn": "The festival may end, but our memories will stay with us.\nYou've done well, my friend."
       },
       {
         "id": "CH0069_ST_EV1010_QUEST_TOUCH_01",
@@ -19518,8 +19765,10 @@
           "Progress"
         ],
         "text": "후후, 너와 나의 추억을 또 쌓아 보겠느냐?",
+        "voice": "voc_ch0069_event_mission_touch_1",
         "ani": "active",
-        "emo": "question"
+        "emo": "question",
+        "textEn": "Heh, shall we make another memory, just the two of us?"
       },
       {
         "id": "CH0069_ST_EV1010_QUEST_TOUCH_02",
@@ -19531,8 +19780,10 @@
           "Progress"
         ],
         "text": "요 녀석, 여기까지 와서도 장난을 치려 하다니.",
+        "voice": "voc_ch0069_event_mission_touch_2",
         "face": "smile",
-        "emo": "surprise4"
+        "emo": "surprise4",
+        "textEn": "Still up to your tricks, even here? You little rascal."
       },
       {
         "id": "CH0069_ST_EV1010_QUEST_TOUCH_END_01",
@@ -19544,9 +19795,11 @@
           "Reward"
         ],
         "text": "기억을 내 몸에 새길 생각이냐?\n엉큼하기는.",
+        "voice": "voc_ch0069_event_mission_touch_end_1",
         "face": "question",
         "emo": "question",
-        "wait": 2.0
+        "wait": 2.0,
+        "textEn": "Trying to etch those memories into my body, are you?\nHow naughty of you."
       },
       {
         "id": "CH0069_ST_EV1010_QUEST_CLEAR_01",
@@ -19557,8 +19810,10 @@
           "Cleared"
         ],
         "text": "또 하나 해결! 훌륭하구나, 벗아.",
+        "voice": "voc_ch0069_event_mission_cleared_1",
         "ani": "active",
-        "emo": "twinkle"
+        "emo": "twinkle",
+        "textEn": "Another one down! Splendid work, my friend."
       },
       {
         "id": "CH0069_ST_EV1010_QUEST_CLEAR_02",
@@ -19569,8 +19824,10 @@
           "Cleared"
         ],
         "text": "내 벗이라면 충분히 해낼 줄 알았단다.",
+        "voice": "voc_ch0069_event_mission_cleared_2",
         "face": "happy",
-        "emo": "love"
+        "emo": "love",
+        "textEn": "I knew you could do it, my friend."
       },
       {
         "id": "CH0069_ST_EV1010_SHOP_ENTER_01",
@@ -19582,8 +19839,10 @@
           "Progress"
         ],
         "text": "좋은 물건이 잔뜩 있구나.\n마음껏 골라보거라.",
+        "voice": "voc_ch0069_event_shop_enter_1",
         "ani": "active",
-        "emo": "harmony"
+        "emo": "harmony",
+        "textEn": "There are plenty of fine wares here.\nPick whatever takes your fancy."
       },
       {
         "id": "CH0069_ST_EV1010_SHOP_ENTER_02",
@@ -19595,8 +19854,10 @@
           "Progress"
         ],
         "text": "축제에는 풍요가 따르는 법.\n함께 풍요를 누려보자꾸나.",
+        "voice": "voc_ch0069_event_shop_enter_2",
         "face": "smile",
-        "emo": "hehe"
+        "emo": "hehe",
+        "textEn": "Festivals always have plenty to offer.\nCome, let's enjoy the bounty together."
       },
       {
         "id": "CH0069_ST_EV1010_SHOP_ENTER_END_01",
@@ -19608,9 +19869,11 @@
           "Reward"
         ],
         "text": "물건은 잘 챙겼느냐? 놓친게 있어도 걱정하진 말거라.\n축제는 또 열리기 마련이니.",
+        "voice": "voc_ch0069_event_shop_enter_end_1",
         "face": "question",
         "emo": "question",
-        "wait": 2.5
+        "wait": 2.5,
+        "textEn": "Did you get everything you needed? Don't worry if you missed anything.\nThere's always another festival to look forward to."
       },
       {
         "id": "CH0069_ST_EV1010_SHOP_TOUCH_01",
@@ -19622,9 +19885,11 @@
           "Progress"
         ],
         "text": "아앙♡! 벗아, 그렇게 하지 않아도 난 이미 네것이란다♡",
+        "voice": "voc_ch0069_event_shop_touch_1",
         "face": "shy",
         "emo": "shy",
-        "wait": 2.0
+        "wait": 2.0,
+        "textEn": "Ah♡! No need to go that far, my friend. I'm already yours♡"
       },
       {
         "id": "CH0069_ST_EV1010_SHOP_TOUCH_02",
@@ -19636,8 +19901,10 @@
           "Progress"
         ],
         "text": "역시 내 벗이야.\n최고의 상품을 고르는 눈이 있구나♡",
+        "voice": "voc_ch0069_event_shop_touch_2",
         "face": "shy",
-        "emo": "love"
+        "emo": "love",
+        "textEn": "That's just like you, my friend.\nYou certainly know a treasure when you see one♡"
       },
       {
         "id": "CH0069_ST_EV1010_SHOP_TOUCH_END_01",
@@ -19649,9 +19916,11 @@
           "Reward"
         ],
         "text": "원하는 건 모두 얻었으냐?\n아니어도 아쉬워하진 말거라. 네겐 이 몸이 있지 않느냐♡",
+        "voice": "voc_ch0069_event_shop_touch_end_1",
         "face": "question",
         "emo": "question",
-        "wait": 2.5
+        "wait": 2.5,
+        "textEn": "Did you get everything you wanted?\nDon't worry if you didn't. You still have me, don't you?♡"
       },
       {
         "id": "CH0069_ST_EV1010_SHOP_BUY_01",
@@ -19662,8 +19931,10 @@
           "Buy"
         ],
         "text": "훌륭한 안목이로구나!",
+        "voice": "voc_ch0069_event_shop_buy_1",
         "face": "happy",
-        "emo": "twinkle"
+        "emo": "twinkle",
+        "textEn": "You have excellent taste!"
       },
       {
         "id": "CH0069_ST_EV1010_SHOP_BUY_02",
@@ -19674,8 +19945,10 @@
           "Buy"
         ],
         "text": "그 물건도 나처럼 좋은 벗을 만났구나.",
+        "voice": "voc_ch0069_event_shop_buy_2",
         "ani": "active",
-        "emo": "twinkle"
+        "emo": "twinkle",
+        "textEn": "It's found a good friend in you, just as I have."
       },
       {
         "id": "CH0069_ST_LOBBY_TOUCH_01",
@@ -19685,6 +19958,7 @@
           "Touch"
         ],
         "text": "후후... 풍월을 한번 읊어 보겠느냐?",
+        "voice": "voc_ch0069_lobby_touch_1",
         "face": "smile",
         "emo": "chat",
         "textEn": "Heh... Care to recite poetry with me?"
@@ -19697,6 +19971,7 @@
           "Touch"
         ],
         "text": "과자를 내어라!\n그렇지 않으면... 너로 대신하는 수밖에♡",
+        "voice": "voc_ch0069_lobby_touch_2",
         "ani": "active",
         "emo": "respond",
         "wait": 2.0,
@@ -19710,6 +19985,7 @@
           "Touch"
         ],
         "text": "새 놀잇감을 찾았나 보구나.\n기꺼이 어울려주마.",
+        "voice": "voc_ch0069_lobby_touch_3",
         "face": "smile",
         "emo": "yureka",
         "wait": 2.0,
@@ -19723,6 +19999,7 @@
           "Touch"
         ],
         "text": "아앙♡ 벗아, 그런 장난이 치고 싶은 것이냐? 쿠후후...♡",
+        "voice": "voc_ch0069_lobby_touch_4",
         "face": "shy",
         "emo": "love2",
         "wait": 2.0,
@@ -19737,6 +20014,7 @@
           "Breast"
         ],
         "text": "엇?",
+        "voice": "voc_ch0069_lobby_touch_5",
         "ani": "breast_touch",
         "emo": "surprise",
         "textEn": "Huh?"
@@ -19750,6 +20028,7 @@
           "Breast"
         ],
         "text": "옷?",
+        "voice": "voc_ch0069_lobby_touch_6",
         "ani": "breast_touch",
         "emo": "surprise3",
         "textEn": "Oh?"
@@ -19762,7 +20041,8 @@
           "Touch",
           "Breast"
         ],
-        "text": "앗?!",
+        "text": "으음…",
+        "voice": "voc_ch0069_lobby_touch_7",
         "ani": "breast_touch",
         "emo": "surprise2",
         "textEn": "Ah?!"
@@ -19775,7 +20055,8 @@
           "Touch",
           "Breast"
         ],
-        "text": "으앗!?",
+        "text": "크흠!",
+        "voice": "voc_ch0069_lobby_touch_8",
         "ani": "breast_touch",
         "emo": "shy",
         "textEn": "Uwah!?"
@@ -19788,6 +20069,7 @@
           "Enter"
         ],
         "text": "오늘도 축제로구나!\n함께 풍류를 즐겨보자꾸나.",
+        "voice": "voc_ch0069_lobby_enter_1",
         "ani": "active",
         "emo": "twinkle",
         "textEn": "Today is a festival as well! Let us enjoy the festivities together."
@@ -19800,6 +20082,7 @@
           "Enter"
         ],
         "text": "바람과 벗이 함께 오다니 즐거운 날이로구나!",
+        "voice": "voc_ch0069_lobby_enter_2",
         "ani": "active",
         "emo": "hehe",
         "textEn": "The wind and a friend arriving together... What a delightful day!"
@@ -19812,6 +20095,7 @@
           "Onlook"
         ],
         "text": "이 몸을 무료하게 하는 게 죄라는걸 알고 있겠지~?",
+        "voice": "voc_ch0069_outgame_profile_1",
         "ani": "idle_boring",
         "emo": "question",
         "textEn": "Surely you know that leaving me bored is a sin, do you not?"
@@ -19824,6 +20108,7 @@
           "Onlook"
         ],
         "text": "놀~아~줘~! 승~부~하~자~!",
+        "voice": "voc_ch0069_outgame_profile_2",
         "ani": "idle_boring",
         "emo": "gogo",
         "textEn": "Play with me! Challenge me to a duel!"
@@ -19837,6 +20122,8 @@
           "Touch"
         ],
         "text": "자, 잠깐... 벗아. 진짜로... 할 셈이냐?",
+        "voice": "voc_ch0069_desire_lobby_1",
+        "ani": "active",
         "face": "surprised",
         "emo": "surprise2",
         "textEn": "W-Wait... my friend. Are you... actually going to do this?"
@@ -19850,6 +20137,8 @@
           "Touch"
         ],
         "text": "감각이... 점점 민감해져가...!",
+        "voice": "voc_ch0069_desire_lobby_2",
+        "ani": "active",
         "face": "shy",
         "emo": "love2",
         "textEn": "My senses... are becoming so sensitive...!"
@@ -19863,6 +20152,8 @@
           "Touch"
         ],
         "text": "하아... 하아... 이 기분은... 뭐지?",
+        "voice": "voc_ch0069_desire_lobby_3",
+        "ani": "active",
         "face": "shy",
         "emo": "shy",
         "textEn": "Haa... haa... What is... this sensation?"
@@ -19876,6 +20167,8 @@
           "Touch"
         ],
         "text": "내, 내몸에 무슨 짓을 하는 거냐, 벗아!",
+        "voice": "voc_ch0069_desire_lobby_4",
+        "ani": "active",
         "face": "embarrassed",
         "emo": "sweat3",
         "textEn": "W-What are you doing to my body, my friend?!"
@@ -19889,6 +20182,8 @@
           "Touch"
         ],
         "text": "자, 잠깐... 벗아. 진짜로... 할 셈이냐?",
+        "voice": "voc_ch0069_desire_lobby_1",
+        "ani": "active",
         "face": "surprised",
         "emo": "surprise2",
         "textEn": "W-Wait... my friend. Are you... actually going to do this?"
@@ -19902,6 +20197,8 @@
           "Touch"
         ],
         "text": "감각이... 점점 민감해져가...!",
+        "voice": "voc_ch0069_desire_lobby_2",
+        "ani": "active",
         "face": "shy",
         "emo": "love2",
         "textEn": "My senses... are becoming so sensitive...!"
@@ -19915,6 +20212,8 @@
           "Touch"
         ],
         "text": "하아... 하아... 이 기분은... 뭐지?",
+        "voice": "voc_ch0069_desire_lobby_3",
+        "ani": "active",
         "face": "shy",
         "emo": "shy",
         "textEn": "Haa... haa... What is... this sensation?"
@@ -19928,6 +20227,8 @@
           "Touch"
         ],
         "text": "내, 내몸에 무슨 짓을 하는 거냐, 벗아!",
+        "voice": "voc_ch0069_desire_lobby_4",
+        "ani": "active",
         "face": "embarrassed",
         "emo": "sweat3",
         "textEn": "W-What are you doing to my body, my friend?!"
@@ -19941,6 +20242,7 @@
           "Touch"
         ],
         "text": "어디... 함께 풍류를 즐겨보자꾸나.",
+        "voice": "voc_ch0069_affection_lobby_1",
         "ani": "active",
         "emo": "hehe",
         "textEn": "Now then... let us enjoy the refined arts together."
@@ -19954,6 +20256,8 @@
           "Touch"
         ],
         "text": "후후, 걱정하지 말거라.\n이 곳에는 너와 나 둘 뿐이니…",
+        "voice": "voc_ch0069_affection_lobby_2",
+        "ani": "active",
         "face": "happy",
         "emo": "chat",
         "wait": 2.0,
@@ -19968,6 +20272,8 @@
           "Touch"
         ],
         "text": "이번에는 내가 네 녀석을 농락할 차례로구나.",
+        "voice": "voc_ch0069_affection_lobby_3",
+        "ani": "active",
         "face": "happy",
         "emo": "twinkle",
         "textEn": "This time, it is my turn to play with you."
@@ -19981,6 +20287,8 @@
           "Touch"
         ],
         "text": "이런 걸 유열이라 하던가...?\n후훗, 나쁘지 않은 감정이로구나.",
+        "voice": "voc_ch0069_affection_lobby_4",
+        "ani": "active",
         "face": "question",
         "emo": "question",
         "wait": 2.5,
@@ -19995,6 +20303,7 @@
           "Touch"
         ],
         "text": "어디... 함께 풍류를 즐겨보자꾸나.",
+        "voice": "voc_ch0069_affection_lobby_1",
         "ani": "active",
         "emo": "hehe",
         "textEn": "Now then... let us enjoy the refined arts together."
@@ -20008,6 +20317,8 @@
           "Touch"
         ],
         "text": "후후, 걱정하지 말거라.\n이 곳에는 너와 나 둘 뿐이니…",
+        "voice": "voc_ch0069_affection_lobby_2",
+        "ani": "active",
         "face": "happy",
         "emo": "chat",
         "wait": 2.0,
@@ -20022,6 +20333,8 @@
           "Touch"
         ],
         "text": "이번에는 내가 네 녀석을 농락할 차례로구나.",
+        "voice": "voc_ch0069_affection_lobby_3",
+        "ani": "active",
         "face": "happy",
         "emo": "twinkle",
         "textEn": "This time, it is my turn to play with you."
@@ -20035,6 +20348,8 @@
           "Touch"
         ],
         "text": "이런 걸 유열이라 하던가...?\n후훗, 나쁘지 않은 감정이로구나.",
+        "voice": "voc_ch0069_affection_lobby_4",
+        "ani": "active",
         "face": "question",
         "emo": "question",
         "wait": 2.5,
@@ -20048,6 +20363,7 @@
           "Touch"
         ],
         "text": "승부라면 내가 빠질 수 없지!",
+        "voice": "voc_ch0069_outgame_select_1",
         "ani": "active",
         "emo": "gogo",
         "textEn": "If it's a competition, I certainly can't sit it out!"
@@ -20060,6 +20376,7 @@
           "Touch"
         ],
         "text": "자, 이 축제를 함께 꽃피워 보자꾸나!",
+        "voice": "voc_ch0069_outgame_select_2",
         "ani": "active",
         "emo": "twinkle",
         "textEn": "Come, let us make this festival bloom together!"
@@ -20072,6 +20389,7 @@
           "Rankup"
         ],
         "text": "벗과 함께하는 시간이 이렇게나 즐거울 즐이야.",
+        "voice": "voc_ch0069_outgame_rankup_1",
         "face": "shy",
         "emo": "love2",
         "textEn": "To think spending time with a friend could be so delightful."
@@ -20084,6 +20402,7 @@
           "Rankup"
         ],
         "text": "함께 있는 매일이 축제나 다름이 없구나.",
+        "voice": "voc_ch0069_outgame_rankup_2",
         "face": "happy",
         "emo": "shy",
         "textEn": "Every day spent with you is no different from a festival."

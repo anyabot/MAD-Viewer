@@ -71,3 +71,14 @@ test.describe('/event', () => {
     await expect(page).toHaveURL(/\/story\/\?chapter=/);
   });
 });
+
+test('Ascent lists Basic first and ended seasons under Past seasons', async ({ page }) => {
+  await page.goto('/stages/?mode=ascent');
+  const main = page.locator('main');
+  await expect(main.getByText('Past seasons')).toBeVisible();
+  await expect(main.getByText('Infinity Archive', { exact: false }).first()).toBeVisible();
+  const text = await main.innerText();
+  expect(text.indexOf('Basic Archive')).toBeLessThan(text.indexOf('Past seasons'));
+  expect(text.slice(text.indexOf('Past seasons'))).toContain('Ended');
+  expect(text.slice(text.indexOf('Past seasons'))).not.toContain('Basic Archive');
+});

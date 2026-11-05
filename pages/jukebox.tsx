@@ -18,6 +18,7 @@ const GROUP_LABEL: Record<string, Localized> = {
   faction: { en: 'Faction', ko: '세력' },
   character: { en: 'Character', ko: '캐릭터' },
   romance: { en: 'Romance', ko: '로맨스' },
+  minigame: { en: 'Minigame', ko: '미니게임' },
 };
 
 function groupLabel(group: string, lang: 'en' | 'ko'): string {

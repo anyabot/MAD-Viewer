@@ -731,7 +731,7 @@ export function loadCharacters(): Promise<CharacterData> {
 }
 
 // A tier whose options repeat the tier below is an unreleased placeholder (T6 in 1.11.6).
-function dropPlaceholderTiers(data: CharacterData): CharacterData {
+export function dropPlaceholderTiers(data: CharacterData): CharacterData {
   for (const slot of Object.values(data.equipment ?? {})) {
     if (!slot.tiers) continue;
     slot.tiers = slot.tiers.filter((row, i, all) => !i || JSON.stringify(row.options) !== JSON.stringify(all[i - 1].options));
@@ -1173,7 +1173,9 @@ export type EventArtRig = {
   atlas: string;
   dataScale: number;
   animations: string[];
-  role: 'character' | 'box';
+  role: 'character' | 'box' | 'unit';
+  // a unit rig's character or summon code
+  code?: string;
   start: string;
   idle?: string[];
   actions?: string[];
@@ -1220,6 +1222,7 @@ export type EventDraw =
 export type EventArt = {
   key: string;
   rigs: EventArtRig[];
+  units?: EventArtRig[];
   chibis: EventChibi[];
   stickers: EventSticker[];
   draw?: EventDraw;

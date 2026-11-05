@@ -37,5 +37,9 @@ body {
 
 .hub-footer__games a, .hub-footer__legal, .hub-footer__legal a { color: var(--hub-text-muted); }
 
+/* crawler text: shown only if the app has not replaced it within 2s */
+.prerender-summary { opacity: 0; animation: prerender-show 0.2s linear 2s forwards; }
+@keyframes prerender-show { to { opacity: 1; } }
+
 /* the kit theme drops popovers to 10, under the 1300 modal layer */
 .ui-popover__popper { z-index: 1500; }
