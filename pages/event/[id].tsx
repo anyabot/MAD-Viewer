@@ -240,6 +240,24 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
         </Box>
       ) : null}
 
+      {event.songs?.length ? (
+        <Box>
+          <Text fontSize="lg" fontWeight="bold" mb={3}>{t('eventsSongs')}</Text>
+          <SimpleGrid columns={{ base: 2, md: 4 }} spacing={3}>
+            {event.songs.map((song) => {
+              const title = gameText(song.name, gameLang);
+              const art = resolveIcon(icons, 'song', [song.id]);
+              return (
+                <VStack key={song.id} align="stretch" spacing={1}>
+                  {art && <Box as="img" src={art} alt={title} loading="lazy" w="100%" aspectRatio={1} borderRadius="md" />}
+                  <Text fontSize="sm">{title}</Text>
+                </VStack>
+              );
+            })}
+          </SimpleGrid>
+        </Box>
+      ) : null}
+
       {event.attendance && (
         <AttendancePanel attendance={event.attendance} refs={data.refs} icons={icons} gameLang={gameLang} />
       )}
