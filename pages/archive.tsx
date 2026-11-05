@@ -16,7 +16,7 @@ import {
 import { formatMoment, remaining, zoneLabel } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
 import { useLang, useT } from '@/lib/i18n';
-import { isFuture } from '@/lib/spoilers';
+import { isFuture, useHideSpoilers } from '@/lib/spoilers';
 import { useSpoilerGate } from '@/components/spoilers';
 import { hasIcon } from '@/lib/icons';
 import { itemHref } from '@/lib/items';
@@ -40,6 +40,7 @@ function ArchiveContent() {
   const [difficulty, setDifficulty] = useState(1);
   const [serverTime, setServerTime] = useServerTime();
   const now = useNow(30_000);
+  const hideSpoilers = useHideSpoilers();
 
   useEffect(() => {
     loadArchive().then(setData).catch((e) => setError(String(e)));
@@ -48,7 +49,8 @@ function ArchiveContent() {
     loadIcons().then(setIcons).catch(() => setIcons(null));
   }, []);
 
-  const season = data?.seasons[0];
+  const season = data?.seasons.find((s) => s.open && now <= Date.parse(s.open.end)
+    && !(hideSpoilers && isFuture(s.open.start, now))) ?? data?.seasons[data.seasons.length - 1];
   const path = season?.difficulties.find((d) => d.difficulty === difficulty) ?? season?.difficulties[0];
   const poolOrder = useMemo(() => Object.keys(data?.pools ?? {}).sort((a, b) => Number(a) - Number(b)), [data]);
 
