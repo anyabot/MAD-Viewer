@@ -100,6 +100,10 @@
       64,
       64
     ],
+    "T_DialogFX_emotion_35": [
+      64,
+      64
+    ],
     "T_DialogFX_emotion_36": [
       128,
       128
@@ -5826,6 +5830,486 @@
             },
             "randomizePerFrame": false
           },
+          "flip": 1
+        },
+        {
+          "name": "trail",
+          "sheet": "T_DialogFX_emotion_35",
+          "tiles": [
+            1,
+            1
+          ],
+          "position": [
+            -0.21,
+            -0.92
+          ],
+          "angle": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "duration": 0.6,
+          "looping": false,
+          "startDelay": {
+            "m": 0,
+            "s": 0.1
+          },
+          "simulationSpeed": 1.0,
+          "maxParticles": 1000,
+          "align": 2,
+          "scaling": 0,
+          "ownScale": [
+            1.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "start": {
+            "lifetime": {
+              "m": 0,
+              "s": 0.8
+            },
+            "speed": {
+              "m": 0,
+              "s": 0.0
+            },
+            "size": {
+              "m": 0,
+              "s": 0.3
+            },
+            "rotation": {
+              "m": 0,
+              "s": 0.0
+            },
+            "color": {
+              "m": 0,
+              "c": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "gravity": {
+              "m": 0,
+              "s": 0.0
+            },
+            "flipRotation": 0.0
+          },
+          "emission": {
+            "rate": {
+              "m": 0,
+              "s": 0.0
+            },
+            "bursts": [
+              {
+                "t": 0.0,
+                "n": {
+                  "m": 0,
+                  "s": 1.0
+                },
+                "cycles": 1,
+                "interval": 0.01,
+                "probability": 1.0
+              }
+            ]
+          },
+          "color": {
+            "gradient": {
+              "m": 1,
+              "g": {
+                "c": [
+                  [
+                    0.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ],
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                "a": [
+                  [
+                    0.70001,
+                    1.0
+                  ],
+                  [
+                    0.85,
+                    0.0
+                  ]
+                ],
+                "f": 0
+              }
+            }
+          },
+          "velocity": {
+            "x": {
+              "m": 1,
+              "s": 4.0,
+              "k": [
+                [
+                  0.0,
+                  -1.0,
+                  0.60167,
+                  0.60167
+                ],
+                [
+                  1.0,
+                  -0.39833,
+                  0.60167,
+                  0.60167
+                ]
+              ]
+            },
+            "y": {
+              "m": 1,
+              "s": 3.0,
+              "k": [
+                [
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            "radial": {
+              "m": 0,
+              "s": 0.0
+            },
+            "speedModifier": {
+              "m": 0,
+              "s": 1.0
+            },
+            "inWorldSpace": false
+          },
+          "spin": {
+            "curve": {
+              "m": 1,
+              "s": 8.72665,
+              "k": [
+                [
+                  0.20335,
+                  1.0,
+                  -3.16466,
+                  -3.16466
+                ],
+                [
+                  0.58886,
+                  0.3445,
+                  -0.43878,
+                  -0.43878
+                ],
+                [
+                  1.0,
+                  0.20056,
+                  -0.35009,
+                  -0.35009
+                ]
+              ]
+            }
+          },
+          "force": {
+            "x": {
+              "m": 0,
+              "s": 0.0
+            },
+            "y": {
+              "m": 0,
+              "s": -8.0
+            },
+            "randomizePerFrame": false
+          },
+          "trail": {
+            "mode": 0,
+            "ratio": 1.0,
+            "lifetime": {
+              "m": 0,
+              "s": 0.3
+            },
+            "minVertexDistance": 0.2,
+            "textureMode": 0,
+            "worldSpace": false,
+            "dieWithParticles": true,
+            "sizeAffectsWidth": true,
+            "sizeAffectsLifetime": false,
+            "inheritParticleColor": true,
+            "color": {
+              "m": 0,
+              "c": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "width": {
+              "m": 0,
+              "s": 1.0
+            },
+            "colorOverTrail": {
+              "m": 0,
+              "c": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          },
+          "renderNone": true,
+          "flip": 1
+        },
+        {
+          "name": "trail (1)",
+          "sheet": "T_DialogFX_emotion_35",
+          "tiles": [
+            1,
+            1
+          ],
+          "position": [
+            -0.25,
+            -1.07
+          ],
+          "angle": 0.0,
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "duration": 0.6,
+          "looping": false,
+          "startDelay": {
+            "m": 0,
+            "s": 0.1
+          },
+          "simulationSpeed": 1.0,
+          "maxParticles": 1000,
+          "align": 2,
+          "scaling": 0,
+          "ownScale": [
+            1.0,
+            1.0
+          ],
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "start": {
+            "lifetime": {
+              "m": 0,
+              "s": 0.8
+            },
+            "speed": {
+              "m": 0,
+              "s": 0.0
+            },
+            "size": {
+              "m": 0,
+              "s": 0.3
+            },
+            "rotation": {
+              "m": 0,
+              "s": 0.0
+            },
+            "color": {
+              "m": 0,
+              "c": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "gravity": {
+              "m": 0,
+              "s": 0.0
+            },
+            "flipRotation": 0.0
+          },
+          "emission": {
+            "rate": {
+              "m": 0,
+              "s": 0.0
+            },
+            "bursts": [
+              {
+                "t": 0.0,
+                "n": {
+                  "m": 0,
+                  "s": 1.0
+                },
+                "cycles": 1,
+                "interval": 0.01,
+                "probability": 1.0
+              }
+            ]
+          },
+          "color": {
+            "gradient": {
+              "m": 1,
+              "g": {
+                "c": [
+                  [
+                    0.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ],
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                "a": [
+                  [
+                    0.70001,
+                    1.0
+                  ],
+                  [
+                    0.85,
+                    0.0
+                  ]
+                ],
+                "f": 0
+              }
+            }
+          },
+          "velocity": {
+            "x": {
+              "m": 1,
+              "s": 4.0,
+              "k": [
+                [
+                  0.0,
+                  -1.0,
+                  0.60167,
+                  0.60167
+                ],
+                [
+                  1.0,
+                  -0.39833,
+                  0.60167,
+                  0.60167
+                ]
+              ]
+            },
+            "y": {
+              "m": 1,
+              "s": 3.0,
+              "k": [
+                [
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0
+                ],
+                [
+                  1.0,
+                  1.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            },
+            "radial": {
+              "m": 0,
+              "s": 0.0
+            },
+            "speedModifier": {
+              "m": 0,
+              "s": 1.0
+            },
+            "inWorldSpace": false
+          },
+          "spin": {
+            "curve": {
+              "m": 1,
+              "s": 8.72665,
+              "k": [
+                [
+                  0.20335,
+                  1.0,
+                  -3.16466,
+                  -3.16466
+                ],
+                [
+                  0.58886,
+                  0.3445,
+                  -0.43878,
+                  -0.43878
+                ],
+                [
+                  1.0,
+                  0.20056,
+                  -0.35009,
+                  -0.35009
+                ]
+              ]
+            }
+          },
+          "force": {
+            "x": {
+              "m": 0,
+              "s": 0.0
+            },
+            "y": {
+              "m": 0,
+              "s": -8.0
+            },
+            "randomizePerFrame": false
+          },
+          "trail": {
+            "mode": 0,
+            "ratio": 1.0,
+            "lifetime": {
+              "m": 0,
+              "s": 0.15
+            },
+            "minVertexDistance": 0.2,
+            "textureMode": 0,
+            "worldSpace": false,
+            "dieWithParticles": true,
+            "sizeAffectsWidth": true,
+            "sizeAffectsLifetime": false,
+            "inheritParticleColor": true,
+            "color": {
+              "m": 0,
+              "c": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "width": {
+              "m": 0,
+              "s": 1.0
+            },
+            "colorOverTrail": {
+              "m": 0,
+              "c": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          },
+          "renderNone": true,
           "flip": 1
         }
       ]
@@ -16047,6 +16531,28 @@
         "InsideHead": [
           1.5699,
           2.7238
+        ]
+      }
+    },
+    "CH0069": {
+      "look": "Left",
+      "bones": {
+        "Mouth": "mouth",
+        "OutsideHead": "face",
+        "InsideHead": "face"
+      },
+      "offsets": {
+        "Mouth": [
+          0.0,
+          0.0
+        ],
+        "OutsideHead": [
+          -4.4251,
+          12.3182
+        ],
+        "InsideHead": [
+          5.9285,
+          9.9351
         ]
       }
     },

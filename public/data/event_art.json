@@ -2968,6 +2968,136 @@
     "beadFrom": "00_spin_",
     "beadTo": "00_bead_"
    }
+  },
+  "1011": {
+   "rigs": [],
+   "units": [
+    {
+     "asset": "EV1011_NP0801",
+     "code": "NP0801",
+     "skel": "EV1011_NP0801.skel",
+     "atlas": "EV1011_NP0801.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "01_run"
+     ],
+     "role": "unit",
+     "start": "01_run"
+    },
+    {
+     "asset": "EV1011_NP0803",
+     "code": "NP0803",
+     "skel": "EV1011_NP0803.skel",
+     "atlas": "EV1011_NP0803.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "01_run"
+     ],
+     "role": "unit",
+     "start": "01_run"
+    },
+    {
+     "asset": "EV1011_NP0804",
+     "code": "NP0804",
+     "skel": "EV1011_NP0804.skel",
+     "atlas": "EV1011_NP0804.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "01_run"
+     ],
+     "role": "unit",
+     "start": "01_run"
+    },
+    {
+     "asset": "EV1011_NP0805",
+     "code": "NP0805",
+     "skel": "EV1011_NP0805.skel",
+     "atlas": "EV1011_NP0805.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "01_run"
+     ],
+     "role": "unit",
+     "start": "01_run"
+    },
+    {
+     "asset": "EV1011_NP0807",
+     "code": "NP0807",
+     "skel": "EV1011_NP0807.skel",
+     "atlas": "EV1011_NP0807.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "01_run"
+     ],
+     "role": "unit",
+     "start": "01_run"
+    },
+    {
+     "asset": "EV1011_NP0808",
+     "code": "NP0808",
+     "skel": "EV1011_NP0808.skel",
+     "atlas": "EV1011_NP0808.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "01_run"
+     ],
+     "role": "unit",
+     "start": "01_run"
+    },
+    {
+     "asset": "EV1011_NP0809",
+     "code": "NP0809",
+     "skel": "EV1011_NP0809.skel",
+     "atlas": "EV1011_NP0809.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "01_run"
+     ],
+     "role": "unit",
+     "start": "01_run"
+    },
+    {
+     "asset": "EV1011_NP0812",
+     "code": "NP0812",
+     "skel": "EV1011_NP0812.skel",
+     "atlas": "EV1011_NP0812.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "01_run"
+     ],
+     "role": "unit",
+     "start": "01_run"
+    },
+    {
+     "asset": "EV1011_SM0005",
+     "code": "SM0005",
+     "skel": "EV1011_SM0005.skel",
+     "atlas": "EV1011_SM0005.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "00_idle",
+      "00_unsummon"
+     ],
+     "role": "unit",
+     "start": "00_idle"
+    },
+    {
+     "asset": "EV1011_SM0006",
+     "code": "SM0006",
+     "skel": "EV1011_SM0006.skel",
+     "atlas": "EV1011_SM0006.atlas",
+     "dataScale": 0.009999999776482582,
+     "animations": [
+      "00_idle",
+      "00_unsummon"
+     ],
+     "role": "unit",
+     "start": "00_idle"
+    }
+   ],
+   "chibis": [],
+   "stickers": [],
+   "key": "event_1011"
   }
  }
 }

@@ -15,6 +15,7 @@ import {
 } from '@/components/eventsBoard';
 import EventBoxArt from '@/components/eventBoxArt';
 import EventChibis from '@/components/eventChibis';
+import EventUnits from '@/components/eventUnits';
 import {
   loadCharacters, loadEventArt, loadEvents, loadIcons,
   type CharacterData, type EventArtIndex, type EventIndex, type IconManifest,
@@ -231,6 +232,13 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
           </Wrap>
         </Box>
       )}
+
+      {art?.units?.length ? (
+        <Box>
+          <Text fontSize="lg" fontWeight="bold" mb={3}>{t('eventsUnits')}</Text>
+          <EventUnits art={art} chars={chars} />
+        </Box>
+      ) : null}
 
       {event.attendance && (
         <AttendancePanel attendance={event.attendance} refs={data.refs} icons={icons} gameLang={gameLang} />

@@ -12,6 +12,7 @@
     "AF_CH0042_asmr_enter": "view/af_ch0042",
     "AF_CH0043_basic_enter": "view/af_ch0043",
     "AF_CH0058_basic_enter": "view/af_ch0058",
+    "AF_CH0069_basic_enter": "view/af_ch0069",
     "AF_CH0075_basic_enter": "view/af_ch0075",
     "DS_CH0009_basic_enter": "view/ds_ch0009",
     "DS_CH0009_reaction_A1": "view/ds_ch0009",
@@ -147,6 +148,16 @@
     "DS_CH0058_reaction_B1_reaction": "view/ds_ch0058",
     "DS_CH0058_reaction_H1": "view/ds_ch0058",
     "DS_CH0068_basic_enter": "view/ds_ch0068",
+    "DS_CH0069_basic_enter": "view/ds_ch0069",
+    "DS_CH0069_overlay_B3": "view/ds_ch0069",
+    "DS_CH0069_overlay_B4": "view/ds_ch0069",
+    "DS_CH0069_overlay_B5": "view/ds_ch0069",
+    "DS_CH0069_reaction_A1_2": "view/ds_ch0069",
+    "DS_CH0069_reaction_A2": "view/ds_ch0069",
+    "DS_CH0069_reaction_A2_2": "view/ds_ch0069",
+    "DS_CH0069_reaction_A3": "view/ds_ch0069",
+    "DS_CH0069_reaction_A3_2": "view/ds_ch0069",
+    "DS_CH0069_reaction_H1": "view/ds_ch0069",
     "DS_CH0075_basic_enter": "view/ds_ch0075",
     "DS_CH0075_reaction_A1": "view/ds_ch0075",
     "DS_CH0075_reaction_A1_2": "view/ds_ch0075",
@@ -165,6 +176,8 @@
     "SE_Bell_03": "sfx",
     "SE_Bell_04": "sfx",
     "SE_Bell_05": "sfx",
+    "SE_Bike_drive_01": "sfx",
+    "SE_Bike_start_01": "sfx",
     "SE_Bird_01": "sfx",
     "SE_Bird_Flying_01": "sfx",
     "SE_Blackening_01_LP": "sfx",
@@ -664,6 +677,7 @@
     "bgm_battle_017_lp": "bgm",
     "bgm_battle_018_in": "bgm",
     "bgm_battle_018_lp": "bgm",
+    "bgm_battle_019": "bgm",
     "bgm_character_001": "bgm",
     "bgm_character_002": "bgm",
     "bgm_character_003": "bgm",
@@ -698,8 +712,13 @@
     "bgm_faction_015": "bgm",
     "bgm_faction_016": "bgm",
     "bgm_minigame_001": "bgm",
+    "bgm_minigame_001_sample": "bgm",
     "bgm_minigame_002": "bgm",
+    "bgm_minigame_002_sample": "bgm",
     "bgm_minigame_003": "bgm",
+    "bgm_minigame_003_sample": "bgm",
+    "bgm_minigame_004": "bgm",
+    "bgm_minigame_004_sample": "bgm",
     "bgm_outgame_003": "bgm",
     "bgm_outgame_004": "bgm",
     "bgm_outgame_005": "bgm",
@@ -799,6 +818,10 @@
     "bgm_romance_041_lp": "bgm",
     "bgm_romance_042_in": "bgm",
     "bgm_romance_042_lp": "bgm",
+    "bgm_romance_043_in": "bgm",
+    "bgm_romance_043_lp": "bgm",
+    "bgm_romance_044_in": "bgm",
+    "bgm_romance_044_lp": "bgm",
     "bgm_story_001": "bgm",
     "bgm_story_002": "bgm",
     "bgm_story_003": "bgm",
@@ -857,7 +880,15 @@
     "bgm_story_080": "bgm",
     "bgm_story_081": "bgm",
     "bgm_story_082": "bgm",
-    "bgm_story_083": "bgm"
+    "bgm_story_083": "bgm",
+    "bgm_story_085": "bgm",
+    "bgm_story_086": "bgm",
+    "bgm_story_087": "bgm",
+    "bgm_story_088": "bgm",
+    "bgm_story_089": "bgm",
+    "bgm_story_090": "bgm",
+    "bgm_story_091": "bgm",
+    "bgm_story_091_var": "bgm"
   },
   "animations": {
     "af_ch0009": {
@@ -895,6 +926,9 @@
     },
     "af_ch0058": {
       "basic/enter": "AF_CH0058_basic_enter"
+    },
+    "af_ch0069": {
+      "basic/enter": "AF_CH0069_basic_enter"
     },
     "af_ch0075": {
       "basic/enter": "AF_CH0075_basic_enter"
@@ -1070,6 +1104,18 @@
     },
     "ds_ch0068": {
       "basic/enter": "DS_CH0068_basic_enter"
+    },
+    "ds_ch0069": {
+      "10_basic/10_enter": "DS_CH0069_basic_enter",
+      "10_reaction/10_A1_2": "DS_CH0069_reaction_A1_2",
+      "10_reaction/10_A2": "DS_CH0069_reaction_A2",
+      "10_reaction/10_A2_2": "DS_CH0069_reaction_A2_2",
+      "10_reaction/10_A3": "DS_CH0069_reaction_A3",
+      "10_reaction/10_A3_2": "DS_CH0069_reaction_A3_2",
+      "10_reaction/10_H1": "DS_CH0069_reaction_H1",
+      "30_overlay/30_B3": "DS_CH0069_overlay_B3",
+      "30_overlay/30_B4": "DS_CH0069_overlay_B4",
+      "30_overlay/30_B5": "DS_CH0069_overlay_B5"
     },
     "ds_ch0075": {
       "10_basic/10_enter": "DS_CH0075_basic_enter",
@@ -1559,6 +1605,54 @@
       "seconds": 59.2
     },
     {
+      "id": "bgm_story_085",
+      "group": "story",
+      "loop": "bgm_story_085",
+      "seconds": 96.7
+    },
+    {
+      "id": "bgm_story_086",
+      "group": "story",
+      "loop": "bgm_story_086",
+      "seconds": 146.2
+    },
+    {
+      "id": "bgm_story_087",
+      "group": "story",
+      "loop": "bgm_story_087",
+      "seconds": 158.7
+    },
+    {
+      "id": "bgm_story_088",
+      "group": "story",
+      "loop": "bgm_story_088",
+      "seconds": 73.5
+    },
+    {
+      "id": "bgm_story_089",
+      "group": "story",
+      "loop": "bgm_story_089",
+      "seconds": 89.5
+    },
+    {
+      "id": "bgm_story_090",
+      "group": "story",
+      "loop": "bgm_story_090",
+      "seconds": 80.5
+    },
+    {
+      "id": "bgm_story_091",
+      "group": "story",
+      "loop": "bgm_story_091",
+      "seconds": 44.8
+    },
+    {
+      "id": "bgm_story_091_var",
+      "group": "story",
+      "loop": "bgm_story_091_var",
+      "seconds": 44.8
+    },
+    {
       "id": "bgm_battle_001",
       "group": "battle",
       "loop": "bgm_battle_001",
@@ -1682,6 +1776,12 @@
       "loop": "bgm_battle_018_lp",
       "intro": "bgm_battle_018_in",
       "seconds": 118.5
+    },
+    {
+      "id": "bgm_battle_019",
+      "group": "battle",
+      "loop": "bgm_battle_019",
+      "seconds": 66.1
     },
     {
       "id": "bgm_event_001",
@@ -2112,10 +2212,30 @@
       "seconds": 103.8
     },
     {
+      "id": "bgm_romance_043",
+      "group": "romance",
+      "loop": "bgm_romance_043_lp",
+      "intro": "bgm_romance_043_in",
+      "seconds": 75.0
+    },
+    {
+      "id": "bgm_romance_044",
+      "group": "romance",
+      "loop": "bgm_romance_044_lp",
+      "intro": "bgm_romance_044_in",
+      "seconds": 56.2
+    },
+    {
       "id": "bgm_minigame_001",
       "group": "minigame",
       "loop": "bgm_minigame_001",
       "seconds": 90.0
+    },
+    {
+      "id": "bgm_minigame_001_sample",
+      "group": "minigame",
+      "loop": "bgm_minigame_001_sample",
+      "seconds": 14.0
     },
     {
       "id": "bgm_minigame_002",
@@ -2124,10 +2244,34 @@
       "seconds": 90.0
     },
     {
+      "id": "bgm_minigame_002_sample",
+      "group": "minigame",
+      "loop": "bgm_minigame_002_sample",
+      "seconds": 14.3
+    },
+    {
       "id": "bgm_minigame_003",
       "group": "minigame",
       "loop": "bgm_minigame_003",
       "seconds": 89.6
+    },
+    {
+      "id": "bgm_minigame_003_sample",
+      "group": "minigame",
+      "loop": "bgm_minigame_003_sample",
+      "seconds": 17.4
+    },
+    {
+      "id": "bgm_minigame_004",
+      "group": "minigame",
+      "loop": "bgm_minigame_004",
+      "seconds": 101.1
+    },
+    {
+      "id": "bgm_minigame_004_sample",
+      "group": "minigame",
+      "loop": "bgm_minigame_004_sample",
+      "seconds": 20.2
     }
   ]
 }
