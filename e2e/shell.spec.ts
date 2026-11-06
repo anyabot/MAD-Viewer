@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { SAMPLE, openSettled, stored } from './fixtures';
 
 test.describe('language', () => {
-  test('switching to Korean relabels the site and persists', async ({ page }) => {
+  test('switching to Korean relabels the site and persists', { tag: '@smoke' }, async ({ page }) => {
     await openSettled(page, '/characters/');
     await page.getByRole('button', { name: '한국어', exact: true }).click();
     await expect(page.locator('html')).toHaveAttribute('lang', 'ko');

@@ -26,7 +26,7 @@ test.describe('/viewer', () => {
 const MIN_NON_BG = 0.05;
 const MIN_COLORS = 500;
 
-test('a shared viewer link draws the skin', async ({ page }) => {
+test('a shared viewer link draws the skin', { tag: '@smoke' }, async ({ page }) => {
   await page.goto(`/viewer/?skin=${SAMPLE.skin}`);
   const canvas = page.locator('canvas').first();
   await expect(canvas).toBeVisible({ timeout: 45_000 });

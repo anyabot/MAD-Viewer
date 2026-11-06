@@ -4,7 +4,7 @@ import { SAMPLE, openSettled, showSpoilers, stored, withheldCode } from './fixtu
 const path = `/character/${SAMPLE.character.code}/`;
 
 test.describe('/character', () => {
-  test('shows the profile for a released unit', async ({ page }) => {
+  test('shows the profile for a released unit', { tag: '@smoke' }, async ({ page }) => {
     await page.goto(path);
     await expect(page.getByRole('heading', { name: SAMPLE.character.name, level: 1 })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Profile', exact: true })).toBeVisible();

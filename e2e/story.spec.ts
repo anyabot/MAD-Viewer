@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { SAMPLE } from './fixtures';
 
 test.describe('/story', () => {
-  test('a chapter opens with its scenes and speaker links', async ({ page }) => {
+  test('a chapter opens with its scenes and speaker links', { tag: '@smoke' }, async ({ page }) => {
     await page.goto('/story/');
     await page.getByRole('link', { name: new RegExp(SAMPLE.chapter) }).click();
     await expect(page).toHaveURL(/chapter=/);

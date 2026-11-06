@@ -3,19 +3,23 @@ name: CI
 on:
   push:
     branches: [main, dev]
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
 
+# Keyed on the event too, so a push never cancels the nightly run on the same branch.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
-  e2e:
-    name: E2E
+  checks:
+    name: Typecheck, lint, unit, data contract
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -29,6 +33,51 @@ jobs:
       - run: npm install --no-save github:Altterisk/game-hub
       - run: npx tsc --noEmit
       - run: npm run lint
+      - run: npm test
+      - run: npm run test:contract
+
+  smoke:
+    name: E2E smoke
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    needs: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+      - run: npm ci
+      - run: npm install --no-save github:Altterisk/game-hub
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e:smoke
+      - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-smoke
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
+  e2e:
+    name: E2E full
+    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
+    needs: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+      - run: npm ci
+      - run: npm install --no-save github:Altterisk/game-hub
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
@@ -40,3 +89,20 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 14
+
+  cdn:
+    name: CDN buckets (live)
+    if: github.event_name != 'push' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CONTRACT_CDN: '1'
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+      - run: npm ci
+      - run: npm run test:contract

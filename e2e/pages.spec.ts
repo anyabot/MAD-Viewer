@@ -32,7 +32,7 @@ const CASES: PageCase[] = [
 ];
 
 for (const c of CASES) {
-  test(`page ${c.path} renders`, async ({ page, baseURL }) => {
+  test(`page ${c.path} renders`, { tag: '@smoke' }, async ({ page, baseURL }) => {
     const errors: string[] = [];
     const bad: string[] = [];
     page.on('pageerror', (err) => errors.push(err.message));

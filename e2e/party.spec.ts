@@ -35,7 +35,7 @@ test.describe('/party', () => {
   test.describe('codes', () => {
     test.use({ permissions: ['clipboard-read', 'clipboard-write'] });
 
-    test('a copied code imports as a new team', async ({ page }) => {
+    test('a copied code imports as a new team', { tag: '@smoke' }, async ({ page }) => {
       await page.getByRole('button', { name: 'New team' }).click();
       await page.getByRole('button', { name: 'Copy code', exact: true }).click();
       await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBeTruthy();
