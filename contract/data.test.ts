@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
+import { z } from 'zod';
 import * as S from './schemas';
 import { ICONS, exists, jsonFiles, read } from './source';
 
@@ -96,6 +97,25 @@ describe('events', () => {
   it('every bonus unit is in characters.json', () => {
     const bonus = events.flatMap((e) => (e.bonus ?? []).map((b) => `${e.id} ${b.code}`));
     expect(bonus.filter((b) => !characters[b.split(' ')[1]])).toEqual([]);
+  });
+});
+
+describe('event map ghosts', () => {
+  it('every ghost marks a side story of its own event', () => {
+    const art = read('event_art.json', z.looseObject({ events: z.record(z.string(), z.looseObject({
+      stickers: z.array(z.looseObject({ name: z.string(), stories: z.array(z.number()).optional() })),
+    })) })).events;
+    const chapters = Object.values(read('story/index.json', S.storyIndex).chapters);
+    const bad: string[] = [];
+    for (const [id, entry] of Object.entries(art)) {
+      const side = chapters.find((c) => c.kind === 'side' && (c as { event?: number }).event === Number(id));
+      for (const s of entry.stickers) {
+        for (const story of s.stories ?? []) {
+          if (!side?.scenes.some((sc) => sc.id === story)) bad.push(`${id} ${s.name}: story ${story}`);
+        }
+      }
+    }
+    expect(bad).toEqual([]);
   });
 });
 

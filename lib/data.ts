@@ -1213,6 +1213,7 @@ export type EventSticker = {
   rotation: number;
   scale: [number, number];
   idle?: ChibiClip;
+  stories?: number[];
 };
 
 export type EventDraw =
@@ -1226,6 +1227,8 @@ export type EventArt = {
   chibis: EventChibi[];
   stickers: EventSticker[];
   draw?: EventDraw;
+  // sprite -> pixel hash, so a renamed copy reads as the same picture
+  hashes?: Record<string, string>;
 };
 
 export type EventArtIndex = { events: Record<string, EventArt> };
