@@ -45,6 +45,20 @@ describe('humanized skills', () => {
     expect(burst).toContain('deals 120% of its ATK as damage to every enemy hit — only when it hits 2+ targets');
   });
 
+  it('a multi-hit single target spells out its range and hit count', () => {
+    const line = proseAt('CH0033', 5).get(3390)!.base.find((l) => l.includes('Method'))!;
+    expect(line.startsWith('Hits the nearest enemy in front within range 5, 5 times: ')).toBe(true);
+    const all = Object.keys(data.characters).filter((k) => k.startsWith('CH') && data.characters[k].skillSetGroup != null)
+      .flatMap((code) => [...proseAt(code, skillGrades(data.characters[code] as CharacterEntry, data).at(-1)!).values()].flatMap((p) => [...p.base, ...p.variant]));
+    expect(all.filter((l) => /×\d|Single target|any distance|\bwithin \d/.test(l))).toEqual([]);
+  });
+
+  it('a multi-hit says whether its value repeats or is split', () => {
+    expect(proseAt('CH0033', 5).get(3390)!.base.join(' ')).toContain('deals 500% of its ATK as damage to it in total (100% per hit)');
+    expect(proseAt('CH0069', 5).get(6980)!.base.join(' ')).toContain('deals 130% of its ATK as damage to it per hit');
+    expect(proseAt('CH0007', 5).get(710)!.base.join(' ')).toContain('deals 150% of its ATK as damage to it in total (21% on 6 hits, 24% on 1 hit)');
+  });
+
   it('no two states in a kit share a name', () => {
     const clashes: string[] = [];
     for (const [code, c] of Object.entries(data.characters)) {
