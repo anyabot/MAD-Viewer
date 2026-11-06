@@ -182,6 +182,8 @@ export const UI = {
   eventsPickup: { en: 'Pickup', ko: '픽업' },
   eventsCast: { en: 'In the story', ko: '스토리 등장' },
   eventsUnits: { en: 'Event units', ko: '이벤트 유닛' },
+  forcedCritChance: { en: '{n} critical chance', ko: '치명타 확률 {n}' },
+  forcedPenetration: { en: '{n} penetration', ko: '관통 {n}' },
   eventsSongs: { en: 'Minigame songs', ko: '미니게임 곡' },
 
   storyMain: { en: 'Main story', ko: '메인 스토리' },

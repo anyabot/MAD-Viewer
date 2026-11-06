@@ -428,8 +428,8 @@ export const OP_LABEL: Record<string, Localized> = {
   EMPTY_EFFECT: { en: 'No effect', ko: '효과 없음' },
   ADD_DAMAGE: { en: 'Damage', ko: '피해' },
   ADD_HEAL: { en: 'Heal', ko: '회복' },
-  ADD_FORCE_CRITICAL_DAMAGE: { en: 'Guaranteed critical', ko: '치명타 확정' },
-  ADD_FORCE_PENETRATION_DAMAGE: { en: 'Guaranteed penetration', ko: '관통 확정' },
+  ADD_FORCE_CRITICAL_DAMAGE: { en: 'Set critical chance', ko: '치명타 확률 지정' },
+  ADD_FORCE_PENETRATION_DAMAGE: { en: 'Set penetration', ko: '관통 지정' },
   REDUCE_BURST_COOLDOWN: { en: 'Burst cooldown down', ko: '버스트 재사용 대기 감소' },
   UNSUMMON: { en: 'Unsummon', ko: '소환 해제' },
   CLEAR_DURATION_DEFINE_ID: { en: 'Remove a named state', ko: '지정 상태 해제' },
@@ -990,10 +990,11 @@ export function scaleSummary(op: SkillOp | SkillStat, lang: Lang = 'en'): string
 // A marker has no name the game shows, so it is named rather than printed as a table id.
 export const INTERNAL_STATE: Localized = { en: 'an internal state', ko: '내부 상태' };
 
-export function detailSummary(detail: SkillDetail, lang: Lang = 'en'): string[] {
+export function detailSummary(detail: SkillDetail, lang: Lang = 'en', stateName?: (id: string) => string): string[] {
   if (detail.kind.endsWith('Category')) {
     return detail.values.map((v) => labelOf(CATEGORY_LABEL, v.name ?? v.id, lang));
   }
+  if (stateName) return detail.values.map((v) => (v.name ? (lang === 'en' ? (v.nameEn || v.name) : v.name) : stateName(v.id)));
   const named = detail.values.filter((v) => v.name)
     .map((v) => (lang === 'en' ? (v.nameEn || v.name) : v.name) as string);
   const internal = detail.values.length - named.length;
@@ -1037,6 +1038,8 @@ export function gateSummary(
       case 'HAS_DURATION_STACK_SAME': return `${state} 정확히 ${n}중첩일 때`;
       case 'HAS_DURATION_STACK_NOT_SAME': return `${state} ${n}중첩이 아닐 때`;
       case 'HAS_DURATION_STACK_MORE': return `${state} ${n}중첩 이상일 때`;
+      case 'HITS_EXACTLY': return `대상 ${id}명에게 적중할 때`;
+      case 'HITS_AT_LEAST': return `대상 ${id}명 이상에게 적중할 때`;
       case 'HAS_DURATION_TYPE': return `${category} 보유 시`;
       case 'LACKS_DURATION_TYPE': return `${category} 미보유 시`;
       case 'SAME_ATTRIBUTE_TYPE': return '같은 속성일 때';
@@ -1061,6 +1064,8 @@ export function gateSummary(
     case 'HAS_DURATION_STACK_SAME': return `with exactly ${n} ${state}`;
     case 'HAS_DURATION_STACK_NOT_SAME': return `without exactly ${n} ${state}`;
     case 'HAS_DURATION_STACK_MORE': return `with ${n}+ ${state}`;
+    case 'HITS_EXACTLY': return `when it hits exactly ${id} ${id === '1' ? 'target' : 'targets'}`;
+    case 'HITS_AT_LEAST': return `when it hits ${id}+ targets`;
     case 'HAS_DURATION_TYPE': return `with any ${category}`;
     case 'LACKS_DURATION_TYPE': return `without any ${category}`;
     case 'SAME_ATTRIBUTE_TYPE': return 'of the same element';
