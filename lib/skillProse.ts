@@ -1,5 +1,5 @@
 import {
-  CATEGORY_LABEL, OP_LABEL, SKILL_CATEGORY_LABEL, SORT_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, chanceText,
+  CATEGORY_LABEL, DURATION_CATEGORY_CONST, OP_LABEL, SKILL_CATEGORY_LABEL, SORT_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, chanceText,
   colorRuns, gateSummary, growValue, labelOf, moveSummary, opAmounts, statAmount,
 } from '@/lib/characters';
 import { dataText, pick, type Lang } from '@/lib/i18n';
@@ -170,6 +170,16 @@ export function workCheck(when: NonNullable<SkillOp['when']>, lang: Lang, states
   const ko = lang === 'ko';
   const state = when.state ? states(when.state) : '';
   const v = when.value ?? '';
+  if (when.check === 'CHECK_HP' && when.state) {
+    const pct = `${when.state}%`;
+    const side = { COMPARISON_LESS_OR_EQUAL: ['이하', 'or below'], COMPARISON_LESS_THAN: ['미만', 'below'], COMPARISON_GREATER_OR_EQUAL: ['이상', 'or above'], COMPARISON_GREATER_THAN: ['초과', 'above'] }[when.op ?? ''];
+    if (side) return ko ? `체력 ${pct} ${side[0]}일 때` : side[1].startsWith('or') ? `only at ${pct} HP ${side[1]}` : `only ${side[1]} ${pct} HP`;
+  }
+  if (when.check === 'CHECK_DURATION_CATEGORIZE' && when.state && (when.op === 'COMPARISON_GREATER_OR_EQUAL' && when.value === '1')) {
+    const what = labelOf(CATEGORY_LABEL, DURATION_CATEGORY_CONST[when.state] ?? when.state, lang);
+    const target = when.on === 'TRIGGER_TARGET';
+    return ko ? `${target ? '대상이 ' : ''}${what} 보유 시` : `only while ${target ? 'the target has' : 'it has'} ${what.toLowerCase()}`;
+  }
   if (when.check !== 'CHECK_DURATION_DEFINE' || !state) return when.check ?? '';
   if (when.on === 'TRIGGER_TARGET' && v === '1' && (when.op === 'COMPARISON_EQUAL_TO' || when.op === 'COMPARISON_LESS_THAN')) {
     const has = when.op === 'COMPARISON_EQUAL_TO';
@@ -256,11 +266,38 @@ function sameCheck(op: SkillOp): boolean {
 }
 
 // One effect as a clause: verb, magnitude, whom, how long.
+export type Spread = { landings: number; groups: number };
+
+// Several landings: with no weight each one deals the whole value, a weight splits the value between them.
+function perHit(op: SkillOp, level: number, period: number, spread: Spread | undefined, lang: Lang): string {
+  if (!spread || spread.landings * spread.groups < 2 || !op.value) return '';
+  const ko = lang === 'ko';
+  if (op.weight == null) return ko ? ' (타격마다)' : ' per hit';
+  const coef = growValue(op.value, level, period, 0);
+  const fmt = (v: number) => (op.scale?.endsWith('_RATE') ? `${Number((v * 100).toPrecision(6))}%` : `${Number(v.toPrecision(6))}`);
+  const weights = Array.isArray(op.weight) ? op.weight : Array<number>(spread.landings).fill(op.weight);
+  const whole = spread.groups === 1 && Math.abs(weights.reduce((a, b) => a + b, 0) - 100) < 0.01;
+  const runs: string[] = [];
+  for (let i = 0; i < weights.length;) {
+    let j = i;
+    while (j < weights.length && weights[j] === weights[i]) j += 1;
+    const each = fmt((coef * weights[i]) / 100);
+    runs.push(weights.length === 1 || j - i === weights.length ? each : ko ? `${each} ${j - i}회` : `${each} on ${j - i === 1 ? '1 hit' : `${j - i} hits`}`);
+    i = j;
+  }
+  const split = runs.length === 1 ? (ko ? `타격당 ${runs[0]}` : `${runs[0]} per hit`) : (ko ? `타격별 ${runs.join(', ')}` : `${runs.join(', ')}`);
+  if (whole) return ko ? ` (총합, ${split})` : ` in total (${split})`;
+  // the rest of the split lands elsewhere, so this hit's share is spelled out
+  const shares = [...new Set(weights)].map((w) => `${w}%`).join('/');
+  return ko ? ` (타격당 ${shares}: ${runs.join(', ')})` : ` (${shares} of it per hit: ${runs.join(', ')})`;
+}
+
 export function opClause(
   op: SkillOp, level: number, period: number, data: CharacterData, lang: Lang, states: StateNamer, inHit = false,
-  castName?: string,
+  castName?: string, spread?: Spread,
 ): string {
   const ko = lang === 'ko';
+  const per = perHit(op, level, period, spread, lang);
   const target = who(op, inHit, lang, castName);
   const amount = scaled(op, level, period, lang);
   const time = seconds(op, level, period, lang);
@@ -269,10 +306,10 @@ export function opClause(
   let text: string;
   switch (op.op) {
     case 'ADD_DAMAGE':
-      text = ko ? `${target}에게 ${amount} 피해` : `deals ${amount} as damage to ${target}`;
+      text = ko ? `${target}에게 ${amount} 피해${per}` : `deals ${amount} as damage to ${target}${per}`;
       break;
     case 'ADD_HEAL':
-      text = ko ? `${target}을(를) ${amount} 회복` : `heals ${target} for ${amount}`;
+      text = ko ? `${target}을(를) ${amount} 회복${per}` : `heals ${target} for ${amount}${per}`;
       break;
     case 'ADD_FORCE_CRITICAL_DAMAGE':
     case 'ADD_FORCE_PENETRATION_DAMAGE': {
@@ -285,7 +322,7 @@ export function opClause(
       const extra = crit
         ? (rate >= 1 ? (ko ? '치명타 확정' : 'a guaranteed critical') : (ko ? `치명타 확률 ${pct}` : `a ${pct} critical chance`))
         : (ko ? `관통 ${pct}` : `${pct} penetration`);
-      text = ko ? `${target}에게 ${first} 피해 (${extra})` : `deals ${first} as damage to ${target} with ${extra}`;
+      text = ko ? `${target}에게 ${first} 피해${per} (${extra})` : `deals ${first} as damage to ${target}${per} with ${extra}`;
       break;
     }
     case 'OVERTIME_DAMAGE':
@@ -446,23 +483,32 @@ function hitSentences(
   return groups.map((hits) => {
     const hit = hits[0];
     const landings = hits.length * hit.count * Math.max(1, hit.ticks);
-    const times = landings > 1 ? ` ×${landings}` : '';
+    const times = landings > 1 ? (ko ? `, ${landings}회 타격` : `, ${landings} hits`) : '';
     const repeat = hit.ticks === 0 && hit.cycle && hit.lifetime
       ? (ko ? ` (${hit.lifetime}초간 ${hit.cycle}초마다)` : ` (every ${hit.cycle}s for ${hit.lifetime}s)`)
-      : hit.lifetime ? (ko ? ` (${hit.lifetime}초 유지)` : ` (stays ${hit.lifetime}s)`) : '';
+      : hit.lifetime ? (ko ? ` (${hit.lifetime}초 유지)` : ` (lasts ${hit.lifetime}s)`) : '';
     const target = hit.cast?.team && hit.cast.team !== 'SELF' ? castSummary(hit.cast, lang) : '';
     const single = target && singleTarget(hit);
     const castName = single ? (ko ? '그 대상' : 'it') : undefined;
-    const ops = opsText(hit.ops, (op) => opClause(op, level, period, data, lang, states, true, castName), data, lang, states);
+    const spread = { landings: hit.count * Math.max(1, hit.ticks), groups: hits.length };
+    const ops = opsText(hit.ops, (op) => opClause(op, level, period, data, lang, states, true, castName, spread), data, lang, states);
     const fired = hit.arrive && target ? (ko ? `${target}에게 발사, 도착 시 ` : `Fires at ${target}; on arrival, `) : '';
     const moving = !hit.arrive && hit.attach === 'ATTACH_DISPATCHER'
       ? (ko ? ` (스킬 이펙트를 따라 이동${target ? `, 목표: ${target}` : ''})` : ` that moves with the skill's effect${target ? `, aimed at ${target}` : ''}`)
       : hit.attach === 'ATTACH_TARGET' ? (ko ? ' (대상을 따라 이동)' : ' that follows its target') : '';
     if (single) {
       const offset = hits.some((h) => h.offsetValue || h.offsetZ || h.fieldCenter);
-      const lead = fired || (ko ? `${target} 단일 대상` : `Single target, ${target}`);
-      const inside = offset ? (ko ? ` (${areaPhrase(hits, lang)} 안에 있을 때)` : ` (only while inside ${areaPhrase(hits, lang)})`) : '';
-      return `${lead}${fired ? (ko ? '단일 대상' : 'single target') : ''}${inside}${times}${repeat}: ${ops}.`;
+      // a single-target hit aimed at several units lands on each of them separately
+      const many = !!hit.cast && (hit.cast.pick === 'ALL' || (hit.cast.pick !== 'NTH_TARGET_SELECT' && hit.cast.count > 1));
+      const count = landings > 1 ? (ko ? ` ${landings}회` : ` ${landings} times`) : '';
+      const inside = offset
+        ? (ko ? ` (${areaPhrase(hits, lang)} 안에 있을 때)` : ` (only while it is inside ${areaPhrase(hits, lang).replace(/^in /, '')})`) : '';
+      const lead = ko
+        ? `${fired}${fired ? '' : `${target} `}${many ? '각각 ' : ''}단일 대상${count} 타격`
+        : fired
+          ? `${fired}hits ${many ? 'each' : 'it'}${count}`
+          : `Hits ${many ? (hit.cast!.pick === 'ALL' ? `${target}, one at a time` : `each of ${target}`) : target}${count ? `,${count}` : ''}`;
+      return `${lead}${inside}${repeat}: ${ops}.`;
     }
     const shape = hit.shape === 'CIRCLE' ? (ko ? `반경 ${hit.range} 원` : `a ${hit.range}-radius circle`)
       : hit.shape === 'X_AXIS' ? (ko ? `폭 ${hit.range} 띠` : `a ${hit.range}-wide band`) : '';

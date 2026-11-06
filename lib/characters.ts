@@ -593,6 +593,7 @@ export const SORT_LABEL: Record<string, Localized> = {
   MAG_DEF_LOWEST: { en: 'lowest magic DEF', ko: '마법 방어력이 가장 낮은' },
   MAG_DEF_HIGHEST: { en: 'highest magic DEF', ko: '마법 방어력이 가장 높은' },
   RANDOM: { en: 'at random', ko: '무작위' },
+  CRI_HIGHEST: { en: 'highest crit rate', ko: '치명이 가장 높은' },
 };
 
 // `SKILL_RANGE_TYPE` on a hitbox, `SKILL_CAST_TARGET_SELECT_RANGE` on the cast.
@@ -620,9 +621,9 @@ export const ATTACH_LABEL: Record<string, Localized> = {
 
 // A cast range of 99 is the whole field on that side.
 function castReach(cast: NonNullable<SkillHit['cast']>, lang: Lang): string | null {
-  if (cast.rangeValue >= 99) return lang === 'ko' ? '거리 무관' : 'any distance';
+  if (cast.rangeValue >= 99) return lang === 'ko' ? '거리 무관' : 'at any range';
   if (cast.rangeValue <= 0) return null;
-  return lang === 'ko' ? `${cast.rangeValue} 이내` : `within ${cast.rangeValue}`;
+  return lang === 'ko' ? `사거리 ${cast.rangeValue} 이내` : `within range ${cast.rangeValue}`;
 }
 
 export const SHAPE_LABEL: Record<string, Localized> = {
@@ -835,10 +836,11 @@ export function moveSummary(move: SkillMoveTarget, lang: Lang = 'en'): string {
   }
   text = labelOf(MOVE_LABEL, move.type, lang);
   if (move.type === 'MOVE_TO_DIRECTION' && move.offset) {
-    text += lang === 'ko'
-      ? (move.offset > 0 ? ` · 앞으로 ${n}` : ` · 뒤로 ${n}`)
-      : (move.offset > 0 ? ` ${n} forward` : ` ${n} back`);
+    text = lang === 'ko'
+      ? `${move.offset > 0 ? '앞으로' : '뒤로'} ${n} 이동`
+      : `moves ${n} ${move.offset > 0 ? 'forward' : 'back'}`;
   }
+  if (move.type === 'LOOK_TARGET' && target) return lang === 'ko' ? `${target}을(를) 바라봄` : `turns to face ${target}`;
   return target ? `${text}${lang === 'ko' ? ` · 대상: ${target}` : ` · on ${target}`}` : text;
 }
 
@@ -853,7 +855,7 @@ export function castSummary(
   const reach = castReach(cast, 'en');
   const where = cast.range && cast.range !== 'ALL'
     ? ` in ${cast.range === 'CENTER' ? 'the centre' : labelOf(SHAPE_LABEL, cast.range)}`
-      + (reach ? `, ${reach}` : '')
+      + (reach ? ` ${reach}` : '')
     : '';
 
   if (cast.pick === 'ALL') return `every ${one}${where}`;
@@ -1079,7 +1081,7 @@ export function gateSummary(
 }
 
 // `DURATION_CATEGORIZE_TYPE` by value, for gates carrying the integer rather than the constant.
-const DURATION_CATEGORY_CONST: Record<string, string> = {
+export const DURATION_CATEGORY_CONST: Record<string, string> = {
   1: 'CATEGORIZE_BUFF', 2: 'CATEGORIZE_DEBUFF', 3: 'CATEGORIZE_CC',
 };
 
