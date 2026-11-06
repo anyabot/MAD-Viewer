@@ -187,6 +187,7 @@ export const UI = {
   storyMain: { en: 'Main story', ko: '메인 스토리' },
   storyEvent: { en: 'Event stories', ko: '이벤트 스토리' },
   storyNemesis: { en: 'Nemesis', ko: '네메시스' },
+  storyActivityLog: { en: 'Activity Log', ko: '활동 일지' },
   storySide: { en: 'Side', ko: '사이드' },
   storyBattle: { en: 'Battle', ko: '전투' },
   storyVoiced: { en: '{n} voiced', ko: '음성 {n}' },
