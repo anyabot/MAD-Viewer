@@ -30,9 +30,9 @@ function tiles(art: EventArt): EventSticker[] {
   return [...runners, ...art.stickers];
 }
 
-function EventStickers({ art }: { art: EventArt }) {
+function EventStickers({ art, shown }: { art: EventArt; shown: Set<string> }) {
   const [urls, setUrls] = useState<Record<string, string> | null>(null);
-  const items = useMemo(() => tiles(art), [art]);
+  const items = useMemo(() => tiles(art).filter((s) => shown.has(s.sprite)), [art, shown]);
   useEffect(() => {
     let live = true;
     loadArchive(`event:${art.key}`, () => eventArchiveUrls(art.key)).then((files) => {
@@ -71,10 +71,20 @@ export default function ChibisPage() {
   }, []);
 
   const { hide, facts } = useSpoilerFilter();
-  const groups = Object.entries(art?.events ?? {})
+  const visible = Object.entries(art?.events ?? {})
     .filter(([id]) => !hide || (!!facts && !facts.events.has(Number(id))))
     .filter(([, entry]) => entry.stickers.length > 0 || entry.chibis.length > 0)
-    .sort(([a], [b]) => Number(b) - Number(a));
+    .sort(([a], [b]) => Number(a) - Number(b));
+  // a picture two events share, renamed or not, is shown once, under the first event that used it
+  const picture = (entry: EventArt, sprite: string) => entry.hashes?.[sprite] ?? sprite;
+  const owner = new Map<string, string>();
+  for (const [id, entry] of visible) for (const s of tiles(entry)) if (!owner.has(picture(entry, s.sprite))) owner.set(picture(entry, s.sprite), id);
+  const groups = visible.map(([id, entry]) => {
+    const all = tiles(entry);
+    const own = new Set(all.filter((s) => owner.get(picture(entry, s.sprite)) === id).map((s) => s.sprite));
+    const from = [...new Set(all.map((s) => owner.get(picture(entry, s.sprite))!).filter((o) => o !== id))];
+    return { id, entry, own, shared: all.length - own.size, from };
+  }).filter((g) => g.own.size > 0).reverse();
 
   return (
     <VStack align="stretch" spacing={6}>
@@ -82,14 +92,22 @@ export default function ChibisPage() {
       <PageHeader title={t('navChibis')} />
       {error && <Text color="red.400">{error}</Text>}
       {!art && !error && <Center py={20}><Spinner /></Center>}
-      {groups.map(([id, entry]) => {
-        const event = events?.events.find((e) => e.id === Number(id));
+      {groups.map(({ id, entry, own, shared, from }) => {
+        const nameOf = (eid: string) => {
+          const event = events?.events.find((e) => e.id === Number(eid));
+          return event ? gameText(event.name, gameLang) : eid;
+        };
         return (
           <Box key={id}>
-            <Text as={NextLink} href={eventHref(id)} fontSize="lg" fontWeight="bold" mb={3} display="block">
-              {event ? gameText(event.name, gameLang) : id}
+            <Text as={NextLink} href={eventHref(id)} fontSize="lg" fontWeight="bold" mb={shared ? 1 : 3} display="block">
+              {nameOf(id)}
             </Text>
-            <EventStickers art={entry} />
+            {shared > 0 && (
+              <Text fontSize="xs" color="gray.500" mb={3}>
+                {t('chibisShared', { n: shared, events: from.map(nameOf).join(', ') })}
+              </Text>
+            )}
+            <EventStickers art={entry} shown={own} />
           </Box>
         );
       })}

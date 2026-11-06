@@ -185,6 +185,8 @@ export const UI = {
   forcedCritChance: { en: '{n} critical chance', ko: '치명타 확률 {n}' },
   forcedPenetration: { en: '{n} penetration', ko: '관통 {n}' },
   eventsSongs: { en: 'Minigame songs', ko: '미니게임 곡' },
+  eventsSideStories: { en: 'Side stories', ko: '사이드 스토리' },
+  chibisShared: { en: '+{n} shared with {events}', ko: '{events}와 공유 {n}개' },
 
   storyMain: { en: 'Main story', ko: '메인 스토리' },
   storyEvent: { en: 'Event stories', ko: '이벤트 스토리' },

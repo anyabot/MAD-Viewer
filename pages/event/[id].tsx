@@ -16,9 +16,10 @@ import {
 import EventBoxArt from '@/components/eventBoxArt';
 import EventChibis from '@/components/eventChibis';
 import EventUnits from '@/components/eventUnits';
+import EventSideStories from '@/components/eventSideStories';
 import {
-  loadCharacters, loadEventArt, loadEvents, loadIcons,
-  type CharacterData, type EventArtIndex, type EventIndex, type IconManifest,
+  loadCharacters, loadEventArt, loadEvents, loadIcons, loadStoryIndex,
+  type CharacterData, type EventArtIndex, type EventIndex, type IconManifest, type StoryIndex,
 } from '@/lib/data';
 import { bannerNames, remaining, sceneCount } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
@@ -76,6 +77,7 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
   const [eventArt, setEventArt] = useState<EventArtIndex | null>(null);
+  const [story, setStory] = useState<StoryIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [serverTime, setServerTime] = useServerTime();
   const now = useNow(30_000);
@@ -85,6 +87,7 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
     loadCharacters().then(setChars).catch(() => setChars(null));
     loadIcons().then(setIcons).catch(() => setIcons(null));
     loadEventArt().then(setEventArt).catch(() => setEventArt(null));
+    loadStoryIndex().then(setStory).catch(() => setStory(null));
   }, []);
 
   const hideSpoilers = useHideSpoilers();
@@ -132,6 +135,8 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
     .filter((c) => !bonus.some((b) => b.code === c) && !pickups.includes(c)
       && chars?.characters[c]?.characterType === 1);
   const art = eventArt?.events[String(event.id)];
+  const sideStories = story && Object.values(story.chapters).find((c) => c.kind === 'side' && c.event === event.id);
+  const ghosted = art && sideStories && art.stickers.some((s) => sideStories.scenes.some((sc) => s.stories?.includes(sc.id)));
   const ordered = data.events.filter((e) => !hideSpoilers || !isFuture(e.start, now)).sort((a, b) => Date.parse(a.start) - Date.parse(b.start) || a.id - b.id);
   const at = ordered.findIndex((e) => e.id === event.id);
   const prev = ordered[at - 1];
@@ -200,6 +205,13 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
       </Flex>
 
       {art && art.chibis.length > 0 && <EventChibis art={art} />}
+
+      {art && sideStories && ghosted && (
+        <Box>
+          <Text fontSize="lg" fontWeight="bold" mb={3}>{t('eventsSideStories')}</Text>
+          <EventSideStories art={art} chapter={sideStories} />
+        </Box>
+      )}
 
       {(bonus.length > 0 || pickups.length > 0) && (
         <Box>
