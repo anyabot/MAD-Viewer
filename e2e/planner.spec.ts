@@ -18,7 +18,7 @@ test.describe('/farm', () => {
     await expect(page.getByRole('button', { name: 'Skip', exact: true })).toBeHidden();
   });
 
-  test('a searched unit is tracked and survives a reload', async ({ page }) => {
+  test('a searched unit is tracked and survives a reload', { tag: '@smoke' }, async ({ page }) => {
     await skipTutorial(page);
     await expect(page.getByText('no units tracked')).toBeVisible();
     await page.getByPlaceholder('Add a unit to plan…').fill(SAMPLE.character.name);

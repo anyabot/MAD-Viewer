@@ -13,7 +13,7 @@ test.describe('/dps', () => {
     await expect(removes).toHaveCount(before);
   });
 
-  test('a chosen unit enters the ranking and defence changes it', async ({ page }) => {
+  test('a chosen unit enters the ranking and defence changes it', { tag: '@smoke' }, async ({ page }) => {
     await page.goto('/dps/');
     const ranking = page.locator('section').filter({ has: page.getByRole('heading', { name: 'Ranking', exact: true }) });
     await page.locator('select', { has: page.locator('option', { hasText: /^Lucia$/ }) }).first().selectOption({ label: 'Lucia' });
@@ -33,7 +33,7 @@ test.describe('/gacha', () => {
     await expect(old).toContainText('▴');
   });
 
-  test('summons are tallied and reset clears them', async ({ page }) => {
+  test('summons are tallied and reset clears them', { tag: '@smoke' }, async ({ page }) => {
     await page.goto('/gacha/');
     await page.getByRole('button', { name: 'Summon ×1', exact: true }).click();
     await expect(page.getByText('Mileage 1/200')).toBeVisible();

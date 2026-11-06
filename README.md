@@ -38,6 +38,15 @@ npm run dev              # http://localhost:3000
 npm run build            # static export -> out/
 ```
 
+Tests:
+
+```bash
+npm test                 # unit (Vitest)
+npm run test:contract    # published-data contract over public/data
+npm run test:e2e:smoke   # Playwright smoke tier, after npm run build
+npm run test:e2e         # full Playwright suite
+```
+
 The app needs generated content to display:
 
 - `public/data/skin_list.json` — the gallery index

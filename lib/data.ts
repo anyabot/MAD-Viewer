@@ -1311,10 +1311,11 @@ export type StoryBattle = {
 export type StoryChapter = {
   id: number;
   episode: number;
-  kind: 'main' | 'event' | 'nemesis';
+  kind: 'main' | 'event' | 'nemesis' | 'side';
   name: GameLocalized;
   desc?: GameLocalized;
   background?: string;
+  art?: string;
   event?: number;
   cast?: string[];
   scenes: StoryScene[];
@@ -1330,6 +1331,7 @@ export type StoryEpisode = {
 export type StoryIndex = {
   langs: GameLang[];
   episodes: StoryEpisode[];
+  labels?: Partial<Record<StoryChapter['kind'], GameLocalized>>;
   chapters: Record<string, StoryChapter>;
 };
 

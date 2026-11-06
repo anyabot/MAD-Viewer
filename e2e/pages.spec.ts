@@ -10,7 +10,7 @@ const CASES: PageCase[] = [
   { path: '/viewer/', title: full('Viewer'), text: 'Store diff' },
   { path: '/characters/', title: full('Characters'), text: 'Stat comparison' },
   { path: `/character/${SAMPLE.character.code}/`, title: full(SAMPLE.character.name), text: SAMPLE.character.name },
-  { path: '/effects/', title: full('Effects'), text: 'Guaranteed critical' },
+  { path: '/effects/', title: full('Effects'), text: 'Set critical chance' },
   { path: '/stages/', title: full('Events & Stages'), text: 'Supply run' },
   { path: `/stage/?id=${SAMPLE.stage.id}`, title: full('Events & Stages'), text: SAMPLE.stage.title },
   { path: '/items/', title: full('Items'), text: 'Held or needed' },
@@ -32,7 +32,7 @@ const CASES: PageCase[] = [
 ];
 
 for (const c of CASES) {
-  test(`page ${c.path} renders`, async ({ page, baseURL }) => {
+  test(`page ${c.path} renders`, { tag: '@smoke' }, async ({ page, baseURL }) => {
     const errors: string[] = [];
     const bad: string[] = [];
     page.on('pageerror', (err) => errors.push(err.message));

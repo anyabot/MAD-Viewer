@@ -34,7 +34,7 @@ test.describe('/characters', () => {
     await expect.poll(async () => (await count(page)).shown).toBe(before.shown);
   });
 
-  test('a tile opens the character page', async ({ page }) => {
+  test('a tile opens the character page', { tag: '@smoke' }, async ({ page }) => {
     await page.locator(tile(SAMPLE.character.code)).first().click();
     await expect(page).toHaveURL(new RegExp(`/character/${SAMPLE.character.code}/`));
     await expect(page.getByRole('heading', { name: SAMPLE.character.name, level: 1 })).toBeVisible();

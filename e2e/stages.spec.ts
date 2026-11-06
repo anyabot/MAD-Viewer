@@ -23,7 +23,7 @@ test.describe('/stages', () => {
 });
 
 test.describe('/stage', () => {
-  test('shows missions, drops and waves', async ({ page }) => {
+  test('shows missions, drops and waves', { tag: '@smoke' }, async ({ page }) => {
     await page.goto(`/stage/?id=${SAMPLE.stage.id}`);
     await expect(page.getByRole('heading', { name: SAMPLE.stage.title })).toBeVisible();
     for (const name of ['Mission', 'Drops', 'Field', 'Wave 1']) {
@@ -58,7 +58,7 @@ test.describe('/stage', () => {
 });
 
 test.describe('/event', () => {
-  test('shows the event page and links its bonus units', async ({ page }) => {
+  test('shows the event page and links its bonus units', { tag: '@smoke' }, async ({ page }) => {
     await page.goto(`/event/${SAMPLE.event.id}/`);
     await expect(page.getByText(SAMPLE.event.name).first()).toBeVisible();
     await expect(page.getByText('Bonus units')).toBeVisible();

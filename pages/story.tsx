@@ -24,9 +24,9 @@ import { useSpoilerGate } from '@/components/spoilers';
 
 const StoryPlayer = dynamic(() => import('@/components/storyPlayer'), { ssr: false });
 
-const KIND_ORDER: StoryChapter['kind'][] = ['main', 'event', 'nemesis'];
+const KIND_ORDER: StoryChapter['kind'][] = ['main', 'event', 'nemesis', 'side'];
 const KIND_LABEL: Record<StoryChapter['kind'], UiKey> = {
-  main: 'storyMain', event: 'storyEvent', nemesis: 'storyNemesis',
+  main: 'storyMain', event: 'storyEvent', nemesis: 'storyNemesis', side: 'storyActivityLog',
 };
 
 export default function StoryPage() {
@@ -93,7 +93,9 @@ function StoryList({ index, events, icons }: {
         if (!list.length) return null;
         return (
           <VStack key={kind} align="stretch" spacing={2}>
-            <Text fontSize="lg" fontWeight="bold">{t(KIND_LABEL[kind])}</Text>
+            <Text fontSize="lg" fontWeight="bold">
+              {gameText(index.labels?.[kind], lang) || t(KIND_LABEL[kind])}
+            </Text>
             <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={3}>
               {list.map((chapter) => {
                 const event = events?.events.find((e) => e.kind === 'main' && e.id === chapter.event);
@@ -104,12 +106,13 @@ function StoryList({ index, events, icons }: {
                     p={3} borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="md" minW={0}
                     align="center" _hover={{ borderColor: 'accent.400', bg: 'whiteAlpha.50' }}>
                     <ArtBox manifest={icons} w="104px" sources={[
+                      ['banner', chapter.art],
                       ...(event ? bannerNames(event, lang).map((n) => ['banner', n] as ['banner', string]) : []),
                       ['banner', nemesis], ['story', chapter.background],
                     ]} />
                     <Box minW={0}>
                       <Text fontWeight="bold" fontSize="sm" noOfLines={1}>
-                        {(event ? gameText(event.name, lang) : '') || gameText(chapter.name, lang)}
+                        {(event && kind === 'event' ? gameText(event.name, lang) : '') || gameText(chapter.name, lang)}
                       </Text>
                       <Text fontSize="xs" color="gray.500">
                         {sceneCount(t, chapter.scenes.length)}

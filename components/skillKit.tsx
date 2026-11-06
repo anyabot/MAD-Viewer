@@ -13,14 +13,15 @@ import { GameIcon } from '@/components/gameIcon';
 import {
   BUFF_CATEGORY, DISPEL_LABEL, MOVE_LABEL, OP_LABEL, OP_SCHEME, SETUP_CONDITION_LABEL, SIDE_LABEL,
   SKILL_CATEGORY_LABEL, SORT_LABEL, STAT_LABEL, TARGET_LABEL, TRIGGER_LABEL, castSummary, colorRuns,
-  detailSummary, everySecondsText, gateSummary, hitSummary, labelOf, moveSummary, opAmounts, opSeconds, weightText, chanceText,
+  detailSummary, everySecondsText, gateSummary, growValue, hitSummary, labelOf, moveSummary, opAmounts, opSeconds, weightText, chanceText,
   scaleSummary, secondsText, skillDescs, variantCondition, skillGrades, skillsAtGrade, statAmount,
   patternConditionText, shadowedPatterns,
 } from '@/lib/characters';
 import {
-  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, skillLabel, type Delivery, type StateNamer,
+  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, skillLabel, triggerSubject, workCheck, type Delivery, type StateNamer,
 } from '@/lib/skillProse';
 import { useSkillView, type SkillView } from '@/lib/skillViewStore';
+import { kitFacts, resolveBehaviour, type KitFacts } from '@/lib/skillResolve';
 import { dataText, useLang, useT, type UiKey } from '@/lib/i18n';
 import type {
   BattlePattern, BuffEntry, CharacterData, CharacterEntry, IconManifest, SkillBehaviour, SkillEntry,
@@ -110,9 +111,9 @@ export function BuffList({ buffs, icons }: {
 }
 
 // Operations expose target side, scaling stat and unnamed effects.
-function OpRow({ op, level, period, data, icons, landings = 1 }: {
+function OpRow({ op, level, period, data, icons, landings = 1, states }: {
   op: SkillOp; level: number; period: number; landings?: number;
-  data: CharacterData; icons: IconManifest | null;
+  data: CharacterData; icons: IconManifest | null; states?: StateNamer;
 }) {
   const t = useT();
   const lang = useLang();
@@ -127,12 +128,15 @@ function OpRow({ op, level, period, data, icons, landings = 1 }: {
       ? t('onSide', { side: labelOf(SIDE_LABEL, op.applyTo, lang) }) : '',
   ].filter(Boolean).join(' · ');
   const scale = scaleSummary(op, lang);
-  const amounts = opAmounts(op, level, period);
+  const forced = op.op === 'ADD_FORCE_CRITICAL_DAMAGE' || op.op === 'ADD_FORCE_PENETRATION_DAMAGE';
+  const all = opAmounts(op, level, period);
+  const amounts = forced ? all.slice(0, 1) : all;
+  const rate = forced && op.value ? `${Number((growValue(op.value, level, period, 1) * 100).toPrecision(6))}%` : '';
   const seconds = opSeconds(op, level, period, lang);
   const weights = op.value ? weightText(op, landings, lang) : null;
   const odds = chanceText(op, lang);
   // a boss can name six states at once; the rest go in the tooltip
-  const detail = op.detail ? detailSummary(op.detail, lang) : [];
+  const detail = op.detail ? detailSummary(op.detail, lang, states) : [];
   const shown = detail.slice(0, 3);
   return (
     <Flex gap={2} align="start" wrap="wrap">
@@ -142,11 +146,16 @@ function OpRow({ op, level, period, data, icons, landings = 1 }: {
       <Badge fontSize="0.55rem" colorScheme={scheme} mt={0.5}>
         {labelOf(OP_LABEL, op.op, lang)}
       </Badge>
-      {op.name && (
+      {op.op === 'USE_TRIGGER_SKILL' && states?.trigger && (
+        <Text fontSize="xs" fontWeight="bold">{states.trigger}</Text>
+      )}
+      {op.name ? (
         <Text fontSize="xs" fontWeight="bold">
           <GameText text={dataText(lang, op.name, op.nameEn)} />
         </Text>
-      )}
+      ) : op.op === 'MARKER' && op.define && states ? (
+        <Text fontSize="xs" fontWeight="bold" color="gray.300" title={op.define}>{states(op.define)}</Text>
+      ) : null}
       <StateBadges categorize={op.categorize} dispellable={op.dispellable} />
       {amounts.length > 0 && (
         <Text fontSize="xs" color="accent.200">{amounts.join(' / ')}</Text>
@@ -154,6 +163,11 @@ function OpRow({ op, level, period, data, icons, landings = 1 }: {
       {scale && <Text fontSize="0.65rem" color="gray.400">{scale}</Text>}
       {weights && <Text fontSize="0.65rem" color="orange.200">{weights}</Text>}
       {odds && <Text fontSize="0.65rem" color="pink.200">{odds}</Text>}
+      {rate && (
+        <Text fontSize="0.65rem" color="pink.200">
+          {t(op.op === 'ADD_FORCE_CRITICAL_DAMAGE' ? 'forcedCritChance' : 'forcedPenetration', { n: rate })}
+        </Text>
+      )}
       {detail.length > 0 && (
         <Text fontSize="0.65rem" color="gray.300" noOfLines={1}
           title={detail.map((v) => colorRuns(v).map((r) => (r.break ? ' ' : r.text)).join('')).join(', ')}>
@@ -168,8 +182,11 @@ function OpRow({ op, level, period, data, icons, landings = 1 }: {
       )}
       {op.gate && (
         <Text fontSize="0.65rem" color="cyan.300">
-          <GameText text={gateSummary(op.gate, data, lang)} />
+          <GameText text={gateSummary(op.gate, data, lang, states)} />
         </Text>
+      )}
+      {op.when && states && (
+        <Text fontSize="0.65rem" color="cyan.300">{workCheck(op.when, lang, states)}</Text>
       )}
       {seconds && <Text fontSize="0.65rem" color="gray.500">{seconds}</Text>}
       {op.interval ? (
@@ -185,9 +202,9 @@ function OpRow({ op, level, period, data, icons, landings = 1 }: {
   );
 }
 
-function Behaviour({ behaviour, level, period, data, icons }: {
+function Behaviour({ behaviour, level, period, data, icons, states }: {
   behaviour: SkillBehaviour; level: number; period: number;
-  data: CharacterData; icons: IconManifest | null;
+  data: CharacterData; icons: IconManifest | null; states?: StateNamer;
 }) {
   const t = useT();
   const lang = useLang();
@@ -215,7 +232,7 @@ function Behaviour({ behaviour, level, period, data, icons }: {
           </Text>
           <VStack align="stretch" spacing={0.5} mt={0.5}>
             {hit.ops.map((op, j) => (
-              <OpRow key={j} op={op} level={level} period={period} data={data} landings={hit.count}
+              <OpRow key={j} op={op} level={level} period={period} data={data} landings={hit.count} states={states}
                 icons={icons} />
             ))}
           </VStack>
@@ -244,6 +261,11 @@ function Behaviour({ behaviour, level, period, data, icons }: {
                 {labelOf(TRIGGER_LABEL, trigger.on, lang)}
               </Text>
             </WrapItem>
+            {states && triggerSubject(trigger, lang, states) && (
+              <WrapItem>
+                <Text fontSize="0.65rem" color="gray.200">{triggerSubject(trigger, lang, states)}</Text>
+              </WrapItem>
+            )}
             {trigger.check && (
               <WrapItem>
                 <Text fontSize="0.6rem" color="gray.600">
@@ -268,7 +290,7 @@ function Behaviour({ behaviour, level, period, data, icons }: {
           </Wrap>
           <VStack align="stretch" spacing={0.5} mt={0.5}>
             {trigger.ops.map((op, j) => (
-              <OpRow key={j} op={op} level={level} period={period} data={data}
+              <OpRow key={j} op={op} level={level} period={period} data={data} states={states}
                 icons={icons} />
             ))}
           </VStack>
@@ -290,9 +312,9 @@ function Sentences({ lines }: { lines: string[] }) {
 }
 
 // Skills level independently; passives use star grade and normal attacks have no level.
-export function SkillRow({ skill, data, icons, label, owner, states }: {
+export function SkillRow({ skill, data, icons, label, owner, states, facts }: {
   skill: SkillEntry & { id: number }; data: CharacterData;
-  icons: IconManifest | null; label?: string; owner?: string; states?: StateNamer;
+  icons: IconManifest | null; label?: string; owner?: string; states?: StateNamer; facts?: KitFacts;
 }) {
   const t = useT();
   const lang = useLang();
@@ -376,7 +398,7 @@ export function SkillRow({ skill, data, icons, label, owner, states }: {
         </Text>
         {view.buffs && <BuffList buffs={skill.buffs[at] ?? []} icons={icons} />}
         {view.prose && skill.behaviour && (
-          <Sentences lines={behaviourSentences(skill.behaviour, at + 1, skill.levelPeriod, data, lang, namer)} />
+          <Sentences lines={behaviourSentences(resolveBehaviour(skill.behaviour, facts), at + 1, skill.levelPeriod, data, lang, namer)} />
         )}
         {skill.variant?.behaviour && (
           <Box mt={2} pl={2} borderLeftWidth="2px" borderColor="accent.700">
@@ -385,17 +407,17 @@ export function SkillRow({ skill, data, icons, label, owner, states }: {
               {skill.variant.action && <Text as="span" color="gray.500">{` · ${skill.variant.action}`}</Text>}
             </Text>
             {view.prose && (
-              <Sentences lines={behaviourSentences(skill.variant.behaviour, at + 1, skill.levelPeriod, data, lang, namer)} />
+              <Sentences lines={behaviourSentences(resolveBehaviour(skill.variant.behaviour, facts), at + 1, skill.levelPeriod, data, lang, namer)} />
             )}
             {view.details && (
               <Behaviour behaviour={skill.variant.behaviour} level={at + 1}
-                period={skill.levelPeriod} data={data} icons={icons} />
+                period={skill.levelPeriod} data={data} icons={icons} states={namer} />
             )}
           </Box>
         )}
         {view.details && skill.behaviour && (
           <Behaviour behaviour={skill.behaviour} level={at + 1}
-            period={skill.levelPeriod} data={data} icons={icons} />
+            period={skill.levelPeriod} data={data} icons={icons} states={namer} />
         )}
       </Box>
     </Flex>
@@ -450,12 +472,14 @@ export function SkillList({ group, defaultStar, data, icons, owner }: {
 }) {
   const t = useT();
   const lang = useLang();
-  const states = kitStates(kitSkills(group, data), lang);
+  const kit = kitSkills(group, data);
+  const states = kitStates(kit, lang);
   const entry = { skillSetGroup: group, defaultStar } as CharacterEntry;
   const grades = skillGrades(entry, data);
   const [grade, setGrade] = useState<number | null>(null);
   const shown = grade ?? grades[0] ?? 0;
   const skills = shown ? skillsAtGrade(entry, data, shown) : [];
+  const facts = kitFacts(kit, skills.map((x) => data.skills[String(x.id)]), data);
   if (!skills.length) return null;
   return (
     <>
@@ -475,7 +499,7 @@ export function SkillList({ group, defaultStar, data, icons, owner }: {
       </Flex>
       <VStack align="stretch" spacing={3}>
         {skills.map((skill) => (
-          <SkillRow key={skill.id} skill={skill} data={data} icons={icons} owner={owner} states={states}
+          <SkillRow key={skill.id} skill={skill} data={data} icons={icons} owner={owner} states={states} facts={facts}
             label={skillLabel(skill, skills, lang)} />
         ))}
       </VStack>
@@ -587,7 +611,7 @@ export function PatternRotation({ patterns, skillOf, data, icons, title, states 
                   {rot.steps.map((step, n) => {
                     const hit = skillOf(step);
                     const skill = hit?.skill;
-                    const ambiguous = (idsByName.get(skill?.name ?? '')?.size ?? 0) > 1;
+                    const ambiguous = !!skill?.name && (idsByName.get(skill.name)?.size ?? 0) > 1;
                     const label = !skill ? t('skillSlot', { n: step })
                       : ambiguous ? t('skillSlotName', { n: skill.skillType })
                         : dataText(lang, skill.name, skill.nameEn);

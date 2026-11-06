@@ -22,7 +22,7 @@ test.describe('site navigation', () => {
     });
   }
 
-  test('secondary pages are reachable from the menu', async ({ page }) => {
+  test('secondary pages are reachable from the menu', { tag: '@smoke' }, async ({ page }) => {
     await page.goto('/');
     await openMenuIfCollapsed(page);
     const etc = page.getByRole('button', { name: 'Etc.' });

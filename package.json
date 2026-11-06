@@ -10,7 +10,10 @@
     "postbuild": "node scripts/seo-files.js",
     "start": "next start",
     "lint": "next lint",
+    "test": "vitest run",
+    "test:contract": "vitest run --config vitest.contract.config.mts",
     "test:e2e": "playwright test",
+    "test:e2e:smoke": "playwright test --grep @smoke --project=chromium",
     "test:e2e:ui": "playwright test --ui",
     "sync:local-data": "node scripts/sync-local-data.js"
   },
@@ -33,6 +36,8 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.5.2",
     "typescript": "^5.7.3",
-    "wrangler": "^4.157.0"
+    "vitest": "^5.1.0",
+    "wrangler": "^4.157.0",
+    "zod": "^4.6.7"
   }
 }

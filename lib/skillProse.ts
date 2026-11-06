@@ -45,7 +45,7 @@ function plain(text: string): string {
 // Skills sharing a name are told apart by category, or by slot when that is shared too.
 export function skillLabel(s: SkillEntry, skills: SkillEntry[], lang: Lang): string {
   const name = plain(dataText(lang, s.name, s.nameEn));
-  const twins = skills.filter((x) => x.name === s.name && x.skillType !== s.skillType);
+  const twins = s.name ? skills.filter((x) => x.name === s.name && x.skillType !== s.skillType) : [];
   if (!twins.length) return name;
   if (twins.every((x) => x.categorize !== s.categorize)) return `${name} (${pick(SKILL_CATEGORY_LABEL[s.categorize], lang)})`;
   return lang === 'ko' ? `스킬 ${s.skillType}` : `Skill ${s.skillType}`;
@@ -95,10 +95,13 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
   const label = (s: SkillEntry) => skillLabel(s, skills, lang);
   // an unnamed state set at battle start by one passive grade stands for that grade being equipped
   const markers = new Map<string, { self: boolean; long: boolean; short: boolean; skill: SkillEntry; start: boolean }[]>();
+  const owners = new Map<string, SkillEntry[]>();
+  const made = new Set<string>();
   const stacks = new Set<string>();
   for (const skill of skills) {
     for (const b of behavioursOf(skill)) {
       const add = (op: SkillOp, start: boolean) => {
+        if (op.define && op.kind === 'duration') owners.set(op.define, [...(owners.get(op.define) ?? []), skill]);
         if (op.op === 'MARKER' && op.define) {
           const s = op.seconds?.base?.[0] ?? 0;
           const row = { self: op.applyTo === 'CASTER' || op.team === 'SELF', long: s >= 9999, short: s > 0 && s <= 1, skill, start };
@@ -111,16 +114,39 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
     }
   }
   const signals = new Map<string, string[]>();
+  const watchers = (id: string) => skills.filter((s) => behavioursOf(s).some((b) => (b.triggers ?? []).some((t) => t.value?.includes(id))));
   for (const [id, rows] of markers) {
     if (named.has(id)) continue;
     if (rows.every((r) => r.start && r.self && r.long && r.skill.categorize === 4) && new Set(rows.map((r) => r.skill)).size === 1) {
       named.set(id, plain(dataText(lang, rows[0].skill.name, rows[0].skill.nameEn)));
-    } else if (rows.every((r) => !r.start && r.self && r.short && (r.skill.behaviour?.hits ?? []).length)) {
+    } else if (rows.every((r) => !r.start && r.self && r.short && (r.skill.behaviour?.hits ?? []).length) && watchers(id).length) {
       signals.set(id, [...new Set(rows.map((r) => label(r.skill)))]);
-      const reader = readerName(skills.filter((s) => behavioursOf(s).some((b) => (b.triggers ?? []).some((t) => t.value?.includes(id)))), lang);
+      const reader = readerName(watchers(id), lang);
       named.set(id, reader
         ? (lang === 'ko' ? `${reader} 발동 표식` : `${/^[aeiou]/i.test(reader) ? 'an' : 'a'} ${reader} trigger mark`)
         : (lang === 'ko' ? '스킬 사용 표식' : 'a skill-use mark'));
+    }
+  }
+  // any other unnamed mark is named after the skills that set it, a passive's grades counting once
+  for (const [id, rows] of owners) {
+    if (named.has(id)) continue;
+    const slots = new Map<number, SkillEntry[]>();
+    for (const x of new Set(rows)) slots.set(x.skillType, [...(slots.get(x.skillType) ?? []), x]);
+    const names = [...new Set([...slots.values()].map((group) => (group.length > 1 && readerName(group, lang)) || label(group[0])))];
+    if (!names.length || names.some((n) => !n)) continue;
+    made.add(id);
+    named.set(id, lang === 'ko' ? `${names.join('/')} 표식`
+      : names.length === 1 ? `${names[0]}'s mark` : `the ${names.join(' / ')} mark`);
+  }
+  // marks that end up sharing a name are told apart by the words of their own id
+  const byName = new Map<string, string[]>();
+  for (const [id, name] of named) if (made.has(id)) byName.set(name, [...(byName.get(name) ?? []), id]);
+  for (const ids of byName.values()) {
+    if (ids.length < 2) continue;
+    for (const id of ids) {
+      const tail = id.replace(/^define_/, '').replace(/^(trigger|duration|buff|debuff)_/, '').replace(/^(ch|np)\d+_/, '')
+        .replace(/^(skill\d+|ulti|passive)_/, '').replace(/_/g, ' ');
+      named.set(id, /^\d+$/.test(tail) ? `${named.get(id)} ${Number(tail)}` : `${named.get(id)} (${tail})`);
     }
   }
   const letters = new Map<string, string>();
@@ -139,12 +165,16 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
   return namer;
 }
 
-// A passive work's own check: a state's stacks compared with a number.
-function workCheck(when: NonNullable<SkillOp['when']>, lang: Lang, states: StateNamer): string {
+// A passive work's own check: a state's stacks compared with a number, on itself or on the unit that set the trigger off.
+export function workCheck(when: NonNullable<SkillOp['when']>, lang: Lang, states: StateNamer): string {
   const ko = lang === 'ko';
   const state = when.state ? states(when.state) : '';
   const v = when.value ?? '';
   if (when.check !== 'CHECK_DURATION_DEFINE' || !state) return when.check ?? '';
+  if (when.on === 'TRIGGER_TARGET' && v === '1' && (when.op === 'COMPARISON_EQUAL_TO' || when.op === 'COMPARISON_LESS_THAN')) {
+    const has = when.op === 'COMPARISON_EQUAL_TO';
+    return ko ? `대상이 ${state} ${has ? '보유' : '미보유'} 시` : `only while the target ${has ? 'has' : 'lacks'} ${state}`;
+  }
   switch (when.op) {
     case 'COMPARISON_EQUAL_TO':
       if (v === '1') return ko ? `${state} 보유 시` : `only with ${state}`;
@@ -216,6 +246,15 @@ function detailNames(op: SkillOp, lang: Lang, states: StateNamer): string {
   return list(names, lang);
 }
 
+// A check that repeats the gate on the same unit: the hit unit is the one that set the trigger off.
+function sameCheck(op: SkillOp): boolean {
+  const g = op.gate;
+  const w = op.when;
+  if (!g || !w || w.check !== 'CHECK_DURATION_DEFINE' || g.values.length !== 1 || g.values[0].id !== w.state || w.value !== '1') return false;
+  if (!(g.on === 'HOLDER' && op.applyTo === 'HOLDER' && op.team !== 'SELF' && w.on === 'TRIGGER_TARGET')) return false;
+  return (g.condition === 'LACKS_DURATIONS' && w.op === 'COMPARISON_LESS_THAN') || (g.condition === 'HAS_DURATIONS' && w.op === 'COMPARISON_EQUAL_TO');
+}
+
 // One effect as a clause: verb, magnitude, whom, how long.
 export function opClause(
   op: SkillOp, level: number, period: number, data: CharacterData, lang: Lang, states: StateNamer, inHit = false,
@@ -235,6 +274,20 @@ export function opClause(
     case 'ADD_HEAL':
       text = ko ? `${target}을(를) ${amount} 회복` : `heals ${target} for ${amount}`;
       break;
+    case 'ADD_FORCE_CRITICAL_DAMAGE':
+    case 'ADD_FORCE_PENETRATION_DAMAGE': {
+      // the second magnitude replaces the critical chance or the penetration rate for this hit
+      const value = op.value!;
+      const first = scaled({ ...op, value: { base: value.base.slice(0, 1), up: value.up.slice(0, 1), extra: value.extra.slice(0, 1) } }, level, period, lang);
+      const rate = growValue(value, level, period, 1);
+      const pct = `${Number((rate * 100).toPrecision(6))}%`;
+      const crit = op.op === 'ADD_FORCE_CRITICAL_DAMAGE';
+      const extra = crit
+        ? (rate >= 1 ? (ko ? '치명타 확정' : 'a guaranteed critical') : (ko ? `치명타 확률 ${pct}` : `a ${pct} critical chance`))
+        : (ko ? `관통 ${pct}` : `${pct} penetration`);
+      text = ko ? `${target}에게 ${first} 피해 (${extra})` : `deals ${first} as damage to ${target} with ${extra}`;
+      break;
+    }
     case 'OVERTIME_DAMAGE':
     case 'OVERTIME_HEAL': {
       const every = op.interval ? (ko ? ` ${op.interval}초마다` : ` every ${op.interval}s`) : '';
@@ -281,10 +334,51 @@ export function opClause(
   }
   const lock = op.kind === 'duration' && op.dispellable === false && (op.categorize ?? 0) > 0
     ? (ko ? ' (해제 불가)' : ' (cannot be removed)') : '';
-  const check = op.when ? workCheck(op.when, lang, states) : '';
-  const only = [gate ? (ko ? ` — ${gate}만` : ` — only ${gate}`) : '', check ? ` — ${check}` : ''].join('');
+  const check = op.when && !sameCheck(op) ? workCheck(op.when, lang, states) : '';
+  const gated = !gate ? '' : ko ? ` — ${gate.endsWith('만') ? gate : `${gate}만`}` : ` — ${gate.startsWith('only ') ? gate : `only ${gate}`}`;
+  const only = [gated, check ? ` — ${check}` : ''].join('');
   const chance = odds ? (ko ? `${odds}로 ` : `${odds}: `) : '';
   return `${chance}${text.replace(/\s+/g, ' ').trim()}${lock}${only}`;
+}
+
+const HAS = 'HAS_DURATIONS';
+const LACKS = 'LACKS_DURATIONS';
+
+// The one state a gate tests for, held or missing.
+function single(op: SkillOp): { id: string; held: boolean } | null {
+  const g = op.gate;
+  if (!g || op.when || op.chance != null || g.values.length !== 1 || (g.condition !== HAS && g.condition !== LACKS)) return null;
+  return { id: `${g.on ?? ''}:${g.values[0].id}`, held: g.condition === HAS };
+}
+
+// Two ops on opposite sides of one state read as one choice, the held side as the difference.
+function opsText(
+  ops: SkillOp[], clause: (op: SkillOp) => string, data: CharacterData, lang: Lang, states: StateNamer,
+): string {
+  const ko = lang === 'ko';
+  const used = new Set<number>();
+  const out: string[] = [];
+  for (const [i, op] of ops.entries()) {
+    if (used.has(i)) continue;
+    const mine = single(op);
+    const j = mine ? ops.findIndex((other, k) => k > i && !used.has(k) && single(other)?.id === mine.id && single(other)?.held !== mine.held) : -1;
+    if (!mine || j < 0) {
+      out.push(clause(op));
+      continue;
+    }
+    used.add(j);
+    const [held, missing] = mine.held ? [op, ops[j]] : [ops[j], op];
+    const base = clause({ ...missing, gate: undefined });
+    const alt = clause({ ...held, gate: undefined });
+    const when = gateSummary(held.gate!, data, lang, states);
+    if (alt.startsWith(base) && alt.length > base.length) {
+      const extra = alt.slice(base.length).trim().replace(/^\(|\)$/g, '').replace(/^with /, '');
+      out.push(ko ? `${base} (${when} ${extra})` : `${base} (${extra} ${when})`);
+    } else {
+      out.push(ko ? `${when} ${alt}, 아니면 ${base}` : `${when}, ${alt}; otherwise ${base}`);
+    }
+  }
+  return out.join('; ');
 }
 
 // Centre = anchor x + offset along its facing; FIELD_CENTER swaps only the depth for the field's centre line, then `offsetZ` shifts it.
@@ -359,7 +453,7 @@ function hitSentences(
     const target = hit.cast?.team && hit.cast.team !== 'SELF' ? castSummary(hit.cast, lang) : '';
     const single = target && singleTarget(hit);
     const castName = single ? (ko ? '그 대상' : 'it') : undefined;
-    const ops = hit.ops.map((op) => opClause(op, level, period, data, lang, states, true, castName)).join('; ');
+    const ops = opsText(hit.ops, (op) => opClause(op, level, period, data, lang, states, true, castName), data, lang, states);
     const fired = hit.arrive && target ? (ko ? `${target}에게 발사, 도착 시 ` : `Fires at ${target}; on arrival, `) : '';
     const moving = !hit.arrive && hit.attach === 'ATTACH_DISPATCHER'
       ? (ko ? ` (스킬 이펙트를 따라 이동${target ? `, 목표: ${target}` : ''})` : ` that moves with the skill's effect${target ? `, aimed at ${target}` : ''}`)
@@ -379,6 +473,15 @@ function hitSentences(
     const head = fired ? `${fired}${area}` : `${area[0].toUpperCase()}${area.slice(1)}`;
     return `${head}${times}${repeat}: ${ops}.`;
   });
+}
+
+// What sets a trigger off, as the details view lists it: the skills it watches, or the states.
+export function triggerSubject(t: SkillTrigger, lang: Lang, states: StateNamer): string {
+  const values = t.value ?? [];
+  if (!values.length) return '';
+  if (t.on === 'TRIGGER_TYPE_USE_SKILL' && states.skill) return list(values.map((v) => states.skill!(Number(v))), lang, true);
+  if (values.every((v) => v.startsWith('define_'))) return list(values.map((v) => states(v)), lang, true);
+  return '';
 }
 
 function whenText(t: SkillTrigger, lang: Lang, states: StateNamer): string {
@@ -427,7 +530,7 @@ function triggerSentences(
         .map((op) => workCheck(op.when!, lang, states).replace(/^only with /, 'while it has ').replace(/^only without /, 'while it lacks '))
         .join(ko ? ' 또는 ' : ', or ')}`
       : t.ops.length
-        ? t.ops.map((op) => opClause(op, level, period, data, lang, states)).join('; ')
+        ? opsText(t.ops, (op) => opClause(op, level, period, data, lang, states), data, lang, states)
         : (ko ? '효과 없음' : 'nothing');
     return `${head}: ${ops}.`;
   });
