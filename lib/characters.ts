@@ -455,6 +455,7 @@ export const OP_LABEL: Record<string, Localized> = {
   BUFF_HEAL_RECEIVE: { en: 'Healing received up', ko: '받는 치유량 증가' },
   BUFF_ATTACK_SPEED_UP: { en: 'Attack speed up', ko: '공격 속도 증가' },
   DAMAGE_REDUCE: { en: 'Damage taken down', ko: '받는 피해 감소' },
+  BUFF_SPIRITLINK: { en: 'Spirit link', ko: '영혼 연결' },
   DEBUFF_PHYSICS_ATTACK_DOWN: { en: 'Attack down', ko: '공격력 감소' },
   DEBUFF_PHYSICS_DEFEND_DOWN: { en: 'Defence down', ko: '방어력 감소' },
   DEBUFF_PHYSICS_CRITICAL_CHANCE_DOWN: { en: 'Crit rate down', ko: '치명 감소' },
