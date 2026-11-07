@@ -142,8 +142,7 @@ export function valueAt(curve: EmoteCurve | undefined, t: number, roll: number):
 
 type Rgba = [number, number, number, number];
 
-/** A `Gradient` at `t`. Colour and alpha are keyed independently; mode 1 is a
- * step gradient, so a key holds until the next one. */
+// Colour and alpha are keyed independently; mode 1 (`GradientMode.Fixed`) takes the next key's value, not the previous one's.
 function gradientAt(stops: EmoteGradientStops | undefined, t: number): Rgba {
   if (!stops) return [1, 1, 1, 1];
   const step = stops.f === 1;
@@ -151,7 +150,8 @@ function gradientAt(stops: EmoteGradientStops | undefined, t: number): Rgba {
   const colors = stops.c;
   if (colors.length) {
     let index = 0;
-    while (index < colors.length - 1 && colors[index + 1][0] <= t) index += 1;
+    if (step) while (index < colors.length - 1 && colors[index][0] < t) index += 1;
+    else while (index < colors.length - 1 && colors[index + 1][0] <= t) index += 1;
     const key = colors[index];
     const next = colors[Math.min(index + 1, colors.length - 1)];
     const span = next[0] - key[0];
@@ -163,7 +163,8 @@ function gradientAt(stops: EmoteGradientStops | undefined, t: number): Rgba {
   const alphas = stops.a;
   if (alphas.length) {
     let index = 0;
-    while (index < alphas.length - 1 && alphas[index + 1][0] <= t) index += 1;
+    if (step) while (index < alphas.length - 1 && alphas[index][0] < t) index += 1;
+    else while (index < alphas.length - 1 && alphas[index + 1][0] <= t) index += 1;
     const key = alphas[index];
     const next = alphas[Math.min(index + 1, alphas.length - 1)];
     const span = next[0] - key[0];

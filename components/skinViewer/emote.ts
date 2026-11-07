@@ -90,6 +90,10 @@ export function createEmoteBubble(options: {
     const scale = unit * Math.abs(spine.scale.y);
     // A mirrored placement flips positions, quads, pivots, and rotations about the slot.
     const mirror = place.mirror ? -1 : 1;
+    // `SetFlip` sets the emote's world x sign; a mirrored parent (a story actor facing its other way) flips what is drawn inside it.
+    const m = scene.worldTransform;
+    const parent = m.a * m.d - m.b * m.c < 0 ? -1 : 1;
+    const world = mirror * parent;
 
     let used = 0;
     for (const emitter of run.emitters) {
@@ -97,8 +101,8 @@ export function createEmoteBubble(options: {
       if (!base || emitter.def.renderNone) continue;
       const [columns, rows] = emitter.def.tiles;
       // `CharacterEmoticon.SetFlip`: the root mirror, then per system 4 re-mirrors its own transform, 1 toggles the texture flip, 2 flips rotation
-      const flip = mirror < 0 ? emitter.def.flip ?? 0 : 0;
-      const inner = flip & 4 ? 1 : mirror;
+      const flip = world < 0 ? emitter.def.flip ?? 0 : 0;
+      const inner = (flip & 4 ? 1 : world) * parent;
       const quad = inner * (flip & 1 ? -1 : 1);
       const turn = inner * (flip & 2 ? -1 : 1);
       const [ex] = emitter.def.position;
@@ -115,7 +119,8 @@ export function createEmoteBubble(options: {
         }));
         node.position.set(point.x, point.y);
         node.scale.set(quad, 1);
-        node.rotation = -particle.angle * turn;
+        // Unity turns a particle clockwise for a positive angle, as Pixi does
+        node.rotation = particle.angle * turn;
         view.position.set(0, 0);
         view.width = particle.size * scale;
         view.height = particle.sizeY * scale;
