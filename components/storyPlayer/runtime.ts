@@ -635,15 +635,15 @@ export class StoryRuntime {
   }
 
   // Per-property tweens, a newer one taking its property over (Naninovel's actor tweens), so a face change mid-move cannot freeze the move.
-  private async tweenActor(actor: StoryActor, change: { pos?: { x: number; y: number; z: number }; alpha?: number; rotation?: number },
+  private async tweenActor(actor: StoryActor, change: { pos?: { x: number; y: number; z: number }; alpha?: number; rotation?: number; turn?: { x: number; y: number } },
     duration: number, ease?: string): Promise<void> {
-    const from = { pos: { ...actor.pos }, alpha: actor.alpha, rotation: actor.rotation };
+    const from = { pos: { ...actor.pos }, alpha: actor.alpha, rotation: actor.rotation, turn: { ...actor.turn } };
     const owners = this.owners.get(actor) ?? { pos: 0, alpha: 0, rotation: 0 };
     this.owners.set(actor, owners);
     const mine = {
       pos: change.pos ? ++owners.pos : -1,
       alpha: change.alpha != null ? ++owners.alpha : -1,
-      rotation: change.rotation != null ? ++owners.rotation : -1,
+      rotation: change.rotation != null || change.turn ? ++owners.rotation : -1,
     };
     await this.stage.tween(duration, ease ?? ACTOR_EASE, (t) => {
       const to = change.pos;
@@ -652,6 +652,8 @@ export class StoryRuntime {
       }
       if (change.alpha != null && owners.alpha === mine.alpha) actor.alpha = from.alpha + (change.alpha - from.alpha) * t;
       if (change.rotation != null && owners.rotation === mine.rotation) actor.rotation = from.rotation + (change.rotation - from.rotation) * t;
+      const turn = change.turn;
+      if (turn && owners.rotation === mine.rotation) actor.turn = { x: from.turn.x + (turn.x - from.turn.x) * t, y: from.turn.y + (turn.y - from.turn.y) * t };
       actor.apply();
     });
   }
@@ -670,13 +672,15 @@ export class StoryRuntime {
     const appearing = show && !actor.visible;
     if (appearing) { actor.visible = true; actor.alpha = 0; }
     const moves = !!(f.ScenePosition || f.Position);
-    // Unity z turns counter-clockwise; the actor keeps a clockwise angle, as `CharacterRollCommand` does.
-    const z = f.Rotation ? parts(f.Rotation)[2] : null;
+    // Unity z turns counter-clockwise; the actor keeps a clockwise angle, as `CharacterRollCommand` does. An empty component keeps its value.
+    const [rx, ry, z] = f.Rotation ? parts(f.Rotation) : [null, null, null];
+    const turn = rx != null || ry != null ? { x: rx ?? actor.turn.x, y: ry ?? actor.turn.y } : undefined;
     const duration = num(f.Duration, DEFAULT_DURATION);
     await this.tweenActor(actor, {
       pos: moves ? this.target(actor, f.ScenePosition, f.Position) : undefined,
       alpha: !show ? 0 : appearing || actor.alpha < 1 ? 1 : undefined,
       rotation: z != null ? -z : undefined,
+      turn,
     }, duration, f.EasingTypeName);
     if (!show) { actor.visible = false; actor.apply(); }
   }

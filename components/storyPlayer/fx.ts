@@ -130,7 +130,7 @@ export class FxRun {
         view.texture = this.tile(emitter.def.sheet, columns, rows, particle.frame);
         view.anchor.set(0.5 - emitter.def.pivot[0], 0.5 + emitter.def.pivot[1]);
         node.position.set(particle.x, -particle.y);
-        node.rotation = -particle.angle;
+        node.rotation = particle.angle;
         view.width = particle.size;
         view.height = particle.sizeY;
         view.tint = (Math.round(Math.min(1, Math.max(0, particle.r)) * 255) << 16)

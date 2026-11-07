@@ -88,6 +88,8 @@ export class StoryActor {
   visible = false;
   alpha = 1;
   rotation = 0;
+  // `Rotation` x and y in degrees; an orthographic camera sees y 180 as a mirror and 90 as edge-on.
+  turn = { x: 0, y: 0 };
   shake = { x: 0, y: 0 };
   private rollPivot: number | null = null;
   tint = 0xffffff;
@@ -157,8 +159,24 @@ export class StoryActor {
     const heightType = this.layout?.actor?.heightType ?? 1;
     const flip = this.look && this.facing && this.look !== this.facing ? -1 : 1;
     this.holder.position.set(this.pos.x + this.shake.x, -(this.pos.y + this.shake.y + heightOffset(scale, heightType)));
-    this.holder.scale.set(scale * flip, scale);
-    this.holder.rotation = this.rotation * (Math.PI / 180);
+    if (!this.turn.x && !this.turn.y) {
+      this.holder.skew.set(0, 0);
+      this.holder.scale.set(scale * flip, scale);
+      this.holder.rotation = this.rotation * (Math.PI / 180);
+    } else {
+      // Unity's Euler order R = Ry·Rx·Rz seen orthographically: its top-left 2×2, taken to y-down, then the depth scale and facing flip.
+      const rad = Math.PI / 180;
+      const [cx, sx] = [Math.cos(this.turn.x * rad), Math.sin(this.turn.x * rad)];
+      const [cy, sy] = [Math.cos(this.turn.y * rad), Math.sin(this.turn.y * rad)];
+      const [cz, sz] = [Math.cos(-this.rotation * rad), Math.sin(-this.rotation * rad)];
+      const a00 = cy * cz + sy * sx * sz;
+      const a01 = -cy * sz + sy * sx * cz;
+      const a10 = cx * sz;
+      const a11 = cx * cz;
+      const position = { x: this.holder.position.x, y: this.holder.position.y };
+      this.holder.setFromMatrix(new this.stage.PIXI.Matrix(a00 * scale * flip, -a10 * scale * flip, -a01 * scale, a11 * scale, 0, 0));
+      this.holder.position.set(position.x, position.y);
+    }
     this.applyRollPivot();
     this.holder.zIndex = -this.pos.z;
     this.holder.alpha = this.alpha;

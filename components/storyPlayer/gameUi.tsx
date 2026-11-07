@@ -224,12 +224,12 @@ function Place({ text, fx }: { text: string; fx: FxIndex | null }) {
       <div style={{ position: 'absolute', left: 0, top: 0, height: 120, overflow: 'hidden', animation: clip('storyPlaceBox') }}>
         <Sliced name="Bg_gradation128" art={fx?.ui} tint="rgba(0, 0, 0, 0.6)" width={500} height={120} style={{ left: 0, top: 0 }} />
         <div style={{ position: 'absolute', left: 0, top: 0, width: 500, height: 120, backgroundImage: ui('M4_Inven_SlashLine'), backgroundSize: '32px 32px', opacity: 0.05 }} />
+        {/* the rule retracts with the box */}
+        <div style={{ position: 'absolute', left: 40, width: 400, bottom: 24, height: 2, background: 'rgba(0, 245, 255, 0.2)' }} />
       </div>
       <div style={{ position: 'absolute', left: 0, top: 0, width: 500, height: 120 }}>
         <div style={{ position: 'absolute', left: 40, top: 60 - 15, fontSize: 40, color: '#fff', whiteSpace: 'nowrap', animation: `${clip('storyPlaceTitle')}, ${clip('storyPlaceTitleY')}` }}>{text}</div>
-        <div style={{ position: 'absolute', left: 40, width: 400, bottom: 24, height: 2, background: 'rgba(0, 245, 255, 0.2)' }}>
-          <div style={{ position: 'absolute', left: 0, bottom: 8, fontSize: 15, color: 'rgba(255, 255, 255, 0.2)', animation: clip('storyPlaceTag') }}>PLACE</div>
-        </div>
+        <div style={{ position: 'absolute', left: 40, bottom: 24 + 8, fontSize: 15, color: 'rgba(255, 255, 255, 0.2)', animation: clip('storyPlaceTag') }}>PLACE</div>
       </div>
       <div style={{ position: 'absolute', left: 0, top: 0, width: 10, background: 'rgb(0, 245, 255)', animation: clip('storyPlaceBar') }} />
     </div>
