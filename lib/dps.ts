@@ -69,7 +69,11 @@ const plain = (s?: string | null) => (s ?? '').replace(/<[^>]+>/g, '');
 type Side = 'self' | 'target' | 'summon';
 type Effect = { op: string; value: number; scale: string | null; scaleOf: string | null };
 type State = { name: string; nameEn: string; list: { row: string; until: number; n: number }[]; effects: Effect[] };
-type Ctx = { stats: Record<string, number>; target: Target; gate: (gate: SkillGate, holder: Side) => number | null };
+// One application of a damage-over-time state: `tick` is one stack's damage per interval, `stacks` its expected count.
+type Dot = { row: string; every: number; secs: number; cap: number; replace: boolean; tick: Yield; stacks: number };
+type Ctx = {
+  stats: Record<string, number>; target: Target; gate: (gate: SkillGate, holder: Side) => number | null; dot?: (d: Dot) => void;
+};
 type Yield = { damage: number; heal: number; healPct: number };
 
 export function unitStar(entry: CharacterEntry, data: CharacterData, build: Pick<Build, 'star'>): number {
@@ -217,6 +221,15 @@ function hitYield(hit: SkillHit, level: number, period: number, skillType: numbe
           const secs = op.seconds ? growValue(op.seconds, level, period) : 0;
           const n = every > 0 && secs > 0 && secs < FOREVER ? Math.floor(secs / every) : 0;
           if (!n) continue;
+          if (ctx.dot && (op.op === 'OVERTIME_DAMAGE' || op.op === 'OVERTIME_HEAL')) {
+            const tick: Yield = op.op === 'OVERTIME_DAMAGE' ? { damage: Math.max(1, coef * base * w) * f * a * l, heal: 0, healPct: 0 }
+              : onHolder ? { damage: 0, heal: 0, healPct: coef * w } : { damage: 0, heal: Math.max(1, coef * base * w), healPct: 0 };
+            ctx.dot({
+              row: `${op.op}:${(op.stacking === 'TIME_REPLACE' ? op.define : op.row ?? op.define) ?? ''}`, every, secs, cap: op.rowMaxStack ?? 0, replace: op.stacking === 'TIME_REPLACE',
+              tick, stacks: chance,
+            });
+            continue;
+          }
           if (op.op === 'ADD_DAMAGE' || op.op === 'OVERTIME_DAMAGE') out.damage += chance * n * Math.max(1, coef * base * w) * f * a * l;
           else if (onHolder) out.healPct += chance * n * coef * w;
           else out.heal += chance * n * Math.max(1, coef * base * w);
@@ -458,8 +471,10 @@ export function unitYield(
       default: return null;
     }
   };
-  const ctxAt = (at: number, side: Side = 'self', own: Record<string, number> = base): Ctx => (
-    { stats: statsAt(at, side, own), target: targetAt(at), gate: gateAt(at) });
+  const ctxAt = (at: number, side: Side = 'self', own: Record<string, number> = base, dot?: { source?: Labelled; weight?: number; burst?: boolean }): Ctx => ({
+    stats: statsAt(at, side, own), target: targetAt(at), gate: gateAt(at),
+    dot: (d) => addDot({ ...d, stacks: d.stacks * (dot?.weight ?? 1) }, at, dot?.source, !!dot?.burst),
+  });
 
   const totals = { damage: 0, heal: 0 };
   const casts = new Map<string, number>();
@@ -477,6 +492,40 @@ export function unitYield(
   };
   const SUMMONS: Labelled = { label: '소환수', labelEn: 'Summons' };
   const scaled = (y: Yield, e: number): Yield => ({ damage: y.damage * e, heal: y.heal * e, healPct: y.healPct * e });
+
+  // one live damage- or heal-over-time instance per duration row; a reapplication adds stacks to the row cap and restarts the timer
+  type LiveDot = { until: number; every: number; next: number; stacks: number; tick: Yield; source?: Labelled; burst: boolean };
+  const dots = new Map<string, LiveDot>();
+  const tickDots = (upTo: number) => {
+    for (const [row, d] of dots) {
+      for (; d.next <= Math.min(upTo, d.until) + 1e-9; d.next += d.every) {
+        const y = scaled(d.tick, d.stacks);
+        if (d.next <= window) {
+          credit(y, d.next, d.source);
+          if (d.burst) { burstSum.damage += y.damage; burstSum.heal += y.heal; burstSum.healPct += y.healPct; }
+        }
+      }
+      if (d.until <= upTo + 1e-9) dots.delete(row);
+    }
+  };
+  const addDot = (d: Dot, at: number, source: Labelled | undefined, burst: boolean) => {
+    if (d.stacks <= 0) return;
+    tickDots(at);
+    const cap = d.cap > 0 ? d.cap : Infinity;
+    const live = dots.get(d.row);
+    if (live && live.until > at + 1e-9) {
+      if (d.replace && at + d.secs <= live.until) return;
+      // a reapplication also restarts the tick interval
+      if (!d.replace) {
+        live.stacks = Math.min(cap, live.stacks + d.stacks);
+        live.tick = d.tick;
+        live.until = at + d.secs;
+        live.next = at + d.every;
+        return;
+      }
+    }
+    dots.set(d.row, { until: at + d.secs, every: d.every, next: at + d.every, stacks: Math.min(cap, d.stacks), tick: d.tick, source, burst });
+  };
 
   // removes the named states with probability e: a certain removal deletes them, a partial one thins every stack
   const clear = (side: Side, op: SkillOp, at: number, e = 1) => {
@@ -508,7 +557,7 @@ export function unitYield(
     const live = s.list.filter((i) => i.until > at);
     const until = secs >= FOREVER ? Infinity : at + secs;
     const row = first.row ?? define;
-    // STACK adds to its own row without a timer reset until the row cap; TIME_REPLACE keeps the longer
+    // STACK adds to its own row up to the row cap and restarts its timer; TIME_REPLACE keeps the longer
     if (first.stacking === 'TIME_REPLACE' && live.length) {
       const old = live[0];
       if (until > old.until) s.list = [{ row, until, n: 1 - (1 - Math.min(1, old.n)) * (1 - Math.min(1, n)) }];
@@ -516,8 +565,10 @@ export function unitYield(
       const same = first.stacking === 'STACK' ? live.find((i) => i.row === row) : undefined;
       const cap = first.rowMaxStack && first.rowMaxStack > 0 ? first.rowMaxStack : Infinity;
       if (!same) s.list.push({ row, until, n: first.stacking === 'TIME_REPLACE' ? Math.min(1, n) : Math.min(cap, n) });
-      else if (same.n < cap) same.n = Math.min(cap, same.n + n);
-      else same.until = until;
+      else {
+        same.n = Math.min(cap, same.n + n);
+        same.until = until;
+      }
     }
     states.set(key, s);
     for (const a of armed.get('TRIGGER_TYPE_DURATION_DEFINE_APPLY') ?? []) {
@@ -570,7 +621,7 @@ export function unitYield(
           for (; queued >= 1 - 1e-9; queued -= 1) queue.push(triggerId);
         } else if (op.op && DAMAGE_OPS.has(op.op)) {
           const hit: SkillHit = { shape: null, range: 0, ticks: 1, cycle: 0, delay: 0, count: 1, ops: [op] };
-          credit(scaled(hitYield(hit, 1, 0, 0, ctxAt(at), () => skipped.add(`${trig.on}:${op.op}`)), e), at, source);
+          credit(scaled(hitYield(hit, 1, 0, 0, ctxAt(at, 'self', base, { source, weight: e }), () => skipped.add(`${trig.on}:${op.op}`)), e), at, source);
           landed('self', 0, hit, 1, 0, at, depth + 1, e);
         }
       }
@@ -746,7 +797,7 @@ export function unitYield(
     s.next = t0 + Math.max(0.1, timing[id]?.seconds ?? 1);
     const at = t0 + (timing[id]?.hits?.[0] ?? 0);
     for (const hit of skill.behaviour?.hits ?? []) {
-      credit(hitYield(hit, 1, 0, skill.skillType, ctxAt(at, 'summon', s.stats), (k) => skipped.add(`${id}:${k}`)), at, SUMMONS);
+      credit(hitYield(hit, 1, 0, skill.skillType, ctxAt(at, 'summon', s.stats, { source: SUMMONS }), (k) => skipped.add(`${id}:${k}`)), at, SUMMONS);
       landed('summon', skill.skillType, hit, 1, 0, at, 0, 1, s.stats);
     }
   };
@@ -759,6 +810,7 @@ export function unitYield(
       act(next);
     }
     expire(upTo);
+    tickDots(upTo);
   };
 
   const cast = (id: string, t0: number) => {
@@ -779,7 +831,7 @@ export function unitYield(
       casts.set(id, (casts.get(id) ?? 0) + 1);
     }
     (behaviour?.hits ?? []).forEach((hit, h) => {
-      const y = hitYield(hit, level, period, skill.skillType, ctxAt(at), (k) => skipped.add(`${id}:${h}:${k}`));
+      const y = hitYield(hit, level, period, skill.skillType, ctxAt(at, 'self', base, { burst: id === burstId && counted }), (k) => skipped.add(`${id}:${h}:${k}`));
       credit(y, at);
       if (id === burstId && counted) {
         burstSum.damage += y.damage; burstSum.heal += y.heal; burstSum.healPct += y.healPct;

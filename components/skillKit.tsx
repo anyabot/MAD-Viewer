@@ -18,7 +18,7 @@ import {
   patternConditionText, shadowedPatterns,
 } from '@/lib/characters';
 import {
-  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, skillLabel, triggerSubject, workCheck, type Delivery, type StateNamer,
+  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, skillLabel, stackRule, triggerSubject, workCheck, type Delivery, type StateNamer,
 } from '@/lib/skillProse';
 import { useSkillView, type SkillView } from '@/lib/skillViewStore';
 import { kitFacts, resolveBehaviour, type KitFacts } from '@/lib/skillResolve';
@@ -135,6 +135,7 @@ function OpRow({ op, level, period, data, icons, landings = 1, states }: {
   const seconds = opSeconds(op, level, period, lang);
   const weights = op.value ? weightText(op, landings, lang) : null;
   const odds = chanceText(op, lang);
+  const stacking = stackRule(op, level, period, lang, states);
   // a boss can name six states at once; the rest go in the tooltip
   const detail = op.detail ? detailSummary(op.detail, lang, states) : [];
   const shown = detail.slice(0, 3);
@@ -194,9 +195,7 @@ function OpRow({ op, level, period, data, icons, landings = 1, states }: {
           {everySecondsText(op.interval, lang)}
         </Text>
       ) : null}
-      {(op.maxStack ?? 0) > 1 && (op.maxStack ?? 0) < 99 && (
-        <Text fontSize="0.6rem" color="gray.600">{t('maxStack', { n: op.maxStack ?? 0 })}</Text>
-      )}
+      {stacking && <Text fontSize="0.65rem" color="purple.200">{stacking}</Text>}
       {where && <Text fontSize="0.65rem" color="gray.600">{where}</Text>}
     </Flex>
   );

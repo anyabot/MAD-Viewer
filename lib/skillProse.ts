@@ -10,6 +10,7 @@ import type {
 // Names states per kit; `skill` labels a skill type the way the kit lists it, `trigger` is the kit's trigger skill.
 export type StateNamer = ((id: string) => string) & {
   skill?: (type: number) => string; trigger?: string; stacks?: Set<string>; signal?: (id: string) => string[] | undefined;
+  rows?: (define: string) => number;
 };
 
 export type Delivery = 'projectile' | 'travelling' | 'instant';
@@ -98,10 +99,12 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
   const owners = new Map<string, SkillEntry[]>();
   const made = new Set<string>();
   const stacks = new Set<string>();
+  const rowsOf = new Map<string, Set<number>>();
   for (const skill of skills) {
     for (const b of behavioursOf(skill)) {
       const add = (op: SkillOp, start: boolean) => {
         if (op.define && op.kind === 'duration') owners.set(op.define, [...(owners.get(op.define) ?? []), skill]);
+        if (op.define && op.kind === 'duration' && op.row) rowsOf.set(op.define, (rowsOf.get(op.define) ?? new Set()).add(skill.skillType));
         if (op.op === 'MARKER' && op.define) {
           const s = op.seconds?.base?.[0] ?? 0;
           const row = { self: op.applyTo === 'CASTER' || op.team === 'SELF', long: s >= 9999, short: s > 0 && s <= 1, skill, start };
@@ -155,6 +158,7 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
   }
   const namer: StateNamer = (id) => named.get(id) ?? letters.get(id) ?? (lang === 'ko' ? '내부 상태' : 'an internal state');
   namer.stacks = stacks;
+  namer.rows = (define) => rowsOf.get(define)?.size ?? 0;
   namer.signal = (id) => signals.get(id);
   namer.skill = (type) => {
     const s = skills.find((x) => x.skillType === type);
@@ -166,6 +170,28 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
 }
 
 // A passive work's own check: a state's stacks compared with a number, on itself or on the unit that set the trigger off.
+// decoded apply rule (battle-math.md): STACK adds to its own row's instance and restarts its one timer; TIME_REPLACE keeps the longer
+export function stackRule(op: SkillOp, level: number, period: number, lang: Lang, states?: StateNamer): string {
+  if (op.kind !== 'duration' || !op.stacking) return '';
+  const ko = lang === 'ko';
+  const s = op.seconds ? growValue(op.seconds, level, period) : 0;
+  const timed = s > 0 && s < 9999;
+  if (op.stacking === 'TIME_REPLACE') {
+    return timed ? (ko ? '중첩 불가 · 더 긴 지속시간 유지' : "Doesn't stack · the longer duration is kept") : '';
+  }
+  if (op.stacking !== 'STACK') return ko ? '적용마다 별도 지속' : 'Each application lasts on its own';
+  const cap = op.rowMaxStack ?? op.maxStack ?? 0;
+  const stack = cap === 1 ? (ko ? '중첩 불가' : "Doesn't stack")
+    : cap > 1 ? (ko ? `최대 ${cap}중첩` : `Stacks to ${cap}`) : (ko ? '무제한 중첩' : 'Stacks without limit');
+  const parts = [stack];
+  if (timed) parts.push(ko ? '다시 걸리면 지속시간 초기화' : cap === 1 ? 'reapplying restarts the timer' : 'reapplying restarts the timer for every stack');
+  if (op.define && (states?.rows?.(op.define) ?? 0) > 1) {
+    parts.push(ko ? (cap === 1 ? '스킬마다 따로 지속' : '스킬마다 따로 중첩·지속') : cap === 1 ? 'each skill times its own' : 'each skill stacks and times its own');
+  }
+  if (!timed) return cap > 1 ? stack : '';
+  return parts.join(' · ');
+}
+
 export function workCheck(when: NonNullable<SkillOp['when']>, lang: Lang, states: StateNamer): string {
   const ko = lang === 'ko';
   const state = when.state ? states(when.state) : '';
@@ -352,6 +378,12 @@ export function opClause(
     case 'CLEAR_DURATION_DEFINE_ID':
     case 'CLEAR_DURATION_CATEGORIZE_TYPE':
       text = ko ? `${target}의 ${detailNames(op, lang, states)} 해제` : `removes ${detailNames(op, lang, states)} from ${target}`;
+      break;
+    case 'BUFF_SPIRITLINK':
+      // decoded from HeroBase_V2::ApplyFinalLifeDamageWithSpiritLink / IsKeepingAlive (1.11.6 libil2cpp)
+      text = ko
+        ? `자신과 ${target}을(를) ${time} 연결: 체력 0을 넘는 피해는 상대에게 넘어가고, 상대가 살아 있는 동안 체력 0이 되어도 쓰러지지 않음`
+        : `links itself with ${target} ${time}: damage past 0 HP carries over to the other, and a linked unit at 0 HP stays in the fight while the other lives`;
       break;
     case 'USE_TRIGGER_SKILL':
       text = ko ? `${states.trigger ?? '발동 스킬'} 시전` : `casts ${states.trigger ?? 'its trigger skill'}`;

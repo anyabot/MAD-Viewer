@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { CharacterData, CharacterEntry, SkillBehaviour } from '@/lib/data';
 import { skillGrades, skillsAtGrade } from '@/lib/characters';
-import { behaviourSentences, kitSkills, kitStates } from '@/lib/skillProse';
+import { behaviourSentences, kitSkills, kitStates, stackRule } from '@/lib/skillProse';
 import { kitFacts, resolveBehaviour } from '@/lib/skillResolve';
 import { DATA } from './source';
 
@@ -57,6 +57,22 @@ describe('humanized skills', () => {
     expect(proseAt('CH0033', 5).get(3390)!.base.join(' ')).toContain('deals 500% of its ATK as damage to it in total (100% per hit)');
     expect(proseAt('CH0069', 5).get(6980)!.base.join(' ')).toContain('deals 130% of its ATK as damage to it per hit');
     expect(proseAt('CH0007', 5).get(710)!.base.join(' ')).toContain('deals 150% of its ATK as damage to it in total (21% on 6 hits, 24% on 1 hit)');
+  });
+
+  it('spirit link says what the link does', () => {
+    expect(proseAt('CH0003', 5).get(302)!.base.join(' ')).toContain('links itself with the highest DEF other ally for the whole battle: damage past 0 HP carries over to the other');
+  });
+
+  it('a duration op states how it stacks and times out', () => {
+    const rule = (code: string, id: number) => {
+      const entry = data.characters[code] as CharacterEntry;
+      const states = kitStates(kitSkills(entry.skillSetGroup, data), 'en');
+      const op = data.skills[String(id)].behaviour!.hits!.flatMap((h) => h.ops).find((o) => o.kind === 'duration')!;
+      return stackRule(op, 1, 0, 'en', states);
+    };
+    expect(rule('CH0017', 1720)).toBe('Stacks without limit · reapplying restarts the timer for every stack · each skill stacks and times its own');
+    expect(rule('CH0028', 2830)).toBe('Stacks without limit · reapplying restarts the timer for every stack · each skill stacks and times its own');
+    expect(rule('CH0028', 2820)).toBe("Doesn't stack · the longer duration is kept");
   });
 
   it('no two states in a kit share a name', () => {
