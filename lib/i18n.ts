@@ -353,6 +353,8 @@ export const UI = {
   skillSlot: { en: 'slot {n}', ko: '슬롯 {n}' },
   skillLevel: { en: 'Lv', ko: 'Lv' },
   maxStack: { en: '×{n} max', ko: '최대 {n}중첩' },
+  reachesStacks: { en: 'on reaching {n} stacks', ko: '{n}중첩 도달 시' },
+  reachesStacksEach: { en: 'from {n} stacks, every application', ko: '{n}중첩부터 부여될 때마다' },
   cooldown: { en: '{n}s cd', ko: '재사용 {n}초' },
   perBattle: { en: '×{n} per battle', ko: '전투당 {n}회' },
   allInRange: { en: 'all in range', ko: '범위 내 전체' },

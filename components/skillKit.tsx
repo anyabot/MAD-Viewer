@@ -18,7 +18,7 @@ import {
   patternConditionText, shadowedPatterns,
 } from '@/lib/characters';
 import {
-  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, skillLabel, stackRule, triggerSubject, workCheck, type Delivery, type StateNamer,
+  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, reachedCount, skillLabel, stackRule, triggerSubject, workCheck, type Delivery, type StateNamer,
 } from '@/lib/skillProse';
 import { useSkillView, type SkillView } from '@/lib/skillViewStore';
 import { kitFacts, resolveBehaviour, type KitFacts } from '@/lib/skillResolve';
@@ -252,7 +252,9 @@ function Behaviour({ behaviour, level, period, data, icons, states }: {
         </Flex>
       ))}
 
-      {(triggers ?? []).map((trigger, i) => (
+      {(triggers ?? []).map((trigger, i) => {
+        const reached = reachedCount(trigger, states);
+        return (
         <Box key={i}>
           <Wrap spacing={2} align="baseline">
             <WrapItem>
@@ -263,6 +265,11 @@ function Behaviour({ behaviour, level, period, data, icons, states }: {
             {states && triggerSubject(trigger, lang, states) && (
               <WrapItem>
                 <Text fontSize="0.65rem" color="gray.200">{triggerSubject(trigger, lang, states)}</Text>
+              </WrapItem>
+            )}
+            {reached && (
+              <WrapItem>
+                <Text fontSize="0.65rem" color="cyan.300">{t(reached.each ? 'reachesStacksEach' : 'reachesStacks', { n: reached.n })}</Text>
               </WrapItem>
             )}
             {trigger.check && (
@@ -289,12 +296,13 @@ function Behaviour({ behaviour, level, period, data, icons, states }: {
           </Wrap>
           <VStack align="stretch" spacing={0.5} mt={0.5}>
             {trigger.ops.map((op, j) => (
-              <OpRow key={j} op={op} level={level} period={period} data={data} states={states}
+              <OpRow key={j} op={reached ? { ...op, when: undefined } : op} level={level} period={period} data={data} states={states}
                 icons={icons} />
             ))}
           </VStack>
         </Box>
-      ))}
+        );
+      })}
     </VStack>
   );
 }
