@@ -72,7 +72,25 @@ function readerName(readers: SkillEntry[], lang: Lang): string {
 }
 
 // Unnamed internal states get a letter per kit, so an apply and its expire read as the same state.
-export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
+// define -> the units whose kits set it and the op that does, across the whole roster
+const SETTERS = new WeakMap<CharacterData, Map<string, { code: string; op: SkillOp }[]>>();
+function setters(data: CharacterData): Map<string, { code: string; op: SkillOp }[]> {
+  let map = SETTERS.get(data);
+  if (map) return map;
+  map = new Map();
+  for (const [code, c] of Object.entries(data.characters)) {
+    if (c.skillSetGroup == null) continue;
+    for (const skill of kitSkills(c.skillSetGroup, data)) {
+      for (const b of behavioursOf(skill)) {
+        for (const op of opsOf(b)) if (op.define && op.kind === 'duration') map.set(op.define, [...(map.get(op.define) ?? []), { code, op }]);
+      }
+    }
+  }
+  SETTERS.set(data, map);
+  return map;
+}
+
+export function kitStates(skills: SkillEntry[], lang: Lang, data?: CharacterData): StateNamer {
   const named = new Map<string, string>();
   const order: string[] = [];
   const see = (id: string | null | undefined, name?: string | null, nameEn?: string | null) => {
@@ -155,6 +173,22 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
       named.set(id, /^\d+$/.test(tail) ? `${named.get(id)} ${Number(tail)}` : `${named.get(id)} (${tail})`);
     }
   }
+  // a state another unit's kit sets is named after that unit; one no kit sets, after the unit its id names
+  const unitName = (code: string) => {
+    const c = data?.characters[code];
+    return c ? plain(dataText(lang, c.name, c.nameEn)) : '';
+  };
+  for (const id of data ? order : []) {
+    if (named.has(id)) continue;
+    const from = setters(data!).get(id)?.[0];
+    const owner = from ? unitName(from.code) : unitName((/_((?:np|ch)\d{4})(?:_|$)/.exec(id)?.[1] ?? '').toUpperCase());
+    if (!owner) {
+      if (!from) named.set(id, id.replace(/^define_/, '').replace(/_/g, ' '));
+      continue;
+    }
+    const what = from && from.op.op !== 'MARKER' ? labelOf(OP_LABEL, from.op.op, lang) : (lang === 'ko' ? '표식' : 'mark');
+    named.set(id, lang === 'ko' ? `${owner}의 ${what}` : `${owner}'s ${what}`);
+  }
   const letters = new Map<string, string>();
   for (const id of order) {
     if (!named.has(id)) letters.set(id, `${lang === 'ko' ? '표식' : 'Mark'} ${LETTERS[letters.size] ?? letters.size + 1}`);
@@ -197,6 +231,8 @@ export function stackRule(op: SkillOp, level: number, period: number, lang: Lang
 }
 
 export function workCheck(when: NonNullable<SkillOp['when']>, lang: Lang, states: StateNamer): string {
+  // CompareValue passes every value under comparison NONE (1.11.6)
+  if (!when.op) return '';
   const ko = lang === 'ko';
   const state = when.state ? states(when.state) : '';
   const v = when.value ?? '';
@@ -206,7 +242,7 @@ export function workCheck(when: NonNullable<SkillOp['when']>, lang: Lang, states
     if (side) return ko ? `체력 ${pct} ${side[0]}일 때` : side[1].startsWith('or') ? `only at ${pct} HP ${side[1]}` : `only ${side[1]} ${pct} HP`;
   }
   if (when.check === 'CHECK_DURATION_CATEGORIZE' && when.state && (when.op === 'COMPARISON_GREATER_OR_EQUAL' && when.value === '1')) {
-    const what = labelOf(CATEGORY_LABEL, DURATION_CATEGORY_CONST[when.state] ?? when.state, lang);
+    const what = list(when.state.split('|').map((c) => labelOf(CATEGORY_LABEL, DURATION_CATEGORY_CONST[c] ?? c, lang)), lang, true);
     const target = when.on === 'TRIGGER_TARGET';
     return ko ? `${target ? '대상이 ' : ''}${what} 보유 시` : `only while ${target ? 'the target has' : 'it has'} ${what.toLowerCase()}`;
   }
@@ -273,6 +309,7 @@ function who(op: SkillOp, inHit: boolean, lang: Lang, castName?: string): string
   if (!ONE[team]) return many;
   const hit = inHit ? ' hit' : '';
   if (op.pick === 'ALL') return `every ${ONE[team]}${hit}`;
+  if (op.sort === 'RANDOM') return op.count > 1 ? `${op.count} random ${many}${hit}` : `a random ${ONE[team]}${hit}`;
   const sort = op.sort ? `${labelOf(SORT_LABEL, op.sort, 'en')} ` : '';
   if (op.count > 1) return `the ${op.count} ${sort}${many}${hit}`;
   return `the ${sort}${ONE[team]}${hit}`;
@@ -290,22 +327,31 @@ function detailNames(op: SkillOp, lang: Lang, states: StateNamer): string {
 function sameCheck(op: SkillOp): boolean {
   const g = op.gate;
   const w = op.when;
-  if (!g || !w || w.check !== 'CHECK_DURATION_DEFINE' || g.values.length !== 1 || g.values[0].id !== w.state || w.value !== '1') return false;
+  if (!g || !w || w.check !== 'CHECK_DURATION_DEFINE' || g.values[0]?.id !== w.state || w.value !== '1') return false;
   if (!(g.on === 'HOLDER' && op.applyTo === 'HOLDER' && op.team !== 'SELF' && w.on === 'TRIGGER_TARGET')) return false;
-  return (g.condition === 'LACKS_DURATIONS' && w.op === 'COMPARISON_LESS_THAN') || (g.condition === 'HAS_DURATIONS' && w.op === 'COMPARISON_EQUAL_TO');
+  // a 1+ stack gate is the same test as holding it
+  const one = (g.values.length === 1 && (g.condition === HAS || g.condition === LACKS)) || (g.condition === 'HAS_DURATION_STACK_MORE' && g.values.length === 2 && g.values[1].id === '1');
+  if (!one) return false;
+  return (g.condition === 'LACKS_DURATIONS' && w.op === 'COMPARISON_LESS_THAN') || (g.condition !== 'LACKS_DURATIONS' && w.op === 'COMPARISON_EQUAL_TO');
 }
 
 // One effect as a clause: verb, magnitude, whom, how long.
-export type Spread = { landings: number; groups: number };
+export type Spread = { landings: number; groups: number; ticks: number };
 
 // Several landings: with no weight each one deals the whole value, a weight splits the value between them.
 function perHit(op: SkillOp, level: number, period: number, spread: Spread | undefined, lang: Lang): string {
-  if (!spread || spread.landings * spread.groups < 2 || !op.value) return '';
+  const tick = op.tickWeights?.length ? op.tickWeights : undefined;
+  if (!spread || (spread.landings * spread.groups < 2 && !tick) || !op.value) return '';
   const ko = lang === 'ko';
-  if (op.weight == null) return ko ? ' (타격마다)' : ' per hit';
+  if (op.weight == null && !tick) return ko ? ' (타격마다)' : ' per hit';
   const coef = growValue(op.value, level, period, 0);
   const fmt = (v: number) => (op.scale?.endsWith('_RATE') ? `${Number((v * 100).toPrecision(6))}%` : `${Number(v.toPrecision(6))}`);
-  const weights = Array.isArray(op.weight) ? op.weight : Array<number>(spread.landings).fill(op.weight);
+  // as dps.ts: a tick past the tick-weight list deals nothing, and a zero-weight tick is no landing
+  const weights = tick
+    ? Array.from({ length: spread.ticks }, (_, t) => Array<number>(spread.landings / spread.ticks).fill(tick[t] ?? 0)).flat()
+      .map((w, i) => (w * (Array.isArray(op.weight) ? op.weight[i] ?? op.weight.at(-1)! : op.weight ?? 100)) / 100).filter((w) => w > 0)
+    : Array.isArray(op.weight) ? op.weight : Array<number>(spread.landings).fill(op.weight!);
+  if (weights.length === 1 && weights[0] === 100 && spread.groups === 1) return '';
   const whole = spread.groups === 1 && Math.abs(weights.reduce((a, b) => a + b, 0) - 100) < 0.01;
   const runs: string[] = [];
   for (let i = 0; i < weights.length;) {
@@ -317,6 +363,13 @@ function perHit(op: SkillOp, level: number, period: number, spread: Spread | und
   }
   const split = runs.length === 1 ? (ko ? `타격당 ${runs[0]}` : `${runs[0]} per hit`) : (ko ? `타격별 ${runs.join(', ')}` : `${runs.join(', ')}`);
   if (whole) return ko ? ` (총합, ${split})` : ` in total (${split})`;
+  const sum = weights.reduce((a, b) => a + b, 0);
+  if (tick && spread.groups === 1) {
+    if (spread.landings === 1) return ko ? ` (${sum}%만: ${runs[0]})` : ` (only ${sum}% of it: ${runs[0]})`;
+    const some = weights.length < spread.landings ? (ko ? ` ${spread.landings}회 중 ${weights.length}회만` : ` on only ${weights.length} of the ${spread.landings} hits`) : '';
+    const total = fmt((coef * sum) / 100);
+    return ko ? `${some} (${split}, 총 ${total})` : `${some} (${split}, ${total} in total)`;
+  }
   // the rest of the split lands elsewhere, so this hit's share is spelled out
   const shares = [...new Set(weights)].map((w) => `${w}%`).join('/');
   return ko ? ` (타격당 ${shares}: ${runs.join(', ')})` : ` (${shares} of it per hit: ${runs.join(', ')})`;
@@ -327,6 +380,8 @@ export function opClause(
   castName?: string, spread?: Spread,
 ): string {
   const ko = lang === 'ko';
+  // a cast target that is the unit itself reads, and scales, as itself
+  if (op.team === 'CAST_TARGET' && (castName === 'itself' || castName === '자신')) op = { ...op, team: 'SELF' };
   const per = perHit(op, level, period, spread, lang);
   const target = who(op, inHit, lang, castName);
   const amount = scaled(op, level, period, lang);
@@ -359,7 +414,9 @@ export function opClause(
     case 'OVERTIME_HEAL': {
       const every = op.interval ? (ko ? ` ${op.interval}초마다` : ` every ${op.interval}s`) : '';
       const what = op.op === 'OVERTIME_DAMAGE' ? (ko ? '피해' : 'damage') : (ko ? '회복' : 'healing');
-      text = ko ? `${target}에게${every} ${amount} ${what}, ${time}` : `${what} of ${amount}${every} to ${target} ${time}`;
+      // an all-zero coefficient is left out of the data
+      const size = amount || scaled({ ...op, value: { base: [1e-9], up: [0], extra: [0] } }, level, period, lang).replace(/[\d.e-]+%/, '0%');
+      text = ko ? `${target}에게${every} ${size} ${what}, ${time}` : `${what} of ${size}${every} to ${target} ${time}`;
       break;
     }
     case 'MARKER': {
@@ -393,7 +450,7 @@ export function opClause(
       text = ko ? `${states.trigger ?? '발동 스킬'} 시전` : `casts ${states.trigger ?? 'its trigger skill'}`;
       break;
     case 'CC_KNOCKBACK':
-      text = ko ? `${target} 넉백` : `knocks back ${target}`;
+      text = ko ? `${target} 넉백` : `knocks ${target} back`;
       break;
     default: {
       const label = op.name ? plain(dataText(lang, op.name, op.nameEn)) : labelOf(OP_LABEL, op.op, lang);
@@ -424,6 +481,35 @@ function single(op: SkillOp): { id: string; held: boolean } | null {
   return { id: `${g.on ?? ''}:${g.values[0].id}`, held: g.condition === HAS };
 }
 
+// One state's factors (Shadow Arts: ATK and healing) read as one clause listing each amount.
+function joinFactors(op: SkillOp, rest: SkillOp[], clause: (op: SkillOp) => string, lang: Lang): { text: string; used: SkillOp[] } | null {
+  if (op.kind !== 'duration' || !op.define || !op.value) return null;
+  const key = (o: SkillOp) => JSON.stringify({ ...o, op: null, value: null, scale: null, scaleOf: null, icon: null });
+  const run: SkillOp[] = [];
+  for (const o of rest) {
+    if (o.kind !== 'duration' || !o.value || key(o) !== key(op)) break;
+    run.push(o);
+  }
+  if (!run.length) return null;
+  const bare = clause({ ...op, value: undefined });
+  const amounts: string[] = [];
+  let at = -1;
+  let first = '';
+  for (const o of [op, ...run]) {
+    const full = clause(o);
+    if (clause({ ...o, value: undefined }) !== bare) return null;
+    let k = 0;
+    while (k < bare.length && full[k] === bare[k]) k += 1;
+    const piece = full.slice(k, k + full.length - bare.length);
+    const m = /^ ?\((.+)\) ?$/.exec(piece);
+    if (!m || full.slice(k + piece.length) !== bare.slice(k) || (at >= 0 && at !== k)) return null;
+    at = k;
+    first ||= piece;
+    amounts.push(m[1]);
+  }
+  return { text: `${bare.slice(0, at)}${first.replace(amounts[0], list(amounts, lang))}${bare.slice(at)}`, used: run };
+}
+
 // Two ops on opposite sides of one state read as one choice, the held side as the difference.
 function opsText(
   ops: SkillOp[], clause: (op: SkillOp) => string, data: CharacterData, lang: Lang, states: StateNamer,
@@ -431,8 +517,16 @@ function opsText(
   const ko = lang === 'ko';
   const used = new Set<number>();
   const out: string[] = [];
+  // an empty instant no trigger relays on does nothing
+  ops = ops.filter((op) => op.op !== 'EMPTY_EFFECT');
   for (const [i, op] of ops.entries()) {
     if (used.has(i)) continue;
+    const factors = joinFactors(op, ops.slice(i + 1).filter((_, k) => !used.has(i + 1 + k)), clause, lang);
+    if (factors) {
+      factors.used.forEach((o) => used.add(ops.indexOf(o)));
+      out.push(factors.text);
+      continue;
+    }
     const mine = single(op);
     const j = mine ? ops.findIndex((other, k) => k > i && !used.has(k) && single(other)?.id === mine.id && single(other)?.held !== mine.held) : -1;
     if (!mine || j < 0) {
@@ -451,7 +545,15 @@ function opsText(
       out.push(ko ? `${when} ${alt}, 아니면 ${base}` : `${when}, ${alt}; otherwise ${base}`);
     }
   }
-  return out.join('; ');
+  // the same effect applied several times over reads once, with its count
+  const runs: string[] = [];
+  for (let i = 0; i < out.length;) {
+    let j = i;
+    while (j < out.length && out[j] === out[i]) j += 1;
+    runs.push(j - i > 1 ? `${out[i]} (${ko ? `${j - i}회` : `${j - i} times`})` : out[i]);
+    i = j;
+  }
+  return runs.join('; ');
 }
 
 // Centre = anchor x + offset along its facing; FIELD_CENTER swaps only the depth for the field's centre line, then `offsetZ` shifts it.
@@ -516,17 +618,22 @@ function hitSentences(
     else groups.push([hit]);
   }
   const ko = lang === 'ko';
-  return groups.map((hits) => {
+  return groups.filter((hits) => hits[0].ops.some((op) => op.op !== 'EMPTY_EFFECT')).map((hits) => {
     const hit = hits[0];
     const landings = hits.length * hit.count * Math.max(1, hit.ticks);
     const times = landings > 1 ? (ko ? `, ${landings}회 타격` : `, ${landings} hits`) : '';
     const repeat = hit.ticks === 0 && hit.cycle && hit.lifetime
       ? (ko ? ` (${hit.lifetime}초간 ${hit.cycle}초마다)` : ` (every ${hit.cycle}s for ${hit.lifetime}s)`)
       : hit.lifetime ? (ko ? ` (${hit.lifetime}초 유지)` : ` (lasts ${hit.lifetime}s)`) : '';
+    // a hitbox cast on itself whose every op lands on its cast target is just an effect on itself
+    if (hit.cast?.team === 'SELF' && hits.length === 1 && landings === 1 && hit.ops.length && hit.ops.every((op) => op.team === 'CAST_TARGET' || op.team === 'SELF' || op.applyTo === 'CASTER')) {
+      const own = opsText(hit.ops, (op) => opClause(op, level, period, data, lang, states, true, ko ? '자신' : 'itself'), data, lang, states);
+      return `${own[0].toUpperCase()}${own.slice(1)}.`;
+    }
     const target = hit.cast?.team && hit.cast.team !== 'SELF' ? castSummary(hit.cast, lang) : '';
     const single = target && singleTarget(hit);
-    const castName = single ? (ko ? '그 대상' : 'it') : undefined;
-    const spread = { landings: hit.count * Math.max(1, hit.ticks), groups: hits.length };
+    const castName = single ? (ko ? '그 대상' : 'it') : hit.cast?.team === 'SELF' ? (ko ? '자신' : 'itself') : undefined;
+    const spread = { landings: hit.count * Math.max(1, hit.ticks), groups: hits.length, ticks: Math.max(1, hit.ticks) };
     const ops = opsText(hit.ops, (op) => opClause(op, level, period, data, lang, states, true, castName, spread), data, lang, states);
     const fired = hit.arrive && target ? (ko ? `${target}에게 발사, 도착 시 ` : `Fires at ${target}; on arrival, `) : '';
     const moving = !hit.arrive && hit.attach === 'ATTACH_DISPATCHER'
@@ -594,10 +701,10 @@ function whenText(t: SkillTrigger, lang: Lang, states: StateNamer): string {
     const holder = HOLDER_ONE[t.check ?? ''];
     if (ko) {
       const what = [...new Set(t.value.map((v) => labelOf(CATEGORY_LABEL, DURATION_CATEGORY_CONST[v] ?? v, lang)))].join(' 또는 ');
-      return `${holder ? `${holder.ko}의 ` : ''}${what}이(가) ${on0.endsWith('_APPLY') ? '부여될 때' : on0.endsWith('_DISPEL') ? '해제될 때' : '끝날 때'}`;
+      return `${holder ? `${t.holds ? `${states(t.holds)} 보유 ` : ''}${holder.ko}의 ` : ''}${what}이(가) ${on0.endsWith('_APPLY') ? '부여될 때' : on0.endsWith('_DISPEL') ? '해제될 때' : '끝날 때'}`;
     }
     const what = list(t.value.map((v) => CATEGORY_ONE[v] ?? v), lang, true);
-    const where = holder ? holder.en : '';
+    const where = holder ? `${holder.en}${t.holds ? ` with ${states(t.holds)}` : ''}` : '';
     if (on0.endsWith('_APPLY')) return `When ${what} is applied${where ? ` to ${where}` : ''}`;
     if (on0.endsWith('_DISPEL')) return `When ${what} is removed${where ? ` from ${where}` : ''}`;
     return `When ${what} runs out${where ? ` on ${where}` : ''}`;
@@ -607,6 +714,14 @@ function whenText(t: SkillTrigger, lang: Lang, states: StateNamer): string {
     if (reached.each) return ko ? `${state}이(가) ${reached.n}중첩에 도달할 때와 이후 부여될 때마다` : `When ${state} reaches ${reached.n} stacks and on every application after`;
     return ko ? `${state}이(가) ${reached.n}중첩에 도달할 때` : `When ${state} reaches ${reached.n} stacks`;
   }
+  // an event on another unit names that unit
+  const other = t.check && t.check !== 'SELF' ? HOLDER_ONE[t.check] : undefined;
+  const event: Record<string, [string, string]> = {
+    TRIGGER_TYPE_ATTACK: ['attacks', '공격할 때'], TRIGGER_TYPE_HIT: ['is hit', '피격될 때'],
+    TRIGGER_TYPE_ATTACK_CRI: ['lands a critical hit', '치명타를 가할 때'], TRIGGER_TYPE_HIT_CRI: ['takes a critical hit', '치명타를 받을 때'],
+    TRIGGER_TYPE_ACTOR_DEAD: ['dies', '쓰러질 때'],
+  };
+  if (other && event[on0]) return ko ? `${other.ko}이(가) ${event[on0][1]}` : `When ${other.en} ${event[on0][0]}`;
   switch (t.on) {
     case 'TRIGGER_TYPE_DURATION_DEFINE_APPLY': {
       const from = t.value?.[0] ? states.signal?.(t.value[0]) : undefined;
@@ -631,17 +746,107 @@ function whenText(t: SkillTrigger, lang: Lang, states: StateNamer): string {
   return labelOf(TRIGGER_LABEL, t.on, lang);
 }
 
+const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
+
+// Two works that differ only in which state category they wait for read as one work waiting for either.
+function joinCategoryChecks(ops: SkillOp[]): SkillOp[] {
+  const out: SkillOp[] = [];
+  for (const op of ops) {
+    const last = out[out.length - 1];
+    const w = op.when;
+    const lw = last?.when;
+    if (w?.check === 'CHECK_DURATION_CATEGORIZE' && lw?.check === 'CHECK_DURATION_CATEGORIZE'
+      && same({ ...last, when: { ...lw, state: null } }, { ...op, when: { ...w, state: null } })) {
+      out[out.length - 1] = { ...last, when: { ...lw, state: `${lw.state}|${w.state}` } };
+    } else out.push(op);
+  }
+  return out;
+}
+
+// A trigger on an instant that another trigger of the skill lands is that trigger's next step; a no-op instant is only the relay.
+export function foldRelays(triggers: SkillTrigger[]): SkillTrigger[] {
+  const made = new Set(triggers.flatMap((t) => t.ops.flatMap((op) => (op.instant ? [op.instant] : []))));
+  const relay = new Map<string, SkillTrigger>();
+  for (const t of triggers) {
+    if (t.on === 'TRIGGER_TYPE_ONETIME_DEFINE_APPLY' && t.value?.length === 1 && made.has(t.value[0])) relay.set(t.value[0], t);
+  }
+  const expand = (ops: SkillOp[], seen: string[]): SkillOp[] => ops.flatMap((op) => {
+    const next = op.instant && !seen.includes(op.instant) ? relay.get(op.instant) : undefined;
+    if (!next) return [op];
+    const marker = op.op === 'EMPTY_EFFECT';
+    const kids = joinCategoryChecks(next.ops).map((o) => ({
+      ...o, then: marker ? op.then : true, perBattle: next.limit || op.perBattle, when: o.when ?? (marker ? op.when : undefined),
+    }));
+    return [...(marker ? [] : [op]), ...expand(kids, [...seen, op.instant!])];
+  });
+  const listening = new Set(relay.values());
+  return triggers.filter((t) => !listening.has(t)).map((t) => {
+    // a relay's condition on the unit that set it off reads as part of the trigger
+    const markers = t.ops.filter((op) => op.op === 'EMPTY_EFFECT' && op.instant && relay.has(op.instant));
+    const w = markers[0]?.when;
+    const holds = w && markers.every((m) => same(m.when, w)) && w.check === 'CHECK_DURATION_DEFINE' && w.on === 'TRIGGER_TARGET'
+      && w.op === 'COMPARISON_GREATER_OR_EQUAL' && w.value === '1' && w.state ? w.state : undefined;
+    const ops = expand(joinCategoryChecks(holds ? t.ops.map((op) => (markers.includes(op) ? { ...op, when: undefined } : op)) : t.ops), []);
+    return tidy({ ...t, ops, ...(holds ? { holds } : {}) });
+  });
+}
+
+// Drop checks the event itself already guarantees, up to the first step that could undo them.
+function tidy(t: SkillTrigger): SkillTrigger {
+  const ops = joinCategoryChecks(t.ops);
+  const applied = t.on === 'TRIGGER_TYPE_DURATION_CATEGORIZE_APPLY' ? t.value ?? [] : [];
+  let held = !!t.holds;
+  let fresh = applied.length > 0;
+  return {
+    ...t,
+    ops: ops.map((op) => {
+      let out = op;
+      const target = op.via === 'TRIGGER_TARGET';
+      const w = op.when;
+      if (target && held && w?.check === 'CHECK_DURATION_DEFINE' && w.on === 'TRIGGER_TARGET' && w.state === t.holds && w.value === '1'
+        && (w.op === 'COMPARISON_GREATER_OR_EQUAL' || w.op === 'COMPARISON_EQUAL_TO')) out = { ...out, when: undefined };
+      if (target && fresh && w?.check === 'CHECK_DURATION_CATEGORIZE' && w.on === 'TRIGGER_TARGET' && w.op === 'COMPARISON_GREATER_OR_EQUAL'
+        && w.value === '1' && applied.every((c) => (w.state ?? '').split('|').includes(c))) out = { ...out, when: undefined };
+      const g = op.gate;
+      if (target && held && g?.condition === HAS && g.on === 'HOLDER' && g.values.length === 1 && g.values[0].id === t.holds) out = { ...out, gate: undefined };
+      if (op.op === 'CLEAR_DURATION_DEFINE_ID' && op.detail?.values.some((v) => v.id === t.holds)) held = false;
+      if (op.op === 'CLEAR_DURATION_CATEGORIZE_TYPE') fresh = false;
+      return out;
+    }),
+  };
+}
+
+// Whom a passive work's CAST_TARGET op lands on: its holder, or the unit the event happened to or came from (wording per the game's own skill text).
+function workTarget(t: SkillTrigger, via: string | null | undefined, lang: Lang): string | undefined {
+  const ko = lang === 'ko';
+  const on = t.on ?? '';
+  if (via === 'HOLDER') return ko ? '자신' : 'itself';
+  if (via === 'TRIGGER_TARGET') {
+    const one = t.check && t.check !== 'SELF' ? HOLDER_ONE[t.check] : undefined;
+    return one ? (ko ? `그 ${one.ko}` : `that ${t.check === 'ENEMY' ? 'enemy' : 'ally'}`) : undefined;
+  }
+  if (via === 'TRIGGER_INSTIGATOR') {
+    if (on.startsWith('TRIGGER_TYPE_ATTACK')) return ko ? '공격받은 적' : 'the enemy hit';
+    if (on.startsWith('TRIGGER_TYPE_HIT')) return ko ? '공격한 적' : 'the attacker';
+    if (on === 'TRIGGER_TYPE_SUMMON_AFTER') return ko ? '그 소환물' : 'the summon';
+  }
+  return undefined;
+}
+
 function triggerSentences(
   b: SkillBehaviour, level: number, period: number, data: CharacterData, lang: Lang, states: StateNamer,
 ): string[] {
   const ko = lang === 'ko';
-  return (b.triggers ?? []).map((t) => {
+  return foldRelays(b.triggers ?? []).map((t) => {
     const limits = [
       t.limit === 1 ? (ko ? '전투당 1회' : 'once per battle')
         : t.limit > 1 ? (ko ? `전투당 ${t.limit}회` : `up to ${t.limit} times per battle`) : '',
       t.cooldown > 0 && t.limit !== 1 ? (ko ? `재사용 ${t.cooldown}초` : `${t.cooldown}s cooldown`) : '',
     ].filter(Boolean);
     const head = `${whenText(t, lang, states)}${limits.length ? ` (${limits.join(', ')})` : ''}`;
+    const subject = (op: SkillOp) => workTarget(t, op.via, lang);
+    const step = (op: SkillOp, text: string) => `${op.then ? (ko ? '이어서 ' : 'then ') : ''}${text}${op.perBattle
+      ? (ko ? ` (전투당 ${op.perBattle}회)` : op.perBattle === 1 ? ' (once per battle)' : ` (up to ${op.perBattle} times per battle)`) : ''}`;
     if (reachedCount(t, states)) t = { ...t, ops: t.ops.map((op) => ({ ...op, when: undefined })) };
     // the same cast behind several conditions reads as one cast with alternatives
     const casts = t.ops.length > 1 && t.ops.every((op) => op.op === 'USE_TRIGGER_SKILL' && op.when);
@@ -649,8 +854,8 @@ function triggerSentences(
       ? `${opClause({ ...t.ops[0], when: undefined }, level, period, data, lang, states)} — ${t.ops
         .map((op) => workCheck(op.when!, lang, states).replace(/^only with /, 'while it has ').replace(/^only without /, 'while it lacks '))
         .join(ko ? ' 또는 ' : ', or ')}`
-      : t.ops.length
-        ? opsText(t.ops, (op) => opClause(op, level, period, data, lang, states), data, lang, states)
+      : t.ops.some((op) => op.op !== 'EMPTY_EFFECT')
+        ? opsText(t.ops, (op) => step(op, opClause(op, level, period, data, lang, states, false, subject(op))), data, lang, states)
         : (ko ? '효과 없음' : 'nothing');
     return `${head}: ${ops}.`;
   });

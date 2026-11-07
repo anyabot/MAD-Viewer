@@ -18,7 +18,7 @@ import {
   patternConditionText, shadowedPatterns,
 } from '@/lib/characters';
 import {
-  behaviourSentences, deliveries, hitDelivery, kitSkills, kitStates, reachedCount, skillLabel, stackRule, triggerSubject, workCheck, type Delivery, type StateNamer,
+  behaviourSentences, deliveries, foldRelays, hitDelivery, kitSkills, kitStates, reachedCount, skillLabel, stackRule, triggerSubject, workCheck, type Delivery, type StateNamer,
 } from '@/lib/skillProse';
 import { useSkillView, type SkillView } from '@/lib/skillViewStore';
 import { kitFacts, resolveBehaviour, type KitFacts } from '@/lib/skillResolve';
@@ -141,6 +141,7 @@ function OpRow({ op, level, period, data, icons, landings = 1, states }: {
   const shown = detail.slice(0, 3);
   return (
     <Flex gap={2} align="start" wrap="wrap">
+      {op.then && <Text fontSize="0.6rem" color="gray.500" mt={0.5}>{t('thenStep')}</Text>}
       {op.icon
         ? <GameIcon manifest={icons} group="buff" name={op.icon} size={4} mt={0.5} />
         : <Box w={4} />}
@@ -186,7 +187,7 @@ function OpRow({ op, level, period, data, icons, landings = 1, states }: {
           <GameText text={gateSummary(op.gate, data, lang, states)} />
         </Text>
       )}
-      {op.when && states && (
+      {op.when?.op && states && (
         <Text fontSize="0.65rem" color="cyan.300">{workCheck(op.when, lang, states)}</Text>
       )}
       {seconds && <Text fontSize="0.65rem" color="gray.500">{seconds}</Text>}
@@ -197,6 +198,7 @@ function OpRow({ op, level, period, data, icons, landings = 1, states }: {
       ) : null}
       {stacking && <Text fontSize="0.65rem" color="purple.200">{stacking}</Text>}
       {where && <Text fontSize="0.65rem" color="gray.600">{where}</Text>}
+      {op.perBattle ? <Text fontSize="0.6rem" color="gray.600">{t('perBattle', { n: op.perBattle })}</Text> : null}
     </Flex>
   );
 }
@@ -252,7 +254,7 @@ function Behaviour({ behaviour, level, period, data, icons, states }: {
         </Flex>
       ))}
 
-      {(triggers ?? []).map((trigger, i) => {
+      {foldRelays(triggers ?? []).map((trigger, i) => {
         const reached = reachedCount(trigger, states);
         return (
         <Box key={i}>
@@ -265,6 +267,11 @@ function Behaviour({ behaviour, level, period, data, icons, states }: {
             {states && triggerSubject(trigger, lang, states) && (
               <WrapItem>
                 <Text fontSize="0.65rem" color="gray.200">{triggerSubject(trigger, lang, states)}</Text>
+              </WrapItem>
+            )}
+            {trigger.holds && states && (
+              <WrapItem>
+                <Text fontSize="0.65rem" color="cyan.300">{t('whileHolding', { state: states(trigger.holds) })}</Text>
               </WrapItem>
             )}
             {reached && (
@@ -480,7 +487,7 @@ export function SkillList({ group, defaultStar, data, icons, owner }: {
   const t = useT();
   const lang = useLang();
   const kit = kitSkills(group, data);
-  const states = kitStates(kit, lang);
+  const states = kitStates(kit, lang, data);
   const entry = { skillSetGroup: group, defaultStar } as CharacterEntry;
   const grades = skillGrades(entry, data);
   const [grade, setGrade] = useState<number | null>(null);
@@ -540,7 +547,7 @@ export function Rotation({ entry, data, icons }: {
   if (!entry.battlePatterns) return null;
   return (
     <PatternRotation patterns={entry.battlePatterns} data={data} icons={icons}
-      states={kitStates(kitSkills(entry.skillSetGroup, data), lang)}
+      states={kitStates(kitSkills(entry.skillSetGroup, data), lang, data)}
       skillOf={(id) => (data.skills[String(id)] ? { id, skill: data.skills[String(id)] } : null)} />
   );
 }

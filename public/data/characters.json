@@ -74096,6 +74096,7 @@
         "applyTo": "HOLDER",
         "scale": null,
         "scaleOf": null,
+        "instant": "define_check_trigger_ch0025_01",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74251,6 +74252,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_02",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74296,6 +74298,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_02",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74347,6 +74350,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_01",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74434,6 +74438,7 @@
         "applyTo": "HOLDER",
         "scale": null,
         "scaleOf": null,
+        "instant": "define_check_trigger_ch0025_01",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74589,6 +74594,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_02",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74634,6 +74640,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_02",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74685,6 +74692,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_01",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74772,6 +74780,7 @@
         "applyTo": "HOLDER",
         "scale": null,
         "scaleOf": null,
+        "instant": "define_check_trigger_ch0025_01",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74927,6 +74936,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_02",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -74972,6 +74982,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_02",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,
@@ -75023,6 +75034,7 @@
           }
          ]
         },
+        "instant": "define_dispel_trigger_ch0025_01",
         "team": "CAST_TARGET",
         "pick": null,
         "sort": null,

@@ -85,6 +85,24 @@ describe('humanized skills', () => {
     expect(proseAt('CH0021', 5).get(2102)!.base.join(' ')).toContain('When Returning Butterfly reaches 5 stacks and on every application after:');
   });
 
+  it('a relay through no-op instants reads as one chain of steps', () => {
+    expect(proseAt('CH0025', 5).get(2502)!.base).toContain('When a debuff or crowd control is applied to an ally with Ghost Dust: removes debuffs and crowd control from that ally; then removes Ghost Dust from that ally; then gives itself Shadow Arts (7% of its ATK and 5% of its healing) for the whole battle, up to 10 stacks (cannot be removed) (up to 10 times per battle).');
+  });
+
+  it('a per-tick weight splits the value across the ticks', () => {
+    expect(proseAt('CH0025', 5).get(2590)!.base.join(' ')).toContain('otherwise deals 450% of its ATK as damage to every enemy hit in total (45% per hit)');
+    expect(proseAt('CH0021', 5).get(2110)!.base.join(' ')).toContain('deals 150% of its ATK as damage to it on only 7 of the 10 hits (30% per hit, 210% in total)');
+  });
+
+  it('a work target and a self cast are named', () => {
+    expect(proseAt('CH0005', 5).get(520)!.base).toContain('Gives itself Shield (40% of its max HP) for 3s.');
+    expect(proseAt('CH0068', 5).get(6802)!.base).toContain('When another ally dies: removes Riding from itself.');
+    expect(proseAt('CH0014', 5).get(1402)!.base.join(' ')).toContain('When an ally is hit (1s cooldown): deals 200% of its ATK as damage to the attacker');
+    const all = Object.keys(data.characters).filter((k) => k.startsWith('CH') && data.characters[k].skillSetGroup != null)
+      .flatMap((code) => [...proseAt(code, skillGrades(data.characters[code] as CharacterEntry, data).at(-1)!).values()].flatMap((p) => [...p.base, ...p.variant]));
+    expect(all.filter((l) => /the cast target|no effect|an instant lands/.test(l))).toEqual([]);
+  });
+
   it('no two states in a kit share a name', () => {
     const clashes: string[] = [];
     for (const [code, c] of Object.entries(data.characters)) {
