@@ -11,6 +11,7 @@ import type {
 export type StateNamer = ((id: string) => string) & {
   skill?: (type: number) => string; trigger?: string; stacks?: Set<string>; signal?: (id: string) => string[] | undefined;
   rows?: (define: string) => number;
+  cap?: (define: string) => number | undefined;
 };
 
 export type Delivery = 'projectile' | 'travelling' | 'instant';
@@ -100,11 +101,13 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
   const made = new Set<string>();
   const stacks = new Set<string>();
   const rowsOf = new Map<string, Set<number>>();
+  const caps = new Map<string, number>();
   for (const skill of skills) {
     for (const b of behavioursOf(skill)) {
       const add = (op: SkillOp, start: boolean) => {
         if (op.define && op.kind === 'duration') owners.set(op.define, [...(owners.get(op.define) ?? []), skill]);
         if (op.define && op.kind === 'duration' && op.row) rowsOf.set(op.define, (rowsOf.get(op.define) ?? new Set()).add(skill.skillType));
+        if (op.define && op.kind === 'duration' && op.stacking === 'STACK') caps.set(op.define, Math.max(caps.get(op.define) ?? 0, op.rowMaxStack ? op.rowMaxStack : Infinity));
         if (op.op === 'MARKER' && op.define) {
           const s = op.seconds?.base?.[0] ?? 0;
           const row = { self: op.applyTo === 'CASTER' || op.team === 'SELF', long: s >= 9999, short: s > 0 && s <= 1, skill, start };
@@ -159,6 +162,7 @@ export function kitStates(skills: SkillEntry[], lang: Lang): StateNamer {
   const namer: StateNamer = (id) => named.get(id) ?? letters.get(id) ?? (lang === 'ko' ? '내부 상태' : 'an internal state');
   namer.stacks = stacks;
   namer.rows = (define) => rowsOf.get(define)?.size ?? 0;
+  namer.cap = (define) => caps.get(define);
   namer.signal = (id) => signals.get(id);
   namer.skill = (type) => {
     const s = skills.find((x) => x.skillType === type);
@@ -559,13 +563,50 @@ export function triggerSubject(t: SkillTrigger, lang: Lang, states: StateNamer):
   if (!values.length) return '';
   if (t.on === 'TRIGGER_TYPE_USE_SKILL' && states.skill) return list(values.map((v) => states.skill!(Number(v))), lang, true);
   if (values.every((v) => v.startsWith('define_'))) return list(values.map((v) => states(v)), lang, true);
+  if ((t.on ?? '').startsWith('TRIGGER_TYPE_DURATION_CATEGORIZE_')) return list(values.map((v) => labelOf(CATEGORY_LABEL, DURATION_CATEGORY_CONST[v] ?? v, lang)), lang, true);
   return '';
+}
+
+const CATEGORY_ONE: Record<string, string> = { 1: 'a buff', 2: 'a debuff', 3: 'crowd control' };
+const HOLDER_ONE: Record<string, { en: string; ko: string }> = {
+  SELF: { en: 'itself', ko: '자신' }, FRIENDLY: { en: 'an ally', ko: '아군' }, FRIENDLY_NOT_SELF: { en: 'another ally', ko: '다른 아군' },
+  ENEMY: { en: 'an enemy', ko: '적' },
+};
+
+// a trigger on its own state whose every work waits for one stack count; `each` when it can fire again at or past that count
+export function reachedCount(t: SkillTrigger, states?: StateNamer): { n: string; each: boolean } | null {
+  const w = t.ops[0]?.when;
+  if (t.on !== 'TRIGGER_TYPE_DURATION_DEFINE_APPLY' || !w || w.check !== 'CHECK_DURATION_DEFINE' || w.state !== t.value?.[0]) return null;
+  if (!['SELF', 'HOLDER'].includes(w.on ?? '') || t.check !== 'SELF' || !['COMPARISON_EQUAL_TO', 'COMPARISON_GREATER_OR_EQUAL'].includes(w.op ?? '')) return null;
+  if (!t.ops.every((op) => JSON.stringify(op.when) === JSON.stringify(w))) return null;
+  const n = Number(w.value);
+  const cap = states?.cap?.(w.state);
+  const again = w.op === 'COMPARISON_GREATER_OR_EQUAL' || cap === n;
+  return { n: String(n), each: t.limit !== 1 && again };
 }
 
 function whenText(t: SkillTrigger, lang: Lang, states: StateNamer): string {
   const ko = lang === 'ko';
   const state = t.value?.[0]?.startsWith('define_') ? states(t.value[0]) : '';
   const on = t.check ? labelOf(TARGET_LABEL, t.check, lang) : '';
+  const on0 = t.on ?? '';
+  if (on0.startsWith('TRIGGER_TYPE_DURATION_CATEGORIZE_') && t.value?.length) {
+    const holder = HOLDER_ONE[t.check ?? ''];
+    if (ko) {
+      const what = [...new Set(t.value.map((v) => labelOf(CATEGORY_LABEL, DURATION_CATEGORY_CONST[v] ?? v, lang)))].join(' 또는 ');
+      return `${holder ? `${holder.ko}의 ` : ''}${what}이(가) ${on0.endsWith('_APPLY') ? '부여될 때' : on0.endsWith('_DISPEL') ? '해제될 때' : '끝날 때'}`;
+    }
+    const what = list(t.value.map((v) => CATEGORY_ONE[v] ?? v), lang, true);
+    const where = holder ? holder.en : '';
+    if (on0.endsWith('_APPLY')) return `When ${what} is applied${where ? ` to ${where}` : ''}`;
+    if (on0.endsWith('_DISPEL')) return `When ${what} is removed${where ? ` from ${where}` : ''}`;
+    return `When ${what} runs out${where ? ` on ${where}` : ''}`;
+  }
+  const reached = reachedCount(t, states);
+  if (reached && state) {
+    if (reached.each) return ko ? `${state}이(가) ${reached.n}중첩에 도달할 때와 이후 부여될 때마다` : `When ${state} reaches ${reached.n} stacks and on every application after`;
+    return ko ? `${state}이(가) ${reached.n}중첩에 도달할 때` : `When ${state} reaches ${reached.n} stacks`;
+  }
   switch (t.on) {
     case 'TRIGGER_TYPE_DURATION_DEFINE_APPLY': {
       const from = t.value?.[0] ? states.signal?.(t.value[0]) : undefined;
@@ -598,9 +639,10 @@ function triggerSentences(
     const limits = [
       t.limit === 1 ? (ko ? '전투당 1회' : 'once per battle')
         : t.limit > 1 ? (ko ? `전투당 ${t.limit}회` : `up to ${t.limit} times per battle`) : '',
-      t.cooldown > 0 ? (ko ? `재사용 ${t.cooldown}초` : `${t.cooldown}s cooldown`) : '',
+      t.cooldown > 0 && t.limit !== 1 ? (ko ? `재사용 ${t.cooldown}초` : `${t.cooldown}s cooldown`) : '',
     ].filter(Boolean);
     const head = `${whenText(t, lang, states)}${limits.length ? ` (${limits.join(', ')})` : ''}`;
+    if (reachedCount(t, states)) t = { ...t, ops: t.ops.map((op) => ({ ...op, when: undefined })) };
     // the same cast behind several conditions reads as one cast with alternatives
     const casts = t.ops.length > 1 && t.ops.every((op) => op.op === 'USE_TRIGGER_SKILL' && op.when);
     const ops = casts

@@ -75,6 +75,16 @@ describe('humanized skills', () => {
     expect(rule('CH0028', 2820)).toBe("Doesn't stack · the longer duration is kept");
   });
 
+  it('a category trigger names its categories and a stack trigger reads as reaching the count', () => {
+    const lines = proseAt('CH0075', 5).get(7502)!.base;
+    expect(lines).toContain('When a debuff or crowd control is removed from an ally (up to 5 times per battle): gives itself Purification of Corruption (5% of its healing) for the whole battle, up to 5 stacks.');
+    expect(lines).toContain('When Purification of Corruption reaches 5 stacks (once per battle): gives itself Wraith Form (25% of its healing) for the whole battle; removes Purification of Corruption from itself.');
+  });
+
+  it('a stack trigger that fires past its count says so', () => {
+    expect(proseAt('CH0021', 5).get(2102)!.base.join(' ')).toContain('When Returning Butterfly reaches 5 stacks and on every application after:');
+  });
+
   it('no two states in a kit share a name', () => {
     const clashes: string[] = [];
     for (const [code, c] of Object.entries(data.characters)) {
