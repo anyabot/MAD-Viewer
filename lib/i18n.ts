@@ -357,6 +357,8 @@ export const UI = {
   reachesStacksEach: { en: 'from {n} stacks, every application', ko: '{n}중첩부터 부여될 때마다' },
   cooldown: { en: '{n}s cd', ko: '재사용 {n}초' },
   perBattle: { en: '×{n} per battle', ko: '전투당 {n}회' },
+  thenStep: { en: 'then', ko: '이어서' },
+  whileHolding: { en: 'with {state}', ko: '{state} 보유 시' },
   allInRange: { en: 'all in range', ko: '범위 내 전체' },
   onSide: { en: 'on the {side}', ko: '{side} 기준' },
   rotationOpening: { en: 'Opening', ko: '시작' },

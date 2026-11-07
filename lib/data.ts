@@ -353,6 +353,11 @@ export type SkillOp = {
   when?: { check: string | null; on: string | null; state: string | null; op: string | null; value: string | null };
   // a passive work's target: HOLDER, TRIGGER_TARGET or TRIGGER_INSTIGATOR
   via?: string | null;
+  // the instant define a TRIGGER_TYPE_ONETIME_DEFINE_APPLY trigger listens for
+  instant?: string;
+  // set by foldRelays: a later step of a relayed trigger, and that step's per-battle limit
+  then?: boolean;
+  perBattle?: number;
   // duration operations only
   define?: string;
   name?: string | null;
@@ -427,6 +432,8 @@ export type SkillTrigger = {
   // the define a duration trigger listens to, or the trigger's threshold
   value?: string[];
   ops: SkillOp[];
+  // set by foldRelays: the state the triggering unit must hold
+  holds?: string;
 };
 
 export type SkillMoveTarget = {

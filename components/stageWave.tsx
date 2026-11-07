@@ -319,7 +319,7 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
               {patterns && (
                 <PatternRotation patterns={patterns} data={chars} icons={icons}
                   skillOf={skillByType(kitGroup, chars)}
-                  states={kitStates(kitSkills(kitGroup, chars), lang)} />
+                  states={kitStates(kitSkills(kitGroup, chars), lang, chars)} />
               )}
               <SkillList group={kitGroup} defaultStar={entry?.defaultStar}
                 data={chars} icons={icons} />
@@ -361,7 +361,7 @@ function EnemyRow({ group, data, chars, icons, lang, isBoss }: {
                     {patterns && (
                       <PatternRotation patterns={patterns} data={chars} icons={icons}
                         skillOf={skillByType(kitGroup, chars)}
-                        states={kitStates(kitSkills(kitGroup, chars), lang)} />
+                        states={kitStates(kitSkills(kitGroup, chars), lang, chars)} />
                     )}
                     <SkillList group={kitGroup} defaultStar={entry?.defaultStar}
                       data={chars} icons={icons} />
