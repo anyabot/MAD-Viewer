@@ -2,8 +2,6 @@
 // and sizes come out in the emitter's own particle units for the caller to
 // convert. The modules covered are the ones the emote prefabs enable.
 //
-// Not modelled: velocity-aligned billboards, which every emitter asking for one
-// starts at zero speed.
 import type {
   EmoteCurve, EmoteEmitter, EmoteGradient, EmoteGradientStops,
 } from '@/lib/data';
@@ -16,8 +14,13 @@ export type Particle = {
   size: number;
   sizeY: number;
   sizeZ: number;
-  /** Radians, counter-clockwise. */
+  // radians, clockwise on screen as in Unity
   angle: number;
+  // velocity over the last step (particle units/s, y up); a Velocity-aligned quad (render alignment 4) turns its up axis along it
+  travelX: number;
+  travelY: number;
+  // a stable per-particle random, for choices made once per particle
+  pick: number;
   // 3D start rotation; zero unless the emitter authors one
   angleX: number;
   angleY: number;
@@ -365,6 +368,9 @@ function createEmitter(def: EmoteEmitter, seed: number) {
       lifetime,
       vx: (dx * cos - dy * sin) * speed,
       vy: (dx * sin + dy * cos) * speed,
+      pick: rolls[0],
+      travelX: (dx * cos - dy * sin) * speed,
+      travelY: (dx * sin + dy * cos) * speed,
       ax: 0,
       ay: 0,
       size: size,
@@ -476,6 +482,7 @@ function createEmitter(def: EmoteEmitter, seed: number) {
       if (gravity !== 0) p.ay -= gravity * GRAVITY * step;
       p.x += (vx + p.ax) * step;
       p.y += (vy + p.ay) * step;
+      if (step > 0) { p.travelX = vx + p.ax; p.travelY = vy + p.ay; }
 
       if (def.size) {
         const scale = valueAt(def.size.curve, t, p.rolls[ROLL_SIZE_OL]);
@@ -527,3 +534,10 @@ export function createEmoteRun(defs: EmoteEmitter[], seed: number): EmoteRun {
     finished: () => emitters.every((emitter) => emitter.finished()),
   };
 }
+
+// Render alignment 4 (Velocity): the clockwise turn that points the quad's up axis along the particle's travel; 0 otherwise or when still.
+export function travelTurn(def: EmoteEmitter, p: Particle): number {
+  if (def.align !== 4 || (!p.travelX && !p.travelY)) return 0;
+  return Math.atan2(p.travelX, p.travelY);
+}
+

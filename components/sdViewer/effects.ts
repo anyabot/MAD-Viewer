@@ -226,6 +226,11 @@ export async function createCutinEffects(options: {
           const cos = Math.cos(turn - own);
           const sin = Math.sin(turn - own);
           sprite.rotation = Math.atan2(c * cos + d * sin, a * cos + b * sin);
+        } else if (def.align === 4 && (particle.travelX || particle.travelY)) {
+          // Velocity alignment: the quad's up axis follows the particle's travel on screen
+          const tx = a * particle.travelX + b * particle.travelY;
+          const ty = c * particle.travelX + d * particle.travelY;
+          sprite.rotation = Math.atan2(tx, -ty) + own;
         } else {
           sprite.rotation = own;
         }

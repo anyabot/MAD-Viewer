@@ -55,11 +55,11 @@ export function emotePlacement(
   if (!emitters.length) return null;
   const sheets: EmotePlacement['sheets'] = {};
   for (const emitter of emitters) {
-    const size = manifest?.sheets[emitter.sheet];
-    if (!size) continue;
-    sheets[emitter.sheet] = {
-      url: emoteSheetUrl(emitter.sheet), width: size[0], height: size[1],
-    };
+    for (const name of [emitter.sheet, emitter.shaderGraph?.mask]) {
+      const size = name ? manifest?.sheets[name] : undefined;
+      if (!name || !size) continue;
+      sheets[name] = { url: emoteSheetUrl(name), width: size[0], height: size[1] };
+    }
   }
   // the client mirrors the whole emote exactly when the rig's baked facing is Right
   const mirror = actor.look === 'Right';

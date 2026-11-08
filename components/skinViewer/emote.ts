@@ -1,6 +1,7 @@
 // The emote container shares the actor's scene transform while particle units use their own scale.
 import { EMOTE_UNIT_SCALE } from '@/components/skinViewer/constants';
-import { createEmoteRun, type EmoteRun } from '@/components/skinViewer/particles';
+import { createGraphQuad, type GraphQuad } from '@/components/skinViewer/graphQuad';
+import { createEmoteRun, travelTurn, type EmoteRun } from '@/components/skinViewer/particles';
 import type { EmotePlacement } from '@/lib/emoticons';
 
 export type EmoteBubble = {
@@ -30,9 +31,11 @@ export function createEmoteBubble(options: {
   container.visible = false;
   container.eventMode = 'none';
   container.zIndex = 30;
+  // emitters draw in their renderers' sorting order
+  container.sortableChildren = true;
   scene.addChild(container);
 
-  const pool: { node: any; view: any }[] = [];
+  const pool: { node: any; view: any; graph?: GraphQuad; graphDef?: unknown }[] = [];
   // The emitter's grid makes each sheet-and-tile combination a distinct texture.
   const tiles = new Map<string, any>();
   const sheets = new Map<string, any>();
@@ -118,9 +121,27 @@ export function createEmoteBubble(options: {
           y: originY - particle.y * unit,
         }));
         node.position.set(point.x, point.y);
-        node.scale.set(quad, 1);
-        // Unity turns a particle clockwise for a positive angle, as Pixi does
-        node.rotation = particle.angle * turn;
+        const [flipX, flipY] = emitter.def.rendererFlip ?? [0, 0];
+        node.skew.set(0, 0);
+        node.scale.set(quad * (particle.pick < flipX ? -1 : 1), particle.pick < flipY ? -1 : 1);
+        // the start rotation is clockwise; a Local-aligned quad (2) also takes the emitter transform's counter-clockwise turn
+        const tilt = (emitter.def.angle ?? 0) * (Math.PI / 180);
+        node.rotation = (particle.angle - tilt - (emitter.def.align === 2 ? tilt : 0)) * turn + travelTurn(emitter.def, particle) * inner;
+        if (emitter.def.align === 2 && (particle.angleX || particle.angleY)) {
+          // 3D start rotation on a Local quad: the top-left 2x2 of Ry·Rx·Rz (Quaternion.Euler order), y-up to y-down, then the quad mirrors
+          const z = -node.rotation;
+          const [cz, sz] = [Math.cos(z), Math.sin(z)];
+          const [cx, sx] = [Math.cos(particle.angleX), Math.sin(particle.angleX)];
+          const [cy, sy] = [Math.cos(particle.angleY * inner), Math.sin(particle.angleY * inner)];
+          const a00 = cy * cz + sy * sx * sz;
+          const a01 = -cy * sz + sy * sx * cz;
+          const a10 = cx * sz;
+          const a11 = cx * cz;
+          const [mx, my] = [node.scale.x, node.scale.y];
+          const at = { x: node.position.x, y: node.position.y };
+          node.setFromMatrix(new PIXI.Matrix(a00 * mx, -a10 * mx, -a01 * my, a11 * my, 0, 0));
+          node.position.set(at.x, at.y);
+        }
         view.position.set(0, 0);
         view.width = particle.size * scale;
         view.height = particle.sizeY * scale;
@@ -130,6 +151,27 @@ export function createEmoteBubble(options: {
           | (Math.round(Math.min(1, Math.max(0, particle.g)) * 255) << 8)
           | Math.round(Math.min(1, Math.max(0, particle.b)) * 255);
         view.alpha = Math.min(1, Math.max(0, particle.a));
+        view.visible = true;
+        view.blendMode = emitter.def.blend ?? 'normal';
+        node.zIndex = emitter.def.order ?? 0;
+        const item = pool[used - 1];
+        const graph = emitter.def.shaderGraph;
+        if (graph) {
+          // the Shader Graph's own sampling replaces the sprite; a pooled quad is rebuilt when its emitter changes
+          if (!item.graph || item.graphDef !== emitter.def) {
+            item.graph?.mesh.destroy();
+            const mask = graph.mask ? sheets.get(graph.mask) ?? null : null;
+            item.graph = createGraphQuad(PIXI, emitter.def, base, mask);
+            item.graphDef = emitter.def;
+            node.addChild(item.graph.mesh);
+          }
+          const w = view.width;
+          const h = view.height;
+          item.graph.draw(-view.anchor.x * w, -view.anchor.y * h, w, h, particle);
+          view.visible = false;
+        } else if (item.graph) {
+          item.graph.mesh.visible = false;
+        }
         node.visible = true;
       }
     }

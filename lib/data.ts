@@ -885,6 +885,17 @@ export type EmoteEmitter = {
   name: string;
   /** Key into `EmoticonManifest.sheets`, and the file under `emoticons/fx/`. */
   sheet: string;
+  // one of the four FX Shader Graphs: tiling UV from particle Custom1 (null without the custom stream), alpha mask, HDR tint
+  shaderGraph?: {
+    shader: string; hdrOn: boolean; hdr: [number, number, number]; alphaStrength: number;
+    tile?: [EmoteCurve, EmoteCurve] | null; offset?: [EmoteCurve, EmoteCurve] | null; maskChannel?: 'a' | 'r' | null; mask?: string;
+  };
+  // the fraction of particles whose quad the renderer mirrors on x and y
+  rendererFlip?: [number, number];
+  // the material's blend (shader pass factors), the renderer's sorting order, mesh-mode geometry
+  blend?: 'normal' | 'add' | 'multiply' | 'screen';
+  order?: number;
+  mesh?: { verts: number[]; uvs: number[]; tris: number[] };
   tiles: [number, number];
   /** The emitter's own transform, relative to the prefab root. */
   position: [number, number];

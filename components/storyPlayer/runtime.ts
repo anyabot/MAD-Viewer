@@ -71,6 +71,16 @@ function colorAlpha(value: string | undefined): number {
   return /^[0-9a-f]{8}$/.test(hex) ? parseInt(hex.slice(6), 16) / 255 : 1;
 }
 
+// `FadeCommand.Duration` unassigned
+const FADE_DURATION = 0.5;
+
+// SlideCommand `Direction` is `Side.In|Out`: side default Right, fade default Out (`get_AssignedSlideDirection`, `get_AssignedFadeDirection`)
+function slideDirection(value: string | undefined): { side: string; out: boolean } {
+  const [rawSide, rawFade] = (value ?? '').split('.');
+  const sides: Record<string, string> = { left: 'Left', right: 'Right', top: 'Top', bottom: 'Bottom' };
+  return { side: sides[(rawSide ?? '').trim().toLowerCase()] ?? 'Right', out: (rawFade ?? 'Out').trim().toLowerCase() !== 'in' };
+}
+
 function actorId(value: string | undefined): [string, string | null] {
   const text = value ?? '';
   const dot = text.indexOf('.');
@@ -1060,34 +1070,66 @@ export class StoryRuntime {
     actor.apply();
   }
 
-  // CV FadeCommand family on one fade panel: From/To are coverage (defaults 0 -> 1; Blink keeps the current value;
-  // ScreenFade's direction picks the end), Position is screen percent, softness defaults Slide 1, Blink 0.5, else 0.
+  // FadeCommand.Play → FadePanel.Play (1.11.6): show the panel, set From when non-null, set or tween Position, tween to To when non-null
   private async fade(c: StoryCommand): Promise<void> {
     const f = c.fields;
     const stage = this.stage;
-    const kinds: Record<string, Transition['type']> = { SlideCommand: 'slide', BlinkCommand: 'blink', IrisCommand: 'iris', CircleCommand: 'circle' };
-    const type: Transition['type'] = kinds[c.class] ?? 'fade';
     const current = stage.transition;
-    const same = current.type === type;
-    const now = same ? current.amount : 0;
-    const out = (f.Direction ?? 'Out') === 'Out';
-    const from = f.From ? num(f.From, now) : type === 'fade' || type === 'blink' ? now : 0;
-    const to = f.To ? num(f.To, 1) : type === 'fade' ? (out ? 1 : 0) : type === 'blink' ? now : 1;
+    const parsed = c.class === 'SlideCommand' ? slideDirection(f.Direction) : null;
+    const type = parsed ? (parsed.side === 'Left' || parsed.side === 'Right' ? 4 : 5)
+      : ({ ScreenFadeCommand: 0, BlinkCommand: 1, IrisCommand: 2, CircleCommand: 3 } as Record<string, number>)[c.class] ?? 0;
+    const given = (value: string | undefined): number | null => (value != null && value !== '' && Number.isFinite(Number(value)) ? Number(value) : null);
+    let from = given(f.From);
+    let to = given(f.To);
+    if (c.class === 'ScreenFadeCommand') {
+      // DefaultFrom/To: Direction In 0 → 1, Out 1 → 0, unassigned null (no change)
+      const direction = (f.Direction ?? '').trim().toLowerCase();
+      const assigned = direction === 'in' || direction === 'out';
+      if (from == null && assigned) from = direction === 'in' ? 0 : 1;
+      if (to == null && assigned) to = direction === 'in' ? 1 : 0;
+    } else if (c.class === 'IrisCommand' || c.class === 'CircleCommand') {
+      if (from == null) from = 0;
+      if (to == null) to = 1;
+    } else if (parsed) {
+      // SlideCommand.GetDirectionalValue over the base defaults 0 / 1
+      const directional = (v: number) => {
+        const value = parsed.out ? 1 - v : v;
+        const negate = parsed.out ? parsed.side === 'Left' || parsed.side === 'Bottom' : parsed.side === 'Right' || parsed.side === 'Top';
+        return negate ? -value : value;
+      };
+      from = directional(from ?? 0);
+      to = directional(to ?? 1);
+    }
+    // AssignedPosition per type; ToNormalizedPos maps 0..100 to -1..1 (negative → -1)
+    const normal = (v: number) => (v < 0 ? -1 : Math.min(v, 100) * 0.02 - 1);
     const [px, py] = parts(f.Position);
-    const tint = color(f.TintColor) ?? color(f.Color);
-    const next = {
-      type,
-      amount: from,
-      color: tint ?? (same ? current.color : 0x000000),
-      x: px != null ? px / 100 : same ? current.x : 0.5,
-      y: py != null ? py / 100 : px != null && type === 'blink' ? px / 100 : same ? current.y : 0.5,
-      softness: num(f.Softness, type === 'slide' ? 1 : type === 'blink' ? 0.5 : 0),
-      roundness: num(f.Roundness, 0),
-      side: type === 'slide' ? f.Direction || 'Left' : current.side,
+    const position: [number, number] = parsed ? [num(f.Length, 1), 8]
+      : c.class === 'BlinkCommand' ? [num(f.Roundness, 1), normal(num(f.Position, 50))]
+        : c.class === 'IrisCommand' || c.class === 'CircleCommand' ? [normal(px ?? 50), normal(py ?? 50)] : [50, 50];
+    const softness = Math.min(1, Math.max(0.01, num(f.Softness, parsed ? 1 : c.class === 'BlinkCommand' ? 0.5 : 0)));
+    const tweenPosition = (c.class === 'IrisCommand' || c.class === 'CircleCommand') && current.shown && current.type === type;
+    const instant = color(f.Color);
+    const tint = color(f.TintColor);
+    const startColor = instant ?? current.color;
+    const startAlpha = instant != null ? colorAlpha(f.Color) : current.alpha;
+    const base: Transition = {
+      shown: true, type, value: from ?? current.value, softness, color: startColor, alpha: startAlpha,
+      x: tweenPosition ? current.x : position[0], y: tweenPosition ? current.y : position[1],
     };
-    stage.transition = next;
-    await stage.tween(num(f.Duration, DEFAULT_DURATION), f.EasingTypeName, (t) => {
-      stage.transition = { ...next, amount: from + (to - from) * t };
+    stage.transition = base;
+    stage.drawCover();
+    const endAlpha = tint != null ? colorAlpha(f.TintColor) : startAlpha;
+    // with nothing to tween, FadePanel.Play awaits only completed tasks
+    const moving = to != null || tint != null || tweenPosition;
+    await stage.tween(moving ? num(f.Duration, FADE_DURATION) : 0, f.EasingTypeName, (t) => {
+      stage.transition = {
+        ...base,
+        value: to == null ? base.value : base.value + (to - base.value) * t,
+        x: tweenPosition ? base.x + (position[0] - base.x) * t : base.x,
+        y: tweenPosition ? base.y + (position[1] - base.y) * t : base.y,
+        color: tint == null ? startColor : mixColor(startColor, tint, t),
+        alpha: startAlpha + (endAlpha - startAlpha) * t,
+      };
       stage.drawCover();
     });
   }

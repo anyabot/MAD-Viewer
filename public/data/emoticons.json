@@ -108,6 +108,10 @@
       128,
       128
     ],
+    "T_FX_Rectangle_01": [
+      128,
+      128
+    ],
     "T_FX_trail_07": [
       128,
       256
@@ -275,7 +279,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         }
       ]
     },
@@ -456,7 +462,9 @@
                 "f": 0
               }
             }
-          }
+          },
+          "blend": "normal",
+          "order": 4
         },
         {
           "name": "emotion",
@@ -630,7 +638,9 @@
                 "f": 0
               }
             }
-          }
+          },
+          "blend": "normal",
+          "order": 5
         }
       ]
     },
@@ -861,7 +871,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "dust",
@@ -1147,7 +1159,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 6
         }
       ]
     },
@@ -1360,6 +1374,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         }
       ]
@@ -1523,7 +1539,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "emotion",
@@ -1679,7 +1697,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 6
         },
         {
           "name": "emotion (3)",
@@ -1835,7 +1855,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "emotion (2)",
@@ -1991,7 +2013,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 6
         }
       ]
     },
@@ -2155,7 +2179,9 @@
               ]
             },
             "separateAxes": true
-          }
+          },
+          "blend": "normal",
+          "order": 5
         }
       ]
     },
@@ -2323,6 +2349,54 @@
               }
             }
           },
+          "shaderGraph": {
+            "shader": "Gray_Scale_Tile_Speed_offset_alpha",
+            "hdrOn": false,
+            "hdr": [
+              11.98431396484375,
+              11.98431396484375,
+              11.98431396484375
+            ],
+            "alphaStrength": 1.0,
+            "tile": [
+              {
+                "m": 0,
+                "s": 4.0
+              },
+              {
+                "m": 0,
+                "s": 2.0
+              }
+            ],
+            "offset": [
+              {
+                "m": 0,
+                "s": 0.0
+              },
+              {
+                "m": 1,
+                "s": 1.2999999523162842,
+                "k": [
+                  [
+                    0.0,
+                    0.0,
+                    1.0,
+                    1.0
+                  ],
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ]
+              }
+            ],
+            "maskChannel": "a",
+            "mask": "T_FX_Rectangle_01"
+          },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         }
       ]
@@ -2545,7 +2619,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "pang",
@@ -2800,7 +2876,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 6
         },
         {
           "name": "emotion (1)",
@@ -3033,7 +3111,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "pang (1)",
@@ -3288,7 +3368,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 6
         },
         {
           "name": "emotion (2)",
@@ -3358,6 +3440,14 @@
             "sizeY": {
               "m": 0,
               "s": 1.2
+            },
+            "rotationX": {
+              "m": 0,
+              "s": 0.0
+            },
+            "rotationY": {
+              "m": 0,
+              "s": 3.14159
             }
           },
           "emission": {
@@ -3521,7 +3611,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "pang (2)",
@@ -3776,7 +3868,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 6
         }
       ]
     },
@@ -4048,6 +4142,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         },
         {
@@ -4313,6 +4409,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         },
         {
@@ -4578,6 +4676,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         },
         {
@@ -4843,6 +4943,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         },
         {
@@ -5108,6 +5210,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         },
         {
@@ -5373,6 +5477,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         }
       ]
@@ -5614,6 +5720,8 @@
               ]
             }
           },
+          "blend": "normal",
+          "order": 6,
           "flip": 3
         }
       ]
@@ -5830,6 +5938,8 @@
             },
             "randomizePerFrame": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         },
         {
@@ -6069,6 +6179,7 @@
               ]
             }
           },
+          "order": 5,
           "renderNone": true,
           "flip": 1
         },
@@ -6309,6 +6420,7 @@
               ]
             }
           },
+          "order": 5,
           "renderNone": true,
           "flip": 1
         }
@@ -6531,6 +6643,8 @@
             },
             "inWorldSpace": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         }
       ]
@@ -6805,6 +6919,8 @@
             },
             "randomizePerFrame": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         }
       ]
@@ -7142,6 +7258,8 @@
               ]
             }
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         },
         {
@@ -7490,6 +7608,8 @@
               ]
             }
           },
+          "blend": "normal",
+          "order": 6,
           "flip": 2
         },
         {
@@ -7742,6 +7862,8 @@
             },
             "randomizePerFrame": false
           },
+          "blend": "normal",
+          "order": 7,
           "flip": 1
         }
       ]
@@ -8090,7 +8212,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "emotion (1)",
@@ -8485,7 +8609,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 6
         },
         {
           "name": "emotion (2)",
@@ -8673,7 +8799,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "emotion (3)",
@@ -8861,7 +8989,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         }
       ]
     },
@@ -9078,6 +9208,8 @@
               ]
             }
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         }
       ]
@@ -9153,7 +9285,15 @@
               "m": 0,
               "s": 0.0
             },
-            "flipRotation": 0.0
+            "flipRotation": 0.0,
+            "rotationX": {
+              "m": 0,
+              "s": 1.5708
+            },
+            "rotationY": {
+              "m": 0,
+              "s": 0.0
+            }
           },
           "emission": {
             "rate": {
@@ -9294,6 +9434,8 @@
             },
             "inWorldSpace": true
           },
+          "blend": "normal",
+          "order": 6,
           "flip": 1
         }
       ]
@@ -9467,7 +9609,9 @@
                 "f": 1
               }
             }
-          }
+          },
+          "blend": "normal",
+          "order": 5
         }
       ]
     },
@@ -9624,7 +9768,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "smoke",
@@ -9767,7 +9913,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 7
         },
         {
           "name": "dot (1)",
@@ -9974,6 +10122,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 8,
           "flip": 4
         },
         {
@@ -10181,6 +10331,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 8,
           "flip": 4
         },
         {
@@ -10388,6 +10540,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 8,
           "flip": 4
         }
       ]
@@ -10617,7 +10771,9 @@
               "s": 1.0
             },
             "inWorldSpace": false
-          }
+          },
+          "blend": "normal",
+          "order": 5
         }
       ]
     },
@@ -10774,7 +10930,9 @@
             "animationType": 0,
             "rowMode": 1,
             "rowIndex": 0
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "dot",
@@ -10888,6 +11046,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 6,
           "flip": 1
         }
       ]
@@ -11115,6 +11275,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         },
         {
@@ -11335,6 +11497,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         },
         {
@@ -11555,6 +11719,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         }
       ]
@@ -11698,7 +11864,9 @@
               ]
             },
             "separateAxes": false
-          }
+          },
+          "blend": "normal",
+          "order": 5
         }
       ]
     },
@@ -11771,7 +11939,15 @@
               "m": 0,
               "s": 0.0
             },
-            "flipRotation": 0.0
+            "flipRotation": 0.0,
+            "rotationX": {
+              "m": 0,
+              "s": 0.0
+            },
+            "rotationY": {
+              "m": 0,
+              "s": 0.0
+            }
           },
           "emission": {
             "rate": {
@@ -11863,6 +12039,12 @@
             },
             "separateAxes": false
           },
+          "blend": "normal",
+          "order": 5,
+          "rendererFlip": [
+            1.0,
+            0.0
+          ],
           "flip": 1
         },
         {
@@ -11929,7 +12111,15 @@
               "m": 0,
               "s": 0.0
             },
-            "flipRotation": 0.0
+            "flipRotation": 0.0,
+            "rotationX": {
+              "m": 0,
+              "s": 0.0
+            },
+            "rotationY": {
+              "m": 0,
+              "s": 0.0
+            }
           },
           "emission": {
             "rate": {
@@ -12021,6 +12211,8 @@
             },
             "separateAxes": false
           },
+          "blend": "normal",
+          "order": 6,
           "flip": 1
         }
       ]
@@ -12152,7 +12344,9 @@
               ]
             },
             "separateAxes": false
-          }
+          },
+          "blend": "normal",
+          "order": 5
         },
         {
           "name": "emotion",
@@ -12322,7 +12516,9 @@
               "s": 1.0
             },
             "inWorldSpace": false
-          }
+          },
+          "blend": "normal",
+          "order": 7
         },
         {
           "name": "emotion (1)",
@@ -12492,7 +12688,9 @@
               "s": 1.0
             },
             "inWorldSpace": false
-          }
+          },
+          "blend": "normal",
+          "order": 7
         }
       ]
     },
@@ -12659,7 +12857,9 @@
                 "f": 0
               }
             }
-          }
+          },
+          "blend": "normal",
+          "order": 5
         }
       ]
     },
@@ -12882,6 +13082,8 @@
             },
             "inWorldSpace": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         }
       ]
@@ -13103,6 +13305,8 @@
             },
             "inWorldSpace": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         },
         {
@@ -13317,6 +13521,8 @@
             },
             "inWorldSpace": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         },
         {
@@ -13531,6 +13737,8 @@
             },
             "inWorldSpace": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 4
         }
       ]
@@ -13611,6 +13819,14 @@
               "m": 3,
               "s": 0.4,
               "n": 0.6
+            },
+            "rotationX": {
+              "m": 0,
+              "s": 1.5708
+            },
+            "rotationY": {
+              "m": 0,
+              "s": 0.0
             }
           },
           "emission": {
@@ -13847,6 +14063,8 @@
             },
             "randomizePerFrame": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 2
         },
         {
@@ -13920,6 +14138,14 @@
               "m": 3,
               "s": 0.4,
               "n": 0.6
+            },
+            "rotationX": {
+              "m": 0,
+              "s": 1.5708
+            },
+            "rotationY": {
+              "m": 0,
+              "s": 0.0
             }
           },
           "emission": {
@@ -14156,6 +14382,8 @@
             },
             "randomizePerFrame": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 2
         },
         {
@@ -14229,6 +14457,14 @@
               "m": 3,
               "s": 0.4,
               "n": 0.6
+            },
+            "rotationX": {
+              "m": 0,
+              "s": 1.5708
+            },
+            "rotationY": {
+              "m": 0,
+              "s": 0.0
             }
           },
           "emission": {
@@ -14465,6 +14701,8 @@
             },
             "randomizePerFrame": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 2
         }
       ]
@@ -14810,6 +15048,8 @@
             },
             "inWorldSpace": false
           },
+          "blend": "normal",
+          "order": 5,
           "flip": 1
         }
       ]
@@ -14959,6 +15199,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 6,
           "flip": 1
         },
         {
@@ -15029,6 +15271,14 @@
             "sizeY": {
               "m": 0,
               "s": 0.4
+            },
+            "rotationX": {
+              "m": 0,
+              "s": 1.55334
+            },
+            "rotationY": {
+              "m": 0,
+              "s": 0.0
             }
           },
           "emission": {
@@ -15109,6 +15359,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 6,
           "flip": 1
         },
         {
@@ -15406,6 +15658,8 @@
             "rowMode": 1,
             "rowIndex": 0
           },
+          "blend": "normal",
+          "order": 6,
           "flip": 1
         }
       ]

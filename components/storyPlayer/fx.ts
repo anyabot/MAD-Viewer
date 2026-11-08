@@ -1,4 +1,5 @@
-import { colorAt, createEmoteRun, valueAt, type EmoteRun, type Particle } from '@/components/skinViewer/particles';
+import { createGraphQuad, type GraphQuad } from '@/components/skinViewer/graphQuad';
+import { colorAt, createEmoteRun, travelTurn, valueAt, type EmoteRun, type Particle } from '@/components/skinViewer/particles';
 import type { EmoteEmitter } from '@/lib/emoticons';
 
 export type FxIndex = {
@@ -19,7 +20,7 @@ const MAX_STEP = 0.333;
 // A spawned prefab: its particle systems simulate in world units under one container that carries the spawn transform.
 export class FxRun {
   readonly container: any;
-  private readonly pool: { node: any; view: any }[] = [];
+  private readonly pool: { node: any; view: any; graph?: GraphQuad; graphDef?: unknown; mesh?: any; meshDef?: unknown }[] = [];
   private readonly ribbons: any[] = [];
   private readonly run: EmoteRun;
   private last: number;
@@ -29,6 +30,8 @@ export class FxRun {
     private readonly now: () => number, private readonly onEnd: () => void) {
     this.container = new PIXI.Container();
     this.container.eventMode = 'none';
+    // emitters draw in their renderers' sorting order
+    this.container.sortableChildren = true;
     parent.addChild(this.container);
     this.run = createEmoteRun(emitters.filter((e) => sheets.has(e.sheet)), Math.floor(Math.random() * 0xffffffff));
     this.last = now();
@@ -127,16 +130,126 @@ export class FxRun {
         }
         used += 1;
         const { node, view } = item;
-        view.texture = this.tile(emitter.def.sheet, columns, rows, particle.frame);
-        view.anchor.set(0.5 - emitter.def.pivot[0], 0.5 + emitter.def.pivot[1]);
-        node.position.set(particle.x, -particle.y);
-        node.rotation = particle.angle;
-        view.width = particle.size;
-        view.height = particle.sizeY;
-        view.tint = (Math.round(Math.min(1, Math.max(0, particle.r)) * 255) << 16)
+        const def = emitter.def;
+        const color = (Math.round(Math.min(1, Math.max(0, particle.r)) * 255) << 16)
           | (Math.round(Math.min(1, Math.max(0, particle.g)) * 255) << 8)
           | Math.round(Math.min(1, Math.max(0, particle.b)) * 255);
-        view.alpha = Math.min(1, Math.max(0, particle.a));
+        const alpha = Math.min(1, Math.max(0, particle.a));
+        node.zIndex = def.order ?? 0;
+        // the start rotation is clockwise; a Local-aligned quad (2) also takes the emitter transform's counter-clockwise turn
+        const tilt = (def.angle ?? 0) * (Math.PI / 180);
+        const spin = particle.angle - tilt - (def.align === 2 ? tilt : 0) + travelTurn(def, particle);
+        if (def.mesh) {
+          // mesh render mode: the mesh scaled by the particle size, turned z, then x, then y (Quaternion.Euler), seen orthographically
+          view.visible = false;
+          if (!item.mesh || item.meshDef !== def) {
+            item.mesh?.destroy();
+            item.graph?.mesh.destroy();
+            item.graph = undefined;
+            if (def.shaderGraph) {
+              // a Shader Graph material shades the mesh with its own program
+              const mask = def.shaderGraph.mask ? this.sheets.get(def.shaderGraph.mask) ?? null : null;
+              item.graph = createGraphQuad(this.PIXI, def, this.sheets.get(def.sheet), mask,
+                { uvs: def.mesh.uvs, tris: def.mesh.tris, count: def.mesh.verts.length / 3 });
+              item.graphDef = def;
+              item.mesh = item.graph.mesh;
+            } else {
+              item.mesh = new this.PIXI.MeshSimple({
+                texture: this.sheets.get(def.sheet),
+                vertices: new Float32Array((def.mesh.verts.length / 3) * 2),
+                uvs: new Float32Array(def.mesh.uvs.length),
+                indices: new Uint32Array(def.mesh.tris),
+              });
+            }
+            item.meshDef = def;
+            node.addChild(item.mesh);
+          }
+          node.position.set(particle.x, -particle.y);
+          node.rotation = 0;
+          node.scale.set(1, 1);
+          node.skew.set(0, 0);
+          const z = -spin;
+          const [cz, sz] = [Math.cos(z), Math.sin(z)];
+          const [cx, sx] = [Math.cos(particle.angleX), Math.sin(particle.angleX)];
+          const [cy, sy] = [Math.cos(particle.angleY), Math.sin(particle.angleY)];
+          const target = item.graph && item.graphDef === def ? item.graph.positions : item.mesh.geometry.getBuffer('aPosition').data as Float32Array;
+          const src = def.mesh.verts;
+          for (let k = 0, j = 0; k < src.length; k += 3, j += 2) {
+            const bx = src[k] * particle.size;
+            const by = src[k + 1] * particle.sizeY;
+            const bz = src[k + 2] * particle.sizeZ;
+            const zx = bx * cz - by * sz;
+            const zy = bx * sz + by * cz;
+            const ry = zy * cx - bz * sx;
+            const rz = zy * sx + bz * cx;
+            target[j] = zx * cy + rz * sy;
+            target[j + 1] = -ry;
+          }
+          if (item.graph && item.graphDef === def) {
+            item.graph.commit();
+            item.graph.shade(particle);
+            node.visible = true;
+            continue;
+          }
+          item.mesh.geometry.getBuffer('aPosition').update();
+          const frame = this.tile(def.sheet, columns, rows, particle.frame).frame;
+          const sheet = this.sheets.get(def.sheet);
+          const uvs = item.mesh.geometry.getBuffer('aUV').data as Float32Array;
+          for (let k = 0; k < def.mesh.uvs.length; k += 2) {
+            uvs[k] = frame.x / sheet.width + def.mesh.uvs[k] * (frame.width / sheet.width);
+            uvs[k + 1] = frame.y / sheet.height + def.mesh.uvs[k + 1] * (frame.height / sheet.height);
+          }
+          item.mesh.geometry.getBuffer('aUV').update();
+          item.mesh.blendMode = def.blend ?? 'normal';
+          item.mesh.tint = color;
+          item.mesh.alpha = alpha;
+          item.mesh.visible = true;
+          node.visible = true;
+          continue;
+        }
+        if (item.mesh && item.meshDef) {
+          item.mesh.destroy();
+          if (item.graph?.mesh === item.mesh) item.graph = undefined;
+          item.mesh = undefined;
+          item.meshDef = undefined;
+        }
+        view.texture = this.tile(def.sheet, columns, rows, particle.frame);
+        view.anchor.set(0.5 - def.pivot[0], 0.5 + def.pivot[1]);
+        node.position.set(particle.x, -particle.y);
+        const [flipX, flipY] = def.rendererFlip ?? [0, 0];
+        node.skew.set(0, 0);
+        node.scale.set(particle.pick < flipX ? -1 : 1, particle.pick < flipY ? -1 : 1);
+        node.rotation = spin;
+        if (def.align === 2 && (particle.angleX || particle.angleY)) {
+          // 3D start rotation on a Local quad: the top-left 2x2 of Ry·Rx·Rz (Quaternion.Euler order), y-up to y-down, then the quad mirrors
+          const z = -spin;
+          const [cz, sz] = [Math.cos(z), Math.sin(z)];
+          const [cx, sx] = [Math.cos(particle.angleX), Math.sin(particle.angleX)];
+          const [cy, sy] = [Math.cos(particle.angleY), Math.sin(particle.angleY)];
+          const [mx, my] = [node.scale.x, node.scale.y];
+          node.setFromMatrix(new this.PIXI.Matrix((cy * cz + sy * sx * sz) * mx, -(cx * sz) * mx, -(-cy * sz + sy * sx * cz) * my, cx * cz * my, 0, 0));
+          node.position.set(particle.x, -particle.y);
+        }
+        view.width = particle.size;
+        view.height = particle.sizeY;
+        view.tint = color;
+        view.alpha = alpha;
+        view.blendMode = def.blend ?? 'normal';
+        view.visible = true;
+        if (def.shaderGraph) {
+          // the Shader Graph's own sampling replaces the sprite; a pooled quad is rebuilt when its emitter changes
+          if (!item.graph || item.graphDef !== def) {
+            item.graph?.mesh.destroy();
+            const mask = def.shaderGraph.mask ? this.sheets.get(def.shaderGraph.mask) ?? null : null;
+            item.graph = createGraphQuad(this.PIXI, def, this.sheets.get(def.sheet), mask);
+            item.graphDef = def;
+            node.addChild(item.graph.mesh);
+          }
+          item.graph.draw(-view.anchor.x * particle.size, -view.anchor.y * particle.sizeY, particle.size, particle.sizeY, particle);
+          view.visible = false;
+        } else if (item.graph) {
+          item.graph.mesh.visible = false;
+        }
         node.visible = true;
       }
     }
