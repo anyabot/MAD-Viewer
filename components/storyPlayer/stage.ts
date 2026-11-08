@@ -5,6 +5,7 @@ import { StoryCutscene } from './cutscene';
 import { archiveName, type StoreKey } from '@/components/skinViewer/types';
 import { easeOf } from './ease';
 import { FilterStack } from './filters';
+import { FADE_FRAGMENT, FADE_VERTEX } from './fadeShader';
 import { createEmoteBubble, type EmoteBubble } from '@/components/skinViewer/emote';
 import { emotePlacement, type EmoticonManifest } from '@/lib/emoticons';
 
@@ -52,15 +53,16 @@ export type DrawShape = {
   fromX: number; fromY: number; toX: number; toY: number; length: number | null; thickness: number;
 };
 
+// `UIFade`: shown once a fade command runs; `value` is signed visibility (0 covered, ±1 clear), `type` 0 fade, 1 blink, 2 iris, 3 circle, 4/5 slide
 export type Transition = {
-  type: 'fade' | 'slide' | 'blink' | 'iris' | 'circle';
-  amount: number;
-  color: number;
+  shown: boolean;
+  type: number;
+  value: number;
   x: number;
   y: number;
   softness: number;
-  roundness: number;
-  side: string;
+  color: number;
+  alpha: number;
 };
 
 export function sceneToWorld(x: number, y: number): { x: number; y: number } {
@@ -242,6 +244,7 @@ export class StoryStage {
   readonly backdrop: any;
   readonly actors: any;
   readonly cover: any;
+  private readonly coverFilter: any;
   private tweens = new Set<Tween>();
   readonly backLayers = new Map<string, BackLayer>();
   readonly cutscenes = new Map<string, StoryCutscene>();
@@ -249,7 +252,8 @@ export class StoryStage {
   readonly actorMap = new Map<string, StoryActor>();
   camera = { x: 0, y: 0, zoom: 0, roll: 0 };
   shake = { x: 0, y: 0 };
-  transition: Transition = { type: 'fade', amount: 0, color: 0x000000, x: 0.5, y: 0.5, softness: 0, roundness: 0, side: 'Left' };
+  // the prefab's serialized UIFade: type 5, pos (1, 10), value 0, softness 1, hidden until a fade command shows it
+  transition: Transition = { shown: false, type: 5, value: 0, x: 1, y: 10, softness: 1, color: 0x000000, alpha: 1 };
   speed = 1;
   time = 0;
   emoticons: EmoticonManifest | null = null;
@@ -271,7 +275,20 @@ export class StoryStage {
     this.backdrop = new PIXI.Container();
     this.actors = new PIXI.Container();
     this.actors.sortableChildren = true;
-    this.cover = new PIXI.Graphics();
+    this.cover = new PIXI.Sprite(PIXI.Texture.WHITE);
+    this.coverFilter = new PIXI.Filter({
+      glProgram: PIXI.GlProgram.from({ vertex: FADE_VERTEX, fragment: FADE_FRAGMENT }),
+      resources: {
+        fade: {
+          uType: { value: 5, type: 'i32' },
+          uSize: { value: new Float32Array([SCENE_W, SCENE_H]), type: 'vec2<f32>' },
+          uParams: { value: new Float32Array([1, 10, 0, 1]), type: 'vec4<f32>' },
+          uColor: { value: new Float32Array([0, 0, 0, 1]), type: 'vec4<f32>' },
+        },
+      },
+    });
+    this.cover.filters = [this.coverFilter];
+    this.cover.visible = false;
     this.fxLayer = new PIXI.Container();
     this.cam.addChild(this.backdrop, this.actors, this.fxLayer);
     this.root.addChild(this.cam, this.cover);
@@ -305,7 +322,7 @@ export class StoryStage {
     parent?: any): Promise<FxRun | null> {
     const emitters = this.fx?.prefabs[prefab];
     if (!emitters) return null;
-    await Promise.all([...new Set(emitters.map((e) => e.sheet))].filter((s) => !this.fxSheets.has(s)).map(async (sheet) => {
+    await Promise.all([...new Set(emitters.flatMap((e) => [e.sheet, e.shaderGraph?.mask ?? e.sheet]))].filter((s) => !this.fxSheets.has(s)).map(async (sheet) => {
       const texture = await this.PIXI.Assets.load({ src: storyAssetUrl('fx', sheet), loadParser: 'loadTextures' }).catch(() => null);
       if (texture?.source) this.fxSheets.set(sheet, texture);
     }));
@@ -355,7 +372,8 @@ export class StoryStage {
     shape.node.rotation = (shape.rotation * Math.PI) / 180;
     const stroke = shape.border != null ? { width: 0.03, color: shape.border } : null;
     if (shape.kind === 'box' || shape.kind === 'circle') {
-      const w = shape.w * W;
+      // `ResolveBox`/`ResolveCircle` size both axes by `ToWorldScalar` (percent of scene height); DrawBox clears UseSceneSpaceSize
+      const w = shape.w * H;
       const h = shape.h * H;
       const ox = -w * (shape.pivotX / 100);
       const oy = -h * (1 - shape.pivotY / 100);
@@ -456,49 +474,25 @@ export class StoryStage {
 
   // The fade panel: `amount` is how much of the screen is covered, drawn as the command's mask shape.
   drawCover(): void {
-    const { type, amount, color, x, y, softness, roundness, side } = this.transition;
-    const w = this.width;
-    const h = this.height;
-    const g = this.cover;
-    g.clear();
-    g.alpha = 1;
-    g.visible = amount > 0.001;
-    if (!g.visible) return;
-    const fill = { color, alpha: 1 };
-    if (type === 'fade') {
-      g.rect(0, 0, w, h).fill(fill);
-      g.alpha = Math.min(1, amount);
-    } else if (type === 'slide') {
-      const horizontal = side === 'Left' || side === 'Right';
-      const span = (horizontal ? w : h) * amount;
-      const soft = (horizontal ? w : h) * 0.2 * softness;
-      const steps = soft > 0 ? 8 : 0;
-      const band = (from: number, size: number, alpha: number) => {
-        const start = side === 'Left' || side === 'Up' ? from : (horizontal ? w : h) - from - size;
-        if (horizontal) g.rect(start, 0, size, h).fill({ color, alpha }); else g.rect(0, start, w, size).fill({ color, alpha });
-      };
-      band(0, Math.max(0, span - soft), 1);
-      for (let i = 0; i < steps; i += 1) band(span - soft + (soft * i) / steps, soft / steps, 1 - (i + 0.5) / steps);
-    } else if (type === 'blink') {
-      const line = (1 - y) * h;
-      const top = line * amount;
-      const bottom = (h - line) * amount;
-      const curve = h * 0.25 * roundness * amount;
-      g.moveTo(0, 0).lineTo(w, 0).lineTo(w, top).quadraticCurveTo(w / 2, top + curve, 0, top).closePath().fill(fill);
-      g.moveTo(0, h).lineTo(w, h).lineTo(w, h - bottom).quadraticCurveTo(w / 2, h - bottom - curve, 0, h - bottom).closePath().fill(fill);
-    } else {
-      const cx = x * w;
-      const cy = (1 - y) * h;
-      const reach = Math.hypot(Math.max(cx, w - cx), Math.max(cy, h - cy));
-      const radius = reach * Math.max(0, 1 - amount);
-      const soft = reach * 0.15 * softness;
-      g.rect(0, 0, w, h).fill(fill);
-      if (radius > 0) g.circle(cx, cy, radius).cut();
-      for (let i = 0; soft > 0 && radius > 0 && i < 6; i += 1) {
-        const r = radius - (soft * (i + 1)) / 6;
-        if (r > 0) g.circle(cx, cy, radius - (soft * i) / 6).fill({ color, alpha: 0.12 }), g.circle(cx, cy, r).cut();
-      }
-    }
+    const { shown, type, value, x, y, softness, color, alpha } = this.transition;
+    const sprite = this.cover;
+    sprite.visible = shown;
+    if (!shown) return;
+    sprite.position.set(0, 0);
+    sprite.width = this.width;
+    sprite.height = this.height;
+    const u = this.coverFilter.resources.fade.uniforms;
+    u.uType = type;
+    u.uSize[0] = this.width;
+    u.uSize[1] = this.height;
+    u.uParams[0] = x;
+    u.uParams[1] = y;
+    u.uParams[2] = value;
+    u.uParams[3] = softness;
+    u.uColor[0] = ((color >> 16) & 255) / 255;
+    u.uColor[1] = ((color >> 8) & 255) / 255;
+    u.uColor[2] = (color & 255) / 255;
+    u.uColor[3] = alpha;
   }
 
   // `key` is the resource mapper path (`Pleasures/pl0001`); null when the published data names no rig for it.
@@ -605,10 +599,10 @@ export class StoryStage {
     }
     // the story's closing fade-out would otherwise keep the battle dark
     const from = layer?.alpha ?? 1;
-    const cover = this.transition.amount;
+    const value = this.transition.value;
     await this.tween(duration, undefined, (t) => {
       if (revive) { layer.alpha = from + (1 - from) * t; this.renderBack(layer); }
-      this.transition = { ...this.transition, amount: cover * (1 - t) };
+      this.transition = { ...this.transition, value: value + ((value < 0 ? -1 : 1) - value) * t };
       this.drawCover();
     });
   }
