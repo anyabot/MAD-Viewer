@@ -58,7 +58,7 @@ export class FilterStack {
   private make(kind: FilterKind): any {
     const { PIXI } = this;
     if (kind === 'grayscale' || kind === 'sepia' || kind === 'silhouette') {
-      const filter = new PIXI.ColorMatrixFilter();
+      const filter = new PIXI.ColorMatrixFilter({ resolution: 'inherit' });
       if (kind === 'grayscale') filter.greyscale(0.4, false);
       else if (kind === 'sepia') filter.sepia(false);
       else filter.matrix = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0];
@@ -66,6 +66,7 @@ export class FilterStack {
     }
     if (kind === 'blur') return new PIXI.BlurFilter({ strength: 0, quality: 3 });
     return new PIXI.Filter({
+      resolution: 'inherit',
       glProgram: PIXI.GlProgram.from({ vertex: VERTEX, fragment: kind === 'scanline' ? SCANLINE : GLITCH }),
       resources: { fx: { uAmount: { value: 0, type: 'f32' }, uTime: { value: 0, type: 'f32' } } },
     });

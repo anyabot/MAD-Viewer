@@ -279,6 +279,7 @@ export class StoryStage {
     this.actors.sortableChildren = true;
     this.cover = new PIXI.Sprite(PIXI.Texture.WHITE);
     this.coverFilter = new PIXI.Filter({
+      resolution: 'inherit',
       glProgram: PIXI.GlProgram.from({ vertex: FADE_VERTEX, fragment: FADE_FRAGMENT }),
       resources: {
         fade: {

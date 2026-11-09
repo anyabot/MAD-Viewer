@@ -15,11 +15,21 @@ import { SCENE_H, SCENE_W, StoryStage } from './stage';
 
 type Printed = { author: string; actor: string | null; text: string; printer: PrinterId };
 const REVEAL_MS = 22;
+const THEATER_FRAME = { position: 'fixed', inset: 0, zIndex: 1400, bg: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' } as const;
+// An upright phone turns the landscape scene so it fills the screen.
+const THEATER_CSS = `.story-theater-stage { width: min(100vw, calc(100dvh * ${SCENE_W} / ${SCENE_H})); flex-shrink: 0; touch-action: manipulation; }
+@media (orientation: portrait) and (pointer: coarse) { .story-theater-stage { width: min(100dvh, calc(100vw * ${SCENE_W} / ${SCENE_H})); transform: rotate(90deg); } }`;
+
+// Sharp on dense screens, never past the scene's own reference width.
+function densityFor(host: HTMLElement): number {
+  return Math.max(1, Math.min(window.devicePixelRatio || 1, (SCENE_W * 100) / Math.max(host.clientWidth, 1)));
+}
 
 export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
   const partsKey = JSON.stringify(parts);
   const t = useT();
   const lang = useGameLang();
+  const frameRef = useRef<HTMLDivElement>(null);
   const hostRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<(() => void) | null>(null);
   const runtimeRef = useRef<StoryRuntime | null>(null);
@@ -37,6 +47,7 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
   const [sound, setSound] = useState(true);
   const [fxIndex, setFxIndex] = useState<FxIndex | null>(null);
   const [bark, setBark] = useState<StoryBark | null>(null);
+  const [theater, setTheater] = useState(false);
   const soundRef = useRef(sound);
   soundRef.current = sound;
 
@@ -63,7 +74,7 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
         sequence.some((p) => 'battle' in p) ? loadStoryBattles().catch(() => null) : Promise.resolve(null),
       ]);
       if (destroyed) return;
-      pixi = await createPixiApp({ PIXI, host, cancelled: () => destroyed, init: { background: 0x000000 } });
+      pixi = await createPixiApp({ PIXI, host, cancelled: () => destroyed, init: { background: 0x000000, resolution: densityFor(host) } });
       if (!pixi) return;
       const app = pixi.app;
       const live = new StoryStage(PIXI, SPINE, app, index, (message) => console.warn('[story]', message));
@@ -72,7 +83,11 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
       live.fx = fx;
       setFxIndex(fx);
       live.skinStores = new Map((skins?.skins ?? []).map((s) => [s.key, s.stores]));
-      const layout = () => live.resize(app.screen.width, app.screen.height);
+      const layout = () => {
+        const density = densityFor(host);
+        if (Math.abs(density - app.renderer.resolution) > 0.01) app.renderer.resize(app.screen.width, app.screen.height, density);
+        live.resize(app.screen.width, app.screen.height);
+      };
       layout();
       app.renderer.on('resize', layout);
       const reports: Map<string, number>[] = [];
@@ -195,24 +210,61 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
     resolve?.();
   }, [choices, line]);
 
+  const enterTheater = () => {
+    setTheater(true);
+    frameRef.current?.requestFullscreen?.()
+      .then(() => (screen.orientation as ScreenOrientation & { lock?: (o: string) => Promise<void> }).lock?.('landscape'))
+      .catch(() => undefined);
+  };
+
+  const exitTheater = useCallback(() => {
+    setTheater(false);
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    if (!theater) return undefined;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') exitTheater(); };
+    const onFullscreen = () => { if (!document.fullscreenElement) setTheater(false); };
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    document.addEventListener('fullscreenchange', onFullscreen);
+    return () => {
+      document.body.style.overflow = overflow;
+      window.removeEventListener('keydown', onKey);
+      document.removeEventListener('fullscreenchange', onFullscreen);
+    };
+  }, [theater, exitTheater]);
+
   const printed = line ? line.text.slice(0, shown) : '';
 
   return (
     <VStack align="stretch" spacing={2}>
-      <Box position="relative" w="100%" bg="black" borderRadius="md" overflow="hidden"
-        style={{ aspectRatio: `${SCENE_W} / ${SCENE_H}` }} onClick={advance} cursor="pointer" userSelect="none">
-        <Box ref={hostRef} position="absolute" inset={0} />
-        <GameUi line={line && { ...line, text: printed, waiting: shown >= line.text.length }} choices={choices} place={place}
-          fx={fxIndex} printerRef={printerRef} bark={bark && { icon: bark.icon, side: bark.side, text: gameText(bark.text ?? undefined, lang) }} />
-        {state === 'loading' && <Center position="absolute" inset={0}><Spinner /></Center>}
-        {state === 'done' && (
-          <Center position="absolute" inset={0} bg="blackAlpha.600">
-            <Text color="gray.200">{t('storyEnd')}</Text>
-          </Center>
-        )}
+      <Box ref={frameRef} {...(theater ? THEATER_FRAME : {})}>
+        {theater && <style>{THEATER_CSS}</style>}
+        <Box position="relative" w={theater ? undefined : '100%'} bg="black" borderRadius={theater ? undefined : 'md'} overflow="hidden"
+          className={theater ? 'story-theater-stage' : undefined} style={{ aspectRatio: `${SCENE_W} / ${SCENE_H}` }} onClick={advance} cursor="pointer" userSelect="none">
+          <Box ref={hostRef} position="absolute" inset={0} />
+          <GameUi line={line && { ...line, text: printed, waiting: shown >= line.text.length }} choices={choices} place={place}
+            fx={fxIndex} printerRef={printerRef} bark={bark && { icon: bark.icon, side: bark.side, text: gameText(bark.text ?? undefined, lang) }} />
+          {state === 'loading' && <Center position="absolute" inset={0}><Spinner /></Center>}
+          {state === 'done' && (
+            <Center position="absolute" inset={0} bg="blackAlpha.600">
+              <Text color="gray.200">{t('storyEnd')}</Text>
+            </Center>
+          )}
+          {theater && (
+            <Button size="xs" position="absolute" top={2} right={2} zIndex={1} opacity={0.7}
+              onClick={(e) => { e.stopPropagation(); exitTheater(); }}>
+              {t('btnExitTheatre')}
+            </Button>
+          )}
+        </Box>
       </Box>
       <Flex gap={2} wrap="wrap" align="center">
         <Button size="xs" variant="outline" onClick={() => setRun((n) => n + 1)}>{t('storyReplay')}</Button>
+        <Button size="xs" variant="outline" onClick={enterTheater}>{t('rowTheatre')}</Button>
         <Button size="xs" variant={sound ? 'solid' : 'outline'}
           onClick={() => {
             soundRef.current = !sound;
