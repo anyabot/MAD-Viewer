@@ -26,6 +26,20 @@ test.describe('/story', () => {
     await expect(page.getByRole('button', { name: 'Play', exact: true }).first()).toBeVisible();
   });
 
+  test('theatre fills the screen and exits back to the page', async ({ page }) => {
+    await page.goto('/story/');
+    await page.getByRole('link', { name: new RegExp(SAMPLE.chapter) }).click();
+    await page.getByRole('button', { name: 'Play', exact: true }).first().click();
+    await page.getByRole('button', { name: 'Theatre', exact: true }).click();
+    const exit = page.getByRole('button', { name: 'Exit theatre', exact: true });
+    await expect(exit).toBeVisible();
+    const box = (await page.locator('div[style*="aspect-ratio"]').first().boundingBox())!;
+    const view = page.viewportSize()!;
+    expect(Math.max(box.width / view.width, box.height / view.height)).toBeCloseTo(1, 1);
+    await exit.click();
+    await expect(exit).toBeHidden();
+  });
+
   test('unknown chapter does not crash', async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
