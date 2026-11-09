@@ -49,7 +49,7 @@ export type DrawShape = {
   graphics: any;
   sprite: any;
   x: number; y: number; z: number; w: number; h: number; rotation: number;
-  color: number; border: number | null; alpha: number; pivotX: number; pivotY: number;
+  color: number; colorAlpha: number; border: number; borderAlpha: number; borderSize: number; alpha: number; pivotX: number; pivotY: number;
   fromX: number; fromY: number; toX: number; toY: number; length: number | null; thickness: number;
 };
 
@@ -95,6 +95,7 @@ export class StoryActor {
   shake = { x: 0, y: 0 };
   private rollPivot: number | null = null;
   tint = 0xffffff;
+  tintAlpha = 1;
   dimmed = false;
   face = '';
   private timeScale = 1;
@@ -184,6 +185,7 @@ export class StoryActor {
     this.holder.alpha = this.alpha;
     this.holder.visible = this.visible && this.alpha > 0;
     this.holder.tint = this.dimmed ? multiply(this.tint, 0x8c8c8c) : this.tint;
+    this.filters.opacity = this.tintAlpha;
   }
 
   // Inferred: a roll pivot is a height percent of the setup bounds, 0 at the feet; rotation turns about it instead of the actor pivot.
@@ -352,8 +354,8 @@ export class StoryStage {
       const graphics = new this.PIXI.Graphics();
       node.addChild(graphics);
       this.actors.addChild(node);
-      shape = { id, kind: 'box', node, graphics, sprite: null, x: 50, y: 50, z: 0, w: 0, h: 0, rotation: 0, color: 0x000000,
-        border: null, alpha: 0, pivotX: 50, pivotY: 50, fromX: 0, fromY: 0, toX: 0, toY: 0, length: null, thickness: 1 };
+      shape = { id, kind: 'box', node, graphics, sprite: null, x: 50, y: 50, z: 0, w: 0, h: 0, rotation: 0, color: 0x000000, colorAlpha: 1,
+        border: 0xffffff, borderAlpha: 0, borderSize: 0, alpha: 0, pivotX: 50, pivotY: 50, fromX: 0, fromY: 0, toX: 0, toY: 0, length: null, thickness: 1 };
       this.draws.set(id, shape);
     }
     return shape;
@@ -370,22 +372,29 @@ export class StoryStage {
     const world = sceneToWorld(shape.x, shape.y);
     shape.node.position.set(world.x, -world.y);
     shape.node.rotation = (shape.rotation * Math.PI) / 180;
-    const stroke = shape.border != null ? { width: 0.03, color: shape.border } : null;
     if (shape.kind === 'box' || shape.kind === 'circle') {
       // `ResolveBox`/`ResolveCircle` size both axes by `ToWorldScalar` (percent of scene height); DrawBox clears UseSceneSpaceSize
-      const w = shape.w * H;
-      const h = shape.h * H;
-      const ox = -w * (shape.pivotX / 100);
-      const oy = -h * (1 - shape.pivotY / 100);
-      if (shape.kind === 'box') g.rect(ox, oy, w, h); else g.ellipse(ox + w / 2, oy + h / 2, w / 2, h / 2);
-      g.fill({ color: shape.color });
-      if (stroke) g.stroke(stroke);
+      const w = Math.max(shape.w * H, 0);
+      const h = Math.max(shape.h * H, 0);
+      const cx = w * (0.5 - shape.pivotX / 100);
+      const cy = -h * (0.5 - shape.pivotY / 100);
+      const trace = (bw: number, bh: number) => (shape.kind === 'box' ? g.rect(cx - bw / 2, cy - bh / 2, bw, bh) : g.ellipse(cx, cy, bw / 2, bh / 2));
+      // `ResolveBorderedSize`: a positive border eats into the size, a negative one grows outside it.
+      const band = Math.abs(shape.borderSize) * H * 2;
+      const [outerW, outerH] = shape.borderSize < 0 ? [w + band, h + band] : [w, h];
+      const [innerW, innerH] = shape.borderSize > 0 ? [Math.max(w - band, 0), Math.max(h - band, 0)] : [w, h];
+      const hasInner = innerW > 0 && innerH > 0;
+      if (shape.borderSize !== 0) {
+        trace(outerW, outerH).fill({ color: shape.border, alpha: shape.borderAlpha });
+        if (hasInner) trace(innerW, innerH).cut();
+      }
+      if (hasInner) trace(innerW, innerH).fill({ color: shape.color, alpha: shape.colorAlpha });
     } else if (shape.kind === 'fill') {
       shape.node.position.set(0, 0);
       shape.node.rotation = 0;
       const a = sceneToWorld(shape.fromX, shape.fromY);
       const b = sceneToWorld(shape.toX, shape.toY);
-      g.rect(Math.min(a.x, b.x), -Math.max(a.y, b.y), Math.abs(b.x - a.x), Math.abs(b.y - a.y)).fill({ color: shape.color });
+      g.rect(Math.min(a.x, b.x), -Math.max(a.y, b.y), Math.abs(b.x - a.x), Math.abs(b.y - a.y)).fill({ color: shape.color, alpha: shape.colorAlpha });
       for (const hole of this.holes) {
         const c = sceneToWorld(hole.x, hole.y);
         if (hole.size > 0) g.circle(c.x, -c.y, (hole.size * H) / 2).cut();
@@ -399,7 +408,7 @@ export class StoryStage {
         const turn = (shape.rotation * Math.PI) / 180;
         start = { x: end.x - Math.cos(turn) * shape.length * W, y: end.y - Math.sin(turn) * shape.length * W };
       }
-      g.moveTo(start.x, -start.y).lineTo(end.x, -end.y).stroke({ width: shape.thickness * 0.05, color: shape.color });
+      g.moveTo(start.x, -start.y).lineTo(end.x, -end.y).stroke({ width: shape.thickness * 0.05, color: shape.color, alpha: shape.colorAlpha });
     }
     if (shape.sprite) {
       const h = shape.h * H;

@@ -100,7 +100,7 @@ export class StoryRuntime {
   private trackVolume = 1;
   private vars: Vars = {};
   private loops = new Map<string, { active: boolean }>();
-  private readonly owners = new WeakMap<StoryActor, { pos: number; alpha: number; rotation: number }>();
+  private readonly owners = new WeakMap<StoryActor, { pos: number; alpha: number; rotation: number; tint: number }>();
   // an in-battle script plays over the battle music, so it leaves the track running when it ends
   keepMusic = false;
 
@@ -645,15 +645,16 @@ export class StoryRuntime {
   }
 
   // Per-property tweens, a newer one taking its property over (Naninovel's actor tweens), so a face change mid-move cannot freeze the move.
-  private async tweenActor(actor: StoryActor, change: { pos?: { x: number; y: number; z: number }; alpha?: number; rotation?: number; turn?: { x: number; y: number } },
+  private async tweenActor(actor: StoryActor, change: { pos?: { x: number; y: number; z: number }; alpha?: number; rotation?: number; turn?: { x: number; y: number }; tint?: { rgb: number; alpha: number } },
     duration: number, ease?: string): Promise<void> {
-    const from = { pos: { ...actor.pos }, alpha: actor.alpha, rotation: actor.rotation, turn: { ...actor.turn } };
-    const owners = this.owners.get(actor) ?? { pos: 0, alpha: 0, rotation: 0 };
+    const from = { pos: { ...actor.pos }, alpha: actor.alpha, rotation: actor.rotation, turn: { ...actor.turn }, tint: actor.tint, tintAlpha: actor.tintAlpha };
+    const owners = this.owners.get(actor) ?? { pos: 0, alpha: 0, rotation: 0, tint: 0 };
     this.owners.set(actor, owners);
     const mine = {
       pos: change.pos ? ++owners.pos : -1,
       alpha: change.alpha != null ? ++owners.alpha : -1,
       rotation: change.rotation != null || change.turn ? ++owners.rotation : -1,
+      tint: change.tint ? ++owners.tint : -1,
     };
     await this.stage.tween(duration, ease ?? ACTOR_EASE, (t) => {
       const to = change.pos;
@@ -664,6 +665,10 @@ export class StoryRuntime {
       if (change.rotation != null && owners.rotation === mine.rotation) actor.rotation = from.rotation + (change.rotation - from.rotation) * t;
       const turn = change.turn;
       if (turn && owners.rotation === mine.rotation) actor.turn = { x: from.turn.x + (turn.x - from.turn.x) * t, y: from.turn.y + (turn.y - from.turn.y) * t };
+      if (change.tint && owners.tint === mine.tint) {
+        actor.tint = mixColor(from.tint, change.tint.rgb, t);
+        actor.tintAlpha = from.tintAlpha + (change.tint.alpha - from.tintAlpha) * t;
+      }
       actor.apply();
     });
   }
@@ -676,7 +681,6 @@ export class StoryRuntime {
     if (appearance) actor.setFace(appearance);
     if (f.LookDirection) actor.look = lookOf(f.LookDirection);
     const tint = color(f.TintColor);
-    if (tint != null) actor.tint = tint;
     if (f.TimeScale) actor.setTimeScale(num(f.TimeScale, 1));
     const show = flag(f.Visible, true);
     const appearing = show && !actor.visible;
@@ -691,6 +695,7 @@ export class StoryRuntime {
       alpha: !show ? 0 : appearing || actor.alpha < 1 ? 1 : undefined,
       rotation: z != null ? -z : undefined,
       turn,
+      tint: tint != null ? { rgb: tint, alpha: colorAlpha(f.TintColor) } : undefined,
     }, duration, f.EasingTypeName);
     if (!show) { actor.visible = false; actor.apply(); }
   }
@@ -946,9 +951,18 @@ export class StoryRuntime {
       fromX: fx ?? shape.fromX, fromY: fy ?? shape.fromY, toX: tx ?? shape.toX, toY: ty ?? shape.toY,
       length: f.Length ? num(f.Length, 0) : shape.length,
     };
-    shape.color = color(f.TintColor) ?? (kind === 'image' ? 0xffffff : shape.color);
-    if (shape.sprite) shape.sprite.tint = shape.color;
-    shape.border = color(f.BorderColor);
+    // `TryResolveDrawStyle`: a new shape with a border defaults to an outline (clear fill, white border), otherwise to a white fill.
+    if (fresh && (kind === 'box' || kind === 'circle')) {
+      const outlined = num(f.Border, 0) !== 0;
+      Object.assign(shape, { color: 0xffffff, colorAlpha: outlined ? 0 : 1, border: 0xffffff, borderAlpha: outlined ? 1 : 0, borderSize: 0 });
+    }
+    const tint = color(f.TintColor);
+    shape.color = tint ?? (kind === 'image' ? 0xffffff : shape.color);
+    shape.colorAlpha = tint != null ? colorAlpha(f.TintColor) : kind === 'image' ? 1 : shape.colorAlpha;
+    if (shape.sprite) { shape.sprite.tint = shape.color; shape.sprite.alpha = shape.colorAlpha; }
+    const edge = color(f.BorderColor);
+    if (edge != null) { shape.border = edge; shape.borderAlpha = colorAlpha(f.BorderColor); }
+    shape.borderSize = num(f.Border, shape.borderSize);
     shape.thickness = num(f.Thickness, shape.thickness);
     shape.pivotX = vx ?? shape.pivotX;
     shape.pivotY = vy ?? shape.pivotY;

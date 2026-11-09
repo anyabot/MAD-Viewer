@@ -49,6 +49,9 @@ export type FilterKind = 'grayscale' | 'sepia' | 'silhouette' | 'scanline' | 'gl
 export class FilterStack {
   readonly amounts: Record<FilterKind, number> = { grayscale: 0, sepia: 0, silhouette: 0, scanline: 0, glitch: 0, blur: 0 };
   private built: Partial<Record<FilterKind, any>> = {};
+  // RenderTextureMeshRenderer `_Color.a`: applied to the whole character after its filters, so overlapping slots don't show through.
+  opacity = 1;
+  private opacityFilter: any = null;
 
   constructor(private readonly PIXI: any, private readonly target: () => any, private readonly pixel: () => number) {}
 
@@ -82,6 +85,11 @@ export class FilterStack {
         filter.resources.fx.uniforms.uTime = time;
       } else filter.alpha = Math.min(1, amount);
       list.push(filter);
+    }
+    if (this.opacity < 0.999) {
+      this.opacityFilter ??= new this.PIXI.AlphaFilter({ resolution: 'inherit' });
+      this.opacityFilter.alpha = this.opacity;
+      list.push(this.opacityFilter);
     }
     target.filters = list.length ? list : null;
   }
