@@ -379,6 +379,8 @@ export type SkillOp = {
   weight?: number | number[];
   // % per detection tick inside one landing
   tickWeights?: number[];
+  // lands on each target once per cast however many times the hitbox detects
+  once?: boolean;
 };
 
 // `count` is how many times the skill spawns this same hitbox.

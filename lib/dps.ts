@@ -146,7 +146,8 @@ export function passiveStats(
   return out;
 }
 
-function landings(hit: SkillHit): number {
+function landings(hit: SkillHit, op?: SkillOp): number {
+  if (op?.once) return 1;
   return hit.ticks > 0 ? hit.ticks
     : hit.lifetime && hit.cycle ? Math.max(1, Math.floor(hit.lifetime / hit.cycle)) : 1;
 }
@@ -199,9 +200,9 @@ function hitYield(hit: SkillHit, level: number, period: number, skillType: numbe
   const baseCrit = criticalChance(stat('PHYSICS_CRITICAL_CHANCE') - target.critResist);
   const basePen = penetrationFactor(stat('PENETRATION') - target.penetrationResist);
   const out: Yield = { damage: 0, heal: 0, healPct: 0 };
-  const ticks = landings(hit);
   hit.ops.forEach((op, k) => {
     if (!op.value || !op.scale || !op.op || !DAMAGE_OPS.has(op.op)) return;
+    const ticks = landings(hit, op);
     let chance = op.chance ?? 1;
     if (op.gate) {
       const c = ctx.gate(op.gate, op.op === 'ADD_HEAL' || op.op === 'OVERTIME_HEAL' ? 'self' : 'target');
@@ -649,7 +650,7 @@ export function unitYield(
       const h = g * hitChance;
       const crit = op.op === 'ADD_FORCE_CRITICAL_DAMAGE'
         ? Math.min(1, Math.max(0, growValue(op.value, level, period, 1))) : baseCrit;
-      for (let i = 0; i < hit.count * landings(hit); i += 1) {
+      for (let i = 0; i < hit.count * landings(hit, op); i += 1) {
         for (const a of armed.get('TRIGGER_TYPE_ATTACK') ?? []) if (attackerMatches(a.trig.check, attacker) && byType(a)) fire(a, at, attack, h, depth);
         for (const a of armed.get('TRIGGER_TYPE_ATTACK_CRI') ?? []) if (attackerMatches(a.trig.check, attacker) && byType(a)) fire(a, at, attack, h * crit, depth);
         for (const a of armed.get('TRIGGER_TYPE_HIT') ?? []) if (a.trig.check === 'ENEMY' && byType(a)) fire(a, at, struck, h, depth);

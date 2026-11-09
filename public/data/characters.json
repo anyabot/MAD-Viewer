@@ -55118,7 +55118,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "once": true
        }
       ],
       "cast": {
@@ -77160,7 +77161,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "once": true
        }
       ],
       "cast": {
@@ -114008,7 +114010,8 @@
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
         },
-        "via": "HOLDER"
+        "via": "HOLDER",
+        "once": true
        }
       ]
      }
@@ -114237,7 +114240,8 @@
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
         },
-        "via": "HOLDER"
+        "via": "HOLDER",
+        "once": true
        }
       ]
      }
@@ -114466,7 +114470,8 @@
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
         },
-        "via": "HOLDER"
+        "via": "HOLDER",
+        "once": true
        }
       ]
      }
@@ -135115,7 +135120,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "once": true
        },
        {
         "kind": "onetime",
@@ -135140,7 +135146,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "once": true
        }
       ],
       "cast": {
