@@ -622,7 +622,7 @@ function hitSentences(
     const hit = hits[0];
     const landings = hits.length * hit.count * Math.max(1, hit.ticks);
     const times = landings > 1 ? (ko ? `, ${landings}회 타격` : `, ${landings} hits`) : '';
-    const repeat = hit.ticks === 0 && hit.cycle && hit.lifetime
+    const repeat = hit.ticks === 0 && hit.cycle && hit.lifetime && !hit.ops.every((op) => op.once)
       ? (ko ? ` (${hit.lifetime}초간 ${hit.cycle}초마다)` : ` (every ${hit.cycle}s for ${hit.lifetime}s)`)
       : hit.lifetime ? (ko ? ` (${hit.lifetime}초 유지)` : ` (lasts ${hit.lifetime}s)`) : '';
     // a hitbox cast on itself whose every op lands on its cast target is just an effect on itself

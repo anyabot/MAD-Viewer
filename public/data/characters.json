@@ -55118,7 +55118,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "once": true
        }
       ],
       "cast": {
@@ -77160,7 +77161,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "once": true
        }
       ],
       "cast": {
@@ -114001,6 +114003,7 @@
         "pick": null,
         "sort": null,
         "count": 0,
+        "once": true,
         "when": {
          "check": "CHECK_DURATION_DEFINE",
          "on": "SELF",
@@ -114230,6 +114233,7 @@
         "pick": null,
         "sort": null,
         "count": 0,
+        "once": true,
         "when": {
          "check": "CHECK_DURATION_DEFINE",
          "on": "SELF",
@@ -114459,6 +114463,7 @@
         "pick": null,
         "sort": null,
         "count": 0,
+        "once": true,
         "when": {
          "check": "CHECK_DURATION_DEFINE",
          "on": "SELF",
@@ -114823,7 +114828,7 @@
        "range": "FRONT",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "DISTANCE_HIGHEST",
+       "sort": "PHY_ATK_HIGHEST",
        "count": 1
       },
       "count": 1
@@ -135115,7 +135120,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "once": true
        },
        {
         "kind": "onetime",
@@ -135140,7 +135146,8 @@
         "team": "ENEMY",
         "pick": "ALL",
         "sort": null,
-        "count": 0
+        "count": 0,
+        "once": true
        }
       ],
       "cast": {
