@@ -114003,6 +114003,7 @@
         "pick": null,
         "sort": null,
         "count": 0,
+        "once": true,
         "when": {
          "check": "CHECK_DURATION_DEFINE",
          "on": "SELF",
@@ -114010,8 +114011,7 @@
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
         },
-        "via": "HOLDER",
-        "once": true
+        "via": "HOLDER"
        }
       ]
      }
@@ -114233,6 +114233,7 @@
         "pick": null,
         "sort": null,
         "count": 0,
+        "once": true,
         "when": {
          "check": "CHECK_DURATION_DEFINE",
          "on": "SELF",
@@ -114240,8 +114241,7 @@
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
         },
-        "via": "HOLDER",
-        "once": true
+        "via": "HOLDER"
        }
       ]
      }
@@ -114463,6 +114463,7 @@
         "pick": null,
         "sort": null,
         "count": 0,
+        "once": true,
         "when": {
          "check": "CHECK_DURATION_DEFINE",
          "on": "SELF",
@@ -114470,8 +114471,7 @@
          "op": "COMPARISON_EQUAL_TO",
          "value": "5"
         },
-        "via": "HOLDER",
-        "once": true
+        "via": "HOLDER"
        }
       ]
      }
@@ -114828,7 +114828,7 @@
        "range": "FRONT",
        "rangeValue": 99.0,
        "pick": "N_TARGET_SELECT",
-       "sort": "DISTANCE_HIGHEST",
+       "sort": "PHY_ATK_HIGHEST",
        "count": 1
       },
       "count": 1
