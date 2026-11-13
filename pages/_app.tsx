@@ -25,6 +25,8 @@ const ChangelogDialog = dynamic(() => import('@/components/changelog').then((m) 
 
 setTextResolver(dataText);
 
+const useClientLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
 const KOREAN_FONT = 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=optional';
 
 // The stylesheet alone is 90 KiB, so only a visitor reading Korean pays for it.
@@ -50,7 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(restoreSpoilers, []);
   // batched with the restores above, so the content reveals on the render that applies them
   useEffect(() => setRestored(true), []);
-  useLayoutEffect(() => { if (restored) document.documentElement.removeAttribute('data-restoring'); }, [restored]);
+  useClientLayoutEffect(() => { if (restored) document.documentElement.removeAttribute('data-restoring'); }, [restored]);
   useEffect(startSync, []);
   const lang = useLangStore((s) => s.lang);
   const gameLang = useGameLang();
