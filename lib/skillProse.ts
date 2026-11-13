@@ -153,6 +153,8 @@ export function kitStates(skills: SkillEntry[], lang: Lang, data?: CharacterData
     if (named.has(id)) continue;
     if (rows.every((r) => r.start && r.self && r.long && r.skill.categorize === 4) && new Set(rows.map((r) => r.skill)).size === 1) {
       named.set(id, plain(dataText(lang, rows[0].skill.name, rows[0].skill.nameEn)));
+      // grades with one generic name are told apart like any other clash
+      made.add(id);
     } else if (rows.every((r) => !r.start && r.self && r.short && (r.skill.behaviour?.hits ?? []).length) && watchers(id).length) {
       signals.set(id, [...new Set(rows.map((r) => label(r.skill)))]);
       const reader = readerName(watchers(id), lang);

@@ -33,7 +33,7 @@ describe('humanized skills', () => {
     const combo = proseAt('CH0003', 5).get(320)!.variant;
     expect(combo).toHaveLength(3);
     for (const [i, pct] of ['150%', '165%', '180%'].entries()) {
-      expect(combo[i]).toContain(`deals ${pct} of its ATK as damage to it (a 55% critical chance with the Skill 2 / Burst mark)`);
+      expect(combo[i]).toContain(`deals ${pct} of its ATK as damage to it (a 55% critical chance with the Skill 2 / Burst mark (critical))`);
       expect(combo[i]).not.toContain('only');
     }
     expect(combo.join(' ')).not.toMatch(/\bMark [A-Z]\b/);
