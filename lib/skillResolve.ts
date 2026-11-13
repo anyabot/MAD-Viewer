@@ -1,7 +1,8 @@
 import type { CharacterData, SkillBehaviour, SkillEntry, SkillGate, SkillHit, SkillOp, SkillTrigger } from '@/lib/data';
 
 // `constants` hold for the shown star grade; `scratch` markers live inside one cast and start at 0.
-export type KitFacts = { constants: Map<string, number>; scratch: Set<string> };
+export type UseClear = { define: string; skillTypes: string[]; by: SkillEntry };
+export type KitFacts = { constants: Map<string, number>; scratch: Set<string>; useClears: UseClear[] };
 
 const MAX_INPUTS = 3;
 const LONG = 9999;
@@ -71,7 +72,7 @@ export function kitFacts(kit: SkillEntry[], grade: SkillEntry[], data: Character
   }
   for (const [id, rows] of setters) {
     if (named.has(id)) continue;
-    const constant = !clears.has(id) && rows.every((r) => r.trigger?.on === 'TRIGGER_TYPE_BATTLE_START' && !r.op.when && !r.op.gate
+    const constant = !clears.has(id) && rows.every((r) => (r.trigger?.on === 'TRIGGER_TYPE_BATTLE_START' || r.trigger?.on === 'TRIGGER_TYPE_WAVE_START') && !r.op.when && !r.op.gate
       && (r.op.seconds?.base?.[0] ?? 0) >= LONG);
     if (constant) {
       constants.set(id, rows.some((r) => grade.includes(r.skill)) ? 1 : 0);
@@ -79,7 +80,23 @@ export function kitFacts(kit: SkillEntry[], grade: SkillEntry[], data: Character
     }
     if (!watched.has(id) && rows.every((r) => !r.trigger && (r.op.seconds?.base?.[0] ?? 0) <= 1)) scratch.add(id);
   }
-  return { constants, scratch };
+  const useClears: UseClear[] = [];
+  for (const skill of grade) {
+    for (const b of behavioursOf(skill)) {
+      for (const t of b.triggers ?? []) {
+        if (t.on !== 'TRIGGER_TYPE_USE_SKILL') continue;
+        for (const op of t.ops) for (const define of cleared(op)) useClears.push({ define, skillTypes: t.value ?? [], by: skill });
+      }
+    }
+  }
+  return { constants, scratch, useClears };
+}
+
+// The kit skill whose use trigger clears `define` when a skill of `skillType` is used.
+export function clearedOnUse(facts: KitFacts | undefined, define: string | undefined, skillType: number): SkillEntry | null {
+  if (!facts || !define) return null;
+  return facts.useClears.find((c) => c.define === define
+    && (!c.skillTypes.length || c.skillTypes.includes(String(skillType))))?.by ?? null;
 }
 
 type State = Map<string, number>;

@@ -21,7 +21,7 @@ import {
   behaviourSentences, deliveries, foldRelays, hitDelivery, kitSkills, kitStates, reachedCount, skillLabel, stackRule, triggerSubject, workCheck, type Delivery, type StateNamer,
 } from '@/lib/skillProse';
 import { useSkillView, type SkillView } from '@/lib/skillViewStore';
-import { kitFacts, resolveBehaviour, type KitFacts } from '@/lib/skillResolve';
+import { clearedOnUse, kitFacts, resolveBehaviour, type KitFacts } from '@/lib/skillResolve';
 import { dataText, useLang, useT, type UiKey } from '@/lib/i18n';
 import type {
   BattlePattern, BuffEntry, CharacterData, CharacterEntry, IconManifest, SkillBehaviour, SkillEntry,
@@ -303,7 +303,7 @@ function Behaviour({ behaviour, level, period, data, icons, states }: {
           </Wrap>
           <VStack align="stretch" spacing={0.5} mt={0.5}>
             {trigger.ops.map((op, j) => (
-              <OpRow key={j} op={reached ? { ...op, when: undefined } : op} level={level} period={period} data={data} states={states}
+              <OpRow key={j} op={reached ? { ...op, when: undefined, gate: op.when ? op.gate : undefined } : op} level={level} period={period} data={data} states={states}
                 icons={icons} />
             ))}
           </VStack>
@@ -338,6 +338,7 @@ export function SkillRow({ skill, data, icons, label, owner, states, facts }: {
   const descs = skillDescs(skill, 'ko').map((ko, i) => dataText(lang, ko, skill.descEn?.[i]));
   const timing = useSkillTiming()?.[String(skill.id)];
   const at = Math.min(level, descs.length) - 1;
+  const clearer = clearedOnUse(facts, skill.variant?.when.define, skill.skillType);
   return (
     <Flex gap={3} align="start" borderTopWidth="1px" borderColor="whiteAlpha.100" pt={2}>
       <GameIcon manifest={icons} group="skill" name={skill.icon} size={9} borderRadius="md" />
@@ -419,6 +420,12 @@ export function SkillRow({ skill, data, icons, label, owner, states, facts }: {
             <Text fontSize="xs" color="accent.300" title={skill.variant.when.define}>
               <GameText text={variantCondition(skill.variant, lang, namer)} />
               {skill.variant.action && <Text as="span" color="gray.500">{` · ${skill.variant.action}`}</Text>}
+              {clearer && (
+                <Text as="span" color="gray.500">
+                  {lang === 'ko' ? ` · 사용 시 ${dataText(lang, clearer.name ?? '', clearer.nameEn)}(으)로 해제`
+                    : ` · cleared on use by ${dataText(lang, clearer.name ?? '', clearer.nameEn)}`}
+                </Text>
+              )}
             </Text>
             {view.prose && (
               <Sentences lines={behaviourSentences(resolveBehaviour(skill.variant.behaviour, facts), at + 1, skill.levelPeriod, data, lang, namer)} />

@@ -13,7 +13,7 @@ import NextLink from '@/components/appLink';
 import {
   Badge, Box, Center, Divider, Flex, Grid, HStack, Popover, PopoverBody,
   PopoverContent, PopoverTrigger, Portal, SimpleGrid, Text, VStack, Wrap,
-  WrapItem,
+  WrapItem, useMediaQuery,
 } from '@altterisk/game-hub/ui';
 import { nextRouterAdapter } from '@altterisk/game-hub/filters';
 import SkinViewer from '@/components/skinViewer';
@@ -426,15 +426,25 @@ function FilterLink({ onClick, children }: {
   );
 }
 
-// Hover only: on a touch screen the row itself links to the same list.
+// On a screen without hover the first tap opens the list and the next one follows the row's link.
 function MemberPopover({ members, icons, current, children }: {
   members: CharacterEntry[]; icons: IconManifest | null; current?: string; children: React.ReactNode;
 }) {
   const lang = useLang();
+  const [touch] = useMediaQuery('(hover: none)');
+  const [open, setOpen] = useState(false);
   if (!members.length) return <>{children}</>;
   return (
-    <Popover trigger="hover" isLazy openDelay={120} closeDelay={80}>
-      <PopoverTrigger><Box>{children}</Box></PopoverTrigger>
+    <Popover trigger={touch ? 'click' : 'hover'} isLazy openDelay={120} closeDelay={80}
+      isOpen={open} onOpen={() => setOpen(true)} onClose={() => setOpen(false)}>
+      <PopoverTrigger>
+        <Box onClickCapture={(e: React.MouseEvent) => {
+          if (!touch || open) return;
+          e.preventDefault();
+          e.stopPropagation();
+          setOpen(true);
+        }}>{children}</Box>
+      </PopoverTrigger>
       <Portal>
         <PopoverContent bg="gray.800" borderColor="whiteAlpha.300" w="280px">
           <PopoverBody maxH="320px" overflowY="auto" px={2} py={2}>
