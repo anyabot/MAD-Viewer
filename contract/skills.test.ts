@@ -60,7 +60,7 @@ describe('humanized skills', () => {
   });
 
   it('spirit link says what the link does', () => {
-    expect(proseAt('CH0003', 5).get(302)!.base.join(' ')).toContain('links itself with the highest DEF other ally for the whole battle: damage past 0 HP carries over to the other');
+    expect(proseAt('CH0003', 5).get(302)!.base.join(' ')).toContain('links itself with the highest DEF other ally for the whole battle: when either one takes more damage than its remaining HP, the excess goes to the other');
   });
 
   it('a duration op states how it stacks and times out', () => {

@@ -468,9 +468,10 @@ export function opClause(
       break;
     case 'BUFF_SPIRITLINK':
       // decoded from HeroBase_V2::ApplyFinalLifeDamageWithSpiritLink / IsKeepingAlive (1.11.6 libil2cpp)
+      // the partner is that ally, never an enemy; "상대" read as the opponent
       text = ko
-        ? `자신과 ${target}을(를) ${time} 연결: 체력 0을 넘는 피해는 상대에게 넘어가고, 상대가 살아 있는 동안 체력 0이 되어도 쓰러지지 않음`
-        : `links itself with ${target} ${time}: damage past 0 HP carries over to the other, and a linked unit at 0 HP stays in the fight while the other lives`;
+        ? `자신과 ${target}을(를) ${time} 연결: 둘 중 한쪽이 남은 체력보다 큰 피해를 받으면 넘치는 피해는 연결된 다른 쪽이 받음. 체력이 0이 되어도 연결된 다른 쪽이 살아 있는 동안은 쓰러지지 않으며, 둘 다 0이 되면 함께 쓰러짐`
+        : `links itself with ${target} ${time}: when either one takes more damage than its remaining HP, the excess goes to the other; a linked unit at 0 HP stays in the fight while its partner is alive, and both fall once both reach 0 HP`;
       break;
     case 'USE_TRIGGER_SKILL':
       text = ko ? `${states.trigger ?? '발동 스킬'} 시전` : `casts ${states.trigger ?? 'its trigger skill'}`;
