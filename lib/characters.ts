@@ -605,12 +605,18 @@ const COMPARE: Record<string, string> = {
 
 // Every shipped variant tests a duration define's stack count on the caster.
 export function variantCondition(
-  variant: SkillVariant, lang: Lang = 'en', stateName?: (id: string) => string,
+  variant: SkillVariant, lang: Lang = 'en', stateName?: ((id: string) => string) & { cap?: (define: string) => number | undefined },
 ): string {
   const w = variant.when;
   const state = (lang === 'ko' ? w.name : w.nameEn ?? w.name)
     ?? (stateName && w.define ? stateName(w.define) : null)
     ?? (lang === 'ko' ? '내부 상태' : 'internal state');
+  // one stack against 1 is simply holding it or not
+  const one = Number(w.value) === 1;
+  if (one && w.op === 'COMPARISON_LESS_THAN') return lang === 'ko' ? `${state} 미보유 시` : `while it lacks ${state}`;
+  if (one && (w.op === 'COMPARISON_GREATER_OR_EQUAL' || (w.op === 'COMPARISON_EQUAL_TO' && stateName?.cap?.(w.define ?? '') === 1))) {
+    return lang === 'ko' ? `${state} 보유 시` : `while it has ${state}`;
+  }
   const test = `${COMPARE[w.op ?? ''] ?? '='} ${w.value}`;
   return lang === 'ko' ? `${state} ${test}일 때` : `while ${state} ${test}`;
 }

@@ -72,7 +72,7 @@ export function kitFacts(kit: SkillEntry[], grade: SkillEntry[], data: Character
   }
   for (const [id, rows] of setters) {
     if (named.has(id)) continue;
-    const constant = !clears.has(id) && rows.every((r) => r.trigger?.on === 'TRIGGER_TYPE_BATTLE_START' && !r.op.when && !r.op.gate
+    const constant = !clears.has(id) && rows.every((r) => (r.trigger?.on === 'TRIGGER_TYPE_BATTLE_START' || r.trigger?.on === 'TRIGGER_TYPE_WAVE_START') && !r.op.when && !r.op.gate
       && (r.op.seconds?.base?.[0] ?? 0) >= LONG);
     if (constant) {
       constants.set(id, rows.some((r) => grade.includes(r.skill)) ? 1 : 0);

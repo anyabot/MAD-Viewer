@@ -12,6 +12,7 @@ export type StateNamer = ((id: string) => string) & {
   skill?: (type: number) => string; trigger?: string; stacks?: Set<string>; signal?: (id: string) => string[] | undefined;
   rows?: (define: string) => number;
   cap?: (define: string) => number | undefined;
+  reader?: (id: string) => string | undefined;
 };
 
 export type Delivery = 'projectile' | 'travelling' | 'instant';
@@ -46,7 +47,9 @@ function plain(text: string): string {
 
 // Skills sharing a name are told apart by category, or by slot when that is shared too.
 export function skillLabel(s: SkillEntry, skills: SkillEntry[], lang: Lang): string {
-  const name = plain(dataText(lang, s.name, s.nameEn));
+  const raw = plain(dataText(lang, s.name, s.nameEn));
+  // a trigger skill with only the generic slot name is called what it is
+  const name = s.categorize === 5 && /^(Skill|스킬)$/.test(raw) ? (lang === 'ko' ? '발동 스킬' : 'Trigger Skill') : raw;
   const twins = s.name ? skills.filter((x) => x.name === s.name && x.skillType !== s.skillType) : [];
   if (!twins.length) return name;
   if (twins.every((x) => x.categorize !== s.categorize)) return `${name} (${pick(SKILL_CATEGORY_LABEL[s.categorize], lang)})`;
@@ -88,6 +91,12 @@ function setters(data: CharacterData): Map<string, { code: string; op: SkillOp }
   }
   SETTERS.set(data, map);
   return map;
+}
+
+// The words a define id adds past its owner and skill: `define_debuff_ch0071_chill` → "chill".
+function idWord(id: string): string {
+  return id.replace(/^define_/, '').replace(/^(trigger|duration|buff|debuff)_/, '').replace(/^(ch|np)\d+_/, '')
+    .replace(/^(skill\d+|ulti|passive)_/, '').replace(/_(ch|np)\d+$/, '').replace(/_/g, ' ');
 }
 
 export function kitStates(skills: SkillEntry[], lang: Lang, data?: CharacterData): StateNamer {
@@ -134,10 +143,11 @@ export function kitStates(skills: SkillEntry[], lang: Lang, data?: CharacterData
         if (op.when?.state && Number(op.when.value) > 1) stacks.add(op.when.state);
       };
       for (const hit of b.hits ?? []) for (const op of hit.ops) add(op, false);
-      for (const tr of b.triggers ?? []) for (const op of tr.ops) add(op, tr.on === 'TRIGGER_TYPE_BATTLE_START');
+      for (const tr of b.triggers ?? []) for (const op of tr.ops) add(op, tr.on === 'TRIGGER_TYPE_BATTLE_START' || tr.on === 'TRIGGER_TYPE_WAVE_START');
     }
   }
   const signals = new Map<string, string[]>();
+  const readers = new Map<string, string>();
   const watchers = (id: string) => skills.filter((s) => behavioursOf(s).some((b) => (b.triggers ?? []).some((t) => t.value?.includes(id))));
   for (const [id, rows] of markers) {
     if (named.has(id)) continue;
@@ -146,6 +156,7 @@ export function kitStates(skills: SkillEntry[], lang: Lang, data?: CharacterData
     } else if (rows.every((r) => !r.start && r.self && r.short && (r.skill.behaviour?.hits ?? []).length) && watchers(id).length) {
       signals.set(id, [...new Set(rows.map((r) => label(r.skill)))]);
       const reader = readerName(watchers(id), lang);
+      if (reader) readers.set(id, reader);
       named.set(id, reader
         ? (lang === 'ko' ? `${reader} 발동 표식` : `${/^[aeiou]/i.test(reader) ? 'an' : 'a'} ${reader} trigger mark`)
         : (lang === 'ko' ? '스킬 사용 표식' : 'a skill-use mark'));
@@ -159,8 +170,11 @@ export function kitStates(skills: SkillEntry[], lang: Lang, data?: CharacterData
     const names = [...new Set([...slots.values()].map((group) => (group.length > 1 && readerName(group, lang)) || label(group[0])))];
     if (!names.length || names.some((n) => !n)) continue;
     made.add(id);
-    named.set(id, lang === 'ko' ? `${names.join('/')} 표식`
-      : names.length === 1 ? `${names[0]}'s mark` : `the ${names.join(' / ')} mark`);
+    // a mark carries the word its id gives it, unless that only repeats a slot or a number
+    const word = idWord(id);
+    const telling = word && !/^(\d+|(ch|np)\d+|(skill|ulti|passive|attack|trigger)\s?\d*)$/.test(word);
+    named.set(id, `${lang === 'ko' ? `${names.join('/')} 표식`
+      : names.length === 1 ? `${names[0]}'s mark` : `the ${names.join(' / ')} mark`}${telling ? ` (${word})` : ''}`);
   }
   // marks that end up sharing a name are told apart by the words of their own id
   const byName = new Map<string, string[]>();
@@ -168,8 +182,7 @@ export function kitStates(skills: SkillEntry[], lang: Lang, data?: CharacterData
   for (const ids of byName.values()) {
     if (ids.length < 2) continue;
     for (const id of ids) {
-      const tail = id.replace(/^define_/, '').replace(/^(trigger|duration|buff|debuff)_/, '').replace(/^(ch|np)\d+_/, '')
-        .replace(/^(skill\d+|ulti|passive)_/, '').replace(/_/g, ' ');
+      const tail = idWord(id);
       named.set(id, /^\d+$/.test(tail) ? `${named.get(id)} ${Number(tail)}` : `${named.get(id)} (${tail})`);
     }
   }
@@ -198,6 +211,7 @@ export function kitStates(skills: SkillEntry[], lang: Lang, data?: CharacterData
   namer.rows = (define) => rowsOf.get(define)?.size ?? 0;
   namer.cap = (define) => caps.get(define);
   namer.signal = (id) => signals.get(id);
+  namer.reader = (id) => readers.get(id);
   namer.skill = (type) => {
     const s = skills.find((x) => x.skillType === type);
     return s ? label(s) : (lang === 'ko' ? `스킬 ${type}` : `Skill ${type}`);
@@ -271,6 +285,8 @@ function seconds(op: SkillOp, level: number, period: number, lang: Lang): string
   return lang === 'ko' ? `${s}초간` : `for ${s}s`;
 }
 
+const DAMAGE_OPS = new Set(['ADD_DAMAGE', 'ADD_FORCE_CRITICAL_DAMAGE', 'ADD_FORCE_PENETRATION_DAMAGE', 'OVERTIME_DAMAGE']);
+
 // Whose stat a coefficient reads: the caster's own, or the target's.
 function scaled(op: SkillOp, level: number, period: number, lang: Lang): string {
   const amounts = opAmounts(op, level, period);
@@ -280,8 +296,10 @@ function scaled(op: SkillOp, level: number, period: number, lang: Lang): string 
   // a state scaling off its holder reads the holder's stat, which is itself when it lands on itself
   const own = op.scaleOf !== 'HOLDER' || (op.kind === 'duration' && (op.applyTo === 'CASTER' || op.team === 'SELF'));
   const holder = op.kind === 'duration';
-  if (lang === 'ko') return `${own ? '자신' : holder ? '보유자' : '대상'}의 ${stat} ${amount}`;
-  return `${amount} of ${own ? 'its' : holder ? "the holder's" : "the target's"} ${stat}`;
+  // a heal, shield or buff on someone else reads "its" as the recipient's, so the caster is named
+  const caster = own && !(op.applyTo === 'CASTER' || op.team === 'SELF') && !DAMAGE_OPS.has(op.op ?? '');
+  if (lang === 'ko') return `${caster ? '시전자' : own ? '자신' : holder ? '보유자' : '대상'}의 ${stat} ${amount}`;
+  return `${amount} of ${caster ? "the caster's" : own ? 'its' : holder ? "the holder's" : "the target's"} ${stat}`;
 }
 
 const ONE: Record<string, string> = {
@@ -422,6 +440,12 @@ export function opClause(
     case 'MARKER': {
       const state = op.define ? states(op.define) : (ko ? '내부 상태' : 'an internal state');
       const self = op.applyTo === 'CASTER' || op.team === 'SELF';
+      // a short self mark only a passive reads is that passive being set off
+      const reader = op.define && self ? states.reader?.(op.define) : undefined;
+      if (reader) {
+        text = ko ? `${reader} 발동` : `sets off ${reader}`;
+        break;
+      }
       if (op.define && self && states.stacks?.has(op.define)) {
         const timed = time && !time.includes('battle') && !time.includes('전투') ? ` ${time}` : '';
         text = ko ? `${state} 1중첩 획득${timed}` : `gains a stack of ${state}${timed}`;
@@ -537,7 +561,9 @@ function opsText(
     const [held, missing] = mine.held ? [op, ops[j]] : [ops[j], op];
     const base = clause({ ...missing, gate: undefined });
     const alt = clause({ ...held, gate: undefined });
-    const when = gateSummary(held.gate!, data, lang, states);
+    const summary = gateSummary(held.gate!, data, lang, states);
+    // a state the caster holds reads as its own, not as something the hit carries
+    const when = !ko && held.gate!.on === 'CASTER' ? summary.replace(/^with /, 'while it has ').replace(/^without /, 'while it lacks ') : summary;
     if (alt.startsWith(base) && alt.length > base.length) {
       const extra = alt.slice(base.length).trim().replace(/^\(|\)$/g, '').replace(/^with /, '');
       out.push(ko ? `${base} (${when} ${extra})` : `${base} (${extra} ${when})`);
@@ -626,9 +652,10 @@ function hitSentences(
       ? (ko ? ` (${hit.lifetime}초간 ${hit.cycle}초마다)` : ` (every ${hit.cycle}s for ${hit.lifetime}s)`)
       : hit.lifetime ? (ko ? ` (${hit.lifetime}초 유지)` : ` (lasts ${hit.lifetime}s)`) : '';
     // a hitbox cast on itself whose every op lands on its cast target is just an effect on itself
-    if (hit.cast?.team === 'SELF' && hits.length === 1 && landings === 1 && hit.ops.length && hit.ops.every((op) => op.team === 'CAST_TARGET' || op.team === 'SELF' || op.applyTo === 'CASTER')) {
+    if (hit.cast?.team === 'SELF' && hits.length === 1 && !hit.lifetime && hit.ops.length && hit.ops.every((op) => op.team === 'CAST_TARGET' || op.team === 'SELF' || op.applyTo === 'CASTER')) {
       const own = opsText(hit.ops, (op) => opClause(op, level, period, data, lang, states, true, ko ? '자신' : 'itself'), data, lang, states);
-      return `${own[0].toUpperCase()}${own.slice(1)}.`;
+      const text = landings > 1 ? (ko ? `${landings}회: ${own}` : `${landings} times: ${own}`) : own;
+      return `${text[0].toUpperCase()}${text.slice(1)}.`;
     }
     const target = hit.cast?.team && hit.cast.team !== 'SELF' ? castSummary(hit.cast, lang) : '';
     const single = target && singleTarget(hit);
@@ -656,19 +683,27 @@ function hitSentences(
     const shape = hit.shape === 'CIRCLE' ? (ko ? `반경 ${hit.range} 원` : `a ${hit.range}-radius circle`)
       : hit.shape === 'X_AXIS' ? (ko ? `폭 ${hit.range} 띠` : `a ${hit.range}-wide band`) : '';
     // a hitbox riding the effect is wherever the effect is, so it is described by what it moves with
+    const placed = areaPhrase(hits, lang);
+    // a projectile's hitbox on the unit it was fired at names that unit once
+    const there = fired && target ? (ko ? placed.replace(`${target} 중심`, '그 대상 중심') : placed.replace(` on ${target}`, ' on it')) : placed;
     const area = hit.attach === 'ATTACH_DISPATCHER' && shape && !hit.arrive
       ? (ko ? `${shape}${moving}` : `${shape}${moving}`)
-      : `${areaPhrase(hits, lang)}${moving}`;
+      : `${there}${moving}`;
     const head = fired ? `${fired}${area}` : `${area[0].toUpperCase()}${area.slice(1)}`;
     return `${head}${times}${repeat}: ${ops}.`;
   });
 }
 
+// an attack trigger's values are the skill types whose attacks count
+const ATTACK_EVENTS = new Set(['TRIGGER_TYPE_ATTACK', 'TRIGGER_TYPE_ATTACK_CRI']);
+
 // What sets a trigger off, as the details view lists it: the skills it watches, or the states.
 export function triggerSubject(t: SkillTrigger, lang: Lang, states: StateNamer): string {
   const values = t.value ?? [];
   if (!values.length) return '';
-  if (t.on === 'TRIGGER_TYPE_USE_SKILL' && states.skill) return list(values.map((v) => states.skill!(Number(v))), lang, true);
+  if ((t.on === 'TRIGGER_TYPE_USE_SKILL' || ATTACK_EVENTS.has(t.on ?? '')) && states.skill) {
+    return list(values.map((v) => states.skill!(Number(v))), lang, true);
+  }
   if (values.every((v) => v.startsWith('define_'))) return list(values.map((v) => states(v)), lang, true);
   if ((t.on ?? '').startsWith('TRIGGER_TYPE_DURATION_CATEGORIZE_')) return list(values.map((v) => labelOf(CATEGORY_LABEL, DURATION_CATEGORY_CONST[v] ?? v, lang)), lang, true);
   return '';
@@ -682,6 +717,13 @@ const HOLDER_ONE: Record<string, { en: string; ko: string }> = {
 
 // a trigger on its own state whose every work waits for one stack count; `each` when it can fire again at or past that count
 export function reachedCount(t: SkillTrigger, states?: StateNamer): { n: string; each: boolean } | null {
+  // the same count can be a gate on the unit holding the state
+  const g = t.ops[0]?.gate;
+  if (t.on === 'TRIGGER_TYPE_DURATION_DEFINE_APPLY' && !t.ops[0]?.when && g?.condition === 'HAS_DURATION_STACK_MORE' && g.on === 'HOLDER'
+    && g.values[0]?.id === t.value?.[0] && t.ops.every((op) => !op.when && JSON.stringify(op.gate) === JSON.stringify(g))) {
+    const resets = t.ops.some((op) => op.op === 'CLEAR_DURATION_DEFINE_ID' && op.detail?.values.some((v) => v.id === g.values[0].id));
+    return { n: String(Number(g.values[1]?.id)), each: t.limit !== 1 && !resets };
+  }
   const w = t.ops[0]?.when;
   if (t.on !== 'TRIGGER_TYPE_DURATION_DEFINE_APPLY' || !w || w.check !== 'CHECK_DURATION_DEFINE' || w.state !== t.value?.[0]) return null;
   if (!['SELF', 'HOLDER'].includes(w.on ?? '') || t.check !== 'SELF' || !['COMPARISON_EQUAL_TO', 'COMPARISON_GREATER_OR_EQUAL'].includes(w.op ?? '')) return null;
@@ -711,8 +753,10 @@ function whenText(t: SkillTrigger, lang: Lang, states: StateNamer): string {
   }
   const reached = reachedCount(t, states);
   if (reached && state) {
-    if (reached.each) return ko ? `${state}이(가) ${reached.n}중첩에 도달할 때와 이후 부여될 때마다` : `When ${state} reaches ${reached.n} stacks and on every application after`;
-    return ko ? `${state}이(가) ${reached.n}중첩에 도달할 때` : `When ${state} reaches ${reached.n} stacks`;
+    const holder = t.check && t.check !== 'SELF' ? HOLDER_ONE[t.check] : undefined;
+    const on = holder ? (ko ? `${holder.ko}의 ` : ` on ${holder.en}`) : '';
+    if (reached.each) return ko ? `${on}${state}이(가) ${reached.n}중첩에 도달할 때와 이후 부여될 때마다` : `When ${state}${on} reaches ${reached.n} stacks and on every application after`;
+    return ko ? `${on}${state}이(가) ${reached.n}중첩에 도달할 때` : `When ${state}${on} reaches ${reached.n} stacks`;
   }
   // an event on another unit names that unit
   const other = t.check && t.check !== 'SELF' ? HOLDER_ONE[t.check] : undefined;
@@ -722,6 +766,10 @@ function whenText(t: SkillTrigger, lang: Lang, states: StateNamer): string {
     TRIGGER_TYPE_ACTOR_DEAD: ['dies', '쓰러질 때'],
   };
   if (other && event[on0]) return ko ? `${other.ko}이(가) ${event[on0][1]}` : `When ${other.en} ${event[on0][0]}`;
+  if (ATTACK_EVENTS.has(on0) && t.value?.length && states.skill) {
+    const names = list(t.value.map((v) => states.skill!(Number(v))), lang, true);
+    return ko ? `${names}(으)로 ${event[on0][1]}` : `When it ${event[on0][0]} with ${names}`;
+  }
   switch (t.on) {
     case 'TRIGGER_TYPE_DURATION_DEFINE_APPLY': {
       const from = t.value?.[0] ? states.signal?.(t.value[0]) : undefined;
@@ -847,7 +895,7 @@ function triggerSentences(
     const subject = (op: SkillOp) => workTarget(t, op.via, lang);
     const step = (op: SkillOp, text: string) => `${op.then ? (ko ? '이어서 ' : 'then ') : ''}${text}${op.perBattle
       ? (ko ? ` (전투당 ${op.perBattle}회)` : op.perBattle === 1 ? ' (once per battle)' : ` (up to ${op.perBattle} times per battle)`) : ''}`;
-    if (reachedCount(t, states)) t = { ...t, ops: t.ops.map((op) => ({ ...op, when: undefined })) };
+    if (reachedCount(t, states)) t = { ...t, ops: t.ops.map((op) => ({ ...op, when: undefined, gate: op.when ? op.gate : undefined })) };
     // the same cast behind several conditions reads as one cast with alternatives
     const casts = t.ops.length > 1 && t.ops.every((op) => op.op === 'USE_TRIGGER_SKILL' && op.when);
     const ops = casts

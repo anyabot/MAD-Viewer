@@ -303,7 +303,7 @@ function Behaviour({ behaviour, level, period, data, icons, states }: {
           </Wrap>
           <VStack align="stretch" spacing={0.5} mt={0.5}>
             {trigger.ops.map((op, j) => (
-              <OpRow key={j} op={reached ? { ...op, when: undefined } : op} level={level} period={period} data={data} states={states}
+              <OpRow key={j} op={reached ? { ...op, when: undefined, gate: op.when ? op.gate : undefined } : op} level={level} period={period} data={data} states={states}
                 icons={icons} />
             ))}
           </VStack>
