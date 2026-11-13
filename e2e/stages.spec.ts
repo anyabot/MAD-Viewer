@@ -5,7 +5,7 @@ import { SAMPLE } from './fixtures';
 test.describe('/stages', () => {
   test('a mode card opens that mode and all modes returns', async ({ page }) => {
     await page.goto('/stages/');
-    await page.getByRole('link', { name: /^Arena/ }).first().click();
+    await page.locator('a[href*="mode=arena"]').first().click();
     await expect(page).toHaveURL(/mode=arena/);
     await page.getByRole('link', { name: 'All modes' }).click();
     await expect(page).toHaveURL(/\/stages\/$/);
