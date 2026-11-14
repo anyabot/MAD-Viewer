@@ -1046,7 +1046,7 @@ export function gateSummary(
       case 'LACKS_ANY_DURATIONS': return `${state} 미보유 시`;
       case 'HAS_DURATION_STACK_SAME': return `${state} 정확히 ${n}중첩일 때`;
       case 'HAS_DURATION_STACK_NOT_SAME': return `${state} ${n}중첩이 아닐 때`;
-      case 'HAS_DURATION_STACK_MORE': return `${state} ${n}중첩 이상일 때`;
+      case 'HAS_DURATION_STACK_MORE': return n === '1' ? `${state} 보유 시` : `${state} ${n}중첩 이상일 때`;
       case 'HITS_EXACTLY': return `대상 ${id}명에게 적중할 때`;
       case 'HITS_AT_LEAST': return `대상 ${id}명 이상에게 적중할 때`;
       case 'HAS_DURATION_TYPE': return `${category} 보유 시`;
@@ -1072,7 +1072,7 @@ export function gateSummary(
     case 'LACKS_ANY_DURATIONS': return `without ${state}`;
     case 'HAS_DURATION_STACK_SAME': return `with exactly ${n} ${state}`;
     case 'HAS_DURATION_STACK_NOT_SAME': return `without exactly ${n} ${state}`;
-    case 'HAS_DURATION_STACK_MORE': return `with ${n}+ ${state}`;
+    case 'HAS_DURATION_STACK_MORE': return n === '1' ? `with ${state}` : `with ${n}+ ${state}`;
     case 'HITS_EXACTLY': return `when it hits exactly ${id} ${id === '1' ? 'target' : 'targets'}`;
     case 'HITS_AT_LEAST': return `when it hits ${id}+ targets`;
     case 'HAS_DURATION_TYPE': return `with any ${category}`;

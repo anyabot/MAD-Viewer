@@ -263,8 +263,8 @@ export function workCheck(when: NonNullable<SkillOp['when']>, lang: Lang, states
     return ko ? `${target ? '대상이 ' : ''}${what} 보유 시` : `only while ${target ? 'the target has' : 'it has'} ${what.toLowerCase()}`;
   }
   if (when.check !== 'CHECK_DURATION_DEFINE' || !state) return when.check ?? '';
-  if (when.on === 'TRIGGER_TARGET' && v === '1' && (when.op === 'COMPARISON_EQUAL_TO' || when.op === 'COMPARISON_LESS_THAN')) {
-    const has = when.op === 'COMPARISON_EQUAL_TO';
+  if (when.on === 'TRIGGER_TARGET' && v === '1' && ['COMPARISON_EQUAL_TO', 'COMPARISON_GREATER_OR_EQUAL', 'COMPARISON_LESS_THAN'].includes(when.op ?? '')) {
+    const has = when.op !== 'COMPARISON_LESS_THAN';
     return ko ? `대상이 ${state} ${has ? '보유' : '미보유'} 시` : `only while the target ${has ? 'has' : 'lacks'} ${state}`;
   }
   switch (when.op) {
@@ -273,7 +273,10 @@ export function workCheck(when: NonNullable<SkillOp['when']>, lang: Lang, states
       return ko ? `${state} ${v}중첩일 때` : `if ${state} is at ${v} stacks`;
     case 'COMPARISON_LESS_THAN': return v === '1' ? (ko ? `${state} 없을 때` : `only without ${state}`) : (ko ? `${state} ${v}중첩 미만일 때` : `if ${state} is below ${v} stacks`);
     case 'COMPARISON_GREATER_THAN': return ko ? `${state} ${v}중첩 초과일 때` : `if ${state} is above ${v} stacks`;
-    case 'COMPARISON_GREATER_OR_EQUAL': return ko ? `${state} ${v}중첩 이상일 때` : `if ${state} is at ${v}+ stacks`;
+    case 'COMPARISON_GREATER_OR_EQUAL':
+      // one stack or more is simply holding it
+      if (v === '1') return ko ? `${state} 보유 시` : `only while it has ${state}`;
+      return ko ? `${state} ${v}중첩 이상일 때` : `if ${state} is at ${v}+ stacks`;
     case 'COMPARISON_LESS_OR_EQUAL': return ko ? `${state} ${v}중첩 이하일 때` : `if ${state} is at ${v} stacks or fewer`;
     default: return `${state} ${when.op ?? ''} ${v}`;
   }
@@ -501,10 +504,19 @@ export function opClause(
 const HAS = 'HAS_DURATIONS';
 const LACKS = 'LACKS_DURATIONS';
 
+// an HP threshold and its complement split the same way: the low side is the held one
+const HP_SIDES: Record<string, { pair: string; low: boolean }> = {
+  HP_GREATER_THAN: { pair: 'gt', low: false }, HP_LESS_OR_EQUAL: { pair: 'gt', low: true },
+  HP_GREATER_OR_EQUAL: { pair: 'ge', low: false }, HP_LESS_THAN: { pair: 'ge', low: true },
+};
+
 // The one state a gate tests for, held or missing.
 function single(op: SkillOp): { id: string; held: boolean } | null {
   const g = op.gate;
-  if (!g || op.when || op.chance != null || g.values.length !== 1 || (g.condition !== HAS && g.condition !== LACKS)) return null;
+  if (!g || op.when || op.chance != null || g.values.length !== 1) return null;
+  const hp = HP_SIDES[g.condition ?? ''];
+  if (hp) return { id: `${g.on ?? ''}:hp:${hp.pair}:${g.values[0].id}`, held: hp.low };
+  if (g.condition !== HAS && g.condition !== LACKS) return null;
   return { id: `${g.on ?? ''}:${g.values[0].id}`, held: g.condition === HAS };
 }
 
@@ -581,6 +593,13 @@ function opsText(
     while (j < out.length && out[j] === out[i]) j += 1;
     runs.push(j - i > 1 ? `${out[i]} (${ko ? `${j - i}회` : `${j - i} times`})` : out[i]);
     i = j;
+  }
+  // a condition every clause ends with is said once
+  const tail = runs.length > 1 ? / — [^—;]+$/.exec(runs[0])?.[0] : undefined;
+  if (tail && runs.every((r) => r.endsWith(tail) && !r.slice(0, -tail.length).includes(tail))) {
+    const cond = tail.slice(3);
+    const all = ko ? ` — 모두 ${cond}` : ` — ${runs.length === 2 ? 'both' : 'all'} ${cond}`;
+    return `${runs.map((r) => r.slice(0, -tail.length)).join('; ')}${all}`;
   }
   return runs.join('; ');
 }
@@ -908,7 +927,12 @@ function triggerSentences(
       : t.ops.some((op) => op.op !== 'EMPTY_EFFECT')
         ? opsText(t.ops, (op) => step(op, opClause(op, level, period, data, lang, states, false, subject(op))), data, lang, states)
         : (ko ? '효과 없음' : 'nothing');
-    return `${head}: ${ops}.`;
+    // "the target" of a work check is the unit the event happened to, named as the trigger names it
+    const unit = workTarget(t, 'TRIGGER_TARGET', lang);
+    const named = unit
+      ? (ko ? ops.replace(/대상이 /g, `${unit}이(가) `) : ops.replace(/only while the target (has|lacks) /g, `only while ${unit} $1 `))
+      : ops;
+    return `${head}: ${named}.`;
   });
 }
 
