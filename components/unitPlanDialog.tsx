@@ -221,7 +221,8 @@ export function UnitPlanDialog({
   const previewed = memoryRef ? { ...leftover, [memoryRef]: held } : leftover;
   const spendable = memoryRef ? { ...inventory, [memoryRef]: held } : inventory;
   const owing = !!(bill.unitExp || bill.equipExp || Object.keys(bill.materials).length > 0);
-  const covered = billCovered(growth, bill, priority ? spendable : previewed);
+  // completing spends what is held, so priority shares do not block it
+  const covered = billCovered(growth, bill, spendable);
 
   // Banking writes this row alone; other pending edits stay in the draft, and only a star row spends the edited held count.
   const bankPart = (part: PlanPart) => {
@@ -271,7 +272,7 @@ export function UnitPlanDialog({
             <Panel title={t('planTargets')}>
               <PlanGrid entry={entry} data={data} growth={growth} icons={icons}
                 sides={['current', 'target']} draft={planDraft}
-                check={{ inventory: priority ? spendable : previewed, onComplete: bankPart }} />
+                check={{ inventory: spendable, onComplete: bankPart }} />
             </Panel>
 
             <MemoryPanel entry={entry} growth={growth} stages={stages} hard={hard}
