@@ -582,6 +582,8 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }:
   const hidden = pair.hidden ?? false;
   const owing = !!(bill.unitExp || bill.equipExp || Object.keys(bill.materials).length > 0);
   const covered = billCovered(growth, bill, priority ? inventory : leftover);
+  // completing spends what is held, so priority shares do not block it
+  const completable = billCovered(growth, bill, held);
   const material = memories.ref ? growth.materials[memories.ref] : null;
   const gear = Object.values(pair.target.gear ?? {})
     .reduce((n, g) => Math.max(n, g.tier), 0);
@@ -647,11 +649,11 @@ function UnitRow({ row, growth, icons, leftover, lang, onOpen, open, onExpand }:
           onClick={() => setHidden(entry.code, !hidden)}>
           {hidden ? <ViewOffIcon boxSize={3.5} /> : <ViewIcon boxSize={3.5} />}
         </RowAction>
-        <RowAction label={t('farmComplete')} disabled={!owing || !covered}
+        <RowAction label={t('farmComplete')} disabled={!owing || !completable}
           hint={!owing ? t('planNothingOwed')
-            : covered ? t('farmCompleteHint') : t('farmCompleteShort')}
+            : completable ? t('farmCompleteHint') : t('farmCompleteShort')}
           onClick={() => completeUnit(entry.code, spendBill(growth, bill, held))}>
-          <CheckIcon boxSize={3} color={owing && covered ? 'green.300' : undefined} />
+          <CheckIcon boxSize={3} color={owing && completable ? 'green.300' : undefined} />
         </RowAction>
         <RowAction label={t('farmRemove')} danger
           onClick={() => (collected ? setListed(entry.code, false)
