@@ -331,6 +331,8 @@ export const UI = {
   charactersTabList: { en: 'List', ko: '목록' },
   charactersTabStats: { en: 'Stat comparison', ko: '스탯 비교' },
   charactersTabEquipment: { en: 'Equipment use', ko: '장비 사용 현황' },
+  charactersTabOrder: { en: 'Line order', ko: '배치 순서' },
+  lineOrderSeeAll: { en: 'All lines →', ko: '전체 배치 순서 →' },
   statsInvestment: { en: 'Investment', ko: '육성' },
   statsGearLevel: { en: 'Equipment level', ko: '장비 레벨' },
   statsGearTier: { en: 'Equipment tier', ko: '장비 등급' },
