@@ -8,6 +8,7 @@ import {
   EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox, TabPanel, UrlTabs, tabParam,
 } from '@altterisk/game-hub';
 import CharacterEquipmentTab from '@/components/characterEquipmentTab';
+import CharacterLineOrderTab from '@/components/characterLineOrderTab';
 import CharacterStatsTab from '@/components/characterStatsTab';
 import { GameIcon, StarRating } from '@/components/gameIcon';
 import {
@@ -130,6 +131,7 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
     { id: 'list', label: t('charactersTabList') },
     { id: 'stats', label: t('charactersTabStats') },
     { id: 'equipment', label: t('charactersTabEquipment') },
+    { id: 'order', label: t('charactersTabOrder') },
   ];
   const [tab, setTab] = tabParam(nextRouterAdapter(router), tabItems);
   // only playable units have stats to compare and equipment slots
@@ -247,6 +249,10 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
       <TabPanel tab={tab} idBase="chars">
         {tab === 'stats' && <CharacterStatsTab list={units} chars={chars} icons={icons} />}
         {tab === 'equipment' && <CharacterEquipmentTab list={units} chars={chars} icons={icons} />}
+        {tab === 'order' && (
+          <CharacterLineOrderTab list={units} chars={chars} icons={icons}
+            focus={typeof router.query.focus === 'string' ? router.query.focus : undefined} />
+        )}
         {tab === 'list' && (
           <>
             <Grid gap={3} templateColumns={{

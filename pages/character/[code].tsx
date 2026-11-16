@@ -427,8 +427,9 @@ function FilterLink({ onClick, children }: {
 }
 
 // On a screen without hover the first tap opens the list and the next one follows the row's link.
-function MemberPopover({ members, icons, current, children }: {
-  members: CharacterEntry[]; icons: IconManifest | null; current?: string; children: React.ReactNode;
+function MemberPopover({ members, icons, current, more, children }: {
+  members: CharacterEntry[]; icons: IconManifest | null; current?: string;
+  more?: { href: string; label: string }; children: React.ReactNode;
 }) {
   const lang = useLang();
   const [touch] = useMediaQuery('(hover: none)');
@@ -463,6 +464,12 @@ function MemberPopover({ members, icons, current, children }: {
                 </VStack>
               ))}
             </SimpleGrid>
+            {more && (
+              <Box as={NextLink} href={more.href} display="block" mt={2} px={1} fontSize="xs"
+                color="accent.300" _hover={{ textDecoration: 'underline' }}>
+                {more.label}
+              </Box>
+            )}
           </PopoverBody>
         </PopoverContent>
       </Portal>
@@ -520,7 +527,8 @@ function Infobox({ entry, data, icons, accent, skins }: {
       rows.push({
         label: t('rowLineOrder'),
         node: (
-          <MemberPopover members={line} icons={icons} current={entry.code}>
+          <MemberPopover members={line} icons={icons} current={entry.code}
+            more={{ href: `/characters?tab=order&focus=${entry.code}`, label: t('lineOrderSeeAll') }}>
             <Box as="button" type="button" _hover={{ textDecoration: 'underline' }}>
               {rank + 1} / {line.length}
             </Box>
