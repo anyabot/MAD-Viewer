@@ -498,7 +498,10 @@ export function opClause(
   const gated = !gate ? '' : ko ? ` — ${gate.endsWith('만') ? gate : `${gate}만`}` : ` — ${gate.startsWith('only ') ? gate : `only ${gate}`}`;
   const only = [gated, check ? ` — ${check}` : ''].join('');
   const chance = odds ? (ko ? `${odds}로 ` : `${odds}: `) : '';
-  return `${chance}${text.replace(/\s+/g, ' ').trim()}${lock}${only}`;
+  const again = op.repeat
+    ? (ko ? `이번 시전에 이미 ${op.repeat}회 맞은 대상이면 ` : `if this cast already hit it ${op.repeat === 1 ? 'once' : op.repeat === 2 ? 'twice' : `${op.repeat} times`}, `)
+    : '';
+  return `${again}${chance}${text.replace(/\s+/g, ' ').trim()}${lock}${only}`;
 }
 
 const HAS = 'HAS_DURATIONS';

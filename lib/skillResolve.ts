@@ -179,78 +179,118 @@ function spread(op: SkillOp): number {
   return Math.min(cap, op.pick === 'ALL' ? cap : op.count);
 }
 
+// A counter laid on the unit a hit lands on, read there and kept past the hit, counts that unit's hits, not the cast's.
+function perTargetCounters(hits: SkillHit[], local: Set<string>): string[] {
+  const ids = new Set<string>();
+  for (const h of hits) {
+    for (const op of h.ops) {
+      if (op.op === 'MARKER' && op.define && local.has(op.define) && op.team !== 'SELF' && op.applyTo !== 'CASTER' && !spread(op)) ids.add(op.define);
+    }
+  }
+  return [...ids].filter((id) => hits.every((h) => h.ops.every((op) => !cleared(op).includes(id)
+    && (!op.gate || !gateIds(op.gate).includes(id) || op.gate.on === 'HOLDER'))));
+}
+
 // Plays one cast per assignment of the outside states its counters read, and per number of targets hit, keeping the ops that can fire.
 function unrollScratch(b: SkillBehaviour, facts: KitFacts): SkillBehaviour | null {
   const hits = b.hits ?? [];
   const local = facts.scratch;
   const counters = hits.flatMap((h) => h.ops.filter((op) => op.op === 'MARKER' && op.define && local.has(op.define)));
   if (!counters.length) return null;
-  const spreads = [...new Set(counters.map(spread).filter(Boolean))];
+  const perTarget = perTargetCounters(hits, local);
+  if (perTarget.length > 1) return null;
+  const own = perTarget[0];
+  // hit h can land on a unit an earlier hit of this cast already marked, up to h times or the counter's cap
+  const cap = own ? Math.max(...counters.filter((op) => op.define === own).map((op) => op.maxStack || 99)) : 0;
+  const spreads = [...new Set(counters.filter((op) => op.define !== own).map(spread).filter(Boolean))];
   if (spreads.length > 1) return null;
   const most = spreads[0] ?? 1;
   const inputs = new Set<string>();
+  // where each outside state is read, so a rebuilt gate names its real holder
+  const holders = new Map<string, string | null>();
   for (const hit of hits) {
     for (const op of hit.ops) {
       if (!op.gate) continue;
       const ids = gateIds(op.gate);
       if (!ids.some((id) => local.has(id)) && !(op.op === 'MARKER' && op.define && local.has(op.define))) continue;
-      for (const id of ids) if (!local.has(id) && !facts.constants.has(id)) inputs.add(id);
+      for (const id of ids) {
+        if (local.has(id) || facts.constants.has(id)) continue;
+        inputs.add(id);
+        if (!holders.has(id)) holders.set(id, op.gate.on ?? null);
+      }
     }
   }
   const outside = [...inputs];
   if (outside.length > MAX_INPUTS) return null;
-  const fired = new Map<string, number[]>();
+  const fired = new Map<string, { run: number; seen: number }[]>();
   const masks = 2 ** outside.length;
   const runs = masks * most;
   for (let run = 0; run < runs; run++) {
     const mask = Math.floor(run / most);
     const targets = (run % most) + 1;
-    const state: State = new Map([...facts.constants, ...[...local].map((id) => [id, 0] as const)]);
+    let state: State = new Map([...facts.constants, ...[...local].map((id) => [id, 0] as const)]);
     outside.forEach((id, i) => state.set(id, (mask >> i) & 1));
     for (const [h, hit] of hits.entries()) {
-      for (const [o, op] of hit.ops.entries()) {
-        const ok = op.gate ? testGate(op.gate, state) : true;
-        if (op.op === 'MARKER' && op.define && local.has(op.define)) {
-          if (ok === null) return null;
-          const times = spread(op) ? targets : 1;
-          if (ok) state.set(op.define, Math.min(op.maxStack || 99, (state.get(op.define) ?? 0) + times * (op.value?.base?.[0] || 1)));
-          continue;
+      let next: State = state;
+      for (let seen = 0; seen <= (own ? Math.min(h, cap) : 0); seen++) {
+        const s: State = new Map(state);
+        if (own) s.set(own, seen);
+        for (const [o, op] of hit.ops.entries()) {
+          const ok = op.gate ? testGate(op.gate, s) : true;
+          if (op.op === 'MARKER' && op.define && local.has(op.define)) {
+            if (ok === null) return null;
+            const times = spread(op) ? targets : 1;
+            if (ok) s.set(op.define, Math.min(op.maxStack || 99, (s.get(op.define) ?? 0) + times * (op.value?.base?.[0] || 1)));
+            continue;
+          }
+          const ids = cleared(op);
+          if (ids.length && ids.every((id) => local.has(id))) {
+            for (const id of ids) s.set(id, 0);
+            continue;
+          }
+          if (ok === false) continue;
+          const key = `${h}:${o}`;
+          fired.set(key, [...(fired.get(key) ?? []), { run: ok === null ? -1 - run : run, seen }]);
         }
-        const ids = cleared(op);
-        if (ids.length && ids.every((id) => local.has(id))) {
-          for (const id of ids) state.set(id, 0);
-          continue;
-        }
-        if (ok === false) continue;
-        const key = `${h}:${o}`;
-        fired.set(key, [...(fired.get(key) ?? []), ok === null ? -1 - run : run]);
+        if (seen === 0) next = s;
       }
+      state = next;
     }
   }
   const out: SkillHit[] = [];
   for (const [h, hit] of hits.entries()) {
     const ops: SkillOp[] = [];
+    const reach = own ? Math.min(h, cap) + 1 : 1;
     for (const [o, op] of hit.ops.entries()) {
       const fires = fired.get(`${h}:${o}`);
       if (!fires) continue;
-      const unknown = fires.some((m) => m < 0);
-      const set = new Set(fires.map((m) => (m < 0 ? -1 - m : m)));
+      const unknown = fires.some((f) => f.run < 0);
       if (unknown) {
         if (op.gate && gateIds(op.gate).some((id) => local.has(id))) return null;
         ops.push(op);
         continue;
       }
-      const gate = literal(set, outside, most, op.gate?.on ?? null);
-      if (gate === undefined) return null;
-      ops.push({ ...op, gate: gate ?? undefined });
+      const bySeen = new Map<number, Set<number>>();
+      for (const f of fires) bySeen.set(f.seen, (bySeen.get(f.seen) ?? new Set()).add(f.run));
+      const sets = [...bySeen.values()];
+      const uniform = bySeen.size === reach && sets.every((s) => s.size === sets[0].size && [...s].every((r) => sets[0].has(r)));
+      for (const [seen, set] of uniform ? [[0, sets[0]] as const] : [...bySeen].sort(([a], [b]) => a - b)) {
+        const gate = literal(set, outside, most, op.gate?.on ?? null, holders);
+        if (gate === undefined) return null;
+        ops.push({ ...op, gate: gate ?? undefined, ...(seen > 0 ? { repeat: seen } : {}) });
+      }
     }
+    // a unit hit for the first time reads first, the repeat hits after it
+    ops.sort((a, b) => (a.repeat ?? 0) - (b.repeat ?? 0));
     if (ops.length || !hit.ops.length) out.push({ ...hit, ops });
   }
   return { ...b, hits: out };
 }
 
 // The runs an op fired under, as no gate, one state held or missing, or a number of targets hit.
-function literal(set: Set<number>, outside: string[], most: number, on: string | null): SkillGate | null | undefined {
+function literal(
+  set: Set<number>, outside: string[], most: number, on: string | null, holders?: Map<string, string | null>,
+): SkillGate | null | undefined {
   const runs = 2 ** outside.length * most;
   if (set.size === runs) return null;
   const all = [...Array(runs).keys()];
@@ -258,7 +298,7 @@ function literal(set: Set<number>, outside: string[], most: number, on: string |
   for (const [i, id] of outside.entries()) {
     for (const held of [1, 0]) {
       if (same(all.filter((r) => ((Math.floor(r / most) >> i) & 1) === held))) {
-        return { condition: held ? 'HAS_DURATIONS' : 'LACKS_DURATIONS', on, values: [{ id, name: null, nameEn: null }] };
+        return { condition: held ? 'HAS_DURATIONS' : 'LACKS_DURATIONS', on: holders?.get(id) ?? on, values: [{ id, name: null, nameEn: null }] };
       }
     }
   }

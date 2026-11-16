@@ -381,6 +381,8 @@ export type SkillOp = {
   tickWeights?: number[];
   // lands on each target once per cast however many times the hitbox detects
   once?: boolean;
+  // set by the resolver: fires only on a unit this cast already hit this many times
+  repeat?: number;
 };
 
 // `count` is how many times the skill spawns this same hitbox.

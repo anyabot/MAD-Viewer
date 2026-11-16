@@ -29,12 +29,15 @@ describe('humanized skills', () => {
     }
   });
 
-  it('a cast-scoped damage counter unrolls into one line per hit', () => {
+  it('a counter on the hit unit raises damage only on a unit the cast already hit', () => {
     const combo = proseAt('CH0003', 5).get(320)!.variant;
     expect(combo).toHaveLength(3);
-    for (const [i, pct] of ['150%', '165%', '180%'].entries()) {
-      expect(combo[i]).toContain(`deals ${pct} of its ATK as damage to it (a 55% critical chance with the Skill 2 / Burst mark (critical))`);
-      expect(combo[i]).not.toContain('only');
+    const crit = '(a 55% critical chance while it has the Skill 2 / Burst mark (critical))';
+    for (const [i, line] of combo.entries()) {
+      expect(line).toContain(`deals 150% of its ATK as damage to it ${crit}`);
+      expect(line.includes(`if this cast already hit it once, deals 165% of its ATK as damage to it ${crit}`)).toBe(i >= 1);
+      expect(line.includes(`if this cast already hit it twice, deals 180% of its ATK as damage to it ${crit}`)).toBe(i >= 2);
+      expect(line).not.toContain('only');
     }
     expect(combo.join(' ')).not.toMatch(/\bMark [A-Z]\b/);
   });
