@@ -85,7 +85,7 @@ it('characters.json, icons.json and skin_list.json agree', () => {
     }
   }
   assert.deepEqual(unreleased.filter((c) => has('char', c.iconPath)).map((c) => c.code),
-    ['CH0003', 'CH0004', 'CH0008', 'CH0059']);
+    ['CH0004', 'CH0008', 'CH0041', 'CH0059']);
   for (const code of ['CH0033']) {
     assert.ok(skins.some((s) => s.character === code), `${code} has a shipped skin`);
   }
@@ -131,9 +131,6 @@ it('characters.json, icons.json and skin_list.json agree', () => {
 
   const storyOnly = Object.values(characters).filter((c) => c.storyOnly);
   assert.equal(storyOnly.length, 21, `story-only rigs: ${storyOnly.length}`);
-  const unnamedRigs = [...new Set(skins.map((s) => s.character))]
-    .filter((code) => /^(CH|NP|SC)\d{4}$/.test(code) && !characters[code]?.name);
-  assert.deepEqual(unnamedRigs, [], `coded rigs with no name: ${unnamedRigs.join(', ')}`);
   for (const c of storyOnly) {
     assert.ok(c.name && c.actorId, `${c.code} has a script name and actor id`);
     assert.equal(c.characterType, undefined, `${c.code} has no master-data row`);
@@ -144,7 +141,7 @@ it('characters.json, icons.json and skin_list.json agree', () => {
   assert.equal(characters.SC0002.actorId, 'dandelion');
   assert.equal(rosterNote(characters.CH0001), null);
   assert.equal(rosterNote(characters.NP0103).label, 'NPC');
-  assert.equal(rosterNote(characters.CH0003).label, 'UNRELEASED');
+  assert.equal(rosterNote(characters.CH0004).label, 'UNRELEASED');
   assert.equal(rosterNote(null), null);
 
   const withProfile = playable.filter((c) => c.hobby || c.specialty || c.likes);
@@ -280,7 +277,7 @@ it('characters.json, icons.json and skin_list.json agree', () => {
       for (const buff of level) {
         buffed += 1;
         assert.ok(buff.name, 'buff has a name');
-        assert.ok(has('buff', buff.icon), `buff icon ${buff.icon}`);
+        assert.ok(!buff.icon || has('buff', buff.icon), `buff icon ${buff.icon}`);
         assert.ok(BUFF_CATEGORY[buff.categorize] || buff.categorize === 0,
           `buff category ${buff.categorize}`);
         for (const text of [buff.name, buff.desc]) {

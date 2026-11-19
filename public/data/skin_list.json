@@ -1,6 +1,54 @@
 {
  "skins": [
   {
+   "key": "af_ch0003",
+   "kind": "affection",
+   "character": "CH0003",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 34,
+   "faces": 7,
+   "bodyGroups": [
+    "asmr",
+    "basic",
+    "setup"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:AF_CH0003.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename",
+     "dropped",
+     "added"
+    ],
+    "renamed": [
+     "nipple_L",
+     "nipple_R"
+    ],
+    "dropped": [
+     "tit_L_UNCEN",
+     "tit_R_UNCEN"
+    ],
+    "added": [
+     "crotch_CEN",
+     "nipple_L_CEN_shadow",
+     "nipple_R_CEN_shadow"
+    ]
+   },
+   "bytes": {
+    "google": 13964463,
+    "onestore": 13865834
+   }
+  },
+  {
    "key": "af_ch0009",
    "kind": "affection",
    "character": "CH0009",
@@ -909,6 +957,64 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 2176096
+   }
+  },
+  {
+   "key": "dm_ma0003",
+   "kind": "drama",
+   "character": "DM_0003",
+   "stores": [
+    "onestore"
+   ],
+   "animations": 0,
+   "faces": 0,
+   "bodyGroups": [],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [],
+   "divergeEdit": null,
+   "bytes": {
+    "onestore": 2776221
+   }
+  },
+  {
+   "key": "ds_ch0003",
+   "kind": "desire",
+   "character": "CH0003",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 33,
+   "faces": 0,
+   "bodyGroups": [
+    "10_basic",
+    "10_reaction",
+    "30_overlay",
+    "backup"
+   ],
+   "hasBg": true,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:DS_CH0003.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "rename"
+    ],
+    "renamed": [
+     "nipple_L_2",
+     "nipple_R_2"
+    ],
+    "dropped": [],
+    "added": []
+   },
+   "bytes": {
+    "google": 13282567,
+    "onestore": 13205105
    }
   },
   {
@@ -2005,8 +2111,8 @@
     ]
    },
    "bytes": {
-    "google": 8614781,
-    "onestore": 8631371
+    "google": 8614805,
+    "onestore": 8631395
    }
   },
   {
@@ -2116,6 +2222,7 @@
    "kind": "standing",
    "character": "CH0003",
    "stores": [
+    "google",
     "onestore"
    ],
    "animations": 17,
@@ -2125,10 +2232,19 @@
    ],
    "hasBg": false,
    "uncensored": false,
-   "divergeReasons": [],
-   "divergeEdit": null,
+   "divergeReasons": [
+    "skeleton"
+   ],
+   "divergeEdit": {
+    "censorship": false,
+    "mechanisms": [],
+    "renamed": [],
+    "dropped": [],
+    "added": []
+   },
    "bytes": {
-    "onestore": 4492818
+    "google": 4500387,
+    "onestore": 4500193
    }
   },
   {
@@ -2189,6 +2305,47 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 4484164
+   }
+  },
+  {
+   "key": "st_ch0008",
+   "kind": "standing",
+   "character": "CH0008",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 11,
+   "faces": 10,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": false,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0008.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped"
+    ],
+    "renamed": [],
+    "dropped": [
+     "oppai_L_CENSORED",
+     "oppai_L_UNC",
+     "oppai_R_CENSORED",
+     "oppai_R_UNC",
+     "pelvis_CENSORED",
+     "pelvis_UNC"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 3809175,
+    "onestore": 4233541
    }
   },
   {
@@ -2917,6 +3074,43 @@
    }
   },
   {
+   "key": "st_ch0041",
+   "kind": "standing",
+   "character": "CH0041",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 16,
+   "faces": 15,
+   "bodyGroups": [
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0041.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped"
+    ],
+    "renamed": [],
+    "dropped": [
+     "nipple_L_UNCEN",
+     "nipple_R_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 4665489,
+    "onestore": 4673764
+   }
+  },
+  {
    "key": "st_ch0042",
    "kind": "standing",
    "character": "CH0042",
@@ -2955,6 +3149,46 @@
    "divergeEdit": null,
    "bytes": {
     "onestore": 4506809
+   }
+  },
+  {
+   "key": "st_ch0044",
+   "kind": "standing",
+   "character": "CH0044",
+   "stores": [
+    "google",
+    "onestore"
+   ],
+   "animations": 19,
+   "faces": 15,
+   "bodyGroups": [
+    "",
+    "00"
+   ],
+   "hasBg": false,
+   "uncensored": true,
+   "divergeReasons": [
+    "skeleton",
+    "atlas",
+    "texture:ST_CH0044.png"
+   ],
+   "divergeEdit": {
+    "censorship": true,
+    "mechanisms": [
+     "dropped"
+    ],
+    "renamed": [],
+    "dropped": [
+     "oppai_L_CEN",
+     "oppai_L_UNCEN",
+     "oppai_R_CEN",
+     "oppai_R_UNCEN"
+    ],
+    "added": []
+   },
+   "bytes": {
+    "google": 4251600,
+    "onestore": 4470689
    }
   },
   {

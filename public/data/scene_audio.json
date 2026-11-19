@@ -1,5 +1,6 @@
 {
   "clips": {
+    "AF_CH0003_basic_enter": "view/af_ch0003",
     "AF_CH0009_basic_enter": "view/af_ch0009",
     "AF_CH0011_basic_enter": "view/af_ch0011",
     "AF_CH0015_basic_enter": "view/af_ch0015",
@@ -14,6 +15,19 @@
     "AF_CH0058_basic_enter": "view/af_ch0058",
     "AF_CH0069_basic_enter": "view/af_ch0069",
     "AF_CH0075_basic_enter": "view/af_ch0075",
+    "DS_CH0003_basic_enter": "view/ds_ch0003",
+    "DS_CH0003_overlay_B2_off": "view/ds_ch0003",
+    "DS_CH0003_overlay_B2_on": "view/ds_ch0003",
+    "DS_CH0003_overlay_B3_off": "view/ds_ch0003",
+    "DS_CH0003_overlay_B3_on": "view/ds_ch0003",
+    "DS_CH0003_overlay_T1": "view/ds_ch0003",
+    "DS_CH0003_reaction_A1_1": "view/ds_ch0003",
+    "DS_CH0003_reaction_A1_3": "view/ds_ch0003",
+    "DS_CH0003_reaction_A1_4": "view/ds_ch0003",
+    "DS_CH0003_reaction_A2_1": "view/ds_ch0003",
+    "DS_CH0003_reaction_A2_3": "view/ds_ch0003",
+    "DS_CH0003_reaction_A2_4": "view/ds_ch0003",
+    "DS_CH0003_reaction_H1": "view/ds_ch0003",
     "DS_CH0009_basic_enter": "view/ds_ch0009",
     "DS_CH0009_reaction_A1": "view/ds_ch0009",
     "DS_CH0009_reaction_A2": "view/ds_ch0009",
@@ -173,6 +187,7 @@
     "SE_Angry_01": "sfx",
     "SE_Awakening_01": "sfx",
     "SE_Awakening_01_LP": "sfx",
+    "SE_Bell_01": "sfx",
     "SE_Bell_03": "sfx",
     "SE_Bell_04": "sfx",
     "SE_Bell_05": "sfx",
@@ -269,6 +284,7 @@
     "SE_Door_07": "sfx",
     "SE_Door_08": "sfx",
     "SE_Door_09": "sfx",
+    "SE_Door_10": "sfx",
     "SE_Door_crash_01": "sfx",
     "SE_Door_lock_01": "sfx",
     "SE_Door_lock_open_01": "sfx",
@@ -414,6 +430,7 @@
     "SE_Question_01": "sfx",
     "SE_Question_02": "sfx",
     "SE_QuizBell_01": "sfx",
+    "SE_Radar_01": "sfx",
     "SE_Rage_01": "sfx",
     "SE_Rain_01_AMB": "sfx",
     "SE_Record_01": "sfx",
@@ -491,6 +508,7 @@
     "SE_Solace_02": "sfx",
     "SE_Sonic_boom_01": "sfx",
     "SE_Spear_01": "sfx",
+    "SE_Spike_01": "sfx",
     "SE_Steel_Hit_01": "sfx",
     "SE_Step_01": "sfx",
     "SE_Suction_01": "sfx",
@@ -532,6 +550,7 @@
     "SE_Typing_01": "sfx",
     "SE_Unlock_01": "sfx",
     "SE_Vibraslap_01": "sfx",
+    "SE_Vibration_02": "sfx",
     "SE_Victory_01": "sfx",
     "SE_Walk_01_A": "sfx",
     "SE_Walk_01_B": "sfx",
@@ -598,6 +617,7 @@
     "SFX_BG_36_Sword": "sfx",
     "SFX_BG_37_EyeFight": "sfx",
     "SFX_BG_40_Spotlight2": "sfx",
+    "SFX_BG_41_Twinkle": "sfx",
     "SFX_BG_42_LightSource": "sfx",
     "SFX_BG_43_Fall": "sfx",
     "SFX_BG_44_Airborne": "sfx",
@@ -618,6 +638,7 @@
     "SFX_CH_SOS": "sfx",
     "SFX_CH_Shield": "sfx",
     "SFX_CH_WhirlWind": "sfx",
+    "SFX_CH_Wisp": "sfx",
     "SFX_Can_01": "sfx",
     "SFX_Char_Emo_01_Respond": "sfx",
     "SFX_Char_Emo_02_Surprise": "sfx",
@@ -645,7 +666,9 @@
     "SFX_Char_Emo_25_Surprise4": "sfx",
     "SFX_Char_Emo_27_Gogo": "sfx",
     "SFX_Char_Emo_32_Angry2": "sfx",
+    "SFX_Char_Emo_32_angry4": "sfx",
     "SFX_Char_Emo_33_Sleep": "sfx",
+    "SFX_Char_Emo_33_tremble": "sfx",
     "SFX_Char_Emo_34_Lovebreak": "sfx",
     "SFX_Char_Emo_35_Ghost": "sfx",
     "SFX_Char_Emo_39_Shy": "sfx",
@@ -789,6 +812,9 @@
     "bgm_romance_013_lp": "bgm",
     "bgm_romance_014_in": "bgm",
     "bgm_romance_014_lp": "bgm",
+    "bgm_romance_015_in": "bgm",
+    "bgm_romance_015_lp": "bgm",
+    "bgm_romance_016": "bgm",
     "bgm_romance_017_in": "bgm",
     "bgm_romance_017_lp": "bgm",
     "bgm_romance_018_in": "bgm",
@@ -906,9 +932,14 @@
     "bgm_story_089": "bgm",
     "bgm_story_090": "bgm",
     "bgm_story_091": "bgm",
-    "bgm_story_091_var": "bgm"
+    "bgm_story_091_var": "bgm",
+    "bgm_story_092": "bgm",
+    "bgm_story_093": "bgm"
   },
   "animations": {
+    "af_ch0003": {
+      "basic/enter": "AF_CH0003_basic_enter"
+    },
     "af_ch0009": {
       "basic/10_enter": "AF_CH0009_basic_enter"
     },
@@ -950,6 +981,21 @@
     },
     "af_ch0075": {
       "basic/enter": "AF_CH0075_basic_enter"
+    },
+    "ds_ch0003": {
+      "10_basic/10_enter": "DS_CH0003_basic_enter",
+      "10_reaction/10_A1_1": "DS_CH0003_reaction_A1_1",
+      "10_reaction/10_A1_3": "DS_CH0003_reaction_A1_3",
+      "10_reaction/10_A1_4": "DS_CH0003_reaction_A1_4",
+      "10_reaction/10_A2_1": "DS_CH0003_reaction_A2_1",
+      "10_reaction/10_A2_3": "DS_CH0003_reaction_A2_3",
+      "10_reaction/10_A2_4": "DS_CH0003_reaction_A2_4",
+      "10_reaction/10_H1": "DS_CH0003_reaction_H1",
+      "30_overlay/30_B2_off": "DS_CH0003_overlay_B2_off",
+      "30_overlay/30_B2_on": "DS_CH0003_overlay_B2_on",
+      "30_overlay/30_B3_off": "DS_CH0003_overlay_B3_off",
+      "30_overlay/30_B3_on": "DS_CH0003_overlay_B3_on",
+      "30_overlay/30_T1": "DS_CH0003_overlay_T1"
     },
     "ds_ch0009": {
       "10_basic/10_enter": "DS_CH0009_basic_enter",
@@ -1671,6 +1717,18 @@
       "seconds": 44.8
     },
     {
+      "id": "bgm_story_092",
+      "group": "story",
+      "loop": "bgm_story_092",
+      "seconds": 78.9
+    },
+    {
+      "id": "bgm_story_093",
+      "group": "story",
+      "loop": "bgm_story_093",
+      "seconds": 88.9
+    },
+    {
       "id": "bgm_battle_001",
       "group": "battle",
       "loop": "bgm_battle_001",
@@ -2051,6 +2109,19 @@
       "loop": "bgm_romance_014_lp",
       "intro": "bgm_romance_014_in",
       "seconds": 66.0
+    },
+    {
+      "id": "bgm_romance_015",
+      "group": "romance",
+      "loop": "bgm_romance_015_lp",
+      "intro": "bgm_romance_015_in",
+      "seconds": 30.8
+    },
+    {
+      "id": "bgm_romance_016",
+      "group": "romance",
+      "loop": "bgm_romance_016",
+      "seconds": 84.9
     },
     {
       "id": "bgm_romance_017",

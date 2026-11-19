@@ -9229,6 +9229,138 @@
     "HEAL_RECEIVE": 1.0,
     "ATTACK_SPEED_NORMAL": 1.0
    },
+   "30901": {
+    "PHYSICS_ATTACK": 192.0,
+    "PHYSICS_DEFENSE": 225.0,
+    "MAX_LIFE": 79200.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30902": {
+    "PHYSICS_ATTACK": 224.0,
+    "PHYSICS_DEFENSE": 225.0,
+    "MAX_LIFE": 66000.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30903": {
+    "PHYSICS_ATTACK": 192.0,
+    "PHYSICS_DEFENSE": 225.0,
+    "MAX_LIFE": 52800.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30904": {
+    "PHYSICS_ATTACK": 208.0,
+    "PHYSICS_DEFENSE": 375.0,
+    "MAX_LIFE": 338800.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "PHYSICS_CRITICAL_DAMAGE": 1.5,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30905": {
+    "PHYSICS_ATTACK": 224.0,
+    "PHYSICS_DEFENSE": 375.0,
+    "MAX_LIFE": 330000.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "PHYSICS_CRITICAL_DAMAGE": 1.5,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30906": {
+    "PHYSICS_ATTACK": 168.0,
+    "PHYSICS_DEFENSE": 120.0,
+    "MAX_LIFE": 14520.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30907": {
+    "PHYSICS_ATTACK": 176.0,
+    "PHYSICS_DEFENSE": 120.0,
+    "MAX_LIFE": 12540.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30908": {
+    "PHYSICS_ATTACK": 128.0,
+    "PHYSICS_DEFENSE": 120.0,
+    "MAX_LIFE": 16720.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30909": {
+    "PHYSICS_ATTACK": 144.0,
+    "PHYSICS_DEFENSE": 120.0,
+    "MAX_LIFE": 9900.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30910": {
+    "PHYSICS_ATTACK": 168.0,
+    "PHYSICS_DEFENSE": 120.0,
+    "MAX_LIFE": 13420.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30911": {
+    "PHYSICS_ATTACK": 144.0,
+    "PHYSICS_DEFENSE": 120.0,
+    "MAX_LIFE": 17600.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30912": {
+    "PHYSICS_ATTACK": 168.0,
+    "PHYSICS_DEFENSE": 120.0,
+    "MAX_LIFE": 14740.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
+   "30913": {
+    "PHYSICS_ATTACK": 168.0,
+    "PHYSICS_DEFENSE": 120.0,
+    "MAX_LIFE": 13420.0,
+    "ACCURACY": 25.0,
+    "EVASION": 10.0,
+    "WEIGHT": 1.0,
+    "HEAL_RECEIVE": 1.0,
+    "ATTACK_SPEED_NORMAL": 1.0
+   },
    "40101": {
     "PHYSICS_ATTACK": 91.2,
     "PHYSICS_DEFENSE": 15.0,
@@ -22600,6 +22732,84 @@
     "ACCURACY": 1.0,
     "EVASION": 1.0
    },
+   "30901": {
+    "PHYSICS_ATTACK": 21.5,
+    "MAX_LIFE": 3960.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30902": {
+    "PHYSICS_ATTACK": 25.09,
+    "MAX_LIFE": 3300.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30903": {
+    "PHYSICS_ATTACK": 21.5,
+    "MAX_LIFE": 2640.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30904": {
+    "PHYSICS_ATTACK": 23.3,
+    "MAX_LIFE": 16940.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30905": {
+    "PHYSICS_ATTACK": 25.09,
+    "MAX_LIFE": 16500.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30906": {
+    "PHYSICS_ATTACK": 18.82,
+    "MAX_LIFE": 726.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30907": {
+    "PHYSICS_ATTACK": 19.71,
+    "MAX_LIFE": 627.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30908": {
+    "PHYSICS_ATTACK": 14.34,
+    "MAX_LIFE": 836.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30909": {
+    "PHYSICS_ATTACK": 16.13,
+    "MAX_LIFE": 495.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30910": {
+    "PHYSICS_ATTACK": 18.82,
+    "MAX_LIFE": 671.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30911": {
+    "PHYSICS_ATTACK": 16.13,
+    "MAX_LIFE": 880.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30912": {
+    "PHYSICS_ATTACK": 18.82,
+    "MAX_LIFE": 737.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
+   "30913": {
+    "PHYSICS_ATTACK": 18.82,
+    "MAX_LIFE": 671.0,
+    "ACCURACY": 1.0,
+    "EVASION": 1.0
+   },
    "40101": {
     "PHYSICS_ATTACK": 10.21,
     "MAX_LIFE": 259.6,
@@ -30329,6 +30539,58 @@
    "repeat": "np0209_battle_pattern_repeat"
   },
   "30813": {
+   "start": "np0211_battle_pattern_start",
+   "repeat": "np0211_battle_pattern_repeat"
+  },
+  "30901": {
+   "start": "np6020_battle_pattern_start_01",
+   "repeat": "np6020_battle_pattern_repeat_01"
+  },
+  "30902": {
+   "start": "np6021_battle_pattern_start_01",
+   "repeat": "np6021_battle_pattern_repeat_01"
+  },
+  "30903": {
+   "start": "np6022_battle_pattern_start_01",
+   "repeat": "np6022_battle_pattern_repeat_01"
+  },
+  "30904": {
+   "start": "np6023_battle_pattern_start_04",
+   "repeat": "np6023_battle_pattern_repeat_04"
+  },
+  "30905": {
+   "start": "np6024_battle_pattern_start_04",
+   "repeat": "np6024_battle_pattern_repeat_04"
+  },
+  "30906": {
+   "start": "np0110_battle_pattern_start",
+   "repeat": "np0110_battle_pattern_repeat"
+  },
+  "30907": {
+   "start": "np0111_battle_pattern_start",
+   "repeat": "np0111_battle_pattern_repeat"
+  },
+  "30908": {
+   "start": "np0112_battle_pattern_start",
+   "repeat": "np0112_battle_pattern_repeat"
+  },
+  "30909": {
+   "start": "np0307_battle_pattern_start",
+   "repeat": "np0307_battle_pattern_repeat"
+  },
+  "30910": {
+   "start": "np0310_battle_pattern_start",
+   "repeat": "np0310_battle_pattern_repeat"
+  },
+  "30911": {
+   "start": "np0207_battle_pattern_start",
+   "repeat": "np0207_battle_pattern_repeat"
+  },
+  "30912": {
+   "start": "np0209_battle_pattern_start",
+   "repeat": "np0209_battle_pattern_repeat"
+  },
+  "30913": {
    "start": "np0211_battle_pattern_start",
    "repeat": "np0211_battle_pattern_repeat"
   },
@@ -39594,13 +39856,10 @@
     "order": 0,
     "condition": 13,
     "conditionValue": [
-     "0.7"
+     "0.4"
     ],
     "steps": [
-     2,
-     1,
      4,
-     1,
      1,
      4,
      6,
@@ -39611,10 +39870,13 @@
     "order": 1,
     "condition": 13,
     "conditionValue": [
-     "0.4"
+     "0.7"
     ],
     "steps": [
+     2,
+     1,
      4,
+     1,
      1,
      4,
      6,
@@ -119381,6 +119643,127 @@
    ]
   },
   {
+   "id": 7021106,
+   "group": "nemesis:7016",
+   "bossName": "무도회 게스트",
+   "mode": "nemesis",
+   "zoneId": 70211,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6020_zone_01",
+   "nameTemplate": {
+    "ko": "Overture",
+    "en": "Overture"
+   },
+   "weakAttribute": 4,
+   "background": "Battle_Field_Mari'squerade_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7021106,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6020",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6020",
+       "level": 68,
+       "baseStat": 30901,
+       "levelStat": 30901
+      },
+      {
+       "code": "NP0110",
+       "level": 68,
+       "baseStat": 30906,
+       "levelStat": 30906
+      },
+      {
+       "code": "NP0111",
+       "level": 68,
+       "baseStat": 30907,
+       "levelStat": 30907
+      },
+      {
+       "code": "NP0112",
+       "level": 68,
+       "baseStat": 30908,
+       "levelStat": 30908
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bossCode": "NP6022",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6022",
+       "level": 68,
+       "baseStat": 30903,
+       "levelStat": 30903
+      },
+      {
+       "code": "NP0307",
+       "level": 68,
+       "baseStat": 30909,
+       "levelStat": 30909
+      },
+      {
+       "code": "NP0307",
+       "level": 68,
+       "baseStat": 30909,
+       "levelStat": 30909
+      },
+      {
+       "code": "NP0311",
+       "level": 68,
+       "baseStat": 30910,
+       "levelStat": 30910
+      },
+      {
+       "code": "NP0311",
+       "level": 68,
+       "baseStat": 30910,
+       "levelStat": 30910
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bossCode": "NP6021",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6021",
+       "level": 68,
+       "baseStat": 30902,
+       "levelStat": 30902
+      },
+      {
+       "code": "NP0207",
+       "level": 68,
+       "baseStat": 30911,
+       "levelStat": 30911
+      },
+      {
+       "code": "NP0209",
+       "level": 68,
+       "baseStat": 30912,
+       "levelStat": 30912
+      },
+      {
+       "code": "NP0211",
+       "level": 68,
+       "baseStat": 30913,
+       "levelStat": 30913
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 7021201,
    "group": "nemesis:7016",
    "bossName": "안나",
@@ -119546,6 +119929,39 @@
    ]
   },
   {
+   "id": 7021206,
+   "group": "nemesis:7016",
+   "bossName": "안나",
+   "mode": "nemesis",
+   "zoneId": 70212,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6020_zone_02",
+   "nameTemplate": {
+    "ko": "Intermission",
+    "en": "Intermission"
+   },
+   "weakAttribute": 4,
+   "background": "Battle_Field_Mari'squerade_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7021206,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6024",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6024",
+       "level": 68,
+       "baseStat": 30905,
+       "levelStat": 30905
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 7021301,
    "group": "nemesis:7016",
    "bossName": "마리",
@@ -119705,6 +120121,39 @@
        "level": 65,
        "baseStat": 30804,
        "levelStat": 30804
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7021306,
+   "group": "nemesis:7016",
+   "bossName": "마리",
+   "mode": "nemesis",
+   "zoneId": 70213,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6020_zone_03",
+   "nameTemplate": {
+    "ko": "Finale",
+    "en": "Finale"
+   },
+   "weakAttribute": 4,
+   "background": "Battle_Field_Mari'squerade_03",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7021306,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6023",
+     "bgm": "bgm_battle_012",
+     "enemies": [
+      {
+       "code": "NP6023",
+       "level": 68,
+       "baseStat": 30904,
+       "levelStat": 30904
       }
      ]
     }
@@ -120381,6 +120830,140 @@
    ]
   },
   {
+   "id": 7024106,
+   "group": "nemesis:7014",
+   "bossName": "무도회 게스트",
+   "mode": "nemesis",
+   "zoneId": 70241,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6020_zone_01",
+   "nameTemplate": {
+    "ko": "Overture",
+    "en": "Overture"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_01",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024106,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6020",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6020",
+       "level": 68,
+       "baseStat": 30901,
+       "levelStat": 30901,
+       "attribute": 4
+      },
+      {
+       "code": "NP0110",
+       "level": 68,
+       "baseStat": 30906,
+       "levelStat": 30906,
+       "attribute": 4
+      },
+      {
+       "code": "NP0111",
+       "level": 68,
+       "baseStat": 30907,
+       "levelStat": 30907,
+       "attribute": 4
+      },
+      {
+       "code": "NP0112",
+       "level": 68,
+       "baseStat": 30908,
+       "levelStat": 30908,
+       "attribute": 4
+      }
+     ]
+    },
+    {
+     "sequence": 2,
+     "encounter": "run",
+     "bossCode": "NP6022",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6022",
+       "level": 68,
+       "baseStat": 30903,
+       "levelStat": 30903,
+       "attribute": 4
+      },
+      {
+       "code": "NP0307",
+       "level": 68,
+       "baseStat": 30909,
+       "levelStat": 30909,
+       "attribute": 4
+      },
+      {
+       "code": "NP0307",
+       "level": 68,
+       "baseStat": 30909,
+       "levelStat": 30909,
+       "attribute": 4
+      },
+      {
+       "code": "NP0311",
+       "level": 68,
+       "baseStat": 30910,
+       "levelStat": 30910,
+       "attribute": 4
+      },
+      {
+       "code": "NP0311",
+       "level": 68,
+       "baseStat": 30910,
+       "levelStat": 30910,
+       "attribute": 4
+      }
+     ]
+    },
+    {
+     "sequence": 3,
+     "encounter": "run",
+     "bossCode": "NP6021",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6021",
+       "level": 68,
+       "baseStat": 30902,
+       "levelStat": 30902,
+       "attribute": 4
+      },
+      {
+       "code": "NP0207",
+       "level": 68,
+       "baseStat": 30911,
+       "levelStat": 30911,
+       "attribute": 4
+      },
+      {
+       "code": "NP0209",
+       "level": 68,
+       "baseStat": 30912,
+       "levelStat": 30912,
+       "attribute": 4
+      },
+      {
+       "code": "NP0211",
+       "level": 68,
+       "baseStat": 30913,
+       "levelStat": 30913,
+       "attribute": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 7024201,
    "group": "nemesis:7014",
    "bossName": "안나",
@@ -120551,6 +121134,40 @@
    ]
   },
   {
+   "id": 7024206,
+   "group": "nemesis:7014",
+   "bossName": "안나",
+   "mode": "nemesis",
+   "zoneId": 70242,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6020_zone_02",
+   "nameTemplate": {
+    "ko": "Intermission",
+    "en": "Intermission"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_02",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024206,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6024",
+     "bgm": "bgm_battle_011",
+     "enemies": [
+      {
+       "code": "NP6024",
+       "level": 68,
+       "baseStat": 30905,
+       "levelStat": 30905,
+       "attribute": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": 7024301,
    "group": "nemesis:7014",
    "bossName": "마리",
@@ -120714,6 +121331,40 @@
        "level": 65,
        "baseStat": 30804,
        "levelStat": 30804,
+       "attribute": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": 7024306,
+   "group": "nemesis:7014",
+   "bossName": "마리",
+   "mode": "nemesis",
+   "zoneId": 70243,
+   "order": 6,
+   "nameKey": "contents_nemesis_np6020_zone_03",
+   "nameTemplate": {
+    "ko": "Finale",
+    "en": "Finale"
+   },
+   "weakAttribute": 2,
+   "background": "Battle_Field_Mari'squerade_03",
+   "bgm": "bgm_battle_001",
+   "waveGroup": 7024306,
+   "waves": [
+    {
+     "sequence": 1,
+     "encounter": "run",
+     "bossCode": "NP6023",
+     "bgm": "bgm_battle_012",
+     "enemies": [
+      {
+       "code": "NP6023",
+       "level": 68,
+       "baseStat": 30904,
+       "levelStat": 30904,
        "attribute": 4
       }
      ]

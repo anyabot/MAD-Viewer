@@ -160,6 +160,216 @@
     "voc_ch0002_outgame_skilllv_2": "jp/ch0002/outgame",
     "voc_ch0002_outgame_starup_1": "jp/ch0002/outgame",
     "voc_ch0002_outgame_starup_2": "jp/ch0002/outgame",
+    "voc_ch0003_affection_lobby_1": "jp/ch0003/affection",
+    "voc_ch0003_affection_lobby_2": "jp/ch0003/affection",
+    "voc_ch0003_affection_lobby_3": "jp/ch0003/affection",
+    "voc_ch0003_affection_lobby_4": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_1": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_10": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_11": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_12": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_13": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_14": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_15": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_16": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_17": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_18": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_19": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_2": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_20": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_21": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_22": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_23": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_24": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_25": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_26": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_27": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_28": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_3": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_4": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_5": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_6": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_7": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_8": "jp/ch0003/affection",
+    "voc_ch0003_affection_view_9": "jp/ch0003/affection",
+    "voc_ch0003_desire_enjoy_1": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_10": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_11": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_12": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_13": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_14": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_15": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_16": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_17": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_18": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_19": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_2": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_20": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_21": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_22": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_23": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_24": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_25": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_26": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_27": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_28": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_29": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_3": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_30": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_31": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_32": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_33": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_34": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_35": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_36": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_37": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_38": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_39": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_4": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_40_1": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_40_1_ver2": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_40_2": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_40_3": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_40_4": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_40_4_ver2": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_41_1": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_41_2": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_41_3": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_41_4": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_5": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_50": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_51": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_52": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_53": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_54": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_55": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_56": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_57": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_58": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_59": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_6": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_60": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_7": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_8": "jp/ch0003/desire",
+    "voc_ch0003_desire_enjoy_9": "jp/ch0003/desire",
+    "voc_ch0003_desire_lobby_1": "jp/ch0003/desire",
+    "voc_ch0003_desire_lobby_2": "jp/ch0003/desire",
+    "voc_ch0003_desire_lobby_3": "jp/ch0003/desire",
+    "voc_ch0003_desire_lobby_4": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_1": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_10": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_11": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_12": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_13": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_14": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_15": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_16": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_17": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_18": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_19": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_2": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_3": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_4": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_5": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_6": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_7": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_8": "jp/ch0003/desire",
+    "voc_ch0003_desire_story_9": "jp/ch0003/desire",
+    "voc_ch0003_ingame_burst_1_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_burst_1_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_burst_2_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_burst_2_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_burst_3_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_burst_3_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_die_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_die_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_enter_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_enter_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_lose_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_lose_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_move_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_move_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_skill_1_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_skill_1_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_skill_2_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_skill_2_2": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_win_1": "jp/ch0003/ingame",
+    "voc_ch0003_ingame_win_2": "jp/ch0003/ingame",
+    "voc_ch0003_lobby_enter_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_birthday_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_birthday_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_christmas_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_christmas_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_halloween_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_halloween_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_newyear_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_newyear_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_summer_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_summer_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_valentine_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_enter_valentine_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_3": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_4": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_5": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_6": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_7": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_8": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_birthday_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_birthday_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_christmas_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_christmas_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_halloween_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_halloween_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_newyear_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_newyear_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_summer_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_summer_2": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_valentine_1": "jp/ch0003/lobby",
+    "voc_ch0003_lobby_touch_valentine_2": "jp/ch0003/lobby",
+    "voc_ch0003_outgame_charget_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_charlv_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_charlv_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_10": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_11": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_12": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_3": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_4": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_5": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_6": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_7": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_8": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_effect_9": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_gift_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_gift_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_gift_3": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_gift_4": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_gift_5": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_gift_6": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_intro_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_intro_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_list_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_list_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_profile_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_profile_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_profile_3": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_profile_4": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_rankup_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_rankup_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_rankup_3": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_rankup_4": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_rankup_5": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_rankup_6": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_select_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_select_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_skilllv_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_skilllv_2": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_starup_1": "jp/ch0003/outgame",
+    "voc_ch0003_outgame_starup_2": "jp/ch0003/outgame",
     "voc_ch0005_event_lobby_enter_1": "jp/ch0005/outgame",
     "voc_ch0005_event_lobby_enter_2": "jp/ch0005/outgame",
     "voc_ch0005_event_lobby_enter_3": "jp/ch0005/outgame",
@@ -6106,6 +6316,79 @@
     "voc_ch0075_outgame_starup_2": "jp/ch0075/outgame"
   },
   "scripts": {
+    "relationshipstory/ch0003/ch0003_03_affection_story": {
+      "~15cdf993": "voc_ch0003_affection_view_9",
+      "~66710d3d": "voc_ch0003_affection_view_19",
+      "~6bf0b19e": "voc_ch0003_affection_view_16",
+      "~78195bea": "voc_ch0003_affection_view_20",
+      "~7997804d": "voc_ch0003_affection_view_2",
+      "~99905c64": "voc_ch0003_affection_view_8",
+      "~b9c04475": "voc_ch0003_affection_view_21",
+      "~c02c19b4": "voc_ch0003_affection_view_17",
+      "~cc7fbd0d": "voc_ch0003_affection_view_6",
+      "~d29c6ed2": "voc_ch0003_affection_view_7",
+      "~ed13b6c9": "voc_ch0003_affection_view_1"
+    },
+    "relationshipstory/ch0003/ch0003_03_affection_view": {
+      "~15cdf993": "voc_ch0003_affection_view_9",
+      "~24167cd8": "voc_ch0003_affection_view_23",
+      "~4b648f15": "voc_ch0003_affection_view_27",
+      "~66710d3d": "voc_ch0003_affection_view_19",
+      "~6bf0b19e": "voc_ch0003_affection_view_16",
+      "~78195bea": "voc_ch0003_affection_view_20",
+      "~7997804d": "voc_ch0003_affection_view_2",
+      "~94c3ac6a": "voc_ch0003_affection_view_24",
+      "~99905c64": "voc_ch0003_affection_view_8",
+      "~b9c04475": "voc_ch0003_affection_view_21",
+      "~c02c19b4": "voc_ch0003_affection_view_17",
+      "~cc7fbd0d": "voc_ch0003_affection_view_6",
+      "~cce108c4": "voc_ch0003_affection_view_28",
+      "~d29c6ed2": "voc_ch0003_affection_view_7",
+      "~ed13b6c9": "voc_ch0003_affection_view_1",
+      "~f8caa85e": "voc_ch0003_affection_view_25"
+    },
+    "relationshipstory/ch0003/ch0003_05_desire_story": {
+      "~1efb2871": "voc_ch0003_desire_story_17",
+      "~2982e3e": "voc_ch0003_desire_story_1",
+      "~43a36ebf": "voc_ch0003_desire_story_10",
+      "~5106609b": "voc_ch0003_desire_story_7",
+      "~66c5936c": "voc_ch0003_desire_story_9",
+      "~720cc3dd": "voc_ch0003_desire_story_6",
+      "~7e9fb7d4": "voc_ch0003_desire_story_3",
+      "~813d1894": "voc_ch0003_desire_story_4",
+      "~8456a4b7": "voc_ch0003_desire_story_8",
+      "~93f3af92": "voc_ch0003_desire_story_15",
+      "~a09dc360": "voc_ch0003_desire_story_16",
+      "~c01963ed": "voc_ch0003_desire_story_5",
+      "~cdfe7a83": "voc_ch0003_desire_story_18",
+      "~da856d81": "voc_ch0003_desire_story_19",
+      "~e281070": "voc_ch0003_desire_story_2"
+    },
+    "relationshipstory/ch0003/ch0003_05_desire_view": {
+      "~108d1d57": "voc_ch0003_desire_enjoy_40_4",
+      "~1fe399d4": "voc_ch0003_desire_enjoy_40_3",
+      "~29cb32da": "voc_ch0003_desire_enjoy_41_2",
+      "~3381bbb2": "voc_ch0003_desire_enjoy_27",
+      "~368f05c": "voc_ch0003_desire_enjoy_16",
+      "~38f8a6c": "voc_ch0003_desire_enjoy_10",
+      "~4ba38a71": "voc_ch0003_desire_enjoy_20",
+      "~4f309cdd": "voc_ch0003_desire_enjoy_26",
+      "~53515dc9": "voc_ch0003_desire_enjoy_18",
+      "~56231163": "voc_ch0003_desire_enjoy_41_4",
+      "~565c8875": "voc_ch0003_desire_enjoy_17",
+      "~8a3ee1ec": "voc_ch0003_desire_enjoy_40_1",
+      "~8ba2889c": "voc_ch0003_desire_enjoy_7",
+      "~91772f26": "voc_ch0003_desire_enjoy_40_2",
+      "~a0818778": "voc_ch0003_desire_enjoy_41_1",
+      "~abb1cecd": "voc_ch0003_desire_enjoy_19",
+      "~cc4a6b41": "voc_ch0003_desire_enjoy_13",
+      "~cd0e62b": "voc_ch0003_desire_enjoy_12",
+      "~cfa917be": "voc_ch0003_desire_enjoy_41_3",
+      "~d2773e14": "voc_ch0003_desire_enjoy_9",
+      "~e2709f3d": "voc_ch0003_desire_enjoy_24",
+      "~e3c5770": "voc_ch0003_desire_enjoy_21",
+      "~f12519f7": "voc_ch0003_desire_enjoy_25"
+    },
     "relationshipstory/ch0009/ch0009_03_desire_story": {
       "~13cf584f": "voc_ch0009_desire_story_9",
       "~2f656565": "voc_ch0009_desire_story_5",
@@ -7598,6 +7881,429 @@
         "emo": "silence",
         "wait": 2.0,
         "textEn": "Getting closer to someone...\nis such a wonderful thing!"
+      }
+    ],
+    "CH0003": [
+      {
+        "id": "CH0003_ST_LOBBY_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "아아, 그렇게 강렬한 눈빛으로 바라보시다니... 끓어오르는 욕망이 주체가 안 되시나요~?",
+        "voice": "voc_ch0003_lobby_touch_1",
+        "face": "shy",
+        "emo": "shy",
+        "wait": 3.0,
+        "textEn": "Oh my... You're staring so intently. Are you having trouble keeping those urges in check?"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "인연이란, 언제 어디서 새로이 이어질지 아무도 모르는 법이죠…\n마치, 저희 둘처럼요~",
+        "voice": "voc_ch0003_lobby_touch_2",
+        "ani": "active",
+        "emo": "love",
+        "textEn": "No one ever knows when or where a new bond will tie us together...\nJust like the two of us!"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_TOUCH_03",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "후우, 제 상품이 잘 어울릴 법한 손님은 찾기 참 어려운 것 같아요~ 아아, 밧줄이 잘 어울릴만한 사람이 또 제 앞에 갑자기 나타나 줬으면…",
+        "voice": "voc_ch0003_lobby_touch_3",
+        "face": "closeeye",
+        "emo": "sigh",
+        "textEn": "Phew, it's so hard to find a customer who would look good in my merchandise. Ah, I wish someone who looks great in ropes would suddenly appear before me again..."
+      },
+      {
+        "id": "CH0003_ST_LOBBY_TOUCH_04",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "어머, 이 실이 신경 쓰이나요~?\n혹시... 실뜨기 놀이, 좋아하세요~?",
+        "voice": "voc_ch0003_lobby_touch_4",
+        "face": "question",
+        "emo": "question",
+        "textEn": "Oh my, does this thread catch your eye?\nBy any chance... do you like playing cat's cradle?"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_TOUCH_05",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ],
+        "text": "흡…",
+        "voice": "voc_ch0003_lobby_touch_5",
+        "ani": "breast_touch",
+        "emo": "surprise",
+        "textEn": "Oh...!"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_TOUCH_06",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ],
+        "text": "흐앗...!",
+        "voice": "voc_ch0003_lobby_touch_6",
+        "ani": "breast_touch",
+        "emo": "surprise2",
+        "textEn": "Hah...!"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_TOUCH_07",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ],
+        "text": "으앗...!",
+        "voice": "voc_ch0003_lobby_touch_7",
+        "ani": "breast_touch",
+        "emo": "shy",
+        "textEn": "Ah...!"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_TOUCH_08",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ],
+        "text": "어머...!",
+        "voice": "voc_ch0003_lobby_touch_8",
+        "ani": "breast_touch",
+        "emo": "surprise4",
+        "textEn": "Oh my...!"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_ENTER_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Enter"
+        ],
+        "text": "후훗... 어서 오세요, 해결사님. 오시기를 기다리고 있었다고요~?\n 뭐 하면서 기다렸냐고요?... 흐응~ 듣고 싶으신가요~?",
+        "voice": "voc_ch0003_lobby_enter_1",
+        "ani": "active",
+        "emo": "respond",
+        "textEn": "Hehe... Welcome, Fixer. You know I've been waiting for you, right?\n What was I doing while waiting?... Hmm, would you like to hear?"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_ENTER_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Enter"
+        ],
+        "text": "이것도 운명의 이끌림이겠죠~?\n다시 만나서 반가워요, 해결사님~",
+        "voice": "voc_ch0003_lobby_enter_2",
+        "face": "question",
+        "emo": "question",
+        "textEn": "This must be the pull of fate too, right?\nIt's lovely to see you again, Fixer!"
+      },
+      {
+        "id": "CH0003_ST_LOBBY_ONLOOK_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Onlook"
+        ],
+        "text": "어머, 해결사님은 부재중인가 보군요~ 좋아요, 그럼 이 틈에 해결사님의 방을 한번 몰래…",
+        "voice": "voc_ch0003_outgame_profile_1",
+        "ani": "idle_boring",
+        "emo": "shy",
+        "textEn": "Oh my, it looks like the Fixer's away. Perfect... Now's my chance to slip into his room and..."
+      },
+      {
+        "id": "CH0003_ST_LOBBY_ONLOOK_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Onlook"
+        ],
+        "text": "아쉬워라~ 해결사님이 오늘은 얼마나 예술적으로 절 묶어줄지 궁금했었는데~",
+        "voice": "voc_ch0003_outgame_profile_2",
+        "ani": "idle_boring",
+        "emo": "sigh",
+        "textEn": "What a shame... I was wondering how creative you'd get tying me up today, Fixer."
+      },
+      {
+        "id": "CH0003_DE_LOBBY_TOUCH_01",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "손재주가 좋으면... 스스로를 이렇게 매달고, 풀고 하는 것은 일도 아니에요~",
+        "voice": "voc_ch0003_desire_lobby_1",
+        "ani": "active",
+        "textEn": "When you're good with your hands... suspending yourself like this is easy. Getting free again is just as simple."
+      },
+      {
+        "id": "CH0003_DE_LOBBY_TOUCH_02",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "몸의 자유를 포기하는 대신, 더욱 깊게 생각하고... 느낄 수 있지요…",
+        "voice": "voc_ch0003_desire_lobby_2",
+        "ani": "active",
+        "textEn": "When I let myself be bound... I can think... and feel so much more deeply..."
+      },
+      {
+        "id": "CH0003_DE_LOBBY_TOUCH_03",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "후후후... 그래서, 해결사님은 저를 어떻게 하고... 싶으신가요~?",
+        "voice": "voc_ch0003_desire_lobby_3",
+        "ani": "active",
+        "textEn": "Hehehe... Tell me, Fixer... what would you like to do to me?"
+      },
+      {
+        "id": "CH0003_DE_LOBBY_TOUCH_04",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "후후... 해결사님이 무슨 짓을 하셔도, 지금의 저로서는 저항할 수단이 전혀 없단 말이죠~?",
+        "voice": "voc_ch0003_desire_lobby_4",
+        "ani": "active",
+        "textEn": "Hehe... Whatever you do to me, Fixer... I can't exactly resist you like this, can I?"
+      },
+      {
+        "id": "CH0003_DE_LOBBY_TOUCH_05",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "손재주가 좋으면... 스스로를 이렇게 매달고, 풀고 하는 것은 일도 아니에요~",
+        "voice": "voc_ch0003_desire_lobby_1",
+        "ani": "active",
+        "textEn": "When you're good with your hands... suspending yourself like this is easy. Getting free again is just as simple."
+      },
+      {
+        "id": "CH0003_DE_LOBBY_TOUCH_06",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "몸의 자유를 포기하는 대신, 더욱 깊게 생각하고... 느낄 수 있지요…",
+        "voice": "voc_ch0003_desire_lobby_2",
+        "ani": "active",
+        "textEn": "When I let myself be bound... I can think... and feel so much more deeply..."
+      },
+      {
+        "id": "CH0003_DE_LOBBY_TOUCH_07",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "후후후... 그래서, 해결사님은 저를 어떻게 하고... 싶으신가요~?",
+        "voice": "voc_ch0003_desire_lobby_3",
+        "ani": "active",
+        "textEn": "Hehehe... Tell me, Fixer... what would you like to do to me?"
+      },
+      {
+        "id": "CH0003_DE_LOBBY_TOUCH_08",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "후후... 해결사님이 무슨 짓을 하셔도, 지금의 저로서는 저항할 수단이 전혀 없단 말이죠~?",
+        "voice": "voc_ch0003_desire_lobby_4",
+        "ani": "active",
+        "textEn": "Hehe... Whatever you do to me, Fixer... I can't exactly resist you like this, can I?"
+      },
+      {
+        "id": "CH0003_AF_LOBBY_TOUCH_01",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "후후후... 눈을 못 떼시는군요, 해결사님~",
+        "voice": "voc_ch0003_affection_lobby_1",
+        "ani": "active",
+        "textEn": "Hehehe... You can't take your eyes off me, can you, Fixer?"
+      },
+      {
+        "id": "CH0003_AF_LOBBY_TOUCH_02",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "밧줄이 그렇게 신경 쓰이시나요? 한번... 만져보시겠어요...?",
+        "voice": "voc_ch0003_affection_lobby_2",
+        "ani": "active",
+        "textEn": "Are you that curious about the rope? Would you like to... touch it...?"
+      },
+      {
+        "id": "CH0003_AF_LOBBY_TOUCH_03",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "이 실은... 저희 둘만의, 운명의 붉은 실이에요~",
+        "voice": "voc_ch0003_affection_lobby_3",
+        "ani": "active",
+        "textEn": "This is... our red thread of fate. Just for the two of us."
+      },
+      {
+        "id": "CH0003_AF_LOBBY_TOUCH_04",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "뜨겁고, 강렬하고, 아름다운... 그대의 욕망이 느껴져요, 해결사님~",
+        "voice": "voc_ch0003_affection_lobby_4",
+        "ani": "active",
+        "textEn": "So intense... so beautiful... I can feel your burning desire, Fixer."
+      },
+      {
+        "id": "CH0003_AF_LOBBY_TOUCH_05",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "후후후... 눈을 못 떼시는군요, 해결사님~",
+        "voice": "voc_ch0003_affection_lobby_1",
+        "ani": "active",
+        "textEn": "Hehehe... You can't take your eyes off me, can you, Fixer?"
+      },
+      {
+        "id": "CH0003_AF_LOBBY_TOUCH_06",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "밧줄이 그렇게 신경 쓰이시나요? 한번... 만져보시겠어요...?",
+        "voice": "voc_ch0003_affection_lobby_2",
+        "ani": "active",
+        "textEn": "Are you that curious about the rope? Would you like to... touch it...?"
+      },
+      {
+        "id": "CH0003_AF_LOBBY_TOUCH_07",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "이 실은... 저희 둘만의, 운명의 붉은 실이에요~",
+        "voice": "voc_ch0003_affection_lobby_3",
+        "ani": "active",
+        "textEn": "This is... our red thread of fate. Just for the two of us."
+      },
+      {
+        "id": "CH0003_AF_LOBBY_TOUCH_08",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "뜨겁고, 강렬하고, 아름다운... 그대의 욕망이 느껴져요, 해결사님~",
+        "voice": "voc_ch0003_affection_lobby_4",
+        "ani": "active",
+        "textEn": "So intense... so beautiful... I can feel your burning desire, Fixer."
+      },
+      {
+        "id": "CH0003_ST_PARTNER_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Partner",
+          "Touch"
+        ],
+        "text": "그럼, 오늘은 어떤 봉인구를 실험해 볼까요~",
+        "voice": "voc_ch0003_outgame_select_1",
+        "ani": "active",
+        "emo": "respond",
+        "textEn": "Now, which sealing implement should we try today?"
+      },
+      {
+        "id": "CH0003_ST_PARTNER_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Partner",
+          "Touch"
+        ],
+        "text": "해결사님이 불러주시다니, 오늘은 좋은 날이군요~",
+        "voice": "voc_ch0003_outgame_select_2",
+        "ani": "active",
+        "emo": "harmony",
+        "textEn": "You called for me, Fixer? You've made my day."
+      },
+      {
+        "id": "CH0003_ST_RELATION_RANKUP_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Relation",
+          "Rankup"
+        ],
+        "text": "더욱 깊어져 가는 인연... 후훗…",
+        "voice": "voc_ch0003_outgame_rankup_1",
+        "face": "closeeye",
+        "emo": "love2",
+        "textEn": "Our bond keeps growing stronger... Hehe..."
+      },
+      {
+        "id": "CH0003_ST_RELATION_RANKUP_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Relation",
+          "Rankup"
+        ],
+        "text": "해결사님을 더욱 깊게 느낄 수 있군요~ 후후후…",
+        "voice": "voc_ch0003_outgame_rankup_2",
+        "face": "happy",
+        "emo": "love",
+        "textEn": "I feel even closer to you now, Fixer... Hehehe..."
       }
     ],
     "CH0005": [
@@ -20406,6 +21112,790 @@
         "face": "happy",
         "emo": "shy",
         "textEn": "Every day spent with you is no different from a festival."
+      }
+    ],
+    "CH0071": [
+      {
+        "id": "CH0071_ST_EV1010_SHOP_ENTER_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Shop",
+          "Enter",
+          "Progress"
+        ],
+        "text": "필요한 게 있으시다면 말씀해 주세요."
+      },
+      {
+        "id": "CH0071_ST_EV1010_SHOP_ENTER_02",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Shop",
+          "Enter",
+          "Progress"
+        ],
+        "text": "어서 오세요. 이런 곳에서 이런 복장으로 마주할 줄은... 몰랐습니다."
+      },
+      {
+        "id": "CH0071_ST_EV1010_SHOP_ENTER_END_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Shop",
+          "Enter",
+          "Reward"
+        ],
+        "text": "아쉽지만, 제가 드릴 수 있는 것은 이게 다인 것 같군요."
+      },
+      {
+        "id": "CH0071_ST_EV1010_SHOP_TOUCH_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Shop",
+          "Touch",
+          "Progress"
+        ],
+        "text": "음? 도움이 필요하신가요?"
+      },
+      {
+        "id": "CH0071_ST_EV1010_SHOP_TOUCH_02",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Shop",
+          "Touch",
+          "Progress"
+        ],
+        "text": "저는 <블러디 메리>의 사용인이기도 하지만... 당신의 친우기도 하니, 도움이 필요하시다면 언제든지 말씀해 주셔도 됩니다."
+      },
+      {
+        "id": "CH0071_ST_EV1010_SHOP_TOUCH_END_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Shop",
+          "Touch",
+          "Reward"
+        ],
+        "text": "다음에 뵐 때는 더 좋은 것을 준비하겠습니다."
+      },
+      {
+        "id": "CH0071_ST_EV1010_SHOP_BUY_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Shop",
+          "Buy"
+        ],
+        "text": "보는 눈이 있으시군요."
+      },
+      {
+        "id": "CH0071_ST_EV1010_SHOP_BUY_02",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Shop",
+          "Buy"
+        ],
+        "text": "<블러디 메리> 만큼은 아니지만... 제가 준비할 수 있는 최고의 한잔을 건네드리겠습니다."
+      },
+      {
+        "id": "CH0071_ST_LOBBY_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "그렇게 뚫어져라 바라보시니.... 조금...부끄럽습니다."
+      },
+      {
+        "id": "CH0071_ST_LOBBY_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "이 옷은 칵테일을 형상화한 란제리라고 하더군요. 조금 부끄럽지만, <블러디 메리>의 바텐더로서는 마음에 듭니다."
+      },
+      {
+        "id": "CH0071_ST_LOBBY_TOUCH_03",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "추우시다면 말씀해 주세요. 온열 모드로 전환하겠습니다."
+      },
+      {
+        "id": "CH0071_ST_LOBBY_TOUCH_04",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "흠... 아이스 카빙은 매번 아쉽군요. 이번 휴가 동안 더 연습해야겠습니다."
+      },
+      {
+        "id": "CH0071_ST_LOBBY_TOUCH_05",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ]
+      },
+      {
+        "id": "CH0071_ST_LOBBY_TOUCH_06",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ]
+      },
+      {
+        "id": "CH0071_ST_LOBBY_TOUCH_07",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ]
+      },
+      {
+        "id": "CH0071_ST_LOBBY_TOUCH_08",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ]
+      },
+      {
+        "id": "CH0071_ST_LOBBY_ENTER_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Enter"
+        ],
+        "text": "오셨군요. 오늘의 기분은 어떠신가요? 부디 평온한 하루 되시길."
+      },
+      {
+        "id": "CH0071_ST_LOBBY_ENTER_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Enter"
+        ],
+        "text": "어서 오세요. 당신께서 다시 찾아주시기만을 고대하고 있었습니다."
+      },
+      {
+        "id": "CH0071_ST_LOBBY_ONLOOK_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Onlook"
+        ],
+        "text": "흐음... 이곳도 한번 청소해야겠군요."
+      },
+      {
+        "id": "CH0071_ST_LOBBY_ONLOOK_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Onlook"
+        ],
+        "text": "... 후우. 가만히 휴식을 취하는 것도 어려운 일이군요."
+      },
+      {
+        "id": "CH0071_DE_LOBBY_TOUCH_01",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "그읏-! 거기는...! 충전이랑은 관계없습니다-!"
+      },
+      {
+        "id": "CH0071_DE_LOBBY_TOUCH_02",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "흐읏...! 이. 이것도 충전 과정인가요?"
+      },
+      {
+        "id": "CH0071_DE_LOBBY_TOUCH_03",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "하아... 하아... 이런 느낌은 처음입니다...."
+      },
+      {
+        "id": "CH0071_DE_LOBBY_TOUCH_04",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "그, 그만...! 더... 더이상은 무리입니다...!"
+      },
+      {
+        "id": "CH0071_DE_LOBBY_TOUCH_05",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "그읏-! 거기는...! 충전이랑은 관계없습니다-!"
+      },
+      {
+        "id": "CH0071_DE_LOBBY_TOUCH_06",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "흐읏...! 이. 이것도 충전 과정인가요?"
+      },
+      {
+        "id": "CH0071_DE_LOBBY_TOUCH_07",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "하아... 하아... 이런 느낌은 처음입니다...."
+      },
+      {
+        "id": "CH0071_DE_LOBBY_TOUCH_08",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "그, 그만...! 더... 더이상은 무리입니다...!"
+      },
+      {
+        "id": "CH0071_AF_LOBBY_TOUCH_01",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "으읏...! 더는...! 참을 수가...! 아흑-!"
+      },
+      {
+        "id": "CH0071_AF_LOBBY_TOUCH_02",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "하으... 아읏! 머, 머릿속이 새하얗습니다...!"
+      },
+      {
+        "id": "CH0071_AF_LOBBY_TOUCH_03",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "하아... 하아...  이런 모습이라도... 저와 함께 해주실 건가요...?"
+      },
+      {
+        "id": "CH0071_AF_LOBBY_TOUCH_04",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "아흐으읏-! 몸. 몸이 식지 않습니다...."
+      },
+      {
+        "id": "CH0071_AF_LOBBY_TOUCH_05",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "으읏...! 더는...! 참을 수가...! 아흑-!"
+      },
+      {
+        "id": "CH0071_AF_LOBBY_TOUCH_06",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "하으... 아읏! 머, 머릿속이 새하얗습니다...!"
+      },
+      {
+        "id": "CH0071_AF_LOBBY_TOUCH_07",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "하아... 하아...  이런 모습이라도... 저와 함께 해주실 건가요...?"
+      },
+      {
+        "id": "CH0071_AF_LOBBY_TOUCH_08",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "아흐으읏-! 몸. 몸이 식지 않습니다...."
+      },
+      {
+        "id": "CH0071_ST_PARTNER_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Partner",
+          "Touch"
+        ],
+        "text": "제게 맡기실 일이 있으신가요?"
+      },
+      {
+        "id": "CH0071_ST_PARTNER_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Partner",
+          "Touch"
+        ],
+        "text": "분부대로 따르죠."
+      },
+      {
+        "id": "CH0071_ST_RELATION_RANKUP_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Relation",
+          "Rankup"
+        ],
+        "text": "당신과 함께 있으면... 감정 조절 장치가 제멋대로 날뛰는 것 같습니다."
+      },
+      {
+        "id": "CH0071_ST_RELATION_RANKUP_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Relation",
+          "Rankup"
+        ],
+        "text": "<블러디 메리>에 오신다면 언제든지 절 찾아주세요. 당신을 위한 특제 칵테일 한 잔을 준비해 두겠습니다."
+      }
+    ],
+    "CH0072": [
+      {
+        "id": "CH0072_ST_EV1010_QUEST_ENTER_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Quest",
+          "Enter",
+          "Progress"
+        ],
+        "text": "작전명 런웨이. 어때? 조금 요원 같지 않아?"
+      },
+      {
+        "id": "CH0072_ST_EV1010_QUEST_ENTER_02",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Quest",
+          "Enter",
+          "Progress"
+        ],
+        "text": "요원 임무도, 모델 역할도 문제없이 해낼거라구."
+      },
+      {
+        "id": "CH0072_ST_EV1010_QUEST_ENTER_END_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Quest",
+          "Enter",
+          "Reward"
+        ],
+        "text": "우리의 활약은 비밀로 남겠지만... 네 덕분에 성공할 수 있었어. 고마워."
+      },
+      {
+        "id": "CH0072_ST_EV1010_QUEST_TOUCH_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Quest",
+          "Touch",
+          "Progress"
+        ],
+        "text": "아직 할 일이 많네. 우릴 우습게 본 녀석들의 코를 납작하게 만들어 주자고."
+      },
+      {
+        "id": "CH0072_ST_EV1010_QUEST_TOUCH_02",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Quest",
+          "Touch",
+          "Progress"
+        ],
+        "text": "후훗, 두부단 애들이 보면 깜짝 놀라겠지? 돌아가면 잔뜩 놀려주자!"
+      },
+      {
+        "id": "CH0072_ST_EV1010_QUEST_TOUCH_END_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Quest",
+          "Touch",
+          "Reward"
+        ],
+        "text": "네가 아니었으면 이렇게 못했을 거야. 고마워. 그리고... 다음에도 잘 부탁해?"
+      },
+      {
+        "id": "CH0072_ST_EV1010_QUEST_CLEAR_01",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Quest",
+          "Cleared"
+        ],
+        "text": "얏호~! 또 하나 클리어~!"
+      },
+      {
+        "id": "CH0072_ST_EV1010_QUEST_CLEAR_02",
+        "filter": [
+          "Standing",
+          "EV1013",
+          "Event_Quest",
+          "Cleared"
+        ],
+        "text": "임무 완료~ 나, 에이스가 돼버릴 지도~?"
+      },
+      {
+        "id": "CH0072_ST_LOBBY_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "이 빅토리아님의 매력에 빠져들게 해줄게☆"
+      },
+      {
+        "id": "CH0072_ST_LOBBY_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "아, 손길이 음흉해~"
+      },
+      {
+        "id": "CH0072_ST_LOBBY_TOUCH_03",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "훗후, 조심해... 나 같은 미녀에겐 치명적인 비밀이 있기 마련이라고!"
+      },
+      {
+        "id": "CH0072_ST_LOBBY_TOUCH_04",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "헤, 헷츄! ...들었어?! 모, 못들었지? 못들었다고 말해~!"
+      },
+      {
+        "id": "CH0072_ST_LOBBY_TOUCH_05",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ]
+      },
+      {
+        "id": "CH0072_ST_LOBBY_TOUCH_06",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ]
+      },
+      {
+        "id": "CH0072_ST_LOBBY_TOUCH_07",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ]
+      },
+      {
+        "id": "CH0072_ST_LOBBY_TOUCH_08",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Touch",
+          "Breast"
+        ]
+      },
+      {
+        "id": "CH0072_ST_LOBBY_ENTER_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Enter"
+        ],
+        "text": "야호~! 같이 런웨이에 오를 준비는 됐어?"
+      },
+      {
+        "id": "CH0072_ST_LOBBY_ENTER_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Enter"
+        ],
+        "text": "어서와! 오늘도 무대에서 반짝반짝하는 모습을 보여주자구."
+      },
+      {
+        "id": "CH0072_ST_LOBBY_ONLOOK_01",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Onlook"
+        ],
+        "text": "저기저기~~ 언제까지 포즈 취하고 있으면 돼?"
+      },
+      {
+        "id": "CH0072_ST_LOBBY_ONLOOK_02",
+        "filter": [
+          "Standing",
+          "Lobby",
+          "Onlook"
+        ],
+        "text": "으응~ 기다리는건, 살짝 지루할지도..."
+      },
+      {
+        "id": "CH0072_DE_LOBBY_TOUCH_01",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "오늘 촬영 잘 부탁해요, 나만의 촬영기사님~"
+      },
+      {
+        "id": "CH0072_DE_LOBBY_TOUCH_02",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "어떤 포즈가 좋아? 요청 OK라구~"
+      },
+      {
+        "id": "CH0072_DE_LOBBY_TOUCH_03",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "이번엔 특별히 너만을 위한 모델이 되어줄게."
+      },
+      {
+        "id": "CH0072_DE_LOBBY_TOUCH_04",
+        "filter": [
+          "Desire",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "으응~ 이거, 옷이 스쳐서... 간지러워..."
+      },
+      {
+        "id": "CH0072_DE_LOBBY_TOUCH_05",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "오늘 촬영 잘 부탁해요, 나만의 촬영기사님~"
+      },
+      {
+        "id": "CH0072_DE_LOBBY_TOUCH_06",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "어떤 포즈가 좋아? 요청 OK라구~"
+      },
+      {
+        "id": "CH0072_DE_LOBBY_TOUCH_07",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "이번엔 특별히 너만을 위한 모델이 되어줄게."
+      },
+      {
+        "id": "CH0072_DE_LOBBY_TOUCH_08",
+        "filter": [
+          "Desire",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "으응~ 이거, 옷이 스쳐서... 간지러워..."
+      },
+      {
+        "id": "CH0072_AF_LOBBY_TOUCH_01",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "이쪽으로 와, 금방 따뜻하게 해 줄 테니까."
+      },
+      {
+        "id": "CH0072_AF_LOBBY_TOUCH_02",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "저기, 춥지? 조금 더... 가까이 붙을래?"
+      },
+      {
+        "id": "CH0072_AF_LOBBY_TOUCH_03",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "나, 체온이 높은 편이거든... 후훗. 확인해 볼래?"
+      },
+      {
+        "id": "CH0072_AF_LOBBY_TOUCH_04",
+        "filter": [
+          "Affection",
+          "Situation1",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "오늘 일은... 친구들한테는 비밀이야~"
+      },
+      {
+        "id": "CH0072_AF_LOBBY_TOUCH_05",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "이쪽으로 와, 금방 따뜻하게 해 줄 테니까."
+      },
+      {
+        "id": "CH0072_AF_LOBBY_TOUCH_06",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "저기, 춥지? 조금 더... 가까이 붙을래?"
+      },
+      {
+        "id": "CH0072_AF_LOBBY_TOUCH_07",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "나, 체온이 높은 편이거든... 후훗. 확인해 볼래?"
+      },
+      {
+        "id": "CH0072_AF_LOBBY_TOUCH_08",
+        "filter": [
+          "Affection",
+          "Situation2",
+          "Lobby",
+          "Touch"
+        ],
+        "text": "오늘 일은... 친구들한테는 비밀이야~"
+      },
+      {
+        "id": "CH0072_ST_PARTNER_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Partner",
+          "Touch"
+        ],
+        "text": "기품있고, 우아하게 가자고~ 알겠지?"
+      },
+      {
+        "id": "CH0072_ST_PARTNER_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Partner",
+          "Touch"
+        ],
+        "text": "내 솜씨를 보여주겠어."
+      },
+      {
+        "id": "CH0072_ST_RELATION_RANKUP_TOUCH_01",
+        "filter": [
+          "Standing",
+          "Relation",
+          "Rankup"
+        ],
+        "text": "두근두근 한걸~?"
+      },
+      {
+        "id": "CH0072_ST_RELATION_RANKUP_TOUCH_02",
+        "filter": [
+          "Standing",
+          "Relation",
+          "Rankup"
+        ],
+        "text": "이 빅토리아님의 매력을 잔뜩 느껴보라구~"
       }
     ],
     "CH0075": [

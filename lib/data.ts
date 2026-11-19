@@ -1078,6 +1078,7 @@ export type RewardMissionSet = {
   name?: GameLocalized;
   event?: number;
   pickup?: string;
+  tab?: string;
   open?: RewardWindow;
   reset?: 'daily' | 'weekly' | 'monthly';
   point?: { name?: GameLocalized; icon?: string; steps: { need: number; rewards?: string }[] };

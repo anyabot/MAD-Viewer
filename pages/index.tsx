@@ -9,10 +9,12 @@ import {
   EventCard, TimeControls, useNow, useServerTime,
 } from '@/components/eventsBoard';
 import { ArtBox } from '@/components/artBox';
+import { bounded } from '@/components/seasonRewards';
 import { GameIcon } from '@/components/gameIcon';
 import {
-  dataUrl, loadArchive, loadCharacters, loadEvents, loadIcons, loadStages,
-  type ArchiveIndex, type CharacterData, type EventIndex, type GameEvent, type IconManifest, type StageData,
+  dataUrl, loadArchive, loadCharacters, loadEvents, loadIcons, loadRewards, loadStages,
+  type ArchiveIndex, type CharacterData, type EventIndex, type GameEvent, type IconManifest, type RewardIndex,
+  type StageData,
 } from '@/lib/data';
 import { bannerNames, eventPhase, formatMoment, remaining, zoneLabel } from '@/lib/events';
 import { gameText, useGameLang } from '@/lib/gameText';
@@ -93,6 +95,7 @@ export default function Home({ lead }: { lead: HomeLead | null }) {
   const [archive, setArchive] = useState<ArchiveIndex | null>(null);
   const [chars, setChars] = useState<CharacterData | null>(null);
   const [icons, setIcons] = useState<IconManifest | null>(null);
+  const [rewards, setRewards] = useState<RewardIndex | null>(null);
   const [serverTime, setServerTime] = useServerTime();
   const now = useNow(30_000, lead?.builtAt);
   const hideSpoilers = useHideSpoilers();
@@ -110,10 +113,11 @@ export default function Home({ lead }: { lead: HomeLead | null }) {
     loadArchive().then(setArchive).catch(() => setArchive(null));
     loadCharacters().then(setChars).catch(() => setChars(null));
     loadIcons().then(setIcons).catch(() => setIcons(null));
+    loadRewards().then(setRewards).catch(() => setRewards(null));
   }, []);
 
   const live = (events?.events ?? (lead ? [lead.event] : []))
-    .filter((e) => (hideSpoilers ? ['running'] : ['running', 'upcoming']).includes(eventPhase(e, now)))
+    .filter((e) => (hideSpoilers ? ['running', 'exchange'] : ['running', 'exchange', 'upcoming']).includes(eventPhase(e, now)))
     .sort((a, b) => Date.parse(a.end) - Date.parse(b.end));
   const banners = (events?.banners ?? lead?.banners ?? [])
     .filter((b) => now <= Date.parse(b.end) && !(hideSpoilers && isFuture(b.start, now)))
@@ -124,6 +128,8 @@ export default function Home({ lead }: { lead: HomeLead | null }) {
   const season = archive?.seasons.find((s) => s.open && now <= Date.parse(s.open.end)
     && !(hideSpoilers && isFuture(s.open.start, now)));
   const core = stages ? Object.values(stages.groups).filter((g) => g.mode === 'ascent' && groupIsLive(g)) : [];
+  const questEvents = (rewards?.missions ?? []).filter((m) => m.type === 'event_hub' && m.point && bounded(m.open)
+    && now <= Date.parse(m.open.end) && !(hideSpoilers && isFuture(m.open.start, now)));
 
   return (
     <VStack align="stretch" spacing={8}>
@@ -163,6 +169,23 @@ export default function Home({ lead }: { lead: HomeLead | null }) {
               <BannerTile key={b.start} banner={b} now={now} serverTime={serverTime} priority={i === 0}
                 chars={chars ?? lead?.chars ?? null} icons={icons ?? lead?.icons ?? null} />
             ))}
+          </SimpleGrid>
+        </Section>
+      )}
+
+      {questEvents.length > 0 && (
+        <Section title={t('homeQuestEvents')} href="/rewards">
+          <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={3}>
+            {questEvents.map((m) => {
+              const live = now >= Date.parse(m.open!.start);
+              return (
+                <Tile key={m.id} href={`/rewards?tab=missions#mission-${m.id}`} live={live} icons={icons}
+                  art={[['banner', m.tab]]} title={gameText(m.name, gameLang)}
+                  note={live
+                    ? t('eventsEndsIn', { time: remaining(Date.parse(m.open!.end) - now, lang) })
+                    : t('eventsStartsIn', { time: remaining(Date.parse(m.open!.start) - now, lang) })} />
+              );
+            })}
           </SimpleGrid>
         </Section>
       )}

@@ -1,5 +1,1692 @@
 {
   "rigs": {
+    "af_ch0003": {
+      "story": {
+        "script": "ch0003_03_affection_story",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "affection"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_016",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "NaniSummary",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 3,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Unskippable"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 6,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/enter"
+            },
+            "clip": "basic/enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 8,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 10,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_01",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_01"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 11,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 13,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "묶인다는 게 어떤 의미인지 아시나요, 해결사님~?",
+            "texts": {
+              "en": "Do you know what it means to be tied up, Fixer?",
+              "ja": "縛られるって、どんな意味なのか分かりますか、フィクサーさん～？",
+              "zh-Hans": "您知道被绑住意味着什么吗，解决师大人～？",
+              "zh-Hant": "您知道被綁住是什麼意思嗎，解決師大人～？",
+              "th": "รู้ไหมคะว่าการถูกมัดมีความหมายว่ายังไง คุณฟิกเซอร์~?",
+              "es": "¿Sabe qué significa estar atado, Fixer?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_1"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 14,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 16,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그것은... 누군가의 소유물이 된다는 뜻이에요~♡",
+            "texts": {
+              "en": "It means... becoming someone's possession!♡",
+              "ja": "それは…誰かの所有物になる、という意味なんですよ～♡",
+              "zh-Hans": "那意味着……成为某人的所有物哦～♡",
+              "zh-Hant": "那代表……會成為某個人的所有物喔～♡",
+              "th": "มันหมายถึง... การได้กลายเป็นของของใครบางคนยังไงล่ะคะ~♡",
+              "es": "Significa... convertirse en la propiedad de alguien~♡"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_2"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0001"
+            },
+            "clip": "asmr/ani_0001"
+          },
+          {
+            "class": "PrintText",
+            "line": 20,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "몸도... 마음도... 자유도... 전부 바치고...",
+            "texts": {
+              "en": "Offering up everything... your body... your heart... your freedom...",
+              "ja": "身も心も…自由も…全部捧げて…。",
+              "zh-Hans": "身体也好……心灵也好……自由也好……全都献出来……",
+              "zh-Hant": "身體也是……心也是……自由也是……全都奉獻出去……",
+              "th": "ทั้งร่างกาย... หัวใจ... และอิสรภาพ... ขอมอบให้ทั้งหมด...",
+              "es": "Entregar el cuerpo... el corazón... la libertad... absolutamente todo..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 22,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0002"
+            },
+            "clip": "asmr/ani_0002"
+          },
+          {
+            "class": "PrintText",
+            "line": 24,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "상대의 변덕에 모든 것을 맡기는 거죠~♡",
+            "texts": {
+              "en": "And letting the other person call all the shots!♡",
+              "ja": "相手の気まぐれに、全てを託すんです～♡",
+              "zh-Hans": "将一切都交由对方的一时兴起去摆布呢～♡",
+              "zh-Hant": "把一切都交給對方的喜怒無常與一時興起喔～♡",
+              "th": "แล้วฝากทุกสิ่งทุกอย่างไว้กับความเอาแต่ใจของอีกฝ่ายยังไงล่ะคะ~♡",
+              "es": "Y dejarlo todo a merced de los caprichos de la otra persona~♡"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 26,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0003"
+            },
+            "clip": "asmr/ani_0003"
+          },
+          {
+            "class": "PrintText",
+            "line": 28,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아, 그게 지금 이 상황이랑 무슨 관계가 있냐고요...?",
+            "texts": {
+              "en": "Oh, you want to know what that has to do with all this...?",
+              "ja": "ああ、それが今の状況と何か関係があるのか、ですか…？",
+              "zh-Hans": "啊，您问这和现在的情况有什么关系吗……？",
+              "zh-Hant": "啊，您問這跟現在的狀況有什麼關係嗎……？",
+              "th": "อ้อ จะถามว่าเรื่องนั้นมันเกี่ยวอะไรกับสถานการณ์ตอนนี้เหรอคะ...?",
+              "es": "Ah, ¿que qué tiene eso que ver con la situación actual...?"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_02",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_02"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 31,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 33,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗, 바로 이 붉은 실, 붉은 밧줄... 그리고 제 옷과 연관이 있죠~",
+            "texts": {
+              "en": "Heh, it's all connected to this red thread, this Red Rope... and my clothes!",
+              "ja": "ふふっ、それはこの赤い糸、赤い縄…。そして私の服に関係あるんですよ～",
+              "zh-Hans": "呵呵，这跟这根红线、红绳……还有我的衣服可都有关联哦～",
+              "zh-Hant": "呵呵，這跟這條紅線、紅繩……還有我的衣服都有關聯喔～",
+              "th": "ฮุฮุ ก็เกี่ยวกับด้ายแดงเส้นนี้ เชือกสีแดง... แล้วก็เสื้อผ้าของฉันยังไงล่ะคะ~",
+              "es": "Je, je, pues tiene todo que ver con este hilo rojo, esta cuerda roja... y mi ropa."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_6"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 36,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "전부, 평범해 보여도... 매우 특별한 것이거든요...",
+            "texts": {
+              "en": "They may all look ordinary, but... they're actually very special...",
+              "ja": "全部、普通のものに見えても…実は特製なんですよね…。",
+              "zh-Hans": "虽然它们看起来都很普通……但其实全都非常特别呢……",
+              "zh-Hant": "這一切看似平凡……其實都是非常特別的東西喔……",
+              "th": "ทั้งหมดนี้ ถึงจะดูธรรมดา... แต่เป็นของที่พิเศษมากเลยนะคะ...",
+              "es": "Aunque parezcan normales... todo ello es muy especial..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_7"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 39,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "운명의 상대가 아니라면, 절대 풀어질 수 없는 봉인과도 같은...",
+            "texts": {
+              "en": "Like a seal only your destined partner can undo...",
+              "ja": "運命の相手じゃないと、絶対解かれることのない封印のような…。",
+              "zh-Hans": "就像是如果不是命中注定的对象，就绝对无法解开的封印一样……",
+              "zh-Hant": "就像是如果不是命定之人，就絕對無法解開的封印一樣……",
+              "th": "เป็นเหมือนกับผนึกที่หากไม่ใช่เนื้อคู่แห่งโชคชะตา ก็จะไม่มีวันแกะออกได้อย่างเด็ดขาด...",
+              "es": "Es como un sello imposible de desatar a menos que sea por mi persona destinada..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_8"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 40,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.6"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 42,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그런데 그 봉인이, 방금 해결사님의 손에 의해...엉망진창이 되었거든요~?♡",
+            "texts": {
+              "en": "And just now, Fixer... you broke that seal yourself, didn't you?♡",
+              "ja": "…でも、その封印がちょうど今、フィクサーさんに…めちゃくちゃにされちゃったんですよね～？♡",
+              "zh-Hans": "可是那个封印，刚才却被解决师大人的手……弄得一团糟了呢～？♡",
+              "zh-Hant": "可是那個封印，剛才卻被解決師大人的手……弄得一團糟了呢～？♡",
+              "th": "ทว่าผนึกที่ว่านั่น เพิ่งจะถูกมือของคุณฟิกเซอร์... ทำให้เละเทะไม่เป็นท่าไปเมื่อครู่นี้เองค่ะ~?♡",
+              "es": "Pero resulta que las manos del Fixer acaban de... dejar ese sello hecho un verdadero desastre~♡"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_9"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 44,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0004"
+            },
+            "clip": "asmr/ani_0004"
+          },
+          {
+            "class": "PrintText",
+            "line": 46,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아흣~♡  후후, 그렇게 힘을 더 주입한다고 해서 더 풀리진 않아요~",
+            "texts": {
+              "en": "Ahh!♡ Hehe, channeling more energy into it won't loosen it any further!",
+              "ja": "あうっ…♡…ふふっ、そんなに力を入れたって、解かれたりしませんよ～",
+              "zh-Hans": "啊嗯～♡呵呵，就算像那样注入再多的力量，也不会解开得更多的哦～",
+              "zh-Hant": "啊嗯～♡呵呵，就算那樣灌注更多力量，也不會解開更多喔～",
+              "th": "อ๊ะ~♡ ฮุฮุ ต่อให้พยายามอัดพลังเข้าไปมากกว่านี้ มันก็ไม่คลายออกหรอกนะคะ~",
+              "es": "¡Aaah~♡! Je, je, por mucha más fuerza que le inyecte no va a aflojarse más..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 48,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0005"
+            },
+            "clip": "asmr/ani_0005"
+          },
+          {
+            "class": "PrintText",
+            "line": 50,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "다만... 흐응... 봉인이 저항하듯, 몸을 더 파고들 뿐...",
+            "texts": {
+              "en": "It just... mmm... digs deeper into my skin, as though the seal is fighting back...",
+              "ja": "ただ…ううぅん…。封印が抵抗するように、体にもっと食い込むだけで…。",
+              "zh-Hans": "只不过……嗯哼……封印就像是在抵抗一样，勒得身体更深了而已……",
+              "zh-Hant": "只不過……嗯哼……封印就像是在抵抗一樣，會陷進身體裡更深而已……",
+              "th": "มีแต่... อื้อ... ผนึกจะยิ่งรัดแน่นและบาดลึกเข้าไปในเนื้อ เหมือนกำลังต่อต้านเท่านั้นแหละค่ะ...",
+              "es": "Solo consigue que... mmm... el sello se clave aún más en mi piel, como si se resistiera..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 52,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_03_1_1"
+            },
+            "clip": "asmr/loop_03_1_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 54,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하아... 어머, 더 안 하시는 건가요?",
+            "texts": {
+              "en": "Haa... Oh my, stopping already?",
+              "ja": "はあぁ…。…あら、もう止めちゃうんですか？",
+              "zh-Hans": "哈啊……哎呀，您不继续了吗？",
+              "zh-Hant": "哈啊……哎呀，您不繼續做了嗎？",
+              "th": "แฮ่ก... ตายจริง จะไม่ทำต่อแล้วเหรอคะ?",
+              "es": "Aah... Vaya, ¿ya no va a seguir?"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 56,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0005_1"
+            },
+            "clip": "asmr/ani_0005_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 58,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "해결사님이라면, 얼마든지 더 받아들일 수 있는데...",
+            "texts": {
+              "en": "With you, Fixer, I can take as much as you want to give...",
+              "ja": "フィクサーさんでしたら、いくらでも受け止められますけど…。",
+              "zh-Hans": "如果是解决师大人的话，无论多少我都能承受得住哦……",
+              "zh-Hant": "如果是解決師大人的話，無論多少我都能接納的說……",
+              "th": "ถ้าเป็นคุณฟิกเซอร์ล่ะก็ ฉันพร้อมจะรับเข้ามาอีกเท่าไหร่ก็ได้แท้ๆ นะคะ...",
+              "es": "Tratándose de usted, Fixer, puedo aceptar todo lo que quiera echarme..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 60,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_03_1_2"
+            },
+            "clip": "asmr/loop_03_1_2"
+          },
+          {
+            "class": "PrintText",
+            "line": 62,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후후후... 혹시 벌써 지치신 건... 아니시죠~?",
+            "texts": {
+              "en": "Hehehe... Don't tell me you're... worn out already?",
+              "ja": "ふふふっ…。もしかして、もう疲れちゃった…とかじゃないですよね～？",
+              "zh-Hans": "呵呵呵……您该不会是已经累了……吧～？",
+              "zh-Hant": "呵呵呵……您該不會是已經累了……吧～？",
+              "th": "ฮุฮุฮุ... คงไม่ได้เหนื่อยขึ้นมาแล้ว... หรอกใช่ไหมคะ~?",
+              "es": "Je, je, je... ¿No me diga que... ya se ha cansado?"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 64,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0006"
+            },
+            "clip": "asmr/ani_0006"
+          },
+          {
+            "class": "PrintText",
+            "line": 66,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아흥... 이렇게나 뜨겁고 강렬한 욕망이라니...",
+            "texts": {
+              "en": "Ahhn... Such intense, burning desire...",
+              "ja": "はうっ…。こんなにも熱くて、強烈な欲望だなんて…。",
+              "zh-Hans": "啊嗯……居然是如此炽热而又强烈的欲望……",
+              "zh-Hant": "啊嗯……居然是這麼火熱又強烈的欲望……",
+              "th": "อ๊า... แรงขับที่ทั้งร้อนแรงและรุนแรงถึงเพียงนี้...",
+              "es": "Aaah... Qué impulso tan ardiente y tan intenso..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 68,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_04_1_1",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_04_1_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 70,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "정말... 으흥...역시 이건 운명이에요...",
+            "texts": {
+              "en": "It really... mmm... must be fate...",
+              "ja": "本当にもう…ううぅん…これはやはり運命としか思えません…。",
+              "zh-Hans": "真的……嗯哼……这果然是命中注定呢……",
+              "zh-Hant": "真是的……嗯哼……這果然是命運呢……",
+              "th": "ให้ตายสิ... อื้อ... นี่มันคือโชคชะตาจริงๆ ด้วยค่ะ...",
+              "es": "De verdad... mmm... está claro que esto es el destino..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_16"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 71,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.2"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 73,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아니었으면... 제 몸이 이렇게 반응하지 않았을 거예요...",
+            "texts": {
+              "en": "Otherwise... my body wouldn't be reacting like this...",
+              "ja": "そうじゃなかったら…私の体、こんなに反応するはずないですから…。",
+              "zh-Hans": "不然的话……我的身体是不会有这种反应的……",
+              "zh-Hant": "否則的話……我的身體是不會產生這種反應的……",
+              "th": "ถ้าไม่อย่างนั้น... ร่างกายของฉันคงไม่ตอบสนองถึงขนาดนี้หรอกค่ะ...",
+              "es": "Si no lo fuera... mi cuerpo no estaría reaccionando de esta manera..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_17"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 75,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0006_1"
+            },
+            "clip": "asmr/ani_0006_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 77,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후후, 운명 같은 건 안 믿으시는 편인가요...?",
+            "texts": {
+              "en": "Hehe, don't you believe in fate...?",
+              "ja": "…ふふっ、運命なんて、信じないタイプなんですか…？",
+              "zh-Hans": "呵呵，您是不太相信命运那一类的吗……？",
+              "zh-Hant": "呵呵，您是不太相信命運那種事的人嗎……？",
+              "th": "ฮุฮุ คุณเป็นพวกไม่ค่อยเชื่อเรื่องโชคชะตาหรือคะ...?",
+              "es": "Je, je, ¿usted es de los que no creen en el destino y esas cosas...?"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 79,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_04_1_2",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_04_1_2"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 80,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 82,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "괜찮아요... 믿고 싶지 않다면 안 믿으셔도 돼요...",
+            "texts": {
+              "en": "That's all right... You don't have to believe in it...",
+              "ja": "いいんです…。信じたくなかったら、信じなくても…。",
+              "zh-Hans": "没关系哦……如果您不想相信的话，不相信也没关系……",
+              "zh-Hant": "沒關係喔……如果不想相信的話，不相信也沒關係……",
+              "th": "ไม่เป็นไรค่ะ... ถ้าไม่อยากเชื่อ ก็ไม่ต้องเชื่อก็ได้ค่ะ...",
+              "es": "No pasa nada... Si no quiere creer en ello, no hace falta que lo haga..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_19"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 83,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 85,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그래도 저희 만남이 저에게 운명이었다는 점은... 바뀌지 않으니까요...",
+            "texts": {
+              "en": "Even so... I'll always believe fate brought us together...",
+              "ja": "それでも、私たちの出会いが私にとって運命だったことに…変わりはありませんから…。",
+              "zh-Hans": "即便如此，我们的相遇对我而言就是命运这一点……是不会改变的……",
+              "zh-Hant": "但我們的相遇對我而言就是命運這一點……是不會改變的……",
+              "th": "ถึงอย่างนั้น ความจริงที่ว่าการพบกันของเราคือโชคชะตาสำหรับฉัน... มันก็ไม่เปลี่ยนแปลงหรอกนะคะ...",
+              "es": "Porque eso no cambia el hecho de que, para mí, nuestro encuentro... haya sido cosa del destino..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_20"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 86,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 88,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "저만의 해.결.사.님.♡",
+            "texts": {
+              "en": "My very own F-I-X-E-R.♡",
+              "ja": "私だけのフィ・ク・サー・さん♡",
+              "zh-Hans": "只属于我的解·决·师·大·人·♡",
+              "zh-Hant": "只屬於我的解・決・師・大・人・♡",
+              "th": "คุณ ฟิก.เซอร์. ของฉันแค่คนเดียว♡",
+              "es": "Mi único y exclusivo F-I-X-E-R.♡"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_21"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 90,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 92,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Wait": "true",
+              "Color": "white",
+              "Direction": "Out"
+            }
+          },
+          {
+            "class": "HideAllActors",
+            "line": 94,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "AffectionEndingCommand",
+            "line": 96,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 98,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "view": {
+        "script": "ch0003_03_affection_view",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "affection"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_016",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/enter"
+            },
+            "clip": "basic/enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "DesireAffectionViewMenuPanel",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 7,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_01",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_01"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 8,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 10,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "묶인다는 게 어떤 의미인지 아시나요, 해결사님~?",
+            "texts": {
+              "en": "Do you know what it means to be tied up, Fixer?",
+              "ja": "縛られるって、どんな意味なのか分かりますか、フィクサーさん～？",
+              "zh-Hans": "您知道被绑住意味着什么吗，解决师大人～？",
+              "zh-Hant": "您知道被綁住是什麼意思嗎，解決師大人～？",
+              "th": "รู้ไหมคะว่าการถูกมัดมีความหมายว่ายังไง คุณฟิกเซอร์~?",
+              "es": "¿Sabe qué significa estar atado, Fixer?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_1"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 11,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 13,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그것은... 누군가의 소유물이 된다는 뜻이에요~♡",
+            "texts": {
+              "en": "It means... becoming someone's possession!♡",
+              "ja": "それは…誰かの所有物になる、という意味なんですよ～♡",
+              "zh-Hans": "那意味着……成为某人的所有物哦～♡",
+              "zh-Hant": "那代表……會成為某個人的所有物喔～♡",
+              "th": "มันหมายถึง... การได้กลายเป็นของของใครบางคนยังไงล่ะคะ~♡",
+              "es": "Significa... convertirse en la propiedad de alguien~♡"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_2"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 15,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0001"
+            },
+            "clip": "asmr/ani_0001"
+          },
+          {
+            "class": "PrintText",
+            "line": 17,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "몸도... 마음도... 자유도... 전부 바치고...",
+            "texts": {
+              "en": "Offering up everything... your body... your heart... your freedom...",
+              "ja": "身も心も…自由も…全部捧げて…。",
+              "zh-Hans": "身体也好……心灵也好……自由也好……全都献出来……",
+              "zh-Hant": "身體也是……心也是……自由也是……全都奉獻出去……",
+              "th": "ทั้งร่างกาย... หัวใจ... และอิสรภาพ... ขอมอบให้ทั้งหมด...",
+              "es": "Entregar el cuerpo... el corazón... la libertad... absolutamente todo..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 19,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0002"
+            },
+            "clip": "asmr/ani_0002"
+          },
+          {
+            "class": "PrintText",
+            "line": 21,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "상대의 변덕에 모든 것을 맡기는 거죠~♡",
+            "texts": {
+              "en": "And letting the other person call all the shots!♡",
+              "ja": "相手の気まぐれに、全てを託すんです～♡",
+              "zh-Hans": "将一切都交由对方的一时兴起去摆布呢～♡",
+              "zh-Hant": "把一切都交給對方的喜怒無常與一時興起喔～♡",
+              "th": "แล้วฝากทุกสิ่งทุกอย่างไว้กับความเอาแต่ใจของอีกฝ่ายยังไงล่ะคะ~♡",
+              "es": "Y dejarlo todo a merced de los caprichos de la otra persona~♡"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 23,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0003"
+            },
+            "clip": "asmr/ani_0003"
+          },
+          {
+            "class": "PrintText",
+            "line": 25,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아, 그게 지금 이 상황이랑 무슨 관계가 있냐고요...?",
+            "texts": {
+              "en": "Oh, you want to know what that has to do with all this...?",
+              "ja": "ああ、それが今の状況と何か関係があるのか、ですか…？",
+              "zh-Hans": "啊，您问这和现在的情况有什么关系吗……？",
+              "zh-Hant": "啊，您問這跟現在的狀況有什麼關係嗎……？",
+              "th": "อ้อ จะถามว่าเรื่องนั้นมันเกี่ยวอะไรกับสถานการณ์ตอนนี้เหรอคะ...?",
+              "es": "Ah, ¿que qué tiene eso que ver con la situación actual...?"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 27,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_02",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_02"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 28,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 30,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗, 바로 이 붉은 실, 붉은 밧줄... 그리고 제 옷과 연관이 있죠~",
+            "texts": {
+              "en": "Heh, it's all connected to this red thread, this Red Rope... and my clothes!",
+              "ja": "ふふっ、それはこの赤い糸、赤い縄…。そして私の服に関係あるんですよ～",
+              "zh-Hans": "呵呵，这跟这根红线、红绳……还有我的衣服可都有关联哦～",
+              "zh-Hant": "呵呵，這跟這條紅線、紅繩……還有我的衣服都有關聯喔～",
+              "th": "ฮุฮุ ก็เกี่ยวกับด้ายแดงเส้นนี้ เชือกสีแดง... แล้วก็เสื้อผ้าของฉันยังไงล่ะคะ~",
+              "es": "Je, je, pues tiene todo que ver con este hilo rojo, esta cuerda roja... y mi ropa."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_6"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 31,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 33,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "전부, 평범해 보여도... 매우 특별한 것이거든요...",
+            "texts": {
+              "en": "They may all look ordinary, but... they're actually very special...",
+              "ja": "全部、普通のものに見えても…実は特製なんですよね…。",
+              "zh-Hans": "虽然它们看起来都很普通……但其实全都非常特别呢……",
+              "zh-Hant": "這一切看似平凡……其實都是非常特別的東西喔……",
+              "th": "ทั้งหมดนี้ ถึงจะดูธรรมดา... แต่เป็นของที่พิเศษมากเลยนะคะ...",
+              "es": "Aunque parezcan normales... todo ello es muy especial..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_7"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 36,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "운명의 상대가 아니라면, 절대 풀어질 수 없는 봉인과도 같은...",
+            "texts": {
+              "en": "Like a seal only your destined partner can undo...",
+              "ja": "運命の相手じゃないと、絶対解かれることのない封印のような…。",
+              "zh-Hans": "就像是如果不是命中注定的对象，就绝对无法解开的封印一样……",
+              "zh-Hant": "就像是如果不是命定之人，就絕對無法解開的封印一樣……",
+              "th": "เป็นเหมือนกับผนึกที่หากไม่ใช่เนื้อคู่แห่งโชคชะตา ก็จะไม่มีวันแกะออกได้อย่างเด็ดขาด...",
+              "es": "Es como un sello imposible de desatar a menos que sea por mi persona destinada..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_8"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 37,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.6"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 39,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그런데 그 봉인이, 방금 해결사님의 손에 의해...엉망진창이 되었거든요~?♡",
+            "texts": {
+              "en": "And just now, Fixer... you broke that seal yourself, didn't you?♡",
+              "ja": "…でも、その封印がちょうど今、フィクサーさんに…めちゃくちゃにされちゃったんですよね～？♡",
+              "zh-Hans": "可是那个封印，刚才却被解决师大人的手……弄得一团糟了呢～？♡",
+              "zh-Hant": "可是那個封印，剛才卻被解決師大人的手……弄得一團糟了呢～？♡",
+              "th": "ทว่าผนึกที่ว่านั่น เพิ่งจะถูกมือของคุณฟิกเซอร์... ทำให้เละเทะไม่เป็นท่าไปเมื่อครู่นี้เองค่ะ~?♡",
+              "es": "Pero resulta que las manos del Fixer acaban de... dejar ese sello hecho un verdadero desastre~♡"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_9"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 41,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0004"
+            },
+            "clip": "asmr/ani_0004"
+          },
+          {
+            "class": "PrintText",
+            "line": 43,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아흣~♡  후후, 그렇게 힘을 더 주입한다고 해서 더 풀리진 않아요~",
+            "texts": {
+              "en": "Ahh!♡ Hehe, channeling more energy into it won't loosen it any further!",
+              "ja": "あうっ…♡…ふふっ、そんなに力を入れたって、解かれたりしませんよ～",
+              "zh-Hans": "啊嗯～♡呵呵，就算像那样注入再多的力量，也不会解开得更多的哦～",
+              "zh-Hant": "啊嗯～♡呵呵，就算那樣灌注更多力量，也不會解開更多喔～",
+              "th": "อ๊ะ~♡ ฮุฮุ ต่อให้พยายามอัดพลังเข้าไปมากกว่านี้ มันก็ไม่คลายออกหรอกนะคะ~",
+              "es": "¡Aaah~♡! Je, je, por mucha más fuerza que le inyecte no va a aflojarse más..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 45,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0005"
+            },
+            "clip": "asmr/ani_0005"
+          },
+          {
+            "class": "PrintText",
+            "line": 47,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "다만... 흐응... 봉인이 저항하듯, 몸을 더 파고들 뿐...",
+            "texts": {
+              "en": "It just... mmm... digs deeper into my skin, as though the seal is fighting back...",
+              "ja": "ただ…ううぅん…。封印が抵抗するように、体にもっと食い込むだけで…。",
+              "zh-Hans": "只不过……嗯哼……封印就像是在抵抗一样，勒得身体更深了而已……",
+              "zh-Hant": "只不過……嗯哼……封印就像是在抵抗一樣，會陷進身體裡更深而已……",
+              "th": "มีแต่... อื้อ... ผนึกจะยิ่งรัดแน่นและบาดลึกเข้าไปในเนื้อ เหมือนกำลังต่อต้านเท่านั้นแหละค่ะ...",
+              "es": "Solo consigue que... mmm... el sello se clave aún más en mi piel, como si se resistiera..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 49,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_03_1_1"
+            },
+            "clip": "asmr/loop_03_1_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 51,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하아... 어머, 더 안 하시는 건가요?",
+            "texts": {
+              "en": "Haa... Oh my, stopping already?",
+              "ja": "はあぁ…。…あら、もう止めちゃうんですか？",
+              "zh-Hans": "哈啊……哎呀，您不继续了吗？",
+              "zh-Hant": "哈啊……哎呀，您不繼續做了嗎？",
+              "th": "แฮ่ก... ตายจริง จะไม่ทำต่อแล้วเหรอคะ?",
+              "es": "Aah... Vaya, ¿ya no va a seguir?"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 53,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0005_1"
+            },
+            "clip": "asmr/ani_0005_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 55,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "해결사님이라면, 얼마든지 더 받아들일 수 있는데...",
+            "texts": {
+              "en": "With you, Fixer, I can take as much as you want to give...",
+              "ja": "フィクサーさんでしたら、いくらでも受け止められますけど…。",
+              "zh-Hans": "如果是解决师大人的话，无论多少我都能承受得住哦……",
+              "zh-Hant": "如果是解決師大人的話，無論多少我都能接納的說……",
+              "th": "ถ้าเป็นคุณฟิกเซอร์ล่ะก็ ฉันพร้อมจะรับเข้ามาอีกเท่าไหร่ก็ได้แท้ๆ นะคะ...",
+              "es": "Tratándose de usted, Fixer, puedo aceptar todo lo que quiera echarme..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 57,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_03_1_2"
+            },
+            "clip": "asmr/loop_03_1_2"
+          },
+          {
+            "class": "PrintText",
+            "line": 59,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후후후... 혹시 벌써 지치신 건... 아니시죠~?",
+            "texts": {
+              "en": "Hehehe... Don't tell me you're... worn out already?",
+              "ja": "ふふふっ…。もしかして、もう疲れちゃった…とかじゃないですよね～？",
+              "zh-Hans": "呵呵呵……您该不会是已经累了……吧～？",
+              "zh-Hant": "呵呵呵……您該不會是已經累了……吧～？",
+              "th": "ฮุฮุฮุ... คงไม่ได้เหนื่อยขึ้นมาแล้ว... หรอกใช่ไหมคะ~?",
+              "es": "Je, je, je... ¿No me diga que... ya se ha cansado?"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 61,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0006"
+            },
+            "clip": "asmr/ani_0006"
+          },
+          {
+            "class": "PrintText",
+            "line": 63,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아흥... 이렇게나 뜨겁고 강렬한 욕망이라니...",
+            "texts": {
+              "en": "Ahhn... Such intense, burning desire...",
+              "ja": "はうっ…。こんなにも熱くて、強烈な欲望だなんて…。",
+              "zh-Hans": "啊嗯……居然是如此炽热而又强烈的欲望……",
+              "zh-Hant": "啊嗯……居然是這麼火熱又強烈的欲望……",
+              "th": "อ๊า... แรงขับที่ทั้งร้อนแรงและรุนแรงถึงเพียงนี้...",
+              "es": "Aaah... Qué impulso tan ardiente y tan intenso..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_04_1_1",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_04_1_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 67,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "정말... 으흥...역시 이건 운명이에요...",
+            "texts": {
+              "en": "It really... mmm... must be fate...",
+              "ja": "本当にもう…ううぅん…これはやはり運命としか思えません…。",
+              "zh-Hans": "真的……嗯哼……这果然是命中注定呢……",
+              "zh-Hant": "真是的……嗯哼……這果然是命運呢……",
+              "th": "ให้ตายสิ... อื้อ... นี่มันคือโชคชะตาจริงๆ ด้วยค่ะ...",
+              "es": "De verdad... mmm... está claro que esto es el destino..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_16"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 68,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.2"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 70,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "아니었으면... 제 몸이 이렇게 반응하지 않았을 거예요...",
+            "texts": {
+              "en": "Otherwise... my body wouldn't be reacting like this...",
+              "ja": "そうじゃなかったら…私の体、こんなに反応するはずないですから…。",
+              "zh-Hans": "不然的话……我的身体是不会有这种反应的……",
+              "zh-Hant": "否則的話……我的身體是不會產生這種反應的……",
+              "th": "ถ้าไม่อย่างนั้น... ร่างกายของฉันคงไม่ตอบสนองถึงขนาดนี้หรอกค่ะ...",
+              "es": "Si no lo fuera... mi cuerpo no estaría reaccionando de esta manera..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_17"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 72,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0006_1"
+            },
+            "clip": "asmr/ani_0006_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 74,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후후, 운명 같은 건 안 믿으시는 편인가요...?",
+            "texts": {
+              "en": "Hehe, don't you believe in fate...?",
+              "ja": "…ふふっ、運命なんて、信じないタイプなんですか…？",
+              "zh-Hans": "呵呵，您是不太相信命运那一类的吗……？",
+              "zh-Hant": "呵呵，您是不太相信命運那種事的人嗎……？",
+              "th": "ฮุฮุ คุณเป็นพวกไม่ค่อยเชื่อเรื่องโชคชะตาหรือคะ...?",
+              "es": "Je, je, ¿usted es de los que no creen en el destino y esas cosas...?"
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 76,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_04_1_2",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_04_1_2"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 77,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 79,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "괜찮아요... 믿고 싶지 않다면 안 믿으셔도 돼요...",
+            "texts": {
+              "en": "That's all right... You don't have to believe in it...",
+              "ja": "いいんです…。信じたくなかったら、信じなくても…。",
+              "zh-Hans": "没关系哦……如果您不想相信的话，不相信也没关系……",
+              "zh-Hant": "沒關係喔……如果不想相信的話，不相信也沒關係……",
+              "th": "ไม่เป็นไรค่ะ... ถ้าไม่อยากเชื่อ ก็ไม่ต้องเชื่อก็ได้ค่ะ...",
+              "es": "No pasa nada... Si no quiere creer en ello, no hace falta que lo haga..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_19"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 80,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.7"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 82,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그래도 저희 만남이 저에게 운명이었다는 점은... 바뀌지 않으니까요...",
+            "texts": {
+              "en": "Even so... I'll always believe fate brought us together...",
+              "ja": "それでも、私たちの出会いが私にとって運命だったことに…変わりはありませんから…。",
+              "zh-Hans": "即便如此，我们的相遇对我而言就是命运这一点……是不会改变的……",
+              "zh-Hant": "但我們的相遇對我而言就是命運這一點……是不會改變的……",
+              "th": "ถึงอย่างนั้น ความจริงที่ว่าการพบกันของเราคือโชคชะตาสำหรับฉัน... มันก็ไม่เปลี่ยนแปลงหรอกนะคะ...",
+              "es": "Porque eso no cambia el hecho de que, para mí, nuestro encuentro... haya sido cosa del destino..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_20"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 83,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 85,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "저만의 해.결.사.님.♡",
+            "texts": {
+              "en": "My very own F-I-X-E-R.♡",
+              "ja": "私だけのフィ・ク・サー・さん♡",
+              "zh-Hans": "只属于我的解·决·师·大·人·♡",
+              "zh-Hant": "只屬於我的解・決・師・大・人・♡",
+              "th": "คุณ ฟิก.เซอร์. ของฉันแค่คนเดียว♡",
+              "es": "Mi único y exclusivo F-I-X-E-R.♡"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_21"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 90,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0007"
+            },
+            "clip": "asmr/ani_0007"
+          },
+          {
+            "class": "PrintText",
+            "line": 92,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하읏... 갑자기 엄청나게 크고... 뜨거운 것이....",
+            "texts": {
+              "en": "Haa... So sudden... Something so huge and... hot...",
+              "ja": "はうっ…。そんないきなり、とっても大きくて…熱いものが…。",
+              "zh-Hans": "哈嗯……突然有好大……好烫的东西……",
+              "zh-Hant": "哈啊……突然有個非常巨大……又火熱的東西……",
+              "th": "อ๊า... จู่ๆ ก็มีอะไรบางอย่างที่ทั้งใหญ่โต... และร้อนผ่าว....",
+              "es": "Aaah... De repente siento algo enormemente grande... y ardiente..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 94,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_05",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_05"
+          },
+          {
+            "class": "PrintText",
+            "line": 96,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "더... 더 원해요... 해결사님의 뜨거운 욕망...",
+            "texts": {
+              "en": "More... I want more... Your burning desire, Fixer...",
+              "ja": "もっと…もっと欲しいです…。フィクサーさんの熱い欲望…。",
+              "zh-Hans": "还想……还想要更多……解决师大人炽热的欲望……",
+              "zh-Hant": "還要……我還要更多……解決師大人火熱的欲望……",
+              "th": "อีกค่ะ... ต้องการมากกว่านี้อีก... แรงขับอันเร่าร้อนของคุณฟิกเซอร์...",
+              "es": "Quiero más... más... Su ardiente impulso, Fixer..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_23"
+          },
+          {
+            "class": "PrintText",
+            "line": 98,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "제 안을, 제 몸 전부를 가득 채우고도 남을... 강력한 힘...",
+            "texts": {
+              "en": "So much power... enough to fill me up, to fill my whole body...",
+              "ja": "私の中を、体中を満たし尽くして尚、溢れてしまいそうな…強い力…。",
+              "zh-Hans": "将我的里面、我的整个身体全都填满都还绰绰有余的……强大力量……",
+              "zh-Hant": "足以將我的裡面、將我的整個身體完全填滿還有餘的……強大力量……",
+              "th": "พลังอันแข็งแกร่ง... ที่เติมเต็มข้างในของฉัน และร่างกายของฉันจนเอ่อล้น...",
+              "es": "Una fuerza abrumadora... capaz de llenarme por dentro y desbordar todo mi cuerpo..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_24"
+          },
+          {
+            "class": "PrintText",
+            "line": 100,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하으응.. 후아아... 흐으응...",
+            "texts": {
+              "en": "Haa... Phew... Mmm...",
+              "ja": "はうぅん…ふああぁ…。ふうぅん…。",
+              "zh-Hans": "哈嗯……呼啊啊……嗯哼……",
+              "zh-Hant": "哈啊嗯……呼啊啊……嗯哼……",
+              "th": "อื้อ.. ฮาา... อื้ออ...",
+              "es": "Aaah... Uaah... Mmm..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_25"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 102,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/ani_0008"
+            },
+            "clip": "asmr/ani_0008"
+          },
+          {
+            "class": "PrintText",
+            "line": 104,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하지만... 아직도 부족해요... 후후후...",
+            "texts": {
+              "en": "And yet... it's still not enough... Hehehe...",
+              "ja": "でも…まだまだ足りません…。ふふふっ…。",
+              "zh-Hans": "可是……还是不够呢……呵呵呵……",
+              "zh-Hant": "可是……這樣還不夠喔……呵呵呵……",
+              "th": "แต่ว่า... แค่นี้ยังไม่พอหรอกนะคะ... ฮุฮุฮุ...",
+              "es": "Pero... todavía no es suficiente... Je, je, je..."
+            },
+            "author": "yomi"
+          },
+          {
+            "class": "AffectionCommand",
+            "line": 106,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.asmr/loop_06",
+              "Loop": "true"
+            },
+            "clip": "asmr/loop_06"
+          },
+          {
+            "class": "PrintText",
+            "line": 108,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그러니... 마지막까지... 책임져주실 거죠...?",
+            "texts": {
+              "en": "So... you'll see this through... to the very end, won't you...?",
+              "ja": "ですから…最後まで責任…取ってくださいますよね…？",
+              "zh-Hans": "所以……直到最后……您都会负责到底的吧……？",
+              "zh-Hant": "所以……直到最後……您都會對我負責的吧……？",
+              "th": "เพราะฉะนั้น... คุณจะรับผิดชอบฉัน... ไปจนถึงที่สุดเลยใช่ไหมคะ...?",
+              "es": "Así que... se hará responsable... hasta el final, ¿verdad...?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_27"
+          },
+          {
+            "class": "AffectionWaitCommand",
+            "line": 109,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 111,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "오늘 밤... 잘 부탁드릴게요... 해결사님...♡",
+            "texts": {
+              "en": "Please take good care of me... tonight, Fixer...♡",
+              "ja": "今夜は…いっぱい、お願いしますね…。フィクサーさん…♡",
+              "zh-Hans": "今晚……就请多指教了哦……解决师大人……♡",
+              "zh-Hant": "今晚……就請您多多指教囉……解決師大人……♡",
+              "th": "คืนนี้... ขอฝากตัวด้วยนะคะ... คุณฟิกเซอร์...♡",
+              "es": "Esta noche... me pongo en sus manos... Fixer...♡"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_affection_view_28"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 113,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 115,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Wait": "true",
+              "Color": "white",
+              "Direction": "Out"
+            }
+          },
+          {
+            "class": "HideAllActors",
+            "line": 117,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "AffectionEndingCommand",
+            "line": 119,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 121,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
+      }
+    },
     "af_ch0009": {
       "story": {
         "script": "ch0009_05_affection_story",
@@ -1536,7 +3223,7 @@
               "en": "Fufu... It seems I'll be testing your limits, albeit unintentionally.",
               "ja": "ふふっ…そんなつもりじゃなかったけど、これって君の限界を試すことになるのかしら？",
               "zh-Hans": "呵呵……这就无意间要考验你的极限了呢。",
-              "zh-Hant": "呵呵... 這下倒是意外地變成在測試你的極限了呢。",
+              "zh-Hant": "呵呵...這下倒是意外地變成在測試你的極限了呢。",
               "th": "หึๆ... กลายเป็นได้ทดสอบขีดจำกัดของนายโดยไม่ได้ตั้งใจซะอย่างนั้น",
               "es": "Jujut... Sin querer, voy a poner a prueba tus límites."
             },
@@ -3916,7 +5603,7 @@
               "en": "Wait, what...? Say thank you... one more time...?",
               "ja": "え、なに…？もう一度…礼を言って欲しい…？",
               "zh-Hans": "哎，什么……？再……说一次谢谢……？",
-              "zh-Hant": "欸，你說什麼……？ 要我再說一次…… 說謝謝你……？",
+              "zh-Hant": "欸，你說什麼……？要我再說一次……說謝謝你……？",
               "th": "เอ๊ะ ว่าไงนะ..? ให้พูดขอบใจ... อีกสักรอบเหรอ...?",
               "es": "¿Eh? ¿Qué dices...? ¿Que te lo diga... una vez más...?"
             },
@@ -7439,7 +9126,7 @@
               "en": "Fufu... Shall I show you my secret weapon...?",
               "ja": "ふふ…私のとっておきを見せてやろうか？",
               "zh-Hans": "呵呵……要让你看看我的秘密武器吗……？",
-              "zh-Hant": "呵呵... 要不要讓你看看我的秘密武器...…？",
+              "zh-Hant": "呵呵...要不要讓你看看我的秘密武器...…？",
               "th": "ฮูฮู... จะแสดงอาวุธลับของฉันให้ดูเอาไหม...?",
               "es": "Juju... ¿Quieres que te enseñe mi arma secreta...?"
             },
@@ -7632,7 +9319,7 @@
               "en": "Eating it so fast gave me a headache... but it's so delicious...!",
               "ja": "急に食べたら頭痛ーい…でも美味しい…！",
               "zh-Hans": "吃得太急头好痛……可是好好吃……！",
-              "zh-Hant": "突然一口吃下去害我頭好痛...… 可是真的好好吃...…！",
+              "zh-Hant": "突然一口吃下去害我頭好痛...…可是真的好好吃...…！",
               "th": "กินเร็วไปหน่อยเลยปวดหัวเลย... แต่อร่อยจัง...!",
               "es": "Me he congelado el cerebro por comerlo tan rápido... ¡Pero está buenísimo...!"
             },
@@ -8009,7 +9696,7 @@
               "en": "Do you really want a taste of mine... that badly?",
               "ja": "そんなに私のこれが…食べたいの？",
               "zh-Hans": "你就那么……想吃我的吗？",
-              "zh-Hant": "你就這麼想要... 吃我的嗎？",
+              "zh-Hant": "你就這麼想要...吃我的嗎？",
               "th": "อยากกินของของฉัน... ขนาดนั้นเลยเหรอ?",
               "es": "¿Tantas ganas tienes... de probar lo mío?"
             },
@@ -8095,7 +9782,7 @@
             "texts": {
               "en": "Come on, open wide. ♡",
               "ja": "ほら、あーんして♡",
-              "zh-Hans": "来，啊～张开嘴。 ♡",
+              "zh-Hans": "来，啊～张开嘴。♡",
               "zh-Hant": "來，張開嘴，啊～♡",
               "th": "เอ้า อ้า~ ปากสิ ♡",
               "es": "Venga, di ah~. ♡"
@@ -8432,7 +10119,7 @@
               "en": "Eating it so fast gave me a headache... but it's so delicious...!",
               "ja": "急に食べたら頭痛ーい…でも美味しい…！",
               "zh-Hans": "吃得太急头好痛……可是好好吃……！",
-              "zh-Hant": "突然一口吃下去害我頭好痛...… 可是真的好好吃...…！",
+              "zh-Hant": "突然一口吃下去害我頭好痛...…可是真的好好吃...…！",
               "th": "กินเร็วไปหน่อยเลยปวดหัวเลย... แต่อร่อยจัง...!",
               "es": "Me he congelado el cerebro por comerlo tan rápido... ¡Pero está buenísimo...!"
             },
@@ -8809,7 +10496,7 @@
               "en": "Do you really want a taste of mine... that badly?",
               "ja": "そんなに私のこれが…食べたいの？",
               "zh-Hans": "你就那么……想吃我的吗？",
-              "zh-Hant": "你就這麼想要... 吃我的嗎？",
+              "zh-Hant": "你就這麼想要...吃我的嗎？",
               "th": "อยากกินของของฉัน... ขนาดนั้นเลยเหรอ?",
               "es": "¿Tantas ganas tienes... de probar lo mío?"
             },
@@ -8867,7 +10554,7 @@
               "en": "Do you want to... try some?",
               "ja": "一回…食べてみる？",
               "zh-Hans": "要不要……吃吃看？",
-              "zh-Hant": "要不要... 吃一口看看？",
+              "zh-Hant": "要不要...吃一口看看？",
               "th": "ลอง... กินดูไหมล่ะ?",
               "es": "¿quieres probar... un poquito?"
             },
@@ -8895,7 +10582,7 @@
             "texts": {
               "en": "Come on, open wide. ♡",
               "ja": "ほら、あーんして♡",
-              "zh-Hans": "来，啊～张开嘴。 ♡",
+              "zh-Hans": "来，啊～张开嘴。♡",
               "zh-Hant": "來，張開嘴，啊～♡",
               "th": "เอ้า อ้า~ ปากสิ ♡",
               "es": "Venga, di ah~. ♡"
@@ -8983,7 +10670,7 @@
               "en": "Alright, then... let me have a bite too...",
               "ja": "よし、それじゃあ…私も一口…。",
               "zh-Hans": "好，那让我也……吃一口……",
-              "zh-Hant": "好，那接下來... …換我也吃一口...…",
+              "zh-Hant": "好，那接下來...…換我也吃一口...…",
               "th": "ดีละ งั้นไหนดูสิ... ฉันขออีกคำ...",
               "es": "Vale, a ver... yo también daré un bocado..."
             },
@@ -9166,7 +10853,7 @@
             "texts": {
               "en": "I don't think I'll ever be able to pull myself away. ♥",
               "ja": "もう虜になっちゃいそう♡",
-              "zh-Hans": "恐怕再也无法自拔了。 ♥",
+              "zh-Hans": "恐怕再也无法自拔了。♥",
               "zh-Hant": "感覺好像再也無法自拔了。♥",
               "th": "คงถอนตัวไม่ขึ้นอีกแล้วแน่ๆ ♥",
               "es": "siento que ya jamás podré escapar. ♥"
@@ -9253,7 +10940,7 @@
             "texts": {
               "en": "Every last bit of it... ♡",
               "ja": "ぜーんぶ…♡",
-              "zh-Hans": "全部吃掉…… ♡",
+              "zh-Hans": "全部吃掉……♡",
               "zh-Hant": "通通吃掉……♡",
               "th": "ทั้งหมดเลย... ♡",
               "es": "Absolutamente todo... ♡"
@@ -22264,7 +23951,7 @@
               "en": "I... must be a strong and outstanding person... who bows to no one.",
               "ja": "誰にも簡単に屈しない…強くて優れた…そういう人間でなくちゃいけないの。",
               "zh-Hans": "我……必须是一个不向任何人低头的……强大又优秀的……那种人才行。",
-              "zh-Hant": "我…… 必須是那種……不向任何人低頭……強大又優秀……的人。",
+              "zh-Hant": "我……必須是那種……不向任何人低頭……強大又優秀……的人。",
               "th": "ฉัน... ต้องเป็นคนที่แข็งแกร่งและเก่งกาจ... ไม่ก้มหัวให้ใคร... แบบนั้นให้ได้",
               "es": "Tengo que ser... una persona fuerte y brillante... que jamás se incline ante nadie."
             },
@@ -27390,7 +29077,7 @@
               "en": "Mmmgh... No... It's overflowing...!",
               "ja": "ーーッ…だめええ…。溢れちゃう…！",
               "zh-Hans": "嗯嗯……不行……要溢出来了……！",
-              "zh-Hant": "呼唔唔…… 不行…… 要滿出來了……！",
+              "zh-Hant": "呼唔唔……不行……要滿出來了……！",
               "th": "ฮื้อออ... ไม่นะ... มันจะทะลักออกมาแล้ว...!",
               "es": "¡Ahhh... No... se desborda...!"
             },
@@ -30957,7 +32644,7 @@
             "texts": {
               "en": "*Yawn*... I'm sleepy...",
               "ja": "ふああぁ～ねむいぃ…。",
-              "zh-Hans": "哈啊啊欠～ 好困哦……",
+              "zh-Hans": "哈啊啊欠～好困哦……",
               "zh-Hant": "呼啊啊姆～好睏喔……",
               "th": "ฮ้าววว~ ง่วงแล้วสิ...",
               "es": "*Aaaah...* Qué sueño tengo..."
@@ -41736,6 +43423,3019 @@
         "pairs": []
       }
     },
+    "ds_ch0003": {
+      "story": {
+        "script": "ch0003_05_desire_story",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "desire"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Unskippable"
+            }
+          },
+          {
+            "class": "NaniSummary",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 3,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_015_lp",
+              "IntroBgmPath": "bgm_romance_015_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/enter"
+            },
+            "clip": "10_basic/10_enter"
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 7,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "ShowUI",
+            "line": 9,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "ExControlPanel.Default",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 12,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/touch"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "PrintText",
+            "line": 13,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "어머, 해결사님~ 오셨군요?",
+            "texts": {
+              "en": "Oh my, Fixer! You came!",
+              "ja": "あら、フィクサーさん～いらっしゃったんですね？",
+              "zh-Hans": "哎呀，解决师大人～您来啦？",
+              "zh-Hant": "哎呀，解決師大人～您來啦？",
+              "th": "ตายจริง คุณฟิกเซอร์~ มาแล้วเหรอคะ?",
+              "es": "Vaya, Fixer... ¿Ya ha llegado?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_1"
+          },
+          {
+            "class": "PrintText",
+            "line": 16,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...이건 또 대체 무슨 상황이야?",
+            "texts": {
+              "en": "...What on earth is going on this time?",
+              "ja": "…これは一体どういう状況なんだ？",
+              "zh-Hans": "……这又是什么情况？",
+              "zh-Hant": "……這又是什麼狀況啊？",
+              "th": "...แล้วนี่มันสถานการณ์อะไรอีกล่ะเนี่ย?",
+              "es": "... ¿Pero qué clase de situación es esta ahora?"
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 19,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 20,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 22,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Offset": "-3,1.5",
+              "Zoom": "0.5",
+              "EasingTypeName": "EaseInOutSine",
+              "Duration": "2",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 24,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후후후... 요즘, 주체가 되지 못하고 마음이 자꾸 들끓어서요...",
+            "texts": {
+              "en": "Hehehe... I just can't seem to control myself lately. My heart won't stop racing...",
+              "ja": "ふふふっ…。最近、どうしようもなく心が滾ってしまい…。",
+              "zh-Hans": "呵呵呵……最近，我的心总是躁动不已，有些控制不住自己呢……",
+              "zh-Hant": "呵呵呵……最近我總是無法控制自己，內心一直躁動不已……",
+              "th": "ฟุฟุฟุ... ช่วงนี้ควบคุมตัวเองไม่ค่อยได้ จิตใจมันคอยแต่จะพลุ่งพล่านอยู่เรื่อยน่ะค่ะ...",
+              "es": "Je, je, je... Últimamente no logro controlarme y mis deseos no dejan de alborotarse..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_2"
+          },
+          {
+            "class": "PrintText",
+            "line": 26,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "수행이 부족한 것 같아, 잠시 정신 수양을 하던 중입니다.",
+            "texts": {
+              "en": "I thought I could use a little discipline, so I'm doing some mental training.",
+              "ja": "修行が足りないなーと思って、ちょっと雑念を払っていたところです。",
+              "zh-Hans": "觉得大概是修行还不够，所以正稍微进行一下精神修养。",
+              "zh-Hant": "覺得自己修行不夠，正稍微在進行精神修養呢。",
+              "th": "รู้สึกว่าตัวเองยังฝึกฝนไม่พอ ก็เลยกำลังฝึกจิตอยู่สักหน่อยค่ะ",
+              "es": "Sentí que me faltaba disciplina, así que estaba haciendo un poco de entrenamiento mental."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_3"
+          },
+          {
+            "class": "PrintText",
+            "line": 27,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "...뭔놈의 정신 수양이 이런 식이야?",
+            "texts": {
+              "en": "...What kind of mental training looks like this?",
+              "ja": "…雑念塗れになってねぇか？",
+              "zh-Hans": "……哪门子的精神修养是这种搞法啊？",
+              "zh-Hant": "……哪門子的精神修養會是這種方式啊？",
+              "th": "...การฝึกจิตบ้าบออะไรทำกันแบบนี้เนี่ย?",
+              "es": "... ¿Pero qué clase de entrenamiento mental se hace así?"
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 29,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 31,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 33,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/touch"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "PrintText",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "구속으로 몸의 자유를 버리고... 마음의 자유를 얻는, 그런 거죠~",
+            "texts": {
+              "en": "Binding the body... to free the mind. That sort of thing!",
+              "ja": "自分を拘束することで体の自由を捨て…心の自由を得る、まあそういうことですね～",
+              "zh-Hans": "通过拘束舍弃身体的自由……从而获得心灵的自由，就是这么回事哦～",
+              "zh-Hant": "透過拘束捨棄身體的自由……藉此獲得心靈的自由，就是這麼回事囉～",
+              "th": "ก็แบบว่า... สละอิสรภาพทางกายด้วยพันธนาการ... เพื่อให้ได้มาซึ่งอิสรภาพทางใจ อะไรทำนองนั้นแหละค่ะ~",
+              "es": "Abandonar la libertad del cuerpo mediante el grillete... para alcanzar la libertad de la mente, algo así."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_4"
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 36,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Offset": "0,-1",
+              "Zoom": "0.2",
+              "Duration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 38,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐음...",
+            "texts": {
+              "en": "Hmm...",
+              "ja": "へえ…。",
+              "zh-Hans": "唔……",
+              "zh-Hant": "唔嗯……",
+              "th": "ฮึ่ม...",
+              "es": "Mmm..."
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 40,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 41,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 42,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 44,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Offset": "0,0",
+              "Zoom": "0",
+              "Duration": "2",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 47,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "…? 해결사님, 갑자기 눈은 왜 그렇게…",
+            "texts": {
+              "en": "...? Fixer, why are you looking at me like that...?",
+              "ja": "…？フィクサーさん、なんだか視線が…。",
+              "zh-Hans": "……？解决师大人，您的眼神怎么突然变得这么……",
+              "zh-Hant": "……？解決師大人，您的眼神怎麼突然變得那麼……",
+              "th": "...? คุณฟิกเซอร์คะ ทำไมจู่ๆ ถึงทำตาแบบนั้นล่ะคะ...",
+              "es": "... ¿Eh? Fixer, ¿por qué me mira así de repente...?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_5"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 49,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/touch"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "PrintText",
+            "line": 50,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐응, 뭔가 새로운 장난에 눈뜬 것 같은 얼굴을 하고 계시는군요~",
+            "texts": {
+              "en": "Hmph, that look tells me you've just thought of some new mischief!",
+              "ja": "ふぅん、何か新しいイタズラに目覚めたような顔をしてますね～",
+              "zh-Hans": "嗯哼，您脸上露出了像是觉醒了什么新恶作剧一样的表情呢～",
+              "zh-Hant": "哼嗯，您露出了像是覺醒了什麼新惡作劇的表情呢～",
+              "th": "หือ ทำหน้าเหมือนเพิ่งตื่นรู้ถึงการละเล่นใหม่ๆ เลยนะคะเนี่ย~",
+              "es": "Mmm, tiene cara de haber descubierto una nueva travesura..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_6"
+          },
+          {
+            "class": "PrintText",
+            "line": 51,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "원하시는 대로 하셔도 전혀 상관없지만…",
+            "texts": {
+              "en": "Not that I'd mind you doing whatever you like with me...",
+              "ja": "お好きにされても一向に構いませんが…。",
+              "zh-Hans": "虽然您想怎么对我都完全没关系……",
+              "zh-Hant": "要隨您的喜好怎麼做我是完全不介意啦……",
+              "th": "จะทำตามที่ต้องการเลยฉันก็ไม่ว่าอะไรหรอกนะคะ...",
+              "es": "A mí no me importa en absoluto que haga conmigo lo que quiera, pero..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_7"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 53,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/touch"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "PrintText",
+            "line": 54,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "나중에 뒷감당… 가능하시겠어요~?",
+            "texts": {
+              "en": "Are you sure you can handle... the aftermath?",
+              "ja": "その後のこと、責任取れますか～？",
+              "zh-Hans": "但之后的善后工作……您能应付得来吗～？",
+              "zh-Hant": "但之後的後果……您承擔得起嗎～？",
+              "th": "แต่จะรับมือกับผลที่ตามมาทีหลัง... ไหวเหรอคะ~?",
+              "es": "¿Podrá asumir las consecuencias... después?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_8"
+          },
+          {
+            "class": "PrintText",
+            "line": 57,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "뒷감당은 개뿔, 대놓고 잡아먹어 주세요~ 하고 노린 거면서.",
+            "texts": {
+              "en": "Aftermath, my ass. You're practically begging me to devour you right now.",
+              "ja": "冗談はよせ、白々しい。ヤッちゃってください～って魂胆じゃねぇか。",
+              "zh-Hans": "善后个鬼啊，你这明明就是摆明了在说“快来吃掉我吧～”，故意引我上钩的吧。",
+              "zh-Hant": "承擔個頭啦，妳明明就是故意擺出「快來吃掉我吧～」的樣子在釣我。",
+              "th": "รับมือกับผลที่ตามมาบ้าบออะไรเล่า ตั้งใจอ่อยกันซึ่งๆ หน้าว่า 'ช่วยจับฉันกินทีสิคะ~' ชัดๆ",
+              "es": "Qué consecuencias ni qué ocho cuartos, si está claro que te has puesto así a propósito diciendo «¡cómeme, por favor!»."
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 59,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 60,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 61,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 63,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "내가 올 타이밍을 다 아는 네가, 아무 이유도 없이 이렇게까지 할 리가 없잖아.",
+            "texts": {
+              "en": "You knew exactly when I'd show up. You didn't go to all this trouble for nothing.",
+              "ja": "俺が来ると分かってるお前が、なんの理由もなくこんなマネするわけねぇだろ。",
+              "zh-Hans": "对我过来的时机了如指掌的你，怎么可能会毫无理由地做到这种地步。",
+              "zh-Hant": "完全清楚我何時會來的妳，怎麼可能無緣無故做到這種地步。",
+              "th": "คนอย่างเธอที่รู้จังหวะเวลาที่ฉันจะมาเป็นอย่างดี ไม่มีทางทำถึงขนาดนี้โดยไม่มีเหตุผลหรอกน่า",
+              "es": "Sabiendo perfectamente cuándo iba a llegar, es imposible que hayas hecho todo esto sin ningún motivo."
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "4"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 66,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 67,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 69,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/wait"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 70,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 71,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": "",
+              "Wait": "true"
+            },
+            "text": "으음... 대담하시네요~",
+            "texts": {
+              "en": "Mmm... Aren't you bold!",
+              "ja": "ううぅん…。大胆ですね～",
+              "zh-Hans": "唔……您还真是大胆呢～",
+              "zh-Hant": "唔嗯……您真大膽呢～",
+              "th": "อืม... กล้าได้กล้าเสียจังเลยนะคะ~",
+              "es": "Mmm... Qué atrevido es usted."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_9"
+          },
+          {
+            "class": "ParametrizeGeneric",
+            "line": 71,
+            "inline": 1,
+            "indent": 1,
+            "fields": {
+              "Wait": "true",
+              "SkipWaitingInput": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 72,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후후, 아무리 못 볼 것 다 본 사이라지만...",
+            "texts": {
+              "en": "Hehe, we may have already seen everything there is to see of each other...",
+              "ja": "ふふっ、いくらお互いを知り尽くした関係とは言え…。",
+              "zh-Hans": "呵呵，就算我们已经是该看的不该看的都看过了的关系……",
+              "zh-Hant": "呵呵，就算我們已經是該看的不該看的都看過的關係了……",
+              "th": "ฟุฟุ ถึงเราจะเห็นอะไรต่อมิอะไรกันมาหมดแล้วก็เถอะ...",
+              "es": "Je, je, por mucha confianza íntima que tengamos ya..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_10"
+          },
+          {
+            "class": "PrintText",
+            "line": 75,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흥, 그 여유가 어디까지 갈까...",
+            "texts": {
+              "en": "Hmph. Let's see how long you stay so smug...",
+              "ja": "ふん、その余裕がいつまで持つんだろうな？",
+              "zh-Hans": "哼，就看看你这份从容能维持到什么时候……",
+              "zh-Hant": "哼，就看妳那份從容能維持到什麼時候……",
+              "th": "หึ ท่าทีสบายๆ แบบนั้นจะอยู่ไปได้สักกี่น้ำกันเชียว...",
+              "es": "Ja, veamos cuánto te dura esa calma..."
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 77,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 78,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 79,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 81,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "오늘이야말로 엉망진창으로 만들어주지!",
+            "texts": {
+              "en": "Today, I'm going to absolutely wreck you!",
+              "ja": "今日こそ、めちゃくちゃにしてやる！",
+              "zh-Hans": "今天我非把你弄得一团糟不可！",
+              "zh-Hant": "今天我一定要把妳弄得一團糟！",
+              "th": "วันนี้แหละ ฉันจะทำให้เธอปั่นป่วนจนเสียศูนย์ไปเลยคอยดู!",
+              "es": "¡Hoy sí que te voy a dejar hecha un desastre!"
+            },
+            "author": "player"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 83,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "HidePrinter",
+            "line": 84,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 85,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 87,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/wait",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_wait"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 88,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 89,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐으읏...!",
+            "texts": {
+              "en": "Nngh...!",
+              "ja": "ううぅん…！",
+              "zh-Hans": "唔嗯……！",
+              "zh-Hant": "唔嗯……！",
+              "th": "ฮึ่ก...!",
+              "es": "¡Mmmgh...!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_15"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 90,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 91,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후후후... 결국, 운명의 밧줄이 떨어져 내렸군요...",
+            "texts": {
+              "en": "Hehehe... So the ropes of fate have finally fallen away...",
+              "ja": "ふふふっ…。結局、運命の縄が落ちちゃいましたね…。",
+              "zh-Hans": "呵呵呵……结果，命运的绳索还是滑落下来了呢……",
+              "zh-Hant": "呵呵呵……結果，命運的繩索還是落下了呢……",
+              "th": "ฟุฟุฟุ... สุดท้าย เชือกแห่งโชคชะตาก็ร่วงหล่นลงมาแล้วสินะคะ...",
+              "es": "Je, je, je... Al final han caído las cuerdas del destino..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_16"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 93,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/touch",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_touch"
+          },
+          {
+            "class": "PrintText",
+            "line": 94,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "그래서... 어떻게 하실 건가요, 해결사님?",
+            "texts": {
+              "en": "So... what are you going to do, Fixer?",
+              "ja": "それで…どうするんですか、フィクサーさん…？",
+              "zh-Hans": "那么……您打算怎么做呢，解决师大人？",
+              "zh-Hant": "那麼……您打算怎麼做呢，解決師大人？",
+              "th": "แล้ว... จะทำยังไงต่อเหรอคะ คุณฟิกเซอร์?",
+              "es": "Y bien... ¿Qué piensa hacer, Fixer?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_17"
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 96,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Offset": "-3,1.5",
+              "Zoom": "0.5",
+              "EasingTypeName": "EaseInOutSine",
+              "Duration": "4",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 97,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이 기회를 잡으실 건가요...? 아니면...",
+            "texts": {
+              "en": "Are you going to seize this chance...? Or...",
+              "ja": "このチャンスを掴みますか…？それとも…。",
+              "zh-Hans": "是要抓住这个机会呢……？还是说……",
+              "zh-Hant": "您要抓住這個機會嗎……？還是說……",
+              "th": "จะคว้าโอกาสนี้ไว้ไหมคะ...? หรือว่า...",
+              "es": "¿Va a aprovechar esta oportunidad...? ¿O acaso..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_18"
+          },
+          {
+            "class": "PrintText",
+            "line": 98,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Text": ""
+            },
+            "text": "이대로 흘려보내실 건가요...?",
+            "texts": {
+              "en": "will you let it slip away...?",
+              "ja": "このまま逃しちゃうんですか…？",
+              "zh-Hans": "就这样让它溜走呢……？",
+              "zh-Hant": "就這樣讓它溜走呢……？",
+              "th": "จะปล่อยให้มันผ่านเลยไปแบบนี้เหรอคะ...?",
+              "es": "va a dejarla escapar así como así...?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_story_19"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 100,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 102,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Wait": "true",
+              "Color": "white",
+              "Direction": "Out"
+            }
+          },
+          {
+            "class": "HideAllActors",
+            "line": 104,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireEndingCommand",
+            "line": 106,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "End",
+            "line": 108,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "view": {
+        "script": "ch0003_05_desire_view",
+        "modelCommands": [
+          {
+            "class": "UsingScopeCommand",
+            "line": 0,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Scopes": "desire"
+            }
+          },
+          {
+            "class": "PlayBgm",
+            "line": 1,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "BgmPath": "bgm_romance_015_lp",
+              "IntroBgmPath": "bgm_romance_015_in",
+              "FadeInDuration": "3",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 2,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/enter"
+            },
+            "clip": "10_basic/10_enter"
+          },
+          {
+            "class": "ShowUI",
+            "line": 4,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "UINames": "DesireAffectionViewMenuPanel",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 5,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0",
+              "IdAndAppearance": "DesireAffectionSubtitle",
+              "MakeDefault": "true"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "set",
+            "line": 7,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 9,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "x=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 13,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 14,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "z=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 17,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "y1=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 18,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Expression": "z1=0"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "phase1",
+            "line": 20,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 21,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 23,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "reaction/T1",
+              "Wait": "false",
+              "IdAndBoundingBox": "yomi"
+            },
+            "clip": "10_reaction/10_T1"
+          },
+          {
+            "class": "Goto",
+            "line": 24,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase1-1"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 26,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase1-1",
+            "line": 28,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 30,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_60"
+            },
+            "voice": "voc_ch0003_desire_enjoy_60"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 32,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.overlay/T1"
+            },
+            "clip": "30_overlay/30_T1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 33,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "2.2"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 34,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐으읏...!! 하아...",
+            "texts": {
+              "en": "Nngh...!! Haa...",
+              "ja": "ひゃうぅん…！ああッ…！！",
+              "zh-Hans": "唔嗯……！！哈啊……",
+              "zh-Hant": "唔嗯……！！哈啊……",
+              "th": "ฮื้อออ...!! แฮ่ก...",
+              "es": "¡¡Mmmgh...!! Aah..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_7"
+          },
+          {
+            "class": "Gosub",
+            "line": 35,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Path": ".object_on"
+            }
+          },
+          {
+            "class": "Gosub",
+            "line": 36,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Path": ".object_idle"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 37,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Path": ".phase2"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "phase2",
+            "line": 39,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 40,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/idle_1"
+            },
+            "clip": "10_basic/10_idle_1"
+          },
+          {
+            "class": "Gosub",
+            "line": 41,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Path": ".object_on"
+            }
+          },
+          {
+            "class": "Label",
+            "label": "on_off_pass",
+            "line": 43,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Gosub",
+            "line": 45,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Path": ".object_idle"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 47,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 49,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "yomi.A1"
+            },
+            "box": "A1"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 50,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.overlay/H1",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_H1"
+          },
+          {
+            "class": "Gosub",
+            "line": 51,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".object_off_touch"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 52,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y=0&&z=0",
+              "IdAndAppearance": "yomi.reaction/A1_1"
+            },
+            "clip": "10_reaction/10_A1_1"
+          },
+          {
+            "class": "PickRandom",
+            "line": 53,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 54,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 55,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하으...! 흐으응...!",
+            "texts": {
+              "en": "Haa...! Nnngh...!",
+              "ja": "はうっ…！ううん…！",
+              "zh-Hans": "哈啊……！唔嗯……！",
+              "zh-Hant": "哈啊……！唔嗯……！",
+              "th": "ฮาอึ...! ฮือออ...!",
+              "es": "¡Aah...! ¡Mmm...!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_12"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 56,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_1"
+            },
+            "voice": "voc_ch0003_desire_enjoy_1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 57,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "3.5"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 58,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_54"
+            },
+            "voice": "voc_ch0003_desire_enjoy_54"
+          },
+          {
+            "class": "Group",
+            "line": 59,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 60,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": ""
+            },
+            "text": "으응...! 흐으읏...!",
+            "texts": {
+              "en": "Mmm...! Nngh...!",
+              "ja": "ううん…！ふううっ…！",
+              "zh-Hans": "嗯……！唔嗯……！",
+              "zh-Hant": "唔嗯……！哼嗯……！",
+              "th": "อื้อ...! ฮึ่ก...!",
+              "es": "¡Mmm...! ¡Mmmgh...!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_13"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 61,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_1"
+            },
+            "voice": "voc_ch0003_desire_enjoy_1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 62,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "3"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 63,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_54"
+            },
+            "voice": "voc_ch0003_desire_enjoy_54"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 65,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y=1",
+              "IdAndAppearance": "yomi.reaction/A1_3"
+            },
+            "clip": "10_reaction/10_A1_3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 66,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PickRandom",
+            "line": 67,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 68,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하아... 후우읏...!",
+            "texts": {
+              "en": "Haa... Phew...!",
+              "ja": "はああ…。うううん…！",
+              "zh-Hans": "哈啊……呼唔……！",
+              "zh-Hant": "哈啊……呼唔……！",
+              "th": "แฮ่ก... ฟู่ว... อึ่ก...!",
+              "es": "Aah... ¡Uff...!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_16"
+          },
+          {
+            "class": "PrintText",
+            "line": 69,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "으응... 아아앙...!",
+            "texts": {
+              "en": "Mmm... Aaah...!",
+              "ja": "ううぅん…。ああん…！",
+              "zh-Hans": "嗯……啊啊啊……！",
+              "zh-Hant": "唔嗯……啊啊啊……！",
+              "th": "อื้อ... อาอ๊าง...!",
+              "es": "Mmm... ¡Aaaah...!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_17"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 70,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_58"
+            },
+            "voice": "voc_ch0003_desire_enjoy_58"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 71,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1.9"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 72,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_55"
+            },
+            "voice": "voc_ch0003_desire_enjoy_55"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 74,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "z=1",
+              "IdAndAppearance": "yomi.reaction/A1_4"
+            },
+            "clip": "10_reaction/10_A1_4"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 75,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1.8"
+            }
+          },
+          {
+            "class": "PickRandom",
+            "line": 76,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 77,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "꺄앗..! 햣..!",
+            "texts": {
+              "en": "Kyaa..! Hyah..!",
+              "ja": "きゃあっ…！ひゃあっ…！",
+              "zh-Hans": "呀啊……！呀……！",
+              "zh-Hant": "呀啊……！呀……！",
+              "th": "อร๊าย..! ฮะ..!",
+              "es": "¡Kyaa...! ¡Ah...!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_18"
+          },
+          {
+            "class": "PrintText",
+            "line": 78,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "웃...! 아앗...!",
+            "texts": {
+              "en": "Ugh...! Aah...!",
+              "ja": "っ…！ああっ…！",
+              "zh-Hans": "唔……！啊啊……！",
+              "zh-Hant": "唔……！啊啊……！",
+              "th": "อุ๊...! อ๊าา...!",
+              "es": "¡Ugh...! ¡Aah...!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_19"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 80,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+20"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 81,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 82,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "z=0"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 84,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndBoundingBox": "yomi.A2"
+            },
+            "box": "A2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 85,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.overlay/H1",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_H1"
+          },
+          {
+            "class": "Gosub",
+            "line": 86,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".object_off_touch"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 87,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y=0&&z=0",
+              "IdAndAppearance": "yomi.reaction/A2_1"
+            },
+            "clip": "10_reaction/10_A2_1"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 88,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PickRandom",
+            "line": 89,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 90,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 91,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후우응... 하아앙...",
+            "texts": {
+              "en": "Mmph... Haaah...",
+              "ja": "ふうぅん…。はああん…。",
+              "zh-Hans": "呼嗯……哈啊啊……",
+              "zh-Hant": "呼唔……哈啊啊……",
+              "th": "ฟู่วอือ... ฮาอ๊าง...",
+              "es": "Uff... Aaaah..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_20"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 92,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_53"
+            },
+            "voice": "voc_ch0003_desire_enjoy_53"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 93,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 94,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_55"
+            },
+            "voice": "voc_ch0003_desire_enjoy_55"
+          },
+          {
+            "class": "Group",
+            "line": 95,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 96,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐으읏... 하아아...",
+            "texts": {
+              "en": "Nngh... Haaah...",
+              "ja": "ううん…。はあぁ…。",
+              "zh-Hans": "唔嗯……哈啊啊……",
+              "zh-Hant": "唔嗯……哈啊啊……",
+              "th": "ฮึ่ก... อาาา...",
+              "es": "Mmmgh... Aaaah..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_21"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 97,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_53"
+            },
+            "voice": "voc_ch0003_desire_enjoy_53"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 98,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 99,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_55"
+            },
+            "voice": "voc_ch0003_desire_enjoy_55"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 101,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "y=1",
+              "IdAndAppearance": "yomi.reaction/A2_3"
+            },
+            "clip": "10_reaction/10_A2_3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 102,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 103,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_50"
+            },
+            "voice": "voc_ch0003_desire_enjoy_50"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 104,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PickRandom",
+            "line": 105,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "Group",
+            "line": 106,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 107,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하으응... 후우우...",
+            "texts": {
+              "en": "Haaah... Phew...",
+              "ja": "はうぅん…。ふう…。",
+              "zh-Hans": "哈嗯……呼唔唔……",
+              "zh-Hant": "哈嗯……呼嗚嗚……",
+              "th": "ฮาอื้อ... ฟู่...",
+              "es": "Aaah... Ufff..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_24"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 108,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 109,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_5"
+            },
+            "voice": "voc_ch0003_desire_enjoy_5"
+          },
+          {
+            "class": "Group",
+            "line": 110,
+            "inline": 0,
+            "indent": 3,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 111,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐으읏... 하아앗...",
+            "texts": {
+              "en": "Nngh... Haaah...",
+              "ja": "ふうぅっ…。はああ…。",
+              "zh-Hans": "唔嗯……哈啊啊……",
+              "zh-Hant": "唔嗯……哈啊啊……",
+              "th": "ฮึ่ก... ฮาอ๊า...",
+              "es": "Mmmgh... Aaah..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_25"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 112,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "WaitMode": "1.3"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 113,
+            "inline": 0,
+            "indent": 4,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_53"
+            },
+            "voice": "voc_ch0003_desire_enjoy_53"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 115,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "ConditionalExpression": "z=1",
+              "IdAndAppearance": "yomi.reaction/A2_4"
+            },
+            "clip": "10_reaction/10_A2_4"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 116,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "PickRandom",
+            "line": 117,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 118,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "꺄흑..! 아흣...",
+            "texts": {
+              "en": "Kyah..! Aah...",
+              "ja": "きゃあん…！あううっ…。",
+              "zh-Hans": "呀唔……！啊唔……",
+              "zh-Hant": "呀唔……！啊唔……",
+              "th": "อร๊ายย..! อะฮึ่ก...",
+              "es": "¡Guh...! Aah..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_26"
+          },
+          {
+            "class": "PrintText",
+            "line": 119,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Text": ""
+            },
+            "text": "크훗..! 꺄앗...!",
+            "texts": {
+              "en": "Khf..! Kyaa...!",
+              "ja": "くうぅん…！ひゃあっ…。",
+              "zh-Hans": "唔哼……！呀啊……！",
+              "zh-Hant": "唔哼……！呀啊……！",
+              "th": "คึฮึ่ก..! อร๊าย...!",
+              "es": "¡Ugh...! ¡Kyaa...!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_27"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 120,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "x=x+20"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 121,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 122,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "z=0"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 124,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x>=100&&y*z=0",
+              "IdAndAppearance": "yomi.overlay/H1",
+              "Wait": "false"
+            },
+            "clip": "30_overlay/30_H1"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 126,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "x>=100&&y*z=0",
+              "Appearance": "reaction/H1",
+              "IdAndBoundingBox": "yomi.A3"
+            },
+            "clip": "10_reaction/10_H1",
+            "box": "A3"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 127,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.overlay/H1",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_H1"
+          },
+          {
+            "class": "Gosub",
+            "line": 128,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".object_off_touch"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 129,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "10f"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 130,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_54"
+            },
+            "voice": "voc_ch0003_desire_enjoy_54"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 131,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "50f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 134,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흡흡흡흡흡흡  - !!",
+            "texts": {
+              "en": "Mmph, mmph, mmph—!!",
+              "ja": "っ、うっ、っ、ん、くっ、うっんっー！！",
+              "zh-Hans": "唔唔唔唔唔唔——！！",
+              "zh-Hant": "唔唔唔唔唔唔——！！",
+              "th": "อึ๊บอึ๊บอึ๊บอึ๊บอึ๊บอึ๊บ - !!",
+              "es": "¡¡Mmm, mmm, mmm, mmm!!"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_40_4"
+          },
+          {
+            "class": "Await",
+            "line": 136,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "PrintText",
+            "line": 137,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "하아... 하아... 하아...",
+            "texts": {
+              "en": "Haa... haa... haa...",
+              "ja": "はあ…はあ…はあぁ…。",
+              "zh-Hans": "哈啊……哈啊……哈啊……",
+              "zh-Hant": "哈啊……哈啊……哈啊……",
+              "th": "แฮ่ก... แฮ่ก... แฮ่ก...",
+              "es": "Jaa... jaa... jaa..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_41_3"
+          },
+          {
+            "class": "Group",
+            "line": 138,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 139,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "WaitMode": "3f"
+            }
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 140,
+            "inline": 0,
+            "indent": 3,
+            "fields": {
+              "Duration": "2",
+              "Wait": "false",
+              "Color": "white",
+              "Direction": "Out"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 142,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "10f"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 144,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗...",
+            "texts": {
+              "en": "Hehe...",
+              "ja": "…ふふっ…。",
+              "zh-Hans": "呵呵……",
+              "zh-Hant": "呵呵……",
+              "th": "ฟุฟุ...",
+              "es": "Jujut..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_41_4"
+          },
+          {
+            "class": "HidePrinter",
+            "line": 146,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 147,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/after_idle",
+              "Wait": "false"
+            },
+            "clip": "10_basic/10_after_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 148,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "0.5"
+            }
+          },
+          {
+            "class": "Goto",
+            "line": 149,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".phase_after"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 151,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=0",
+              "IdAndBoundingBox": "yomi.B2"
+            },
+            "box": "B2"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 152,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 153,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "z=2"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 154,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.overlay/B2",
+              "Mix": "0.2"
+            },
+            "clip": "30_overlay/30_B2"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 155,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "Gosub",
+            "line": 156,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Path": ".object_off_select"
+            }
+          },
+          {
+            "class": "BeginIf",
+            "line": 157,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y1=0"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 158,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Offset": "-2",
+              "Zoom": "0.2",
+              "EasingTypeName": "EaseInSine",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 159,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "후훗... 그것도 쓰려고요...?",
+            "texts": {
+              "en": "Hehe... Are you going to use that, too...?",
+              "ja": "ふふっ…。それも使っちゃうんですか…？",
+              "zh-Hans": "呵呵……那个也要用上吗……？",
+              "zh-Hant": "呵呵……您連那個也打算用上嗎……？",
+              "th": "ฟุฟุ... จะใช้เจ้านั่นด้วยเหรอคะ...?",
+              "es": "Je, je... ¿También piensa usar eso...?"
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_9"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 160,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.2"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 161,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Offset": "0",
+              "Zoom": "0",
+              "EasingTypeName": "EaseInSine",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 162,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y1=1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 164,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=1",
+              "Appearance": "overlay/B2",
+              "Mix": "0.2",
+              "IdAndBoundingBox": "yomi.B2"
+            },
+            "clip": "30_overlay/30_B2",
+            "box": "B2"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 165,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 166,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "z=0"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 167,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 168,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.overlay/B3_on",
+              "Track": "33",
+              "Wait": "false"
+            },
+            "clip": "30_overlay/30_B3_on"
+          },
+          {
+            "class": "Goto",
+            "line": 169,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".on_off_pass"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 171,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z=0",
+              "IdAndBoundingBox": "yomi.B3"
+            },
+            "box": "B3"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 172,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "z=1"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 173,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=2"
+            }
+          },
+          {
+            "class": "DesireCommand",
+            "line": 175,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.overlay/B3",
+              "Mix": "0.2"
+            },
+            "clip": "30_overlay/30_B3"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 176,
+            "inline": 0,
+            "indent": 2,
+            "fields": {}
+          },
+          {
+            "class": "Gosub",
+            "line": 177,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Path": ".object_off_select"
+            }
+          },
+          {
+            "class": "BeginIf",
+            "line": 178,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "z1=0"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 179,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Offset": "2,1",
+              "Zoom": "0.2",
+              "EasingTypeName": "EaseInSine",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "PrintText",
+            "line": 180,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Text": ""
+            },
+            "text": "흐응... 크고 두껍네요~...",
+            "texts": {
+              "en": "Mmm... It's so big and thick...",
+              "ja": "ううぅん…。太くて、大きいですね～",
+              "zh-Hans": "嗯哼……又大又粗呢～……",
+              "zh-Hant": "哼嗯……又大又粗呢～……",
+              "th": "หือ... ทั้งใหญ่ทั้งหนาเลยนะคะเนี่ย~...",
+              "es": "Mmm... Qué grande y grueso es..."
+            },
+            "author": "yomi",
+            "voice": "voc_ch0003_desire_enjoy_10"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 181,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "WaitMode": "0.2"
+            }
+          },
+          {
+            "class": "ModifyCamera",
+            "line": 182,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "Offset": "0",
+              "Zoom": "0",
+              "EasingTypeName": "EaseInSine",
+              "Wait": "false"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 183,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "z1=1"
+            }
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 185,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z=1",
+              "Appearance": "overlay/B3",
+              "Mix": "0.2",
+              "IdAndBoundingBox": "yomi.B3"
+            },
+            "clip": "30_overlay/30_B3",
+            "box": "B3"
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 186,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "y=0"
+            }
+          },
+          {
+            "class": "SetCustomVariable",
+            "line": 187,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Expression": "z=0"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 188,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 189,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.overlay/B2_on",
+              "Track": "32",
+              "Wait": "false"
+            },
+            "clip": "30_overlay/30_B2_on"
+          },
+          {
+            "class": "Goto",
+            "line": 190,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Path": ".on_off_pass"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 192,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "object_on",
+            "line": 196,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 197,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y<1",
+              "IdAndAppearance": "yomi.overlay/B2_on",
+              "Track": "32",
+              "Wait": "false",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B2_on"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 198,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z<1",
+              "IdAndAppearance": "yomi.overlay/B3_on",
+              "Track": "33",
+              "Wait": "false",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B3_on"
+          },
+          {
+            "class": "Return",
+            "line": 200,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "object_idle",
+            "line": 202,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 203,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=0",
+              "IdAndAppearance": "yomi.overlay/B2_idle",
+              "Track": "32",
+              "Wait": "false",
+              "Loop": "true",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B2_idle"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 204,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z=0",
+              "IdAndAppearance": "yomi.overlay/B3_idle",
+              "Track": "33",
+              "Wait": "false",
+              "Loop": "true",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B3_idle"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 206,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=1",
+              "IdAndAppearance": "yomi.overlay/B2_idle_on",
+              "Track": "32",
+              "Wait": "false",
+              "Loop": "true",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B2_idle_on"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 207,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=0",
+              "IdAndAppearance": "yomi.overlay/B2_idle_on",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_B2_idle_on"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 209,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z=1",
+              "IdAndAppearance": "yomi.overlay/B3_idle_on",
+              "Track": "33",
+              "Wait": "false",
+              "Loop": "true",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B3_idle_on"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 210,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z=0",
+              "IdAndAppearance": "yomi.overlay/B3_idle_on",
+              "Reset": "true"
+            },
+            "clip": "30_overlay/30_B3_idle_on"
+          },
+          {
+            "class": "Return",
+            "line": 212,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "object_off_select",
+            "line": 214,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 215,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=2",
+              "IdAndAppearance": "yomi.overlay/B2_off",
+              "Track": "32",
+              "Wait": "false",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B2_off"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 216,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z=2",
+              "IdAndAppearance": "yomi.overlay/B3_off",
+              "Track": "33",
+              "Wait": "false",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B3_off"
+          },
+          {
+            "class": "Return",
+            "line": 218,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "object_off_touch",
+            "line": 220,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 221,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y<1",
+              "IdAndAppearance": "yomi.overlay/B2_off",
+              "Track": "32",
+              "Wait": "false",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B2_off"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 222,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z<1",
+              "IdAndAppearance": "yomi.overlay/B3_off",
+              "Track": "33",
+              "Wait": "false",
+              "Hold": "true"
+            },
+            "clip": "30_overlay/30_B3_off"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 224,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "y=1",
+              "IdAndAppearance": "yomi.overlay/B2_off_2",
+              "Track": "32",
+              "Wait": "false"
+            },
+            "clip": "30_overlay/30_B2_off_2"
+          },
+          {
+            "class": "DesireCommand",
+            "line": 225,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "ConditionalExpression": "z=1",
+              "IdAndAppearance": "yomi.overlay/B3_off_2",
+              "Track": "33",
+              "Wait": "false"
+            },
+            "clip": "30_overlay/30_B3_off_2"
+          },
+          {
+            "class": "Return",
+            "line": 227,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "Label",
+            "label": "phase_after",
+            "line": 231,
+            "inline": null,
+            "indent": 0,
+            "fields": {}
+          },
+          {
+            "class": "ScreenFadeCommand",
+            "line": 232,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Duration": "2",
+              "Wait": "false",
+              "Color": "white",
+              "Direction": "In"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 233,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/after_idle"
+            },
+            "clip": "10_basic/10_after_idle"
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 235,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "PlayVoice",
+            "line": 237,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_56",
+              "Loop": "true"
+            },
+            "voice": "voc_ch0003_desire_enjoy_56"
+          },
+          {
+            "class": "DesireTouchTriggerCommand",
+            "line": 239,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Appearance": "basic/after_touch",
+              "Mix": "0.2",
+              "IdAndBoundingBox": "yomi"
+            },
+            "clip": "10_basic/10_after_touch"
+          },
+          {
+            "class": "PickRandom",
+            "line": 240,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "PlayVoice",
+            "line": 241,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_1"
+            },
+            "voice": "voc_ch0003_desire_enjoy_1"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 242,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_2"
+            },
+            "voice": "voc_ch0003_desire_enjoy_2"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 243,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_3"
+            },
+            "voice": "voc_ch0003_desire_enjoy_3"
+          },
+          {
+            "class": "PlayVoice",
+            "line": 244,
+            "inline": 0,
+            "indent": 2,
+            "fields": {
+              "VoicePath": "ch0003/desire/voc_ch0003_desire_enjoy_4"
+            },
+            "voice": "voc_ch0003_desire_enjoy_4"
+          },
+          {
+            "class": "DesireResetCommand",
+            "line": 247,
+            "inline": 0,
+            "indent": 0,
+            "fields": {
+              "Destination": ".set"
+            }
+          },
+          {
+            "class": "ModifyTextPrinter",
+            "line": 248,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Visible": "false",
+              "Duration": "0.5",
+              "Wait": "false",
+              "IdAndAppearance": "DesireAffectionSubtitle"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 249,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Transition": "Crossfade",
+              "Duration": "0.5",
+              "Wait": "false",
+              "ScenePosition": ",,-50",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 250,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "StopVoice",
+            "line": 251,
+            "inline": 0,
+            "indent": 1,
+            "fields": {}
+          },
+          {
+            "class": "DesireCommand",
+            "line": 252,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi",
+              "Reset": "true"
+            }
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 253,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1"
+            }
+          },
+          {
+            "class": "ModifyBackground",
+            "line": 254,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "Visible": "false",
+              "Duration": "1",
+              "Wait": "false",
+              "AppearanceAndTransition": "BG_Fade_White"
+            }
+          },
+          {
+            "class": "DesireIdleCommand",
+            "line": 255,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "IdAndAppearance": "yomi.basic/idle"
+            },
+            "clip": "10_basic/10_idle"
+          },
+          {
+            "class": "DesireWaitCommand",
+            "line": 256,
+            "inline": 0,
+            "indent": 1,
+            "fields": {
+              "WaitMode": "1.5"
+            }
+          },
+          {
+            "class": "Stop",
+            "line": 258,
+            "inline": 0,
+            "indent": 0,
+            "fields": {}
+          }
+        ]
+      },
+      "mix": {
+        "default": 0.2,
+        "pairs": []
+      }
+    },
     "ds_ch0009": {
       "story": {
         "script": "ch0009_03_desire_story",
@@ -43261,7 +47961,7 @@
               "en": "Oh my. Fufu... what a cheeky boy you are.",
               "ja": "あら、ふふ…。本当にエッチなんだから。",
               "zh-Hans": "哎呀。呵呵……你还真是个坏心眼的孩子呢。",
-              "zh-Hant": "哎呀。呵呵... 真是個色心不小的孩子呢。",
+              "zh-Hant": "哎呀。呵呵...真是個色心不小的孩子呢。",
               "th": "ตายจริง หึๆ... เป็นเด็กทะลึ่งจริงเลยนะ",
               "es": "Vaya. Juju... Eres una persona muy pícara."
             },
@@ -45776,7 +50476,7 @@
               "en": "Ah... It tickles a little...",
               "ja": "あっ…少し、くすぐったいです…。",
               "zh-Hans": "啊唔……有一点，发痒……",
-              "zh-Hant": "啊嗚…. 有一點，癢癢的……。",
+              "zh-Hant": "啊嗚….有一點，癢癢的……。",
               "th": "อ๊ะ... รู้สึกจั๊กจี้นิดหน่อยค่ะ...",
               "es": "Ah... Siento... un ligero cosquilleo..."
             },
@@ -46496,7 +51196,7 @@
               "en": "Ah... It tickles a little...",
               "ja": "あっ…少し、くすぐったいです…。",
               "zh-Hans": "啊唔……有一点，发痒……",
-              "zh-Hant": "啊嗚…. 有一點，癢癢的……。",
+              "zh-Hant": "啊嗚….有一點，癢癢的……。",
               "th": "อ๊ะ... รู้สึกจั๊กจี้นิดหน่อยค่ะ...",
               "es": "Ah... Siento... un ligero cosquilleo..."
             },
@@ -47006,7 +51706,7 @@
             "text": "읏… 이 또한… 뜨거움을 배우는 과정이겠지요?",
             "texts": {
               "en": "Ngh... Is this also... part of learning about heat?",
-              "ja": "あ…胸が…　っ…これもまた…熱さを感じるため、ということですか？",
+              "ja": "あ…胸が…っ…これもまた…熱さを感じるため、ということですか？",
               "zh-Hans": "唔……这也是……学习火热的过程吧？",
               "zh-Hant": "唔……這也是……學習熾熱的過程之一，對吧？",
               "th": "อึ้ก... นี่ก็เป็น... ขั้นตอนการเรียนรู้ความเร่าร้อนด้วยใช่ไหมคะ?",
@@ -50550,7 +55250,7 @@
               "en": "Maybe I should have a taste too. Time to dig in... Ahh...♡",
               "ja": "ちょっと私も味見しようかな、いただきます…あーん♡",
               "zh-Hans": "我也来尝尝看好了。我要开动了……啊♡",
-              "zh-Hant": "我也來嚐一口看看。我要開動了... 啊嗯♡",
+              "zh-Hant": "我也來嚐一口看看。我要開動了...啊嗯♡",
               "th": "ขอฉันลองชิมหน่อยสิ จะทานละนะค้า... อ้าม♡",
               "es": "Deja que lo pruebe yo también. ¡Que aproveche!... Aamm♡"
             },
@@ -51093,7 +55793,7 @@
               "en": "My next batches of tofu are growing nicely in here too... heh...",
               "ja": "次に生まれる子たちも、この中ですくすくと育ってるよ…ふふっ…",
               "zh-Hans": "下一批要做的孩子们，也在这里面茁壮成长着呢……呵呵……",
-              "zh-Hant": "接下來還要做的那些孩子，也都正在這裡好好長大呢... 呵呵...",
+              "zh-Hant": "接下來還要做的那些孩子，也都正在這裡好好長大呢...呵呵...",
               "th": "เหล่าเด็กๆ ที่จะทำต่อไปก็กำลังเติบโตอยู่ในนี้อย่างแข็งแรงเลย... หุหุ...",
               "es": "Los siguientes que prepararé están creciendo felices aquí dentro... Jeje..."
             },
@@ -72079,8 +76779,8 @@
             "texts": {
               "en": "Now, my minion, give me th— Ah?! W-Wait!",
               "ja": "さあ、我が眷属よ。それを吾輩にーーひゃあっ！ちょ、ちょっと！！",
-              "zh-Hans": "来吧，我的眷属啊。把那个给本大― 唔哇？！等、等等！！",
-              "zh-Hant": "來吧，本大人的眷屬啊。把那個給本大― 唔啊？！等、等等！！",
+              "zh-Hans": "来吧，我的眷属啊。把那个给本大―唔哇？！等、等等！！",
+              "zh-Hant": "來吧，本大人的眷屬啊。把那個給本大―唔啊？！等、等等！！",
               "th": "เอาล่ะ บริวารของข้า ส่งเจ้านั่นมาให้ข้— มึอ๊าด?! ดะ... เดี๋ยวสิ!!",
               "es": "Y bien, esbirro mío. Dásela a esta eminenc― ¡¿Eh?! ¡E-Espera!"
             },
@@ -87466,7 +92166,7 @@
             "text": "흩어지고 있어… 내게 쌓여있던 것들이…",
             "texts": {
               "en": "It's fading away... everything that's built up inside me...",
-              "ja": "흩어지고 있어… 후우... 내게 쌓여있던 것들이…",
+              "ja": "散ってゆく…。ふう…。私の中に溜まっていたものが…。",
               "zh-Hans": "正在消散……积存在我体内的东西……",
               "zh-Hant": "正在消散……累積在我體內的東西……",
               "th": "กำลังกระจัดกระจายไปแล้ว... สิ่งที่สะสมอยู่ในตัวฉัน...",

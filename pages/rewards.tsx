@@ -120,6 +120,7 @@ function MissionSet({ set, ctx }: { set: RewardMissionSet; ctx: Ctx }) {
   const typeLabel = set.type ? t(SET_TYPE[set.type]) : '';
   const resetLabel = set.reset ? t(RESET[set.reset]) : '';
   return (
+    <Box id={set.id != null ? `mission-${set.id}` : undefined}>
     <Panel title={title} actions={
       <HStack spacing={1} wrap="wrap">
         {typeLabel && !title.startsWith(typeLabel) && <Badge textTransform="none">{typeLabel}</Badge>}
@@ -155,6 +156,7 @@ function MissionSet({ set, ctx }: { set: RewardMissionSet; ctx: Ctx }) {
         ))}
       </VStack>
     </Panel>
+    </Box>
   );
 }
 
@@ -258,6 +260,10 @@ export default function RewardsPage() {
   const { hide, facts } = useSpoilerFilter();
   const shown = useMemo(() => (data && hide ? (facts ? withoutRewardSpoilers(data, facts) : null) : data), [data, facts, hide]);
   const ctx: Ctx | null = shown ? { data: shown, icons, gameLang, now, serverTime } : null;
+  const ready = !!shown;
+  useEffect(() => {
+    if (ready && window.location.hash) document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
+  }, [ready]);
 
   return (
     <VStack align="stretch" spacing={4}>
