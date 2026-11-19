@@ -450,6 +450,7 @@ export type SceneHost = {
   rig: SceneRig;
   say(text: string, author: string | null, voice: string | null, texts?: Record<string, string> | null, join?: boolean): void;
   voice(clip: string, loop?: boolean): void;
+  stopVoice?(): void;
   voiceBusy(): boolean;
   subtitle(visible: boolean): void;
   background(appearance: string, visible: boolean, duration: number): void;
@@ -1211,9 +1212,9 @@ export class Scene {
   // --- playback control
 
   // `ScriptPlayer.Play` at an index, interrupting the hosts the old position sits in.
-  playAt(index: number): void {
+  playAt(index: number, notify = true): void {
     if (index < 0 || index >= this.program.length) return;
-    this.notifyInterrupted(index);
+    if (notify) this.notifyInterrupted(index);
     this.waitingInput = null;
     swallow(this.main.play(index, this.root));
     this.publish();
@@ -1326,7 +1327,8 @@ export class Scene {
           const target = f.Path ? this.labelIndex.get(stripLabel(f.Path)) : undefined;
           if (target === undefined) return;
           this.gosub.push(this.moveAt(i, ctx.cursor));
-          this.playAt(target);
+          // `Gosub.NavigatePlayedScript` resumes with notifyPlaybackInterrupt false, so its hosts keep their state.
+          this.playAt(target, false);
         });
       case 'Return':
         return basic(() => {
@@ -1483,6 +1485,9 @@ export class Scene {
         });
       case 'PlayVoice':
         return basic(() => { if (c.voice) host.voice(c.voice, bool(f.Loop)); });
+      case 'StopVoice':
+        // `StopVoice.Execute` calls `IAudioManager.StopVoice()` and completes without waiting.
+        return basic(() => { host.stopVoice?.(); });
       case 'HidePrinter': {
         const seconds = num(f.Duration, PRINTER_FADE);
         return basic(async (ctx) => {
