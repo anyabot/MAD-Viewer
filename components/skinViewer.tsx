@@ -1107,6 +1107,7 @@ export default function SkinViewer({
           voice: (clip, loop) => {
             if (voiceOnRef.current) void playVoice(voiceIndexRef.current, clip, loop);
           },
+          stopVoice: () => stopVoice(),
           subtitle: (visible) => { if (!visible) setSubtitle(null); },
           background: (appearance, visible) => {
             dbg('background', { appearance, visible });

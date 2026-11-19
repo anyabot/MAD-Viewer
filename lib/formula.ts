@@ -18,8 +18,12 @@ export const BATTLE = {
 // attacker attribute -> the attribute it deals bonus damage to
 export const ATTRIBUTE_SUPERIORITY: [number, number][] = [[1, 3], [3, 2], [2, 4], [4, 1]];
 
-export const defenseFactor = (defense: number) =>
-  BATTLE.defenseConstant / (BATTLE.defenseConstant + defense);
+// `cap` is `MINUS_DEF_DAMAGE_AMP_CAP` (1.12+), read as the ceiling on this factor below zero defense.
+export const defenseFactor = (defense: number, cap?: number | null) => {
+  if (!cap || defense >= 0) return BATTLE.defenseConstant / (BATTLE.defenseConstant + defense);
+  if (defense <= -BATTLE.defenseConstant) return cap;
+  return Math.min(cap, BATTLE.defenseConstant / (BATTLE.defenseConstant + defense));
+};
 
 export const penetrationFactor = (gap: number) =>
   Math.max(0, (BATTLE.pierceRateMax * gap) / (gap + BATTLE.pierceConstant));

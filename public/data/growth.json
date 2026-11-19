@@ -543,6 +543,12 @@
    "icon": "Icon_Character_Piece_CH0029",
    "kind": "piece"
   },
+  "item:3": {
+   "name": "요미의 메모리",
+   "nameEn": "Yomi's Memory",
+   "icon": "Icon_Character_Piece_CH0003",
+   "kind": "piece"
+  },
   "item:30": {
    "name": "세븐의 메모리",
    "nameEn": "Seven's Memory",
@@ -6149,6 +6155,7 @@
   "pieces": {
    "CH0001": "item:1",
    "CH0002": "item:2",
+   "CH0003": "item:3",
    "CH0005": "item:5",
    "CH0006": "item:6",
    "CH0007": "item:7",
@@ -6228,6 +6235,7 @@
    "codes": [
     "CH0001",
     "CH0002",
+    "CH0003",
     "CH0005",
     "CH0006",
     "CH0007",

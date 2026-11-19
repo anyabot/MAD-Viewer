@@ -15,6 +15,8 @@
         }
       },
       "units": {
+        "af_ch0003__google": "2",
+        "af_ch0003__onestore": "2",
         "af_ch0009__google": "1",
         "af_ch0009__onestore": "1",
         "af_ch0010__google": "1",
@@ -57,6 +59,9 @@
         "dm_ma0001__google": "2",
         "dm_ma0001__onestore": "2",
         "dm_ma0002": "2",
+        "dm_ma0003": "2",
+        "ds_ch0003__google": "2",
+        "ds_ch0003__onestore": "2",
         "ds_ch0009__google": "1",
         "ds_ch0009__onestore": "1",
         "ds_ch0010": "1",
@@ -108,10 +113,13 @@
         "pl_title_0001": "1",
         "st_ch0001": "1",
         "st_ch0002": "1",
-        "st_ch0003": "2",
+        "st_ch0003__google": "2",
+        "st_ch0003__onestore": "2",
         "st_ch0005": "1",
         "st_ch0006": "1",
         "st_ch0007": "1",
+        "st_ch0008__google": "2",
+        "st_ch0008__onestore": "2",
         "st_ch0009__google": "1",
         "st_ch0009__onestore": "1",
         "st_ch0010__google": "1",
@@ -148,8 +156,12 @@
         "st_ch0039": "1",
         "st_ch0040__google": "2",
         "st_ch0040__onestore": "2",
+        "st_ch0041__google": "2",
+        "st_ch0041__onestore": "2",
         "st_ch0042": "1",
         "st_ch0043": "1",
+        "st_ch0044__google": "2",
+        "st_ch0044__onestore": "2",
         "st_ch0046": "1",
         "st_ch0050": "1",
         "st_ch0052": "2",
@@ -231,6 +243,11 @@
         "jp/ch0002/ingame": "1",
         "jp/ch0002/lobby": "1",
         "jp/ch0002/outgame": "1",
+        "jp/ch0003/affection": "1",
+        "jp/ch0003/desire": "1",
+        "jp/ch0003/ingame": "1",
+        "jp/ch0003/lobby": "1",
+        "jp/ch0003/outgame": "1",
         "jp/ch0005/ingame": "1",
         "jp/ch0005/lobby": "1",
         "jp/ch0005/outgame": "1",
@@ -428,12 +445,13 @@
       "buckets": {
         "1": {
           "repo": "MAD-audio-1",
-          "ref": "v16"
+          "ref": "v18"
         }
       },
       "units": {
         "bgm": "1",
         "sfx": "1",
+        "view/af_ch0003": "1",
         "view/af_ch0009": "1",
         "view/af_ch0011": "1",
         "view/af_ch0015": "1",
@@ -448,6 +466,7 @@
         "view/af_ch0058": "1",
         "view/af_ch0069": "1",
         "view/af_ch0075": "1",
+        "view/ds_ch0003": "1",
         "view/ds_ch0009": "1",
         "view/ds_ch0010": "1",
         "view/ds_ch0011": "1",
@@ -476,12 +495,13 @@
       "buckets": {
         "1": {
           "repo": "MAD-sd-1",
-          "ref": "v13"
+          "ref": "v14"
         }
       },
       "units": {
         "sd_ch0001": "1",
         "sd_ch0002": "1",
+        "sd_ch0003": "1",
         "sd_ch0005": "1",
         "sd_ch0006": "1",
         "sd_ch0007": "1",

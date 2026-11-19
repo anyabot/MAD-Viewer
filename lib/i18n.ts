@@ -87,6 +87,7 @@ export const UI = {
   homeEvents: { en: 'Events', ko: '이벤트' },
   homeBanners: { en: 'Pickup banners', ko: '픽업 모집' },
   homeSeasonal: { en: 'Seasonal content', ko: '시즌 콘텐츠' },
+  homeQuestEvents: { en: 'Quest events', ko: '퀘스트 이벤트' },
   homeReveal: { en: 'Upcoming partner · click to reveal', ko: '예정 파트너 · 클릭해서 보기' },
   homeNemesis: { en: 'Nemesis', ko: '네메시스' },
   homeViewer: { en: 'Every skin, live: lobby, affection and desire scenes', ko: '모든 스킨을 로비·어펙션·디자이어로 재생' },
