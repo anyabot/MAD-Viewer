@@ -66,6 +66,7 @@ function FormulaContent() {
   if (error || !chars) {
     return <LoadState loading error={error} labels={{ loading: t('loading'), error }} />;
   }
+  const defenseCap = chars.battle?.minusDefDamageAmpCap ?? null;
 
   const stat = (key: string) => {
     const row = chars.statTypes[key];
@@ -161,9 +162,10 @@ function FormulaContent() {
 
         <Panel title={L('Defense (D)', '방어 (D)')}>
           <VStack align="stretch" spacing={3}>
-            <Formula>{`D = ${BATTLE.defenseConstant} / (${BATTLE.defenseConstant} + ${stat('PHYSICS_DEFENSE')})`}</Formula>
+            <Formula>{`D = ${BATTLE.defenseConstant} / (${BATTLE.defenseConstant} + ${stat('PHYSICS_DEFENSE')})${defenseCap ? `\nD ≤ ${defenseCap}  (${stat('PHYSICS_DEFENSE')} < 0)` : ''}`}</Formula>
             <ValueTable head={[stat('PHYSICS_DEFENSE'), 'D']}
-              rows={[100, 300, 600, 900, 1200, 1800].map((d) => [String(d), pct(defenseFactor(d))])} />
+              rows={[...(defenseCap ? [-300, -100] : []), 100, 300, 600, 900, 1200, 1800]
+                .map((d) => [String(d), pct(defenseFactor(d, defenseCap))])} />
           </VStack>
         </Panel>
 

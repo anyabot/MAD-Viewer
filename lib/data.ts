@@ -533,6 +533,7 @@ export type CharacterData = {
   /** Keyed by `STAT_TYPE` constant. */
   statTypes: Record<string, StatTypeEntry>;
   statCaps: StatCaps;
+  battle?: { minusDefDamageAmpCap?: number };
   /** Index 0 is affection level 1. */
   loveTitles: { name: string | null; en: string | null }[];
   /** `skillSetGroup` -> star grade -> the skill ids that grade has. */

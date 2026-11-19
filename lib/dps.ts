@@ -16,7 +16,7 @@ export type Build = {
 export type Target = {
   defense: number; evasion: number; critResist: number; critDamageResist: number;
   penetrationResist: number; levelGap: number; advantage: boolean; maxLife: number;
-  hpRate: number; marked: boolean; seconds: number;
+  hpRate: number; marked: boolean; seconds: number; defenseCap?: number | null;
 };
 export type SkillYield = {
   id: string; damage: number; heal: number; healPct: number; seconds: number | null; skipped: number;
@@ -190,7 +190,7 @@ function passiveSide(op: SkillOp, trig: SkillTrigger): Side {
 function hitYield(hit: SkillHit, level: number, period: number, skillType: number, ctx: Ctx, skip: (op: number) => void): Yield {
   const { stats, target } = ctx;
   const stat = (k: string) => stats[k] ?? 0;
-  const f = defenseFactor(target.defense);
+  const f = defenseFactor(target.defense, target.defenseCap);
   const a = target.advantage ? 1 + BATTLE.attributeBonus : 1;
   const l = levelGapFactor(target.levelGap);
   const s = Math.max(0, 1 + stat(SKILL_DAMAGE_STAT[skillType] ?? ''));
@@ -443,9 +443,11 @@ export function unitYield(
         lower[field] += n * e.value * (e.scaleOf === 'CASTER' ? base[from] ?? 0 : target[field]);
       }
     }
+    const defenseCap = data.battle?.minusDefDamageAmpCap ?? null;
     return {
       ...target,
-      defense: Math.max(0, target.defense - lower.defense),
+      defenseCap,
+      defense: defenseCap ? target.defense - lower.defense : Math.max(0, target.defense - lower.defense),
       critResist: Math.max(0, target.critResist - lower.critResist),
     };
   };
