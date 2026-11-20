@@ -1,16 +1,14 @@
-// One Pixi surface holding one Spine rig at a time. The rig is framed by its
-// own `cam` bone, on the same drawer the skin viewer's desire scenes use.
-//
-// A tap anywhere on the surface advances the phase the machine is parked on.
-
+// A tap on the surface advances the phase the machine is parked on.
 import { Badge, Box, Button, Flex, HStack, Select, Spinner, Text } from '@altterisk/game-hub/ui';
+import { saveBlob } from '@altterisk/game-hub/persist';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
   STATE_LABEL, runState,
   type GachaHost, type GachaState, type Grade,
 } from '@/components/gachaViewer/machine';
-import { REFERENCE_VIEW_WIDTH } from '@/components/skinViewer/constants';
+import { MAX_RECORD_DIM, REFERENCE_VIEW_WIDTH, speedOptions } from '@/components/skinViewer/constants';
+import { attachmentScales, saveStagePng, sourcePixelScale } from '@/components/skinViewer/exportPng';
 import { rigCameraTransform } from '@/components/skinViewer/scenes';
 import { gachaArchiveUrls } from '@/lib/cdn';
 import { useLang, useT } from '@/lib/i18n';
@@ -23,6 +21,32 @@ type Loaded = {
   camBone: any;
   camSetup: { x: number; y: number; scale: number };
   rig: GachaRig;
+};
+
+type RigKey = 'child' | 'adult';
+
+// Spine's own bounds are the bounding-box attachments when a rig has any, which here is only the chest hit box.
+function artBounds(spine: any, RegionAttachment: any, MeshAttachment: any) {
+  let minX = Infinity; let minY = Infinity; let maxX = -Infinity; let maxY = -Infinity;
+  const v: number[] = [];
+  for (const slot of spine.skeleton.drawOrder) {
+    const a = slot.getAttachment();
+    let n = 0;
+    if (a instanceof RegionAttachment) { a.computeWorldVertices(slot, v, 0, 2); n = 8; }
+    else if (a instanceof MeshAttachment) { n = a.worldVerticesLength; a.computeWorldVertices(slot, 0, n, v, 0, 2); }
+    for (let i = 0; i < n; i += 2) {
+      minX = Math.min(minX, v[i]); maxX = Math.max(maxX, v[i]);
+      minY = Math.min(minY, v[i + 1]); maxY = Math.max(maxY, v[i + 1]);
+    }
+  }
+  return minX === Infinity ? { x: 0, y: 0, width: 0, height: 0 } : { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
+}
+
+type Controller = {
+  runScene(): void;
+  playClip(rig: RigKey, clip: string, loop: boolean): void;
+  saveFull(): void;
+  saveView(): void;
 };
 
 // `grade`/`play`/`onDone` let a page drive the scene: `play` restarts it at `grade`, `onDone` fires when it ends.
@@ -39,17 +63,30 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
   const [style, setStyle] = useState<string>('Default');
   const [sfx, setSfx] = useState<string[]>([]);
   const [runId, setRunId] = useState(0);
+  const [speed, setSpeed] = useState(1);
+  const [playing, setPlaying] = useState(true);
+  const [mode, setMode] = useState<'scene' | 'clip'>('scene');
+  const [clipRig, setClipRig] = useState<RigKey>('child');
+  const [clip, setClip] = useState(index.rigs.child.animations[0] ?? '');
+  const [loop, setLoop] = useState(true);
+  const [parked, setParked] = useState(false);
 
   const gradeRef = useRef<Grade>(grade);
   gradeRef.current = forced ?? grade;
   const onDoneRef = useRef(onDone);
   onDoneRef.current = onDone;
+  const speedRef = useRef(speed);
+  speedRef.current = speed;
+  const playingRef = useRef(playing);
+  playingRef.current = playing;
+  const ctrlRef = useRef<Controller | null>(null);
 
   // Whatever the machine is parked on, waiting for the next tap.
   const tapParkRef = useRef<(() => void) | null>(null);
   const onTap = useCallback(() => {
     const park = tapParkRef.current;
     tapParkRef.current = null;
+    setParked(false);
     park?.();
   }, []);
 
@@ -57,19 +94,16 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
     let destroyed = false;
     let app: any = null;
     let pixi: PixiAppHandle | null = null;
-    const timers: number[] = [];
     const teardown: (() => void)[] = [];
     const surface = hostRef.current;
     setReady(false);
     setError(null);
-    setState('intro');
-    setStyle('Default');
-    setSfx([]);
 
     (async () => {
       const PIXI = await import('pixi.js');
       const {
         Spine, SkeletonBinary, AtlasAttachmentLoader, TextureAtlas, SpineTexture,
+        RegionAttachment, MeshAttachment,
       } = await import('@esotericsoftware/spine-pixi-v8') as any;
 
       const build = async (rig: GachaRig): Promise<Loaded> => {
@@ -89,7 +123,7 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
         const binary = new SkeletonBinary(new AtlasAttachmentLoader(atlas));
         binary.scale = rig.dataScale;
         const skeletonData = binary.readSkeletonData(await readBytes(files, rig.skel));
-        const spine = new Spine({ skeletonData });
+        const spine = new Spine({ skeletonData, autoUpdate: false });
         spine.update(0);
         const camBone = rig.cameraBone ? spine.skeleton.findBone(rig.cameraBone) : null;
         return {
@@ -106,12 +140,12 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
         };
       };
 
-      // Both up front: a grade-3 result swaps mid-scene and the swap must not
-      // stall on a download.
+      // Both up front: a grade-3 result swaps mid-scene and the swap must not stall on a download.
       const [child, adult] = await Promise.all([
         build(index.rigs.child), build(index.rigs.adult),
       ]);
       if (destroyed) return;
+      const rigs: Record<RigKey, Loaded> = { child, adult };
 
       pixi = await createPixiApp({
         PIXI, host: surface!, cancelled: () => destroyed,
@@ -151,8 +185,6 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
           app.screen.width / 2 - centre.x * s, app.screen.height / 2 - centre.y * s);
       };
 
-      // The view is the inverse of the bone's pose against its setup pose. On
-      // these rigs the bone never translates, so the camera is all zoom.
       const followCamera = () => {
         const { camBone, camSetup } = current;
         if (!camBone) return;
@@ -177,103 +209,251 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
       };
       stage(child);
 
-      app.ticker.add(followCamera);
+      app.ticker.add(() => {
+        if (playingRef.current) current.spine.update(app.ticker.deltaMS / 1000 * speedRef.current);
+        followCamera();
+      });
 
       const onResize = () => fit();
       window.addEventListener('resize', onResize);
       teardown.push(() => window.removeEventListener('resize', onResize));
 
-      const sleep = (ms: number) => new Promise<void>((resolve) => {
-        timers.push(window.setTimeout(resolve, ms));
-      });
+      // A new run or clip bumps the token; anything parked on an older one stops.
+      let token = 0;
 
       const trackEmpty = () => {
         const entry = current.spine.state.getCurrent(0);
         return !entry || (entry.isComplete() && !entry.next && !entry.loop);
       };
 
-      const host: GachaHost = {
-        style: (name) => setStyle(name),
-        sfx: (key, loop) => setSfx(
-          (keys) => [...keys, loop ? `${key} (loop)` : key].slice(-3)),
-        stopSfx: () => setSfx([]),
-        set: (clip, loop) => { current.spine.state.setAnimation(0, clip, !!loop); },
-        queue: (clip, loop, onStart) => {
-          const entry = current.spine.state.addAnimation(0, clip, !!loop, 0);
-          if (onStart) entry.listener = { start: () => onStart() };
-        },
-        currentClip: () => current.spine.state.getCurrent(0)?.animation?.name ?? null,
-        loopCurrent: () => {
-          const entry = current.spine.state.getCurrent(0);
-          if (!entry) return;
-          current.spine.state.clearNext(entry);
-          entry.loop = true;
-        },
-        swapToAdult: async () => { stage(adult); },
-        grade: () => gradeRef.current,
-        isAdult: () => current === adult,
+      const resetRig = (rig: Loaded) => {
+        rig.spine.state.clearTracks();
+        rig.spine.skeleton.setToSetupPose();
+        rig.spine.update(0);
+      };
 
-        waitAnimation: () => new Promise<void>((resolve) => {
+      const host = (run: number): GachaHost => {
+        const live = () => !destroyed && run === token;
+        const waitTick = (done: () => boolean) => new Promise<void>((resolve) => {
           const tick = () => {
-            if (destroyed || trackEmpty()) {
+            if (!live() || done()) {
               app.ticker.remove(tick);
-              resolve();
+              if (live()) resolve();
             }
           };
           app.ticker.add(tick);
-        }),
-        waitTap: () => new Promise<void>((resolve) => { tapParkRef.current = resolve; }),
-        delay: sleep,
+        });
+        return {
+          style: (name) => { if (live()) setStyle(name); },
+          sfx: (key, isLoop) => {
+            if (live()) setSfx((keys) => [...keys, isLoop ? `${key} (loop)` : key].slice(-3));
+          },
+          stopSfx: () => { if (live()) setSfx([]); },
+          set: (name, isLoop) => { current.spine.state.setAnimation(0, name, !!isLoop); },
+          queue: (name, isLoop, onStart) => {
+            const entry = current.spine.state.addAnimation(0, name, !!isLoop, 0);
+            if (onStart) entry.listener = { start: () => { if (live()) onStart(); } };
+          },
+          currentClip: () => current.spine.state.getCurrent(0)?.animation?.name ?? null,
+          loopCurrent: () => {
+            const entry = current.spine.state.getCurrent(0);
+            if (!entry) return;
+            current.spine.state.clearNext(entry);
+            entry.loop = true;
+          },
+          swapToAdult: async () => { resetRig(adult); stage(adult); },
+          grade: () => gradeRef.current,
+          isAdult: () => current === adult,
+          waitAnimation: () => waitTick(trackEmpty),
+          waitTap: () => new Promise<void>((resolve) => {
+            if (!live()) return;
+            tapParkRef.current = () => { if (live()) resolve(); };
+            setParked(true);
+          }),
+          delay: (ms) => {
+            let left = ms;
+            return waitTick(() => {
+              if (playingRef.current) left -= app.ticker.deltaMS * speedRef.current;
+              return left <= 0;
+            });
+          },
+        };
       };
 
-      setReady(true);
+      const begin = () => {
+        token += 1;
+        tapParkRef.current = null;
+        setParked(false);
+        setStyle('Default');
+        setSfx([]);
+        return token;
+      };
 
-      let next: GachaState = 'intro';
-      while (!destroyed && next !== 'done') {
-        setState(next);
-        next = await runState(next, host);
-      }
-      if (!destroyed) {
-        setState('done');
-        onDoneRef.current?.();
-      }
+      const runScene = async () => {
+        const run = begin();
+        resetRig(child);
+        stage(child);
+        const h = host(run);
+        let next: GachaState = 'intro';
+        while (!destroyed && run === token && next !== 'done') {
+          setState(next);
+          next = await runState(next, h);
+        }
+        if (!destroyed && run === token) {
+          setState('done');
+          onDoneRef.current?.();
+        }
+      };
+
+      const playClip = (key: RigKey, name: string, isLoop: boolean) => {
+        begin();
+        const rig = rigs[key];
+        resetRig(rig);
+        stage(rig);
+        if (rig.rig.animations.includes(name)) rig.spine.state.setAnimation(0, name, isLoop);
+      };
+
+      const fileStem = () => {
+        const name = current.spine.state.getCurrent(0)?.animation?.name;
+        return `${current.rig.asset}${name ? `_${name}` : ''}`;
+      };
+
+      // Transparent, native resolution, the whole figure regardless of framing.
+      const saveFull = () => {
+        const bg = app.renderer.background;
+        const alpha = bg.alpha;
+        bg.alpha = 0;
+        const { spine } = current;
+        const pixelScale = sourcePixelScale(
+          attachmentScales(spine, RegionAttachment, MeshAttachment), []) * (view.scale.x || 1);
+        spine.boundsProvider = { calculateBounds: () => artBounds(spine, RegionAttachment, MeshAttachment) };
+        void saveStagePng({ PIXI, app, root, pixelScale, fileName: `${fileStem()}.png` })
+          .finally(() => {
+            spine.boundsProvider = undefined;
+            bg.alpha = alpha;
+          });
+      };
+
+      // Exactly the framed view, at the art's own density capped by the record limit.
+      const saveView = () => {
+        const pixelScale = sourcePixelScale(
+          attachmentScales(current.spine, RegionAttachment, MeshAttachment), []);
+        const onScreen = root.scale.x * view.scale.x;
+        const native = onScreen > 0 && pixelScale > 0 ? 1 / pixelScale / onScreen : 1;
+        const cap = MAX_RECORD_DIM / Math.max(app.screen.width, app.screen.height, 1);
+        const resolution = Math.max(1, Math.min(native, cap)) || 1;
+        const canvas = app.renderer.extract.canvas({
+          target: app.stage,
+          frame: new PIXI.Rectangle(0, 0, app.screen.width, app.screen.height),
+          resolution,
+          clearColor: app.renderer.background.color,
+        }) as HTMLCanvasElement;
+        canvas.toBlob((blob) => {
+          if (blob) saveBlob(blob, `${fileStem()}_view.png`);
+        }, 'image/png');
+      };
+
+      teardown.push(() => { token += 1; });
+      ctrlRef.current = { runScene: () => { void runScene(); }, playClip, saveFull, saveView };
+      setReady(true);
     })().catch((e) => {
       if (!destroyed) setError(String(e?.message ?? e));
     });
 
     return () => {
       destroyed = true;
-      for (const t of timers) window.clearTimeout(t);
+      ctrlRef.current = null;
       for (const off of teardown) off();
       tapParkRef.current = null;
       pixi?.dispose();
       surface?.replaceChildren();
     };
-    // A grade change restarts the scene, which is what `runId` bumps.
-  }, [index, runId, play]);
+  }, [index]);
+
+  useEffect(() => {
+    if (ready && mode === 'scene') ctrlRef.current?.runScene();
+  }, [ready, mode, runId, play]);
+
+  useEffect(() => {
+    if (ready && mode === 'clip') ctrlRef.current?.playClip(clipRig, clip, loop);
+  }, [ready, mode, clipRig, clip, loop, runId]);
+
+  const clips = index.rigs[clipRig].animations;
+  const pickRig = (key: RigKey) => {
+    setClipRig(key);
+    if (!index.rigs[key].animations.includes(clip)) setClip(index.rigs[key].animations[0] ?? '');
+  };
 
   return (
     <Flex direction="column" gap={3}>
       {controls && <Flex wrap="wrap" align="center" gap={3}>
         <HStack gap={2}>
-          <Text fontSize="sm" color="gray.400">{t('gachaGrade')}</Text>
-          <Select size="sm" w="24" value={grade}
-            onChange={(e) => setGrade(Number(e.target.value) as Grade)}>
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
+          <Text fontSize="sm" color="gray.400">{t('rowMode')}</Text>
+          <Select size="sm" w="7rem" value={mode} aria-label={t('rowMode')}
+            onChange={(e) => setMode(e.target.value as 'scene' | 'clip')}>
+            <option value="scene">{t('gachaModeScene')}</option>
+            <option value="clip">{t('gachaModeClip')}</option>
           </Select>
         </HStack>
-        <Button size="sm" onClick={() => setRunId((n) => n + 1)}>{t('gachaReplay')}</Button>
-        <Badge colorScheme="gray">{STATE_LABEL[state][lang]}</Badge>
-        <Text fontSize="sm" color="gray.500">fx {style}</Text>
-        {sfx.length > 0 && (
-          <Text fontSize="sm" color="gray.600" noOfLines={1}>sfx {sfx.join(' · ')}</Text>
+        {mode === 'scene' ? (
+          <HStack gap={2}>
+            <Text fontSize="sm" color="gray.400">{t('gachaGrade')}</Text>
+            <Select size="sm" w="24" value={grade} aria-label={t('gachaGrade')}
+              onChange={(e) => setGrade(Number(e.target.value) as Grade)}>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+            </Select>
+          </HStack>
+        ) : (<>
+          <HStack gap={2}>
+            <Text fontSize="sm" color="gray.400">{t('gachaRig')}</Text>
+            <Select size="sm" w="7rem" value={clipRig} aria-label={t('gachaRig')}
+              onChange={(e) => pickRig(e.target.value as RigKey)}>
+              <option value="child">{t('gachaRigChild')}</option>
+              <option value="adult">{t('gachaRigAdult')}</option>
+            </Select>
+          </HStack>
+          <HStack gap={2} minW={0}>
+            <Text fontSize="sm" color="gray.400">{t('gachaClip')}</Text>
+            <Select size="sm" w="13rem" maxW="100%" value={clip} aria-label={t('gachaClip')}
+              onChange={(e) => setClip(e.target.value)}>
+              {clips.map((name) => <option key={name} value={name}>{name}</option>)}
+            </Select>
+          </HStack>
+          <Button size="sm" variant={loop ? 'solid' : 'outline'} onClick={() => setLoop((v) => !v)}>
+            {t('rowLoopClip')}
+          </Button>
+        </>)}
+        <HStack gap={2}>
+          <Text fontSize="sm" color="gray.400">{t('rowSpeed')}</Text>
+          <Select size="sm" w="6rem" value={String(speed)} aria-label={t('ariaPlaybackSpeed')}
+            onChange={(e) => setSpeed(Number(e.target.value))}>
+            {speedOptions(lang).map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+          </Select>
+        </HStack>
+        <Button size="sm" isDisabled={!ready} onClick={() => setPlaying((v) => !v)}>
+          {playing ? t('btnPause') : t('btnPlay')}
+        </Button>
+        <Button size="sm" isDisabled={!ready} onClick={() => setRunId((n) => n + 1)}>{t('gachaReplay')}</Button>
+        {mode === 'scene' && (
+          <Button size="sm" isDisabled={!parked} onClick={onTap}>{t('btnAdvance')}</Button>
         )}
+        <Button size="sm" variant="outline" isDisabled={!ready}
+          onClick={() => ctrlRef.current?.saveFull()}>{t('btnSavePng')}</Button>
+        <Button size="sm" variant="outline" isDisabled={!ready}
+          onClick={() => ctrlRef.current?.saveView()}>{t('btnSaveView')}</Button>
+        {mode === 'scene' && <>
+          <Badge colorScheme="gray">{STATE_LABEL[state][lang]}</Badge>
+          <Text fontSize="sm" color="gray.500">fx {style}</Text>
+          {sfx.length > 0 && (
+            <Text fontSize="sm" color="gray.600" noOfLines={1}>sfx {sfx.join(' · ')}</Text>
+          )}
+        </>}
       </Flex>}
       <Box position="relative" bg="black" borderRadius="md" overflow="hidden"
         h={{ base: '60vh', lg: '70vh' }} minH="320px" onPointerDown={onTap}
-        style={{ touchAction: 'none', cursor: 'pointer' }}>
+        style={{ touchAction: 'none', cursor: mode === 'scene' ? 'pointer' : 'default' }}>
         <Box ref={hostRef} position="absolute" inset={0} />
         {!ready && !error && (
           <Flex position="absolute" inset={0} align="center" justify="center">
