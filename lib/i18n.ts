@@ -580,6 +580,12 @@ export const UI = {
 
   gachaGrade: { en: 'Grade', ko: '등급' },
   gachaReplay: { en: 'Replay', ko: '다시 재생' },
+  gachaModeScene: { en: 'Scene', ko: '연출' },
+  gachaModeClip: { en: 'Clip', ko: '클립' },
+  gachaRig: { en: 'Rig', ko: '리그' },
+  gachaRigChild: { en: 'Child', ko: '어린이' },
+  gachaRigAdult: { en: 'Adult', ko: '성인' },
+  gachaClip: { en: 'Clip', ko: '클립' },
   gachaTitle: { en: 'Summon Simulator', ko: '호출 시뮬레이터' },
   gachaPull: { en: 'Summon ×{n}', ko: '{n}회 호출' },
   gachaScene: { en: 'Play summon scene', ko: '호출 연출 재생' },
