@@ -1,5 +1,5 @@
 import {
-  attachmentScales as spineAttachmentScales, percentileScale, saveStagePng as saveStage,
+  attachmentScales as spineAttachmentScales, percentileScale, renderStageCanvas, tightCrop,
   type StageRenderOptions,
 } from '@altterisk/game-hub/spine';
 import { EXPORT_SCALE_PERCENTILE, MAX_EXPORT_DIM } from '@/components/skinViewer/constants';
@@ -22,8 +22,8 @@ export function sourcePixelScale(scales: number[], backgroundSprites: any[]): nu
   return 1;
 }
 
-export function saveStagePng(options: Omit<StageRenderOptions, 'maxDim' | 'oversize'> & {
-  fileName: string;
-}): Promise<boolean> {
-  return saveStage({ ...options, maxDim: MAX_EXPORT_DIM, oversize: 'clamp' });
+// The whole figure at native resolution, cropped to its opaque pixels.
+export function renderFigure(options: Omit<StageRenderOptions, 'maxDim' | 'oversize'>): HTMLCanvasElement | null {
+  const canvas = renderStageCanvas({ ...options, maxDim: MAX_EXPORT_DIM, oversize: 'clamp' });
+  return canvas && tightCrop(canvas);
 }

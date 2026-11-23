@@ -4,22 +4,23 @@ import { MAX_RECORD_DIM } from '@/components/skinViewer/constants';
 export type StillFormat = 'png' | 'webp';
 export type AnimFormat = 'webp-anim' | 'apng' | 'gif';
 
-export type ExportFormat = StillFormat | AnimFormat;
+export type VideoFormat = 'webm' | AnimFormat;
+export type StillCrop = 'bounds' | 'view';
 
 export const ANIM_FPS: Record<AnimFormat, number> = { 'webp-anim': 30, apng: 30, gif: 25 };
 export const ANIM_MAX_DIM: Record<AnimFormat, number> = { 'webp-anim': MAX_RECORD_DIM, apng: 1080, gif: 1080 };
 
-export const EXPORT_FORMATS: { value: ExportFormat; label: string }[] = [
-  { value: 'png', label: 'PNG' },
-  { value: 'webp', label: 'WebP' },
+export const VIDEO_FORMATS: { value: VideoFormat; label: string }[] = [
+  { value: 'webm', label: 'WebM' },
   { value: 'webp-anim', label: 'WebP (anim)' },
   { value: 'apng', label: 'APNG' },
   { value: 'gif', label: 'GIF' },
 ];
 
-export function isStill(format: ExportFormat): format is StillFormat {
-  return format === 'png' || format === 'webp';
-}
+export const STILL_FORMATS: { value: StillFormat; label: string }[] = [
+  { value: 'png', label: 'PNG' },
+  { value: 'webp', label: 'WebP' },
+];
 
 export const ANIM_EXT: Record<AnimFormat, string> = { 'webp-anim': 'webp', apng: 'png', gif: 'gif' };
 
@@ -28,7 +29,7 @@ export function stillBlob(canvas: HTMLCanvasElement, format: StillFormat): Promi
 }
 
 export async function encodeAnimation({
-  format, count, width, height, frame, progress, cancelled = () => false,
+  format, count, width, height, frame, progress, cancelled = () => false, delays: given,
 }: {
   format: AnimFormat;
   count: number;
@@ -37,8 +38,9 @@ export async function encodeAnimation({
   frame: (index: number) => HTMLCanvasElement;
   progress?: (done: number, total: number) => void;
   cancelled?: () => boolean;
+  delays?: number[];
 }): Promise<Blob | null> {
-  const delays = frameDelays(count, ANIM_FPS[format]);
+  const delays = given ?? frameDelays(count, ANIM_FPS[format]);
   const gif = format === 'gif' ? createGif(width, height) : null;
   const frames: Uint8Array[] = [];
   for (let i = 0; i < count; i += 1) {
@@ -62,6 +64,81 @@ export async function encodeAnimation({
   }
   if (gif) return gif.finish();
   return format === 'apng' ? muxApng(frames, delays) : muxAnimatedWebp(frames, width, height, delays);
+}
+
+export type VideoLength = 'record' | 'loop';
+export const LIVE_MAX_SECONDS = 30;
+
+export type LiveCapture = {
+  width: number;
+  height: number;
+  stop: () => Promise<Blob | null>;
+  cancel: () => void;
+};
+
+// Snapshots the app canvas after each render at up to `fps`; frame timing comes from the real clock.
+export function startLiveCapture({ app, format, resolution, onLimit, progress }: {
+  app: any;
+  format: AnimFormat;
+  resolution: number;
+  onLimit: () => void;
+  progress?: (done: number, total: number) => void;
+}): LiveCapture {
+  const fps = ANIM_FPS[format];
+  const restore = app.renderer.resolution;
+  const longEdge = Math.max(app.screen.width, app.screen.height, 1);
+  app.renderer.resolution = Math.max(0.25, Math.min(resolution, ANIM_MAX_DIM[format] / longEdge));
+  const width = app.canvas.width;
+  const height = app.canvas.height;
+  const shots: Promise<ImageBitmap>[] = [];
+  const times: number[] = [];
+  let last = -Infinity;
+  let live = true;
+  const grab = () => {
+    const now = performance.now();
+    if (now - last < 1000 / fps - 2) return;
+    last = now;
+    shots.push(createImageBitmap(app.canvas));
+    times.push(now);
+    if (times.length === fps * LIVE_MAX_SECONDS) onLimit();
+  };
+  app.ticker.add(grab, undefined, -50);
+  const end = () => {
+    if (!live) return false;
+    live = false;
+    app.ticker.remove(grab);
+    app.renderer.resolution = restore;
+    return true;
+  };
+  return {
+    width,
+    height,
+    stop: async () => {
+      if (!end()) return null;
+      const bitmaps = await Promise.all(shots);
+      if (!bitmaps.length) return null;
+      const delays = times.map((at, i) => Math.max(10, Math.round((times[i + 1] ?? at + 1000 / fps) - at)));
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d')!;
+      try {
+        return await encodeAnimation({
+          format, count: bitmaps.length, width, height, delays, progress,
+          frame: (i) => {
+            ctx.clearRect(0, 0, width, height);
+            ctx.drawImage(bitmaps[i], 0, 0, width, height);
+            return canvas;
+          },
+        });
+      } finally {
+        for (const bitmap of bitmaps) bitmap.close();
+      }
+    },
+    cancel: () => {
+      if (end()) void Promise.all(shots).then((bitmaps) => bitmaps.forEach((bitmap) => bitmap.close()));
+    },
+  };
 }
 
 // Drives Pixi tickers on a fixed step; `performance.now` reads the same clock only while a step runs.

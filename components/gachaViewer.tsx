@@ -8,7 +8,7 @@ import {
   type GachaHost, type GachaState, type Grade,
 } from '@/components/gachaViewer/machine';
 import { MAX_RECORD_DIM, REFERENCE_VIEW_WIDTH, speedOptions } from '@/components/skinViewer/constants';
-import { attachmentScales, saveStagePng, sourcePixelScale } from '@/components/skinViewer/exportPng';
+import { attachmentScales, renderFigure, sourcePixelScale } from '@/components/skinViewer/exportPng';
 import { rigCameraTransform } from '@/components/skinViewer/scenes';
 import { gachaArchiveUrls } from '@/lib/cdn';
 import { useLang, useT } from '@/lib/i18n';
@@ -16,8 +16,8 @@ import type { GachaIndex, GachaRig } from '@/lib/data';
 import { loadArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
 import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
 import {
-  ANIM_EXT, ANIM_FPS, EXPORT_FORMATS, ANIM_MAX_DIM, encodeAnimation, isStill, steppedClock, stillBlob,
-  type AnimFormat, type ExportFormat, type StillFormat,
+  ANIM_EXT, STILL_FORMATS, VIDEO_FORMATS, startLiveCapture, stillBlob,
+  type LiveCapture, type StillCrop, type StillFormat, type VideoFormat,
 } from '@/components/skinViewer/exportAnim';
 import {
   canRecordCanvas, startCanvasVideo, type VideoRecording,
@@ -52,12 +52,10 @@ function artBounds(spine: any, RegionAttachment: any, MeshAttachment: any) {
 type Controller = {
   runScene(): void;
   playClip(rig: RigKey, clip: string, loop: boolean): void;
-  saveFull(): void;
-  saveView(): void;
   viewResolution(): number;
-  exportStill(format: StillFormat): Promise<void>;
-  exportAnim(format: AnimFormat, progress: (done: number, total: number) => void): Promise<void>;
+  exportStill(format: StillFormat, crop: StillCrop): Promise<void>;
   app: any;
+  fileStem(): string;
 };
 
 // `grade`/`play`/`onDone` let a page drive the scene: `play` restarts it at `grade`, `onDone` fires when it ends.
@@ -91,7 +89,10 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
   const playingRef = useRef(playing);
   playingRef.current = playing;
   const ctrlRef = useRef<Controller | null>(null);
-  const [exportFormat, setExportFormat] = useState<ExportFormat>('png');
+  const [videoFormat, setVideoFormat] = useState<VideoFormat>('webm');
+  const [stillFormat, setStillFormat] = useState<StillFormat>('png');
+  const [stillCrop, setStillCrop] = useState<StillCrop>('bounds');
+  const liveRef = useRef<LiveCapture | null>(null);
   const [exporting, setExporting] = useState(false);
   const [recording, setRecording] = useState(false);
   const [videoStatus, setVideoStatus] = useState<string | null>(null);
@@ -335,7 +336,7 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
       };
 
       // Transparent, native resolution, the whole figure regardless of framing.
-      const saveFull = () => {
+      const renderFull = () => {
         const bg = app.renderer.background;
         const alpha = bg.alpha;
         bg.alpha = 0;
@@ -343,11 +344,12 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
         const pixelScale = sourcePixelScale(
           attachmentScales(spine, RegionAttachment, MeshAttachment), []) * (view.scale.x || 1);
         spine.boundsProvider = { calculateBounds: () => artBounds(spine, RegionAttachment, MeshAttachment) };
-        void saveStagePng({ PIXI, app, root, pixelScale, fileName: `${fileStem()}.png` })
-          .finally(() => {
-            spine.boundsProvider = undefined;
-            bg.alpha = alpha;
-          });
+        try {
+          return renderFigure({ PIXI, app, root, pixelScale });
+        } finally {
+          spine.boundsProvider = undefined;
+          bg.alpha = alpha;
+        }
       };
 
       // The framed view at the art's own density, capped by the record limit.
@@ -366,46 +368,18 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
         clearColor: app.renderer.background.color,
       }) as HTMLCanvasElement;
 
-      const saveView = () => {
-        renderView(viewResolution()).toBlob((blob) => {
-          if (blob) saveBlob(blob, `${fileStem()}_view.png`);
-        }, 'image/png');
-      };
-
-      const exportStill = async (format: StillFormat) => {
-        saveBlob(await stillBlob(renderView(viewResolution()), format), `${fileStem()}_view.${format}`);
-      };
-
-      // One cycle of the current clip, stepping the whole scene on a fixed clock.
-      const exportAnim = async (format: AnimFormat, progress: (done: number, total: number) => void) => {
-        const fps = ANIM_FPS[format];
-        const stem = fileStem();
-        const duration = current.spine.state.getCurrent(0)?.animation?.duration ?? 0;
-        const count = Math.max(1, Math.round(duration / Math.max(speedRef.current, 0.01) * fps));
-        const longEdge = Math.max(app.screen.width, app.screen.height, 1);
-        const resolution = Math.min(viewResolution(), ANIM_MAX_DIM[format] / longEdge);
-        const width = Math.max(1, Math.round(app.screen.width * resolution));
-        const height = Math.max(1, Math.round(app.screen.height * resolution));
-        const clock = steppedClock([app.ticker]);
-        let blob: Blob | null = null;
-        try {
-          blob = await encodeAnimation({
-            format, count, width, height, progress, cancelled: () => destroyed,
-            frame: (i) => {
-              if (i > 0) clock.advance(1000 / fps);
-              return renderView(resolution);
-            },
-          });
-        } finally {
-          if (!destroyed) await clock.finish();
+      const exportStill = async (format: StillFormat, crop: StillCrop) => {
+        if (crop === 'view') {
+          saveBlob(await stillBlob(renderView(viewResolution()), format), `${fileStem()}_view.${format}`);
+          return;
         }
-        if (blob) saveBlob(blob, `${stem}.${ANIM_EXT[format]}`);
+        const canvas = renderFull();
+        if (canvas) saveBlob(await stillBlob(canvas, format), `${fileStem()}.${format}`);
       };
 
       teardown.push(() => { token += 1; });
       ctrlRef.current = {
-        runScene: () => { void runScene(); }, playClip, saveFull, saveView,
-        viewResolution, exportStill, exportAnim, app,
+        runScene: () => { void runScene(); }, playClip, viewResolution, exportStill, app, fileStem,
       };
       setReady(true);
     })().catch((e) => {
@@ -415,6 +389,8 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
     return () => {
       destroyed = true;
       ctrlRef.current = null;
+      liveRef.current?.cancel();
+      liveRef.current = null;
       recordingRef.current?.cancel();
       recordingRef.current = null;
       setRecording(false);
@@ -433,12 +409,52 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
     if (ready && mode === 'clip') ctrlRef.current?.playClip(clipRig, clip, loop);
   }, [ready, mode, clipRig, clip, loop, runId]);
 
+  const runExport = async (job: () => Promise<void>) => {
+    if (exporting) return;
+    setExporting(true);
+    try {
+      await job();
+      setVideoStatus(null);
+    } catch (reason: any) {
+      setVideoStatus(String(reason?.message ?? reason));
+    } finally {
+      setExporting(false);
+    }
+  };
+
+  const stopLive = () => {
+    const capture = liveRef.current;
+    if (!capture) return;
+    liveRef.current = null;
+    setRecording(false);
+    const fileName = `${ctrlRef.current?.fileStem() ?? 'gacha'}.${ANIM_EXT[videoFormat as Exclude<VideoFormat, 'webm'>]}`;
+    void runExport(async () => {
+      const blob = await capture.stop();
+      if (blob) saveBlob(blob, fileName);
+    });
+  };
+
   const handleRecord = () => {
     if (recordingRef.current) {
       recordingRef.current.stop();
       return;
     }
+    if (liveRef.current) {
+      stopLive();
+      return;
+    }
     const ctrl = ctrlRef.current;
+    if (ctrl && videoFormat !== 'webm') {
+      const capture = startLiveCapture({
+        app: ctrl.app, format: videoFormat, resolution: ctrl.viewResolution(),
+        onLimit: () => stopLive(),
+        progress: (done, total) => setVideoStatus(`${done}/${total}`),
+      });
+      liveRef.current = capture;
+      setVideoStatus(`${capture.width}×${capture.height}`);
+      setRecording(true);
+      return;
+    }
     if (!ctrl || !canRecordCanvas()) {
       setVideoStatus(t('videoUnsupported'));
       return;
@@ -469,21 +485,6 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
     recordingRef.current = video;
     setVideoStatus(`${t(video.audio ? 'videoWithAudio' : 'videoVisualOnly')} ${video.width}×${video.height}`);
     setRecording(true);
-  };
-
-  const handleExport = async () => {
-    const ctrl = ctrlRef.current;
-    if (!ctrl || exporting) return;
-    setExporting(true);
-    try {
-      if (isStill(exportFormat)) await ctrl.exportStill(exportFormat);
-      else await ctrl.exportAnim(exportFormat, (done, total) => setVideoStatus(`${done}/${total}`));
-      setVideoStatus(null);
-    } catch (reason: any) {
-      setVideoStatus(String(reason?.message ?? reason));
-    } finally {
-      setExporting(false);
-    }
   };
 
   const clips = index.rigs[clipRig].animations;
@@ -547,22 +548,33 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
         {mode === 'scene' && (
           <Button size="sm" isDisabled={!parked} onClick={onTap}>{t('btnAdvance')}</Button>
         )}
-        <Button size="sm" variant="outline" isDisabled={!ready}
-          onClick={() => ctrlRef.current?.saveFull()}>{t('btnSavePng')}</Button>
-        <Button size="sm" variant="outline" isDisabled={!ready}
-          onClick={() => ctrlRef.current?.saveView()}>{t('btnSaveView')}</Button>
-        <Button size="sm" variant={recording ? 'solid' : 'outline'} colorScheme={recording ? 'red' : undefined}
-          isDisabled={!ready || exporting} onClick={handleRecord}>
-          {recording ? t('btnStopRecording') : t('btnRecordVideo')}
-        </Button>
-        <Select size="sm" w="8.5rem" value={exportFormat} aria-label={t('ariaExportFormat')}
-          onChange={(e) => setExportFormat(e.target.value as ExportFormat)}>
-          {EXPORT_FORMATS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-        </Select>
-        <Button size="sm" variant="outline" isDisabled={!ready || recording || exporting}
-          onClick={() => { void handleExport(); }}>
-          {exporting ? <Spinner size="xs" /> : t('btnExport')}
-        </Button>
+        <HStack gap={2}>
+          <Select size="sm" w="8.5rem" value={videoFormat} aria-label={t('ariaVideoFormat')}
+            isDisabled={recording || exporting}
+            onChange={(e) => setVideoFormat(e.target.value as VideoFormat)}>
+            {VIDEO_FORMATS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+          </Select>
+          <Button size="sm" variant={recording ? 'solid' : 'outline'} colorScheme={recording ? 'red' : undefined}
+            isDisabled={!ready || exporting} onClick={handleRecord}>
+            {recording ? t('btnStopRecording') : t('btnRecord')}
+          </Button>
+        </HStack>
+        <HStack gap={2}>
+          <Select size="sm" w="6rem" value={stillFormat} aria-label={t('ariaStillFormat')}
+            onChange={(e) => setStillFormat(e.target.value as StillFormat)}>
+            {STILL_FORMATS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+          </Select>
+          <Select size="sm" w="7rem" value={stillCrop} aria-label={t('ariaStillCrop')}
+            onChange={(e) => setStillCrop(e.target.value as StillCrop)}>
+            <option value="bounds">{t('optCropBounds')}</option>
+            <option value="view">{t('optCropView')}</option>
+          </Select>
+          <Button size="sm" variant="outline" isDisabled={!ready || recording || exporting}
+            onClick={() => { const ctrl = ctrlRef.current; if (ctrl) void runExport(() => ctrl.exportStill(stillFormat, stillCrop)); }}>
+            {t('btnSave')}
+          </Button>
+        </HStack>
+        {exporting && <Spinner size="xs" />}
         {videoStatus && <Text fontSize="xs" color="gray.500">{videoStatus}</Text>}
         {mode === 'scene' && <>
           <Badge colorScheme="gray">{STATE_LABEL[state][lang]}</Badge>
