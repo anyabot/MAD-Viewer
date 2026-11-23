@@ -21,6 +21,7 @@
     "@altterisk/game-hub": "github:Altterisk/game-hub#ee31f7edff1963fb67d3bd3e03ecf21e793f84ce",
     "@esotericsoftware/spine-pixi-v8": "4.2.72",
     "brotli-dec-wasm": "^2.3.2",
+    "gifenc": "^1.0.3",
     "next": "^15.5.18",
     "pixi.js": "~8.4.0",
     "react": "18.3.1",
