@@ -13,7 +13,20 @@ import { MAX_RECORD_DIM, speedOptions } from '@/components/skinViewer/constants'
 import {
   canRecordCanvas, startCanvasVideo, type VideoRecording,
 } from '@/components/skinViewer/exportVideo';
-import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
+import { createPixiApp, tightCrop, type PixiAppHandle } from '@altterisk/game-hub/spine';
+import { saveBlob } from '@altterisk/game-hub/persist';
+import { attachmentScales, sourcePixelScale } from '@/components/skinViewer/exportPng';
+import { MAX_EXPORT_DIM } from '@/components/skinViewer/constants';
+import {
+  ANIM_EXT, ANIM_FPS, EXPORT_FORMATS, ANIM_MAX_DIM, encodeAnimation, isStill, stillBlob,
+  type AnimFormat, type ExportFormat, type StillFormat,
+} from '@/components/skinViewer/exportAnim';
+
+type Controls = {
+  nativeScale: () => number;
+  exportStill: (format: StillFormat) => Promise<void>;
+  exportAnim: (format: AnimFormat, progress: (done: number, total: number) => void) => Promise<void>;
+};
 
 // The battle scene's CharacterCamera lens, in radians.
 const CAMERA_FOV = 20 * Math.PI / 180;
@@ -35,6 +48,9 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
   const [recording, setRecording] = useState(false);
   const [videoStatus, setVideoStatus] = useState<string | null>(null);
   const appRef = useRef<any>(null);
+  const ctrlRef = useRef<Controls | null>(null);
+  const [exportFormat, setExportFormat] = useState<ExportFormat>('png');
+  const [exporting, setExporting] = useState(false);
   const recordingRef = useRef<VideoRecording | null>(null);
   const playingRef = useRef(playing);
   const speedRef = useRef(speed);
@@ -94,7 +110,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
 
       pixi = await createPixiApp({
         PIXI, host: surface!, cancelled: () => destroyed,
-        init: { background: 0x111827, autoDensity: false },
+        init: { background: 0x111827 },
       });
       if (!pixi) return;
       app = pixi.app;
@@ -173,6 +189,102 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
         cutinEffects?.tick(current, isCutin);
       };
       app.ticker.add(tick);
+
+      const { RegionAttachment, MeshAttachment } = spineRuntime;
+      const nativeScale = () => {
+        const pixelScale = sourcePixelScale(attachmentScales(spine, RegionAttachment, MeshAttachment), []);
+        const scale = pixelScale > 0 ? 1 / pixelScale : 1;
+        return Number.isFinite(scale) && scale > 0 ? scale : 1;
+      };
+      const renderRegion = (
+        region: { x: number; y: number; width: number; height: number }, scale: number, width: number, height: number,
+      ) => {
+        const rt = PIXI.RenderTexture.create({ width, height });
+        app.renderer.render({
+          container: app.stage, target: rt, clear: true, clearColor: [0, 0, 0, 0],
+          transform: new PIXI.Matrix(scale, 0, 0, scale, -region.x * scale, -region.y * scale),
+        });
+        const extracted = app.renderer.extract.canvas({ target: rt }) as HTMLCanvasElement;
+        rt.destroy(true);
+        if (extracted.width === width && extracted.height === height) return extracted;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d')!.drawImage(extracted, 0, 0, width, height);
+        return canvas;
+      };
+      const exportStill = async (format: StillFormat) => {
+        const bounds = app.stage.getBounds();
+        if (!(bounds.width > 0 && bounds.height > 0)) return;
+        const scale = Math.min(nativeScale(), MAX_EXPORT_DIM / Math.max(bounds.width, bounds.height));
+        const canvas = tightCrop(renderRegion(bounds, scale,
+          Math.max(1, Math.ceil(bounds.width * scale)), Math.max(1, Math.ceil(bounds.height * scale))));
+        if (!canvas) return;
+        const blob = await stillBlob(canvas, format);
+        saveBlob(blob, `${character.archive}_${spine.state.getCurrent(0)?.animation?.name ?? 'frame'}.${format}`);
+      };
+      const exportAnim = async (format: AnimFormat, progress: (done: number, total: number) => void) => {
+        const name = spine.state.getCurrent(0)?.animation?.name ?? animationRef.current;
+        if (!name) return;
+        const isCutin = name === character.cutin?.animation;
+        const loop = isCutin ? false : (character.loop ?? true);
+        const fps = ANIM_FPS[format];
+        const autoUpdate = spine.autoUpdate;
+        const timeScale = spine.state.timeScale;
+        spine.autoUpdate = false;
+        spine.state.timeScale = 1;
+        app.ticker.stop();
+        const step = (index: number) => {
+          if (index === 0) {
+            spine.state.clearTracks();
+            spine.skeleton.setToSetupPose();
+            spine.state.setAnimation(0, name, loop);
+            spine.update(0);
+          } else {
+            spine.update(1 / fps);
+          }
+          tick!();
+        };
+        try {
+          const duration = spine.skeleton.data.findAnimation(name)?.duration ?? 0;
+          const count = Math.max(1, Math.round(duration * fps));
+          let region = { x: 0, y: 0, width: app.screen.width, height: app.screen.height };
+          let native = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+          if (!isCutin) {
+            let minX = Infinity; let minY = Infinity; let maxX = -Infinity; let maxY = -Infinity;
+            for (let i = 0; i < count; i += 1) {
+              step(i);
+              if (i === 0) native = nativeScale();
+              const b = app.stage.getBounds();
+              if (!(b.width > 0 && b.height > 0)) continue;
+              minX = Math.min(minX, b.x); minY = Math.min(minY, b.y);
+              maxX = Math.max(maxX, b.x + b.width); maxY = Math.max(maxY, b.y + b.height);
+            }
+            if (!(maxX > minX && maxY > minY)) return;
+            region = { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
+          }
+          const cap = ANIM_MAX_DIM[format] / Math.max(region.width, region.height);
+          const scale = Math.min(native, cap);
+          const width = Math.max(1, Math.round(region.width * scale));
+          const height = Math.max(1, Math.round(region.height * scale));
+          const blob = await encodeAnimation({
+            format, count, width, height, progress, cancelled: () => destroyed,
+            frame: (i) => {
+              step(i);
+              return renderRegion(region, scale, width, height);
+            },
+          });
+          if (blob) saveBlob(blob, `${character.archive}_${name}.${ANIM_EXT[format]}`);
+        } finally {
+          if (!destroyed) {
+            step(0);
+            spine.state.timeScale = timeScale;
+            spine.autoUpdate = autoUpdate;
+            app.ticker.start();
+          }
+        }
+      };
+      ctrlRef.current = { nativeScale, exportStill, exportAnim };
       setReady(true);
     })().catch((reason) => {
       if (!destroyed) setError(String(reason?.message ?? reason));
@@ -180,6 +292,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
 
     return () => {
       destroyed = true;
+      ctrlRef.current = null;
       recordingRef.current?.cancel();
       recordingRef.current = null;
       setRecording(false);
@@ -231,14 +344,21 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
     }
     const restore = app.renderer.resolution;
     const longEdge = Math.max(host.clientWidth, host.clientHeight);
-    app.renderer.resolution = Math.max(1, Math.min(2, longEdge > 0 ? MAX_RECORD_DIM / longEdge : 1));
+    const cap = longEdge > 0 ? MAX_RECORD_DIM / longEdge : 1;
+    app.renderer.resolution = Math.max(restore, Math.min(Math.max(2, ctrlRef.current?.nativeScale() ?? 2), cap));
+    // WebM drops alpha, so additive glows need an opaque backdrop to survive.
+    app.renderer.background.alpha = 1;
+    const reset = () => {
+      app.renderer.resolution = restore;
+      app.renderer.background.alpha = 0;
+    };
     let video: VideoRecording | null = null;
     try {
       video = startCanvasVideo({
         canvas: app.canvas,
         fileName: character.archive,
         onStop: () => {
-          if (appRef.current) appRef.current.renderer.resolution = restore;
+          if (appRef.current) reset();
           if (recordingRef.current !== video) return;
           recordingRef.current = null;
           setRecording(false);
@@ -248,13 +368,28 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
       video = null;
     }
     if (!video) {
-      app.renderer.resolution = restore;
+      reset();
       setVideoStatus(t('videoUnsupported'));
       return;
     }
     recordingRef.current = video;
     setVideoStatus(`${t(video.audio ? 'videoWithAudio' : 'videoVisualOnly')} ${video.width}×${video.height}`);
     setRecording(true);
+  };
+
+  const handleExport = async () => {
+    const ctrl = ctrlRef.current;
+    if (!ctrl || exporting) return;
+    setExporting(true);
+    try {
+      if (isStill(exportFormat)) await ctrl.exportStill(exportFormat);
+      else await ctrl.exportAnim(exportFormat, (done, total) => setVideoStatus(`${done}/${total}`));
+      setVideoStatus(null);
+    } catch (reason: any) {
+      setVideoStatus(String(reason?.message ?? reason));
+    } finally {
+      setExporting(false);
+    }
   };
 
   const ordinaryAnimations = character.animations.filter(
@@ -289,7 +424,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
           {playing ? t('btnPause') : t('btnPlay')}
         </Button>
         <Button size="sm" variant={recording ? 'solid' : 'outline'} colorScheme={recording ? 'red' : undefined}
-          isDisabled={!ready} onClick={handleRecord}>
+          isDisabled={!ready || exporting} onClick={handleRecord}>
           {recording ? t('btnStopRecording') : t('btnRecordVideo')}
         </Button>
         <Button size="sm" variant="outline" isDisabled={!ready || !animation}
@@ -312,6 +447,15 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
             <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </Select>
+        <Select size="sm" w="8.5rem" value={exportFormat} aria-label={t('ariaExportFormat')}
+          onChange={(event) => setExportFormat(event.target.value as ExportFormat)}>
+          {EXPORT_FORMATS.map((option) => (
+            <option key={option.value} value={option.value}>{option.label}</option>
+          ))}
+        </Select>
+        <Button size="sm" variant="outline" isDisabled={!ready || recording || exporting} onClick={handleExport}>
+          {exporting ? <Spinner size="xs" /> : t('btnExport')}
+        </Button>
         {videoStatus && <Text fontSize="xs" color="gray.500">{videoStatus}</Text>}
       </Flex>
       <Box position="relative" h={{ base: '440px', md: 'min(72vh, 720px)' }} minW={0}

@@ -65,6 +65,10 @@ import { copyText } from '@altterisk/game-hub';
 import { saveBlob } from '@altterisk/game-hub/persist';
 import { ViewerShell } from '@altterisk/game-hub/viewer';
 import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
+import {
+  ANIM_EXT, ANIM_FPS, EXPORT_FORMATS, ANIM_MAX_DIM, encodeAnimation, isStill, steppedClock, stillBlob,
+  type ExportFormat,
+} from '@/components/skinViewer/exportAnim';
 
 type SkinViewerProps = {
   skin: string;
@@ -127,6 +131,8 @@ export default function SkinViewer({
   const [recording, setRecording] = useState(false);
   const [videoStatus, setVideoStatus] = useState('');
   const recordingRef = useRef<VideoRecording | null>(null);
+  const [exportFormat, setExportFormat] = useState<ExportFormat>('png');
+  const [exporting, setExporting] = useState(false);
 
   const [bodyAnim, setBodyAnim] = useState('');
   const [faceAnim, setFaceAnim] = useState('');
@@ -1943,28 +1949,78 @@ export default function SkinViewer({
   };
 
   // Exactly the framed view on screen, at the art's own density; the touch-zone overlay is a debug aid and stays out.
-  const handleSaveView = () => {
+  const renderView = (resolution: number): HTMLCanvasElement | null => {
     const app = appRef.current;
-    const host = hostRef.current;
     const PIXI = pixiRef.current;
-    if (!app || !host || !PIXI) return;
+    if (!app || !PIXI) return null;
     const overlay = boxOverlayRef.current;
     const overlayShown = overlay?.visible ?? false;
     if (overlay) overlay.visible = false;
-    let canvas: HTMLCanvasElement | null = null;
     try {
-      canvas = app.renderer.extract.canvas({
+      return app.renderer.extract.canvas({
         target: app.stage,
         frame: new PIXI.Rectangle(0, 0, app.screen.width, app.screen.height),
-        resolution: recordScale(host),
+        resolution,
         clearColor: app.renderer.background.color,
       }) as HTMLCanvasElement;
     } finally {
       if (overlay) overlay.visible = overlayShown;
     }
-    canvas?.toBlob((blob) => {
+  };
+
+  const handleSaveView = () => {
+    const host = hostRef.current;
+    if (!host) return;
+    renderView(recordScale(host))?.toBlob((blob) => {
       if (blob) saveBlob(blob, `${archive}_view.png`);
     }, 'image/png');
+  };
+
+  // Animated formats step the whole viewer on a fixed clock for one cycle of the body track.
+  const handleExport = async () => {
+    const app = appRef.current;
+    const host = hostRef.current;
+    const PIXI = pixiRef.current;
+    const spine = spineRef.current;
+    if (!app || !host || !PIXI || !spine || exporting) return;
+    setExporting(true);
+    try {
+      if (isStill(exportFormat)) {
+        const canvas = renderView(recordScale(host));
+        if (canvas) saveBlob(await stillBlob(canvas, exportFormat), `${archive}_view.${exportFormat}`);
+      } else {
+        const fps = ANIM_FPS[exportFormat];
+        const entry = spine.state.getCurrent(0);
+        const duration = entry?.animation?.duration ?? 0;
+        const count = Math.max(1, Math.round(duration / Math.max(speedRef.current, 0.01) * fps));
+        const longEdge = Math.max(app.screen.width, app.screen.height, 1);
+        const scale = Math.min(recordScale(host), ANIM_MAX_DIM[exportFormat] / longEdge);
+        const width = Math.max(1, Math.round(app.screen.width * scale));
+        const height = Math.max(1, Math.round(app.screen.height * scale));
+        const clock = steppedClock([PIXI.Ticker.shared, app.ticker]);
+        let blob: Blob | null = null;
+        try {
+          blob = await encodeAnimation({
+            format: exportFormat, count, width, height,
+            progress: (done, total) => setVideoStatus(`${done}/${total}`),
+            cancelled: () => appRef.current !== app,
+            frame: (i) => {
+              if (i > 0) clock.advance(1000 / fps);
+              return renderView(scale)!;
+            },
+          });
+        } finally {
+          await clock.finish();
+        }
+        const name = entry?.animation?.name ? `_${animLabel(entry.animation.name)}` : '';
+        if (blob) saveBlob(blob, `${archive}${name}.${ANIM_EXT[exportFormat]}`);
+      }
+      setVideoStatus('');
+    } catch (reason: any) {
+      setVideoStatus(String(reason?.message ?? reason));
+    } finally {
+      setExporting(false);
+    }
   };
 
   // Screen px per world unit needed for the art's own resolution, capped by frame size.
@@ -1992,26 +2048,33 @@ export default function SkinViewer({
     }
     // The frame is the aspect box, so only its pixel density is raised.
     const restore = app.renderer.resolution;
+    const restoreAlpha = app.renderer.background.alpha;
     app.renderer.resolution = recordScale(host);
+    // WebM drops alpha, so additive glows need an opaque backdrop to survive.
+    app.renderer.background.alpha = 1;
+    const reset = () => {
+      app.renderer.resolution = restore;
+      app.renderer.background.alpha = restoreAlpha;
+    };
     let recording_: VideoRecording | null = null;
     try {
       recording_ = startCanvasVideo({
         canvas,
         fileName: archive,
         onStop: () => {
-          if (appRef.current) appRef.current.renderer.resolution = restore;
+          if (appRef.current) reset();
           if (recordingRef.current !== recording_) return;
           recordingRef.current = null;
           setRecording(false);
         },
       });
     } catch {
-      app.renderer.resolution = restore;
+      reset();
       setVideoStatus(t('videoUnsupported'));
       return;
     }
     if (!recording_) {
-      app.renderer.resolution = restore;
+      reset();
       setVideoStatus(t('videoUnsupported'));
       return;
     }
@@ -2314,7 +2377,14 @@ export default function SkinViewer({
               <WrapItem>
                 <ActionButton icon="record"
                   label={recording ? t('btnStopRecording') : t('btnRecordVideo')}
-                  onClick={handleRecord} disabled={loadState !== 'ready'} />
+                  onClick={handleRecord} disabled={loadState !== 'ready' || exporting} />
+              </WrapItem>
+              <WrapItem>
+                <OverlaySelect icon="save" value={exportFormat} options={EXPORT_FORMATS}
+                  onChange={(value) => setExportFormat(value as ExportFormat)} minW="0"
+                  label={t('ariaExportFormat')} />
+                <ActionButton icon="save" label={t('btnExport')} onClick={() => { void handleExport(); }}
+                  disabled={loadState !== 'ready' || recording} busy={exporting} />
               </WrapItem>
             </Wrap>
             {shareStatus && <Text fontSize="xs" color="green.300">{shareStatus}</Text>}

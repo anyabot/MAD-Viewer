@@ -479,6 +479,8 @@ export const UI = {
   shareCopied: { en: 'Link copied', ko: '링크 복사됨' },
   shareCopyFailed: { en: 'Copy the link from the address bar', ko: '주소 표시줄에서 링크를 복사하세요' },
   btnRecordVideo: { en: 'Record video', ko: '동영상 녹화' },
+  btnExport: { en: 'Export', ko: '내보내기' },
+  ariaExportFormat: { en: 'Export format', ko: '내보내기 형식' },
   btnStopRecording: { en: 'Stop recording', ko: '녹화 중지' },
   videoVisualOnly: { en: 'Video export records the canvas without audio.', ko: '동영상 내보내기는 오디오 없이 화면만 녹화합니다.' },
   videoWithAudio: { en: 'Recording canvas and audio.', ko: '화면과 오디오를 녹화합니다.' },
