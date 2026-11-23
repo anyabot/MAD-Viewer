@@ -18,13 +18,13 @@ import { saveBlob } from '@altterisk/game-hub/persist';
 import { attachmentScales, sourcePixelScale } from '@/components/skinViewer/exportPng';
 import { MAX_EXPORT_DIM } from '@/components/skinViewer/constants';
 import {
-  ANIM_EXT, ANIM_FPS, EXPORT_FORMATS, ANIM_MAX_DIM, encodeAnimation, isStill, stillBlob,
-  type AnimFormat, type ExportFormat, type StillFormat,
+  ANIM_EXT, ANIM_FPS, ANIM_MAX_DIM, STILL_FORMATS, VIDEO_FORMATS, encodeAnimation, startLiveCapture, stillBlob,
+  type AnimFormat, type LiveCapture, type StillCrop, type StillFormat, type VideoFormat, type VideoLength,
 } from '@/components/skinViewer/exportAnim';
 
 type Controls = {
   nativeScale: () => number;
-  exportStill: (format: StillFormat) => Promise<void>;
+  exportStill: (format: StillFormat, crop: StillCrop) => Promise<void>;
   exportAnim: (format: AnimFormat, progress: (done: number, total: number) => void) => Promise<void>;
 };
 
@@ -49,7 +49,11 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
   const [videoStatus, setVideoStatus] = useState<string | null>(null);
   const appRef = useRef<any>(null);
   const ctrlRef = useRef<Controls | null>(null);
-  const [exportFormat, setExportFormat] = useState<ExportFormat>('png');
+  const [videoFormat, setVideoFormat] = useState<VideoFormat>('webm');
+  const [videoLength, setVideoLength] = useState<VideoLength>('record');
+  const liveRef = useRef<LiveCapture | null>(null);
+  const [stillFormat, setStillFormat] = useState<StillFormat>('png');
+  const [stillCrop, setStillCrop] = useState<StillCrop>('bounds');
   const [exporting, setExporting] = useState(false);
   const recordingRef = useRef<VideoRecording | null>(null);
   const playingRef = useRef(playing);
@@ -213,15 +217,23 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
         canvas.getContext('2d')!.drawImage(extracted, 0, 0, width, height);
         return canvas;
       };
-      const exportStill = async (format: StillFormat) => {
+      const exportStill = async (format: StillFormat, crop: StillCrop) => {
+        const stem = `${character.archive}_${spine.state.getCurrent(0)?.animation?.name ?? 'frame'}`;
+        if (crop === 'view') {
+          const { width, height } = app.screen;
+          const scale = Math.min(nativeScale(), MAX_RECORD_DIM / Math.max(width, height, 1));
+          const canvas = renderRegion({ x: 0, y: 0, width, height }, scale,
+            Math.max(1, Math.round(width * scale)), Math.max(1, Math.round(height * scale)));
+          saveBlob(await stillBlob(canvas, format), `${stem}_view.${format}`);
+          return;
+        }
         const bounds = app.stage.getBounds();
         if (!(bounds.width > 0 && bounds.height > 0)) return;
         const scale = Math.min(nativeScale(), MAX_EXPORT_DIM / Math.max(bounds.width, bounds.height));
         const canvas = tightCrop(renderRegion(bounds, scale,
           Math.max(1, Math.ceil(bounds.width * scale)), Math.max(1, Math.ceil(bounds.height * scale))));
         if (!canvas) return;
-        const blob = await stillBlob(canvas, format);
-        saveBlob(blob, `${character.archive}_${spine.state.getCurrent(0)?.animation?.name ?? 'frame'}.${format}`);
+        saveBlob(await stillBlob(canvas, format), `${stem}.${format}`);
       };
       const exportAnim = async (format: AnimFormat, progress: (done: number, total: number) => void) => {
         const name = spine.state.getCurrent(0)?.animation?.name ?? animationRef.current;
@@ -293,6 +305,8 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
     return () => {
       destroyed = true;
       ctrlRef.current = null;
+      liveRef.current?.cancel();
+      liveRef.current = null;
       recordingRef.current?.cancel();
       recordingRef.current = null;
       setRecording(false);
@@ -331,21 +345,73 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
     if (spine) spine.state.timeScale = playing ? speed : 0;
   }, [playing, speed]);
 
+  const runExport = async (job: (ctrl: Controls) => Promise<void>) => {
+    const ctrl = ctrlRef.current;
+    if (!ctrl || exporting) return;
+    setExporting(true);
+    try {
+      await job(ctrl);
+      setVideoStatus(null);
+    } catch (reason: any) {
+      setVideoStatus(String(reason?.message ?? reason));
+    } finally {
+      setExporting(false);
+    }
+  };
+
+  const recordResolution = (app: any, host: HTMLElement) => {
+    const longEdge = Math.max(host.clientWidth, host.clientHeight);
+    const cap = longEdge > 0 ? MAX_RECORD_DIM / longEdge : 1;
+    return Math.max(app.renderer.resolution, Math.min(Math.max(2, ctrlRef.current?.nativeScale() ?? 2), cap));
+  };
+
+  const stopLive = () => {
+    const capture = liveRef.current;
+    if (!capture) return;
+    liveRef.current = null;
+    setRecording(false);
+    const stem = `${character.archive}_${animationRef.current || 'clip'}`;
+    const format = videoFormat as AnimFormat;
+    void runExport(async () => {
+      const blob = await capture.stop();
+      if (blob) saveBlob(blob, `${stem}.${ANIM_EXT[format]}`);
+    });
+  };
+
   const handleRecord = () => {
     if (recordingRef.current) {
       recordingRef.current.stop();
       return;
     }
+    if (liveRef.current) {
+      stopLive();
+      return;
+    }
     const app = appRef.current;
     const host = hostRef.current;
+    if (videoFormat !== 'webm') {
+      const format = videoFormat;
+      if (videoLength === 'loop') {
+        void runExport((ctrl) => ctrl.exportAnim(format, (done, total) => setVideoStatus(`${done}/${total}`)));
+        return;
+      }
+      if (!app || !host) return;
+      const capture = startLiveCapture({
+        app, format, resolution: recordResolution(app, host),
+        onLimit: () => stopLive(),
+        progress: (done, total) => setVideoStatus(`${done}/${total}`),
+      });
+      liveRef.current = capture;
+      setVideoStatus(`${capture.width}×${capture.height}`);
+      setRecording(true);
+      return;
+    }
     if (!app || !host || !canRecordCanvas()) {
       setVideoStatus(t('videoUnsupported'));
       return;
     }
     const restore = app.renderer.resolution;
-    const longEdge = Math.max(host.clientWidth, host.clientHeight);
-    const cap = longEdge > 0 ? MAX_RECORD_DIM / longEdge : 1;
-    app.renderer.resolution = Math.max(restore, Math.min(Math.max(2, ctrlRef.current?.nativeScale() ?? 2), cap));
+    app.renderer.resolution = recordResolution(app, host);
     // WebM drops alpha, so additive glows need an opaque backdrop to survive.
     app.renderer.background.alpha = 1;
     const reset = () => {
@@ -375,21 +441,6 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
     recordingRef.current = video;
     setVideoStatus(`${t(video.audio ? 'videoWithAudio' : 'videoVisualOnly')} ${video.width}×${video.height}`);
     setRecording(true);
-  };
-
-  const handleExport = async () => {
-    const ctrl = ctrlRef.current;
-    if (!ctrl || exporting) return;
-    setExporting(true);
-    try {
-      if (isStill(exportFormat)) await ctrl.exportStill(exportFormat);
-      else await ctrl.exportAnim(exportFormat, (done, total) => setVideoStatus(`${done}/${total}`));
-      setVideoStatus(null);
-    } catch (reason: any) {
-      setVideoStatus(String(reason?.message ?? reason));
-    } finally {
-      setExporting(false);
-    }
   };
 
   const ordinaryAnimations = character.animations.filter(
@@ -423,10 +474,6 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
           isDisabled={!ready}>
           {playing ? t('btnPause') : t('btnPlay')}
         </Button>
-        <Button size="sm" variant={recording ? 'solid' : 'outline'} colorScheme={recording ? 'red' : undefined}
-          isDisabled={!ready || exporting} onClick={handleRecord}>
-          {recording ? t('btnStopRecording') : t('btnRecordVideo')}
-        </Button>
         <Button size="sm" variant="outline" isDisabled={!ready || !animation}
           onClick={() => setPlaybackRun((run) => run + 1)}>
           {t('btnRestart')}
@@ -447,15 +494,43 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
             <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </Select>
-        <Select size="sm" w="8.5rem" value={exportFormat} aria-label={t('ariaExportFormat')}
-          onChange={(event) => setExportFormat(event.target.value as ExportFormat)}>
-          {EXPORT_FORMATS.map((option) => (
+      </Flex>
+      <Flex align="center" gap={2} wrap="wrap">
+        <Select size="sm" w="8.5rem" value={videoFormat} aria-label={t('ariaVideoFormat')}
+          isDisabled={recording || exporting}
+          onChange={(event) => setVideoFormat(event.target.value as VideoFormat)}>
+          {VIDEO_FORMATS.map((option) => (
             <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </Select>
-        <Button size="sm" variant="outline" isDisabled={!ready || recording || exporting} onClick={handleExport}>
-          {exporting ? <Spinner size="xs" /> : t('btnExport')}
+        {videoFormat !== 'webm' && (
+          <Select size="sm" w="7.5rem" value={videoLength} aria-label={t('ariaVideoLength')}
+            isDisabled={recording || exporting}
+            onChange={(event) => setVideoLength(event.target.value as VideoLength)}>
+            <option value="record">{t('optLengthRecord')}</option>
+            <option value="loop">{t('optLengthLoop')}</option>
+          </Select>
+        )}
+        <Button size="sm" variant={recording ? 'solid' : 'outline'} colorScheme={recording ? 'red' : undefined}
+          isDisabled={!ready || exporting} onClick={handleRecord}>
+          {recording ? t('btnStopRecording') : t('btnRecord')}
         </Button>
+        <Select size="sm" w="6rem" value={stillFormat} aria-label={t('ariaStillFormat')}
+          onChange={(event) => setStillFormat(event.target.value as StillFormat)}>
+          {STILL_FORMATS.map((option) => (
+            <option key={option.value} value={option.value}>{option.label}</option>
+          ))}
+        </Select>
+        <Select size="sm" w="7rem" value={stillCrop} aria-label={t('ariaStillCrop')}
+          onChange={(event) => setStillCrop(event.target.value as StillCrop)}>
+          <option value="bounds">{t('optCropBounds')}</option>
+          <option value="view">{t('optCropView')}</option>
+        </Select>
+        <Button size="sm" variant="outline" isDisabled={!ready || recording || exporting}
+          onClick={() => { void runExport((ctrl) => ctrl.exportStill(stillFormat, stillCrop)); }}>
+          {t('btnSave')}
+        </Button>
+        {exporting && <Spinner size="xs" />}
         {videoStatus && <Text fontSize="xs" color="gray.500">{videoStatus}</Text>}
       </Flex>
       <Box position="relative" h={{ base: '440px', md: 'min(72vh, 720px)' }} minW={0}
