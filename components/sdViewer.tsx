@@ -18,19 +18,9 @@ import { saveBlob } from '@altterisk/game-hub/persist';
 import { attachmentScales, sourcePixelScale } from '@/components/skinViewer/exportPng';
 import { MAX_EXPORT_DIM } from '@/components/skinViewer/constants';
 import {
-  ANIM_FPS, canvasBlob, createGif, frameDelays, muxAnimatedWebp, muxApng,
-  type AnimFormat, type StillFormat,
-} from '@/components/sdViewer/animEncode';
-
-type ExportFormat = StillFormat | AnimFormat;
-const EXPORT_FORMATS: { value: ExportFormat; label: string }[] = [
-  { value: 'png', label: 'PNG' },
-  { value: 'webp', label: 'WebP' },
-  { value: 'webp-anim', label: 'WebP (anim)' },
-  { value: 'apng', label: 'APNG' },
-  { value: 'gif', label: 'GIF' },
-];
-const GIF_MAX_DIM = 1080;
+  ANIM_EXT, ANIM_FPS, EXPORT_FORMATS, ANIM_MAX_DIM, encodeAnimation, isStill, stillBlob,
+  type AnimFormat, type ExportFormat, type StillFormat,
+} from '@/components/skinViewer/exportAnim';
 
 type Controls = {
   nativeScale: () => number;
@@ -230,7 +220,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
         const canvas = tightCrop(renderRegion(bounds, scale,
           Math.max(1, Math.ceil(bounds.width * scale)), Math.max(1, Math.ceil(bounds.height * scale))));
         if (!canvas) return;
-        const blob = await canvasBlob(canvas, `image/${format}`, 1);
+        const blob = await stillBlob(canvas, format);
         saveBlob(blob, `${character.archive}_${spine.state.getCurrent(0)?.animation?.name ?? 'frame'}.${format}`);
       };
       const exportAnim = async (format: AnimFormat, progress: (done: number, total: number) => void) => {
@@ -273,30 +263,18 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
             if (!(maxX > minX && maxY > minY)) return;
             region = { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
           }
-          const cap = (format === 'gif' ? GIF_MAX_DIM : MAX_RECORD_DIM) / Math.max(region.width, region.height);
+          const cap = ANIM_MAX_DIM[format] / Math.max(region.width, region.height);
           const scale = Math.min(native, cap);
           const width = Math.max(1, Math.round(region.width * scale));
           const height = Math.max(1, Math.round(region.height * scale));
-          const delays = frameDelays(count, fps);
-          const gif = format === 'gif' ? createGif(width, height) : null;
-          const frames: Uint8Array[] = [];
-          for (let i = 0; i < count; i += 1) {
-            if (destroyed) return;
-            step(i);
-            const canvas = renderRegion(region, scale, width, height);
-            if (gif) {
-              gif.add(canvas.getContext('2d')!.getImageData(0, 0, width, height).data, delays[i]);
-              await new Promise((resolve) => setTimeout(resolve, 0));
-            } else {
-              const blob = await canvasBlob(canvas, format === 'apng' ? 'image/png' : 'image/webp', format === 'apng' ? 1 : 0.92);
-              frames.push(new Uint8Array(await blob.arrayBuffer()));
-            }
-            progress(i + 1, count);
-          }
-          const blob = gif ? gif.finish()
-            : format === 'apng' ? muxApng(frames, delays) : muxAnimatedWebp(frames, width, height, delays);
-          const ext = format === 'gif' ? 'gif' : format === 'apng' ? 'png' : 'webp';
-          saveBlob(blob, `${character.archive}_${name}.${ext}`);
+          const blob = await encodeAnimation({
+            format, count, width, height, progress, cancelled: () => destroyed,
+            frame: (i) => {
+              step(i);
+              return renderRegion(region, scale, width, height);
+            },
+          });
+          if (blob) saveBlob(blob, `${character.archive}_${name}.${ANIM_EXT[format]}`);
         } finally {
           if (!destroyed) {
             step(0);
@@ -404,7 +382,7 @@ export default function SdViewer({ character }: { character: SdCharacter }) {
     if (!ctrl || exporting) return;
     setExporting(true);
     try {
-      if (exportFormat === 'png' || exportFormat === 'webp') await ctrl.exportStill(exportFormat);
+      if (isStill(exportFormat)) await ctrl.exportStill(exportFormat);
       else await ctrl.exportAnim(exportFormat, (done, total) => setVideoStatus(`${done}/${total}`));
       setVideoStatus(null);
     } catch (reason: any) {

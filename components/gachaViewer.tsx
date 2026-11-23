@@ -15,6 +15,13 @@ import { useLang, useT } from '@/lib/i18n';
 import type { GachaIndex, GachaRig } from '@/lib/data';
 import { loadArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
 import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
+import {
+  ANIM_EXT, ANIM_FPS, EXPORT_FORMATS, ANIM_MAX_DIM, encodeAnimation, isStill, steppedClock, stillBlob,
+  type AnimFormat, type ExportFormat, type StillFormat,
+} from '@/components/skinViewer/exportAnim';
+import {
+  canRecordCanvas, startCanvasVideo, type VideoRecording,
+} from '@/components/skinViewer/exportVideo';
 
 type Loaded = {
   spine: any;
@@ -47,6 +54,10 @@ type Controller = {
   playClip(rig: RigKey, clip: string, loop: boolean): void;
   saveFull(): void;
   saveView(): void;
+  viewResolution(): number;
+  exportStill(format: StillFormat): Promise<void>;
+  exportAnim(format: AnimFormat, progress: (done: number, total: number) => void): Promise<void>;
+  app: any;
 };
 
 // `grade`/`play`/`onDone` let a page drive the scene: `play` restarts it at `grade`, `onDone` fires when it ends.
@@ -80,6 +91,11 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
   const playingRef = useRef(playing);
   playingRef.current = playing;
   const ctrlRef = useRef<Controller | null>(null);
+  const [exportFormat, setExportFormat] = useState<ExportFormat>('png');
+  const [exporting, setExporting] = useState(false);
+  const [recording, setRecording] = useState(false);
+  const [videoStatus, setVideoStatus] = useState<string | null>(null);
+  const recordingRef = useRef<VideoRecording | null>(null);
 
   // Whatever the machine is parked on, waiting for the next tap.
   const tapParkRef = useRef<(() => void) | null>(null);
@@ -149,7 +165,7 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
 
       pixi = await createPixiApp({
         PIXI, host: surface!, cancelled: () => destroyed,
-        init: { background: 0x000000, backgroundAlpha: 1, autoDensity: false },
+        init: { background: 0x000000, backgroundAlpha: 1 },
       });
       if (!pixi) return;
       app = pixi.app;
@@ -334,27 +350,63 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
           });
       };
 
-      // Exactly the framed view, at the art's own density capped by the record limit.
-      const saveView = () => {
+      // The framed view at the art's own density, capped by the record limit.
+      const viewResolution = () => {
         const pixelScale = sourcePixelScale(
           attachmentScales(current.spine, RegionAttachment, MeshAttachment), []);
         const onScreen = root.scale.x * view.scale.x;
         const native = onScreen > 0 && pixelScale > 0 ? 1 / pixelScale / onScreen : 1;
         const cap = MAX_RECORD_DIM / Math.max(app.screen.width, app.screen.height, 1);
-        const resolution = Math.max(1, Math.min(native, cap)) || 1;
-        const canvas = app.renderer.extract.canvas({
-          target: app.stage,
-          frame: new PIXI.Rectangle(0, 0, app.screen.width, app.screen.height),
-          resolution,
-          clearColor: app.renderer.background.color,
-        }) as HTMLCanvasElement;
-        canvas.toBlob((blob) => {
+        return Math.max(1, Math.min(native, cap)) || 1;
+      };
+      const renderView = (resolution: number) => app.renderer.extract.canvas({
+        target: app.stage,
+        frame: new PIXI.Rectangle(0, 0, app.screen.width, app.screen.height),
+        resolution,
+        clearColor: app.renderer.background.color,
+      }) as HTMLCanvasElement;
+
+      const saveView = () => {
+        renderView(viewResolution()).toBlob((blob) => {
           if (blob) saveBlob(blob, `${fileStem()}_view.png`);
         }, 'image/png');
       };
 
+      const exportStill = async (format: StillFormat) => {
+        saveBlob(await stillBlob(renderView(viewResolution()), format), `${fileStem()}_view.${format}`);
+      };
+
+      // One cycle of the current clip, stepping the whole scene on a fixed clock.
+      const exportAnim = async (format: AnimFormat, progress: (done: number, total: number) => void) => {
+        const fps = ANIM_FPS[format];
+        const stem = fileStem();
+        const duration = current.spine.state.getCurrent(0)?.animation?.duration ?? 0;
+        const count = Math.max(1, Math.round(duration / Math.max(speedRef.current, 0.01) * fps));
+        const longEdge = Math.max(app.screen.width, app.screen.height, 1);
+        const resolution = Math.min(viewResolution(), ANIM_MAX_DIM[format] / longEdge);
+        const width = Math.max(1, Math.round(app.screen.width * resolution));
+        const height = Math.max(1, Math.round(app.screen.height * resolution));
+        const clock = steppedClock([app.ticker]);
+        let blob: Blob | null = null;
+        try {
+          blob = await encodeAnimation({
+            format, count, width, height, progress, cancelled: () => destroyed,
+            frame: (i) => {
+              if (i > 0) clock.advance(1000 / fps);
+              return renderView(resolution);
+            },
+          });
+        } finally {
+          if (!destroyed) await clock.finish();
+        }
+        if (blob) saveBlob(blob, `${stem}.${ANIM_EXT[format]}`);
+      };
+
       teardown.push(() => { token += 1; });
-      ctrlRef.current = { runScene: () => { void runScene(); }, playClip, saveFull, saveView };
+      ctrlRef.current = {
+        runScene: () => { void runScene(); }, playClip, saveFull, saveView,
+        viewResolution, exportStill, exportAnim, app,
+      };
       setReady(true);
     })().catch((e) => {
       if (!destroyed) setError(String(e?.message ?? e));
@@ -363,6 +415,9 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
     return () => {
       destroyed = true;
       ctrlRef.current = null;
+      recordingRef.current?.cancel();
+      recordingRef.current = null;
+      setRecording(false);
       for (const off of teardown) off();
       tapParkRef.current = null;
       pixi?.dispose();
@@ -377,6 +432,59 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
   useEffect(() => {
     if (ready && mode === 'clip') ctrlRef.current?.playClip(clipRig, clip, loop);
   }, [ready, mode, clipRig, clip, loop, runId]);
+
+  const handleRecord = () => {
+    if (recordingRef.current) {
+      recordingRef.current.stop();
+      return;
+    }
+    const ctrl = ctrlRef.current;
+    if (!ctrl || !canRecordCanvas()) {
+      setVideoStatus(t('videoUnsupported'));
+      return;
+    }
+    const { app } = ctrl;
+    const restore = app.renderer.resolution;
+    app.renderer.resolution = Math.max(restore, ctrl.viewResolution());
+    let video: VideoRecording | null = null;
+    try {
+      video = startCanvasVideo({
+        canvas: app.canvas,
+        fileName: index.rigs[clipRig].asset,
+        onStop: () => {
+          if (ctrlRef.current?.app === app) app.renderer.resolution = restore;
+          if (recordingRef.current !== video) return;
+          recordingRef.current = null;
+          setRecording(false);
+        },
+      });
+    } catch {
+      video = null;
+    }
+    if (!video) {
+      app.renderer.resolution = restore;
+      setVideoStatus(t('videoUnsupported'));
+      return;
+    }
+    recordingRef.current = video;
+    setVideoStatus(`${t(video.audio ? 'videoWithAudio' : 'videoVisualOnly')} ${video.width}×${video.height}`);
+    setRecording(true);
+  };
+
+  const handleExport = async () => {
+    const ctrl = ctrlRef.current;
+    if (!ctrl || exporting) return;
+    setExporting(true);
+    try {
+      if (isStill(exportFormat)) await ctrl.exportStill(exportFormat);
+      else await ctrl.exportAnim(exportFormat, (done, total) => setVideoStatus(`${done}/${total}`));
+      setVideoStatus(null);
+    } catch (reason: any) {
+      setVideoStatus(String(reason?.message ?? reason));
+    } finally {
+      setExporting(false);
+    }
+  };
 
   const clips = index.rigs[clipRig].animations;
   const pickRig = (key: RigKey) => {
@@ -443,6 +551,19 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
           onClick={() => ctrlRef.current?.saveFull()}>{t('btnSavePng')}</Button>
         <Button size="sm" variant="outline" isDisabled={!ready}
           onClick={() => ctrlRef.current?.saveView()}>{t('btnSaveView')}</Button>
+        <Button size="sm" variant={recording ? 'solid' : 'outline'} colorScheme={recording ? 'red' : undefined}
+          isDisabled={!ready || exporting} onClick={handleRecord}>
+          {recording ? t('btnStopRecording') : t('btnRecordVideo')}
+        </Button>
+        <Select size="sm" w="8.5rem" value={exportFormat} aria-label={t('ariaExportFormat')}
+          onChange={(e) => setExportFormat(e.target.value as ExportFormat)}>
+          {EXPORT_FORMATS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+        </Select>
+        <Button size="sm" variant="outline" isDisabled={!ready || recording || exporting}
+          onClick={() => { void handleExport(); }}>
+          {exporting ? <Spinner size="xs" /> : t('btnExport')}
+        </Button>
+        {videoStatus && <Text fontSize="xs" color="gray.500">{videoStatus}</Text>}
         {mode === 'scene' && <>
           <Badge colorScheme="gray">{STATE_LABEL[state][lang]}</Badge>
           <Text fontSize="sm" color="gray.500">fx {style}</Text>

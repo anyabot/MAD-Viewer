@@ -1,9 +1,95 @@
 import { GIFEncoder, applyPalette, quantize } from 'gifenc';
+import { MAX_RECORD_DIM } from '@/components/skinViewer/constants';
 
 export type StillFormat = 'png' | 'webp';
 export type AnimFormat = 'webp-anim' | 'apng' | 'gif';
 
+export type ExportFormat = StillFormat | AnimFormat;
+
 export const ANIM_FPS: Record<AnimFormat, number> = { 'webp-anim': 30, apng: 30, gif: 25 };
+export const ANIM_MAX_DIM: Record<AnimFormat, number> = { 'webp-anim': MAX_RECORD_DIM, apng: 1080, gif: 1080 };
+
+export const EXPORT_FORMATS: { value: ExportFormat; label: string }[] = [
+  { value: 'png', label: 'PNG' },
+  { value: 'webp', label: 'WebP' },
+  { value: 'webp-anim', label: 'WebP (anim)' },
+  { value: 'apng', label: 'APNG' },
+  { value: 'gif', label: 'GIF' },
+];
+
+export function isStill(format: ExportFormat): format is StillFormat {
+  return format === 'png' || format === 'webp';
+}
+
+export const ANIM_EXT: Record<AnimFormat, string> = { 'webp-anim': 'webp', apng: 'png', gif: 'gif' };
+
+export function stillBlob(canvas: HTMLCanvasElement, format: StillFormat): Promise<Blob> {
+  return canvasBlob(canvas, `image/${format}`, 1);
+}
+
+export async function encodeAnimation({
+  format, count, width, height, frame, progress, cancelled = () => false,
+}: {
+  format: AnimFormat;
+  count: number;
+  width: number;
+  height: number;
+  frame: (index: number) => HTMLCanvasElement;
+  progress?: (done: number, total: number) => void;
+  cancelled?: () => boolean;
+}): Promise<Blob | null> {
+  const delays = frameDelays(count, ANIM_FPS[format]);
+  const gif = format === 'gif' ? createGif(width, height) : null;
+  const frames: Uint8Array[] = [];
+  for (let i = 0; i < count; i += 1) {
+    if (cancelled()) return null;
+    let canvas = frame(i);
+    if (canvas.width !== width || canvas.height !== height) {
+      const sized = document.createElement('canvas');
+      sized.width = width;
+      sized.height = height;
+      sized.getContext('2d')!.drawImage(canvas, 0, 0, width, height);
+      canvas = sized;
+    }
+    if (gif) {
+      gif.add(canvas.getContext('2d')!.getImageData(0, 0, width, height).data, delays[i]);
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    } else {
+      const blob = await canvasBlob(canvas, format === 'apng' ? 'image/png' : 'image/webp', format === 'apng' ? 1 : 0.92);
+      frames.push(new Uint8Array(await blob.arrayBuffer()));
+    }
+    progress?.(i + 1, count);
+  }
+  if (gif) return gif.finish();
+  return format === 'apng' ? muxApng(frames, delays) : muxAnimatedWebp(frames, width, height, delays);
+}
+
+// Drives Pixi tickers on a fixed step; `performance.now` reads the same clock only while a step runs.
+export function steppedClock(tickers: any[]) {
+  const running = tickers.map((ticker) => ticker.started);
+  for (const ticker of tickers) ticker.stop();
+  let now = performance.now();
+  const realNow = performance.now.bind(performance);
+  return {
+    advance(ms: number) {
+      now += ms;
+      Object.defineProperty(performance, 'now', { value: () => now, configurable: true, writable: true });
+      try {
+        for (const ticker of tickers) ticker.update(now);
+      } finally {
+        delete (performance as any).now;
+      }
+    },
+    async finish() {
+      const ahead = now - realNow();
+      if (ahead > 0) await new Promise((resolve) => setTimeout(resolve, ahead + 1));
+      tickers.forEach((ticker, i) => {
+        ticker.lastTime = realNow();
+        if (running[i]) ticker.start();
+      });
+    },
+  };
+}
 
 export function canvasBlob(canvas: HTMLCanvasElement, type: string, quality?: number): Promise<Blob> {
   return new Promise((resolve, reject) => {
