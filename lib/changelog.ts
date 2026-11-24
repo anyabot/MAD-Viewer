@@ -30,6 +30,252 @@ export const KIND_ORDER: ChangeKind[] = ['unit', 'scene', 'feature', 'fix'];
 
 export const RELEASES: Release[] = [
   {
+    date: '2026-11-23',
+    title: { en: 'Viewer export and summon cutscene controls', ko: '뷰어 내보내기와 호출 연출 조작' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'The skin, summon and chibi viewers have separate Record and Save buttons. Videos can be WebM, animated WebP, APNG or GIF, captured live or as one loop. Images can be PNG or WebP, saved at full size or as the current view.',
+          ko: '스킨·호출·치비 뷰어에 녹화와 저장 분리: 동영상은 WebM·애니메이션 WebP·APNG·GIF, 실시간 또는 한 루프로 녹화, 이미지는 PNG·WebP, 전체 또는 화면 범위로 저장',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'The summon cutscene viewer adds scene or clip mode, speed, pause, advance and image save.',
+          ko: '호출 연출 뷰어에 장면·클립 모드, 속도, 일시정지, 진행, 이미지 저장 추가',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Chibi recordings keep full quality.',
+          ko: '치비 녹화 화질 저하 수정',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-19',
+    title: { en: 'Yomi and 1.12.4', ko: '요미와 1.12.4' },
+    entries: [
+      {
+        kind: 'unit',
+        code: 'CH0003',
+        text: {
+          en: 'Yomi added, with her Affection and Desire scenes.',
+          ko: '요미 추가, 어펙션·데자이어 장면 포함',
+        },
+      },
+      {
+        kind: 'scene',
+        text: {
+          en: '1.12.4 data.',
+          ko: '1.12.4 데이터 반영',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'The home page lists events in their exchange phase and quest events. The rewards page links each quest set.',
+          ko: '홈에 교환 기간 이벤트와 퀘스트 이벤트 표시, 보상 페이지에 퀘스트 세트 링크',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Scenes stop the voice when the script says to.',
+          ko: '장면 스크립트의 보이스 정지 반영',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'The formula and DPS pages cap the damage bonus against negative Defense the way the game does.',
+          ko: '공식·DPS 페이지에서 음수 방어력 대상 피해 보너스를 게임과 같이 상한 적용',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-16',
+    title: { en: 'Line order tab', ko: '배치 순서 탭' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'The character list adds a Line order tab, linked from the line order popup on character pages.',
+          ko: '캐릭터 목록에 배치 순서 탭 추가, 캐릭터 페이지의 배치 순서 팝업에서 연결',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Planner units can be completed from held items even when other units have priority.',
+          ko: '플래너에서 다른 유닛이 우선이어도 보유 재료로 유닛 완료 가능',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Thousand Miles shows its repeat-hit bonus only on a unit the cast has already hit.',
+          ko: 'Thousand Miles의 반복 타격 보너스를 이미 맞은 유닛에만 표시',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-13',
+    title: { en: 'Clearer skill text', ko: '더 명확한 스킬 설명' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'Skill text names the caster on shared buffs and reads stack thresholds and wave-start passives. It lists the skills an attack trigger counts and gives unnamed trigger skills and marks readable names.',
+          ko: '스킬 설명에 공유 버프의 시전자, 중첩 조건, 웨이브 시작 패시브, 공격 트리거가 세는 스킬 표시, 이름 없는 트리거 스킬·표식에 이름 부여',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Spirit link explains that overflow damage passes to the linked ally.',
+          ko: '영혼 결속이 초과 피해를 연결된 아군에게 넘기는 효과임을 설명',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'On touch screens, member lists open on tap.',
+          ko: '터치 화면에서 소속 목록이 탭으로 열리도록 수정',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Kouchou (Halloween)\'s first skill targets the enemy with the highest physical attack.',
+          ko: '홍접(할로윈) 1스킬이 물리 공격력이 가장 높은 적을 대상으로 지정',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-09',
+    title: { en: 'Story theatre mode', ko: '스토리 전체 화면' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'The story player adds a theatre mode and renders at your screen\'s pixel density.',
+          ko: '스토리 플레이어에 전체 화면 모드 추가, 화면 해상도에 맞춰 렌더링',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Story fades, effects, shapes, tints and emotes now match the game.',
+          ko: '스토리의 페이드, 효과, 도형, 색조, 이모트를 게임과 동일하게 표현',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'The DPS comparison counts a hit that skips repeat targets once per target.',
+          ko: 'DPS 비교에서 중복 대상 제외 타격을 대상별 1회로 계산',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-07',
+    title: { en: 'Stacking rules and Halloween side stories', ko: '중첩 규칙과 할로윈 외전' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'The DPS comparison stacks buffs and damage over time the way the game does. Skill details show each effect\'s stacking rule.',
+          ko: 'DPS 비교에 게임과 같은 버프·지속 피해 중첩 적용, 스킬 상세에 효과별 중첩 규칙 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'The Nightmare Carnival event page adds map chibis and lists each Halloween side story with its ghosts.',
+          ko: 'Nightmare Carnival 이벤트 페이지에 맵 치비 추가, 할로윈 외전별 유령 표시',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-06',
+    title: { en: 'Activity Log and readable skill details', ko: '활동 일지와 스킬 상세 개선' },
+    entries: [
+      {
+        kind: 'feature',
+        text: {
+          en: 'The story page adds the Activity Log side stories.',
+          ko: '스토리 페이지에 활동 일지 외전 추가',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Skill text resolves hidden markers and names every state. It shows fixed critical chances, ranges, hit counts, and whether a multi-hit value repeats per hit or is split across hits.',
+          ko: '스킬 설명에서 숨은 표식 해석, 모든 상태 이름, 고정 치명 확률, 범위, 타격 수, 다단 타격 수치의 타격별 반복·분할 여부 표시',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'The viewer\'s store switch and camera modes respond to clicks again.',
+          ko: '뷰어의 스토어 전환과 카메라 모드 버튼 클릭 수정',
+        },
+      },
+    ],
+  },
+  {
+    date: '2026-11-05',
+    title: { en: 'Dan Xi (Halloween) and Nightmare Carnival', ko: '단희(할로윈)와 Nightmare Carnival' },
+    entries: [
+      {
+        kind: 'unit',
+        code: 'CH0069',
+        text: {
+          en: 'Dan Xi (Halloween) added, with her Affection and Desire scenes.',
+          ko: '단희(할로윈) 추가, 어펙션·데자이어 장면 포함',
+        },
+      },
+      {
+        kind: 'scene',
+        text: {
+          en: '1.11.6 data: the Nightmare Carnival event, with the 11/5 patch\'s talisman touch fix and new reaction clips.',
+          ko: '1.11.6 데이터: Nightmare Carnival 이벤트, 11/5 패치의 부적 터치 수정과 신규 반응 클립',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'The rhythm minigame\'s event page shows its song art and titles.',
+          ko: '리듬 미니게임 이벤트 페이지에 곡 아트와 제목 표시',
+        },
+      },
+      {
+        kind: 'feature',
+        text: {
+          en: 'Infinity Archive opens on the season that is running or next. Seasons list Basic and the live ones first, and each season has its own link.',
+          ko: '인피니티 아카이브를 진행 중 또는 다음 시즌으로 표시, 기본·진행 중 시즌 우선 정렬, 시즌별 링크',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'A Planner row shows its completion from unsaved edits.',
+          ko: '플래너 행에 저장 전 수정 내용의 완료 상태 표시',
+        },
+      },
+    ],
+  },
+  {
     date: '2026-11-03',
     title: { en: 'Stat comparison and equipment use', ko: '스탯 비교와 장비 사용 현황' },
     entries: [
@@ -52,6 +298,20 @@ export const RELEASES: Release[] = [
         text: {
           en: 'Equipment use: which characters use each of the 12 equipment types, and the three types each character uses.',
           ko: '장비 사용 현황: 12종 장비별 사용 캐릭터와 캐릭터별 장비 3종 표시',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'Pages no longer jump on load for Korean and returning visitors.',
+          ko: '한국어 사용자와 재방문자의 페이지 로딩 시 화면 밀림 수정',
+        },
+      },
+      {
+        kind: 'fix',
+        text: {
+          en: 'A notice appears when the Google Drive sign-in expires.',
+          ko: 'Google 드라이브 로그인 만료 시 알림 표시',
         },
       },
     ],
