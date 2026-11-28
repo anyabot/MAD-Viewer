@@ -15,10 +15,22 @@
     "test:e2e": "playwright test",
     "test:e2e:smoke": "playwright test --grep @smoke --project=chromium",
     "test:e2e:ui": "playwright test --ui",
-    "sync:local-data": "node scripts/sync-local-data.js"
+    "sync:local-data": "node scripts/sync-local-data.js",
+    "lint:design": "node node_modules/@altterisk/game-hub/scripts/check-design.mjs"
+  },
+  "hubDesign": {
+    "prefix": "mad",
+    "css": [
+      "styles"
+    ],
+    "src": [
+      "components",
+      "pages",
+      "lib"
+    ]
   },
   "dependencies": {
-    "@altterisk/game-hub": "github:Altterisk/game-hub#ee31f7edff1963fb67d3bd3e03ecf21e793f84ce",
+    "@altterisk/game-hub": "github:Altterisk/game-hub#709348170d7b35a9306d0c100684ea9f788701e6",
     "@esotericsoftware/spine-pixi-v8": "4.2.72",
     "brotli-dec-wasm": "^2.3.2",
     "gifenc": "^1.0.3",

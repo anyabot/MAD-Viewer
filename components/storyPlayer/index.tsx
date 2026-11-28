@@ -15,10 +15,10 @@ import { SCENE_H, SCENE_W, StoryStage } from './stage';
 
 type Printed = { author: string; actor: string | null; text: string; printer: PrinterId };
 const REVEAL_MS = 22;
-const THEATER_FRAME = { position: 'fixed', inset: 0, zIndex: 1400, bg: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' } as const;
+const THEATER_FRAME = { position: 'fixed', inset: 0, zIndex: 'var(--hub-z-theater)', bg: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' } as const;
 // An upright phone turns the landscape scene so it fills the screen.
-const THEATER_CSS = `.story-theater-stage { width: min(100vw, calc(100dvh * ${SCENE_W} / ${SCENE_H})); flex-shrink: 0; touch-action: manipulation; }
-@media (orientation: portrait) and (pointer: coarse) { .story-theater-stage { width: min(100dvh, calc(100vw * ${SCENE_W} / ${SCENE_H})); transform: rotate(90deg); } }`;
+const THEATER_CSS = `.mad-story-theater-stage { width: min(100vw, calc(100dvh * ${SCENE_W} / ${SCENE_H})); flex-shrink: 0; touch-action: manipulation; }
+@media (orientation: portrait) and (pointer: coarse) { .mad-story-theater-stage { width: min(100dvh, calc(100vw * ${SCENE_W} / ${SCENE_H})); transform: rotate(90deg); } }`;
 
 // Sharp on dense screens, never past the scene's own reference width.
 function densityFor(host: HTMLElement): number {
@@ -244,7 +244,7 @@ export default function StoryPlayer({ parts }: { parts: StoryPart[] }) {
       <Box ref={frameRef} {...(theater ? THEATER_FRAME : {})}>
         {theater && <style>{THEATER_CSS}</style>}
         <Box position="relative" w={theater ? undefined : '100%'} bg="black" borderRadius={theater ? undefined : 'md'} overflow="hidden"
-          className={theater ? 'story-theater-stage' : undefined} style={{ aspectRatio: `${SCENE_W} / ${SCENE_H}` }} onClick={advance} cursor="pointer" userSelect="none">
+          className={theater ? 'mad-story-theater-stage' : undefined} style={{ aspectRatio: `${SCENE_W} / ${SCENE_H}` }} onClick={advance} cursor="pointer" userSelect="none">
           <Box ref={hostRef} position="absolute" inset={0} />
           <GameUi line={line && { ...line, text: printed, waiting: shown >= line.text.length }} choices={choices} place={place}
             fx={fxIndex} printerRef={printerRef} bark={bark && { icon: bark.icon, side: bark.side, text: gameText(bark.text ?? undefined, lang) }} />

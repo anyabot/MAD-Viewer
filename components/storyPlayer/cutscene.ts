@@ -1,4 +1,5 @@
-import { loadSkinArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
+import { loadSkeletonData, loadTexture } from '@altterisk/game-hub/spine';
+import { loadSkinArchive, readText } from '@/lib/skinArchive';
 import { buildBackgrounds } from '@/components/skinViewer/background';
 import { REFERENCE_VIEW_WIDTH } from '@/components/skinViewer/constants';
 import { gameViewFit, rigCameraTransform } from '@/components/skinViewer/scenes';
@@ -56,7 +57,7 @@ export class StoryCutscene {
     this.layout = layout;
     if (layout.static) {
       // Inferred: a still drama image covers the scene, as a background does.
-      const texture = await PIXI.Assets.load({ src: urlFor(archive, files, layout.static.image), loadParser: 'loadTextures' });
+      const texture = await loadTexture(PIXI, archive, files, layout.static.image);
       const sprite = new PIXI.Sprite(texture);
       const scale = Math.max(SCENE_W / texture.width, SCENE_H / texture.height);
       sprite.anchor.set(0.5);
@@ -64,19 +65,11 @@ export class StoryCutscene {
       this.view.addChild(sprite);
       return;
     }
-    const atlas = new SPINE.TextureAtlas(await readText(files, layout.atlas!));
-    await Promise.all(atlas.pages.map(async (page: any) => {
-      const texture = await PIXI.Assets.load({
-        src: urlFor(archive, files, page.name),
-        loadParser: 'loadTextures',
-        data: { alphaMode: page.pma ? 'premultiplied-alpha' : 'premultiply-alpha-on-upload' },
-      });
-      page.setTexture(SPINE.SpineTexture.from(texture.source));
-    }));
-    const binary = new SPINE.SkeletonBinary(new SPINE.AtlasAttachmentLoader(atlas));
     const sk = layout.world?.skeleton ?? { x: 0, y: 0, scale: 1, dataScale: 1 };
-    binary.scale = sk.dataScale ?? 1;
-    const spine = new SPINE.Spine({ skeletonData: binary.readSkeletonData(await readBytes(files, layout.skel!)) });
+    const skeletonData = await loadSkeletonData({
+      PIXI, spine: SPINE, name: archive, files, atlas: layout.atlas!, skeleton: layout.skel!, scale: sk.dataScale ?? 1,
+    });
+    const spine = new SPINE.Spine({ skeletonData });
     const prefabScale = sk.scale || 1;
     spine.position.set(sk.x, -sk.y);
     spine.scale.set(prefabScale);

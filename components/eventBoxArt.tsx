@@ -1,13 +1,16 @@
 import {
-  Box, Button, ButtonGroup, Center, HStack, Spinner, Text, Wrap, WrapItem,
+  Box, Button, ButtonGroup, HStack, Wrap, WrapItem,
 } from '@altterisk/game-hub/ui';
+import {
+  createPixiApp, guardClippingSlot, loadSkeletonData, playOnce, type PixiAppHandle,
+} from '@altterisk/game-hub/spine';
+import { CanvasStage } from '@altterisk/game-hub/viewer';
 import { useEffect, useRef, useState } from 'react';
 
 import { eventArchiveUrls } from '@/lib/cdn';
 import type { EventArt, EventArtRig } from '@/lib/data';
 import { useT, type UiKey } from '@/lib/i18n';
-import { loadArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
-import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
+import { loadArchive } from '@/lib/skinArchive';
 
 type Player = { rig: EventArtRig; spine: any };
 type Grade = 1 | 2 | 3;
@@ -20,13 +23,6 @@ function playable(rig: EventArtRig): string[] {
   const listed = [...(rig.actions ?? []), ...(rig.reactions ?? [])];
   const others = rig.animations.filter((a) => a !== rig.start && !listed.includes(a));
   return [...listed, ...others];
-}
-
-function playOnce(spine: any, track: number, name: string): Promise<void> {
-  return new Promise((resolve) => {
-    const entry = spine.state.setAnimation(track, name, false);
-    entry.listener = { complete: () => resolve(), interrupt: () => resolve() };
-  });
 }
 
 const wait = (seconds: number) => new Promise((r) => { setTimeout(r, seconds * 1000); });
@@ -51,28 +47,16 @@ export default function EventBoxArt({ art, maxDraws }: { art: EventArt; maxDraws
 
     (async () => {
       const PIXI = await import('pixi.js');
-      const {
-        Spine, SkeletonBinary, AtlasAttachmentLoader, TextureAtlas, SpineTexture,
-      } = await import('@esotericsoftware/spine-pixi-v8') as any;
+      const spineModule = await import('@esotericsoftware/spine-pixi-v8') as any;
       const archive = `event:${art.key}`;
       const files = await loadArchive(archive, () => eventArchiveUrls(art.key));
 
       const build = async (rig: EventArtRig): Promise<Player> => {
-        const atlas = new TextureAtlas(await readText(files, rig.atlas));
-        await Promise.all(atlas.pages.map(async (page: any) => {
-          const texture = await PIXI.Assets.load({
-            src: urlFor(archive, files, page.name),
-            loadParser: 'loadTextures',
-            data: { alphaMode: page.pma ? 'premultiplied-alpha' : 'premultiply-alpha-on-upload' },
-          });
-          page.setTexture(SpineTexture.from(texture.source));
-        }));
-        const binary = new SkeletonBinary(new AtlasAttachmentLoader(atlas));
-        binary.scale = rig.dataScale;
-        const spine = new Spine({ skeletonData: binary.readSkeletonData(await readBytes(files, rig.skel)) });
-        const transform = spine.transformAttachments.bind(spine);
-        // the runtime keeps the last frame's clipping slot, which crashes once an animation hides that clip
-        spine.transformAttachments = () => { spine.currentClippingSlot = undefined; transform(); };
+        const skeletonData = await loadSkeletonData({
+          PIXI, spine: spineModule, name: archive, files, atlas: rig.atlas, skeleton: rig.skel, scale: rig.dataScale,
+        });
+        const spine = new spineModule.Spine({ skeletonData });
+        guardClippingSlot(spine);
         spine.state.setAnimation(0, rig.start, true);
         spine.update(0);
         return { rig, spine };
@@ -166,14 +150,8 @@ export default function EventBoxArt({ art, maxDraws }: { art: EventArt; maxDraws
   const draw = art.draw;
   return (
     <Box>
-      <Box position="relative" h={{ base: '240px', md: '320px' }} borderRadius="md" bg="whiteAlpha.50" overflow="hidden">
-        <Box ref={hostRef} position="absolute" inset={0} />
-        {!ready && (
-          <Center position="absolute" inset={0}>
-            {error ? <Text fontSize="xs" color="red.400">{error}</Text> : <Spinner />}
-          </Center>
-        )}
-      </Box>
+      <CanvasStage hostRef={hostRef} ready={ready} error={error}
+        h={{ base: '240px', md: '320px' }} borderRadius="md" bg="whiteAlpha.50" />
       {ready && draw && (
         <HStack spacing={2} mt={2} wrap="wrap">
           {draw.style === 'bead' && (

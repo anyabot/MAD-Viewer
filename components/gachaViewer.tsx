@@ -1,6 +1,9 @@
 // A tap on the surface advances the phase the machine is parked on.
-import { Badge, Box, Button, Flex, HStack, Select, Spinner, Text } from '@altterisk/game-hub/ui';
+import { Badge, Button, Flex, HStack, Select, Text } from '@altterisk/game-hub/ui';
+import { ExportControls, stillBlob, useCanvasCapture, type StillCrop, type StillFormat } from '@altterisk/game-hub/capture';
 import { saveBlob } from '@altterisk/game-hub/persist';
+import { attachmentBounds, createPixiApp, loadSkeletonData, type PixiAppHandle } from '@altterisk/game-hub/spine';
+import { CanvasStage } from '@altterisk/game-hub/viewer';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
@@ -9,19 +12,13 @@ import {
 } from '@/components/gachaViewer/machine';
 import { MAX_RECORD_DIM, REFERENCE_VIEW_WIDTH, speedOptions } from '@/components/skinViewer/constants';
 import { attachmentScales, renderFigure, sourcePixelScale } from '@/components/skinViewer/exportPng';
+import { captureLabels, exportLabels } from '@/components/skinViewer/exportLabels';
+import { captureAudioTracks } from '@/lib/audioBus';
 import { rigCameraTransform } from '@/components/skinViewer/scenes';
 import { gachaArchiveUrls } from '@/lib/cdn';
 import { useLang, useT } from '@/lib/i18n';
 import type { GachaIndex, GachaRig } from '@/lib/data';
-import { loadArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
-import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
-import {
-  ANIM_EXT, STILL_FORMATS, VIDEO_FORMATS, startLiveCapture, stillBlob,
-  type LiveCapture, type StillCrop, type StillFormat, type VideoFormat,
-} from '@/components/skinViewer/exportAnim';
-import {
-  canRecordCanvas, startCanvasVideo, type VideoRecording,
-} from '@/components/skinViewer/exportVideo';
+import { loadArchive } from '@/lib/skinArchive';
 
 type Loaded = {
   spine: any;
@@ -31,23 +28,6 @@ type Loaded = {
 };
 
 type RigKey = 'child' | 'adult';
-
-// Spine's own bounds are the bounding-box attachments when a rig has any, which here is only the chest hit box.
-function artBounds(spine: any, RegionAttachment: any, MeshAttachment: any) {
-  let minX = Infinity; let minY = Infinity; let maxX = -Infinity; let maxY = -Infinity;
-  const v: number[] = [];
-  for (const slot of spine.skeleton.drawOrder) {
-    const a = slot.getAttachment();
-    let n = 0;
-    if (a instanceof RegionAttachment) { a.computeWorldVertices(slot, v, 0, 2); n = 8; }
-    else if (a instanceof MeshAttachment) { n = a.worldVerticesLength; a.computeWorldVertices(slot, 0, n, v, 0, 2); }
-    for (let i = 0; i < n; i += 2) {
-      minX = Math.min(minX, v[i]); maxX = Math.max(maxX, v[i]);
-      minY = Math.min(minY, v[i + 1]); maxY = Math.max(maxY, v[i + 1]);
-    }
-  }
-  return minX === Infinity ? { x: 0, y: 0, width: 0, height: 0 } : { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
-}
 
 type Controller = {
   runScene(): void;
@@ -89,14 +69,20 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
   const playingRef = useRef(playing);
   playingRef.current = playing;
   const ctrlRef = useRef<Controller | null>(null);
-  const [videoFormat, setVideoFormat] = useState<VideoFormat>('webm');
-  const [stillFormat, setStillFormat] = useState<StillFormat>('png');
-  const [stillCrop, setStillCrop] = useState<StillCrop>('bounds');
-  const liveRef = useRef<LiveCapture | null>(null);
-  const [exporting, setExporting] = useState(false);
-  const [recording, setRecording] = useState(false);
-  const [videoStatus, setVideoStatus] = useState<string | null>(null);
-  const recordingRef = useRef<VideoRecording | null>(null);
+  const capture = useCanvasCapture({
+    app: () => ctrlRef.current?.app ?? null,
+    resolution: (kind) => {
+      const ctrl = ctrlRef.current;
+      if (!ctrl) return 1;
+      return kind === 'video' ? Math.max(ctrl.app.renderer.resolution, ctrl.viewResolution()) : ctrl.viewResolution();
+    },
+    fileStem: () => ctrlRef.current?.fileStem() ?? 'gacha',
+    videoName: () => index.rigs[clipRig].asset,
+    audioTracks: captureAudioTracks,
+    labels: captureLabels(t),
+  });
+  const captureRef = useRef(capture);
+  captureRef.current = capture;
 
   // Whatever the machine is parked on, waiting for the next tap.
   const tapParkRef = useRef<(() => void) | null>(null);
@@ -118,29 +104,15 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
 
     (async () => {
       const PIXI = await import('pixi.js');
-      const {
-        Spine, SkeletonBinary, AtlasAttachmentLoader, TextureAtlas, SpineTexture,
-        RegionAttachment, MeshAttachment,
-      } = await import('@esotericsoftware/spine-pixi-v8') as any;
+      const spineModule = await import('@esotericsoftware/spine-pixi-v8') as any;
+      const { RegionAttachment, MeshAttachment } = spineModule;
 
       const build = async (rig: GachaRig): Promise<Loaded> => {
         const files = await loadArchive(rig.key, () => gachaArchiveUrls(rig.key));
-        const atlas = new TextureAtlas(await readText(files, rig.atlas));
-        await Promise.all(atlas.pages.map(async (page: any) => {
-          const texture = await PIXI.Assets.load({
-            src: urlFor(rig.key, files, page.name),
-            loadParser: 'loadTextures',
-            data: {
-              alphaMode: page.pma
-                ? 'premultiplied-alpha' : 'premultiply-alpha-on-upload',
-            },
-          });
-          page.setTexture(SpineTexture.from(texture.source));
-        }));
-        const binary = new SkeletonBinary(new AtlasAttachmentLoader(atlas));
-        binary.scale = rig.dataScale;
-        const skeletonData = binary.readSkeletonData(await readBytes(files, rig.skel));
-        const spine = new Spine({ skeletonData, autoUpdate: false });
+        const skeletonData = await loadSkeletonData({
+          PIXI, spine: spineModule, name: rig.key, files, atlas: rig.atlas, skeleton: rig.skel, scale: rig.dataScale,
+        });
+        const spine = new spineModule.Spine({ skeletonData, autoUpdate: false });
         spine.update(0);
         const camBone = rig.cameraBone ? spine.skeleton.findBone(rig.cameraBone) : null;
         return {
@@ -343,7 +315,7 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
         const { spine } = current;
         const pixelScale = sourcePixelScale(
           attachmentScales(spine, RegionAttachment, MeshAttachment), []) * (view.scale.x || 1);
-        spine.boundsProvider = { calculateBounds: () => artBounds(spine, RegionAttachment, MeshAttachment) };
+        spine.boundsProvider = { calculateBounds: () => attachmentBounds(spine, spineModule) };
         try {
           return renderFigure({ PIXI, app, root, pixelScale });
         } finally {
@@ -389,11 +361,7 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
     return () => {
       destroyed = true;
       ctrlRef.current = null;
-      liveRef.current?.cancel();
-      liveRef.current = null;
-      recordingRef.current?.cancel();
-      recordingRef.current = null;
-      setRecording(false);
+      captureRef.current.cancel();
       for (const off of teardown) off();
       tapParkRef.current = null;
       pixi?.dispose();
@@ -408,84 +376,6 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
   useEffect(() => {
     if (ready && mode === 'clip') ctrlRef.current?.playClip(clipRig, clip, loop);
   }, [ready, mode, clipRig, clip, loop, runId]);
-
-  const runExport = async (job: () => Promise<void>) => {
-    if (exporting) return;
-    setExporting(true);
-    try {
-      await job();
-      setVideoStatus(null);
-    } catch (reason: any) {
-      setVideoStatus(String(reason?.message ?? reason));
-    } finally {
-      setExporting(false);
-    }
-  };
-
-  const stopLive = () => {
-    const capture = liveRef.current;
-    if (!capture) return;
-    liveRef.current = null;
-    setRecording(false);
-    const fileName = `${ctrlRef.current?.fileStem() ?? 'gacha'}.${ANIM_EXT[videoFormat as Exclude<VideoFormat, 'webm'>]}`;
-    void runExport(async () => {
-      const blob = await capture.stop();
-      if (blob) saveBlob(blob, fileName);
-    });
-  };
-
-  const handleRecord = () => {
-    if (recordingRef.current) {
-      recordingRef.current.stop();
-      return;
-    }
-    if (liveRef.current) {
-      stopLive();
-      return;
-    }
-    const ctrl = ctrlRef.current;
-    if (ctrl && videoFormat !== 'webm') {
-      const capture = startLiveCapture({
-        app: ctrl.app, format: videoFormat, resolution: ctrl.viewResolution(),
-        onLimit: () => stopLive(),
-        progress: (done, total) => setVideoStatus(`${done}/${total}`),
-      });
-      liveRef.current = capture;
-      setVideoStatus(`${capture.width}×${capture.height}`);
-      setRecording(true);
-      return;
-    }
-    if (!ctrl || !canRecordCanvas()) {
-      setVideoStatus(t('videoUnsupported'));
-      return;
-    }
-    const { app } = ctrl;
-    const restore = app.renderer.resolution;
-    app.renderer.resolution = Math.max(restore, ctrl.viewResolution());
-    let video: VideoRecording | null = null;
-    try {
-      video = startCanvasVideo({
-        canvas: app.canvas,
-        fileName: index.rigs[clipRig].asset,
-        onStop: () => {
-          if (ctrlRef.current?.app === app) app.renderer.resolution = restore;
-          if (recordingRef.current !== video) return;
-          recordingRef.current = null;
-          setRecording(false);
-        },
-      });
-    } catch {
-      video = null;
-    }
-    if (!video) {
-      app.renderer.resolution = restore;
-      setVideoStatus(t('videoUnsupported'));
-      return;
-    }
-    recordingRef.current = video;
-    setVideoStatus(`${t(video.audio ? 'videoWithAudio' : 'videoVisualOnly')} ${video.width}×${video.height}`);
-    setRecording(true);
-  };
 
   const clips = index.rigs[clipRig].animations;
   const pickRig = (key: RigKey) => {
@@ -548,34 +438,8 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
         {mode === 'scene' && (
           <Button size="sm" isDisabled={!parked} onClick={onTap}>{t('btnAdvance')}</Button>
         )}
-        <HStack gap={2}>
-          <Select size="sm" w="8.5rem" value={videoFormat} aria-label={t('ariaVideoFormat')}
-            isDisabled={recording || exporting}
-            onChange={(e) => setVideoFormat(e.target.value as VideoFormat)}>
-            {VIDEO_FORMATS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-          </Select>
-          <Button size="sm" variant={recording ? 'solid' : 'outline'} colorScheme={recording ? 'red' : undefined}
-            isDisabled={!ready || exporting} onClick={handleRecord}>
-            {recording ? t('btnStopRecording') : t('btnRecord')}
-          </Button>
-        </HStack>
-        <HStack gap={2}>
-          <Select size="sm" w="6rem" value={stillFormat} aria-label={t('ariaStillFormat')}
-            onChange={(e) => setStillFormat(e.target.value as StillFormat)}>
-            {STILL_FORMATS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-          </Select>
-          <Select size="sm" w="7rem" value={stillCrop} aria-label={t('ariaStillCrop')}
-            onChange={(e) => setStillCrop(e.target.value as StillCrop)}>
-            <option value="bounds">{t('optCropBounds')}</option>
-            <option value="view">{t('optCropView')}</option>
-          </Select>
-          <Button size="sm" variant="outline" isDisabled={!ready || recording || exporting}
-            onClick={() => { const ctrl = ctrlRef.current; if (ctrl) void runExport(() => ctrl.exportStill(stillFormat, stillCrop)); }}>
-            {t('btnSave')}
-          </Button>
-        </HStack>
-        {exporting && <Spinner size="xs" />}
-        {videoStatus && <Text fontSize="xs" color="gray.500">{videoStatus}</Text>}
+        <ExportControls capture={capture} ready={ready} labels={exportLabels(t)}
+          onSave={() => { const ctrl = ctrlRef.current; if (ctrl) void capture.run(() => ctrl.exportStill(capture.stillFormat, capture.stillCrop)); }} />
         {mode === 'scene' && <>
           <Badge colorScheme="gray">{STATE_LABEL[state][lang]}</Badge>
           <Text fontSize="sm" color="gray.500">fx {style}</Text>
@@ -584,21 +448,9 @@ export default function GachaViewer({ index, grade: forced, play = 0, onDone, co
           )}
         </>}
       </Flex>}
-      <Box position="relative" bg="black" borderRadius="md" overflow="hidden"
+      <CanvasStage hostRef={hostRef} ready={ready} error={error} bg="black" borderRadius="md"
         h={{ base: '60vh', lg: '70vh' }} minH="320px" onPointerDown={onTap}
-        style={{ touchAction: 'none', cursor: mode === 'scene' ? 'pointer' : 'default' }}>
-        <Box ref={hostRef} position="absolute" inset={0} />
-        {!ready && !error && (
-          <Flex position="absolute" inset={0} align="center" justify="center">
-            <Spinner color="gray.400" />
-          </Flex>
-        )}
-        {error && (
-          <Flex position="absolute" inset={0} align="center" justify="center" p={4}>
-            <Text color="red.300" fontSize="sm" textAlign="center">{error}</Text>
-          </Flex>
-        )}
-      </Box>
+        style={{ touchAction: 'none', cursor: mode === 'scene' ? 'pointer' : 'default' }} />
     </Flex>
   );
 }

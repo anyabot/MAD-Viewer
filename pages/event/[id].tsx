@@ -114,7 +114,7 @@ export default function EventPage({ seo }: { seo: EventSeo | null }) {
           <VStack><Spinner /><Text fontSize="sm" color="gray.500">{t('loading')}</Text></VStack>
         </Center>
         {seo && !gated && (
-          <VStack align="stretch" spacing={2} className="prerender-summary">
+          <VStack align="stretch" spacing={2} className="mad-prerender-summary">
             <Text as="h1" fontSize="2xl" fontWeight="bold">{seo.name}</Text>
             {seo.desc && <Text fontSize="sm" color="gray.400">{seo.desc}</Text>}
             {seo.period && <Text fontSize="sm">{seo.period}</Text>}

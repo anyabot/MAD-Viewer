@@ -1,4 +1,5 @@
-import { loadSkinArchive, readBytes, readText, urlFor } from '@/lib/skinArchive';
+import { guardClippingSlot, loadSkeletonData } from '@altterisk/game-hub/spine';
+import { loadSkinArchive, readText } from '@/lib/skinArchive';
 import { storyAssetUrl, storyBackgroundUrl, type StoryScriptIndex } from '@/lib/data';
 import { FxRun, type FxIndex } from './fx';
 import { StoryCutscene } from './cutscene';
@@ -121,20 +122,12 @@ export class StoryActor {
     const archive = archiveName(rig, stores[0] ?? 'onestore', stores.length > 1);
     const files = await loadSkinArchive(archive);
     const layout = JSON.parse(await readText(files, 'spine.json')) as Layout;
-    const atlas = new SPINE.TextureAtlas(await readText(files, layout.atlas));
-    await Promise.all(atlas.pages.map(async (page: any) => {
-      const texture = await PIXI.Assets.load({
-        src: urlFor(archive, files, page.name),
-        loadParser: 'loadTextures',
-        data: { alphaMode: page.pma ? 'premultiplied-alpha' : 'premultiply-alpha-on-upload' },
-      });
-      page.setTexture(SPINE.SpineTexture.from(texture.source));
-    }));
-    const binary = new SPINE.SkeletonBinary(new SPINE.AtlasAttachmentLoader(atlas));
-    binary.scale = layout.world?.skeleton?.dataScale ?? 1;
-    const spine = new SPINE.Spine({ skeletonData: binary.readSkeletonData(await readBytes(files, layout.skel)) });
-    const transform = spine.transformAttachments.bind(spine);
-    spine.transformAttachments = () => { spine.currentClippingSlot = undefined; transform(); };
+    const skeletonData = await loadSkeletonData({
+      PIXI, spine: SPINE, name: archive, files, atlas: layout.atlas, skeleton: layout.skel,
+      scale: layout.world?.skeleton?.dataScale ?? 1,
+    });
+    const spine = new SPINE.Spine({ skeletonData });
+    guardClippingSlot(spine);
     const idle = layout.actor?.idle;
     if (idle && spine.skeleton.data.findAnimation(idle)) spine.state.setAnimation(0, idle, true);
     // Inferred: the render-texture drawer's PPU over the camera's 100 normalises every rig (skeleton and pivot both land ~15 units).

@@ -11,7 +11,7 @@ import { useHideSpoilers, useSpoilerFacts } from '@/lib/spoilers';
 import { createPersisted } from '@altterisk/game-hub/persist';
 import NextLink from '@/components/appLink';
 import {
-  Badge, Box, Center, Divider, Flex, Grid, HStack, Popover, PopoverBody,
+  Badge, Box, Flex, Grid, HStack, Popover, PopoverBody,
   PopoverContent, PopoverTrigger, Portal, SimpleGrid, Text, VStack, Wrap,
   WrapItem, useMediaQuery,
 } from '@altterisk/game-hub/ui';
@@ -27,8 +27,9 @@ import { GameIcon, StarRating } from '@/components/gameIcon';
 import { ShareButton } from '@/components/shareButton';
 import { GameText, Rotation, Skills } from '@/components/skillKit';
 import {
-  EmptyState, LevelControl, LoadState, PageHeader, Panel, TabPanel, UrlTabs, tabParam,
+  Breadcrumbs, EmptyState, InfoBox, LevelControl, LoadState, PageHeader, Panel, TabPanel, UrlTabs, tabParam,
 } from '@altterisk/game-hub';
+import { nextLink } from '@/lib/hubLink';
 import InfusionTree, { bonusText, infusionLabel } from '@/components/infusionTree';
 import { characterIcon, resolveIcon, skinIcon } from '@/lib/icons';
 import { useFilters } from '@/lib/filterStore';
@@ -185,7 +186,7 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
         {head}
         <LoadState loading error={error} labels={{ loading: t('loading'), error }} />
         {seo && !gated && (
-          <VStack align="stretch" spacing={2} mb={4} className="prerender-summary">
+          <VStack align="stretch" spacing={2} mb={4} className="mad-prerender-summary">
             <Text as="h1" fontSize="2xl" fontWeight="bold">{seo.name}</Text>
             {seo.desc && <Text fontSize="sm" color="gray.400">{seo.desc}</Text>}
             {seo.facts.map(([label, value]) => (
@@ -210,6 +211,7 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
   }
 
   const element = typeOf(entry, chars.types, 'attribute');
+  const headerArt = characterIcon(icons, entry, mine);
   const roster = rosterNote(entry, lang);
 
   // Only what the character has gets a tab, and with one section left the tab
@@ -376,9 +378,10 @@ export default function CharacterPage({ seo }: { seo: CharacterSeo | null }) {
   return (
     <VStack align="stretch" spacing={4}>
       {head}
-      <Text as={NextLink} href="/characters" fontSize="sm" color="gray.500" alignSelf="start"
-        _hover={{ color: 'gray.200' }}>{t('backToCharacters')}</Text>
+      <Breadcrumbs renderLink={nextLink} label={t('navCharacters')}
+        items={[{ label: t('navCharacters'), href: '/characters' }, { label: characterName(entry, lang) }]} />
       <PageHeader title={characterName(entry, lang)} id={entry.code}
+        art={headerArt && <Box as="img" src={headerArt} alt="" className="mad-header-art" />}
         subtitle={(characterSubName(entry, lang) || altNameEn(entry)) && (
           <HStack spacing={3} wrap="wrap">
             {characterSubName(entry, lang) && <Text color="gray.500">{characterSubName(entry, lang)}</Text>}
@@ -575,52 +578,30 @@ function Infobox({ entry, data, icons, accent, skins }: {
   const art = cutin ?? characterIcon(icons, entry, skins);
   if (!art && !rows.length && !entry.comment && !entry.birthdayComment) return null;
 
+  const notes = (entry.comment || entry.birthdayComment) && (
+    <VStack align="stretch" spacing={2}>
+      {entry.comment && (
+        <Box>
+          <Text fontSize="xs" color="gray.500">{t('statusMessage')}</Text>
+          <Text>{dataText(lang, entry.comment, entry.commentEn)}</Text>
+        </Box>
+      )}
+      {entry.birthdayComment && (
+        <Box>
+          <Text fontSize="xs" color="gray.500">{t('birthdayMessage')}</Text>
+          <Text>{dataText(lang, entry.birthdayComment, entry.birthdayCommentEn)}</Text>
+        </Box>
+      )}
+    </VStack>
+  );
+
+  // a rig icon is a small square and must not be blown up to the height a tall cut-in takes
   return (
-    <Box borderWidth="1px" borderColor="whiteAlpha.300" borderRadius="md"
-      borderTopWidth="3px" borderTopColor={accent ?? 'whiteAlpha.400'}
-      bg="whiteAlpha.50" overflow="hidden">
-      {art && (
-        <Center bg="blackAlpha.400" py={2} h={cutin ? '276px' : '136px'}>
-          {/* a rig icon is a small square and must not be blown up to the
-              height a tall cut-in takes */}
-          <Box as="img" src={art} alt="" w="auto" objectFit="contain"
-            maxH={cutin ? '260px' : '120px'} />
-        </Center>
-      )}
-
-      <VStack align="stretch" spacing={0} fontSize="sm">
-        {rows.map(({ label, node }) => (
-          <Flex key={label} px={3} py={1.5} gap={2} align="center"
-            borderTopWidth="1px" borderColor="whiteAlpha.100">
-            <Text minW="82px" color="gray.500" fontSize="xs" textTransform="uppercase"
-              letterSpacing="wide">{label}</Text>
-            <Box flex="1" minW={0}>{node}</Box>
-          </Flex>
-        ))}
-      </VStack>
-
-      {(entry.comment || entry.birthdayComment) && (
-        <>
-          <Divider borderColor="whiteAlpha.200" />
-          <VStack align="stretch" spacing={2} px={3} py={2} fontSize="sm">
-            {entry.comment && (
-              <Box>
-                <Text fontSize="xs" color="gray.500">{t('statusMessage')}</Text>
-                <Text>{dataText(lang, entry.comment, entry.commentEn)}</Text>
-              </Box>
-            )}
-            {entry.birthdayComment && (
-              <Box>
-                <Text fontSize="xs" color="gray.500">{t('birthdayMessage')}</Text>
-                <Text>
-                  {dataText(lang, entry.birthdayComment, entry.birthdayCommentEn)}
-                </Text>
-              </Box>
-            )}
-          </VStack>
-        </>
-      )}
-    </Box>
+    <InfoBox accent={accent} artHeight={art ? (cutin ? 276 : 136) : undefined}
+      art={art && <Box as="img" src={art} alt="" maxH={cutin ? '260px' : '120px'} />}
+      rows={rows.map(({ label, node }) => ({ label, value: node }))}>
+      {notes}
+    </InfoBox>
   );
 }
 
