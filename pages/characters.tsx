@@ -1,12 +1,13 @@
 // Filtered by the axes the game itself uses, each drawn with its in-game icon.
 import { nextFilterMode, nextRouterAdapter, textMatch } from '@altterisk/game-hub/filters';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import NextLink from '@/components/appLink';
 import { useRouter } from 'next/router';
-import { Badge, Box, Flex, Grid, HStack, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
+import { Badge, Box, Text, VStack, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import {
-  EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox, TabPanel, UrlTabs, tabParam,
+  EmptyState, FilterChip, FilterPanel, FilterRow, ListToolbar, LoadState, SearchBox, TabPanel, UnitGrid, UnitTile,
+  UrlTabs, tabParam,
 } from '@altterisk/game-hub';
+import { nextLink } from '@/lib/hubLink';
 import CharacterEquipmentTab from '@/components/characterEquipmentTab';
 import CharacterLineOrderTab from '@/components/characterLineOrderTab';
 import CharacterStatsTab from '@/components/characterStatsTab';
@@ -255,17 +256,14 @@ function CharactersContent({ links }: { links: StaticLink[] }) {
         )}
         {tab === 'list' && (
           <>
-            <Grid gap={3} templateColumns={{
-              base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)',
-              md: 'repeat(4, 1fr)', xl: 'repeat(6, 1fr)',
-            }}>
+            <UnitGrid density="portrait">
               {list.map((c) => (
                 <CharacterCard key={c.code} entry={c} types={chars.types} icons={icons}
                   skins={byCharacter.get(c.code) ?? NO_SKINS} lang={lang}
                   collected={!!collected[c.code]} favorite={!!favorites[c.code]}
                   setCollected={setCollected} />
               ))}
-            </Grid>
+            </UnitGrid>
             {list.length === 0 && <EmptyState title={t('noMatch')} />}
           </>
         )}
@@ -292,29 +290,23 @@ const CharacterCard = memo(function CharacterCard({
   // Prefer rig thumbnails because story-only characters can lack portraits.
   const art = characterIcon(icons, entry, skins);
 
+  const subName = characterSubName(entry, lang);
+
   return (
-    <Box as={NextLink} href={characterHref(entry.code)}
-      borderWidth="1px" borderColor="whiteAlpha.200" borderRadius="xl" overflow="hidden"
-      bg="linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02))"
-      boxShadow="0 12px 28px rgba(0,0,0,0.14)" display="block"
-      _hover={{ borderColor: element?.color ?? 'whiteAlpha.500', transform: 'translateY(-2px)',
-        boxShadow: '0 18px 38px rgba(0,0,0,0.24)', textDecoration: 'none' }}
-      transition="border-color 0.16s, transform 0.16s, box-shadow 0.16s">
-      <Box position="relative" bg="blackAlpha.400" sx={{ aspectRatio: '1 / 1' }}>
-        {art && (
-          <Box as="img" src={art} alt="" w="100%" h="100%" objectFit="contain" loading="lazy" />
-        )}
-        <HStack position="absolute" top={1} left={1} spacing={1}
-          bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
-          backdropFilter="blur(2px)" className="mad-hide-empty">
+    <UnitTile density="portrait" href={characterHref(entry.code)} renderLink={nextLink}
+      accent={element?.color}
+      art={art ? <Box as="img" src={art} alt="" loading="lazy" /> : undefined}
+      title={characterName(entry, lang)} subtitle={subName || undefined} id={entry.code}
+      start={(
+        <>
           <GameIcon manifest={icons} group="ui" names={typeIcons(element)} size={5}
             tint={typeTint(element)} title={typeLabel(element, lang)} reserve={false} />
           <GameIcon manifest={icons} group="ui" names={typeIcons(role)} size={5}
             title={typeLabel(role, lang)} reserve={false} />
-        </HStack>
-        <HStack position="absolute" top={1} right={1} spacing={1}
-          bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
-          backdropFilter="blur(2px)" className="mad-hide-empty">
+        </>
+      )}
+      end={(
+        <>
           {favorite && <Badge colorScheme="pink" fontSize="0.55rem">♥</Badge>}
           {isPlayable(entry) && (
             // The card is a link, so the toggle has to keep the click.
@@ -333,32 +325,14 @@ const CharacterCard = memo(function CharacterCard({
           )}
           <GameIcon manifest={icons} group="ui" names={typeIcons(faction)} size={5}
             title={typeLabel(faction, lang)} reserve={false} />
-        </HStack>
-        {kinds.length > 0 && (
-          <HStack position="absolute" bottom={1} right={1} spacing={0.5}
-            bg="blackAlpha.700" borderRadius="md" px={1} py={0.5}
-            backdropFilter="blur(2px)" className="mad-hide-empty">
-            {kinds.map((k) => (
-              <GameIcon key={k} manifest={icons} group="ui" name={KIND_ICON[k]}
-                size={4} title={KIND_LABEL[k][lang]} opacity={0.9} reserve={false} />
-            ))}
-          </HStack>
-        )}
-      </Box>
-      <VStack align="stretch" spacing={0.5} px={2} py={1.5}>
-        <Text fontSize="sm" fontWeight="bold" noOfLines={1}>{characterName(entry, lang)}</Text>
-        {characterSubName(entry, lang) && (
-          <Text fontSize="0.65rem" color="gray.500" noOfLines={1}>
-            {characterSubName(entry, lang)}
-          </Text>
-        )}
-        <Flex align="center" justify="space-between" gap={1}>
-          {roster
-            ? <Badge colorScheme={roster.scheme} fontSize="0.55rem">{roster.label}</Badge>
-            : <StarRating manifest={icons} star={entry.defaultStar ?? 0} size={3} />}
-          <Text fontSize="0.65rem" fontFamily="mono" color="gray.500">{entry.code}</Text>
-        </Flex>
-      </VStack>
-    </Box>
+        </>
+      )}
+      corner={kinds.length > 0 && kinds.map((k) => (
+        <GameIcon key={k} manifest={icons} group="ui" name={KIND_ICON[k]}
+          size={4} title={KIND_LABEL[k][lang]} opacity={0.9} reserve={false} />
+      ))}
+      badges={roster
+        ? <Badge colorScheme={roster.scheme} fontSize="0.55rem">{roster.label}</Badge>
+        : <StarRating manifest={icons} star={entry.defaultStar ?? 0} size={3} />} />
   );
 });

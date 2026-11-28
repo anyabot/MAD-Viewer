@@ -1,5 +1,7 @@
+:root { --mad-glow-blue: rgba(66, 153, 225, 0.06); }
+
 body {
-  background-image: radial-gradient(circle at 12% -10%, rgba(246, 196, 69, 0.08), transparent 30rem), radial-gradient(circle at 92% 18%, rgba(66, 153, 225, 0.06), transparent 28rem);
+  background-image: radial-gradient(circle at 12% -10%, color-mix(in srgb, var(--hub-accent) 8%, transparent), transparent 30rem), radial-gradient(circle at 92% 18%, var(--mad-glow-blue), transparent 28rem);
   background-attachment: fixed;
 }
 
@@ -18,12 +20,10 @@ body {
 
 .mad-stat-table th, .mad-stat-table td { padding: 0.25rem 0.5rem; text-align: right; }
 
-.mad-canvas-host canvas { display: block; }
 .mad-stat-table th:first-of-type, .mad-stat-table td:first-of-type { text-align: left; padding-left: 0; }
 
 .mad-rule-last:last-child { border-bottom-width: 0; }
 .mad-rule-first:first-child { border-top-width: 0; padding-top: 0; }
-.mad-hide-empty:empty { display: none; }
 
 @media (min-width: 768px) and (max-width: 1439px) {
   .hub-bar__inner { flex-wrap: wrap; row-gap: 0; }
@@ -38,8 +38,7 @@ body {
 .hub-footer__games a, .hub-footer__legal, .hub-footer__legal a { color: var(--hub-text-muted); }
 
 /* crawler text: shown only if the app has not replaced it within 2s */
-.prerender-summary { opacity: 0; animation: prerender-show 0.2s linear 2s forwards; }
-@keyframes prerender-show { to { opacity: 1; } }
+.mad-prerender-summary { opacity: 0; animation: mad-prerender-show 0.2s linear 2s forwards; }
+@keyframes mad-prerender-show { to { opacity: 1; } }
 
-/* the kit theme drops popovers to 10, under the 1300 modal layer */
-.ui-popover__popper { z-index: 1500; }
+.mad-header-art { display: block; width: 96px; height: 96px; object-fit: cover; object-position: top; border-radius: var(--hub-radius-lg); background: var(--hub-surface-raised); }

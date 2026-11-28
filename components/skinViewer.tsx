@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Box, Center, Spinner, Text, Wrap, WrapItem } from '@altterisk/game-hub/ui';
 import {
-  loadSkinArchive, loadTexture, readBytes, readText, revokeSkinUrls, urlFor,
+  loadSkinArchive, loadTexture, readText, revokeSkinUrls,
 } from '@/lib/skinArchive';
 import {
   BORING_DELAY_MS, actorPhases, archiveName, attachPanZoom, baseSkinKey,
@@ -21,9 +21,8 @@ import { createTouchOverlay } from '@/components/skinViewer/touchOverlay';
 import {
   attachmentScales, renderFigure, sourcePixelScale,
 } from '@/components/skinViewer/exportPng';
-import {
-  canRecordCanvas, startCanvasVideo, type VideoRecording,
-} from '@/components/skinViewer/exportVideo';
+import { captureLabels } from '@/components/skinViewer/exportLabels';
+import { captureAudioTracks } from '@/lib/audioBus';
 import { createBlinkCover, createFadeCover, createSceneClock } from '@/components/skinViewer/sceneClock';
 import { JiggleField } from '@/components/skinViewer/jiggle';
 import { setExpressionReporter, type Vars } from '@/components/skinViewer/interactions';
@@ -64,12 +63,12 @@ import {
 import { copyText } from '@altterisk/game-hub';
 import { saveBlob } from '@altterisk/game-hub/persist';
 import { ViewerShell } from '@altterisk/game-hub/viewer';
-import { createPixiApp, type PixiAppHandle } from '@altterisk/game-hub/spine';
+import { createPixiApp, loadSkeletonData, type PixiAppHandle } from '@altterisk/game-hub/spine';
 import {
-  ANIM_EXT, ANIM_FPS, ANIM_MAX_DIM, STILL_FORMATS, VIDEO_FORMATS, encodeAnimation, startLiveCapture,
-  steppedClock, stillBlob,
-  type AnimFormat, type LiveCapture, type StillCrop, type StillFormat, type VideoFormat, type VideoLength,
-} from '@/components/skinViewer/exportAnim';
+  ANIM_EXT, ANIM_FPS, ANIM_MAX_DIM, STILL_FORMATS, VIDEO_FORMATS, encodeAnimation, steppedClock, stillBlob,
+  useCanvasCapture, type AnimFormat, type CanvasCapture, type CaptureProgress, type StillCrop, type StillFormat,
+  type VideoFormat, type VideoLength,
+} from '@altterisk/game-hub/capture';
 
 type SkinViewerProps = {
   skin: string;
@@ -129,15 +128,7 @@ export default function SkinViewer({
   const sharedSelectionsAppliedRef = useRef(false);
   const sharedStageAppliedRef = useRef(false);
   const [shareStatus, setShareStatus] = useState('');
-  const [recording, setRecording] = useState(false);
-  const [videoStatus, setVideoStatus] = useState('');
-  const recordingRef = useRef<VideoRecording | null>(null);
-  const [videoFormat, setVideoFormat] = useState<VideoFormat>('webm');
-  const [videoLength, setVideoLength] = useState<VideoLength>('record');
-  const [stillFormat, setStillFormat] = useState<StillFormat>('png');
-  const [stillCrop, setStillCrop] = useState<StillCrop>('bounds');
-  const liveRef = useRef<LiveCapture | null>(null);
-  const [exporting, setExporting] = useState(false);
+  const captureRef = useRef<CanvasCapture | null>(null);
 
   const [bodyAnim, setBodyAnim] = useState('');
   const [faceAnim, setFaceAnim] = useState('');
@@ -627,30 +618,16 @@ export default function SkinViewer({
         return;
       }
 
-      const {
-        Spine, SkeletonBinary, AtlasAttachmentLoader, TextureAtlas, SpineTexture,
-        RegionAttachment, MeshAttachment, SkeletonBounds,
-      } = await import('@esotericsoftware/spine-pixi-v8') as any;
+      const spineModule = await import('@esotericsoftware/spine-pixi-v8') as any;
+      const { Spine, RegionAttachment, MeshAttachment, SkeletonBounds } = spineModule;
 
       if (!files || !layout.atlas || !layout.skel) return;
 
-      // `pma` decides whether the page's bytes are already premultiplied.
-      const atlasText = await readText(files, layout.atlas);
-      const atlas = new TextureAtlas(atlasText);
-      await Promise.all(atlas.pages.map(async (page: any) => {
-        const texture = await PIXI.Assets.load({
-          src: urlFor(archive, files, page.name),
-          loadParser: 'loadTextures',
-          data: { alphaMode: page.pma ? 'premultiplied-alpha' : 'premultiply-alpha-on-upload' },
-        });
-        page.setTexture(SpineTexture.from(texture.source));
-      }));
-      if (destroyed) return;
-
       // The Unity SkeletonDataAsset scale, applied at parse time as the game does.
-      const binary = new SkeletonBinary(new AtlasAttachmentLoader(atlas));
-      binary.scale = layout.world?.skeleton?.dataScale ?? 1;
-      const skeletonData = binary.readSkeletonData(await readBytes(files, layout.skel));
+      const skeletonData = await loadSkeletonData({
+        PIXI, spine: spineModule, name: archive, files,
+        atlas: layout.atlas, skeleton: layout.skel, scale: layout.world?.skeleton?.dataScale ?? 1,
+      });
       if (destroyed) return;
 
       // `autoDensity` pins the CSS size, so recording can raise the backing store alone.
@@ -1774,11 +1751,7 @@ export default function SkinViewer({
       stopBgm();
       stopSfx();
       spinePixelScaleRef.current = () => 1;
-      if (liveRef.current) {
-        liveRef.current.cancel();
-        liveRef.current = null;
-        setRecording(false);
-      }
+      captureRef.current?.cancelLive();
       appRef.current = null;
       rootRef.current = null;
       fitCameraRef.current = () => {};
@@ -1964,20 +1937,27 @@ export default function SkinViewer({
     }
   };
 
-  const runExport = async (job: () => Promise<void>) => {
-    if (exporting) return;
-    setExporting(true);
-    try {
-      await job();
-      setVideoStatus('');
-    } catch (reason: any) {
-      setVideoStatus(String(reason?.message ?? reason));
-    } finally {
-      setExporting(false);
-    }
-  };
+  const loopAllowed = mode === 'manual';
+  const capture = useCanvasCapture({
+    app: () => appRef.current,
+    resolution: () => (hostRef.current ? recordScale(hostRef.current) : 1),
+    fileStem: () => {
+      const name = spineRef.current?.state.getCurrent(0)?.animation?.name;
+      return `${archive}${name ? `_${animLabel(name)}` : ''}`;
+    },
+    videoName: () => archive,
+    audioTracks: captureAudioTracks,
+    opaque: true,
+    loop: loopAllowed ? (format, progress) => exportAnim(format, progress) : undefined,
+    labels: captureLabels(t),
+  });
+  captureRef.current = capture;
+  const {
+    videoFormat, setVideoFormat, videoLength, setVideoLength, stillFormat, setStillFormat, stillCrop, setStillCrop,
+    recording, exporting, status: videoStatus,
+  } = capture;
 
-  const handleStill = () => runExport(async () => {
+  const handleStill = () => capture.run(async () => {
     const app = appRef.current;
     const host = hostRef.current;
     const root = rootRef.current;
@@ -1996,7 +1976,7 @@ export default function SkinViewer({
   });
 
   // Animated formats step the whole viewer on a fixed clock for one cycle of the body track.
-  const exportAnim = (format: AnimFormat) => runExport(async () => {
+  const exportAnim = async (format: AnimFormat, progress: CaptureProgress) => {
     const app = appRef.current;
     const host = hostRef.current;
     const PIXI = pixiRef.current;
@@ -2015,7 +1995,7 @@ export default function SkinViewer({
     try {
       blob = await encodeAnimation({
         format, count, width, height,
-        progress: (done, total) => setVideoStatus(`${done}/${total}`),
+        progress,
         cancelled: () => appRef.current !== app,
         frame: (i) => {
           if (i > 0) clock.advance(1000 / fps);
@@ -2027,7 +2007,7 @@ export default function SkinViewer({
     }
     const name = entry?.animation?.name ? `_${animLabel(entry.animation.name)}` : '';
     if (blob) saveBlob(blob, `${archive}${name}.${ANIM_EXT[format]}`);
-  });
+  };
 
   // Screen px per world unit needed for the art's own resolution, capped by frame size.
   const recordScale = (host: HTMLDivElement) => {
@@ -2039,100 +2019,6 @@ export default function SkinViewer({
     const scale = Math.min(native, cap);
     return Number.isFinite(scale) ? Math.max(1, scale) : 1;
   };
-
-  const loopAllowed = mode === 'manual';
-
-  const stopLive = () => {
-    const capture = liveRef.current;
-    if (!capture) return;
-    liveRef.current = null;
-    setRecording(false);
-    const name = spineRef.current?.state.getCurrent(0)?.animation?.name;
-    const fileName = `${archive}${name ? `_${animLabel(name)}` : ''}.${ANIM_EXT[videoFormat as AnimFormat]}`;
-    void runExport(async () => {
-      const blob = await capture.stop();
-      if (blob) saveBlob(blob, fileName);
-    });
-  };
-
-  const handleRecord = () => {
-    if (recordingRef.current) {
-      recordingRef.current.stop();
-      return;
-    }
-    if (liveRef.current) {
-      stopLive();
-      return;
-    }
-    const app = appRef.current;
-    const host = hostRef.current;
-    if (videoFormat !== 'webm') {
-      const format = videoFormat;
-      if (loopAllowed && videoLength === 'loop') {
-        void exportAnim(format);
-        return;
-      }
-      if (!app || !host) return;
-      const capture = startLiveCapture({
-        app, format, resolution: recordScale(host),
-        onLimit: () => stopLive(),
-        progress: (done, total) => setVideoStatus(`${done}/${total}`),
-      });
-      liveRef.current = capture;
-      setVideoStatus(`${capture.width}×${capture.height}`);
-      setRecording(true);
-      return;
-    }
-    const canvas = app?.canvas ?? app?.renderer?.canvas;
-    if (!app || !host || !canvas || !canRecordCanvas()) {
-      setVideoStatus(t('videoUnsupported'));
-      return;
-    }
-    // The frame is the aspect box, so only its pixel density is raised.
-    const restore = app.renderer.resolution;
-    const restoreAlpha = app.renderer.background.alpha;
-    app.renderer.resolution = recordScale(host);
-    // WebM drops alpha, so additive glows need an opaque backdrop to survive.
-    app.renderer.background.alpha = 1;
-    const reset = () => {
-      app.renderer.resolution = restore;
-      app.renderer.background.alpha = restoreAlpha;
-    };
-    let recording_: VideoRecording | null = null;
-    try {
-      recording_ = startCanvasVideo({
-        canvas,
-        fileName: archive,
-        onStop: () => {
-          if (appRef.current) reset();
-          if (recordingRef.current !== recording_) return;
-          recordingRef.current = null;
-          setRecording(false);
-        },
-      });
-    } catch {
-      reset();
-      setVideoStatus(t('videoUnsupported'));
-      return;
-    }
-    if (!recording_) {
-      reset();
-      setVideoStatus(t('videoUnsupported'));
-      return;
-    }
-    recordingRef.current = recording_;
-    setVideoStatus(`${t(recording_.audio ? 'videoWithAudio' : 'videoVisualOnly')} ${
-      recording_.width}×${recording_.height}`);
-    setRecording(true);
-  };
-
-  useEffect(() => () => {
-    const recording_ = recordingRef.current;
-    recordingRef.current = null;
-    recording_?.cancel();
-    liveRef.current?.cancel();
-    liveRef.current = null;
-  }, []);
 
   // Memoised so the `?? []` fallback does not hand the option memos a fresh identity every render.
   const anims = useMemo(() => layout?.animations ?? [], [layout]);
@@ -2435,7 +2321,7 @@ export default function SkinViewer({
               <WrapItem>
                 <ActionButton icon="record"
                   label={recording ? t('btnStopRecording') : t('btnRecord')}
-                  onClick={handleRecord} disabled={loadState !== 'ready' || exporting}
+                  onClick={capture.record} disabled={loadState !== 'ready' || exporting}
                   busy={exporting && !recording} active={recording} />
               </WrapItem>
             </Wrap>

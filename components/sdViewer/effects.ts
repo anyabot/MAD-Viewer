@@ -1,6 +1,6 @@
 import { createEmoteRun, type EmoteRun } from '@/components/skinViewer/particles';
 import type { SdCharacter } from '@/lib/data';
-import { urlFor } from '@/lib/skinArchive';
+import { loadTexture } from '@altterisk/game-hub/spine';
 
 type Effect = NonNullable<SdCharacter['cutin']>['effects'][number];
 
@@ -37,10 +37,7 @@ export async function createCutinEffects(options: {
     (effect) => effect.emitters.map((emitter) => emitter.sheet)))];
   await Promise.all(names.map(async (name) => {
     if (!files.has(name)) return;
-    const texture = await PIXI.Assets.load({
-      src: urlFor(cacheKey, files, name),
-      loadParser: 'loadTextures',
-    });
+    const texture = await loadTexture(PIXI, cacheKey, files, name);
     if (texture?.source) sheets.set(name, texture);
   }));
 

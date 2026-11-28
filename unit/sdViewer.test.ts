@@ -1,32 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { guardClearedClippingAttachment } from '@/components/sdViewer/clipping';
 import { frameBounds, shakeOffset } from '@/components/sdViewer/timeline';
-
-function renderer(attachment: unknown) {
-  return {
-    currentClippingSlot: { slot: { attachment } } as { slot: { attachment: any } } | undefined,
-    updateAndSetPixiMask(..._args: unknown[]) {
-      if (this.currentClippingSlot) void this.currentClippingSlot.slot.attachment.endSlot;
-    },
-  };
-}
-
-describe('SD clipping guard', () => {
-  it.each([null, {}, { name: 'region' }])('drops stale renderer state for %j', (attachment) => {
-    const spine = renderer(attachment);
-    guardClearedClippingAttachment(spine as any);
-    expect(() => spine.updateAndSetPixiMask({}, false)).not.toThrow();
-    expect(spine.currentClippingSlot).toBeUndefined();
-  });
-
-  it('keeps an active clipping attachment', () => {
-    const clipping = { endSlot: { name: 'end' }, worldVerticesLength: 8 };
-    const spine = renderer(clipping);
-    guardClearedClippingAttachment(spine as any);
-    spine.updateAndSetPixiMask({}, false);
-    expect(spine.currentClippingSlot?.slot.attachment).toBe(clipping);
-  });
-});
 
 describe('SD cut-in timeline', () => {
   const screen = { width: 900, height: 600 };
